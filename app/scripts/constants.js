@@ -151,16 +151,8 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
   // they are unpersisted, disallowed for most end users, or not supported by
   // openshift but exist in kubernetes.
   AVAILABLE_KINDS_BLACKLIST: [],
-
-  // Currently disables watch on events used by the drawer.
+  // Currently disables watch on events used by the drawer
   DISABLE_GLOBAL_EVENT_WATCH: false,
-
-  // Disables the copy login command option from the user menu and CLI page.
-  DISABLE_COPY_LOGIN_COMMAND: false,
-
-  // Set to true when the template service broker is enabled for the cluster.
-  TEMPLATE_SERVICE_BROKER_ENABLED: false,
-
   ENABLE_TECH_PREVIEW_FEATURE: {
     // Set to true if the service catalog supports pod presets for binding services to applications.
     pod_presets: false
@@ -212,16 +204,6 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     {resource: 'services', group: ''},
     {resource: 'statefulsets', group: 'apps'}
   ],
-  MEMBERSHIP_WHITELIST: [
-    "admin",
-    "basic-user",
-    "edit",
-    "system:deployer",
-    "system:image-builder",
-    "system:image-puller",
-    "system:image-pusher",
-    "view",
-  ],
   // TODO:
   // This map can drive both the drawer & toast messages by
   // updating it to the following format:
@@ -236,49 +218,44 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
   // TODO: Also consider an API_OBJECTS_TO_IGNORE
   // map that can blacklist some, for example, if FailedCreate
   // applies to many but we don't want to see all.
-  EVENTS_TO_SHOW: {
-    // General events that apply to more than one api object
+   EVENTS_TO_SHOW: {
+    // CRUD events that apply to more than one api object
     FailedCreate: true,
     FailedDelete: true,
-    FailedScheduling: true,
     FailedUpdate: true,
     // Build
-    BuildCancelled: true,
+    BuildStarted: true,
     BuildCompleted: true,
     BuildFailed: true,
-    BuildStarted: true,
+    BuildCancelled: true,
     // BuildConfig
-    BuildConfigInstantiateFailed: true,
+    //
     // Deployment
     Failed: true,
+    ScalingReplicaSet: true,
+    DeploymentCancelled: true,
     // DeploymentConfig
     DeploymentCreated: true,
     DeploymentCreationFailed: true,
-    RolloutCancelled: true,
-    // HorizontalPodAutoscaler
-    FailedRescale: true,
-    SuccessfulRescale: true,
     // Pod
-    BackOff: true,
     FailedSync: true,
-    InvalidEnvironmentVariableNames: true,
+    BackOff: true,
     Unhealthy: true,
-    // PVC
-    FailedBinding: true,
-    ProvisioningFailed: true,
-    VolumeDeleted: true,
+    // Image/Pod
+    Pulling: true,
+    Pulled: true,
+    // SuccessfulDelete: true,
+    // Cron
+    //
+    // PodAutoscaler
+    SuccessfulRescale: true,
+    FailedRescale: true,
     // Service
     LoadBalancerUpdateFailed: true,
-    // Service Catalog
-    Deprovisioning: true,
-    ErrorCallingProvision: true,
-    ErrorInjectingBindResult: true,
-    ProvisionCallFailed: true,
-    ProvisionedSuccessfully: true,
-    Provisioning: true,
-    ReferencesNonexistentServiceClass: true,
-    ReferencesNonexistentServicePlan: true,
-    UnbindCallFailed: true
+    // PVC
+    VolumeDeleted: true,
+    FailedBinding: true,
+    ProvisioningFailed: true
   },
 
   // href's will be prefixed with /project/{{projectName}} unless they are absolute URLs

@@ -19,7 +19,7 @@
 
       var counter = this;
       var DISABLE_GLOBAL_EVENT_WATCH = _.get(Constants, 'DISABLE_GLOBAL_EVENT_WATCH');
-      var LIMIT_WATCHES = $filter('isIE')();
+      var LIMIT_WATCHES = $filter('isIE')() || $filter('isEdge')();
 
       counter.hide = true;
 
@@ -32,7 +32,7 @@
         if(!projectName) {
           return;
         }
-        notificationListeners.push($rootScope.$on('NotificationDrawerWrapper.onUnreadNotifications', cb));
+        notificationListeners.push($rootScope.$on('NotificationDrawerWrapper.count', cb));
       };
 
       var deregisterNotificationListeners = function() {

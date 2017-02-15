@@ -12,30 +12,31 @@ angular.module('openshiftConsole')
 
       var EVENTS_TO_SHOW_BY_REASON = _.get(window, 'OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW');
 
-      var isImportantAPIEvent = function(event) {
-        return EVENTS_TO_SHOW_BY_REASON[event.reason];
+      var isImportantEvent = function(event) {
+        var reason = event.reason;
+        return EVENTS_TO_SHOW_BY_REASON[reason];
       };
 
-      var markRead = function(id) {
-        _.set(cachedEvents, [id, READ], true);
+      var markRead = function(event) {
+        _.set(cachedEvents, [event.metadata.uid, READ], true);
         BrowserStore.saveJSON('session','events', cachedEvents);
       };
 
-      var markCleared = function(id) {
-        _.set(cachedEvents, [id, CLEARED], true);
+      var markCleared = function(event) {
+        _.set(cachedEvents, [event.metadata.uid, CLEARED], true);
         BrowserStore.saveJSON('session','events', cachedEvents);
       };
 
-      var isRead = function(id) {
-        return _.get(cachedEvents, [id, READ]);
+      var isRead = function(event) {
+        return _.get(cachedEvents, [event.metadata.uid, READ]);
       };
 
-      var isCleared = function(id) {
-        return _.get(cachedEvents, [id, CLEARED]);
+      var isCleared = function(event) {
+        return _.get(cachedEvents, [event.metadata.uid, CLEARED]);
       };
 
       return {
-        isImportantAPIEvent: isImportantAPIEvent,
+        isImportantEvent: isImportantEvent,
         // read removes the event bold effect
         markRead: markRead,
         isRead: isRead,
