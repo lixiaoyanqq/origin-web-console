@@ -37,8 +37,16 @@
             <div class="event-reason">
               {{event.reason | sentenceCase}}
             </div>
-            <div class="event-object">
-              {{event.involvedObject.kind | kindToResource | abbreviateResource}}/{{event.involvedObject.name}}
+            <div
+              class="event-object"
+              ng-init="resourceURL = (event | navigateEventInvolvedObjectURL)">
+              <a
+                ng-if="resourceURL"
+                ng-attr-title="Navigate to {{event.involvedObject.name}}"
+                href="{{resourceURL}}">
+                {{event.involvedObject.kind | kindToResource | abbreviateResource}}/{{event.involvedObject.name}}
+              </a>
+              <span ng-if="!(resourceURL)">{{event.involvedObject.kind | kindToResource | abbreviateResource}}/{{event.involvedObject.name}}</span>
             </div>
           </div>
           <div class="detail-group">
