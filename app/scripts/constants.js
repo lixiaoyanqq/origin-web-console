@@ -71,7 +71,7 @@ function Noop() {
   gettext('Middleware');
   gettext('CI/CD');
   gettext('No results found for Keyword:');
-  gettext('View the result for Keyword:');	
+  gettext('View the result for Keyword:');
   gettext('View all');
   gettext('results for Keyword:');
   gettext('Filter by Keyword');
