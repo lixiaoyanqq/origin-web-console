@@ -14677,7 +14677,34 @@ r.destroy();
 });
 }
 };
-}).directive("shortId", function() {
+}).directive("copyLoginToClipboard", [ "NotificationsService", function(e) {
+return {
+restrict: "E",
+replace: !0,
+scope: {
+clipboardText: "="
+},
+template: '<a href="" data-clipboard-text="">Copy Login Command</a>',
+link: function(t, n) {
+var a = new Clipboard(n.get(0));
+a.on("success", function() {
+e.addNotification({
+id: "copied_to_clipboard_toast_success",
+type: "warning",
+message: "Do not share the API token in your clipboard. A token is a form of a password."
+});
+}), a.on("error", function() {
+e.addNotification({
+id: "copied_to_clipboard_toast_error",
+type: "error",
+message: "Unable to copy."
+});
+}), n.on("$destroy", function() {
+a.destroy();
+});
+}
+};
+} ]).directive("shortId", function() {
 return {
 restrict: "E",
 scope: {
@@ -21046,6 +21073,7 @@ type: "dom",
 node: '<li><a href="about">About</a></li>'
 }), e;
 });
+<<<<<<< f798ce94fb0fd270304f860e760793e830d726c9
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 } ]), angular.module("openshiftConsole").run([ "extensionRegistry", "$rootScope", "AuthService", "gettext", "gettextCatalog", function(a, b, c, d, e) {
 a.add("nav-user-dropdown", function() {
@@ -21057,9 +21085,15 @@ type:"dom",
 node:g + '<li><a href="logout">' + _.escape(a) + "</a></li>"
 =======
 } ]), angular.module("openshiftConsole").run([ "extensionRegistry", "$rootScope", function(e, t) {
+=======
+} ]), angular.module("openshiftConsole").run([ "extensionRegistry", "$rootScope", "DataService", "AuthService", function(e, t, n, a) {
+>>>>>>> Add quick command to help dropdown
 e.add("nav-user-dropdown", function() {
 var e = "Log out";
 return t.user.fullName && t.user.fullName !== t.user.metadata.name && (e += " (" + t.user.metadata.name + ")"), [ {
+type: "dom",
+node: "<li><copy-login-to-clipboard clipboard-text=\"'oc login " + n.openshiftAPIBaseUrl() + " --token=" + a.UserStore().getToken() + "'\"></copy-login-to-clipboard></li>"
+}, {
 type: "dom",
 node: '<li><a href="logout">' + _.escape(e) + "</a></li>"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1

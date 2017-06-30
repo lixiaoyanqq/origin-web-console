@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('openshiftConsole')
-  .run(function(extensionRegistry, $rootScope, AuthService, gettext, gettextCatalog) {
+  .run(function(extensionRegistry, $rootScope, DataService, AuthService) {
     extensionRegistry
       .add('nav-user-dropdown', function() {
         var msg = gettext('Log out');
@@ -18,7 +18,10 @@ angular.module('openshiftConsole')
 
         return [{
           type: 'dom',
-          node: nodeHtml + '<li><a href="logout">' + _.escape(msg) + '</a></li>'
+          node: '<li><copy-login-to-clipboard clipboard-text="\'oc login ' + DataService.openshiftAPIBaseUrl() + ' --token=' + AuthService.UserStore().getToken() + '\'"></copy-login-to-clipboard></li>'
+        },{
+          type: 'dom',
+          node: '<li><a href="logout">' + _.escape(msg) + '</a></li>'
         }];
       });
   });
