@@ -103,12 +103,12 @@ angular.module('openshiftConsole')
       }
     };
   })
-  .directive('copyLoginToClipboard', function(AlertMessageService, NotificationsService) {
+  .directive('copyLoginToClipboard', function(NotificationsService) {
     return {
       restrict: 'E',
       replace: true,
       scope: {
-        clipboardText: "="
+        clipboardText: "@"
       },
       template: '<a href="" data-clipboard-text="" translate>Copy Login Command</a>',
       link: function($scope, element) {
