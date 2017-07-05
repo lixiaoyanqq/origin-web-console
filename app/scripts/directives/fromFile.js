@@ -107,17 +107,6 @@ angular.module("openshiftConsole")
           }
         };
 
-        var createProjectIfNecessary = function() {
-          if (_.has($scope.input.selectedProject, 'metadata.uid')) {
-            return $q.when($scope.input.selectedProject);
-          }
-
-          var newProjName = $scope.input.selectedProject.metadata.name;
-          var newProjDisplayName = $scope.input.selectedProject.metadata.annotations['new-display-name'];
-          var newProjDesc = $filter('description')($scope.input.selectedProject);
-          return ProjectsService.create(newProjName, newProjDisplayName, newProjDesc);
-        };
-
         $scope.create = function() {
           delete $scope.error;
 
@@ -299,13 +288,13 @@ angular.module("openshiftConsole")
           if ($scope.resourceKind === "Template" && $scope.templateOptions.process && !$scope.errorOccurred) {
             if ($scope.isDialog) {
               $scope.$emit('fileImportedFromYAMLOrJSON', {
-                project: $scope.input.selectedProject,
+                project: $scope.project,
                 template: $scope.resource
               });
             }
             else {
-              namespace = ($scope.templateOptions.add || $scope.updateResources.length > 0) ? $scope.input.selectedProject.metadata.name : "";
-              path = Navigate.createFromTemplateURL($scope.resource, $scope.input.selectedProject.metadata.name, {namespace: namespace});
+              namespace = ($scope.templateOptions.add || $scope.updateResources.length > 0) ? $scope.project.metadata.name : "";
+              path = Navigate.createFromTemplateURL($scope.resource, $scope.project.metadata.name, {namespace: namespace});
               $location.url(path);
             }
           }

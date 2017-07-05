@@ -70,18 +70,11 @@
       });
     };
 
-    var updated = function(current, previous) {
-      var resource;
+    var updated = function() {
       // Check for errors, then check for warnings.
       try {
-        resource = parseYAML(false);
+        ctrl.resource = parseYAML(false);
         setValid(true);
-
-        // Only update `ctrl.resource` if the value has changed.
-        if (current !== previous) {
-          ctrl.resource = resource;
-        }
-
         // Check for warnings.
         try {
           parseYAML(true);
@@ -93,7 +86,6 @@
         setAnnotation(e, 'error');
         setValid(false);
       }
-
     };
 
     $scope.$watch(function() {
@@ -114,6 +106,7 @@
       }
     };
 
+    ctrl.aceChanged = updated;
     ctrl.aceLoaded = function(editor) {
       // Keep a reference to use later in event callbacks.
       aceEditor = editor;
@@ -123,10 +116,6 @@
       session.setOption('useSoftTabs', true);
       editor.setDragDelay = 0;
     };
-
-    $scope.$watch(function() {
-      return ctrl.model;
-    }, updated);
 
     ctrl.gotoLine = function(line) {
       aceEditor.gotoLine(line);
