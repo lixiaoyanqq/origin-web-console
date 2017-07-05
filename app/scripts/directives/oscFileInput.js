@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('openshiftConsole')
-  .directive('oscFileInput', function(Logger) {
+  .directive('oscFileInput', function($filter, Logger, NotificationsService) {
     return {
       restrict: 'E',
       scope: {
@@ -14,10 +14,23 @@ angular.module('openshiftConsole')
         hideClear: '<?',
         helpText: "@?",
         dropZoneId: "@?",
-        onFileAdded: "<?"
+        onFileAdded: "<?",
+        // Don't perform any encoding determination on the file. Use this if the file might be binary.
+        // https://www.w3.org/TR/file-upload/#encoding-determination
+        readAsBinaryString: "<?",
+        // This lets the parent know if binary content was added. For the config map / secret form, we
+        // can then hide the Ace editor for this field since it will have unprintable characters.
+        // Note: This should only be set to `true` if uploading a file, not if typing / pasting control
+        // characters directly into the editor. Otherwise the Ace editor could disappear when pasting
+        // content.
+        // TODO: If we add Ace editor directly to osc-file-input, rather than having it in the secret form, we
+        // can remove this flag.
+        isBinaryFile: "=?"
       },
       templateUrl: 'views/directives/osc-file-input.html',
       link: function(scope, element){
+        var isNonPrintable = $filter('isNonPrintable');
+
         var id = _.uniqueId('osc-file-input-');
         scope.dropMessageID = id + '-drop-message';
         scope.helpID = id + '-help';
@@ -25,9 +38,9 @@ angular.module('openshiftConsole')
         scope.uploadError = false;
 
         var dropMessageSelector = "#" + scope.dropMessageID,
-            highlightDropZone = false,
-            showDropZone = false,
-            inputFileField = element.find('input[type=file]');
+          highlightDropZone = false,
+          showDropZone = false,
+          inputFileField = element.find('input[type=file]');
 
         setTimeout(addDropZoneListeners);
 
@@ -71,6 +84,7 @@ angular.module('openshiftConsole')
         scope.cleanInputValues = function() {
           scope.model = '';
           scope.fileName = '';
+          scope.isBinaryFile = false;
           inputFileField[0].value = "";
         };
 
@@ -156,7 +170,7 @@ angular.module('openshiftConsole')
             var droppableElement, dropZoneMessage = element.find('.drag-and-drop-zone');
             if (putFront) {
               droppableElement = (scope.dropZoneId) ? $('#' + scope.dropZoneId) : element,
-              positionOver(dropZoneMessage, droppableElement);
+                positionOver(dropZoneMessage, droppableElement);
             } else {
               dropZoneMessage.css('z-index', '-1');
             }
@@ -174,11 +188,23 @@ angular.module('openshiftConsole')
         }
 
         function addFile(file) {
+          // If the file is larger than 5 MiB, don't try to upload. Note that secrets and config
+          // maps have an even smaller limit (1 MB).
+          if (file.size > (5 * 1024 * 1024)) {
+            NotificationsService.addNotification({
+              type: "error",
+              message: "The file is too large.",
+              details: "The file " + file.name + " is " + $filter('humanizeSize')(file.size) + ". The web console has a 5 MiB file limit."
+            });
+            return;
+          }
+
           var reader = new FileReader();
           reader.onloadend = function(){
             scope.$apply(function(){
               scope.fileName = file.name;
               scope.model = reader.result;
+              scope.isBinaryFile = isNonPrintable(reader.result);
               var cb = scope.onFileAdded;
               if (_.isFunction(cb)) {
                 cb(reader.result);
@@ -192,7 +218,12 @@ angular.module('openshiftConsole')
             scope.uploadError = true;
             Logger.error("Could not read file", e);
           };
-          reader.readAsText(file);
+
+          if (scope.readAsBinaryString) {
+            reader.readAsBinaryString(file);
+          } else {
+            reader.readAsText(file);
+          }
         }
 
         function removeDropZoneClasses(){

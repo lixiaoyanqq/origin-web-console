@@ -126,6 +126,13 @@ body.ios {
   display: none;
 }
 
+.btn-link.inline-btn-link {
+  font-size: inherit;
+  font-weight: inherit;
+  vertical-align: initial;
+  padding: 0;
+}
+
 .empty-state-message {
   margin: 40px auto 60px;
   max-width: 600px;
@@ -411,6 +418,12 @@ registry-imagestream-meta dt:after {
   margin: 0 20px;
 }
 
+.quota-charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .route-service-bar-chart {
   .service-name,
   .service-weight {
@@ -566,10 +579,10 @@ label.checkbox {
         }
       }
       .action {
-          font-size: @font-size-small;
-          font-weight: normal;
-          // &:extend(.action-inline);
-        }
+        font-size: @font-size-small;
+        font-weight: normal;
+        // &:extend(.action-inline);
+      }
       > ul.list-inline {
         margin-bottom: 0;
         > li {
@@ -864,7 +877,7 @@ abbr[data-original-title], abbr[title] {
 }
 
 select:invalid {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .truncate {
@@ -888,11 +901,6 @@ select:invalid {
 .spinner.spinner-xs { // set height & width to 12px so that FF displays correctly
   height: 12px;
   width: 12px;
-}
-
-.spinner.spinner-inverse {
-  border-color: rgba(0,153,211, .25);
-  border-top-color: rgba(0,153,211, .75);
 }
 
 .attention-message {
@@ -1026,10 +1034,6 @@ a.disabled-link {
   .empty-state-message {
     margin-top: 60px;
   }
-  kubernetes-container-terminal {
-    .text-center();
-    overflow: hidden;
-  }
   .original-cmd-msg {
     margin-bottom: 10px;
   }
@@ -1053,33 +1057,6 @@ a.disabled-link {
   .checkbox {
     margin: 10px 0;
   }
-  .add-webhook {
-    padding-bottom: 10px;
-    padding-top: 5px;
-
-    .add-webhook-row {
-      display:table;
-      margin-bottom:@form-group-margin-bottom;
-      padding-right:25px;
-      position:relative;
-      table-layout:fixed;
-      width:100%;
-      .remove-webhook-trigger-action {
-        position: absolute;
-        right: 0;
-        .btn-remove {
-          padding: 5px 7px;
-        }
-      }
-      .select-secret-ref,
-      .select-webhook-type {
-        float: left;
-        margin-bottom: 0;
-        padding-right: 5px;
-        width: 50%;
-      }
-    }
-  }
 
   .section {
     padding-bottom: 5px;
@@ -1097,17 +1074,22 @@ a.disabled-link {
 }
 
 .status {
+  display: flex;
   min-width: 130px;
+  // when status-icon is child of .status, add margin-right to the icon
+  // because the space resulting from display: inline-block collapses
+  status-icon {
+    margin-right: 3px;
+  }
+}
+
+.status-detail {
+  flex: 1 1 0%;
 }
 
 build-counts,
 notification-icon,
 status-icon {
-  // when status-icon is child of [row], add margin-right to the icon
-  // because the space resulting from display: inline-block collapses
-  [row] > & {
-    margin-right: 3px;
-  }
   // so that status-icons have a fixed width (like .fa-fw, but better sized)
   // this ensures when the icons change, the text that follows doesn't shift
   .fa, .pficon {
@@ -1144,6 +1126,7 @@ pre.clipped {
 }
 
 .k8s-label {
+  display: flex;
   margin-right: 5px;
   // A bit more space below the actions button.
   margin-top: 3px;
@@ -1153,51 +1136,52 @@ pre.clipped {
     white-space: normal;
   }
   .label-pair {
+    display: flex;
     margin-bottom: 2px;
     max-width: 100%; // needed to enable truncation within table, but still allow inline display if room is available
-  .label {
-    // prevent short label-key or label-value from being truncated less than 4 characters
-    min-width: 50px;
-    &:first-child {
-      border-radius: 2px 0 0 2px;
+    .label {
+      // prevent short label-key or label-value from being truncated less than 4 characters
+      min-width: 50px;
+      &:first-child {
+        border-radius: 2px 0 0 2px;
+      }
+      &:last-child {
+        border-radius: 0 2px 2px 0;
+      }
     }
-    &:last-child {
-      border-radius: 0 2px 2px 0;
+    .label-key {
+      background-color: #bee1f4;
+      color: #00659c;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      margin-left: 0;
+      font-size: 12px;
     }
-  }
-  .label-key {
-    background-color: #bee1f4;
-    color: #00659c;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    margin-left: 0;
-    font-size: 12px;
-  }
-  // if its a link
-  a.label-key {
-    &:hover, &:focus, &:active {
-      background-color: #00659c;
+    // if its a link
+    a.label-key {
+      &:hover, &:focus, &:active {
+        background-color: #00659c;
+        color: #FFFFFF;
+      }
+    }
+    .label-value {
+      background-color: #7dc3e8;
       color: #FFFFFF;
+      margin-left: 0;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 12px;
     }
-  }
-  .label-value {
-    background-color: #7dc3e8;
-    color: #FFFFFF;
-    margin-left: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-size: 12px;
-  }
-  a.label-value {
-    &:hover, &:focus, &:active {
-      background-color: #00659c;
+    a.label-value {
+      &:hover, &:focus, &:active {
+        background-color: #00659c;
+      }
     }
-  }
   }
 }
 @media (max-width: @screen-sm-min) {
   .k8s-label {
-  // enable label to truncate
+    // enable label to truncate
     width: 100%;
     .label {
       display: block;
@@ -1207,6 +1191,11 @@ pre.clipped {
       width: 100%;
     }
   }
+}
+
+.k8s-labels {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .action-divider {
@@ -1249,6 +1238,7 @@ pre.clipped {
 
 .label-tech-preview {
   display: inline-block;
+  line-height: normal; // so that label height is adjusted and text vertically aligned within
   margin-top: 7px;
   @media(min-width: @screen-xs-min) {
     float: right;
@@ -1323,4 +1313,17 @@ pre.clipped {
       }
     }
   }
+}
+
+.init-container-status-detail {
+  flex: 1 1 0%;
+}
+
+.init-container-status,
+.ui-select-choices-flex {
+  display: flex;
+}
+
+.ui-select-choices-flex {
+  justify-content: space-between;
 }

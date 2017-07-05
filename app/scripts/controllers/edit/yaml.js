@@ -19,7 +19,7 @@ angular.module('openshiftConsole')
                                               DataService,
                                               Navigate,
                                               NotificationsService,
-	  				      gettext,
+	  				                                  gettext,
 	                                      gettextCatalog,
                                               ProjectsService) {
     if (!$routeParams.kind || !$routeParams.name) {

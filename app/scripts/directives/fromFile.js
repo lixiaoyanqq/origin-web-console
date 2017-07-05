@@ -12,8 +12,8 @@ angular.module("openshiftConsole")
                                   NotificationsService,
                                   QuotaService,
                                   SecurityCheckService,
-	    			  gettextCatalog,
-	       			  gettext,
+                                  gettextCatalog,
+                                  gettext,
                                   TaskList,
                                   ProjectsService) {
     return {
