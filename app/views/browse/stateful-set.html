@@ -1,42 +1,56 @@
-<div class="middle">
-  <div class="middle-header">
-    <div class="container-fluid">
-      <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
-      <alerts alerts="alerts"></alerts>
-      <div>
-        <h1>
-          {{statefulSet.metadata.name}}
-          <div
-            class="pull-right dropdown"
-            ng-if="statefulSet"
-            ng-show="'statefulsets' | canIDoAny">
-            <button
-              type="button"
-              class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs"
-              data-toggle="dropdown" >
-              <translate>Actions</translate>
-              <span class="caret" aria-hidden="true"></span>
-            </button>
-            <a
-              href=""
-              class="dropdown-toggle actions-dropdown-kebab visible-xs-inline"
-              data-toggle="dropdown">
-              <i class="fa fa-ellipsis-v"></i><span class="sr-only" translate>Actions</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right actions action-button">
-              <li ng-if="statefulSetsVersion | canI : 'update'">
-                <a ng-href="{{statefulSet | editYamlURL}}" role="button" translate>Edit YAML</a>
-              </li>
-              <li ng-if="statefulSetsVersion | canI : 'delete'">
-                <delete-link
-                  kind="StatefulSet"
-                  group="apps"
-                  resource-name="{{statefulSet.metadata.name}}"
-                  project-name="{{statefulSet.metadata.namespace}}"
-                  alerts="alerts">
-                </delete-link>
-              </li>
-            </ul>
+<project-header class="top-header"></project-header>
+<project-page>
+  <div class="middle-section">
+    <div class="middle-container">
+
+      <div class="middle-header">
+        <div class="container-fluid">
+          <span class="label label-warning label-tech-preview">Technology Preview</span>
+          <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
+          <alerts alerts="alerts"></alerts>
+          <div>
+            <h1>
+              {{statefulSet.metadata.name}}
+              <div
+                class="pull-right dropdown"
+                ng-if="statefulSet"
+                ng-show="resourceGroupVersion.resource | canIDoAny">
+                <button
+                  type="button"
+                  class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs"
+                  data-toggle="dropdown">
+                  <translate>Actions</translate>
+                  <span class="caret" aria-hidden="true"></span>
+                </button>
+                <a
+                  href=""
+                  class="dropdown-toggle actions-dropdown-kebab visible-xs-inline"
+                  data-toggle="dropdown">
+                  <i class="fa fa-ellipsis-v"></i><span class="sr-only" translate>Actions</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right actions action-button">
+                  <li ng-if="resourceGroupVersion | canI : 'update'">
+                    <a ng-href="{{statefulSet | editYamlURL}}" role="button" translate>Edit YAML</a>
+                  </li>
+                  <li ng-if="resourceGroupVersion | canI : 'delete'">
+                    <delete-link
+                      kind="StatefulSet"
+                      group="apps"
+                      resource-name="{{statefulSet.metadata.name}}"
+                      project-name="{{statefulSet.metadata.namespace}}"
+                      alerts="alerts">
+                    </delete-link>
+                  </li>
+                </ul>
+              </div>
+            </h1>
+            <labels
+              labels="statefulSet.metadata.labels"
+              clickable="true"
+              kind="stateful-sets"
+              title-kind="stateful sets"
+              project-name="{{statefulSet.metadata.namespace}}"
+              limit="3"></labels>
           </div>
         </h1>
         <labels

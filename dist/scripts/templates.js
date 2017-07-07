@@ -3924,6 +3924,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< HEAD
+=======
+    "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
+>>>>>>> Improving display of tech-preview label
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div>\n" +
@@ -4036,6 +4040,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< HEAD
+=======
+    "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
+>>>>>>> Improving display of tech-preview label
     "<h1>\n" +
     "<translate>Stateful Sets</translate>\n" +
     "\n" +
