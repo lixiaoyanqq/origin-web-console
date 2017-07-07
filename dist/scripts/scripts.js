@@ -5847,6 +5847,7 @@ errorNotification: !1
 n.createSampleURL = c.createFromTemplateURL(e, n.projectName);
 });
 }
+<<<<<<< HEAD
 h();
 })), n.startBuild = a.startBuild, n.$on("$destroy", function() {
 i.unwatchAll(m);
@@ -5898,11 +5899,63 @@ e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
 w !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (w = l, s.get(r.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
+=======
+p();
+})), c.startBuild = f.startBuild, c.$on("$destroy", function() {
+g.unwatchAll(j);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(a, b, c, d, e, f, g, h, i, j, k, l) {
+a.projectName = c.project, a.buildConfigName = c.buildconfig, a.buildConfig = null, a.labelSuggestions = {}, a.alerts = {}, a.breadcrumbs = [], a.forms = {}, a.expand = {
+imageEnv:!1
+}, c.isPipeline ? a.breadcrumbs.push({
+title:"Pipelines",
+link:"project/" + c.project + "/browse/pipelines"
+}) :a.breadcrumbs.push({
+title:"Builds",
+link:"project/" + c.project + "/browse/builds"
+}), a.breadcrumbs.push({
+title:c.buildconfig
+}), a.emptyMessage = "Loading...", a.aceLoaded = function(a) {
+var b = a.getSession();
+b.setOption("tabSize", 2), b.setOption("useSoftTabs", !0), a.$blockScrolling = 1 / 0;
+};
+var m, n = b("buildConfigForBuild"), o = b("buildStrategy"), p = [], q = function(b) {
+a.updatedBuildConfig = angular.copy(b), a.envVars = o(a.updatedBuildConfig).env || [];
+};
+a.compareTriggers = function(a, b) {
+return _.isNumber(a.value) ? -1 :"ConfigChange" === a.value ? -1 :"ConfigChange" === b.value ? 1 :"ImageChange" === a.value ? -1 :"ImageChange" === b.value ? 1 :a.value.localeCompare(b.value);
+}, a.saveEnvVars = function() {
+j.hideNotification("save-bc-env-error"), a.envVars = _.filter(a.envVars, "name"), o(a.updatedBuildConfig).env = l.compactEntries(angular.copy(a.envVars)), g.update("buildconfigs", c.buildconfig, a.updatedBuildConfig, m).then(function() {
+j.addNotification({
+type:"success",
+message:"Environment variables for build config " + a.buildConfigName + " were successfully updated."
+}), a.forms.bcEnvVars.$setPristine();
+}, function(c) {
+j.addNotification({
+id:"save-bc-env-error",
+type:"error",
+message:"An error occurred updating environment variables for build config " + a.buildConfigName + ".",
+details:b("getErrorDetails")(c)
+});
+});
+}, a.clearEnvVarUpdates = function() {
+q(a.buildConfig), a.forms.bcEnvVars.$setPristine();
+};
+var r, s = function(c, h) {
+a.loaded = !0, a.buildConfig = c, a.buildConfigPaused = e.isPaused(a.buildConfig), a.buildConfig.spec.source.images && (a.imageSources = a.buildConfig.spec.source.images, a.imageSourcesPaths = [], a.imageSources.forEach(function(c) {
+a.imageSourcesPaths.push(b("destinationSourcePair")(c.paths));
+}));
+var i = _.get(o(c), "from", {}), j = i.kind + "/" + i.name + "/" + (i.namespace || a.projectName);
+r !== j && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], i.kind) ? (r = j, g.get(d.kindToResource(i.kind), i.name, {
+namespace:i.namespace || a.projectName
+>>>>>>> Use toast notifications for build config env editor
 }, {
 errorNotification: !1
 }).then(function(t) {
 e.BCEnvVarsFromImage = i.getEnvironment(t);
 }, function() {
+<<<<<<< HEAD
 e.BCEnvVarsFromImage = [];
 })) : e.BCEnvVarsFromImage = []), C(n), "DELETED" === a && (e.alerts.deleted = {
 type: "warning",
@@ -5962,6 +6015,46 @@ if (e.emptyMessage = "No builds to show", r) {
 if (g(a) === n.buildconfig) {
 var i = a.metadata.name;
 switch (r) {
+=======
+a.BCEnvVarsFromImage = [];
+})) :a.BCEnvVarsFromImage = []), q(c), "DELETED" === h && (a.alerts.deleted = {
+type:"warning",
+message:"This build configuration has been deleted."
+}, a.buildConfigDeleted = !0), !a.forms.bcEnvVars || a.forms.bcEnvVars.$pristine ? q(c) :a.alerts.background_update = {
+type:"warning",
+message:"This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
+links:[ {
+label:"Reload Environment Variables",
+onClick:function() {
+return a.clearEnvVarUpdates(), !0;
+}
+} ]
+}, a.paused = e.isPaused(a.buildConfig);
+};
+k.get(c.project).then(_.spread(function(d, f) {
+function j() {
+h.getLabelSelector().isEmpty() || !$.isEmptyObject(a.builds) || $.isEmptyObject(a.unfilteredBuilds) ? delete a.alerts.builds :a.alerts.builds = {
+type:"warning",
+details:"The active filters are hiding all builds."
+};
+}
+a.project = d, m = f, g.get("buildconfigs", c.buildconfig, f, {
+errorNotification:!1
+}).then(function(a) {
+s(a), p.push(g.watchObject("buildconfigs", c.buildconfig, f, s));
+}, function(c) {
+a.loaded = !0, a.alerts.load = {
+type:"error",
+message:404 === c.status ? "This build configuration can not be found, it may have been deleted." :"The build configuration details could not be loaded.",
+details:404 === c.status ? "Any remaining build history for this build will be shown." :b("getErrorDetails")(c)
+};
+}), p.push(g.watch("builds", f, function(b, d, f) {
+if (a.emptyMessage = "No builds to show", d) {
+var g = n(f);
+if (g === c.buildconfig) {
+var i = f.metadata.name;
+switch (d) {
+>>>>>>> Use toast notifications for build config env editor
 case "ADDED":
 case "MODIFIED":
 e.unfilteredBuilds[i] = a;
@@ -5986,12 +6079,56 @@ omission: ""
 e.$apply(function() {
 e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), d();
 });
+<<<<<<< HEAD
 }), e.startBuild = function() {
 o.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
 l.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
 s.unwatchAll(y);
+=======
+}), a.startBuild = function() {
+e.startBuild(a.buildConfig);
+}, a.showJenkinsfileExamples = function() {
+i.showJenkinsfileExamples();
+}, a.$on("$destroy", function() {
+g.unwatchAll(p);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(a, b, c, d, e, f, g, h) {
+a.projectName = c.project, a.build = null, a.buildConfig = null, a.buildConfigName = c.buildconfig, a.builds = {}, a.alerts = {}, a.showSecret = !1, a.renderOptions = {
+hideFilterWidget:!0
+}, a.breadcrumbs = [], c.isPipeline ? (a.breadcrumbs.push({
+title:"Pipelines",
+link:"project/" + c.project + "/browse/pipelines"
+}), c.buildconfig && a.breadcrumbs.push({
+title:c.buildconfig,
+link:"project/" + c.project + "/browse/pipelines/" + c.buildconfig
+})) :(a.breadcrumbs.push({
+title:"Builds",
+link:"project/" + c.project + "/browse/builds"
+}), c.buildconfig && a.breadcrumbs.push({
+title:c.buildconfig,
+link:"project/" + c.project + "/browse/builds/" + c.buildconfig
+})), a.breadcrumbs.push({
+title:c.build
+});
+var i, j = b("annotation"), k = [], l = function(b) {
+a.logCanRun = !_.includes([ "New", "Pending", "Error" ], b.status.phase);
+}, m = function() {
+a.buildConfig ? a.canBuild = d.canBuild(a.buildConfig) :a.canBuild = !1;
+};
+h.get(c.project).then(_.spread(function(g, h) {
+a.project = g, a.projectContext = h, a.logOptions = {};
+var n = function() {
+i ? a.eventObjects = [ a.build, i ] :a.eventObjects = [ a.build ];
+}, o = function(b, c) {
+a.loaded = !0, a.build = b, l(b), n();
+var d = j(b, "buildNumber");
+d && (a.breadcrumbs[2].title = "#" + d), "DELETED" === c && (a.alerts.deleted = {
+type:"warning",
+message:"This build has been deleted."
+>>>>>>> Use toast notifications for build config env editor
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
