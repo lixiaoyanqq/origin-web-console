@@ -4552,7 +4552,9 @@ importPolicy: {}
 };
 n.push(l);
 }
-var u = {
+var u = _.assign({
+deploymentconfig: e.name
+}, e.labels), d = {
 kind: "DeploymentConfig",
 apiVersion: "v1",
 metadata: {
@@ -4580,15 +4582,10 @@ namespace: e.namespace
 } ],
 replicas: 1,
 test: !1,
-selector: {
-app: e.name,
-deploymentconfig: e.name
-},
+selector: u,
 template: {
 metadata: {
-labels: _.assign({
-deploymentconfig: e.name
-}, e.labels),
+labels: u,
 annotations: r
 },
 spec: {
@@ -4606,9 +4603,9 @@ resources: {}
 },
 status: {}
 };
-_.first(e.pullSecrets).name && (u.spec.template.spec.imagePullSecrets = e.pullSecrets), n.push(u);
-var d;
-return _.isEmpty(e.ports) || (d = {
+_.first(e.pullSecrets).name && (d.spec.template.spec.imagePullSecrets = e.pullSecrets), n.push(d);
+var m;
+return _.isEmpty(e.ports) || (m = {
 kind: "Service",
 apiVersion: "v1",
 metadata: {
@@ -4624,7 +4621,7 @@ ports: _.map(e.ports, function(e) {
 return t.getServicePort(e);
 })
 }
-}, n.push(d)), n;
+}, n.push(m)), n;
 },
 getEnvironment: function(e) {
 return _.map(_.get(e, "image.dockerImageMetadata.Config.Env"), function(e) {
@@ -10601,8 +10598,8 @@ c.list("resourcequotas", i).then(function(e) {
 y = e.by("metadata.name"), m.log("quotas", y);
 }), c.list("appliedclusterresourcequotas", i).then(function(e) {
 S = e.by("metadata.name"), m.log("cluster quotas", S);
-}), e.$watch("scaling.autoscale", $), e.$watch("container", $, !0), e.$watch("name", function(e) {
-T.value = e;
+}), e.$watch("scaling.autoscale", $), e.$watch("container", $, !0), e.$watch("name", function(e, t) {
+T.value && T.value !== t || (T.value = e);
 }), function(t) {
 t.name = r.name, t.imageName = R, t.imageTag = r.imageTag, t.namespace = r.namespace, t.buildConfig = {
 buildOnSourceChange: !0,
@@ -10622,7 +10619,7 @@ deployOnConfigChange: !0
 }, t.DCEnvVarsFromImage, t.DCEnvVarsFromUser = [], t.routing = {
 include: !0,
 portOptions: []
-}, t.userDefinedLabels = [], t.systemLabels = [ T ], t.annotations = {}, t.scaling = {
+}, t.labelArray = [ T ], t.annotations = {}, t.scaling = {
 replicas: 1,
 autoscale: !1,
 autoscaleOptions: [ {
@@ -10879,17 +10876,15 @@ e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
 }, e.createApp = function() {
-e.disableInputs = !0, I(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser);
-var t = w.mapEntries(w.compactEntries(e.userDefinedLabels)), n = w.mapEntries(w.compactEntries(e.systemLabels));
-e.labels = _.extend(n, t);
-var a = s.generate(e);
-A = [], angular.forEach(a, function(e) {
+e.disableInputs = !0, I(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
+var t = s.generate(e);
+A = [], angular.forEach(t, function(e) {
 null !== e && (m.debug("Generated resource definition:", e), A.push(e));
 });
-var r = s.ifResourcesDontExist(A, e.projectName), o = v.getLatestQuotaAlerts(A, i), c = function(t) {
-return e.nameTaken = t.nameTaken, o;
+var n = s.ifResourcesDontExist(A, e.projectName), a = v.getLatestQuotaAlerts(A, i), r = function(t) {
+return e.nameTaken = t.nameTaken, a;
 };
-r.then(c, c).then(U, U);
+n.then(r, r).then(U, U);
 };
 })), e.cancel = function() {
 g.toProjectOverview(e.projectName);
@@ -14740,7 +14735,6 @@ return {
 restrict: "E",
 scope: {
 labels: "=",
-systemLabels: "=",
 expand: "=?",
 canToggle: "=?",
 helpText: "@?"
@@ -17538,12 +17532,17 @@ r.prefillParameters[a.name] && (a.value = r.prefillParameters[a.name]);
 =======
 f.prefillParameters && _.each(f.template.parameters, function(e) {
 f.prefillParameters[e.name] && (e.value = f.prefillParameters[e.name]);
+<<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
 }), f.systemLabels = _.map(f.template.labels, function(e, t) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), f.labels = _.map(f.template.labels, function(e, t) {
+>>>>>>> Let users edit app label directly for "add to project"
 return {
 name: t,
 value: e
 };
+<<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 }), B() && r.systemLabels.push({
 name:"app",
@@ -17679,6 +17678,9 @@ prefillParameters:"<",
 isDialog:"<"
 =======
 }), R() && f.systemLabels.push({
+=======
+}), R() && f.labels.push({
+>>>>>>> Let users edit app label directly for "add to project"
 name: "app",
 value: f.template.metadata.name
 });
@@ -17766,9 +17768,7 @@ f.createFromTemplate = function() {
 f.disableInputs = !0, j().then(function(e) {
 f.selectedProject = e, g = {
 namespace: f.selectedProject.metadata.name
-};
-var t = d.mapEntries(d.compactEntries(f.labels)), n = d.mapEntries(d.compactEntries(f.systemLabels));
-f.template.labels = _.extend(n, t), r.create("processedtemplates", null, f.template, g).then(function(e) {
+}, f.template.labels = d.mapEntries(d.compactEntries(f.labels)), r.create("processedtemplates", null, f.template, g).then(function(e) {
 s.setTemplateData(e.parameters, f.template.parameters, e.message), y = e.objects, c.getLatestQuotaAlerts(y, g).then(k);
 }, function(e) {
 f.disableInputs = !1;
@@ -18898,7 +18898,7 @@ isDialog: "="
 templateUrl: "views/directives/deploy-image.html",
 link: function(n) {
 function l() {
-var e = p.mapEntries(p.compactEntries(n.labels)), t = p.mapEntries(p.compactEntries(n.systemLabels));
+var e = p.mapEntries(p.compactEntries(n.labels));
 return i.getResources({
 name: n.app.name,
 image: n.import.name,
@@ -18907,11 +18907,11 @@ tag: n.import.tag || "latest",
 ports: n.ports,
 volumes: n.volumes,
 env: p.compactEntries(n.env),
-labels: _.extend(t, e),
+labels: e,
 pullSecrets: n.pullSecrets
 });
 }
-n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [], n.systemLabels = [ {
+n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
 name: "app",
 value: ""
 } ], n.pullSecrets = [ {
@@ -18969,10 +18969,12 @@ t && (n.app.name = R(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t
 }, function(t) {
 n.import.error = e("getErrorDetails")(t) || "An error occurred finding the image.", n.loading = !1;
 });
-}, n.$watch("app.name", function() {
-n.nameTaken = !1, _.set(_.find(n.systemLabels, {
+}, n.$watch("app.name", function(e, t) {
+n.nameTaken = !1;
+var a = _.find(n.labels, {
 name: "app"
-}), "value", n.app.name);
+});
+!a || a.value && a.value !== t || (a.value = e);
 }), n.$watch("mode", function(e, t) {
 e !== t && (delete n.import, n.istag = {}, "dockerImage" === e ? n.forms.imageSelection.imageName.$setValidity("imageLoaded", !1) : n.forms.imageSelection.imageName.$setValidity("imageLoaded", !0));
 }), n.$watch("istag", function(t, a) {
