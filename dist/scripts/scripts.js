@@ -5091,7 +5091,11 @@ p();
 g.unwatchAll(j);
 });
 }));
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "ProjectsService", "keyValueEditorUtils", "gettext", "gettextCatalog", function(a, b, c, d, e, f, g, h, i, j, k, l, m) {
+=======
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(a, b, c, d, e, f, g, h, i, j, k, l) {
+>>>>>>> Use toast notifications for build config env editor
 a.projectName = c.project, a.buildConfigName = c.buildconfig, a.buildConfig = null, a.labelSuggestions = {}, a.alerts = {}, a.breadcrumbs = [], a.forms = {}, a.expand = {
 imageEnv:!1
 }, c.isPipeline ? a.breadcrumbs.push({
@@ -5106,25 +5110,37 @@ title:c.buildconfig
 var b = a.getSession();
 b.setOption("tabSize", 2), b.setOption("useSoftTabs", !0), a.$blockScrolling = 1 / 0;
 };
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 var n, o = b("buildConfigForBuild"), p = b("buildStrategy"), q = [], r = function(b) {
 a.updatedBuildConfig = angular.copy(b), a.envVars = p(a.updatedBuildConfig).env || [];
+=======
+var m, n = b("buildConfigForBuild"), o = b("buildStrategy"), p = [], q = function(b) {
+a.updatedBuildConfig = angular.copy(b), a.envVars = o(a.updatedBuildConfig).env || [];
+>>>>>>> Use toast notifications for build config env editor
 };
 a.compareTriggers = function(a, b) {
 return _.isNumber(a.value) ? -1 :"ConfigChange" === a.value ? -1 :"ConfigChange" === b.value ? 1 :"ImageChange" === a.value ? -1 :"ImageChange" === b.value ? 1 :a.value.localeCompare(b.value);
 }, a.saveEnvVars = function() {
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 a.envVars = _.filter(a.envVars, "name"), p(a.updatedBuildConfig).env = k.compactEntries(angular.copy(a.envVars)), g.update("buildconfigs", c.buildconfig, a.updatedBuildConfig, n).then(function() {
 a.alerts.saveBCEnvVarsSuccess = {
+=======
+j.hideNotification("save-bc-env-error"), a.envVars = _.filter(a.envVars, "name"), o(a.updatedBuildConfig).env = l.compactEntries(angular.copy(a.envVars)), g.update("buildconfigs", c.buildconfig, a.updatedBuildConfig, m).then(function() {
+j.addNotification({
+>>>>>>> Use toast notifications for build config env editor
 type:"success",
-message:a.buildConfigName + " was updated."
-}, a.forms.bcEnvVars.$setPristine();
+message:"Environment variables for build config " + a.buildConfigName + " were successfully updated."
+}), a.forms.bcEnvVars.$setPristine();
 }, function(c) {
-a.alerts.saveBCEnvVarsError = {
+j.addNotification({
+id:"save-bc-env-error",
 type:"error",
-message:a.buildConfigName + " was not updated.",
+message:"An error occurred updating environment variables for build config " + a.buildConfigName + ".",
 details:b("getErrorDetails")(c)
-};
+});
 });
 }, a.clearEnvVarUpdates = function() {
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 r(a.buildConfig), a.forms.bcEnvVars.$setPristine();
 };
 var s, t = function(c, h) {
@@ -5133,6 +5149,16 @@ a.imageSourcesPaths.push(b("destinationSourcePair")(c.paths));
 }));
 var i = _.get(p(c), "from", {}), j = i.kind + "/" + i.name + "/" + (i.namespace || a.projectName);
 s !== j && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], i.kind) ? (s = j, g.get(d.kindToResource(i.kind), i.name, {
+=======
+q(a.buildConfig), a.forms.bcEnvVars.$setPristine();
+};
+var r, s = function(c, h) {
+a.loaded = !0, a.buildConfig = c, a.buildConfigPaused = e.isPaused(a.buildConfig), a.buildConfig.spec.source.images && (a.imageSources = a.buildConfig.spec.source.images, a.imageSourcesPaths = [], a.imageSources.forEach(function(c) {
+a.imageSourcesPaths.push(b("destinationSourcePair")(c.paths));
+}));
+var i = _.get(o(c), "from", {}), j = i.kind + "/" + i.name + "/" + (i.namespace || a.projectName);
+r !== j && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], i.kind) ? (r = j, g.get(d.kindToResource(i.kind), i.name, {
+>>>>>>> Use toast notifications for build config env editor
 namespace:i.namespace || a.projectName
 }, {
 errorNotification:!1
@@ -5140,10 +5166,17 @@ errorNotification:!1
 a.BCEnvVarsFromImage = f.getEnvironment(b);
 }, function() {
 a.BCEnvVarsFromImage = [];
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 })) :a.BCEnvVarsFromImage = []), r(c), "DELETED" === h && (a.alerts.deleted = {
 type:"warning",
 message:"This build configuration has been deleted."
 }, a.buildConfigDeleted = !0), !a.forms.bcEnvVars || a.forms.bcEnvVars.$pristine ? r(c) :a.alerts.background_update = {
+=======
+})) :a.BCEnvVarsFromImage = []), q(c), "DELETED" === h && (a.alerts.deleted = {
+type:"warning",
+message:"This build configuration has been deleted."
+}, a.buildConfigDeleted = !0), !a.forms.bcEnvVars || a.forms.bcEnvVars.$pristine ? q(c) :a.alerts.background_update = {
+>>>>>>> Use toast notifications for build config env editor
 type:"warning",
 message:"This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links:[ {
@@ -5154,26 +5187,39 @@ return a.clearEnvVarUpdates(), !0;
 } ]
 }, a.paused = e.isPaused(a.buildConfig);
 };
-j.get(c.project).then(_.spread(function(d, f) {
+k.get(c.project).then(_.spread(function(d, f) {
 function j() {
 h.getLabelSelector().isEmpty() || !$.isEmptyObject(a.builds) || $.isEmptyObject(a.unfilteredBuilds) ? delete a.alerts.builds :a.alerts.builds = {
 type:"warning",
 details:"The active filters are hiding all builds."
 };
 }
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 a.project = d, n = f, g.get("buildconfigs", c.buildconfig, f, {
 errorNotification:!1
 }).then(function(a) {
 t(a), q.push(g.watchObject("buildconfigs", c.buildconfig, f, t));
+=======
+a.project = d, m = f, g.get("buildconfigs", c.buildconfig, f, {
+errorNotification:!1
+}).then(function(a) {
+s(a), p.push(g.watchObject("buildconfigs", c.buildconfig, f, s));
+>>>>>>> Use toast notifications for build config env editor
 }, function(c) {
 a.loaded = !0, a.alerts.load = {
 type:"error",
 message:404 === c.status ? "This build configuration can not be found, it may have been deleted." :"The build configuration details could not be loaded.",
 details:404 === c.status ? "Any remaining build history for this build will be shown." :b("getErrorDetails")(c)
 };
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 }), q.push(g.watch("builds", f, function(b, d, f) {
 if (a.emptyMessage = l("No builds to show"), d) {
 var g = o(f);
+=======
+}), p.push(g.watch("builds", f, function(b, d, f) {
+if (a.emptyMessage = "No builds to show", d) {
+var g = n(f);
+>>>>>>> Use toast notifications for build config env editor
 if (g === c.buildconfig) {
 var i = f.metadata.name;
 switch (d) {
@@ -5206,7 +5252,11 @@ e.startBuild(a.buildConfig);
 }, a.showJenkinsfileExamples = function() {
 i.showJenkinsfileExamples();
 }, a.$on("$destroy", function() {
+<<<<<<< 3cc50d9102cf1de7566d58b9d696d41d30c80245
 g.unwatchAll(q);
+=======
+g.unwatchAll(p);
+>>>>>>> Use toast notifications for build config env editor
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(a, b, c, d, e, f, g, h) {
