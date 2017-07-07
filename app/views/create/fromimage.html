@@ -404,62 +404,32 @@
 
                         <!-- /scaling -->
 
-                        <osc-form-section
-                          header="{{'Resource Limits'|translate}}"
-                          about-title="{{'Resource Limits'|translate}}"
-                          about="{{'Resource limits control compute resource usage by a container on a node.'|translate}}"
-                          expand="true"
-                          can-toggle="false"
-                          >
-                          <edit-request-limit
-                              resources="container.resources"
-                              type="cpu"
-                              limit-ranges="limitRanges"
-                              project="project">
-                          </edit-request-limit>
-                          <edit-request-limit
-                              resources="container.resources"
-                              type="memory"
-                              limit-ranges="limitRanges"
-                              project="project">
-                          </edit-request-limit>
-                          <div ng-repeat="problem in cpuProblems" class="has-error">
-                            <span class="help-block">{{problem}}</span>
+                            <label-editor
+                                labels="labelArray"
+                                expand="true"
+                                can-toggle="false"
+                                help-text="Each label is applied to each created resource.">
+                            </label-editor>
                           </div>
                           <div ng-repeat="problem in memoryProblems" class="has-error">
                             <span class="help-block">{{problem}}</span>
                           </div>
-                        </osc-form-section>
-
-                        <!-- /limits -->
-
-                        <label-editor
-                            labels="labelArray"
-                            expand="true"
-                            can-toggle="false"
-                            help-text="{{'Each label is applied to each created resource.'|translate}}">
-                        </label-editor>
-                      </div>
-                      <div class="mar-top-md">
-                        <span ng-if="!advancedOptions" translate>Show</span>
-                        <span ng-if="advancedOptions" translate>Hide</span>
-                        <a href="" ng-click="advancedOptions = !advancedOptions" role="button" translate>advanced options</a>
-                        <translate>for source, routes, builds, and deployments.</translate>
-                      </div>
-                      <div class="buttons gutter-bottom" ng-class="{'gutter-top': !alerts.length}">
-                        <button type="submit"
-                            class="btn btn-primary btn-lg"
-                            ng-disabled="form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs"
-                            translate>Create</button>
-                        <a class="btn btn-default btn-lg" href="" ng-click="cancel()" role="button" translate>Cancel</a>
-                      </div>
-                    </form>
-                  </fieldset>
-                </div>
-              </div><!-- /row -->
-            </div><!-- /osc-form -->
-          </div><!-- /col-* -->
-        </div><!-- /row -->
-      </div><!-- /container -->
-    </div><!-- /middle-content -->
+                          <div class="buttons gutter-bottom" ng-class="{'gutter-top': !alerts.length}">
+                            <button type="submit"
+                                class="btn btn-primary btn-lg"
+                                ng-disabled="form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs"
+                                 translate>Create</button>
+                            <a class="btn btn-default btn-lg" href="" ng-click="cancel()" role="button" translate>Cancel</a>
+                          </div>
+                        </form>
+                      </fieldset>
+                    </div>
+                  </div><!-- /row -->
+                </div><!-- /osc-form -->
+              </div><!-- /col-* -->
+            </div><!-- /row -->
+          </div><!-- /container -->
+        </div><!-- /middle-content -->
+      </div><!-- /middle-container -->
+    </div><!-- /middle-section -->
   </div><!-- /middle -->

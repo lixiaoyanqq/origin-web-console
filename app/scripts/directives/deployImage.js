@@ -118,7 +118,8 @@ angular.module("openshiftConsole")
             ports: $scope.ports,
             volumes: $scope.volumes,
             env: keyValueEditorUtils.compactEntries($scope.env),
-            labels: labels
+            labels: labels,
+            pullSecrets: $scope.pullSecrets
           });
         }
 
