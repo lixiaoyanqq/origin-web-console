@@ -5943,7 +5943,11 @@ p();
 g.unwatchAll(j);
 });
 }));
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", "gettext", function(a, b, c, d, e, f, g, h, i, j, k, l, m) {
+=======
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(a, b, c, d, e, f, g, h, i, j, k, l) {
+>>>>>>> Use toast notifications for build config env editor
 a.projectName = c.project, a.buildConfigName = c.buildconfig, a.buildConfig = null, a.labelSuggestions = {}, a.alerts = {}, a.breadcrumbs = [], a.forms = {}, a.expand = {
 imageEnv: !1
 }, c.isPipeline ? a.breadcrumbs.push({
@@ -5958,12 +5962,17 @@ title: c.buildconfig
 var b = a.getSession();
 b.setOption("tabSize", 2), b.setOption("useSoftTabs", !0), a.$blockScrolling = 1 / 0;
 };
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 var n = b("buildConfigForBuild"), o = b("buildStrategy"), p = [], q = function(b) {
+=======
+var m, n = b("buildConfigForBuild"), o = b("buildStrategy"), p = [], q = function(b) {
+>>>>>>> Use toast notifications for build config env editor
 a.updatedBuildConfig = angular.copy(b), a.envVars = o(a.updatedBuildConfig).env || [];
 };
 a.compareTriggers = function(a, b) {
 return _.isNumber(a.value) ? -1 : "ConfigChange" === a.value ? -1 : "ConfigChange" === b.value ? 1 : "ImageChange" === a.value ? -1 : "ImageChange" === b.value ? 1 : a.value.localeCompare(b.value);
 }, a.saveEnvVars = function() {
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 j.hideNotification("save-bc-env-error"), a.envVars = _.filter(a.envVars, "name"), o(a.updatedBuildConfig).env = l.compactEntries(angular.copy(a.envVars)), g.update(a.buildConfigsVersion, c.buildconfig, a.updatedBuildConfig, a.projectContext).then(function() {
 j.addNotification({
 type: "success",
@@ -5975,6 +5984,19 @@ id: "save-bc-env-error",
 type: "error",
 message: "An error occurred updating environment variables for build config " + a.buildConfigName + ".",
 details: b("getErrorDetails")(c)
+=======
+j.hideNotification("save-bc-env-error"), a.envVars = _.filter(a.envVars, "name"), o(a.updatedBuildConfig).env = l.compactEntries(angular.copy(a.envVars)), g.update("buildconfigs", c.buildconfig, a.updatedBuildConfig, m).then(function() {
+j.addNotification({
+type:"success",
+message:"Environment variables for build config " + a.buildConfigName + " were successfully updated."
+}), a.forms.bcEnvVars.$setPristine();
+}, function(c) {
+j.addNotification({
+id:"save-bc-env-error",
+type:"error",
+message:"An error occurred updating environment variables for build config " + a.buildConfigName + ".",
+details:b("getErrorDetails")(c)
+>>>>>>> Use toast notifications for build config env editor
 });
 });
 }, a.clearEnvVarUpdates = function() {
@@ -5986,13 +6008,18 @@ a.imageSourcesPaths.push(b("destinationSourcePair")(c.paths));
 }));
 var i = _.get(o(c), "from", {}), j = i.kind + "/" + i.name + "/" + (i.namespace || a.projectName);
 r !== j && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], i.kind) ? (r = j, g.get(d.kindToResource(i.kind), i.name, {
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 namespace: i.namespace || a.projectName
+=======
+namespace:i.namespace || a.projectName
+>>>>>>> Use toast notifications for build config env editor
 }, {
 errorNotification: !1
 }).then(function(b) {
 a.BCEnvVarsFromImage = f.getEnvironment(b);
 }, function() {
 a.BCEnvVarsFromImage = [];
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 })) : a.BCEnvVarsFromImage = []), q(c), "DELETED" === h && (a.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
@@ -6002,6 +6029,17 @@ message: "This build configuration has been updated in the background. Saving yo
 links: [ {
 label: "Reload Environment Variables",
 onClick: function() {
+=======
+})) :a.BCEnvVarsFromImage = []), q(c), "DELETED" === h && (a.alerts.deleted = {
+type:"warning",
+message:"This build configuration has been deleted."
+}, a.buildConfigDeleted = !0), !a.forms.bcEnvVars || a.forms.bcEnvVars.$pristine ? q(c) :a.alerts.background_update = {
+type:"warning",
+message:"This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
+links:[ {
+label:"Reload Environment Variables",
+onClick:function() {
+>>>>>>> Use toast notifications for build config env editor
 return a.clearEnvVarUpdates(), !0;
 }
 } ]
@@ -6014,18 +6052,30 @@ type: "warning",
 details: "The active filters are hiding all builds."
 };
 }
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 a.project = d, a.projectContext = f, g.get(a.buildConfigsVersion, c.buildconfig, f, {
 errorNotification: !1
 }).then(function(b) {
 s(b), p.push(g.watchObject(a.buildConfigsVersion, c.buildconfig, f, s));
+=======
+a.project = d, m = f, g.get("buildconfigs", c.buildconfig, f, {
+errorNotification:!1
+}).then(function(a) {
+s(a), p.push(g.watchObject("buildconfigs", c.buildconfig, f, s));
+>>>>>>> Use toast notifications for build config env editor
 }, function(c) {
 a.loaded = !0, a.alerts.load = {
 type: "error",
 message: 404 === c.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === c.status ? "Any remaining build history for this build will be shown." : b("getErrorDetails")(c)
 };
+<<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 }), p.push(g.watch(a.buildsVersion, f, function(b, d, f) {
 if (a.emptyMessage = m("No builds to show"), d) {
+=======
+}), p.push(g.watch("builds", f, function(b, d, f) {
+if (a.emptyMessage = "No builds to show", d) {
+>>>>>>> Use toast notifications for build config env editor
 var g = n(f);
 if (g === c.buildconfig) {
 var i = f.metadata.name;

@@ -19,8 +19,7 @@ angular.module('openshiftConsole')
                        ModalsService,
                        NotificationsService,
                        ProjectsService,
-                       keyValueEditorUtils,
-                       gettext) {
+                       keyValueEditorUtils) {
     $scope.projectName = $routeParams.project;
     $scope.buildConfigName = $routeParams.buildconfig;
     $scope.buildConfig = null;
@@ -94,7 +93,7 @@ angular.module('openshiftConsole')
       $scope.envVars = _.filter($scope.envVars, 'name');
       buildStrategy($scope.updatedBuildConfig).env = keyValueEditorUtils.compactEntries(angular.copy($scope.envVars));
       DataService
-        .update($scope.buildConfigsVersion, $routeParams.buildconfig, $scope.updatedBuildConfig, $scope.projectContext)
+        .update("buildconfigs", $routeParams.buildconfig, $scope.updatedBuildConfig, requestContext)
         .then(function success() {
           NotificationsService.addNotification({
             type: "success",
