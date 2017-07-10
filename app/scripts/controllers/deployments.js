@@ -161,7 +161,10 @@ angular.module('openshiftConsole')
           Logger.log("deploymentconfigs (subscribe)", $scope.deploymentConfigs);
         }));
 
-        watches.push(DataService.watch(deploymentsVersion, context, function(deploymentData) {
+        watches.push(DataService.watch({
+          group: "apps",
+          resource: "deployments"
+        }, context, function(deploymentData) {
           deploymentsByUID = $scope.unfilteredDeployments = deploymentData.by("metadata.uid");
           LabelFilter.addLabelSuggestionsFromResources($scope.unfilteredDeployments, $scope.labelSuggestions);
           LabelFilter.setLabelSuggestions($scope.labelSuggestions);

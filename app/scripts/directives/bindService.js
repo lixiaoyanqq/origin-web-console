@@ -107,9 +107,35 @@
       var context = {
         namespace: _.get(ctrl.target, 'metadata.namespace')
       };
-      ApplicationsService.getApplications(context).then(function(applications) {
-        ctrl.applications = applications;
-        ctrl.bindType = ctrl.applications.length ? "application" : "secret-only";
+      // Load all the "application" types
+      DataService.list('deploymentconfigs', context).then(function(deploymentConfigData) {
+        deploymentConfigs = _.toArray(deploymentConfigData.by('metadata.name'));
+        sortApplications();
+      });
+      DataService.list('replicationcontrollers', context).then(function(replicationControllerData) {
+        replicationControllers = _.reject(replicationControllerData.by('metadata.name'), $filter('hasDeploymentConfig'));
+        sortApplications();
+      });
+      DataService.list({
+        group: 'apps',
+        resource: 'deployments'
+      }, context).then(function(deploymentData) {
+        deployments = _.toArray(deploymentData.by('metadata.name'));
+        sortApplications();
+      });
+      DataService.list({
+        group: 'extensions',
+        resource: 'replicasets'
+      }, context).then(function(replicaSetData) {
+        replicaSets = _.reject(replicaSetData.by('metadata.name'), $filter('hasDeployment'));
+        sortApplications();
+      });
+      DataService.list({
+        group: 'apps',
+        resource: 'statefulsets'
+      }, context).then(function(statefulSetData) {
+        statefulSets = _.toArray(statefulSetData.by('metadata.name'));
+        sortApplications();
       });
     };
 

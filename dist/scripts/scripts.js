@@ -621,10 +621,17 @@ E.deploymentConfigs = a.by("metadata.name"), Oa(), Sa(E.deploymentConfigs), Sa(E
 group: "extensions",
 resource: "replicasets"
 }, d, function(a) {
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 E.replicaSets = a.by("metadata.name"), Qa(), Sa(E.vanillaReplicaSets), Sa(E.monopods), ya(E.vanillaReplicaSets), Ia(E.vanillaReplicaSets), gb(), ra(), s.log("replicasets (subscribe)", E.replicaSets);
 })), ib.push(l.watch({
 group: "apps",
 resource: "deployments"
+=======
+z.replicaSets = a.by("metadata.name"), Ha(), Ja(z.vanillaReplicaSets), Ja(z.monopods), pa(z.vanillaReplicaSets), za(z.vanillaReplicaSets), $a(), ia(), p.log("replicasets (subscribe)", z.replicaSets);
+})), ab.push(i.watch({
+group:"apps",
+resource:"deployments"
+>>>>>>> Use `apps` API group for deployments
 }, d, function(a) {
 H = a.by("metadata.uid"), E.deployments = _.sortBy(H, "metadata.name"), Qa(), Sa(E.deployments), Sa(E.vanillaReplicaSets), Ia(E.deployments), gb(), ra(), s.log("deployments (subscribe)", E.deploymentsByUID);
 })), ib.push(l.watch("builds", d, function(a) {
@@ -6194,6 +6201,7 @@ var k = b("deploymentStatus")(e);
 } else a.deploymentConfigDeploymentsInProgress = f.associateRunningDeploymentToDeploymentConfig(a.replicationControllersByDC);
 e ? "DELETED" !== d && (e.causes = b("deploymentCauses")(e)) : angular.forEach(a.replicationControllers, function(a) {
 a.causes = b("deploymentCauses")(a);
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 }), h.log("replicationControllers (subscribe)", a.replicationControllers);
 })), u.push(e.watch(s, d, function(b) {
 m = b.by("metadata.name"), t(), h.log("replicasets (subscribe)", a.replicaSets);
@@ -6207,11 +6215,32 @@ return b > 1 || 1 === b && !a.replicationControllersByDC[""];
 }, g.onActiveFiltersChanged(function(b) {
 a.$evalAsync(function() {
 a.deploymentConfigs = b.select(a.unfilteredDeploymentConfigs), a.replicationControllersByDC = f.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], a.replicationControllersByDC[""] = g.getLabelSelector().select(a.replicationControllersByDC[""])), a.deployments = b.select(a.unfilteredDeployments), a.replicaSets = b.select(a.unfilteredReplicaSets), l();
+=======
+}), g.log("replicationControllers (subscribe)", a.replicationControllers);
+})), n.push(d.watch({
+group:"extensions",
+resource:"replicasets"
+}, h, function(b) {
+j = b.by("metadata.name"), m(), g.log("replicasets (subscribe)", a.replicaSets);
+})), n.push(d.watch("deploymentconfigs", h, function(b) {
+a.unfilteredDeploymentConfigs = b.by("metadata.name"), f.addLabelSuggestionsFromResources(a.unfilteredDeploymentConfigs, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.deploymentConfigs = f.getLabelSelector().select(a.unfilteredDeploymentConfigs), a.emptyMessage = "No deployment configurations to show", a.replicationControllersByDC = e.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], a.replicationControllersByDC[""] = f.getLabelSelector().select(a.replicationControllersByDC[""])), i(), g.log("deploymentconfigs (subscribe)", a.deploymentConfigs);
+})), n.push(d.watch({
+group:"apps",
+resource:"deployments"
+}, h, function(b) {
+k = a.unfilteredDeployments = b.by("metadata.uid"), f.addLabelSuggestionsFromResources(a.unfilteredDeployments, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.deployments = f.getLabelSelector().select(a.unfilteredDeployments), m(), g.log("deployments (subscribe)", a.unfilteredDeployments);
+})), a.showEmptyMessage = function() {
+return 0 === b("hashSize")(a.replicationControllersByDC) || !(1 !== b("hashSize")(a.replicationControllersByDC) || !a.replicationControllersByDC[""]);
+}, f.onActiveFiltersChanged(function(b) {
+a.$apply(function() {
+a.deploymentConfigs = b.select(a.unfilteredDeploymentConfigs), a.replicationControllersByDC = e.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], a.replicationControllersByDC[""] = f.getLabelSelector().select(a.replicationControllersByDC[""])), a.deployments = b.select(a.unfilteredDeployments), a.replicaSets = b.select(a.unfilteredReplicaSets), i();
+>>>>>>> Use `apps` API group for deployments
 });
 }), a.$on("$destroy", function() {
 e.unwatchAll(u);
 });
 }));
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 } ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "APIService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "LabelFilter", "Logger", "ModalsService", "Navigate", "OwnerReferencesService", "ProjectsService", "StorageService", "gettext", "gettextCatalog", function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q) {
 var r = {};
 a.projectName = c.project, a.name = c.deployment, a.replicaSetsForDeployment = {}, a.unfilteredReplicaSetsForDeployment = {}, a.labelSuggestions = {}, a.emptyMessage = "Loading...", a.forms = {}, a.alerts = {}, a.imagesByDockerReference = {}, a.breadcrumbs = [ {
@@ -6228,6 +6257,29 @@ function n() {
 i.getLabelSelector().isEmpty() || !_.isEmpty(a.replicaSetsForDeployment) || _.isEmpty(a.unfilteredReplicaSetsForDeployment) ? delete a.alerts["filter-hiding-all"] : a.alerts["filter-hiding-all"] = {
 type: "warning",
 details: "The active filters are hiding all rollout history."
+=======
+} ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "EnvironmentService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "OwnerReferencesService", "Logger", "ProjectsService", "StorageService", function(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
+var o = {};
+a.projectName = c.project, a.name = c.deployment, a.forms = {}, a.alerts = {}, a.imagesByDockerReference = {}, a.breadcrumbs = [ {
+title:"Deployments",
+link:"project/" + c.project + "/browse/deployments"
+}, {
+title:c.deployment
+} ], a.healthCheckURL = j.healthCheckURL(c.project, "Deployment", c.deployment, "apps");
+var p = !1, q = function(b, c) {
+if (!p) {
+if (!a.forms.deploymentEnvVars || a.forms.deploymentEnvVars.$pristine) return void (a.updatedDeployment = f.copyAndNormalize(b));
+if (f.isEnvironmentEqual(b, c)) return void (a.updatedDeployment = f.mergeEdits(a.updatedDeployment, b));
+p = !0, a.alerts["env-conflict"] = {
+type:"warning",
+message:"The environment variables for the deployment have been updated in the background. Saving your changes may create a conflict or cause loss of data.",
+links:[ {
+label:"Reload Environment Variables",
+onClick:function() {
+return a.clearEnvVarUpdates(), !0;
+}
+} ]
+>>>>>>> Use `apps` API group for deployments
 };
 }
 a.project = d, a.projectContext = l;
@@ -6236,10 +6288,43 @@ g.getHPAWarnings(a.deployment, a.autoscalers, x, d).then(function(b) {
 a.hpaWarnings = b;
 });
 };
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 e.get(a.deploymentsVersion, c.deployment, l, {
 errorNotification: !1
 }).then(function(b) {
 a.loaded = !0, a.deployment = b, y(), w.push(e.watchObject(a.deploymentsVersion, c.deployment, l, function(b, c) {
+=======
+d.get({
+group:"apps",
+resource:"deployments"
+}, c.deployment, m, {
+errorNotification:!1
+}).then(function(g) {
+a.loaded = !0, a.deployment = g, x(), a.saveEnvVars = function() {
+f.compact(a.updatedDeployment), v = d.update({
+group:"apps",
+resource:"deployments"
+}, c.deployment, a.updatedDeployment, m), v.then(function() {
+a.alerts.saveEnvSuccess = {
+type:"success",
+message:c.deployment + " was updated."
+}, a.forms.deploymentEnvVars.$setPristine();
+}, function(d) {
+a.alerts.saveEnvError = {
+type:"error",
+message:c.deployment + " was not updated.",
+details:b("getErrorDetails")(d)
+};
+})["finally"](function() {
+v = null;
+});
+}, a.clearEnvVarUpdates = function() {
+a.updatedDeployment = f.copyAndNormalize(a.deployment), a.forms.deploymentEnvVars.$setPristine(), p = !1;
+}, u.push(d.watchObject({
+group:"apps",
+resource:"deployments"
+}, c.deployment, m, function(b, c) {
+>>>>>>> Use `apps` API group for deployments
 "DELETED" === c && (a.alerts.deleted = {
 type: "warning",
 message: "This deployment has been deleted."
@@ -6504,6 +6589,7 @@ var b = n.getControllerReferences(a.replicaSet), d = _.find(b, {
 kind: "Deployment"
 });
 d && f.get({
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 group: "apps",
 resource: "deployments"
 }, d.name, p).then(function(b) {
@@ -6511,6 +6597,15 @@ a.deployment = b, a.healthCheckURL = m.healthCheckURL(c.project, "Deployment", b
 group: "apps",
 resource: "deployments"
 }, b.metadata.name, p, function(b, d) {
+=======
+group:"apps",
+resource:"deployments"
+}, d.name, l).then(function(b) {
+a.deployment = b, a.healthCheckURL = n.healthCheckURL(c.project, "Deployment", b.metadata.name, "apps"), z.push(f.watchObject({
+group:"apps",
+resource:"deployments"
+}, b.metadata.name, l, function(b, d) {
+>>>>>>> Use `apps` API group for deployments
 return "DELETED" === d ? (a.alerts["deployment-deleted"] = {
 type: "warning",
 message: "The deployment controlling this replica set has been deleted."
@@ -13702,10 +13797,34 @@ i.valid = a;
 k && (k(), k = void 0), l && (l(), l = void 0), n.nextTitle = "Close", n.wizardComplete = !0, n.bindService();
 }, v = function() {
 var a = {
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 namespace: _.get(n.target, "metadata.namespace")
 };
 d.getApplications(a).then(function(a) {
 n.applications = a, n.bindType = n.applications.length ? "application" : "secret-only";
+=======
+namespace:_.get(l.target, "metadata.namespace")
+};
+c.list("deploymentconfigs", a).then(function(a) {
+g = _.toArray(a.by("metadata.name")), p();
+}), c.list("replicationcontrollers", a).then(function(a) {
+i = _.reject(a.by("metadata.name"), b("hasDeploymentConfig")), p();
+}), c.list({
+group:"apps",
+resource:"deployments"
+}, a).then(function(a) {
+h = _.toArray(a.by("metadata.name")), p();
+}), c.list({
+group:"extensions",
+resource:"replicasets"
+}, a).then(function(a) {
+j = _.reject(a.by("metadata.name"), b("hasDeployment")), p();
+}), c.list({
+group:"apps",
+resource:"statefulsets"
+}, a).then(function(a) {
+k = _.toArray(a.by("metadata.name")), p();
+>>>>>>> Use `apps` API group for deployments
 });
 }, w = function() {
 var a = {
@@ -16607,6 +16726,7 @@ return !_.isEmpty(b);
 return function(b) {
 return _.get(a(b, "Ready"), "message");
 };
+<<<<<<< 61b7ccebc1be9196354cef218d1e7a812de7a0c6
 } ]).filter("failedConditionMessage", [ "statusConditionFilter", function(a) {
 return function(b) {
 return _.get(a(b, "Failed"), "message");
@@ -16638,6 +16758,50 @@ verbs: [ "delete", "update" ]
 group: "",
 resource: "buildconfigs/instantiate",
 verbs: [ "create" ]
+=======
+}), angular.module("openshiftConsole").filter("canIDoAny", [ "canIFilter", function(a) {
+var b = {
+buildConfigs:[ {
+group:"",
+resource:"buildconfigs",
+verbs:[ "delete", "update" ]
+}, {
+group:"",
+resource:"buildconfigs/instantiate",
+verbs:[ "create" ]
+} ],
+builds:[ {
+group:"",
+resource:"builds/clone",
+verbs:[ "create" ]
+}, {
+group:"",
+resource:"builds",
+verbs:[ "delete", "update" ]
+} ],
+configmaps:[ {
+group:"",
+resource:"configmaps",
+verbs:[ "update", "delete" ]
+} ],
+deployments:[ {
+group:"autoscaling",
+resource:"horizontalpodautoscalers",
+verbs:[ "create", "update" ]
+}, {
+group:"apps",
+resource:"deployments",
+verbs:[ "update", "delete" ]
+} ],
+deploymentConfigs:[ {
+group:"autoscaling",
+resource:"horizontalpodautoscalers",
+verbs:[ "create", "update" ]
+}, {
+group:"",
+resource:"deploymentconfigs",
+verbs:[ "create", "update" ]
+>>>>>>> Use `apps` API group for deployments
 } ],
 builds: [ _.assign({}, a.getPreferredVersion("builds/clone"), {
 verbs: [ "create" ]

@@ -56,7 +56,54 @@ angular.module('openshiftConsole')
     $scope.healthCheckURL = Navigate.healthCheckURL($routeParams.project,
                                                     "Deployment",
                                                     $routeParams.deployment,
-                                                    $scope.deploymentsVersion.group);
+                                                    "apps");
+
+    var previousEnvConflict = false;
+    var updateEnvironment = function(current, previous) {
+      if (previousEnvConflict) {
+        return;
+      }
+
+      if (!$scope.forms.deploymentEnvVars || $scope.forms.deploymentEnvVars.$pristine) {
+        $scope.updatedDeployment = EnvironmentService.copyAndNormalize(current);
+        return;
+      }
+
+      // The env var form has changed and the deployment has been updated. See
+      // if there were any background changes to the environment variables. If
+      // not, merge the environment edits into the updated deployment object.
+      if (EnvironmentService.isEnvironmentEqual(current, previous)) {
+        $scope.updatedDeployment = EnvironmentService.mergeEdits($scope.updatedDeployment, current);
+        return;
+      }
+
+      previousEnvConflict = true;
+      $scope.alerts["env-conflict"] = {
+        type: "warning",
+        message: "The environment variables for the deployment have been updated in the background. Saving your changes may create a conflict or cause loss of data.",
+        links: [
+          {
+            label: 'Reload Environment Variables',
+            onClick: function() {
+              $scope.clearEnvVarUpdates();
+              return true;
+            }
+          }
+        ]
+      };
+    };
+
+    var orderByDisplayName = $filter('orderByDisplayName');
+    var getErrorDetails = $filter('getErrorDetails');
+
+    var displayError = function(errorMessage, errorDetails) {
+      $scope.alerts['from-value-objects'] = {
+        type: "error",
+        message: errorMessage,
+        details: errorDetails
+      };
+    };
+
     var watches = [];
 
     ProjectsService
@@ -74,15 +121,54 @@ angular.module('openshiftConsole')
             });
         };
 
-        DataService.get($scope.deploymentsVersion, $routeParams.deployment, context, { errorNotification: false }).then(
+        var saveEnvPromise;
+        DataService.get({
+          group: 'apps',
+          resource: 'deployments'
+        }, $routeParams.deployment, context, { errorNotification: false }).then(
           // success
           function(deployment) {
             $scope.loaded = true;
             $scope.deployment = deployment;
             updateHPAWarnings();
 
+            $scope.saveEnvVars = function() {
+              EnvironmentService.compact($scope.updatedDeployment);
+              saveEnvPromise = DataService.update({
+                group: 'apps',
+                resource: 'deployments'
+              }, $routeParams.deployment, $scope.updatedDeployment, context);
+              saveEnvPromise.then(function success(){
+                // TODO:  de-duplicate success and error messages.
+                // as it stands, multiple messages appear based on how edit
+                // is made.
+                $scope.alerts['saveEnvSuccess'] = {
+                  type: "success",
+                  message: $routeParams.deployment + " was updated."
+                };
+                $scope.forms.deploymentEnvVars.$setPristine();
+              }, function error(e){
+                $scope.alerts['saveEnvError'] = {
+                  type: "error",
+                  message: $routeParams.deployment + " was not updated.",
+                  details: $filter('getErrorDetails')(e)
+                };
+              }).finally(function() {
+                saveEnvPromise = null;
+              });
+            };
+
+            $scope.clearEnvVarUpdates = function() {
+              $scope.updatedDeployment = EnvironmentService.copyAndNormalize($scope.deployment);
+              $scope.forms.deploymentEnvVars.$setPristine();
+              previousEnvConflict = false;
+            };
+
             // If we found the item successfully, watch for changes on it
-            watches.push(DataService.watchObject($scope.deploymentsVersion, $routeParams.deployment, context, function(deployment, action) {
+            watches.push(DataService.watchObject({
+              group: 'apps',
+              resource: 'deployments'
+            }, $routeParams.deployment, context, function(deployment, action) {
               if (action === "DELETED") {
                 $scope.alerts["deleted"] = {
                   type: "warning",
