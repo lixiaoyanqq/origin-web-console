@@ -384,6 +384,7 @@ return _.get(_.head(t), [ "metadata", "name" ]) || e.metadata.name;
 }, {});
 }
 }
+<<<<<<< HEAD
 }, jt = function() {
 he.bindableServiceInstances = c.filterBindableServiceInstances(he.serviceInstances, he.serviceClasses, he.servicePlans), he.orderedServiceInstances = c.sortServiceInstances(he.serviceInstances, he.serviceClasses);
 }, kt = [], It = L ? {
@@ -418,6 +419,69 @@ poll: B,
 pollInterval: 6e4
 })), kt.push(m.watch(ae, r, function(e) {
 A.routes = e.by("metadata.name"), ut(), S.log("routes (subscribe)", A.routes);
+=======
+}, _a = function() {
+return Q.serviceInstances || Q.serviceClasses ? (Q.bindableServiceInstances = _.filter(Q.serviceInstances, function(a) {
+return w.isServiceBindable(a, Q.serviceClasses);
+}), void (Q.orderedServiceInstances = _.sortByAll(Q.serviceInstances, function(a) {
+return _.get(Q.serviceClasses, [ a.spec.serviceClassName, "externalMetadata", "displayName" ]) || a.spec.serviceClassName;
+}, function(a) {
+return _.get(a, "metadata.name", "");
+}))) :void (Q.bindableServiceInstances = null);
+}, ab = [];
+v.get(c.project).then(_.spread(function(c, d) {
+Q.project = a.project = c, Q.context = d;
+var e = function() {
+z.pods && m.fetchReferencedImageStreamImages(z.pods, Q.imagesByDockerReference, Q.imageStreamImageRefByDockerReference, d);
+};
+ab.push(i.watch("pods", d, function(a) {
+z.pods = a.by("metadata.name"), Ca(), e(), ya(), Ja(z.monopods), pa(z.monopods), za(z.monopods), ia(), p.log("pods (subscribe)", z.pods);
+})), ab.push(i.watch("replicationcontrollers", d, function(a) {
+z.replicationControllers = a.by("metadata.name"), Fa(), Ja(z.vanillaReplicationControllers), Ja(z.monopods), pa(z.vanillaReplicationControllers), za(z.vanillaReplicationControllers), $a(), ia(), p.log("replicationcontrollers (subscribe)", z.replicationControllers);
+})), ab.push(i.watch("deploymentconfigs", d, function(a) {
+z.deploymentConfigs = a.by("metadata.name"), Fa(), Ja(z.deploymentConfigs), Ja(z.vanillaReplicationControllers), za(z.deploymentConfigs), wa(), Va(), Wa(), $a(), ia(), p.log("deploymentconfigs (subscribe)", z.deploymentConfigs);
+})), ab.push(i.watch({
+group:"extensions",
+resource:"replicasets"
+}, d, function(a) {
+z.replicaSets = a.by("metadata.name"), Ha(), Ja(z.vanillaReplicaSets), Ja(z.monopods), pa(z.vanillaReplicaSets), za(z.vanillaReplicaSets), $a(), ia(), p.log("replicasets (subscribe)", z.replicaSets);
+})), ab.push(i.watch({
+group:"apps",
+resource:"deployments"
+}, d, function(a) {
+D = a.by("metadata.uid"), z.deployments = _.sortBy(D, "metadata.name"), Ha(), Ja(z.deployments), Ja(z.vanillaReplicaSets), za(z.deployments), $a(), ia(), p.log("deployments (subscribe)", z.deploymentsByUID);
+})), ab.push(i.watch("builds", d, function(a) {
+Q.builds = a.by("metadata.name"), Xa(), p.log("builds (subscribe)", Q.builds);
+})), ab.push(i.watch({
+group:"apps",
+resource:"statefulsets"
+}, d, function(a) {
+z.statefulSets = a.by("metadata.name"), Ja(z.statefulSets), Ja(z.monopods), pa(z.statefulSets), za(z.statefulSets), $a(), ia(), p.log("statefulsets (subscribe)", z.statefulSets);
+}, {
+poll:A,
+pollInterval:B
+})), ab.push(i.watch("services", d, function(a) {
+Q.allServices = a.by("metadata.name"), Ka(), p.log("services (subscribe)", Q.allServices);
+}, {
+poll:A,
+pollInterval:B
+})), ab.push(i.watch("routes", d, function(a) {
+z.routes = a.by("metadata.name"), La(), p.log("routes (subscribe)", z.routes);
+}, {
+poll:A,
+pollInterval:B
+})), ab.push(i.watch("buildConfigs", d, function(a) {
+z.buildConfigs = a.by("metadata.name"), Pa(), Va(), Xa(), ia(), p.log("buildconfigs (subscribe)", z.buildConfigs);
+}, {
+poll:A,
+pollInterval:B
+})), ab.push(i.watch({
+group:"autoscaling",
+resource:"horizontalpodautoscalers",
+version:"v1"
+}, d, function(a) {
+z.horizontalPodAutoscalers = a.by("metadata.name"), Ma(), p.log("autoscalers (subscribe)", z.horizontalPodAutoscalers);
+>>>>>>> Use `apps` API group for deployments
 }, {
 poll: B,
 pollInterval: 6e4
@@ -5856,6 +5920,7 @@ n.imageStreams = e.select(n.unfilteredImageStreams), s();
 a.unwatchAll(l);
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ImageStreamController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "ImageStreamsService", "Navigate", "gettext", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
 n.projectName = t.project, n.imageStream = null, n.tags = [], n.tagShowOlder = {}, n.alerts = {}, n.renderOptions = n.renderOptions || {}, n.renderOptions.hideFilterWidget = !0, n.breadcrumbs = [ {
 title: "Image Streams",
@@ -5879,6 +5944,121 @@ n.loaded = !0, n.alerts.load = {
 type: "error",
 message: "The image stream details could not be loaded.",
 details: e("getErrorDetails")(t)
+=======
+} ]), angular.module("openshiftConsole").controller("ImageStreamController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", "ImageStreamsService", "Navigate", function(a, b, c, d, e, f, g) {
+a.projectName = b.project, a.imageStream = null, a.tags = [], a.tagShowOlder = {}, a.alerts = {}, a.renderOptions = a.renderOptions || {}, a.renderOptions.hideFilterWidget = !0, a.breadcrumbs = [ {
+title:"Image Streams",
+link:"project/" + b.project + "/browse/images"
+}, {
+title:b.imagestream
+} ], a.emptyMessage = "Loading...";
+var h = [];
+d.get(b.project).then(_.spread(function(d, g) {
+a.project = d, c.get("imagestreams", b.imagestream, g, {
+errorNotification:!1
+}).then(function(d) {
+a.loaded = !0, a.imageStream = d, a.emptyMessage = "No tags to show", h.push(c.watchObject("imagestreams", b.imagestream, g, function(b, c) {
+"DELETED" === c && (a.alerts.deleted = {
+type:"warning",
+message:"This image stream has been deleted."
+}), a.imageStream = b, a.tags = _.toArray(f.tagsByName(a.imageStream));
+}));
+}, function(b) {
+a.loaded = !0, a.alerts.load = {
+type:"error",
+message:"The image stream details could not be loaded.",
+details:e("getErrorDetails")(b)
+};
+}), a.$on("$destroy", function() {
+c.unwatchAll(h);
+});
+})), a.imagestreamPath = function(a, b) {
+if (!b.status) return "";
+var c = g.resourceURL(a.metadata.name, "ImageStream", a.metadata.namespace);
+return b && (c += "/" + b.name), c;
+};
+} ]), angular.module("openshiftConsole").controller("DeploymentsController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "LabelFilter", "Logger", "OwnerReferencesService", "ProjectsService", function(a, b, c, d, e, f, g, h, i) {
+a.projectName = c.project, a.replicationControllers = {}, a.unfilteredDeploymentConfigs = {}, a.unfilteredDeployments = {}, a.replicationControllersByDC = {}, a.labelSuggestions = {}, a.alerts = a.alerts || {}, a.emptyMessage = "Loading...", a.expandedDeploymentConfigRow = {}, a.unfilteredReplicaSets = {}, a.unfilteredReplicationControllers = {};
+var j, k, l = b("annotation"), m = function() {
+j && k && (a.replicaSetsByDeploymentUID = h.groupByControllerUID(j), a.unfilteredReplicaSets = _.get(a, [ "replicaSetsByDeploymentUID", "" ], {}), f.addLabelSuggestionsFromResources(a.unfilteredReplicaSets, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.replicaSets = f.getLabelSelector().select(a.unfilteredReplicaSets), a.latestReplicaSetByDeploymentUID = {}, _.each(a.replicaSetsByDeploymentUID, function(b, c) {
+c && (a.latestReplicaSetByDeploymentUID[c] = e.getActiveReplicaSet(b, k[c]));
+}));
+}, n = [];
+i.get(c.project).then(_.spread(function(c, h) {
+function i() {
+var b = !f.getLabelSelector().isEmpty();
+if (!b) return void delete a.alerts.deployments;
+var c = _.isEmpty(a.unfilteredDeploymentConfigs) && _.isEmpty(a.unfilteredReplicationControllers) && _.isEmpty(a.unfilteredDeployments) && _.isEmpty(a.unfilteredReplicaSets);
+if (c) return void delete a.alerts.deployments;
+var d = _.isEmpty(a.deploymentConfigs) && _.isEmpty(a.replicationControllersByDC[""]) && _.isEmpty(a.deployments) && _.isEmpty(a.replicaSets);
+return d ? void (a.alerts.deployments = {
+type:"warning",
+details:"The active filters are hiding all deployments."
+}) :void delete a.alerts.deployments;
+}
+a.project = c, n.push(d.watch("replicationcontrollers", h, function(c, d, h) {
+a.replicationControllers = c.by("metadata.name");
+var j, k;
+if (h && (j = l(h, "deploymentConfig"), k = h.metadata.name), a.replicationControllersByDC = e.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], f.addLabelSuggestionsFromResources(a.unfilteredReplicationControllers, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.replicationControllersByDC[""] = f.getLabelSelector().select(a.replicationControllersByDC[""])), i(), d) {
+if ("ADDED" === d || "MODIFIED" === d && [ "New", "Pending", "Running" ].indexOf(b("deploymentStatus")(h)) > -1) a.deploymentConfigDeploymentsInProgress[j] = a.deploymentConfigDeploymentsInProgress[j] || {}, a.deploymentConfigDeploymentsInProgress[j][k] = h; else if ("MODIFIED" === d) {
+var m = b("deploymentStatus")(h);
+"Complete" !== m && "Failed" !== m || delete a.deploymentConfigDeploymentsInProgress[j][k];
+}
+} else a.deploymentConfigDeploymentsInProgress = e.associateRunningDeploymentToDeploymentConfig(a.replicationControllersByDC);
+h ? "DELETED" !== d && (h.causes = b("deploymentCauses")(h)) :angular.forEach(a.replicationControllers, function(a) {
+a.causes = b("deploymentCauses")(a);
+}), g.log("replicationControllers (subscribe)", a.replicationControllers);
+})), n.push(d.watch({
+group:"extensions",
+resource:"replicasets"
+}, h, function(b) {
+j = b.by("metadata.name"), m(), g.log("replicasets (subscribe)", a.replicaSets);
+})), n.push(d.watch("deploymentconfigs", h, function(b) {
+a.unfilteredDeploymentConfigs = b.by("metadata.name"), f.addLabelSuggestionsFromResources(a.unfilteredDeploymentConfigs, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.deploymentConfigs = f.getLabelSelector().select(a.unfilteredDeploymentConfigs), a.emptyMessage = "No deployment configurations to show", a.replicationControllersByDC = e.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], a.replicationControllersByDC[""] = f.getLabelSelector().select(a.replicationControllersByDC[""])), i(), g.log("deploymentconfigs (subscribe)", a.deploymentConfigs);
+})), n.push(d.watch({
+group:"apps",
+resource:"deployments"
+}, h, function(b) {
+k = a.unfilteredDeployments = b.by("metadata.uid"), f.addLabelSuggestionsFromResources(a.unfilteredDeployments, a.labelSuggestions), f.setLabelSuggestions(a.labelSuggestions), a.deployments = f.getLabelSelector().select(a.unfilteredDeployments), m(), g.log("deployments (subscribe)", a.unfilteredDeployments);
+})), a.showEmptyMessage = function() {
+return 0 === b("hashSize")(a.replicationControllersByDC) || !(1 !== b("hashSize")(a.replicationControllersByDC) || !a.replicationControllersByDC[""]);
+}, f.onActiveFiltersChanged(function(b) {
+a.$apply(function() {
+a.deploymentConfigs = b.select(a.unfilteredDeploymentConfigs), a.replicationControllersByDC = e.associateDeploymentsToDeploymentConfig(a.replicationControllers, a.deploymentConfigs, !0), a.replicationControllersByDC[""] && (a.unfilteredReplicationControllers = a.replicationControllersByDC[""], a.replicationControllersByDC[""] = f.getLabelSelector().select(a.replicationControllersByDC[""])), a.deployments = b.select(a.unfilteredDeployments), a.replicaSets = b.select(a.unfilteredReplicaSets), i();
+});
+}), a.$on("$destroy", function() {
+d.unwatchAll(n);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "EnvironmentService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "OwnerReferencesService", "Logger", "ProjectsService", "StorageService", function(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
+var o = {};
+a.projectName = c.project, a.name = c.deployment, a.forms = {}, a.alerts = {}, a.imagesByDockerReference = {}, a.breadcrumbs = [ {
+title:"Deployments",
+link:"project/" + c.project + "/browse/deployments"
+}, {
+title:c.deployment
+} ], a.healthCheckURL = j.healthCheckURL(c.project, "Deployment", c.deployment, "apps");
+var p = !1, q = function(b, c) {
+if (!p) {
+if (!a.forms.deploymentEnvVars || a.forms.deploymentEnvVars.$pristine) return void (a.updatedDeployment = f.copyAndNormalize(b));
+if (f.isEnvironmentEqual(b, c)) return void (a.updatedDeployment = f.mergeEdits(a.updatedDeployment, b));
+p = !0, a.alerts["env-conflict"] = {
+type:"warning",
+message:"The environment variables for the deployment have been updated in the background. Saving your changes may create a conflict or cause loss of data.",
+links:[ {
+label:"Reload Environment Variables",
+onClick:function() {
+return a.clearEnvVarUpdates(), !0;
+}
+} ]
+};
+}
+}, r = b("orderByDisplayName"), s = b("getErrorDetails"), t = function(b, c) {
+a.alerts["from-value-objects"] = {
+type:"error",
+message:b,
+details:c
+>>>>>>> Use `apps` API group for deployments
 };
 }), n.$on("$destroy", function() {
 a.unwatchAll(l);
@@ -5888,6 +6068,7 @@ if (!t.status) return "";
 var n = i.resourceURL(e.metadata.name, "ImageStream", e.metadata.namespace);
 return t && (n += "/" + t.name), n;
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("DeploymentsController", [ "$scope", "$filter", "$routeParams", "APIService", "DataService", "DeploymentsService", "LabelFilter", "Logger", "OwnerReferencesService", "ProjectsService", "gettext", function(e, t, n, r, a, o, i, s, c, l, u) {
 function d() {
 var t = _.isEmpty(e.unfilteredDeploymentConfigs) && _.isEmpty(e.unfilteredReplicationControllers) && _.isEmpty(e.unfilteredDeployments) && _.isEmpty(e.unfilteredReplicaSets), n = !i.getLabelSelector().isEmpty(), r = _.isEmpty(e.deploymentConfigs) && _.isEmpty(e.replicationControllersByDC[""]) && _.isEmpty(e.deployments) && _.isEmpty(e.replicaSets);
@@ -5933,6 +6114,52 @@ e.deploymentConfigs = t.select(e.unfilteredDeploymentConfigs), e.replicationCont
 }), e.$on("$destroy", function() {
 a.unwatchAll(b);
 });
+=======
+d.get({
+group:"apps",
+resource:"deployments"
+}, c.deployment, m, {
+errorNotification:!1
+}).then(function(g) {
+a.loaded = !0, a.deployment = g, x(), a.saveEnvVars = function() {
+f.compact(a.updatedDeployment), v = d.update({
+group:"apps",
+resource:"deployments"
+}, c.deployment, a.updatedDeployment, m), v.then(function() {
+a.alerts.saveEnvSuccess = {
+type:"success",
+message:c.deployment + " was updated."
+}, a.forms.deploymentEnvVars.$setPristine();
+}, function(d) {
+a.alerts.saveEnvError = {
+type:"error",
+message:c.deployment + " was not updated.",
+details:b("getErrorDetails")(d)
+};
+})["finally"](function() {
+v = null;
+});
+}, a.clearEnvVarUpdates = function() {
+a.updatedDeployment = f.copyAndNormalize(a.deployment), a.forms.deploymentEnvVars.$setPristine(), p = !1;
+}, u.push(d.watchObject({
+group:"apps",
+resource:"deployments"
+}, c.deployment, m, function(b, c) {
+"DELETED" === c && (a.alerts.deleted = {
+type:"warning",
+message:"This deployment has been deleted."
+});
+var d = a.deployment;
+a.deployment = b, a.updatingPausedState = !1, x(), q(b, d), v ? v["finally"](function() {
+q(b, d);
+}) :q(b, d), h.fetchReferencedImageStreamImages([ b.spec.template ], a.imagesByDockerReference, o, m);
+})), u.push(d.watch({
+group:"extensions",
+resource:"replicasets"
+}, m, function(b) {
+var c = b.by("metadata.name");
+c = k.filterForController(c, g), a.inProgressDeployment = _.chain(c).filter("status.replicas").size() > 1, a.replicaSetsForDeployment = e.sortByRevision(c);
+>>>>>>> Use `apps` API group for deployments
 }));
 } ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "APIService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "LabelFilter", "Logger", "ModalsService", "Navigate", "OwnerReferencesService", "ProjectsService", "StorageService", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v) {
 var h = {};
@@ -6185,6 +6412,7 @@ angular.forEach(t.by("metadata.name"), function(t) {
 c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t) {
 e.hpaWarnings = t;
 });
+<<<<<<< HEAD
 }, A = function(r) {
 var a = P(r, "deploymentConfig");
 if (a) {
@@ -6235,6 +6463,38 @@ humanizedKind: "Deployments"
 })), x.push(i.watch(D, u, function(e) {
 var t = e.by("metadata.name");
 q = M(t);
+=======
+}, P = !1, Q = function() {
+var b = o.getControllerReferences(a.replicaSet), d = _.find(b, {
+kind:"Deployment"
+});
+d && f.get({
+group:"apps",
+resource:"deployments"
+}, d.name, l).then(function(b) {
+a.deployment = b, a.healthCheckURL = n.healthCheckURL(c.project, "Deployment", b.metadata.name, "apps"), z.push(f.watchObject({
+group:"apps",
+resource:"deployments"
+}, b.metadata.name, l, function(b, d) {
+return "DELETED" === d ? (a.alerts["deployment-deleted"] = {
+type:"warning",
+message:"The deployment controlling this replica set has been deleted."
+}, a.healthCheckURL = n.healthCheckURL(c.project, "ReplicaSet", c.replicaSet, "extensions"), a.deploymentMissing = !0, void delete a.deployment) :(a.deployment = b, a.breadcrumbs = e.getBreadcrumbs({
+object:a.replicaSet,
+displayName:"#" + g.getRevision(a.replicaSet),
+parent:{
+title:a.deployment.metadata.name,
+link:n.resourceURL(a.deployment)
+},
+humanizedKind:"Deployments"
+}), N(), void s());
+})), z.push(f.watch({
+group:"extensions",
+resource:"replicasets"
+}, l, function(a) {
+var b = a.by("metadata.name");
+P = O(b);
+>>>>>>> Use `apps` API group for deployments
 }));
 });
 }, H = function() {
@@ -13207,12 +13467,34 @@ g.applications = e, g.bindType = g.applications.length ? "application" : "secret
 var e = {
 namespace: _.get(g.target, "metadata.namespace")
 };
+<<<<<<< HEAD
 i.list(h, e).then(function(e) {
 g.serviceInstances = e.by("metadata.name"), C();
 }), i.list(y, {}).then(function(e) {
 g.serviceClasses = e.by("metadata.name"), C();
 }), i.list(b, {}).then(function(e) {
 g.servicePlans = e.by("metadata.name"), C();
+=======
+c.list("deploymentconfigs", a).then(function(a) {
+g = _.toArray(a.by("metadata.name")), p();
+}), c.list("replicationcontrollers", a).then(function(a) {
+i = _.reject(a.by("metadata.name"), b("hasDeploymentConfig")), p();
+}), c.list({
+group:"apps",
+resource:"deployments"
+}, a).then(function(a) {
+h = _.toArray(a.by("metadata.name")), p();
+}), c.list({
+group:"extensions",
+resource:"replicasets"
+}, a).then(function(a) {
+j = _.reject(a.by("metadata.name"), b("hasDeployment")), p();
+}), c.list({
+group:"apps",
+resource:"statefulsets"
+}, a).then(function(a) {
+k = _.toArray(a.by("metadata.name")), p();
+>>>>>>> Use `apps` API group for deployments
 });
 };
 c = {
@@ -15837,6 +16119,7 @@ name: r.name
 });
 return n(o) ? "read-only" : _.get(o, "persistentVolumeClaim.readOnly") ? "read-only" : t.getString(e(r.readOnly ? "read-only" : "read-write"));
 };
+<<<<<<< HEAD
 } ]).filter("managesRollouts", [ "APIService", function(e) {
 return function(t) {
 if (!t) return !1;
@@ -15882,6 +16165,66 @@ verbs: [ "delete", "update" ]
 group: "",
 resource: "buildconfigs/instantiate",
 verbs: [ "create" ]
+=======
+}).filter("managesRollouts", [ "APIService", function(a) {
+return function(b) {
+if (!b) return !1;
+var c = a.objectToResourceGroupVersion(b);
+return "deploymentconfigs" === c.resource && !c.group || "deployments" === c.resource && ("apps" === c.group || "extensions" === c.group);
+};
+} ]).filter("hasAlternateBackends", function() {
+return function(a) {
+var b = _.get(a, "spec.alternateBackends", []);
+return !_.isEmpty(b);
+};
+}).filter("serviceInstanceDisplayName", function() {
+return function(a, b) {
+var c = a.spec.serviceClassName, d = a.metadata.name, e = _.get(b, [ c, "externalMetadata", "displayName" ]);
+return e || c || d;
+};
+}), angular.module("openshiftConsole").filter("canIDoAny", [ "canIFilter", function(a) {
+var b = {
+buildConfigs:[ {
+group:"",
+resource:"buildconfigs",
+verbs:[ "delete", "update" ]
+}, {
+group:"",
+resource:"buildconfigs/instantiate",
+verbs:[ "create" ]
+} ],
+builds:[ {
+group:"",
+resource:"builds/clone",
+verbs:[ "create" ]
+}, {
+group:"",
+resource:"builds",
+verbs:[ "delete", "update" ]
+} ],
+configmaps:[ {
+group:"",
+resource:"configmaps",
+verbs:[ "update", "delete" ]
+} ],
+deployments:[ {
+group:"autoscaling",
+resource:"horizontalpodautoscalers",
+verbs:[ "create", "update" ]
+}, {
+group:"apps",
+resource:"deployments",
+verbs:[ "update", "delete" ]
+} ],
+deploymentConfigs:[ {
+group:"autoscaling",
+resource:"horizontalpodautoscalers",
+verbs:[ "create", "update" ]
+}, {
+group:"",
+resource:"deploymentconfigs",
+verbs:[ "create", "update" ]
+>>>>>>> Use `apps` API group for deployments
 } ],
 builds: [ _.assign({}, e.getPreferredVersion("builds/clone"), {
 verbs: [ "create" ]

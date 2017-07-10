@@ -48523,6 +48523,7 @@ n = "";
 this._options.selectedColor && (n += "color:" + this._options.selectedColor + ";"), this._options.selectedBackColor && (n += "background-color:" + this._options.selectedBackColor + ";"), t += ".node-" + this._elementId + ".node-selected{" + n + "}", t += ".node-" + this._elementId + ".node-selected:hover{" + n + "}";
 }
 if (this._options.highlightChanges) {
+<<<<<<< HEAD
 var n = "color: " + this._options.changedNodeColor + ";";
 t += ".node-" + this._elementId + ".node-check-changed{" + n + "}";
 }
@@ -48552,6 +48553,37 @@ text: e('<span class="text"></span>')
 }, o.prototype._css = ".treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}", o.prototype.findNodes = function(e, t) {
 return this._findNodes(e, t);
 }, o.prototype.getNodes = function() {
+=======
+var c = "color: " + this._options.changedNodeColor + ";";
+b += ".node-" + this._elementId + ".node-check-changed{" + c + "}";
+}
+return a.each(this._orderedNodes, a.proxy(function(a, c) {
+if (c.color || c.backColor) {
+var d = "";
+c.color && (d += "color:" + c.color + ";"), c.backColor && (d += "background-color:" + c.backColor + ";"), b += ".node-" + this._elementId + '[data-nodeId="' + c.nodeId + '"]{' + d + "}";
+}
+if (c.iconColor) {
+var d = "color:" + c.iconColor + ";";
+b += ".node-" + this._elementId + '[data-nodeId="' + c.nodeId + '"] .node-icon{' + d + "}";
+}
+}, this)), this._css + b;
+}, g.prototype._template = {
+tree:a('<ul class="list-group"></ul>'),
+node:a('<li class="list-group-item"></li>'),
+indent:a('<span class="indent"></span>'),
+icon:{
+node:a('<span class="icon node-icon"></span>'),
+expand:a('<span class="icon expand-icon"></span>'),
+check:a('<span class="icon check-icon"></span>'),
+empty:a('<span class="icon"></span>')
+},
+image:a('<span class="image"></span>'),
+badge:a("<span></span>"),
+text:a('<span class="text"></span>')
+}, g.prototype._css = ".treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}", g.prototype.findNodes = function(a, b) {
+return this._findNodes(a, b);
+}, g.prototype.getNodes = function() {
+>>>>>>> Use `apps` API group for deployments
 return this._orderedNodes;
 }, o.prototype.getParents = function(t) {
 t instanceof Array || (t = [ t ]);
