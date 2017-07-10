@@ -1,12 +1,12 @@
 <status-icon status="build.status.phase" disable-animation></status-icon>
-<span ng-if="!build.status.reason || build.status.phase === 'Cancelled'">{{build.status.phase | translate}}</span><span
-  ng-if="build.status.reason && build.status.phase !== 'Cancelled'">{{build.status.reason | sentenceCase}}</span><span
-  ng-switch="build.status.phase" class="hide-ng-leave" ng-if="build.status.startTimestamp"><span
-    ng-switch-when="Complete">, <translate>ran for</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span
-    ng-switch-when="Failed">, <translate>ran for</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span
-    ng-switch-when="Cancelled"> <translate>after</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span
-    ng-switch-when="Running"> <translate>for</translate> <time-only-duration-until-now timestamp="build.status.startTimestamp" time-only></time-only-duration-until-now></span><span
-    ng-switch-when="New"></span><span
-    ng-switch-when="Pending"></span><span
-    ng-switch-default>, <translate>ran for</translate> {{build.status.startTimestamp | duration : build.status.completionTimestamp}}</span>
+<span ng-if="!build.status.reason || build.status.phase === 'Cancelled'">{{build.status.phase | translate}}</span>
+<span ng-if="build.status.reason && build.status.phase !== 'Cancelled'">{{build.status.reason | sentenceCase}}</span>
+<span ng-if="build.status.startTimestamp" class="small text-muted">
+  &ndash;
+  <span ng-if="build.status.completionTimestamp">
+    {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}
+  </span>
+  <span ng-if="!build.status.completionTimestamp">
+    <time-only-duration-until-now timestamp="build.status.startTimestamp" time-only></time-only-duration-until-now>
+  </span>
 </span>
