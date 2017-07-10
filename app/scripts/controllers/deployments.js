@@ -134,7 +134,7 @@ angular.module('openshiftConsole')
         }));
 
         watches.push(DataService.watch({
-          group: "extensions",
+          group: "apps",
           resource: "deployments"
         }, context, function(deploymentData) {
           deploymentsByUID = $scope.unfilteredDeployments = deploymentData.by("metadata.uid");

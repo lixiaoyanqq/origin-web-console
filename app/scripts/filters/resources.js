@@ -1311,7 +1311,7 @@ angular.module('openshiftConsole')
         return true;
       }
 
-      if (rgv.resource === 'deployments' && rgv.group === 'extensions') {
+      if (rgv.resource === 'deployments' && (rgv.group === 'apps' || rgv.group === 'extensions')) {
         return true;
       }
 

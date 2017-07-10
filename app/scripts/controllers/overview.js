@@ -1269,7 +1269,7 @@ function OverviewController($scope,
     }));
 
     watches.push(DataService.watch({
-      group: "extensions",
+      group: "apps",
       resource: "deployments"
     }, context, function(deploymentData) {
       deploymentsByUID = deploymentData.by('metadata.uid');
