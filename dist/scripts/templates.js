@@ -6099,7 +6099,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/build-status.html',
     "<status-icon status=\"build.status.phase\" disable-animation></status-icon>\n" +
+<<<<<<< HEAD
     "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase | translate}}</span>\n" +
+=======
+    "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase}}</span>\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "<span ng-if=\"build.status.reason && build.status.phase !== 'Cancelled'\">{{build.status.reason | sentenceCase}}</span>\n" +
     "<span ng-if=\"build.status.startTimestamp\" class=\"small text-muted\">\n" +
     "&ndash;\n" +
@@ -11426,6 +11430,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small><translate>created</translate> <span am-time-ago=\"pod.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
+<<<<<<< HEAD
+=======
+    "<div class=\"list-group-item-text\">\n" +
+    "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
+    "{{pod | podStatus | sentenceCase}}\n" +
+    "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
+    "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready\n" +
+    "</small>\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "</div>\n" +
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
@@ -11502,10 +11515,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small><translate>created</translate> <span am-time-ago=\"replicationController.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
     "<div class=\"pods\">\n" +
+=======
+    "<div class=\"list-group-item-text\">\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "<a href=\"\" ng-click=\"viewPodsForSet(replicationController)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[replicationController.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +
@@ -11555,9 +11572,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h3>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
     "<div class=\"pods\">\n" +
+=======
+    "<div class=\"list-group-item-text\">\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "<a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[replicaSet.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +
@@ -11633,10 +11654,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small>created <span am-time-ago=\"set.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
     "<div class=\"pods\">\n" +
+=======
+    "<div class=\"list-group-item-text\">\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "<a href=\"\" ng-click=\"viewPodsForSet(set)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[set.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +

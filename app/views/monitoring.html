@@ -4,13 +4,13 @@
       <div class="container-fluid">
         <div class="page-header page-header-bleed-right page-header-bleed-left">
           <h1>
-	  <translate>Monitoring</translate>
+            <translate>Monitoring</translate>
             <events-badge project-context="projectContext" ng-if="projectContext" class="pull-right" sidebar-collapsed="renderOptions.collapseEventsSidebar"></events-badge>
           </h1>
         </div>
         <div class="data-toolbar">
           <ui-select class="data-toolbar-dropdown" ng-model="kindSelector.selected" theme="bootstrap" search-enabled="true" ng-disabled="kindSelector.disabled" title="Choose a resource">
-		  <ui-select-match placeholder="{{'Choose a resource'|translate}}">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
+            <ui-select-match placeholder="Choose a resource|translate">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
             <ui-select-choices repeat="kind in kinds | filter : {kind: $select.search} : matchKind">
               <div ng-bind-html="(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search"></div>
             </ui-select-choices>
@@ -22,20 +22,20 @@
                 <div class="search-pf-input-group">
                   <label for="name-filter" class="sr-only" translate>Filter by name</label>
                   <input type="search"
-		      placeholder="{{'Filter by name'|translate}}"
-                      class="form-control"
-                      id="name-filter"
-                      ng-model="filters.text"
-                      autocorrect="off"
-                      autocapitalize="none"
-                      spellcheck="false">
+                         placeholder="Filter by name | translate"
+                         class="form-control"
+                         id="name-filter"
+                         ng-model="filters.text"
+                         autocorrect="off"
+                         autocapitalize="none"
+                         spellcheck="false">
                   <button
-                      type="button"
-                      class="clear"
-                      aria-hidden="true"
-                      ng-if="filters.text"
-                      ng-click="filters.text = ''">
-                      <span class="pficon pficon-close"></span>
+                    type="button"
+                    class="clear"
+                    aria-hidden="true"
+                    ng-if="filters.text"
+                    ng-click="filters.text = ''">
+                    <span class="pficon pficon-close"></span>
                   </button>
                 </div>
               </div>
@@ -43,7 +43,7 @@
           </div>
           <div class="checkbox nowrap">
             <label>
-		    <input type="checkbox" ng-model="filters.hideOlderResources"><translate>Hide older resources</translate>
+              <input type="checkbox" ng-model="filters.hideOlderResources"><translate>Hide older resources</translate>
             </label>
           </div>
         </div>
@@ -52,7 +52,7 @@
     <div class="middle-content">
       <div class="container-fluid">
         <alerts alerts="alerts"></alerts>
-	<div ng-if="kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'Pods'">
+        <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Pods'">
           <h2>Pods</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredPods | size)}">
             <div class="list-pf-item" ng-if="!(filteredPods | size)">
@@ -87,7 +87,7 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{pod | navigateResourceURL}}"><span ng-bind-html="pod.metadata.name | highlightKeywords : filterKeywords"></span></a>
-			  <small><translate>created</translate> <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
+                          <small><translate>created</translate> <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
@@ -109,11 +109,11 @@
               </div><!-- /list-pf-container -->
 
               <div class="list-pf-expansion collapse"
-                  ng-if="expanded.pods[pod.metadata.name]"
-                  ng-class="{'in': expanded.pods[pod.metadata.name]}">
+                   ng-if="expanded.pods[pod.metadata.name]"
+                   ng-class="{'in': expanded.pods[pod.metadata.name]}">
                 <div class="list-pf-container">
                   <log-viewer
-                    ng-if="'pods/log' | canI : 'get'"
+                    ng-if="podsLogVersion | canI : 'get'"
                     object="pod"
                     context="projectContext"
                     options="logOptions.pods[pod.metadata.name]"
@@ -122,6 +122,7 @@
                     fixed-height="250"
                     full-log-url="(pod | navigateResourceURL) + '?view=chromeless'"
                     ng-class="{'log-viewer-select': pod.spec.containers.length > 1}">
+
                     <span class="container-details">
                       <label for="selectLogContainer" translate>Container:</label>
 
@@ -147,7 +148,7 @@
           </div><!-- /list-pf -->
         </div>
 
-        <div ng-if="kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'ReplicationControllers'">
+        <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'ReplicationControllers'">
           <h2 translate>Deployments</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredReplicationControllers | size) && !(filteredReplicaSets | size)}">
             <div class="list-pf-item" ng-if="!(filteredReplicationControllers | size) && !(filteredReplicaSets | size)">
@@ -182,25 +183,24 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{replicationController | navigateResourceURL}}"><span ng-bind-html="replicationController.metadata.name | highlightKeywords : filterKeywords"></span></a>
-			  <small><translate>created</translate> <span am-time-ago="replicationController.metadata.creationTimestamp"></span></small>
+                          <small><translate>created</translate> <span am-time-ago="replicationController.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
                     <div class="list-pf-additional-content">
                       <div class="list-pf-additional-content-item">
                         <div class="pods">
-                          <a href=""
-                            ng-click="viewPodsForSet(replicationController)"
-                            class="mini-donut-link"
-                            ng-class="{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }">
+                          <a ng-href="{{replicationController | donutURL : podsByOwnerUID[replicationController.metadata.uid]}}"
+                             class="mini-donut-link"
+                             ng-class="{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }">
                             <pod-donut pods="podsByOwnerUID[replicationController.metadata.uid]" mini="true"></pod-donut>
                           </a>
                         </div>
                       </div>
                       <div class="list-pf-additional-content-item">
                         <image-names
-                            pod-template="replicationController.spec.template"
-                            pods="podsByOwnerUID[replicationController.metadata.uid]">
+                          pod-template="replicationController.spec.template"
+                          pods="podsByOwnerUID[replicationController.metadata.uid]">
                         </image-names>
                       </div>
                     </div><!-- /list-pf-additional-content -->
@@ -211,7 +211,7 @@
                 <div class="list-pf-container">
                   <!-- TODO fix vanilla RCs -->
                   <log-viewer
-                    ng-if="'deploymentconfigs/log' | canI : 'get'"
+                    ng-if="deploymentConfigsLogVersion | canI : 'get'"
                     object="replicationController"
                     context="projectContext"
                     options="logOptions.replicationControllers[replicationController.metadata.name]"
@@ -222,9 +222,9 @@
                   </log-viewer>
                   <div class="mar-top-lg" ng-if="metricsAvailable">
                     <deployment-metrics
-                        pods="podsByOwnerUID[replicationController.metadata.uid]"
-                        containers="replicationController.spec.template.spec.containers"
-                        alerts="alerts">
+                      pods="podsByOwnerUID[replicationController.metadata.uid]"
+                      containers="replicationController.spec.template.spec.containers"
+                      alerts="alerts">
                     </deployment-metrics>
                   </div>
                 </div><!-- /list-pf-container -->
@@ -253,25 +253,24 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{replicaSet | navigateResourceURL}}"><span ng-bind-html="replicaSet.metadata.name | highlightKeywords : filterKeywords"></span></a>
-			  <small><translate>created</translate> <span am-time-ago="replicaSet.metadata.creationTimestamp"></span></small>
+                          <small><translate>created</translate><span am-time-ago="replicaSet.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
                     <div class="list-pf-additional-content">
                       <div class="list-pf-additional-content-item">
                         <div class="pods">
-                          <a href=""
-                            ng-click="viewPodsForSet(replicaSet)"
-                            class="mini-donut-link"
-                            ng-class="{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }">
+                          <a ng-href="{{replicaSet | donutURL : podsByOwnerUID[replicaSet.metadata.uid]}}"
+                             class="mini-donut-link"
+                             ng-class="{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }">
                             <pod-donut pods="podsByOwnerUID[replicaSet.metadata.uid]" mini="true"></pod-donut>
                           </a>
                         </div>
                       </div>
                       <div class="list-pf-additional-content-item">
                         <image-names
-                            pod-template="replicaSet.spec.template"
-                            pods="podsByOwnerUID[replicaSet.metadata.uid]">
+                          pod-template="replicaSet.spec.template"
+                          pods="podsByOwnerUID[replicaSet.metadata.uid]">
                         </image-names>
                       </div>
                     </div>
@@ -283,7 +282,7 @@
                 <div class="list-pf-container">
                   <!-- TODO fix vanilla RCs -->
                   <log-viewer
-                    ng-if="'deploymentconfigs/log' | canI : 'get'"
+                    ng-if="deploymentConfigsLogVersion | canI : 'get'"
                     object="replicationController"
                     context="projectContext"
                     options="logOptions.replicationControllers[replicationController.metadata.name]"
@@ -294,26 +293,26 @@
                   </log-viewer>
                   <div class="mar-top-lg" ng-if="metricsAvailable">
                     <deployment-metrics
-                        pods="podsByOwnerUID[replicationController.metadata.uid]"
-                        containers="replicationController.spec.template.spec.containers"
-                        alerts="alerts">
+                      pods="podsByOwnerUID[replicationController.metadata.uid]"
+                      containers="replicationController.spec.template.spec.containers"
+                      alerts="alerts">
                     </deployment-metrics>
                   </div>
                 </div>
               </div><!-- /list-pf-expansion -->
               <div class="list-pf-expansion collapse"
-                    ng-if="expanded.replicaSets[replicaSet.metadata.name]" ng-class="{'in': expanded.replicaSets[replicaSet.metadata.name]}">
+                   ng-if="expanded.replicaSets[replicaSet.metadata.name]" ng-class="{'in': expanded.replicaSets[replicaSet.metadata.name]}">
                 <div class="list-pf-container">
-			<translate>Logs are not available for replica sets.</translate>
+                  <translate>Logs are not available for replica sets.</translate>
                   <span ng-if="podsByOwnerUID[replicaSet.metadata.uid] | size">
-			  <translate>To see application logs, view the logs for one of the replica set's</translate>
-                    <a href="" ng-click="viewPodsForSet(replicaSet)">pods</a>.
+                    <translate>To see application logs, view the logs for one of the replica set's</translate>
+                    <a ng-href="{{replicaSet | donutURL : podsByOwnerUID[replicaSet.metadata.uid]}}">pods</a>.
                   </span>
                   <div class="mar-top-lg" ng-if="metricsAvailable">
                     <deployment-metrics
-                        pods="podsByOwnerUID[replicaSet.metadata.uid]"
-                        containers="replicaSet.spec.template.spec.containers"
-                        alerts="alerts">
+                      pods="podsByOwnerUID[replicaSet.metadata.uid]"
+                      containers="replicaSet.spec.template.spec.containers"
+                      alerts="alerts">
                     </deployment-metrics>
                   </div>
                 </div><!-- /list-pf-container -->
@@ -322,15 +321,15 @@
           </div><!-- /list-pf -->
         </div>
 
-        <div ng-if="kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '有状态集群'">
+        <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'StatefulSets'">
           <h2 translate>Stateful Sets</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredStatefulSets | size)}">
             <div class="list-pf-item" ng-if="!(filteredStatefulSets | size)">
               <div class="list-pf-container">
                 <ellipsis-pulser color="dark" size="sm" msg="Loading stateful sets" ng-if="!statefulSetsLoaded"></ellipsis-pulser>
                 <em>
-			<div ng-if="(statefulSets | size) > 0"><translate>The current filters are hiding all stateful sets.</translate></div>
-			<span ng-if="statefulSetsLoaded && (statefulSets | size) === 0"><translate>There are no stateful sets in this project.</translate></span>
+                  <div ng-if="(statefulSets | size) > 0"><translate>The current filters are hiding all stateful sets.</translate></div>
+                  <span ng-if="statefulSetsLoaded && (statefulSets | size) === 0"><translate>There are no stateful sets in this project.</translate></span>
                 </em>
               </div>
             </div>
@@ -343,11 +342,11 @@
                   <a href="" ng-click="toggleItem($event, this, set, true)" role="button" class="toggle-expand-link">
                     <span ng-if="expanded.statefulSets[set.metadata.name]">
                       <span class="fa fa-angle-down"  aria-hidden="true"></span>
-                      <span class="sr-only">Collapse</span>
+                      <span class="sr-only" translate>Collapse</span>
                     </span>
                     <span ng-if="!expanded.statefulSets[set.metadata.name]">
                       <span class="fa fa-angle-right"  aria-hidden="true"></span>
-                      <span class="sr-only">Expand</span>
+                      <span class="sr-only" translate>Expand</span>
                     </span>
                   </a>
                 </div>
@@ -357,17 +356,16 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{set | navigateResourceURL}}"><span ng-bind-html="set.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small>created <span am-time-ago="set.metadata.creationTimestamp"></span></small>
+                          <small><translate>created</translate> <span am-time-ago="set.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
                     <div class="list-pf-additional-content">
                       <div class="list-pf-additional-content-item">
                         <div class="pods">
-                          <a href=""
-                            ng-click="viewPodsForSet(set)"
-                            class="mini-donut-link"
-                            ng-class="{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }">
+                          <a ng-href="{{set | donutURL : podsByOwnerUID[set.metadata.uid]}}"
+                             class="mini-donut-link"
+                             ng-class="{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }">
                             <pod-donut pods="podsByOwnerUID[set.metadata.uid]" mini="true"></pod-donut>
                           </a>
                         </div>
@@ -380,12 +378,12 @@
                 </div><!-- /list-pf-content -->
               </div><!-- /list-pf-container -->
               <div class="list-pf-expansion collapse"
-                    ng-if="expanded.statefulSets[set.metadata.name]" ng-class="{'in': expanded.statefulSets[set.metadata.name]}">
+                   ng-if="expanded.statefulSets[set.metadata.name]" ng-class="{'in': expanded.statefulSets[set.metadata.name]}">
                 <div class="list-pf-container">
                   Logs are not available for stateful sets.
                   <span ng-if="podsByOwnerUID[set.metadata.uid] | size">
                     To see application logs, view the logs for one of the stateful sets's
-                    <a href="" ng-click="viewPodsForSet(set)">pods</a>.
+                    <a ng-href="{{set | donutURL : podsByOwnerUID[set.metadata.uid]}}">pods</a>.
                   </span>
                   <div class="mar-top-lg" ng-if="metricsAvailable">
                     <deployment-metrics
@@ -400,7 +398,7 @@
           </div><!-- /list-pf -->
         </div>
 
-        <div ng-if="kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '构建'" class="mar-bottom-xl">
+        <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Builds'" class="mar-bottom-xl">
           <h2 translate>Builds</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredBuilds | size)}">
             <div class="list-pf-item" ng-if="!(filteredBuilds | size)">
@@ -408,7 +406,7 @@
                 <ellipsis-pulser color="dark" size="sm" msg="Loading builds" ng-if="!buildsLoaded"></ellipsis-pulser>
                 <em>
                   <div ng-if="(builds | size) > 0" translate>The current filters are hiding all builds.</div>
-                  <span ng-if="buildsLoaded && (builds | size) === 0" translate>当前项目中没有构建</span>
+                  <span ng-if="buildsLoaded && (builds | size) === 0" translate>There are no builds in this project.</span>
                 </em>
               </div>
             </div>
@@ -435,7 +433,7 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{build | navigateResourceURL}}"><span ng-bind-html="build.metadata.name | highlightKeywords : filterKeywords"></span></a>
-			  <small><translate>created</translate> <span am-time-ago="build.metadata.creationTimestamp"></span></small>
+                          <small><translate>created</translate> <span am-time-ago="build.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
@@ -469,12 +467,12 @@
                 </div><!-- /list-pf-content -->
               </div><!-- /list-pf-container -->
               <div class="list-pf-expansion collapse"
-                    ng-if="expanded.builds[build.metadata.name]"
-                    ng-class="{'in': expanded.builds[build.metadata.name]}">
+                   ng-if="expanded.builds[build.metadata.name]"
+                   ng-class="{'in': expanded.builds[build.metadata.name]}">
                 <div class="list-pf-container">
                   <!-- TODO fix vanilla RCs -->
                   <log-viewer
-                    ng-if="'builds/log' | canI : 'get'"
+                    ng-if="buildsLogVersion | canI : 'get'"
                     object="build"
                     context="projectContext"
                     options="logOptions.builds[build.metadata.name]"

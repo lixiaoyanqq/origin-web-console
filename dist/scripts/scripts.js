@@ -5151,6 +5151,7 @@ s = !n.expanded.pods[a.metadata.name], n.expanded.pods[a.metadata.name] = s, c =
 break;
 
 case "StatefulSet":
+<<<<<<< HEAD
 s = !n.expanded.statefulSets[a.metadata.name], n.expanded.statefulSets[a.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, a);
 }
 }
@@ -5192,6 +5193,43 @@ var e = t.search();
 e.kind = n.kindSelector.selected.kind, t.replace().search(e);
 }), n.$watch("filters.text", _.debounce(function() {
 n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(I);
+=======
+g = !c.expanded.statefulSets[e.metadata.name], c.expanded.statefulSets[e.metadata.name] = g, h = g ? "event.resource.highlight" :"event.resource.clear-highlight", n.$emit(h, e);
+}
+}
+}, c.viewPodsForSet = function(a) {
+var b = _.get(c, [ "podsByOwnerUID", a.metadata.uid ], []);
+_.isEmpty(b) || k.toPodsForDeployment(a, b);
+}, m.get(a.project).then(_.spread(function(a, d) {
+c.project = a, c.projectContext = d, f.watch("pods", d, function(a) {
+c.podsByName = a.by("metadata.name"), c.pods = u(c.podsByName, !0), c.podsByOwnerUID = l.groupByOwnerUID(c.pods), c.podsLoaded = !0, _.each(c.pods, y), C(), i.log("pods", c.pods);
+}), f.watch({
+resource:"statefulsets",
+group:"apps",
+version:"v1beta1"
+}, d, function(a) {
+c.statefulSets = a.by("metadata.name"), c.statefulSetsLoaded = !0, B(), i.log("statefulSets", c.statefulSets);
+}), f.watch("replicationcontrollers", d, function(a) {
+c.replicationControllers = u(a.by("metadata.name"), !0), c.replicationControllersLoaded = !0, _.each(c.replicationControllers, z), J(), i.log("replicationcontrollers", c.replicationControllers);
+}), f.watch("builds", d, function(a) {
+c.builds = u(a.by("metadata.name"), !0), c.latestBuildByConfig = e.latestBuildByConfig(c.builds), c.buildsLoaded = !0, _.each(c.builds, A), G(), i.log("builds", c.builds);
+}), f.watch({
+group:"extensions",
+resource:"replicasets"
+}, d, function(a) {
+c.replicaSets = u(a.by("metadata.name"), !0), c.replicaSetsLoaded = !0, K(), i.log("replicasets", c.replicaSets);
+}), c.$on("$destroy", function() {
+f.unwatchAll(o);
+}), c.$watch("filters.hideOlderResources", function() {
+C(), G(), J(), K(), B();
+var a = b.search();
+a.hideOlderResources = c.filters.hideOlderResources ? "true" :"false", b.replace().search(a);
+}), c.$watch("kindSelector.selected.kind", function() {
+var a = b.search();
+a.kind = c.kindSelector.selected.kind, b.replace().search(a);
+}), c.$watch("filters.text", _.debounce(function() {
+c.filterKeywords = w = h.generateKeywords(c.filters.text), c.$apply(x);
+>>>>>>> Improve monitoring page collapsed rows
 }, 50, {
 maxWait: 250
 })), n.$watch("renderOptions.collapseEventsSidebar", function(e, t) {
