@@ -6142,7 +6142,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/build-status.html',
     "<status-icon status=\"build.status.phase\" disable-animation></status-icon>\n" +
+<<<<<<< f579a498647e14d5a6ae0738d54d266a96dceeec
     "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase | translate}}</span>\n" +
+=======
+    "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase}}</span>\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "<span ng-if=\"build.status.reason && build.status.phase !== 'Cancelled'\">{{build.status.reason | sentenceCase}}</span>\n" +
     "<span ng-if=\"build.status.startTimestamp\" class=\"small text-muted\">\n" +
     "&ndash;\n" +
@@ -11447,9 +11451,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-group-item-text\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
+<<<<<<< f579a498647e14d5a6ae0738d54d266a96dceeec
     "{{pod | podStatus | humanizeReason}}\n" +
     "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
     "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} <translate>ready</translate>\n" +
+=======
+    "{{pod | podStatus | sentenceCase}}\n" +
+    "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
+    "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready\n" +
+>>>>>>> Improve monitoring page collapsed rows
     "</small>\n" +
     "</div>\n" +
     "</div>\n" +

@@ -96,9 +96,29 @@
                           </small>
                         </div>
                       </div>
-                      <div class="list-view-pf-additional-info">
-                        <div class="list-view-pf-additional-info-item">
-                          <image-names pod-template="pod" pods="[pod]"></image-names>
+
+                      <div class="list-view-pf-main-info">
+                        <div class="list-view-pf-body">
+                          <div class="list-view-pf-description">
+                            <div class="list-group-item-heading">
+                              <a ng-href="{{pod | navigateResourceURL}}"><span ng-bind-html="pod.metadata.name | highlightKeywords : filterKeywords"></span></a>
+                              <small>created <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
+                            </div>
+                            <div class="list-group-item-text">
+                              <status-icon status="pod | podStatus" disable-animation></status-icon>
+                              {{pod | podStatus | sentenceCase}}
+                              <small ng-if="(pod | podStatus) === 'Running'" class="text-muted">
+                                &ndash;
+                                {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready
+                              </small>
+                            </div>
+                          </div>
+                          <div class="list-view-pf-additional-info">
+                            <div class="list-view-pf-additional-info-item">
+                              <span class="pficon fa-fw pficon-image"></span>
+                              <image-names pod-template="pod" pods="[pod]"></image-names>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -164,21 +184,31 @@
                       <span class="fa fa-angle-right"></span>
                     </span>
                   </div>
-
-                  <div class="list-view-pf-main-info">
-                    <div class="list-view-pf-body">
-                      <div class="list-view-pf-description">
-                        <div class="list-group-item-heading">
-                          <a ng-href="{{replicationController | navigateResourceURL}}"><span ng-bind-html="replicationController.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small><translate>created</translate> <span am-time-ago="replicationController.metadata.creationTimestamp"></span></small>
-                        </div>
-                        <div class="list-group-item-text">
-                          <a href=""
-                             ng-click="viewPodsForSet(replicationController)"
-                             class="mini-donut-link"
-                             ng-class="{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }">
-                            <pod-donut pods="podsByOwnerUID[replicationController.metadata.uid]" mini="true"></pod-donut>
-                          </a>
+                      <div class="list-view-pf-main-info">
+                        <div class="list-view-pf-body">
+                          <div class="list-view-pf-description">
+                            <div class="list-group-item-heading">
+                              <a ng-href="{{replicationController | navigateResourceURL}}"><span ng-bind-html="replicationController.metadata.name | highlightKeywords : filterKeywords"></span></a>
+                              <small><translate>created</translate> <span am-time-ago="replicationController.metadata.creationTimestamp"></span></small>
+                            </div>
+                            <div class="list-group-item-text">
+                              <a href=""
+                                 ng-click="viewPodsForSet(replicationController)"
+                                 class="mini-donut-link"
+                                 ng-class="{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }">
+                                <pod-donut pods="podsByOwnerUID[replicationController.metadata.uid]" mini="true"></pod-donut>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="list-view-pf-additional-info">
+                            <div class="list-view-pf-additional-info-item">
+                              <span class="pficon fa-fw pficon-image"></span>
+                              <image-names
+                                  pod-template="replicationController.spec.template"
+                                  pods="podsByOwnerUID[replicationController.metadata.uid]">
+                              </image-names>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="list-view-pf-additional-info">
@@ -226,20 +256,31 @@
                     </span>
                   </div>
 
-                  <div class="list-view-pf-main-info">
-                    <div class="list-view-pf-body">
-                      <div class="list-view-pf-description">
-                        <div class="list-group-item-heading">
-                          <a ng-href="{{replicaSet | navigateResourceURL}}"><span ng-bind-html="replicaSet.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small><translate>created</translate> <span am-time-ago="replicaSet.metadata.creationTimestamp"></span></small>
-                        </div>
-                        <div class="list-group-item-text">
-                          <a href=""
-                             ng-click="viewPodsForSet(replicaSet)"
-                             class="mini-donut-link"
-                             ng-class="{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }">
-                            <pod-donut pods="podsByOwnerUID[replicaSet.metadata.uid]" mini="true"></pod-donut>
-                          </a>
+                      <div class="list-view-pf-main-info">
+                        <div class="list-view-pf-body">
+                          <div class="list-view-pf-description">
+                            <div class="list-group-item-heading">
+                              <a ng-href="{{replicaSet | navigateResourceURL}}"><span ng-bind-html="replicaSet.metadata.name | highlightKeywords : filterKeywords"></span></a>
+                              <small><translate>created</translate> <span am-time-ago="replicaSet.metadata.creationTimestamp"></span></small>
+                            </div>
+                            <div class="list-group-item-text">
+                              <a href=""
+                                 ng-click="viewPodsForSet(replicaSet)"
+                                 class="mini-donut-link"
+                                 ng-class="{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }">
+                                <pod-donut pods="podsByOwnerUID[replicaSet.metadata.uid]" mini="true"></pod-donut>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="list-view-pf-additional-info">
+                            <div class="list-view-pf-additional-info-item">
+                              <span class="pficon fa-fw pficon-image"></span>
+                              <image-names
+                                  pod-template="replicaSet.spec.template"
+                                  pods="podsByOwnerUID[replicaSet.metadata.uid]">
+                              </image-names>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="list-view-pf-additional-info">
@@ -295,20 +336,28 @@
                     </span>
                   </div>
 
-                  <div class="list-view-pf-main-info">
-                    <div class="list-view-pf-body">
-                      <div class="list-view-pf-description">
-                        <div class="list-group-item-heading">
-                          <a ng-href="{{set | navigateResourceURL}}"><span ng-bind-html="set.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small><translate>created</translate> <span am-time-ago="set.metadata.creationTimestamp"></span></small>
-                        </div>
-                        <div class="list-group-item-text">
-                          <a href=""
-                             ng-click="viewPodsForSet(set)"
-                             class="mini-donut-link"
-                             ng-class="{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }">
-                            <pod-donut pods="podsByOwnerUID[set.metadata.uid]" mini="true"></pod-donut>
-                          </a>
+                      <div class="list-view-pf-main-info">
+                        <div class="list-view-pf-body">
+                          <div class="list-view-pf-description">
+                            <div class="list-group-item-heading">
+                              <a ng-href="{{set | navigateResourceURL}}"><span ng-bind-html="set.metadata.name | highlightKeywords : filterKeywords"></span></a>
+                              <small><translate>created</translate> <span am-time-ago="set.metadata.creationTimestamp"></span></small>
+                            </div>
+                            <div class="list-group-item-text">
+                              <a href=""
+                                 ng-click="viewPodsForSet(set)"
+                                 class="mini-donut-link"
+                                 ng-class="{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }">
+                                <pod-donut pods="podsByOwnerUID[set.metadata.uid]" mini="true"></pod-donut>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="list-view-pf-additional-info">
+                            <div class="list-view-pf-additional-info-item">
+                              <span class="pficon fa-fw pficon-image"></span>
+                              <image-names pod-template="set.spec.template" pods="podsByOwnerUID[set.metadata.uid]"></image-names>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="list-view-pf-additional-info">
