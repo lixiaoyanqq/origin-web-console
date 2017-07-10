@@ -168,15 +168,27 @@
                 </overview-list-row>
               </div>
             </div>
-            <div ng-if="overview.viewBy === 'resource'">
-              <div ng-if="overview.filteredDeploymentConfigs | hashSize">
-                <h2>
-                  <span ng-if="overview.deployments | hashSize" translate>
-                    Deployment Configs
-                  </span>
-                  <span ng-if="!(overview.deployments | hashSize)" translate>
-                    Deployments
-                  </span>
+            <div ng-if="!overview.everythingFiltered || overview.viewBy === 'pipeline'">
+              <div ng-if="overview.viewBy === 'app'" ng-repeat="app in overview.apps">
+                <div ng-if="app" class="app-heading">
+                  <h2>
+                    <div class="component-label">Application</div>
+                    <span ng-bind-html="app | highlightKeywords : overview.state.filterKeywords"></span>
+                  </h2>
+                  <div ng-if="route = overview.bestRouteByApp[app]" class="pull-right">
+                    <h3 class="overview-route">
+                      <span ng-if="route | isWebRoute">
+                        <a ng-href="{{route | routeWebURL}}" target="_blank">
+                          {{route | routeLabel}}
+                          <i class="fa fa-external-link" aria-hidden="true"></i>
+                        </a>
+                      </span>
+                      <span ng-if="!(route | isWebRoute)">{{route | routeLabel}}</span>
+                    </h3>
+                  </div>
+                </div>
+                <h2 ng-if="!app" translate>
+                  Other Resources
                 </h2>
                 <div class="list-pf">
                   <overview-list-row

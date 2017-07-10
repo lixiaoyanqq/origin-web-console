@@ -167,15 +167,39 @@
                 <div ng-if="reveal.certificate">
                   <pre class="clipped">{{route.spec.tls.certificate}}</pre>
                 </div>
-                <dt translate>Key:</dt>
-                <dd>
-                  <span ng-if="route.spec.tls.key && !reveal.key">
-                    <a href="" ng-click="reveal.key = true" translate>Show</a>
-                  </span>
-                  <span ng-if="!route.spec.tls.key"><em translate>none</em></span>
-                </dd>
-                <div ng-if="reveal.key">
-                  <pre class="clipped">{{route.spec.tls.key}}</pre>
+                <div ng-repeat="ingress in route.status.ingress" ng-init="admittedCondition = (ingress | routeIngressCondition : 'Admitted')" class="route-status">
+                  <div class="h3">
+                    <span ng-if="(route | isWebRoute)">
+                      <a ng-href="{{route | routeWebURL : ingress.host}}" target="_blank">
+                        {{route | routeLabel : ingress.host : true}}
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span ng-if="!(route | isWebRoute)">
+                      {{route | routeLabel : ingress.host}}
+                    </span>
+                  </div>
+                  <div class="meta">
+                    <span ng-if="!admittedCondition">Admission status unknown for router '{{ingress.routerName}}'</span>
+                    <span ng-if="admittedCondition.status === 'True'">
+                      <status-icon status="'Succeeded'"></status-icon>
+                      Exposed on router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
+                    </span>
+                    <span ng-if="admittedCondition.status === 'False'">
+                      <status-icon status="'Error'"></status-icon>
+                      Rejected by router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
+                    </span>
+                  </div>
+                  <div ng-if="showRouterHostnameAlert(ingress, admittedCondition)" class="mar-top-lg">
+                    <div class="alert alert-info">
+                      <span class="pficon pficon-info" aria-hidden="true"></span>
+                      <span class="mar-right-sm">
+                        The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}},
+                        to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.
+                      </span>
+                      <a href="" ng-click="hideRouterHostnameAlert(ingress)" role="button" class="nowrap" translate>Don't Show Me Again</a>
+                    </div>
+                  </div>
                 </div>
                 <dt translate>CA Certificate:</dt>
                 <dd>
