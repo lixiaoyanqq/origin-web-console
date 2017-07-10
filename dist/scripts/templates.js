@@ -3534,12 +3534,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</colgroup>\n" +
     "<thead>\n" +
     "<tr>\n" +
+<<<<<<< HEAD
     "<th>{{customNameHeader || '名称'}}</th>\n" +
     "<th translate>Hostname</th>\n" +
     "\n" +
     "<th translate>Service</th>\n" +
     "<th translate>Target Port</th>\n" +
     "<th translate>TLS Termination</th>\n" +
+=======
+    "<th>{{customNameHeader || 'Name'}}</th>\n" +
+    "<th>Hostname</th>\n" +
+    "\n" +
+    "<th>Service</th>\n" +
+    "<th>Target Port</th>\n" +
+    "<th>TLS Termination</th>\n" +
+>>>>>>> Route table tweaks
     "</tr>\n" +
     "</thead>\n" +
     "<tbody>\n" +
@@ -3565,7 +3574,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</td>\n" +
     "\n" +
+<<<<<<< HEAD
     "<td data-title=\"{{'Service'|translate}}\">\n" +
+=======
+    "<td data-title=\"Service\">\n" +
+>>>>>>> Route table tweaks
     "<span ng-if=\"route.spec.to.kind !== 'Service'\">{{route.spec.to.kind}}: {{route.spec.to.name}}</span>\n" +
     "<span ng-if=\"route.spec.to.kind === 'Service'\"><a ng-href=\"{{route.spec.to.name | navigateResourceURL : 'Service': route.metadata.namespace}}\">{{route.spec.to.name}}</a></span>\n" +
     "</td>\n" +
