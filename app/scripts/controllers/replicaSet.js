@@ -82,7 +82,7 @@ angular.module('openshiftConsole')
       $scope.logCanRun = !(_.includes(['New', 'Pending'], deploymentStatus(replicaSet)));
     };
 
-    var limitWatches = $filter('isIE')();
+    var limitWatches = $filter('isIE')() || $filter('isEdge')();
 
     ProjectsService
       .get($routeParams.project)

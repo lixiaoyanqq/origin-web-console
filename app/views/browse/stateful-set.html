@@ -72,29 +72,10 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <h3 translate>Volumes</h3>
-                  <p ng-if="!statefulSet.spec.template.spec.volumes.length" translate>
-                    none
-                  </p>
-                  <volumes
-                      volumes="statefulSet.spec.template.spec.volumes"
-                      namespace="project.metadata.name">
-                  </volumes>
-
-                  <h3 translate>Pods</h3>
-                  <pods-table
-                    pods="podsForStatefulSet"></pods-table>
-
-                  <resource-service-bindings
-                    project="project"
-                    project-context="projectContext"
-                    api-object="statefulSet">
-                  </resource-service-bindings>
-
-                  <annotations
-                    annotations="statefulSet.metadata.annotations"></annotations>
+                <uib-tab active="selectedTab.environment" ng-if="statefulSet">
+                  <uib-tab-heading>Environment</uib-tab-heading>
+                  <div class="resource-environment">
+                    <edit-environment-variables api-object="statefulSet"></edit-environment-variables>
                   </div>
                 </div>
             </uib-tab>

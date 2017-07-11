@@ -52,7 +52,7 @@
       // variables. If not, merge the environment edits into the updated
       // deployment config object.
       if (EnvironmentService.isEnvironmentEqual(currentValue, previousValue)) {
-        ctrl.updatedObject = EnvironmentService.mergeEdits(ctrl.updatedObject, currentValue);
+        ctrl.updatedObject = EnvironmentService.mergeEdits(currentValue, previousValue);
         return;
       }
 
@@ -148,7 +148,6 @@
 
     ctrl.clearChanges = function() {
       ctrl.updatedObject = EnvironmentService.copyAndNormalize(ctrl.apiObject);
-      ctrl.containers = EnvironmentService.getContainers(ctrl.updatedObject);
       ctrl.form.$setPristine();
       previousEnvConflict = false;
     };

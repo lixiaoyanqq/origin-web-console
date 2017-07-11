@@ -352,43 +352,20 @@
                     <div ng-repeat="hpa in autoscalers">
                       <hpa hpa="hpa" project="project" show-scale-target="false" alerts="alerts"></hpa>
                     </div>
-
-                    <div ng-if="deploymentConfig.spec.strategy.type !== 'Custom'">
-                      <h3>
-                        <translate>Hooks</translate>
-                        <span class="learn-more-inline">
-                          <a ng-href="{{'lifecycle_hooks' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
-                        </span>
-                      </h3>
-                      <div ng-if="strategyParams.pre">
-                        <lifecycle-hook deployment-config="deploymentConfig" type="pre"></lifecycle-hook>
-                      </div>
-                      <div ng-if="strategyParams.mid">
-                        <lifecycle-hook deployment-config="deploymentConfig" type="mid"></lifecycle-hook>
-                      </div>
-                      <div ng-if="strategyParams.post">
-                        <lifecycle-hook deployment-config="deploymentConfig" type="post"></lifecycle-hook>
-                      </div>
-                      <p ng-if="!strategyParams.pre && !strategyParams.mid && !strategyParams.post" translate>
-                        none
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <annotations annotations="deploymentConfig.metadata.annotations"></annotations>
-              </div>
-            </uib-tab>
-            <uib-tab heading="{{'Environment'|translate}}" active="selectedTab.environment" ng-if="deploymentConfig">
-              <uib-tab-heading translate>Environment</uib-tab-heading>
-              <edit-environment-variables api-object="deploymentConfig"></edit-environment-variables>
-            </uib-tab>
-            <uib-tab active="selectedTab.events" ng-if="eventsVersion | canI : 'watch'">
-              <uib-tab-heading translate>Events</uib-tab-heading>
-              <events api-objects="[ deploymentConfig ]" project-context="projectContext" ng-if="selectedTab.events"></events>
-            </uib-tab>
-          </uib-tabset>
-        </div><!-- /col-* -->
-      </div>
-    </div>
-  </div><!-- /middle-content -->
-</div>
+                  </uib-tab>
+                  <uib-tab heading="Environment" active="selectedTab.environment" ng-if="deploymentConfig">
+                    <uib-tab-heading translate>Environment</uib-tab-heading>
+                    <edit-environment-variables api-object="deploymentConfig"></edit-environment-variables>
+                  </uib-tab>
+                  <uib-tab active="selectedTab.events" ng-if="'events' | canI : 'watch'">
+                    <uib-tab-heading translate>Events</uib-tab-heading>
+                    <events api-objects="[ deploymentConfig ]" project-context="projectContext" ng-if="selectedTab.events"></events>
+                  </uib-tab>
+                </uib-tabset>
+              </div><!-- /col-* -->
+            </div>
+          </div>
+        </div><!-- /middle-content -->
+      </div><!-- /middle-container -->
+    </div><!-- /middle-section -->
+  </project-page>

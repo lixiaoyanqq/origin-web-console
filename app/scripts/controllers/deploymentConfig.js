@@ -80,7 +80,7 @@ angular.module('openshiftConsole')
             });
         };
 
-        DataService.get($scope.deploymentConfigsVersion, $routeParams.deploymentconfig, context, { errorNotification: false }).then(
+        DataService.get("deploymentconfigs", $routeParams.deploymentconfig, context, { errorNotification: false }).then(
           // success
           function(deploymentConfig) {
             $scope.loaded = true;
@@ -174,7 +174,7 @@ angular.module('openshiftConsole')
           updateHPAWarnings();
         });
 
-        watches.push(DataService.watch(imageStreamsVersion, context, function(imageStreamData) {
+        watches.push(DataService.watch("imagestreams", context, function(imageStreamData) {
           var imageStreams = imageStreamData.by("metadata.name");
           ImageStreamResolver.buildDockerRefMapForImageStreams(imageStreams, imageStreamImageRefByDockerReference);
           // If the dep config has been loaded already
