@@ -225,10 +225,10 @@
                   $scope.forms.keyValueEditor.$setDirty();
                 },
                 isReadonlySome: function(name) {
-                  return _.contains(readOnlySome, name);
+                  return _.includes(readOnlySome, name);
                 },
                 cannotDeleteSome: function(name) {
-                  return _.contains(cannotDeleteSome, name);
+                  return _.includes(cannotDeleteSome, name);
                 },
                 onAddRow: function() {
                   utils.addEntry($scope.entries);

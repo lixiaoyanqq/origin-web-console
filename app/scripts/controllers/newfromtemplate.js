@@ -166,7 +166,7 @@ angular.module('openshiftConsole')
           });
         }
       });
-      images = _.uniq(images, false, 'name');
+      images = _.uniqBy(images, 'name');
     }
 
     function getParameterValues() {

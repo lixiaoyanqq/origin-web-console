@@ -237,7 +237,7 @@
         return false;
       }
 
-      var buildConfig = _.first(row.buildConfigs);
+      var buildConfig = _.head(row.buildConfigs);
       return !isBinaryBuild(buildConfig);
     };
 
