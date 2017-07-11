@@ -7638,7 +7638,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 09aec676d45ef13c0609d6ece87170b1c79c051a
     "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
+=======
+    "<table class=\"table table-bordered table-condensed table-mobile table-hover table-layout-fixed events-table\">\n" +
+>>>>>>> Use table toolbar styles for events filter
     "<thead>\n" +
     "<tr>\n" +
     "<th id=\"time\" translate>Time</th>\n" +
