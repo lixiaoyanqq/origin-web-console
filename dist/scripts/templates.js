@@ -7602,7 +7602,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
+=======
+    "</div>\n" +
+    "<table class=\"table table-bordered table-condensed table-mobile table-hover table-layout-fixed events-table\">\n" +
+>>>>>>> Use table toolbar styles for events filter
     "<thead>\n" +
     "<tr>\n" +
     "<th id=\"time\" translate>Time</th>\n" +
