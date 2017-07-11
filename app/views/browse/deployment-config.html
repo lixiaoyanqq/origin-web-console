@@ -328,49 +328,7 @@
                   </uib-tab>
                   <uib-tab heading="Environment" active="selectedTab.environment" ng-if="deploymentConfig">
                     <uib-tab-heading translate>Environment</uib-tab-heading>
-                    <ng-form name="forms.dcEnvVars" class="mar-bottom-xl block">
-                      <confirm-on-exit
-                        ng-if="'deploymentconfigs' | canI : 'update'"
-                        dirty="forms.dcEnvVars.$dirty">
-                      </confirm-on-exit>
-
-                      <div ng-repeat="container in updatedDeploymentConfig.spec.template.spec.containers">
-                        <h3 translate>Container {{container.name}} Environment Variables</h3>
-                        <key-value-editor
-                          ng-if="!('deploymentconfigs' | canI : 'update')"
-                          entries="container.env"
-                          key-placeholder="{{'Name'|translate}}"
-                          value-placeholder="{{'Value'|translate}}"
-                          cannot-add
-                          cannot-sort
-                          cannot-delete
-                          is-readonly
-                          show-header></key-value-editor>
-                        <key-value-editor
-                          ng-if="'deploymentconfigs' | canI : 'update'"
-                          entries="container.env"
-                          key-placeholder="{{'Name'|translate}}"
-                          value-placeholder="{{'Value'|translate}}"
-                          value-from-selector-options="valueFromObjects"
-                          key-validator="[A-Za-z_][A-Za-z0-9_]*"
-                          key-validator-error="{{'Please enter a valid key'|translate}}"
-                          key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
-                          add-row-link="{{'Add Environment Variable'|translate}}"
-                          add-row-with-selectors-link="{{'Add Environment Variable Using a Config Map or Secret'|translate}}"
-                          show-header></key-value-editor>
-                      </div>
-                      <button
-                        class="btn btn-default"
-                        ng-if="'deploymentconfigs' | canI : 'update'"
-                        ng-click="saveEnvVars()"
-                        ng-disabled="forms.dcEnvVars.$pristine || forms.dcEnvVars.$invalid" translate>Save</button>
-                      <a
-                        ng-if="!forms.dcEnvVars.$pristine"
-                        href=""
-                        ng-click="clearEnvVarUpdates()"
-                        class="mar-left-sm"
-                        style="vertical-align: -2px;" translate>Clear Changes</a>
-                    </ng-form>
+                    <edit-environment-variables api-object="deploymentConfig"></edit-environment-variables>
                   </uib-tab>
                   <uib-tab active="selectedTab.events" ng-if="'events' | canI : 'watch'">
                     <uib-tab-heading translate>Events</uib-tab-heading>
