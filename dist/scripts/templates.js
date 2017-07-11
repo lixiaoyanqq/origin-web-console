@@ -262,6 +262,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+  $templateCache.put('views/_init-containers-summary.html',
+    "<span ng-if=\"$ctrl.podTemplate.spec.initContainers.length\" class=\"text-muted small\">\n" +
+    "<ng-pluralize class=\"mar-right-sm\" count=\"$ctrl.podTemplate.spec.initContainers.length\" when=\"{'1': '&nbsp;{} init container','other': '&nbsp;{} init containers'}\">\n" +
+    "</ng-pluralize>\n" +
+    "<a ng-href=\"{{$ctrl.apiObject | navigateToTabURL:$ctrl.tab}}\">View Details</a>\n" +
+    "</span>"
+  );
+
+
   $templateCache.put('views/_parse-error.html',
     "<div ng-show=\"error && !hidden\" class=\"alert alert-danger animate-show\">\n" +
     "<button ng-click=\"hidden = true\" type=\"button\" class=\"close\" aria-hidden=\"true\">\n" +
