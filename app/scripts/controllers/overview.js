@@ -1168,12 +1168,23 @@ function OverviewController($scope,
   };
 
   var sortServiceInstances = function() {
-    state.bindableServiceInstances =
-      BindingService.filterBindableServiceInstances(state.serviceInstances,
-                                                    state.serviceClasses,
-                                                    state.servicePlans);
-    state.orderedServiceInstances =
-      BindingService.sortServiceInstances(state.serviceInstances, state.serviceClasses);
+    if(!state.serviceInstances && !state.serviceClasses) {
+      state.bindableServiceInstances = null;
+      return;
+    }
+
+    state.bindableServiceInstances = _.filter(state.serviceInstances, function(serviceInstance) {
+      return BindingService.isServiceBindable(serviceInstance, state.serviceClasses);
+    });
+
+    state.orderedServiceInstances = _.sortBy(state.serviceInstances,
+      function(item) {
+        return _.get(state.serviceClasses, [item.spec.serviceClassName, 'externalMetadata', 'displayName']) || item.spec.serviceClassName;
+      },
+      function(item) {
+        return _.get(item, 'metadata.name', '');
+      }
+    );
   };
 
   var watches = [];

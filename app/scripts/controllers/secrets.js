@@ -23,8 +23,9 @@ angular.module('openshiftConsole')
           $scope.secretsLoaded = true;
         }));
 
-        $scope.$on('$destroy', function(){
-          DataService.unwatchAll(watches);
+        DataService.list("secrets", context).then(function(secrets) {
+          $scope.secrets = _.sortBy(secrets.by("metadata.name"), ["type", "metadata.name"]);
+          $scope.loaded = true;
         });
     }));
   });

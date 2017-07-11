@@ -70,19 +70,19 @@ angular.module('openshiftConsole')
         // Sort by display name. Use `metadata.name` as a secondary sort when
         // projects have the same display name.
         sortedProjects = _.orderBy(projects,
-                                   [ displayNameLower, 'metadata.name' ],
-                                   [ primarySortOrder ]);
+                                       [ displayNameLower, 'metadata.name' ],
+                                       [ primarySortOrder ]);
         break;
       case 'metadata.annotations["openshift.io/requester"]':
         // Sort by requester, then display name. Secondary sort is always ascending.
         sortedProjects = _.orderBy(projects,
-                                   [ sortID, displayNameLower ],
-                                   [ primarySortOrder, 'asc' ]);
+                                       [ sortID, displayNameLower ],
+                                       [ primarySortOrder, 'asc' ]);
         break;
       default:
         sortedProjects = _.orderBy(projects,
-                                   [ sortID ],
-                                   [ primarySortOrder ]);
+                                       [ sortID ],
+                                       [ primarySortOrder ]);
       }
 
       // Remember the previous sort ID.

@@ -1,6 +1,6 @@
 <div class="order-service">
   <pf-wizard
-       wizard-title="{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project'}}"
+       hide-header="true"
        hide-sidebar="true"
        step-class="order-service-wizard-step"
        wizard-ready="$ctrl.wizardReady"
@@ -9,7 +9,8 @@
        on-finish="$ctrl.close()"
        on-cancel="$ctrl.close()"
        wizard-done="$ctrl.wizardDone"
-       current-step="$ctrl.currentStep">
+       current-step="$ctrl.currentStep"
+       class="pf-wizard-no-back">
     <pf-wizard-step ng-repeat="step in $ctrl.steps track by step.id"
          step-title="{{step.label}}"
          wz-disabled="{{step.hidden}}"

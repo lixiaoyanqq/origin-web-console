@@ -47,6 +47,7 @@ angular.module('openshiftConsole')
           $scope.buildsLoaded = true;
           // Filter out pipeline builds, which have a separate page.
           $scope.builds = _.omitBy(builds.by("metadata.name"), isPipeline);
+          $scope.emptyMessage = "No builds to show";
           associateBuildsToBuildConfig();
           LabelFilter.addLabelSuggestionsFromResources($scope.builds, $scope.labelSuggestions);
 
@@ -107,16 +108,26 @@ angular.module('openshiftConsole')
 
         function associateBuildsToBuildConfig() {
           $scope.latestByConfig = BuildsService.latestBuildByConfig($scope.builds, showBuild);
-          $scope.buildsNoConfig = _.pick($scope.builds, showBuildNoConfigOnly);
+          $scope.buildsNoConfig = _.pickBy($scope.builds, showBuildNoConfigOnly);
           // Make sure there is a key for every build config we know about
           angular.forEach($scope.buildConfigs, function(buildConfig, buildConfigName){
             $scope.latestByConfig[buildConfigName] = $scope.latestByConfig[buildConfigName] || null;
           });
         }
 
-        function updateFilterMessage() {
+        function updateFilterWarning() {
           var visibleBuilds = _.omitBy($scope.latestByConfig, _.isNull);
-          $scope.filterWithZeroResults = !LabelFilter.getLabelSelector().isEmpty() && _.isEmpty($scope.buildConfigs) && _.isEmpty(visibleBuilds);
+          if (!LabelFilter.getLabelSelector().isEmpty() &&
+              _.isEmpty($scope.buildConfigs) &&
+              _.isEmpty(visibleBuilds)) {
+            $scope.alerts["builds"] = {
+              type: "warning",
+              details: "The active filters are hiding all builds."
+            };
+          }
+          else {
+            delete $scope.alerts["builds"];
+          }
         }
 
         LabelFilter.onActiveFiltersChanged(function(labelSelector) {

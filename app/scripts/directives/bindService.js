@@ -57,25 +57,28 @@
       // wait till both service instances and service classes are available so
       // that the sort is stable and items dont jump around
       if (ctrl.serviceClasses && ctrl.serviceInstances) {
-        ctrl.serviceInstances =
-          BindingService.filterBindableServiceInstances(ctrl.serviceInstances,
-                                                        ctrl.serviceClasses,
-                                                        ctrl.servicePlans);
-        ctrl.orderedServiceInstances =
-          BindingService.sortServiceInstances(ctrl.serviceInstances, ctrl.serviceClasses);
-
-        if (!ctrl.serviceToBind) {
-          preselectService();
-        }
+        ctrl.orderedServiceInstances = _.sortBy(ctrl.serviceInstances,
+          function(item) {
+            return _.get(ctrl.serviceClasses, [item.spec.serviceClassName, 'externalMetadata', 'displayName']) || item.spec.serviceClassName;
+          },
+          function(item) {
+            return _.get(item, 'metadata.name', '');
+          }
+        );
       }
     };
 
-    var showBind = function() {
-      ctrl.nextTitle = bindParametersStep.hidden ? 'Bind' : 'Next >';
-      if (ctrl.podPresets && !selectionValidityWatcher) {
-        selectionValidityWatcher = $scope.$watch("ctrl.selectionForm.$valid", function(isValid) {
-          bindFormStep.valid = isValid;
-        });
+    var deploymentConfigs, deployments, replicationControllers, replicaSets, statefulSets;
+    var sortApplications = function() {
+      // Don't waste time sorting on each data load, just sort when we have them all
+      if (deploymentConfigs && deployments && replicationControllers && replicaSets && statefulSets) {
+        var apiObjects =  [].concat(deploymentConfigs)
+                            .concat(deployments)
+                            .concat(replicationControllers)
+                            .concat(replicaSets)
+                            .concat(statefulSets);
+        ctrl.applications = _.sortBy(apiObjects, ['metadata.name', 'kind']);
+        ctrl.bindType = ctrl.applications.length ? "application" : "secret-only";
       }
     };
 

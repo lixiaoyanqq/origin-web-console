@@ -1,6 +1,6 @@
 <div class="bind-service-wizard unbind-service">
   <pf-wizard
-    wizard-title="{{'Delete Binding'|translate}}"
+    hide-header="true"
     hide-sidebar="true"
     hide-back-button="true"
     step-class="bind-service-wizard-step"
@@ -8,9 +8,10 @@
     next-title="ctrl.nextTitle"
     on-finish="ctrl.closeWizard()"
     on-cancel="ctrl.closeWizard()"
-    wizard-done="ctrl.wizardComplete">
+    wizard-done="ctrl.wizardComplete"
+    class="pf-wizard-no-back">
     <pf-wizard-step
-      ng-repeat="step in ctrl.steps track by step.id"
+      ng-repeat="step in ctrl.steps track by $index"
       step-title="{{step.label}}"
       next-enabled="step.valid"
       allow-click-nav="false"

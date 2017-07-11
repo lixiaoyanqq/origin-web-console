@@ -10,40 +10,47 @@
             <alerts alerts="alerts"></alerts>
           </div>
 
-          <div ng-if="!showGetStarted">
-            <div ng-if="loading" class="empty-state-message">
-              <h2 class="text-center" translate>Loading...</h2>
-            </div>
-            <div ng-if="!loading">
-              <div class="projects-header">
-                <div class="projects-bar">
-                  <h1 translate>My Projects</h1>
-                  <div class="projects-options">
-                    <div class="projects-add" ng-if="canCreate">
-                      <button ng-click="createProject($event)" class="btn btn-primary">
-                        <span class="fa fa-plus" aria-hidden="true"></span>
-                        <span class="icon-button-text" translate>Create Project</span>
-                      </button>
-                    </div>
-                    <div class="projects-search">
-                      <form role="form" class="search-pf has-button">
-                        <div class="form-group has-clear">
-                          <div class="search-pf-input-group">
-                            <label for="search-projects" class="sr-only" translate>Filter by keyword</label>
-                            <input
-                              type="search"
-                              class="form-control"
-                              placeholder="Filter by keyword"
-                              id="search-projects"
-                              ng-model="search.text">
-                            <button
-                              type="button"
-                              class="clear"
-                              aria-hidden="true"
-                              ng-if="search.text"
-                              ng-click="search.text = ''">
-                              <span class="pficon pficon-close"></span>
-                            </button>
+                <div ng-if="!showGetStarted">
+                  <div ng-if="loading" class="empty-state-message">
+                    <h2 class="text-center" translate>Loading...</h2>
+                  </div>
+                  <div ng-if="!loading">
+                    <div class="projects-header">
+                      <div class="projects-bar">
+                        <h1 translate>My Projects</h1>
+                        <div class="projects-options">
+                          <div class="projects-add" ng-if="canCreate">
+                            <a href="create-project" class="btn btn-md btn-primary" translate>
+                              Create Project
+                            </a>
+                          </div>
+                          <div class="projects-search">
+                            <form role="form" class="search-pf has-button">
+                              <div class="form-group has-clear">
+                                <div class="search-pf-input-group">
+                                  <label for="search-projects" class="sr-only" translate>Filter by keyword</label>
+                                  <input
+                                    type="search"
+                                    class="form-control"
+                                    placeholder="Filter by keyword"
+                                    id="search-projects"
+                                    ng-model="search.text">
+                                  <button
+                                    type="button"
+                                    class="clear"
+                                    aria-hidden="true"
+                                    ng-if="search.text"
+                                    ng-click="search.text = ''">
+                                    <span class="pficon pficon-close"></span>
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
+                            <span class="vertical-divider"></span>
+                            <span class="projects-sort-label" translate>Sort by</span>
+                            <div class="projects-sort">
+                              <pf-sort config="sortConfig" class="sort-controls"></pf-sort>
+                            </div>
                           </div>
                         </div>
                       </form>
