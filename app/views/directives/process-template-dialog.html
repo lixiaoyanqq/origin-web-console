@@ -1,26 +1,24 @@
 <div class="order-service">
   <pf-wizard
      title="{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project' | translate}}"
-       hide-sidebar="true"
-       hide-back-button="!$ctrl.useProjectTemplate"
-       step-class="order-service-wizard-step"
-       wizard-ready="$ctrl.wizardReady"
-       next-title="$ctrl.nextTitle"
-       next-callback="$ctrl.next"
-       on-finish="$ctrl.close()"
-       on-cancel="$ctrl.close()"
-       wizard-done="$ctrl.wizardDone"
-       current-step="$ctrl.currentStep"
-       ng-class="{'pf-wizard-no-back': !$ctrl.useProjectTemplate}">
+     hide-sidebar="true"
+     step-class="order-service-wizard-step"
+     wizard-ready="$ctrl.wizardReady"
+     next-title="$ctrl.nextTitle"
+     next-callback="$ctrl.next"
+     on-finish="$ctrl.close()"
+     on-cancel="$ctrl.close()"
+     wizard-done="$ctrl.wizardDone"
+     current-step="$ctrl.currentStep">
     <pf-wizard-step ng-repeat="step in $ctrl.steps track by step.id"
-         step-title="{{step.label}}"
-         wz-disabled="{{step.hidden}}"
-         allow-click-nav="step.allowClickNav"
-         next-enabled="step.valid"
-         prev-enabled="step.prevEnabled"
-         on-show="step.onShow"
-         step-id="{{step.id}}"
-         step-priority="{{$index}}">
+       step-title="{{step.label}}"
+       wz-disabled="{{step.hidden}}"
+       allow-click-nav="step.allowClickNav"
+       next-enabled="step.valid"
+       prev-enabled="step.prevEnabled"
+       on-show="step.onShow"
+       step-id="{{step.id}}"
+       step-priority="{{$index}}">
       <div class="wizard-pf-main-inner-shadow-covers">
         <div ng-if="step.selected" ng-include="step.view" class="wizard-pf-main-form-contents"></div>
       </div>

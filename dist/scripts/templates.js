@@ -6256,11 +6256,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/bind-service.html',
     "<div class=\"bind-service-wizard\">\n" +
+<<<<<<< HEAD
     "<pf-wizard title=\"Create Binding\" hide-sidebar=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" hide-back-button=\"{{ctrl.hideBack}}\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" wz-disabled=\"{{step.hidden}}\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\" allow-click-nav=\"step.allowClickNav\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"bind-service-config\">\n" +
     "<div ng-if=\"!step.hidden\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
+=======
+    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+    "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
+    "<div class=\"bind-service-config\">\n" +
+    "<div ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
@@ -6738,9 +6746,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/deploy-image-dialog.html',
+<<<<<<< HEAD
     "<pf-wizard wizard-title=\"{{'Deploy Image'|translate}}\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\">\n" +
     "\n" +
     "<pf-wizard-step step-title=\"{{'Image'|translate}}\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!!($ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated)\">\n" +
+=======
+    "<overlay-panel show-panel=\"$ctrl.visible\" show-close=\"true\" handle-close=\"$ctrl.close\">\n" +
+    "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.deployForm.$invalid\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -6751,7 +6765,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
+<<<<<<< HEAD
     "<pf-wizard-step step-title=\"{{'Results'|translate}}\" step-id=\"results\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\">\n" +
+=======
+    "<pf-wizard-step step-title=\"Results\" step-id=\"results\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -6760,8 +6778,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</pf-wizard-step>\n" +
     "</pf-wizard>"
+=======
+    "</pf-wizard-step> \n" +
+    "</pf-wizard> \n" +
+    "</overlay-panel>"
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
   );
 
 
@@ -7559,9 +7583,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "<div class=\"vertical-divider\"></div>\n" +
     "<div class=\"sort-group\">\n" +
+<<<<<<< HEAD
     "<span class=\"sort-label\" translate>Sort by</span>\n" +
     "<pf-sort config=\"sortConfig\" class=\"sort-controls\"></pf-sort>\n" +
     "</div>\n" +
+=======
+    "<span class=\"sort-label\">Sort by</span>\n" +
+    "<pf-sort config=\"sortConfig\" class=\"sort-controls\"></pf-sort>\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>\n" +
     "</div>\n" +
     "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
@@ -7641,8 +7670,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/from-file-dialog.html',
+<<<<<<< HEAD
     "<pf-wizard title=\"{{'Import'|translate}} YAML / JSON\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
     "<pf-wizard-step step-title=\"YAML / JSON\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
+=======
+    "<overlay-panel show-panel=\"$ctrl.visible\" show-close=\"true\" handle-close=\"$ctrl.close\" ng-if=\"$ctrl.project\">\n" +
+    "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" step-class=\"order-service-wizard-step\">\n" +
+    "<pf-wizard-step step-title=\"JSON / YAML\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -7699,7 +7734,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
+<<<<<<< HEAD
     "<pf-wizard-step step-title=\"{{'Results'|translate}}\" step-id=\"results\" step-priority=\"3\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" prev-enabled=\"false\">\n" +
+=======
+    "<pf-wizard-step step-title=\"Results\" step-id=\"results\" step-priority=\"3\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" prev-enabled=\"false\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -7709,8 +7748,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</pf-wizard-step>\n" +
     "</pf-wizard>"
+=======
+    "</pf-wizard-step> \n" +
+    "</pf-wizard> \n" +
+    "</overlay-panel>"
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
   );
 
 
@@ -7754,9 +7799,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/header/_navbar-utility.html',
     "<ul class=\"nav navbar-nav navbar-right navbar-iconic\">\n" +
     "<li extension-point extension-name=\"nav-system-status\" extension-types=\"dom\"></li>\n" +
+<<<<<<< HEAD
     "<notification-counter ng-hide=\"chromeless\"></notification-counter>\n" +
     "<li ng-if=\"launcherApps.length > 0\">\n" +
     "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
+=======
+    "<li ng-if=\"launcherApps.length > 0\">\n" +
+    "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
+    "</li>\n" +
+    "<li uib-dropdown>\n" +
+    "<a uib-dropdown-toggle class=\"nav-item-iconic\" id=\"help-dropdown\" href=\"\">\n" +
+    "<span title=\"Help\" class=\"fa pficon-help\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Help</span>\n" +
+    "<span class=\"caret\" aria-hidden=\"true\"></span>\n" +
+    "</a>\n" +
+    "<ul uib-dropdown-menu aria-labelledby=\"help-dropdown\" extension-point extension-name=\"nav-help-dropdown\" extension-types=\"dom html\"></ul>\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</li>\n" +
     "\n" +
     "\n" +
@@ -7844,6 +7902,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<catalog-search ng-if=\"canIAddToProject\" catalog-items=\"catalogItems\" base-project-url=\"project\" toggle-at-mobile=\"true\" search-toggle-callback=\"onSearchToggle\"></catalog-search>\n" +
     "\n" +
+<<<<<<< HEAD
     "<div class=\"dropdown add-to-project\" ng-if=\"canIAddToProject\" uib-dropdown>\n" +
     "<button class=\"dropdown-toggle btn btn-link\" ng-disabled=\"currentProject.status.phase != 'Active'\" title=\"Add to Project\" uib-dropdown-toggle>\n" +
     "<i class=\"fa fa-plus visible-xs-inline-block\" aria-hidden=\"true\" title=\"Add to Project\"></i>\n" +
@@ -7857,6 +7916,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"{{currentProjectName | catalogURL}}\" translate>Browse Catalog</a></li>\n" +
     "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\" translate>Deploy Image</a></li>\n" +
     "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\" translate>Import YAML / JSON</a></li>\n" +
+=======
+    "<div row class=\"dropdown navbar-flex-btn\" ng-if=\"project.metadata.name | canIAddToProject\" uib-dropdown>\n" +
+    "<a row class=\"nav-item-iconic dropdown-toggle add-to-project-btn\" href=\"\" ng-disabled=\"project.status.phase != 'Active'\" title=\"Add to Project\" uib-dropdown-toggle>\n" +
+    "<i class=\"fa fa-plus visible-xs-inline-block\" aria-hidden=\"true\" title=\"Add to Project\"></i><span class=\"hidden-xs add-to-project\">Add to Project</span><span class=\"hidden-xs caret\" aria-hidden=\"true\" title=\"Add to Project\"></span>\n" +
+    "</a>\n" +
+    "<ul role=\"menu\" uib-dropdown-menu class=\"dropdown-menu dropdown-menu-right\">\n" +
+    "<li ng-if-start=\"!catalogLandingPageEnabled\" role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromCatalog\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=deployImage\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromFile\">Import YAML / JSON</a></li>\n" +
+    "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"/\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\">Import YAML / JSON</a></li>\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</ul>\n" +
     "</div>\n" +
     "</div> \n" +
@@ -9593,8 +9665,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/process-template-dialog.html',
     "<div class=\"order-service\">\n" +
+<<<<<<< HEAD
     "<pf-wizard title=\"{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project' | translate}}\" hide-sidebar=\"true\" hide-back-button=\"!$ctrl.useProjectTemplate\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" ng-class=\"{'pf-wizard-no-back': !$ctrl.useProjectTemplate}\">\n" +
     "<pf-wizard-step ng-repeat=\"step in $ctrl.steps track by step.id\" step-title=\"{{step.label}}\" wz-disabled=\"{{step.hidden}}\" allow-click-nav=\"step.allowClickNav\" next-enabled=\"step.valid\" prev-enabled=\"step.prevEnabled\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+=======
+    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step ng-repeat=\"step in $ctrl.steps track by step.id\" step-title=\"{{step.label}}\" wz-disabled=\"{{step.hidden}}\" allow-click-nav=\"step.allowed\" next-enabled=\"step.valid\" prev-enabled=\"step.prevEnabled\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div ng-if=\"step.selected\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
     "</div>\n" +
@@ -9639,6 +9716,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-description-block\">\n" +
     "<p ng-bind-html=\"$ctrl.template | description | linky : '_blank'\" class=\"description\"></p>\n" +
     "</div>\n" +
+<<<<<<< HEAD
+=======
+    "</div>\n" +
+    "<div class=\"order-service-config\">\n" +
+    "<div ng-if=\"step.selected\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</pf-wizard-step>\n" +
+    "</pf-wizard>\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>"
   );
 
@@ -9995,8 +10082,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/unbind-service.html',
     "<div class=\"bind-service-wizard unbind-service\">\n" +
+<<<<<<< HEAD
     "<pf-wizard title=\"Delete Binding\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" allow-click-nav=\"false\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+=======
+    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"bind-service-config\">\n" +
     "<div ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
@@ -13773,8 +13865,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"projects-sort-label\" translate>Sort by</span>\n" +
     "<div class=\"projects-sort\">\n" +
     "<pf-sort config=\"sortConfig\" class=\"sort-controls\"></pf-sort>\n" +
+<<<<<<< HEAD
     "</div>\n" +
     "</div>\n" +
+=======
+>>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
