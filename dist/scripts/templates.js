@@ -2669,7 +2669,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\" ng-if=\"deploymentConfig\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+>>>>>>> Create reusable edit-environment-variables component
     "<edit-environment-variables api-object=\"deploymentConfig\"></edit-environment-variables>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
@@ -2999,6 +3003,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<edit-environment-variables api-object=\"deployment\"></edit-environment-variables>\n" +
 =======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+<<<<<<< HEAD
     "<ng-form name=\"forms.deploymentEnvVars\">\n" +
     "<confirm-on-exit ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\" dirty=\"forms.deploymentEnvVars.$dirty\">\n" +
     "</confirm-on-exit>\n" +
@@ -3011,6 +3016,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"!forms.deploymentEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\">Clear Changes</a>\n" +
     "</ng-form>\n" +
 >>>>>>> Use `apps` API group for deployments
+=======
+    "<edit-environment-variables api-object=\"deployment\"></edit-environment-variables>\n" +
+>>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
@@ -3244,7 +3252,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-include src=\" 'views/browse/_pod-details.html' \"></ng-include>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+>>>>>>> Create reusable edit-environment-variables component
     "<edit-environment-variables api-object=\"pod\" ng-readonly=\"true\"></edit-environment-variables>\n" +
     "</uib-tab>\n" +
     "<uib-tab ng-if=\"metricsAvailable\" heading=\"{{'Metrics'|translate}}\" active=\"selectedTab.metrics\">\n" +
@@ -3391,6 +3403,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-if=\"deployment && (deploymentsVersion | canI : 'update')\">\n" +
 =======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+<<<<<<< HEAD
     "\n" +
     "<div ng-if=\"(replicaSet | hasDeployment) || (replicaSet | hasDeploymentConfig)\">\n" +
     "<p ng-if=\"deployment && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
@@ -3402,6 +3415,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-if=\"deploymentConfigName && (deploymentConfigsVersion | canI : 'update')\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "<translate>Environment variables can be edited on deployment config</translate>\n" +
+=======
+    "<p ng-if=\"deployment && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "Environment variables can be edited on the deployment\n" +
+    "<a ng-href=\"{{deployment | navigateResourceURL}}?tab=environment\">{{deployment.metadata.name}}</a>.\n" +
+    "</p>\n" +
+    "<p ng-if=\"deploymentConfigName && ('deploymentconfigs' | canI : 'update')\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "Environment variables can be edited on deployment config\n" +
+>>>>>>> Create reusable edit-environment-variables component
     "<a ng-href=\"{{replicaSet | configURLForResource}}?tab=environment\">{{deploymentConfigName}}</a>.\n" +
     "</p>\n" +
     "\n" +
@@ -7078,6 +7101,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/directives/edit-environment-from.html',
     "<ng-form name=\"$ctrl.editEnvironmentFromForm\" novalidate>\n" +
     "<div ng-if=\"$ctrl.showHeader\" class=\"environment-from-entry environment-from-editor-entry-header\">\n" +
@@ -7178,10 +7202,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Create reusable edit-environment-variables component
   $templateCache.put('views/directives/edit-environment-variables.html',
     "<form ng-if=\"$ctrl.apiObject\" name=\"$ctrl.form\" class=\"mar-bottom-xl\">\n" +
     "<confirm-on-exit ng-if=\"$ctrl.canIUpdate && !$ctrl.ngReadonly\" dirty=\"$ctrl.form.$dirty\"></confirm-on-exit>\n" +
     "<div ng-repeat=\"container in $ctrl.containers\">\n" +
+<<<<<<< HEAD
     "<h3><translate>Container</translate> {{container.name}}</h3>\n" +
     "<h4 translate>Variables</h4>\n" +
     "<div ng-if=\"!$ctrl.canIUpdate || $ctrl.ngReadonly\">\n" +
@@ -7202,6 +7229,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<button class=\"btn btn-default\" ng-if=\"$ctrl.canIUpdate && !$ctrl.ngReadonly\" ng-click=\"$ctrl.save()\" ng-disabled=\"$ctrl.form.$pristine || $ctrl.form.$invalid\" translate>Save</button>\n" +
     "<a ng-if=\"!$ctrl.form.$pristine\" href=\"\" ng-click=\"$ctrl.clearChanges()\" class=\"mar-left-sm clear-env-changes-link\" translate>Clear Changes</a>\n" +
+=======
+    "<h3>Container {{container.name}}</h3>\n" +
+    "<div ng-if=\"!$ctrl.canIUpdate || $ctrl.ngReadonly\">\n" +
+    "<span ng-if=\"!container.env.length\">\n" +
+    "No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}} template for container {{container.name}}.\n" +
+    "</span>\n" +
+    "<key-value-editor ng-if=\"container.env.length\" entries=\"container.env\" key-placeholder=\"Name\" value-placeholder=\"Value\" cannot-add cannot-sort cannot-delete is-readonly show-header>\n" +
+    "</key-value-editor>\n" +
+    "</div>\n" +
+    "<key-value-editor ng-if=\"$ctrl.canIUpdate && !$ctrl.ngReadonly\" entries=\"container.env\" key-placeholder=\"Name\" value-placeholder=\"Value\" value-from-selector-options=\"$ctrl.valueFromObjects\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"Please enter a valid key.\" key-validator-error-tooltip=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" add-row-link=\"Add Environment Variable\" add-row-with-selectors-link=\"Add Environment Variable Using a Config Map or Secret\" show-header>\n" +
+    "</key-value-editor>\n" +
+    "</div>\n" +
+    "<button class=\"btn btn-default\" ng-if=\"$ctrl.canIUpdate && !$ctrl.ngReadonly\" ng-click=\"$ctrl.save()\" ng-disabled=\"$ctrl.form.$pristine || $ctrl.form.$invalid\">Save</button>\n" +
+    "<a ng-if=\"!$ctrl.form.$pristine\" href=\"\" ng-click=\"$ctrl.clearChanges()\" class=\"mar-left-sm clear-env-changes-link\">Clear Changes</a>\n" +
+>>>>>>> Create reusable edit-environment-variables component
     "</form>"
   );
 
