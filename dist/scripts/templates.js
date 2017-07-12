@@ -1768,8 +1768,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<build-trends-chart builds=\"builds\"></build-trends-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"loaded && (unfilteredBuilds | hashSize) > 0\" class=\"mar-bottom-xl\">\n" +
-    "<div class=\"table-filter-wrapper\">\n" +
+    "<div class=\"table-filter-extension\">\n" +
+    "<div class=\"data-toolbar\">\n" +
+    "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" class=\"table table-bordered table-hover table-mobile\">\n" +
     "<thead>\n" +
@@ -2418,8 +2422,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>created</translate> <span am-time-ago=\"mostRecent.metadata.creationTimestamp\"></span>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"table-filter-wrapper\">\n" +
+    "<div class=\"table-filter-extension\">\n" +
+    "<div class=\"data-toolbar\">\n" +
+    "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "<table class=\"table table-bordered table-hover table-mobile\">\n" +
     "<thead>\n" +
