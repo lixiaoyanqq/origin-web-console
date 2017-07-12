@@ -314,19 +314,15 @@
                           </span>
                         </dd>
                       </div>
-                      <div class="run-policy">
-                        <dt translate>Run Policy:</dt>
-                        <dd>
-                          {{buildConfig.spec.runPolicy | sentenceCase}}
-                          <span class="help action-inline">
-                            <a href ng-switch="buildConfig.spec.runPolicy">
-                              <i ng-switch-when="Serial" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run one at the time, in the order they have been triggered.'|translate}}"></i>
-                              <i ng-switch-when="Parallel" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run all at the same time. The order in which they will finish is not guaranteed.'|translate}}"></i>
-                              <i ng-switch-when="SerialLatestOnly" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run one at the time. When a currently running build completes, the next build that will run is the latest build created. Other queued builds will be cancelled.'|translate}}"></i>
-                              <i ng-switch-default class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="Builds triggered from this Build Configuration will run using the {{buildConfig.spec.runPolicy | sentenceCase}} policy."></i>
-                            </a>
-                          </span>
-                        </dd>
+                      <build-trends-chart builds="builds"></build-trends-chart>
+                    </div>
+                    <div ng-if="loaded && (unfilteredBuilds | hashSize) > 0" class="mar-bottom-xl">
+                      <div class="table-filter-extension">
+                        <div class="data-toolbar">
+                          <div class="data-toolbar-filter">
+                            <project-filter></project-filter>
+                          </div>
+                        </div>
                       </div>
                       <!-- Put the field values that use full editors last so that they don't interrupt the flow of other <dl> items. -->
                       <div ng-if="buildConfig.spec.source.dockerfile">

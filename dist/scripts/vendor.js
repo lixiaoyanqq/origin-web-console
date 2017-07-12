@@ -36756,12 +36756,20 @@ b.$el ? b.$el.empty() : b.$el = this._newNodeEl(b, c).addClass("node-" + this._e
 b.$el.attr("data-" + a, c);
 }), b.$el.attr("data-nodeId", b.nodeId), b.tooltip && b.$el.attr("title", b.tooltip);
 for (var e = 0; e < b.level - 1; e++) b.$el.append(this._template.indent.clone());
+<<<<<<< db7101402b68a3d5a346780fc9c59e440358d1fa
 if (b.$el.append(b.nodes || b.lazyLoad ? this._template.icon.expand.clone() : this._template.icon.empty.clone()), this._options.checkboxFirst ? (this._addCheckbox(b), this._addIcon(b), this._addImage(b)) : (this._addIcon(b), this._addImage(b), this._addCheckbox(b)), this._options.wrapNodeText) {
+=======
+if (b.$el.append(b.nodes || b.lazyLoad ? this._template.icon.expand.clone() :this._template.icon.empty.clone()), this._options.checkboxFirst ? (this._addCheckbox(b), this._addIcon(b), this._addImage(b)) :(this._addIcon(b), this._addImage(b), this._addCheckbox(b)), this._options.wrapNodeText) {
+>>>>>>> Update table label filter to reuse data-toolbar data-toolbar-filter and extend on top of table
 var g = this._template.text.clone();
 b.$el.append(g), g.append(b.text);
 } else b.$el.append(b.text);
 this._options.showTags && b.tags && a.each(b.tags, a.proxy(function(a, c) {
+<<<<<<< db7101402b68a3d5a346780fc9c59e440358d1fa
 b.$el.append(this._template.badge.clone().addClass(("object" == typeof c ? c["class"] : d) || b.tagsClass || this._options.tagsClass).append(("object" == typeof c ? c.text : d) || c));
+=======
+b.$el.append(this._template.badge.clone().addClass(("object" == typeof c ? c["class"] :d) || b.tagsClass || this._options.tagsClass).append(("object" == typeof c ? c.text :d) || c));
+>>>>>>> Update table label filter to reuse data-toolbar data-toolbar-filter and extend on top of table
 }, this)), this._setSelected(b, b.state.selected), this._setChecked(b, b.state.checked), this._setSearchResult(b, b.searchResult), this._setExpanded(b, b.state.expanded), this._setDisabled(b, b.state.disabled), this._setVisible(b, b.state.visible), this._triggerEvent("nodeRendered", b, f.options);
 }
 }, g.prototype._addCheckbox = function(a) {
