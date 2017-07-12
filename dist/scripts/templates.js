@@ -1763,7 +1763,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<table ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" class=\"table table-bordered table-mobile\">\n" +
+=======
+    "<table ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" class=\"table table-bordered table-hover table-mobile\">\n" +
+>>>>>>> Update table label filter to reuse data-toolbar data-toolbar-filter and extend on top of table
     "<thead>\n" +
     "<tr>\n" +
     "<th translate>Build</th>\n" +
@@ -2424,7 +2428,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<table class=\"table table-bordered table-mobile\">\n" +
+=======
+    "<table class=\"table table-bordered table-hover table-mobile\">\n" +
+>>>>>>> Update table label filter to reuse data-toolbar data-toolbar-filter and extend on top of table
     "<thead>\n" +
     "<tr>\n" +
     "<th translate>Deployment</th>\n" +

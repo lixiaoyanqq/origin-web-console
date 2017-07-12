@@ -48398,6 +48398,7 @@ return e.state.checked;
 }, o.prototype._toggleChecked = function(t, n) {
 if (t) {
 if (this._options.hierarchicalCheck) {
+<<<<<<< HEAD
 var i, r = e.extend({}, n, {
 silent: n.silent || !this._options.propagateCheckEvent
 }), o = t;
@@ -48452,6 +48453,62 @@ this._removeNodeEl(t);
 }, o.prototype._expandNode = function(t) {
 t.nodes && e.each(t.nodes.slice(0).reverse(), e.proxy(function(e, n) {
 n.level = t.level + 1, this._renderNode(n, t.$el);
+=======
+var e, f = a.extend({}, c, {
+silent:c.silent || !this._options.propagateCheckEvent
+}), g = b;
+for (b.state.checked = !b.state.checked; g = this._nodes[g.parentId]; ) e = g.nodes.reduce(function(a, b) {
+return a === b.state.checked ? a :d;
+}, g.nodes[0].state.checked), this._setChecked(g, e, f);
+if (b.nodes && b.nodes.length > 0) for (var h, i = b.nodes.slice(); i && i.length > 0; ) h = i.pop(), this._setChecked(h, b.state.checked, f), h.nodes && h.nodes.length > 0 && (i = i.concat(h.nodes.slice()));
+b.state.checked = !b.state.checked;
+}
+this._setChecked(b, !b.state.checked, c);
+}
+}, g.prototype._setChecked = function(a, b, c) {
+c && b === a.state.checked || (this._options.highlightChanges && a.$el.toggleClass("node-check-changed", this._checkedNodes.indexOf(a) == -1 == b), b ? (a.state.checked = !0, a.$el && (a.$el.addClass("node-checked").removeClass("node-checked-partial"), a.$el.children("span.check-icon").removeClass(this._options.uncheckedIcon).removeClass(this._options.partiallyCheckedIcon).addClass(this._options.checkedIcon)), this._triggerEvent("nodeChecked", a, c)) :b === d && this._options.hierarchicalCheck ? (a.state.checked = d, a.$el && (a.$el.addClass("node-checked-partial").removeClass("node-checked"), a.$el.children("span.check-icon").removeClass(this._options.uncheckedIcon).removeClass(this._options.checkedIcon).addClass(this._options.partiallyCheckedIcon)), this._triggerEvent("nodeUnchecked", a, c)) :(a.state.checked = !1, a.$el && (a.$el.removeClass("node-checked node-checked-partial"), a.$el.children("span.check-icon").removeClass(this._options.checkedIcon).removeClass(this._options.partiallyCheckedIcon).addClass(this._options.uncheckedIcon)), 
+this._triggerEvent("nodeUnchecked", a, c)));
+}, g.prototype._setDisabled = function(a, b, c) {
+c && b === a.state.disabled || (b ? (a.state.disabled = !0, c && !c.keepState && (this._setSelected(a, !1, c), this._setChecked(a, !1, c), this._setExpanded(a, !1, c)), a.$el && a.$el.addClass("node-disabled"), this._triggerEvent("nodeDisabled", a, c)) :(a.state.disabled = !1, a.$el && a.$el.removeClass("node-disabled"), this._triggerEvent("nodeEnabled", a, c)));
+}, g.prototype._setSearchResult = function(a, b, c) {
+c && b === a.searchResult || (b ? (a.searchResult = !0, a.$el && a.$el.addClass("node-result")) :(a.searchResult = !1, a.$el && a.$el.removeClass("node-result")));
+}, g.prototype._render = function() {
+this._initialized || (this.$wrapper = this._template.tree.clone(), this.$element.empty().addClass(e).append(this.$wrapper), this._injectStyle(), this._initialized = !0);
+var b;
+a.each(this._orderedNodes, a.proxy(function(a, c) {
+this._renderNode(c, b), b = c;
+}, this)), this._triggerEvent("rendered", this._orderedNodes, f.options);
+}, g.prototype._renderNode = function(b, c) {
+if (b) {
+b.$el ? b.$el.empty() :b.$el = this._newNodeEl(b, c).addClass("node-" + this._elementId), b.$el.addClass(b["class"]), b.id && b.$el.attr("id", b.id), b.dataAttr && a.each(b.dataAttr, function(a, c) {
+b.$el.attr("data-" + a, c);
+}), b.$el.attr("data-nodeId", b.nodeId), b.tooltip && b.$el.attr("title", b.tooltip);
+for (var e = 0; e < b.level - 1; e++) b.$el.append(this._template.indent.clone());
+if (b.$el.append(b.nodes || b.lazyLoad ? this._template.icon.expand.clone() :this._template.icon.empty.clone()), this._options.checkboxFirst ? (this._addCheckbox(b), this._addIcon(b), this._addImage(b)) :(this._addIcon(b), this._addImage(b), this._addCheckbox(b)), this._options.wrapNodeText) {
+var g = this._template.text.clone();
+b.$el.append(g), g.append(b.text);
+} else b.$el.append(b.text);
+this._options.showTags && b.tags && a.each(b.tags, a.proxy(function(a, c) {
+b.$el.append(this._template.badge.clone().addClass(("object" == typeof c ? c["class"] :d) || b.tagsClass || this._options.tagsClass).append(("object" == typeof c ? c.text :d) || c));
+}, this)), this._setSelected(b, b.state.selected), this._setChecked(b, b.state.checked), this._setSearchResult(b, b.searchResult), this._setExpanded(b, b.state.expanded), this._setDisabled(b, b.state.disabled), this._setVisible(b, b.state.visible), this._triggerEvent("nodeRendered", b, f.options);
+}
+}, g.prototype._addCheckbox = function(a) {
+!this._options.showCheckbox || a.hideCheckbox !== d && a.hideCheckbox !== !1 || a.$el.append(this._template.icon.check.clone());
+}, g.prototype._addIcon = function(a) {
+!this._options.showIcon || this._options.showImage && a.image || a.$el.append(this._template.icon.node.clone().addClass(a.icon || this._options.nodeIcon));
+}, g.prototype._addImage = function(a) {
+this._options.showImage && a.image && a.$el.append(this._template.image.clone().addClass("node-image").css("background-image", "url('" + a.image + "')"));
+}, g.prototype._newNodeEl = function(a, b) {
+var c = this._template.node.clone();
+return b ? b.$el.after(c) :this.$wrapper.prepend(c), c;
+}, g.prototype._removeNodeEl = function(b) {
+b && (b.nodes && a.each(b.nodes, a.proxy(function(a, b) {
+this._removeNodeEl(b);
+}, this)), b.$el.remove());
+}, g.prototype._expandNode = function(b) {
+b.nodes && a.each(b.nodes.slice(0).reverse(), a.proxy(function(a, c) {
+c.level = b.level + 1, this._renderNode(c, b.$el);
+>>>>>>> Update table label filter to reuse data-toolbar data-toolbar-filter and extend on top of table
 }, this));
 }, o.prototype._injectStyle = function() {
 this._options.injectStyle && !n.getElementById(this._styleId) && e('<style type="text/css" id="' + this._styleId + '"> ' + this._buildStyle() + " </style>").appendTo("head");
