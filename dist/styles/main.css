@@ -4802,8 +4802,13 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf-additional-info{width:40%}
 .list-view-pf-description{width:60%}
 }
+<<<<<<< a15acf59644318972f0b9d48ff80e06b9fd461fe
 #header-logo{background-image:url(../images/logo-origin-thin.png);background-repeat:no-repeat;background-position:center left;background-size:100%;height:46px;width:230px}
 .navbar-pf-alt{background:#1b2d3e;border-bottom:1px solid #050505;border-left:1px solid transparent;border-right:1px solid transparent;border-top:0;min-height:inherit}
+=======
+#header-logo{background-image:url(../images/logo-origin-thin.svg);background-repeat:no-repeat;background-position:center left;background-size:initial;height:45px;width:230px}
+.navbar-pf-alt{background:#1c2127;border-bottom:1px solid #050505;border-left:1px solid transparent;border-right:1px solid transparent;border-top:0;min-height:inherit}
+>>>>>>> Utility nav and Online extension point fixes
 .layout-pf-alt-fixed .navbar-pf-alt{left:0;position:fixed;right:0;top:0;z-index:1030}
 .layout-pf-alt-fixed .tech-preview .navbar-pf-alt{top:20px}
 .navbar-pf-alt .navbar-toggle{margin:0;padding:9px 14px}
@@ -4861,8 +4866,13 @@ h2+.list-view-pf{margin-top:20px}
 .layout-pf-alt-fixed .navbar-pf-alt .navbar-brand:after{content:'';background:#050505;display:block;height:100%;left:-1px;position:absolute;top:0;width:1px}
 .top-header.logged-out .toggle-menu{display:none}
 .navbar-flex-btn{flex:0 0 50px}
+<<<<<<< a15acf59644318972f0b9d48ff80e06b9fd461fe
 .navbar-flex-btn>a{color:#fff;cursor:pointer;display:flex;font-size:18px}
 .navbar-flex-btn>a:active,.navbar-flex-btn>a:focus,.navbar-flex-btn>a:hover{background-color:#13202b;color:#dbdada}
+=======
+.navbar-flex-btn>a{color:#fff;cursor:pointer;display:flex}
+.navbar-flex-btn>a:active,.navbar-flex-btn>a:focus,.navbar-flex-btn>a:hover{text-decoration:none}
+>>>>>>> Utility nav and Online extension point fixes
 .navbar-pf-alt .nav-item-iconic{align-items:center;flex:1 1 auto;justify-content:center;padding:0!important}
 .navbar-pf-alt .nav-item-iconic.system-status:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
 .navbar-pf-alt .nav-item-iconic.system-status:hover{background:0 0;text-decoration:none}
