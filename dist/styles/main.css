@@ -4856,6 +4856,7 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf-additional-info{width:40%}
 .list-view-pf-description{width:60%}
 }
+<<<<<<< 94c3ca643787eb19862408ce97e18c2a88385599
 #header-logo{background-image:url(../images/logo-origin-thin.svg);background-position:left center;background-repeat:no-repeat;height:40px;width:196px}
 @media (min-width:768px){#header-logo{width:230px}
 }
@@ -4892,6 +4893,92 @@ h2+.list-view-pf{margin-top:20px}
 .wizard-pf-main .deploy-image .empty-state-message{margin-bottom:0;margin-top:35px}
 @media (min-width:768px){.wizard-pf-main .deploy-image .empty-state-message{margin-top:90px}
 .landing-page .wizard-pf-main .deploy-image .empty-state-message{margin-top:50px}
+=======
+#header-logo{background-image:url(../images/logo-origin-thin.svg);background-repeat:no-repeat;background-position:center left;background-size:initial;height:45px;width:230px}
+.navbar-pf-alt{background:#1c2127;border-bottom:1px solid #050505;border-left:1px solid transparent;border-right:1px solid transparent;border-top:0;min-height:inherit}
+.layout-pf-alt-fixed .navbar-pf-alt{left:0;position:fixed;right:0;top:0;z-index:1030}
+.layout-pf-alt-fixed .tech-preview .navbar-pf-alt{top:20px}
+.navbar-pf-alt .navbar-toggle{margin:0;padding:9px 14px}
+@media (max-width:479px){.navbar-pf-alt .navbar-toggle{padding-left:8px;padding-right:8px}
+}
+.navbar-pf-alt .navbar-header{display:flex;flex:1 1 0%;text-decoration:none}
+.navbar-pf-alt .navbar-header .navbar-home{align-items:center;color:#dbdada;display:flex;flex:1 0 0%;font-weight:300;justify-content:center;text-decoration:none}
+.navbar-pf-alt .navbar-header .navbar-home .pficon{color:#A8A9AA;font-size:20px}
+.navbar-pf-alt .navbar-header .navbar-home:focus,.navbar-pf-alt .navbar-header .navbar-home:focus .pficon,.navbar-pf-alt .navbar-header .navbar-home:hover,.navbar-pf-alt .navbar-header .navbar-home:hover .pficon{background-color:#0b0d0f;color:#fcfcfc}
+.navbar-pf-alt .navbar-iconic{margin-right:10px}
+.navbar-pf-alt .nav .dropdown-menu{margin-top:-5px;right:0}
+@media (min-width:480px){.navbar-pf-alt .nav .dropdown-menu{right:5px}
+}
+@media (min-width:768px){.navbar-pf-alt .nav .dropdown-menu{margin-top:-10px;right:0}
+}
+.navbar-pf-alt .nav .dropdown-menu:after{border:6px solid transparent;border-bottom-color:#fff;border-top-width:0;content:"";display:block;height:0;position:absolute;right:7px;top:-6px;vertical-align:middle;width:0}
+.navbar-pf-alt .navbar-brand{border:0;height:auto;margin-left:0;padding:0 0 0 10px;position:relative}
+.navbar-pf-alt .navbar-toggle{border:0;display:block;float:left}
+.navbar-pf-alt .navbar-toggle:focus .icon-bar,.navbar-pf-alt .navbar-toggle:hover .icon-bar{background:#fff}
+.navbar-pf-alt .navbar-toggle+.navbar-brand{margin-left:0}
+.navbar-pf-alt .navbar-toggle .icon-bar{background:#d1d1d1}
+.navbar-pf-alt .nav .nav-item-iconic{color:#d1d1d1;cursor:pointer;line-height:normal;max-height:none;padding-top:25.5px;padding-bottom:25.5px}
+.navbar-pf-alt .nav .nav-item-iconic:focus,.navbar-pf-alt .nav .nav-item-iconic:hover{color:#fff;text-decoration:none}
+.navbar-pf-alt .nav .nav-item-iconic:focus .caret,.navbar-pf-alt .nav .nav-item-iconic:focus .fa,.navbar-pf-alt .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:focus .pf-icon,.navbar-pf-alt .nav .nav-item-iconic:hover .caret,.navbar-pf-alt .nav .nav-item-iconic:hover .fa,.navbar-pf-alt .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:hover .pf-icon{color:#fff}
+.navbar-pf-alt .nav .nav-item-iconic .add-to-project,.navbar-pf-alt .nav .nav-item-iconic .username{float:left;font-weight:300;padding:0 4px}
+.navbar-pf-alt .nav .nav-item-iconic .caret{margin-top:5px}
+.navbar-pf-alt .nav .nav-item-iconic .add-to-project+.caret,.navbar-pf-alt .nav .nav-item-iconic .pficon-user,.navbar-pf-alt .nav .nav-item-iconic .username+.caret{display:block;float:left}
+.navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pf-icon{color:#d1d1d1;font-size:16px;width:auto}
+.navbar-pf-alt .nav .nav-item-iconic .username{max-width:100px}
+@media (min-width:992px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:130px}
+}
+@media (min-width:1200px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:150px}
+}
+@media (min-width:1600px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:250px}
+}
+.navbar-pf-alt .open>.nav-item-iconic,.navbar-pf-alt .open>.nav-item-iconic:focus,.navbar-pf-alt .open>.nav-item-iconic:hover{background:0 0}
+.navbar-pf-alt .open>.nav-item-iconic .caret,.navbar-pf-alt .open>.nav-item-iconic .fa,.navbar-pf-alt .open>.nav-item-iconic .pf-icon,.navbar-pf-alt .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .open>.nav-item-iconic:focus .pf-icon,.navbar-pf-alt .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .open>.nav-item-iconic:hover .pf-icon{color:#fff}
+@media (min-width:768px){#header-logo{height:60px}
+.navbar-pf-alt .nav .dropdown .nav-item-iconic{padding-right:20px}
+.navbar-pf-alt .nav .nav-item-iconic{display:block;float:left;padding:21px 10px 20px}
+.navbar-pf-alt .nav .nav-item-iconic .status-icon{position:relative;top:1px}
+}
+.navbar-pf-alt .system-status .status-issue{display:none;font-weight:300;max-width:100px;padding:0 0 0 5px;position:relative;top:-2px}
+@media (min-width:1200px){.navbar-pf-alt .system-status .status-issue{display:inline}
+}
+@media (min-width:768px){.navbar-pf-alt .system-status-mobile{display:none}
+}
+.navbar-pf-alt .system-status-mobile:before{content:'';display:block;position:absolute;top:0;left:-1px;width:1px;background:#050505;height:100%}
+.navbar-flex-btn{position:relative}
+.navbar-flex-btn .navbar-toggle.project-action-btn:before,.navbar-flex-btn+.navbar-flex-btn .add-to-project-btn:before{display:none}
+.navbar-flex-btn .add-to-project-btn{font-weight:300}
+.navbar-flex-btn .add-to-project-btn:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
+@media (max-width:767px){.navbar-pf-alt .nav .dropdown-menu:after{right:13px}
+.layout-pf-alt-fixed .navbar-pf-alt{position:absolute}
+.layout-pf-alt-fixed .navbar-pf-alt .navbar-brand:after{content:'';background:#050505;display:block;height:100%;left:-1px;position:absolute;top:0;width:1px}
+.top-header.logged-out .toggle-menu{display:none}
+.navbar-flex-btn{flex:0 0 50px}
+.navbar-flex-btn>a{color:#fff;cursor:pointer;display:flex}
+.navbar-flex-btn>a:active,.navbar-flex-btn>a:focus,.navbar-flex-btn>a:hover{text-decoration:none}
+.navbar-pf-alt .nav-item-iconic{align-items:center;flex:1 1 auto;justify-content:center;padding:0!important}
+.navbar-pf-alt .nav-item-iconic.system-status:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
+.navbar-pf-alt .nav-item-iconic.system-status:hover{background:0 0;text-decoration:none}
+}
+.build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
+@media (max-width:479px){.navbar-flex-btn{flex:0 0 40px}
+}
+@media (min-width:768px){.navbar-pf-alt .navbar-header{height:60px;width:143px}
+.navbar-pf-alt .navbar-header .navbar-brand{padding:0;margin-left:30px;margin-right:75px;margin-top:0}
+.navbar-flex-btn.toggle-menu{display:none}
+.tech-preview-banner{position:fixed}
+}
+@media (min-width:1200px){.navbar-pf-alt .navbar-header{width:143px}
+}
+@media (min-width:1600px){.navbar-pf-alt .navbar-header{width:208px}
+.navbar-pf-alt .navbar-header .navbar-home{font-size:14px;justify-content:flex-start;margin-top:0;padding-left:20px}
+.navbar-pf-alt .navbar-header .navbar-home .pficon{display:inline-block;width:25px;margin-right:10px}
+.navbar-pf-alt .navbar-header .navbar-home .visible-xlg-inline-block{margin-left:3px}
+}
+.tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;text-align:center;text-transform:uppercase;width:100%;z-index:1030}
+.wizard-pf-main .deploy-image .empty-state-message{margin:30px auto}
+.wizard-pf-main #from-file .editor{height:285px}
+@media (min-width:768px){.order-service-config-single-column{margin-bottom:-20px;margin-top:-20px;overflow-y:auto}
+>>>>>>> Utility nav and Online extension point fixes
 }
 .build-count .builds,.build-count .pipelines{display:block}
 .build-count .running-stage{font-size:84%;color:#9c9c9c}
