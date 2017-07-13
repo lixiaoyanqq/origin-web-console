@@ -5798,6 +5798,7 @@ if (b.isEmpty()) return !0;
 var c = k(a) || "";
 return c && d.unfilteredBuildConfigs[c] ? !!d.buildConfigs[c] : b.matches(a);
 }
+<<<<<<< c3402a2575d9b360c752c51c219d95fe163ccb12
 function j(a) {
 var b = k(a);
 if (b) return !1;
@@ -5822,6 +5823,35 @@ d.unfilteredBuildConfigs = _.omitBy(a.by("metadata.name"), q), h.addLabelSuggest
 })), h.onActiveFiltersChanged(function(a) {
 d.$evalAsync(function() {
 d.buildConfigs = a.select(d.unfilteredBuildConfigs), o(), p();
+=======
+function l(a) {
+var b = j(a);
+if (b) return !1;
+var c = e.getLabelSelector();
+return !!c.isEmpty() || c.matches(a);
+}
+function m() {
+b.latestByConfig = h.latestBuildByConfig(b.builds, i), b.buildsNoConfig = _.pick(b.builds, l), angular.forEach(b.buildConfigs, function(a, c) {
+b.latestByConfig[c] = b.latestByConfig[c] || null;
+});
+}
+function n() {
+var a = _.omit(b.latestByConfig, _.isNull);
+!e.getLabelSelector().isEmpty() && _.isEmpty(b.buildConfigs) && _.isEmpty(a) ? b.alerts.builds = {
+type:"warning",
+details:"The active filters are hiding all builds."
+} :delete b.alerts.builds;
+}
+b.project = a;
+var o = d("isJenkinsPipelineStrategy");
+k.push(c.watch("builds", g, function(a) {
+b.builds = _.omit(a.by("metadata.name"), o), b.emptyMessage = "No builds to show", m(), e.addLabelSuggestionsFromResources(b.builds, b.labelSuggestions), f.log("builds (subscribe)", b.builds);
+})), k.push(c.watch("buildconfigs", g, function(a) {
+b.unfilteredBuildConfigs = _.omit(a.by("metadata.name"), o), e.addLabelSuggestionsFromResources(b.unfilteredBuildConfigs, b.labelSuggestions), e.setLabelSuggestions(b.labelSuggestions), b.buildConfigs = e.getLabelSelector().select(b.unfilteredBuildConfigs), m(), n(), f.log("buildconfigs (subscribe)", b.buildConfigs);
+})), e.onActiveFiltersChanged(function(a) {
+b.$apply(function() {
+b.buildConfigs = a.select(b.unfilteredBuildConfigs), m(), n();
+>>>>>>> Fix missing builds with no build config
 });
 }), d.$on("$destroy", function() {
 g.unwatchAll(n);

@@ -107,7 +107,7 @@ angular.module('openshiftConsole')
 
         function associateBuildsToBuildConfig() {
           $scope.latestByConfig = BuildsService.latestBuildByConfig($scope.builds, showBuild);
-          $scope.buildsNoConfig = _.pickBy($scope.builds, showBuildNoConfigOnly);
+          $scope.buildsNoConfig = _.pick($scope.builds, showBuildNoConfigOnly);
           // Make sure there is a key for every build config we know about
           angular.forEach($scope.buildConfigs, function(buildConfig, buildConfigName){
             $scope.latestByConfig[buildConfigName] = $scope.latestByConfig[buildConfigName] || null;
