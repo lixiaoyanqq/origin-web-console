@@ -2824,8 +2824,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<uib-tabset>\n" +
     "<uib-tab active=\"selectedTab.history\">\n" +
+<<<<<<< f0c1e251e488c363375b718cecb05c866e8925a2
     "<uib-tab-heading translate>History</uib-tab-heading>\n" +
     "<div ng-if=\"replicaSetsForDeployment | hashSize\">\n" +
+=======
+    "<uib-tab-heading>History</uib-tab-heading>\n" +
+    "<div class=\"table-filter-extension\">\n" +
+    "<div class=\"data-toolbar\">\n" +
+    "<div class=\"data-toolbar-filter\">\n" +
+    "<project-filter></project-filter>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
     "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -2841,7 +2852,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-    "<tbody>\n" +
+    "<tbody ng-if=\"(replicaSetsForDeployment | size) == 0\">\n" +
+    "<tr><td colspan=\"4\"><em>{{emptyMessage}}</em></td></tr>\n" +
+    "</tbody>\n" +
+    "<tbody ng-if=\"(replicaSetsForDeployment | size) > 0\">\n" +
     "<tr ng-repeat=\"replicaSet in replicaSetsForDeployment\">\n" +
     "<td data-title=\"{{'Version'|translate}}\">\n" +
     "#{{replicaSet | annotation : 'deployment.kubernetes.io/revision'}}\n" +
@@ -2858,7 +2872,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "</tbody>\n" +
     "</table>\n" +
-    "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.configuration\">\n" +
     "<uib-tab-heading translate>Configuration</uib-tab-heading>\n" +
