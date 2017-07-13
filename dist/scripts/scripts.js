@@ -29,11 +29,15 @@ resource: "bindings"
 });
 e.projectName = n.project;
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E, N, D = t("annotation"), I = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), A = t("imageObjectRef"), L = t("isJenkinsPipelineStrategy"), U = t("isNewerResource"), O = t("label"), x = t("podTemplate"), F = {}, M = {}, V = {}, q = R.state = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 var E, N, D = t("annotation"), I = t("buildConfigForBuild"), A = t("deploymentIsInProgress"), B = t("imageObjectRef"), L = t("isJenkinsPipelineStrategy"), U = t("isNewerResource"), O = t("label"), x = t("podTemplate"), F = {}, M = {}, V = {}, q = R.state = {
 >>>>>>> Improve YAML editor validation and feedback
+=======
+var E, D, N = t("annotation"), I = t("buildConfigForBuild"), A = t("deploymentIsInProgress"), B = t("imageObjectRef"), L = t("isJenkinsPipelineStrategy"), U = t("isNewerResource"), O = t("label"), x = t("podTemplate"), F = {}, M = {}, V = {}, q = R.state = {
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -587,14 +591,14 @@ _.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, F), "pipeline" !== R.view
 }, je = function(e) {
 _.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, M), "pipeline" === R.viewBy && g.setLabelSuggestions(M));
 }, Re = function(e) {
-return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!O(e, "openshift.io/deployer-pod-for.name") && (!D(e, "openshift.io/build.name") && "slave" !== O(e, "jenkins")));
+return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!O(e, "openshift.io/deployer-pod-for.name") && (!N(e, "openshift.io/build.name") && "slave" !== O(e, "jenkins")));
 }, Pe = function() {
 q.podsByOwnerUID = C.groupByOwnerUID(R.pods), R.monopods = _.filter(q.podsByOwnerUID[""], Re);
 }, Te = function(e) {
-return !!_.get(e, "status.replicas") || (!D(e, "deploymentConfig") || A(e));
+return !!_.get(e, "status.replicas") || (!N(e, "deploymentConfig") || A(e));
 }, Ee = function(e) {
-return D(e, "deploymentConfig");
-}, Ne = function() {
+return N(e, "deploymentConfig");
+}, De = function() {
 if (R.deploymentConfigs && R.replicationControllers) {
 var e = [];
 R.replicationControllersByDeploymentConfig = {}, R.currentByDeploymentConfig = {}, V = {};
@@ -605,7 +609,7 @@ var r = Ee(a) || "";
 var o = V[r];
 o && !U(a, o) || (V[r] = a);
 var i;
-"Complete" === D(a, "deploymentStatus") && ((i = t[r]) && !U(a, i) || (t[r] = a)), Te(a) && _.set(n, [ r, a.metadata.name ], a);
+"Complete" === N(a, "deploymentStatus") && ((i = t[r]) && !U(a, i) || (t[r] = a)), Te(a) && _.set(n, [ r, a.metadata.name ], a);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
@@ -613,7 +617,7 @@ var n = l.sortByDeploymentVersion(e, !0);
 R.replicationControllersByDeploymentConfig[t] = n, R.currentByDeploymentConfig[t] = _.head(n);
 }), R.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ye();
 }
-}, De = function(e, t) {
+}, Ne = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
 var n = l.getRevision(e);
 return !n || !!t && l.getRevision(t) === n;
@@ -621,7 +625,7 @@ return !n || !!t && l.getRevision(t) === n;
 R.replicaSets && E && (R.replicaSetsByDeploymentUID = b.groupByControllerUID(R.replicaSets), R.currentByDeploymentUID = {}, _.each(R.replicaSetsByDeploymentUID, function(e, t) {
 if (t) {
 var n = E[t], a = _.filter(e, function(e) {
-return De(e, n);
+return Ne(e, n);
 }), r = l.sortByRevision(a);
 R.replicaSetsByDeploymentUID[t] = r, R.currentByDeploymentUID[t] = _.head(r);
 }
@@ -904,9 +908,9 @@ R.pods && m.fetchReferencedImageStreamImages(R.pods, q.imagesByDockerReference, 
 Xe.push(c.watch("pods", a, function(e) {
 R.pods = e.by("metadata.name"), Pe(), r(), we(), Ae(R.monopods), ge(R.monopods), ke(R.monopods), se(), f.log("pods (subscribe)", R.pods);
 })), Xe.push(c.watch("replicationcontrollers", a, function(e) {
-R.replicationControllers = e.by("metadata.name"), Ne(), Ae(R.vanillaReplicationControllers), Ae(R.monopods), ge(R.vanillaReplicationControllers), ke(R.vanillaReplicationControllers), Ye(), se(), f.log("replicationcontrollers (subscribe)", R.replicationControllers);
+R.replicationControllers = e.by("metadata.name"), De(), Ae(R.vanillaReplicationControllers), Ae(R.monopods), ge(R.vanillaReplicationControllers), ke(R.vanillaReplicationControllers), Ye(), se(), f.log("replicationcontrollers (subscribe)", R.replicationControllers);
 })), Xe.push(c.watch("deploymentconfigs", a, function(e) {
-R.deploymentConfigs = e.by("metadata.name"), Ne(), Ae(R.deploymentConfigs), Ae(R.vanillaReplicationControllers), ke(R.deploymentConfigs), Se(), Ke(), We(), Ye(), se(), f.log("deploymentconfigs (subscribe)", R.deploymentConfigs);
+R.deploymentConfigs = e.by("metadata.name"), De(), Ae(R.deploymentConfigs), Ae(R.vanillaReplicationControllers), ke(R.deploymentConfigs), Se(), Ke(), We(), Ye(), se(), f.log("deploymentconfigs (subscribe)", R.deploymentConfigs);
 })), Xe.push(c.watch({
 group: "extensions",
 resource: "replicasets"
@@ -952,7 +956,7 @@ R.horizontalPodAutoscalers = e.by("metadata.name"), Ue(), f.log("autoscalers (su
 poll: P,
 pollInterval: 6e4
 })), Xe.push(c.watch("imagestreams", a, function(e) {
-N = e.by("metadata.name"), m.buildDockerRefMapForImageStreams(N, q.imageStreamImageRefByDockerReference), r(), f.log("imagestreams (subscribe)", N);
+D = e.by("metadata.name"), m.buildDockerRefMapForImageStreams(D, q.imageStreamImageRefByDockerReference), r(), f.log("imagestreams (subscribe)", D);
 }, {
 poll: P,
 pollInterval: 6e4
@@ -8673,12 +8677,12 @@ n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), S, w);
 b = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(b, S, w);
-}, N = a("isIncompleteBuild"), D = a("buildConfigForBuild"), I = a("isRecentBuild"), A = function() {
+}, D = a("isIncompleteBuild"), N = a("buildConfigForBuild"), I = a("isRecentBuild"), A = function() {
 moment().subtract(5, "m");
 h = _.filter(n.builds, function(e) {
 if (!n.filters.hideOlderResources) return !0;
-if (N(e)) return !0;
-var t = D(e);
+if (D(e)) return !0;
+var t = N(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : I(e);
 }), n.filteredBuilds = s.filterForKeywords(h, S, w);
 }, B = a("deploymentStatus"), L = a("deploymentIsInProgress"), U = function() {
@@ -9101,7 +9105,7 @@ return e ? a + (v(e, "description") || "") : "";
 }
 }
 });
-var N = function(e, t, n, r) {
+var D = function(e, t, n, r) {
 var o = {
 alerts: {},
 detailsMarkup: C.remove.areYouSure.html.subject({
@@ -9175,7 +9179,7 @@ project: n,
 subjectKinds: E,
 canUpdateRolebindings: y("rolebindings", "update", f),
 confirmRemove: function(n, r, i) {
-var c = null, l = N(n, r, i, a.user.metadata.name);
+var c = null, l = D(n, r, i, a.user.metadata.name);
 _.isEqual(n, a.user.metadata.name) && u.isLastRole(a.user.metadata.name, a.roleBindings) && (c = !0), o.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -10557,42 +10561,49 @@ a.unwatchAll(p);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 }));
-} ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "OwnerReferencesService", "Logger", "ProjectsService", "StorageService", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
-var p = {};
-e.projectName = n.project, e.name = n.deployment, e.forms = {}, e.alerts = {}, e.imagesByDockerReference = {}, e.breadcrumbs = [ {
+} ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "LabelFilter", "Logger", "ModalsService", "Navigate", "OwnerReferencesService", "ProjectsService", "StorageService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
+var g = {};
+e.projectName = n.project, e.name = n.deployment, e.replicaSetsForDeployment = {}, e.unfilteredReplicaSetsForDeployment = {}, e.labelSuggestions = {}, e.emptyMessage = "Loading...", e.forms = {}, e.alerts = {}, e.imagesByDockerReference = {}, e.breadcrumbs = [ {
 title: "Deployments",
 link: "project/" + n.project + "/browse/deployments"
 }, {
 title: n.deployment
-} ], e.healthCheckURL = c.healthCheckURL(n.project, "Deployment", n.deployment, "apps");
-var g = [];
-d.get(n.project).then(_.spread(function(c, d) {
-e.project = c, e.projectContext = d;
-var f = {}, h = function() {
-o.getHPAWarnings(e.deployment, e.autoscalers, f, c).then(function(t) {
+} ], e.healthCheckURL = u.healthCheckURL(n.project, "Deployment", n.deployment, "apps");
+var f = [];
+m.get(n.project).then(_.spread(function(u, m) {
+function h() {
+s.getLabelSelector().isEmpty() || !_.isEmpty(e.replicaSetsForDeployment) || _.isEmpty(e.unfilteredReplicaSetsForDeployment) ? delete e.alerts["filter-hiding-all"] : e.alerts["filter-hiding-all"] = {
+type: "warning",
+details: "The active filters are hiding all rollout history."
+};
+}
+e.project = u, e.projectContext = m;
+var v = {}, y = function() {
+o.getHPAWarnings(e.deployment, e.autoscalers, v, u).then(function(t) {
 e.hpaWarnings = t;
 });
 };
 a.get({
 group: "apps",
 resource: "deployments"
-}, n.deployment, d, {
+}, n.deployment, m, {
 errorNotification: !1
 }).then(function(t) {
-e.loaded = !0, e.deployment = t, h(), g.push(a.watchObject({
+e.loaded = !0, e.deployment = t, y(), f.push(a.watchObject({
 group: "apps",
 resource: "deployments"
-}, n.deployment, d, function(t, n) {
+}, n.deployment, m, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This deployment has been deleted."
-}), e.deployment = t, e.updatingPausedState = !1, h(), i.fetchReferencedImageStreamImages([ t.spec.template ], e.imagesByDockerReference, p, d);
-})), g.push(a.watch({
+}), e.deployment = t, e.updatingPausedState = !1, y(), i.fetchReferencedImageStreamImages([ t.spec.template ], e.imagesByDockerReference, g, m);
+})), f.push(a.watch({
 group: "extensions",
 resource: "replicasets"
-}, d, function(n) {
+}, m, function(n) {
+e.emptyMessage = "No deployments to show";
 var a = n.by("metadata.name");
-a = l.filterForController(a, t), e.inProgressDeployment = _.chain(a).filter("status.replicas").size() > 1, e.replicaSetsForDeployment = r.sortByRevision(a);
+a = d.filterForController(a, t), e.inProgressDeployment = _.chain(a).filter("status.replicas").size() > 1, e.unfilteredReplicaSetsForDeployment = r.sortByRevision(a), e.replicaSetsForDeployment = s.getLabelSelector().select(e.unfilteredReplicaSetsForDeployment), h(), s.addLabelSuggestionsFromResources(e.unfilteredReplicaSetsForDeployment, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions);
 }));
 <<<<<<< HEAD
 }, function(c) {
@@ -10618,20 +10629,24 @@ type: "error",
 message: 404 === n.status ? "This deployment can not be found, it may have been deleted." : "The deployment details could not be loaded.",
 details: t("getErrorDetails")(n)
 };
-}), a.list("limitranges", d).then(function(e) {
-f = e.by("metadata.name"), h();
-}), g.push(a.watch("imagestreams", d, function(t) {
+}), a.list("limitranges", m).then(function(e) {
+v = e.by("metadata.name"), y();
+}), f.push(a.watch("imagestreams", m, function(t) {
 var n = t.by("metadata.name");
-i.buildDockerRefMapForImageStreams(n, p), e.deployment && i.fetchReferencedImageStreamImages([ e.deployment.spec.template ], e.imagesByDockerReference, p, d), u.log("imagestreams (subscribe)", e.imageStreams);
-})), g.push(a.watch({
+i.buildDockerRefMapForImageStreams(n, g), e.deployment && i.fetchReferencedImageStreamImages([ e.deployment.spec.template ], e.imagesByDockerReference, g, m), c.log("imagestreams (subscribe)", e.imageStreams);
+})), f.push(a.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
-}, d, function(t) {
-e.autoscalers = o.filterHPA(t.by("metadata.name"), "Deployment", n.deployment), h();
-})), g.push(a.watch("builds", d, function(t) {
-e.builds = t.by("metadata.name"), u.log("builds (subscribe)", e.builds);
-})), e.scale = function(n) {
+}, m, function(t) {
+e.autoscalers = o.filterHPA(t.by("metadata.name"), "Deployment", n.deployment), y();
+})), f.push(a.watch("builds", m, function(t) {
+e.builds = t.by("metadata.name"), c.log("builds (subscribe)", e.builds);
+})), s.onActiveFiltersChanged(function(t) {
+e.$evalAsync(function() {
+e.replicaSetsForDeployment = t.select(e.unfilteredReplicaSetsForDeployment), h();
+});
+}), e.scale = function(n) {
 r.scale(e.deployment, n).then(_.noop, function(n) {
 e.alerts = e.alerts || {}, e.alerts.scale = {
 type: "error",
@@ -10640,7 +10655,7 @@ details: t("getErrorDetails")(n)
 };
 });
 }, e.setPaused = function(n) {
-e.updatingPausedState = !0, r.setPaused(e.deployment, n, d).then(_.noop, function(a) {
+e.updatingPausedState = !0, r.setPaused(e.deployment, n, m).then(_.noop, function(a) {
 e.updatingPausedState = !1, e.alerts = e.alerts || {}, e.alerts.scale = {
 type: "error",
 message: "An error occurred " + (n ? "pausing" : "resuming") + " the deployment.",
@@ -10650,17 +10665,17 @@ details: t("getErrorDetails")(a)
 }, e.removeVolume = function(t) {
 var n;
 n = _.get(e, "deployment.spec.paused") ? "This will remove the volume from the deployment." : "This will remove the volume from the deployment and start a new rollout.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
-s.confirm({
+l.confirm({
 message: "Remove volume " + t.name + "?",
 details: n,
 okButtonText: "Remove",
 okButtonClass: "btn-danger",
 cancelButtonText: "Cancel"
 }).then(function() {
-m.removeVolume(e.deployment, t, d);
+p.removeVolume(e.deployment, t, m);
 });
 }, e.$on("$destroy", function() {
-a.unwatchAll(g);
+a.unwatchAll(f);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("DeploymentConfigController", [ "$scope", "$filter", "$routeParams", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "NotificationsService", "Logger", "ProjectsService", "StorageService", "LabelFilter", "labelNameFilter", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g, f) {
@@ -11192,14 +11207,14 @@ e.autoscalers = e.hpaForRS.concat(t);
 var a = s.filterHPA(v, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(a);
 } else e.autoscalers = e.hpaForRS;
-}, N = function() {
+}, D = function() {
 j.push(o.watch(e.resource, f, function(t) {
 var n, a = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
 }), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, E();
 }));
-}, D = function() {
+}, N = function() {
 s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
 e.hpaWarnings = t;
 });
@@ -11286,14 +11301,14 @@ break;
 case "ReplicaSet":
 L();
 }
-D(), e.breadcrumbs = r.getBreadcrumbs({
+N(), e.breadcrumbs = r.getBreadcrumbs({
 object: t
 }), j.push(o.watchObject(e.resource, n.replicaSet, f, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This " + S + " has been deleted."
-}), e.replicaSet = t, P(t), D(), U(), e.deployment && $();
-})), e.deploymentConfigName && N(), j.push(o.watch("pods", f, function(t) {
+}), e.replicaSet = t, P(t), N(), U(), e.deployment && $();
+})), e.deploymentConfigName && D(), j.push(o.watch("pods", f, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = g.filterForOwner(n, e.replicaSet);
 }));
@@ -11323,12 +11338,12 @@ group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, f, function(e) {
-v = e.by("metadata.name"), E(), D();
+v = e.by("metadata.name"), E(), N();
 }, {
 poll: T,
 pollInterval: 6e4
 })), o.list("limitranges", f).then(function(t) {
-e.limitRanges = t.by("metadata.name"), D();
+e.limitRanges = t.by("metadata.name"), N();
 });
 j.push(o.watch("resourcequotas", f, function(t) {
 e.quotas = t.by("metadata.name");
@@ -14524,9 +14539,14 @@ title: P
 var T = {
 name: "app",
 value: ""
+<<<<<<< HEAD
 }, E = t("orderByDisplayName"), N = t("getErrorDetails"), D = {}, I = function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification("create-builder-list-secrets-error"), _.each(D, function(e) {
+=======
+}, E = t("orderByDisplayName"), D = t("getErrorDetails"), N = {}, I = function() {
+f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 !e.id || "error" !== e.type && "warning" !== e.type || f.hideNotification(e.id);
 });
 };
@@ -14655,7 +14675,7 @@ a = E(t.by("metadata.name")), e.valueFromObjects = a.concat(o);
 id: "create-builder-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: N(e)
+details: D(e)
 });
 <<<<<<< HEAD
 }), c.list(V, n, null, {
@@ -14679,7 +14699,7 @@ e.unshift("");
 id: "create-builder-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: N(e)
+details: D(e)
 });
 <<<<<<< HEAD
 }), c.get(L, r.imageName, {
@@ -14832,16 +14852,20 @@ cancelButtonText: "Cancel"
 }
 }).result.then(B);
 }, U = function(t) {
-I(), D = t.quotaAlerts || [], e.nameTaken || _.some(D, {
+I(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
 type: "error"
-}) ? (e.disableInputs = !1, _.each(D, function(e) {
+}) ? (e.disableInputs = !1, _.each(N, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
+<<<<<<< HEAD
 <<<<<<< HEAD
 })) : _.isEmpty(D) ? A() : (L(D), e.disableInputs = !1);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 })) : _.isEmpty(D) ? B() : (L(D), e.disableInputs = !1);
 >>>>>>> Improve YAML editor validation and feedback
+=======
+})) : _.isEmpty(N) ? B() : (L(N), e.disableInputs = !1);
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 };
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
@@ -17687,9 +17711,9 @@ message: "Cannot create " + R(e.object.kind) + ' "' + e.object.metadata.name + '
 =======
 function S() {
 var e = {
-started: "Creating resources in project " + N(m.project),
-success: "Creating resources in project " + N(m.project),
-failure: "Failed to create some resources in project " + N(m.project)
+started: "Creating resources in project " + D(m.project),
+success: "Creating resources in project " + D(m.project),
+failure: "Failed to create some resources in project " + D(m.project)
 }, t = {};
 d.add(e, t, m.project.metadata.name, function() {
 var e = n.defer();
@@ -17755,9 +17779,9 @@ message: "Cannot update " + R(e.object.kind) + ' "' + e.object.metadata.name + '
 =======
 function w() {
 var e = {
-started: "Updating resources in project " + N(m.project),
-success: "Updated resources in project " + N(m.project),
-failure: "Failed to update some resources in project " + N(m.project)
+started: "Updating resources in project " + D(m.project),
+success: "Updated resources in project " + D(m.project),
+failure: "Failed to update some resources in project " + D(m.project)
 }, t = {};
 d.add(e, t, m.project.metadata.name, function() {
 var e = n.defer();
@@ -17960,11 +17984,15 @@ m.errorOccured || (1 === m.createResources.length && "Template" === m.resourceLi
 T(), s.toProjectOverview(m.project.metadata.name);
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 var $ = e("displayName");
 m.$on("importFileFromYAMLOrJSON", m.create), m.$on("$destroy", D);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 var N = e("displayName");
+=======
+var D = e("displayName");
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 m.$on("importFileFromYAMLOrJSON", m.create), m.$on("$destroy", T);
 >>>>>>> Improve YAML editor validation and feedback
 } ]
@@ -20443,11 +20471,12 @@ var t = m.options.selectedContainer;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 switch (e) {
 case "memory/usage":
-var n = N(t);
+var n = D(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
 case "cpu/usage_rate":
+<<<<<<< HEAD
 <<<<<<< HEAD
 var r = D(t);
 if (r) return d(r);
@@ -20460,6 +20489,9 @@ if (t.total) {
 var n, a = {
 =======
 var a = D(t);
+=======
+var a = N(t);
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 if (a) return d(a);
 }
 return null;
@@ -20683,7 +20715,7 @@ m.loaded = !0;
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var P, T = {}, E = {}, N = n("resources.limits.memory"), D = n("resources.limits.cpu"), I = 30, $ = !1;
+var P, T = {}, E = {}, D = n("resources.limits.memory"), N = n("resources.limits.cpu"), I = 30, $ = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 label: "Memory",
@@ -20951,6 +20983,7 @@ return e[0];
 }
 function u(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
@@ -20959,6 +20992,11 @@ k || (D = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (N[i].lastValue = (N[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = I(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+var a, r = o(e, n), i = n.descriptor;
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (D[i].lastValue = (D[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = I(n)).data = r, C[i] = c3.generate(a));
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 }));
 }
 function d() {
@@ -20987,6 +21025,7 @@ return w || (n.containerName = t.options.selectedContainer.name), n.start = j ||
 }
 function f(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (!P) if (N++, t.noData) t.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
@@ -20997,6 +21036,12 @@ status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
 }; else if (!(D < 2) && t.alerts) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+if (!k) if (N++, t.noData) t.metricsError = {
+status: _.get(e, "status", 0),
+details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
+}; else if (!(N < 2) && t.alerts) {
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 var n = "metrics-failed-" + t.uniqueID;
 t.alerts[n] = {
 type: "error",
@@ -21006,10 +21051,14 @@ href: "",
 label: "Retry",
 onClick: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 delete t.alerts[n], N = 1, y();
 =======
 delete t.alerts[n], D = 1, y();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+delete t.alerts[n], N = 1, y();
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 }
 } ]
 };
@@ -21032,7 +21081,7 @@ if (!R && v()) {
 k = Date.now();
 =======
 function h() {
-return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && D < 2;
+return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && N < 2;
 }
 function v(e, n, a) {
 t.noData = !1;
@@ -21124,6 +21173,7 @@ compactType: "spline",
 chartID: "network-rx-" + t.uniqueID
 } ];
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
@@ -21136,6 +21186,13 @@ l.showComputeUnitsHelp();
 };
 var D = 0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var D = _.indexBy(t.metrics, "descriptor");
+t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
+l.showComputeUnitsHelp();
+};
+var N = 0;
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 c.getMetricsURL().then(function(e) {
 t.metricsURL = e;
 }), t.options = {
@@ -21287,7 +21344,7 @@ top: t.followAffixTop || 0
 }));
 }, E = function() {
 return $("#" + t.logViewerID + " .log-view-output");
-}, N = function(e) {
+}, D = function(e) {
 var n = E(), a = n.offset().top;
 if (!(a < 0)) {
 var r = $(".ellipsis-pulser").outerHeight(!0), o = t.fixedHeight ? t.fixedHeight : Math.floor($(window).height() - a - r);
@@ -21297,10 +21354,14 @@ t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
 }, "fast") : n.css("min-height", o + "px"), t.fixedHeight && n.css("max-height", o);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T = function() {
 =======
 }, D = function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, N = function() {
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 if (!S) {
 var e = function() {
 clearInterval(S), S = null, t.$evalAsync(function() {
@@ -21308,6 +21369,7 @@ t.sized = !0;
 });
 }, n = 0;
 S = setInterval(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 n > 10 ? e() : (n++, I().is(":visible") && (R(), e()));
 }, 100);
@@ -21331,10 +21393,13 @@ t.resolve();
 L().then(function() {
 =======
 n > 10 ? e() : (n++, E().is(":visible") && (N(), e()));
+=======
+n > 10 ? e() : (n++, E().is(":visible") && (D(), e()));
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
 }, 100);
 }
 }, I = _.debounce(function() {
-N(!0), w(), P(), k(), T(), R();
+D(!0), w(), P(), k(), T(), R();
 }, 100);
 p.on("resize", I);
 var A, B = function() {
@@ -21395,7 +21460,7 @@ n++, L.appendChild(f(n, e)), U();
 };
 (A = c.createStream(b, C, t.context, e)).onMessage(function(r, o, i) {
 t.$evalAsync(function() {
-t.empty = !1, "logs" !== t.state && (t.state = "logs", D());
+t.empty = !1, "logs" !== t.state && (t.state = "logs", N());
 }), r && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
 t.limitReached = !0, t.loading = !1;
 }), O(!0)), a(r), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
@@ -25076,7 +25141,7 @@ hasErrors: r
 project: n.project,
 appName: n.app.name
 }) : s.toNextSteps(n.app.name, n.project.metadata.name);
-}, N = function(e) {
+}, D = function(e) {
 a.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -25132,21 +25197,21 @@ cancelButtonText: "Cancel"
 }
 }
 }).result.then(E);
-}, D = function(e) {
+}, N = function(e) {
 h = e.quotaAlerts || [];
 var t = _.filter(h, {
 type: "error"
 });
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(h, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), c.addNotification(e);
-})) : h.length ? (N(h), n.disableInputs = !1) : E();
+})) : h.length ? (D(h), n.disableInputs = !1) : E();
 };
 n.create = function() {
 n.disableInputs = !0, v(), P = l();
 var e = r.ifResourcesDontExist(P, n.project.metadata.name), t = u.getLatestQuotaAlerts(P, n.context), a = function(e) {
 return n.nameTaken = e.nameTaken, t;
 };
-e.then(a, a).then(D, D);
+e.then(a, a).then(N, N);
 }, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", v);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }

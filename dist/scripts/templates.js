@@ -2813,7 +2813,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<uib-tabset>\n" +
     "<uib-tab active=\"selectedTab.history\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>History</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>History</uib-tab-heading>\n" +
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
     "<div class=\"table-filter-extension\">\n" +
     "<div class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
@@ -2821,7 +2825,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+=======
+    "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
+>>>>>>> Label Filter for Kubernetes Deployment History Tab
     "<colgroup>\n" +
     "<col class=\"col-sm-2\">\n" +
     "<col class=\"col-sm-4\">\n" +
