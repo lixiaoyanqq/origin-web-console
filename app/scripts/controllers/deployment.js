@@ -103,13 +103,15 @@ angular.module('openshiftConsole')
             }));
 
             // Watch replica sets for this deployment
-            watches.push(DataService.watch(replicaSetsVersion, context, function(replicaSetData) {
+            watches.push(DataService.watch({
+              group: 'extensions',
+              resource: 'replicasets'
+            }, context, function(replicaSetData) {
               $scope.emptyMessage = "No deployments to show";
 
               var replicaSets = replicaSetData.by('metadata.name');
               replicaSets = OwnerReferencesService.filterForController(replicaSets, deployment);
-
-              $scope.inProgressDeployment = _.chain(replicaSets).filter('status.replicas').length > 1;
+              $scope.inProgressDeployment = _.chain(replicaSets).filter('status.replicas').size() > 1;
 
               $scope.unfilteredReplicaSetsForDeployment = DeploymentsService.sortByRevision(replicaSets);
               $scope.replicaSetsForDeployment = LabelFilter.getLabelSelector().select($scope.unfilteredReplicaSetsForDeployment);
