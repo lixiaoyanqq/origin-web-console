@@ -5555,6 +5555,7 @@ if (u(e)) return !1;
 var t = s.getLabelSelector();
 return !!t.isEmpty() || t.matches(e);
 }
+<<<<<<< HEAD
 function g() {
 r.latestByConfig = o.latestBuildByConfig(r.builds, a), r.buildsNoConfig = _.pickBy(r.builds, l), angular.forEach(r.buildConfigs, function(e, t) {
 r.latestByConfig[t] = r.latestByConfig[t] || null;
@@ -5576,6 +5577,38 @@ r.buildConfigs = e.select(r.unfilteredBuildConfigs), g(), f();
 });
 }), r.$on("$destroy", function() {
 i.unwatchAll(p);
+=======
+function l(a) {
+var b = j(a);
+if (b) return !1;
+var c = e.getLabelSelector();
+return !!c.isEmpty() || c.matches(a);
+}
+function m() {
+b.latestByConfig = h.latestBuildByConfig(b.builds, i), b.buildsNoConfig = _.pick(b.builds, l), angular.forEach(b.buildConfigs, function(a, c) {
+b.latestByConfig[c] = b.latestByConfig[c] || null;
+});
+}
+function n() {
+var a = _.omit(b.latestByConfig, _.isNull);
+!e.getLabelSelector().isEmpty() && _.isEmpty(b.buildConfigs) && _.isEmpty(a) ? b.alerts.builds = {
+type:"warning",
+details:"The active filters are hiding all builds."
+} :delete b.alerts.builds;
+}
+b.project = a;
+var o = d("isJenkinsPipelineStrategy");
+k.push(c.watch("builds", g, function(a) {
+b.builds = _.omit(a.by("metadata.name"), o), b.emptyMessage = "No builds to show", m(), e.addLabelSuggestionsFromResources(b.builds, b.labelSuggestions), f.log("builds (subscribe)", b.builds);
+})), k.push(c.watch("buildconfigs", g, function(a) {
+b.unfilteredBuildConfigs = _.omit(a.by("metadata.name"), o), e.addLabelSuggestionsFromResources(b.unfilteredBuildConfigs, b.labelSuggestions), e.setLabelSuggestions(b.labelSuggestions), b.buildConfigs = e.getLabelSelector().select(b.unfilteredBuildConfigs), m(), n(), f.log("buildconfigs (subscribe)", b.buildConfigs);
+})), e.onActiveFiltersChanged(function(a) {
+b.$apply(function() {
+b.buildConfigs = a.select(b.unfilteredBuildConfigs), m(), n();
+});
+}), b.$on("$destroy", function() {
+c.unwatchAll(k);
+>>>>>>> Fix missing builds with no build config
 });
 }));
 } ]), angular.module("openshiftConsole").controller("PipelinesController", [ "$filter", "$routeParams", "$scope", "APIService", "BuildsService", "Constants", "DataService", "Logger", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {

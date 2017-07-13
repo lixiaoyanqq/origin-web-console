@@ -4,6 +4,11 @@
       <div class="page-header page-header-bleed-right page-header-bleed-left">
         <h1>
           <translate>Builds</translate>
+          <span class="page-header-link">
+            <a ng-href="{{'builds' | helpLink}}" target="_blank">
+              Learn More <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
+          </span>
         </h1>
       </div>
       <div ng-if="(((latestByConfig | hashSize) || (buildsNoConfig | hashSize)) || filterWithZeroResults)" class="data-toolbar">
@@ -98,7 +103,6 @@
                 </td>
                 <td data-title="Status">
                   <div row class="status">
-                    <!-- <build-status build="build"></build-status> -->
                     <status-icon status="latestBuild.status.phase" disable-animation></status-icon>
                     <span ng-if="!latestBuild.status.reason || latestBuild.status.phase === 'Cancelled'">{{latestBuild.status.phase}}</span>
                     <span ng-if="latestBuild.status.reason && latestBuild.status.phase !== 'Cancelled'" translate>{{latestBuild.status.reason | sentenceCase}}</span>
