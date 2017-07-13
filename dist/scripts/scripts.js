@@ -5007,8 +5007,19 @@ if (c.isEmpty()) return !0;
 var d = k(a) || "";
 return d && b.unfilteredBuildConfigs[d] ? !!b.buildConfigs[d] :c.matches(a);
 }
+<<<<<<< 7ea42e6b4e3b96e22cca5e6ddfdd988bed433e85
 function m() {
 b.latestByConfig = h.latestBuildByConfig(b.builds, i), angular.forEach(b.buildConfigs, function(a, c) {
+=======
+function l(a) {
+var b = j(a);
+if (b) return !1;
+var c = e.getLabelSelector();
+return !!c.isEmpty() || c.matches(a);
+}
+function m() {
+b.latestByConfig = h.latestBuildByConfig(b.builds, i), b.buildsNoConfig = _.pick(b.builds, l), angular.forEach(b.buildConfigs, function(a, c) {
+>>>>>>> Fix missing builds with no build config
 b.latestByConfig[c] = b.latestByConfig[c] || null;
 });
 }
@@ -5021,9 +5032,15 @@ details:"The active filters are hiding all builds."
 }
 b.project = a;
 var o = d("isJenkinsPipelineStrategy");
+<<<<<<< 7ea42e6b4e3b96e22cca5e6ddfdd988bed433e85
 l.push(c.watch("builds", g, function(a) {
 b.builds = _.omit(a.by("metadata.name"), o), b.emptyMessage = j("No builds to show"), m(), e.addLabelSuggestionsFromResources(b.builds, b.labelSuggestions), f.log("builds (subscribe)", b.builds);
 })), l.push(c.watch("buildconfigs", g, function(a) {
+=======
+k.push(c.watch("builds", g, function(a) {
+b.builds = _.omit(a.by("metadata.name"), o), b.emptyMessage = "No builds to show", m(), e.addLabelSuggestionsFromResources(b.builds, b.labelSuggestions), f.log("builds (subscribe)", b.builds);
+})), k.push(c.watch("buildconfigs", g, function(a) {
+>>>>>>> Fix missing builds with no build config
 b.unfilteredBuildConfigs = _.omit(a.by("metadata.name"), o), e.addLabelSuggestionsFromResources(b.unfilteredBuildConfigs, b.labelSuggestions), e.setLabelSuggestions(b.labelSuggestions), b.buildConfigs = e.getLabelSelector().select(b.unfilteredBuildConfigs), m(), n(), f.log("buildconfigs (subscribe)", b.buildConfigs);
 })), e.onActiveFiltersChanged(function(a) {
 b.$apply(function() {
