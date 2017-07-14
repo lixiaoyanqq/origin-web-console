@@ -99,72 +99,124 @@
                           <div ng-if="form.strategyTimeout.$error.number" class="help-block" translate>
                             Must be a number.
                           </div>
-                          <div ng-if="form.strategyTimeout.$error.min" class="help-block" translate>
-                            Timeout can't be negative.
-                          </div>
-                          <span ng-if="form.strategyTimeout.$error.pattern && !form.strategyTimeout.$error.min" class="help-block" translate>
-                            Must be a whole number.
-                          </span>
-                        </div>
-                      </div>
-
-                      <div ng-if="strategyData.type === 'Rolling'">
-                        <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
-                        <div ng-show="view.advancedStrategyOptions">
-                          <div class="form-group">
-                            <label for="updatePeriod" translate>Update Period</label>
-                            <span class="input-group"
-                               ng-class="{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }">
-                              <input id="updatePeriod"
-                                  type="number"
-                                  placeholder="1"
-                                  name="updatePeriod"
-                                  ng-model="strategyData[strategyParamsPropertyName].updatePeriodSeconds"
-                                  pattern="\d*"
-                                  min="0"
-                                  select-on-focus
-                                  class="form-control"
-                                  aria-describedby="updatePeriod">
-                              <span class="input-group-addon" translate>seconds</span>
-                            </span>
-                            <div class="help-block" id="updatePeriod" translate>
-                              Time to wait between retrying to run individual pod.
-                            </div>
-                            <div ng-if="form.updatePeriod.$invalid && form.updatePeriod.$touched" class="has-error">
-                              <div ng-if="form.updatePeriod.$error.number" class="help-block" translate>
-                                Must be a number.
+                          <div ng-if="strategyData.type !== 'Custom'" >
+                            <div class="form-group">
+                              <label for="strategyTimeout" translate>Timeout</label>
+                              <span class="input-group"
+                                 ng-class="{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }">
+                                <input id="strategyTimeout"
+                                    type="number"
+                                    name="strategyTimeout"
+                                    ng-model="strategyData[strategyParamsPropertyName].timeoutSeconds"
+                                    placeholder="600"
+                                    pattern="\d*"
+                                    min="0"
+                                    select-on-focus
+                                    class="form-control"
+                                    aria-describedby="strategyTimeout">
+                                <span class="input-group-addon" translate>seconds</span>
+                              </span>
+                              <div class="help-block" ng-attr-id="strategyTimeout">
+			      <translate>How long to wait for a pod to scale up before giving up.</translate>
                               </div>
                               <div ng-if="form.updatePeriod.$error.min" class="help-block" translate>
-                                Update period can't be negative.
+				<translate>Update period can't be negative.</translate>
                               </div>
                               <span ng-if="form.updatePeriod.$error.pattern && !form.updatePeriod.$error.min" class="help-block" translate>
-                                Must be a whole number.
+				      <translate>Must be a whole number.</translate>
                               </span>
                             </div>
                           </div>
 
-                          <div class="form-group">
-                            <label for="interval" translate>Interval</label>
-                            <span class="input-group"
-                               ng-class="{ 'has-error': form.interval.$invalid && form.interval.$touched }">
-                              <input id="interval"
-                                  type="number"
-                                  placeholder="1"
-                                  name="interval"
-                                  ng-model="strategyData[strategyParamsPropertyName].intervalSeconds"
-                                  pattern="\d*"
-                                  min="0"
-                                  select-on-focus
-                                  class="form-control"
-                                  aria-describedby="interval">
-                              <span class="input-group-addon" translate>seconds</span>
-                            </span>
-                            <div class="help-block" ng-attr-id="interval" translate>
-                              Time to wait between polling deployment status after running a pod.
-                            </div>
-                            <div ng-if="form.interval.$invalid && form.interval.$touched" class="has-error">
-                              <div ng-if="form.interval.$error.number" class="help-block" translate>
-                                Must be a number.
+                            <div ng-if="strategyData.type === 'Rolling'">
+                              <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
+                              <div ng-show="view.advancedStrategyOptions">
+                                <div class="form-group">
+                                  <label for="updatePeriod" translate>Update Period</label>
+                                  <span class="input-group"
+                                     ng-class="{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }">
+                                    <input id="updatePeriod"
+                                        type="number"
+                                        placeholder="1"
+                                        name="updatePeriod"
+                                        ng-model="strategyData[strategyParamsPropertyName].updatePeriodSeconds"
+                                        pattern="\d*"
+                                        min="0"
+                                        select-on-focus
+                                        class="form-control"
+                                        aria-describedby="updatePeriod">
+                                    <span class="input-group-addon" translate>seconds</span>
+                                  </span>
+                                  <div class="help-block" id="updatePeriod">
+					  <translate>Time to wait between retrying to run individual pod.</translate>
+                                  </div>
+                                  <div ng-if="form.updatePeriod.$invalid && form.updatePeriod.$touched" class="has-error">
+                                    <div ng-if="form.updatePeriod.$error.number" class="help-block">
+					    <translate>Must be a number.</translate>
+                                    </div>
+                                    <div ng-if="form.updatePeriod.$error.min" class="help-block">
+					    <translate>Update period can't be negative.</translate>
+                                    </div>
+                                    <span ng-if="form.updatePeriod.$error.pattern && !form.updatePeriod.$error.min" class="help-block">
+					    <translate>Must be a whole number.</translate>
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="interval" translate>Interval</label>
+                                  <span class="input-group"
+                                     ng-class="{ 'has-error': form.interval.$invalid && form.interval.$touched }">
+                                    <input id="interval"
+                                        type="number"
+                                        placeholder="1"
+                                        name="interval"
+                                        ng-model="strategyData[strategyParamsPropertyName].intervalSeconds"
+                                        pattern="\d*"
+                                        min="0"
+                                        select-on-focus
+                                        class="form-control"
+                                        aria-describedby="interval">
+                                    <span class="input-group-addon" translate>seconds</span>
+                                  </span>
+                                  <div class="help-block" ng-attr-id="interval">
+					  <translate>Time to wait between polling deployment status after running a pod.</translate>
+                                  </div>
+                                  <div ng-if="form.interval.$invalid && form.interval.$touched" class="has-error">
+                                    <div ng-if="form.interval.$error.number" class="help-block">
+					    <translate>Must be a number.</translate>
+                                    </div>
+                                    <div ng-if="form.interval.$error.min" class="help-block">
+					    <translate>Interval can't be negative.</translate>
+                                    </div>
+                                    <span ng-if="form.interval.$error.pattern && !form.interval.$error.min" class="help-block">
+					    <translate>Must be a whole number.</translate>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="maxUnavailable" translate>Maximum Number of Unavailable Pods</label>
+                                <div ng-class="{ 'has-error': form.maxUnavailable.$invalid && form.maxUnavailable.$touched }">
+                                  <input id="maxUnavailable"
+                                      type="text"
+                                      placeholder="25%"
+                                      name="maxUnavailable"
+                                      ng-model="strategyData[strategyParamsPropertyName].maxUnavailable"
+                                      ng-pattern="/^\d+%?$/"
+                                      select-on-focus
+                                      class="form-control"
+                                      aria-describedby="max-unavailable-help">
+                                </div>
+                                <div class="help-block">
+					<translate>The maximum number of pods that can be unavailable during the rolling deployment. This can be either a percentage (10%) or a whole number (1).</tanslate>
+                                </div>
+                                <div ng-if="form.maxUnavailable.$invalid && form.maxUnavailable.$touched && form.maxUnavailable.$error.pattern" class="has-error">
+                                  <span class="help-block">
+					  <translate>Must be a non-negative whole number or percentage.</translate>
+                                  </span>
+                                </div>
                               </div>
                               <div ng-if="form.interval.$error.min" class="help-block" translate>
                                 Interval can't be negative.

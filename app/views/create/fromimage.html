@@ -228,43 +228,53 @@
 
                         <!-- /build config -->
 
-                        <osc-form-section
-                          header="{{'Deployment Configuration'|translate}}"
-                          about-title="{{'Deployment Configuration'|translate}}"
-                          about="{{'Deployment configurations describe how your application is configured by the cluster and under what conditions it should be recreated (e.g. when the image changes).'|translate}}"
-                          expand="true"
-                          can-toggle="false">
-                          <div class="animate-drawer" ng-show="$parent.expand">
-                            <h3 translate>Autodeploy when</h3>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" ng-model="deploymentConfig.deployOnNewImage">
-                                <translate>New image is available</translate>
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                            <label>
-                              <input type="checkbox" ng-model="deploymentConfig.deployOnConfigChange">
-                              <translate>Deployment configuration changes</translate>
-                            </label>
-                            </div>
-                            <div>
-                              <h3><translate>Environment Variables</translate> <span class="appended-icon"><translate>(Runtime only)</translate> <span class="help action-inline">
-                                <a href="" data-toggle="tooltip"
-                                   data-original-title="{{'Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime.'|translate}}">
-                                  <i class="pficon pficon-help"></i>
-                                </a>
-                              </span></span></h3>
-                              <p ng-show="DCEnvVarsFromImage.length">
-                                <a
-                                  href=""
-                                  ng-click="showDCEnvs = (!showDCEnvs)" translate>
-                                  {{showDCEnvs ? 'Hide' : 'Show'}} Image Environment Variables
-                                </a>
-                              </p>
-                              <div ng-show="showDCEnvs">
-                                <div class="help-block">
-                                  <p translate>These variables exist on the image and will be available at runtime. You may override them below.</p>
+                            <osc-form-section
+                              header="Scaling"
+                              about-title="Scaling"
+                              about="Scaling defines the number of running instances of your built image."
+                              expand="true"
+                              can-toggle="false"
+                              >
+                              <div class="form-group">
+                                <label for="scale-type" translate>Strategy</label>
+                                <ui-select ng-model="scaling.autoscale" input-id="scale-type" search-enabled="false" aria-describedby="scale-type-help">
+                                  <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                  <ui-select-choices repeat="option.value as option in scaling.autoscaleOptions">
+                                    {{option.label}}
+                                  </ui-select-choices>
+                                </ui-select>
+                                <div class="help-block" id="scale-type-help">
+					<translate>Scale replicas manually or automatically based on CPU usage.</translate>
+                                </div>
+                                <div class="learn-more-block">
+					<a href="{{'pod_autoscaling' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="has-warning" ng-if="metricsWarning && scaling.autoscale">
+                                  <span class="help-block" translate>
+                                    CPU metrics might not be available. In order to use horizontal pod autoscalers,
+                                    your cluster administrator must have properly configured cluster metrics.
+                                  </span>
+                                </div>
+                              </div>
+                              <div ng-if="!scaling.autoscale"
+                                   class="form-group"
+                                   ng-class="{ 'has-error': form.replicas.$dirty && form.replicas.$invalid }">
+                                <label class="number" translate>Replicas</label>
+                                <input type="number"
+                                       class="form-control"
+                                       min="0"
+                                       name="replicas"
+                                       ng-model="scaling.replicas"
+                                       ng-required="!scaling.autoscale"
+                                       ng-disabled="scaling.autoscale"
+                                       pattern="\d*"
+                                       select-on-focus
+                                       aria-describedby="replicas-help">
+                                <div id="replicas-help">
+                                  <span class="help-block" translate>The number of instances of your image.</span>
+                                </div>
+                                <div class="has-error" ng-show="form.replicas.$dirty && form.replicas.$invalid">
+                                  <span class="help-block" translate>Replicas must be an integer value greater than or equal to 0.</span>
                                 </div>
                                 <key-value-editor
                                   entries="DCEnvVarsFromImage"
