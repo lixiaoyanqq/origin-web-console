@@ -13,7 +13,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div ng-show="!containers.length" class="mar-top-md" translate>Loading...</div>
-                <form ng-show="containers.length" name="form" class="health-checks-form">
+                <form ng-show="containers.length" name="form" class="health-checks-form" novalidate>
                   <h1 translate>Health Checks: {{name}}</h1>
                   <div class="help-block">
                     <translate>Container health is periodically checked using readiness and liveness probes.</translate>
