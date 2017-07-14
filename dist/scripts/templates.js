@@ -73,8 +73,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-if=\"label\">{{label}}</label>\n" +
     "<div class=\"resource-size\" ng-class=\"{ 'has-error': form.$invalid }\">\n" +
     "<div class=\"resource-amount\">\n" +
+<<<<<<< HEAD
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}\" translate>Amount</label>\n" +
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
+=======
+    "<label class=\"sr-only\" ng-attr-for=\"{{id}}\">Amount</label>\n" +
+    "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d*\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}-unit\" translate>Unit</label>\n" +
@@ -4902,7 +4907,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Routing is a way to make your application publicly visible.\n" +
     "</div>\n" +
     "<form name=\"createRouteForm\" class=\"mar-top-xl osc-form\" novalidate>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"!services\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!services\">Loading...</div>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<div ng-if=\"services\">\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
     "<osc-routing model=\"routing\" services=\"services\" show-name-input=\"true\">\n" +
@@ -5212,7 +5221,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!scaling.autoscale\" class=\"form-group\" ng-class=\"{ 'has-error': form.replicas.$dirty && form.replicas.$invalid }\">\n" +
+<<<<<<< HEAD
     "<label class=\"number\" translate>Replicas</label>\n" +
+=======
+    "<label class=\"number\">Replicas</label>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<input type=\"number\" class=\"form-control\" min=\"0\" name=\"replicas\" ng-model=\"scaling.replicas\" ng-required=\"!scaling.autoscale\" ng-disabled=\"scaling.autoscale\" pattern=\"\\d*\" select-on-focus aria-describedby=\"replicas-help\">\n" +
     "<div id=\"replicas-help\">\n" +
     "<span class=\"help-block\" translate>The number of instances of your image.</span>\n" +
@@ -5735,7 +5748,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-attr-for=\"{{id}}-initial-delay\" translate>Initial Delay</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.initialDelaySeconds.$invalid && form.initialDelaySeconds.$touched }\">\n" +
     "<input type=\"number\" name=\"initialDelaySeconds\" ng-model=\"probe.initialDelaySeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus ng-attr-id=\"{{id}}-initial-delay\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-delay-description\">\n" +
+<<<<<<< HEAD
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
+=======
+    "<span class=\"input-group-addon\">seconds</span>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" ng-attr-id=\"{{id}}-delay-description\" translate>\n" +
     "How long to wait after the container starts before checking its health.\n" +
@@ -5756,7 +5773,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-attr-for=\"{{id}}-timeout\" translate>Timeout</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.timeoutSeconds.$invalid && form.timeoutSeconds.$touched }\">\n" +
     "<input type=\"number\" name=\"timeoutSeconds\" ng-model=\"probe.timeoutSeconds\" pattern=\"\\d*\" min=\"1\" placeholder=\"1\" select-on-focus ng-attr-id=\"{{id}}-timeout\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-timeout-description\">\n" +
+<<<<<<< HEAD
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
+=======
+    "<span class=\"input-group-addon\">seconds</span>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" ng-attr-id=\"{{id}}-timeout-description\" translate>\n" +
     "How long to wait for the probe to finish. If the time is exceeded, the probe is considered failed.\n" +
@@ -8317,7 +8338,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "CPU Request Target\n" +
     "</label>\n" +
     "<div class=\"input-group\" ng-class=\"{ 'has-error': form.targetCPU.$invalid && form.targetCPU.$touched }\">\n" +
+<<<<<<< HEAD
     "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"autoscaling.targetCPU\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
+=======
+    "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"targetCPUInput.percent\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<span class=\"input-group-addon\">%</span>\n" +
     "</div>\n" +
     "<div id=\"target-cpu-help\" class=\"help-block\" translate>\n" +
@@ -8532,7 +8557,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"resource-size\" ng-class=\"{ 'has-error': persistentVolumeClaimForm.capacity.$invalid && persistentVolumeClaimForm.capacity.$touched && !claimDisabled }\">\n" +
     "<div class=\"resource-amount\">\n" +
     "<label for=\"claim-amount\" class=\"sr-only\">Amount</label>\n" +
+<<<<<<< HEAD
     "<input type=\"number\" name=\"capacity\" id=\"claim-amount\" ng-model=\"claim.amount\" required min=\"0\" pattern=\"\\d+(\\.\\d+)?\" select-on-focus class=\"form-control\" aria-describedby=\"claim-capacity-help\">\n" +
+=======
+    "<input type=\"number\" name=\"capacity\" id=\"claim-amount\" ng-model=\"claim.amount\" required min=\"0\" pattern=\"\\d*\" select-on-focus class=\"form-control\" aria-describedby=\"claim-capacity-help\">\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\">Unit</label>\n" +
@@ -8639,7 +8668,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"showWeight\" class=\"form-group col-sm-6\">\n" +
+<<<<<<< HEAD
     "<label for=\"{{id}}-service-weight\" class=\"required\" translate>Weight</label>\n" +
+=======
+    "<label for=\"{{id}}-service-weight\" class=\"required\">Weight</label>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<input ng-model=\"model.weight\" name=\"weight\" id=\"{{id}}-service-weight\" type=\"number\" required min=\"0\" max=\"256\" pattern=\"\\d*\" select-on-focus class=\"form-control\" aria-describedby=\"{{id}}-weight-help\">\n" +
     "<div>\n" +
     "<span id=\"{{id}}-weight-help\" class=\"help-block\" translate>\n" +
@@ -10282,7 +10315,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"strategy-timeout\" translate>Timeout</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }\">\n" +
+<<<<<<< HEAD
     "<input id=\"strategy-timeout\" type=\"number\" name=\"strategyTimeout\" ng-model=\"strategyData[strategyParamsPropertyName].timeoutSeconds\" placeholder=\"600\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"strategy-timeout-help\">\n" +
+=======
+    "<input id=\"strategyTimeout\" type=\"number\" name=\"strategyTimeout\" ng-model=\"strategyData[strategyParamsPropertyName].timeoutSeconds\" placeholder=\"600\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"strategyTimeout\">\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<span class=\"input-group-addon\">seconds</span>\n" +
     "</span>\n" +
     "<div class=\"help-block\" id=\"strategy-timeout-help\" translate>\n" +
@@ -10306,8 +10343,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"update-period\" translate>Update Period</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }\">\n" +
+<<<<<<< HEAD
     "<input id=\"update-period\" type=\"number\" placeholder=\"1\" name=\"updatePeriod\" ng-model=\"strategyData[strategyParamsPropertyName].updatePeriodSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"update-period-help\">\n" +
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
+=======
+    "<input id=\"updatePeriod\" type=\"number\" placeholder=\"1\" name=\"updatePeriod\" ng-model=\"strategyData[strategyParamsPropertyName].updatePeriodSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"updatePeriod\">\n" +
+    "<span class=\"input-group-addon\">seconds</span>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" id=\"update-period-help\" translate>\n" +
     "Time to wait between retrying to run individual pod.\n" +
@@ -10327,8 +10369,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"interval\" translate>Interval</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.interval.$invalid && form.interval.$touched }\">\n" +
+<<<<<<< HEAD
     "<input id=\"interval\" type=\"number\" placeholder=\"1\" name=\"interval\" ng-model=\"strategyData[strategyParamsPropertyName].intervalSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"interval-help\">\n" +
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
+=======
+    "<input id=\"interval\" type=\"number\" placeholder=\"1\" name=\"interval\" ng-model=\"strategyData[strategyParamsPropertyName].intervalSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"interval\">\n" +
+    "<span class=\"input-group-addon\">seconds</span>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" id=\"interval-help\" translate>\n" +
     "Time to wait between polling deployment status after running a pod.\n" +
@@ -10482,11 +10529,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< HEAD
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div ng-show=\"!containers.length\" class=\"mar-top-md\" translate>Loading...</div>\n" +
     "<form ng-show=\"containers.length\" name=\"form\" class=\"health-checks-form\" novalidate>\n" +
     "<h1><translate>Health Checks:</translate> {{name}}</h1>\n" +
+=======
+    "<div class=\"col-md-12\">\n" +
+    "<div ng-show=\"!containers.length\" class=\"mar-top-md\">Loading...</div>\n" +
+    "<form ng-show=\"containers.length\" name=\"form\" class=\"health-checks-form\" novalidate>\n" +
+    "<h1>Health Checks: {{name}}</h1>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<div class=\"help-block\">\n" +
     "<translate>Container health is periodically checked using readiness and liveness probes.</translate>\n" +
     "<div class=\"learn-more-block\">\n" +
@@ -13956,9 +14010,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< HEAD
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div ng-show=\"!containers.length\" translate>Loading...</div>\n" +
+=======
+    "<div class=\"col-md-12\">\n" +
+    "<div ng-show=\"!containers.length\">Loading...</div>\n" +
+>>>>>>> Bug 1470976 - Support number input on iOS
     "<form ng-if=\"containers.length\" name=\"form\" class=\"set-limits-form\" novalidate>\n" +
     "<h1>Resource Limits: {{name}}</h1>\n" +
     "<div class=\"help-block\">\n" +
