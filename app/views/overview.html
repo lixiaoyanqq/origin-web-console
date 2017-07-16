@@ -24,31 +24,57 @@
           <ng-include src="'views/_request-access.html'"></ng-include>
         </div>
       </div>
-    </div>
-    <div ng-if="overview.showLoading" class="container-fluid loading-message" translate>
-      Loading...
-    </div>
-    <div ng-if="!overview.showGetStarted && !overview.showLoading">
-      <div class="middle-header">
-        <div class="container-fluid toolbar-container">
-          <div class="data-toolbar" role="toolbar" aria-label="Filter Toolbar">
-            <div class="data-toolbar-filter" role="group">
-              <ui-select
-                class="data-toolbar-dropdown"
-                ng-model="overview.filterBy"
-                search-enabled="false"
-                append-to-body="true"
-                ng-disabled="overview.disableFilter">
-                <ui-select-match>{{$select.selected.label}}</ui-select-match>
-                <ui-select-choices repeat="option.id as option in overview.filterByOptions">
-                  {{option.label}}
-                </ui-select-choices>
-              </ui-select>
-              <div ng-if="overview.filterBy === 'label'" class="label-filter">
-                <!-- FIXME: This disables the add button but not the label filter selectize controlers. -->
-                <fieldset ng-disabled="overview.disableFilter">
-                  <project-filter></project-filter>
-                </fieldset>
+      <div ng-if="overview.showLoading" class="container-fluid loading-message" translate>
+        Loading...
+      </div>
+      <div ng-if="!overview.showGetStarted && !overview.showLoading">
+        <div class="middle-header header-toolbar">
+          <div class="container-fluid toolbar-container">
+            <div class="data-toolbar" role="toolbar" aria-label="Filter Toolbar">
+              <div class="data-toolbar-filter" role="group">
+                <ui-select
+                  class="data-toolbar-dropdown"
+                  ng-model="overview.filterBy"
+                  search-enabled="false"
+                  append-to-body="true"
+                  ng-disabled="overview.disableFilter">
+                  <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                  <ui-select-choices repeat="option.id as option in overview.filterByOptions">
+                    {{option.label}}
+                  </ui-select-choices>
+                </ui-select>
+                <div ng-if="overview.filterBy === 'label'" class="label-filter">
+                  <!-- FIXME: This disables the add button but not the label filter selectize controlers. -->
+                  <fieldset ng-disabled="overview.disableFilter">
+                    <project-filter></project-filter>
+                  </fieldset>
+                </div>
+                <div ng-if="overview.filterBy === 'name'" class="name-filter">
+                  <form role="form" class="search-pf has-button">
+                    <div class="form-group filter-controls has-clear">
+                      <div class="search-pf-input-group">
+                        <label for="name-filter" class="sr-only" translate>Filter by name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          ng-model="overview.filterText"
+                          placeholder="Filter by name"
+                          autocorrect="off"
+                          autocapitalize="none"
+                          spellcheck="false"
+                          ng-disabled="overview.disableFilter">
+                        <button
+                          type="button"
+                          class="clear"
+                          aria-hidden="true"
+                          ng-if="overview.filterText && !overview.disableFilter"
+                          ng-click="overview.filterText = ''">
+                          <span class="pficon pficon-close"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
               <div ng-if="overview.filterBy === 'name'" class="name-filter">
                 <form role="form" class="search-pf has-button">

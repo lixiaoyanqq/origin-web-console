@@ -1,43 +1,55 @@
-<div class="monitoring-page" ng-class="{'show-sidebar-right': renderOptions.showEventsSidebar}">
-  <div class="middle" ng-class="{ 'sidebar-open': !renderOptions.collapseEventsSidebar }">
-    <div class="middle-header header-toolbar">
-      <div class="container-fluid">
-        <div class="page-header page-header-bleed-right page-header-bleed-left">
-          <h1>
-            <translate>Monitoring</translate>
-            <events-badge project-context="projectContext" ng-if="projectContext" class="pull-right" sidebar-collapsed="renderOptions.collapseEventsSidebar"></events-badge>
-          </h1>
-        </div>
-        <div class="data-toolbar">
-          <ui-select class="data-toolbar-dropdown" ng-model="kindSelector.selected" theme="bootstrap" search-enabled="true" ng-disabled="kindSelector.disabled" title="{{'Choose a resource'|translate}}">
-            <ui-select-match placeholder="Choose a resource">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
-            <ui-select-choices repeat="kind in kinds | filter : {kind: $select.search} : matchKind">
-              <div ng-bind-html="(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search"></div>
-            </ui-select-choices>
-          </ui-select>
-          <div class="vertical-divider"></div>
-          <div class="data-toolbar-filter">
-            <form role="form" class="search-pf has-button">
-              <div class="form-group filter-controls has-clear">
-                <div class="search-pf-input-group">
-                  <label for="name-filter" class="sr-only" translate>Filter by name</label>
-                  <input type="search"
-                      placeholder="{{'Filter by name'|translate}}"
-                      class="form-control"
-                      id="name-filter"
-                      ng-model="filters.text"
-                      autocorrect="off"
-                      autocapitalize="none"
-                      spellcheck="false">
-                  <button
-                      type="button"
-                      class="clear"
-                      aria-hidden="true"
-                      ng-if="filters.text"
-                      ng-click="filters.text = ''">
-                      <span class="pficon pficon-close"></span>
-                  </button>
-                </div>
+<project-header class="top-header"></project-header>
+  <project-page class="monitoring">
+
+    <!-- Middle section -->
+    <div class="middle-section monitoring-page"
+         ng-class="{ 'sidebar-open': !renderOptions.collapseEventsSidebar }">
+      <div class="middle-container">
+        <div class="middle-header header-toolbar">
+          <div class="container-fluid">
+            <div class="page-header page-header-bleed-right page-header-bleed-left">
+              <h1>
+		      <translate>Monitoring</translate>
+                <events-badge project-context="projectContext" ng-if="projectContext" class="pull-right" sidebar-collapsed="renderOptions.collapseEventsSidebar"></events-badge>
+              </h1>
+            </div>
+            <div class="data-toolbar">
+              <ui-select class="data-toolbar-dropdown" ng-model="kindSelector.selected" theme="bootstrap" search-enabled="true" ng-disabled="kindSelector.disabled" title="Choose a resource">
+                <ui-select-match placeholder="Choose a resource">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
+                <ui-select-choices repeat="kind in kinds | filter : {kind: $select.search} : matchKind">
+                  <div ng-bind-html="(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+              <div class="vertical-divider"></div>
+              <div class="data-toolbar-filter">
+                <form role="form" class="search-pf has-button">
+                  <div class="form-group filter-controls has-clear">
+                    <div class="search-pf-input-group">
+                      <label for="name-filter" class="sr-only" translate>Filter by name</label>
+                      <input type="search"
+                          placeholder="Filter by name"
+                          class="form-control"
+                          id="name-filter"
+                          ng-model="filters.text"
+                          autocorrect="off"
+                          autocapitalize="none"
+                          spellcheck="false">
+                      <button
+                          type="button"
+                          class="clear"
+                          aria-hidden="true"
+                          ng-if="filters.text"
+                          ng-click="filters.text = ''">
+                          <span class="pficon pficon-close"></span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="checkbox nowrap">
+                <label>
+                  <input type="checkbox" ng-model="filters.hideOlderResources" translate>Hide older resources
+                </label>
               </div>
             </form>
           </div>

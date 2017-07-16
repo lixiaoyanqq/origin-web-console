@@ -93,23 +93,42 @@
                     </span>
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label translate>
-                      <input
-                          id="select-keys"
-                          type="checkbox"
-                          ng-model="attach.pickKeys"
-                          ng-disabled="!attach.source"
-                          aria-describedby="select-keys-help">
-                      <translate>Select specific keys and paths</translate>
-                    </label>
-                    <div id="select-keys-help" class="help-block" translate>
-                      Add only certain keys or use paths that are different than the key names.
-                    </div>
-                  </div>
-                </div>
+                        <div class="form-group">
+                          <label for="mount-path" class="required" translate>Mount Path</label>
+                          <input
+                              id="mount-path"
+                              class="form-control"
+                              type="text"
+                              name="mountPath"
+                              ng-model="attach.mountPath"
+                              required
+                              ng-pattern="/^\/.*$/"
+                              osc-unique="existingMountPaths"
+                              placeholder="example: /data"
+                              autocorrect="off"
+                              autocapitalize="none"
+                              spellcheck="false"
+                              aria-describedby="mount-path-help">
+                          <div>
+                            <span id="mount-path-help" class="help-block">
+				    <translate>Mount path for the volume.</translate>
+                              <span ng-if="!attach.pickKeys" translate>
+                                A file will be created in this directory for each key from the config
+                                map or secret. The file contents will be the value of the key.
+                              </span>
+                            </span>
+                          </div>
+                          <div class="has-error" ng-show="forms.addConfigVolumeForm.mountPath.$error.pattern && forms.addConfigVolumeForm.mountPath.$touched">
+                            <span class="help-block" translate>
+                              Mount path must be a valid path to a directory starting with <code>/</code>.
+                            </span>
+                          </div>
+                          <div class="has-error" ng-show="forms.addConfigVolumeForm.mountPath.$error.oscUnique">
+                            <span class="help-block" translate>
+                              The mount path is already used. Please choose another mount path.
+                            </span>
+                          </div>
+                        </div>
 
                 <div ng-if="attach.pickKeys && attach.source" class="mar-bottom-md">
                   <h3 translate>Keys and Paths</h3>
@@ -152,10 +171,64 @@
                             Path must be a relative path. It cannot start with <code>/</code> or contain <code>..</code> path elements.
                           </span>
                         </div>
-                        <div class="has-error" ng-show="forms.addConfigVolumeForm['path-' + $id].$error.oscUnique">
-                          <span class="help-block" translate>
-                            Paths must be unique.
-                          </span>
+
+                        <div ng-if="attach.pickKeys && attach.source" class="mar-bottom-md">
+                          <h3 translate>Keys and Paths</h3>
+                          <div class="help-block mar-bottom-md" translate>
+                            Select the keys to use and the file paths where each key will be exposed.
+                            The file paths are relative to the mount path.
+                            The contents of each file will be the value of the key.
+                          </div>
+                          <div ng-repeat="item in attach.items">
+                            <div class="row">
+                              <div class="form-group col-md-6">
+                                <label class="required" translate>Key</label>
+                                <ui-select ng-model="item.key" ng-required="true">
+                                  <ui-select-match placeholder="Pick a key">
+                                    {{$select.selected}}
+                                  </ui-select-match>
+                                  <ui-select-choices repeat="key in attach.source.data | keys | filter : $select.search">
+                                    <span ng-bind-html="key | highlight : $select.search"></span>
+                                  </ui-select-choices>
+                                </ui-select>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label ng-attr-for="path-{{$id}}" class="required" translate>Path</label>
+                                <input
+                                    ng-attr-id="path-{{$id}}"
+                                    class="form-control"
+                                    ng-class="{ 'has-error': forms.addConfigVolumeForm['path-' + $id].$invalid && forms.addConfigVolumeForm['path-' + $id].$touched }"
+                                    type="text"
+                                    name="path-{{$id}}"
+                                    ng-model="item.path"
+                                    ng-pattern="RELATIVE_PATH_PATTERN"
+                                    required
+                                    osc-unique="itemPaths"
+                                    placeholder="example: config/app.properties"
+                                    autocorrect="off"
+                                    autocapitalize="none"
+                                    spellcheck="false">
+                                <div class="has-error" ng-show="forms.addConfigVolumeForm['path-' + $id].$error.pattern">
+                                  <span class="help-block">
+                                    Path must be a relative path. It cannot start with <code>/</code> or
+                                    contain <code>..</code> path elements.
+                                  </span>
+                                </div>
+                                <div class="has-error" ng-show="forms.addConfigVolumeForm['path-' + $id].$error.oscUnique">
+                                  <span class="help-block" translate>
+                                    Paths must be unique.
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mar-bottom-md">
+                              <a ng-hide="attach.items.length === 1" href="" ng-click="removeItem($index)" translate>Remove Item</a>
+                              <span ng-if="$last">
+                                <span ng-hide="attach.items.length === 1" class="action-divider" aria-hidden="true">|</span>
+                                <a href="" ng-click="addItem()" translate>Add Item</a>
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

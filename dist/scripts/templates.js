@@ -601,7 +601,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "          'has-warning': isOnlyWhitespace(parameter.value)\n" +
     "        }\">\n" +
     "<input ng-if=\"!expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" type=\"text\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<a href=\"\" ng-click=\"expandedParameter = !expandedParameter\" class=\"resize-input action-button\" data-toggle=\"tooltip\" data-trigger=\"hover\" dynamic-content=\"{{expandedParameter ? singleText : multiText|translate}}\"><i class=\"fa\" ng-class=\"{'fa-expand': !expandedParemeter, 'fa-compress': expandedParameter}\" aria-hidden=\"true\" role=\"presentation\"/><span class=\"sr-only\" ng-if=\"expandedParameter\" translate>Collapse to a single line input</span><span class=\"sr-only\" ng-if=\"!expandedParameter\" translate>Expand to enter multiline input</span></a>\n" +
+=======
+    "<a href=\"\" ng-click=\"expandedParameter = !expandedParameter\" class=\"resize-input action-button\" data-toggle=\"tooltip\" data-trigger=\"hover\" dynamic-content=\"{{expandedParameter ? 'Collapse to a single line input. This may strip any new lines you have entered.' : 'Expand to enter multiple lines of content. This is required if you need to include newline characters.'}}\"><i class=\"fa\" ng-class=\"{'fa-expand': !expandedParemeter, 'fa-compress': expandedParameter}\" aria-hidden=\"true\" role=\"presentation\"/><span class=\"sr-only\" ng-if=\"expandedParameter\">Collapse to a single line input</span><span class=\"sr-only\" ng-if=\"!expandedParameter\">Expand to enter multiline input</span></a>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<textarea ng-if=\"expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" rows=\"6\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\"></textarea>\n" +
     "<div class=\"help-block\" ng-if=\"parameter.description\" ng-attr-id=\"{{paramID}}-description\">{{parameter.description}}</div>\n" +
     "<div ng-show=\"paramForm[paramID].$error.required && paramForm[paramID].$touched && !cleared\" class=\"has-error\">\n" +
@@ -881,7 +885,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"mount-path\" class=\"required\" translate>Mount Path</label>\n" +
+=======
+    "<label for=\"mount-path\" class=\"required\">Mount Path</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" required ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
     "<div>\n" +
     "<span id=\"mount-path-help\" class=\"help-block\">\n" +
@@ -935,7 +943,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
     "<div class=\"form-group col-md-6\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label ng-attr-for=\"path-{{$id}}\" class=\"required\" translate>Path</label>\n" +
+=======
+    "<label ng-attr-for=\"path-{{$id}}\" class=\"required\">Path</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input ng-attr-id=\"path-{{$id}}\" class=\"form-control\" ng-class=\"{ 'has-error': forms.addConfigVolumeForm['path-' + $id].$invalid && forms.addConfigVolumeForm['path-' + $id].$touched }\" type=\"text\" name=\"path-{{$id}}\" ng-model=\"item.path\" ng-pattern=\"RELATIVE_PATH_PATTERN\" required osc-unique=\"itemPaths\" placeholder=\"example: config/app.properties\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "<div class=\"has-error\" ng-show=\"forms.addConfigVolumeForm['path-' + $id].$error.pattern\">\n" +
     "<span class=\"help-block\" translate>\n" +
@@ -1047,7 +1059,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Specify details about how volumes are going to be mounted inside containers.\n" +
     "</div>\n" +
     "<div class=\"form-group mar-top-xl\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"mount-path\" translate>Mount Path</label>\n" +
+=======
+    "<label for=\"mount-path\">Mount Path</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
     "<div>\n" +
     "<span id=\"mount-path-help\" class=\"help-block\" translate>Mount path for the volume inside the container. If not specified, the volume will not be mounted automatically.</span>\n" +
@@ -1064,9 +1080,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"sub-path\" translate>Subpath</label>\n" +
     "<input id=\"sub-path\" class=\"form-control\" type=\"text\" name=\"subPath\" ng-model=\"attach.subPath\" placeholder=\"example: application/resources\" ng-pattern=\"RELATIVE_PATH_PATTERN\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"sub-path-help\">\n" +
     "<div id=\"sub-path-help\" class=\"help-block\" translate>\n" +
+=======
+    "<label for=\"sub-path\">Subpath</label>\n" +
+    "<input id=\"sub-path\" class=\"form-control\" type=\"text\" name=\"subPath\" ng-model=\"attach.subPath\" placeholder=\"example: application/resources\" ng-pattern=\"RELATIVE_PATH_PATTERN\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"sub-path-help\">\n" +
+    "<div id=\"sub-path-help\" class=\"help-block\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "Optional path within the volume from which it will be mounted into the container. Defaults to the volume's root.\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"attachPVCForm.subPath.$error.pattern && attachPVCForm.subPath.$touched\">\n" +
@@ -1078,7 +1100,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"volume-name\" translate>Volume Name</label>\n" +
     "\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"{{'(generated if empty)'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
+=======
+    "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<div>\n" +
     "<span id=\"volume-name-help\" class=\"help-block\" translate>Unique name used to identify this volume. If not specified, a volume name is generated.</span>\n" +
     "</div>\n" +
@@ -4666,8 +4692,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group has-clear\">\n" +
     "\n" +
     "<div class=\"search-pf-input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"search\" class=\"sr-only\" translate>Filter by name or description</label>\n" +
     "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"{{'Filter by name or description'|translate}}\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<label for=\"search\" class=\"sr-only\">Filter by name or description</label>\n" +
+    "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"Filter by name or description\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.keyword\" ng-click=\"filter.keyword = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -4769,8 +4800,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group has-clear\">\n" +
     "\n" +
     "<div class=\"search-pf-input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"search\" class=\"sr-only\" translate>Filter by name or description</label>\n" +
     "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"{{'Filter by name or description'|translate}}\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<label for=\"search\" class=\"sr-only\">Filter by name or description</label>\n" +
+    "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"Filter by name or description\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.keyword\" ng-click=\"filter.keyword = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -5769,7 +5805,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "\n" +
     "<span ng-show=\"!multiline\" class=\"input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input type=\"text\" ng-model=\"nextArg\" name=\"nextArg\" ng-attr-id=\"{{id}}-add-arg\" on-enter=\"addArg()\" ng-attr-placeholder=\"{{placeholder || ('Add argument' | translate)}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<input type=\"text\" ng-model=\"nextArg\" name=\"nextArg\" ng-attr-id=\"{{id}}-add-arg\" on-enter=\"addArg()\" ng-attr-placeholder=\"{{placeholder || 'Add argument'}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<span class=\"input-group-btn\">\n" +
     "\n" +
     "<a class=\"btn btn-default\" href=\"\" ng-click=\"addArg()\" ng-disabled=\"!nextArg\" ng-attr-aria-disabled=\"!nextArg\" role=\"button\" translate>Add</a>\n" +
@@ -5777,7 +5817,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "\n" +
     "<span ng-show=\"multiline\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<textarea ng-model=\"nextArg\" name=\"nextArg\" rows=\"10\" ng-attr-id=\"{{id}}-add-arg\" ng-attr-placeholder=\"{{placeholder || ('Add argument' | translate)}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<textarea ng-model=\"nextArg\" name=\"nextArg\" rows=\"10\" ng-attr-id=\"{{id}}-add-arg\" ng-attr-placeholder=\"{{placeholder || 'Add argument'}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "      </textarea>\n" +
     "<div class=\"mar-top-md\">\n" +
     "<a class=\"btn btn-default\" href=\"\" ng-click=\"addArg()\" ng-disabled=\"!nextArg\" ng-attr-aria-disabled=\"!nextArg\" role=\"button\" translate>Add</a>\n" +
@@ -6437,7 +6481,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.passwordToken.$invalid && secretForm.passwordToken.$touched }\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"passwordToken\" translate>Password or Token</label>\n" +
+=======
+    "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"passwordToken\">Password or Token</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input class=\"form-control\" id=\"passwordToken\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.passwordToken.$error.required && secretForm.passwordToken.$touched\">\n" +
@@ -6751,8 +6799,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if-end>\n" +
     "<ng-form name=\"forms.deployImage\" class=\"osc-form\">\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"name\" class=\"required\" translate>Name</label>\n" +
     "<div ng-class=\"{'has-error': (forms.deployImage.name.$invalid && forms.deployImage.name.$touched) || nameTaken}\">\n" +
+=======
+    "<label for=\"name\" class=\"required\">Name</label>\n" +
+    "<div ng-class=\"{'has-error': form.name.$invalid || nameTaken}\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input type=\"text\" required select-on-focus minlength=\"2\" maxlength=\"24\" pattern=\"[a-z]([-a-z0-9]*[a-z0-9])?\" ng-model=\"app.name\" id=\"name\" name=\"name\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "</div>\n" +
     "<div class=\"help-block\" translate>Identifies the resources created for this image.</div>\n" +
@@ -7388,8 +7441,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group filter-controls has-clear\">\n" +
     "<div class=\"search-pf-input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"events-filter\" class=\"sr-only\" translate>Filter</label>\n" +
     "<input type=\"search\" placeholder=\"{{'Filter by keyword'|translate}}\" class=\"form-control\" id=\"events-filter\" ng-model=\"filter.text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<label for=\"events-filter\" class=\"sr-only\">Filter</label>\n" +
+    "<input type=\"search\" placeholder=\"Filter by keyword\" class=\"form-control\" id=\"events-filter\" ng-model=\"filter.text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.text\" ng-click=\"filter.text = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -8535,7 +8593,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"has-error\" ng-show=\"uploadError\">\n" +
     "<span class=\"help-block\" translate>There was an error reading the file. Please copy the file content into the text area.</span>\n" +
     "</div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+=======
+    "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "  </textarea>\n" +
     "<a href=\"\" ng-show=\"(model || fileName) && !disabled && !readonly && !hideClear\" ng-click=\"cleanInputValues()\" translate>Clear Value</a>\n" +
     "</div>"
@@ -8629,6 +8691,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"claim-name\" class=\"required\" translate>Name</label>\n" +
 <<<<<<< HEAD
     "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$touched && !claimDisabled }\">\n" +
@@ -8657,6 +8720,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Init translation.
 =======
     "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$dirty && !claimDisabled }\">\n" +
+=======
+    "<label for=\"claim-name\" class=\"required\">Name</label>\n" +
+    "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$touched && !claimDisabled }\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input id=\"claim-name\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"claim.name\" ng-required=\"true\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" placeholder=\"my-storage-claim\" take-focus select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"claim-name-help\">\n" +
 >>>>>>> rebase from poc 3.6
     "</span>\n" +
@@ -8886,7 +8953,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"host\" translate>Hostname</label>\n" +
     "<span ng-class=\"{ 'has-error': routeForm.host.$invalid && routeForm.host.$touched && !routingDisabled }\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input id=\"host\" class=\"form-control\" type=\"text\" name=\"host\" ng-model=\"route.host\" ng-pattern=\"hostnamePattern\" ng-maxlength=\"hostnameMaxLength\" ng-readonly=\"isHostnameReadOnly()\" placeholder=\"www.example.com\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"route-host-help\">\n" +
+=======
+    "<input id=\"host\" class=\"form-control\" type=\"text\" name=\"host\" ng-model=\"route.host\" ng-pattern=\"hostnamePattern\" ng-maxlength=\"hostnameMaxLength\" ng-readonly=\"hostReadOnly\" placeholder=\"www.example.com\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"route-host-help\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</span>\n" +
     "<div>\n" +
     "<span id=\"route-host-help\" class=\"help-block\">\n" +
@@ -9982,7 +10053,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group editor\">\n" +
     "<label for=\"sourceRef\" translate>Git Reference</label>\n" +
     "<div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input class=\"form-control\" id=\"sourceRef\" name=\"sourceRef\" type=\"text\" ng-model=\"updatedBuildConfig.spec.source.git.ref\" placeholder=\"{{'master'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"source-ref-help\">\n" +
+=======
+    "<input class=\"form-control\" id=\"sourceRef\" name=\"sourceRef\" type=\"text\" ng-model=\"updatedBuildConfig.spec.source.git.ref\" placeholder=\"master\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"source-ref-help\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "<div class=\"help-block\" id=\"source-ref-help\" translate>Optional branch, tag, or commit.</div>\n" +
     "</div>\n" +
@@ -10052,13 +10127,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"imageOptions.fromSource.type==='ImageStreamImage'\" class=\"form-group\">\n" +
     "<label for=\"imageSourceImage\" translate>Image Stream Image</label>\n" +
     "<div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.fromSource.imageStreamImage\" placeholder=\"{{'example: openshift/ruby-20-centos7@603bfa418'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+=======
+    "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.fromSource.imageStreamImage\" placeholder=\"example: openshift/ruby-20-centos7@603bfa418\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"imageOptions.fromSource.type==='DockerImage'\" class=\"form-group\">\n" +
     "<label for=\"imageSourceLink\" translate>Docker Image Repository</label>\n" +
     "<div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input class=\"form-control\" id=\"imageSourceLink\" name=\"imageSourceLink\" type=\"text\" ng-model=\"imageOptions.fromSource.dockerImage\" placeholder=\"{{'example: centos/ruby-20-centos7:latest'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+=======
+    "<input class=\"form-control\" id=\"imageSourceLink\" name=\"imageSourceLink\" type=\"text\" ng-model=\"imageOptions.fromSource.dockerImage\" placeholder=\"example: centos/ruby-20-centos7:latest\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
@@ -10102,9 +10185,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"jenkinsfileOptions.type === 'path'\" class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"jenkinsfilePath\" translate>Jenkinsfile Source Path</label>\n" +
     "<input class=\"form-control\" id=\"jenkinsfilePath\" name=\"jenkinsfilePath\" type=\"text\" ng-model=\"updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"jenkinsfile-path-help\">\n" +
     "<div class=\"help-block\" id=\"jenkinsfile-path-help\" translate>\n" +
+=======
+    "<label for=\"jenkinsfilePath\">Jenkinsfile Source Path</label>\n" +
+    "<input class=\"form-control\" id=\"jenkinsfilePath\" name=\"jenkinsfilePath\" type=\"text\" ng-model=\"updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"jenkinsfile-path-help\">\n" +
+    "<div class=\"help-block\" id=\"jenkinsfile-path-help\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "Optional path to the Jenkinsfile relative to the context dir. Defaults to the Jenkinsfile in context dir.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10154,13 +10243,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"imageOptions.from.type==='DockerImage'\" class=\"form-group\">\n" +
     "<label for=\"FromTypeLink\" translate>Docker Image Repository</label>\n" +
     "<div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.from.dockerImage\" autocorrect=\"off\" autocapitalize=\"none\" placeholder=\"{{'example: centos/ruby-20-centos7:latest'|translate}}\" spellcheck=\"false\" required>\n" +
+=======
+    "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.from.dockerImage\" autocorrect=\"off\" autocapitalize=\"none\" placeholder=\"example: centos/ruby-20-centos7:latest\" spellcheck=\"false\" required>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"imageOptions.from.type==='ImageStreamImage'\" class=\"form-group\">\n" +
     "<label for=\"FromTypeImage\" translate>Image Stream Image</label>\n" +
     "<div>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.from.imageStreamImage\" placeholder=\"{{'example: openshift/ruby-20-centos7@603bfa418'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+=======
+    "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.from.imageStreamImage\" placeholder=\"example: openshift/ruby-20-centos7@603bfa418\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10660,7 +10757,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!containerConfig.hasDeploymentTrigger\" class=\"form-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"imageName\" class=\"required\" translate>Image Name</label>\n" +
+=======
+    "<label for=\"imageName\" class=\"required\">Image Name</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input class=\"form-control\" id=\"imageName\" name=\"imageName\" ng-model=\"containerConfig.image\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11225,7 +11326,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Name\n" +
     "</label>\n" +
     "\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input ng-if=\"newBinding.kind !== 'ServiceAccount'\" type=\"text\" class=\"form-control input-name\" placeholder=\"{{'Name'|translate}}\" ng-model=\"newBinding.name\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<input ng-if=\"newBinding.kind !== 'ServiceAccount'\" type=\"text\" class=\"form-control input-name\" placeholder=\"Name\" ng-model=\"newBinding.name\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "\n" +
     "<div ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"service-account-namespace\" aria-hidden=\"true\">\n" +
     "<ui-select ng-model=\"newBinding.namespace\" on-select=\"selectProject($item, $model)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"{{'Select a project'|translate}}\" class=\"select-role\">\n" +
@@ -11535,7 +11640,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-show=\"typeNameToConfirm\">\n" +
     "<p translate>Type the name of the {{typeDisplayName || (kind | humanizeKind)}} to confirm.</p>\n" +
     "<p>\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label class=\"sr-only\" for=\"resource-to-delete\" translate>{{typeDisplayName || (kind | humanizeKind)}} to delete</label>\n" +
+=======
+    "<label class=\"sr-only\" for=\"resource-to-delete\">{{typeDisplayName || (kind | humanizeKind)}} to delete</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input ng-model=\"confirmName\" id=\"resource-to-delete\" type=\"text\" class=\"form-control input-lg\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" autofocus>\n" +
     "</p>\n" +
     "</div>\n" +
@@ -11645,8 +11754,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group filter-controls has-clear\">\n" +
     "<div class=\"search-pf-input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"name-filter\" class=\"sr-only\" translate>Filter by name</label>\n" +
     "<input type=\"search\" placeholder=\"{{'Filter by name'|translate}}\" class=\"form-control\" id=\"name-filter\" ng-model=\"filters.text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+=======
+    "<label for=\"name-filter\" class=\"sr-only\">Filter by name</label>\n" +
+    "<input type=\"search\" placeholder=\"Filter by name\" class=\"form-control\" id=\"name-filter\" ng-model=\"filters.text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filters.text\" ng-click=\"filters.text = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -12165,7 +12279,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group filter-controls has-clear\">\n" +
     "<div class=\"search-pf-input-group\">\n" +
+<<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"name-filter\" class=\"sr-only\" translate>Filter by name</label>\n" +
+=======
+    "<label for=\"name-filter\" class=\"sr-only\">Filter by name</label>\n" +
+>>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input type=\"text\" class=\"form-control\" ng-model=\"overview.filterText\" placeholder=\"Filter by name\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-disabled=\"overview.disableFilter\">\n" +
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"overview.filterText && !overview.disableFilter\" ng-click=\"overview.filterText = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +

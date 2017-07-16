@@ -1,52 +1,128 @@
-<div class="middle surface-shaded" ng-show="buildConfig">
-  <div class="middle-content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
-          <alerts alerts="alerts"></alerts>
-          <div ng-if="!loaded" translate>Loading...</div>
-          <h1>
-            <translate>Edit Build Config {{buildConfig.metadata.name}}</translate>
-            <small>&mdash; {{strategyType | startCase}} <translate>Build Strategy</translate></small>
-          </h1>
-          <fieldset ng-disabled="disableInputs">
-            <form class="edit-form" name="form" novalidate ng-submit="save()">
-              <div ng-if="buildConfig.spec.source.type !== 'None'" class="section">
-                <h3 translate>Source Configuration</h3>
-                <dl class="dl-horizontal left">
-                  <div ng-if="sources.git">
-                    <div class="row">
-                      <div ng-class="{
-                        'col-lg-8': view.advancedOptions,
-                        'col-lg-12': !view.advancedOptions}">
-                        <div class="form-group">
-                          <label for="sourceUrl" class="required" translate>Git Repository URL</label>
-                          <div ng-class="{
-                            'has-warning': form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri),
-                            'has-error': form.sourceUrl.$touched && form.sourceUrl.$error.required
-                          }">
-                            <!-- Unfortunately, we can't set type="url" because some valid values don't pass browser validation. -->
-                            <input class="form-control"
-                              id="sourceUrl"
-                              name="sourceUrl"
-                              ng-model="updatedBuildConfig.spec.source.git.uri"
-                              type="text"
-                              autocorrect="off"
-                              autocapitalize="none"
-                              spellcheck="false"
-                              aria-describedby="source-url-help"
-                              required>
+<default-header class="top-header"></default-header>
+<div class="wrap no-sidebar">
+  <div class="sidebar-left collapse navbar-collapse navbar-collapse-2">
+    <navbar-utility-mobile></navbar-utility-mobile>
+  </div>
+  <div class="middle surface-shaded">
+    <!-- Middle section -->
+    <div class="middle-section" ng-show="buildConfig">
+      <div class="middle-container">
+        <div class="middle-content">
+          <div class="container surface-shaded">
+            <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
+            <alerts alerts="alerts"></alerts>
+            <div ng-if="!loaded" translate>Loading...</div>
+            <h1>
+              Edit Build Config {{buildConfig.metadata.name}}
+              <small>&mdash; {{strategyType | startCase}} Build Strategy</small>
+            </h1>
+            <fieldset ng-disabled="disableInputs">
+              <form class="edit-form" name="form" novalidate ng-submit="save()">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div ng-if="buildConfig.spec.source.type !== 'None'" class="section">
+                      <h3 translate>Source Configuration</h3>
+                      <dl class="dl-horizontal left">
+                        <div ng-if="sources.git">
+                          <div class="row">
+                            <div ng-class="{
+                              'col-lg-8': view.advancedOptions,
+                              'col-lg-12': !view.advancedOptions}">
+                              <div class="form-group">
+                                <label for="sourceUrl" class="required">Git Repository URL</label>
+                                <div ng-class="{
+                                  'has-warning': form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri),
+                                  'has-error': form.sourceUrl.$touched && form.sourceUrl.$error.required
+                                }">
+                                  <!-- Unfortunately, we can't set type="url" because some valid values don't pass browser validation. -->
+                                  <input class="form-control"
+                                    id="sourceUrl"
+                                    name="sourceUrl"
+                                    ng-model="updatedBuildConfig.spec.source.git.uri"
+                                    type="text"
+                                    autocorrect="off"
+                                    autocapitalize="none"
+                                    spellcheck="false"
+                                    aria-describedby="source-url-help"
+                                    required>
+                                </div>
+                                <div class="help-block" id="source-url-help">
+                                  Git URL of the source code to build.
+                                  <span ng-if="!view.advancedOptions">If your Git repository is private, view the <a href="" ng-click="view.advancedOptions = true">advanced options</a> to set up authentication.</span>
+                                </div>
+                                <div class="has-error" ng-if="form.sourceUrl.$touched && form.sourceUrl.$error.required">
+                                  <span class="help-block">A Git repository URL is required.</span>
+                                </div>
+                                <div class="has-warning" ng-if="updatedBuildConfig.spec.source.git.uri && form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri)">
+                                  <span class="help-block">This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository.</span>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="col-lg-4" ng-if="view.advancedOptions">
+                              <div class="form-group editor">
+                                <label for="sourceRef">Git Reference</label>
+                                <div>
+                                  <input class="form-control"
+                                    id="sourceRef"
+                                    name="sourceRef"
+                                    type="text"
+                                    ng-model="updatedBuildConfig.spec.source.git.ref"
+                                    placeholder="master"
+                                    autocorrect="off"
+                                    autocapitalize="none"
+                                    spellcheck="false"
+                                    aria-describedby="source-ref-help">
+                                </div>
+                                <div class="help-block" id="source-ref-help">Optional branch, tag, or commit.</div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="help-block" id="source-url-help">
-                            <translate>Git URL of the source code to build.</translate>
-                            <span ng-if="!view.advancedOptions" translate>If your Git repository is private, view the <a href="" ng-click="view.advancedOptions = true">advanced options</a> to set up authentication.</span>
+
+                          <div ng-if="view.advancedOptions">
+                            <div class="form-group">
+                              <label for="sourceContextDir">Context Dir</label>
+                              <div>
+                                <input class="form-control"
+                                  id="sourceContextDir"
+                                  name="sourceContextDir"
+                                  type="text"
+                                  ng-model="updatedBuildConfig.spec.source.contextDir"
+                                  placeholder="/"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false"
+                                  aria-describedby="context-dir-help">
+                              </div>
+                              <div class="help-block" id="context-dir-help">Optional subdirectory for the application source code, used as the context directory for the build.</div>
+                            </div>
+                            <div class="form-group">
+                              <osc-secrets model="secrets.picked.gitSecret"
+                                          namespace="projectName"
+                                          display-type="source"
+                                          type="source"
+                                          service-account-to-link="builder"
+                                          secrets-by-type="secrets.secretsByType"
+                                          alerts="alerts">
+                              </osc-secrets>
+                            </div>
                           </div>
                           <div class="has-error" ng-if="form.sourceUrl.$touched && form.sourceUrl.$error.required">
                             <span class="help-block" translate>A Git repository URL is required.</span>
                           </div>
-                          <div class="has-warning" ng-if="updatedBuildConfig.spec.source.git.uri && form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri)">
-                            <span class="help-block" translate>This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository.</span>
+
+                          <div class="form-group" ng-if="updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath && view.advancedOptions">
+                            <label for="dockerfilePath">Dockerfile Path</label>
+                            <div>
+                              <input class="form-control"
+                                id="dockerfilePath"
+                                name="dockerfilePath"
+                                type="text"
+                                ng-model="updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath"
+                                autocorrect="off"
+                                autocapitalize="none"
+                                spellcheck="false">
+                            </div>
                           </div>
                         </div>
 
@@ -71,35 +147,71 @@
                       </div>
                     </div>
 
-                    <div ng-if="view.advancedOptions">
-                      <div class="form-group">
-                        <label for="sourceContextDir" translate>Context Dir</label>
-                        <div>
-                          <input class="form-control"
-                            id="sourceContextDir"
-                            name="sourceContextDir"
-                            type="text"
-                            ng-model="updatedBuildConfig.spec.source.contextDir"
-                            placeholder="/"
-                            autocorrect="off"
-                            autocapitalize="none"
-                            spellcheck="false"
-                            aria-describedby="context-dir-help">
-                        </div>
-                        <div class="help-block" id="context-dir-help" translate>Optional subdirectory for the application source code, used as the context directory for the build.</div>
-                      </div>
-                      <div class="form-group">
-                        <osc-secrets model="secrets.picked.gitSecret"
-                                    namespace="projectName"
-                                    display-type="source"
-                                    type="source"
-                                    service-account-to-link="builder"
-                                    secrets-by-type="secrets.secretsByType"
-                                    alerts="alerts">
-                        </osc-secrets>
-                      </div>
-                    </div>
-                  </div>
+                        <div class="form-groups" ng-show="sources.images">
+                          <div class="single-image-source" ng-if="sourceImages.length === 1">
+
+                            <div class="form-group">
+                              <label>Image Source From</label>
+                              <ui-select required ng-model="imageOptions.fromSource.type" search-enabled="false">
+                                <ui-select-match>{{$select.selected | startCase}}</ui-select-match>
+                                <ui-select-choices repeat="type in imageSourceTypes">
+                                  {{type | startCase}}
+                                </ui-select-choices>
+                              </ui-select>
+                            </div>
+
+                            <div class="form-group" ng-if="imageOptions.fromSource.type==='ImageStreamTag'" >
+                              <istag-select include-shared-namespace="true"
+                                            select-required="true"
+                                            model="imageOptions.fromSource.imageStreamTag"></istag-select>
+                            </div>
+
+                            <div ng-if="imageOptions.fromSource.type==='ImageStreamImage'" class="form-group">
+                              <label for="imageSourceImage" translate>Image Stream Image</label>
+                              <div>
+                                <input class="form-control"
+                                  type="text"
+                                  ng-model="imageOptions.fromSource.imageStreamImage"
+                                  placeholder="example: openshift/ruby-20-centos7@603bfa418"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false"
+                                  required>
+                              </div>
+                            </div>
+
+
+                            <div ng-if="imageOptions.fromSource.type==='DockerImage'" class="form-group">
+                              <label for="imageSourceLink" translate>Docker Image Repository</label>
+                              <div>
+                                <input class="form-control"
+                                  id="imageSourceLink"
+                                  name="imageSourceLink"
+                                  type="text"
+                                  ng-model="imageOptions.fromSource.dockerImage"
+                                  placeholder="example: centos/ruby-20-centos7:latest"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false"
+                                  required>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="buildFrom" translate>Source and Destination Paths<span class="help action-inline">
+                                <a href="">
+                                <i class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="Paths is a list of source and destination paths to copy from the image. At least one pair has to be specified."></i>
+                                </a>
+                              </span></label>
+                              <key-value-editor
+                                entries="imageSourcePaths"
+                                key-placeholder="Source Path"
+                                key-validator="\/.*?$"
+                                value-placeholder="Destination Dir"
+                                key-validator-error-tooltip="A valid Source Path is an absolute path beginning with '/'"
+                                add-row-link="Add image source path"></key-value-editor>
+                            </div>
+                          </div>
 
                   <div ng-if="sources.dockerfile">
                     <div class="form-group">
@@ -157,10 +269,21 @@
                         </ui-select>
                       </div>
 
-                      <div class="form-group" ng-if="imageOptions.fromSource.type==='ImageStreamTag'" >
-                        <istag-select include-shared-namespace="true"
-                                      select-required="true"
-                                      model="imageOptions.fromSource.imageStreamTag"></istag-select>
+                      <div ng-if="jenkinsfileOptions.type === 'path'" class="form-group">
+                        <label for="jenkinsfilePath">Jenkinsfile Source Path</label>
+                        <input class="form-control"
+                               id="jenkinsfilePath"
+                               name="jenkinsfilePath"
+                               type="text"
+                               ng-model="updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath"
+                               autocorrect="off"
+                               autocapitalize="none"
+                               spellcheck="false"
+                               aria-describedby="jenkinsfile-path-help">
+                        <div class="help-block" id="jenkinsfile-path-help">
+                          Optional path to the Jenkinsfile relative to the context dir.
+                          Defaults to the Jenkinsfile in context dir.
+                        </div>
                       </div>
 
                       <div ng-if="imageOptions.fromSource.type==='ImageStreamImage'" class="form-group">
@@ -260,54 +383,34 @@
                   </div>
                 </div>
 
-                <div ng-if="jenkinsfileOptions.type === 'inline'">
-                  <label>Jenkinsfile</label>
-                  <div ui-ace="{
-                    mode: 'groovy',
-                    theme: 'eclipse',
-                    rendererOptions: {
-                      fadeFoldWidgets: true,
-                      showPrintMargin: false
-                    }
-                  }" ng-model="updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile" class="ace-bordered ace-inline"></div>
-                </div>
-                <div class="mar-top-md mar-bottom-md">
-                  <a ng-if="!view.jenkinsfileExamples" href="" ng-click="view.jenkinsfileExamples = true" translate>What's a Jenkinsfile?</a>
-                </div>
-                <div ng-if="view.jenkinsfileExamples" class="editor-examples">
-                  <div class="pull-right mar-top-md">
-                    <a href="" ng-click="view.jenkinsfileExamples = false" translate>Hide examples</a>
-                  </div>
-                  <h4 translate>Jenkinsfile Examples</h4>
-                  <ng-include src="'views/edit/jenkinsfile-examples.html'"></ng-include>
-                </div>
-              </div>
-              <div ng-if="sources.none && !(updatedBuildConfig | isJenkinsPipelineStrategy)">
-                <div class="form-group">
-                  <i translate>No source inputs have been defined for this build configuration.</i>
-                </div>
-              </div>
+                          <div ng-if="imageOptions.from.type==='DockerImage'" class="form-group">
+                            <label for="FromTypeLink">Docker Image Repository</label>
+                            <div>
+                              <input class="form-control"
+                                type="text"
+                                ng-model="imageOptions.from.dockerImage"
+                                autocorrect="off"
+                                autocapitalize="none"
+                                placeholder="example: centos/ruby-20-centos7:latest"
+                                spellcheck="false"
+                                required>
+                            </div>
+                          </div>
 
-              <div ng-if="strategyType !== 'JenkinsPipeline'" class="section">
-                <h3 class="with-divider" translate>Image Configuration</h3>
-                <dl class="dl-horizontal left">
-
-                  <div>
-                    <div class="form-group">
-                      <label for="buildFrom">Build From</label>
-                      <ui-select required ng-model="imageOptions.from.type" search-enabled="false">
-                        <ui-select-match>{{$select.selected | startCase}}</ui-select-match>
-                        <ui-select-choices repeat="type in buildFromTypes">
-                          {{type | startCase}}
-                        </ui-select-choices>
-                      </ui-select>
-                    </div>
-
-                    <div class="form-group" ng-if="imageOptions.from.type==='ImageStreamTag'">
-                      <istag-select include-shared-namespace="true"
-                                    select-required="true"
-                                    model="imageOptions.from.imageStreamTag"></istag-select>
-                    </div>
+                          <div ng-if="imageOptions.from.type==='ImageStreamImage'" class="form-group">
+                            <label for="FromTypeImage">Image Stream Image</label>
+                            <div>
+                              <input class="form-control"
+                                type="text"
+                                ng-model="imageOptions.from.imageStreamImage"
+                                placeholder="example: openshift/ruby-20-centos7@603bfa418"
+                                autocorrect="off"
+                                autocapitalize="none"
+                                spellcheck="false"
+                                required>
+                            </div>
+                          </div>
+                        </div>
 
                     <div ng-if="imageOptions.from.type==='DockerImage'" class="form-group">
                       <label for="FromTypeLink" translate>Docker Image Repository</label>
@@ -354,14 +457,21 @@
                     </div>
                   </div>
 
-                  <div class="form-group" ng-if="view.advancedOptions">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" ng-model="options.forcePull">
-                        <translate>Always pull the builder image from the docker registry, even if it is present locally</translate>
-                      </label>
-                    </div>
-                  </div>
+                          <div ng-if="imageOptions.to.type==='DockerImage'" class="form-group">
+                            <label for="pushToLink">Docker Image Repository</label>
+                            <div>
+                              <input class="form-control"
+                                id="pushToLink"
+                                name="pushToLink"
+                                type="text"
+                                ng-model="imageOptions.to.dockerImage"
+                                placeholder="example: centos/ruby-20-centos7:latest"
+                                autocorrect="off"
+                                autocapitalize="none"
+                                spellcheck="false"
+                                required>
+                            </div>
+                          </div>
 
                   <div>
                     <div class="form-group">
