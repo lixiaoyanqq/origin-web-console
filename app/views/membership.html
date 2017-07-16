@@ -3,7 +3,20 @@
     <div class="container-fluid">
       <div class="page-header page-header-bleed-right page-header-bleed-left">
         <h1>
+          <a
+            class="pull-right btn btn-default"
+            href=""
+            ng-if="canUpdateRolebindings"
+            ng-click="toggleEditMode()">
+            <span ng-if="!(mode.edit)">Edit Membership</span>
+            <span ng-if="mode.edit">Done Editing</span>
+          </a>
           <translate>Membership</translate>
+          <span class="page-header-link">
+             <a ng-href="{{'roles' | helpLink}}" target="_blank">
+               Learn More <i class="fa fa-external-link" aria-hidden="true"></i>
+             </a>
+           </span>
         </h1>
       </div>
     </div>
@@ -11,11 +24,6 @@
   <div class="middle-content" persist-tab-state>
     <div class="container-fluid">
       <alerts alerts="alerts"></alerts>
-      <div class="row">
-        <div class="col-md-12">
-
-        </div>
-      </div>
       <div  ng-if="!(roleBindingsVersion | canI : 'list')">
         <p translate>You do not have permission to view roles in this project.</p>
       </div>
@@ -41,23 +49,18 @@
             </p>
           </div>
           <div
-            column
             class="content-pane"
             ng-class="'content-' + subjectKind.name.toLowerCase()">
 
             <div
-              class="col-heading"
-              flex-collapse-fix>
-              <div class="col-name" flex ng-class="{ 'half-width': !mode.edit }">
+              class="col-heading">
+              <div class="col-name">
                 <h3 translate>Name</h3>
               </div>
-              <div class="col-roles" flex>
-                <h3 translate>Roles</h3>
-              </div>
-              <div ng-if="mode.edit" class="col-add-role visible-md-block visible-lg-block" flex-collapse-fix>
-                <h3 translate>
-                  Add Another Role
-                </h3>
+              <div class="action-set">
+                <div class="col-roles">
+                  <h3 translate>Roles</h3>
+                </div>
               </div>
             </div>
 
@@ -68,9 +71,8 @@
             </div>
             <div
               ng-repeat="subject in subjectKind.subjects"
-              class="item-row highlight-hover"
-              row mobile="column">
-              <div class="col-name" row flex cross-axis="center" ng-class="{ 'half-width': !mode.edit }">
+              class="item-row highlight-hover">
+              <div class="col-name">
                 <a
                   ng-if="subject.namespace"
                   target="_blank"
@@ -106,15 +108,14 @@
                 <div
                   ng-if="mode.edit"
                   class="col-add-role">
-                  <div row>
+                  <div class="col-add-role-inputs">
                     <ui-select
                       ng-if="filteredRoles.length"
                       ng-model="subject.newRole"
                       theme="bootstrap"
                       search-enabled="true"
                       title="Select a new role for {{subject.name}}"
-                      class="select-role"
-                      flex>
+                      class="select-role">
                       <ui-select-match
                         placeholder="Select a role">
                         <span ng-bind="subject.newRole.metadata.name"></span>
@@ -221,15 +222,14 @@
                 </div>
                 <div class="action-set">
                   <div class="col-add-role">
-                    <div ng-show="mode.edit" row>
+                    <div ng-show="mode.edit" class="col-add-role-inputs">
                       <ui-select
                         ng-if="filteredRoles.length"
                         ng-model="newBinding.newRole"
                         theme="bootstrap"
                         search-enabled="true"
                         title="new {{subjectKind.name}} role"
-                        class="select-role"
-                        flex>
+                        class="select-role">
                         <ui-select-match
                           placeholder="Select a role">
                           <span ng-bind="newBinding.newRole.metadata.name"></span>
@@ -261,8 +261,6 @@
             <div
               ng-if="mode.edit"
               class="show-hidden-roles">
-              <div class="action-set">
-                <div class="col-add-role">
                   <div class="checkbox">
                     <label>
                       <input
@@ -270,20 +268,14 @@
                         class="toggle-hidden"
                         ng-click="toggleRoles($event)"
                         ng-checked="toggle.roles">
-		      <translate>Show hidden roles</translate>
-		    </label>&nbsp;
-		    <a href=""
-                       class="action-inline"
+                      <translate>Show hidden roles</translate></label>&nbsp;<a href=""
+                        class="action-inline"
                        data-toggle="popover"
                        data-trigger="hover focus"
-                       data-content="System roles are hidden by default and do not typically need to be managed.">
-			    <i class="pficon pficon-help"></i>
-		    </a>
+                       data-content="System roles are hidden by default and do not typically need to be managed."><i class="pficon pficon-help"></i></a>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
         </uib-tab>
       </uib-tabset>
     </div>

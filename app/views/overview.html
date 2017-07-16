@@ -22,6 +22,9 @@
             <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromFile')" translate>
               Import YAML / JSON
             </button>
+            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromProject')">
+              Select from Project
+            </button>
           </div>
         </div>
         <div ng-if="!(project.metadata.name | canIAddToProject)">
@@ -109,7 +112,7 @@
           <div ng-if="overview.everythingFiltered && overview.viewBy !== 'pipeline'">
             <div class="empty-state-message text-center h2">
 		    <translate>The filter is hiding all resources.</translate>
-              <a href="" ng-click="overview.clearFilter()" role="button" class="nowrap" translate>Clear Filter</a>
+              <button type="button" class="btn btn-link inline-btn-link" ng-click="overview.clearFilter()">Clear All Filters</button>
             </div>
           </div>
           <div ng-if="!overview.everythingFiltered || overview.viewBy === 'pipeline'">
@@ -119,8 +122,8 @@
                   <div class="component-label" translate>Application</div>
                   <span ng-bind-html="app | highlightKeywords : overview.state.filterKeywords"></span>
                 </h2>
-                <div ng-if="route = overview.bestRouteByApp[app]" class="pull-right">
-                  <h3 class="overview-route">
+                <div class="overview-routes" ng-if="overview.routesToDisplayByApp[app] | size">
+                  <h3 class="overview-route" ng-repeat="route in overview.routesToDisplayByApp[app] track by (route | uid)">
                     <span ng-if="route | isWebRoute">
                       <a ng-href="{{route | routeWebURL}}" target="_blank">
                         {{route | routeLabel}}
@@ -165,6 +168,11 @@
                      ng-repeat="statefulSet in overview.filteredStatefulSetsByApp[app] track by (statefulSet | uid)"
                      api-object="statefulSet"
                      state="overview.state">
+                </overview-list-row>
+                <overview-list-row
+                  ng-repeat="daemonSet in overview.filteredDaemonSetsByApp[app] track by (daemonSet | uid)"
+                  api-object="daemonSet"
+                  state="overview.state">
                 </overview-list-row>
                 <overview-list-row
                      ng-repeat="pod in overview.filteredMonopodsByApp[app] track by (pod | uid)"
@@ -236,6 +244,16 @@
                   </overview-list-row>
                 </div>
               </div>
+              <div ng-if="overview.filteredDaemonSets | hashSize">
+                <h2>Daemon Sets</h2>
+                <div class="list-pf">
+                  <overview-list-row
+                    ng-repeat="daemonSet in overview.filteredDaemonSets track by (daemonSet | uid)"
+                    api-object="daemonSet"
+                    state="overview.state">
+                  </overview-list-row>
+                </div>
+              </div>
               <div ng-if="overview.filteredMonopods | hashSize">
                 <h2 translate>Pods</h2>
                 <div class="list-pf">
@@ -254,6 +272,11 @@
                 <div ng-if="project.metadata.name | canIAddToProject">
                   <p>
                     No pipelines have been added to project {{projectName}}.
+                    <br>
+                    Learn more about
+                    <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank">Pipeline Builds</a>
+                    and the
+                    <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank">OpenShift Pipeline Plugin</a>.
                   </p>
                   <p ng-if="(project.metadata.name | canIAddToProject) && overview.samplePipelineURL">
                     <a ng-href="{{overview.samplePipelineURL}}" class="btn btn-lg btn-primary" translate>
@@ -268,7 +291,7 @@
               <div ng-if="(overview.pipelineBuildConfigs | hashSize) && !(overview.filteredPipelineBuildConfigs | hashSize)">
                 <div class="empty-state-message text-center h2">
                   <translate>All pipelines are filtered.</translate>
-                  <a href="" ng-click="overview.clearFilter()" role="button" class="nowrap" translate>Clear Filter</a>
+                  <button type="button" class="btn btn-link inline-btn-link" ng-click="overview.clearFilter()">Clear All Filters</button>
                 </div>
               </div>
               <div ng-repeat="pipeline in overview.filteredPipelineBuildConfigs track by (pipeline | uid)">
@@ -344,6 +367,12 @@
                      api-object="statefulSet"
                      state="overview.state">
                 </overview-list-row>
+
+                <overview-list-row
+                  ng-repeat="daemonSet in overview.daemonSets track by (daemonSet | uid)"
+                  api-object="daemonSet"
+                  state="overview.state">
+                </overview-list-row>
                 <overview-list-row
                      ng-repeat="pod in overview.monopods track by (pod | uid)"
                      api-object="pod"
@@ -351,7 +380,26 @@
                 </overview-list-row>
               </div>
             </div>
-
+            <!-- Show Mobile Apps -->
+            <div ng-if="(overview.filteredMobileClients | size) && AEROGEAR_MOBILE_ENABLED && !overview.hidePipelineOtherResources">
+              <h2>Mobile Clients</h2>
+              <div class="list-pf">
+                <mobile-client-row
+                  ng-repeat="mobileapp in overview.filteredMobileClients track by (mobileapp | uid)"
+                  api-object="mobileapp"
+                  state="overview.state"></mobile-client-row>
+              </div>
+            </div>
+            <!-- Show Kubevirt Virtual Machines -->
+            <div ng-if="(overview.filteredOfflineVirtualMachines | size) && !overview.hidePipelineOtherResources">
+              <h2>Virtual Machines</h2>
+              <div class="list-pf">
+                <virtual-machine-row
+                  ng-repeat="ovm in overview.filteredOfflineVirtualMachines track by (ovm | uid)"
+                  api-object="ovm"
+                  state="overview.state"></virtual-machine-row>
+              </div>
+            </div>
             <!-- Show provisioned services. -->
             <div ng-if="overview.filteredServiceInstances.length && !overview.hidePipelineOtherResources">
               <h2 translate>

@@ -7,8 +7,8 @@
           <alerts alerts="alerts"></alerts>
           <div ng-if="!loaded">Loading...</div>
           <h1>
-		  <translate>Edit Build Config</translate> {{buildConfig.metadata.name}}
-		  <small>&mdash; {{strategyType | startCase}} <translate>Build Strategy</translate></small>
+            <translate>Edit Build Config</translate> {{buildConfig.metadata.name}}
+            <small>&mdash; {{strategyType | startCase}} <translate>Build Strategy</translate></small>
           </h1>
           <fieldset ng-disabled="disableInputs">
             <form class="edit-form" name="form" novalidate ng-submit="save()">
@@ -28,15 +28,15 @@
                           }">
                             <!-- Unfortunately, we can't set type="url" because some valid values don't pass browser validation. -->
                             <input class="form-control"
-                              id="sourceUrl"
-                              name="sourceUrl"
-                              ng-model="updatedBuildConfig.spec.source.git.uri"
-                              type="text"
-                              autocorrect="off"
-                              autocapitalize="none"
-                              spellcheck="false"
-                              aria-describedby="source-url-help"
-                              required>
+                                   id="sourceUrl"
+                                   name="sourceUrl"
+                                   ng-model="updatedBuildConfig.spec.source.git.uri"
+                                   type="text"
+                                   autocorrect="off"
+                                   autocapitalize="none"
+                                   spellcheck="false"
+                                   aria-describedby="source-url-help"
+                                   required>
                           </div>
                           <div class="help-block" id="source-url-help">
                             Git URL of the source code to build.
@@ -56,15 +56,15 @@
                           <label for="sourceRef" translate>Git Reference</label>
                           <div>
                             <input class="form-control"
-                              id="sourceRef"
-                              name="sourceRef"
-                              type="text"
-                              ng-model="updatedBuildConfig.spec.source.git.ref"
-                              placeholder="master"
-                              autocorrect="off"
-                              autocapitalize="none"
-                              spellcheck="false"
-                              aria-describedby="source-ref-help">
+                                   id="sourceRef"
+                                   name="sourceRef"
+                                   type="text"
+                                   ng-model="updatedBuildConfig.spec.source.git.ref"
+                                   placeholder="master"
+                                   autocorrect="off"
+                                   autocapitalize="none"
+                                   spellcheck="false"
+                                   aria-describedby="source-ref-help">
                           </div>
                           <div class="help-block" id="source-ref-help" translate>Optional branch, tag, or commit.</div>
                         </div>
@@ -76,26 +76,26 @@
                         <label for="sourceContextDir" translate>Context Dir</label>
                         <div>
                           <input class="form-control"
-                            id="sourceContextDir"
-                            name="sourceContextDir"
-                            type="text"
-                            ng-model="updatedBuildConfig.spec.source.contextDir"
-                            placeholder="/"
-                            autocorrect="off"
-                            autocapitalize="none"
-                            spellcheck="false"
-                            aria-describedby="context-dir-help">
+                                 id="sourceContextDir"
+                                 name="sourceContextDir"
+                                 type="text"
+                                 ng-model="updatedBuildConfig.spec.source.contextDir"
+                                 placeholder="/"
+                                 autocorrect="off"
+                                 autocapitalize="none"
+                                 spellcheck="false"
+                                 aria-describedby="context-dir-help">
                         </div>
                         <div class="help-block" id="context-dir-help" translate>Optional subdirectory for the application source code, used as the context directory for the build.</div>
                       </div>
                       <div class="form-group">
                         <osc-secrets model="secrets.picked.gitSecret"
-                                    namespace="projectName"
-                                    display-type="source"
-                                    type="source"
-                                    service-account-to-link="builder"
-                                    secrets-by-type="secrets.secretsByType"
-                                    alerts="alerts">
+                                     namespace="projectName"
+                                     display-type="source"
+                                     type="source"
+                                     service-account-to-link="builder"
+                                     secrets-by-type="secrets.secretsByType"
+                                     alerts="alerts">
                         </osc-secrets>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
 
                   <div ng-if="sources.dockerfile">
                     <div class="form-group">
-                    <label for="buildFrom">Dockerfile</label>
+                      <label for="buildFrom">Dockerfile</label>
                       <div ui-ace="{
                         mode: 'dockerfile',
                         theme: 'dreamweaver',
@@ -118,13 +118,13 @@
                       <label for="dockerfilePath" translate>Dockerfile Path</label>
                       <div>
                         <input class="form-control"
-                          id="dockerfilePath"
-                          name="dockerfilePath"
-                          type="text"
-                          ng-model="updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath"
-                          autocorrect="off"
-                          autocapitalize="none"
-                          spellcheck="false">
+                               id="dockerfilePath"
+                               name="dockerfilePath"
+                               type="text"
+                               ng-model="updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath"
+                               autocorrect="off"
+                               autocapitalize="none"
+                               spellcheck="false">
                       </div>
                     </div>
                   </div>
@@ -143,6 +143,7 @@
                       </label>
                     </div>
                   </div>
+
                   <div class="form-groups" ng-show="sources.images">
                     <div class="single-image-source" ng-if="sourceImages.length === 1">
 
@@ -166,13 +167,13 @@
                         <label for="imageSourceImage" translate>Image Stream Image</label>
                         <div>
                           <input class="form-control"
-                            type="text"
-                            ng-model="imageOptions.fromSource.imageStreamImage"
-                            placeholder="example: openshift/ruby-20-centos7@603bfa418"
-                            autocorrect="off"
-                            autocapitalize="none"
-                            spellcheck="false"
-                            required>
+                                 type="text"
+                                 ng-model="imageOptions.fromSource.imageStreamImage"
+                                 placeholder="example: openshift/ruby-20-centos7@603bfa418"
+                                 autocorrect="off"
+                                 autocapitalize="none"
+                                 spellcheck="false"
+                                 required>
                         </div>
                       </div>
 
@@ -181,15 +182,15 @@
                         <label for="imageSourceLink">Docker Image Repository</label>
                         <div>
                           <input class="form-control"
-                            id="imageSourceLink"
-                            name="imageSourceLink"
-                            type="text"
-                            ng-model="imageOptions.fromSource.dockerImage"
-                            placeholder="example: centos/ruby-20-centos7:latest"
-                            autocorrect="off"
-                            autocapitalize="none"
-                            spellcheck="false"
-                            required>
+                                 id="imageSourceLink"
+                                 name="imageSourceLink"
+                                 type="text"
+                                 ng-model="imageOptions.fromSource.dockerImage"
+                                 placeholder="example: centos/ruby-20-centos7:latest"
+                                 autocorrect="off"
+                                 autocapitalize="none"
+                                 spellcheck="false"
+                                 required>
                         </div>
                       </div>
 
@@ -315,13 +316,13 @@
                       <label for="FromTypeLink">Docker Image Repository</label>
                       <div>
                         <input class="form-control"
-                          type="text"
-                          ng-model="imageOptions.from.dockerImage"
-                          autocorrect="off"
-                          autocapitalize="none"
-                          placeholder="example: centos/ruby-20-centos7:latest"
-                          spellcheck="false"
-                          required>
+                               type="text"
+                               ng-model="imageOptions.from.dockerImage"
+                               autocorrect="off"
+                               autocapitalize="none"
+                               placeholder="example: centos/ruby-20-centos7:latest"
+                               spellcheck="false"
+                               required>
                       </div>
                     </div>
 
@@ -329,13 +330,13 @@
                       <label for="FromTypeImage" translate>Image Stream Image</label>
                       <div>
                         <input class="form-control"
-                          type="text"
-                          ng-model="imageOptions.from.imageStreamImage"
-                          placeholder="example: openshift/ruby-20-centos7@603bfa418"
-                          autocorrect="off"
-                          autocapitalize="none"
-                          spellcheck="false"
-                          required>
+                               type="text"
+                               ng-model="imageOptions.from.imageStreamImage"
+                               placeholder="example: openshift/ruby-20-centos7@603bfa418"
+                               autocorrect="off"
+                               autocapitalize="none"
+                               spellcheck="false"
+                               required>
                       </div>
                     </div>
                   </div>
@@ -346,12 +347,12 @@
                          the form is still marked invalid if a hidden field has errors. -->
                     <div ng-show="view.advancedOptions">
                       <osc-secrets model="secrets.picked.pullSecret"
-                                  namespace="projectName"
-                                  display-type="pull"
-                                  type="image"
-                                  secrets-by-type="secrets.secretsByType"
-                                  service-account-to-link="builder"
-                                  alerts="alerts">
+                                   namespace="projectName"
+                                   display-type="pull"
+                                   type="image"
+                                   secrets-by-type="secrets.secretsByType"
+                                   service-account-to-link="builder"
+                                   alerts="alerts">
                       </osc-secrets>
                     </div>
                   </div>
@@ -385,15 +386,15 @@
                       <label for="pushToLink">Docker Image Repository</label>
                       <div>
                         <input class="form-control"
-                          id="pushToLink"
-                          name="pushToLink"
-                          type="text"
-                          ng-model="imageOptions.to.dockerImage"
-                          placeholder="example: centos/ruby-20-centos7:latest"
-                          autocorrect="off"
-                          autocapitalize="none"
-                          spellcheck="false"
-                          required>
+                               id="pushToLink"
+                               name="pushToLink"
+                               type="text"
+                               ng-model="imageOptions.to.dockerImage"
+                               placeholder="example: centos/ruby-20-centos7:latest"
+                               autocorrect="off"
+                               autocapitalize="none"
+                               spellcheck="false"
+                               required>
                       </div>
                     </div>
 
@@ -402,13 +403,13 @@
                       <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
                       <div class="form-group" ng-show="view.advancedOptions">
                         <osc-secrets model="secrets.picked.pushSecret"
-                                    namespace="projectName"
-                                    display-type="push"
-                                    type="image"
-                                    disable-input="imageOptions.to.type==='None'"
-                                    service-account-to-link="builder"
-                                    secrets-by-type="secrets.secretsByType"
-                                    alerts="alerts">
+                                     namespace="projectName"
+                                     display-type="push"
+                                     type="image"
+                                     disable-input="imageOptions.to.type==='None'"
+                                     service-account-to-link="builder"
+                                     secrets-by-type="secrets.secretsByType"
+                                     alerts="alerts">
                         </osc-secrets>
                       </div>
                     </div>
@@ -426,6 +427,9 @@
                   <key-value-editor
                     ng-if="envVars"
                     entries="envVars"
+                    key-placeholder="Name"
+                    value-placeholder="Value"
+                    show-header
                     value-from-selector-options="valueFromObjects"
                     key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
                     key-validator-error-tooltip="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
@@ -466,10 +470,10 @@
                           <label>
                             <input type="checkbox" ng-model="triggers.builderImageChangeTrigger.present" ng-disabled="imageOptions.from.type === 'None'">
                             <translate>Automatically build a new image when the builder image changes</translate>
-                              <span class="help action-inline">
+                            <span class="help action-inline">
                                 <a href>
                                   <i class="pficon pficon-help" aria-hidden="true"
-                                  data-toggle="tooltip" data-original-title="{{'Automatically building a new image when the builder image changes allows your code to always run on the latest updates.'|translate}}">
+                                     data-toggle="tooltip" data-original-title="{{'Automatically building a new image when the builder image changes allows your code to always run on the latest updates.'|translate}}">
                                 </i>
                                 </a>
                               </span>
@@ -485,24 +489,24 @@
                 <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
                 <div ng-show="view.advancedOptions">
                   <h3 class="with-divider">
-			  <translate>Build Secrets</translate>
+                    <translate>Build Secrets</translate>
                     <a href="{{'source_secrets' | helpLink}}" target="_blank"><span class="learn-more-inline" translate>Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
                   </h3>
                   <div class="form-group">
                     <osc-source-secrets model="secrets.picked.sourceSecrets"
-                                namespace="projectName"
-                                secrets-by-type="secrets.secretsByType"
-                                strategy-type="strategyType"
-                                service-account-to-link="builder"
-                                alerts="alerts"
-                                display-type="source"
-                                type="source">
+                                        namespace="projectName"
+                                        secrets-by-type="secrets.secretsByType"
+                                        strategy-type="strategyType"
+                                        service-account-to-link="builder"
+                                        alerts="alerts"
+                                        display-type="source"
+                                        type="source">
                     </osc-source-secrets>
                   </div>
                 </div>
               </div>
               <div class="section mar-bottom-lg" ng-if="view.advancedOptions">
-		      <h3 class="with-divider"><translate>Run Policy</translate>
+                <h3 class="with-divider"><translate>Run Policy</translate>
                   <span class="help action-inline">
                     <a href="">
                       <i class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="The build run policy describes the order in which the builds created from the build configuration should run."></i>
@@ -551,8 +555,8 @@
                     <div class="form-group">
                       <label>Hook Types</label>
                       <ui-select
-                         ng-model="buildHookSelection.type"
-                         title="Choose a type of build hook">
+                        ng-model="buildHookSelection.type"
+                        title="Choose a type of build hook">
                         <ui-select-match>{{$select.selected.label}}</ui-select-match>
                         <ui-select-choices repeat="type in buildHookTypes">
                           {{type.label}}
@@ -614,10 +618,10 @@
                 </button>
                 <button class="btn btn-default btn-lg" ng-click="cancel()" translate>Cancel</button>
               </div>
-           </form>
-        </fieldset>
+            </form>
+          </fieldset>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
