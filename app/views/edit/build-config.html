@@ -41,7 +41,7 @@
                                     ng-model="updatedBuildConfig.spec.source.git.uri"
                                     type="text"
                                     autocorrect="off"
-                                    autocapitalize="off"
+                                    autocapitalize="none"
                                     spellcheck="false"
                                     aria-describedby="source-url-help"
                                     required>
@@ -70,7 +70,7 @@
                                     ng-model="updatedBuildConfig.spec.source.git.ref"
                                     placeholder="master"
                                     autocorrect="off"
-                                    autocapitalize="off"
+                                    autocapitalize="none"
                                     spellcheck="false"
                                     aria-describedby="source-ref-help">
                                 </div>
@@ -90,7 +90,7 @@
                                   ng-model="updatedBuildConfig.spec.source.contextDir"
                                   placeholder="/"
                                   autocorrect="off"
-                                  autocapitalize="off"
+                                  autocapitalize="none"
                                   spellcheck="false"
                                   aria-describedby="context-dir-help">
                               </div>
@@ -131,7 +131,7 @@
                                 type="text"
                                 ng-model="updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath"
                                 autocorrect="off"
-                                autocapitalize="off"
+                                autocapitalize="none"
                                 spellcheck="false">
                             </div>
                           </div>
@@ -179,7 +179,7 @@
                                   ng-model="imageOptions.fromSource.imageStreamImage"
                                   placeholder="{{'example: openshift/ruby-20-centos7@603bfa418'|translate}}"
                                   autocorrect="off"
-                                  autocapitalize="off"
+                                  autocapitalize="none"
                                   spellcheck="false"
                                   required>
                               </div>
@@ -196,7 +196,7 @@
                                   ng-model="imageOptions.fromSource.dockerImage"
                                   placeholder="{{'example: centos/ruby-20-centos7:latest'|translate}}"
                                   autocorrect="off"
-                                  autocapitalize="off"
+                                  autocapitalize="none"
                                   spellcheck="false"
                                   required>
                               </div>
@@ -260,7 +260,7 @@
                                type="text"
                                ng-model="updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath"
                                autocorrect="off"
-                               autocapitalize="off"
+                               autocapitalize="none"
                                spellcheck="false"
                                aria-describedby="jenkinsfile-path-help">
                         <div class="help-block" id="jenkinsfile-path-help">
@@ -326,8 +326,9 @@
                                 type="text"
                                 ng-model="imageOptions.from.dockerImage"
                                 autocorrect="off"
-                                autocapitalize="off"
                                 placeholder="{{'example: centos/ruby-20-centos7:latest'|translate}}"
+                                autocapitalize="none"
+				placeholder="{{'example: centos/ruby-20-centos7:latest'|translate}}"
                                 spellcheck="false"
                                 required>
                             </div>
@@ -341,7 +342,7 @@
                                 ng-model="imageOptions.from.imageStreamImage"
                                 placeholder="{{'example: openshift/ruby-20-centos7@603bfa418'|translate}}"
                                 autocorrect="off"
-                                autocapitalize="off"
+                                autocapitalize="none"
                                 spellcheck="false"
                                 required>
                             </div>
@@ -399,7 +400,7 @@
                                 ng-model="imageOptions.to.dockerImage"
                                 placeholder="{{'example: centos/ruby-20-centos7:latest'|translate}}"
                                 autocorrect="off"
-                                autocapitalize="off"
+                                autocapitalize="none"
                                 spellcheck="false"
                                 required>
                             </div>

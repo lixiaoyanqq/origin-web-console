@@ -80,7 +80,7 @@
                               osc-unique="existingMountPaths"
                               placeholder="{{'example: /data'|translate}}"
                               autocorrect="off"
-                              autocapitalize="off"
+                              autocapitalize="none"
                               spellcheck="false"
                               aria-describedby="mount-path-help">
                           <div>
@@ -154,7 +154,7 @@
                                     osc-unique="itemPaths"
                                     placeholder="{{'example: config/app.properties'|translate}}"
                                     autocorrect="off"
-                                    autocapitalize="off"
+                                    autocapitalize="none"
                                     spellcheck="false">
                                 <div class="has-error" ng-show="forms.addConfigVolumeForm['path-' + $id].$error.pattern">
                                   <span class="help-block" translate>
