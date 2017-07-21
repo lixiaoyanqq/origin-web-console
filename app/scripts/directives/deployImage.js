@@ -43,6 +43,8 @@ angular.module("openshiftConsole")
         });
       },
       link: function($scope) {
+        $scope.forms = {};
+
         // Pick from an image stream tag or Docker image name.
         $scope.mode = "istag"; // "istag" or "dockerImage"
 
