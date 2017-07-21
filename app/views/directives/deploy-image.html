@@ -150,7 +150,8 @@
       </div>
     </div>
 
-    <div ng-if-end>
+  <div class="row" ng-if-end>
+    <div class="col-sm-12">
       <ng-form name="forms.deployImage" class="osc-form">
         <div class="form-group">
          <label for="name" class="required" translate>Name</label>
@@ -169,13 +170,15 @@
                   autocapitalize="none"
                   spellcheck="false">
           </div>
-          <div class="help-block" translate>Identifies the resources created for this image.</div>
+          <div class="help-block">Identifies the resources created for this image.</div>
           <div class="has-error" ng-show="forms.deployImage.name.$invalid && forms.deployImage.name.$touched">
             <div class="help-block" ng-show="forms.deployImage.name.$error.required" translate>
               A name is required.
             </div>
             <div class="help-block" ng-show="forms.deployImage.name.$error.pattern" translate>
-              Name must be an alphanumeric (a-z, 0-9) string with a maximum length of 24 characters where the first character is a letter (a-z). The '-' character is allowed anywhere except the first or last character.
+              Name must be an alphanumeric (a-z, 0-9) string with a maximum length
+              of 24 characters where the first character is a letter (a-z). The '-'
+              character is allowed anywhere except the first or last character.
             </div>
             <div class="help-block" ng-show="forms.deployImage.name.$error.minlength" translate>
               Name must have at least 2 characters.
