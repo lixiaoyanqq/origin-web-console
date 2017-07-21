@@ -106,10 +106,10 @@
 
   <div class="row" ng-if-end>
     <div class="col-sm-12">
-      <form name="form" class="osc-form">
+      <ng-form name="forms.deployImage" class="osc-form">
         <div class="form-group">
          <label for="name" class="required" translate>Name</label>
-         <div ng-class="{'has-error': form.name.$invalid || nameTaken}">
+         <div ng-class="{'has-error': (forms.deployImage.name.$invalid && forms.deployImage.name.$touched) || nameTaken}">
            <input type="text"
                   required
                   select-on-focus
@@ -125,18 +125,19 @@
                   spellcheck="false">
           </div>
           <div class="help-block" translate>Identifies the resources created for this image.</div>
-          <div class="has-error" ng-show="form.name.$invalid">
-            <div class="help-block" ng-show="form.name.$error.required" translate>
+          <div class="has-error" ng-show="forms.deployImage.name.$invalid && forms.deployImage.name.$touched">
+            <div class="help-block" ng-show="forms.deployImage.name.$error.required" translate>
               A name is required.
             </div>
-            <div class="help-block" ng-show="form.name.$error.pattern">
-              <translate>Name must be an alphanumeric (a-z, 0-9) string with a maximum length of 24 characters where the first character is a letter (a-z).</translate>
-              <translate>The '-' character is allowed anywhere except the first or last character.</translate>
+            <div class="help-block" ng-show="forms.deployImage.name.$error.pattern">
+              <translate>Name must be an alphanumeric (a-z, 0-9) string with a maximum length
+              of 24 characters where the first character is a letter (a-z). The '-'
+              character is allowed anywhere except the first or last character.</translate>
             </div>
-            <div class="help-block" ng-show="form.name.$error.minlength" translate>
+            <div class="help-block" ng-show="forms.deployImage.name.$error.minlength" translate>
               Name must have at least 2 characters.
             </div>
-            <div class="help-block" ng-show="form.name.$error.maxlength" translate>
+            <div class="help-block" ng-show="forms.deployImage.name.$error.maxlength" translate>
               Name can't have more than 24 characters.
             </div>
           </div>
@@ -184,10 +185,10 @@
               class="btn btn-primary btn-lg"
               ng-click="create()"
               value=""
-              ng-disabled="form.$invalid || nameTaken || disableInputs" translate>Create</button>
+              ng-disabled="forms.deployImage.$invalid || nameTaken || disableInputs" translate>Create</button>
           <a class="btn btn-default btn-lg" href="#" back translate>Cancel</a>
         </div>
-      </form>
+      </ng-form>
     </div>
   </div>
 
