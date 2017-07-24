@@ -5208,7 +5208,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.fromFile\">\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Import YAML / JSON</uib-tab-heading>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "<from-file ng-if=\"project\" project=\"project\"></from-file>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -6816,6 +6820,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/deploy-image-dialog.html',
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "<pf-wizard wizard-title=\"{{'Deploy Image'|translate}}\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\">\n" +
     "\n" +
@@ -6825,6 +6830,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
     "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.deployForm.$invalid\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"$ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated\">\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -6848,6 +6857,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "</pf-wizard-step>\n" +
     "</pf-wizard>"
@@ -6856,14 +6866,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</pf-wizard> \n" +
     "</overlay-panel>"
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "</pf-wizard-step>\n" +
+    "</pf-wizard>"
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
   );
 
 
   $templateCache.put('views/directives/deploy-image.html',
     "<div class=\"deploy-image\">\n" +
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
+=======
+    "<p>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Deploy an existing image from an image stream tag or docker pull spec.\n" +
     "</p>\n" +
     "<ng-form name=\"forms.imageSelection\">\n" +
@@ -6888,7 +6906,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"radio\" ng-class=\"{disabled : !input.selectedProject.metadata.uid}\">\n" +
     "<label>\n" +
     "<input type=\"radio\" ng-model=\"mode\" value=\"dockerImage\" ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<translate>Image Name</translate>\n" +
+=======
+    "Image Name\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</label>\n" +
     "</div>\n" +
     "<fieldset ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
@@ -6903,7 +6925,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "</span>\n" +
     "</div>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<div ng-if=\"!input.selectedProject.metadata.uid\" class=\"help-block\" translate>\n" +
+=======
+    "<div ng-if=\"!input.selectedProject.metadata.uid\" class=\"help-block\">\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Image search is only available for existing projects.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7010,8 +7036,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\" translate>This name is already in use within the project. Please choose a different name.</span>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<osc-form-section header=\"{{'Environment Variables'|translate}}\" about-title=\"{{'Environment Variables'|translate}}\" about=\"{{'Environment variables are used to configure and pass information to running containers.'|translate}}\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
     "<key-value-editor entries=\"env\" key-placeholder=\"{{'Name'|translate}}\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"input.selectedProject.metadata.uid && valueFromNamespace[input.selectedProject.metadata.name]\" add-row-link=\"{{'Add Value'|translate}}\" add-row-with-selectors-link=\"{{'Add Value from Config Map or Secret'|translate}}\"></key-value-editor>\n" +
+=======
+    "<osc-form-section header=\"Environment Variables\" about-title=\"Environment Variables\" about=\"Environment variables are used to configure and pass information to running containers.\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
+    "<key-value-editor entries=\"env\" key-placeholder=\"Name\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" value-placeholder=\"Value\" value-from-selector-options=\"input.selectedProject.metadata.uid && valueFromNamespace[input.selectedProject.metadata.name]\" add-row-link=\"Add Environment Variable\" add-row-with-selectors-link=\"Add Environment Variable Using a Config Map or Secret\"></key-value-editor>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</osc-form-section>\n" +
 <<<<<<< 0b6e0c0321bd8895dd0292e7e94a096ab205c99e
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
@@ -7756,12 +7787,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/from-file-dialog.html',
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "<pf-wizard wizard-title=\"{{'Import YAML / JSON'|translate}}\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
     "<pf-wizard-step step-title=\"YAML / JSON\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
 =======
     "<overlay-panel show-panel=\"$ctrl.visible\" show-close=\"true\" handle-close=\"$ctrl.close\" ng-if=\"$ctrl.project\">\n" +
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" step-class=\"order-service-wizard-step\">\n" +
+=======
+    "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "<pf-wizard-step step-title=\"JSON / YAML\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
@@ -7838,6 +7873,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "</pf-wizard-step>\n" +
     "</pf-wizard>"
@@ -7846,13 +7882,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</pf-wizard> \n" +
     "</overlay-panel>"
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "</pf-wizard-step>\n" +
+    "</pf-wizard>"
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
   );
 
 
   $templateCache.put('views/directives/from-file.html',
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
+=======
+    "<p>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Create or replace resources from their YAML or JSON definitions. If adding a template, you'll have the option to process the template.\n" +
     "</p>\n" +
     "<parse-error error=\"error\" ng-show=\"error\"></parse-error>\n" +
@@ -8070,8 +8114,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div> \n" +
     "<navbar-utility class=\"hidden-xs\"></navbar-utility>\n" +
     "</nav>\n" +
-    "<deploy-image-dialog visible=\"ordering.panelName === 'deployImage'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
-    "<from-file-dialog visible=\"ordering.panelName === 'fromFile'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>"
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+    "</overlay-panel>"
   );
 
 
@@ -11533,11 +11579,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/landing-page.html',
     "<div class=\"middle landing-page\">\n" +
     "<div class=\"middle-content\">\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<overlay-panel show-panel=\"ordering.panelName\" handle-close=\"closeOrderingPanel\">\n" +
     "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
     "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+=======
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</overlay-panel>\n" +
     "<landing-page base-project-url=\"project\" on-template-selected=\"templateSelected\">\n" +
     "<landingsearch>\n" +
@@ -11549,8 +11602,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</landingheader>\n" +
     "<landingbody>\n" +
+<<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\" on-create-from-project=\"fromProjectSelected\">\n" +
     "</services-view>\n" +
+=======
+    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\"></services-view>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</landingbody>\n" +
     "<landingside>\n" +
     "<projects-summary base-project-url=\"project\" projects-url=\"projects\" start-tour=\"startGuidedTour\" view-edit-membership=\"viewMembership\" catalog-items=\"catalogItems\"></projects-summary>\n" +

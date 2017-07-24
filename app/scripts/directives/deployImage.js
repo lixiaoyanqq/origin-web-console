@@ -38,7 +38,9 @@ angular.module("openshiftConsole")
         });
       },
       link: function($scope) {
-        $scope.forms = {};
+        $scope.input = {
+          selectedProject: $scope.project
+        };
 
         // Pick from an image stream tag or Docker image name.
         $scope.mode = "istag"; // "istag" or "dockerImage"
@@ -52,10 +54,6 @@ angular.module("openshiftConsole")
           name: 'app',
           value: ''
         }];
-
-        $scope.$on('no-projects-cannot-create', function() {
-          $scope.noProjectsCantCreate = true;
-        });
 
         var orderByDisplayName = $filter('orderByDisplayName');
         var getErrorDetails = $filter('getErrorDetails');
@@ -120,8 +118,7 @@ angular.module("openshiftConsole")
             ports: $scope.ports,
             volumes: $scope.volumes,
             env: keyValueEditorUtils.compactEntries($scope.env),
-            labels: labels,
-            pullSecrets: $scope.pullSecrets
+            labels: labels
           });
         }
 
@@ -248,7 +245,7 @@ angular.module("openshiftConsole")
               configMapDataOrdered = orderByDisplayName(configMapData.by("metadata.name"));
               $scope.valueFromNamespace[project.metadata.name] = configMapDataOrdered.concat(secretDataOrdered);
             }, function(e) {
-              if (e.status === 403) {
+              if (e.code === 403) {
                return;
               }
 
@@ -264,7 +261,7 @@ angular.module("openshiftConsole")
               secretDataOrdered = orderByDisplayName(secretData.by("metadata.name"));
               $scope.valueFromNamespace[project.metadata.name] = secretDataOrdered.concat(configMapDataOrdered);
             }, function(e) {
-              if (e.status === 403) {
+              if (e.code === 403) {
                 return;
               }
 
@@ -281,9 +278,9 @@ angular.module("openshiftConsole")
           var generatedResources;
           var createResources = function() {
             var titles = {
-              started: gettextCatalog.getString(gettext("Deploying image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject))),
-              success: gettextCatalog.getString(gettext("Deployed image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject))),
-              failure: gettextCatalog.getString(gettext("Failed to deploy image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject)))
+              started: "Deploying image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject),
+              success: "Deployed image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject),
+              failure: "Failed to deploy image " + $scope.app.name + " to project " + displayName($scope.input.selectedProject)
             };
             TaskList.clear();
             TaskList.add(titles, {}, $scope.input.selectedProject.metadata.name, function() {
@@ -389,17 +386,13 @@ angular.module("openshiftConsole")
               };
               nameTakenPromise.then(setNameTaken, setNameTaken).then(showWarningsOrCreate, showWarningsOrCreate);
             }, function(e) {
+              NotificationsService.addNotification({
+                id: "deploy-image-create-project-error",
+                type: "error",
+                message: "An error occurred creating project",
+                details: getErrorDetails(e)
+              });
               $scope.disableInputs = false;
-              if (e.data.reason === 'AlreadyExists') {
-                $scope.projectNameTaken = true;
-              } else {
-                NotificationsService.addNotification({
-                  id: "deploy-image-create-project-error",
-                  type: "error",
-                  message: "An error occurred creating project.",
-                  details: getErrorDetails(e)
-                });
-              }
             });
           };
 

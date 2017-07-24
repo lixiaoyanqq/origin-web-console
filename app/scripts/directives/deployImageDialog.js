@@ -39,7 +39,6 @@
 
     $scope.$on('deployImageNewAppCreated', function(event, message) {
       ctrl.selectedProject = message.project;
-      ctrl.appName = message.appName;
       ctrl.deployImageNewAppCreated = true;
       ctrl.currentStep = "Results";
     });

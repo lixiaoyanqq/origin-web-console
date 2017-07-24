@@ -16,17 +16,17 @@
               </catalog>
             </uib-tab>
 
-            <uib-tab active="selectedTab.deployImage">
-              <uib-tab-heading translate>Deploy Image</uib-tab-heading>
-              <form><!-- wrapping form element is necessary for the enter key to trigger the submit button -->
-                <deploy-image ng-if="project" project="project"></deploy-image>
-              </form>
-            </uib-tab>
+                  <uib-tab active="selectedTab.deployImage">
+                    <uib-tab-heading translate>Deploy Image</uib-tab-heading>
+                    <form><!-- wrapping form element is necessary for the enter key to trigger the submit button -->
+                      <deploy-image ng-if="project" project="project"></deploy-image>
+                    </form>
+                  </uib-tab>
 
-            <uib-tab active="selectedTab.fromFile">
-              <uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>
-              <from-file ng-if="project" project="project"></from-file>
-            </uib-tab>
+                  <uib-tab active="selectedTab.fromFile">
+                    <uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>
+                    <from-file ng-if="project" project="project"></from-file>
+                  </uib-tab>
 
           </uib-tabset>
         </div>

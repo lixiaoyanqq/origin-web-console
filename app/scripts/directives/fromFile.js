@@ -13,9 +13,7 @@ angular.module("openshiftConsole")
                                   QuotaService,
                                   SecurityCheckService,
                                   TaskList,
-                                  ProjectsService,
-	  			  gettext,
-                                  gettextCatalog) {
+                                  ProjectsService) {
     return {
       restrict: "E",
       scope: {
@@ -31,17 +29,9 @@ angular.module("openshiftConsole")
         var getErrorDetails = $filter('getErrorDetails');
         TaskList.clear();
 
-        $scope.$on('no-projects-cannot-create', function() {
-          $scope.noProjectsCantCreate = true;
-        });
-
         $scope.input = {
           selectedProject: $scope.project
         };
-
-        $scope.$watch('input.selectedProject.metadata.name', function() {
-          $scope.projectNameTaken = false;
-        });
 
         $scope.aceLoaded = function(editor) {
           aceEditorSession = editor.getSession();
@@ -105,6 +95,17 @@ angular.module("openshiftConsole")
           else {
             createAndUpdate();
           }
+        };
+
+        var createProjectIfNecessary = function() {
+          if (_.has($scope.input.selectedProject, 'metadata.uid')) {
+            return $q.when($scope.input.selectedProject);
+          }
+
+          var newProjName = $scope.input.selectedProject.metadata.name;
+          var newProjDisplayName = $scope.input.selectedProject.metadata.annotations['new-display-name'];
+          var newProjDesc = $filter('description')($scope.input.selectedProject);
+          return ProjectsService.create(newProjName, newProjDisplayName, newProjDesc);
         };
 
         $scope.create = function() {
@@ -176,17 +177,14 @@ angular.module("openshiftConsole")
               }
             });
           }, function(e) {
-            if (e.data.reason === 'AlreadyExists') {
-              $scope.projectNameTaken = true;
-            } else {
-              NotificationsService.addNotification({
-                id: "import-create-project-error",
-                type: "error",
-                message: "An error occurred creating project.",
-                details: getErrorDetails(e)
-              });
-            }
+            NotificationsService.addNotification({
+              id: "import-create-project-error",
+              type: "error",
+              message: "An error occurred creating project",
+              details: getErrorDetails(e)
+            });
           });
+
         };
 
         $scope.cancel = function() {
@@ -288,21 +286,19 @@ angular.module("openshiftConsole")
           if ($scope.resourceKind === "Template" && $scope.templateOptions.process && !$scope.errorOccurred) {
             if ($scope.isDialog) {
               $scope.$emit('fileImportedFromYAMLOrJSON', {
-                project: $scope.project,
+                project: $scope.input.selectedProject,
                 template: $scope.resource
               });
             }
             else {
-              namespace = ($scope.templateOptions.add || $scope.updateResources.length > 0) ? $scope.project.metadata.name : "";
-              path = Navigate.createFromTemplateURL($scope.resource, $scope.project.metadata.name, {namespace: namespace});
+              namespace = ($scope.templateOptions.add || $scope.updateResources.length > 0) ? $scope.input.selectedProject.metadata.name : "";
+              path = Navigate.createFromTemplateURL($scope.resource, $scope.input.selectedProject.metadata.name, {namespace: namespace});
               $location.url(path);
             }
           }
           else if ($scope.isDialog) {
             $scope.$emit('fileImportedFromYAMLOrJSON', {
-              project: $scope.input.selectedProject,
-              resource: $scope.resource,
-              isList: $scope.isList
+              project: $scope.input.selectedProject
             });
           }
           else {
@@ -405,9 +401,9 @@ angular.module("openshiftConsole")
         var displayName = $filter('displayName');
         function createResourceList(){
           var titles = {
-            started: gettextCatalog.getString(gettext("Creating resources in project ")) + displayName($scope.input.selectedProject),
-            success: gettextCatalog.getString(gettext("Creating resources in project ")) + displayName($scope.input.selectedProject),
-            failure: gettextCatalog.getString(gettext("Failed to create some resources in project ")) + displayName($scope.input.selectedProject)
+            started: "Creating resources in project " + displayName($scope.input.selectedProject),
+            success: "Creating resources in project " + displayName($scope.input.selectedProject),
+            failure: "Failed to create some resources in project " + displayName($scope.input.selectedProject)
           };
           var helpLinks = {};
           TaskList.add(titles, helpLinks, $scope.input.selectedProject.metadata.name, function() {
@@ -456,9 +452,9 @@ angular.module("openshiftConsole")
 
         function updateResourceList(){
           var titles = {
-            started: gettextCatalog.getString(gettext("Updating resources in project ")) + displayName($scope.input.selectedProject),
-            success: gettextCatalog.getString(gettext("Updated resources in project ")) + displayName($scope.input.selectedProject),
-            failure: gettextCatalog.getString(gettext("Failed to update some resources in project ")) + displayName($scope.input.selectedProject)
+            started: "Updating resources in project " + displayName($scope.input.selectedProject),
+            success: "Updated resources in project " + displayName($scope.input.selectedProject),
+            failure: "Failed to update some resources in project " + displayName($scope.input.selectedProject)
           };
           var helpLinks = {};
           TaskList.add(titles, helpLinks, $scope.input.selectedProject.metadata.name, function() {
