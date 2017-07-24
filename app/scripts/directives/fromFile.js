@@ -198,6 +198,7 @@ angular.module("openshiftConsole")
               });
             }
           });
+
         };
 
         $scope.cancel = function() {
