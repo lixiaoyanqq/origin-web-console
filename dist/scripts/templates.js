@@ -5099,12 +5099,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<uib-tab active=\"selectedTab.deployImage\">\n" +
     "<uib-tab-heading translate>Deploy Image</uib-tab-heading>\n" +
     "<form>\n" +
-    "<deploy-image project=\"project\" context=\"context\"></deploy-image>\n" +
+    "<deploy-image ng-if=\"project\" project=\"project\"></deploy-image>\n" +
     "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.fromFile\">\n" +
+<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
     "<uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>\n" +
     "<from-file project=\"project\" context=\"context\"></from-file>\n" +
+=======
+    "<uib-tab-heading>Import YAML / JSON</uib-tab-heading>\n" +
+    "<from-file ng-if=\"project\" project=\"project\"></from-file>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
     "</div>\n" +
@@ -6550,9 +6555,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/deploy-image-dialog.html',
-    "<overlay-panel show-panel=\"$ctrl.visible\" show-close=\"true\" handle-close=\"$ctrl.close\">\n" +
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
-    "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.deployForm.$invalid\">\n" +
+    "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"$ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config order-service-config-single-column\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -6572,15 +6576,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</pf-wizard-step> \n" +
-    "</pf-wizard> \n" +
-    "</overlay-panel>"
+    "</pf-wizard-step>\n" +
+    "</pf-wizard>"
   );
 
 
   $templateCache.put('views/directives/deploy-image.html',
     "<div class=\"deploy-image\">\n" +
+<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
     "<p translate>\n" +
+=======
+    "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
+    "<p>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Deploy an existing image from an image stream tag or docker pull spec.\n" +
     "</p>\n" +
     "<ng-form name=\"forms.imageSelection\">\n" +
@@ -6593,20 +6601,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<fieldset>\n" +
     "<istag-select model=\"istag\" select-required=\"mode === 'istag'\" select-disabled=\"mode !== 'istag'\" include-shared-namespace=\"true\"></istag-select>\n" +
-    "<div ng-if=\"mode == 'istag' && istag.namespace && istag.namespace !== 'openshift' && istag.namespace !== project.metadata.name\" class=\"alert alert-warning\">\n" +
+    "<div ng-if=\"mode == 'istag' && istag.namespace && istag.namespace !== 'openshift' && istag.namespace !== input.selectedProject.metadata.name\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "<translate>Service account <strong>default</strong> will need image pull authority to deploy images from <strong>{{istag.namespace}}</strong>. You can grant authority with the command:</translate>\n" +
     "<p>\n" +
-    "<code>oc policy add-role-to-user system:image-puller system:serviceaccount:{{project.metadata.name}}:default -n {{istag.namespace}}</code>\n" +
+    "<code>oc policy add-role-to-user system:image-puller system:serviceaccount:{{input.selectedProject.metadata.name}}:default -n {{istag.namespace}}</code>\n" +
     "</p>\n" +
     "</div>\n" +
     "</fieldset>\n" +
-    "<div class=\"radio\">\n" +
+    "\n" +
+    "<div class=\"radio\" ng-class=\"{disabled : !input.selectedProject.metadata.uid}\">\n" +
     "<label>\n" +
+<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
     "<input type=\"radio\" ng-model=\"mode\" value=\"dockerImage\">\n" +
     "<translate>Image Name</translate>\n" +
+=======
+    "<input type=\"radio\" ng-model=\"mode\" value=\"dockerImage\" ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
+    "Image Name\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</label>\n" +
     "</div>\n" +
+    "<fieldset ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"imageName\" class=\"sr-only\" translate>Image name or pull spec</label>\n" +
     "<div class=\"input-group\">\n" +
@@ -6622,7 +6637,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "</span>\n" +
     "</div>\n" +
+    "<div ng-if=\"!input.selectedProject.metadata.uid\" class=\"help-block\">\n" +
+    "Image search is only available for existing projects.\n" +
     "</div>\n" +
+    "</div>\n" +
+    "</fieldset>\n" +
     "</fieldset>\n" +
     "</ng-form>\n" +
     "<div ng-if=\"loading || !import\" class=\"empty-state-message text-muted text-center\">\n" +
@@ -6719,10 +6738,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\" translate>This name is already in use within the project. Please choose a different name.</span>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
     "<osc-secrets model=\"pullSecrets\" namespace=\"project.metadata.name\" display-type=\"pull\" type=\"image\" secrets-by-type=\"secretsByType\" service-account-to-link=\"default\" alerts=\"alerts\" allow-multiple-secrets=\"true\">\n" +
     "</osc-secrets>\n" +
     "<osc-form-section header=\"{{'Environment Variables'|translate}}\" about-title=\"{{'Environment Variables'|translate}}\" about=\"{{'Environment variables are used to configure and pass information to running containers.'|translate}}\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
     "<key-value-editor entries=\"env\" key-placeholder=\"{{'Name'|translate}}\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"valueFromObjects\" add-row-link=\"{{'Add Environment Variable'|translate}}\" add-row-with-selectors-link=\"{{'Add Environment Variable Using a Config Map or Secret'|translate}}\"></key-value-editor>\n" +
+=======
+    "<osc-form-section header=\"Environment Variables\" about-title=\"Environment Variables\" about=\"Environment variables are used to configure and pass information to running containers.\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
+    "<key-value-editor entries=\"env\" key-placeholder=\"Name\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" value-placeholder=\"Value\" value-from-selector-options=\"input.selectedProject.metadata.uid && valueFromNamespace[input.selectedProject.metadata.name]\" add-row-link=\"Add Environment Variable\" add-row-with-selectors-link=\"Add Environment Variable Using a Config Map or Secret\"></key-value-editor>\n" +
+>>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</osc-form-section>\n" +
 <<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
     "<label-editor labels=\"labels\" system-labels=\"systemLabels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
@@ -7320,14 +7344,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/from-file-dialog.html',
-    "<overlay-panel show-panel=\"$ctrl.visible\" show-close=\"true\" handle-close=\"$ctrl.close\" ng-if=\"$ctrl.project\">\n" +
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
     "<pf-wizard-step step-title=\"JSON / YAML\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config order-service-config-single-column\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
     "<form name=\"$ctrl.importForm\">\n" +
-    "<from-file is-dialog=\"true\" project=\"$ctrl.project\" context=\"$ctrl.context\"></from-file>\n" +
+    "<from-file is-dialog=\"true\" project=\"$ctrl.project\"></from-file>\n" +
     "</form>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7382,13 +7405,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</pf-wizard-step> \n" +
-    "</pf-wizard> \n" +
-    "</overlay-panel>"
+    "</pf-wizard-step>\n" +
+    "</pf-wizard>"
   );
 
 
   $templateCache.put('views/directives/from-file.html',
+    "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
     "<p>\n" +
     "<translate>Create or replace resources from their YAML or JSON definitions.</translate>\n" +
     "<translate>If adding a template, you'll have the option to process the template.</translate>\n" +
@@ -7568,8 +7591,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div> \n" +
     "<navbar-utility class=\"hidden-xs\"></navbar-utility>\n" +
     "</nav>\n" +
-    "<deploy-image-dialog visible=\"ordering.panelName === 'deployImage'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
-    "<from-file-dialog visible=\"ordering.panelName === 'fromFile'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>"
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+    "</overlay-panel>"
   );
 
 
@@ -10789,8 +10814,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-section\">\n" +
     "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<overlay-panel show-panel=\"template\" show-close=\"true\" handle-close=\"templateDialogClosed\">\n" +
-    "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"templateDialogClosed\"></process-template-dialog>\n" +
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
     "</overlay-panel>\n" +
     "<landing-page base-project-url=\"project\" on-template-selected=\"templateSelected\">\n" +
     "<landingsearch>\n" +
@@ -10802,7 +10829,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</landingheader>\n" +
     "<landingbody>\n" +
-    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\"></services-view>\n" +
+    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\"></services-view>\n" +
     "</landingbody>\n" +
     "<landingside>\n" +
     "<projects-summary base-project-url=\"project\" projects-url=\"projects\" start-tour=\"startGuidedTour\" view-edit-membership=\"viewMembership\" catalog-items=\"catalogItems\"></projects-summary>\n" +
