@@ -4,7 +4,6 @@
   angular.module('openshiftConsole').component('serviceInstanceRow', {
     controller: [
       '$filter',
-      'APIService',
       'AuthorizationService',
       'BindingService',
       'ListRowUtils',
@@ -21,7 +20,6 @@
   });
 
   function ServiceInstanceRow($filter,
-                              APIService,
                               AuthorizationService,
                               BindingService,
                               ListRowUtils,
@@ -146,55 +144,7 @@
     };
 
     row.deprovision = function() {
-      var modalScope = {
-        alerts: {
-          deprovision: {
-            type: 'error',
-            message: 'Service \'' + row.apiObject.spec.serviceClassName + '\' will be deleted and no longer available.'
-          }
-        },
-        detailsMarkup: 'Delete Service?',
-        okButtonText: 'Delete',
-        okButtonClass: 'btn-danger',
-        cancelButtonText: 'Cancel'
-      };
-      // TODO: we probably have to handle bindings in here.
-      // either:
-      // - automatically remove the bindings
-      // - tell the user they must manually unbind before continue
-      $uibModal.open({
-        animation: true,
-        templateUrl: 'views/modals/confirm.html',
-        controller: 'ConfirmModalController',
-        resolve: {
-          modalConfig: function() {
-            return modalScope;
-          }
-        }
-      })
-      .result.then(function() {
-        NotificationsService.hideNotification("deprovision-service-error");
-        DataService.delete({
-          group: 'servicecatalog.k8s.io',
-          resource: 'serviceinstances'
-        },
-        row.apiObject.metadata.name,
-        { namespace: row.apiObject.metadata.namespace },
-        { propagationPolicy: null }) // TODO - remove once this is resolved https://github.com/kubernetes-incubator/service-catalog/issues/942
-        .then(function() {
-          NotificationsService.addNotification({
-            type: "success",
-            message: "Successfully deleted " + row.apiObject.metadata.name + "."
-          });
-        }, function(err) {
-          NotificationsService.addNotification({
-            id: "deprovision-service-error",
-            type: "error",
-            message: "An error occurred while deleting " + row.apiObject.metadata.name + ".",
-            details: getErrorDetails(err)
-          });
-        });
-      });
+      ServiceInstancesService.deprovision(row.apiObject);
     };
   }
 })();

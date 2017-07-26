@@ -4160,14 +4160,100 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
+=======
+>>>>>>> Updates for Service Instance & Bindings
   $templateCache.put('views/browse/service-instance.html',
     "<project-header class=\"top-header\"></project-header>\n" +
     "<project-page>\n" +
     "\n" +
     "<div class=\"middle-section\">\n" +
     "<div class=\"middle-container\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 =======
+=======
+    "<div class=\"middle-header\">\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<alerts alerts=\"alerts\"></alerts>\n" +
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+    "<div ng-if=\"serviceInstance\">\n" +
+    "<h1 class=\"contains-actions\">\n" +
+    "<div class=\"pull-right dropdown\" ng-hide=\"!('serviceInstances' | canIDoAny)\">\n" +
+    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
+    "Actions\n" +
+    "<span class=\"caret\"></span>\n" +
+    "</button>\n" +
+    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
+    "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+    "<li ng-if=\"{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'update'\">\n" +
+    "<a ng-href=\"{{serviceInstance | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'\">\n" +
+    "<a href=\"\" ng-click=\"deprovision()\" role=\"button\">Delete</a>\n" +
+    "</li>\n" +
+    "</ul>\n" +
+    "</div>\n" +
+    "{{serviceInstance | serviceInstanceDisplayName:serviceClasses}}\n" +
+    "<small class=\"meta\">created <span am-time-ago=\"serviceInstance.metadata.creationTimestamp\"></span></small>\n" +
+    "</h1>\n" +
+    "<labels labels=\"serviceInstance.metadata.labels\" clickable=\"true\" kind=\"service-instances\" project-name=\"{{serviceInstance.metadata.namespace}}\" limit=\"3\"></labels>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"middle-content\" persist-tab-state>\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<div class=\"row\" ng-if=\"serviceInstance\">\n" +
+    "<div class=\"col-md-12\">\n" +
+    "<uib-tabset>\n" +
+    "<uib-tab active=\"selectedTab.details\">\n" +
+    "<uib-tab-heading>Details</uib-tab-heading>\n" +
+    "<div class=\"resource-details\">\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-lg-6\">\n" +
+    "<p ng-bind-html=\"plan.description | linkify : '_blank'\"></p>\n" +
+    "<dl class=\"dl-horizontal left\">\n" +
+    "<dt ng-if-start=\"serviceClass.description || serviceClass.externalMetadata.longDescription\">Description:</dt>\n" +
+    "<dd ng-if-end>\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.description | linkify : '_blank'\"></p>\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.externalMetadata.longDescription | linkify : '_blank'\"></p>\n" +
+    "</dd>\n" +
+    "<dt>Status:</dt>\n" +
+    "<dd>\n" +
+    "<status-icon status=\"serviceInstance | serviceInstanceStatus\" disable-animation></status-icon>\n" +
+    "<span flex>{{serviceInstance | serviceInstanceStatus | sentenceCase}}</span>\n" +
+    "</dd>\n" +
+    "<dt ng-if-start=\"serviceInstance | serviceInstanceConditionMessage\">Status Reason:</dt>\n" +
+    "<dd ng-if-end>\n" +
+    "{{serviceInstance | serviceInstanceConditionMessage}}\n" +
+    "</dd>\n" +
+    "</dl>\n" +
+    "</div>\n" +
+    "<div class=\"col-lg-6\">\n" +
+    "<resource-service-bindings project=\"project\" project-context=\"projectContext\" api-object=\"serviceInstance\">\n" +
+    "</resource-service-bindings>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<annotations annotations=\"serviceInstance.metadata.annotations\"></annotations>\n" +
+    "</div>\n" +
+    "</uib-tab>\n" +
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+    "<events api-objects=\"[ serviceInstance ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
+    "</uib-tab>\n" +
+    "</uib-tabset>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</project-page>"
+  );
+
+
+>>>>>>> Updates for Service Instance & Bindings
   $templateCache.put('views/browse/service.html',
     "<div class=\"middle\">\n" +
 >>>>>>> Patternfly vertical navigation and project bar
@@ -6323,6 +6409,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/_service-binding.html',
     "<div class=\"service-binding\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<div ng-class=\"{'col-sm-5 col-md-6': $ctrl.isOverview,\n" +
     "                    'col-sm-8 col-md-6 col-lg-8': !$ctrl.isOverview}\">\n" +
     "<h3>\n" +
@@ -6370,6 +6457,36 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</catalog-parameters>\n" +
     "</form>\n" +
     "</div>\n" +
+=======
+    "<div class=\"col-sm-5 col-md-6\">\n" +
+    "<h3 ng-if=\"$ctrl.serviceClass\">\n" +
+    "<span ng-if=\"$ctrl.serviceClass\">\n" +
+    "<span ng-if=\"$ctrl.refApiObject.kind !== 'Instance'\">\n" +
+    "{{$ctrl.serviceClass.externalMetadata.displayName || $ctrl.serviceClass.metadata.name}}\n" +
+    "</span>\n" +
+    "<span ng-if=\"$ctrl.refApiObject.kind === 'Instance'\">\n" +
+    "{{$ctrl.binding.spec.secretName}}\n" +
+    "</span>\n" +
+    "</span>\n" +
+    "<span ng-if=\"!$ctrl.serviceClass\">\n" +
+    "{{$ctrl.binding.spec.instanceRef.name}}\n" +
+    "</span>\n" +
+    "<small ng-if=\"$ctrl.serviceClass\">{{$ctrl.binding.spec.instanceRef.name}}</small>\n" +
+    "<small>created <span am-time-ago=\"$ctrl.binding.metadata.creationTimestamp\"></span></small>\n" +
+    "</h3>\n" +
+    "</div>\n" +
+    "<div class=\"col-sm-7 col-md-6\" ng-if=\"!($ctrl.binding | isBindingReady)\">\n" +
+    "<status-icon status=\"'Pending'\"></status-icon>Pending\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"service-binding-actions\" ng-if=\"!ctrl.binding.metadata.deletionTimestamp\">\n" +
+    "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" label=\"Delete Binding\" kind=\"binding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
+    "</delete-link>\n" +
+    "<a ng-if=\"('secrets' | canI : 'get')\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
+    "View Secret\n" +
+    "</a>\n" +
+    "</div>\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "</div>"
   );
 
@@ -6382,8 +6499,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-switch-when=\"Active\" class=\"fa fa-refresh\" aria-hidden=\"true\"></span>\n" +
     "<span ng-switch-when=\"Error\" class=\"fa fa-times text-danger\" aria-hidden=\"true\"></span>\n" +
     "<span ng-switch-when=\"Failed\" class=\"fa fa-times text-danger\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<span ng-switch-when=\"New\" class=\"fa fa-hourglass-o\" aria-hidden=\"true\"></span>\n" +
     "<span ng-switch-when=\"Pending\" class=\"fa fa-hourglass-half\" aria-hidden=\"true\"></span>\n" +
+=======
+    "<span ng-switch-when=\"New\" class=\"spinner spinner-xs spinner-inline\" aria-hidden=\"true\"></span>\n" +
+    "<span ng-switch-when=\"Pending\" class=\"spinner spinner-xs spinner-inline\" aria-hidden=\"true\"></span>\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<span ng-switch-when=\"Ready\" class=\"fa fa-check text-success\" aria-hidden=\"true\"></span>\n" +
     "<span ng-switch-when=\"Running\" class=\"fa fa-refresh\" aria-hidden=\"true\" ng-class=\"{'fa-spin' : spinning}\"></span>\n" +
     "<span ng-switch-when=\"Succeeded\" class=\"fa fa-check text-success\" aria-hidden=\"true\"></span>\n" +
@@ -10649,6 +10771,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/resource-service-bindings.html',
     "<div class=\"mar-bottom-xl\" ng-if=\"$ctrl.showBindings\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
     "<h3>Bindings</h3>\n" +
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" ref-api-object=\"$ctrl.apiObject\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
@@ -10676,6 +10799,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3>Service Bindings</h3>\n" +
     "<overview-service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
     "</overview-service-binding>\n" +
+=======
+    "<h3>Bindings</h3>\n" +
+    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" ref-api-object=\"$ctrl.apiObject\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
+    "</service-binding>\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
@@ -14245,6 +14373,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
   $templateCache.put('views/overview/_service-binding.html',
     "<div class=\"service-binding\">\n" +
     "<div class=\"row\">\n" +
@@ -14283,6 +14412,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Updates for Service Instance & Bindings
   $templateCache.put('views/overview/_service-bindings.html',
     "<div class=\"expanded-section\">\n" +
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
@@ -14301,8 +14432,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"./\" translate>Browse Catalog</a>\n" +
 =======
     "<div class=\"section-title hidden-xs\">Service Bindings</div>\n" +
-    "<overview-service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
-    "</overview-service-binding>\n" +
+    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
+    "</service-binding>\n" +
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
@@ -15367,13 +15498,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
+=======
+>>>>>>> Updates for Service Instance & Bindings
   $templateCache.put('views/service-instances.html',
     "<project-header class=\"top-header\"></project-header>\n" +
     "<project-page>\n" +
     "\n" +
     "<div class=\"middle-section\">\n" +
     "<div class=\"middle-container\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 =======
   $templateCache.put('views/services.html',
     "<div class=\"middle\">\n" +
@@ -15386,6 +15521,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h1>\n" +
     "</div>\n" +
     "<div ng-if=\"(serviceInstances | size) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
+=======
+    "<div class=\"middle-header header-toolbar\">\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+    "<h1>\n" +
+    "Provisioned Services\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "<div class=\"data-toolbar\">\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -15394,6 +15539,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"(serviceInstances | hashSize) == 0\">\n" +
@@ -15411,11 +15557,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(serviceInstances | size) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+=======
+    "<alerts alerts=\"alerts\"></alerts>\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-md-12\">\n" +
+    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "</colgroup>\n" +
     "<thead>\n" +
     "<tr>\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<th translate>Name</th>\n" +
     "<th translate>Instance Name</th>\n" +
     "<th translate>Status</th>\n" +
@@ -15430,28 +15583,60 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</td>\n" +
     "<td data-title=\"{{'Instance Name'|translate}}\"><span>{{serviceInstance.metadata.name}}</span></td>\n" +
     "<td data-title=\"{{'Status'|translate}}\">\n" +
+=======
+    "<th>Name</th>\n" +
+    "<th>Status</th>\n" +
+    "<th>Created</th>\n" +
+    "<th>Bindings</th>\n" +
+    "</tr>\n" +
+    "</thead>\n" +
+    "<tbody ng-if=\"(serviceInstances | size) === 0\">\n" +
+    "<tr>\n" +
+    "<td colspan=\"4\"><em>{{emptyMessage}}</em></td>\n" +
+    "</tr>\n" +
+    "</tbody>\n" +
+    "<tbody ng-if=\"(serviceInstances | size) > 0\">\n" +
+    "<tr ng-repeat=\"serviceInstance in serviceInstances track by (serviceInstance | uid)\">\n" +
+    "<td data-title=\"Name\"><a ng-href=\"{{serviceInstance | navigateResourceURL}}\">{{serviceInstance | serviceInstanceDisplayName:serviceClasses}}</a></td>\n" +
+    "<td data-title=\"Status\">\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<div row class=\"status\">\n" +
     "<status-icon status=\"serviceInstance | serviceInstanceStatus\" disable-animation></status-icon>\n" +
     "<span flex>{{serviceInstance | serviceInstanceStatus | sentenceCase}}</span>\n" +
     "</div>\n" +
     "</td>\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<td data-title=\"{{'Created'|translate}}\">\n" +
     "<span am-time-ago=\"serviceInstance.metadata.creationTimestamp\" am-without-suffix=\"true\"></span> ago\n" +
     "</td>\n" +
     "<td data-title=\"{{'Bindings'|translate}}\">\n" +
+=======
+    "<td data-title=\"Created\">\n" +
+    "<span am-time-ago=\"serviceInstance.metadata.creationTimestamp\" am-without-suffix=\"true\"></span> ago\n" +
+    "</td>\n" +
+    "<td data-title=\"Bindings\">\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "<div ng-if=\"bindingsByInstanceRef[serviceInstance.metadata.name].length\">\n" +
     "<p ng-if=\"firstBinding = bindingsByInstanceRef[serviceInstance.metadata.name][0]\">\n" +
     "<span ng-if=\"application = applicationsByBinding[firstBinding.metadata.name][0]\">\n" +
     "{{application.metadata.name}}\n" +
     "</span>\n" +
     "<span ng-if=\"!application\">\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "{{firstBinding.metadata.name}}\n" +
+=======
+    "{{firstBinding.spec.secretName}}\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "</span>\n" +
     "<ng-pluralize count=\"bindingsByInstanceRef[serviceInstance.metadata.name].length\" when=\"{'0':'', '1':'', '2':'and {} other', 'other':'and {} others'}\" offset=\"1\">\n" +
     "</ng-pluralize>\n" +
     "</p>\n" +
     "</div>\n" +
+<<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<div ng-if=\"!bindingsByInstanceRef[serviceInstance.metadata.name].length\" translate>\n" +
+=======
+    "<div ng-if=\"!bindingsByInstanceRef[serviceInstance.metadata.name].length\">\n" +
+>>>>>>> Updates for Service Instance & Bindings
     "No bindings\n" +
     "</div>\n" +
     "</td>\n" +

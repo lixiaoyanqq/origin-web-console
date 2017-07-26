@@ -11,15 +11,14 @@ angular.module('openshiftConsole')
                                                       LabelFilter,
                                                       Logger,
                                                       ProjectsService) {
+    $scope.alerts = {};
     $scope.bindingsByInstanceRef = {};
+    $scope.emptyMessage = "Loading...";
     $scope.labelSuggestions = {};
     $scope.projectName = $routeParams.project;
     $scope.serviceClasses = {};
     $scope.serviceInstances = {};
     $scope.unfilteredServiceInstances = {};
-    $scope.clearFilter = function() {
-      LabelFilter.clear();
-    };
 
     var watches = [];
 
@@ -31,31 +30,30 @@ angular.module('openshiftConsole')
       $scope.unfilteredServiceInstances = BindingService.sortServiceInstances($scope.unfilteredServiceInstances, $scope.serviceClasses);
     };
 
-    $scope.getServiceClass = function(serviceInstance) {
-      var serviceClassName = _.get(serviceInstance, 'spec.clusterServiceClassRef.name');
-      return _.get($scope, ['serviceClasses', serviceClassName]);
-    };
-
     ProjectsService
       .get($routeParams.project)
       .then(_.spread(function(project, context) {
         $scope.project = project;
         $scope.projectContext = context;
 
-        var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
-        watches.push(DataService.watch(serviceBindingsVersion, context, function(bindings) {
+        watches.push(DataService.watch({
+          group: 'servicecatalog.k8s.io',
+          resource: 'serviceinstancecredentials'
+        }, context, function(bindings) {
           var bindingsByName = bindings.by('metadata.name');
           $scope.bindingsByInstanceRef = _.groupBy(bindingsByName, 'spec.instanceRef.name');
         }));
 
-        var serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
-        watches.push(DataService.watch(serviceInstancesVersion, context, function(serviceInstances) {
-          $scope.serviceInstancesLoaded = true;
+        watches.push(DataService.watch({
+          group: 'servicecatalog.k8s.io',
+          resource: 'serviceinstances'
+        }, context, function(serviceInstances) {
+          $scope.emptyMessage = "No provisioned services to show";
           $scope.unfilteredServiceInstances = serviceInstances.by('metadata.name');
 
           sortServiceInstances();
           updateFilter();
-          updateFilterMessage();
+          updateFilterWarning();
 
           LabelFilter.addLabelSuggestionsFromResources($scope.unfilteredServiceInstances, $scope.labelSuggestions);
           LabelFilter.setLabelSuggestions($scope.labelSuggestions);
@@ -63,22 +61,32 @@ angular.module('openshiftConsole')
           Logger.log("provisioned services (subscribe)", $scope.unfilteredServiceInstances);
         }));
 
-        var serviceClassesVersion = APIService.getPreferredVersion('clusterserviceclasses');
-        DataService.list(serviceClassesVersion, {}, function(serviceClasses) {
+        DataService.list({
+          group: 'servicecatalog.k8s.io',
+          resource: 'serviceclasses'
+        }, context, function(serviceClasses) {
           $scope.serviceClasses = serviceClasses.by('metadata.name');
           sortServiceInstances();
           updateFilter();
         });
 
-        function updateFilterMessage() {
-          $scope.filterWithZeroResults = !LabelFilter.getLabelSelector().isEmpty() && _.isEmpty($scope.serviceInstances)  && !_.isEmpty($scope.unfilteredServiceInstances);
+        function updateFilterWarning() {
+          if (!LabelFilter.getLabelSelector().isEmpty() && _.isEmpty($scope.serviceInstances)  && !_.isEmpty($scope.unfilteredServiceInstances)) {
+            $scope.alerts["all-instances-filtered"] = {
+              type: "warning",
+              details: "The active filters are hiding all provisioned services."
+            };
+          }
+          else {
+            delete $scope.alerts["all-instances-filtered"];
+          }
         }
 
         LabelFilter.onActiveFiltersChanged(function(labelSelector) {
           // trigger a digest loop
           $scope.$evalAsync(function() {
             $scope.serviceInstances = labelSelector.select($scope.unfilteredServiceInstances);
-            updateFilterMessage();
+            updateFilterWarning();
           });
         });
 

@@ -8,143 +8,67 @@
         <div class="container-fluid">
           <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
           <alerts alerts="alerts"></alerts>
-          <div ng-if="!loaded" class="mar-top-xl" translate>Loading...</div>
+          <div ng-if="!loaded" class="mar-top-xl">Loading...</div>
           <div ng-if="serviceInstance">
             <h1 class="contains-actions">
               <div class="pull-right dropdown" ng-hide="!('serviceInstances' | canIDoAny)">
-                <!-- Primary Actions -->
-                <button
-                  ng-if="editAvailable && ({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'update')"
-                  class="btn btn-default hidden-xs"
-                  ng-click="showEditDialog()" translate>
-                  Edit
-                </button>
-
-                <!-- Secondary Actions -->
                 <button type="button" class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs" data-toggle="dropdown">
-                  <translate>Actions</translate>
+		<translate>Actions</translate>
                   <span class="caret"></span>
                 </button>
                 <a href=""
                    class="dropdown-toggle actions-dropdown-kebab visible-xs-inline"
                    data-toggle="dropdown"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sr-only" translate>Actions</span></a>
                 <ul class="dropdown-menu dropdown-menu-right actions action-button">
-                  <li class="visible-xs-inline" ng-if="editAvailable && (serviceInstancesVersion  | canI : 'update')">
-                    <a href=""
-                       role="button"
-                       ng-click="showEditDialog()" translate>Edit</a>
-                  </li>
-                  <li ng-if="serviceInstancesVersion | canI : 'update'">
+                  <li ng-if="{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'update'">
                     <a ng-href="{{serviceInstance | editYamlURL}}" role="button" translate>Edit YAML</a>
                   </li>
-                  <li ng-if="serviceInstancesVersion | canI : 'delete'">
-                    <a href="" ng-click="deprovision()" ng-attr-aria-disabled="{{serviceInstance.metadata.deletionTimestamp ? 'true' : undefined}}" ng-class="{ 'disabled-link': serviceInstance.metadata.deletionTimestamp }" role="button" translate>Delete</a>
+                  <li ng-if="{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'">
+                    <a href="" ng-click="deprovision()" role="button" translate>Delete</a>
                   </li>
                 </ul>
               </div>
-              {{displayName}}
-              <small class="list-row-longname" ng-if="displayName !== serviceInstance.metadata.name">
-                {{serviceInstance.metadata.name}}
-              </small>
-              <div>
-                <small class="meta">created <span am-time-ago="serviceInstance.metadata.creationTimestamp"></span></small>
-              </div>
+              {{serviceInstance | serviceInstanceDisplayName:serviceClasses}}
+              <small class="meta">created <span am-time-ago="serviceInstance.metadata.creationTimestamp"></span></small>
             </h1>
             <labels labels="serviceInstance.metadata.labels" clickable="true" kind="service-instances" project-name="{{serviceInstance.metadata.namespace}}" limit="3"></labels>
           </div>
         </div>
       </div><!-- /middle-header-->
-      <div class="middle-content service-instance-details" persist-tab-state>
+      <div class="middle-content" persist-tab-state>
         <div class="container-fluid">
           <div class="row" ng-if="serviceInstance">
             <div class="col-md-12">
-              <div ng-if="serviceInstance.metadata.deletionTimestamp" class="alert word-break alert-warning">
-                <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-                <span class="sr-only" translate>warning</span>
-                <span class="strong" translate>The service was marked for deletion</span>
-                <span class="strong" am-time-ago="serviceInstance.metadata.deletionTimestamp"></span>.
-              </div>
               <uib-tabset>
                 <uib-tab active="selectedTab.details">
                   <uib-tab-heading translate>Details</uib-tab-heading>
                   <div class="resource-details">
                     <div class="row">
                       <div class="col-lg-6">
-                        <h3 translate>Status</h3>
+                        <p ng-bind-html="plan.description | linkify : '_blank'"></p>
                         <dl class="dl-horizontal left">
+                          <dt ng-if-start="serviceClass.description || serviceClass.externalMetadata.longDescription" translate>Description:</dt>
+                          <dd ng-if-end>
+                            <p class="pre-wrap" ng-bind-html="serviceClass.description | linkify : '_blank'"></p>
+                            <p class="pre-wrap" ng-bind-html="serviceClass.externalMetadata.longDescription | linkify : '_blank'"></p>
+                          </dd>
                           <dt translate>Status:</dt>
                           <dd>
                             <status-icon status="serviceInstance | serviceInstanceStatus" disable-animation></status-icon>
                             <span flex>{{serviceInstance | serviceInstanceStatus | sentenceCase}}</span>
                           </dd>
                           <dt ng-if-start="serviceInstance | serviceInstanceConditionMessage" translate>Status Reason:</dt>
-                          <dd ng-if-end class="instance-status-message">{{serviceInstance | serviceInstanceConditionMessage}}</dd>
+                          <dd ng-if-end>
+                            {{serviceInstance | serviceInstanceConditionMessage}}
+                          </dd>
                         </dl>
-                        <div class="hidden-lg">
-                          <h3 ng-if-start="serviceClass.spec.description || serviceClass.spec.externalMetadata.longDescription" translate>Description</h3>
-                          <p class="service-description"><truncate-long-text
-                            limit="500"
-                            content="serviceClass.spec.description"
-                            use-word-boundary="true"
-                            expandable="true"
-                            linkify="true">
-                          </truncate-long-text></p>
-                          <p ng-if-end class="service-description"><truncate-long-text
-                            limit="500"
-                            content="serviceClass.spec.externalMetadata.longDescription"
-                            use-word-boundary="true"
-                            expandable="true"
-                            linkify="true">
-                          </truncate-long-text></p>
-                        </div>
-                        <h3 translate>Plan</h3>
-                        <p ng-bind-html="plan.spec.description | linkify : '_blank'"></p>
-                        <div ng-if="parameterSchema.properties" class="config-parameters-form">
-                          <h3>
-                            <span translate>Configuration</span>
-                            <a ng-if="allowParametersReveal" href="" class="hide-show-link" ng-click="toggleShowParameterValues()" role="button">
-                              {{showParameterValues ? 'Hide Values' : 'Reveal Values'}}
-                            </a>
-                          </h3>
-                          <form name="forms.orderConfigureForm" >
-                            <catalog-parameters
-                              hide-values="!showParameterValues"
-                              opaque-keys="opaqueParameterKeys"
-                              model="parameterData"
-                              parameter-schema="parameterSchema"
-                              parameter-form-definition="parameterFormDefinition"
-                              is-horizontal="true"
-                              read-only="true">
-                            </catalog-parameters>
-                          </form>
-                        </div>
                       </div>
                       <div class="col-lg-6">
-                        <div class="hidden-xs hidden-sm hidden-md">
-                          <h3 ng-if-start="serviceClass.spec.description || serviceClass.spec.externalMetadata.longDescription" translate>Description</h3>
-                          <p class="service-description"><truncate-long-text
-                            limit="500"
-                            content="serviceClass.spec.description"
-                            use-word-boundary="true"
-                            expandable="true"
-                            linkify="true">
-                          </truncate-long-text></p>
-                          <p ng-if-end class="service-description"><truncate-long-text
-                            limit="500"
-                            content="serviceClass.spec.externalMetadata.longDescription"
-                            use-word-boundary="true"
-                            expandable="true"
-                            linkify="true">
-                          </truncate-long-text></p>
-                        </div>
-                        <service-instance-bindings
-                          show-header="true"
+                        <resource-service-bindings
                           project="project"
-                          bindings="bindings"
-                          service-instance="serviceInstance"
-                          service-class="serviceClass"
-                          service-plan="plan">
-                        </service-instance-bindings>
+                          project-context="projectContext"
+                          api-object="serviceInstance">
+                        </resource-service-bindings>
                       </div>
                     </div>
                     <annotations annotations="serviceInstance.metadata.annotations"></annotations>
@@ -158,15 +82,6 @@
             </div><!-- /col-* -->
           </div>
         </div>
-        <overlay-panel show-panel="editDialogShown" handle-close="closeEditDialog">
-          <update-service service-instance="serviceInstance"
-                          project="project"
-                          base-project-url="project"
-                          service-class="serviceClass"
-                          service-plans="servicePlans"
-                          handle-close="closeEditDialog">
-          </update-service>
-        </overlay-panel>
       </div><!-- /middle-content -->
     </div><!-- /middle-container -->
   </div><!-- /middle-section -->

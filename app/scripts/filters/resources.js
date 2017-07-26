@@ -1329,6 +1329,26 @@ angular.module('openshiftConsole')
       return _.get(statusConditionFilter(instance, 'Ready'), 'message');
     };
   })
+  .filter('serviceInstanceStatus', function(isServiceInstanceReadyFilter) {
+    return function(instance) {
+      var status = 'Pending';
+      var conditions = _.get(instance, 'status.conditions');
+      var instanceError = _.find(conditions, {type: 'Failed', status: 'True'});
+
+      if (instanceError) {
+        status = 'Failed';
+      } else if (isServiceInstanceReadyFilter(instance)) {
+        status = 'Ready';
+      }
+
+      return status;
+    };
+  })
+  .filter('readyConditionMessage', function(statusConditionFilter) {
+    return function(instance) {
+      return _.get(statusConditionFilter(instance, 'Ready'), 'message');
+    };
+  })
   .filter('failedConditionMessage', function(statusConditionFilter) {
     return function(instance) {
       return _.get(statusConditionFilter(instance, 'Failed'), 'message');
@@ -1348,14 +1368,4 @@ angular.module('openshiftConsole')
 
       return serviceInstanceMessage;
     };
-  })
-  .filter('humanizeReason', function() {
-    return function(reason) {
-      var humanizedReason = _.startCase(reason);
-      // Special case some values like "BackOff" -> "Back-off"
-      return humanizedReason.replace("Back Off", "Back-off").replace("O Auth", "OAuth");
-    };
-  })
-  .filter('humanizePodStatus', function(humanizeReasonFilter) {
-    return humanizeReasonFilter;
   });
