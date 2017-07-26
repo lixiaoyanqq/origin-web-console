@@ -6488,7 +6488,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/bind-service.html',
     "<div class=\"bind-service-wizard\">\n" +
-    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"bind-service-config\">\n" +
@@ -6542,8 +6542,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/bind-service/bind-parameters.html',
     "<form name=\"ctrl.parametersForm\">\n" +
+<<<<<<< 92d49b5b8d974a4ddad02505f496451a4c333643
     "<catalog-parameters model=\"ctrl.parameterData\" parameter-schema=\"ctrl.parameterSchema\" parameter-form-definition=\"ctrl.parameterFormDefinition\">\n" +
     "</catalog-parameters>\n" +
+=======
+    "<catalog-parameters model=\"ctrl.parameterData\" parameter-schema=\"ctrl.parameterSchema\"></catalog-parameters>\n" +
+>>>>>>> Support binding parameters
     "</form>"
   );
 

@@ -80,11 +80,20 @@
       }
     };
 
+    var showBind = function() {
+      ctrl.nextTitle = bindParametersStep.hidden ? 'Bind' : 'Next >';
+      if (ctrl.podPresets && !selectionValidityWatcher) {
+        selectionValidityWatcher = $scope.$watch("ctrl.selectionForm.$valid", function(isValid) {
+          bindFormStep.valid = isValid;
+        });
+      }
+    };
+
     var showParameters = function() {
       ctrl.nextTitle = 'Bind';
-      if (ctrl.podPresets) {
-        validityWatcher = $scope.$watch("ctrl.selectionForm.$valid", function(isValid) {
-          ctrl.steps[0].valid = isValid;
+      if (!parametersValidityWatcher) {
+        parametersValidityWatcher = $scope.$watch("ctrl.parametersForm.$valid", function(isValid) {
+          bindParametersStep.valid = isValid;
         });
       }
     };
@@ -157,7 +166,6 @@
       label: 'Binding',
       view: 'views/directives/bind-service/bind-service-form.html',
       valid: true,
-      allowClickNav: true,
       onShow: showBind
     };
 
@@ -166,7 +174,6 @@
       label: 'Parameters',
       view: 'views/directives/bind-service/bind-parameters.html',
       hidden: true,
-      allowClickNav: true,
       onShow: showParameters
     };
 
@@ -175,29 +182,25 @@
       label: 'Results',
       view: 'views/directives/bind-service/results.html',
       valid: true,
-      allowClickNav: false,
       onShow: showResults
     };
 
     var updateInstance = function() {
-      if (!ctrl.serviceClasses || !ctrl.servicePlans) {
+      if (!ctrl.serviceClasses) {
         return;
       }
 
-      var instance = ctrl.target.kind === 'ServiceInstance' ? ctrl.target : ctrl.serviceToBind;
+      var instance = ctrl.target.kind === 'Instance' ? ctrl.target : ctrl.serviceToBind;
       if (!instance) {
         return;
       }
 
-      var serviceClassName = ServiceInstancesService.getServiceClassNameForInstance(instance);
-      ctrl.serviceClass = ctrl.serviceClasses[serviceClassName];
-      var servicePlanName = ServiceInstancesService.getServicePlanNameForInstance(instance);
-      ctrl.plan = ctrl.servicePlans[servicePlanName];
-      ctrl.parameterSchema = _.get(ctrl.plan, 'spec.serviceBindingCreateParameterSchema');
-      ctrl.parameterFormDefinition = _.get(ctrl.plan, 'spec.externalMetadata.schemas.service_binding.create.openshift_form_definition');
+      ctrl.serviceClass = ctrl.serviceClasses[instance.spec.serviceClassName];
+      ctrl.serviceClassName = instance.spec.serviceClassName;
+      ctrl.plan = BindingService.getPlanForInstance(instance, ctrl.serviceClass);
+      ctrl.parameterSchema = _.get(ctrl.plan, 'alphaBindingCreateParameterSchema');
       bindParametersStep.hidden = !_.has(ctrl.parameterSchema, 'properties');
       ctrl.nextTitle = bindParametersStep.hidden ? 'Bind' : 'Next >';
-      ctrl.hideBack = bindParametersStep.hidden;
     };
 
     $scope.$watch("ctrl.serviceToBind", updateInstance);
@@ -206,9 +209,9 @@
       ctrl.serviceSelection = {};
       ctrl.projectDisplayName = $filter('displayName')(ctrl.project);
       ctrl.podPresets = enableTechPreviewFeature('pod_presets');
+      ctrl.parameterData = {};
 
       ctrl.steps = [ bindFormStep, bindParametersStep, resultsStep ];
-      ctrl.hideBack = bindParametersStep.hidden;
 
       // We will want ServiceClasses either way for display purposes
       var serviceClassesVersion = APIService.getPreferredVersion('clusterserviceclasses');
