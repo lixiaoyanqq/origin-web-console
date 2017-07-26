@@ -12,8 +12,8 @@ angular.module('openshiftConsole')
                                                      Logger,
                                                      ProjectsService,
                                                      SecretsService,
-	  					     gettext,
-	  					     gettextCatalog,
+                                                     gettext,
+                                                     gettextCatalog,
                                                      ServiceInstancesService) {
     $scope.alerts = {};
     $scope.projectName = $routeParams.project;
