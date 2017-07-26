@@ -193,12 +193,10 @@
       ctrl.serviceSelection = {};
       ctrl.projectDisplayName = $filter('displayName')(ctrl.project);
       ctrl.podPresets = enableTechPreviewFeature('pod_presets');
-<<<<<<< HEAD
       ctrl.parameterData = {};
-=======
->>>>>>> Do not allow binding to an application when pod_presets is false
 
       ctrl.steps = [ bindFormStep, bindParametersStep, resultsStep ];
+      ctrl.hideBack = bindParametersStep.hidden;
 
       if (ctrl.target.kind === 'ServiceInstance') {
         ctrl.bindType = "secret-only";
