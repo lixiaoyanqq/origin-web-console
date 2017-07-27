@@ -2,6 +2,7 @@ div.code,pre,textarea{overflow:auto}
 body,div.code,legend,pre{color:#363636}
 body,figure{margin:0}
 .text-left,caption,th{text-align:left}
+<<<<<<< HEAD
 .bootstrap-switch,.btn,.datepicker table{-moz-user-select:none}
 <<<<<<< HEAD
 .navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.pre-scrollable{max-height:340px}
@@ -9,6 +10,9 @@ body,figure{margin:0}
 .c3 svg,html{-webkit-tap-highlight-color:transparent}
 =======
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.list-view-pf-top-align .list-view-pf-actions,.list-view-pf-top-align .list-view-pf-checkbox{align-self:flex-start}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .fa,.font-icon,.glyphicon{-moz-osx-font-smoothing:grayscale}
 .origin-modal-popup textarea,.wizard-pf-contents textarea{resize:vertical}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:300;src:url(../styles/fonts/OpenSans-Light-webfont.eot);src:local("Open Sans Light"),local("OpenSans-Light"),url(../styles/fonts/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"),url(../styles/fonts/OpenSans-Light-webfont.woff2) format("woff2"),url(../styles/fonts/OpenSans-Light-webfont.woff) format("woff"),url(../styles/fonts/OpenSans-Light-webfont.ttf) format("truetype"),url(../styles/fonts/OpenSans-Light-webfont.svg#OpenSans) format("svg")}
@@ -778,10 +782,15 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 .form-horizontal .form-group-sm .control-label{padding-top:3px;font-size:11px}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:12px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-ms-user-select:none;user-select:none}
 =======
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:13px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-ms-user-select:none;user-select:none}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:13px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .btn.focus,.btn:focus,.btn:hover{color:#4d5258;text-decoration:none}
 .btn.active,.btn:active{outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}
@@ -969,6 +978,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:340px}
 @media (max-device-width:480px) and (orientation:landscape){.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:200px}
 }
+.membership .ui-select-bootstrap>.ui-select-choices,.typeahead-long{max-height:300px}
 .container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:-20px;margin-left:-20px}
 .navbar-static-top{z-index:1000;border-width:0 0 1px}
 .navbar-fixed-bottom,.navbar-fixed-top{position:fixed;right:0;left:0;z-index:1030}
@@ -1366,7 +1376,6 @@ button.close{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance
 .carousel-inner>.item.active.left,.carousel-inner>.item.prev{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);left:0}
 .carousel-inner>.item.active,.carousel-inner>.item.next.left,.carousel-inner>.item.prev.right{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);left:0}
 }
-.bootstrap-select.btn-group .btn,.bootstrap-switch{-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 .carousel-inner>.active,.carousel-inner>.next,.carousel-inner>.prev{display:block}
 .carousel-inner>.active{left:0}
 .carousel-inner>.next,.carousel-inner>.prev{position:absolute;top:0;width:100%}
@@ -2416,7 +2425,7 @@ td>.progress:first-child:last-child{margin-bottom:0;margin-top:3px}
 .form-inline .combobox-container .input-group-addon,.form-search .combobox-container .input-group-addon{width:auto}
 }
 .combobox-container:not(.combobox-selected) .glyphicon-remove,.combobox-selected .caret{display:none}
-.typeahead-long{max-height:300px;overflow-y:auto}
+.typeahead-long{overflow-y:auto}
 .control-group.error .combobox-container .add-on{color:#B94A48;border-color:#B94A48}
 .control-group.error .combobox-container .caret{border-top-color:#B94A48}
 .control-group.warning .combobox-container .add-on{color:#C09853;border-color:#C09853}
@@ -2440,7 +2449,7 @@ td>.progress:first-child:last-child{margin-bottom:0;margin-top:3px}
 .datepicker-dropdown.datepicker-orient-bottom:after{top:-6px}
 .datepicker-dropdown.datepicker-orient-top:before{bottom:-7px;border-bottom:0;border-top:7px solid #bbb}
 .datepicker-dropdown.datepicker-orient-top:after{bottom:-6px;border-bottom:0;border-top:6px solid #fff}
-.datepicker table{margin:0;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none}
+.datepicker table{margin:0;-webkit-touch-callout:none;-khtml-user-select:none;-ms-user-select:none;user-select:none}
 .datepicker table tr td,.datepicker table tr th{text-align:center;width:30px;height:30px;border:none}
 .table-striped .datepicker table tr td,.table-striped .datepicker table tr th{background-color:transparent}
 .datepicker table tr td.new,.datepicker table tr td.old{color:#9c9c9c}
@@ -2556,6 +2565,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bootstrap-select.btn-group .dropdown-menu li a span.text{display:inline-block}
 .bootstrap-select.btn-group .dropdown-menu li small{padding-left:.5em}
 .bootstrap-select.btn-group .dropdown-menu .notify{position:absolute;bottom:5px;width:96%;margin:0 2%;min-height:26px;padding:3px 5px;background:#f5f5f5;border:1px solid #e3e3e3;box-shadow:inset 0 1px 1px rgba(0,0,0,.05);pointer-events:none;opacity:.9;box-sizing:border-box}
+.layout-pf,.layout-pf body,.layout-pf-alt,.layout-pf-alt body{min-height:100%}
 .bootstrap-select.btn-group .no-results{padding:3px;background:#f5f5f5;margin:0 5px;white-space:nowrap}
 .bootstrap-select.btn-group.fit-width .dropdown-toggle .filter-option{position:static}
 .bootstrap-select.btn-group.fit-width .dropdown-toggle .caret{position:static;top:auto;margin-top:-1px}
@@ -2577,10 +2587,14 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bs-searchbox+.bs-actionsbox{padding:0 8px 4px}
 .bs-searchbox .form-control{margin-bottom:0;width:100%;float:none}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
 .bootstrap-switch .bootstrap-switch-container{display:inline-block;top:0;border-radius:1px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bootstrap-switch .bootstrap-switch-handle-off,.bootstrap-switch .bootstrap-switch-handle-on,.bootstrap-switch .bootstrap-switch-label{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:inline-block!important;height:100%;padding:2px 6px;font-size:12px;line-height:20px}
@@ -2641,7 +2655,6 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .c3-area{stroke-width:0;opacity:.2}
 .c3-chart-arcs-title{dominant-baseline:middle;font-size:1.3em}
 .c3-chart-arcs .c3-chart-arcs-background{fill:#e0e0e0;stroke:none}
-.c3 path,.c3-axis-x .tick line{stroke:#d1d1d1}
 .c3-chart-arcs .c3-chart-arcs-gauge-unit{fill:#000;font-size:16px}
 .c3-chart-arcs .c3-chart-arcs-gauge-max,.c3-chart-arcs .c3-chart-arcs-gauge-min{fill:#777}
 .c3-chart-arc .c3-gauge-value{fill:#000}
@@ -2742,6 +2755,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .applauncher-pf .dropdown-menu{padding:9px;min-width:220px}
 .applauncher-pf .applauncher-pf-link:hover{background-color:#f5f5f5;border-color:#bbb;color:#0088ce;text-decoration:none;-webkit-box-shadow:0 0 2px 0 #d1d1d1;box-shadow:0 0 2px 0 #d1d1d1}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .applauncher-pf .applauncher-pf-link-icon{font-size:1.2em;text-align:center;width:1.28571429em}
 .navbar-utility .applauncher-pf .dropdown-menu{border-width:1px!important}
 .navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus{background-color:#232323;color:#f5f5f5}
@@ -2763,10 +2777,21 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .navbar-pf .applauncher-pf,.navbar-pf .navbar-utility .applauncher-pf,.navbar-pf-alt .applauncher-pf,.navbar-pf-alt .navbar-utility .applauncher-pf{display:block;overflow:hidden}
 .navbar-pf .applauncher-pf>a:hover,.navbar-pf .navbar-utility .applauncher-pf>a:hover,.navbar-pf-alt .applauncher-pf>a:hover,.navbar-pf-alt .navbar-utility .applauncher-pf>a:hover{background-color:#37404c}
 .navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus{background-color:#37404c;color:#f5f5f5}
+=======
+.applauncher-pf .applauncher-pf-link-icon{font-size:1.2em;text-align:center;width:1.28571429em}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .navbar-pf .applauncher-pf .dropdown-menu,.navbar-pf .navbar-utility .applauncher-pf .dropdown-menu,.navbar-pf-alt .applauncher-pf .dropdown-menu,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-menu{border-width:1px!important}
-@media (min-width:768px){.navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus{background-color:#475362;border-color:#3d4855;color:#d1d1d1}
+.navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus{background-color:#37404c;color:#f5f5f5}
+@media (min-width:768px){.applauncher-pf .applauncher-pf-link-icon{font-size:2em}
 .navbar-pf .applauncher-pf .dropdown-menu,.navbar-pf .navbar-utility .applauncher-pf .dropdown-menu,.navbar-pf-alt .applauncher-pf .dropdown-menu,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-menu{margin-top:11px}
+<<<<<<< HEAD
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus{background-color:#475362;border-color:#3d4855;color:#d1d1d1}
+}
+@media (max-width:767px){.navbar-pf .applauncher-pf.open .dropdown-menu>li>a,.navbar-pf .navbar-utility .applauncher-pf.open .dropdown-menu>li>a,.navbar-pf-alt .applauncher-pf.open .dropdown-menu>li>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open .dropdown-menu>li>a{padding-left:20px}
+.navbar-pf .applauncher-pf.open .dropdown-menu>li>a .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf.open .dropdown-menu>li>a .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf.open .dropdown-menu>li>a .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf.open .dropdown-menu>li>a .applauncher-pf-link-icon{padding-right:20px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 }
 .navbar-pf .applauncher-pf .dropdown-toggle,.navbar-pf .applauncher-pf.dropdown>.dropdown-toggle,.navbar-pf .navbar-utility .applauncher-pf .dropdown-toggle,.navbar-pf .navbar-utility .applauncher-pf.dropdown>.dropdown-toggle,.navbar-pf-alt .applauncher-pf .dropdown-toggle,.navbar-pf-alt .applauncher-pf.dropdown>.dropdown-toggle,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-toggle,.navbar-pf-alt .navbar-utility .applauncher-pf.dropdown>.dropdown-toggle{background-color:inherit;color:#d1d1d1;text-align:left;text-decoration:none;border-width:0;display:block;padding-left:20px}
 .navbar-pf .applauncher-pf .dropdown-toggle.disabled,.navbar-pf .applauncher-pf.dropdown>.dropdown-toggle.disabled,.navbar-pf .navbar-utility .applauncher-pf .dropdown-toggle.disabled,.navbar-pf .navbar-utility .applauncher-pf.dropdown>.dropdown-toggle.disabled,.navbar-pf-alt .applauncher-pf .dropdown-toggle.disabled,.navbar-pf-alt .applauncher-pf.dropdown>.dropdown-toggle.disabled,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-toggle.disabled,.navbar-pf-alt .navbar-utility .applauncher-pf.dropdown>.dropdown-toggle.disabled{color:#8b8d8f!important}
@@ -2788,6 +2813,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .navbar-pf .applauncher-pf-block-list .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf-block-list .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf-block-list .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf-block-list .applauncher-pf-link-icon{padding:0}
 .navbar-pf .applauncher-pf .dropdown-menu,.navbar-pf .navbar-utility .applauncher-pf .dropdown-menu,.navbar-pf-alt .applauncher-pf .dropdown-menu,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-menu{padding:9px;min-width:220px}
 .navbar-pf .applauncher-pf .applauncher-pf-link:hover,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link:hover,.navbar-pf-alt .applauncher-pf .applauncher-pf-link:hover,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link:hover{background-color:#f5f5f5;border-color:#bbb;color:#0088ce;text-decoration:none;-webkit-box-shadow:0 0 2px 0 #d1d1d1;box-shadow:0 0 2px 0 #d1d1d1}
+<<<<<<< HEAD
 <<<<<<< HEAD
 .navbar-pf .applauncher-pf .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link-icon{font-size:1.2em;text-align:center;width:1.28571429em}
 .navbar-pf .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf-alt .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf-alt .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu{margin-top:0;right:10px}
@@ -2813,6 +2839,16 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 @media (min-width:768px) and (min-width:768px){.navbar-pf .applauncher-pf .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link-icon{padding-right:4px}
 .navbar-pf .applauncher-pf.applauncher-pf-block-list .applauncher-pf-link,.navbar-pf .navbar-utility .applauncher-pf.applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .applauncher-pf.applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .navbar-utility .applauncher-pf.applauncher-pf-block-list .applauncher-pf-link{padding:15px 10px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.navbar-pf .applauncher-pf .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link-icon{font-size:1.2em;text-align:center;width:1.28571429em}
+}
+@media (min-width:768px) and (min-width:768px){.navbar-pf .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf .navbar-utility .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf-alt .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf-alt .navbar-utility .applauncher-pf-block-list .applauncher-pf-item{flex:0 0 50%}
+.navbar-pf .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf .navbar-utility .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .navbar-utility .applauncher-pf-block-list .applauncher-pf-link{flex-direction:column;text-align:center;padding:15px 0}
+.navbar-pf .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link,.navbar-pf .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link,.navbar-pf-alt .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link,.navbar-pf-alt .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link{padding:9px}
+.navbar-pf .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-icon{flex:1 0 0;text-align:left}
+.navbar-pf .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-title,.navbar-pf .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-title,.navbar-pf-alt .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-title,.navbar-pf-alt .navbar-utility .applauncher-pf:not(.applauncher-pf-block-list) .applauncher-pf-link-title{flex:3}
+.navbar-pf .applauncher-pf .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link-icon{font-size:2em}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 }
 @media (min-width:768px){.navbar-iconic .applauncher-pf .dropdown-toggle,.navbar-iconic .applauncher-pf.dropdown>.dropdown-toggle,.navbar-iconic .navbar-utility .applauncher-pf .dropdown-toggle,.navbar-iconic .navbar-utility .applauncher-pf.dropdown>.dropdown-toggle{padding:22px 10px;line-height:inherit}
 }
@@ -2861,7 +2897,8 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .input-daterange input:last-child{border-radius:0 1px 1px 0}
 .input-daterange .input-group-addon{background-color:#f1f1f1;border-color:#bbb;line-height:1.66666667;padding:2px 6px}
 .bootstrap-select.btn-group.form-control{margin-bottom:0}
-.bootstrap-select.btn-group .btn{-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+.bootstrap-select.btn-group .btn{-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+.layout-pf-alt-fixed.transitions .nav-pf-vertical-alt,.layout-pf-alt.layout-pf-alt-fixed.transitions .container-pf-alt-nav-pf-vertical-alt,.layout-pf.layout-pf-fixed.transitions .container-pf-nav-pf-vertical{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .bootstrap-select.btn-group .btn:hover{border-color:#7dc3e8}
 .bootstrap-select.btn-group .btn .caret{margin-top:-4px}
 .bootstrap-select.btn-group .btn:focus{border-color:#0088ce;outline:0!important;-webkit-box-shadow:inset 0 1px 1px rgba(3,3,3,.075),0 0 8px rgba(0,136,206,.6);box-shadow:inset 0 1px 1px rgba(3,3,3,.075),0 0 8px rgba(0,136,206,.6)}
@@ -2995,7 +3032,9 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .card-pf-view.card-pf-view-single-select{cursor:pointer}
 .card-pf-view.card-pf-view-xs .card-pf-title{font-size:16px;font-weight:400;margin-bottom:10px}
 .card-pf-view.card-pf-view-xs .card-pf-title .fa,.card-pf-view.card-pf-view-xs .card-pf-title .pficon{font-size:14px;margin-right:5px}
+.c3 path{stroke:#d1d1d1}
 .c3 svg{font-family:"Open Sans",Helvetica,Arial,sans-serif}
+.c3-axis-x .tick line{stroke:#d1d1d1}
 .c3-axis-y .tick line{display:none}
 .c3-chart-arc path{stroke:#fff}
 .c3-grid line{stroke:#d1d1d1}
@@ -3077,7 +3116,10 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .pficon-applications:before{content:"\e936"}
 .pficon-arrow:before{content:"\e929"}
 .pficon-asleep:before{content:"\e925"}
+<<<<<<< HEAD
 .pficon-automation:before{content:"\e937"}
+=======
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .pficon-build:before{content:"\e902"}
 .pficon-builder-image:before{content:"\e800"}
 .pficon-bundle:before{content:"\e918"}
@@ -3117,22 +3159,35 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .pficon-integration:before{content:"\e948"}
 .pficon-key:before{content:"\e924"}
 .pficon-locked:before{content:"\e923"}
+<<<<<<< HEAD
+=======
+.pficon-unlocked:before{content:"\e922"}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .pficon-maintenance:before{content:"\e92d"}
 .pficon-memory:before{content:"\e908"}
 .pficon-middleware:before{content:"\e917"}
 .pficon-migration:before{content:"\e92e"}
+<<<<<<< HEAD
 .pficon-monitoring:before{content:"\e944"}
 .pficon-network:before{content:"\e909"}
 .pficon-on:before{content:"\e931"}
 .pficon-on-running:before{content:"\e930"}
 .pficon-optimize:before{content:"\e93e"}
 .pficon-orders:before{content:"\e93f"}
+=======
+.pficon-network:before{content:"\e909"}
+.pficon-on:before{content:"\e931"}
+.pficon-on-running:before{content:"\e930"}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .pficon-off:before{content:"\e92f"}
 .pficon-ok:before{color:#3f9c35;content:"\e602"}
 .pficon-paused:before{content:"\e932"}
 .pficon-pending:before{content:"\e933"}
+<<<<<<< HEAD
 .pficon-plugged:before{content:"\e940"}
 .pficon-port:before{content:"\e945"}
+=======
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .pficon-print:before{content:"\e612"}
 .pficon-process-automation:before{content:"\e949"}
 .pficon-private:before{content:"\e914"}
@@ -3204,7 +3259,11 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .infotip.right .arrow:after{border-left-width:0;border-right-color:#fff;left:1px}
 .infotip.left .arrow{border-left-color:#bbb;border-right-width:0;margin-top:-11px;right:-11px;top:50%}
 .infotip.left .arrow:after{border-left-color:#fff;border-right-width:0;right:1px}
+<<<<<<< HEAD
 .layout-pf.layout-pf-fixed.transitions .container-pf-nav-pf-vertical{transition:all .2s cubic-bezier(.35,0,.25,1)}
+=======
+.layout-pf.layout-pf-fixed body{padding-top:60px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .layout-pf.layout-pf-fixed .navbar-pf{left:0;position:fixed;top:0;right:0;z-index:1030}
 .layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.nav-pf-vertical-with-badges{margin-left:270px}
 .layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.collapsed-nav.hidden-icons-pf,.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.hidden-nav{margin-left:0}
@@ -3229,8 +3288,11 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll,.layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll body{height:100%;min-height:0}
 .layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll .container-pf-alt-nav-pf-vertical-alt{height:100%;overflow:auto}
 .layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll .container-pf-alt-nav-pf-vertical-alt.container-cards-pf{margin-top:0;padding-top:20px}
+<<<<<<< HEAD
 .layout-pf-alt.layout-pf-alt-fixed.transitions .container-pf-alt-nav-pf-vertical-alt{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt.layout-pf-alt-fixed body{padding-top:60px}
+=======
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt{margin-left:250px}
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt.collapsed-nav{margin-left:75px}
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt.hidden-nav,.list-pf-left{margin-left:0}
@@ -3273,7 +3335,11 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .list-view-pf .list-group-item:after,.list-view-pf .list-group-item:before{content:" ";display:table}
 .list-view-pf .list-group-item.list-view-pf-expand-active{background-color:#fafafa;box-shadow:0 2px 6px rgba(3,3,3,.2);z-index:1}
 .list-view-pf .list-group-item.active{color:#555;background-color:#def3ff;background-clip:border-box;border-color:#bbb transparent transparent;z-index:auto}
+<<<<<<< HEAD
 .list-view-pf .list-group-item:hover{border-left-color:transparent;border-right-color:transparent}
+=======
+.list-view-pf .list-group-item:hover{background-color:#fafafa;border-left-color:transparent;border-right-color:transparent}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .list-view-pf .list-group-item.list-view-pf-expand-active{border:1px solid #bbb}
 .list-view-pf .list-group-item.list-view-pf-expand-active:first-child{border-top-color:#bbb}
 .list-view-pf .list-group-item:first-child{border-top:1px solid transparent}
@@ -3285,7 +3351,6 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 }
 .list-view-pf-actions{float:right;margin-bottom:20px;margin-left:20px;margin-top:20px;order:2}
 .list-view-pf-actions .dropdown-kebab-pf,.list-view-pf-actions button,.list-view-pf-actions>a{margin-left:10px}
-.list-view-pf-top-align .list-view-pf-actions{align-self:flex-start}
 .list-view-pf-additional-info{align-items:center;display:flex;flex-wrap:wrap}
 @media (min-width:992px){.list-view-pf-additional-info{flex:1 0 auto;float:left;width:50%}
 }
@@ -3300,7 +3365,6 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 @media (min-width:992px){.list-view-pf-body{align-items:center;display:flex;flex-direction:row}
 }
 .list-view-pf-checkbox{border-right:1px solid #d1d1d1;float:left;margin-right:15px;padding:3px 10px 3px 0}
-.list-view-pf-top-align .list-view-pf-checkbox{align-self:flex-start}
 .list-view-pf-stacked .list-view-pf-description{display:block;flex:none}
 @media (min-width:992px){.list-view-pf-description{align-items:center;display:flex;float:left;width:50%}
 }
@@ -3327,7 +3391,11 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .list-view-pf-expand{cursor:pointer;float:left;margin-bottom:20px;margin-right:2px;margin-top:20px;padding:3px 0}
 .list-view-pf-expand.active,.list-view-pf-expand:hover{color:#0088ce}
 .list-view-pf-additional-info-item .list-view-pf-expand{margin:0;padding:0}
+<<<<<<< HEAD
 .list-view-pf-expand .fa-angle-right{cursor:pointer;font-size:17px;margin-right:5px;margin-top:2px;width:10px}
+=======
+.list-view-pf-expand .fa-angle-right{cursor:pointer;font-size:18px;margin-right:5px;margin-top:2px;width:10px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .list-group-item-container{background:#fff;border-top:solid 1px #bbb;box-sizing:content-box;margin:-1px -15px 0;order:3;padding:10px 15px;position:relative;width:100%}
 .list-view-pf-dnd .dndDragging.drag-original{display:none}
 .list-view-pf-dnd .dndDragging.drag-original .list-view-pf-dnd-original-items{display:block}
@@ -3422,6 +3490,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf .navbar-nav>.active>a,.navbar-pf .navbar-nav>.active>a:focus,.navbar-pf .navbar-nav>.active>a:hover{background-color:#232323;color:#f5f5f5}
 .navbar-pf .navbar-nav>li>a{color:#d1d1d1;line-height:1;padding:10px 20px;text-shadow:none}
 .navbar-pf .navbar-nav>li>a:focus,.navbar-pf .navbar-nav>li>a:hover{color:#f5f5f5}
+<<<<<<< HEAD
 .navbar-pf .navbar-nav>.open>a,.navbar-pf .navbar-nav>.open>a:focus,.navbar-pf .navbar-nav>.open>a:hover{background-color:#232323;color:#f5f5f5}
 .navbar-pf .navbar-nav .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;left:26px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:6px}
 @media (min-width:768px){.navbar-pf .navbar-nav .badge{left:auto;right:6px;top:3px}
@@ -3429,6 +3498,12 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf .navbar-nav .badge.badge-pf-bordered{border:1px solid #030303}
 @media (max-width:767px){.navbar-pf .navbar-nav .active .dropdown-menu,.navbar-pf .navbar-nav .active .navbar-persistent,.navbar-pf .navbar-nav .open .dropdown-menu{background-color:#171717!important;margin-left:0;padding-bottom:0;padding-top:0}
 .navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a,.navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a:focus,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a:hover,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a:focus,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a:hover,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a:focus,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:#1f1f1f!important;color:#f5f5f5}
+=======
+.navbar-pf .navbar-nav>.open>a,.navbar-pf .navbar-nav>.open>a:focus,.navbar-pf .navbar-nav>.open>a:hover{background-color:#37404c;color:#f5f5f5}
+.navbar-pf .navbar-nav .badge{background-color:#0088ce;border-radius:20px;border:1px solid #1c2127;color:#fff;cursor:pointer;font-size:10px;font-weight:700;padding:2px 4px;margin-top:-12px;margin-left:-9px;min-height:10px}
+@media (max-width:767px){.navbar-pf .navbar-nav .active .dropdown-menu,.navbar-pf .navbar-nav .active .navbar-persistent,.navbar-pf .navbar-nav .open .dropdown-menu{background-color:#2d353f!important;margin-left:0;padding-bottom:0;padding-top:0}
+.navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a,.navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a:focus,.navbar-pf .navbar-nav .active .dropdown-menu>.active>a:hover,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a:focus,.navbar-pf .navbar-nav .active .navbar-persistent>.active>a:hover,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a:focus,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open>a:hover,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a:focus,.navbar-pf .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:#333d48!important;color:#f5f5f5}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .navbar-pf .navbar-nav .active .dropdown-menu>li>a,.navbar-pf .navbar-nav .active .navbar-persistent>li>a,.navbar-pf .navbar-nav .open .dropdown-menu>li>a{background-color:transparent;border:0;color:#d1d1d1;outline:0;padding-left:30px}
 .navbar-pf .navbar-nav .active .dropdown-menu .dropdown-submenu.open .dropdown-toggle,.navbar-pf .navbar-nav .active .dropdown-menu>li>a:hover,.navbar-pf .navbar-nav .active .navbar-persistent .dropdown-submenu.open .dropdown-toggle,.navbar-pf .navbar-nav .active .navbar-persistent>li>a:hover,.navbar-pf .navbar-nav .open .dropdown-menu .dropdown-submenu.open .dropdown-toggle,.navbar-pf .navbar-nav .open .dropdown-menu>li>a:hover{color:#f5f5f5}
 .navbar-pf .navbar-nav .active .dropdown-menu .divider,.navbar-pf .navbar-nav .active .navbar-persistent .divider,.navbar-pf .navbar-nav .open .dropdown-menu .divider{background-color:#292929;margin:0 1px}
@@ -3526,9 +3601,14 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-alt .nav .nav-item-iconic{cursor:pointer;line-height:1;max-height:58px;padding:21px 12px;position:relative}
 .navbar-pf-alt .nav .nav-item-iconic:focus,.navbar-pf-alt .nav .nav-item-iconic:hover{background-color:transparent}
 .navbar-pf-alt .nav .nav-item-iconic:focus .caret,.navbar-pf-alt .nav .nav-item-iconic:focus .fa,.navbar-pf-alt .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .nav-item-iconic:hover .caret,.navbar-pf-alt .nav .nav-item-iconic:hover .fa,.navbar-pf-alt .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:hover .pficon{color:#fff}
+<<<<<<< HEAD
 .navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
 .navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
 .navbar-pf-alt .nav .nav-item-iconic .caret{font-size:12px;width:auto}
+=======
+.navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:10px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
+.navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:17px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .navbar-pf-alt .nav .open>.nav-item-iconic,.navbar-pf-alt .nav .open>.nav-item-iconic:focus,.navbar-pf-alt .nav .open>.nav-item-iconic:hover{background:0 0}
 .navbar-pf-alt .nav .open>.nav-item-iconic .caret,.navbar-pf-alt .nav .open>.nav-item-iconic .fa,.navbar-pf-alt .nav .open>.nav-item-iconic .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
 .navbar-pf-alt .navbar-brand{color:#fff;height:auto;margin:0 0 0 25px;min-height:35px;padding:11px 0 12px}
@@ -3548,10 +3628,16 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .nav .nav-item-iconic{color:#d1d1d1;cursor:pointer;line-height:1;max-height:58px;padding:21px 12px;position:relative}
 .navbar-pf-vertical .nav .nav-item-iconic:focus,.navbar-pf-vertical .nav .nav-item-iconic:hover{color:#fff;background-color:transparent}
 .navbar-pf-vertical .nav .nav-item-iconic:focus .caret,.navbar-pf-vertical .nav .nav-item-iconic:focus .fa,.navbar-pf-vertical .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-vertical .nav .nav-item-iconic:focus .pficon,.navbar-pf-vertical .nav .nav-item-iconic:hover .caret,.navbar-pf-vertical .nav .nav-item-iconic:hover .fa,.navbar-pf-vertical .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-vertical .nav .nav-item-iconic:hover .pficon{color:#fff}
+<<<<<<< HEAD
 .navbar-pf-vertical .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;left:20px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:18px}
 .navbar-pf-vertical .nav .nav-item-iconic .badge.badge-pf-bordered{border:1px solid #1d1d1d}
 .navbar-pf-vertical .nav .nav-item-iconic .caret,.navbar-pf-vertical .nav .nav-item-iconic .fa,.navbar-pf-vertical .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
 .navbar-pf-vertical .nav .nav-item-iconic .caret{font-size:12px;width:auto}
+=======
+.navbar-pf-vertical .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:10px;font-weight:700;margin-top:-15px;margin-left:-12px;padding:2px 4px;min-width:10px;min-height:10px}
+.navbar-pf-vertical .nav .nav-item-iconic .caret,.navbar-pf-vertical .nav .nav-item-iconic .fa,.navbar-pf-vertical .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:17px}
+.navbar-pf-vertical .nav .nav-item-iconic .caret{font-size:13px;width:auto}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .navbar-pf-vertical .nav .open>.nav-item-iconic,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover{background:0 0}
 .navbar-pf-vertical .nav .open>.nav-item-iconic .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic .pficon,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
 .navbar-pf-vertical .navbar-brand{color:#fff;height:auto;margin:0 0 0 25px;min-height:35px}
@@ -3564,7 +3650,6 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .navbar-toggle:focus .icon-bar,.navbar-pf-vertical .navbar-toggle:hover .icon-bar{background:#fff}
 .navbar-pf-vertical .navbar-toggle+.navbar-brand{margin-left:0}
 .navbar-pf-vertical .navbar-toggle .icon-bar{background:#d1d1d1}
-.layout-pf-alt-fixed.transitions .nav-pf-vertical-alt{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt.collapsed .list-group-item .list-group-item-value{transition:opacity 0s .1s,opacity .1s linear}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt .list-group-item .badge{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt .list-group-item .list-group-item-value{transition:opacity .5s ease-out;transition-delay:150ms}
@@ -3584,7 +3669,11 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .nav-pf-vertical-alt .list-group-item.active{background-color:#fff;border-color:#f5f5f5}
 .nav-pf-vertical-alt .list-group-item.active:before{background:#39a5dc;content:" ";display:block;height:100%;left:0;position:absolute;top:0;width:5px}
 .nav-pf-vertical-alt .list-group-item.active a{color:#39a5dc}
+<<<<<<< HEAD
 .nav-pf-vertical-alt .list-group-item .badge{background:#363636;border:1px solid #fff;border-radius:3px;color:#fff;font-weight:700;font-size:9px;padding:5px;position:absolute;right:15px;text-align:center;top:21px}
+=======
+.nav-pf-vertical-alt .list-group-item .badge{background:#363636;border:1px solid #fff;border-radius:3px;color:#fff;font-weight:700;font-size:10px;padding:5px;position:absolute;right:15px;text-align:center;top:21px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .nav-pf-vertical-alt .list-group-item .badge.notifications{background:#0088ce}
 .nav-pf-vertical-alt .list-group-item .fa,.nav-pf-vertical-alt .list-group-item .glyphicon,.nav-pf-vertical-alt .list-group-item .pficon{float:left;font-size:18px;line-height:30px;margin-right:10px;text-align:center;width:18px}
 .nav-pf-vertical-alt .list-group-item .list-group-item-value{display:inline-block;line-height:30px;opacity:1;overflow:hidden;text-overflow:ellipsis;width:140px}
@@ -3606,6 +3695,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .drawer-pf .blank-slate-pf{border:0;margin-bottom:0;padding:30px}
 .drawer-pf .blank-slate-pf .blank-slate-pf-icon{font-size:3em;line-height:1em}
 .drawer-pf .blank-slate-pf h1{font-size:1em;margin-bottom:0;margin-top:15px}
+<<<<<<< HEAD
 .drawer-pf-close,.drawer-pf-toggle-expand{color:#252525;cursor:pointer;line-height:inherit;padding:2px 10px;position:absolute}
 .drawer-pf-close:focus,.drawer-pf-close:hover,.drawer-pf-toggle-expand:focus,.drawer-pf-toggle-expand:hover{color:#0088ce;text-decoration:none}
 .drawer-pf-toggle-expand{left:0}
@@ -3616,11 +3706,25 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .drawer-pf-action .btn-link{color:#0088ce;padding:10px 0}
 .drawer-pf-action .btn-link .fa,.drawer-pf-action .btn-link .pficon{margin-right:3px}
 .drawer-pf-action .btn-link .pficon-close{position:relative;top:1px}
+=======
+.drawer-pf-close,.drawer-pf-toggle-expand{color:inherit;cursor:pointer;line-height:inherit;padding:2px 5px;position:absolute}
+.drawer-pf-close:focus,.drawer-pf-close:hover,.drawer-pf-toggle-expand:focus,.drawer-pf-toggle-expand:hover{color:inherit;text-decoration:none}
+.drawer-pf-toggle-expand{left:0}
+.drawer-pf-toggle-expand:hover{color:#0088ce}
+.drawer-pf-close{right:0}
+.drawer-pf-action{display:flex}
+.drawer-pf-action .btn-link{color:#0088ce;padding:10px 0}
+.drawer-pf-action .btn-link .fa,.drawer-pf-action .btn-link .pficon{margin-right:3px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .drawer-pf-action .btn-link:hover{color:#00659c}
 .drawer-pf-action-link{border-left:solid 1px #d1d1d1;flex:1 1 0%;margin:10px 0;text-align:center}
 .drawer-pf-action-link:first-of-type{border-left-width:0}
 .drawer-pf-action-link .btn-link{padding:0}
+<<<<<<< HEAD
 .drawer-pf-loading{color:#4d5258;font-size:14px;padding:20px 15px}
+=======
+.drawer-pf-loading{color:#4d5258;font-size:15px;padding:20px 15px}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .drawer-pf-notification{border-bottom:1px solid #d1d1d1;padding:15px}
 .drawer-pf-notification .date{border-right:1px solid #aaa;display:inline-block;line-height:1;margin-right:5px;padding-right:9px}
 .drawer-pf-notification>.dropdown-kebab-pf{margin-top:-3px}
@@ -3639,6 +3743,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .expanded-notification .drawer-pf-notification-info,.expanded-notification .drawer-pf-notification-message{display:inline-block}
 .drawer-pf-notifications-non-clickable .drawer-pf-notification:hover{background-color:#fff}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .drawer-pf-title{background-color:#fafafa;border-bottom:1px solid #d1d1d1;position:absolute;width:100%}
 .drawer-pf-title h3{font-size:12px;margin:0;padding:6px 15px}
 .drawer-pf-notification.expanded-notification .drawer-pf-notification-content{display:flex}
@@ -3655,6 +3760,9 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 }
 =======
 .drawer-pf-title{background-color:#fafafa;border-bottom:1px solid #d1d1d1;position:absolute;width:318px}
+=======
+.drawer-pf-title{background-color:#fafafa;border-bottom:1px solid #d1d1d1;position:absolute;width:100%}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .drawer-pf-title h3{font-size:13px;margin:0;padding:6px 15px}
 .drawer-pf-notification.expanded-notification .drawer-pf-notification-content{display:flex}
 .drawer-pf-notification.expanded-notification .drawer-pf-notification-content .drawer-pf-notification-message{flex:1 1}
@@ -3662,8 +3770,11 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .nav .drawer-pf-trigger .drawer-pf-trigger-icon{border-left:1px solid #3d4855;border-right:1px solid #3d4855;padding-left:15px;padding-right:15px}
 .navbar-pf-vertical .nav .drawer-pf-trigger.open .drawer-pf-trigger-icon{background-color:#37404c}
 .navbar-pf .drawer-pf{height:calc(100vh - 46px);top:26px}
+<<<<<<< HEAD
 .navbar-pf .drawer-pf-trigger-icon{cursor:pointer}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .search-pf.has-button{border-collapse:separate;display:table}
 .search-pf.has-button .form-group{display:table-cell;width:100%}
 .search-pf.has-button .form-group .btn{-webkit-box-shadow:none;box-shadow:none;float:left;margin-left:-1px}
@@ -3794,10 +3905,14 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .toast-pf .dropdown-kebab-pf .btn-link{padding-top:0;padding-bottom:0;vertical-align:text-bottom}
 .wizard-pf-substep-number,.wizard-pf-substep-title{vertical-align:middle;margin-right:5px;display:inline-block}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .toast-pf-top-right{left:20px;position:absolute;right:20px;top:12px;z-index:1055}
 =======
 .toast-pf-top-right{left:20px;position:absolute;right:20px;top:12px;z-index:1035}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.toast-pf-top-right{left:20px;position:absolute;right:20px;top:12px;z-index:1055}
+>>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 @media (min-width:992px){.toast-pf{display:inline-block}
 .toast-pf-max-width{max-width:31.1%}
 .toast-pf-top-right{left:auto}
@@ -6539,7 +6654,6 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 @media (max-width:991px){.membership .content-pane .service-account{flex-direction:column}
 =======
 .membership .content-pane .col-add-role,.membership .content-pane .col-heading,.membership .content-pane .col-name,.membership .content-pane .col-roles,.membership .content-pane .item-row,.membership .content-pane [flex-collapse-fix],.membership .content-pane [flex]{flex-shrink:0;flex-basis:auto}
-.membership .ui-select-bootstrap>.ui-select-choices{max-height:300px}
 @media (min-width:480px){.membership .content-pane .col-heading .col-add-role h3,.membership .content-pane .form-new-role .col-roles{display:block}
 .membership .content-pane .col-add-role{padding:0;min-width:245px}
 .membership .content-pane .col-heading,.membership .content-pane .item-row{border-bottom:none;margin-bottom:none}
