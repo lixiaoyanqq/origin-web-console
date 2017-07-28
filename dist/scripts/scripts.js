@@ -14190,27 +14190,7 @@ e.model.editing = !1;
 };
 }
 };
-}), angular.module("openshiftConsole").component("initContainersSummary", {
-bindings: {
-apiObject: "<"
-},
-templateUrl: "views/_init-containers-summary.html",
-controller: function(e) {
-var t = this;
-t.$onChanges = function(n) {
-var a = _.get(n.apiObject, "currentValue");
-if (a) switch (t.podTemplate = e("podTemplate")(a), a.kind) {
-case "DeploymentConfig":
-case "Deployment":
-t.tab = "configuration";
-break;
-
-default:
-t.tab = "details";
-}
-};
-}
-}).directive("containerStatuses", function(e) {
+}), angular.module("openshiftConsole").directive("containerStatuses", [ "$filter", function(e) {
 return {
 restrict: "E",
 scope: {
@@ -14239,7 +14219,7 @@ if (t.hasDebugTerminal) return t.onDebugTerminal.call(this, e);
 };
 }
 };
-}).directive("podTemplate", function() {
+} ]).directive("podTemplate", function() {
 return {
 restrict: "E",
 scope: {
@@ -14329,7 +14309,7 @@ probe: "="
 },
 templateUrl: "views/directives/_probe.html"
 };
-}).directive("podsTable", function(e) {
+}).directive("podsTable", [ "$filter", function(e) {
 return {
 restrict: "E",
 scope: {
@@ -14351,7 +14331,7 @@ maxWait: 500
 t.$watch("pods", a);
 }
 };
-}).directive("trafficTable", function() {
+} ]).directive("trafficTable", function() {
 return {
 restrict: "E",
 scope: {
@@ -19625,8 +19605,109 @@ showFileInput: "<?"
 },
 templateUrl: "views/directives/ui-ace-yaml.html"
 });
+<<<<<<< 85e379686d2f1679f1c7ddc80a56728aeb6b42a5
 }(), angular.module("openshiftConsole").filter("duration", function() {
 >>>>>>> Improve YAML editor validation and feedback
+=======
+}(), angular.module("openshiftConsole").directive("affix", [ "$window", function(e) {
+return {
+restrict: "AE",
+scope: {
+offsetTop: "@",
+offsetBottom: "@"
+},
+link: function(e, t, n, a) {
+t.affix({
+offset: {
+top: n.offsetTop,
+bottom: n.offsetBottom
+}
+});
+}
+};
+} ]), function() {
+angular.module("openshiftConsole").component("editEnvironmentVariables", {
+controller: [ "$filter", "APIService", "DataService", "EnvironmentService", "NotificationsService", function(e, t, n, a, r) {
+var o, i, s, c, l = this, u = !1, d = [], m = [], p = !1, g = e("canI"), f = e("getErrorDetails"), h = e("humanizeKind"), v = e("orderByDisplayName"), y = function(e, t) {
+u || (l.form && !l.form.$pristine && l.updatedObject ? a.isEnvironmentEqual(e, t) ? l.updatedObject = a.mergeEdits(e, t) : (u = !0, r.addNotification({
+type: "warning",
+message: "The environment variables for the " + o + " have been updated in the background.",
+details: "Saving your changes may create a conflict or cause loss of data."
+})) : l.updatedObject = a.copyAndNormalize(e));
+}, b = function() {
+n.list("configmaps", {
+namespace: l.apiObject.metadata.namespace
+}).then(function(e) {
+d = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
+});
+}, C = function() {
+g("secrets", "list") && n.list("secrets", {
+namespace: l.apiObject.metadata.namespace
+}).then(function(e) {
+m = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
+});
+}, S = function() {
+p || (p = !0, b(), C());
+}, _ = function(e, n) {
+o = h(e.kind), i = e.metadata.name, s = t.objectToResourceGroupVersion(e), l.canIUpdate = g(s, "update"), c ? c.finally(function() {
+y(e, n);
+}) : y(e, n), l.containers = a.getContainers(l.updatedObject), l.disableValueFrom || l.ngReadonly || !l.canIUpdate || S();
+};
+l.$onChanges = function(e) {
+e.apiObject && e.apiObject.currentValue && _(e.apiObject.currentValue, e.apiObject.previousValue);
+}, l.save = function() {
+var e = "save-env-error-" + i;
+r.hideNotification(e), a.compact(l.updatedObject), (c = n.update(s, i, l.updatedObject, {
+namespace: l.updatedObject.metadata.namespace
+})).then(function() {
+r.addNotification({
+type: "success",
+message: "Environment variables for " + o + " " + i + " were successfully updated."
+}), l.form.$setPristine();
+}, function(t) {
+r.addNotification({
+id: e,
+type: "error",
+message: "An error occurred updating environment variables for " + o + " " + i + ".",
+details: f(t)
+});
+}).finally(function() {
+c = null;
+});
+}, l.clearChanges = function() {
+l.updatedObject = a.copyAndNormalize(l.apiObject), l.form.$setPristine(), u = !1;
+};
+} ],
+controllerAs: "$ctrl",
+bindings: {
+apiObject: "<",
+ngReadonly: "<",
+disableValueFrom: "<"
+},
+templateUrl: "views/directives/edit-environment-variables.html"
+});
+}(), angular.module("openshiftConsole").component("initContainersSummary", {
+bindings: {
+apiObject: "<"
+},
+templateUrl: "views/_init-containers-summary.html",
+controller: [ "$filter", function(e) {
+var t = this;
+t.$onChanges = function(n) {
+var a = _.get(n.apiObject, "currentValue");
+if (a) switch (t.podTemplate = e("podTemplate")(a), a.kind) {
+case "DeploymentConfig":
+case "Deployment":
+t.tab = "configuration";
+break;
+
+default:
+t.tab = "details";
+}
+};
+} ]
+}), angular.module("openshiftConsole").filter("duration", function() {
+>>>>>>> Bug 1476157 - Fix minification problems due to dependency injection
 return function(e, t, n, a) {
 function r(e, t, a) {
 0 !== e && (1 !== e ? s.push(e + " " + a) : n ? s.push(t) : s.push("1 " + t));
@@ -20918,84 +20999,7 @@ return window.encodeURIComponent;
 return function(t) {
 return _.get(e, [ "ENABLE_TECH_PREVIEW_FEATURE", t ], !1);
 };
-} ]), angular.module("openshiftConsole").directive("affix", [ "$window", function(e) {
-return {
-restrict: "AE",
-scope: {
-offsetTop: "@",
-offsetBottom: "@"
-},
-link: function(e, t, n, a) {
-t.affix({
-offset: {
-top: n.offsetTop,
-bottom: n.offsetBottom
-}
-});
-}
-};
-} ]), function() {
-angular.module("openshiftConsole").component("editEnvironmentVariables", {
-controller: [ "$filter", "APIService", "DataService", "EnvironmentService", "NotificationsService", function(e, t, n, a, r) {
-var o, i, s, c, l = this, u = !1, d = [], m = [], p = !1, g = e("canI"), f = e("getErrorDetails"), h = e("humanizeKind"), v = e("orderByDisplayName"), y = function(e, t) {
-u || (l.form && !l.form.$pristine && l.updatedObject ? a.isEnvironmentEqual(e, t) ? l.updatedObject = a.mergeEdits(e, t) : (u = !0, r.addNotification({
-type: "warning",
-message: "The environment variables for the " + o + " have been updated in the background.",
-details: "Saving your changes may create a conflict or cause loss of data."
-})) : l.updatedObject = a.copyAndNormalize(e));
-}, b = function() {
-n.list("configmaps", {
-namespace: l.apiObject.metadata.namespace
-}).then(function(e) {
-d = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
-});
-}, C = function() {
-g("secrets", "list") && n.list("secrets", {
-namespace: l.apiObject.metadata.namespace
-}).then(function(e) {
-m = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
-});
-}, S = function() {
-p || (p = !0, b(), C());
-}, _ = function(e, n) {
-o = h(e.kind), i = e.metadata.name, s = t.objectToResourceGroupVersion(e), l.canIUpdate = g(s, "update"), c ? c.finally(function() {
-y(e, n);
-}) : y(e, n), l.containers = a.getContainers(l.updatedObject), l.disableValueFrom || l.ngReadonly || !l.canIUpdate || S();
-};
-l.$onChanges = function(e) {
-e.apiObject && e.apiObject.currentValue && _(e.apiObject.currentValue, e.apiObject.previousValue);
-}, l.save = function() {
-var e = "save-env-error-" + i;
-r.hideNotification(e), a.compact(l.updatedObject), (c = n.update(s, i, l.updatedObject, {
-namespace: l.updatedObject.metadata.namespace
-})).then(function() {
-r.addNotification({
-type: "success",
-message: "Environment variables for " + o + " " + i + " were successfully updated."
-}), l.form.$setPristine();
-}, function(t) {
-r.addNotification({
-id: e,
-type: "error",
-message: "An error occurred updating environment variables for " + o + " " + i + ".",
-details: f(t)
-});
-}).finally(function() {
-c = null;
-});
-}, l.clearChanges = function() {
-l.updatedObject = a.copyAndNormalize(l.apiObject), l.form.$setPristine(), u = !1;
-};
-} ],
-controllerAs: "$ctrl",
-bindings: {
-apiObject: "<",
-ngReadonly: "<",
-disableValueFrom: "<"
-},
-templateUrl: "views/directives/edit-environment-variables.html"
-});
-}(), angular.module("openshiftConsole").factory("logLinks", [ "$anchorScroll", "$document", "$location", "$window", function(e, t, n, a) {
+} ]), angular.module("openshiftConsole").factory("logLinks", [ "$anchorScroll", "$document", "$location", "$window", function(e, t, n, a) {
 var r = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'project.<%= namespace %>.<%= namespaceUid %>.*',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 return {
 scrollTop: function(e) {
