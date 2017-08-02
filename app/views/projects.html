@@ -24,6 +24,15 @@
                       <div class="projects-bar">
                         <h1 translate>My Projects</h1>
                         <div class="projects-options">
+                          <div class="projects-add" ng-if="canCreate">
+                            <button ng-click="createProject()" class="btn btn-md btn-primary">
+                              <span class="fa fa-plus" aria-hidden="true"></span>
+                              <span class="icon-button-text">Create Project</span>
+                            </button>
+                            <origin-modal-popup shown="newProjectPanelShown" modal-title="Create Project" on-close="closeNewProjectPanel">
+                              <create-project is-dialog="true" redirect-action="onNewProject" on-cancel="closeNewProjectPanel"></create-project>
+                            </origin-modal-popup>
+                          </div>
                           <div class="projects-search">
                             <form role="form" class="search-pf has-button">
                               <div class="form-group has-clear">
@@ -95,9 +104,31 @@
                                   View Membership
                                 </a>
                               </li>
+                              <li role="menuitem">
+                                <a href="" ng-click="editProject(project)" translate>
+                                  Edit Project
+                                </a>
+                              </li>
+                              <li role="menuitem">
+                                <delete-link
+                                  kind="Project"
+                                  label="{{'Delete Project'|translate}}"
+                                  resource-name="{{project.metadata.name}}"
+                                  project-name="{{project.metadata.name}}"
+                                  display-name="{{(project | displayName)}}"
+                                  type-name-to-confirm="true"
+                                  stay-on-current-page="true"
+                                  alerts="alerts" translate>Delete
+                                </delete-link>
+                              </li>
                             </ul>
                           </div>
                         </div>
+                        <origin-modal-popup shown="editProjectPanelShown && editingProject === project"
+                                            ng-class="{'with-description': (project | description | size)}"
+                                            modal-title="Edit Project" on-close="closeEditProjectPanel">
+                          <edit-project project="project" is-dialog="true" redirect-action="onEditProject" on-cancel="closeEditProjectPanel"></edit-project>
+                        </origin-modal-popup>
                       </div>
                     </div>
                     <p class="projects-instructions" ng-if="canCreate === false" ng-include="'views/_cannot-create-project.html'"></p>
