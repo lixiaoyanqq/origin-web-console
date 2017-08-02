@@ -13867,6 +13867,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"projects-bar\">\n" +
     "<h1 translate>My Projects</h1>\n" +
     "<div class=\"projects-options\">\n" +
+<<<<<<< HEAD
+=======
+    "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
+    "<button ng-click=\"createProject()\" class=\"btn btn-md btn-primary\">\n" +
+    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "</button>\n" +
+    "<origin-modal-popup shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\">\n" +
+    "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
+    "</origin-modal-popup>\n" +
+    "</div>\n" +
+>>>>>>> Edit/Create Projects on page in a popup
     "<div class=\"projects-search\">\n" +
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group has-clear\">\n" +
@@ -13943,11 +13955,36 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
     "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
     "</origin-modal-popup>\n" +
+=======
+    "<div row class=\"list-view-pf-actions list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
+    "<div uib-dropdown>\n" +
+    "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
+    "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
+    "<li role=\"menuitem\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/membership\">\n" +
+    "View Membership\n" +
+    "</a>\n" +
+    "</li>\n" +
+    "<li role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"editProject(project)\">\n" +
+    "Edit Project\n" +
+    "</a>\n" +
+    "</li>\n" +
+    "<li role=\"menuitem\">\n" +
+    "<delete-link kind=\"Project\" label=\"Delete Project\" resource-name=\"{{project.metadata.name}}\" project-name=\"{{project.metadata.name}}\" display-name=\"{{(project | displayName)}}\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" alerts=\"alerts\">\n" +
+    "</delete-link>\n" +
+    "</li>\n" +
+    "</ul>\n" +
+>>>>>>> Edit/Create Projects on page in a popup
     "</div>\n" +
     "</div>\n" +
+    "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
+    "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
+    "</origin-modal-popup>\n" +
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"projects.length > limitListTo\">\n" +
