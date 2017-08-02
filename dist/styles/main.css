@@ -5916,13 +5916,21 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 }
 .projects-bar h1{margin-bottom:0!important;margin-top:0!important}
 .projects-bar .projects-add{display:flex;justify-content:flex-end;margin:-27px 0 0}
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
 @media (min-width:685px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
+=======
+@media (min-width:660px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
+>>>>>>> Edit/Create Projects on page in a popup
 }
 @media (min-width:768px){.projects-bar .projects-add .origin-modal-popup{width:370px}
 }
 .projects-bar .projects-options{display:flex;flex-direction:column}
 .projects-bar .projects-search{display:flex;margin-bottom:20px;margin-top:20px}
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
 @media (min-width:685px){.projects-bar .projects-options{flex-direction:row}
+=======
+@media (min-width:660px){.projects-bar .projects-options{flex-direction:row}
+>>>>>>> Edit/Create Projects on page in a popup
 .projects-bar .projects-search{margin-top:0}
 }
 .projects-bar .projects-search .search-pf{display:block;flex:0 1 auto}
@@ -5947,7 +5955,10 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 }
 .container-terminal-wrapper{position:relative}
 @media (min-width:768px){.projects-list .with-description .origin-modal-popup.position-above{margin-top:20px}
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
 .projects-list-create-popup form{width:400px}
+=======
+>>>>>>> Edit/Create Projects on page in a popup
 .container-terminal-wrapper:hover .fullscreen-toggle{display:block}
 }
 .container-terminal-wrapper .fullscreen-toggle .exit-fullscreen,.container-terminal-wrapper.disconnected .fullscreen-toggle{display:none}

@@ -13846,10 +13846,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 translate>My Projects</h1>\n" +
     "<div class=\"projects-options\">\n" +
     "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
     "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
     "</button>\n" +
+=======
+    "<button ng-click=\"createProject()\" class=\"btn btn-md btn-primary\">\n" +
+    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "</button>\n" +
+    "<origin-modal-popup shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\">\n" +
+    "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
+    "</origin-modal-popup>\n" +
+>>>>>>> Edit/Create Projects on page in a popup
     "</div>\n" +
     "<div class=\"projects-search\">\n" +
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
@@ -13937,7 +13947,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 <<<<<<< HEAD
 =======
     "<li role=\"menuitem\">\n" +
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
     "<a href=\"\" ng-click=\"editProject(project)\" translate>\n" +
+=======
+    "<a href=\"\" ng-click=\"editProject(project)\">\n" +
+>>>>>>> Edit/Create Projects on page in a popup
     "Edit Project\n" +
     "</a>\n" +
     "</li>\n" +
@@ -13949,7 +13963,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
     "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"{{'Edit Project'|translate}}\" on-close=\"closeEditProjectPanel\">\n" +
+=======
+    "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
+>>>>>>> Edit/Create Projects on page in a popup
     "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
     "</origin-modal-popup>\n" +
     "</div>\n" +

@@ -117,29 +117,9 @@ angular.module('openshiftConsole')
       onSortChange: update
     };
 
-    var updateProjects = function(projectData) {
-      projects = _.toArray(projectData.by("metadata.name"));
-      $scope.loading = false;
-      $scope.showGetStarted = _.isEmpty(projects) && !$scope.isProjectListIncomplete;
-      update();
-    };
-
-    // On create / edit / delete, manually update the project list if not
-    // watching. This uses cached project data, so is not expensive.
-    var onChanges = function() {
-      if (!watchingProjects) {
-        ProjectsService.list().then(updateProjects);
-      }
-    };
-
     $scope.newProjectPanelShown = false;
 
-    $scope.createProject = function(event) {
-      var button =_.get(event, 'target');
-      while (button && !angular.element(button).hasClass('btn')) {
-        button = button.parentElement;
-      }
-      $scope.popupElement = button;
+    $scope.createProject = function() {
       $scope.newProjectPanelShown = true;
     };
 
@@ -149,7 +129,6 @@ angular.module('openshiftConsole')
 
     $scope.onNewProject = function() {
       $scope.newProjectPanelShown = false;
-      onChanges();
     };
 
     $scope.editProjectPanelShown = false;
@@ -165,13 +144,6 @@ angular.module('openshiftConsole')
 
     $scope.onEditProject = function() {
       $scope.editProjectPanelShown = false;
-      onChanges();
-    };
-
-    $scope.onDeleteProject = onChanges;
-
-    $scope.goToProject = function(projectName) {
-      Navigate.toProjectOverview(projectName);
     };
 
     $scope.$watch('search.text', _.debounce(function(searchText) {
