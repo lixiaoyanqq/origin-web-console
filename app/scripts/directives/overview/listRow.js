@@ -7,6 +7,7 @@
       '$uibModal',
       'APIService',
       'BuildsService',
+      'CatalogService',
       'DeploymentsService',
       'ListRowUtils',
       'Navigate',
@@ -31,6 +32,7 @@
                            $uibModal,
                            APIService,
                            BuildsService,
+                           CatalogService,
                            DeploymentsService,
                            ListRowUtils,
                            Navigate,
@@ -97,6 +99,8 @@
 
       return _.get(row.state.hpaByResource, [kind, name], NO_HPA);
     };
+
+    row.showBindings = CatalogService.SERVICE_CATALOG_ENABLED && enableTechPreviewFeature('pod_presets');
 
     row.$doCheck = function() {
       // Update notifications.
