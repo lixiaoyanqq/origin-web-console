@@ -30,7 +30,7 @@ angular.module('openshiftConsole').controller('OverviewController', [
   'PromiseUtils',
   'ResourceAlertsService',
   'RoutesService',
-  'ServiceInstancesService', 
+  'ServiceInstancesService',
   'gettext',
   'gettextCatalog',
   OverviewController
