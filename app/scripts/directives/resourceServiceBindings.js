@@ -3,10 +3,9 @@
 angular.module('openshiftConsole').component('resourceServiceBindings', {
   controller: [
     '$filter',
-    'APIService',
+    'DataService',
     'BindingService',
     'CatalogService',
-    'DataService',
     ResourceServiceBindings
   ],
   controllerAs: '$ctrl',
@@ -20,14 +19,9 @@ angular.module('openshiftConsole').component('resourceServiceBindings', {
 });
 
 
-function ResourceServiceBindings($filter,
-                                 APIService,
-                                 BindingService,
-                                 CatalogService,
-                                 DataService) {
+function ResourceServiceBindings($filter, DataService, BindingService, CatalogService) {
   var ctrl = this;
   var enableTechPreviewFeature = $filter('enableTechPreviewFeature');
-  var servicePlans;
 
   ctrl.bindings = [];
   ctrl.bindableServiceInstances = [];
@@ -35,16 +29,10 @@ function ResourceServiceBindings($filter,
   ctrl.serviceInstances = [];
   ctrl.showBindings = CatalogService.SERVICE_CATALOG_ENABLED && enableTechPreviewFeature('pod_presets');
 
-  var limitWatches = $filter('isIE')();
+  var limitWatches = $filter('isIE')() || $filter('isEdge')();
   var DEFAULT_POLL_INTERVAL = 60 * 1000; // milliseconds
   var watches = [];
   var canI = $filter('canI');
-
-  // API versions
-  var serviceBindingsVersion = ctrl.serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
-  var serviceClassesVersion = APIService.getPreferredVersion('clusterserviceclasses');
-  var serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
-  var servicePlansVersion = APIService.getPreferredVersion('clusterserviceplans');
 
   var updateBindings = function() {
     if (!ctrl.apiObject || !ctrl.bindings) {
@@ -56,7 +44,7 @@ function ResourceServiceBindings($filter,
   };
 
   var sortServiceInstances = function() {
-    ctrl.bindableServiceInstances = BindingService.filterBindableServiceInstances(ctrl.serviceInstances, ctrl.serviceClasses, servicePlans);
+    ctrl.bindableServiceInstances = BindingService.filterBindableServiceInstances(ctrl.serviceInstances, ctrl.serviceClasses);
     ctrl.orderedServiceInstances = BindingService.sortServiceInstances(ctrl.serviceInstances, ctrl.serviceClasses);
   };
 
@@ -73,28 +61,33 @@ function ResourceServiceBindings($filter,
     DataService.unwatchAll(watches);
     watches = [];
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI(serviceBindingsVersion, 'watch')) {
-      watches.push(DataService.watch(serviceBindingsVersion, ctrl.projectContext, function(bindings) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'watch')) {
+      watches.push(DataService.watch({
+        group: 'servicecatalog.k8s.io',
+        resource: 'bindings'
+      }, ctrl.projectContext, function(bindings) {
         ctrl.bindings = bindings.by('metadata.name');
         updateBindings();
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
     }
 
     // The canI check on watch should be temporary until we have a different solution for handling secret parameters
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI(serviceInstancesVersion, 'watch')) {
-      watches.push(DataService.watch(serviceInstancesVersion, ctrl.projectContext, function(serviceInstances) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+      watches.push(DataService.watch({
+        group: 'servicecatalog.k8s.io',
+        resource: 'instances'
+      }, ctrl.projectContext, function(serviceInstances) {
         ctrl.serviceInstances = serviceInstances.by('metadata.name');
         sortServiceInstances();
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
 
       // If we can't watch instances don't bother getting service classes either
-      DataService.list(serviceClassesVersion, {}, function(serviceClasses) {
+      DataService.list({
+        group: 'servicecatalog.k8s.io',
+        resource: 'serviceclasses'
+      }, ctrl.projectContext, function(serviceClasses) {
         ctrl.serviceClasses = serviceClasses.by('metadata.name');
         sortServiceInstances();
-      });
-
-      DataService.list(servicePlansVersion, {}, function(planData) {
-        servicePlans = planData.by('metadata.name');
       });
     }
   };

@@ -173,20 +173,6 @@ code.command {
       }
     }
   }
-
-  .component-label {
-    font-size: @component-label;
-    font-weight: 500;
-    padding: 0 0 4px 0;
-    .text-muted();
-    text-transform: uppercase;
-    .sublabel {
-      font-size: (@component-label - 1);
-      margin-left: 2px;
-      text-transform: none;
-    }
-  }
-
   .resource-details & {
     h3 {
       border-bottom: 0;
@@ -196,26 +182,9 @@ code.command {
   }
 }
 
-.service-binding-message {
-  margin-left: 20px;
-}
-.service-binding-parameters {
-  margin-top: 5px;
-
-  > form {
-    margin-top: 5px;
-  }
-  .hide-show-link {
-    font-size: @font-size-base;
-    margin-left: 5px;
-  }
-}
-
 .service-binding-actions {
   font-size: 13px;
   font-weight: 400;
-  margin-top: 5px;
-
   > a {
     border-left: 1px solid @color-pf-black-300;
     padding: 0 10px;
@@ -223,11 +192,6 @@ code.command {
     &:first-of-type {
       border-left: 0;
       padding-left: 0;
-      padding-right: 5px;
     }
   }
-}
-
-.service-description .truncated-content {
-  white-space: pre-wrap;
 }

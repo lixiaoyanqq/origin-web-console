@@ -4413,11 +4413,15 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .static-form-value-large{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-bottom:10.5px;font-size:16px;margin-top:3px}
 .environment-variables.table.table-bordered>tbody>tr>td:last-child .env-var-value,.hash,.osc-file-input textarea,.template-message .resource-description{font-family:Menlo,Monaco,Consolas,monospace}
 .static-form-value-large .small,.static-form-value-large small{font-weight:400;line-height:1;color:#9c9c9c;font-size:65%}
+<<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 <<<<<<< f56378c1e748449074be8738ae159f02ed953303
 .pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
 =======
 .breadcrumb strong,.pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
 >>>>>>> Create reusable edit-environment-variables component
+=======
+.pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
+>>>>>>> Add bindings list to resource pages
 .clear-env-changes-link{vertical-align:-2px}
 copy-to-clipboard .input-group.limit-width{max-width:300px}
 .copy-to-clipboard input.form-control[readonly]{background-color:#fff;color:#363636}
@@ -4531,6 +4535,7 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .service-binding h3{line-height:1.4;margin-top:0}
 .service-binding h3 small{display:block;margin-top:5px}
 .service-binding h3 small:first-of-type{margin-top:0}
+<<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 .service-binding .component-label{font-size:11px;font-weight:500;padding:0 0 4px;color:#9c9c9c;text-transform:uppercase}
 .service-binding .component-label .sublabel{font-size:10px;margin-left:2px;text-transform:none}
 .resource-details .service-binding h3{border-bottom:0;margin:0;padding-bottom:5px}
@@ -4541,6 +4546,12 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .service-binding-actions>a{border-left:1px solid #d1d1d1;padding:0 10px}
 .service-binding-actions>a:first-of-type{border-left:0;padding-left:0;padding-right:5px}
 .service-description .truncated-content{white-space:pre-wrap}
+=======
+.resource-details .service-binding h3{border-bottom:0;margin:0;padding-bottom:5px}
+.service-binding-actions{font-size:13px;font-weight:400}
+.service-binding-actions>a{border-left:1px solid #d1d1d1;padding:0 10px}
+.service-binding-actions>a:first-of-type{border-left:0;padding-left:0}
+>>>>>>> Add bindings list to resource pages
 .ng-cloak,.x-ng-cloak,[data-ng-cloak],[ng-cloak],[ng\:cloak],[x-ng-cloak]{display:none!important}
 @media only screen and (max-device-width:736px){body.ios{padding-right:0px!important}
 body.ios.modal-open,body.ios.overlay-open{overflow-y:auto;position:fixed}
@@ -5207,7 +5218,11 @@ h2+.list-view-pf{margin-top:20px}
 @media (min-width:992px){.overview .status-icons{margin-right:15px;width:40%}
 }
 .overview :not(.tab-pane)>overview-pipelines>.expanded-section{margin-bottom:30px}
+<<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 .overview .toolbar-container{border-bottom:1px solid #e4e4e4;padding-bottom:13px;padding-top:13px;background-color:#ededed;min-height:100%}
+=======
+.overview .toolbar-container{margin-top:10px;margin-bottom:5px}
+>>>>>>> Add bindings list to resource pages
 .overview .triggers{margin-bottom:20px}
 .overview .usage-value{font-size:18px;font-weight:300;line-height:1}
 .overview .usage-label{font-size:84%;color:#9c9c9c}

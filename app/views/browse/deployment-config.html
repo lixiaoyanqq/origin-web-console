@@ -348,9 +348,47 @@
                       <span ng-if="!(horizontalPodAutoscalersVersion | canI : 'create')" translate>Autoscaling is not enabled. There are no autoscalers for this deployment config.</span>
                     </div>
 
-                    <!-- HPA details -->
-                    <div ng-repeat="hpa in autoscalers">
-                      <hpa hpa="hpa" project="project" show-scale-target="false" alerts="alerts"></hpa>
+                        <div class="col-lg-6">
+                          <h3 translate>Triggers</h3>
+                          <dl class="dl-horizontal left">
+                            <dt>Manual (CLI):
+                              <a href="{{'deployment-operations' | helpLink}}" target="_blank">
+				      <span class="learn-more-block"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
+                              </a>
+                            </dt>
+                            <dd>
+                              <copy-to-clipboard clipboard-text="'oc rollout latest dc/' + deploymentConfig.metadata.name + ' -n ' + project.metadata.name"></copy-to-clipboard>
+                            </dd>
+                            <div ng-repeat="trigger in deploymentConfig.spec.triggers">
+                              <span ng-switch="trigger.type">
+                                <span ng-switch-default>{{trigger.type}}</span>
+                                <span ng-switch-when="ImageChange" ng-if="trigger.imageChangeParams.from">
+                                  <dt translate>New Image For:</dt>
+                                  <dd>
+                                    {{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}
+                                    <small ng-if="!trigger.imageChangeParams.automatic" class="text-muted">(disabled)</small>
+                                  </dd>
+                                </span>
+                                <span ng-switch-when="ConfigChange">
+                                  <dt translate>Change Of:</dt>
+                                  <dd translate>Config</dd>
+                                </span>
+                              </span>
+                            </div>
+                          </dl>
+                        </div>
+
+                        <!-- Service Bindings -->
+                        <div class="col-lg-6">
+                          <resource-service-bindings
+                            project="project"
+                            project-context="projectContext"
+                            api-object="deploymentConfig">
+                          </resource-service-bindings>
+                        </div>
+
+                      </div>
+                      <annotations annotations="deploymentConfig.metadata.annotations"></annotations>
                     </div>
                   </uib-tab>
                   <uib-tab heading="Environment" active="selectedTab.environment" ng-if="deploymentConfig">

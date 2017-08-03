@@ -330,10 +330,15 @@
                       <span class="sr-only" translate>Warning:</span>
                       {{warning.message}}
 
-                      <!-- If the CPU request is missing, add an action to set one. -->
-                      <a ng-href="project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps"
-                         ng-if="warning.reason === 'NoCPURequest' && (deploymentsVersion | canI : 'update')"
-                         role="button" translate>Edit Resource <span ng-if="!('cpu' | isRequestCalculated : project)">Requests and</span> Limits</a>
+                      </div>
+                      <!-- Service Bindings -->
+                      <div class="col-lg-6">
+                        <resource-service-bindings
+                          project="project"
+                          project-context="projectContext"
+                          api-object="deployment">
+                        </resource-service-bindings>
+                      </div>
                     </div>
 
                     <!-- Create autoscaler -->

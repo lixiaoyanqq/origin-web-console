@@ -1168,23 +1168,8 @@ function OverviewController($scope,
   };
 
   var sortServiceInstances = function() {
-    if(!state.serviceInstances && !state.serviceClasses) {
-      state.bindableServiceInstances = null;
-      return;
-    }
-
-    state.bindableServiceInstances = _.filter(state.serviceInstances, function(serviceInstance) {
-      return BindingService.isServiceBindable(serviceInstance, state.serviceClasses);
-    });
-
-    state.orderedServiceInstances = _.sortBy(state.serviceInstances,
-      function(item) {
-        return _.get(state.serviceClasses, [item.spec.serviceClassName, 'externalMetadata', 'displayName']) || item.spec.serviceClassName;
-      },
-      function(item) {
-        return _.get(item, 'metadata.name', '');
-      }
-    );
+    state.bindableServiceInstances = BindingService.filterBindableServiceInstances(state.serviceInstances, state.serviceClasses);
+    state.orderedServiceInstances = BindingService.sortServiceInstances(state.serviceInstances, state.serviceClasses);
   };
 
   var watches = [];
@@ -1352,53 +1337,11 @@ function OverviewController($scope,
     var servicePlanPromises = {};
 
     // The canI check on watch should be temporary until we have a different solution for handling secret parameters
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI(serviceInstancesVersion, 'watch')) {
-
-      // Get the service class for this instance. Returns a promise.
-      fetchServiceClass = function(instance) {
-        var serviceClassName = ServiceInstancesService.getServiceClassNameForInstance(instance);
-
-        var serviceClass = _.get(state, ['serviceClasses', serviceClassName]);
-        if (serviceClass) {
-          return $q.when(serviceClass);
-        }
-
-        // Check if we already have the service class or if a request is already in flight.
-        if (!serviceClassPromises[serviceClassName]) {
-          serviceClassPromises[serviceClassName] = DataService.get(serviceClassesVersion, serviceClassName, {}).then(function(serviceClass) {
-            state.serviceClasses[serviceClassName] = serviceClass;
-            return serviceClass;
-          }).finally(function() {
-            delete servicePlanPromises[serviceClassName];
-          });
-        }
-
-        return serviceClassPromises[serviceClassName];
-      };
-
-      // Get the service plan for this instance. Returns a promise.
-      fetchServicePlan = function(instance) {
-        var servicePlanName = ServiceInstancesService.getServicePlanNameForInstance(instance);
-
-        // Check if we already have the service plan or if a request is already in flight.
-        var servicePlan = _.get(state, ['servicePlans', servicePlanName]);
-        if (servicePlan) {
-          return $q.when(servicePlan);
-        }
-
-        if (!servicePlanPromises[servicePlanName]) {
-          servicePlanPromises[servicePlanName] = DataService.get(servicePlansVersion, servicePlanName, {}).then(function(servicePlan) {
-            state.servicePlans[servicePlanName] = servicePlan;
-            return servicePlan;
-          }).finally(function() {
-            delete servicePlanPromises[servicePlanName];
-          });
-        }
-
-        return servicePlanPromises[servicePlanName];
-      };
-
-      watches.push(DataService.watch(serviceInstancesVersion, context, function(serviceInstances) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+      watches.push(DataService.watch({
+        group: 'servicecatalog.k8s.io',
+        resource: 'instances'
+      }, context, function(serviceInstances) {
         state.serviceInstances = serviceInstances.by('metadata.name');
 
         var promises = [];
@@ -1420,8 +1363,11 @@ function OverviewController($scope,
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
     }
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI(serviceBindingsVersion, 'watch')) {
-      watches.push(DataService.watch(serviceBindingsVersion, context, function(bindings) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'watch')) {
+      watches.push(DataService.watch({
+        group: 'servicecatalog.k8s.io',
+        resource: 'bindings'
+      }, context, function(bindings) {
         state.bindings = bindings.by('metadata.name');
         overview.bindingsByInstanceRef = _.groupBy(state.bindings, 'spec.instanceRef.name');
         groupBindings();
@@ -1433,6 +1379,20 @@ function OverviewController($scope,
     DataService.list("limitranges", context, function(response) {
       state.limitRanges = response.by("metadata.name");
     });
+
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+      // TODO: update to behave like ImageStreamResolver
+      // - we may not even need to list these... perhaps just fetch the ones we need when needed
+      // If we can't watch instances don't bother getting service classes either
+      DataService.list({
+        group: 'servicecatalog.k8s.io',
+        resource: 'serviceclasses'
+      }, context, function(serviceClasses) {
+        state.serviceClasses = serviceClasses.by('metadata.name');
+        sortServiceInstances();
+        updateFilter();
+      });
+    }
 
     var samplePipelineTemplate = Constants.SAMPLE_PIPELINE_TEMPLATE;
     if (samplePipelineTemplate) {
