@@ -23325,6 +23325,7 @@ templateUrl: "views/directives/unbind-service.html"
 }(), function() {
 angular.module("openshiftConsole").component("processTemplate", {
 <<<<<<< HEAD
+<<<<<<< HEAD
 controller: [ "$filter", "$q", "$scope", "$uibModal", "APIService", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "ProjectsService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f) {
 function v(e) {
 var t = /^helplink\.(.*)\.title$/, n = /^helplink\.(.*)\.url$/, r = {};
@@ -23341,6 +23342,10 @@ b.prefillParameters[e.name] && (e.value = b.prefillParameters[e.name]);
 =======
 controller: [ "$filter", "$q", "$scope", "$uibModal", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d) {
 function m(e) {
+=======
+controller: [ "$filter", "$q", "$scope", "$uibModal", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "ProjectsService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
+function p(e) {
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 var t = /^helplink\.(.*)\.title$/, n = /^helplink\.(.*)\.url$/, a = {};
 for (var r in e.annotations) {
 var o, i = r.match(t);
@@ -23348,6 +23353,7 @@ i ? ((o = a[i[1]] || {}).title = e.annotations[r], a[i[1]] = o) : (i = r.match(n
 }
 return a;
 }
+<<<<<<< HEAD
 function p() {
 f.prefillParameters && _.each(f.template.parameters, function(e) {
 f.prefillParameters[e.name] && (e.value = f.prefillParameters[e.name]);
@@ -23357,10 +23363,17 @@ f.prefillParameters[e.name] && (e.value = f.prefillParameters[e.name]);
 =======
 }), f.labels = _.map(f.template.labels, function(e, t) {
 >>>>>>> Let users edit app label directly for "add to project"
+=======
+function g() {
+h.prefillParameters && _.each(h.template.parameters, function(e) {
+h.prefillParameters[e.name] && (e.value = h.prefillParameters[e.name]);
+}), h.labels = _.map(h.template.labels, function(e, t) {
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 return {
 name: t,
 value: e
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), N() && b.labels.push({
@@ -23395,34 +23408,42 @@ message: "Cannot create " + C(e.object.kind).toLowerCase() + ' "' + e.object.met
 =======
 }), R() && f.labels.push({
 >>>>>>> Let users edit app label directly for "add to project"
+=======
+}), P() && h.labels.push({
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 name: "app",
-value: f.template.metadata.name
+value: h.template.metadata.name
 });
 }
-var g, f = this, h = e("displayName"), v = e("humanize");
-f.$onInit = function() {
-f.labels = [], f.template = angular.copy(f.template), f.templateDisplayName = h(f.template), f.selectedProject = f.project, p();
+var f, h = this, v = e("displayName"), y = e("humanize");
+h.$onInit = function() {
+h.labels = [], h.template = angular.copy(h.template), h.templateDisplayName = v(h.template), h.selectedProject = h.project, g();
 };
-var y, b = function() {
+var b, C = function() {
 var e = {
-started: "Creating " + f.templateDisplayName + " in project " + h(f.selectedProject),
-success: "Created " + f.templateDisplayName + " in project " + h(f.selectedProject),
-failure: "Failed to create " + f.templateDisplayName + " in project " + h(f.selectedProject)
-}, a = m(f.template);
-u.clear(), u.add(e, a, f.selectedProject.metadata.name, function() {
+started: "Creating " + h.templateDisplayName + " in project " + v(h.selectedProject),
+success: "Created " + h.templateDisplayName + " in project " + v(h.selectedProject),
+failure: "Failed to create " + h.templateDisplayName + " in project " + v(h.selectedProject)
+}, a = p(h.template);
+d.clear(), d.add(e, a, h.selectedProject.metadata.name, function() {
 var e = t.defer();
-return r.batch(y, g).then(function(t) {
+return r.batch(b, f).then(function(t) {
 var n = [], a = !1;
 t.failure.length > 0 ? (a = !0, t.failure.forEach(function(e) {
 n.push({
 type: "error",
+<<<<<<< HEAD
 message: "Cannot create " + v(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+message: "Cannot create " + y(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 details: e.data.message
 });
 }), t.success.forEach(function(e) {
 n.push({
 type: "success",
+<<<<<<< HEAD
 <<<<<<< HEAD
 message: "Created " + C(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 });
@@ -23444,20 +23465,23 @@ template: b.template
 r.open({
 =======
 message: "Created " + v(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+=======
+message: "Created " + y(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 });
 })) : n.push({
 type: "success",
-message: "All items in template " + f.templateDisplayName + " were created successfully."
+message: "All items in template " + h.templateDisplayName + " were created successfully."
 }), e.resolve({
 alerts: n,
 hasErrors: a
 });
 }), e.promise;
-}), f.isDialog ? n.$emit("templateInstantiated", {
-project: f.selectedProject,
-template: f.template
-}) : o.toNextSteps(f.templateDisplayName, f.selectedProject.metadata.name);
-}, C = function(e) {
+}), h.isDialog ? n.$emit("templateInstantiated", {
+project: h.selectedProject,
+template: h.template
+}) : o.toNextSteps(h.templateDisplayName, h.selectedProject.metadata.name);
+}, S = function(e) {
 a.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -23517,40 +23541,32 @@ cancelButtonText: "Cancel"
 };
 }
 }
-}).result.then(b);
-}, S = {}, w = function() {
-i.hideNotification("process-template-error"), _.each(S, function(e) {
+}).result.then(C);
+}, w = {}, k = function() {
+i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
-}, k = function(e) {
-w(), S = l.getSecurityAlerts(y, f.selectedProject.metadata.name);
+}, j = function(e) {
+k(), w = u.getSecurityAlerts(b, h.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
-S = S.concat(t), _.filter(S, {
+w = w.concat(t), _.filter(w, {
 type: "error"
-}).length ? (f.disableInputs = !1, _.each(S, function(e) {
+}).length ? (h.disableInputs = !1, _.each(w, function(e) {
 e.id = _.uniqueId("process-template-alert-"), i.addNotification(e);
-})) : S.length ? (C(S), f.disableInputs = !1) : b();
-}, j = function() {
-if (_.has(f.selectedProject, "metadata.uid")) return t.when(f.selectedProject);
-var a = {
-apiVersion: "v1",
-kind: "ProjectRequest",
-metadata: {
-name: f.selectedProject.metadata.name
-},
-displayName: f.selectedProject.metadata.annotations["new-display-name"],
-description: e("description")(f.selectedProject)
+})) : w.length ? (S(w), h.disableInputs = !1) : C();
+}, R = function() {
+if (_.has(h.selectedProject, "metadata.uid")) return t.when(h.selectedProject);
+var n = h.selectedProject.metadata.name, a = h.selectedProject.metadata.annotations["new-display-name"], r = e("description")(h.selectedProject);
+return c.create(n, a, r);
 };
-return r.create("projectrequests", null, a, n);
-};
-f.createFromTemplate = function() {
-f.disableInputs = !0, j().then(function(e) {
-f.selectedProject = e, g = {
-namespace: f.selectedProject.metadata.name
-}, f.template.labels = d.mapEntries(d.compactEntries(f.labels)), r.create("processedtemplates", null, f.template, g).then(function(e) {
-s.setTemplateData(e.parameters, f.template.parameters, e.message), y = e.objects, c.getLatestQuotaAlerts(y, g).then(k);
+h.createFromTemplate = function() {
+h.disableInputs = !0, R().then(function(e) {
+h.selectedProject = e, f = {
+namespace: h.selectedProject.metadata.name
+}, h.template.labels = m.mapEntries(m.compactEntries(h.labels)), r.create("processedtemplates", null, h.template, f).then(function(e) {
+s.setTemplateData(e.parameters, h.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, f).then(j);
 }, function(e) {
-f.disableInputs = !1;
+h.disableInputs = !1;
 var t;
 e.data && e.data.message && (t = e.data.message), i.addNotification({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -23562,11 +23578,15 @@ details: t
 });
 }, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (b.disableInputs = !1, "AlreadyExists" === e.data.reason) b.projectNameTaken = !0; else {
 var t;
 e.data && e.data.message && (t = e.data.message), s.addNotification({
 =======
 f.disableInputs = !1;
+=======
+h.disableInputs = !1;
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 var t;
 e.data && e.data.message && (t = e.data.message), i.addNotification({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -23585,12 +23605,20 @@ var N = function() {
 return !_.get(b.template, "labels.app") && !_.some(b.template.objects, "metadata.labels.app");
 =======
 });
+<<<<<<< HEAD
 }, f.cancel = function() {
 w(), o.toProjectOverview(f.project.metadata.name);
 }, n.$on("instantiateTemplate", f.createFromTemplate), n.$on("$destroy", w);
 var R = function() {
 return !_.get(f.template, "labels.app") && !_.some(f.template.objects, "metadata.labels.app");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, h.cancel = function() {
+k(), o.toProjectOverview(h.project.metadata.name);
+}, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", k);
+var P = function() {
+return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
+>>>>>>> Updated processTemplate to call ProjectServices.create(...)
 };
 } ],
 controllerAs: "$ctrl",
