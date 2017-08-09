@@ -8212,6 +8212,7 @@ controller: !0
 });
 }
 };
+<<<<<<< a044a915ec97ccf53d4ca1b478e9ba6eea281385
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }), angular.module("openshiftConsole").factory("ServiceInstancesService", [ "$filter", "$q", "$uibModal", "APIService", "BindingService", "CatalogService", "DataService", "Logger", "NotificationsService", function(a, b, c, d, e, f, g, h, i) {
 var j = d.getPreferredVersion("clusterserviceclasses"), k = d.getPreferredVersion("clusterserviceplans"), l = function(a) {
@@ -8251,6 +8252,46 @@ message: "Provisioned service '" + b.metadata.name + "' was marked for deletion.
 }, function(c) {
 i.addNotification({
 id: "deprovision-service-error",
+=======
+}), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g) {
+function f() {
+if (v) if (p.startTour) d(function() {
+g.replace(), g.search("startTour", null), e.startGuidedTour();
+}, 500); else if (_.get(h, "auto_launch")) {
+var n = "openshift/viewedHomePage/" + t.user.metadata.name;
+"true" !== localStorage.getItem(n) && d(function() {
+e.startGuidedTour() && localStorage.setItem(n, "true");
+}, 500);
+}
+}
+var h = _.get(r, "GUIDED_TOURS.landing_page_tour"), v = h && h.enabled && h.steps;
+e.saasOfferings = r.SAAS_OFFERINGS, e.viewMembership = function(e) {
+i.toProjectMembership(e.metadata.name);
+}, v && (e.startGuidedTour = function() {
+return !u.isWindowBelowBreakpoint(u.WINDOW_SIZE_SM) && (l.startTour(h.steps), !0);
+}), s.clearNotifications();
+var y = function() {
+var t = _.get(e, "template.metadata.uid");
+t && c.addItem(t);
+}, b = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, C = function(e) {
+return b(e) ? o.get("templates", e.metadata.name, {
+namespace: e.metadata.namespace
+}) : m.when(e);
+};
+e.templateSelected = function(t) {
+C(t).then(function(t) {
+e.template = t;
+});
+}, e.templateDialogClosed = function() {
+y(), e.template = null;
+}, n.withUser().then(function() {
+var t = !_.get(r, "ENABLE_TECH_PREVIEW_FEATURE.template_service_broker");
+a.getCatalogItems(t).then(_.spread(function(t, n) {
+if (n) {
+var a = {
+>>>>>>> Bug 1471033 - Only request template metadata
 type: "error",
 message: "An error occurred while deleting provisioned service " + b.metadata.name + ".",
 details: a("getErrorDetails")(c)
@@ -8267,6 +8308,7 @@ if (!b.metadata.deletionTimestamp) {
 var c = {
 propagationPolicy: null
 };
+<<<<<<< a044a915ec97ccf53d4ca1b478e9ba6eea281385
 g["delete"](j, b.metadata.name, e, c).then(function() {
 i.addNotification({
 type: "success",
@@ -8696,6 +8738,16 @@ e.catalogItems = t, p();
 h();
 }), f && e.$on("$locationChangeStart", function(t) {
 m.search().startTour && (e.startGuidedTour(), t.preventDefault());
+=======
+s.addNotification(a);
+}
+e.catalogItems = t, f();
+}));
+}), e.$on("$destroy", function() {
+y();
+}), v && e.$on("$locationChangeStart", function(t) {
+g.search().startTour && (e.startGuidedTour(), t.preventDefault());
+>>>>>>> Bug 1471033 - Only request template metadata
 });
 } ]), angular.module("openshiftConsole").controller("ProjectsController", [ "$scope", "$filter", "$location", "$route", "$timeout", "AuthService", "DataService", "KeywordService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
 var u, d, m = [], p = [];
@@ -15414,11 +15466,15 @@ namespace: "openshift"
 e.openshiftImageStreams = t.by("metadata.name");
 }), s.list("templates", {
 namespace: "openshift"
+}, null, {
+partialObjectMetadataList: !0
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
 }), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (s.list("imagestreams", a).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), s.list("templates", a).then(function(t) {
+}), s.list("templates", a, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
 }));
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
@@ -16398,11 +16454,15 @@ namespace: "openshift"
 e.openshiftImageStreams = t.by("metadata.name");
 }), c.list("templates", {
 namespace: "openshift"
+}, null, {
+partialObjectMetadataList: !0
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
 }), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (c.list("imagestreams", a).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), c.list("templates", a).then(function(t) {
+}), c.list("templates", a, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
 }));
 }));

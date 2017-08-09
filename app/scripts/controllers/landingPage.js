@@ -64,6 +64,21 @@ angular.module('openshiftConsole')
     $scope.templateSelected = function(selectedTemplate) {
       // `selectedTemplate` might be a parial object (metadata only). If necessary, load the complete template object.
       loadCompleteTemplate(selectedTemplate).then(function(template) {
+        $scope.template = template;
+      });
+    };
+
+    var loadCompleteTemplate = function(template) {
+      if (isPartialObject(template)) {
+        return DataService.get("templates", template.metadata.name, { namespace: template.metadata.namespace });
+      }
+
+      return $q.when(template);
+    };
+
+    $scope.templateSelected = function(selectedTemplate) {
+      // `selectedTemplate` might be a parial object (metadata only). If necessary, load the complete template object.
+      loadCompleteTemplate(selectedTemplate).then(function(template) {
         _.set($scope, 'ordering.panelName', 'template');
         $scope.template = template;
       });
