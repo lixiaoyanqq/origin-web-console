@@ -5706,31 +5706,39 @@ controller: !0
 });
 }
 };
-}), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
-function p() {
-if (f) if (d.startTour) u(function() {
-m.replace(), m.search("startTour", null), e.startGuidedTour();
-}, 500); else if (_.get(g, "auto_launch")) {
+}), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g) {
+function f() {
+if (v) if (p.startTour) d(function() {
+g.replace(), g.search("startTour", null), e.startGuidedTour();
+}, 500); else if (_.get(h, "auto_launch")) {
 var n = "openshift/viewedHomePage/" + t.user.metadata.name;
-"true" !== localStorage.getItem(n) && u(function() {
+"true" !== localStorage.getItem(n) && d(function() {
 e.startGuidedTour() && localStorage.setItem(n, "true");
 }, 500);
 }
 }
-var g = _.get(r, "GUIDED_TOURS.landing_page_tour"), f = g && g.enabled && g.steps;
+var h = _.get(r, "GUIDED_TOURS.landing_page_tour"), v = h && h.enabled && h.steps;
 e.saasOfferings = r.SAAS_OFFERINGS, e.viewMembership = function(e) {
-o.toProjectMembership(e.metadata.name);
-}, f && (e.startGuidedTour = function() {
-return !l.isWindowBelowBreakpoint(l.WINDOW_SIZE_SM) && (c.startTour(g.steps), !0);
-}), i.clearNotifications();
-var h = function() {
+i.toProjectMembership(e.metadata.name);
+}, v && (e.startGuidedTour = function() {
+return !u.isWindowBelowBreakpoint(u.WINDOW_SIZE_SM) && (l.startTour(h.steps), !0);
+}), s.clearNotifications();
+var y = function() {
 var t = _.get(e, "template.metadata.uid");
-t && s.addItem(t);
+t && c.addItem(t);
+}, b = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, C = function(e) {
+return b(e) ? o.get("templates", e.metadata.name, {
+namespace: e.metadata.namespace
+}) : m.when(e);
 };
 e.templateSelected = function(t) {
+C(t).then(function(t) {
 e.template = t;
+});
 }, e.templateDialogClosed = function() {
-h(), e.template = null;
+y(), e.template = null;
 }, n.withUser().then(function() {
 var t = !_.get(r, "ENABLE_TECH_PREVIEW_FEATURE.template_service_broker");
 a.getCatalogItems(t).then(_.spread(function(t, n) {
@@ -5739,9 +5747,9 @@ var a = {
 type: "error",
 message: n
 };
-i.addNotification(a);
+s.addNotification(a);
 }
-e.catalogItems = t, p();
+e.catalogItems = t, f();
 }));
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 }), a.$on("$destroy", function() {
@@ -5846,9 +5854,9 @@ b.pods = a.select(b.unfilteredPods), e();
 c.unwatchAll(i);
 =======
 }), e.$on("$destroy", function() {
-h();
-}), f && e.$on("$locationChangeStart", function(t) {
-m.search().startTour && (e.startGuidedTour(), t.preventDefault());
+y();
+}), v && e.$on("$locationChangeStart", function(t) {
+g.search().startTour && (e.startGuidedTour(), t.preventDefault());
 });
 } ]), angular.module("openshiftConsole").controller("ProjectsController", [ "$scope", "$filter", "$location", "$route", "$timeout", "AuthService", "DataService", "KeywordService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
 var u, d, m = [], p = [];
@@ -10635,11 +10643,15 @@ namespace: "openshift"
 e.openshiftImageStreams = t.by("metadata.name");
 }), s.list("templates", {
 namespace: "openshift"
+}, null, {
+partialObjectMetadataList: !0
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
 }), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (s.list("imagestreams", a).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), s.list("templates", a).then(function(t) {
+}), s.list("templates", a, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
 }));
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
@@ -11366,11 +11378,15 @@ namespace: "openshift"
 e.openshiftImageStreams = t.by("metadata.name");
 }), c.list("templates", {
 namespace: "openshift"
+}, null, {
+partialObjectMetadataList: !0
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
 }), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (c.list("imagestreams", a).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), c.list("templates", a).then(function(t) {
+}), c.list("templates", a, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }));
