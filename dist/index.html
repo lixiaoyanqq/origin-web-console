@@ -22,15 +22,24 @@
 <link rel="stylesheet" href="styles/main.css">
 <style type="text/css"></style>
 </head>
+<<<<<<< HEAD
 <body class="console-os" ng-class="{ 'has-project-bar': view.hasProject, 'has-project-search': view.hasProjectSearch }">
 <osc-header></osc-header>
 <toast-notifications></toast-notifications>
 <notification-drawer-wrapper></notification-drawer-wrapper>
 <<<<<<< HEAD
+=======
+<body class="console-os" ng-class="{ 'has-project-bar': view.hasProject }">
+<p ng-if="globalTechPreviewIndicator" ng-cloak class="tech-preview-banner">Technology preview is enabled</p>
+<osc-header></osc-header>
+<toast-notifications></toast-notifications>
+<notification-drawer-wrapper></notification-drawer-wrapper>
+>>>>>>> Patternfly vertical navigation and project bar
 <div class="container-pf-nav-pf-vertical" ng-class="{ 'collapsed-nav': nav.collapsed }">
 <div ng-view class="view">
 <div class="middle">
 <div class="middle-content">
+<<<<<<< HEAD
 <div class="empty-state-message loading">
 <h2 class="text-center" id="temporary-loading-message" style="display: none" translate>Loading...</h2>
 =======
@@ -47,6 +56,8 @@
 <div class="wrap no-sidebar">
 <div class="middle surface-shaded">
 <div class="middle-section">
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 <div class="empty-state-message">
 <h2 class="text-center" id="temporary-loading-message" style="display: none">Loading...</h2>
 >>>>>>> Add notification-drawer to show curated list of events to user

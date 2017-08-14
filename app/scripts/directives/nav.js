@@ -114,6 +114,7 @@ angular.module('openshiftConsole')
         };
 
         $scope.onMouseEnter = function(primaryItem) {
+
           if (primaryItem.mouseLeaveTimeout) {
             $timeout.cancel(primaryItem.mouseLeaveTimeout);
             primaryItem.mouseLeaveTimeout = null;

@@ -1,5 +1,8 @@
 div.code,pre,textarea{overflow:auto}
+<<<<<<< HEAD
 body,div.code,legend,pre{color:#363636}
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 body,figure{margin:0}
 .text-left,caption,th{text-align:left}
 <<<<<<< HEAD
@@ -9,6 +12,7 @@ body,figure{margin:0}
 .navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.pre-scrollable{max-height:340px}
 .datepicker .next.disabled,.datepicker .prev.disabled,.invisible{visibility:hidden}
 .c3 svg,html{-webkit-tap-highlight-color:transparent}
+<<<<<<< HEAD
 =======
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
@@ -18,6 +22,8 @@ body,figure{margin:0}
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 .list-view-pf-top-align .list-view-pf-actions,.list-view-pf-top-align .list-view-pf-checkbox{align-self:flex-start}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 .fa,.font-icon,.glyphicon{-moz-osx-font-smoothing:grayscale}
 .origin-modal-popup textarea,.wizard-pf-contents textarea{resize:vertical}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:300;src:url(../styles/fonts/OpenSans-Light-webfont.eot);src:local("Open Sans Light"),local("OpenSans-Light"),url(../styles/fonts/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"),url(../styles/fonts/OpenSans-Light-webfont.woff2) format("woff2"),url(../styles/fonts/OpenSans-Light-webfont.woff) format("woff"),url(../styles/fonts/OpenSans-Light-webfont.ttf) format("truetype"),url(../styles/fonts/OpenSans-Light-webfont.svg#OpenSans) format("svg")}
@@ -798,11 +804,14 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:13px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+<<<<<<< HEAD
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
 <<<<<<< HEAD
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 =======
 >>>>>>> Bump common and catalog depedencies
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .btn.focus,.btn:focus,.btn:hover{color:#4d5258;text-decoration:none}
 .btn.active,.btn:active{outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}
@@ -986,7 +995,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-collapse.in{overflow-y:visible}
 .navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.navbar-static-top .navbar-collapse{padding-left:0;padding-right:0}
 }
-.carousel-inner,.embed-responsive,.modal,.modal-open,.progress{overflow:hidden}
+.embed-responsive,.modal,.modal-open,.progress{overflow:hidden}
 @media (max-device-width:480px) and (orientation:landscape){.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:200px}
 }
 .membership .ui-select-bootstrap>.ui-select-choices,.typeahead-long{max-height:300px}
@@ -1002,7 +1011,11 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-fixed-bottom,.navbar-fixed-top,.navbar-static-top{border-radius:0}
 .navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand{margin-left:-20px}
 }
+<<<<<<< HEAD
 .navbar-toggle{position:relative;float:right;margin-right:20px;padding:9px 10px;margin-top:13.5px;margin-bottom:13.5px;background-color:transparent;border:1px solid transparent;border-radius:1px}
+=======
+.navbar-toggle{position:relative;float:right;margin-right:20px;padding:9px 10px;margin-top:19px;margin-bottom:19px;background-color:transparent;border:1px solid transparent;border-radius:1px}
+>>>>>>> Patternfly vertical navigation and project bar
 .navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}
 .navbar-toggle .icon-bar+.icon-bar{margin-top:4px}
 .navbar-nav{margin:10.25px -20px}
@@ -1380,7 +1393,7 @@ button.close{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance
 .popover.bottom>.arrow:after{content:" ";top:1px;margin-left:-10px;border-top-width:0;border-bottom-color:#fff}
 .popover.left>.arrow{top:50%;right:-11px;margin-top:-11px;border-right-width:0;border-left-color:#bbb}
 .popover.left>.arrow:after{right:1px;border-right-width:0;border-left-color:#fff}
-.carousel-inner{width:100%}
+.carousel-inner{overflow:hidden;width:100%}
 .carousel-inner>.item{display:none;position:relative;-webkit-transition:.6s ease-in-out left;-o-transition:.6s ease-in-out left;transition:.6s ease-in-out left}
 @media all and (transform-3d),(-webkit-transform-3d){.carousel-inner>.item{-webkit-transition:-webkit-transform .6s ease-in-out;-moz-transition:-moz-transform .6s ease-in-out;-o-transition:-o-transform .6s ease-in-out;transition:transform .6s ease-in-out;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000px;-moz-perspective:1000px;perspective:1000px}
 .carousel-inner>.item.active.right,.carousel-inner>.item.next{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);left:0}
@@ -2460,7 +2473,7 @@ td>.progress:first-child:last-child{margin-bottom:0;margin-top:3px}
 .datepicker-dropdown.datepicker-orient-bottom:after{top:-6px}
 .datepicker-dropdown.datepicker-orient-top:before{bottom:-7px;border-bottom:0;border-top:7px solid #bbb}
 .datepicker-dropdown.datepicker-orient-top:after{bottom:-6px;border-bottom:0;border-top:6px solid #fff}
-.datepicker table{margin:0;-webkit-touch-callout:none;-khtml-user-select:none;-ms-user-select:none;user-select:none}
+.datepicker table{margin:0;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .datepicker table tr td,.datepicker table tr th{text-align:center;width:30px;height:30px;border:none}
 .table-striped .datepicker table tr td,.table-striped .datepicker table tr th{background-color:transparent}
 .datepicker table tr td.new,.datepicker table tr td.old{color:#9c9c9c}
@@ -2600,6 +2613,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
@@ -2611,6 +2625,9 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 >>>>>>> Bump common and catalog depedencies
 .c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
+=======
+.bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+>>>>>>> Patternfly vertical navigation and project bar
 .bootstrap-switch .bootstrap-switch-container{display:inline-block;top:0;border-radius:1px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bootstrap-switch .bootstrap-switch-handle-off,.bootstrap-switch .bootstrap-switch-handle-on,.bootstrap-switch .bootstrap-switch-label{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:inline-block!important;height:100%;padding:2px 6px;font-size:12px;line-height:20px}
 .ie9.layout-pf-alt-fixed .nav-pf-vertical-alt,.ie9.layout-pf-fixed .nav-pf-secondary-nav,.ie9.layout-pf-fixed .nav-pf-tertiary-nav,.ie9.layout-pf-fixed .nav-pf-vertical,.list-group-item-header{box-sizing:content-box}
@@ -2643,7 +2660,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bootstrap-touchspin .input-group-btn-vertical i{position:absolute;font-weight:400}
 .c3 svg{font:10px sans-serif}
 .c3 line,.c3 path{fill:none;stroke:#000}
-.c3 text{user-select:none}
+.c3 text{-webkit-user-select:none;-moz-user-select:none;user-select:none}
 .c3-bars path,.c3-event-rect,.c3-legend-item-tile,.c3-xgrid-focus,.c3-ygrid{shape-rendering:crispEdges}
 .c3-chart-arc text{fill:#fff;font-size:13px}
 .c3-grid text{fill:#aaa}
@@ -2863,6 +2880,11 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
 .navbar-pf .applauncher-pf .applauncher-pf-link-icon,.navbar-pf .navbar-utility .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .applauncher-pf .applauncher-pf-link-icon,.navbar-pf-alt .navbar-utility .applauncher-pf .applauncher-pf-link-icon{font-size:1.2em;text-align:center;width:1.28571429em}
+.navbar-pf .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf-alt .applauncher-pf.dropdown-kebab-pf .dropdown-menu,.navbar-pf-alt .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu{margin-top:0;right:10px}
+.navbar-pf .applauncher-pf.dropdown-kebab-pf .dropdown-menu:before,.navbar-pf .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu:before,.navbar-pf-alt .applauncher-pf.dropdown-kebab-pf .dropdown-menu:before,.navbar-pf-alt .navbar-utility .applauncher-pf.dropdown-kebab-pf .dropdown-menu:before{display:none}
+.navbar-pf .applauncher-pf.open>a,.navbar-pf .applauncher-pf.open>a:focus,.navbar-pf .applauncher-pf.open>a:hover,.navbar-pf .navbar-utility .applauncher-pf.open>a,.navbar-pf .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf .navbar-utility .applauncher-pf.open>a:hover,.navbar-pf-alt .applauncher-pf.open>a,.navbar-pf-alt .applauncher-pf.open>a:focus,.navbar-pf-alt .applauncher-pf.open>a:hover,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:focus,.navbar-pf-alt .navbar-utility .applauncher-pf.open>a:hover{background:0 0}
+.navbar-pf .applauncher-pf .dropdown-toggle,.navbar-pf .navbar-utility .applauncher-pf .dropdown-toggle,.navbar-pf-alt .applauncher-pf .dropdown-toggle,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-toggle{color:#d1d1d1;display:block;font-size:16px;padding:17px 15px 15px 12px!important}
+.navbar-pf .applauncher-pf .dropdown-toggle:focus,.navbar-pf .applauncher-pf .dropdown-toggle:hover,.navbar-pf .navbar-utility .applauncher-pf .dropdown-toggle:focus,.navbar-pf .navbar-utility .applauncher-pf .dropdown-toggle:hover,.navbar-pf-alt .applauncher-pf .dropdown-toggle:focus,.navbar-pf-alt .applauncher-pf .dropdown-toggle:hover,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-toggle:focus,.navbar-pf-alt .navbar-utility .applauncher-pf .dropdown-toggle:hover{color:#fff}
 }
 @media (min-width:768px) and (min-width:768px){.navbar-pf .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf .navbar-utility .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf-alt .applauncher-pf-block-list .applauncher-pf-item,.navbar-pf-alt .navbar-utility .applauncher-pf-block-list .applauncher-pf-item{flex:0 0 50%}
 .navbar-pf .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf .navbar-utility .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .applauncher-pf-block-list .applauncher-pf-link,.navbar-pf-alt .navbar-utility .applauncher-pf-block-list .applauncher-pf-link{flex-direction:column;text-align:center;padding:15px 0}
@@ -2920,7 +2942,6 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .input-daterange .input-group-addon{background-color:#f1f1f1;border-color:#bbb;line-height:1.66666667;padding:2px 6px}
 .bootstrap-select.btn-group.form-control{margin-bottom:0}
 .bootstrap-select.btn-group .btn{-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
-.layout-pf-alt-fixed.transitions .nav-pf-vertical-alt,.layout-pf-alt.layout-pf-alt-fixed.transitions .container-pf-alt-nav-pf-vertical-alt,.layout-pf.layout-pf-fixed.transitions .container-pf-nav-pf-vertical{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .bootstrap-select.btn-group .btn:hover{border-color:#7dc3e8}
 .bootstrap-select.btn-group .btn .caret{margin-top:-4px}
 .bootstrap-select.btn-group .btn:focus{border-color:#0088ce;outline:0!important;-webkit-box-shadow:inset 0 1px 1px rgba(3,3,3,.075),0 0 8px rgba(0,136,206,.6);box-shadow:inset 0 1px 1px rgba(3,3,3,.075),0 0 8px rgba(0,136,206,.6)}
@@ -3282,10 +3303,14 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .infotip.left .arrow{border-left-color:#bbb;border-right-width:0;margin-top:-11px;right:-11px;top:50%}
 .infotip.left .arrow:after{border-left-color:#fff;border-right-width:0;right:1px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .layout-pf.layout-pf-fixed.transitions .container-pf-nav-pf-vertical{transition:all .2s cubic-bezier(.35,0,.25,1)}
 =======
 .layout-pf.layout-pf-fixed body{padding-top:60px}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.layout-pf.layout-pf-fixed.transitions .container-pf-nav-pf-vertical{transition:all .2s cubic-bezier(.35,0,.25,1)}
+>>>>>>> Patternfly vertical navigation and project bar
 .layout-pf.layout-pf-fixed .navbar-pf{left:0;position:fixed;top:0;right:0;z-index:1030}
 .layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.nav-pf-vertical-with-badges{margin-left:270px}
 .layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.collapsed-nav.hidden-icons-pf,.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.hidden-nav{margin-left:0}
@@ -3311,10 +3336,15 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll .container-pf-alt-nav-pf-vertical-alt{height:100%;overflow:auto}
 .layout-pf-alt.layout-pf-alt-fixed.layout-pf-alt-fixed-inner-scroll .container-pf-alt-nav-pf-vertical-alt.container-cards-pf{margin-top:0;padding-top:20px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .layout-pf-alt.layout-pf-alt-fixed.transitions .container-pf-alt-nav-pf-vertical-alt{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt.layout-pf-alt-fixed body{padding-top:60px}
 =======
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.layout-pf-alt.layout-pf-alt-fixed.transitions .container-pf-alt-nav-pf-vertical-alt{transition:all .2s cubic-bezier(.35,0,.25,1)}
+.layout-pf-alt.layout-pf-alt-fixed body{padding-top:60px}
+>>>>>>> Patternfly vertical navigation and project bar
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt{margin-left:250px}
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt.collapsed-nav{margin-left:75px}
 .layout-pf-alt.layout-pf-alt-fixed .container-pf-alt-nav-pf-vertical-alt.hidden-nav,.list-pf-left{margin-left:0}
@@ -3373,6 +3403,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 }
 .list-view-pf-actions{float:right;margin-bottom:20px;margin-left:20px;margin-top:20px;order:2}
 .list-view-pf-actions .dropdown-kebab-pf,.list-view-pf-actions button,.list-view-pf-actions>a{margin-left:10px}
+.list-view-pf-top-align .list-view-pf-actions{align-self:flex-start}
 .list-view-pf-additional-info{align-items:center;display:flex;flex-wrap:wrap}
 @media (min-width:992px){.list-view-pf-additional-info{flex:1 0 auto;float:left;width:50%}
 }
@@ -3387,6 +3418,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 @media (min-width:992px){.list-view-pf-body{align-items:center;display:flex;flex-direction:row}
 }
 .list-view-pf-checkbox{border-right:1px solid #d1d1d1;float:left;margin-right:15px;padding:3px 10px 3px 0}
+.list-view-pf-top-align .list-view-pf-checkbox{align-self:flex-start}
 .list-view-pf-stacked .list-view-pf-description{display:block;flex:none}
 @media (min-width:992px){.list-view-pf-description{align-items:center;display:flex;float:left;width:50%}
 }
@@ -3625,6 +3657,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-alt .nav .nav-item-iconic:focus .caret,.navbar-pf-alt .nav .nav-item-iconic:focus .fa,.navbar-pf-alt .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .nav-item-iconic:hover .caret,.navbar-pf-alt .nav .nav-item-iconic:hover .fa,.navbar-pf-alt .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:hover .pficon{color:#fff}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
 .navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
 .navbar-pf-alt .nav .nav-item-iconic .caret{font-size:12px;width:auto}
@@ -3638,6 +3671,14 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-alt .nav .open>.nav-item-iconic,.navbar-pf-alt .nav .open>.nav-item-iconic:focus,.navbar-pf-alt .nav .open>.nav-item-iconic:hover{background:0 0}
 .navbar-pf-alt .nav .open>.nav-item-iconic .caret,.navbar-pf-alt .nav .open>.nav-item-iconic .fa,.navbar-pf-alt .nav .open>.nav-item-iconic .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
 .navbar-pf-alt .navbar-brand{color:#fff;height:auto;margin:0 0 0 25px;min-height:35px;padding:11px 0 12px}
+=======
+.navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:10px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
+.navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:17px}
+.navbar-pf-alt .nav .nav-item-iconic .caret{font-size:13px;width:auto}
+.navbar-pf-alt .nav .open>.nav-item-iconic,.navbar-pf-alt .nav .open>.nav-item-iconic:focus,.navbar-pf-alt .nav .open>.nav-item-iconic:hover{background:0 0}
+.navbar-pf-alt .nav .open>.nav-item-iconic .caret,.navbar-pf-alt .nav .open>.nav-item-iconic .fa,.navbar-pf-alt .nav .open>.nav-item-iconic .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
+.navbar-pf-alt .navbar-brand{color:#fff;height:auto;margin:0 0 0 25px;min-height:35px;padding:20px 0}
+>>>>>>> Patternfly vertical navigation and project bar
 .navbar-pf-alt .navbar-brand .navbar-brand-name{display:inline;margin-left:0 15px 0 0;margin-right:0 15px 0 0}
 @media (max-width:480px){.navbar-pf-alt .navbar-brand .navbar-brand-name{display:none}
 }
@@ -3676,6 +3717,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .navbar-toggle:focus .icon-bar,.navbar-pf-vertical .navbar-toggle:hover .icon-bar{background:#fff}
 .navbar-pf-vertical .navbar-toggle+.navbar-brand{margin-left:0}
 .navbar-pf-vertical .navbar-toggle .icon-bar{background:#d1d1d1}
+.layout-pf-alt-fixed.transitions .nav-pf-vertical-alt{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt.collapsed .list-group-item .list-group-item-value{transition:opacity 0s .1s,opacity .1s linear}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt .list-group-item .badge{transition:all .2s cubic-bezier(.35,0,.25,1)}
 .layout-pf-alt-fixed.transitions .nav-pf-vertical-alt .list-group-item .list-group-item-value{transition:opacity .5s ease-out;transition-delay:150ms}
@@ -3994,25 +4036,41 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .toolbar-pf-results h5{font-weight:700;margin-right:20px}
 .toolbar-pf-results .label{font-size:11px}
 .toolbar-pf-results .label a{color:#fff;display:inline-block;margin-left:5px}
+<<<<<<< HEAD
 .nav-pf-vertical{background:#292e34;border-right:1px solid #050505;bottom:0;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;width:220px}
+=======
+.nav-pf-vertical{background:#30363d;border-right:1px solid #050505;bottom:0;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;width:220px}
+>>>>>>> Patternfly vertical navigation and project bar
 .layout-pf-fixed-with-footer .nav-pf-vertical{bottom:37px}
 .nav-pf-vertical.hidden.show-mobile-nav{box-shadow:0 0 3px rgba(3,3,3,.15);display:block!important}
 .nav-pf-vertical.hide-nav-pf{visibility:hidden!important}
 .nav-pf-vertical .list-group{border-top:0;margin-bottom:0}
 .nav-pf-vertical .list-group-item{background-color:transparent;padding:0}
+<<<<<<< HEAD
 .nav-pf-vertical .list-group-item>a{background-color:transparent;color:#d1d1d1;cursor:pointer;display:block;height:63px;line-height:26px;padding:17px 20px 17px 25px;position:relative;white-space:nowrap;width:220px}
+=======
+.nav-pf-vertical .list-group-item>a{background-color:transparent;color:#d1d1d1;cursor:pointer;display:block;height:63px;line-height:26px;outline:0;padding:17px 20px 17px 25px;position:relative;white-space:nowrap;width:220px}
+>>>>>>> Patternfly vertical navigation and project bar
 @supports (display:flex){.nav-pf-vertical .list-group-item>a{display:flex;padding-right:0}
 }
 .nav-pf-vertical .list-group-item>a .fa,.nav-pf-vertical .list-group-item>a .glyphicon,.nav-pf-vertical .list-group-item>a .pficon{color:#72767b;float:left;font-size:20px;line-height:26px;margin-right:10px;text-align:center;width:24px}
 .nav-pf-vertical .list-group-item>a:hover{text-decoration:none}
+<<<<<<< HEAD
 .nav-pf-vertical .list-group-item.active>a,.nav-pf-vertical .list-group-item:hover>a{font-weight:600}
+=======
+.nav-pf-vertical .list-group-item.active>a,.nav-pf-vertical .list-group-item:hover>a{color:#fff}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical .list-group-item.active>a .fa,.nav-pf-vertical .list-group-item.active>a .glyphicon,.nav-pf-vertical .list-group-item.active>a .pficon,.nav-pf-vertical .list-group-item:hover>a .fa,.nav-pf-vertical .list-group-item:hover>a .glyphicon,.nav-pf-vertical .list-group-item:hover>a .pficon{color:#39a5dc}
 .nav-pf-vertical .list-group-item.active>a:before{background:#39a5dc;content:" ";height:100%;left:0;position:absolute;top:0;width:3px}
 .nav-pf-vertical .list-group-item.active:hover{background-color:transparent;border-color:#030303}
 .nav-pf-vertical .list-group-item .list-group-item-value{display:block;line-height:25px;max-width:120px;overflow:hidden;text-overflow:ellipsis}
 .nav-pf-vertical .list-group-item-separator{border-top-color:#030303;border-top-width:2px}
 .nav-pf-vertical.nav-pf-vertical-with-badges,.nav-pf-vertical.nav-pf-vertical-with-badges .list-group-item>a{width:270px}
+<<<<<<< HEAD
 .nav-pf-vertical h5{color:#fff;cursor:default;font-size:13px;font-weight:600;margin:30px 20px 10px}
+=======
+.nav-pf-vertical h5{color:#fff;cursor:default;font-size:14px;font-weight:600;margin:30px 20px 10px}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical.hidden-icons-pf.collapsed,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .fa,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .glyphicon,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .pficon{display:none}
 .nav-pf-vertical .badge-container-pf{position:absolute;right:15px;top:20px}
 @supports (display:flex){.nav-pf-vertical .list-group-item .list-group-item-value{flex:1;max-width:none;padding-right:15px}
@@ -4023,6 +4081,7 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical-tooltip.tooltip{margin-left:15px}
 .nav-pf-vertical-tooltip.tooltip .tooltip-inner{background-color:#fff;color:#292e34}
 .nav-pf-vertical-tooltip.tooltip .tooltip-arrow{border-bottom-color:#fff;left:calc(35%)!important}
+<<<<<<< HEAD
 .hover-secondary-nav-pf{width:calc(220px * 2)}
 .hover-secondary-nav-pf.nav-pf-vertical-with-badges{width:calc(270px * 2)}
 .hover-tertiary-nav-pf{width:calc(220px * 3)}
@@ -4033,14 +4092,33 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-secondary-nav{width:calc(270px * 2)}
 .hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-secondary-nav .collapsed-tertiary-nav-pf{width:270px}
 .hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-tertiary-nav{left:calc(270px * 2)}
+=======
+.hover-secondary-nav-pf{width:calc(440px)}
+.hover-secondary-nav-pf.nav-pf-vertical-with-badges{width:calc(540px)}
+.hover-tertiary-nav-pf{width:calc(660px)}
+.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(810px)}
+.hover-tertiary-nav-pf .nav-pf-secondary-nav{width:calc(440px)}
+.hover-tertiary-nav-pf .nav-pf-secondary-nav .collapsed-tertiary-nav-pf{width:220px}
+.hover-tertiary-nav-pf .nav-pf-tertiary-nav{left:calc(440px)}
+.hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-secondary-nav{width:calc(540px)}
+.hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-secondary-nav .collapsed-tertiary-nav-pf{width:270px}
+.hover-tertiary-nav-pf.nav-pf-vertical-with-badges .nav-pf-tertiary-nav{left:calc(540px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical.collapsed.collapsed-secondary-nav-pf{width:220px}
 .nav-pf-vertical.collapsed.collapsed-secondary-nav-pf.nav-pf-vertical-with-badges{width:270px}
 .nav-pf-vertical.collapsed.collapsed-tertiary-nav-pf{width:220px}
 .nav-pf-vertical.collapsed.collapsed-tertiary-nav-pf.nav-pf-vertical-with-badges{width:270px}
+<<<<<<< HEAD
 .nav-pf-vertical.collapsed.hover-secondary-nav-pf{width:calc(75px + 220px)}
 .nav-pf-vertical.collapsed.hover-secondary-nav-pf.nav-pf-vertical-with-badges{width:calc(75px + 270px)}
 .nav-pf-vertical.collapsed.hover-tertiary-nav-pf{width:calc(75px + (220px * 2))}
 .nav-pf-vertical.collapsed.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(75px + (270px * 2))}
+=======
+.nav-pf-vertical.collapsed.hover-secondary-nav-pf{width:calc(295px)}
+.nav-pf-vertical.collapsed.hover-secondary-nav-pf.nav-pf-vertical-with-badges{width:calc(345px)}
+.nav-pf-vertical.collapsed.hover-tertiary-nav-pf{width:calc(515px)}
+.nav-pf-vertical.collapsed.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(615px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .show-mobile-nav.show-mobile-secondary{width:220px}
 .show-mobile-nav.show-mobile-secondary.nav-pf-vertical-with-badges{width:270px}
 .show-mobile-nav.show-mobile-tertiary{width:220px}
@@ -4054,10 +4132,17 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .secondary-nav-item-pf>a:after{color:#72767b;content:"\f105";display:block;font-family:FontAwesome;font-size:24px;line-height:30px;padding:14px 0;position:absolute;right:20px;top:0}
 @supports (display:flex){.secondary-nav-item-pf>a .list-group-item-value{padding-right:35px}
 }
+<<<<<<< HEAD
 .secondary-nav-item-pf.active>a,.secondary-nav-item-pf:hover>a{width:calc(220px + 1px);z-index:1031}
 .secondary-nav-item-pf.active>a:after,.secondary-nav-item-pf:hover>a:after{right:21px}
 .collapsed-secondary-nav-pf .secondary-nav-item-pf.active>a,.collapsed-secondary-nav-pf .secondary-nav-item-pf:hover>a,.collapsed-tertiary-nav-pf .secondary-nav-item-pf.active>a,.collapsed-tertiary-nav-pf .secondary-nav-item-pf:hover>a{z-index:0}
 .nav-pf-vertical-with-badges .secondary-nav-item-pf.active>a,.nav-pf-vertical-with-badges .secondary-nav-item-pf:hover>a{width:calc(270px + 1px)}
+=======
+.secondary-nav-item-pf.active>a,.secondary-nav-item-pf:hover>a{width:calc(221px);z-index:1031}
+.secondary-nav-item-pf.active>a:after,.secondary-nav-item-pf:hover>a:after{right:21px}
+.collapsed-secondary-nav-pf .secondary-nav-item-pf.active>a,.collapsed-secondary-nav-pf .secondary-nav-item-pf:hover>a,.collapsed-tertiary-nav-pf .secondary-nav-item-pf.active>a,.collapsed-tertiary-nav-pf .secondary-nav-item-pf:hover>a{z-index:0}
+.nav-pf-vertical-with-badges .secondary-nav-item-pf.active>a,.nav-pf-vertical-with-badges .secondary-nav-item-pf:hover>a{width:calc(271px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical.collapsed-secondary-nav-pf{width:220px}
 .nav-pf-vertical.collapsed-secondary-nav-pf.nav-pf-vertical-with-badges{width:270px}
 .nav-pf-vertical.collapsed-secondary-nav-pf .secondary-nav-item-pf.active>a,.nav-pf-vertical.collapsed-secondary-nav-pf .secondary-nav-item-pf.hover>a{z-index:1030}
@@ -4071,6 +4156,7 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical.collapsed-tertiary-nav-pf .nav-pf-secondary-nav{width:220px}
 .nav-pf-vertical.collapsed-tertiary-nav-pf .nav-pf-secondary-nav.nav-pf-vertical-with-badges{width:270px}
 .nav-pf-vertical.collapsed-tertiary-nav-pf .secondary-nav-item-pf.active>a,.nav-pf-vertical.collapsed-tertiary-nav-pf .secondary-nav-item-pf.hover>a,.nav-pf-vertical.collapsed-tertiary-nav-pf .tertiary-nav-item-pf.active>a,.nav-pf-vertical.collapsed-tertiary-nav-pf .tertiary-nav-item-pf.hover>a{z-index:0}
+<<<<<<< HEAD
 @media (min-width:1200px){.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf{width:calc(220px * 2)}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.nav-pf-vertical-with-badges{width:calc(270px * 2)}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-secondary-nav-pf{width:220px}
@@ -4080,14 +4166,32 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-tertiary-nav-pf{width:220px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-tertiary-nav-pf.nav-pf-vertical-with-badges{width:270px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed{width:calc(75px + 220px)}
+=======
+@media (min-width:1200px){.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf{width:calc(440px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.nav-pf-vertical-with-badges{width:calc(540px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-secondary-nav-pf{width:220px}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-secondary-nav-pf.nav-pf-vertical-with-badges{width:270px}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-secondary-nav-pf.hover-tertiary-nav-pf{width:calc(440px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-secondary-nav-pf.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(540px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-tertiary-nav-pf{width:220px}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed-tertiary-nav-pf.nav-pf-vertical-with-badges{width:270px}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed{width:calc(295px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.collapsed-secondary-nav-pf{width:220px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.collapsed-secondary-nav-pf.nav-pf-vertical-with-badges{width:270px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.collapsed-tertiary-nav-pf{width:220px}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.collapsed-tertiary-nav-pf.nav-pf-vertical-with-badges{width:270px}
+<<<<<<< HEAD
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.hover-tertiary-nav-pf{width:calc(75px + (220px * 2))}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(75px + (270px * 2))}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.hover-tertiary-nav-pf{width:calc(220px * 3)}
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(270px * 3)}
+=======
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.hover-tertiary-nav-pf{width:calc(515px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.collapsed.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(615px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.hover-tertiary-nav-pf{width:calc(660px)}
+.nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf.hover-tertiary-nav-pf.nav-pf-vertical-with-badges{width:calc(810px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-vertical.nav-pf-persistent-secondary.secondary-visible-pf .secondary-nav-item-pf.active .nav-pf-secondary-nav{visibility:visible;opacity:1}
 }
 .nav-pf-vertical.collapsed,.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf.active>a,.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf>a,.nav-pf-vertical.collapsed .list-group-item>a{width:75px}
@@ -4097,13 +4201,21 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical.collapsed .list-group-item>a>.badge-container-pf,.nav-pf-vertical.collapsed .list-group-item>a>.list-group-item-value{display:none}
 .nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf.active>a:after,.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf>a:after{right:10px}
 .nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf.active>a,.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf:hover>a{width:77px}
+<<<<<<< HEAD
 .nav-pf-secondary-nav{background:#383f47;border:1px solid #050505;border-bottom:none;border-top:none;bottom:0;display:block;left:220px;opacity:0;overflow-x:hidden;overflow-y:auto;position:fixed;top:60px;visibility:hidden;width:220px;z-index:1030}
+=======
+.nav-pf-secondary-nav{background:#383f47;border:1px solid #050505;border-bottom:none;border-top:none;bottom:0;display:block;left:220px;opacity:0;position:fixed;top:60px;visibility:hidden;width:220px;z-index:1030}
+>>>>>>> Patternfly vertical navigation and project bar
 .collapsed-secondary-nav-pf .secondary-nav-item-pf.active .nav-pf-secondary-nav{left:0;opacity:1;visibility:visible;z-index:1032}
 .collapsed-tertiary-nav-pf .secondary-nav-item-pf.active .nav-pf-secondary-nav{left:0;opacity:1;visibility:visible}
 .hover-secondary-nav-pf .secondary-nav-item-pf.is-hover .nav-pf-secondary-nav{opacity:1;visibility:visible}
 .layout-pf-fixed-with-footer .nav-pf-secondary-nav{bottom:37px}
 .nav-pf-secondary-nav .list-group-item{border:none;padding:0 0 5px;width:220px}
+<<<<<<< HEAD
 .nav-pf-secondary-nav .list-group-item>a{background-color:#383f47;color:#d1d1d1;font-size:12px;font-weight:inherit;height:inherit;padding:4px 0 2px;margin-left:20px;width:calc(220px - 20px)}
+=======
+.nav-pf-secondary-nav .list-group-item>a{background-color:#383f47;color:#d1d1d1;font-size:13px;font-weight:inherit;height:inherit;padding:4px 0 2px;margin-left:20px;width:calc(200px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .nav-pf-secondary-nav .list-group-item>a:hover .list-group-item-value{text-decoration:underline}
 .nav-pf-secondary-nav .list-group-item.active>a:before{display:none}
 .nav-pf-secondary-nav .list-group-item.active>a,.nav-pf-secondary-nav .list-group-item:hover>a{background-color:#4a535e;color:#fff}
@@ -4114,6 +4226,7 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf>a:after{color:#72767b;content:"\f105";display:block;font-family:FontAwesome;font-size:20px;line-height:20px;padding:0;position:absolute;right:20px;top:4px}
 @supports (display:flex){.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf>a .list-group-item-value{padding-right:35px}
 }
+<<<<<<< HEAD
 .nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf.active>a,.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf:hover>a{width:calc(220px - 19px);z-index:1033}
 .nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf.active>a:after,.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf:hover>a:after{right:21px}
 .nav-pf-vertical-with-badges .nav-pf-secondary-nav{left:270px;width:270px}
@@ -4124,6 +4237,18 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical-with-badges .nav-pf-tertiary-nav{left:270px;width:270px}
 .collapsed.collapsed-tertiary-nav-pf .hover-tertiary-nav-pf .tertiary-nav-item-pf.is-hover .nav-pf-tertiary-nav,.nav-pf-vertical-with-badges .nav-pf-tertiary-nav .show-mobile-nav{left:0}
 .collapsed .nav-pf-secondary-nav .list-group-item>a,.collapsed .nav-pf-tertiary-nav .list-group-item>a{width:calc(220px - 20px)}
+=======
+.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf.active>a,.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf:hover>a{width:calc(201px);z-index:1033}
+.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf.active>a:after,.nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf:hover>a:after{right:21px}
+.nav-pf-vertical-with-badges .nav-pf-secondary-nav{left:270px;width:270px}
+.nav-pf-vertical-with-badges .nav-pf-secondary-nav .list-group-item{width:270px}
+.nav-pf-vertical-with-badges .nav-pf-secondary-nav .list-group-item>a{width:calc(250px)}
+.nav-pf-vertical-with-badges .nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf.active>a,.nav-pf-vertical-with-badges .nav-pf-secondary-nav .list-group-item.tertiary-nav-item-pf:hover>a{width:calc(251px)}
+.nav-pf-tertiary-nav{background:#4d5258;border:1px solid #050505;border-bottom:none;border-top:none;bottom:0;display:block;left:calc(440px);opacity:0;position:fixed;top:60px;visibility:hidden;width:220px;z-index:1030}
+.nav-pf-vertical-with-badges .nav-pf-tertiary-nav{left:270px;width:270px}
+.collapsed.collapsed-tertiary-nav-pf .hover-tertiary-nav-pf .tertiary-nav-item-pf.is-hover .nav-pf-tertiary-nav,.nav-pf-vertical-with-badges .nav-pf-tertiary-nav .show-mobile-nav{left:0}
+.collapsed .nav-pf-secondary-nav .list-group-item>a,.collapsed .nav-pf-tertiary-nav .list-group-item>a{width:calc(200px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .collapsed-tertiary-nav-pf .tertiary-nav-item-pf.active .nav-pf-tertiary-nav{left:0;opacity:1;visibility:visible;z-index:1033}
 .hover-tertiary-nav-pf .tertiary-nav-item-pf.is-hover .nav-pf-tertiary-nav{opacity:1;visibility:visible}
 .layout-pf-fixed-with-footer .nav-pf-tertiary-nav{bottom:37px}
@@ -4138,13 +4263,19 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-tertiary-nav .list-group-item .badge-container-pf .badge{background:#292e34;color:#fff}
 .nav-pf-tertiary-nav .list-group-item .list-group-item-value{padding-left:5px}
 .collapsed .nav-pf-secondary-nav{left:75px}
+<<<<<<< HEAD
 .collapsed .nav-pf-tertiary-nav{left:calc(75px + 220px)}
 .secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;-webkit-font-smoothing:antialiased;pointer-events:none;opacity:0}
+=======
+.collapsed .nav-pf-tertiary-nav{left:calc(295px)}
+.secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;opacity:0;pointer-events:none;-webkit-font-smoothing:antialiased}
+>>>>>>> Patternfly vertical navigation and project bar
 .collapsed.collapsed-secondary-nav-pf,.collapsed.collapsed-tertiary-nav-pf{width:220px}
 .collapsed.collapsed-secondary-nav-pf .secondary-nav-item-pf:hover>a,.collapsed.collapsed-tertiary-nav-pf .secondary-nav-item-pf:hover>a{z-index:1030}
 .collapsed.collapsed-secondary-nav-pf .nav-pf-secondary-nav,.collapsed.collapsed-tertiary-nav-pf .nav-pf-secondary-nav{left:0}
 .collapsed.collapsed-secondary-nav-pf .nav-pf-tertiary-nav{left:220px}
 .collapsed.collapsed-tertiary-nav-pf .nav-pf-tertiary-nav{left:0}
+<<<<<<< HEAD
 .collapsed.hover-secondary-nav-pf{width:calc(75px + 220px)}
 .collapsed.hover-secondary-nav-pf.collapsed-secondary-nav-pf,.collapsed.hover-secondary-nav-pf.collapsed-tertiary-nav-pf{width:220px}
 .collapsed.hover-tertiary-nav-pf{width:calc(75px + (220px * 2))}
@@ -4158,6 +4289,21 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .collapsed.nav-pf-vertical-with-badges.hover-secondary-nav-pf.collapsed-secondary-nav-pf,.collapsed.nav-pf-vertical-with-badges.hover-secondary-nav-pf.collapsed-tertiary-nav-pf{width:270px}
 .collapsed.nav-pf-vertical-with-badges.hover-tertiary-nav-pf{width:calc(75px + (220px * 2))}
 .collapsed.nav-pf-vertical-with-badges.hover-tertiary-nav-pf.collapsed-secondary-nav-pf{width:calc(220px * 2)}
+=======
+.collapsed.hover-secondary-nav-pf{width:calc(295px)}
+.collapsed.hover-secondary-nav-pf.collapsed-secondary-nav-pf,.collapsed.hover-secondary-nav-pf.collapsed-tertiary-nav-pf{width:220px}
+.collapsed.hover-tertiary-nav-pf{width:calc(515px)}
+.collapsed.hover-tertiary-nav-pf.collapsed-secondary-nav-pf{width:calc(440px)}
+.collapsed.hover-tertiary-nav-pf.collapsed-tertiary-nav-pf{width:220px}
+.collapsed.nav-pf-vertical-with-badges .nav-pf-secondary-nav .list-group-item>a,.collapsed.nav-pf-vertical-with-badges .nav-pf-tertiary-nav .list-group-item>a{width:calc(250px)}
+.collapsed.nav-pf-vertical-with-badges .nav-pf-tertiary-nav{left:calc(345px)}
+.collapsed.nav-pf-vertical-with-badges.collapsed-secondary-nav-pf,.collapsed.nav-pf-vertical-with-badges.collapsed-tertiary-nav-pf{width:270px}
+.collapsed.nav-pf-vertical-with-badges.collapsed-secondary-nav-pf .nav-pf-tertiary-nav{left:270px}
+.collapsed.nav-pf-vertical-with-badges.hover-secondary-nav-pf{width:calc(345px)}
+.collapsed.nav-pf-vertical-with-badges.hover-secondary-nav-pf.collapsed-secondary-nav-pf,.collapsed.nav-pf-vertical-with-badges.hover-secondary-nav-pf.collapsed-tertiary-nav-pf{width:270px}
+.collapsed.nav-pf-vertical-with-badges.hover-tertiary-nav-pf{width:calc(515px)}
+.collapsed.nav-pf-vertical-with-badges.hover-tertiary-nav-pf.collapsed-secondary-nav-pf{width:calc(440px)}
+>>>>>>> Patternfly vertical navigation and project bar
 .collapsed.nav-pf-vertical-with-badges.hover-tertiary-nav-pf.collapsed-tertiary-nav-pf{width:220px}
 .secondary-collapse-toggle-pf:before{content:"\f190"}
 .secondary-collapse-toggle-pf.collapsed:before{content:"\f18e"}
@@ -5001,7 +5147,13 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .row-cards-pf-flex .card-pf-footer .btn{margin-bottom:10px}
 .row-cards-pf-flex .card-pf-title{line-height:1.3;margin:0;overflow:hidden;text-overflow:ellipsis}
 .landing .nav-tabs,.landing h1{margin-bottom:0!important;margin-top:0!important}
+<<<<<<< HEAD
 .landing-page{background:#292e34;min-height:100%}
+=======
+@media (min-width:768px){.catalog-search,.landing-side-bar{top:59px}
+.tech-preview .catalog-search,.tech-preview .landing-side-bar{top:79px}
+}
+>>>>>>> Patternfly vertical navigation and project bar
 .collapse{display:none}
 .collapse.in{display:block}
 .collapsing{height:0;overflow:hidden;-webkit-transition:height 150ms ease;-o-transition:height 150ms ease;transition:height 150ms ease}
@@ -5089,12 +5241,21 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .service-binding-actions>a:first-of-type{border-left:0;padding-left:0}
 >>>>>>> Add bindings list to resource pages
 .ng-cloak,.x-ng-cloak,[data-ng-cloak],[ng-cloak],[ng\:cloak],[x-ng-cloak]{display:none!important}
+<<<<<<< HEAD
 body.ios .nav-tabs li>a:hover:before{content:none}
 body.ios .nav-tabs li.active>a:before{content:''}
 @media only screen and (max-device-width:736px){body.ios{padding-right:0px!important}
 body.ios.modal-open,body.ios.overlay-open{overflow-y:auto;position:fixed}
 body.ios .console-os .ace_editor,body.ios input[type=text],body.ios input[type=url],body.ios input[type=number],body.ios input[type=search],body.ios select,body.ios select.form-control,body.ios textarea,body.ios textarea.form-control{font-size:16px}
 }
+=======
+@media only screen and (max-device-width:736px) and (-webkit-min-device-pixel-ratio:0){.console-os .ace_editor,input[type=text],input[type=url],input[type=number],input[type=search],select,select.form-control,textarea,textarea.form-control{font-size:16px}
+body{padding-right:0px!important}
+.modal-open{overflow-y:auto}
+}
+.ios .nav-tabs li>a:hover:before{content:none}
+.ios .nav-tabs li.active>a:before{content:''}
+>>>>>>> Patternfly vertical navigation and project bar
 @-moz-document url-prefix(){.console-os fieldset{display:table-cell}
 }
 .separator{border-top:1px solid rgba(0,0,0,.15)}
@@ -5448,7 +5609,10 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .data-toolbar .data-toolbar-filter .form-group{margin-bottom:0}
 .header-toolbar .data-toolbar{background-color:#fff;border-bottom:1px solid #e4e4e4;margin:0 -20px;padding-left:20px;padding-right:20px}
 .data-toolbar .vertical-divider+.data-toolbar-filter{margin-top:10px}
+<<<<<<< HEAD
 .selectize-dropdown{font-size:12px}
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 .ellipsis-pulser{padding:10px;text-align:center}
 .ellipsis-pulser .dot{display:inline-block;height:4px;position:relative;width:4px}
 .ellipsis-pulser .dot:before{animation-name:anim;animation-duration:1.5s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:normal;border-radius:100em;content:" ";display:block;height:100%;left:0px;opacity:.33;position:absolute;top:0px;transform-origin:50% 50%;transform:scale(.66);width:100%}
@@ -5472,6 +5636,7 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 70%{transform:scale(.66)}
 100%{opacity:.33;z-index:1}
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 .layout-pf.layout-pf-fixed{height:1px}
 .layout-pf.layout-pf-fixed body{height:1px;padding-top:41px}
@@ -5499,6 +5664,29 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .list-pf-container.list-pf-container-thin{padding-bottom:10px;padding-top:10px}
 .list-pf-content .alert:first-child{margin-top:0}
 =======
+=======
+.header-toolbar{background-color:#fff;border-bottom:1px solid #e4e4e4}
+.layout-pf.layout-pf-fixed{height:1px}
+.layout-pf.layout-pf-fixed body{height:1px;padding-top:41px}
+.layout-pf.layout-pf-fixed body.tech-preview{padding-top:61px}
+@media (min-width:768px){.data-toolbar .data-toolbar-filter{flex:1 1 0%}
+.data-toolbar .vertical-divider+.data-toolbar-filter{margin-top:0}
+.layout-pf.layout-pf-fixed body{padding-top:59px}
+.layout-pf.layout-pf-fixed body.tech-preview{padding-top:79px}
+}
+.layout-pf.layout-pf-fixed body.has-project-bar{padding-top:69px}
+.layout-pf.layout-pf-fixed body.has-project-bar.tech-preview{padding-top:89px}
+@media (min-width:768px){.layout-pf.layout-pf-fixed body.has-project-bar{padding-top:99px}
+.layout-pf.layout-pf-fixed body.has-project-bar.tech-preview{padding-top:119px}
+.layout-pf.layout-pf-fixed body.has-project-bar .container-pf-nav-pf-vertical{margin-left:220px}
+.layout-pf.layout-pf-fixed body.has-project-bar .container-pf-nav-pf-vertical.collapsed-nav{margin-left:75px}
+}
+.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical{height:100%;transition:margin-left .1s ease-in-out}
+.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical,.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.collapsed-nav{margin-left:0}
+.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical .middle-header{margin-bottom:20px}
+.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical .view{height:100%}
+.surface-shaded{background-color:#f2f2f2;min-height:100%}
+>>>>>>> Patternfly vertical navigation and project bar
 .list-pf-actions .actions-dropdown-kebab{font-size:18px;margin-right:-5px}
 .list-pf-actions .dropdown .btn-link{color:#252525;font-size:17px;line-height:1;padding:4px 10px;margin-left:-10px;margin-right:-10px}
 .list-pf-actions .dropdown .btn-link:active,.list-pf-actions .dropdown .btn-link:focus,.list-pf-actions .dropdown .btn-link:hover{color:#0088ce}
@@ -5539,7 +5727,11 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf .list-group-item:first-child{border-top-color:#eaeaea}
 .list-view-pf .list-group-item:hover{background-color:#edf8ff}
 .list-view-pf .list-group-item-expandable{cursor:pointer;border:1px solid #eaeaea;border-left-color:transparent;border-right-color:transparent}
+<<<<<<< HEAD
 .build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.instance-status-notification [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
+=======
+.build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
+>>>>>>> Patternfly vertical navigation and project bar
 .list-view-pf .list-group-item-expandable.expanded{border-color:#d1d1d1}
 .list-view-pf .list-group-item-expandable.expanded,.list-view-pf .list-group-item-expandable.expanded:hover{background-color:#ededed}
 .list-view-pf .list-group-item-expandable.expanded .list-view-pf-checkbox{border-right-color:#d1d1d1}
@@ -5612,87 +5804,43 @@ h2+.list-view-pf{margin-top:20px}
 .landing-page .wizard-pf-main .deploy-image .empty-state-message{margin-top:40px}
 =======
 }
-#header-logo{background-image:url(../images/logo-origin-thin.svg);background-repeat:no-repeat;background-position:center left;background-size:initial;height:45px;width:230px}
-.navbar-pf-alt{background:#1c2127;border-bottom:1px solid #050505;border-left:1px solid transparent;border-right:1px solid transparent;border-top:0;min-height:inherit}
-.layout-pf-alt-fixed .navbar-pf-alt{left:0;position:fixed;right:0;top:0;z-index:1030}
-.layout-pf-alt-fixed .tech-preview .navbar-pf-alt{top:20px}
-.navbar-pf-alt .navbar-toggle{margin:0;padding:9px 14px}
-@media (max-width:479px){.navbar-pf-alt .navbar-toggle{padding-left:8px;padding-right:8px}
+#header-logo{background-image:url(../images/logo-origin-thin.svg);background-position:left center;background-repeat:no-repeat;height:40px;width:196px}
+@media (min-width:768px){#header-logo{width:230px}
 }
-.navbar-pf-alt .navbar-header{display:flex;flex:1 1 0%;text-decoration:none}
-.navbar-pf-alt .navbar-header .navbar-home{align-items:center;color:#dbdada;display:flex;flex:1 0 0%;font-weight:300;justify-content:center;text-decoration:none}
-.navbar-pf-alt .navbar-header .navbar-home .pficon{color:#A8A9AA;font-size:20px}
-.navbar-pf-alt .navbar-header .navbar-home:focus,.navbar-pf-alt .navbar-header .navbar-home:focus .pficon,.navbar-pf-alt .navbar-header .navbar-home:hover,.navbar-pf-alt .navbar-header .navbar-home:hover .pficon{background-color:#0b0d0f;color:#fcfcfc}
-.navbar-pf-alt .navbar-iconic{margin-right:10px}
-.navbar-pf-alt .nav .dropdown-menu{margin-top:-5px;right:0}
-@media (min-width:480px){.navbar-pf-alt .nav .dropdown-menu{right:5px}
+.navbar-pf-vertical{background-color:#1c2127;border-bottom:1px solid #050505;border-top:none;min-height:0}
+@media (min-width:767px){.navbar-pf-vertical{padding-left:20px}
 }
-@media (min-width:768px){.navbar-pf-alt .nav .dropdown-menu{margin-top:-10px;right:0}
+.navbar-pf-vertical .dropdown-menu:after{border:6px solid transparent;border-bottom-color:#fff;border-top-width:0;content:"";display:block;height:0;position:absolute;right:9px;top:-6px;vertical-align:middle;width:0}
+.layout-pf-fixed .tech-preview .navbar-pf-vertical{top:20px}
+.navbar-pf-vertical .navbar-brand{padding:0}
+.navbar-pf-vertical .navbar-header{float:left}
+.navbar-pf-vertical .navbar-iconic{display:flex;float:right;margin:0}
+@media (min-width:768px){.navbar-pf-vertical .navbar-brand{padding-bottom:10px;padding-top:10px}
+.navbar-pf-vertical .navbar-iconic{margin-right:10px}
 }
-.navbar-pf-alt .nav .dropdown-menu:after{border:6px solid transparent;border-bottom-color:#fff;border-top-width:0;content:"";display:block;height:0;position:absolute;right:7px;top:-6px;vertical-align:middle;width:0}
-.navbar-pf-alt .navbar-brand{border:0;height:auto;margin-left:0;padding:0 0 0 10px;position:relative}
-.navbar-pf-alt .navbar-toggle{border:0;display:block;float:left}
-.navbar-pf-alt .navbar-toggle:focus .icon-bar,.navbar-pf-alt .navbar-toggle:hover .icon-bar{background:#fff}
-.navbar-pf-alt .navbar-toggle+.navbar-brand{margin-left:0}
-.navbar-pf-alt .navbar-toggle .icon-bar{background:#d1d1d1}
-.navbar-pf-alt .nav .nav-item-iconic{color:#d1d1d1;cursor:pointer;line-height:normal;max-height:none;padding-top:25.5px;padding-bottom:25.5px}
-.navbar-pf-alt .nav .nav-item-iconic:focus,.navbar-pf-alt .nav .nav-item-iconic:hover{color:#fff;text-decoration:none}
-.navbar-pf-alt .nav .nav-item-iconic:focus .caret,.navbar-pf-alt .nav .nav-item-iconic:focus .fa,.navbar-pf-alt .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:focus .pf-icon,.navbar-pf-alt .nav .nav-item-iconic:hover .caret,.navbar-pf-alt .nav .nav-item-iconic:hover .fa,.navbar-pf-alt .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-alt .nav .nav-item-iconic:hover .pf-icon{color:#fff}
-.navbar-pf-alt .nav .nav-item-iconic .add-to-project,.navbar-pf-alt .nav .nav-item-iconic .username{float:left;font-weight:300;padding:0 4px}
-.navbar-pf-alt .nav .nav-item-iconic .caret{margin-top:5px}
-.navbar-pf-alt .nav .nav-item-iconic .add-to-project+.caret,.navbar-pf-alt .nav .nav-item-iconic .pficon-user,.navbar-pf-alt .nav .nav-item-iconic .username+.caret{display:block;float:left}
-.navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pf-icon{color:#d1d1d1;font-size:16px;width:auto}
-.navbar-pf-alt .nav .nav-item-iconic .username{max-width:100px}
-@media (min-width:992px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:130px}
+.navbar-pf-vertical .navbar-iconic .badge{margin:0!important;position:absolute;top:9px;right:13px}
+.navbar-pf-vertical .navbar-iconic .drawer-pf-trigger{display:inline-block}
+.navbar-pf-vertical .navbar-iconic .drawer-pf-trigger a{display:block}
+.navbar-pf-vertical .navbar-iconic .dropdown .nav-item-iconic{padding-right:20px}
+.navbar-pf-vertical .navbar-iconic>li{display:none}
+.navbar-pf-vertical .navbar-iconic .nav-item-iconic{line-height:normal;padding-right:15px}
+@media (max-width:767px){.navbar-pf-vertical .navbar-iconic .nav-item-iconic{padding:10px 15px 10px 5px}
 }
-@media (min-width:1200px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:150px}
+.navbar-pf-vertical .navbar-iconic .nav-item-iconic .username{display:inline-block;font-weight:300;max-width:170px;padding-right:2px;vertical-align:top}
+.navbar-pf-vertical .navbar-toggle{margin:4px 5px}
+.navbar-pf-vertical .navbar-toggle .icon-bar{width:20px}
+@media (min-width:768px){.navbar-pf-vertical .navbar-iconic .badge{top:20px}
+.navbar-pf-vertical .navbar-iconic>li{display:inline-block}
+.navbar-pf-vertical .navbar-toggle{margin:13px 15px}
+.navbar-pf-vertical .navbar-toggle .icon-bar{width:22px}
 }
-@media (min-width:1600px){.navbar-pf-alt .nav .nav-item-iconic .username{max-width:250px}
-}
-.navbar-pf-alt .open>.nav-item-iconic,.navbar-pf-alt .open>.nav-item-iconic:focus,.navbar-pf-alt .open>.nav-item-iconic:hover{background:0 0}
-.navbar-pf-alt .open>.nav-item-iconic .caret,.navbar-pf-alt .open>.nav-item-iconic .fa,.navbar-pf-alt .open>.nav-item-iconic .pf-icon,.navbar-pf-alt .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .open>.nav-item-iconic:focus .pf-icon,.navbar-pf-alt .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .open>.nav-item-iconic:hover .pf-icon{color:#fff}
-@media (min-width:768px){#header-logo{height:60px}
-.navbar-pf-alt .nav .dropdown .nav-item-iconic{padding-right:20px}
-.navbar-pf-alt .nav .nav-item-iconic{display:block;float:left;padding:21px 10px 20px}
-.navbar-pf-alt .nav .nav-item-iconic .status-icon{position:relative;top:1px}
-}
-.navbar-pf-alt .system-status .status-issue{display:none;font-weight:300;max-width:100px;padding:0 0 0 5px;position:relative;top:-2px}
-@media (min-width:1200px){.navbar-pf-alt .system-status .status-issue{display:inline}
-}
-@media (min-width:768px){.navbar-pf-alt .system-status-mobile{display:none}
-}
-.navbar-pf-alt .system-status-mobile:before{content:'';display:block;position:absolute;top:0;left:-1px;width:1px;background:#050505;height:100%}
-.navbar-flex-btn{position:relative}
-.navbar-flex-btn .navbar-toggle.project-action-btn:before,.navbar-flex-btn+.navbar-flex-btn .add-to-project-btn:before{display:none}
-.navbar-flex-btn .add-to-project-btn{font-weight:300}
-.navbar-flex-btn .add-to-project-btn:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
-@media (max-width:767px){.navbar-pf-alt .nav .dropdown-menu:after{right:13px}
-.layout-pf-alt-fixed .navbar-pf-alt{position:absolute}
-.layout-pf-alt-fixed .navbar-pf-alt .navbar-brand:after{content:'';background:#050505;display:block;height:100%;left:-1px;position:absolute;top:0;width:1px}
-.top-header.logged-out .toggle-menu{display:none}
-.navbar-flex-btn{flex:0 0 50px}
-.navbar-flex-btn>a{color:#fff;cursor:pointer;display:flex}
-.navbar-flex-btn>a:active,.navbar-flex-btn>a:focus,.navbar-flex-btn>a:hover{text-decoration:none}
-.navbar-pf-alt .nav-item-iconic{align-items:center;flex:1 1 auto;justify-content:center;padding:0!important}
-.navbar-pf-alt .nav-item-iconic.system-status:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
-.navbar-pf-alt .nav-item-iconic.system-status:hover{background:0 0;text-decoration:none}
-}
-.build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
-@media (max-width:479px){.navbar-flex-btn{flex:0 0 40px}
-}
-@media (min-width:768px){.navbar-pf-alt .navbar-header{height:60px;width:143px}
-.navbar-pf-alt .navbar-header .navbar-brand{padding:0;margin-left:30px;margin-right:75px;margin-top:0}
-.navbar-flex-btn.toggle-menu{display:none}
-.tech-preview-banner{position:fixed}
-}
-@media (min-width:1200px){.navbar-pf-alt .navbar-header{width:143px}
-}
-@media (min-width:1600px){.navbar-pf-alt .navbar-header{width:208px}
-.navbar-pf-alt .navbar-header .navbar-home{font-size:14px;justify-content:flex-start;margin-top:0;padding-left:20px}
-.navbar-pf-alt .navbar-header .navbar-home .pficon{display:inline-block;width:25px;margin-right:10px}
-.navbar-pf-alt .navbar-header .navbar-home .visible-xlg-inline-block{margin-left:3px}
-}
+<<<<<<< HEAD
 .tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;text-align:center;text-transform:uppercase;width:100%;z-index:1030}
+=======
+.order-service-config-single-column,.overview .data-toolbar-filter .name-filter form,.overview .data-toolbar-filter .name-filter input{width:100%}
+.navbar-toggle:focus{color:#fff;outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
+.wizard-pf-main .ace_editor.editor{height:285px}
+>>>>>>> Patternfly vertical navigation and project bar
 .wizard-pf-main .deploy-image .empty-state-message{margin:30px auto}
 .wizard-pf-main #from-file .editor{height:285px}
 @media (min-width:768px){.order-service-config-single-column{margin-bottom:-20px;margin-top:-20px;overflow-y:auto}
@@ -5714,6 +5862,12 @@ h2+.list-view-pf{margin-top:20px}
 .mini-log{background-color:#fafafa;border:1px solid #d1d1d1;color:#4d5258;font-family:Menlo,Monaco,Consolas,monospace;font-size:11px;margin-bottom:5px;margin-top:5px;padding:5px}
 .mini-log .mini-log-content{line-height:13px;min-height:91px}
 .mini-log .mini-log-content .mini-log-line{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;white-space:pre}
+<<<<<<< HEAD
+=======
+.notification-icon-count{display:inline-block;margin:5px 5px 0 0}
+@media (min-width:992px){.notification-icon-count{margin-top:0}
+}
+>>>>>>> Patternfly vertical navigation and project bar
 .overview .app-heading{display:flex;justify-content:space-between}
 @media (max-width:991px){.overview .app-heading{flex-direction:column;justify-content:flex-start}
 .overview .app-heading .overview-route{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;font-size:15px;margin-top:-5px;margin-bottom:15px}
@@ -5819,10 +5973,14 @@ h2+.list-view-pf{margin-top:20px}
 }
 .overview :not(.tab-pane)>overview-pipelines>.expanded-section{margin-bottom:30px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .overview .toolbar-container{border-bottom:1px solid #e4e4e4;padding-bottom:13px;padding-top:13px;background-color:#ededed;min-height:100%}
 =======
 .overview .toolbar-container{margin-top:10px;margin-bottom:5px}
 >>>>>>> Add bindings list to resource pages
+=======
+.overview .toolbar-container{padding-bottom:13px;padding-top:13px;background-color:#f2f2f2;min-height:100%}
+>>>>>>> Patternfly vertical navigation and project bar
 .overview .triggers{margin-bottom:20px}
 .overview .usage-value{font-size:18px;font-weight:300;line-height:1}
 .overview .usage-label{font-size:91%;color:#757575}
@@ -5970,8 +6128,12 @@ to{background-color:transparent}
 .pipeline-status-bar .pipeline-line:before{content:'';position:absolute;height:100%;animation:progress-line .35s ease-in forwards}
 .pipeline-circle{background:#d1d1d1;width:18px;height:18px;border-radius:9px;margin-top:-11px;position:relative;transform:rotate(-90deg)}
 .pipeline-circle:after{position:absolute;color:#fff;font-family:FontAwesome;font-size:12px;transform:translate(-50%,-50%) rotate(90deg);top:50%;left:50%;opacity:0;animation:fadeIn .1s 875ms linear forwards}
+<<<<<<< HEAD
 .config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
+=======
+.pipeline-circle .clip1:before,.pipeline-circle .clip2:before{width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute;content:''}
+>>>>>>> Patternfly vertical navigation and project bar
 .pipeline-circle .clip1{position:absolute;clip:rect(0,18px,18px,9px);z-index:-9}
 .pipeline-circle .clip1:before{clip:rect(0,9px,18px,0);animation:progress 175ms .35s linear forwards}
 .pipeline-circle .clip2{position:absolute;clip:rect(0,9px,18px,0);z-index:-9}
@@ -5988,6 +6150,7 @@ to{background-color:transparent}
 .build-pipeline-collapsed .build-timestamp{float:right!important;float:right}
 .build-pipeline-collapsed .close{color:#8b8d8f;font-size:16px;opacity:.85;position:absolute;right:10px;top:7px}
 .build-pipeline-collapsed .close:hover{opacity:1}
+<<<<<<< HEAD
 .project-bar{background-color:#292e34;border-bottom:1px solid #050505;display:flex;height:28px;left:0;position:fixed;right:0;top:41px;z-index:1029}
 .project-bar .add-to-project{align-items:center;color:#d1d1d1;justify-content:center;margin:0 5px 0 0}
 .project-bar .add-to-project>.btn-link{align-items:center;color:#d1d1d1;display:flex;flex:1 1 auto;font-weight:300;justify-content:center}
@@ -6059,6 +6222,58 @@ to{background-color:transparent}
 }
 .project-bar .navbar-toggle:focus .icon-bar,.project-bar .navbar-toggle:hover .icon-bar{background:#fff}
 .project-bar .navbar-toggle .icon-bar{background-color:#d1d1d1}
+=======
+.project-bar{background-color:#383f47;border-bottom:1px solid #050505;display:flex;height:28px;left:0;position:fixed;right:0;top:41px;z-index:1029}
+@media (min-width:768px){.project-bar{height:40px;top:59px}
+}
+.project-bar .add-to-project{align-items:center;color:#d1d1d1;display:flex;flex:0 0 35px;font-weight:300;justify-content:center}
+.project-bar .add-to-project:before{background:rgba(255,255,255,.1);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
+@media (min-width:767px){.project-bar .add-to-project{flex:1 0 auto;margin-right:15px}
+.project-bar .add-to-project:before{display:none}
+.project-bar .add-to-project .dropdown-menu{right:-7px}
+}
+.project-bar .add-to-project>a{align-items:center;color:#d1d1d1;display:flex;padding:5px 0;flex:1 1 auto;justify-content:center}
+.project-bar .add-to-project>a:active,.project-bar .add-to-project>a:focus,.project-bar .add-to-project>a:hover{color:#fff;text-decoration:none}
+.project-bar .add-to-project .caret{padding-left:20px}
+.project-bar .add-to-project .dropdown-menu{margin-top:0}
+@media (min-width:768px){.project-bar .bootstrap-select.btn-group{max-width:70%;min-width:200px;width:auto}
+}
+.project-bar .bootstrap-select.btn-group .btn{background:0 0;border-bottom:0;border-color:#050505;border-left-width:0;border-radius:0;border-top:0;box-shadow:none;color:#dbdada;font-size:14px;font-weight:300;line-height:1.66666667;padding:1px 40px 1px 15px;transition:none}
+@media (min-width:768px){.project-bar .bootstrap-select.btn-group .btn{font-size:18px;padding:4px 40px 4px 20px}
+.project-bar .bootstrap-select.btn-group .btn:after{content:'';background:rgba(255,255,255,.1);display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
+}
+.project-bar .bootstrap-select.btn-group .btn:focus,.project-bar .bootstrap-select.btn-group .btn:hover{background-color:#0b0d0f;color:#fcfcfc}
+.project-bar .bootstrap-select.btn-group .btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
+.project-bar .bootstrap-select.btn-group .btn:focus:active{outline:0!important}
+.project-bar .bootstrap-select.btn-group .btn .filter-option{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.project-bar .bootstrap-select.btn-group.open .btn{background-color:#0b0d0f}
+.project-bar .bootstrap-select.btn-group .dropdown-toggle.btn-default{border-right-width:1px;height:27px}
+@media (min-width:768px){.project-bar .bootstrap-select.btn-group .dropdown-toggle.btn-default{border-left-width:1px;border-right:0;height:39px}
+}
+.project-bar .bootstrap-select.btn-group .dropdown-toggle .caret{font-size:13px;margin-top:-5px;position:absolute;right:15px;top:50%}
+.project-bar .bootstrap-select.btn-group .dropdown-menu{background-color:#0b0d0f;border-color:#000;border-radius:0;color:#dbdada;margin-top:0;padding:0}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li{background-color:#0b0d0f}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li.selected a{background-color:#1c2127!important;border-color:transparent!important;color:#fcfcfc}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li.selected a:after{content:'';width:2px;height:100%;left:0;top:0;display:block;position:absolute;background-color:#00a8e1}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li.divider{border-top:1px solid #383f47;height:1px;margin:0!important}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li:last-child>a{color:#00a8e1!important}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li a{color:#dbdada;font-weight:300;padding:3px 5px 3px 16px;white-space:normal}
+@media (min-width:768px){.project-bar .bootstrap-select.btn-group .dropdown-menu li a{padding:8px 20px}
+}
+.project-bar .bootstrap-select.btn-group .dropdown-menu li a:focus,.project-bar .bootstrap-select.btn-group .dropdown-menu li a:hover{background-color:#383f47;border-color:transparent;color:#fcfcfc}
+.project-bar .form-group{flex-basis:100%;margin-bottom:0;min-width:0}
+.project-bar .form-group .form-control{background-color:transparent;margin-bottom:0;height:auto}
+.project-bar .dropdown-menu:after{border:6px solid transparent;border-bottom-color:#fff;border-top-width:0;content:"";display:block;height:0;position:absolute;right:10px;top:-6px;vertical-align:middle;width:0}
+.project-bar .navbar-toggle{border:0;display:block;float:left;margin:0 10px;padding:12px 16px}
+@media (max-width:767px){.project-bar .bootstrap-select.btn-group .dropdown-menu li a span.text{word-break:break-all;word-break:break-word;overflow-wrap:break-word}
+.project-bar .navbar-toggle{display:none}
+}
+.project-bar .navbar-toggle:focus .icon-bar,.project-bar .navbar-toggle:hover .icon-bar{background:#fff}
+.project-bar .navbar-toggle .icon-bar{background-color:#d1d1d1}
+.tech-preview .project-bar{top:61px}
+@media (min-width:768px){.tech-preview .project-bar{top:79px}
+}
+>>>>>>> Patternfly vertical navigation and project bar
 @-ms-viewport{width:device-width}
 .visible-lg,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block,.visible-md,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-sm,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-xs,.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block{display:none!important}
 @media (max-width:767px){.visible-xs{display:block!important}
@@ -6117,6 +6332,7 @@ td.visible-print,th.visible-print{display:table-cell!important}
 @media print{.visible-print-inline-block{display:inline-block!important}
 .hidden-print{display:none!important}
 }
+<<<<<<< HEAD
 :not(.ios) ::-webkit-scrollbar{height:10px;overflow:visible;width:15px}
 :not(.ios) ::-webkit-scrollbar-corner{background:0 0}
 :not(.ios) ::-webkit-scrollbar-thumb{background-clip:padding-box;background-color:rgba(0,0,0,.08);border:solid transparent;border-width:1px;box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);max-height:60px;min-height:28px;padding:100px 0 0}
@@ -6127,6 +6343,18 @@ td.visible-print,th.visible-print{display:table-cell!important}
 :not(.ios) .landing::-webkit-scrollbar-track{background-color:#042e43}
 :not(.ios) .landing-side-bar::-webkit-scrollbar-track{background-color:#21272e}
 :not(.ios) .project-bar ::-webkit-scrollbar-track{background-color:#050505}
+=======
+::-webkit-scrollbar{height:10px;overflow:visible;width:15px}
+::-webkit-scrollbar-corner{background:0 0}
+::-webkit-scrollbar-thumb{background-clip:padding-box;background-color:rgba(0,0,0,.08);border:solid transparent;border-width:1px;box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);max-height:60px;min-height:28px;padding:100px 0 0}
+::-webkit-scrollbar-thumb:active,::-webkit-scrollbar-thumb:hover{background-color:rgba(0,0,0,.18)}
+::-webkit-scrollbar-track{background-clip:padding-box;background-color:rgba(0,0,0,.03)}
+.chromeless .middle::-webkit-scrollbar-thumb,.landing-side-bar::-webkit-scrollbar-thumb,.landing::-webkit-scrollbar-thumb,.log-view .log-view-output::-webkit-scrollbar-thumb,.project-bar .dropdown-menu::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,.25);box-shadow:inset 1px 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(255,255,255,.07)}
+.chromeless .middle::-webkit-scrollbar-thumb:active,.chromeless .middle::-webkit-scrollbar-thumb:hover,.landing-side-bar::-webkit-scrollbar-thumb:active,.landing-side-bar::-webkit-scrollbar-thumb:hover,.landing::-webkit-scrollbar-thumb:active,.landing::-webkit-scrollbar-thumb:hover,.log-view .log-view-output::-webkit-scrollbar-thumb:active,.log-view .log-view-output::-webkit-scrollbar-thumb:hover,.project-bar .dropdown-menu::-webkit-scrollbar-thumb:active,.project-bar .dropdown-menu::-webkit-scrollbar-thumb:hover{background-color:rgba(255,255,255,.35)}
+.landing::-webkit-scrollbar-track{background-color:#042e43}
+.landing-side-bar::-webkit-scrollbar-track{background-color:#21272e}
+.project-bar ::-webkit-scrollbar-track{background-color:#050505}
+>>>>>>> Patternfly vertical navigation and project bar
 .osc-secrets-form .advanced-secrets .help-blocks,.osc-secrets-form .advanced-secrets .input-labels,.osc-secrets-form .basic-secrets .help-blocks,.osc-secrets-form .basic-secrets .input-labels{display:table;padding-right:30px;position:relative;width:100%}
 .osc-secrets-form .advanced-secrets .help-blocks .help-block,.osc-secrets-form .advanced-secrets .help-blocks .input-label,.osc-secrets-form .advanced-secrets .input-labels .help-block,.osc-secrets-form .advanced-secrets .input-labels .input-label,.osc-secrets-form .basic-secrets .help-blocks .help-block,.osc-secrets-form .basic-secrets .help-blocks .input-label,.osc-secrets-form .basic-secrets .input-labels .help-block,.osc-secrets-form .basic-secrets .input-labels .input-label{width:100%;float:left;padding-right:5px}
 .osc-secrets-form .advanced-secrets .secret-row,.osc-secrets-form .basic-secrets .secret-row{display:table;padding-right:30px;position:relative;width:100%;margin-bottom:15px}
@@ -6143,6 +6371,7 @@ dl.secret-data dt{clear:left;float:left;text-align:right;overflow:hidden;text-ov
 dl.secret-data pre{margin-bottom:0}
 .create-secret-editor{height:150px}
 .create-secret-form .help-block{margin-bottom:10px}
+<<<<<<< HEAD
 .right-section{height:100%}
 .right-section .right-container{align-items:flex-start;bottom:0;display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;height:100%;left:0;right:0;top:0}
 .right-section .right-container .right-content{flex:1 1 auto;position:relative;overflow-x:hidden;overflow-y:auto;width:100%}
@@ -6153,6 +6382,18 @@ dl.secret-data pre{margin-bottom:0}
 .sidebar-right .dl-horizontal dd{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .events-sidebar .right-content .event .event-details,.events-sidebar .right-content .event .event-details .event-message,.events-sidebar .right-content .event .event-details .event-object,.events-sidebar .right-content .event .event-details .event-reason{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .sidebar-right h3{border-top:1px solid #dfdfdf;margin-top:0;padding-top:20px}
+=======
+.right-section{height:100%;position:fixed}
+.right-section .right-container{align-items:flex-start;bottom:0;display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;height:100%;left:0;overflow:hidden;position:absolute;right:0;top:0}
+.right-section .right-container .right-content{flex:1 1 auto;position:relative;overflow-x:hidden;overflow-y:auto;width:100%}
+.right-section .right-container .right-header{flex:0 0 auto;width:100%}
+.sidebar-right{background-color:#fff;border-left:1px solid #dadada;display:none;flex:0 0 210px;position:relative}
+.sidebar-right .dl-horizontal{margin:0 0 21px}
+.sidebar-right .dl-horizontal dt{text-align:left}
+.sidebar-right .dl-horizontal dd{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+.events-sidebar .right-content .event .event-details,.events-sidebar .right-content .event .event-details .event-message,.events-sidebar .right-content .event .event-details .event-object,.events-sidebar .right-content .event .event-details .event-reason{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sidebar-right h3{border-top:1px solid #dfdfdf;margin-top:0;padding-top:21px}
+>>>>>>> Patternfly vertical navigation and project bar
 .sidebar-right h3:last-child{border-top:0;padding-top:0}
 .sidebar-right .sidebar-header{border-color:#e4e4e4;margin-bottom:0;margin-top:20px}
 .sidebar-right .sidebar-header h2{margin-left:20px}
@@ -6173,11 +6414,19 @@ dl.secret-data pre{margin-bottom:0}
 @media (min-width:1600px){.show-sidebar-right .sidebar-right{flex:0 0 480px}
 .show-sidebar-right .sidebar-right .right-section{width:480px}
 }
+<<<<<<< HEAD
 .events-badge{margin-top:9px}
 .events-badge:hover{text-decoration:none}
 .events-badge:hover .event-label{text-decoration:underline}
 .events-badge .event-count{color:#363636}
 .events-badge .pficon-info,.events-sidebar .pficon.pficon-info{color:#4d5258}
+=======
+.events-badge{font-size:14px}
+.events-badge:hover{text-decoration:none}
+.events-badge:hover .event-label{text-decoration:underline}
+.events-badge .event-count{color:#363636}
+.events-badge .pficon-info{color:#9c9c9c}
+>>>>>>> Patternfly vertical navigation and project bar
 .events-sidebar .pficon{vertical-align:middle}
 .events-sidebar .events-sidebar-collapse{margin-left:3px;margin-right:8px}
 .events-sidebar .events-sidebar-collapse a{text-decoration:none}
@@ -6192,7 +6441,12 @@ dl.secret-data pre{margin-bottom:0}
 >>>>>>> Improve YAML editor validation and feedback
 .events-sidebar .sidebar-header.right-header .warning-count{white-space:nowrap;margin-left:2px}
 .events-sidebar .sidebar-header.right-header .warning-count .pficon{vertical-align:-1px}
+<<<<<<< HEAD
 .events-sidebar .sidebar-header.right-header .event-details-link{font-size:11px;line-height:1;margin-right:20px}
+=======
+.events-sidebar .sidebar-header.right-header .event-details-link{font-size:84%;margin-right:20px}
+.events-sidebar .right-content .events{padding-bottom:89px}
+>>>>>>> Patternfly vertical navigation and project bar
 .events-sidebar .right-content .event{display:flex;align-items:center;padding:10px 20px}
 .events-sidebar .right-content .event.highlight{background-color:#f5f5f5;border-bottom-width:0;border-color:#d1d1d1!important}
 .events-sidebar .right-content .event+.event{border-top:1px solid #ededed}
@@ -6207,6 +6461,10 @@ dl.secret-data pre{margin-bottom:0}
 .events-sidebar .right-content .event .event-details .event-timestamp{text-align:right;margin-left:5px;min-width:100px}
 }
 .events-sidebar .right-content .event.highlight+.event{border-top:1px solid #d1d1d1}
+<<<<<<< HEAD
+=======
+.events-sidebar-expand{font-size:16px}
+>>>>>>> Patternfly vertical navigation and project bar
 .events-sidebar-expand a{text-decoration:none}
 [extension-name=nav-system-status]{display:inline-block!important}
 @media (max-width:350px){.nav-item-iconic.system-status{padding-right:5px!important}
@@ -6293,15 +6551,22 @@ td[role=presentation].arrow:after{content:"\2193"}
 .tile-row .tile p{margin-bottom:0;margin-top:15px}
 .tile-row .tile-click:hover{box-shadow:0 2px 12px -1px rgba(0,0,0,.3),0 4px 5px 0 rgba(0,0,0,.11),0 1px 10px 0 rgba(0,0,0,.1)}
 .tile-row .tile-item-count{background-color:#ccc;font-weight:600;padding:4px 6px;position:absolute;right:10px;top:10px}
-.chromeless,.log-view{background-color:#101214}
+.console-os .page-header,.console-os .section-header{border-color:#e4e4e4;padding-left:20px;padding-right:20px}
 .tile-row .tile-title{text-align:center}
 .tile-row .tile-title h3{margin:0 20px}
+<<<<<<< HEAD
 .tooltip-default-icon{cursor:help;font-size:11px}
 .console-os breadcrumbs+.page-header{padding-top:0}
 .console-os .page-header{border-color:#e4e4e4;padding:18px 20px 19px;margin:0 -20px}
+=======
+.tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;position:fixed;text-align:center;text-transform:uppercase;top:0;width:100%;z-index:1030}
+.chromeless,.log-view{background-color:#101214}
+.console-os .page-header{margin:20px -20px 0}
+>>>>>>> Patternfly vertical navigation and project bar
 .console-os .page-header .actions{margin-top:0}
 .console-os .page-header h1{margin:0}
 .console-os .page-header-link{display:inline-block;font-size:11px;font-weight:400;margin:0 10px;white-space:nowrap}
+<<<<<<< HEAD
 <<<<<<< HEAD
 .console-os .section-header{border-color:#e4e4e4;padding:18px 20px 10px;border-bottom:none;margin:0 -20px}
 =======
@@ -6309,6 +6574,9 @@ td[role=presentation].arrow:after{content:"\2193"}
 }
 .console-os .section-header{border-color:#e4e4e4;padding-left:20px;padding-right:20px;border-bottom:none;padding-bottom:10px;margin:20px -20px 0}
 >>>>>>> Route table tweaks
+=======
+.console-os .section-header{border-bottom:none;padding-bottom:10px;margin:20px -20px 0}
+>>>>>>> Patternfly vertical navigation and project bar
 .console-os .section-header .actions{margin-top:0}
 .console-os .section-header h1{margin:0}
 h1{margin-top:18px}
@@ -6471,11 +6739,25 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-view .log-scroll-bottom{bottom:10px;position:absolute;right:25px}
 .log-view .log-scroll-top{position:absolute;right:25px;top:10px}
 .log-view .log-scroll-top.affix{position:fixed;right:45px;top:79px}
+<<<<<<< HEAD
 @media (min-width:768px){.log-view .log-scroll-top.affix{top:111px}
 }
 .chromeless .log-view .log-scroll-top.affix{right:25px;top:51px}
 .log-view .log-view-output{font-size:11px;padding:40px 15px 40px 0}
 @media (min-width:768px){.chromeless .log-view .log-scroll-top.affix{top:71px}
+=======
+@media (min-width:768px){.log-view .log-scroll-top.affix{top:109px}
+}
+.chromeless .log-view .log-scroll-top.affix{right:25px;top:51px}
+@media (min-width:768px){.chromeless .log-view .log-scroll-top.affix{top:69px}
+}
+.tech-preview .log-view .log-scroll-top.affix{top:99px}
+@media (min-width:768px){.tech-preview .log-view .log-scroll-top.affix{top:129px}
+}
+.tech-preview .chromeless .log-view .log-scroll-top.affix{top:71px}
+.log-view .log-view-output{font-size:11px;padding:40px 0}
+@media (min-width:768px){.tech-preview .chromeless .log-view .log-scroll-top.affix{top:89px}
+>>>>>>> Patternfly vertical navigation and project bar
 .log-view .log-view-output{font-size:12px}
 }
 @media only screen and (max-device-width:736px) and (-webkit-min-device-pixel-ratio:0){.log-view .log-view-output{padding-bottom:70px}
@@ -6494,6 +6776,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-line{color:#d1d1d1}
 .log-line:hover{background-color:#22262b;color:#ededed}
 .log-line-number:before{content:attr(data-line-number)}
+<<<<<<< HEAD
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 <<<<<<< HEAD
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
@@ -6503,6 +6786,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-line-text ::selection,.log-line-text::selection{background:#f7f7f7;color:#101214}
 .log-line-text a::selection{background:#f7f7f7;color:#006da5}
 =======
+=======
+.log-line-number{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+>>>>>>> Patternfly vertical navigation and project bar
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .log-line-text::-moz-selection{color:#101214;background:#e5e5e5}
 >>>>>>> Bump common and catalog depedencies
@@ -6513,6 +6799,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .hide-if-empty:empty{display:none!important}
 .appended-icon{display:inline-block}
 .block{display:block}
+<<<<<<< HEAD
 .text-prepended-icon{align-items:baseline;display:flex}
 .nav-pf-vertical{background-color:#292e34;top:41px;z-index:990}
 .has-project-bar .nav-pf-vertical{top:69px}
@@ -6546,12 +6833,54 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .nav-pf-vertical .nav-pf-secondary-nav{background:#383f47;border-left:0;border-right:1px solid #050505;top:69px;width:221px}
 @media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:101px}
 .projects-bar .projects-add .origin-modal-popup{width:370px}
+=======
+.nav-pf-vertical{background-color:#30363d;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
+@media (min-width:768px){.nav-pf-vertical{top:59px}
+}
+.has-project-bar .nav-pf-vertical{top:69px}
+@media (min-width:768px){.has-project-bar .nav-pf-vertical{top:99px}
+}
+.nav-pf-vertical .list-group-item{border-color:#050505}
+.nav-pf-vertical .list-group-item:after{background:rgba(255,255,255,.04);content:'';display:block;height:1px;position:absolute;top:0px;width:100%}
+.nav-pf-vertical .list-group-item.active>a,.nav-pf-vertical .list-group-item:focus>a,.nav-pf-vertical .list-group-item:hover>a{background-color:#383f47;font-weight:300}
+.nav-pf-vertical .list-group-item:focus>a .fa,.nav-pf-vertical .list-group-item:focus>a .pficon,.nav-pf-vertical .list-group-item:hover>a .fa,.nav-pf-vertical .list-group-item:hover>a .pficon{color:rgba(255,255,255,.7)}
+.nav-pf-vertical .list-group-item.active>a .fa,.nav-pf-vertical .list-group-item.active>a .pficon{color:#39a5dc}
+.nav-pf-vertical .list-group-item>a,.nav-pf-vertical .list-group-item>a:focus{font-size:13px;font-weight:300;text-decoration:none}
+@media (max-width:767px){.nav-pf-vertical .list-group-item>a,.nav-pf-vertical .list-group-item>a:focus{height:auto;padding:10px 15px}
+}
+.nav-pf-vertical .list-group-item>a .fa,.nav-pf-vertical .list-group-item>a .pficon,.nav-pf-vertical .list-group-item>a:focus .fa,.nav-pf-vertical .list-group-item>a:focus .pficon{font-size:15px}
+@media (min-width:768px){.nav-pf-vertical .list-group-item>a .fa,.nav-pf-vertical .list-group-item>a .pficon,.nav-pf-vertical .list-group-item>a:focus .fa,.nav-pf-vertical .list-group-item>a:focus .pficon{font-size:18px}
+}
+.nav-pf-vertical .list-group-item>a .list-group-item-value,.nav-pf-vertical .list-group-item>a:focus .list-group-item-value{line-height:inherit;text-decoration:none!important}
+.nav-pf-vertical .list-group-item.secondary-nav-item-pf>a:after{padding:16px 0;font-size:14px}
+@media (max-width:767px){.nav-pf-vertical .list-group-item.secondary-nav-item-pf>a:after{padding:8px 0}
+}
+.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf.active>a:after,.nav-pf-vertical.collapsed .list-group-item.secondary-nav-item-pf:hover>a:after{right:12px!important}
+.nav-pf-vertical.collapsed .nav-pf-secondary-nav{left:74px}
+.nav-pf-vertical.hide-mobile-nav{left:-222px}
+.nav-pf-vertical.show-mobile-nav{box-shadow:2px 0 3px rgba(3,3,3,.15);left:0}
+.nav-pf-vertical .list-group-item.secondary-nav-item-pf:hover>a:after{color:rgba(255,255,255,.7)}
+.nav-pf-vertical .nav-pf-secondary-nav{background:#383f47;border-left:0;border-right:1px solid #050505;top:69px;width:221px}
+@media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:99px}
+>>>>>>> Patternfly vertical navigation and project bar
 }
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item:after{display:none}
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a,.nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a:hover{background:#4a535e}
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a{background:0 0;padding:4px 0 2px;margin-left:20px}
+<<<<<<< HEAD
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:focus,.nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:hover{background:#4a535e;color:#fff;text-decoration:none}
 .nav-pf-vertical .nav-item-pf-header{font-size:13px}
+=======
+.nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:hover{text-decoration:none;background:#4a535e}
+.tech-preview .nav-pf-vertical .nav-pf-secondary-nav{top:89px}
+@media (min-width:768px){.tech-preview .nav-pf-vertical .nav-pf-secondary-nav{top:119px}
+}
+.nav-pf-vertical .nav-item-pf-header{font-size:14px}
+.tech-preview .nav-pf-vertical{top:61px}
+@media (min-width:768px){.tech-preview .nav-pf-vertical{top:79px}
+}
+.tech-preview.has-project-bar .nav-pf-vertical{top:89px}
+>>>>>>> Patternfly vertical navigation and project bar
 .donut-title-med-pf{font-size:22.5px;font-weight:300}
 .col-md-12>.alerts:first-child{margin-top:20px}
 .empty-state-message .projects-instructions code{display:inline-block}
@@ -6574,6 +6903,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 @media (min-width:685px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
 }
+<<<<<<< HEAD
 .projects-bar .projects-options{display:flex;flex-direction:column}
 .projects-bar .projects-search{display:flex;margin-bottom:20px;margin-top:20px}
 @media (min-width:685px){.projects-bar .projects-options{flex-direction:row}
@@ -6581,6 +6911,10 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 @media (min-width:660px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
 }
 @media (min-width:768px){.projects-bar .projects-add .origin-modal-popup{width:370px}
+=======
+@media (min-width:768px){.tech-preview.has-project-bar .nav-pf-vertical{top:119px}
+.projects-bar .projects-add .origin-modal-popup{width:370px}
+>>>>>>> Patternfly vertical navigation and project bar
 }
 .projects-bar .projects-options{display:flex;flex-direction:column}
 .projects-bar .projects-search{display:flex;margin-bottom:20px;margin-top:20px}
@@ -6827,20 +7161,31 @@ notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notificatio
 .panel-heading .panel-title .panel-counter a{display:inline-block;font-style:normal}
 =======
 }
-.navbar-pf-alt .nav .nav-item-iconic .badge{font-size:9px;margin:-15px 0 0 -12px;min-width:10px;min-height:10px}
-notification-drawer-wrapper .drawer-pf{height:calc(100vh - 80px);top:50px;z-index:1031}
-.tech-preview notification-drawer-wrapper .drawer-pf{top:70px}
+notification-drawer-wrapper .drawer-pf{height:calc(100vh - 69px);position:fixed;top:69px;z-index:1028}
+@media (max-width:350px){notification-drawer-wrapper .drawer-pf{left:0;width:100%}
+}
+notification-drawer-wrapper .drawer-pf.drawer-pf-expanded{left:0}
+@media (min-width:768px){notification-drawer-wrapper .drawer-pf{height:calc(100vh - 99px - 20px);top:99px}
+notification-drawer-wrapper .drawer-pf.drawer-pf-expanded{left:270px}
+}
+.tech-preview notification-drawer-wrapper .drawer-pf{height:calc(100vh - 89px);top:89px}
+@media (min-width:768px){.tech-preview notification-drawer-wrapper .drawer-pf{height:calc(100vh - 119px - 20px);top:119px}
+}
 notification-drawer-wrapper .drawer-pf-notification,notification-drawer-wrapper .drawer-pf-notification-info,notification-drawer-wrapper .drawer-pf-notification-message{cursor:pointer}
-notification-drawer-wrapper .drawer-pf-notification{padding:0px}
+notification-drawer-wrapper .drawer-pf-notification{padding:0}
 notification-drawer-wrapper .drawer-pf-notification.ng-leave{transition:.25s linear all;opacity:1}
 notification-drawer-wrapper .drawer-pf-notification.ng-leave.ng-leave-active{opacity:0}
 notification-drawer-wrapper .drawer-pf-notification-inner{padding:15px}
-notification-drawer-wrapper .drawer-pf-notification-inner .pficon-close{color:#000}
+notification-drawer-wrapper .drawer-pf-notification-inner .pficon-close{color:#030303}
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message{max-width:35%}
 .panel-heading .panel-title{overflow:hidden}
 .panel-heading .panel-title .container-fluid{margin-left:0;margin-right:0;padding-left:0;padding-right:0}
+<<<<<<< HEAD
 .panel-heading .small{font-size:84%;color:#000}
 >>>>>>> Add notification-drawer to show curated list of events to user
+=======
+.panel-heading .small{font-size:84%;color:#030303}
+>>>>>>> Patternfly vertical navigation and project bar
 .action-chip{margin:0 5px 2px 0;font-size:12px;display:flex;flex-direction:row}
 .action-chip .item{padding:.2em .6em .3em}
 .action-chip .item:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}
@@ -6857,11 +7202,15 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .blue .action-chip .action{background-color:#7dc3e8}
 .blue .action-chip .action:hover{background-color:#00659c}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 .applauncher-pf.dropdown-kebab-pf .dropdown-menu{margin-top:0;right:10px}
 .applauncher-pf.dropdown-kebab-pf .dropdown-menu:before{display:none}
 .applauncher-pf.open>a,.applauncher-pf.open>a:focus,.applauncher-pf.open>a:hover{background:0 0}
 .applauncher-pf .dropdown-toggle{color:#d1d1d1;display:block;font-size:16px;padding:17px 15px 15px 12px!important}
 .applauncher-pf .dropdown-toggle:focus,.applauncher-pf .dropdown-toggle:hover{color:#fff}
+<<<<<<< HEAD
 @media (min-width:768px){.wizard-pf-steps-indicator li a .wizard-pf-step-title{margin-left:0}
 }
 =======
@@ -6872,6 +7221,8 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .navbar-iconic .applauncher-pf .dropdown-toggle,.navbar-iconic .applauncher-pf.dropdown>.dropdown-toggle{border-left-width:0;padding:20px;line-height:inherit}
 }
 .navbar-iconic .dropdown-kebab-pf .dropdown-menu:before{border-color:transparent}
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 .pf-wizard-no-back .wizard-pf-footer .btn-cancel{margin-right:0}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 .wizard-pf-steps-indicator .wizard-pf-step-number{font-size:12px}

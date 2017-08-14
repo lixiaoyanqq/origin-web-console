@@ -1,6 +1,7 @@
 "use strict";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -61,6 +62,12 @@ var E, T, N = t("annotation"), I = t("buildConfigForBuild"), D = t("deploymentIs
 =======
 var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), x = {}, F = {}, M = {}, V = P.state = {
 >>>>>>> Adjust events to show in the drawer
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, h, v, y, b, C, S, w, k, j) {
+var P = this, R = t("isIE")() || t("isEdge")();
+e.projectName = n.project;
+var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
+>>>>>>> Patternfly vertical navigation and project bar
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -181,7 +188,7 @@ label: "Name"
 }, {
 id: "label",
 label: "Label"
-} ], P.filterBy = f.getLabelSelector().isEmpty() ? "name" : "label", P.viewByOptions = [ {
+} ], P.filterBy = g.getLabelSelector().isEmpty() ? "name" : "label", P.viewByOptions = [ {
 id: "app",
 label: "Application"
 }, {
@@ -316,9 +323,9 @@ P.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), P.pipelineViewHasO
 }, ee = function() {
 P.disableFilter = "pipeline" === P.viewBy && _.isEmpty(P.pipelineBuildConfigs);
 }, te = function(e) {
-return f.getLabelSelector().select(e);
+return g.getLabelSelector().select(e);
 }, ne = [ "metadata.name", "spec.serviceClassName" ], ae = function(e) {
-return g.filterForKeywords(e, ne, V.filterKeywords);
+return f.filterForKeywords(e, ne, V.filterKeywords);
 }, re = function(e) {
 switch (P.filterBy) {
 case "label":
@@ -331,7 +338,7 @@ return e;
 }, oe = function() {
 switch (P.filterBy) {
 case "label":
-return !f.getLabelSelector().isEmpty();
+return !g.getLabelSelector().isEmpty();
 
 case "name":
 return !_.isEmpty(V.filterKeywords);
@@ -342,7 +349,7 @@ P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationCont
 P.viewBy = localStorage.getItem(se) || "app", e.$watch(function() {
 return P.viewBy;
 }, function(e) {
-localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? f.setLabelSuggestions(F) : f.setLabelSuggestions(x);
+localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? g.setLabelSuggestions(x) : g.setLabelSuggestions(F);
 }), c.DISABLE_OVERVIEW_METRICS || (v.isAvailable(!0).then(function(e) {
 V.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
@@ -611,21 +618,21 @@ ue(e, a);
 }
 }, pe = function(e) {
 _.each(e, me);
-}, ge = function(e) {
+}, fe = function(e) {
 var t = z(e);
 return t ? M[t] : null;
-}, fe = function(e) {
+}, ge = function(e) {
 var t = z(e);
 return t ? _.get(P, [ "replicationControllersByDeploymentConfig", t ]) : [];
 };
 P.getPreviousReplicationController = function(e) {
-var t = fe(e);
+var t = ge(e);
 return _.size(t) < 2 ? null : t[1];
 };
 var he = function(e) {
-var t = {}, n = ge(e);
+var t = {}, n = fe(e);
 _.assign(t, k.getDeploymentStatusAlerts(e, n), k.getPausedDeploymentAlerts(e));
-var a = fe(e);
+var a = ge(e);
 _.each(a, function(e) {
 var n = de(e);
 _.assign(t, n);
@@ -650,9 +657,9 @@ e.$evalAsync(function() {
 Se(), ve(), Ce();
 });
 }, 500), we = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, x), "pipeline" !== P.viewBy && f.setLabelSuggestions(x));
+_.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, F), "pipeline" !== P.viewBy && g.setLabelSuggestions(F));
 }, ke = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, F), "pipeline" === P.viewBy && f.setLabelSuggestions(F));
+_.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, x), "pipeline" === P.viewBy && g.setLabelSuggestions(x));
 }, je = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!U(e, "openshift.io/deployer-pod-for.name") && (!I(e, "openshift.io/build.name") && "slave" !== U(e, "jenkins")));
 }, Pe = function() {
@@ -722,13 +729,13 @@ _.each(a, function(t) {
 V.recentPipelinesByDeploymentConfig[t] = V.recentPipelinesByDeploymentConfig[t] || [], V.recentPipelinesByDeploymentConfig[t].push(e);
 }), X();
 }
-}, Oe = {}, xe = function() {
+}, Oe = {}, Fe = function() {
 Oe = i.groupBuildConfigsByOutputImage(P.buildConfigs);
-}, Fe = function(e) {
+}, xe = function(e) {
 var t = H(e);
 if (t) return _.get(V, [ "buildConfigsByObjectUID", t ], []);
 }, Me = function(e) {
-var t = [], n = Fe(e);
+var t = [], n = xe(e);
 _.each(n, function(e) {
 var n = _.get(V, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
 t = t.concat(n);
@@ -783,18 +790,18 @@ return i.sortBuilds(e, !0);
 k.setGenericQuotaWarning(V.quotas, V.clusterQuotas, n.project, V.alerts);
 };
 P.clearFilter = function() {
-f.clear(), P.filterText = "";
+g.clear(), P.filterText = "";
 }, e.$watch(function() {
 return P.filterText;
 }, _.debounce(function(t, n) {
-t !== n && (V.filterKeywords = g.generateKeywords(t), e.$evalAsync(ie));
+t !== n && (V.filterKeywords = f.generateKeywords(t), e.$evalAsync(ie));
 }, 50, {
 maxWait: 250
 })), e.$watch(function() {
 return P.filterBy;
 }, function(e, t) {
 e !== t && (P.clearFilter(), ie());
-}), f.onActiveFiltersChanged(function() {
+}), g.onActiveFiltersChanged(function() {
 e.$evalAsync(ie);
 }), P.startBuild = i.startBuild;
 var Qe = function() {
@@ -1010,7 +1017,7 @@ P.routes = e.by("metadata.name"), Be(), h.log("routes (subscribe)", P.routes);
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("buildConfigs", a, function(e) {
-P.buildConfigs = e.by("metadata.name"), xe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
+P.buildConfigs = e.by("metadata.name"), Fe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
 }, {
 poll: R,
 pollInterval: 6e4
@@ -1209,7 +1216,7 @@ errorNotification: !1
 }).then(function(t) {
 P.samplePipelineURL = y.createFromTemplateURL(t, e.projectName);
 }), e.$on("$destroy", function() {
-l.unwatchAll(Ye), $(window).off("resize.overview", q);
+l.unwatchAll(Ye), $(window).off(".overview");
 });
 }));
 }
@@ -1566,6 +1573,7 @@ prefixes: [ "/browse/services/" ]
 label: gettext("Routes"),
 href: "/browse/routes",
 prefixes: [ "/browse/routes/", "/create-route", "/edit/routes/" ]
+<<<<<<< HEAD
 }, {
 label: "Provisioned Services",
 href: "/browse/service-instances",
@@ -1575,6 +1583,8 @@ resource: "serviceinstances",
 group: "servicecatalog.k8s.io",
 verb: "list"
 }
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 } ]
 } ]
 }, {
@@ -1599,6 +1609,7 @@ group: "image.openshift.io"
 resource: "imagestreamtags",
 group: ""
 }, {
+<<<<<<< HEAD
 resource: "imagestreamtags",
 group: "image.openshift.io"
 }, {
@@ -1753,6 +1764,15 @@ prefixes: [ "/browse/config-maps/" ]
 label: "Secrets",
 href: "/browse/secrets",
 prefixes: [ "/browse/secrets/" ],
+=======
+label: "Config Maps",
+href: "/browse/config-maps",
+prefixes: [ "/browse/config-maps/", "/create-config-map", "/edit/config-maps/" ]
+}, {
+label: "Secrets",
+href: "/browse/secrets",
+prefixes: [ "/browse/secrets/", "/create-secret" ],
+>>>>>>> Patternfly vertical navigation and project bar
 canI: {
 resource: "secrets",
 verb: "list"
@@ -1838,7 +1858,7 @@ label: gettext("WildFly")
 label: "Storage",
 iconClass: "pficon pficon-container-node",
 href: "/browse/storage",
-prefixes: [ "/browse/storage/" ]
+prefixes: [ "/browse/storage/", "/create-pvc" ]
 }, {
 label: "Monitoring",
 iconClass: "pficon pficon-screen",
@@ -3215,9 +3235,14 @@ if (e.metadata) p = i.objectToResourceGroupVersion(e); else if (_.get(a, "apiVer
 var g = i.kindToResource(t), f = i.parseGroupVersion(a.apiVersion);
 =======
 if (e.metadata) p = i.objectToResourceGroupVersion(e); else if (_.get(r, "apiVersion")) {
+<<<<<<< HEAD
 var g = i.kindToResource(t), f = i.parseGroupVersion(r.apiVersion);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 f.resource = g, p = i.toResourceGroupVersion(f);
+=======
+var f = i.kindToResource(t), g = i.parseGroupVersion(r.apiVersion);
+g.resource = f, p = i.toResourceGroupVersion(g);
+>>>>>>> Patternfly vertical navigation and project bar
 } else p = i.toResourceGroupVersion(i.kindToResource(t));
 if (!i.apiInfo(p)) return null;
 c.segment("other").search({
@@ -3463,9 +3488,9 @@ var n = d(e);
 return t && n ? t + " #" + n : e.metadata.name;
 }, p = function(e) {
 return "true" === o(e, "openshift.io/build-config.paused");
-}, g = function(e) {
-return e.status.startTimestamp || e.metadata.creationTimestamp;
 }, f = function(e) {
+return e.status.startTimestamp || e.metadata.creationTimestamp;
+}, g = function(e) {
 return _.round(e / 1e3 / 1e3);
 }, h = e("imageObjectRef"), v = function(e) {
 var t = o(e, "jenkinsStatus");
@@ -3692,11 +3717,11 @@ t && !t(e) || u(e, n[a]) && (n[a] = e);
 },
 getBuildNumber: d,
 getBuildDisplayName: m,
-getStartTimestsamp: g,
+getStartTimestsamp: f,
 getDuration: function(e) {
 var t = _.get(e, "status.duration");
-if (t) return f(t);
-var n = g(e), a = e.status.completionTimestamp;
+if (t) return g(t);
+var n = f(e), a = e.status.completionTimestamp;
 return n && a ? moment(a).diff(moment(n)) : 0;
 },
 incompleteBuilds: function(e) {
@@ -4585,14 +4610,14 @@ return e ? e + "/m/stats/query" : e;
 function l(e) {
 return o().then(function(t) {
 var n;
-return n = "counter" === e.type ? t + g : t + p, URI.expand(n, {
+return n = "counter" === e.type ? t + f : t + p, URI.expand(n, {
 podUID: e.pod.metadata.uid,
 containerName: e.containerName,
 metric: e.metric
 }).toString();
 });
 }
-var u, d, m, p = "/gauges/{containerName}%2F{podUID}%2F{metric}/data", g = "/counters/{containerName}%2F{podUID}%2F{metric}/data", f = function(e) {
+var u, d, m, p = "/gauges/{containerName}%2F{podUID}%2F{metric}/data", f = "/counters/{containerName}%2F{podUID}%2F{metric}/data", g = function(e) {
 var t = e.split("/");
 return {
 podUID: t[1],
@@ -4630,7 +4655,7 @@ return _.each(e.data.counter, n), _.each(e.data.gauge, n), t;
 }
 }).then(function(e) {
 var t = {}, n = function(e, n) {
-var a = f(n), o = _.get(r, [ a.podUID, "metadata", "name" ]), s = i(e);
+var a = g(n), o = _.get(r, [ a.podUID, "metadata", "name" ]), s = i(e);
 _.set(t, [ a.descriptor, o ], s);
 };
 return _.each(e.data.counter, n), _.each(e.data.gauge, n), t;
@@ -5412,13 +5437,13 @@ isRequestCalculated: l,
 isLimitCalculated: u,
 validatePodLimits: function(t, r, o, i) {
 if (!o || !o.length) return [];
-var s = d(t, r, "Pod", i), c = d(t, r, "Container", i), m = 0, p = 0, g = s.min && n(s.min), f = s.max && n(s.max), h = [], v = e("computeResourceLabel")(r, !0);
+var s = d(t, r, "Pod", i), c = d(t, r, "Container", i), m = 0, p = 0, f = s.min && n(s.min), g = s.max && n(s.max), h = [], v = e("computeResourceLabel")(r, !0);
 return angular.forEach(o, function(e) {
 var t = e.resources || {}, a = t.requests && t.requests[r] || c.defaultRequest;
 a && (m += n(a));
 var o = t.limits && t.limits[r] || c.defaultLimit;
 o && (p += n(o));
-}), l(r, i) || (g && m < g && h.push(v + " request total for all containers is less than pod minimum (" + a(s.min, r) + ")."), f && m > f && h.push(v + " request total for all containers is greater than pod maximum (" + a(s.max, r) + ").")), u(r, i) || (g && p < g && h.push(v + " limit total for all containers is less than pod minimum (" + a(s.min, r) + ")."), f && p > f && h.push(v + " limit total for all containers is greater than pod maximum (" + a(s.max, r) + ").")), h;
+}), l(r, i) || (f && m < f && h.push(v + " request total for all containers is less than pod minimum (" + a(s.min, r) + ")."), g && m > g && h.push(v + " request total for all containers is greater than pod maximum (" + a(s.max, r) + ").")), u(r, i) || (f && p < f && h.push(v + " limit total for all containers is less than pod minimum (" + a(s.min, r) + ")."), g && p > g && h.push(v + " limit total for all containers is greater than pod maximum (" + a(s.max, r) + ").")), h;
 }
 };
 } ]), angular.module("openshiftConsole").factory("RoutesService", [ "$filter", function(e) {
@@ -5526,7 +5551,7 @@ return l(e, "defaultRequest", t, n);
 return l(e, "defaultLimit", t, n);
 }, m = function(e, t, a) {
 return !(!s("cpu", e) && !u("cpu", t, a)) || (!(!c("cpu", e) && !d("cpu", t, e)) || !!n.isLimitCalculated("cpu", a) && (c("memory", e) || d("memory", t, a)));
-}, p = e("humanizeKind"), g = e("hasDeploymentConfig");
+}, p = e("humanizeKind"), f = e("hasDeploymentConfig");
 return {
 convertRequestPercentToLimit: function(e, t) {
 var n = o(t);
@@ -5562,7 +5587,7 @@ reason: "NoCPURequest"
 })), _.size(r) > 1 && a.push({
 message: "More than one autoscaler is scaling this resource. This is not recommended because they might compete with each other. Consider removing all but one autoscaler.",
 reason: "MultipleHPA"
-}), "ReplicationController" === e.kind && g(e) && _.some(r, function() {
+}), "ReplicationController" === e.kind && f(e) && _.some(r, function() {
 return _.some(r, function(e) {
 return "ReplicationController" === _.get(e, "spec.scaleTargetRef.kind");
 });
@@ -6358,10 +6383,14 @@ target: "_blank"
 }
 return null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, j = {
 =======
 }, g = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, f = {
+>>>>>>> Patternfly vertical navigation and project bar
 cpu: "resources.requests.cpu",
 "requests.cpu": "resources.requests.cpu",
 "limits.cpu": "resources.limits.cpu",
@@ -6370,6 +6399,7 @@ memory: "resources.requests.memory",
 "limits.memory": "resources.limits.memory",
 persistentvolumeclaims: "resources.limits.persistentvolumeclaims",
 "requests.storage": "resources.request.storage"
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, k = function(e, t, n, r) {
 var a = e.status.total || e.status, o = j[r], i = 0;
@@ -6385,6 +6415,10 @@ details: s,
 =======
 }, f = function(e, t, n, a) {
 var r = e.status.total || e.status, o = g[a], s = 0;
+=======
+}, g = function(e, t, n, a) {
+var r = e.status.total || e.status, o = f[a], s = 0;
+>>>>>>> Patternfly vertical navigation and project bar
 if (_.each(n.spec.containers, function(e) {
 var t = _.get(e, o);
 t && (s += i(t));
@@ -6528,7 +6562,7 @@ var i = t.status.total || t.status;
 if (("Pod" !== e.kind || "pods" !== r) && !o(i.hard[r])) {
 var s = p(t, e, r);
 if (s) n.push(s); else if ("pods" !== r) {
-var c = f(t, e, a, r);
+var c = g(t, e, a, r);
 c && n.push(c);
 }
 }
@@ -6538,13 +6572,13 @@ var r = [];
 return t && n ? (_.each(t, function(t) {
 var s = u(t, n), c = u(t, a), l = e.objectToResourceGroupVersion(t);
 if (l) {
-var d = e.kindToResource(t.kind, !0), p = m(t.kind), g = "";
-l.group && (g = l.group + "/"), g += l.resource;
-var f = function(e) {
+var d = e.kindToResource(t.kind, !0), p = m(t.kind), f = "";
+l.group && (f = l.group + "/"), f += l.resource;
+var g = function(e) {
 var n = e.status.total || e.status;
-!o(n.hard[g]) && i(n.hard[g]) <= i(n.used[g]) && r.push({
+!o(n.hard[f]) && i(n.hard[f]) <= i(n.used[f]) && r.push({
 type: "error",
-message: "You are at your quota of " + n.hard[g] + " " + ("1" === n.hard[g] ? p : d) + " in this project.",
+message: "You are at your quota of " + n.hard[f] + " " + ("1" === n.hard[f] ? p : d) + " in this project.",
 details: "You will not be able to create the " + p + " '" + t.metadata.name + "'.",
 links: [ {
 href: "project/" + e.metadata.namespace + "/quota",
@@ -6553,7 +6587,7 @@ target: "_blank"
 } ]
 }), r = r.concat(h(t, e));
 };
-_.each(s, f), _.each(c, f);
+_.each(s, g), _.each(c, g);
 }
 }), r) : r;
 }, y = function(e, t, n) {
@@ -6707,17 +6741,21 @@ type: "info",
 message: "This will create additional membership roles within the project.",
 details: "Admins will be able to grant these custom roles to users, groups, and service accounts."
 }), u.length) {
+<<<<<<< HEAD
 var g = _.uniq(_.map(u, function(e) {
 <<<<<<< HEAD
 return r(e.kind);
 =======
+=======
+var f = _.uniq(_.map(u, function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 return a(e.kind);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }));
 o.push({
 type: "warning",
 message: "This will create resources that may have security or project behavior implications.",
-details: "Make sure you understand what they do before creating them. The resources being created are: " + g.join(", ")
+details: "Make sure you understand what they do before creating them. The resources being created are: " + f.join(", ")
 });
 }
 return o;
@@ -7960,6 +7998,7 @@ return _.get(t, [ e, "cleared" ]);
 }
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ProjectsController", [ "$scope", "$filter", "$location", "$route", "$timeout", "AuthService", "DataService", "KeywordService", "Navigate", "gettextCatalog", "gettext", "Logger", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u, d, m) {
 var p, g, f = [], v = [], h = !1;
 e.alerts = e.alerts || {}, e.loading = !0, e.showGetStarted = !1, e.canCreate = void 0, e.search = {
@@ -7997,8 +8036,12 @@ m.replace(), m.search("startTour", null), e.startGuidedTour();
 =======
 }), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g) {
 function f() {
+=======
+}), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
+function g() {
+>>>>>>> Patternfly vertical navigation and project bar
 if (v) if (p.startTour) d(function() {
-g.replace(), g.search("startTour", null), e.startGuidedTour();
+f.replace(), f.search("startTour", null), e.startGuidedTour();
 }, 500); else if (_.get(h, "auto_launch")) {
 >>>>>>> Bug 1471033 - Only request template metadata
 var n = "openshift/viewedHomePage/" + t.user.metadata.name;
@@ -8043,12 +8086,12 @@ message: n
 };
 s.addNotification(a);
 }
-e.catalogItems = t, f();
+e.catalogItems = t, g();
 }));
 }), e.$on("$destroy", function() {
 y();
 }), v && e.$on("$locationChangeStart", function(t) {
-g.search().startTour && (e.startGuidedTour(), t.preventDefault());
+f.search().startTour && (e.startGuidedTour(), t.preventDefault());
 });
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
 var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
@@ -8071,12 +8114,12 @@ return _.get(t, [ e.metadata.uid, "cleared" ]);
 }
 };
 } ]), angular.module("openshiftConsole").controller("ProjectsController", [ "$scope", "$filter", "$location", "$route", "$timeout", "AuthService", "DataService", "KeywordService", "Navigate", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
-var d, m, p = [], g = [], f = !1;
+var d, m, p = [], f = [], g = !1;
 e.alerts = e.alerts || {}, e.loading = !0, e.showGetStarted = !1, e.canCreate = void 0, e.search = {
 text: ""
 }, e.limitListTo = 250;
 var h, v = [ "metadata.name", 'metadata.annotations["openshift.io/display-name"]', 'metadata.annotations["openshift.io/description"]', 'metadata.annotations["openshift.io/requester"]' ], y = function() {
-e.projects = s.filterForKeywords(m, v, g);
+e.projects = s.filterForKeywords(m, v, f);
 }, b = t("displayName"), C = function() {
 var t = _.get(e, "sortConfig.currentField.id");
 h !== t && (e.sortConfig.isAscending = "metadata.creationTimestamp" !== t);
@@ -8143,7 +8186,7 @@ onSortChange: S
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, S();
 }, k = function() {
-f || u.list().then(w);
+g || u.list().then(w);
 };
 e.newProjectPanelShown = !1, e.createProject = function() {
 e.newProjectPanelShown = !0;
@@ -8212,10 +8255,10 @@ u = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmp
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }, e.$watch("search.text", _.debounce(function(t) {
-e.keywords = g = s.generateKeywords(t), e.$applyAsync(y);
+e.keywords = f = s.generateKeywords(t), e.$applyAsync(y);
 }, 350)), o.withUser().then(function() {
 u.list().then(function(t) {
-e.isProjectListIncomplete = u.isProjectListIncomplete(), w(t), !e.isProjectListIncomplete && _.size(d) <= 250 && (p.push(u.watch(e, w)), f = !0);
+e.isProjectListIncomplete = u.isProjectListIncomplete(), w(t), !e.isProjectListIncomplete && _.size(d) <= 250 && (p.push(u.watch(e, w)), g = !0);
 }, function() {
 e.isProjectListIncomplete = !0, e.loading = !1, d = [], S();
 });
@@ -8347,12 +8390,12 @@ a.metricsAvailable = b;
 type: "warning",
 message: "This terminal has been disconnected. If you reconnect, your terminal history will be lost."
 }, e.noContainersYet = !0, e.selectedTab = {};
-var p = [], g = null;
+var p = [], f = null;
 l.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
-var f = function() {
+var g = function() {
 if (e.pod) {
 var t = _.find(e.pod.status.containerStatuses, {
 name: e.logOptions.container
@@ -8540,7 +8583,7 @@ name: t.containerName
 t.containerState = a;
 });
 }, k = t("annotation"), j = function(t, n) {
-if (e.loaded = !0, e.pod = t, e.dcName = k(t, "deploymentConfig"), e.rcName = k(t, "deployment"), e.deploymentVersion = k(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), f(), delete e.controllerRef, !e.dcName) {
+if (e.loaded = !0, e.pod = t, e.dcName = k(t, "deploymentConfig"), e.rcName = k(t, "deployment"), e.deploymentVersion = k(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), g(), delete e.controllerRef, !e.dcName) {
 var a = u.getControllerReferences(t);
 e.controllerRef = _.find(a, function(e) {
 return "ReplicationController" === e.kind || "ReplicaSet" === e.kind || "Build" === e.kind;
@@ -8620,12 +8663,12 @@ d[b.metadata.name] = b, a.logOptions.container = c.container || b.spec.container
 z(b, c), x(a.containerTerminals), w(b);
 =======
 m.get(n.project).then(_.spread(function(a, l) {
-g = l, e.project = a, e.projectContext = l, i.get("pods", n.pod, l, {
+f = l, e.project = a, e.projectContext = l, i.get("pods", n.pod, l, {
 errorNotification: !1
 }).then(function(t) {
 j(t);
 var a = {};
-a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = C(), S(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, g), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
+a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = C(), S(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, f), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
 j(t, n), w(e.containerTerminals), S(t);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }));
@@ -8635,7 +8678,7 @@ type: "error",
 message: "The pod details could not be loaded.",
 details: t("getErrorDetails")(n)
 };
-}), e.$watch("logOptions.container", f), p.push(i.watch("imagestreams", l, function(t) {
+}), e.$watch("logOptions.container", g), p.push(i.watch("imagestreams", l, function(t) {
 e.imageStreams = t.by("metadata.name"), c.buildDockerRefMapForImageStreams(e.imageStreams, e.imageStreamImageRefByDockerReference), c.fetchReferencedImageStreamImages(e.pods, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, l), o.log("imagestreams (subscribe)", e.imageStreams);
 })), p.push(i.watch("builds", l, function(t) {
 e.builds = t.by("metadata.name"), o.log("builds (subscribe)", e.builds);
@@ -8893,7 +8936,7 @@ a.unwatchAll(i);
 }));
 } ]), angular.module("openshiftConsole").controller("MonitoringController", [ "$routeParams", "$location", "$scope", "$filter", "BuildsService", "DataService", "ImageStreamResolver", "KeywordService", "Logger", "MetricsService", "Navigate", "PodsService", "ProjectsService", "$rootScope", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 n.projectName = e.project, n.alerts = n.alerts || {}, n.renderOptions = n.renderOptions || {}, n.renderOptions.showEventsSidebar = !0, n.renderOptions.collapseEventsSidebar = "true" === localStorage.getItem("monitoring.eventsidebar.collapsed");
-var g = [];
+var f = [];
 n.kinds = [ {
 kind: "All"
 }, {
@@ -8932,6 +8975,7 @@ replicaSets: {},
 builds: {},
 statefulSets: {}
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 var y = r("isNil");
 n.filters = {
@@ -9000,8 +9044,11 @@ name: u
 p.$emit(c, e);
 =======
 var f = a("isNil");
+=======
+var g = a("isNil");
+>>>>>>> Patternfly vertical navigation and project bar
 n.filters = {
-hideOlderResources: f(e.hideOlderResources) || "true" === e.hideOlderResources,
+hideOlderResources: g(e.hideOlderResources) || "true" === e.hideOlderResources,
 text: ""
 };
 var h, v, y, b;
@@ -9148,7 +9195,7 @@ resource: "replicasets"
 }, a, function(e) {
 n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, O(), c.log("replicasets", n.replicaSets);
 }), n.$on("$destroy", function() {
-o.unwatchAll(g);
+o.unwatchAll(f);
 }), n.$watch("filters.hideOlderResources", function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9230,7 +9277,7 @@ warning: {
 serviceAccount: _.template(v.getString(f("Removing a system role granted to a service account may cause unexpected behavior.")))
 =======
 } ]), angular.module("openshiftConsole").controller("MembershipController", [ "$filter", "$location", "$routeParams", "$scope", "$timeout", "$uibModal", "AuthService", "AuthorizationService", "DataService", "ProjectsService", "MembershipService", "NotificationsService", "RoleBindingsService", "RolesService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
-var g, f = n.project, h = e("humanizeKind"), v = e("annotation"), y = e("canI"), b = [], C = {
+var f, g = n.project, h = e("humanizeKind"), v = e("annotation"), y = e("canI"), b = [], C = {
 notice: {
 yourLastRole: _.template('Removing the role "<%= roleName %>" may completely remove your ability to see this project.')
 },
@@ -9270,7 +9317,7 @@ message: t,
 details: n
 });
 }, w = function() {
-a.disableAddForm = !1, a.newBinding.name = "", a.newBinding.namespace = f, a.newBinding.newRole = null;
+a.disableAddForm = !1, a.newBinding.name = "", a.newBinding.namespace = g, a.newBinding.newRole = null;
 }, k = function(e) {
 c.list("serviceaccounts", e).then(function(e) {
 var t = _.keys(e.by("metadata.name")).sort();
@@ -9346,7 +9393,7 @@ subjectKinds: A,
 =======
 });
 }, j = function(e) {
-c.list("rolebindings", g, null, {
+c.list("rolebindings", f, null, {
 errorNotification: !1
 }).then(function(e) {
 angular.extend(a, {
@@ -9358,7 +9405,7 @@ subjectKindsForUI: u.mapRolebindingsForUI(e.by("metadata.name"), b)
 e && (a.roleBindings[e.metadata.name] = e, a.subjectKindsForUI = u.mapRolebindingsForUI(a.roleBindings, b)), w();
 });
 }, P = function(t, n) {
-a.disableAddForm = !0, m.create(t, n, f, g).then(function() {
+a.disableAddForm = !0, m.create(t, n, g, f).then(function() {
 j(), S("success", C.update.subject.success({
 roleName: t.metadata.name,
 subjectName: n.name
@@ -9372,7 +9419,7 @@ httpErr: e("getErrorDetails")(a)
 }));
 });
 }, R = function(t, n, r) {
-a.disableAddForm = !0, m.addSubject(t, n, r, g).then(function() {
+a.disableAddForm = !0, m.addSubject(t, n, r, f).then(function() {
 j(), S("success", C.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
@@ -9390,7 +9437,7 @@ n.tab && (E[n.tab] = !0);
 var T = u.getSubjectKinds();
 angular.extend(a, {
 selectedTab: E,
-projectName: f,
+projectName: g,
 forms: {},
 <<<<<<< HEAD
 subjectKinds: E,
@@ -9547,10 +9594,10 @@ e && !_.includes(a.projects, e) ? a.projects = [ e ].concat(t) : a.projects = t;
 }
 });
 }), l.get(n.project).then(_.spread(function(n, r) {
-g = r, j(), k(g), angular.extend(a, {
+f = r, j(), k(f), angular.extend(a, {
 project: n,
 subjectKinds: T,
-canUpdateRolebindings: y("rolebindings", "update", f),
+canUpdateRolebindings: y("rolebindings", "update", g),
 confirmRemove: function(n, r, i) {
 var c = null, l = I(n, r, i, a.user.metadata.name);
 _.isEqual(n, a.user.metadata.name) && u.isLastRole(a.user.metadata.name, a.roleBindings) && (c = !0), o.open({
@@ -9581,10 +9628,10 @@ return l;
 }
 }
 }).result.then(function() {
-m.removeSubject(n, i, a.roleBindings, g).then(function(e) {
-c ? t.url("./") : (s.getProjectRules(f, !0).then(function() {
+m.removeSubject(n, i, a.roleBindings, f).then(function(e) {
+c ? t.url("./") : (s.getProjectRules(g, !0).then(function() {
 j(e[0]);
-var t = y("rolebindings", "update", f);
+var t = y("rolebindings", "update", g);
 angular.extend(a, {
 canUpdateRolebindings: t,
 mode: {
@@ -9650,7 +9697,7 @@ roleName: n.metadata.name,
 subjectName: e
 })) : i ? R(i, o, r) : P(n, o);
 }
-}), p.listAllRoles(g, {
+}), p.listAllRoles(f, {
 errorNotification: !1
 }).then(function(e) {
 b = u.mapRolesForUI(_.head(e).by("metadata.name"), _.last(e).by("metadata.name"));
@@ -9791,11 +9838,11 @@ details: "The active filters are hiding all builds."
 } : delete t.alerts.builds;
 }
 t.project = e;
-var g = a("isJenkinsPipelineStrategy");
+var f = a("isJenkinsPipelineStrategy");
 u.push(n.watch("builds", i, function(e) {
-t.builds = _.omitBy(e.by("metadata.name"), g), t.emptyMessage = "No builds to show", m(), r.addLabelSuggestionsFromResources(t.builds, t.labelSuggestions), o.log("builds (subscribe)", t.builds);
+t.builds = _.omitBy(e.by("metadata.name"), f), t.emptyMessage = "No builds to show", m(), r.addLabelSuggestionsFromResources(t.builds, t.labelSuggestions), o.log("builds (subscribe)", t.builds);
 })), u.push(n.watch("buildconfigs", i, function(e) {
-t.unfilteredBuildConfigs = _.omitBy(e.by("metadata.name"), g), r.addLabelSuggestionsFromResources(t.unfilteredBuildConfigs, t.labelSuggestions), r.setLabelSuggestions(t.labelSuggestions), t.buildConfigs = r.getLabelSelector().select(t.unfilteredBuildConfigs), m(), p(), o.log("buildconfigs (subscribe)", t.buildConfigs);
+t.unfilteredBuildConfigs = _.omitBy(e.by("metadata.name"), f), r.addLabelSuggestionsFromResources(t.unfilteredBuildConfigs, t.labelSuggestions), r.setLabelSuggestions(t.labelSuggestions), t.buildConfigs = r.getLabelSelector().select(t.unfilteredBuildConfigs), m(), p(), o.log("buildconfigs (subscribe)", t.buildConfigs);
 })), r.onActiveFiltersChanged(function(e) {
 t.$apply(function() {
 t.buildConfigs = e.select(t.unfilteredBuildConfigs), m(), p();
@@ -9809,7 +9856,7 @@ n.projectName = t.project, n.alerts = n.alerts || {}, n.buildConfigs = {};
 var l = [];
 c.get(t.project).then(_.spread(function(t, s) {
 n.project = t;
-var c = {}, u = e("buildConfigForBuild"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), g = function(e, t) {
+var c = {}, u = e("buildConfigForBuild"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), f = function(e, t) {
 if (!d(t)) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 n.statsByConfig[e] || (n.statsByConfig[e] = {
@@ -9830,13 +9877,17 @@ n.buildConfigs[a] || (n.buildConfigs[a] = null), p(r) ? _.set(e, [ a, r.metadata
 var a = n.statsByConfig[e];
 a.count++, a.totalDuration += o.getDuration(t), a.avgDuration = _.round(a.totalDuration / a.count);
 }
-}, f = function() {
+}, g = function() {
 var e = {}, t = {};
 n.statsByConfig = {}, _.each(c, function(a) {
 if (m(a)) {
 var r = u(a) || "";
+<<<<<<< HEAD
 n.buildConfigs[r] || (n.buildConfigs[r] = null), d(a) ? _.set(e, [ r, a.metadata.name ], a) : p(a, t[r]) && (t[r] = a), g(r, a);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+n.buildConfigs[r] || (n.buildConfigs[r] = null), d(a) ? _.set(e, [ r, a.metadata.name ], a) : p(a, t[r]) && (t[r] = a), f(r, a);
+>>>>>>> Patternfly vertical navigation and project bar
 }
 }), _.each(t, function(t, n) {
 _.set(e, [ n, t.metadata.name ], t);
@@ -9916,7 +9967,7 @@ p();
 g.unwatchAll(j);
 =======
 l.push(i.watch("builds", s, function(e) {
-n.buildsLoaded = !0, c = e.by("metadata.name"), f();
+n.buildsLoaded = !0, c = e.by("metadata.name"), g();
 }));
 var h = !1;
 l.push(i.watch("buildconfigs", s, function(e) {
@@ -9930,7 +9981,7 @@ errorNotification: !1
 n.createSampleURL = r.createFromTemplateURL(e, n.projectName);
 });
 }
-f();
+g();
 })), n.startBuild = o.startBuild, n.$on("$destroy", function() {
 i.unwatchAll(l);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -9951,13 +10002,13 @@ title: n.buildconfig
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var m, p = t("buildConfigForBuild"), g = t("buildStrategy"), f = [], h = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = g(e.updatedBuildConfig).env || [];
+var m, p = t("buildConfigForBuild"), f = t("buildStrategy"), g = [], h = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), g(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update("buildconfigs", n.buildconfig, e.updatedBuildConfig, m).then(function() {
+l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update("buildconfigs", n.buildconfig, e.updatedBuildConfig, m).then(function() {
 l.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
@@ -9978,6 +10029,7 @@ e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = r.isPaused(e.buildConfig
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 }));
 <<<<<<< HEAD
+<<<<<<< HEAD
 var i = _.get(o(c), "from", {}), j = i.kind + "/" + i.name + "/" + (i.namespace || a.projectName);
 r !== j && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], i.kind) ? (r = j, g.get(d.kindToResource(i.kind), i.name, {
 namespace:i.namespace || a.projectName
@@ -9995,6 +10047,9 @@ message: "This build configuration has been deleted."
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? C(n) : e.alerts.background_update = {
 =======
 var c = _.get(g(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+=======
+var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+>>>>>>> Patternfly vertical navigation and project bar
 v !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (v = l, i.get(a.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
 }, {
@@ -10120,14 +10175,14 @@ details: "The active filters are hiding all builds."
 e.project = a, m = o, i.get("buildconfigs", n.buildconfig, o, {
 errorNotification: !1
 }).then(function(e) {
-y(e), f.push(i.watchObject("buildconfigs", n.buildconfig, o, y));
+y(e), g.push(i.watchObject("buildconfigs", n.buildconfig, o, y));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: 404 === n.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
-}), f.push(i.watch("builds", o, function(t, a, o) {
+}), g.push(i.watch("builds", o, function(t, a, o) {
 if (e.emptyMessage = "No builds to show", a) {
 if (p(o) === n.buildconfig) {
 var i = o.metadata.name;
@@ -10195,8 +10250,12 @@ r.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
 c.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
+<<<<<<< HEAD
 i.unwatchAll(f);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+i.unwatchAll(g);
+>>>>>>> Patternfly vertical navigation and project bar
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s) {
@@ -10280,7 +10339,7 @@ s.get(n.project).then(_.spread(function(i, s) {
 e.project = i, e.projectContext = s, e.logOptions = {};
 var p = function() {
 e.eventObjects = c ? [ e.build, c ] : [ e.build ];
-}, g = function(t, n) {
+}, f = function(t, n) {
 e.loaded = !0, e.build = t, d(t), p();
 var a = l(t, "buildNumber");
 a && (e.breadcrumbs[2].title = "#" + a), "DELETED" === n && (e.alerts.deleted = {
@@ -10294,7 +10353,7 @@ errorNotification: !1
 c = e, p();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
-}, f = function(t, n) {
+}, g = function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "Build configuration " + e.buildConfigName + " has been deleted."
@@ -10311,8 +10370,12 @@ g(t), d.push(o.watchObject(e.buildsVersion, n.build, s, g)), d.push(o.watchObjec
 r.get("builds", n.build, s, {
 errorNotification: !1
 }).then(function(e) {
+<<<<<<< HEAD
 g(e), u.push(r.watchObject("builds", n.build, s, g)), u.push(r.watchObject("buildconfigs", n.buildconfig, s, f));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+f(e), u.push(r.watchObject("builds", n.build, s, f)), u.push(r.watchObject("buildconfigs", n.buildconfig, s, g));
+>>>>>>> Patternfly vertical navigation and project bar
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -10626,6 +10689,7 @@ e.deploymentConfigs = t.select(e.unfilteredDeploymentConfigs), e.replicationCont
 });
 <<<<<<< HEAD
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "OwnerReferencesService", "Logger", "ProjectsService", "StorageService", function(a, b, c, d, e, f, g, h, i, j, k, l, m) {
 var n = {};
 a.projectName = c.project, a.name = c.deployment, a.forms = {}, a.alerts = {}, a.imagesByDockerReference = {}, a.breadcrumbs = [ {
@@ -10947,6 +11011,17 @@ link: "project/" + n.project + "/browse/deployments"
 title: n.deployment
 } ], e.healthCheckURL = u.healthCheckURL(n.project, "Deployment", n.deployment, "apps");
 var f = [];
+=======
+} ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "LabelFilter", "Logger", "ModalsService", "Navigate", "OwnerReferencesService", "ProjectsService", "StorageService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
+var f = {};
+e.projectName = n.project, e.name = n.deployment, e.replicaSetsForDeployment = {}, e.unfilteredReplicaSetsForDeployment = {}, e.labelSuggestions = {}, e.emptyMessage = "Loading...", e.forms = {}, e.alerts = {}, e.imagesByDockerReference = {}, e.breadcrumbs = [ {
+title: "Deployments",
+link: "project/" + n.project + "/browse/deployments"
+}, {
+title: n.deployment
+} ], e.healthCheckURL = u.healthCheckURL(n.project, "Deployment", n.deployment, "apps");
+var g = [];
+>>>>>>> Patternfly vertical navigation and project bar
 m.get(n.project).then(_.spread(function(u, m) {
 function h() {
 s.getLabelSelector().isEmpty() || !_.isEmpty(e.replicaSetsForDeployment) || _.isEmpty(e.unfilteredReplicaSetsForDeployment) ? delete e.alerts["filter-hiding-all"] : e.alerts["filter-hiding-all"] = {
@@ -10966,15 +11041,15 @@ resource: "deployments"
 }, n.deployment, m, {
 errorNotification: !1
 }).then(function(t) {
-e.loaded = !0, e.deployment = t, y(), f.push(a.watchObject({
+e.loaded = !0, e.deployment = t, y(), g.push(a.watchObject({
 group: "apps",
 resource: "deployments"
 }, n.deployment, m, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This deployment has been deleted."
-}), e.deployment = t, e.updatingPausedState = !1, y(), i.fetchReferencedImageStreamImages([ t.spec.template ], e.imagesByDockerReference, g, m);
-})), f.push(a.watch({
+}), e.deployment = t, e.updatingPausedState = !1, y(), i.fetchReferencedImageStreamImages([ t.spec.template ], e.imagesByDockerReference, f, m);
+})), g.push(a.watch({
 group: "extensions",
 resource: "replicasets"
 }, m, function(n) {
@@ -11008,16 +11083,16 @@ details: t("getErrorDetails")(n)
 };
 }), a.list("limitranges", m).then(function(e) {
 v = e.by("metadata.name"), y();
-}), f.push(a.watch("imagestreams", m, function(t) {
+}), g.push(a.watch("imagestreams", m, function(t) {
 var n = t.by("metadata.name");
-i.buildDockerRefMapForImageStreams(n, g), e.deployment && i.fetchReferencedImageStreamImages([ e.deployment.spec.template ], e.imagesByDockerReference, g, m), c.log("imagestreams (subscribe)", e.imageStreams);
-})), f.push(a.watch({
+i.buildDockerRefMapForImageStreams(n, f), e.deployment && i.fetchReferencedImageStreamImages([ e.deployment.spec.template ], e.imagesByDockerReference, f, m), c.log("imagestreams (subscribe)", e.imageStreams);
+})), g.push(a.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, m, function(t) {
 e.autoscalers = o.filterHPA(t.by("metadata.name"), "Deployment", n.deployment), y();
-})), f.push(a.watch("builds", m, function(t) {
+})), g.push(a.watch("builds", m, function(t) {
 e.builds = t.by("metadata.name"), c.log("builds (subscribe)", e.builds);
 })), s.onActiveFiltersChanged(function(t) {
 e.$evalAsync(function() {
@@ -11052,10 +11127,10 @@ cancelButtonText: "Cancel"
 p.removeVolume(e.deployment, t, m);
 });
 }, e.$on("$destroy", function() {
-a.unwatchAll(f);
+a.unwatchAll(g);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("DeploymentConfigController", [ "$scope", "$filter", "$routeParams", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "NotificationsService", "Logger", "ProjectsService", "StorageService", "LabelFilter", "labelNameFilter", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g, f) {
+} ]), angular.module("openshiftConsole").controller("DeploymentConfigController", [ "$scope", "$filter", "$routeParams", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "NotificationsService", "Logger", "ProjectsService", "StorageService", "LabelFilter", "labelNameFilter", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g) {
 var h = {};
 e.projectName = n.project, e.deploymentConfigName = n.deploymentconfig, e.deploymentConfig = null, e.deployments = {}, e.unfilteredDeployments = {}, e.imagesByDockerReference = {}, e.builds = {}, e.labelSuggestions = {}, e.forms = {}, e.alerts = {}, e.breadcrumbs = a.getBreadcrumbs({
 name: n.deploymentconfig,
@@ -11065,7 +11140,7 @@ namespace: n.project
 var v = t("mostRecent"), y = t("orderObjectsByDate"), b = [];
 m.get(n.project).then(_.spread(function(a, l) {
 function u() {
-g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
+f.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
 type: "warning",
 details: "The active filters are hiding all deployments."
 };
@@ -11140,11 +11215,11 @@ e.unfilteredDeployments = l[n.deploymentconfig] || {}, angular.forEach(e.unfilte
 e.causes = t("deploymentCauses")(e);
 }), e.deploymentConfigDeploymentsInProgress = o.associateRunningDeploymentToDeploymentConfig(l);
 }
-e.deployments = g.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = y(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = v(e.unfilteredDeployments), u(), g.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), g.setLabelSuggestions(e.labelSuggestions);
+e.deployments = f.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = y(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = v(e.unfilteredDeployments), u(), f.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), f.setLabelSuggestions(e.labelSuggestions);
 }, {
 http: {
 params: {
-labelSelector: f("deploymentConfig") + "=" + e.deploymentConfigName
+labelSelector: g("deploymentConfig") + "=" + e.deploymentConfigName
 }
 }
 })), r.list("limitranges", l).then(function(e) {
@@ -11160,7 +11235,7 @@ resource: "horizontalpodautoscalers",
 version: "v1"
 }, l, function(t) {
 e.autoscalers = i.filterHPA(t.by("metadata.name"), "DeploymentConfig", n.deploymentconfig), C();
-})), g.onActiveFiltersChanged(function(t) {
+})), f.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
 e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = y(e.deployments, !0), u();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -11271,9 +11346,15 @@ g.removeVolume(e.deploymentConfig, t, a);
 o.unwatchAll(I);
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "gettext", "gettextCatalog", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y, b, S, C) {
 var w = !1, P = t("annotation"), j = t("humanizeKind")(d), k = t("hasDeployment"), I = r.getPreferredVersion("builds"), R = r.getPreferredVersion("imagestreams"), T = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), N = r.getPreferredVersion("pods"), D = r.getPreferredVersion("replicasets"), A = r.getPreferredVersion("replicationcontrollers"), $ = r.getPreferredVersion("resourcequotas"), B = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
+=======
+} ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, h, v, y) {
+var b = !1, C = t("annotation"), S = t("humanizeKind")(y), w = t("hasDeployment");
+switch (y) {
+>>>>>>> Patternfly vertical navigation and project bar
 case "ReplicaSet":
 e.resource = D, e.healthCheckURL = f.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
 break;
@@ -11287,6 +11368,7 @@ var x = [];
 p.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 });
+<<<<<<< HEAD
 var V = t("deploymentStatus"), O = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], V(t));
 }, U = t("isIE")();
@@ -11295,6 +11377,16 @@ e.project = r, e.projectContext = u;
 var p = {}, y = function() {
 if (e.hpaForRS = c.filterHPA(p, d, n.replicaSet), e.deploymentConfigName && e.isActive) {
 var t = c.filterHPA(p, "DeploymentConfig", e.deploymentConfigName);
+=======
+var P = t("deploymentStatus"), R = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], P(t));
+}, E = t("isIE")() || t("isEdge")();
+g.get(n.project).then(_.spread(function(u, g) {
+e.project = u, e.projectContext = g;
+var v = {}, T = function() {
+if (e.hpaForRS = s.filterHPA(v, y, n.replicaSet), e.deploymentConfigName && e.isActive) {
+var t = s.filterHPA(v, "DeploymentConfig", e.deploymentConfigName);
+>>>>>>> Patternfly vertical navigation and project bar
 e.autoscalers = e.hpaForRS.concat(t);
 } else if (e.deployment && e.isActive) {
 var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
@@ -11306,7 +11398,7 @@ x.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 =======
 }, I = function() {
-j.push(o.watch(e.resource, f, function(t) {
+j.push(o.watch(e.resource, g, function(t) {
 var n, a = [];
 >>>>>>> Adjust events to show in the drawer
 angular.forEach(t.by("metadata.name"), function(t) {
@@ -11323,12 +11415,21 @@ s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t)
 e.hpaWarnings = t;
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, A = function(r) {
 var a = P(r, "deploymentConfig");
 if (a) {
 w = !0, e.deploymentConfigName = a;
 var o = P(r, "deploymentVersion");
 o && (e.logOptions.version = o), e.healthCheckURL = f.healthCheckURL(n.project, "DeploymentConfig", a), i.get(e.deploymentConfigsVersion, a, u, {
+=======
+}, D = function(a) {
+var r = C(a, "deploymentConfig");
+if (r) {
+b = !0, e.deploymentConfigName = r;
+var i = C(a, "deploymentVersion");
+i && (e.logOptions.version = i), e.healthCheckURL = m.healthCheckURL(n.project, "DeploymentConfig", r), o.get("deploymentconfigs", r, g, {
+>>>>>>> Patternfly vertical navigation and project bar
 errorNotification: !1
 }).then(function(t) {
 e.deploymentConfig = t;
@@ -11355,9 +11456,21 @@ uid: e.deployment.metadata.uid
 var t = v.getControllerReferences(e.replicaSet), r = _.find(t, {
 kind: "Deployment"
 });
+<<<<<<< HEAD
 r && i.get(e.deploymentsVersion, r.name, u).then(function(t) {
 e.deployment = t, e.healthCheckURL = f.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), x.push(i.watchObject(e.deploymentsVersion, t.metadata.name, u, function(t, r) {
 if ("DELETED" === r) return e.alerts["deployment-deleted"] = {
+=======
+a && o.get({
+group: "apps",
+resource: "deployments"
+}, a.name, g).then(function(t) {
+e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), j.push(o.watchObject({
+group: "apps",
+resource: "deployments"
+}, t.metadata.name, g, function(t, a) {
+if ("DELETED" === a) return e.alerts["deployment-deleted"] = {
+>>>>>>> Patternfly vertical navigation and project bar
 type: "warning",
 message: "The deployment controlling this replica set has been deleted."
 }, e.healthCheckURL = f.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions"), e.deploymentMissing = !0, void delete e.deployment;
@@ -11416,6 +11529,7 @@ case "ReplicaSet":
 e.resource = {
 group: "extensions",
 resource: "replicasets"
+<<<<<<< HEAD
 }, e.healthCheckURL = m.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
 break;
 
@@ -11467,15 +11581,27 @@ var b = a.by("metadata.name");
 <<<<<<< HEAD
 P = O(b);
 >>>>>>> Use `apps` API group for deployments
+=======
+}, g, function(e) {
+var t = e.by("metadata.name");
+B = A(t);
+>>>>>>> Patternfly vertical navigation and project bar
 }));
 });
 }, H = function() {
 if (!_.isEmpty(L)) {
 var t = _.get(e, "replicaSet.spec.template");
+<<<<<<< HEAD
 t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, L, u);
 }
 };
 i.get(e.resource, n.replicaSet, u, {
+=======
+t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, g);
+}
+};
+o.get(e.resource, n.replicaSet, g, {
+>>>>>>> Patternfly vertical navigation and project bar
 errorNotification: !1
 }).then(function(t) {
 switch (e.loaded = !0, e.replicaSet = t, O(t), d) {
@@ -11488,6 +11614,7 @@ z();
 }
 S(), e.breadcrumbs = o.getBreadcrumbs({
 object: t
+<<<<<<< HEAD
 }), x.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
@@ -11705,8 +11832,16 @@ type: "warning",
 message: "This " + S + " has been deleted."
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && $();
 })), e.deploymentConfigName && I(), j.push(o.watch("pods", f, function(t) {
+=======
+}), j.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
+"DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This " + S + " has been deleted."
+}), e.replicaSet = t, R(t), N(), U(), e.deployment && $();
+})), e.deploymentConfigName && I(), j.push(o.watch("pods", g, function(t) {
+>>>>>>> Patternfly vertical navigation and project bar
 var n = t.by("metadata.name");
-e.podsForDeployment = g.filterForOwner(n, e.replicaSet);
+e.podsForDeployment = f.filterForOwner(n, e.replicaSet);
 }));
 }, function(a) {
 e.loaded = !0, e.alerts.load = {
@@ -11718,35 +11853,35 @@ name: n.replicaSet,
 kind: y,
 namespace: n.project
 });
-}), j.push(o.watch(e.resource, f, function(n, a, r) {
+}), j.push(o.watch(e.resource, g, function(n, a, r) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === y && (e.deploymentsByDeploymentConfig = i.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, s;
 r && (o = C(r, "deploymentConfig"), s = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][s] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][s] : e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
 });
-})), j.push(o.watch("imagestreams", f, function(e) {
+})), j.push(o.watch("imagestreams", g, function(e) {
 var t = e.by("metadata.name");
 c.buildDockerRefMapForImageStreams(t, k), U(), l.log("imagestreams (subscribe)", t);
-})), j.push(o.watch("builds", f, function(t) {
+})), j.push(o.watch("builds", g, function(t) {
 e.builds = t.by("metadata.name"), l.log("builds (subscribe)", e.builds);
 })), j.push(o.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
-}, f, function(e) {
+}, g, function(e) {
 v = e.by("metadata.name"), T(), N();
 }, {
 poll: E,
 pollInterval: 6e4
-})), o.list("limitranges", f).then(function(t) {
+})), o.list("limitranges", g).then(function(t) {
 e.limitRanges = t.by("metadata.name"), N();
 });
-j.push(o.watch("resourcequotas", f, function(t) {
+j.push(o.watch("resourcequotas", g, function(t) {
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
-})), j.push(o.watch("appliedclusterresourcequotas", f, function(t) {
+})), j.push(o.watch("appliedclusterresourcequotas", g, function(t) {
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -11824,11 +11959,11 @@ var O = t("deploymentIsLatest");
 e.showRollbackAction = function() {
 return "Complete" === P(e.replicaSet) && !O(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
 }, e.retryFailedDeployment = function(t) {
-i.retryFailedDeployment(t, f, e);
+i.retryFailedDeployment(t, g, e);
 }, e.rollbackToDeployment = function(t, n, a, r) {
-i.rollbackToDeployment(t, n, a, r, f, e);
+i.rollbackToDeployment(t, n, a, r, g, e);
 }, e.cancelRunningDeployment = function(e) {
-i.cancelRunningDeployment(e, f);
+i.cancelRunningDeployment(e, g);
 }, e.scale = function(n) {
 var a = e.deployment || e.deploymentConfig || e.replicaSet;
 i.scale(a, n).then(_.noop, function(n) {
@@ -11839,9 +11974,9 @@ details: t("getErrorDetails")(n)
 };
 });
 };
-var x = t("hasDeploymentConfig");
+var F = t("hasDeploymentConfig");
 e.isScalable = function() {
-return !!_.isEmpty(e.autoscalers) && (!x(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
+return !!_.isEmpty(e.autoscalers) && (!F(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
 }, e.removeVolume = function(n) {
 var a = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
 n.persistentVolumeClaim ? a += " It will not delete the persistent volume claim." : n.secret ? a += " It will not delete the secret." : n.configMap && (a += " It will not delete the config map.");
@@ -11852,7 +11987,7 @@ okButtonText: "Remove",
 okButtonClass: "btn-danger",
 cancelButtonText: "Cancel"
 }).then(function() {
-h.removeVolume(e.replicaSet, n, f);
+h.removeVolume(e.replicaSet, n, g);
 });
 }, e.$on("$destroy", function() {
 o.unwatchAll(j);
@@ -12230,6 +12365,7 @@ _.extend(e.parameterData, r);
 c.warn("Unable to load parameters from secret " + _.get(t, "secretKeyRef.name"), e);
 }
 }));
+<<<<<<< HEAD
 });
 }
 }, w = function() {
@@ -12473,12 +12609,21 @@ a.alerts = {}, a.projectName = n.project, a.breadcrumbs = [ {
 title: a.projectName,
 link: "project/" + a.projectName
 }, {
+=======
+} ]), angular.module("openshiftConsole").controller("CreateSecretController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
+a.alerts = {}, a.projectName = n.project, a.breadcrumbs = [ {
+>>>>>>> Patternfly vertical navigation and project bar
 title: "Secrets",
 link: "project/" + a.projectName + "/browse/secrets"
 }, {
 title: "Create Secret"
+<<<<<<< HEAD
 } ], l.get(n.project).then(_.spread(function(o, s) {
 a.project = o, a.context = s, a.breadcrumbs[0].title = e("displayName")(o), i.canI("secrets", "create", n.project) ? a.navigateBack = function() {
+=======
+} ], l.get(n.project).then(_.spread(function(e, o) {
+a.project = e, a.context = o, i.canI("secrets", "create", n.project) ? a.navigateBack = function() {
+>>>>>>> Patternfly vertical navigation and project bar
 n.then ? t.url(n.then) : r.history.back();
 } : c.toErrorPage("You do not have authority to create secrets in project " + n.project + ".", "access_denied");
 }));
@@ -12529,9 +12674,6 @@ a.unwatchAll(o);
 }));
 } ]), angular.module("openshiftConsole").controller("CreateConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
 n.projectName = t.project, n.breadcrumbs = [ {
-title: n.projectName,
-link: "project/" + n.projectName
-}, {
 title: "Config Maps",
 link: "project/" + n.projectName + "/browse/config-maps"
 }, {
@@ -12545,7 +12687,7 @@ var u = function() {
 a.history.back();
 };
 n.cancel = u, c.get(t.project).then(_.spread(function(a, c) {
-n.project = a, n.breadcrumbs[0].title = e("displayName")(a), r.canI("configmaps", "create", t.project) ? (n.configMap = {
+n.project = a, r.canI("configmaps", "create", t.project) ? (n.configMap = {
 apiVersion: "v1",
 kind: "ConfigMap",
 metadata: {
@@ -12884,7 +13026,7 @@ var p;
 n.isDuplicateKind = function(e) {
 return p || (p = _.countBy(n.kinds, "kind")), p[e] > 1;
 };
-var g = function(e, t) {
+var f = function(e, t) {
 return _.some(n.kinds, function(n) {
 return n.kind === e && (!n.group && !t || n.group === t);
 });
@@ -12895,11 +13037,38 @@ var t = {
 resource: l.kindToResource(e.kind),
 group: e.group || ""
 };
+<<<<<<< HEAD
 return !!m(e) && (!!r.checkResource(t.resource) && r.canI(t, "list", n.projectName));
 }), n.project = t, n.context = a, n.kindSelector.disabled = !1, e.kind && g(e.kind, e.group) && (_.set(n, "kindSelector.selected.kind", e.kind), _.set(n, "kindSelector.selected.group", e.group || ""));
 })), n.loadKind = d, n.$watch("kindSelector.selected", function() {
 s.clear(), d();
 =======
+=======
+return !!m(e) && (!!a.checkResource(t.resource) && a.canI(t, "list", n.projectName));
+}), n.project = t, n.context = r, n.kindSelector.disabled = !1, e.kind && f(e.kind, e.group) && (_.set(n, "kindSelector.selected.kind", e.kind), _.set(n, "kindSelector.selected.group", e.group || ""));
+})), n.loadKind = d, n.$watch("kindSelector.selected", function() {
+n.alerts = {}, d();
+});
+var g = i("humanizeKind");
+n.matchKind = function(e, t) {
+return -1 !== g(e).toLowerCase().indexOf(t.toLowerCase());
+}, s.onActiveFiltersChanged(function(e) {
+n.$apply(function() {
+n.resources = e.select(n.unfilteredResources), u();
+});
+});
+} ]), angular.module("openshiftConsole").controller("PersistentVolumeClaimController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", function(e, t, n, a, r) {
+e.projectName = t.project, e.pvc = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+title: "Persistent Volume Claims",
+link: "project/" + t.project + "/browse/storage"
+}, {
+title: t.pvc
+} ];
+var o = [], i = function(t, n) {
+e.pvc = t, e.loaded = !0, "DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This persistent volume claim has been deleted."
+>>>>>>> Patternfly vertical navigation and project bar
 });
 var m = function(e) {
 if (e) {
@@ -13023,15 +13192,14 @@ n.unwatchAll(o);
 if (a.kind && a.name) {
 var p = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ];
 if (_.includes(p, a.kind)) {
-var g = e("humanizeKind"), f = g(a.kind, !0) + " " + a.name;
+var f = e("humanizeKind"), g = f(a.kind, !0) + " " + a.name;
 r.name = a.name, "ReplicationController" !== a.kind && "ReplicaSet" !== a.kind || (r.showPodWarning = !0), r.renderOptions = {
 hideFilterWidget: !0
 }, r.breadcrumbs = s.getBreadcrumbs({
 name: a.name,
 kind: a.kind,
 namespace: a.project,
-subpage: "Edit Resource Limits",
-includeProject: !0
+subpage: "Edit Resource Limits"
 });
 var h = e("getErrorDetails"), v = function(e, t) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -13081,29 +13249,31 @@ t.url(r.resourceURL);
 }, b = function() {
 d.hideNotification("set-compute-limits-error");
 };
-r.cancel = y, r.$on("$destroy", b), m.get(a.project).then(_.spread(function(t, n) {
-r.breadcrumbs[0].title = e("displayName")(t);
-var m = {
+r.cancel = y, r.$on("$destroy", b), m.get(a.project).then(_.spread(function(e, t) {
+var n = {
 resource: o.kindToResource(a.kind),
 group: a.group
 };
-if (i.canI(m, "update", a.project)) {
-c.get(m, r.name, n).then(function(e) {
-var a = r.object = angular.copy(e);
+if (i.canI(n, "update", a.project)) {
+c.get(n, r.name, t).then(function(a) {
+var o = r.object = angular.copy(a);
 r.breadcrumbs = s.getBreadcrumbs({
-object: a,
-project: t,
-subpage: "Edit Resource Limits",
-includeProject: !0
-}), r.resourceURL = u.resourceURL(a), r.containers = _.get(a, "spec.template.spec.containers"), r.save = function() {
-r.disableInputs = !0, b(), c.update(m, r.name, a, n).then(function() {
+object: o,
+project: e,
+subpage: "Edit Resource Limits"
+}), r.resourceURL = u.resourceURL(o), r.containers = _.get(o, "spec.template.spec.containers"), r.save = function() {
+r.disableInputs = !0, b(), c.update(n, r.name, o, t).then(function() {
 d.addNotification({
 type: "success",
-message: f + " was updated."
+message: g + " was updated."
 }), y();
 }, function(e) {
+<<<<<<< HEAD
 r.disableInputs = !1, v(f + " could not be updated.", h(e));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+r.disableInputs = !1, v(g + " could not be updated.", h(e));
+>>>>>>> Patternfly vertical navigation and project bar
 });
 var m = function() {
 a.hideCPU || (a.cpuProblems = l.validatePodLimits(a.limitRanges, "cpu", a.containers, e)), a.memoryProblems = l.validatePodLimits(a.limitRanges, "memory", a.containers, e);
@@ -13120,15 +13290,15 @@ a.limitRanges = e.by("metadata.name"), _.isEmpty(a.limitRanges) || a.$watch("con
 e.projectName = r.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = d, e.options = {}, e.jenkinsfileOptions = {
 =======
 }, function(e) {
-v(f + " could not be loaded.", h(e));
+v(g + " could not be loaded.", h(e));
 });
-var p = function() {
-r.hideCPU || (r.cpuProblems = l.validatePodLimits(r.limitRanges, "cpu", r.containers, t)), r.memoryProblems = l.validatePodLimits(r.limitRanges, "memory", r.containers, t);
+var m = function() {
+r.hideCPU || (r.cpuProblems = l.validatePodLimits(r.limitRanges, "cpu", r.containers, e)), r.memoryProblems = l.validatePodLimits(r.limitRanges, "memory", r.containers, e);
 };
-c.list("limitranges", n).then(function(e) {
-r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("containers", p, !0);
+c.list("limitranges", t).then(function(e) {
+r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("containers", m, !0);
 });
-} else u.toErrorPage("You do not have authority to update " + g(a.kind) + " " + a.name + ".", "access_denied");
+} else u.toErrorPage("You do not have authority to update " + f(a.kind) + " " + a.name + ".", "access_denied");
 }));
 } else u.toErrorPage("Health checks are not supported for kind " + a.kind + ".");
 } else u.toErrorPage("Kind or name parameter missing.");
@@ -13150,6 +13320,7 @@ title: "Inline"
 advancedOptions: !1,
 hasHooks: !1
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, e.breadcrumbs = [], r.isPipeline ? (e.breadcrumbs.push({
 title: "Pipelines",
 link: "project/" + r.project + "/browse/pipelines"
@@ -13169,6 +13340,9 @@ title: r.isPipeline ? "Edit Pipelines" : "Edit Builds"
 title: a.project,
 link: "project/" + a.project
 } ], a.isPipeline ? (e.breadcrumbs.push({
+=======
+}, e.breadcrumbs = [], a.isPipeline ? (e.breadcrumbs.push({
+>>>>>>> Patternfly vertical navigation and project bar
 title: "Pipelines",
 link: "project/" + a.project + "/browse/pipelines"
 }), e.breadcrumbs.push({
@@ -13254,6 +13428,7 @@ return "Enter the arguments that will be appended to the script.";
 }
 return null;
 };
+<<<<<<< HEAD
 var g = function() {
 <<<<<<< HEAD
 var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), r = !!_.get(e, "buildConfig.spec.postCommit.script");
@@ -13262,6 +13437,9 @@ var a;
 a = t && n ? "commandArgs" : t && r ? "scriptArgs" : t ? "args" : r ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
 id: a
 =======
+=======
+var f = function() {
+>>>>>>> Patternfly vertical navigation and project bar
 var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), a = !!_.get(e, "buildConfig.spec.postCommit.script");
 e.view.hasHooks = t || n || a;
 var r;
@@ -13269,7 +13447,7 @@ r = t && n ? "commandArgs" : t && a ? "scriptArgs" : t ? "args" : a ? "script" :
 id: r
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
-}, f = function() {
+}, g = function() {
 if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
 case "script":
 delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args;
@@ -13329,10 +13507,10 @@ var b = function() {
 l.hideNotification("edit-build-config-error"), l.hideNotification("edit-build-config-conflict"), l.hideNotification("edit-build-config-deleted");
 };
 e.$on("$destroy", b), u.get(a.project).then(_.spread(function(n, r) {
-e.project = n, e.context = r, e.breadcrumbs[0].title = t("displayName")(n), i.canI("buildconfigs", "update", a.project) ? s.get("buildconfigs", a.buildconfig, r, {
+e.project = n, e.context = r, i.canI("buildconfigs", "update", a.project) ? s.get("buildconfigs", a.buildconfig, r, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = v(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = C(e.triggers, e.buildConfig.spec.triggers), e.sources = E(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
+e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = v(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = C(e.triggers, e.buildConfig.spec.triggers), e.sources = E(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
 var n = m.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
@@ -13652,7 +13830,7 @@ secret: o._generateSecret()
 }, e.triggers[a + "Webhooks"].push(n);
 }
 }, e.save = function() {
-switch (e.disableInputs = !0, f(), v(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
+switch (e.disableInputs = !0, g(), v(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
 case "Docker":
 v(e.updatedBuildConfig).noCache = e.options.noCache;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -13777,7 +13955,6 @@ n.forms = {}, n.projectName = t.project, n.breadcrumbs = o.getBreadcrumbs({
 name: t.configMap,
 kind: "ConfigMap",
 namespace: t.project,
-includeProject: !0,
 subpage: "Edit Config Map"
 });
 var u = function(e) {
@@ -13794,7 +13971,6 @@ errorNotification: !1
 n.loaded = !0, n.breadcrumbs = o.getBreadcrumbs({
 name: t.configMap,
 object: e,
-includeProject: !0,
 project: a,
 subpage: "Edit Config Map"
 }), n.configMap = e, l.push(r.watchObject("configmaps", t.configMap, c, function(e, t) {
@@ -13820,7 +13996,7 @@ details: e("getErrorDetails")(t)
 r.unwatchAll(l), d();
 });
 }));
-} ]), angular.module("openshiftConsole").controller("EditDeploymentConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$uibModal", "$window", "AuthorizationService", "BreadcrumbsService", "DataService", "EnvironmentService", "Navigate", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g) {
+} ]), angular.module("openshiftConsole").controller("EditDeploymentConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$uibModal", "$window", "AuthorizationService", "BreadcrumbsService", "DataService", "EnvironmentService", "Navigate", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
 e.projectName = a.project, e.deploymentConfig = null, e.alerts = {}, e.view = {
 advancedStrategyOptions: !1,
 advancedImageOptions: !1
@@ -13828,11 +14004,14 @@ advancedImageOptions: !1
 name: a.name,
 kind: a.kind,
 namespace: a.project,
-subpage: "Edit Deployment Config",
-includeProject: !0
+subpage: "Edit Deployment Config"
 }), e.deploymentConfigStrategyTypes = [ "Recreate", "Rolling", "Custom" ];
+<<<<<<< HEAD
 var f = t("orderByDisplayName"), h = t("getErrorDetails"), v = function(t, n) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var g = t("orderByDisplayName"), h = t("getErrorDetails"), v = function(t, n) {
+>>>>>>> Patternfly vertical navigation and project bar
 e.alerts["from-value-objects"] = {
 type: "error",
 message: t,
@@ -13888,8 +14067,7 @@ errorNotification: !1
 e.deploymentConfig = t, e.breadcrumbs = s.getBreadcrumbs({
 object: t,
 project: n,
-subpage: "Edit",
-includeProject: !0
+subpage: "Edit"
 });
 e.updatedDeploymentConfig = angular.copy(e.deploymentConfig), e.containerNames = _.map(e.deploymentConfig.spec.template.spec.containers, "name"), e.containerConfigByName = function(t, n) {
 var a = {}, r = _.filter(n, {
@@ -13966,13 +14144,13 @@ type: "ConfigChange"
 }), "Custom" !== e.strategyData.type || _.has(e.strategyData, "customParams.environment") || (e.strategyData.customParams.environment = []), c.list("configmaps", r, null, {
 errorNotification: !1
 }).then(function(t) {
-b = f(t.by("metadata.name")), e.availableConfigMaps = b, e.valueFromObjects = b.concat(C);
+b = g(t.by("metadata.name")), e.availableConfigMaps = b, e.valueFromObjects = b.concat(C);
 }, function(e) {
 403 !== e.code && v("Could not load config maps", h(e));
 }), c.list("secrets", r, null, {
 errorNotification: !1
 }).then(function(t) {
-C = f(t.by("metadata.name")), e.availableSecrets = C, e.valueFromObjects = C.concat(b);
+C = g(t.by("metadata.name")), e.availableSecrets = C, e.valueFromObjects = C.concat(b);
 var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
@@ -14078,17 +14256,30 @@ e.save = function() {
 if (e.disableInputs = !0, _.each(e.containerConfigByName, function(t, n) {
 _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: n
+<<<<<<< HEAD
 }).env = h.compactEntries(t.env);
 }), T() && delete e.strategyData[R(e.originalStrategy)], "Rolling" === e.strategyData.type) {
 var r = e.strategyData[e.strategyParamsPropertyName].maxSurge, a = Number(r);
 "" === r ? e.strategyData[e.strategyParamsPropertyName].maxSurge = null : _.isFinite(a) && (e.strategyData[e.strategyParamsPropertyName].maxSurge = a);
+=======
+}).env = f.compactEntries(t.env);
+}), w() && delete e.strategyData[S(e.originalStrategy)], "Rolling" === e.strategyData.type) {
+var a = e.strategyData[e.strategyParamsPropertyName].maxSurge, r = Number(a);
+"" === a ? e.strategyData[e.strategyParamsPropertyName].maxSurge = null : _.isFinite(r) && (e.strategyData[e.strategyParamsPropertyName].maxSurge = r);
+>>>>>>> Patternfly vertical navigation and project bar
 var o = e.strategyData[e.strategyParamsPropertyName].maxUnavailable, i = Number(o);
 "" === o ? e.strategyData[e.strategyParamsPropertyName].maxUnavailable = null : _.isFinite(i) && (e.strategyData[e.strategyParamsPropertyName].maxUnavailable = i);
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
+<<<<<<< HEAD
 _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = h.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
 }), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = h.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = D(), A(), l.update(C, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 m.addNotification({
+=======
+_.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = f.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = f.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = P(), R(), c.update("deploymentconfigs", e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+d.addNotification({
+>>>>>>> Patternfly vertical navigation and project bar
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
 });
@@ -14109,13 +14300,14 @@ l.unwatchAll(j), A();
 });
 } ]), angular.module("openshiftConsole").controller("EditAutoscalerController", [ "$scope", "$filter", "$routeParams", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "HPAService", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
 if (n.kind && n.name) {
-var g = [ "Deployment", "DeploymentConfig", "HorizontalPodAutoscaler", "ReplicaSet", "ReplicationController" ];
-if (_.includes(g, n.kind)) {
+var f = [ "Deployment", "DeploymentConfig", "HorizontalPodAutoscaler", "ReplicaSet", "ReplicationController" ];
+if (_.includes(f, n.kind)) {
 e.kind = n.kind, e.name = n.name, "HorizontalPodAutoscaler" === n.kind ? e.disableInputs = !0 : (e.targetKind = n.kind, e.targetName = n.name), e.autoscaling = {
 name: e.name
 }, e.labels = [], l.isAvailable().then(function(t) {
 e.metricsWarning = !t;
 });
+<<<<<<< HEAD
 var f = t("getErrorDetails"), v = function() {
 r.history.back();
 };
@@ -14305,6 +14497,9 @@ name: e.name
 e.metricsWarning = !t;
 });
 var f = t("getErrorDetails"), h = function() {
+=======
+var g = t("getErrorDetails"), h = function() {
+>>>>>>> Patternfly vertical navigation and project bar
 a.history.back();
 };
 e.cancel = h;
@@ -14352,10 +14547,10 @@ e.disableInputs = !1, d.addNotification({
 id: "edit-hpa-error",
 type: "error",
 message: "An error occurred creating the horizontal pod autoscaler.",
-details: f(t)
+details: g(t)
 });
 });
-}, g = function(t) {
+}, f = function(t) {
 e.disableInputs = !0, (t = angular.copy(t)).metadata.labels = p.mapEntries(p.compactEntries(e.labels)), t.spec.minReplicas = e.autoscaling.minReplicas, t.spec.maxReplicas = e.autoscaling.maxReplicas, t.spec.targetCPUUtilizationPercentage = e.autoscaling.targetCPU || e.autoscaling.defaultTargetCPU || null, s.update({
 resource: "horizontalpodautoscalers",
 group: "autoscaling"
@@ -14369,7 +14564,7 @@ e.disableInputs = !1, d.addNotification({
 id: "edit-hpa-error",
 type: "error",
 message: "An error occurred creating the horizontal pod autoscaler.",
-details: f(t)
+details: g(t)
 });
 });
 }, y = {};
@@ -14391,20 +14586,18 @@ minReplicas: _.get(r, "spec.minReplicas"),
 maxReplicas: _.get(r, "spec.maxReplicas"),
 targetCPU: _.get(r, "spec.targetCPUUtilizationPercentage")
 }), e.disableInputs = !1, e.save = function() {
-g(r);
+f(r);
 }, e.breadcrumbs = i.getBreadcrumbs({
 name: e.targetName,
 kind: e.targetKind,
 namespace: n.project,
 project: t,
-subpage: "Autoscale",
-includeProject: !0
+subpage: "Autoscale"
 }); else {
 e.breadcrumbs = i.getBreadcrumbs({
 object: r,
 project: t,
-subpage: "Autoscale",
-includeProject: !0
+subpage: "Autoscale"
 }), e.save = m;
 var o = {}, l = function() {
 var n = _.get(r, "spec.template.spec.containers", []);
@@ -14440,17 +14633,21 @@ a.name = n.name, a.resourceURL = c.resourceURL(a.name, n.kind, n.project), a.bre
 name: n.name,
 kind: n.kind,
 namespace: n.project,
-subpage: "Edit Health Checks",
-includeProject: !0
+subpage: "Edit Health Checks"
 }), a.previousProbes = {};
+<<<<<<< HEAD
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 var m = e("getErrorDetails"), p = e("upperFirst"), g = function(e, t) {
+=======
+var m = e("getErrorDetails"), p = e("upperFirst"), f = function(e, t) {
+>>>>>>> Patternfly vertical navigation and project bar
 l.addNotification({
 id: "add-health-check-error",
 type: "error",
 message: e,
 details: t
 });
+<<<<<<< HEAD
 }, f = function() {
 <<<<<<< HEAD
 t.url(r.resourceURL);
@@ -14477,9 +14674,12 @@ _.set(r.previousProbes, [ e.name, t ], e[t]), delete e[t], r.form.$setDirty();
 }, r.save = function() {
 r.disableInputs = !0, v(), s.update(i.kindToResource(n.kind), r.name, a, u).then(function() {
 =======
+=======
+}, g = function() {
+>>>>>>> Patternfly vertical navigation and project bar
 t.url(a.resourceURL);
 };
-a.cancel = f;
+a.cancel = g;
 var h = function() {
 l.hideNotification("add-health-check-error");
 };
@@ -14493,8 +14693,7 @@ var r = a.object = angular.copy(e);
 a.breadcrumbs = o.getBreadcrumbs({
 object: r,
 project: t,
-subpage: "Edit Health Checks",
-includeProject: !0
+subpage: "Edit Health Checks"
 }), a.containers = _.get(r, "spec.template.spec.containers"), a.addProbe = function(e, t) {
 e[t] = _.get(a.previousProbes, [ e.name, t ], {}), a.form.$setDirty();
 }, a.removeProbe = function(e, t) {
@@ -14505,17 +14704,21 @@ a.disableInputs = !0, h(), s.update(i.kindToResource(n.kind), a.name, r, u).then
 l.addNotification({
 type: "success",
 message: p(d) + " was updated."
-}), f();
+}), g();
 }, function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 r.disableInputs = !1, g(p(d) + " could not be updated.", m(e));
 =======
 a.disableInputs = !1, g(p(d) + " could not be updated.", m(e));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+a.disableInputs = !1, f(p(d) + " could not be updated.", m(e));
+>>>>>>> Patternfly vertical navigation and project bar
 });
 };
 }, function(e) {
-g(p(d) + " could not be loaded.", m(e));
+f(p(d) + " could not be loaded.", m(e));
 }) : c.toErrorPage("You do not have authority to update " + d + ".", "access_denied");
 }));
 } else c.toErrorPage("Health checks are not supported for kind " + n.kind + ".");
@@ -14581,9 +14784,6 @@ return _.isEmpty(i) ? delete e.spec.alternateBackends : e.spec.alternateBackends
 a.renderOptions = {
 hideFilterWidget: !0
 }, a.projectName = n.project, a.routeName = n.route, a.loading = !0, a.routeURL = i.resourceURL(a.routeName, "Route", a.projectName), a.breadcrumbs = [ {
-title: a.projectName,
-link: "project/" + a.projectName
-}, {
 title: "Routes",
 link: "project/" + a.projectName + "/browse/routes"
 }, {
@@ -14600,8 +14800,8 @@ var d = function() {
 t.path(a.routeURL);
 };
 a.cancel = d, c.get(n.project).then(_.spread(function(t, c) {
-if (a.project = t, a.breadcrumbs[0].title = e("displayName")(t), r.canI("routes", "update", n.project)) {
-var m, p = e("orderByDisplayName"), g = function() {
+if (a.project = t, r.canI("routes", "update", n.project)) {
+var m, p = e("orderByDisplayName"), f = function() {
 i.toErrorPage('Editing routes with non-service targets is unsupported. You can edit the route with the "Edit YAML" action instead.');
 };
 o.get("routes", a.routeName, c).then(function(e) {
@@ -14618,15 +14818,15 @@ tls: angular.copy(_.get(m, "spec.tls"))
 a.loading = !1;
 var t = e.by("metadata.name");
 a.routing.to = m.spec.to, a.routing.alternateServices = [], _.each(_.get(m, "spec.alternateBackends"), function(e) {
-if ("Service" !== e.kind) return g(), !1;
+if ("Service" !== e.kind) return f(), !1;
 a.routing.alternateServices.push(e);
 }), a.services = p(t);
 });
-} else g();
+} else f();
 }, function() {
 i.toErrorPage("Could not load route " + a.routeName + ".");
 });
-var f = function() {
+var g = function() {
 var e = angular.copy(m), t = _.get(a, "routing.to.name");
 _.set(e, "spec.to.name", t);
 var n = _.get(a, "routing.to.weight");
@@ -14662,7 +14862,7 @@ message: "An error occurred updating route " + r.routeName + ".",
 a.updateRoute = function() {
 if (a.form.$valid) {
 u(), a.disableInputs = !0;
-var t = f();
+var t = g();
 o.update("routes", a.routeName, t, c).then(function() {
 s.addNotification({
 type: "success",
@@ -14733,9 +14933,6 @@ message: g(r.kind, !0) + " " + r.name + " was successfully updated."
 if (a.kind && a.name) {
 var m = t("humanizeKind");
 e.alerts = {}, e.name = a.name, e.resourceURL = l.resourceURL(e.name, a.kind, a.project), e.breadcrumbs = [ {
-title: a.project,
-link: "project/" + a.project
-}, {
 title: a.name,
 link: a.returnURL
 }, {
@@ -14747,7 +14944,7 @@ e.modified = !1, a.returnURL ? n.url(a.returnURL) : r.history.back();
 e.$watch("resource", function(t, n) {
 t !== n && (e.modified = !0);
 });
-var g = [];
+var f = [];
 d.get(a.project).then(_.spread(function(n, r) {
 var s = {
 resource: o.kindToResource(a.kind),
@@ -14804,11 +15001,15 @@ f();
 =======
 p();
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, f.push(c.watchObject(s, e.name, r, function(t, n) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }, g.push(c.watchObject(s, e.name, r, function(t, n) {
 >>>>>>> Improve YAML editor validation and feedback
+=======
+}, f.push(c.watchObject(s, e.name, r, function(t, n) {
+>>>>>>> Patternfly vertical navigation and project bar
 e.resourceChanged = l(t) !== l(i), e.resourceDeleted = "DELETED" === n;
 }, {
 errorNotification: !1
@@ -14846,7 +15047,7 @@ e.project = t, e.context = n, s.list("imagestreams", {
 =======
 l.toErrorPage("Could not load " + m(a.kind) + " '" + a.name + "'. " + t("getErrorDetails")(e));
 }), e.$on("$destroy", function() {
-c.unwatchAll(g);
+c.unwatchAll(f);
 })) : l.toErrorPage("You do not have authority to update " + m(a.kind) + " " + a.name + ".", "access_denied");
 }));
 } else l.toErrorPage("Kind or name parameter missing.");
@@ -14869,24 +15070,26 @@ return !1;
 }), a;
 }, m = i.CATALOG_CATEGORIES, p = "none" === r.category ? "" : r.category;
 if (e.category = d(m, p), e.category) {
-var g, f;
-!r.subcategory || (g = e.category, p = "none" === r.subcategory ? "" : r.subcategory, f = _.get(e.category, "subcategories", []), e.category = d(f, p), e.category) ? (e.alerts = e.alerts || {}, e.breadcrumbs = [ {
-title: e.projectName,
-link: "project/" + e.projectName
-}, {
+var f, g;
+!r.subcategory || (f = e.category, p = "none" === r.subcategory ? "" : r.subcategory, g = _.get(e.category, "subcategories", []), e.category = d(g, p), e.category) ? (e.alerts = e.alerts || {}, e.breadcrumbs = [ {
 title: "Add to Project",
 link: "project/" + e.projectName + "/create"
 }, {
 title: "Catalog",
 link: "project/" + e.projectName + "/create?tab=fromCatalog"
-} ], g && e.breadcrumbs.push({
-title: g.label,
-link: "project/" + e.projectName + "/create/category/" + g.id
+} ], f && e.breadcrumbs.push({
+title: f.label,
+link: "project/" + e.projectName + "/create/category/" + f.id
 }), e.breadcrumbs.push({
 title: e.category.label
+<<<<<<< HEAD
 }), u.get(r.project).then(_.spread(function(n, a) {
 e.project = n, e.context = a, e.breadcrumbs[0].title = t("displayName")(n), s.list("imagestreams", {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), u.get(r.project).then(_.spread(function(t, n) {
+e.project = t, e.context = n, s.list("imagestreams", {
+>>>>>>> Patternfly vertical navigation and project bar
 namespace: "openshift"
 }).then(function(t) {
 e.openshiftImageStreams = t.by("metadata.name");
@@ -14924,25 +15127,22 @@ partialObjectMetadataList: !0
 >>>>>>> Bug 1471033 - Only request template metadata
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
-}), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (s.list("imagestreams", a).then(function(t) {
+}), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (s.list("imagestreams", n).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), s.list("templates", a, null, {
+}), s.list("templates", n, null, {
 partialObjectMetadataList: !0
 }).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
 }));
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
 } else l.toErrorPage("Catalog category " + r.category + " not found.");
-} ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, g, f, h, v, y, b, C, S, w) {
+} ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, h, v, y, b, C, S, w) {
 var k = t("displayName"), j = t("humanize");
 e.projectName = r.project, e.sourceURLPattern = y;
 var P = r.imageStream;
 if (P) if (r.imageTag) {
 var R = r.displayName || P;
 e.displayName = r.displayName, e.advancedOptions = "true" === r.advanced, e.breadcrumbs = [ {
-title: e.projectName,
-link: "project/" + e.projectName
-}, {
 title: "Add to Project",
 link: "project/" + e.projectName + "/create"
 }, {
@@ -14954,6 +15154,7 @@ title: R
 var E = {
 name: "app",
 value: ""
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15028,16 +15229,31 @@ e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.cont
 };
 c.list("limitranges", i).then(function(t) {
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", h, !0);
+=======
+}, T = t("orderByDisplayName"), I = t("getErrorDetails"), N = {}, D = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
-var y, S, $ = function() {
-e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, n) : e.showCPURequestWarning = !1;
 };
-c.list("resourcequotas", i).then(function(e) {
-y = e.by("metadata.name"), m.log("quotas", y);
-}), c.list("appliedclusterresourcequotas", i).then(function(e) {
-S = e.by("metadata.name"), m.log("cluster quotas", S);
-}), e.$watch("scaling.autoscale", $), e.$watch("container", $, !0), e.$watch("name", function(e, t) {
+e.$on("$destroy", D), h.get(r.project).then(_.spread(function(t, n) {
+e.project = t, r.sourceURI && (e.sourceURIinParams = !0);
+var i = function() {
+e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
+};
+c.list("limitranges", n).then(function(t) {
+e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
+>>>>>>> Patternfly vertical navigation and project bar
+});
+var h, y, S = function() {
+e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
+};
+c.list("resourcequotas", n).then(function(e) {
+h = e.by("metadata.name"), m.log("quotas", h);
+}), c.list("appliedclusterresourcequotas", n).then(function(e) {
+y = e.by("metadata.name"), m.log("cluster quotas", y);
+}), e.$watch("scaling.autoscale", S), e.$watch("container", S, !0), e.$watch("name", function(e, t) {
 E.value && E.value !== t || (E.value = e);
+<<<<<<< HEAD
 }), function(t) {
 <<<<<<< HEAD
 t.name = r.name, t.imageName = R, t.imageTag = r.imageTag, t.namespace = r.namespace, t.buildConfig = {
@@ -15045,6 +15261,10 @@ t.name = r.name, t.imageName = R, t.imageTag = r.imageTag, t.namespace = r.names
 =======
 t.name = r.name, t.imageName = P, t.imageTag = r.imageTag, t.namespace = r.namespace, t.buildConfig = {
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+}), function(a) {
+a.name = r.name, a.imageName = P, a.imageTag = r.imageTag, a.namespace = r.namespace, a.buildConfig = {
+>>>>>>> Patternfly vertical navigation and project bar
 buildOnSourceChange: !0,
 buildOnImageChange: !0,
 buildOnConfigChange: !0,
@@ -15068,12 +15288,13 @@ portOptions: []
 sourceUrl: r.sourceURI,
 gitRef: r.sourceRef,
 contextDir: r.contextDir
-}, t.buildConfigEnvVars = [], t.deploymentConfig = {
+}, a.buildConfigEnvVars = [], a.deploymentConfig = {
 deployOnNewImage: !0,
 deployOnConfigChange: !0
-}, t.DCEnvVarsFromImage, t.DCEnvVarsFromUser = [], t.routing = {
+}, a.DCEnvVarsFromImage, a.DCEnvVarsFromUser = [], a.routing = {
 include: !0,
 portOptions: []
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }, t.userDefinedLabels = [], t.systemLabels = [ T ], t.annotations = {}, t.scaling = {
@@ -15084,6 +15305,9 @@ portOptions: []
 =======
 }, t.labelArray = [ E ], t.annotations = {}, t.scaling = {
 >>>>>>> Add bindings list to resource pages
+=======
+}, a.labelArray = [ E ], a.annotations = {}, a.scaling = {
+>>>>>>> Patternfly vertical navigation and project bar
 replicas: 1,
 autoscale: !1,
 autoscaleOptions: [ {
@@ -15093,6 +15317,7 @@ value: !1
 label: "Automatic",
 value: !0
 } ]
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, r.container = {
 resources: {}
@@ -15111,32 +15336,40 @@ errorNotification: !1
 o = E(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
 =======
 }, t.container = {
+=======
+}, a.container = {
+>>>>>>> Patternfly vertical navigation and project bar
 resources: {}
-}, t.cpuRequestCalculated = d.isRequestCalculated("cpu", n), t.cpuLimitCalculated = d.isLimitCalculated("cpu", n), t.memoryRequestCalculated = d.isRequestCalculated("memory", n), t.fillSampleRepo = function() {
+}, a.cpuRequestCalculated = d.isRequestCalculated("cpu", t), a.cpuLimitCalculated = d.isLimitCalculated("cpu", t), a.memoryRequestCalculated = d.isRequestCalculated("memory", t), a.fillSampleRepo = function() {
 var e;
-(t.image || t.image.metadata || t.image.metadata.annotations) && (e = t.image.metadata.annotations, t.buildConfig.sourceUrl = e.sampleRepo || "", t.buildConfig.gitRef = e.sampleRef || "", t.buildConfig.contextDir = e.sampleContextDir || "", (e.sampleRef || e.sampleContextDir) && (t.advancedSourceOptions = !0));
-}, t.usingSampleRepo = function() {
-return t.buildConfig.sourceUrl === _.get(t, "image.metadata.annotations.sampleRepo");
+(a.image || a.image.metadata || a.image.metadata.annotations) && (e = a.image.metadata.annotations, a.buildConfig.sourceUrl = e.sampleRepo || "", a.buildConfig.gitRef = e.sampleRef || "", a.buildConfig.contextDir = e.sampleContextDir || "", (e.sampleRef || e.sampleContextDir) && (a.advancedSourceOptions = !0));
+}, a.usingSampleRepo = function() {
+return a.buildConfig.sourceUrl === _.get(a, "image.metadata.annotations.sampleRepo");
 }, p.isAvailable().then(function(t) {
 e.metricsWarning = !t;
 });
-var a = [], o = [];
-e.valueFromObjects = [], c.list("configmaps", i, null, {
+var o = [], i = [];
+e.valueFromObjects = [], c.list("configmaps", n, null, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 a = E(t.by("metadata.name")), e.valueFromObjects = a.concat(o);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 a = T(t.by("metadata.name")), e.valueFromObjects = a.concat(o);
 >>>>>>> Add bindings list to resource pages
+=======
+o = T(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
+>>>>>>> Patternfly vertical navigation and project bar
 }, function(e) {
-403 !== e.code && f.addNotification({
+403 !== e.code && g.addNotification({
 id: "create-builder-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
 details: I(e)
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), c.list(V, n, null, {
 errorNotification: !1
@@ -15153,18 +15386,26 @@ o = E(t.by("metadata.name")), e.valueFromObjects = o.concat(a);
 o = T(t.by("metadata.name")), e.valueFromObjects = o.concat(a);
 >>>>>>> Add bindings list to resource pages
 var n = b.groupSecretsByType(t), r = _.mapValues(n, function(e) {
+=======
+}), c.list("secrets", n, null, {
+errorNotification: !1
+}).then(function(t) {
+i = T(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
+var n = b.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 return _.map(e, "metadata.name");
 });
-e.secretsByType = _.each(r, function(e) {
+e.secretsByType = _.each(a, function(e) {
 e.unshift("");
 });
 }, function(e) {
-403 !== e.code && f.addNotification({
+403 !== e.code && g.addNotification({
 id: "create-builder-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
 details: I(e)
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), c.get(L, r.imageName, {
 namespace: r.namespace || a.project
@@ -15180,33 +15421,48 @@ _.isEmpty(t) ? (r.routing.include = !1, r.routing.portOptions = []) : (r.routing
 =======
 }), c.get("imagestreams", t.imageName, {
 namespace: t.namespace || r.project
+=======
+}), c.get("imagestreams", a.imageName, {
+namespace: a.namespace || r.project
+>>>>>>> Patternfly vertical navigation and project bar
 }).then(function(e) {
-t.imageStream = e;
-var n = t.imageTag;
-c.get("imagestreamtags", e.metadata.name + ":" + n, {
-namespace: t.namespace
+a.imageStream = e;
+var t = a.imageTag;
+c.get("imagestreamtags", e.metadata.name + ":" + t, {
+namespace: a.namespace
 }).then(function(e) {
+<<<<<<< HEAD
 t.image = e.image, t.DCEnvVarsFromImage = u.getEnvironment(e);
 var n = s.parsePorts(e.image);
 _.isEmpty(n) ? (t.routing.include = !1, t.routing.portOptions = []) : (t.routing.portOptions = _.map(n, function(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+a.image = e.image, a.DCEnvVarsFromImage = u.getEnvironment(e);
+var t = s.parsePorts(e.image);
+_.isEmpty(t) ? (a.routing.include = !1, a.routing.portOptions = []) : (a.routing.portOptions = _.map(t, function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 var t = s.getServicePort(e);
 return {
 port: t.name,
 label: t.targetPort + "/" + t.protocol
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), r.routing.targetPort = r.routing.portOptions[0].port);
 =======
 }), t.routing.targetPort = t.routing.portOptions[0].port);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), a.routing.targetPort = a.routing.portOptions[0].port);
+>>>>>>> Patternfly vertical navigation and project bar
 }, function() {
-g.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
 });
 }, function() {
-g.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
 });
 }(e);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15256,14 +15512,17 @@ var B, A = function() {
 =======
 var A, B = function() {
 >>>>>>> Add bindings list to resource pages
+=======
+var $, A = function() {
+>>>>>>> Patternfly vertical navigation and project bar
 var t = {
 started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
 success: "Created application " + e.name + " in project " + e.projectDisplayName(),
 failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
-}, n = {};
-C.clear(), C.add(t, n, r.project, function() {
+}, o = {};
+C.clear(), C.add(t, o, r.project, function() {
 var t = a.defer();
-return c.batch(A, i).then(function(n) {
+return c.batch($, n).then(function(n) {
 var a = [], r = !1;
 _.isEmpty(n.failure) ? a.push({
 type: "success",
@@ -15284,11 +15543,11 @@ alerts: a,
 hasErrors: r
 });
 }), t.promise;
-}), g.toNextSteps(e.name, e.projectName, {
+}), f.toNextSteps(e.name, e.projectName, {
 usingSampleRepo: e.usingSampleRepo(),
 breadcrumbTitle: R
 });
-}, L = function(e) {
+}, B = function(e) {
 o.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -15322,11 +15581,12 @@ cancelButtonText: "Cancel"
 };
 }
 }
-}).result.then(B);
-}, U = function(t) {
+}).result.then(A);
+}, L = function(t) {
 D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
 type: "error"
 }) ? (e.disableInputs = !1, _.each(N, function(e) {
+<<<<<<< HEAD
 e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15362,6 +15622,10 @@ e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
 =======
 })) : _.isEmpty(N) ? B() : (L(N), e.disableInputs = !1);
 >>>>>>> Adjust events to show in the drawer
+=======
+e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
+})) : _.isEmpty(N) ? A() : (B(N), e.disableInputs = !1);
+>>>>>>> Patternfly vertical navigation and project bar
 };
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
@@ -15402,23 +15666,33 @@ e.disableInputs = !0, N(), e.buildConfig.envVars = w.compactEntries(e.buildConfi
 e.disableInputs = !0, D(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
 >>>>>>> Bug 1481127 - More robust handling of large project lists
 var t = s.generate(e);
+<<<<<<< HEAD
 A = [], angular.forEach(t, function(e) {
 null !== e && (m.debug("Generated resource definition:", e), A.push(e));
 >>>>>>> Add bindings list to resource pages
+=======
+$ = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), $.push(e));
+>>>>>>> Patternfly vertical navigation and project bar
 });
-var n = s.ifResourcesDontExist(A, e.projectName), a = v.getLatestQuotaAlerts(A, i), r = function(t) {
-return e.nameTaken = t.nameTaken, a;
+var a = s.ifResourcesDontExist($, e.projectName), r = v.getLatestQuotaAlerts($, n), o = function(t) {
+return e.nameTaken = t.nameTaken, r;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 r.then(c, c).then(U, U);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 n.then(r, r).then(U, U);
 >>>>>>> Let users edit app label directly for "add to project"
+=======
+a.then(o, o).then(L, L);
+>>>>>>> Patternfly vertical navigation and project bar
 };
 })), e.cancel = function() {
-g.toProjectOverview(e.projectName);
+f.toProjectOverview(e.projectName);
 };
+<<<<<<< HEAD
 } else g.toErrorPage("Cannot create from source: a base image tag was not specified"); else g.toErrorPage("Cannot create from source: a base image was not specified");
 <<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "Logger", "ProjectsService", function(e, t, n, r, a, o, i) {
@@ -15437,13 +15711,13 @@ a.unwatchAll(s);
 function d(e, t) {
 var n = _.get(e, "spec.triggers", []), r = _.find(n, function(e) {
 =======
+=======
+} else f.toErrorPage("Cannot create from source: a base image tag was not specified"); else f.toErrorPage("Cannot create from source: a base image was not specified");
+>>>>>>> Patternfly vertical navigation and project bar
 } ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$scope", "$http", "$routeParams", "DataService", "$q", "$location", "TaskList", "$parse", "Navigate", "Logger", "$filter", "imageObjectRefFilter", "failureObjectNameFilter", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 u("displayName");
-var g = [];
+var f = [];
 e.alerts = [], e.loginBaseUrl = a.openshiftAPIBaseUrl(), e.buildConfigs = {}, e.projectName = n.project, e.fromSampleRepo = n.fromSample, e.breadcrumbs = [ {
-title: e.projectName,
-link: "project/" + e.projectName
-}, {
 title: "Add to Project",
 link: "project/" + e.projectName + "/create"
 }, {
@@ -15451,10 +15725,10 @@ title: n.breadcrumbTitle || n.name
 }, {
 title: "Next Steps"
 } ], p.get(n.project).then(_.spread(function(t, r) {
-e.project = t, e.breadcrumbs[0].title = u("displayName")(t), g.push(a.watch("buildconfigs", r, function(t) {
+e.project = t, f.push(a.watch("buildconfigs", r, function(t) {
 e.buildConfigs = t.by("metadata.name"), e.createdBuildConfig = e.buildConfigs[n.name], l.log("buildconfigs (subscribe)", e.buildConfigs);
 })), e.$on("$destroy", function() {
-a.unwatchAll(g);
+a.unwatchAll(f);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
@@ -15528,15 +15802,15 @@ l.addNotification({
 return _.get(a, "imageChangeParams.from.name");
 }
 function d(e) {
-for (var t = [], n = k.exec(e); n; ) t.push(n[1]), n = k.exec(e);
+for (var t = [], n = w.exec(e); n; ) t.push(n[1]), n = w.exec(e);
 return t;
 }
 function m() {
-var e = f();
-r.templateImages = _.map(j, function(t) {
+var e = g();
+r.templateImages = _.map(k, function(t) {
 return _.isEmpty(t.usesParameters) ? t : {
 name: _.template(t.name, {
-interpolate: k
+interpolate: w
 })(e),
 usesParameters: t.usesParameters
 };
@@ -15549,13 +15823,13 @@ var a = n.image, r = u(e, n);
 r && (a = r), a && t.push(a);
 }), t;
 }
-function g(e) {
-j = [];
+function f(e) {
+k = [];
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
 var a = S(b(e), v);
-a && j.push({
+a && k.push({
 name: a,
 usesParameters: d(a)
 });
@@ -15564,13 +15838,13 @@ r && (n[r] = !0);
 }
 "DeploymentConfig" === e.kind && (t = t.concat(p(e)));
 }), t.forEach(function(e) {
-n[e] || j.push({
+n[e] || k.push({
 name: e,
 usesParameters: d(e)
 });
-}), j = _.uniqBy(j, "name");
+}), k = _.uniqBy(k, "name");
 }
-function f() {
+function g() {
 var e = {};
 return _.each(r.template.parameters, function(t) {
 e[t.name] = t.value;
@@ -15579,9 +15853,6 @@ e[t.name] = t.value;
 var h = a.template, v = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), S = e("imageObjectRef");
 if (h) {
 r.breadcrumbs = [ {
-title: a.project,
-link: "project/" + a.project
-}, {
 title: "Add to Project",
 link: "project/" + a.project + "/create"
 }, {
@@ -15590,7 +15861,6 @@ link: "project/" + a.project + "/create?tab=fromCatalog"
 }, {
 title: h
 } ];
-var w = e("displayName");
 a.templateParamsMap && (r.prefillParameters = function() {
 try {
 return JSON.parse(a.templateParamsMap);
@@ -15604,6 +15874,7 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 });
 }
 }());
+<<<<<<< HEAD
 <<<<<<< HEAD
 var P = /\${([a-zA-Z0-9\_]+)}/g, j = [];
 u.get(r.project).then(_.spread(function(e) {
@@ -15636,12 +15907,15 @@ i.clearTemplate();
 } else c.toErrorPage("Cannot create from template: a template name was not specified.");
 =======
 var k = /\${([a-zA-Z0-9\_]+)}/g, j = [];
+=======
+var w = /\${([a-zA-Z0-9\_]+)}/g, k = [];
+>>>>>>> Patternfly vertical navigation and project bar
 l.get(a.project).then(_.spread(function(n) {
-if (r.project = n, r.breadcrumbs[0].title = w(n), v) i.get("templates", h, {
+if (r.project = n, v) i.get("templates", h, {
 namespace: v || r.project.metadata.name
 }).then(function(t) {
-r.template = t, r.breadcrumbs[3].title = e("displayName")(t), g(t);
-_.some(j, function(e) {
+r.template = t, r.breadcrumbs[2].title = e("displayName")(t), f(t);
+_.some(k, function(e) {
 return !_.isEmpty(e.usesParameters);
 }) ? (r.parameterDisplayNames = {}, _.each(t.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
@@ -15649,7 +15923,7 @@ r.parameterDisplayNames[e.name] = e.displayName || e.name;
 r.$apply(m);
 }, 50, {
 maxWait: 250
-}), !0)) : r.templateImages = j;
+}), !0)) : r.templateImages = k;
 }, function() {
 s.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
@@ -15829,13 +16103,15 @@ n.isLoggedIn() ? (t.debug("LogoutController, logout failed, still logged in"), e
 })) : a.logout_uri ? (t.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", a.logout_uri), e.logoutMessage = "Logging out...", window.location.href = a.logout_uri) : (t.debug("LogoutController, not logged in, logout complete"), e.logoutMessage = 'You are logged out. Return to the <a href="./">console</a>.');
 } ]), angular.module("openshiftConsole").controller("CreateController", [ "$scope", "$filter", "$location", "$q", "$routeParams", "$uibModal", "CatalogService", "Constants", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d) {
 e.projectName = r.project, e.categories = s.CATALOG_CATEGORIES, e.alerts = e.alerts || {}, e.breadcrumbs = [ {
-title: e.projectName,
-link: "project/" + e.projectName
-}, {
 title: "Add to Project"
+<<<<<<< HEAD
 } ], d.get(r.project).then(_.spread(function(n, a) {
 e.project = n, e.context = a, e.breadcrumbs[0].title = t("displayName")(n), c.list("imagestreams", {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ], d.get(r.project).then(_.spread(function(t, n) {
+e.project = t, e.context = n, c.list("imagestreams", {
+>>>>>>> Patternfly vertical navigation and project bar
 namespace: "openshift"
 }).then(function(t) {
 e.openshiftImageStreams = t.by("metadata.name");
@@ -15865,9 +16141,9 @@ partialObjectMetadataList: !0
 >>>>>>> Bug 1471033 - Only request template metadata
 }).then(function(t) {
 e.openshiftTemplates = t.by("metadata.name");
-}), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (c.list("imagestreams", a).then(function(t) {
+}), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (c.list("imagestreams", n).then(function(t) {
 e.projectImageStreams = t.by("metadata.name");
-}), c.list("templates", a, null, {
+}), c.list("templates", n, null, {
 partialObjectMetadataList: !0
 }).then(function(t) {
 e.projectTemplates = t.by("metadata.name");
@@ -15914,6 +16190,7 @@ message: "The templateParamsMap is not valid JSON. " + t
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, f = a.getPreferredVersion("imagestreams"), v = a.getPreferredVersion("imagestreamtags"), h = a.getPreferredVersion("templates"), y = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, b = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], S = _.pickBy(t, function(e, t) {
 return _.includes(b, t) && _.isString(e);
 });
@@ -15929,21 +16206,29 @@ return _.size(e) < 25 && /^[a-z]([-a-z0-9]*[a-z0-9])?$/.test(e);
 return _.contains(p, t) && _.isString(e);
 =======
 }, m = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, p = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], g = _.pickBy(t, function(e, t) {
+=======
+}, m = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, p = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], f = _.pickBy(t, function(e, t) {
+>>>>>>> Patternfly vertical navigation and project bar
 return _.includes(p, t) && _.isString(e);
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 });
-g.namespace = g.namespace || "openshift";
-_.includes(m, g.namespace) ? g.imageStream && g.template ? e.alerts.invalidResource = {
+f.namespace = f.namespace || "openshift";
+_.includes(m, f.namespace) ? f.imageStream && f.template ? e.alerts.invalidResource = {
 type: "error",
 message: "Image streams and templates cannot be combined."
-} : g.imageStream || g.template ? g.name && !function(e) {
+} : f.imageStream || f.template ? f.name && !function(e) {
 return _.size(e) < 25 && /^[a-z]([-a-z0-9]*[a-z0-9])?$/.test(e);
+<<<<<<< HEAD
 }(g.name) ? function(t) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}(f.name) ? function(t) {
+>>>>>>> Patternfly vertical navigation and project bar
 e.alerts.invalidImageStream = {
 type: "error",
 message: 'The app name "' + t + "\" is not valid.  An app name is an alphanumeric (a-z, and 0-9) string with a maximum length of 24 characters, where the first character is a letter (a-z), and the '-' character is allowed anywhere except the first or last character."
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 }(S.name) : (S.imageStream && s.get(f, S.imageStream, {
 namespace: S.namespace
@@ -16022,28 +16307,32 @@ editableFields: d(a),
 =======
 }(g.name) : (g.imageStream && o.get("imagestreams", g.imageStream, {
 namespace: g.namespace
+=======
+}(f.name) : (f.imageStream && o.get("imagestreams", f.imageStream, {
+namespace: f.namespace
+>>>>>>> Patternfly vertical navigation and project bar
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.imageStream = t, o.get("imagestreamtags", t.metadata.name + ":" + g.imageTag, {
-namespace: g.namespace
+e.imageStream = t, o.get("imagestreamtags", t.metadata.name + ":" + f.imageTag, {
+namespace: f.namespace
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.imageStreamTag = t, e.validationPassed = !0, e.resource = t, g.displayName = a("displayName")(t);
+e.imageStreamTag = t, e.validationPassed = !0, e.resource = t, f.displayName = a("displayName")(t);
 }, function() {
-l(g.imageTag);
+l(f.imageTag);
 });
 }, function() {
-c(g.imageStream);
-}), g.template && o.get("templates", g.template, {
-namespace: g.namespace
+c(f.imageStream);
+}), f.template && o.get("templates", f.template, {
+namespace: f.namespace
 }, {
 errorNotification: !1
 }).then(function(t) {
 e.template = t, d() && (e.validationPassed = !0, e.resource = t);
 }, function() {
-u(g.template);
+u(f.template);
 })) : e.alerts.resourceRequired = {
 type: "error",
 message: "An image stream or template is required."
@@ -16052,11 +16341,11 @@ e.alerts.invalidNamespace = {
 type: "error",
 message: 'Resources from the namespace "' + t + '" are not permitted.'
 };
-}(g.namespace), angular.extend(e, {
-createDetails: g,
+}(f.namespace), angular.extend(e, {
+createDetails: f,
 createWithProject: function(a) {
 a = a || e.selected.project.metadata.name;
-var r = t.imageStream ? i.createFromImageURL(e.imageStream, g.imageTag, a, g) : i.createFromTemplateURL(e.template, a, g);
+var r = t.imageStream ? i.createFromImageURL(e.imageStream, f.imageTag, a, f) : i.createFromTemplateURL(e.template, a, f);
 n.url(r);
 }
 }), e.projects = {}, e.canCreateProject = void 0, s.list().then(function(t) {
@@ -16130,11 +16419,14 @@ hideFilterWidget: !0
 name: n.serviceName || ""
 }, n.breadcrumbs = [ {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 title: n.projectName,
 link: "project/" + n.projectName
 }, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 title: "Routes",
 link: "project/" + n.projectName + "/browse/routes"
 }, {
@@ -16160,13 +16452,19 @@ var m = function() {
 a.history.back();
 };
 n.cancel = m, l.get(t.project).then(_.spread(function(a, l) {
+<<<<<<< HEAD
 if (n.project = a, n.breadcrumbs[0].title = e("displayName")(a), o.canI("routes", "create", t.project)) {
 var p = e("orderByDisplayName");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+if (n.project = a, o.canI("routes", "create", t.project)) {
+var p, f = e("orderByDisplayName");
+>>>>>>> Patternfly vertical navigation and project bar
 n.routing.to = {
 kind: "Service",
 name: n.serviceName,
 weight: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 };
@@ -16177,14 +16475,29 @@ var r = d.mapEntries(d.compactEntries(n.labels)), a = _.assign(r, h);
 e && (a = _.omitBy(a, function(t, n) {
 return e[n] && !h[n];
 })), n.labels = _.map(a, function(e, t) {
+=======
+};
+var g, h = function() {
+var e = g, t = _.get(n, "routing.to.name");
+g = _.get(p, [ t, "metadata", "labels" ], {});
+var a = u.mapEntries(u.compactEntries(n.labels)), r = _.assign(a, g);
+e && (r = _.omitBy(r, function(t, n) {
+return e[n] && !g[n];
+})), n.labels = _.map(r, function(e, t) {
+>>>>>>> Patternfly vertical navigation and project bar
 return {
 name: t,
 value: e
 };
 });
 };
+<<<<<<< HEAD
 s.list("services", u).then(function(e) {
 f = e.by("metadata.name"), n.services = v(f), n.$watch("routing.to.name", y);
+=======
+i.list("services", l).then(function(e) {
+p = e.by("metadata.name"), n.services = f(p), n.$watch("routing.to.name", h);
+>>>>>>> Patternfly vertical navigation and project bar
 }), n.createRoute = function() {
 if (n.createRouteForm.$valid) {
 p(), n.disableInputs = !0;
@@ -16216,10 +16529,17 @@ details: e("getErrorDetails")(t)
 }));
 } ]), angular.module("openshiftConsole").controller("AttachPVCController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "QuotaService", "Navigate", "NotificationsService", "ProjectsService", "StorageService", "RELATIVE_PATH_PATTERN", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
 if (t.kind && t.name) {
+<<<<<<< HEAD
 var g = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ], f = e("humanizeKind");
 if (_.includes(g, t.kind)) {
 var v = {
 resource: a.kindToResource(t.kind),
+=======
+var f = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ], g = e("humanizeKind");
+if (_.includes(f, t.kind)) {
+var h = {
+resource: r.kindToResource(t.kind),
+>>>>>>> Patternfly vertical navigation and project bar
 group: t.group
 };
 n.projectName = t.project, n.kind = t.kind, n.name = t.name, n.RELATIVE_PATH_PATTERN = p, n.outOfClaims = !1, n.attach = {
@@ -16233,11 +16553,17 @@ name: t.name,
 kind: t.kind,
 namespace: t.project,
 subpage: "Add Storage"
+<<<<<<< HEAD
 }), n.pvcVersion = a.getPreferredVersion("persistentvolumeclaims");
 var h = a.getPreferredVersion("resourcequotas"), y = a.getPreferredVersion("appliedclusterresourcequotas");
 d.get(t.project).then(_.spread(function(a, d) {
 if (n.project = a, o.canI(v, "update", t.project)) {
 var p = e("orderByDisplayName"), g = e("getErrorDetails"), b = e("generateName"), S = function(e, t) {
+=======
+}), d.get(t.project).then(_.spread(function(r, d) {
+if (n.project = r, o.canI(h, "update", t.project)) {
+var p = e("orderByDisplayName"), f = e("getErrorDetails"), v = e("generateName"), y = function(e, t) {
+>>>>>>> Patternfly vertical navigation and project bar
 n.disableInputs = !0, u.addNotification({
 id: "attach-pvc-error",
 type: "error",
@@ -16274,16 +16600,27 @@ n.onPVCSelected = k;
 s.get(v, t.name, d).then(function(e) {
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
 object: e,
+<<<<<<< HEAD
 project: a,
+=======
+project: r,
+>>>>>>> Patternfly vertical navigation and project bar
 subpage: "Add Storage"
 });
 var t = _.get(e, "spec.template");
 n.existingVolumeNames = m.getVolumeNames(t), k();
 }, function(e) {
+<<<<<<< HEAD
 S(t.name + " could not be loaded.", g(e));
 }), s.list(n.pvcVersion, d).then(function(e) {
 n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs), k());
 }), s.list(h, {
+=======
+y(t.name + " could not be loaded.", f(e));
+}), s.list("persistentvolumeclaims", d).then(function(e) {
+n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
+}), s.list("resourcequotas", {
+>>>>>>> Patternfly vertical navigation and project bar
 namespace: n.projectName
 }, function(e) {
 n.quotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
@@ -16478,23 +16815,23 @@ a.spec.volumes || (a.spec.volumes = []), a.spec.volumes.push(p), s.update(h, e.m
 var e;
 i || (e = "No mount path was provided. The volume reference was added to the configuration, but it will not be mounted into running pods."), u.addNotification({
 type: "success",
-message: "Persistent volume claim " + r.metadata.name + " added to " + f(t.kind) + " " + t.name + ".",
+message: "Persistent volume claim " + r.metadata.name + " added to " + g(t.kind) + " " + t.name + ".",
 details: e
 }), C();
 }, function(e) {
-y("An error occurred attaching the persistent volume claim to the " + f(t.kind) + ".", g(e)), n.disableInputs = !1;
+y("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
 });
 }
 };
-} else l.toErrorPage("You do not have authority to update " + f(t.kind) + " " + t.name + ".", "access_denied");
+} else l.toErrorPage("You do not have authority to update " + g(t.kind) + " " + t.name + ".", "access_denied");
 }));
-} else l.toErrorPage("Storage is not supported for kind " + f(t.kind) + ".");
+} else l.toErrorPage("Storage is not supported for kind " + g(t.kind) + ".");
 } else l.toErrorPage("Kind or name parameter missing.");
 } ]), angular.module("openshiftConsole").controller("AddConfigVolumeController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "StorageService", "RELATIVE_PATH_PATTERN", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 if (n.kind && n.name) {
-var g = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ];
-if (_.includes(g, n.kind)) {
-var f = {
+var f = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ];
+if (_.includes(f, n.kind)) {
+var g = {
 resource: o.kindToResource(n.kind),
 group: n.group
 };
@@ -16505,8 +16842,7 @@ pickKeys: !1
 name: n.name,
 kind: n.kind,
 namespace: n.project,
-subpage: "Add Config Files",
-includeProject: !0
+subpage: "Add Config Files"
 });
 var h = e("humanizeKind");
 a.groupByKind = function(e) {
@@ -16584,16 +16920,15 @@ a.attach.items.push({}), v();
 }, a.removeItem = function(e) {
 a.attach.items.splice(e, 1), v();
 }, d.get(n.project).then(_.spread(function(t, r) {
-if (a.project = t, i.canI(f, "update", n.project)) {
+if (a.project = t, i.canI(g, "update", n.project)) {
 var o = e("orderByDisplayName"), d = e("getErrorDetails"), p = e("generateName");
-c.get(f, n.name, r, {
+c.get(g, n.name, r, {
 errorNotification: !1
 }).then(function(e) {
 a.targetObject = e, a.breadcrumbs = s.getBreadcrumbs({
 object: e,
 project: t,
-subpage: "Add Config Files",
-includeProject: !0
+subpage: "Add Config Files"
 });
 }, function(e) {
 a.error = e;
@@ -16610,11 +16945,11 @@ a.secrets = o(e.by("metadata.name"));
 }, function(e) {
 403 !== e.code ? b("Could not load secrets", d(e)) : a.secrets = [];
 });
-var g = function(e) {
+var f = function(e) {
 return a.attach.allContainers || a.attach.containers[e.name];
 }, v = function() {
 var e = _.get(a, "targetObject.spec.template");
-a.existingMountPaths = m.getMountPaths(e, g);
+a.existingMountPaths = m.getMountPaths(e, f);
 };
 a.$watchGroup([ "targetObject", "attach.allContainers" ], v), a.$watch("attach.containers", v, !0);
 a.$watch("attach.items", function() {
@@ -16628,7 +16963,7 @@ mountPath: _.get(a, "attach.mountPath")
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 "Secret" === o.kind && (l.readOnly = !0), _.each(i.spec.containers, function(e) {
-g(e) && (e.volumeMounts = e.volumeMounts || [], e.volumeMounts.push(l));
+f(e) && (e.volumeMounts = e.volumeMounts || [], e.volumeMounts.push(l));
 });
 <<<<<<< HEAD
 var m, f = {
@@ -16805,7 +17140,7 @@ name: void 0,
 =======
 i.spec.volumes = i.spec.volumes || [], i.spec.volumes.push(h), a.disableInputs = !0, C();
 var v = e("humanizeKind"), S = v(o.kind), w = v(n.kind);
-c.update(f, t.metadata.name, a.targetObject, r).then(function() {
+c.update(g, t.metadata.name, a.targetObject, r).then(function() {
 u.addNotification({
 type: "success",
 message: "Succesfully added " + S + " " + o.metadata.name + " to " + w + " " + n.name + "."
@@ -16899,9 +17234,6 @@ e.showSessionToken = !e.showSessionToken;
 };
 } ]), angular.module("openshiftConsole").controller("CreatePersistentVolumeClaimController", [ "$filter", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u) {
 n.projectName = t.project, n.accessModes = "ReadWriteOnce", n.claim = {}, n.breadcrumbs = [ {
-title: n.projectName,
-link: "project/" + n.projectName
-}, {
 title: "Storage",
 link: "project/" + n.projectName + "/browse/storage"
 }, {
@@ -16970,7 +17302,7 @@ _.isEmpty(a) || _.set(e, "spec.selector.matchLabels", a);
 }
 return n.claim.storageClass && "No Storage Class" !== n.claim.storageClass.metadata.name && (e.metadata.annotations["volume.beta.kubernetes.io/storage-class"] = n.claim.storageClass.metadata.name), e;
 }
-n.project = a, n.breadcrumbs[0].title = e("displayName")(a), o.canI("persistentvolumeclaims", "create", t.project) ? n.createPersistentVolumeClaim = function() {
+n.project = a, o.canI("persistentvolumeclaims", "create", t.project) ? n.createPersistentVolumeClaim = function() {
 if (d(), n.createPersistentVolumeClaimForm.$valid) {
 n.disableInputs = !0;
 var t = l();
@@ -17425,6 +17757,7 @@ scope: a
 var e = a.kind, t = a.resourceName, r = (a.typeDisplayName || n("humanizeKind")(e)) + " '" + (a.displayName ? a.displayName : t) + "'", s = "Project" === a.kind ? {} : {
 namespace: a.projectName
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, u = {};
 a.options.deleteImmediately && (u.gracePeriodSeconds = 0, u.propagationPolicy = null), "servicecatalog.k8s.io" === a.group && (u.propagationPolicy = null), i.delete({
 resource: o.kindToResource(e),
@@ -17437,6 +17770,13 @@ resource: o.kindToResource(e),
 group: a.group
 }, t, u, g).then(function() {
 >>>>>>> Add bindings list to resource pages
+=======
+}, f = {};
+a.options.deleteImmediately && (f.gracePeriodSeconds = 0, f.propagationPolicy = null), "servicecatalog.k8s.io" === a.group && (f.propagationPolicy = null), i.delete({
+resource: o.kindToResource(e),
+group: a.group
+}, t, u, f).then(function() {
+>>>>>>> Patternfly vertical navigation and project bar
 c.addNotification({
 type: "success",
 message: _.capitalize(r) + " was marked for deletion."
@@ -17789,18 +18129,18 @@ var n = e.sortConfig.isAscending ? "asc" : "desc";
 c = _.orderBy(e.events, [ t ], [ n ]);
 }, m = [], p = function() {
 e.filterExpressions = m = a.generateKeywords(_.get(e, "filter.text"));
-}, g = [ "reason", "message", "type" ];
-e.resourceKind && e.resourceName || g.splice(0, 0, "involvedObject.name", "involvedObject.kind");
-var f = function() {
-e.filteredEvents = a.filterForKeywords(c, g, m);
+}, f = [ "reason", "message", "type" ];
+e.resourceKind && e.resourceName || f.splice(0, 0, "involvedObject.name", "involvedObject.kind");
+var g = function() {
+e.filteredEvents = a.filterForKeywords(c, f, m);
 };
 e.$watch("filter.text", _.debounce(function() {
-p(), e.$evalAsync(f);
+p(), e.$evalAsync(g);
 }, 50, {
 maxWait: 250
 }));
 var h = function() {
-d(), f();
+d(), g();
 }, v = _.debounce(function() {
 t && e.$evalAsync(function() {
 e.events = s(t), h();
@@ -18130,13 +18470,13 @@ function p(e) {
 return !!e.kind || (m.error = {
 =======
 controller: [ "$scope", function(p) {
-function g(e) {
+function f(e) {
 return !!e.kind || (p.error = {
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 message: "Resource is missing kind field."
 }, !1);
 }
-function f(e) {
+function g(e) {
 return !!p.isList || (e.metadata ? e.metadata.name ? !e.metadata.namespace || e.metadata.namespace === p.input.selectedProject.metadata.name || (p.error = {
 message: e.kind + " " + e.metadata.name + " can't be created in project " + e.metadata.namespace + ". Can't create resource in different projects."
 }, !1) : (p.error = {
@@ -18619,7 +18959,7 @@ var t = p.input.selectedProject.metadata.name, a = p.input.selectedProject.metad
 return m.create(t, a, r);
 };
 p.create = function() {
-if (delete p.error, g(p.resource) && (p.resourceKind = p.resource.kind, p.resourceKind.endsWith("List") ? p.isList = !0 : p.isList = !1, f(p.resource))) {
+if (delete p.error, f(p.resource) && (p.resourceKind = p.resource.kind, p.resourceKind.endsWith("List") ? p.isList = !0 : p.isList = !1, g(p.resource))) {
 p.isList ? (p.resourceList = p.resource.items, p.resourceName = "") : (p.resourceList = [ p.resource ], p.resourceName = p.resource.metadata.name, "Template" === p.resourceKind && (p.templateOptions = {
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 process: !0,
@@ -18627,7 +18967,7 @@ add: !1
 })), p.updateResources = [], p.createResources = [];
 var e = [];
 p.errorOccurred = !1, _.forEach(p.resourceList, function(t) {
-if (!f(t)) return p.errorOccurred = !0, !1;
+if (!g(t)) return p.errorOccurred = !0, !1;
 e.push(C(t));
 }), D().then(function(t) {
 p.input.selectedProject = t, n.all(e).then(function() {
@@ -19761,6 +20101,7 @@ createBinding: "&"
 },
 templateUrl: "views/directives/resource-service-bindings.html"
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").component("serviceInstanceBindings", {
 controller: [ "$filter", "APIService", "BindingService", ServiceInstanceBindings ],
 controllerAs: "$ctrl",
@@ -19781,6 +20122,10 @@ var l = function(e, t) {
 }), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "Constants", function(e, t, n) {
 var a = t("canI"), r = function(e, t) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, a, r, o, i) {
+var s = function(e, t) {
+>>>>>>> Patternfly vertical navigation and project bar
 return e.href === t || _.some(e.prefixes, function(e) {
 return _.startsWith(t, e);
 });
@@ -19788,6 +20133,7 @@ return _.startsWith(t, e);
 return {
 restrict: "E",
 templateUrl: "views/_sidebar.html",
+<<<<<<< HEAD
 <<<<<<< HEAD
 controller: [ "$scope", function(u) {
 var d;
@@ -19838,11 +20184,47 @@ controller: [ "$scope", function(o) {
 var i = e.path().replace("/project/" + o.projectName, "");
 o.activeSecondary, o.navItems = n.PROJECT_NAVIGATION, o.activePrimary = _.find(o.navItems, function(e) {
 return r(e, i) ? (o.activeSecondary = null, !0) : _.some(e.secondaryNavSections, function(e) {
+=======
+controller: [ "$scope", function(c) {
+var l;
+c.navItems = o.PROJECT_NAVIGATION, c.sidebar = {};
+var u = function() {
+_.set(c, "sidebar.secondaryOpen", !1), _.set(a, "nav.showMobileNav", !1), c.activeSecondary = null, c.activePrimary = _.find(c.navItems, function(t) {
+return l = e.path().replace("/project/" + c.projectName, ""), s(t, l) ? (c.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 var t = _.find(e.items, function(e) {
-return r(e, i);
+return s(e, l);
 });
-return !!t && (o.activeSecondary = t, !0);
+return !!t && (c.activeSecondary = t, !0);
 });
+});
+};
+u(), c.$on("$routeChangeSuccess", u);
+var d = function() {
+_.each(c.navItems, function(e) {
+e.isHover = !1;
+});
+};
+c.navURL = function(e) {
+return e ? t("isAbsoluteURL")(e) ? e : "project/" + c.projectName + e : "";
+}, c.show = function(e) {
+return !(e.isValid && !e.isValid()) && (!e.canI || r.canI({
+resource: e.canI.resource,
+group: e.canI.group
+}, e.canI.verb, c.projectName));
+}, c.itemClicked = function(e) {
+if (e.href) return c.nav.showMobileNav = !1, void (c.sidebar.secondaryOpen = !1);
+d(), e.isHover = !0, e.mobileSecondary = c.isMobile, c.sidebar.showMobileSecondary = c.isMobile, c.sidebar.secondaryOpen = !0;
+}, c.onMouseEnter = function(e) {
+_.isEmpty(e.secondaryNavSections) || (e.mouseLeaveTimeout && (n.cancel(e.mouseLeaveTimeout), e.mouseLeaveTimeout = null), e.mouseEnterTimeout = n(function() {
+e.isHover = !0, e.mouseEnterTimeout = null, c.sidebar.secondaryOpen = !0;
+}, 300));
+}, c.onMouseLeave = function(e) {
+_.isEmpty(e.secondaryNavSections) || (e.mouseEnterTimeout && (n.cancel(e.mouseEnterTimeout), e.mouseEnterTimeout = null), e.mouseLeaveTimeout = n(function() {
+e.isHover = !1, e.mouseLeaveTimeout = null, c.sidebar.secondaryOpen = _.some(c.navItems, function(e) {
+return e.isHover && !_.isEmpty(e.secondaryNavSections);
+});
+<<<<<<< HEAD
 }), o.navURL = function(e) {
 return e ? t("isAbsoluteURL")(e) ? e : "project/" + o.projectName + e : "";
 }, o.show = function(e) {
@@ -19857,15 +20239,36 @@ var f = _.throttle(function() {
 var e = g();
 e !== u.isMobile && u.$evalAsync(function() {
 u.isMobile = e, e || (_.set(r, "nav.showMobileNav", !1), _.each(u.navItems, function(e) {
+=======
+}, 500));
+}, c.closeNav = function() {
+d(), c.nav.showMobileNav = !1, c.sidebar.secondaryOpen = !1;
+}, c.collapseMobileSecondary = function(e, t) {
+e.mobileSecondary = !1, t.stopPropagation();
+};
+var m = function() {
+return i.isWindowBelowBreakpoint(i.WINDOW_SIZE_SM);
+};
+c.isMobile = m();
+var p = _.throttle(function() {
+var e = m();
+e !== c.isMobile && c.$evalAsync(function() {
+c.isMobile = e, e || (_.set(a, "nav.showMobileNav", !1), _.each(c.navItems, function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 e.mobileSecondary = !1;
 }));
 });
 }, 50);
+<<<<<<< HEAD
 $(window).on("resize.verticalnav", f), u.$on("$destroy", function() {
+=======
+$(window).on("resize.verticalnav", p), c.$on("$destroy", function() {
+>>>>>>> Patternfly vertical navigation and project bar
 $(window).off(".verticalnav");
 });
 } ]
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 } ]).directive("oscHeader", [ "$filter", "$location", "$q", "$rootScope", "$routeParams", "$timeout", "APIService", "AuthorizationService", "Catalog", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "ProjectsService", "projectOverviewURLFilter", "gettext", "gettextCatalog", "RecentlyViewedServiceItems", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y) {
@@ -19939,46 +20342,73 @@ var i = {}, s = [];
 } ]).directive("projectHeader", [ "$timeout", "$location", "$filter", "ProjectsService", "projectOverviewURLFilter", "Constants", function(e, t, n, a, r, o) {
 var i = {}, s = [], c = n("displayName"), l = n("uniqueDisplayName");
 >>>>>>> Bug 1481127 - More robust handling of large project lists
+=======
+} ]).directive("oscHeader", [ "$filter", "$location", "$rootScope", "$routeParams", "$timeout", "AuthorizationService", "Constants", "ProjectsService", "projectOverviewURLFilter", function(e, t, n, a, r, o, i, s, c) {
+var l = {}, u = [], d = e("displayName"), m = e("uniqueDisplayName");
+>>>>>>> Patternfly vertical navigation and project bar
 return {
 restrict: "EA",
-templateUrl: "views/directives/header/project-header.html",
-link: function(e, u) {
-e.closeOrderingPanel = function() {
-_.set(e, "ordering.panelName", "");
-}, e.showOrderingPanel = function(t) {
-_.set(e, "ordering.panelName", t);
-}, e.catalogLandingPageEnabled = _.get(o, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page");
-var d = u.find(".selectpicker"), m = [], p = function() {
-var t = e.project || {};
-e.context = {
-namespace: e.projectName
+templateUrl: "views/directives/header/header.html",
+link: function(r, p) {
+r.currentProject = l[a.project];
+var f = function(e, t) {
+var a;
+_.set(n, "nav.collapsed", e), t && (a = e ? "true" : "false", localStorage.setItem("openshift/vertical-nav-collapsed", a));
 };
-var a = e.projectName, r = t.metadata && t.metadata.name;
-if (a || r) {
-a || (a = t.metadata.name), r || (t = {
-metadata: {
-name: a
+!function() {
+var e = "true" === localStorage.getItem("openshift/vertical-nav-collapsed");
+f(e);
+}();
+var g = function() {
+return _.get(n, "nav.collapsed", !1);
+}, h = function(e) {
+_.set(n, "nav.showMobileNav", e);
+};
+r.toggleNav = function() {
+var e = g();
+f(!e, !0);
+}, r.toggleMobileNav = function() {
+var e = _.get(n, "nav.showMobileNav");
+h(!e);
+}, r.closeMobileNav = function() {
+h(!1);
+}, r.closeOrderingPanel = function() {
+_.set(r, "ordering.panelName", "");
+}, r.showOrderingPanel = function(e) {
+_.set(r, "ordering.panelName", e);
+}, r.catalogLandingPageEnabled = _.get(i, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page");
+var v = p.find(".selectpicker"), y = [], b = function() {
+var t = r.projectName;
+if (t) {
+var n = function(e, n) {
+var a = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
+return n ? a.text(d(e)) : a.text(m(e, u)), a;
+};
+_.size(l) <= 100 ? (u = e("orderByDisplayName")(l), y = _.map(u, function(e) {
+return n(e, !1);
+})) : y = [ n(l[t], !0) ], v.empty(), v.append(y), v.append($('<option data-divider="true"></option>')), v.append($('<option value="">View all Projects</option>')), v.selectpicker("refresh");
 }
-}), i[a] || (i[a] = t);
-var o = function(e, t) {
-var n = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === a);
-return t ? n.text(c(e)) : n.text(l(e, s)), n;
+}, C = function() {
+return s.list().then(function(e) {
+l = e.by("metadata.name");
+});
 };
-_.size(i) <= 100 ? (s = n("orderByDisplayName")(i), m = _.map(s, function(e) {
-return o(e, !1);
-})) : m = [ o(i[a], !0) ], d.empty(), d.append(m), d.append($('<option data-divider="true"></option>')), d.append($('<option value="">View all Projects</option>')), d.selectpicker("refresh");
-}
-};
-a.list().then(function(e) {
-i = e.by("metadata.name"), p();
-}), p(), d.selectpicker({
+r.$on("$routeChangeSuccess", function() {
+var e = a.project;
+r.projectName !== e && (r.projectName = e, r.chromeless = "chromeless" === a.view, e && !r.chromeless ? (_.set(n, "view.hasProject", !0), r.canIAddToProject = !1, o.getProjectRules(e).then(function() {
+r.projectName === e && (r.canIAddToProject = o.canIAddToProject(e));
+}), C().then(function() {
+r.projectName = e, r.currentProject = _.get(l, [ e ]), b();
+})) : _.set(n, "view.hasProject", !1));
+}), v.selectpicker({
 iconBase: "fa",
 tickIcon: "fa-check"
 }).change(function() {
-var n = $(this).val(), a = "" === n ? "projects" : r(n);
-e.$apply(function() {
-t.url(a);
+var e = $(this).val(), n = "" === e ? "projects" : c(e);
+r.$apply(function() {
+t.url(n);
 });
+<<<<<<< HEAD
 }), e.$on("project.settings.update", function(e, t) {
 <<<<<<< HEAD
 i[t.metadata.name] = t, d();
@@ -19986,6 +20416,8 @@ i[t.metadata.name] = t, d();
 =======
 i[t.metadata.name] = t, p();
 >>>>>>> Bug 1481127 - More robust handling of large project lists
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 });
 }
 }), N().then(function() {
@@ -20053,6 +20485,7 @@ e.toggleFilterWidget(!t || !t.hideFilterWidget);
 });
 }
 };
+<<<<<<< HEAD
 } ]).directive("projectFilter", [ "LabelFilter", "gettext", "gettextCatalog", function(e, t, n) {
 return {
 restrict: "E",
@@ -20070,6 +20503,8 @@ transclude: !0,
 templateUrl: "views/_project-page.html"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 } ]).directive("navbarUtility", function() {
 return {
 restrict: "E",
@@ -20084,20 +20519,32 @@ return {
 restrict: "E",
 transclude: !0,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 templateUrl: "views/directives/header/_navbar-utility-mobile.html",
 link: function(t, n) {
 e(function() {
 var e = n.find("li");
 e.addClass("list-group-item");
+<<<<<<< HEAD
 var r = {};
 e.each(function(e, t) {
 var n = $(t).find("a");
 n.each(function(e, n) {
 n.href && (r[n.href] = t);
+=======
+var a = {};
+e.each(function(e, t) {
+var n = $(t).find("a");
+n.each(function(e, n) {
+n.href && (a[n.href] = t);
+>>>>>>> Patternfly vertical navigation and project bar
 }), n.contents().filter(function() {
 return 3 === this.nodeType && $.trim(this.nodeValue).length;
 }).wrap('<span class="list-group-item-value"/>');
 });
+<<<<<<< HEAD
 var a = function() {
 e.removeClass("active");
 var t = r[window.location.href];
@@ -20115,6 +20562,16 @@ restrict: "E",
 transclude: !0,
 templateUrl: "views/directives/header/default-header.html"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var r = function() {
+e.removeClass("active");
+var t = a[window.location.href];
+t && $(t).addClass("active");
+};
+r(), t.$on("$routeChangeSuccess", r);
+});
+}
+>>>>>>> Patternfly vertical navigation and project bar
 };
 } ]).directive("navPfVerticalAlt", function() {
 return {
@@ -20527,6 +20984,9 @@ e.$eval(n.onEnter);
 });
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 }).directive("onEsc", function() {
 return function(e, t, n) {
 t.bind("keydown keypress", function(t) {
@@ -20535,8 +20995,11 @@ e.$eval(n.onEsc);
 }), t.preventDefault());
 });
 };
+<<<<<<< HEAD
 =======
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+>>>>>>> Patternfly vertical navigation and project bar
 }).directive("persistTabState", [ "$routeParams", "$location", function(e, t) {
 return {
 restrict: "A",
@@ -21301,7 +21764,7 @@ if (a) return d(a);
 }
 return null;
 }
-function g(e) {
+function f(e) {
 var t = _.head(e.datasets);
 if (t.total) {
 var n, r = {
@@ -21336,10 +21799,14 @@ $ || (E[t.id] = c3.generate(n));
 }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 function v(e) {
 =======
 function f(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+function g(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 if (!_.some(e.datasets, function(e) {
 return !e.data;
 })) {
@@ -21425,7 +21892,7 @@ containerName: e.containerMetric ? m.options.selectedContainer.name : "pod"
 }
 function C() {
 $ || (U = 0, _.each(m.metrics, function(e) {
-f(e), g(e);
+g(e), f(e);
 }));
 }
 function S(e) {
@@ -21881,7 +22348,7 @@ return w ? "1mn" : Math.floor(m() / C) + "ms";
 return w ? "1mn" : Math.floor(m() / S) + "ms";
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
-function g() {
+function f() {
 var e = _.find(t.pods, "metadata.namespace");
 if (e) {
 var n = {
@@ -21892,6 +22359,7 @@ bucketDuration: p()
 return w || (n.containerName = t.options.selectedContainer.name), n.start = j || d(), n;
 }
 }
+<<<<<<< HEAD
 function f(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21941,6 +22409,9 @@ details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " +
 }; else if (!(N < 2) && t.alerts) {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
 =======
+=======
+function g(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 if (!k) if (N++, t.noData) t.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
@@ -22022,9 +22493,14 @@ R = Date.now();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 P = Date.now();
+<<<<<<< HEAD
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 var e = g();
 c.getPodMetrics(e).then(u, f).finally(function() {
+=======
+var e = f();
+c.getPodMetrics(e).then(u, g).finally(function() {
+>>>>>>> Patternfly vertical navigation and project bar
 t.loaded = !0;
 });
 }
@@ -22284,9 +22760,9 @@ e.destroy();
 });
 }
 };
-} ]), angular.module("openshiftConsole").directive("logViewer", [ "$sce", "$timeout", "$window", "$filter", "$q", "AuthService", "APIService", "APIDiscovery", "DataService", "HTMLService", "ModalsService", "logLinks", "BREAKPOINTS", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
-var p = $(window), g = $('<tr class="log-line"><td class="log-line-number"></td><td class="log-line-text"></td></tr>').get(0), f = function(e, t) {
-var n = g.cloneNode(!0);
+} ]), angular.module("openshiftConsole").directive("logViewer", [ "$sce", "$timeout", "$window", "$filter", "$q", "AuthService", "APIService", "APIDiscovery", "DataService", "HTMLService", "ModalsService", "logLinks", "BREAKPOINTS", function(e, t, n, a, r, o, i, s, c, l, u, d) {
+var m = $(window), p = $('<tr class="log-line"><td class="log-line-number"></td><td class="log-line-text"></td></tr>').get(0), f = function(e, t) {
+var n = p.cloneNode(!0);
 n.firstChild.setAttribute("data-line-number", e);
 var a = ansi_up.escape_for_html(t), r = ansi_up.ansi_to_html(a), o = l.linkify(r, "_blank", !0);
 return n.lastChild.innerHTML = o, n;
@@ -22308,39 +22784,32 @@ empty: "=?",
 run: "=?"
 },
 controller: [ "$scope", function(t) {
-var l, u, g, h, v, y = document.documentElement;
+var l, u, p, g = document.documentElement;
 t.logViewerID = _.uniqueId("log-viewer"), t.empty = !0;
-var b, C;
-"ReplicationController" === t.object.kind ? (b = "deploymentconfigs/log", C = a("annotation")(t.object, "deploymentConfig")) : (b = i.kindToResource(t.object.kind) + "/log", C = t.object.metadata.name);
-var S, w = function() {
-h = window.innerWidth < m.screenSmMin && !t.fixedHeight ? null : u;
-}, k = function() {
+var h, v;
+"ReplicationController" === t.object.kind ? (h = "deploymentconfigs/log", v = a("annotation")(t.object, "deploymentConfig")) : (h = i.kindToResource(t.object.kind) + "/log", v = t.object.metadata.name);
+var y, b = function() {
 t.$apply(function() {
 var e = l.getBoundingClientRect();
-t.fixedHeight ? t.showScrollLinks = e && e.height > t.fixedHeight : t.showScrollLinks = e && (e.top < 0 || e.bottom > y.clientHeight);
+t.fixedHeight ? t.showScrollLinks = e && e.height > t.fixedHeight : t.showScrollLinks = e && (e.top < 0 || e.bottom > g.clientHeight);
 });
-}, j = !1, P = function() {
-j ? j = !1 : t.$evalAsync(function() {
+}, C = !1, S = function() {
+C ? C = !1 : t.$evalAsync(function() {
 t.autoScrollActive = !1;
 });
-}, R = function() {
-g.off("scroll", P), p.off("scroll", P), window.innerWidth <= m.screenSmMin && !t.fixedHeight ? p.on("scroll", P) : g.on("scroll", P);
-}, E = function() {
-t.fixedHeight || (window.innerWidth < m.screenSmMin && !t.fixedHeight ? v.affix({
+}, w = function() {
+u ? $(u).on("scroll", S) : m.on("scroll", S);
+}, k = function() {
+t.fixedHeight || p.affix({
 target: window,
 offset: {
 top: t.followAffixTop || 0
 }
-}) : v.affix({
-target: g,
-offset: {
-top: t.followAffixTop || 0
-}
-}));
-}, T = function() {
+});
+}, j = function() {
 return $("#" + t.logViewerID + " .log-view-output");
-}, I = function(e) {
-var n = T(), a = n.offset().top;
+}, P = function(e) {
+var n = j(), a = n.offset().top;
 if (!(a < 0)) {
 var r = $(".ellipsis-pulser").outerHeight(!0), o = t.fixedHeight ? t.fixedHeight : Math.floor($(window).height() - a - r);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -22348,6 +22817,7 @@ t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
 "min-height": o + "px"
 }, "fast") : n.css("min-height", o + "px"), t.fixedHeight && n.css("max-height", o);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22378,11 +22848,16 @@ t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
 }, N = function() {
 >>>>>>> Adjust events to show in the drawer
 if (!S) {
+=======
+}, R = function() {
+if (!y) {
+>>>>>>> Patternfly vertical navigation and project bar
 var e = function() {
-clearInterval(S), S = null, t.$evalAsync(function() {
+clearInterval(y), y = null, t.$evalAsync(function() {
 t.sized = !0;
 });
 }, n = 0;
+<<<<<<< HEAD
 S = setInterval(function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22427,26 +22902,36 @@ n > 10 ? e() : (n++, T().is(":visible") && (I(), e()));
 =======
 n > 10 ? e() : (n++, T().is(":visible") && (I(), e()));
 >>>>>>> Adjust events to show in the drawer
+=======
+y = setInterval(function() {
+n > 10 ? e() : (n++, j().is(":visible") && (P(), e()));
+>>>>>>> Patternfly vertical navigation and project bar
 }, 100);
 }
-}, D = _.debounce(function() {
-I(!0), w(), R(), k(), E(), P();
+}, E = _.debounce(function() {
+P(!0), b(), S();
 }, 100);
-p.on("resize", D);
-var A, B = function() {
-j = !0, d.scrollBottom(h);
-}, L = document.createDocumentFragment(), U = _.debounce(function() {
-l.appendChild(L), L = document.createDocumentFragment(), t.autoScrollActive && B(), t.showScrollLinks || k();
+m.on("resize", E);
+var T, I = function() {
+C = !0, d.scrollBottom(u);
+}, N = document.createDocumentFragment(), D = _.debounce(function() {
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && I(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
-}), O = function(e) {
+}), A = function(e) {
 var t = r.defer();
-return A ? (A.onClose(function() {
+return T ? (T.onClose(function() {
 t.resolve();
+<<<<<<< HEAD
 }), A.stop()) : t.resolve(), e || (U.cancel(), l && (l.innerHTML = ""), L = document.createDocumentFragment()), t.promise;
 }, x = function() {
 O().then(function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), T.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}, B = function() {
+A().then(function() {
+>>>>>>> Patternfly vertical navigation and project bar
 t.$evalAsync(function() {
 if (t.run) {
 angular.extend(t, {
@@ -22487,27 +22972,28 @@ autoScrollActive: !1
 }), N.start();
 =======
 }, t.options), n = 0, a = function(e) {
-n++, L.appendChild(f(n, e)), U();
+n++, N.appendChild(f(n, e)), D();
 };
-(A = c.createStream(b, C, t.context, e)).onMessage(function(r, o, i) {
+(T = c.createStream(h, v, t.context, e)).onMessage(function(r, o, i) {
 t.$evalAsync(function() {
-t.empty = !1, "logs" !== t.state && (t.state = "logs", N());
+t.empty = !1, "logs" !== t.state && (t.state = "logs", R());
 }), r && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
 t.limitReached = !0, t.loading = !1;
-}), O(!0)), a(r), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
+}), A(!0)), a(r), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), A.onClose(function() {
-A = null, t.$evalAsync(function() {
+}), T.onClose(function() {
+T = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), A.onError(function() {
-A = null, t.$evalAsync(function() {
+}), T.onError(function() {
+T = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22522,6 +23008,9 @@ autoScrollActive: !1
 =======
 }), A.start();
 >>>>>>> Add bindings list to resource pages
+=======
+}), T.start();
+>>>>>>> Patternfly vertical navigation and project bar
 }
 });
 });
@@ -22537,8 +23026,12 @@ if (s.getLoggingURL().then(function(a) {
 if (s.getLoggingURL(t.context.project).then(function(a) {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
 var r = _.get(t.context, "project.metadata.name"), i = _.get(t.options, "container");
+<<<<<<< HEAD
 r && i && C && a && (angular.extend(t, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+r && i && v && a && (angular.extend(t, {
+>>>>>>> Patternfly vertical navigation and project bar
 kibanaAuthUrl: e.trustAsResourceUrl(URI(a).segment("auth").segment("token").normalizePathname().toString()),
 access_token: o.UserStore().getToken()
 }), t.$watchGroup([ "context.project.metadata.name", "options.container", "name" ], function() {
@@ -22546,6 +23039,7 @@ angular.extend(t, {
 kibanaArchiveUrl: e.trustAsResourceUrl(d.archiveUri({
 namespace: t.context.project.metadata.name,
 namespaceUid: t.context.project.metadata.uid,
+<<<<<<< HEAD
 <<<<<<< HEAD
 podname: b,
 containername: t.options.container,
@@ -22563,18 +23057,22 @@ f = $(e);
 j(), k();
 =======
 podname: C,
+=======
+podname: v,
+>>>>>>> Patternfly vertical navigation and project bar
 containername: t.options.container,
 backlink: URI.encode(n.location.href)
 }))
 });
 }));
 }), this.cacheScrollableNode = function(e) {
-u = e, g = $(u);
+u = e;
 }, this.cacheLogNode = function(e) {
 l = e;
 }, this.cacheAffixable = function(e) {
-v = $(e);
+p = $(e);
 }, this.start = function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 w(), P(), T();
@@ -22585,12 +23083,16 @@ w(), P(), E();
 =======
 w(), R(), E();
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+w(), k();
+>>>>>>> Patternfly vertical navigation and project bar
 }, angular.extend(t, {
 ready: !0,
 loading: !0,
 autoScrollActive: !0,
 state: !1,
 onScrollBottom: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 d.scrollBottom(u);
 },
@@ -22601,11 +23103,15 @@ toggleAutoScroll: function() {
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && D();
 =======
 d.scrollBottom(h);
+=======
+d.scrollBottom(u);
+>>>>>>> Patternfly vertical navigation and project bar
 },
 onScrollTop: function() {
-t.autoScrollActive = !1, d.scrollTop(h), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
+t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
 },
 toggleAutoScroll: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22620,10 +23126,14 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && A();
 =======
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && B();
 >>>>>>> Add bindings list to resource pages
+=======
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && I();
+>>>>>>> Patternfly vertical navigation and project bar
 },
 goChromeless: d.chromelessLink,
-restartLogs: x
+restartLogs: B
 }), t.$on("$destroy", function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22661,11 +23171,16 @@ O(), p.off("resize", D), p.off("scroll", P), g.off("scroll", P);
 }), "deploymentconfigs/logs" === b && !C) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 t.$watchGroup([ "name", "options.container", "run" ], x);
 >>>>>>> Adjust events to show in the drawer
+=======
+A(), m.off("resize", E), m.off("scroll", S), u && $(u).off("scroll", S);
+}), "deploymentconfigs/logs" === h && !v) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
+t.$watchGroup([ "name", "options.container", "run" ], B);
+>>>>>>> Patternfly vertical navigation and project bar
 } ],
 require: "logViewer",
 link: function(e, n, a, r) {
 t(function() {
-r.cacheScrollableNode(document.getElementById(e.fixedHeight ? e.logViewerID + "-fixed-scrollable" : "container-main")), r.cacheLogNode(document.getElementById(e.logViewerID + "-logContent")), r.cacheAffixable(document.getElementById(e.logViewerID + "-affixedFollow")), r.start();
+e.fixedHeight && r.cacheScrollableNode(document.getElementById(e.logViewerID + "-fixed-scrollable")), r.cacheLogNode(document.getElementById(e.logViewerID + "-logContent")), r.cacheAffixable(document.getElementById(e.logViewerID + "-affixedFollow")), r.start();
 }, 0);
 var o = function() {
 var t = $(n).find(".log-line-text").text(), a = _.get(e, "object.metadata.name", "openshift") + ".log", r = new Blob([ t ], {
@@ -23141,7 +23656,7 @@ e.showQuotaWarning = _.some(t, a) || _.some(n, a);
 });
 var p = function() {
 return e.deploymentConfig || e.deployment || e.rc;
-}, g = function() {
+}, f = function() {
 if (s = !1, angular.isNumber(e.desiredReplicas)) {
 var a = p();
 return r.scale(a, e.desiredReplicas).then(_.noop, function(e) {
@@ -23154,13 +23669,13 @@ details: t("getErrorDetails")(e)
 }), n.reject(e);
 });
 }
-}, f = _.debounce(g, 650);
+}, g = _.debounce(f, 650);
 e.viewPodsForDeployment = function(t) {
 _.isEmpty(e.pods) || c.toPodsForDeployment(t, e.pods);
 }, e.scaleUp = function() {
-e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), e.desiredReplicas++, f(), s = !0);
+e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), e.desiredReplicas++, g(), s = !0);
 }, e.scaleDown = function() {
-e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), 0 !== e.desiredReplicas && (1 !== e.desiredReplicas ? (e.desiredReplicas--, f()) : a.open({
+e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), 0 !== e.desiredReplicas && (1 !== e.desiredReplicas ? (e.desiredReplicas--, g()) : a.open({
 animation: !0,
 templateUrl: "views/modals/confirmScale.html",
 controller: "ConfirmScaleController",
@@ -23173,7 +23688,7 @@ return d(e.rc) ? "deployment" : "replication controller";
 }
 }
 }).result.then(function() {
-e.desiredReplicas = e.getDesiredReplicas() - 1, f(), s = !0;
+e.desiredReplicas = e.getDesiredReplicas() - 1, g(), s = !0;
 })));
 }, e.getDesiredReplicas = function() {
 return angular.isDefined(e.desiredReplicas) && null !== e.desiredReplicas ? e.desiredReplicas : e.rc && e.rc.spec && angular.isDefined(e.rc.spec.replicas) ? e.rc.spec.replicas : 1;
@@ -23182,7 +23697,7 @@ return !_.get(e.rc, "spec.replicas") && !!(e.deploymentConfig ? t("annotation")(
 }, function(t) {
 e.isIdled = !!t;
 }), e.unIdle = function() {
-e.desiredReplicas = t("unidleTargetReplicas")(e.deploymentConfig || e.rc, e.hpa), g().then(function() {
+e.desiredReplicas = t("unidleTargetReplicas")(e.deploymentConfig || e.rc, e.hpa), f().then(function() {
 e.isIdled = !1;
 });
 };
@@ -23419,14 +23934,14 @@ var t = e("isIncompleteBuild");
 angular.forEach(o.builds, function(e) {
 t(e) || o.completeBuilds.push(e);
 });
-}, g = !1, f = function() {
-u && g ? l.ygrids([ {
+}, f = !1, g = function() {
+u && f ? l.ygrids([ {
 value: u,
 class: "build-trends-avg-line"
 } ]) : l.ygrids.remove();
 };
 o.toggleAvgLine = function() {
-g = !g, f();
+f = !f, g();
 };
 o.$watch(function() {
 return p(), o.completeBuilds.length;
@@ -23493,19 +24008,24 @@ var n = {};
 angular.forEach(i.json, function(e) {
 n[e.phase] = !0;
 }), t ? (u = e / t, o.averageDurationText = c(u)) : (u = null, o.averageDurationText = null);
-var p = [], g = [];
+var p = [], f = [];
 angular.forEach(s, function(e) {
-n[e] ? p.push(e) : g.push(e);
-}), i.keys.value = p, i.groups = [ p ], l ? (i.unload = g, i.done = function() {
+n[e] ? p.push(e) : f.push(e);
+}), i.keys.value = p, i.groups = [ p ], l ? (i.unload = f, i.done = function() {
 setTimeout(function() {
 l.flush();
 }, d() + 25);
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, l.load(i), f()) : (m.data = angular.extend(i, m.data), r(function() {
 =======
 }, l.load(i), f()) : (m.data = angular.extend(i, m.data), a(function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 l = c3.generate(m), f();
+=======
+}, l.load(i), g()) : (m.data = angular.extend(i, m.data), a(function() {
+l = c3.generate(m), g();
+>>>>>>> Patternfly vertical navigation and project bar
 }));
 }), o.$on("destroy", function() {
 l && (l = l.destroy());
@@ -24071,9 +24591,9 @@ _.each(d.serviceInstances, function(n) {
 var a = "True" === _.get(m(n, "Ready"), "status");
 a && (!e || n.metadata.creationTimestamp > e.metadata.creationTimestamp) && (e = n), a || t && !(n.metadata.creationTimestamp > t.metadata.creationTimestamp) || (t = n);
 }), d.serviceToBind = e || t;
-}, g = function() {
-d.serviceClasses && d.serviceInstances && (d.serviceInstances = a.filterBindableServiceInstances(d.serviceInstances, d.serviceClasses), d.orderedServiceInstances = a.sortServiceInstances(d.serviceInstances, d.serviceClasses), d.serviceToBind || p());
 }, f = function() {
+d.serviceClasses && d.serviceInstances && (d.serviceInstances = a.filterBindableServiceInstances(d.serviceInstances, d.serviceClasses), d.orderedServiceInstances = a.sortServiceInstances(d.serviceInstances, d.serviceClasses), d.serviceToBind || p());
+}, g = function() {
 if (i && s && c && l && u) {
 var e = [].concat(i).concat(s).concat(c).concat(l).concat(u);
 d.applications = _.sortBy(e, [ "metadata.name", "kind" ]), d.bindType = d.applications.length ? "application" : "secret-only";
@@ -24089,24 +24609,24 @@ var e = {
 namespace: _.get(d.target, "metadata.namespace")
 };
 n.list("deploymentconfigs", e).then(function(e) {
-i = _.toArray(e.by("metadata.name")), f();
+i = _.toArray(e.by("metadata.name")), g();
 }), n.list("replicationcontrollers", e).then(function(e) {
-c = _.reject(e.by("metadata.name"), t("hasDeploymentConfig")), f();
+c = _.reject(e.by("metadata.name"), t("hasDeploymentConfig")), g();
 }), n.list({
 group: "apps",
 resource: "deployments"
 }, e).then(function(e) {
-s = _.toArray(e.by("metadata.name")), f();
+s = _.toArray(e.by("metadata.name")), g();
 }), n.list({
 group: "extensions",
 resource: "replicasets"
 }, e).then(function(e) {
-l = _.reject(e.by("metadata.name"), t("hasDeployment")), f();
+l = _.reject(e.by("metadata.name"), t("hasDeployment")), g();
 }), n.list({
 group: "apps",
 resource: "statefulsets"
 }, e).then(function(e) {
-u = _.toArray(e.by("metadata.name")), f();
+u = _.toArray(e.by("metadata.name")), g();
 });
 }, b = function() {
 var e = {
@@ -24116,7 +24636,7 @@ n.list({
 group: "servicecatalog.k8s.io",
 resource: "instances"
 }, e).then(function(e) {
-d.serviceInstances = e.by("metadata.name"), g();
+d.serviceInstances = e.by("metadata.name"), f();
 });
 };
 d.$onInit = function() {
@@ -24136,7 +24656,7 @@ onShow: v
 group: "servicecatalog.k8s.io",
 resource: "serviceclasses"
 }, {}).then(function(e) {
-d.serviceClasses = e.by("metadata.name"), "Instance" === d.target.kind && (d.serviceClass = d.serviceClasses[d.target.spec.serviceClassName], d.serviceClassName = d.target.spec.serviceClassName), g();
+d.serviceClasses = e.by("metadata.name"), "Instance" === d.target.kind && (d.serviceClass = d.serviceClasses[d.target.spec.serviceClassName], d.serviceClassName = d.target.spec.serviceClassName), f();
 }), "Instance" === d.target.kind ? (d.bindType = "secret-only", d.appToBind = null, d.serviceToBind = d.target, y()) : (d.bindType = "application", d.appToBind = d.target, b());
 }, d.$onChanges = function(e) {
 e.project && !e.project.isFirstChange() && (d.projectDisplayName = t("displayName")(d.project));
@@ -24305,6 +24825,7 @@ i ? ((o = a[i[1]] || {}).title = e.annotations[r], a[i[1]] = o) : (i = r.match(n
 return a;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 function p() {
 f.prefillParameters && _.each(f.template.parameters, function(e) {
 f.prefillParameters[e.name] && (e.value = f.prefillParameters[e.name]);
@@ -24316,6 +24837,9 @@ f.prefillParameters[e.name] && (e.value = f.prefillParameters[e.name]);
 >>>>>>> Let users edit app label directly for "add to project"
 =======
 function g() {
+=======
+function f() {
+>>>>>>> Patternfly vertical navigation and project bar
 h.prefillParameters && _.each(h.template.parameters, function(e) {
 h.prefillParameters[e.name] && (e.value = h.prefillParameters[e.name]);
 }), h.labels = _.map(h.template.labels, function(e, t) {
@@ -24370,9 +24894,9 @@ name: "app",
 value: h.template.metadata.name
 });
 }
-var f, h = this, v = e("displayName"), y = e("humanize");
+var g, h = this, v = e("displayName"), y = e("humanize");
 h.$onInit = function() {
-h.labels = [], h.template = angular.copy(h.template), h.templateDisplayName = v(h.template), h.selectedProject = h.project, g();
+h.labels = [], h.template = angular.copy(h.template), h.templateDisplayName = v(h.template), h.selectedProject = h.project, f();
 };
 var b, C = function() {
 var e = {
@@ -24382,7 +24906,7 @@ failure: "Failed to create " + h.templateDisplayName + " in project " + v(h.sele
 }, a = p(h.template);
 d.clear(), d.add(e, a, h.selectedProject.metadata.name, function() {
 var e = t.defer();
-return r.batch(b, f).then(function(t) {
+return r.batch(b, g).then(function(t) {
 var n = [], a = !1;
 t.failure.length > 0 ? (a = !0, t.failure.forEach(function(e) {
 n.push({
@@ -24516,10 +25040,10 @@ return c.create(n, a, r);
 };
 h.createFromTemplate = function() {
 h.disableInputs = !0, P().then(function(e) {
-h.selectedProject = e, f = {
+h.selectedProject = e, g = {
 namespace: h.selectedProject.metadata.name
-}, h.template.labels = m.mapEntries(m.compactEntries(h.labels)), r.create("processedtemplates", null, h.template, f).then(function(e) {
-s.setTemplateData(e.parameters, h.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, f).then(j);
+}, h.template.labels = m.mapEntries(m.compactEntries(h.labels)), r.create("processedtemplates", null, h.template, g).then(function(e) {
+s.setTemplateData(e.parameters, h.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(j);
 }, function(e) {
 h.disableInputs = !1;
 var t;
@@ -25267,11 +25791,11 @@ e && (r = Date.now(), a.getPodMetrics(e).then(d, m));
 o.updateInView = function(e) {
 i = !e, e && (!r || Date.now() > r + n.getDefaultUpdateInterval()) && p();
 };
-var g;
+var f;
 o.$onInit = function() {
-g = e(p, n.getDefaultUpdateInterval(), !1), p();
+f = e(p, n.getDefaultUpdateInterval(), !1), p();
 }, o.$onDestroy = function() {
-g && (e.cancel(g), g = null);
+f && (e.cancel(f), f = null);
 };
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 } ],
@@ -25296,7 +25820,7 @@ var m = _.throttle(function() {
 e.$evalAsync(function() {
 c.lines = _.clone(d);
 });
-}, 200), p = 0, g = function(e) {
+}, 200), p = 0, f = function(e) {
 if (e) {
 <<<<<<< HEAD
 var t = ansi_up.escape_for_html(e), n = ansi_up.ansi_to_html(t), r = a.linkify(n, "_blank", !0);
@@ -25310,7 +25834,7 @@ markup: a,
 id: p
 }), d.length > u && (d = _.takeRight(d, u)), m();
 }
-}, f = function() {
+}, g = function() {
 s && (s.stop(), s = null);
 <<<<<<< HEAD
 }, v = function() {
@@ -25322,10 +25846,14 @@ follow: !0,
 tailLines: u
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 (s = r.createStream(i, o, c.context, e)).start(), s.onMessage(g), s.onClose(function() {
 =======
 (s = a.createStream(i, o, c.context, e)).start(), s.onMessage(g), s.onClose(function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+(s = a.createStream(i, o, c.context, e)).start(), s.onMessage(f), s.onClose(function() {
+>>>>>>> Patternfly vertical navigation and project bar
 s = null;
 });
 };
@@ -25336,7 +25864,7 @@ c.$onInit = function() {
 "ReplicationController" === c.apiObject.kind ? (i = "deploymentconfigs/log", o = l(c.apiObject, "deploymentConfig")) : (i = n.kindToResource(c.apiObject.kind) + "/log", o = c.apiObject.metadata.name), h();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }, c.$onDestroy = function() {
-f();
+g();
 };
 } ],
 bindings: {
@@ -25483,16 +26011,20 @@ var l = e("canI"), u = e("deploymentIsInProgress"), d = e("isBinaryBuild"), m = 
 controller: [ "$filter", "$uibModal", "APIService", "BuildsService", "CatalogService", "DeploymentsService", "ListRowUtils", "Navigate", "NotificationsService", function(e, t, n, a, r, o, i, s, c) {
 var l = this;
 _.extend(l, i.ui);
+<<<<<<< HEAD
 var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature"), g = function(e) {
 >>>>>>> Add bindings list to resource pages
+=======
+var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature"), f = function(e) {
+>>>>>>> Patternfly vertical navigation and project bar
 var t = _.get(e, "spec.triggers");
 _.isEmpty(t) || (l.imageChangeTriggers = _.filter(t, function(e) {
 return "ImageChange" === e.type && _.get(e, "imageChangeParams.automatic");
 }));
-}, f = function(e) {
+}, g = function(e) {
 e && !l.current && "DeploymentConfig" !== e.kind && "Deployment" !== e.kind && (l.current = e);
 }, h = function(e) {
-l.rgv = n.objectToResourceGroupVersion(e), f(e), g(e);
+l.rgv = n.objectToResourceGroupVersion(e), g(e), f(e);
 };
 l.$onChanges = function(e) {
 e.apiObject && h(e.apiObject.currentValue);
@@ -25977,12 +26509,19 @@ labels: e
 n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
 name: "app",
 value: ""
+<<<<<<< HEAD
 } ], n.$on("no-projects-cannot-create", function() {
 n.noProjectsCantCreate = !0;
 });
 var p = e("orderByDisplayName"), S = e("getErrorDetails"), C = {}, w = function() {
 l.hideNotification("deploy-image-list-config-maps-error"), l.hideNotification("deploy-image-list-secrets-error"), _.each(C, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || l.hideNotification(e.id);
+=======
+} ];
+var f = e("orderByDisplayName"), g = e("getErrorDetails"), h = {}, v = function() {
+c.hideNotification("deploy-image-list-config-maps-error"), c.hideNotification("deploy-image-list-secrets-error"), _.each(h, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
+>>>>>>> Patternfly vertical navigation and project bar
 });
 };
 n.valueFromNamespace = {};
@@ -26043,27 +26582,45 @@ i.list(y, {
 namespace: n.input.selectedProject.metadata.name
 }, null, {
 errorNotification: !1
+<<<<<<< HEAD
 }).then(function(a) {
 t = p(a.by("metadata.name")), n.valueFromNamespace[e.metadata.name] = t.concat(r);
+=======
+}).then(function(r) {
+t = f(r.by("metadata.name")), n.valueFromNamespace[e.metadata.name] = t.concat(a);
+>>>>>>> Patternfly vertical navigation and project bar
 }, function(e) {
 403 !== e.code && l.addNotification({
 id: "deploy-image-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
+<<<<<<< HEAD
 details: S(e)
+=======
+details: g(e)
+>>>>>>> Patternfly vertical navigation and project bar
 });
 }), i.list(b, {
 namespace: n.input.selectedProject.metadata.name
 }, null, {
 errorNotification: !1
+<<<<<<< HEAD
 }).then(function(a) {
 r = p(a.by("metadata.name")), n.valueFromNamespace[e.metadata.name] = r.concat(t);
+=======
+}).then(function(r) {
+a = f(r.by("metadata.name")), n.valueFromNamespace[e.metadata.name] = a.concat(t);
+>>>>>>> Patternfly vertical navigation and project bar
 }, function(e) {
 403 !== e.code && l.addNotification({
 id: "deploy-image-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
+<<<<<<< HEAD
 details: S(e)
+=======
+details: g(e)
+>>>>>>> Patternfly vertical navigation and project bar
 });
 });
 }
@@ -26370,7 +26927,7 @@ c.addNotification({
 id: "deploy-image-create-project-error",
 type: "error",
 message: "An error occurred creating project",
-details: f(e)
+details: g(e)
 }), n.disableInputs = !1;
 });
 }, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", v);
@@ -27164,7 +27721,7 @@ bottom: n.offsetBottom
 } ]), function() {
 angular.module("openshiftConsole").component("editEnvironmentVariables", {
 controller: [ "$filter", "APIService", "DataService", "EnvironmentService", "NotificationsService", function(e, t, n, a, r) {
-var o, i, s, c, l = this, u = !1, d = [], m = [], p = !1, g = e("canI"), f = e("getErrorDetails"), h = e("humanizeKind"), v = e("orderByDisplayName"), y = function(e, t) {
+var o, i, s, c, l = this, u = !1, d = [], m = [], p = !1, f = e("canI"), g = e("getErrorDetails"), h = e("humanizeKind"), v = e("orderByDisplayName"), y = function(e, t) {
 u || (l.form && !l.form.$pristine && l.updatedObject ? a.isEnvironmentEqual(e, t) ? l.updatedObject = a.mergeEdits(e, t) : (u = !0, r.addNotification({
 type: "warning",
 message: "The environment variables for the " + o + " have been updated in the background.",
@@ -27177,7 +27734,7 @@ namespace: l.apiObject.metadata.namespace
 d = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
 });
 }, C = function() {
-g("secrets", "list") && n.list("secrets", {
+f("secrets", "list") && n.list("secrets", {
 namespace: l.apiObject.metadata.namespace
 }).then(function(e) {
 m = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
@@ -27185,7 +27742,7 @@ m = v(e.by("metadata.name")), l.valueFromObjects = d.concat(m);
 }, S = function() {
 p || (p = !0, b(), C());
 }, _ = function(e, n) {
-o = h(e.kind), i = e.metadata.name, s = t.objectToResourceGroupVersion(e), l.canIUpdate = g(s, "update"), c ? c.finally(function() {
+o = h(e.kind), i = e.metadata.name, s = t.objectToResourceGroupVersion(e), l.canIUpdate = f(s, "update"), c ? c.finally(function() {
 y(e, n);
 }) : y(e, n), l.containers = a.getContainers(l.updatedObject), l.disableValueFrom || l.ngReadonly || !l.canIUpdate || S();
 };
@@ -27205,7 +27762,7 @@ r.addNotification({
 id: e,
 type: "error",
 message: "An error occurred updating environment variables for " + o + " " + i + ".",
-details: f(t)
+details: g(t)
 });
 }).finally(function() {
 c = null;
@@ -27271,13 +27828,13 @@ n.$emit("NotificationDrawerWrapper.toggle");
 };
 var p = function(e, t) {
 r.showUnreadNotificationsIndicator = !!t;
-}, g = function(e, t) {
+}, f = function(e, t) {
 return _.get(e, "params.project") !== _.get(t, "params.project");
-}, f = function() {
+}, g = function() {
 l(t.project, p), m(t.project);
 }, h = function() {
-f(), s.push(n.$on("$routeChangeSuccess", function(e, t, n) {
-g(t, n) && f();
+g(), s.push(n.$on("$routeChangeSuccess", function(e, t, n) {
+f(t, n) && g();
 })), s.push(n.$on("NotificationDrawerWrapper.onMarkAllRead", function() {
 r.showUnreadNotificationsIndicator = !1;
 }));
@@ -27293,7 +27850,7 @@ u(), d();
 angular.module("openshiftConsole").component("notificationDrawerWrapper", {
 templateUrl: "views/directives/notifications/notification-drawer-wrapper.html",
 controller: [ "$filter", "$interval", "$location", "$timeout", "$routeParams", "$rootScope", "Constants", "DataService", "NotificationsService", "EventsService", function(e, t, n, a, r, o, i, s, c, l) {
-var u, d, m = _.get(i, "DISABLE_GLOBAL_EVENT_WATCH"), p = e("isIE")() || e("isEdge")(), g = this, f = [], h = {}, v = {}, y = [], b = {}, C = function(e) {
+var u, d, m = _.get(i, "DISABLE_GLOBAL_EVENT_WATCH"), p = e("isIE")() || e("isEdge")(), f = this, g = [], h = {}, v = {}, y = [], b = {}, C = function(e) {
 return s.get("projects", e, {}, {
 errorNotification: !1
 }).then(function(e) {
@@ -27342,14 +27899,14 @@ actions: null
 }));
 }), t;
 }, D = function() {
-_.each(f, function(e) {
+_.each(g, function(e) {
 e();
-}), f = [];
+}), g = [];
 }, $ = function(e) {
-e || (g.drawerHidden = !0);
+e || (f.drawerHidden = !0);
 }, A = function() {
 o.$evalAsync(function() {
-E(), g.notificationGroups = _.filter(y, function(e) {
+E(), f.notificationGroups = _.filter(y, function(e) {
 return e.project.metadata.name === r.project;
 });
 });
@@ -27359,7 +27916,7 @@ h = e.by("metadata.name"), v = N(h), y = I(v), A();
 Normal: "pficon pficon-info",
 Warning: "pficon pficon-warning-triangle-o"
 };
-angular.extend(g, {
+angular.extend(f, {
 drawerHidden: !0,
 allowExpand: !0,
 drawerExpanded: !1,
@@ -27368,7 +27925,7 @@ hasUnread: !1,
 showClearAll: !0,
 showMarkAllRead: !0,
 onClose: function() {
-g.drawerHidden = !0;
+f.drawerHidden = !0;
 },
 onMarkAllRead: function(e) {
 _.each(e.notifications, function(e) {
@@ -27397,7 +27954,7 @@ getStatusForCount: function(e) {
 return L[e] || L.info;
 },
 close: function() {
-g.drawerHidden = !0;
+f.drawerHidden = !0;
 }
 }
 });
@@ -27407,16 +27964,16 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 C(r.project).then(function() {
 k(r.project, B), $(r.project), A();
 });
-}, x = function() {
-r.project && O(), f.push(o.$on("$routeChangeSuccess", function(e, t, n) {
-U(t, n) && (g.customScope.projectName = r.project, O());
-})), f.push(o.$on("NotificationDrawerWrapper.toggle", function() {
-g.drawerHidden = !g.drawerHidden;
+}, F = function() {
+r.project && O(), g.push(o.$on("$routeChangeSuccess", function(e, t, n) {
+U(t, n) && (f.customScope.projectName = r.project, O());
+})), g.push(o.$on("NotificationDrawerWrapper.toggle", function() {
+f.drawerHidden = !f.drawerHidden;
 }));
 };
-g.$onInit = function() {
-m || p || x();
-}, g.$onDestroy = function() {
+f.$onInit = function() {
+m || p || F();
+}, f.$onDestroy = function() {
 j(), w(), D();
 };
 } ]
@@ -29331,10 +29888,7 @@ scrollTop: function(e) {
 e ? e.scrollTop = 0 : window.scrollTo(null, 0);
 },
 scrollBottom: function(e) {
-e ? e.scrollTop = e.scrollHeight : window.scrollTo(0, document.body.scrollHeight - document.body.clientHeight);
-},
-scrollTo: function(t, a) {
-a.preventDefault(), a.stopPropagation(), n.hash(t), e(t);
+e ? e.scrollTop = e.scrollHeight : window.scrollTo(0, document.documentElement.scrollHeight - document.documentElement.clientHeight);
 },
 chromelessLink: function(e, t) {
 if (t) a.open(t, "_blank"); else {
@@ -29501,12 +30055,17 @@ var n = [], a = t.APP_LAUNCHER_NAVIGATION;
 return _.each(a, function(e) {
 var t = {
 type: "dom",
+<<<<<<< HEAD
 node: [ "<li>", '<a href="' + _.escape(e.href) + '">', '<span class="' + _.escape(e.iconClass) + ' fa-fw" aria-hidden="true"></span> ' + _.escape(e.title), "</a>", "</li>" ].join("")
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+node: [ '<li class="list-group-item">', '<a href="' + _.escape(e.href) + '">', '<span class="' + _.escape(e.iconClass) + ' fa-fw" aria-hidden="true"></span> ', '<span class="list-group-item-value">' + _.escape(e.title) + "</span>", "</a>", "</li>" ].join("")
+>>>>>>> Patternfly vertical navigation and project bar
 };
 n.push(t);
 }), n = n.concat([ {
 type: "dom",
+<<<<<<< HEAD
 <<<<<<< HEAD
 node: [ '<li class="list-group-item">', '<a href="command-line">', '<span class="fa fa-terminal" aria-hidden="true"></span> <span class="list-group-item-value" translate>Command Line Tools</span>', "</a>", "</li>" ].join("")
 }, {
@@ -29517,16 +30076,23 @@ type: "dom",
 node: _.template([ '<li class="list-group-item">', '<a href="logout">', '<span class="pficon pficon-user fa-fw" aria-hidden="true"></span>', '<span class="list-group-item-value"><translate>Log out</translate> <span class="username"><%= userName %></span></span>', "</a>", "</li>" ].join(""))({
 =======
 node: [ "<li>", "<a href=\"{{'default' | helpLink}}\">", '<span class="fa fa-book fa-fw" aria-hidden="true"></span> Documentation', "</a>", "</li>" ].join("")
+=======
+node: [ '<li class="list-group-item">', "<a href=\"{{'default' | helpLink}}\">", '<span class="fa fa-book fa-fw" aria-hidden="true"></span> <span class="list-group-item-value">Documentation</span>', "</a>", "</li>" ].join("")
+>>>>>>> Patternfly vertical navigation and project bar
 }, {
 type: "dom",
-node: [ "<li>", '<a href="command-line">', '<span class="fa fa-terminal" aria-hidden="true"></span> Command Line Tools', "</a>", "</li>" ].join("")
+node: [ '<li class="list-group-item">', '<a href="command-line">', '<span class="fa fa-terminal" aria-hidden="true"></span> <span class="list-group-item-value">Command Line Tools</span>', "</a>", "</li>" ].join("")
 }, {
 type: "dom",
-node: [ "<li>", '<a href="about">', '<span class="pficon pficon-info fa-fw" aria-hidden="true"></span> About', "</a>", "</li>" ].join("")
+node: [ '<li class="list-group-item">', '<a href="about">', '<span class="pficon pficon-info fa-fw" aria-hidden="true"></span> <span class="list-group-item-value">About</span>', "</a>", "</li>" ].join("")
 }, {
 type: "dom",
+<<<<<<< HEAD
 node: _.template([ "<li>", '<a href="logout">', '<span class="pficon pficon-user fa-fw" aria-hidden="true"></span>', 'Log out <span class="username"><%= userName %></span>', "</a>", "</li>" ].join(""))({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+node: _.template([ '<li class="list-group-item">', '<a href="logout">', '<span class="pficon pficon-user fa-fw" aria-hidden="true"></span>', '<span class="list-group-item-value">Log out <span class="username"><%= userName %></span></span>', "</a>", "</li>" ].join(""))({
+>>>>>>> Patternfly vertical navigation and project bar
 userName: e ? e.fullName || e.metadata.name : ""
 })
 } ]);

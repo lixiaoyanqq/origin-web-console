@@ -172,6 +172,7 @@
                       <span ng-if="(quota.status.hard[resourceType] || quota.spec.hard[resourceType]) === '0'"
                             data-toggle="tooltip"
 			    title="{{'You are not allowed to create resources of this type.'|translate}}"
+
                             class="pficon pficon-info warnings-popover"></span>
                     </td>
                     <td>
@@ -206,6 +207,7 @@
                       <span class="nowrap">
 			      <translate>Min</translate>
 			      <i class="small pficon pficon-help" data-toggle="tooltip" title="{{'The minimum amount of this compute resource that can be requested.'|translate}}"></i>
+
                       </span>
                     </th>
                     <th>

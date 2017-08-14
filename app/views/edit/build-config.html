@@ -48,7 +48,10 @@
                           <div class="has-warning" ng-if="updatedBuildConfig.spec.source.git.uri && form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri)">
                             <span class="help-block">This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository.</span>
                           </div>
+                          <div class="help-block" id="source-ref-help">Optional branch, tag, or commit.</div>
                         </div>
+                      </div>
+                    </div>
 
                       </div>
                       <div class="col-lg-4" ng-if="view.advancedOptions">
@@ -70,6 +73,25 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="form-group" ng-if="strategyType === 'Docker' && view.advancedOptions">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" ng-model="options.noCache">
+                        Execute docker build without reusing cached instructions.
+                        <span class="help action-inline">
+                          <a href="">
+                            <i class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="Will run the docker build with '--no-cache=true' flag">
+                            </i>
+                          </a>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-groups" ng-show="sources.images">
+                    <div class="single-image-source" ng-if="sourceImages.length === 1">
 
                     <div ng-if="view.advancedOptions">
                       <div class="form-group">
@@ -177,6 +199,22 @@
                         </div>
                       </div>
 
+                <div ng-if="jenkinsfileOptions.type === 'path'" class="form-group">
+                  <label for="jenkinsfilePath">Jenkinsfile Source Path</label>
+                  <input class="form-control"
+                         id="jenkinsfilePath"
+                         name="jenkinsfilePath"
+                         type="text"
+                         ng-model="updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath"
+                         autocorrect="off"
+                         autocapitalize="none"
+                         spellcheck="false"
+                         aria-describedby="jenkinsfile-path-help">
+                  <div class="help-block" id="jenkinsfile-path-help">
+                    Optional path to the Jenkinsfile relative to the context dir.
+                    Defaults to the Jenkinsfile in context dir.
+                  </div>
+                </div>
 
                       <div ng-if="imageOptions.fromSource.type==='DockerImage'" class="form-group">
                         <label for="imageSourceLink">Docker Image Repository</label>
@@ -624,4 +662,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
