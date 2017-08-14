@@ -16,7 +16,7 @@
 }
 
 .navbar-pf-vertical {
-  background-color: @navbar-pf-bg-color;
+  background-color: @navbar-os-bg-color;
   border-bottom: 1px solid @project-bar-border-color;
   border-top: none;
   min-height: 0;
@@ -36,6 +36,9 @@
     vertical-align: middle;
     width: 0;
   }
+  .layout-pf-fixed .tech-preview & {
+    top: @tech-preview-banner-height;
+  }
   .navbar-brand {
     padding: 0;
     @media(min-width: @screen-sm-min) {
@@ -53,14 +56,13 @@
     @media(min-width: @screen-sm-min) {
       margin-right: @navbar-header-right-margin;
     }
-    // adjust positioning of notification drawer badge as our header
-    // heights are different, as is the bell icon size
     .badge {
-      left: 14px !important;
-      top: 7px !important;
+      margin: 0 !important;
+      position: absolute;
+      top: 9px;
+      right: 13px;
       @media(min-width: @screen-sm-min) {
-        left: 21px !important;
-        top: 18px !important;
+        top: 20px;
       }
     }
 

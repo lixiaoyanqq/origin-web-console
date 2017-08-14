@@ -26,5 +26,8 @@
   .catalog-search,
   .landing-side-bar {
     top: @navbar-os-header-height-desktop;
+    .tech-preview & {
+      top: @navbar-os-header-height-desktop + @tech-preview-banner-height;
+    }
   }
 }

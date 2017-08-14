@@ -45,6 +45,19 @@ angular.module("openshiftConsole")
 
     $scope.displayName = $routeParams.displayName;
     $scope.advancedOptions = $routeParams.advanced === 'true';
+    $scope.breadcrumbs = [
+      {
+        title: "Add to Project",
+        link: "project/" + $scope.projectName + "/create"
+      },
+      {
+        title: "Catalog",
+        link: "project/" + $scope.projectName + "/create?tab=fromCatalog"
+      },
+      {
+        title: breadcrumbTitle
+      }
+    ];
 
     var appLabel = {name: 'app', value: ''};
 

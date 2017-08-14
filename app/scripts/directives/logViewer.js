@@ -28,9 +28,7 @@ angular.module('openshiftConsole')
              DataService,
              HTMLService,
              ModalsService,
-             logLinks,
-             gettext,
-             gettextCatalog) {
+             logLinks) {
       // cache the jQuery win, but not clobber angular's $window
       var $win = $(window);
 

@@ -36,7 +36,7 @@
                           route="route"
                           services="services">
           </route-warnings>
-          <small class="meta"><translate>created</translate> <span am-time-ago="route.metadata.creationTimestamp"></span></small>
+          <small class="meta"><translate>created</translate><span am-time-ago="route.metadata.creationTimestamp"></span></small>
         </h1>
         <labels labels="route.metadata.labels" clickable="true" kind="routes" project-name="{{route.metadata.namespace}}" limit="3"></labels>
       </div>
@@ -82,7 +82,11 @@
               <div ng-if="showRouterHostnameAlert(ingress, admittedCondition)" class="mar-top-lg">
                 <div class="alert alert-info">
                   <span class="pficon pficon-info" aria-hidden="true"></span>
-                  <translate>The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}}, to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.</translate>
+                  <span class="mar-right-sm">
+			  <translate>The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}},
+			  to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.</translate>
+                  </span>
+                  <a href="" ng-click="hideRouterHostnameAlert(ingress)" role="button" class="nowrap" translate>Don't Show Me Again</a>
                 </div>
               </div>
             </div>
@@ -91,10 +95,10 @@
             <dl class="dl-horizontal left">
               <dt ng-if-start="route.spec.wildcardPolicy && route.spec.wildcardPolicy !== 'None' && route.spec.wildcardPolicy !== 'Subdomain'" translate>Wildcard Policy:</dt>
               <dd ng-if-end>{{route.spec.wildcardPolicy}}</dd>
-              <dt translate>Path:</dt>
+              <dt>Path:</dt>
               <dd>
                 <span ng-if="route.spec.path">{{route.spec.path}}</span>
-                <span ng-if="!route.spec.path"><em translate>none</em></span>
+                <span ng-if="!route.spec.path"><em>none</em></span>
               </dd>
               <dt>{{route.spec.to.kind || "Routes To"}}:</dt>
               <dd>
@@ -105,9 +109,9 @@
                 <span ng-if="route.spec.port.targetPort">
                   {{route.spec.port.targetPort}}
                 </span>
-                <span ng-if="!route.spec.port.targetPort"><em translate>any</em></span>
+                <span ng-if="!route.spec.port.targetPort"><em>any</em></span>
               </dd>
-              <div ng-if="route.spec.port.targetPort && route.spec.to.kind === 'Service' && (route | routeTargetPortMapping : services[route.spec.to.name])" class="help-block" translate>
+              <div ng-if="route.spec.port.targetPort && route.spec.to.kind === 'Service' && (route | routeTargetPortMapping : services[route.spec.to.name])" class="help-block">
                 This target port will route to {{route | routeTargetPortMapping : services[route.spec.to.name]}}.
               </div>
             </dl>
@@ -125,8 +129,8 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th translate>Service</th>
-                      <th translate>Weight</th>
+                      <th>Service</th>
+                      <th>Weight</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -167,39 +171,15 @@
                 <div ng-if="reveal.certificate">
                   <pre class="clipped">{{route.spec.tls.certificate}}</pre>
                 </div>
-                <div ng-repeat="ingress in route.status.ingress" ng-init="admittedCondition = (ingress | routeIngressCondition : 'Admitted')" class="route-status">
-                  <div class="h3">
-                    <span ng-if="(route | isWebRoute)">
-                      <a ng-href="{{route | routeWebURL : ingress.host}}" target="_blank">
-                        {{route | routeLabel : ingress.host : true}}
-                        <i class="fa fa-external-link" aria-hidden="true"></i>
-                      </a>
-                    </span>
-                    <span ng-if="!(route | isWebRoute)">
-                      {{route | routeLabel : ingress.host}}
-                    </span>
-                  </div>
-                  <div class="meta">
-                    <span ng-if="!admittedCondition">Admission status unknown for router '{{ingress.routerName}}'</span>
-                    <span ng-if="admittedCondition.status === 'True'">
-                      <status-icon status="'Succeeded'"></status-icon>
-                      Exposed on router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
-                    </span>
-                    <span ng-if="admittedCondition.status === 'False'">
-                      <status-icon status="'Error'"></status-icon>
-                      Rejected by router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
-                    </span>
-                  </div>
-                  <div ng-if="showRouterHostnameAlert(ingress, admittedCondition)" class="mar-top-lg">
-                    <div class="alert alert-info">
-                      <span class="pficon pficon-info" aria-hidden="true"></span>
-                      <span class="mar-right-sm">
-                        The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}},
-                        to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.
-                      </span>
-                      <a href="" ng-click="hideRouterHostnameAlert(ingress)" role="button" class="nowrap" translate>Don't Show Me Again</a>
-                    </div>
-                  </div>
+                <dt translate>Key:</dt>
+                <dd>
+                  <span ng-if="route.spec.tls.key && !reveal.key">
+                    <a href="" ng-click="reveal.key = true" translate>Show</a>
+                  </span>
+                  <span ng-if="!route.spec.tls.key"><em translate>none</em></span>
+                </dd>
+                <div ng-if="reveal.key">
+                  <pre class="clipped">{{route.spec.tls.key}}</pre>
                 </div>
                 <dt translate>CA Certificate:</dt>
                 <dd>
@@ -214,7 +194,7 @@
                 <dt translate>Destination CA Cert:</dt>
                 <dd>
                   <span ng-show="route.spec.tls.destinationCACertificate && !reveal.destinationCACertificate">
-                    <a href="" ng-click="reveal.destinationCACertificate = true" translate>Show</a>
+                    <a href="" ng-click="reveal.destinationCACertificate = true" transalte>Show</a>
                   </span>
                   <span ng-if="!route.spec.tls.destinationCACertificate"><em translate>none</em></span>
                 </dd>
@@ -225,7 +205,7 @@
               <p ng-if="!route.spec.tls">
                 <translate>TLS is not enabled.</translate>
                 <span ng-if="'routes' | canI : 'update'" translate>
-                  <a ng-href="{{route | editResourceURL}}" role="button">Edit</a> this route to enable secure network traffic.
+                  <a ng-href="{{route | editResourceURL}}" role="button" translate>Edit</a> this route to enable secure network traffic.
                 </span>
               </p>
             </div>

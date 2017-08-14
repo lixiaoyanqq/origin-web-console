@@ -487,14 +487,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/_sidebar.html',
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<div class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
+=======
+    "<div ng-if=\"view.hasProject\" class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "    collapsed: nav.collapsed && !isMobile,\n" +
     "    'hide-mobile-nav': !nav.showMobileNav && isMobile,\n" +
     "    'hover-secondary-nav-pf': sidebar.secondaryOpen && !isMobile,\n" +
     "    'show-mobile-nav': nav.showMobileNav && isMobile,\n" +
     "    'show-mobile-secondary': nav.showMobileNav && sidebar.showMobileSecondary && isMobile\n" +
     "  }\" on-esc=\"closeNav()\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<nav ng-if=\"view.hasProject\" class=\"nav-vertical-primary\">\n" +
+=======
+    "<nav class=\"nav-vertical-primary\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<ul class=\"list-group\">\n" +
     "\n" +
     "<li ng-repeat=\"primaryItem in navItems\" ng-class=\"{\n" +
@@ -503,6 +511,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "          'secondary-nav-item-pf': primaryItem.secondaryNavSections.length\n" +
     "        }\" ng-if=\"show(primaryItem)\" ng-mouseenter=\"onMouseEnter(primaryItem)\" ng-mouseleave=\"onMouseLeave(primaryItem)\" class=\"list-group-item\">\n" +
     "<a ng-if=\"primaryItem.href\" ng-href=\"{{navURL(primaryItem.href)}}\" ng-click=\"itemClicked(primaryItem)\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<span title=\"{{primaryItem.label}}\" class=\"{{primaryItem.iconClass}}\" aria-hidden=\"true\"></span> <span class=\"list-group-item-value\">{{primaryItem.label}}</span> <span ng-if=\"nav.collapsed && !isMobile\" class=\"sr-only\">{{primaryItem.label}}</span>\n" +
     "</a>\n" +
     "<a ng-if=\"!primaryItem.href\" href=\"\" ng-click=\"itemClicked(primaryItem)\">\n" +
@@ -523,6 +532,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"nav-pf-secondary-nav\">\n" +
     "<div class=\"nav-item-pf-header\">\n" +
     "<a href=\"\" class=\"secondary-collapse-toggle-pf\" ng-click=\"collapseMobileSecondary(primaryItem, $event)\" role=\"button\"><span class=\"sr-only\" translate>Back</span></a>\n" +
+=======
+    "<span class=\"{{primaryItem.iconClass}}\"></span> <span class=\"list-group-item-value\">{{primaryItem.label}}</span>\n" +
+    "</a>\n" +
+    "<a ng-if=\"!primaryItem.href\" href=\"\" ng-click=\"itemClicked(primaryItem)\">\n" +
+    "<span class=\"{{primaryItem.iconClass}}\"></span> <span class=\"list-group-item-value\">{{primaryItem.label}}</span>\n" +
+    "</a>\n" +
+    "\n" +
+    "<div ng-if=\"primaryItem.secondaryNavSections.length\" class=\"secondary-nav-item-pf\" ng-class=\"{\n" +
+    "            'mobile-nav-item-pf': primaryItem.mobileSecondary && isMobile\n" +
+    "          }\">\n" +
+    "<div class=\"nav-pf-secondary-nav\">\n" +
+    "<div class=\"nav-item-pf-header\">\n" +
+    "<a href=\"\" class=\"secondary-collapse-toggle-pf\" ng-click=\"collapseMobileSecondary(primaryItem, $event)\" role=\"button\"><span class=\"sr-only\">Back</span></a>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<span>{{primaryItem.label}}</span>\n" +
     "</div>\n" +
     "<ul class=\"list-group\">\n" +
@@ -832,10 +855,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>You are currently logged in under the user account <strong>{{user.metadata.name}}</strong>.</p>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "</div> \n" +
     "</div>"
   );
@@ -2394,6 +2420,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
+=======
+    "</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
@@ -4005,21 +4035,29 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "</div>\n" +
     "<overlay-panel class=\"add-config-to-application\" show-panel=\"addToApplicationVisible\" show-close=\"true\" handle-close=\"closeAddToApplication\">\n" +
     "<add-config-to-application project=\"project\" api-object=\"secret\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-config-to-application>\n" +
     "</overlay-panel>\n" +
     "</div>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
 
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
   $templateCache.put('views/browse/service-instance.html',
     "<project-header class=\"top-header\"></project-header>\n" +
     "<project-page>\n" +
     "\n" +
     "<div class=\"middle-section\">\n" +
     "<div class=\"middle-container\">\n" +
+=======
+  $templateCache.put('views/browse/service.html',
+    "<div class=\"middle\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -4946,9 +4984,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</p>\n" +
     "<p>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<translate>After downloading and installing it, you can start by logging in. You are currently logged into this console as <strong>{{user.metadata.name}}</strong>. If you want to log into the CLI using the same session token:</translate>\n" +
     "<copy-to-clipboard ng-if=\"sessionToken\" display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL + ' --token=' + sessionToken\" input-text=\"'oc login ' + loginBaseURL + ' --token=<hidden>'\"></copy-to-clipboard>\n" +
     "<copy-to-clipboard ng-if=\"!sessionToken\" display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL\"></copy-to-clipboard>\n" +
+=======
+    "After downloading and installing it, you can start by logging in. You are currently logged into this console as <strong>{{user.metadata.name}}</strong>. If you want to log into the CLI using the same session token:\n" +
+    "<copy-to-clipboard display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL + ' --token=' + sessionToken\" input-text=\"'oc login ' + loginBaseURL + ' --token=<hidden>'\"></copy-to-clipboard>\n" +
+    "<pre class=\"code prettyprint ng-binding\" ng-if=\"!sessionToken\">\n" +
+    "                oc login {{loginBaseURL}}\n" +
+    "              </pre>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</p>\n" +
     "<div ng-if=\"sessionToken\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
@@ -4965,9 +5011,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<copy-to-clipboard display-wide=\"true\" clipboard-text=\"'oc status'\"></copy-to-clipboard>\n" +
     "</p>\n" +
     "<p translate>For other information about the command line tools, check the <a target=\"_blank\" href=\"{{'cli' | helpLink}}\">CLI Reference</a> and <a target=\"_blank\" href=\"{{'basic_cli_operations' | helpLink}}\">Basic CLI Operations</a>.</p>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>"
@@ -5167,7 +5210,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-10\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<div ng-if=\"!project\" class=\"mar-top-md\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!project\" class=\"mar-top-md\">Loading...</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-if=\"project\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
@@ -5192,7 +5239,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"add-to-project middle surface-shaded\">\n" +
     "<div class=\"middle-content\" persist-tab-state>\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<alerts alerts=\"alerts\" class=\"mar-top-md\"></alerts>\n" +
+=======
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<alerts alerts=\"alerts\"></alerts>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<uib-tabset class=\"mar-top-md\" ng-if=\"project\">\n" +
@@ -5229,8 +5281,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<h1>{{category.label|translate}}</h1>\n" +
     "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description|translate}}</div>\n" +
+=======
+    "<h1>{{category.label}}</h1>\n" +
+    "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description}}</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "\n" +
     "<div ng-if=\"category.subcategories\">\n" +
     "<catalog project-name=\"projectName\" project-image-streams=\"projectImageStreams\" openshift-image-streams=\"openshiftImageStreams\" project-templates=\"projectTemplates\" openshift-templates=\"openshiftTemplates\" category=\"category\">\n" +
@@ -5357,7 +5414,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</osc-routing>\n" +
     "</osc-form-section>\n" +
     "\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<osc-form-section header=\"{{'Build Configuration'|translate}}\" about-title=\"{{'Build Configuration'|translate}}\" about=\"{{'A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds.'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
+=======
+    "<osc-form-section header=\"Build Configuration\" about-title=\"Build Configuration\" about=\"A build configuration describes how to build your deployable image.  This includes\n" +
+    "                            your source, the base builder image, and when to launch new builds.\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"buildConfig.buildOnSourceChange\"/>\n" +
@@ -5394,7 +5456,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<key-value-editor entries=\"buildConfigEnvVars\" key-placeholder=\"name\" value-placeholder=\"value\" key-validator=\"[a-zA-Z_][a-zA-Z0-9_]*\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"{{'Add Environment Variable'|translate}}\"></key-value-editor>\n" +
     "</osc-form-section>\n" +
     "\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<osc-form-section header=\"{{'Deployment Configuration'|translate}}\" about-title=\"{{'Deployment Configuration'|translate}}\" about=\"{{'Deployment configurations describe how your application is configured by the cluster and under what conditions it should be recreated (e.g. when the image changes).'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
+=======
+    "<osc-form-section header=\"Deployment Configuration\" about-title=\"Deployment Configuration\" about=\"Deployment configurations describe how your application is configured\n" +
+    "                            by the cluster and under what conditions it should be recreated (e.g. when the image changes).\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"animate-drawer\" ng-show=\"$parent.expand\">\n" +
     "<h3 translate>Autodeploy when</h3>\n" +
     "<div class=\"checkbox\">\n" +
@@ -5528,8 +5595,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/create/next-steps.html',
     "<div class=\"middle surface-shaded\">\n" +
     "<div class=\"middle-content\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<div class=\"container-fluid next-steps pad-top-xl\">\n" +
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\" name=\"name\"></next-steps>\n" +
+=======
+    "<div class=\"container-fluid next-steps\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\"></next-steps>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
     "</div>\n" +
     "</div>"
@@ -5761,7 +5834,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "</div>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
@@ -7932,14 +8008,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/header/_navbar-utility.html',
     "<ul class=\"nav navbar-nav navbar-right navbar-iconic\">\n" +
-    "<li>\n" +
-    "<notification-counter></notification-counter>\n" +
-    "</li>\n" +
     "<li extension-point extension-name=\"nav-system-status\" extension-types=\"dom\"></li>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "<notification-counter ng-hide=\"chromeless\"></notification-counter>\n" +
 =======
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "<notification-counter ng-hide=\"chromeless\"></notification-counter>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<li ng-if=\"launcherApps.length > 0\">\n" +
     "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
     "</li>\n" +
@@ -7975,6 +8052,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
   $templateCache.put('views/directives/header/_tech-preview-banner.html',
     "<translate>Technology preview is enabled</translate>"
   );
@@ -7989,21 +8067,57 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div row class=\"navbar-flex-btn toggle-menu\">\n" +
     "<button type=\"button\" class=\"navbar-toggle project-action-btn ng-isolate-scope\" data-toggle=\"collapse\" data-target=\".navbar-collapse-2\">\n" +
     "<span class=\"sr-only\" translate>Toggle navigation</span>\n" +
+=======
+  $templateCache.put('views/directives/header/header.html',
+    "<nav class=\"navbar navbar-pf-vertical\" role=\"navigation\">\n" +
+    "<div class=\"navbar-header\">\n" +
+    "<button type=\"button\" class=\"navbar-toggle visible-xs\" ng-click=\"toggleMobileNav()\" on-esc=\"closeMobileNav()\">\n" +
+    "<span class=\"sr-only\">Toggle navigation</span>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
     "</button>\n" +
-    "</div>\n" +
     "\n" +
     "<a class=\"navbar-brand\" id=\"openshift-logo\" href=\"./\">\n" +
     "<div id=\"header-logo\"></div>\n" +
     "</a>\n" +
     "</div>\n" +
-    "\n" +
-    "<navbar-utility class=\"hidden-xs\"></navbar-utility>\n" +
-    "<div row extension-point extension-name=\"nav-system-status-mobile\" extension-types=\"dom\" class=\"navbar-flex-btn hide-if-empty\"></div>\n" +
+    "<navbar-utility></navbar-utility>\n" +
+    "</nav>\n" +
+    "<div ng-show=\"projectName && !chromeless\" class=\"project-bar\">\n" +
+    "<div class=\"toggle-menu\">\n" +
+    "<button type=\"button\" class=\"navbar-toggle project-action-btn\" ng-click=\"toggleNav()\">\n" +
+    "<span class=\"sr-only\">Toggle navigation</span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "</button>\n" +
     "</div>\n" +
-    "</nav>"
+    "<div class=\"form-group\">\n" +
+    "\n" +
+    "<select class=\"selectpicker form-control\" data-selected-text-format=\"count>3\" id=\"boostrapSelect\" title=\"\"></select>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"dropdown add-to-project\" ng-show=\"canIAddToProject\" uib-dropdown>\n" +
+    "<a class=\"dropdown-toggle\" href=\"\" ng-disabled=\"currentProject.status.phase != 'Active'\" title=\"Add to Project\" uib-dropdown-toggle>\n" +
+    "<i class=\"fa fa-plus visible-xs-inline-block\" aria-hidden=\"true\" title=\"Add to Project\"></i><span class=\"hidden-xs\">Add to Project</span><span class=\"hidden-xs caret\" aria-hidden=\"true\" title=\"Add to Project\"></span>\n" +
+    "</a>\n" +
+    "<ul role=\"menu\" uib-dropdown-menu class=\"dropdown-menu dropdown-menu-right\">\n" +
+    "<li ng-if-start=\"!catalogLandingPageEnabled\" role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromCatalog\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=deployImage\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromFile\">Import YAML / JSON</a></li>\n" +
+    "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"/\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\">Import YAML / JSON</a></li>\n" +
+    "</ul>\n" +
+    "</div>\n" +
+    "</div> \n" +
+    "<sidebar></sidebar>\n" +
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+    "</overlay-panel>"
   );
 
 
@@ -8846,12 +8960,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/notifications/notification-counter.html',
     "<li class=\"drawer-pf-trigger\" ng-if=\"!$ctrl.hide\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\">\n" +
     "<span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span>\n" +
     "<span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge\"> </span>\n" +
     "<span class=\"sr-only\">Notifications</span>\n" +
     "</a>\n" +
 >>>>>>> Add notification-drawer to show curated list of events to user
+=======
+    "\n" +
+    "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\"><span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span><span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge\"> </span><span class=\"sr-only\">Notifications</span></a>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</li>"
   );
 
@@ -10466,7 +10585,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<div ng-if=\"!targetKind || !targetName || !project\" class=\"mar-top-md\" translate>\n" +
+=======
+    "<div ng-if=\"!targetKind || !targetName || !project\" class=\"mar-top-md\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "Loading...\n" +
     "</div>\n" +
     "<form name=\"form\" ng-submit=\"save()\" class=\"osc-form\" ng-show=\"targetKind && targetName\">\n" +
@@ -10501,7 +10624,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</osc-autoscaling>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\"></label-editor>\n" +
     "<div class=\"buttons gutter-top gutter-bottom\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine\" translate>\n" +
+=======
+    "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "Save\n" +
     "</button>\n" +
     "<a href=\"\" ng-click=\"cancel()\" class=\"btn btn-default btn-lg\" role=\"button\" translate>Cancel</a>\n" +
@@ -10991,7 +11118,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine || disableInputs\" translate>\n" +
     "Save\n" +
     "</button>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<button class=\"btn btn-default btn-lg\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
+=======
+    "<button class=\"btn btn-default btn-lg\" ng-click=\"cancel()\">Cancel</button>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
     "</form>\n" +
     "</fieldset>\n" +
@@ -11310,7 +11441,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button ng-click=\"save()\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine || disableInputs\" translate>\n" +
     "Save\n" +
     "</button>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<button ng-click=\"cancel()\" class=\"btn btn-default btn-lg\" translate>Cancel</button>\n" +
+=======
+    "<button ng-click=\"cancel()\" class=\"btn btn-default btn-lg\">Cancel</button>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
     "</form>\n" +
     "</fieldset>\n" +
@@ -11328,6 +11463,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -11336,6 +11472,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 translate>Health Checks: {{name}}</h1>\n" +
 =======
     "<div class=\"col-md-12\">\n" +
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-show=\"!containers.length\" class=\"mar-top-md\">Loading...</div>\n" +
     "<form ng-show=\"containers.length\" name=\"form\" class=\"health-checks-form\" novalidate>\n" +
     "<h1>Health Checks: {{name}}</h1>\n" +
@@ -11534,7 +11674,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>has been deleted since you started editing it.</translate>\n" +
 =======
     "<div ng-if=\"!updated.resource\" class=\"pad-top-md\">Loading...</div>\n" +
-    "<div ng-if=\"updated.resource\" class=\"pad-top-md\">\n" +
+    "<div ng-if=\"updated.resource\">\n" +
     "<h1 class=\"truncate\">Edit <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}</h1>\n" +
     "<parse-error error=\"error\" ng-if=\"error\"></parse-error>\n" +
     "<div ng-if=\"resourceChanged && !resourceDeleted && !updatingNow\" class=\"alert alert-warning\">\n" +
@@ -11564,10 +11704,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 >>>>>>> Improve YAML editor validation and feedback
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "</form>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
@@ -12630,8 +12773,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"renderOptions.showEventsSidebar && !renderOptions.collapseEventsSidebar\" class=\"sidebar-right sidebar-pf sidebar-pf-right\">\n" +
     "<div class=\"right-section\">\n" +
     "<events-sidebar ng-if=\"projectContext\" project-context=\"projectContext\" collapsed=\"renderOptions.collapseEventsSidebar\"></events-sidebar>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "</div>\n" +
     "</div>\n" +
+=======
+    "</div>\n" +
+    "</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
@@ -14211,20 +14359,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<pods-table ng-if=\"(pods | hashSize) > 0\" pods=\"pods\"></pods-table>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
 
   $templateCache.put('views/projects.html',
     "<div class=\"middle surface-shaded\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"{{'Create Project'|translate}}\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
     "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
     "</origin-modal-popup>\n" +
+=======
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
@@ -14416,9 +14570,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<p translate>To learn more, visit the DMOS <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
     "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14666,6 +14817,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
+=======
+    "</div>\n" +
+    "</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>"
   );
 
@@ -14739,12 +14895,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
   $templateCache.put('views/service-instances.html',
     "<project-header class=\"top-header\"></project-header>\n" +
     "<project-page>\n" +
     "\n" +
     "<div class=\"middle-section\">\n" +
     "<div class=\"middle-container\">\n" +
+=======
+  $templateCache.put('views/services.html',
+    "<div class=\"middle\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -14925,6 +15086,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -14933,6 +15095,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1><translate>Resource Limits:</translate> {{name}}</h1>\n" +
 =======
     "<div class=\"col-md-12\">\n" +
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-show=\"!containers.length\">Loading...</div>\n" +
     "<form ng-if=\"containers.length\" name=\"form\" class=\"set-limits-form\" novalidate>\n" +
     "<h1>Resource Limits: {{name}}</h1>\n" +
@@ -15086,7 +15252,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<br>\n" +
     "<div translate>Return to the <a href=\"\" ng-click=\"reloadConsole()\" translate>console</a>.</div>\n" +
     "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
@@ -15107,6 +15272,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle surface-shaded\">\n" +
     "<div class=\"container\">\n" +
     "<div ng-if=\"!confirmUser\">\n" +
+<<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<h1 translate>Logging in&hellip;</h1>\n" +
     "<p translate>Please wait while you are logged in&hellip;</p>\n" +
     "</div>\n" +
@@ -15122,7 +15288,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>If this is unexpected, click Cancel. This could be an attempt to trick you into acting as another user.</p>\n" +
     "<button class=\"btn btn-lg btn-danger\" type=\"button\" ng-click=\"completeLogin();\" translate>Switch Users</button>\n" +
     "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancelLogin();\" translate>Cancel</button>\n" +
+=======
+    "<h1>Logging in&hellip;</h1>\n" +
+    "<p>Please wait while you are logged in&hellip;</p>\n" +
     "</div>\n" +
+    "<div ng-if=\"confirmUser && !overriddenUser\">\n" +
+    "<h1>Confirm Login</h1>\n" +
+    "<p>You are being logged in as <code>{{confirmUser.metadata.name}}</code>.</p>\n" +
+    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"completeLogin();\">Continue</button>\n" +
+    "<button class=\"btn btn-lg btn-default\" type=\"button\" ng-click=\"cancelLogin();\">Cancel</button>\n" +
+    "</div>\n" +
+    "<div ng-if=\"confirmUser && overriddenUser\">\n" +
+    "<h1>Confirm User Change</h1>\n" +
+    "<p>You are about to change users from <code>{{overriddenUser.metadata.name}}</code> to <code>{{confirmUser.metadata.name}}</code>.</p>\n" +
+    "<p>If this is unexpected, click Cancel. This could be an attempt to trick you into acting as another user.</p>\n" +
+    "<button class=\"btn btn-lg btn-danger\" type=\"button\" ng-click=\"completeLogin();\">Switch Users</button>\n" +
+    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancelLogin();\">Cancel</button>\n" +
+    "</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
     "</div>"
   );

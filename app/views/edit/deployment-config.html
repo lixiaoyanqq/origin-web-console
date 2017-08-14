@@ -27,38 +27,38 @@
                       <div>
                         <span ng-switch="strategyData.type">
                           <span class="help-block" ng-switch-when="Recreate">
-                            <translate>The recreate strategy has basic rollout behavior and supports lifecycle hooks for injecting code into the deployment process.</translate>
-                            <a ng-href="{{'recreate_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+				  <translate>The recreate strategy has basic rollout behavior and supports lifecycle hooks for injecting code into the deployment process.</translate>
+				  <a ng-href="{{'recreate_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
                           </span>
                           <span class="help-block" ng-switch-when="Rolling">
-                            <translate>The rolling strategy will wait for pods to pass their readiness check, scale down old components and then scale up.</translate>
-                            <a ng-href="{{'rolling_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+				  <translate>The rolling strategy will wait for pods to pass their readiness check, scale down old components and then scale up.</translate>
+				  <a ng-href="{{'rolling_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
                           </span>
                           <span class="help-block" ng-switch-when="Custom">
-                            <translate>The custom strategy allows you to specify container image that will provide your own deployment behavior.</translate>
-                            <a ng-href="{{'custom_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+				  <translate>The custom strategy allows you to specify container image that will provide your own deployment behavior.</translate>
+				  <a ng-href="{{'custom_strategy' | helpLink}}" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
                           </span>
                         </span>
                       </div>
                     </div>
 
-                          <div ng-if="strategyData.type === 'Custom'" >
-                            <div class="form-group">
-                              <label for="imageName" class="required" translate>Image Name</label>
-                              <div>
-                                <input class="form-control"
-                                  id="imageName"
-                                  name="imageName"
-                                  ng-model="strategyData.customParams.image"
-                                  type="text"
-                                  autocorrect="off"
-                                  autocapitalize="none"
-                                  spellcheck="false"
-                                  aria-describedby="image-name-help"
-                                  required>
-                              </div>
-                              <div class="help-block" id="image-name-help" translate>An image that can carry out the deployment.</div>
-                            </div>
+                    <div ng-if="strategyData.type === 'Custom'" >
+                      <div class="form-group">
+                        <label for="imageName" class="required" translate>Image Name</label>
+                        <div>
+                          <input class="form-control"
+                            id="imageName"
+                            name="imageName"
+                            ng-model="strategyData.customParams.image"
+                            type="text"
+                            autocorrect="off"
+                            autocapitalize="none"
+                            spellcheck="false"
+                            aria-describedby="image-name-help"
+                            required>
+                        </div>
+                        <div class="help-block" id="image-name-help" translate>An image that can carry out the deployment.</div>
+                      </div>
 
                       <div class="form-group">
                         <label translate>Command</label>
@@ -69,10 +69,10 @@
                         <key-value-editor
                           entries="strategyData.customParams.environment"
                           key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
-                          key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
+                          key-validator-error-tooltip="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
                           value-from-selector-options="valueFromObjects"
-                          add-row-link="{{'Add Value'|translate}}"
-                          add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"></key-value-editor>
+                          add-row-link="Add Environment Variable"
+                          add-row-with-selectors-link="Add Environment Variable Using a Config Map or Secret"></key-value-editor>
                       </div>
                     </div>
                     <div ng-if="strategyData.type !== 'Custom'" >
@@ -90,133 +90,81 @@
                               select-on-focus
                               class="form-control"
                               aria-describedby="strategyTimeout">
-                          <span class="input-group-addon" translate>seconds</span>
+			  <span class="input-group-addon"><translate>seconds</translate></span>
                         </span>
-                        <div class="help-block" ng-attr-id="strategyTimeout" translate>
-                          How long to wait for a pod to scale up before giving up.
+                        <div class="help-block" ng-attr-id="strategyTimeout">
+				<translate>How long to wait for a pod to scale up before giving up.</translate>
                         </div>
                         <div ng-if="form.strategyTimeout.$invalid && form.strategyTimeout.$touched" class="has-error">
                           <div ng-if="form.strategyTimeout.$error.number" class="help-block" translate>
                             Must be a number.
                           </div>
-                          <div ng-if="strategyData.type !== 'Custom'" >
-                            <div class="form-group">
-                              <label for="strategyTimeout" translate>Timeout</label>
-                              <span class="input-group"
-                                 ng-class="{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }">
-                                <input id="strategyTimeout"
-                                    type="number"
-                                    name="strategyTimeout"
-                                    ng-model="strategyData[strategyParamsPropertyName].timeoutSeconds"
-                                    placeholder="600"
-                                    pattern="\d*"
-                                    min="0"
-                                    select-on-focus
-                                    class="form-control"
-                                    aria-describedby="strategyTimeout">
-                                <span class="input-group-addon" translate>seconds</span>
-                              </span>
-                              <div class="help-block" ng-attr-id="strategyTimeout">
-			      <translate>How long to wait for a pod to scale up before giving up.</translate>
+                          <div ng-if="form.strategyTimeout.$error.min" class="help-block" translate>
+                            Timeout can't be negative.
+                          </div>
+                          <span ng-if="form.strategyTimeout.$error.pattern && !form.strategyTimeout.$error.min" class="help-block" translate>
+                            Must be a whole number.
+                          </span>
+                        </div>
+                      </div>
+
+                      <div ng-if="strategyData.type === 'Rolling'">
+                        <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
+                        <div ng-show="view.advancedStrategyOptions">
+                          <div class="form-group">
+                            <label for="updatePeriod" translate>Update Period</label>
+                            <span class="input-group"
+                               ng-class="{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }">
+                              <input id="updatePeriod"
+                                  type="number"
+                                  placeholder="1"
+                                  name="updatePeriod"
+                                  ng-model="strategyData[strategyParamsPropertyName].updatePeriodSeconds"
+                                  pattern="\d*"
+                                  min="0"
+                                  select-on-focus
+                                  class="form-control"
+                                  aria-describedby="updatePeriod">
+                              <span class="input-group-addon" translate>seconds</span>
+                            </span>
+                            <div class="help-block" id="updatePeriod" translate>
+                              Time to wait between retrying to run individual pod.
+                            </div>
+                            <div ng-if="form.updatePeriod.$invalid && form.updatePeriod.$touched" class="has-error">
+                              <div ng-if="form.updatePeriod.$error.number" class="help-block" translate>
+                                Must be a number.
                               </div>
                               <div ng-if="form.updatePeriod.$error.min" class="help-block" translate>
-				<translate>Update period can't be negative.</translate>
+                                Update period can't be negative.
                               </div>
                               <span ng-if="form.updatePeriod.$error.pattern && !form.updatePeriod.$error.min" class="help-block" translate>
-				      <translate>Must be a whole number.</translate>
+                                Must be a whole number.
                               </span>
                             </div>
                           </div>
 
-                            <div ng-if="strategyData.type === 'Rolling'">
-                              <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
-                              <div ng-show="view.advancedStrategyOptions">
-                                <div class="form-group">
-                                  <label for="updatePeriod" translate>Update Period</label>
-                                  <span class="input-group"
-                                     ng-class="{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }">
-                                    <input id="updatePeriod"
-                                        type="number"
-                                        placeholder="1"
-                                        name="updatePeriod"
-                                        ng-model="strategyData[strategyParamsPropertyName].updatePeriodSeconds"
-                                        pattern="\d*"
-                                        min="0"
-                                        select-on-focus
-                                        class="form-control"
-                                        aria-describedby="updatePeriod">
-                                    <span class="input-group-addon" translate>seconds</span>
-                                  </span>
-                                  <div class="help-block" id="updatePeriod">
-					  <translate>Time to wait between retrying to run individual pod.</translate>
-                                  </div>
-                                  <div ng-if="form.updatePeriod.$invalid && form.updatePeriod.$touched" class="has-error">
-                                    <div ng-if="form.updatePeriod.$error.number" class="help-block">
-					    <translate>Must be a number.</translate>
-                                    </div>
-                                    <div ng-if="form.updatePeriod.$error.min" class="help-block">
-					    <translate>Update period can't be negative.</translate>
-                                    </div>
-                                    <span ng-if="form.updatePeriod.$error.pattern && !form.updatePeriod.$error.min" class="help-block">
-					    <translate>Must be a whole number.</translate>
-                                    </span>
-                                  </div>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="interval" translate>Interval</label>
-                                  <span class="input-group"
-                                     ng-class="{ 'has-error': form.interval.$invalid && form.interval.$touched }">
-                                    <input id="interval"
-                                        type="number"
-                                        placeholder="1"
-                                        name="interval"
-                                        ng-model="strategyData[strategyParamsPropertyName].intervalSeconds"
-                                        pattern="\d*"
-                                        min="0"
-                                        select-on-focus
-                                        class="form-control"
-                                        aria-describedby="interval">
-                                    <span class="input-group-addon" translate>seconds</span>
-                                  </span>
-                                  <div class="help-block" ng-attr-id="interval">
-					  <translate>Time to wait between polling deployment status after running a pod.</translate>
-                                  </div>
-                                  <div ng-if="form.interval.$invalid && form.interval.$touched" class="has-error">
-                                    <div ng-if="form.interval.$error.number" class="help-block">
-					    <translate>Must be a number.</translate>
-                                    </div>
-                                    <div ng-if="form.interval.$error.min" class="help-block">
-					    <translate>Interval can't be negative.</translate>
-                                    </div>
-                                    <span ng-if="form.interval.$error.pattern && !form.interval.$error.min" class="help-block">
-					    <translate>Must be a whole number.</translate>
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="maxUnavailable" translate>Maximum Number of Unavailable Pods</label>
-                                <div ng-class="{ 'has-error': form.maxUnavailable.$invalid && form.maxUnavailable.$touched }">
-                                  <input id="maxUnavailable"
-                                      type="text"
-                                      placeholder="25%"
-                                      name="maxUnavailable"
-                                      ng-model="strategyData[strategyParamsPropertyName].maxUnavailable"
-                                      ng-pattern="/^\d+%?$/"
-                                      select-on-focus
-                                      class="form-control"
-                                      aria-describedby="max-unavailable-help">
-                                </div>
-                                <div class="help-block">
-					<translate>The maximum number of pods that can be unavailable during the rolling deployment. This can be either a percentage (10%) or a whole number (1).</tanslate>
-                                </div>
-                                <div ng-if="form.maxUnavailable.$invalid && form.maxUnavailable.$touched && form.maxUnavailable.$error.pattern" class="has-error">
-                                  <span class="help-block">
-					  <translate>Must be a non-negative whole number or percentage.</translate>
-                                  </span>
-                                </div>
+                          <div class="form-group">
+                            <label for="interval" translate>Interval</label>
+                            <span class="input-group"
+                               ng-class="{ 'has-error': form.interval.$invalid && form.interval.$touched }">
+                              <input id="interval"
+                                  type="number"
+                                  placeholder="1"
+                                  name="interval"
+                                  ng-model="strategyData[strategyParamsPropertyName].intervalSeconds"
+                                  pattern="\d*"
+                                  min="0"
+                                  select-on-focus
+                                  class="form-control"
+                                  aria-describedby="interval">
+                              <span class="input-group-addon" translate>seconds</span>
+                            </span>
+                            <div class="help-block" ng-attr-id="interval" translate>
+                              Time to wait between polling deployment status after running a pod.
+                            </div>
+                            <div ng-if="form.interval.$invalid && form.interval.$touched" class="has-error">
+                              <div ng-if="form.interval.$error.number" class="help-block" translate>
+                                Must be a number.
                               </div>
                               <div ng-if="form.interval.$error.min" class="help-block" translate>
                                 Interval can't be negative.
@@ -256,11 +204,21 @@
                           <div ng-class="{ 'has-error': form.maxSurge.$invalid && form.maxSurge.$touched }">
                             <input id="maxSurge"
                                 type="text"
-                                autocorrect="off"
-                                autocapitalize="none"
-                                spellcheck="false"
-                                required>
-                            </div>
+                                placeholder="25%"
+                                name="maxSurge"
+                                ng-model="strategyData[strategyParamsPropertyName].maxSurge"
+                                ng-pattern="/^\d+%?$/"
+                                select-on-focus
+                                class="form-control"
+                                aria-describedby="maxSurge">
+                          </div>
+                          <div class="help-block">
+                            The maximum number of pods that can be scheduled above the original number of pods while the rolling deployment is in progress. This can be either a percentage (10%) or a whole number (1).
+                          </div>
+                          <div ng-if="form.maxSurge.$invalid && form.maxSurge.$touched && form.maxSurge.$error.pattern" class="has-error">
+                            <span class="help-block" translate>
+                              Must be a non-negative whole number or percentage.
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -271,40 +229,37 @@
                           <div class="lifecycle-hook" id="pre-lifecycle-hook">
 
                             <h3 translate>Pre Lifecycle Hook</h3>
-                            <edit-lifecycle-hook
-                              model="strategyData[strategyParamsPropertyName].pre"
-                              type="pre"
-                              available-volumes="volumeNames"
-                              available-containers="containerNames"
-                              available-secrets="availableSecrets"
-                              available-config-maps="availableConfigMaps"
-                              namespace="projectName">
+                            <edit-lifecycle-hook model='strategyData[strategyParamsPropertyName].pre'
+                                              type='pre'
+                                              available-volumes='volumeNames'
+                                              available-containers='containerNames'
+                                              available-secrets='availableSecrets'
+                                              available-configmaps='availableConfigMaps'
+                                              namespace="projectName">
                             </edit-lifecycle-hook>
                           </div>
 
                           <div ng-if="strategyData.type !== 'Rolling'" class="lifecycle-hook" id="mid-lifecycle-hook" >
                             <h3 translate>Mid Lifecycle Hook</h3>
-                            <edit-lifecycle-hook
-                              model="strategyData[strategyParamsPropertyName].mid"
-                              type="mid"
-                              available-volumes="volumeNames"
-                              available-containers="containerNames"
-                              available-secrets="availableSecrets"
-                              available-config-maps="availableConfigMaps"
-                              namespace="projectName">
+                            <edit-lifecycle-hook model='strategyData[strategyParamsPropertyName].mid'
+                                              type='mid'
+                                              available-volumes='volumeNames'
+                                              available-containers='containerNames'
+                                              available-secrets='availableSecrets'
+                                              available-configmaps='availableConfigMaps'
+                                              namespace="projectName">
                             </edit-lifecycle-hook>
                           </div>
 
                           <div class="lifecycle-hook" id="post-lifecycle-hook" >
                             <h3 translate>Post Lifecycle Hook</h3>
-                            <edit-lifecycle-hook
-                              model="strategyData[strategyParamsPropertyName].post"
-                              type="post"
-                              available-volumes="volumeNames"
-                              available-containers="containerNames"
-                              available-secrets="availableSecrets"
-                              available-config-maps="availableConfigMaps"
-                              namespace="projectName">
+                            <edit-lifecycle-hook model='strategyData[strategyParamsPropertyName].post'
+                                              type='post'
+                                              available-volumes='volumeNames'
+                                              available-containers='containerNames'
+                                              available-secrets='availableSecrets'
+                                              available-configmaps='availableConfigMaps'
+                                              namespace="projectName">
                             </edit-lifecycle-hook>
                           </div>
                         </div>
@@ -329,7 +284,7 @@
                       <div class="checkbox form-group">
                         <label>
                           <input type="checkbox" ng-model="containerConfig.hasDeploymentTrigger">
-                          <translate>Deploy images from an image stream tag</translate>
+			  <translate>Deploy images from an image stream tag</translate>
                         </label>
                       </div>
                       <div ng-if="containerConfig.hasDeploymentTrigger">
@@ -357,11 +312,10 @@
                           required>
                       </div>
                     </div>
-
                     <div class="checkbox form-group">
                       <label>
                         <input type="checkbox" ng-model="triggers.hasConfigTrigger">
-                        <translate>Automatically start a new deployment when the deployment configuration changes</translate>
+			<translate>Automatically start a new deployment when the deployment configuration changes</translate>
                       </label>
                     </div>
 
@@ -381,7 +335,7 @@
                     </div>
 
                     <div class="mar-top-lg">
-                      <div ng-if="!view.advancedImageOptions" translate>To set secrets for pulling your images from private image registries, view <a href="" ng-click="view.advancedImageOptions = true">advanced image options.</a></div>
+                      <div ng-if="!view.advancedImageOptions" translate>To set secrets for pulling your images from private image registries, view <a href="" ng-click="view.advancedImageOptions = true" translate>advanced image options.</a></div>
                       <a ng-if="view.advancedImageOptions" href="" ng-click="view.advancedImageOptions = false" translate>Hide Advanced Image Options</a>
                     </div>
                   </dl>
@@ -400,9 +354,9 @@
                       entries="containerConfig.env"
                       value-from-selector-options="valueFromObjects"
                       key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
-                      key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
-                      add-row-link="{{'Add Value'|translate}}"
-                      add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"></key-value-editor>
+                      key-validator-error-tooltip="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
+                      add-row-link="Add Environment Variable"
+                      add-row-with-selectors-link="Add Environment Variable Using a Config Map or Secret"></key-value-editor>
                   </div>
                 </div>
 

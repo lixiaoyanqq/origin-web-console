@@ -3,7 +3,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <div ng-hide="imageStream" class="mar-top-lg" translate>
+            <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
+            <div ng-hide="imageStream" translate>
               Loading...
             </div>
             <div class="osc-form" ng-show="imageStream">
@@ -12,60 +13,52 @@
                 <div class="col-md-2 icon hidden-sm hidden-xs">
                   <custom-icon resource="imageStream" kind="image" tag="imageTag"></custom-icon>
                 </div>
-                <div class="osc-form" ng-show="imageStream">
-                  <alerts alerts="alerts"></alerts>
-                  <div class="row">
-                    <div class="col-md-2 icon hidden-sm hidden-xs">
-                      <custom-icon resource="imageStream" kind="image" tag="imageTag"></custom-icon>
-                    </div>
-                    <div class="col-md-8">
-                      <fieldset ng-disabled="disableInputs">
-                        <osc-image-summary resource="image" name="displayName || imageName" tag="imageTag"></osc-image-summary>
-                        <div class="clearfix visible-xs-block"></div>
-                        <form class="" ng-show="imageStream" novalidate name="form" ng-submit="createApp()">
-                          <div style="margin-bottom: 15px;">
-                            <div class="form-group">
-                             <label for="appname" class="required" translate>Name</label>
-                             <!--
-                               Only validate the name pattern and minlength if the field has both been changed and blurred.  This
-                               avoids a lot of problems clicking on the try it / more options links below.  Don't use $touched,
-                               which causes validation error messages to flash when typing in the field after clicking one of the
-                               links. Show the required error if the user enters and deletes the value, even if the field still
-                               has focus.
-                             -->
-                             <div ng-class="{'has-error': (form.appname.$error.required && form.appname.$dirty) || (form.appname.$invalid && shouldValidateName) || nameTaken}">
-                               <input type="text"
-                                      required
-                                      take-focus
-                                      minlength="2"
-                                      maxlength="24"
-                                      pattern="[a-z]([-a-z0-9]*[a-z0-9])?"
-                                      ng-model="name"
-                                      id="appname"
-                                      name="appname"
-                                      ng-change="nameTaken = false"
-                                      ng-blur="shouldValidateName = form.appname.$dirty"
-                                      class="form-control"
-                                      autocorrect="off"
-                                      autocapitalize="none"
-                                      spellcheck="false">
-                              </div>
-                              <div class="help-block" translate>Identifies the resources created for this application.</div>
-                              <div class="has-error" ng-show="form.appname.$error.required && form.appname.$dirty">
-                                <span class="help-block">A name is required.</span>
-                              </div>
-                              <div class="has-error" ng-show="form.appname.$error.pattern && shouldValidateName">
-                                <span class="help-block"><strong>Please enter a valid name.</strong>
-                                <p>A valid name is applied to all generated resources. It is an alphanumeric (a-z, and 0-9) string with a maximum length of 24 characters, where the first character is a letter (a-z), and the '-' character is allowed anywhere except the first or last character.</p>
-                                </span>
-                              </div>
-                              <div class="has-error" ng-show="form.appname.$error.minlength && shouldValidateName">
-                                <span class="help-block">The name must have at least 2 characters.</span>
-                              </div>
-                              <div class="has-error" ng-show="nameTaken">
-                                <span class="help-block">This name is already in use within the project. Please choose a different name.</span>
-                              </div>
-                            </div>
+                <div class="col-md-8">
+                  <fieldset ng-disabled="disableInputs">
+                    <osc-image-summary resource="image" name="displayName || imageName" tag="imageTag"></osc-image-summary>
+                    <div class="clearfix visible-xs-block"></div>
+                    <form class="" ng-show="imageStream" novalidate name="form" ng-submit="createApp()">
+                      <div style="margin-bottom: 15px;">
+                        <div class="form-group">
+                         <label for="appname" class="required" translate>Name</label>
+                         <!--
+                           Only validate the name pattern and minlength if the field has both been changed and blurred.  This
+                           avoids a lot of problems clicking on the try it / more options links below.  Don't use $touched,
+                           which causes validation error messages to flash when typing in the field after clicking one of the
+                           links. Show the required error if the user enters and deletes the value, even if the field still
+                           has focus.
+                         -->
+                         <div ng-class="{'has-error': (form.appname.$error.required && form.appname.$dirty) || (form.appname.$invalid && shouldValidateName) || nameTaken}">
+                           <input type="text"
+                                  required
+                                  take-focus
+                                  minlength="2"
+                                  maxlength="24"
+                                  pattern="[a-z]([-a-z0-9]*[a-z0-9])?"
+                                  ng-model="name"
+                                  id="appname"
+                                  name="appname"
+                                  ng-change="nameTaken = false"
+                                  ng-blur="shouldValidateName = form.appname.$dirty"
+                                  class="form-control"
+                                  autocorrect="off"
+                                  autocapitalize="none"
+                                  spellcheck="false">
+                          </div>
+                          <div class="help-block" translate>Identifies the resources created for this application.</div>
+                          <div class="has-error" ng-show="form.appname.$error.required && form.appname.$dirty">
+                            <span class="help-block" translate>A name is required.</span>
+                          </div>
+                          <div class="has-error" ng-show="form.appname.$error.pattern && shouldValidateName">
+                            <span class="help-block"><strong translate>Please enter a valid name.</strong>
+                            <p translate>A valid name is applied to all generated resources. It is an alphanumeric (a-z, and 0-9) string with a maximum length of 24 characters, where the first character is a letter (a-z), and the '-' character is allowed anywhere except the first or last character.</p>
+                            </span>
+                          </div>
+                          <div class="has-error" ng-show="form.appname.$error.minlength && shouldValidateName">
+                            <span class="help-block" translate>The name must have at least 2 characters.</span>
+                          </div>
+                          <div class="has-error" ng-show="nameTaken">
+                            <span class="help-block" translate>This name is already in use within the project. Please choose a different name.</span>
                           </div>
                         </div>
                       </div>
@@ -80,57 +73,30 @@
                               'has-warning': buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl),
                               'has-error': (form.sourceUrl.$error.required && form.sourceUrl.$dirty)
                             }">
-                              <div class="form-group">
-                                <label for="sourceUrl" class="required">Git Repository URL</label>
-                                <div ng-class="{
-                                  'has-warning': buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl),
-                                  'has-error': (form.sourceUrl.$error.required && form.sourceUrl.$dirty)
-                                }">
-                                  <!-- Unfortunately, we can't set type="url" because some valid values don't pass browser validation. -->
-                                  <input class="form-control"
-                                    id="sourceUrl"
-                                    name="sourceUrl"
-                                    type="text"
-                                    required
-                                    aria-describedby="from_source_help"
-                                    ng-model="buildConfig.sourceUrl"
-                                    autocorrect="off"
-                                    autocapitalize="none"
-                                    spellcheck="false">
-                                </div>
-                                <div ng-if="!(sourceURIinParams) && image.metadata.annotations.sampleRepo" class="help-block">
-                                  Sample repository for {{imageName}}: {{image.metadata.annotations.sampleRepo}}<span ng-if="image.metadata.annotations.sampleRef">,
-                                    ref: {{image.metadata.annotations.sampleRef}}</span><span ng-if="image.metadata.annotations.sampleContextDir">,
-                                    context dir: {{image.metadata.annotations.sampleContextDir}}</span>
-                                  <a href="" ng-click="fillSampleRepo()"
-                                    style="margin-left: 3px;" class="nowrap">Try It<i class="fa fa-level-up" style="margin-left: 3px; font-size: 17px;"></i></a>
-                                </div>
-                                <div class="has-error" ng-show="form.sourceUrl.$error.required && form.sourceUrl.$dirty">
-                                  <span class="help-block">A Git repository URL is required.</span>
-                                </div>
-                                <div class="has-warning" ng-if="buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl)">
-                                  <span class="help-block">This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository.</span>
-                                </div>
-                              </div>
+                              <!-- Unfortunately, we can't set type="url" because some valid values don't pass browser validation. -->
+                              <input class="form-control"
+                                id="sourceUrl"
+                                name="sourceUrl"
+                                type="text"
+                                required
+                                aria-describedby="from_source_help"
+                                ng-model="buildConfig.sourceUrl"
+                                autocorrect="off"
+                                autocapitalize="none"
+                                spellcheck="false">
                             </div>
-
-                            <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
-                            <div class="col-md-4" ng-show="advancedOptions || advancedSourceOptions">
-                              <div class="form-group">
-                                <label for="gitref">Git Reference</label>
-                                <div>
-                                  <input
-                                    id="gitref"
-                                    ng-model="buildConfig.gitRef"
-                                    type="text"
-                                    placeholder="master"
-                                    autocorrect="off"
-                                    autocapitalize="none"
-                                    spellcheck="false"
-                                    class="form-control">
-                                </div>
-                                <div class="help-block">Optional branch, tag, or commit.</div>
-                              </div>
+                            <div ng-if="!(sourceURIinParams) && image.metadata.annotations.sampleRepo" class="help-block">
+                              Sample repository for {{imageName}}: {{image.metadata.annotations.sampleRepo}}<span ng-if="image.metadata.annotations.sampleRef">,
+                                ref: {{image.metadata.annotations.sampleRef}}</span><span ng-if="image.metadata.annotations.sampleContextDir">,
+                                context dir: {{image.metadata.annotations.sampleContextDir}}</span>
+                              <a href="" ng-click="fillSampleRepo()"
+                                style="margin-left: 3px;" class="nowrap">Try It<i class="fa fa-level-up" style="margin-left: 3px; font-size: 17px;"></i></a>
+                            </div>
+                            <div class="has-error" ng-show="form.sourceUrl.$error.required && form.sourceUrl.$dirty">
+                              <span class="help-block">A Git repository URL is required.</span>
+                            </div>
+                            <div class="has-warning" ng-if="buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl)">
+                              <span class="help-block">This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository.</span>
                             </div>
                           </div>
                         </div>
@@ -138,7 +104,7 @@
                         <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
                         <div class="col-md-4" ng-show="advancedOptions || advancedSourceOptions">
                           <div class="form-group">
-                            <label for="gitref" translate>Git Reference</label>
+                            <label for="gitref">Git Reference</label>
                             <div>
                               <input
                                 id="gitref"
@@ -220,10 +186,10 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" ng-model="buildConfig.buildOnSourceChange"/>
-                              <translate>Configure a webhook build trigger</translate>
+			      <translate>Configure a webhook build trigger</translate>
                               <span class="help action-inline">
                                 <a href data-toggle="tooltip"
-                                   data-original-title="{{'The source repository must be configured to use the webhook to trigger a build when source is committed.'|translate}}">
+                                   data-original-title="The source repository must be configured to use the webhook to trigger a build when source is committed.">
                                   <i class="pficon pficon-help"></i>
                                 </a>
                               </span>
@@ -232,9 +198,9 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" ng-model="buildConfig.buildOnImageChange"/>
-                              <translate>Automatically build a new image when the builder image changes</translate>
+			      <translate>Automatically build a new image when the builder image changes</translate>
                               <span class="help action-inline">
-                                <a href data-toggle="tooltip" data-original-title="{{'Automatically building a new image when the builder image changes allows your code to always run on the latest updates.'|translate}}">
+                                <a href data-toggle="tooltip" data-original-title="Automatically building a new image when the builder image changes allows your code to always run on the latest updates.">
                                 <i class="pficon pficon-help"></i>
                                 </a>
                               </span>
@@ -243,12 +209,12 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" ng-model="buildConfig.buildOnConfigChange"/>
-                              <translate>Launch the first build when the build configuration is created</translate>
+			      <translate>Launch the first build when the build configuration is created</translate>
                             </label>
                           </div>
-                          <h3><translate>Environment Variables</translate> <span class="appended-icon"><translate>(Build and Runtime)</translate> <span class="help action-inline">
+                          <h3 translate>Environment Variables <span class="appended-icon">(Build and Runtime) <span class="help action-inline">
                             <a href data-toggle="tooltip"
-                               data-original-title="{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}">
+				    data-original-title="{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}">
                               <i class="pficon pficon-help"></i>
                             </a>
                           </span></span></h3>
@@ -257,59 +223,50 @@
                             key-placeholder="name"
                             value-placeholder="value"
                             key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
-                            key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
-                            add-row-link="{{'Add Environment Variable'|translate}}"></key-value-editor>
+                            key-validator-error-tooltip="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
+                            add-row-link="Add Environment Variable"></key-value-editor>
                         </osc-form-section>
 
                         <!-- /build config -->
 
-                            <osc-form-section
-                              header="Scaling"
-                              about-title="Scaling"
-                              about="Scaling defines the number of running instances of your built image."
-                              expand="true"
-                              can-toggle="false"
-                              >
-                              <div class="form-group">
-                                <label for="scale-type" translate>Strategy</label>
-                                <ui-select ng-model="scaling.autoscale" input-id="scale-type" search-enabled="false" aria-describedby="scale-type-help">
-                                  <ui-select-match>{{$select.selected.label}}</ui-select-match>
-                                  <ui-select-choices repeat="option.value as option in scaling.autoscaleOptions">
-                                    {{option.label}}
-                                  </ui-select-choices>
-                                </ui-select>
-                                <div class="help-block" id="scale-type-help">
-					<translate>Scale replicas manually or automatically based on CPU usage.</translate>
-                                </div>
-                                <div class="learn-more-block">
-					<a href="{{'pod_autoscaling' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="has-warning" ng-if="metricsWarning && scaling.autoscale">
-                                  <span class="help-block" translate>
-                                    CPU metrics might not be available. In order to use horizontal pod autoscalers,
-                                    your cluster administrator must have properly configured cluster metrics.
-                                  </span>
-                                </div>
-                              </div>
-                              <div ng-if="!scaling.autoscale"
-                                   class="form-group"
-                                   ng-class="{ 'has-error': form.replicas.$dirty && form.replicas.$invalid }">
-                                <label class="number" translate>Replicas</label>
-                                <input type="number"
-                                       class="form-control"
-                                       min="0"
-                                       name="replicas"
-                                       ng-model="scaling.replicas"
-                                       ng-required="!scaling.autoscale"
-                                       ng-disabled="scaling.autoscale"
-                                       pattern="\d*"
-                                       select-on-focus
-                                       aria-describedby="replicas-help">
-                                <div id="replicas-help">
-                                  <span class="help-block" translate>The number of instances of your image.</span>
-                                </div>
-                                <div class="has-error" ng-show="form.replicas.$dirty && form.replicas.$invalid">
-                                  <span class="help-block" translate>Replicas must be an integer value greater than or equal to 0.</span>
+                        <osc-form-section
+                          header="Deployment Configuration"
+                          about-title="Deployment Configuration"
+                          about="Deployment configurations describe how your application is configured
+                            by the cluster and under what conditions it should be recreated (e.g. when the image changes)."
+                          expand="true"
+                          can-toggle="false">
+                          <div class="animate-drawer" ng-show="$parent.expand">
+                            <h3 translate>Autodeploy when</h3>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" ng-model="deploymentConfig.deployOnNewImage">
+				<translate>New image is available</translate>
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                            <label>
+                              <input type="checkbox" ng-model="deploymentConfig.deployOnConfigChange">
+			      <translate>Deployment configuration changes</translate>
+                            </label>
+                            </div>
+                            <div>
+                              <h3 translate>Environment Variables <span class="appended-icon">(Runtime only) <span class="help action-inline">
+                                <a href="" data-toggle="tooltip"
+                                   data-original-title="Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime.">
+                                  <i class="pficon pficon-help"></i>
+                                </a>
+                              </span></span></h3>
+                              <p ng-show="DCEnvVarsFromImage.length">
+                                <a
+                                  href=""
+                                  ng-click="showDCEnvs = (!showDCEnvs)">
+                                  {{showDCEnvs ? 'Hide' : 'Show'}} Image Environment Variables
+                                </a>
+                              </p>
+                              <div ng-show="showDCEnvs">
+                                <div class="help-block">
+                                  <p translate>These variables exist on the image and will be available at runtime. You may override them below.</p>
                                 </div>
                                 <key-value-editor
                                   entries="DCEnvVarsFromImage"
@@ -404,32 +361,62 @@
 
                         <!-- /scaling -->
 
-                            <label-editor
-                                labels="labelArray"
-                                expand="true"
-                                can-toggle="false"
-                                help-text="Each label is applied to each created resource.">
-                            </label-editor>
+                        <osc-form-section
+                          header="Resource Limits"
+                          about-title="Resource Limits"
+                          about="Resource limits control compute resource usage by a container on a node."
+                          expand="true"
+                          can-toggle="false"
+                          >
+                          <edit-request-limit
+                              resources="container.resources"
+                              type="cpu"
+                              limit-ranges="limitRanges"
+                              project="project">
+                          </edit-request-limit>
+                          <edit-request-limit
+                              resources="container.resources"
+                              type="memory"
+                              limit-ranges="limitRanges"
+                              project="project">
+                          </edit-request-limit>
+                          <div ng-repeat="problem in cpuProblems" class="has-error">
+                            <span class="help-block">{{problem}}</span>
                           </div>
                           <div ng-repeat="problem in memoryProblems" class="has-error">
                             <span class="help-block">{{problem}}</span>
                           </div>
-                          <div class="buttons gutter-bottom" ng-class="{'gutter-top': !alerts.length}">
-                            <button type="submit"
-                                class="btn btn-primary btn-lg"
-                                ng-disabled="form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs"
-                                 translate>Create</button>
-                            <a class="btn btn-default btn-lg" href="" ng-click="cancel()" role="button" translate>Cancel</a>
-                          </div>
-                        </form>
-                      </fieldset>
-                    </div>
-                  </div><!-- /row -->
-                </div><!-- /osc-form -->
-              </div><!-- /col-* -->
-            </div><!-- /row -->
-          </div><!-- /container -->
-        </div><!-- /middle-content -->
-      </div><!-- /middle-container -->
-    </div><!-- /middle-section -->
+                        </osc-form-section>
+
+                        <!-- /limits -->
+
+                        <label-editor
+                            labels="labelArray"
+                            expand="true"
+                            can-toggle="false"
+                            help-text="Each label is applied to each created resource.">
+                        </label-editor>
+                      </div>
+                      <div class="mar-top-md">
+                        <span ng-if="!advancedOptions" translate>Show</span>
+                        <span ng-if="advancedOptions" translate>Hide</span>
+                        <a href="" ng-click="advancedOptions = !advancedOptions" role="button">advanced options</a>
+                        for source, routes, builds, and deployments.
+                      </div>
+                      <div class="buttons gutter-bottom" ng-class="{'gutter-top': !alerts.length}">
+                        <button type="submit"
+                            class="btn btn-primary btn-lg"
+                            ng-disabled="form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs"
+                            translate>Create</button>
+                        <a class="btn btn-default btn-lg" href="" ng-click="cancel()" role="button" translate>Cancel</a>
+                      </div>
+                    </form>
+                  </fieldset>
+                </div>
+              </div><!-- /row -->
+            </div><!-- /osc-form -->
+          </div><!-- /col-* -->
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </div><!-- /middle-content -->
   </div><!-- /middle -->

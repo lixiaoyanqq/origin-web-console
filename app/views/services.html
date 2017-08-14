@@ -11,7 +11,7 @@
           </span>
         </h1>
       </div>
-      <div ng-if="(services | hashSize) > 0 || filterWithZeroResults" class="data-toolbar">
+      <div class="data-toolbar">
         <div class="data-toolbar-filter">
           <project-filter></project-filter>
         </div>
@@ -20,23 +20,10 @@
   </div><!-- /middle-header-->
   <div class="middle-content">
     <div class="container-fluid">
+      <alerts alerts="alerts"></alerts>
       <div class="row">
         <div class="col-md-12">
-          <div ng-if="(services | hashSize) == 0">
-            <p ng-if="!servicesLoaded" translate>
-              Loading...
-            </p>
-            <div ng-if="servicesLoaded" class="empty-state-message text-center">
-              <div ng-if="!filterWithZeroResults">
-                <h2 translate>No services.</h2>
-                <p translate>No services have been added to project {{projectName}}.</p>
-              </div>
-              <div ng-if="filterWithZeroResults">
-                <h2><translate>The filter is hiding all services.</translate> <a href="" ng-click="clearFilter()" role="button" class="nowrap" translate>Clear Filter</a></h2>
-              </div>
-            </div>
-          </div>
-          <table ng-if="(services | hashSize) > 0" class="table table-bordered table-mobile table-layout-fixed">
+          <table class="table table-bordered table-hover table-mobile table-layout-fixed">
             <colgroup>
               <col class="col-sm-3">
             </colgroup>
@@ -50,23 +37,26 @@
                 <th translate>Age</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody ng-if="(services | hashSize) == 0">
+              <tr><td colspan="6"><em>{{emptyMessage}}</em></td></tr>
+            </tbody>
+            <tbody ng-if="(services | hashSize) > 0">
               <tr ng-repeat="service in services | orderObjectsByDate : true">
-                <td data-title="{{'Name'|translate}}"><a href="{{service | navigateResourceURL}}">{{service.metadata.name}}</a></td>
-                <td data-title="{{'Cluster IP'|translate}}">{{service.spec.clusterIP}}</td>
-                <td data-title="{{'External IP'|translate}}">
+                <td data-title="Name"><a href="{{service | navigateResourceURL}}">{{service.metadata.name}}</a></td>
+                <td data-title="Cluster IP">{{service.spec.clusterIP}}</td>
+                <td data-title="External IP">
                   <span ng-if="!service.status.loadBalancer.ingress.length"><em translate>none</em></span>
                   <span ng-repeat="ingress in service.status.loadBalancer.ingress | limitTo: 4">{{ingress.ip}}<span ng-if="!$last">,
                   </span></span><span ng-if="service.status.loadBalancer.ingress.length === 5">,
                     {{service.status.loadBalancer.ingress[4].ip}}</span><span ng-if="service.status.loadBalancer.ingress.length > 5">,
-                    <translate>and {{service.status.loadBalancer.ingress.length - 4}} others</translate></span>
+                    and {{service.status.loadBalancer.ingress.length - 4}} others</span>
                 </td>
                 <td data-title="Ports">
-                  <span ng-if="!service.spec.ports.length"><em translate>none</em></span>
+                  <span ng-if="!service.spec.ports.length"><em>none</em></span>
                   <span ng-repeat="portMapping in service.spec.ports | limitTo: 4">{{portMapping.port}}/{{portMapping.protocol}}<span ng-if="!$last">,
                   </span></span><span ng-if="service.spec.ports.length === 5">,
                     {{service.spec.ports[4].port}}/{{service.spec.ports[4].protocol}}</span><span ng-if="service.spec.ports.length > 5">,
-                    <translate>and {{service.spec.ports.length - 4}} others</translate></span>
+                    and {{service.spec.ports.length - 4}} others</span>
                 </td>
                 <td data-title="Selector">
                   <span ng-if="!service.spec.selector"><em translate>none</em></span>

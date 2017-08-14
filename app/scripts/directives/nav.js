@@ -7,7 +7,6 @@ angular.module('openshiftConsole')
       $filter,
       $timeout,
       $rootScope,
-      $routeParams,
       AuthorizationService,
       Constants,
       HTMLService) {
@@ -21,14 +20,13 @@ angular.module('openshiftConsole')
       templateUrl: 'views/_sidebar.html',
       controller: function($scope) {
         var path;
-        var hoverDelay = 200;
-        var hideDelay = hoverDelay + 100;
+        var hoverDelay = 300;
+        var hideDelay = hoverDelay + 200;
 
         $scope.navItems = Constants.PROJECT_NAVIGATION;
         $scope.sidebar = {};
 
         var updateActive = function() {
-          $scope.projectName = $routeParams.project;
           _.set($scope, 'sidebar.secondaryOpen',  false);
           _.set($rootScope, 'nav.showMobileNav', false);
           $scope.activeSecondary = null;
@@ -89,10 +87,6 @@ angular.module('openshiftConsole')
         };
 
         $scope.itemClicked = function(primaryItem) {
-          // Remove `isHover` from any of the items if another primary item was
-          // activated using the keyboard.
-          clearHover();
-
           if (primaryItem.href) {
             // Make sure any secondary nav closes if a primary item with an
             // href was activated using the keyboard.
@@ -100,6 +94,10 @@ angular.module('openshiftConsole')
             $scope.sidebar.secondaryOpen = false;
             return;
           }
+
+          // Remove `isHover` from any of the items if another primary item was
+          // activated using the keyboard.
+          clearHover();
 
           // Open the item regardless of whether the mouse is really over it
           // for keyboard and screen reader accessibility.
@@ -110,6 +108,10 @@ angular.module('openshiftConsole')
         };
 
         $scope.onMouseEnter = function(primaryItem) {
+          if (_.isEmpty(primaryItem.secondaryNavSections)) {
+            return;
+          }
+
           if (primaryItem.mouseLeaveTimeout) {
             $timeout.cancel(primaryItem.mouseLeaveTimeout);
             primaryItem.mouseLeaveTimeout = null;
@@ -118,11 +120,15 @@ angular.module('openshiftConsole')
           primaryItem.mouseEnterTimeout = $timeout(function() {
             primaryItem.isHover = true;
             primaryItem.mouseEnterTimeout = null;
-            $scope.sidebar.secondaryOpen = !_.isEmpty(primaryItem.secondaryNavSections);
+            $scope.sidebar.secondaryOpen = true;
           }, hoverDelay);
         };
 
         $scope.onMouseLeave = function(primaryItem) {
+          if (_.isEmpty(primaryItem.secondaryNavSections)) {
+            return;
+          }
+
           if (primaryItem.mouseEnterTimeout) {
             $timeout.cancel(primaryItem.mouseEnterTimeout);
             primaryItem.mouseEnterTimeout = null;
@@ -176,7 +182,17 @@ angular.module('openshiftConsole')
       }
     };
   })
-  .directive('projectHeader', function($timeout, $location, $filter, ProjectsService, projectOverviewURLFilter, Constants) {
+  .directive('oscHeader',
+    function(
+      $filter,
+      $location,
+      $rootScope,
+      $routeParams,
+      $timeout,
+      AuthorizationService,
+      Constants,
+      ProjectsService,
+      projectOverviewURLFilter) {
 
     // cache these to eliminate flicker
     var projects = {};
@@ -190,6 +206,46 @@ angular.module('openshiftConsole')
       templateUrl: 'views/directives/header/header.html',
       link: function($scope, $elem) {
         var MAX_PROJETS_TO_DISPLAY = 100;
+        var NAV_COLLAPSED_STORAGE_KEY = 'openshift/vertical-nav-collapsed';
+        $scope.currentProject = projects[ $routeParams.project ];
+
+        var setCollapsed = function(collapsed, updateSavedState) {
+          var storageValue;
+          _.set($rootScope, 'nav.collapsed', collapsed);
+
+          if (updateSavedState) {
+            storageValue = collapsed ? 'true' : 'false';
+            localStorage.setItem(NAV_COLLAPSED_STORAGE_KEY, storageValue);
+          }
+        };
+
+        var readSavedCollapsedState = function() {
+          var savedState = localStorage.getItem(NAV_COLLAPSED_STORAGE_KEY) === 'true';
+          setCollapsed(savedState);
+        };
+        readSavedCollapsedState();
+
+        var isCollapsed = function() {
+          return _.get($rootScope, 'nav.collapsed', false);
+        };
+
+        var setMobileNavVisible = function(visible) {
+          _.set($rootScope, 'nav.showMobileNav', visible);
+        };
+
+        $scope.toggleNav = function() {
+          var collapsed = isCollapsed();
+          setCollapsed(!collapsed, true);
+        };
+
+        $scope.toggleMobileNav = function() {
+          var showMobileNav = _.get($rootScope, 'nav.showMobileNav');
+          setMobileNavVisible(!showMobileNav);
+        };
+
+        $scope.closeMobileNav = function() {
+          setMobileNavVisible(false);
+        };
 
         $scope.closeOrderingPanel = function() {
           _.set($scope, 'ordering.panelName', "");
@@ -206,34 +262,9 @@ angular.module('openshiftConsole')
         var dmFilterKeyword = window.DMOS_OPENSHIFT_PROJECTNAMES.split(",");
 
         var updateOptions = function() {
-          var name = $scope.currentProjectName;
+          var name = $scope.projectName;
           if (!name) {
             return;
-          }
-
-          var makeOption = function(project, skipUniqueCheck) {
-            var option = $('<option>').attr("value", project.metadata.name).attr("selected", project.metadata.name === name);
-            if (skipUniqueCheck) {
-              option.text(displayName(project));
-            } else {
-              // FIXME: This is pretty inefficient, but probably OK if
-              // MAX_PROJETS_TO_DISPLAY is not too large.
-              option.text(uniqueDisplayName(project, sortedProjects));
-            }
-
-            return option;
-          };
-
-          // Only show all projects in the dropdown if less than a max number.
-          // Otherwise it's not usable and might impact performance.
-          if (_.size(projects) <= MAX_PROJETS_TO_DISPLAY) {
-            sortedProjects = $filter('orderByDisplayName')(projects);
-            options = _.map(sortedProjects, function(project) {
-              return makeOption(project, false);
-            });
-          } else {
-            // Show the current project and a "View All Projects" link.
-            options = [ makeOption(projects[name], true) ];
           }
 
           var makeOption = function(project, skipUniqueCheck) {
@@ -274,60 +305,40 @@ angular.module('openshiftConsole')
           });
         };
 
-        ProjectsService.list().then(function(items) {
-          projects = items.by("metadata.name");
-          updateOptions();
-        });
+        $scope.$on('$routeChangeSuccess', function() {
+          var projectName = $routeParams.project;
+          if ($scope.projectName === projectName) {
+            // The project hasn't changed.
+            return;
+          }
 
-          $scope.currentProjectName = currentProjectName;
+          $scope.projectName = projectName;
           $scope.chromeless = $routeParams.view === "chromeless";
 
-          if (currentProjectName && !$scope.chromeless) {
+          if (projectName && !$scope.chromeless) {
             _.set($rootScope, 'view.hasProject', true);
             // Check if the user can add to project after switching projects.
             // Assume false until the request completes.
             $scope.canIAddToProject = false;
             // Make sure we have project rules before we check canIAddToProject or we get the wrong value.
-            AuthorizationService.getProjectRules(currentProjectName).then(function() {
+            AuthorizationService.getProjectRules(projectName).then(function() {
               // Make sure the user hasn't switched projects while the request was still in flight.
-              if ($scope.currentProjectName !== currentProjectName) {
+              if ($scope.projectName !== projectName) {
                 return;
               }
 
-              $scope.canIAddToProject = AuthorizationService.canIAddToProject(currentProjectName);
+              $scope.canIAddToProject = AuthorizationService.canIAddToProject(projectName);
             });
 
             updateProjects().then(function() {
-              if (!$scope.currentProjectName || !projects) {
-                return;
-              }
-
-              if (!projects[$scope.currentProjectName]) {
-                // Make sure there is an entry for the current project in the
-                // dropdown. If it doesn't actually exist, the controller for
-                // the current view is responsible for redirecting to an error
-                // page.
-                projects[$scope.currentProjectName] = {
-                  metadata: {
-                    name: $scope.currentProjectName
-                  }
-                };
-              }
-
-              $scope.currentProject = projects[$scope.currentProjectName];
+              $scope.projectName = projectName;
+              $scope.currentProject = _.get(projects, [ projectName ]);
               updateOptions();
             });
           } else {
             _.set($rootScope, 'view.hasProject', false);
           }
-        };
-
-        // Make sure `onRouteChange` gets called on page load, even if
-        // `$routeChangeSuccess` doesn't fire. `onRouteChange` doesn't do any
-        // work if the project name hasn't changed, so there's no penalty if it
-        // gets called twice. This fixes a flake in our integration tests.
-        onRouteChange();
-        $scope.$on('$routeChangeSuccess', onRouteChange);
+        });
 
         select
           .selectpicker({

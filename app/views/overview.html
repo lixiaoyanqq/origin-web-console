@@ -2,20 +2,22 @@
   <div class="middle">
     <!-- Empty states -->
     <div ng-if="overview.showGetStarted" class="container-fluid empty-state">
+      <tasks></tasks>
       <alerts alerts="overview.state.alerts"></alerts>
       <!-- Getting started -->
       <div class="empty-state-message text-center">
         <div ng-if="project.metadata.name | canIAddToProject">
           <h2 translate>Get started with your project.</h2>
           <p class="gutter-top" translate>
-            Use your source or an example repository to build an application image, or add components like databases and message queues.
+            Use your source or an example repository to build an application
+            image, or add components like databases and message queues.
           </p>
           <p class="gutter-top">
-            <a ng-if="overview.catalogLandingPageEnabled" href="./" class="btn btn-lg btn-primary" translate>
-              Browse Catalog
-            </a>
-            <a ng-if="!overview.catalogLandingPageEnabled" ng-href="project/{{projectName}}/create" class="btn btn-lg btn-primary" translate>
+            <a ng-if="!('service_catalog_landing_page' | enableTechPreviewFeature)" ng-href="project/{{projectName}}/create" class="btn btn-lg btn-primary" translate>
               Add to Project
+            </a>
+            <a ng-if="'service_catalog_landing_page' | enableTechPreviewFeature" ng-href="./" class="btn btn-lg btn-primary" translate>
+              Browse Catalog
             </a>
           </p>
         </div>
@@ -24,57 +26,31 @@
           <ng-include src="'views/_request-access.html'"></ng-include>
         </div>
       </div>
-      <div ng-if="overview.showLoading" class="container-fluid loading-message" translate>
-        Loading...
-      </div>
-      <div ng-if="!overview.showGetStarted && !overview.showLoading">
-        <div class="middle-header header-toolbar">
-          <div class="container-fluid toolbar-container">
-            <div class="data-toolbar" role="toolbar" aria-label="Filter Toolbar">
-              <div class="data-toolbar-filter" role="group">
-                <ui-select
-                  class="data-toolbar-dropdown"
-                  ng-model="overview.filterBy"
-                  search-enabled="false"
-                  append-to-body="true"
-                  ng-disabled="overview.disableFilter">
-                  <ui-select-match>{{$select.selected.label}}</ui-select-match>
-                  <ui-select-choices repeat="option.id as option in overview.filterByOptions">
-                    {{option.label}}
-                  </ui-select-choices>
-                </ui-select>
-                <div ng-if="overview.filterBy === 'label'" class="label-filter">
-                  <!-- FIXME: This disables the add button but not the label filter selectize controlers. -->
-                  <fieldset ng-disabled="overview.disableFilter">
-                    <project-filter></project-filter>
-                  </fieldset>
-                </div>
-                <div ng-if="overview.filterBy === 'name'" class="name-filter">
-                  <form role="form" class="search-pf has-button">
-                    <div class="form-group filter-controls has-clear">
-                      <div class="search-pf-input-group">
-                        <label for="name-filter" class="sr-only" translate>Filter by name</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          ng-model="overview.filterText"
-                          placeholder="Filter by name"
-                          autocorrect="off"
-                          autocapitalize="none"
-                          spellcheck="false"
-                          ng-disabled="overview.disableFilter">
-                        <button
-                          type="button"
-                          class="clear"
-                          aria-hidden="true"
-                          ng-if="overview.filterText && !overview.disableFilter"
-                          ng-click="overview.filterText = ''">
-                          <span class="pficon pficon-close"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+    </div>
+    <div ng-if="overview.showLoading" class="container-fluid loading-message" translate>
+      Loading...
+    </div>
+    <div ng-if="!overview.showGetStarted && !overview.showLoading">
+      <div class="middle-header header-toolbar">
+        <div class="container-fluid toolbar-container">
+          <div class="data-toolbar" role="toolbar" aria-label="Filter Toolbar">
+            <div class="data-toolbar-filter" role="group">
+              <ui-select
+                class="data-toolbar-dropdown"
+                ng-model="overview.filterBy"
+                search-enabled="false"
+                append-to-body="true"
+                ng-disabled="overview.disableFilter">
+                <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                <ui-select-choices repeat="option.id as option in overview.filterByOptions">
+                  {{option.label}}
+                </ui-select-choices>
+              </ui-select>
+              <div ng-if="overview.filterBy === 'label'" class="label-filter">
+                <!-- FIXME: This disables the add button but not the label filter selectize controlers. -->
+                <fieldset ng-disabled="overview.disableFilter">
+                  <project-filter></project-filter>
+                </fieldset>
               </div>
               <div ng-if="overview.filterBy === 'name'" class="name-filter">
                 <form role="form" class="search-pf has-button">
@@ -118,7 +94,7 @@
             <span ng-if="overview.viewBy !== 'pipeline'" translate>
               Showing <strong>{{overview.filteredSize}}</strong> of <strong>{{overview.size}}</strong> items
             </span>
-            <span ng-if="overview.viewBy === 'pipeline' && overview.pipelineBuildConfigs | hashSize" translate>
+            <span ng-if="overview.viewBy === 'pipeline' && overview.pipelineBuildConfigs | hashSize">
               Showing <strong>{{overview.filteredPipelineBuildConfigs | hashSize}}</strong> of <strong>{{overview.pipelineBuildConfigs | hashSize}}</strong> pipelines
             </span>
           </div>
@@ -126,11 +102,12 @@
       </div>
       <div class="middle-content">
         <div class="container-fluid">
+          <tasks></tasks>
           <alerts alerts="overview.state.alerts"></alerts>
           <div ng-if="overview.everythingFiltered && overview.viewBy !== 'pipeline'">
             <div class="empty-state-message text-center h2">
-              <translate>The filter is hiding all resources.</translate>
-              <a href="" ng-click="overview.clearFilter()" role="button" class="nowrap" translate>Clear Filter</a>
+              The filter is hiding all resources.
+              <a href="" ng-click="overview.clearFilter()" translate>Clear Filter</a>
             </div>
           </div>
           <div ng-if="!overview.everythingFiltered || overview.viewBy === 'pipeline'">
@@ -194,27 +171,15 @@
                 </overview-list-row>
               </div>
             </div>
-            <div ng-if="!overview.everythingFiltered || overview.viewBy === 'pipeline'">
-              <div ng-if="overview.viewBy === 'app'" ng-repeat="app in overview.apps">
-                <div ng-if="app" class="app-heading">
-                  <h2>
-                    <div class="component-label">Application</div>
-                    <span ng-bind-html="app | highlightKeywords : overview.state.filterKeywords"></span>
-                  </h2>
-                  <div ng-if="route = overview.bestRouteByApp[app]" class="pull-right">
-                    <h3 class="overview-route">
-                      <span ng-if="route | isWebRoute">
-                        <a ng-href="{{route | routeWebURL}}" target="_blank">
-                          {{route | routeLabel}}
-                          <i class="fa fa-external-link" aria-hidden="true"></i>
-                        </a>
-                      </span>
-                      <span ng-if="!(route | isWebRoute)">{{route | routeLabel}}</span>
-                    </h3>
-                  </div>
-                </div>
-                <h2 ng-if="!app" translate>
-                  Other Resources
+            <div ng-if="overview.viewBy === 'resource'">
+              <div ng-if="overview.filteredDeploymentConfigs | hashSize">
+                <h2>
+                  <span ng-if="overview.deployments | hashSize" translate>
+                    Deployment Configs
+                  </span>
+                  <span ng-if="!(overview.deployments | hashSize)" translate>
+                    Deployments
+                  </span>
                 </h2>
                 <div class="list-pf">
                   <overview-list-row
@@ -286,11 +251,11 @@
                 <h2 translate>No pipelines.</h2>
                 <div ng-if="project.metadata.name | canIAddToProject">
                   <p>
-                    <translate>No pipelines have been added to project {{projectName}}.</translate>
+                    No pipelines have been added to project {{projectName}}.
                     <br>
-                    <translate>Learn more about</translate>
+                    Learn more about
                     <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank" translate>Pipeline Builds</a>
-                    <translate>and the</translate>
+                    and the
                     <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank" translate>OpenShift Pipeline Plugin</a>.
                   </p>
                   <p ng-if="(project.metadata.name | canIAddToProject) && overview.samplePipelineURL">
@@ -305,8 +270,8 @@
               </div>
               <div ng-if="(overview.pipelineBuildConfigs | hashSize) && !(overview.filteredPipelineBuildConfigs | hashSize)">
                 <div class="empty-state-message text-center h2">
-                  <translate>All pipelines are filtered.</translate>
-                  <a href="" ng-click="overview.clearFilter()" role="button" class="nowrap" translate>Clear Filter</a>
+			<translate>All pipelines are filtered.</translate>
+                  <a href="" ng-click="overview.clearFilter()" translate>Clear Filter</a>
                 </div>
               </div>
               <div ng-repeat="pipeline in overview.filteredPipelineBuildConfigs track by (pipeline | uid)">
@@ -397,7 +362,7 @@
               </h2>
               <div class="list-pf">
                 <service-instance-row
-                  ng-repeat="serviceInstance in overview.filteredServiceInstances track by (serviceInstance | uid)"
+                  ng-repeat="serviceInstance in overview.filteredServiceInstances"
                   api-object="serviceInstance"
                   bindings="overview.bindingsByInstanceRef[serviceInstance.metadata.name]"
                   state="overview.state"></service-instance-row>

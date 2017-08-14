@@ -26,15 +26,15 @@
               <h2 translate>No pipelines.</h2>
               <div ng-if="project.metadata.name | canIAddToProject">
                 <p>
-                  <translate>No pipelines have been added to project {{projectName}}.</translate>
+                  No pipelines have been added to project {{projectName}}.
                   <br>
-                  <translate>Learn more about</translate>
+                  Learn more about
                   <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank" translate>Pipeline Builds</a>
-                  <translate>and the</translate>
+                  and the
                   <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank" translate>OpenShift Pipeline Plugin</a>.
                 </p>
                 <p ng-if="(project.metadata.name | canIAddToProject) && createSampleURL">
-                  <a ng-href="{{createSampleURL}}" class="btn btn-primary btn-lg" translate>
+                  <a ng-href="{{createSampleURL}}" class="btn btn-lg btn-primary" translate>
                     Create Sample Pipeline
                   </a>
                 </p>
@@ -58,6 +58,7 @@
               </div>
               <h2 class="mar-top-none">
                 <a ng-href="{{buildConfig | navigateResourceURL}}">{{buildConfigName}}</a>
+                <translate>Source Repository:</translate>
                 <small><translate>created</translate> <span am-time-ago="buildConfig.metadata.creationTimestamp"></span></small>
               </h2>
               <div ng-if="buildConfig.spec.source.git.uri">
@@ -81,21 +82,24 @@
             <div ng-if="buildsLoaded && !(interestingBuildsByConfig[buildConfigName] | hashSize)">
               <p class="mar-bottom-xxl">
                 <translate>No pipeline builds have run for {{buildConfigName}}.</translate>
-                <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile" translate>
+                <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile">
                   View the <a ng-href="{{(buildConfig | navigateResourceURL) + '?tab=configuration'}}">Jenkinsfile</a> to see what stages will run.
                 </span>
-                <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath" translate>
-                  View the file <code>{{buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath}}</code> in the <a ng-if="buildConfig | jenkinsfileLink" ng-href="buildConfig | jenkinsfileLink">source repository</a> <span ng-if="!(buildConfig | jenkinsfileLink)">source repository</span> to see what stages will run.
+                <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath">
+                  View the file <code>{{buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath}}</code> in the
+                  <a ng-if="buildConfig | jenkinsfileLink" ng-href="buildConfig | jenkinsfileLink">source repository</a>
+                  <span ng-if="!(buildConfig | jenkinsfileLink)">source repository</span>
+                  to see what stages will run.
                 </span>
               </p>
             </div>
             <div ng-if="interestingBuildsByConfig[buildConfigName] | hashSize">
               <div ng-if="!(statsByConfig[buildConfigName].avgDuration | isNil)" class="hidden-xs pull-right text-muted">
-                <translate>Average Duration:</translate>
+		      <translate>Average Duration:</translate>
                 {{statsByConfig[buildConfigName].avgDuration | timeOnlyDuration}}
               </div>
               <h4>
-                <translate>Recent Runs</translate>
+		      <translate>Recent Runs</translate>
                 <small ng-if="!(statsByConfig[buildConfigName].avgDuration | isNil)" class="visible-xs-block mar-top-xs text-muted">
                   <translate>Average Duration:</translate>
                   {{statsByConfig[buildConfigName].avgDuration | timeOnlyDuration}}

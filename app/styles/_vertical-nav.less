@@ -5,15 +5,14 @@
 .nav-pf-vertical {
   background-color: @nav-pf-vertical-bg-color;
   top: @navbar-os-header-height-mobile;
+  transition: width .1s ease-in-out, left .1s ease-in-out;
   z-index: 990;
   @media(min-width: @screen-sm-min) {
-    // Hide at wider screen widths unless there is a project.
-    display: none;
+    top: @navbar-os-header-height-desktop;
   }
   .has-project-bar & {
     top: (@navbar-os-header-height-mobile + @project-bar-height-mobile);
     @media(min-width: @screen-sm-min) {
-      display: block;
       top: (@navbar-os-header-height-desktop + @project-bar-height-desktop);
     }
   }
@@ -28,39 +27,35 @@
       top: 0px;
       width: 100%;
     }
-    // override PatternFly :hover as we don't want :hover changes
+    &.active > a,
+    &:focus > a,
     &:hover > a {
-      background-color: transparent;
-      color: @nav-pf-vertical-color;
-      .fa,
-      .pficon {
-        color: @nav-pf-vertical-icon-color;
+      background-color: @nav-pf-vertical-secondary-bg-color;
+      font-weight: 300;
+    }
+    &:focus > a,
+    &:hover > a {
+      .pficon,
+      .fa {
+        color: @sidebar-os-icon-hover-color;
       }
     }
-    > a:focus,
-    &.active > a,
-    &.is-hover > a {
-      background-color: @nav-pf-vertical-active-bg-color;
-      color: @nav-pf-vertical-active-color !important;
-      &:after {
-        color: @nav-pf-vertical-active-color !important;
-      }
-      .fa,
-      .pficon {
+    &.active > a {
+      .pficon,
+      .fa {
         color: @nav-pf-vertical-active-icon-color;
       }
     }
-    > a {
+    > a,
+    > a:focus {
       font-size: @font-size-base;
-      font-weight: 300 !important;
+      font-weight: 300;
       text-decoration: none;
       @media(max-width: @screen-xs-max) {
         height: auto;
         padding: 10px 15px;
       }
-      .fa,
-      .pficon {
-        color: @nav-pf-vertical-icon-color;
+      .fa, .pficon {
         font-size: (@font-size-base + 2);
         @media(min-width: @screen-sm-min) {
           font-size: (@font-size-base + 5);
@@ -68,39 +63,22 @@
       }
       .list-group-item-value {
         line-height: inherit;
-        max-width: none; // IE11, fixes https://github.com/patternfly/patternfly/issues/807
         text-decoration: none !important;
       }
     }
-    &.secondary-nav-item-pf {
-      > a:after {
-        font-size: 14px; // make right arrow size consistent with project-bar arrows
-        padding: 16px 0; // padding aligns arrow vertically
-        @media(max-width: @screen-xs-max) {
-          padding: 8px 0;
-        }
-      }
-      &.is-hover > a {
-        width: @nav-pf-vertical-width + 1; // cover .nav-pf-vertical border-right
-        z-index: @zindex-navbar-fixed + 1; // raise z-index to overlay
-        &:after {
-          color: @nav-pf-vertical-active-color;
-          right: 21px; // move 1px to offset parent width 1px increase onHover due to pf rules
-        }
+    // padding aligns arrow vertically
+    &.secondary-nav-item-pf > a:after {
+      padding: 16px 0;
+      @media(max-width: @screen-xs-max) {
+        padding: 8px 0;
       }
     }
   }
   &.collapsed {
-    .list-group-item.secondary-nav-item-pf {
-      &.is-hover > a {
-        width: @nav-pf-vertical-collapsed-width + 2; // cover .nav-pf-vertical.collapsed border-right
-      }
-      &.is-hover,
-      &:hover,
-      &.active {
-        > a:after {
-          right: 12px !important; // prevent arrow moving onHover due to pf rules
-        }
+    .list-group-item.secondary-nav-item-pf:hover,
+    .list-group-item.secondary-nav-item-pf.active {
+      > a:after {
+        right: 12px !important; // prevent arrow moving onHover due to pf rules
       }
     }
     .nav-pf-secondary-nav {
@@ -113,10 +91,18 @@
   &.show-mobile-nav {
     box-shadow: 2px 0 3px rgba(3,3,3,.15);
     left: 0;
-    transition: left .1s ease-in-out;
+  }
+  .list-group-item.secondary-nav-item-pf {
+    &:hover > a:after {
+      color: @sidebar-os-icon-hover-color;
+    }
+    // right arrow alignment
+    > a:after {
+      font-size: 14px;
+    }
   }
   .nav-pf-secondary-nav {
-    background: @nav-pf-vertical-active-bg-color;
+    background: @nav-pf-vertical-secondary-bg-color;
     border-left: 0;
     border-right: 1px solid @nav-pf-vertical-border-color;
     top:(@project-bar-height-mobile + @navbar-os-header-height-mobile);
@@ -137,12 +123,16 @@
       }
       > a {
         background: transparent;
-        &:focus,
         &:hover {
-          background: @nav-pf-vertical-secondary-hover-color;
-          color: @nav-pf-vertical-secondary-active-color;
           text-decoration: none;
+          background: @nav-pf-vertical-secondary-hover-color;
         }
+      }
+    }
+    .tech-preview & {
+      top: (@navbar-os-header-height-mobile + @project-bar-height-mobile + @tech-preview-banner-height);
+      @media(min-width: @screen-sm-min) {
+        top: (@navbar-os-header-height-desktop + @project-bar-height-desktop + @tech-preview-banner-height);
       }
     }
   }
@@ -152,5 +142,17 @@
   .nav-pf-secondary-nav .list-group-item > a {
     padding: 4px 0 2px 0;
     margin-left: 20px;
+  }
+  .tech-preview & {
+    top: (@navbar-os-header-height-mobile + @tech-preview-banner-height);
+    @media(min-width: @screen-sm-min) {
+      top: (@navbar-os-header-height-desktop + @tech-preview-banner-height);
+    }
+  }
+  .tech-preview.has-project-bar & {
+    top: (@navbar-os-header-height-mobile + @project-bar-height-mobile + @tech-preview-banner-height);
+    @media(min-width: @screen-sm-min) {
+      top: (@navbar-os-header-height-desktop + @project-bar-height-desktop + @tech-preview-banner-height);
+    }
   }
 }

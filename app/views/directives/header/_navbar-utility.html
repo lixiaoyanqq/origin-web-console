@@ -1,15 +1,15 @@
 <ul class="nav navbar-nav navbar-right navbar-iconic">
-  <li>
-    <notification-counter></notification-counter>
-  </li>
   <li
     extension-point
     extension-name="nav-system-status"
     extension-types="dom"></li>
 
+  <notification-counter ng-hide="chromeless"></notification-counter>
+
   <li ng-if="launcherApps.length > 0">
     <pf-application-launcher items="launcherApps" is-list="true"></pf-application-launcher>
   </li>
+
 
   <li uib-dropdown>
     <a uib-dropdown-toggle class="nav-item-iconic" id="help-dropdown" href="">

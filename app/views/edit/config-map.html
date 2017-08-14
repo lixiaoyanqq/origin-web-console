@@ -7,7 +7,8 @@
           <div class="mar-top-xl">
             <h1 translate>Edit Config Map {{configMap.metadata.name}}</h1>
             <div class="help-block" translate>
-              Config maps hold key-value pairs that can be used in pods to read application configuration.
+              Config maps hold key-value pairs that can be used in pods to read application
+              configuration.
             </div>
             <div class="mar-top-xl">
               <div ng-if="!loaded" translate>Loading...</div>
@@ -15,13 +16,13 @@
                 <div ng-if="resourceChanged && !resourceDeleted && !updatingNow" class="alert alert-warning">
                   <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
                   <span class="sr-only" translate>Warning:</span>
-                  <translate>Config map {{configMap.metadata.name}} has changed since you started editing it.</translate>
-                  <translate>You'll need to copy any changes you've made and edit the config map again.</translate>
+                  Config map {{configMap.metadata.name}} has changed since you started editing it.
+                  You'll need to copy any changes you've made and edit the config map again.
                 </div>
                 <div ng-if="resourceDeleted" class="alert alert-warning">
                   <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
                   <span class="sr-only" translate>Warning:</span>
-                  <translate>Config map {[configMap.metadata.name}} has been deleted since you started editing it.</translate>
+                  Config map {[configMap.metadata.name}} has been deleted since you started editing it.
                 </div>
                 <fieldset ng-disabled="disableInputs">
                   <edit-config-map model="configMap"></edit-config-map>

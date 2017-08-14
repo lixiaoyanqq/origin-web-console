@@ -14,7 +14,7 @@
            <translate>Membership</translate>
            <span class="page-header-link">
              <a ng-href="{{'roles' | helpLink}}" target="_blank">
-		     <translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i>
+               <translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i>
              </a>
            </span>
         </h1>
@@ -59,24 +59,24 @@
             ng-class="'content-' + subjectKind.name.toLowerCase()">
 
             <div
-              class="col-heading"
-              flex-collapse-fix>
-              <div class="col-name" flex ng-class="{ 'half-width': !mode.edit }">
+              class="col-heading item-row"
+              row mobile="column" flex-collapse-fix>
+              <div class="col-name" flex conceal="mobile" ng-class="{ 'half-width': !mode.edit }">
                 <h3 translate>Name</h3>
               </div>
-              <div class="col-roles" flex>
+              <div class="col-roles" flex conceal="mobile">
                 <h3 translate>Roles</h3>
               </div>
-              <div ng-if="mode.edit" class="col-add-role visible-md-block visible-lg-block" flex-collapse-fix>
+              <div ng-if="mode.edit" class="col-add-role" conceal="tablet" flex-collapse-fix>
                 <h3 translate>
                   Add Another Role
                 </h3>
               </div>
             </div>
 
-            <div ng-if="(subjectKind.subjects | hashSize) === 0" class="membership-empty">
+            <div ng-if="(subjectKind.subjects | hashSize) === 0">
               <p>
-                <em translate>There are no {{ subjectKind.name | humanizeKind }}s with access to this project.</em>
+                <em>There are no {{ subjectKind.name | humanizeKind }}s with access to this project.</em>
               </p>
             </div>
             <div
@@ -106,14 +106,18 @@
                   </span>
                 </span>
               </div>
-              <div class="action-set">
-                <div class="col-roles">
+              <div
+                class="action-set"
+                flex row tablet="column" mobile="column">
+                <div
+                  class="col-roles"
+                  row tablet="column" flex wrap axis="start">
                   <action-chip
                     ng-repeat="role in subject.roles"
                     key="role.metadata.name"
                     key-help="roleHelp(role)"
                     show-action="mode.edit"
-                    action="confirmRemove(subject.name, subjectKind.name, role.metadata.name, subject.namespace)"
+                    action="confirmRemove(subject.name, subjectKind.name, role.metadata.name)"
                     action-title="Remove role {{role.metadata.name}} from {{subject.name}}"></action-chip>
                 </div>
                 <div
@@ -129,12 +133,12 @@
                       class="select-role"
                       flex>
                       <ui-select-match
-                        placeholder="{{'Select a role'|translate}}">
+                        placeholder="Select a role">
                         <span ng-bind="subject.newRole.metadata.name"></span>
                       </ui-select-match>
                       <ui-select-choices
-                        repeat="role as role in filteredRoles | filter: excludeExistingRoles(subject.roles) | filter: { metadata: { name: $select.search } } track by (role | uid)">
-                        <div ng-bind-html="role.metadata.name | highlight: $select.search"></div>
+                        repeat="role as role in filteredRoles | filter: excludeExistingRoles(subject.roles) | filter: $select.search | orderBy: 'metadata.name'">
+                        <div>{{ role.metadata.name }}</div>
                         <div ng-if="role | annotation : 'description'">
                           <small>{{role | annotation : 'description'}}</small>
                         </div>
@@ -142,7 +146,7 @@
                     </ui-select>
                     <button
                       ng-disabled="disableAddForm || (!subject.newRole)"
-                      ng-click="addRoleTo(subject.name, subjectKind.name, subject.newRole, subject.namespace)"
+                      ng-click="addRoleTo(subject.name, subjectKind.name, subject.newRole)"
                       class="btn btn-default add-role-to" translate>
                       Add
                     </button>
@@ -159,7 +163,7 @@
               <div
                 ng-if="mode.edit"
                 class="item-row form-new-role" row mobile="column">
-                <div class="col-name service-account" row mobile="column" tablet="column">
+                <div class="col-name pad-bottom-none" row mobile="column" tablet="column">
                   <label
                     ng-attr-for="newBindingName"
                     class="sr-only" translate>
@@ -171,7 +175,7 @@
                     ng-if="newBinding.kind !== 'ServiceAccount'"
                     type="text"
                     class="form-control input-name"
-                    placeholder="{{'Name'|translate}}"
+                    placeholder="Name"
                     ng-model="newBinding.name"
                     autocorrect="off"
                     autocapitalize="none"
@@ -186,8 +190,8 @@
                       on-select="selectProject($item, $model)"
                       theme="bootstrap"
                       search-enabled="true"
-                      title="{{'Select a project'|translate}}"
-                      class="select-role">
+                      title="Select a project"
+                      class="select-role pad-bottom-sm">
                       <ui-select-match
                         placeholder="Select a project">
                         <span>{{newBinding.namespace}}</span>
@@ -203,114 +207,63 @@
 
                   <span
                     ng-if="newBinding.kind === 'ServiceAccount'"
-                    class="mar-left-md mar-right-md hidden-xs hidden-sm">/</span>
+                    class="mar-left-md mar-right-md hidden-xs">/</span>
+
                   <!-- name entry/picker for service accounts -->
                   <div
-                    ng-if="mode.edit"
-                    class="item-row form-new-role" row mobile="column">
-                    <div class="col-name pad-bottom-none" row mobile="column" tablet="column">
-                      <label
-                        ng-attr-for="newBindingName"
-                        class="sr-only" translate>
-                        Name
-                      </label>
-
-                      <!-- name entry field for everything but service accounts -->
-                      <input
-                        ng-if="newBinding.kind !== 'ServiceAccount'"
-                        type="text"
-                        class="form-control input-name"
-                        placeholder="Name"
-                        ng-model="newBinding.name"
-                        autocorrect="off"
-                        autocapitalize="none"
-                        spellcheck="false">
-                      <!-- namespace entry/picker for service accounts -->
-                      <div
-                        ng-if="newBinding.kind === 'ServiceAccount'"
-                        class="service-account-namespace"
-                        aria-hidden="true">
-                        <ui-select
-                          ng-model="newBinding.namespace"
-                          on-select="selectProject($item, $model)"
-                          theme="bootstrap"
-                          search-enabled="true"
-                          title="Select a project"
-                          class="select-role pad-bottom-sm">
-                          <ui-select-match
-                            placeholder="Select a project">
-                            <span>{{newBinding.namespace}}</span>
-                          </ui-select-match>
-                          <ui-select-choices
-                            repeat="projectName in projects | filter: $select.search"
-                            refresh="refreshProjects($select.search)"
-                            refresh-delay="200">
-                            <div ng-bind-html="projectName | highlight : $select.search"></div>
-                          </ui-select-choices>
-                        </ui-select>
-                      </div>
-
-                      <span
-                        ng-if="newBinding.kind === 'ServiceAccount'"
-                        class="mar-left-md mar-right-md hidden-xs">/</span>
-
-                      <!-- name entry/picker for service accounts -->
-                      <div
-                        ng-if="newBinding.kind === 'ServiceAccount'"
-                        class="service-account-name">
-                        <ui-select
-                          ng-model="newBinding.name"
-                          theme="bootstrap"
-                          search-enabled="true"
-                          title="Select a service account"
-                          class="select-role">
-                          <ui-select-match
-                            placeholder="Service account">
-                            <span>{{newBinding.name}}</span>
-                          </ui-select-match>
-                          <ui-select-choices
-                            repeat="saName in serviceAccounts | filter: $select.search"
-                            refresh="refreshServiceAccounts($select.search)"
-                            refresh-delay="200">
-                            <div ng-bind-html="saName | highlight : $select.search"></div>
-                          </ui-select-choices>
-                        </ui-select>
-                      </div>
-                    </div>
-                    <div
-                      class="action-set"
-                      flex row tablet="column" mobile="column">
-                      <div class="col-roles" flex row tablet="column">&nbsp;</div>
-                      <div class="col-add-role">
-                        <div ng-show="mode.edit" row>
-                          <ui-select
-                            ng-if="filteredRoles.length"
-                            ng-model="newBinding.newRole"
-                            theme="bootstrap"
-                            search-enabled="true"
-                            title="new {{subjectKind.name}} role"
-                            class="select-role"
-                            flex>
-                            <ui-select-match
-                              placeholder="Select a role">
-                              <span ng-bind="newBinding.newRole.metadata.name"></span>
-                            </ui-select-match>
-                            <ui-select-choices
-                              repeat="role as role in filteredRoles | filter: $select.search | orderBy: 'metadata.name'">
-                              <div>{{ role.metadata.name }}</div>
-                              <div ng-if="role | annotation : 'description'">
-                                <small>{{role | annotation : 'description'}}</small>
-                              </div>
-                            </ui-select-choices>
-                          </ui-select>
-                          <button
-                            ng-disabled="disableAddForm || (!newBinding.name) || (!newBinding.newRole)"
-                            ng-click="addRoleTo(newBinding.name, newBinding.kind, newBinding.newRole, newBinding.namespace)"
-                            class="btn btn-default add-role-to" translate>
-                            Add
-                          </button>
-                        </div>
-                      </div>
+                    ng-if="newBinding.kind === 'ServiceAccount'"
+                    class="service-account-name">
+                    <ui-select
+                      ng-model="newBinding.name"
+                      theme="bootstrap"
+                      search-enabled="true"
+                      title="Select a service account"
+                      class="select-role">
+                      <ui-select-match
+                        placeholder="Service account">
+                        <span>{{newBinding.name}}</span>
+                      </ui-select-match>
+                      <ui-select-choices
+                        repeat="saName in serviceAccounts | filter: $select.search"
+                        refresh="refreshServiceAccounts($select.search)"
+                        refresh-delay="200">
+                        <div ng-bind-html="saName | highlight : $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+                </div>
+                <div
+                  class="action-set"
+                  flex row tablet="column" mobile="column">
+                  <div class="col-roles" flex row tablet="column">&nbsp;</div>
+                  <div class="col-add-role">
+                    <div ng-show="mode.edit" row>
+                      <ui-select
+                        ng-if="filteredRoles.length"
+                        ng-model="newBinding.newRole"
+                        theme="bootstrap"
+                        search-enabled="true"
+                        title="new {{subjectKind.name}} role"
+                        class="select-role"
+                        flex>
+                        <ui-select-match
+                          placeholder="Select a role">
+                          <span ng-bind="newBinding.newRole.metadata.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices
+                          repeat="role as role in filteredRoles | filter: $select.search | orderBy: 'metadata.name'">
+                          <div>{{ role.metadata.name }}</div>
+                          <div ng-if="role | annotation : 'description'">
+                            <small>{{role | annotation : 'description'}}</small>
+                          </div>
+                        </ui-select-choices>
+                      </ui-select>
+                      <button
+                        ng-disabled="disableAddForm || (!newBinding.name) || (!newBinding.newRole)"
+                        ng-click="addRoleTo(newBinding.name, newBinding.kind, newBinding.newRole, newBinding.namespace)"
+                        class="btn btn-default add-role-to" translate>
+                        Add
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -319,21 +272,21 @@
 
             <div
               ng-if="mode.edit"
-              class="show-hidden-roles">
-              <div class="action-set">
-                <div class="col-add-role">
+              row mobile="column">
+              <div class="col-name hidden-xs">&nbsp;</div>
+              <div
+                class="action-set"
+                flex row tablet="column" mobile="column">
+                <div class="col-roles hidden-xs" flex>&nbsp;</div>
+                <div class="col-add-role" row>
                   <div class="checkbox">
                     <label>
-                      <input
-                        type="checkbox"
-                        class="toggle-hidden"
-                        ng-click="toggleRoles($event)"
-                        ng-checked="toggle.roles">
-                      <translate>Show hidden roles</translate></label>&nbsp;<a href=""
+                      <input type="checkbox" class="toggle-hidden" ng-click="showAllRoles($event)">
+                      Show hidden roles</label>&nbsp;<a href=""
                                                         class="action-inline"
                                                         data-toggle="popover"
                                                         data-trigger="hover focus"
-                                                        data-content="{{'System roles are hidden by default and do not typically need to be managed.'|translate}}"><i class="pficon pficon-help"></i></a>
+                                                        data-content="System roles are hidden by default and do not typically need to be managed."><i class="pficon pficon-help"></i></a>
                   </div>
                 </div>
               </div>
