@@ -60,8 +60,7 @@ angular.module('openshiftConsole')
       name: $routeParams.name,
       kind: $routeParams.kind,
       namespace: $routeParams.project,
-      subpage: 'Add Config Files',
-      includeProject: true
+      subpage: 'Add Config Files'
     });
 
     var humanizeKind = $filter('humanizeKind');
@@ -131,8 +130,7 @@ angular.module('openshiftConsole')
             $scope.breadcrumbs = BreadcrumbsService.getBreadcrumbs({
               object: object,
               project: project,
-              subpage: 'Add Config Files',
-              includeProject: true
+              subpage: 'Add Config Files'
             });
           },
           function(e) {

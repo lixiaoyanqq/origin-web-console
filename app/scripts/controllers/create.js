@@ -29,11 +29,7 @@ angular.module('openshiftConsole')
 
     $scope.breadcrumbs = [
       {
-        title: $scope.projectName,
-        link: "project/" + $scope.projectName
-      },
-      {
-        title: gettext("Add to Project")
+        title: "Add to Project"
       }
     ];
 
@@ -42,8 +38,6 @@ angular.module('openshiftConsole')
       .then(_.spread(function(project, context) {
         $scope.project = project;
         $scope.context = context;
-        // Update project breadcrumb with display name.
-        $scope.breadcrumbs[0].title = $filter('displayName')(project);
 
         // List image streams and templates in the both the shared `openshift`
         // namespace and the project namespace.

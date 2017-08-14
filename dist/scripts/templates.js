@@ -447,24 +447,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
-  $templateCache.put('views/_project-page.html',
-    "<div ng-class=\"{'show-sidebar-right': renderOptions.showEventsSidebar}\" class=\"wrap\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-1\">\n" +
-    "<sidebar></sidebar>\n" +
-    "</div>\n" +
-    "<div id=\"container-main\" class=\"middle\" in-view-container>\n" +
-    "<div ng-transclude>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div ng-if=\"renderOptions.showEventsSidebar && !renderOptions.collapseEventsSidebar\" class=\"sidebar-right sidebar-pf sidebar-pf-right\">\n" +
-    "<div class=\"right-section\">\n" +
-    "<events-sidebar ng-if=\"projectContext\" project-context=\"projectContext\" collapsed=\"renderOptions.collapseEventsSidebar\"></events-sidebar>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>"
-  );
-
-
   $templateCache.put('views/_quota-usage-chart.html',
     "<div ng-attr-id=\"{{chartID}}\" ng-style=\"{ width: width + 'px', height: height + 'px' }\" aria-hidden=\"true\">\n" +
     "</div>"
@@ -479,6 +461,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/_sidebar.html',
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<nav class=\"navbar navbar-sidebar\">\n" +
     "<ul class=\"nav nav-sidenav-primary\">\n" +
     "<li ng-if=\"'service_catalog_landing_page' | enableTechPreviewFeature\" class=\"visible-xs-block\">\n" +
@@ -501,23 +484,62 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-repeat-end style=\"display:none\"></li>\n" +
     "</ul>\n" +
+=======
+    "<div ng-if=\"view.hasProject\" class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
+    "    collapsed: nav.collapsed && !isMobile,\n" +
+    "    'hide-mobile-nav': !nav.showMobileNav && isMobile,\n" +
+    "    'hover-secondary-nav-pf': sidebar.secondaryOpen && !isMobile,\n" +
+    "    'show-mobile-nav': nav.showMobileNav && isMobile,\n" +
+    "    'show-mobile-secondary': nav.showMobileNav && sidebar.showMobileSecondary && isMobile\n" +
+    "  }\" on-esc=\"closeNav()\">\n" +
+    "<nav class=\"nav-vertical-primary\">\n" +
+    "<ul class=\"list-group\">\n" +
+    "\n" +
+    "<li ng-repeat=\"primaryItem in navItems\" ng-class=\"{\n" +
+    "          active: primaryItem === activePrimary,\n" +
+    "          'is-hover': primaryItem.isHover,\n" +
+    "          'secondary-nav-item-pf': primaryItem.secondaryNavSections.length\n" +
+    "        }\" ng-if=\"show(primaryItem)\" ng-mouseenter=\"onMouseEnter(primaryItem)\" ng-mouseleave=\"onMouseLeave(primaryItem)\" class=\"list-group-item\">\n" +
+    "<a ng-if=\"primaryItem.href\" ng-href=\"{{navURL(primaryItem.href)}}\" ng-click=\"itemClicked(primaryItem)\">\n" +
+    "<span class=\"{{primaryItem.iconClass}}\"></span> <span class=\"list-group-item-value\">{{primaryItem.label}}</span>\n" +
+    "</a>\n" +
+    "<a ng-if=\"!primaryItem.href\" href=\"\" ng-click=\"itemClicked(primaryItem)\">\n" +
+    "<span class=\"{{primaryItem.iconClass}}\"></span> <span class=\"list-group-item-value\">{{primaryItem.label}}</span>\n" +
+    "</a>\n" +
+    "\n" +
+    "<div ng-if=\"primaryItem.secondaryNavSections.length\" class=\"secondary-nav-item-pf\" ng-class=\"{\n" +
+    "            'mobile-nav-item-pf': primaryItem.mobileSecondary && isMobile\n" +
+    "          }\">\n" +
+    "<div class=\"nav-pf-secondary-nav\">\n" +
+    "<div class=\"nav-item-pf-header\">\n" +
+    "<a href=\"\" class=\"secondary-collapse-toggle-pf\" ng-click=\"collapseMobileSecondary(primaryItem, $event)\" role=\"button\"><span class=\"sr-only\">Back</span></a>\n" +
+    "<span>{{primaryItem.label}}</span>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
-    "<div ng-if=\"primaryItem.secondaryNavSections.length\" class=\"hover-nav visible-xs-block\">\n" +
-    "<ul class=\"nav nav-sidenav-secondary\">\n" +
-    "<li ng-repeat-start=\"secondarySection in primaryItem.secondaryNavSections\" ng-if=\"secondarySection.header\" class=\"dropdown-header\">\n" +
+    "<ul class=\"list-group\">\n" +
+    "<li ng-repeat-start=\"secondarySection in primaryItem.secondaryNavSections\" ng-if=\"secondarySection.header\" class=\"nav-item-pf-header\">\n" +
     "{{secondarySection.header}}\n" +
     "</li>\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<li ng-repeat=\"secondaryItem in secondarySection.items\" ng-class=\"{ active: secondaryItem === activeSecondary }\" ng-if=\"show(secondaryItem)\">\n" +
     "<a ng-href=\"{{navURL(secondaryItem.href)}}\">{{secondaryItem.label|translate}}</a>\n" +
+=======
+    "<li ng-repeat=\"secondaryItem in secondarySection.items\" ng-class=\"{ active: secondaryItem === activeSecondary }\" ng-if=\"show(secondaryItem)\" class=\"list-group-item\">\n" +
+    "<a ng-href=\"{{navURL(secondaryItem.href)}}\" ng-click=\"primaryItem.mobileSecondary = false;\">\n" +
+    "<span class=\"list-group-item-value\">{{secondaryItem.label}}</span>\n" +
+    "</a>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</li>\n" +
     "<li ng-repeat-end style=\"display:none\"></li>\n" +
     "</ul>\n" +
     "</div>\n" +
+    "</div>\n" +
     "</li>\n" +
     "</ul>\n" +
+    "</nav>\n" +
     "\n" +
     "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</nav>"
+    "</div>"
   );
 
 
@@ -780,17 +802,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/about.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded gutter-top\">\n" +
+    "<div class=\"container gutter-top\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div class=\"about\">\n" +
@@ -820,28 +834,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
+    "</div> \n" +
     "</div>"
   );
 
 
   $templateCache.put('views/add-config-volume.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"add-to-project middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
-    "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div ng-if=\"!error && (!targetObject || !configMaps || !secrets)\" translate>Loading...</div>\n" +
     "<div ng-if=\"error\" class=\"empty-state-message text-center\">\n" +
@@ -1002,28 +1004,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/attach-pvc.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"add-to-project middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div ng-show=\"!pvcs || !attach.resource\" translate>Loading...</div>\n" +
     "<div ng-show=\"pvcs && !pvcs.length && attach.resource\" class=\"empty-state-message empty-state-full-page\">\n" +
@@ -1182,9 +1172,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</fieldset>\n" +
     "</form>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -1714,11 +1701,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/browse/build-config.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -2017,20 +2000,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"buildConfig.spec.source.dockerfile\">\n" +
     "<dt>Dockerfile:</dt><dd></dd>\n" +
     "<div ui-ace=\"{\n" +
-    "                                mode: 'dockerfile',\n" +
-    "                                theme: 'dreamweaver',\n" +
-    "                                onLoad: aceLoaded,\n" +
-    "                                highlightActiveLine: false,\n" +
-    "                                showGutter: false,\n" +
-    "                                rendererOptions: {\n" +
-    "                                  fadeFoldWidgets: true,\n" +
-    "                                  highlightActiveLine: false,\n" +
-    "                                  showPrintMargin: false\n" +
-    "                                },\n" +
-    "                                advanced: {\n" +
-    "                                  highlightActiveLine: false\n" +
-    "                                }\n" +
-    "                              }\" readonly=\"readonly\" ng-model=\"buildConfig.spec.source.dockerfile\" class=\"ace-bordered ace-read-only ace-inline dockerfile-mode mar-top-md\"></div>\n" +
+    "                          mode: 'dockerfile',\n" +
+    "                          theme: 'dreamweaver',\n" +
+    "                          onLoad: aceLoaded,\n" +
+    "                          highlightActiveLine: false,\n" +
+    "                          showGutter: false,\n" +
+    "                          rendererOptions: {\n" +
+    "                            fadeFoldWidgets: true,\n" +
+    "                            highlightActiveLine: false,\n" +
+    "                            showPrintMargin: false\n" +
+    "                          },\n" +
+    "                          advanced: {\n" +
+    "                            highlightActiveLine: false\n" +
+    "                          }\n" +
+    "                        }\" readonly=\"readonly\" ng-model=\"buildConfig.spec.source.dockerfile\" class=\"ace-bordered ace-read-only ace-inline dockerfile-mode mar-top-md\"></div>\n" +
     "</div>\n" +
     "<div ng-if=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\">\n" +
     "<div class=\"small pull-right mar-top-sm\">\n" +
@@ -2040,18 +2023,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Jenkinsfile:\n" +
     "</dt><dd></dd>\n" +
     "<div ui-ace=\"{\n" +
-    "                                mode: 'groovy',\n" +
-    "                                theme: 'eclipse',\n" +
-    "                                showGutter: false,\n" +
-    "                                rendererOptions: {\n" +
-    "                                  fadeFoldWidgets: true,\n" +
-    "                                  highlightActiveLine: false,\n" +
-    "                                  showPrintMargin: false\n" +
-    "                                },\n" +
-    "                                advanced: {\n" +
-    "                                  highlightActiveLine: false\n" +
-    "                                }\n" +
-    "                              }\" readonly=\"readonly\" ng-model=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" class=\"ace-bordered ace-inline ace-read-only\"></div>\n" +
+    "                          mode: 'groovy',\n" +
+    "                          theme: 'eclipse',\n" +
+    "                          showGutter: false,\n" +
+    "                          rendererOptions: {\n" +
+    "                            fadeFoldWidgets: true,\n" +
+    "                            highlightActiveLine: false,\n" +
+    "                            showPrintMargin: false\n" +
+    "                          },\n" +
+    "                          advanced: {\n" +
+    "                            highlightActiveLine: false\n" +
+    "                          }\n" +
+    "                        }\" readonly=\"readonly\" ng-model=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" class=\"ace-bordered ace-inline ace-read-only\"></div>\n" +
     "</div>\n" +
     "</dl>\n" +
     "<div ng-if=\"buildConfig | hasPostCommitHook\">\n" +
@@ -2145,18 +2128,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/build.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -2254,18 +2231,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/config-map.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -2328,18 +2299,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/config-maps.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -2403,18 +2368,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/deployment-config.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -2720,18 +2679,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/deployment.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3061,18 +3014,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/image.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page class=\"image\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle image\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3116,18 +3063,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/imagestream.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3174,18 +3115,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/persistent-volume-claim.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3265,18 +3200,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/pod.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page class=\"pod\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle pod\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3433,18 +3362,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/replica-set.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3553,18 +3476,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/route.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3771,18 +3688,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/routes.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -3893,18 +3804,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/secret.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -3976,18 +3881,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/service.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -4089,17 +3988,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/stateful-set.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
@@ -4213,17 +4107,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/browse/stateful-sets.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -4287,18 +4176,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/builds.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -4477,9 +4360,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
@@ -4722,17 +4603,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/command-line.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded gutter-top\">\n" +
+    "<div class=\"container gutter-top\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div class=\"command-line\">\n" +
@@ -4760,8 +4633,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "After downloading and installing it, you can start by logging in. You are currently logged into this console as <strong>{{user.metadata.name}}</strong>. If you want to log into the CLI using the same session token:\n" +
     "<copy-to-clipboard display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL + ' --token=' + sessionToken\" input-text=\"'oc login ' + loginBaseURL + ' --token=<hidden>'\"></copy-to-clipboard>\n" +
     "<pre class=\"code prettyprint ng-binding\" ng-if=\"!sessionToken\">\n" +
-    "                      oc login {{loginBaseURL}}\n" +
-    "                    </pre>\n" +
+    "                oc login {{loginBaseURL}}\n" +
+    "              </pre>\n" +
     "</p>\n" +
     "<div class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
@@ -4783,27 +4656,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create-config-map.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div class=\"mar-top-xl\">\n" +
     "<h1 translate>Create Config Map</h1>\n" +
@@ -4824,25 +4686,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create-from-url.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded gutter-top\">\n" +
+    "<div class=\"container gutter-top\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
@@ -4907,27 +4758,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create-persistent-volume-claim.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div class=\"mar-top-xl\">\n" +
     "<h1 translate>Create Storage</h1>\n" +
@@ -4948,31 +4788,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create-project.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded gutter-top\">\n" +
+    "<div class=\"container gutter-top\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<h1 translate>Create Project</h1>\n" +
     "<create-project redirect-action=\"onProjectCreated\"></create-project>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -4981,19 +4807,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/create-route.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div class=\"mar-top-xl\">\n" +
     "<h1 translate>Create Route</h1>\n" +
@@ -5029,28 +4847,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create-secret.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"col-md-10 col-md-offset-1\">\n" +
     "<div ng-if=\"!project\" class=\"mar-top-md\" translate>Loading...</div>\n" +
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<div ng-if=\"!project\" class=\"mar-top-md\">Loading...</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-if=\"project\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
@@ -5067,25 +4879,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"add-to-project middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\" persist-tab-state>\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
@@ -5116,30 +4917,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create/category.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<h1>{{category.label|translate}}</h1>\n" +
     "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description|translate}}</div>\n" +
+=======
+    "<h1>{{category.label}}</h1>\n" +
+    "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description}}</div>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "\n" +
     "<div ng-if=\"category.subcategories\">\n" +
     "<catalog project-name=\"projectName\" project-image-streams=\"projectImageStreams\" openshift-image-streams=\"openshiftImageStreams\" project-templates=\"projectTemplates\" openshift-templates=\"openshiftTemplates\" squid-tab=\"squidTab\" category=\"category\">\n" +
@@ -5152,27 +4947,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create/fromimage.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -5216,15 +4998,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"row\">\n" +
     "<div ng-class=\"{\n" +
-    "                              'col-md-8': advancedOptions || advancedSourceOptions,\n" +
-    "                              'col-lg-12': !advancedOptions && !advancedSourceOptions\n" +
-    "                            }\">\n" +
+    "                          'col-md-8': advancedOptions || advancedSourceOptions,\n" +
+    "                          'col-lg-12': !advancedOptions && !advancedSourceOptions\n" +
+    "                        }\">\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"sourceUrl\" class=\"required\" translate>Git Repository URL</label>\n" +
     "<div ng-class=\"{\n" +
-    "                                  'has-warning': buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl),\n" +
-    "                                  'has-error': (form.sourceUrl.$error.required && form.sourceUrl.$dirty)\n" +
-    "                                }\">\n" +
+    "                              'has-warning': buildConfig.sourceUrl && form.sourceUrl.$touched && !sourceURLPattern.test(buildConfig.sourceUrl),\n" +
+    "                              'has-error': (form.sourceUrl.$error.required && form.sourceUrl.$dirty)\n" +
+    "                            }\">\n" +
     "\n" +
     "<input class=\"form-control\" id=\"sourceUrl\" name=\"sourceUrl\" type=\"text\" required aria-describedby=\"from_source_help\" ng-model=\"buildConfig.sourceUrl\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "</div>\n" +
@@ -5280,7 +5062,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</osc-routing>\n" +
     "</osc-form-section>\n" +
     "\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<osc-form-section header=\"Build Configuration\" about-title=\"Build Configuration\" about=\"{{'A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds.'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
+=======
+    "<osc-form-section header=\"Build Configuration\" about-title=\"Build Configuration\" about=\"A build configuration describes how to build your deployable image.  This includes\n" +
+    "                            your source, the base builder image, and when to launch new builds.\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"buildConfig.buildOnSourceChange\"/>\n" +
@@ -5317,7 +5104,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<key-value-editor entries=\"buildConfigEnvVars\" key-placeholder=\"{{'name'|translate}}\" value-placeholder=\"{{'value'|translate}}\" key-validator=\"[a-zA-Z_][a-zA-Z0-9_]*\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"Add Environment Variable\"></key-value-editor>\n" +
     "</osc-form-section>\n" +
     "\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<osc-form-section header=\"Deployment Configuration\" about-title=\"{{'Deployment Configuration'|translate}}\" about=\"{{'Deployment configurations describe how your application is configured by the cluster and under what conditions it should be recreated (e.g. when the image changes).'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
+=======
+    "<osc-form-section header=\"Deployment Configuration\" about-title=\"Deployment Configuration\" about=\"Deployment configurations describe how your application is configured\n" +
+    "                            by the cluster and under what conditions it should be recreated (e.g. when the image changes).\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"animate-drawer\" ng-show=\"$parent.expand\">\n" +
     "<h3 translate>Autodeploy when</h3>\n" +
     "<div class=\"checkbox\">\n" +
@@ -5448,30 +5240,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/create/next-steps.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded next-steps\">\n" +
+    "<div class=\"container-fluid next-steps\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\"></next-steps>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>"
@@ -5479,11 +5257,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/deployments.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -5700,9 +5474,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
@@ -7458,18 +7230,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/header/_navbar-utility-mobile.html',
-    "<nav class=\"navbar navbar-sidebar visible-xs-block\">\n" +
-    "<ul extension-point extension-name=\"nav-dropdown-mobile\" extension-types=\"dom\" extension-args=\"[user]\" class=\"nav nav-sidenav-primary\"></ul>\n" +
+    "<nav class=\"nav-vertical-utility visible-xs-block\">\n" +
+    "<ul extension-point extension-name=\"nav-dropdown-mobile\" extension-types=\"dom\" extension-args=\"[user]\" class=\"list-group\"></ul>\n" +
     "</nav>"
   );
 
 
   $templateCache.put('views/directives/header/_navbar-utility.html',
     "<ul class=\"nav navbar-nav navbar-right navbar-iconic\">\n" +
-    "<li>\n" +
-    "<notification-counter></notification-counter>\n" +
-    "</li>\n" +
     "<li extension-point extension-name=\"nav-system-status\" extension-types=\"dom\"></li>\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
 <<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
     "<li ng-if=\"launcherApps.length > 0\" pf-application-launcher items=\"launcherApps\" is-list=\"true\"></li>\n" +
     "\n" +
@@ -7486,6 +7256,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "\n" +
 =======
+=======
+    "<notification-counter ng-hide=\"chromeless\"></notification-counter>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<li ng-if=\"launcherApps.length > 0\">\n" +
     "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
     "</li>\n" +
@@ -7500,7 +7273,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<li uib-dropdown ng-cloak ng-if=\"user\">\n" +
     "<a href=\"\" uib-dropdown-toggle id=\"user-dropdown\" class=\"nav-item-iconic\">\n" +
-    "<span class=\"pf-icon pficon-user\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"fa pf-icon pficon-user\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"username truncate\">{{user.fullName || user.metadata.name}}</span> <span class=\"caret\" aria-hidden=\"true\"></span>\n" +
     "</a>\n" +
     "<ul uib-dropdown-menu aria-labelledby=\"user-dropdown\" extension-point extension-name=\"nav-user-dropdown\" extension-types=\"dom html\"></ul>\n" +
@@ -7509,6 +7282,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
   $templateCache.put('views/directives/header/_tech-preview-banner.html',
     "<translate>Technology preview is enabled</translate>"
   );
@@ -7523,21 +7297,57 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div row class=\"navbar-flex-btn toggle-menu\">\n" +
     "<button type=\"button\" class=\"navbar-toggle project-action-btn ng-isolate-scope\" data-toggle=\"collapse\" data-target=\".navbar-collapse-2\">\n" +
     "<span class=\"sr-only\" translate>Toggle navigation</span>\n" +
+=======
+  $templateCache.put('views/directives/header/header.html',
+    "<nav class=\"navbar navbar-pf-vertical\" role=\"navigation\">\n" +
+    "<div class=\"navbar-header\">\n" +
+    "<button type=\"button\" class=\"navbar-toggle visible-xs\" ng-click=\"toggleMobileNav()\" on-esc=\"closeMobileNav()\">\n" +
+    "<span class=\"sr-only\">Toggle navigation</span>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
     "</button>\n" +
-    "</div>\n" +
     "\n" +
     "<a class=\"navbar-brand\" id=\"openshift-logo\" href=\"./\">\n" +
     "<div id=\"header-logo\"></div>\n" +
     "</a>\n" +
     "</div>\n" +
-    "\n" +
-    "<navbar-utility class=\"hidden-xs\"></navbar-utility>\n" +
-    "<div row extension-point extension-name=\"nav-system-status-mobile\" extension-types=\"dom\" class=\"navbar-flex-btn hide-if-empty\"></div>\n" +
+    "<navbar-utility></navbar-utility>\n" +
+    "</nav>\n" +
+    "<div ng-show=\"projectName && !chromeless\" class=\"project-bar\">\n" +
+    "<div class=\"toggle-menu\">\n" +
+    "<button type=\"button\" class=\"navbar-toggle project-action-btn\" ng-click=\"toggleNav()\">\n" +
+    "<span class=\"sr-only\">Toggle navigation</span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "<span class=\"icon-bar\"></span>\n" +
+    "</button>\n" +
     "</div>\n" +
-    "</nav>"
+    "<div class=\"form-group\">\n" +
+    "\n" +
+    "<select class=\"selectpicker form-control\" data-selected-text-format=\"count>3\" id=\"boostrapSelect\" title=\"\"></select>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"dropdown add-to-project\" ng-show=\"canIAddToProject\" uib-dropdown>\n" +
+    "<a class=\"dropdown-toggle\" href=\"\" ng-disabled=\"currentProject.status.phase != 'Active'\" title=\"Add to Project\" uib-dropdown-toggle>\n" +
+    "<i class=\"fa fa-plus visible-xs-inline-block\" aria-hidden=\"true\" title=\"Add to Project\"></i><span class=\"hidden-xs\">Add to Project</span><span class=\"hidden-xs caret\" aria-hidden=\"true\" title=\"Add to Project\"></span>\n" +
+    "</a>\n" +
+    "<ul role=\"menu\" uib-dropdown-menu class=\"dropdown-menu dropdown-menu-right\">\n" +
+    "<li ng-if-start=\"!catalogLandingPageEnabled\" role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromCatalog\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=deployImage\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a ng-href=\"project/{{projectName}}/create?tab=fromFile\">Import YAML / JSON</a></li>\n" +
+    "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"/\">Browse Catalog</a></li>\n" +
+    "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\">Deploy Image</a></li>\n" +
+    "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\">Import YAML / JSON</a></li>\n" +
+    "</ul>\n" +
+    "</div>\n" +
+    "</div> \n" +
+    "<sidebar></sidebar>\n" +
+    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
+    "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+    "</overlay-panel>"
   );
 
 
@@ -8209,11 +8019,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/notifications/notification-counter.html',
     "<li class=\"drawer-pf-trigger\" ng-if=\"!$ctrl.hide\">\n" +
-    "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\">\n" +
-    "<span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span>\n" +
-    "<span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge\"> </span>\n" +
-    "<span class=\"sr-only\">Notifications</span>\n" +
-    "</a>\n" +
+    "\n" +
+    "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\"><span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span><span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge\"> </span><span class=\"sr-only\">Notifications</span></a>\n" +
     "</li>"
   );
 
@@ -9614,21 +9421,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/edit/autoscaler.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\" style=\"max-width: 900px\">\n" +
-    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"!targetKind || !targetName || !project\" class=\"mar-top-md\" translate>\n" +
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<div ng-if=\"!targetKind || !targetName || !project\" class=\"mar-top-md\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "Loading...\n" +
     "</div>\n" +
     "<form name=\"form\" ng-submit=\"save()\" class=\"osc-form\" ng-show=\"targetKind && targetName\">\n" +
@@ -9659,8 +9463,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<osc-autoscaling model=\"autoscaling\" project=\"project\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\">\n" +
     "</osc-autoscaling>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\"></label-editor>\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"buttons gutter-top\">\n" +
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine\" translate>\n" +
+=======
+    "<div class=\"buttons gutter-top gutter-bottom\">\n" +
+    "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || form.$pristine\">\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "Save\n" +
     "</button>\n" +
     "<a href=\"\" ng-click=\"cancel()\" class=\"btn btn-default btn-lg\" role=\"button\" translate>Cancel</a>\n" +
@@ -9671,25 +9480,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/edit/build-config.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
-    "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\" ng-show=\"buildConfig\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle surface-shaded\" ng-show=\"buildConfig\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
@@ -9699,22 +9499,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h1>\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
     "<form class=\"edit-form\" name=\"form\" novalidate ng-submit=\"save()\">\n" +
-    "<div class=\"row\">\n" +
-    "<div class=\"col-lg-12\">\n" +
     "<div ng-if=\"buildConfig.spec.source.type !== 'None'\" class=\"section\">\n" +
     "<h3 translate>Source Configuration</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
     "<div ng-if=\"sources.git\">\n" +
     "<div class=\"row\">\n" +
     "<div ng-class=\"{\n" +
-    "                              'col-lg-8': view.advancedOptions,\n" +
-    "                              'col-lg-12': !view.advancedOptions}\">\n" +
+    "                        'col-lg-8': view.advancedOptions,\n" +
+    "                        'col-lg-12': !view.advancedOptions}\">\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"sourceUrl\" class=\"required\" translate>Git Repository URL</label>\n" +
     "<div ng-class=\"{\n" +
-    "                                  'has-warning': form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri),\n" +
-    "                                  'has-error': form.sourceUrl.$touched && form.sourceUrl.$error.required\n" +
-    "                                }\">\n" +
+    "                            'has-warning': form.sourceUrl.$touched && !sourceURLPattern.test(updatedBuildConfig.spec.source.git.uri),\n" +
+    "                            'has-error': form.sourceUrl.$touched && form.sourceUrl.$error.required\n" +
+    "                          }\">\n" +
     "\n" +
     "<input class=\"form-control\" id=\"sourceUrl\" name=\"sourceUrl\" ng-model=\"updatedBuildConfig.spec.source.git.uri\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"source-url-help\" required>\n" +
     "</div>\n" +
@@ -9758,13 +9556,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"buildFrom\" translate>Dockerfile</label>\n" +
     "<div ui-ace=\"{\n" +
-    "                              mode: 'dockerfile',\n" +
-    "                              theme: 'dreamweaver',\n" +
-    "                              rendererOptions: {\n" +
-    "                                fadeFoldWidgets: true,\n" +
-    "                                showPrintMargin: false\n" +
-    "                              }\n" +
-    "                            }\" ng-model=\"updatedBuildConfig.spec.source.dockerfile\" class=\"ace-bordered ace-inline dockerfile-mode\"></div>\n" +
+    "                        mode: 'dockerfile',\n" +
+    "                        theme: 'dreamweaver',\n" +
+    "                        rendererOptions: {\n" +
+    "                          fadeFoldWidgets: true,\n" +
+    "                          showPrintMargin: false\n" +
+    "                        }\n" +
+    "                      }\" ng-model=\"updatedBuildConfig.spec.source.dockerfile\" class=\"ace-bordered ace-inline dockerfile-mode\"></div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-if=\"updatedBuildConfig.spec.strategy.dockerStrategy.dockerfilePath && view.advancedOptions\">\n" +
     "<label for=\"dockerfilePath\" translate>Dockerfile Path</label>\n" +
@@ -9877,13 +9675,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"jenkinsfileOptions.type === 'inline'\">\n" +
     "<label translate>Jenkinsfile</label>\n" +
     "<div ui-ace=\"{\n" +
-    "                          mode: 'groovy',\n" +
-    "                          theme: 'eclipse',\n" +
-    "                          rendererOptions: {\n" +
-    "                            fadeFoldWidgets: true,\n" +
-    "                            showPrintMargin: false\n" +
-    "                          }\n" +
-    "                        }\" ng-model=\"updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" class=\"ace-bordered ace-inline\"></div>\n" +
+    "                    mode: 'groovy',\n" +
+    "                    theme: 'eclipse',\n" +
+    "                    rendererOptions: {\n" +
+    "                      fadeFoldWidgets: true,\n" +
+    "                      showPrintMargin: false\n" +
+    "                    }\n" +
+    "                  }\" ng-model=\"updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" class=\"ace-bordered ace-inline\"></div>\n" +
     "</div>\n" +
     "<div class=\"mar-top-md mar-bottom-md\">\n" +
     "<a ng-if=\"!view.jenkinsfileExamples\" href=\"\" ng-click=\"view.jenkinsfileExamples = true\" translate>What's a Jenkinsfile?</a>\n" +
@@ -10128,13 +9926,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"buildHookSelection.type.id === 'script' || buildHookSelection.type.id === 'scriptArgs'\">\n" +
     "<label class=\"required\" translate>Script</label>\n" +
     "<div ui-ace=\"{\n" +
-    "                                  mode: 'sh',\n" +
-    "                                  theme: 'eclipse',\n" +
-    "                                  rendererOptions: {\n" +
-    "                                    fadeFoldWidgets: true,\n" +
-    "                                    showPrintMargin: false\n" +
-    "                                  }\n" +
-    "                                }\" ng-model=\"updatedBuildConfig.spec.postCommit.script\" required class=\"ace-bordered ace-inline\">\n" +
+    "                            mode: 'sh',\n" +
+    "                            theme: 'eclipse',\n" +
+    "                            rendererOptions: {\n" +
+    "                              fadeFoldWidgets: true,\n" +
+    "                              showPrintMargin: false\n" +
+    "                            }\n" +
+    "                          }\" ng-model=\"updatedBuildConfig.spec.postCommit.script\" required class=\"ace-bordered ace-inline\">\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"buildHookSelection.type.id === 'command' || buildHookSelection.type.id === 'commandArgs'\">\n" +
@@ -10160,11 +9958,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<button class=\"btn btn-default btn-lg\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</form>\n" +
     "</fieldset>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10174,19 +9969,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/edit/config-map.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<div class=\"mar-top-xl\">\n" +
     "<h1 translate>Edit Config Map {{configMap.metadata.name}}</h1>\n" +
@@ -10221,25 +10008,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/edit/deployment-config.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
-    "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\" ng-show=\"deploymentConfig\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle surface-shaded\" ng-show=\"deploymentConfig\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
@@ -10249,8 +10027,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h1>\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
     "<form class=\"edit-form\" name=\"form\" novalidate>\n" +
-    "<div class=\"row\">\n" +
-    "<div class=\"col-lg-12\">\n" +
     "<div class=\"section\">\n" +
     "<h3 translate>Deployment Strategy</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
@@ -10502,11 +10278,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<button ng-click=\"cancel()\" class=\"btn btn-default btn-lg\" translate>Cancel</button>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</form>\n" +
     "</fieldset>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10517,25 +10290,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/edit/health-checks.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
-    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"col-md-12\">\n" +
 <<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
     "<div ng-show=\"!containers.length\" class=\"mar-top-md\" translate>Loading...</div>\n" +
     "<form ng-show=\"containers.length\" name=\"form\" class=\"health-checks-form\">\n" +
     "<h1 translate>Health Checks: {{name}}</h1>\n" +
 =======
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-show=\"!containers.length\" class=\"mar-top-md\">Loading...</div>\n" +
     "<form ng-show=\"containers.length\" name=\"form\" class=\"health-checks-form\" novalidate>\n" +
     "<h1>Health Checks: {{name}}</h1>\n" +
@@ -10583,9 +10352,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</fieldset>\n" +
     "</form>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10649,17 +10415,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/edit/project.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded gutter-top\">\n" +
+    "<div class=\"container gutter-top\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<h1 style=\"margin-bottom: 5px\" translate>Edit Project {{project.metadata.name}}</h1>\n" +
     "<div class=\"help-block mar-bottom-lg\" translate>Update the display name and description of your project. The project's unique name cannot be modified.</div>\n" +
@@ -10683,26 +10441,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/edit/route.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
+    "<div class=\"container-fluid\">\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<h1><translate>Edit Route</translate> {{routeName}}</h1>\n" +
@@ -10723,24 +10471,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/edit/yaml.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded edit-yaml\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
 <<<<<<< 4c90bbeb06cb1c3b6110ce79a149d15b4a595d99
@@ -10760,7 +10498,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>{{resource.kind | humanizeKind | upperFirst}} <strong>{{resource.metadata.name}}</strong> has been deleted since you started editing it.</translate>\n" +
 =======
     "<div ng-if=\"!updated.resource\" class=\"pad-top-md\">Loading...</div>\n" +
-    "<div ng-if=\"updated.resource\" class=\"pad-top-md\">\n" +
+    "<div ng-if=\"updated.resource\">\n" +
     "<h1 class=\"truncate\">Edit <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}</h1>\n" +
     "<parse-error error=\"error\" ng-if=\"error\"></parse-error>\n" +
     "<div ng-if=\"resourceChanged && !resourceDeleted && !updatingNow\" class=\"alert alert-warning\">\n" +
@@ -10790,19 +10528,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/events.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -10821,18 +10552,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/images.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -10890,22 +10615,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/landing-page.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle landing-page\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
     "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
     "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
@@ -10929,86 +10644,44 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</landingside>\n" +
     "</landing-page>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/logs/chromeless-build-log.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
-    "<div class=\"wrap chromeless\">\n" +
-    "\n" +
-    "<div id=\"container-main\" class=\"middle\">\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
-    "<div class=\"middle-header\">\n" +
+    "<div class=\"chromeless\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
-    "</div>\n" +
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<log-viewer ng-if=\"build\" object=\"build\" context=\"projectContext\" status=\"build.status.phase\" time-start=\"build.status.startTimestamp | date : 'medium'\" time-end=\"build.status.completionTimestamp | date : 'medium'\" chromeless=\"true\" run=\"logCanRun\" flex>\n" +
     "</log-viewer>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/logs/chromeless-deployment-log.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
-    "<div class=\"wrap chromeless\">\n" +
-    "\n" +
-    "<div id=\"container-main\" class=\"middle\">\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
-    "<div class=\"middle-header\">\n" +
+    "<div class=\"chromeless\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
-    "</div>\n" +
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<log-viewer ng-if=\"deploymentConfigName && logOptions.version\" object=\"replicaSet\" context=\"projectContext\" options=\"logOptions\" chromeless=\"true\" run=\"logCanRun\" flex>\n" +
     "</log-viewer>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/logs/chromeless-pod-log.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
-    "<div class=\"wrap chromeless\">\n" +
-    "\n" +
-    "<div id=\"container-main\" class=\"middle\">\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
-    "<div class=\"middle-header\">\n" +
+    "<div class=\"chromeless\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
-    "</div>\n" +
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<log-viewer ng-if=\"pod\" object=\"pod\" context=\"projectContext\" options=\"logOptions\" status=\"pod.status.phase\" time-start=\"pod.status.startTime | date : 'medium'\" chromeless=\"true\" run=\"logCanRun\" flex>\n" +
     "</log-viewer>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>"
   );
@@ -11020,10 +10693,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/membership.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page class=\"membership\" ng-if=\"project\">\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle membership\" ng-if=\"project\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -11201,9 +10871,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</uib-tabset>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
@@ -11538,11 +11206,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/monitoring.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page class=\"monitoring\">\n" +
-    "\n" +
-    "<div class=\"middle-section monitoring-page\" ng-class=\"{ 'sidebar-open': !renderOptions.collapseEventsSidebar }\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"monitoring-page\" ng-class=\"{'show-sidebar-right': renderOptions.showEventsSidebar}\">\n" +
+    "<div class=\"middle\" ng-class=\"{ 'sidebar-open': !renderOptions.collapseEventsSidebar }\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -11906,23 +11571,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+    "<div ng-if=\"renderOptions.showEventsSidebar && !renderOptions.collapseEventsSidebar\" class=\"sidebar-right sidebar-pf sidebar-pf-right\">\n" +
+    "<div class=\"right-section\">\n" +
+    "<events-sidebar ng-if=\"projectContext\" project-context=\"projectContext\" collapsed=\"renderOptions.collapseEventsSidebar\"></events-sidebar>\n" +
     "</div>\n" +
-    "</project-page>"
+    "</div>\n" +
+    "</div>"
   );
 
 
   $templateCache.put('views/newfromtemplate.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
@@ -11963,19 +11624,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/other-resources.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -12050,17 +11704,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/overview.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page class=\"overview\">\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"overview\">\n" +
+    "<div class=\"middle\">\n" +
     "\n" +
     "<div ng-if=\"overview.showGetStarted\" class=\"container-fluid empty-state\">\n" +
     "<tasks></tasks>\n" +
@@ -12151,8 +11801,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<tasks></tasks>\n" +
     "<alerts alerts=\"overview.state.alerts\"></alerts>\n" +
-    "</div>\n" +
-    "<div class=\"container-fluid\">\n" +
     "<div ng-if=\"overview.everythingFiltered && overview.viewBy !== 'pipeline'\">\n" +
     "<div class=\"empty-state-message text-center h2\">\n" +
     "<translate>The filter is hiding all resources.</translate>\n" +
@@ -12335,8 +11983,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
@@ -13281,11 +12928,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/pipelines.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -13398,18 +13041,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/pods.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -13439,24 +13076,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/projects.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\"> \n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"alerts\" class=\"alerts\">\n" +
@@ -13615,19 +13242,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/quota.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid mar-top-xl\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
@@ -13702,9 +13322,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "\n" +
     "<tr ng-repeat=\"resourceType in orderedTypesByClusterQuota[quota.metadata.name]\" ng-if=\"resourceType !== 'resourcequotas'\" ng-class=\"{\n" +
-    "                              warning: isAtLimit(quota, resourceType),\n" +
-    "                              disabled: (quota.status.total.hard[resourceType] || quota.spec.quota.hard[resourceType]) === '0'\n" +
-    "                            }\">\n" +
+    "                        warning: isAtLimit(quota, resourceType),\n" +
+    "                        disabled: (quota.status.total.hard[resourceType] || quota.spec.quota.hard[resourceType]) === '0'\n" +
+    "                      }\">\n" +
     "<td>\n" +
     "{{resourceType | humanizeQuotaResource : true | translate}}\n" +
     "<span ng-if=\"isAtLimit(quota, resourceType)\" data-toggle=\"tooltip\" data-original-title=\"{{'Quota limit reached.'|translate}}\" class=\"pficon pficon-warning-triangle-o warnings-popover\"></span>\n" +
@@ -13784,9 +13404,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "\n" +
     "<tr ng-repeat=\"resourceType in orderedTypesByQuota[quota.metadata.name]\" ng-if=\"resourceType !== 'resourcequotas'\" ng-class=\"{\n" +
-    "                              warning: isAtLimit(quota, resourceType),\n" +
-    "                              disabled: (quota.status.hard[resourceType] || quota.spec.hard[resourceType]) === '0'\n" +
-    "                            }\">\n" +
+    "                        warning: isAtLimit(quota, resourceType),\n" +
+    "                        disabled: (quota.status.hard[resourceType] || quota.spec.hard[resourceType]) === '0'\n" +
+    "                      }\">\n" +
     "<td>\n" +
     "{{resourceType | humanizeQuotaResource : true | translate}}\n" +
     "<span ng-if=\"isAtLimit(quota, resourceType)\" data-toggle=\"tooltip\" data-original-title=\"{{'Quota limit reached.'|translate}}\" class=\"pficon pficon-warning-triangle-o warnings-popover\"></span>\n" +
@@ -13872,18 +13492,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/secrets.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -13942,18 +13556,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/services.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -14023,32 +13631,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/set-limits.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
-    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+    "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<div class=\"col-md-12\">\n" +
 <<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
     "<div ng-show=\"!containers.length\" translate>Loading...</div>\n" +
     "<form ng-if=\"containers.length\" name=\"form\" class=\"set-limits-form\">\n" +
     "<h1 translate>Resource Limits: {{name}}</h1>\n" +
 =======
+=======
+    "<div class=\"col-md-10\">\n" +
+    "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "<div ng-show=\"!containers.length\">Loading...</div>\n" +
     "<form ng-if=\"containers.length\" name=\"form\" class=\"set-limits-form\" novalidate>\n" +
     "<h1>Resource Limits: {{name}}</h1>\n" +
@@ -14086,19 +13688,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/storage.html',
-    "<project-header class=\"top-header\"></project-header>\n" +
-    "<project-page>\n" +
-    "\n" +
-    "<div class=\"middle-section\">\n" +
-    "<div class=\"middle-container\">\n" +
+    "<div class=\"middle\">\n" +
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
@@ -14177,20 +13772,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</project-page>"
+    "</div>"
   );
 
 
   $templateCache.put('views/util/error.html',
-    "<default-header class=\"top-header\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
-    "<div class=\"sidebar-left collapse navbar-collapse navbar-collapse-2\">\n" +
-    "<navbar-utility-mobile></navbar-utility-mobile>\n" +
-    "</div>\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container\">\n" +
     "<div>\n" +
     "<h1 translate>Error</h1>\n" +
     "<h4>{{errorMessage}}</h4>\n" +
@@ -14203,20 +13791,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div translate>Return to the <a href=\"\" ng-click=\"reloadConsole()\">console</a>.</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('views/util/logout.html',
-    "<default-header class=\"top-header logged-out\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container\">\n" +
     "<div>\n" +
     "<h1 translate>Log out</h1>\n" +
     "<div ng-bind-html=\"logoutMessage\"></div>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>"
@@ -14224,11 +13808,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/util/oauth.html',
-    "<default-header class=\"top-header logged-out\"></default-header>\n" +
-    "<div class=\"wrap no-sidebar\">\n" +
     "<div class=\"middle surface-shaded\">\n" +
-    "<div class=\"container surface-shaded\">\n" +
+    "<div class=\"container\">\n" +
     "<div ng-if=\"!confirmUser\">\n" +
+<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<h1 style=\"margin-top: 10px\" translate>Logging in&hellip;</h1>\n" +
     "<p translate>Please wait while you are logged in&hellip;</p>\n" +
     "</div>\n" +
@@ -14244,7 +13827,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>If this is unexpected, click Cancel. This could be an attempt to trick you into acting as another user.</p>\n" +
     "<button class=\"btn btn-lg btn-danger\" type=\"button\" ng-click=\"completeLogin();\" translate>Switch Users</button>\n" +
     "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancelLogin();\" translate>Cancel</button>\n" +
+=======
+    "<h1>Logging in&hellip;</h1>\n" +
+    "<p>Please wait while you are logged in&hellip;</p>\n" +
     "</div>\n" +
+    "<div ng-if=\"confirmUser && !overriddenUser\">\n" +
+    "<h1>Confirm Login</h1>\n" +
+    "<p>You are being logged in as <code>{{confirmUser.metadata.name}}</code>.</p>\n" +
+    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"completeLogin();\">Continue</button>\n" +
+    "<button class=\"btn btn-lg btn-default\" type=\"button\" ng-click=\"cancelLogin();\">Cancel</button>\n" +
+    "</div>\n" +
+    "<div ng-if=\"confirmUser && overriddenUser\">\n" +
+    "<h1>Confirm User Change</h1>\n" +
+    "<p>You are about to change users from <code>{{overriddenUser.metadata.name}}</code> to <code>{{confirmUser.metadata.name}}</code>.</p>\n" +
+    "<p>If this is unexpected, click Cancel. This could be an attempt to trick you into acting as another user.</p>\n" +
+    "<button class=\"btn btn-lg btn-danger\" type=\"button\" ng-click=\"completeLogin();\">Switch Users</button>\n" +
+    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancelLogin();\">Cancel</button>\n" +
+>>>>>>> Patternfly vertical navigation and project bar
     "</div>\n" +
     "</div>\n" +
     "</div>"

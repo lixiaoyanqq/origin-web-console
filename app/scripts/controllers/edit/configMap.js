@@ -28,8 +28,7 @@ angular.module('openshiftConsole')
       name: $routeParams.configMap,
       kind: 'ConfigMap',
       namespace: $routeParams.project,
-      includeProject: true,
-      subpage: gettextCatalog.getString(gettext('Edit Config Map'))
+      subpage: 'Edit Config Map'
     });
 
     var getVersion = function(resource) {
@@ -55,7 +54,6 @@ angular.module('openshiftConsole')
             $scope.breadcrumbs = BreadcrumbsService.getBreadcrumbs({
               name: $routeParams.configMap,
               object: configMap,
-              includeProject: true,
               project: project,
               subpage: gettextCatalog.getString(gettext('Edit Config Map'))
             });

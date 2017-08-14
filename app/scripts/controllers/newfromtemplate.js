@@ -37,11 +37,7 @@ angular.module('openshiftConsole')
 
     $scope.breadcrumbs = [
       {
-        title: $routeParams.project,
-        link: "project/" + $routeParams.project
-      },
-      {
-        title: gettext("Add to Project"),
+        title: "Add to Project",
         link: "project/" + $routeParams.project + "/create"
       },
       {
@@ -53,7 +49,6 @@ angular.module('openshiftConsole')
       }
     ];
 
-    var displayName = $filter('displayName');
     var getValidTemplateParamsMap = function() {
       try {
         return JSON.parse($routeParams.templateParamsMap);
@@ -182,8 +177,6 @@ angular.module('openshiftConsole')
       .get($routeParams.project)
       .then(_.spread(function(project) {
         $scope.project = project;
-        // Update project breadcrumb with display name.
-        $scope.breadcrumbs[0].title = displayName(project);
 
         // Missing namespace indicates that the template should be received from from the 'CachedTemplateService'.
         // Otherwise get it via GET call.
@@ -203,7 +196,7 @@ angular.module('openshiftConsole')
           DataService.get("templates", name, {namespace: (namespace || $scope.project.metadata.name)}).then(
             function(template) {
               $scope.template = template;
-              $scope.breadcrumbs[3].title = $filter('displayName')(template);
+              $scope.breadcrumbs[2].title = $filter('displayName')(template);
               findTemplateImages(template);
               var imageUsesParameters = function(image) {
                 return !_.isEmpty(image.usesParameters);
