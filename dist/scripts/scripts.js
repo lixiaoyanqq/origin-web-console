@@ -16740,17 +16740,31 @@ n.routing.to = {
 kind: "Service",
 name: n.serviceName,
 weight: 1
+<<<<<<< 09d2a6ffdd24feb759f354588edbf74545412878
 }, i.list("services", l).then(function(e) {
 n.services = p(e.by("metadata.name"));
 }), n.copyServiceLabels = function() {
 var e = _.get(n, "routing.to.service.metadata.labels", {}), t = u.mapEntries(u.compactEntries(n.labels)), a = _.assign(t, e);
 n.labels = _.map(a, function(e, t) {
+=======
+};
+var f, h = function() {
+var e = f, t = _.get(n, "routing.to.name");
+f = _.get(p, [ t, "metadata", "labels" ], {});
+var a = u.mapEntries(u.compactEntries(n.labels)), r = _.assign(a, f);
+e && (r = _.omitBy(r, function(t, n) {
+return e[n] && !f[n];
+})), n.labels = _.map(r, function(e, t) {
+>>>>>>> Prefill service labels when creating route
 return {
 name: t,
 value: e
 };
 });
-}, n.createRoute = function() {
+};
+i.list("services", l).then(function(e) {
+p = e.by("metadata.name"), n.services = g(p), n.$watch("routing.to.name", h);
+}), n.createRoute = function() {
 if (n.createRouteForm.$valid) {
 d(), n.disableInputs = !0;
 var t = n.routing.to.name, a = u.mapEntries(u.compactEntries(n.labels)), o = r.createRoute(n.routing, t, a), s = _.get(n, "routing.alternateServices", []);

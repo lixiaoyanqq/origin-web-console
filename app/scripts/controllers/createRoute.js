@@ -101,7 +101,7 @@ angular.module('openshiftConsole')
           });
         };
 
-        DataService.list(servicesVersion, context).then(function(serviceData) {
+        DataService.list("services", context).then(function(serviceData) {
           servicesByName = serviceData.by("metadata.name");
           $scope.services = orderByDisplayName(servicesByName);
           // Wait until the services load before trying to copy service labels.
