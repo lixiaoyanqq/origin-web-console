@@ -32,8 +32,6 @@ angular.module("openshiftConsole")
   .directive("oscRouting",
              function($filter,
                       Constants,
-		      gettextCatalog,
-		      gettext,
                       DNS1123_SUBDOMAIN_VALIDATION) {
     return {
       require: '^form',
