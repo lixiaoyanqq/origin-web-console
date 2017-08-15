@@ -8215,11 +8215,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>Drop file here</p>\n" +
     "</div>\n" +
     "<div class=\"input-group\">\n" +
-    "<input type=\"text\" class=\"form-control\" ng-model=\"fileName\" readonly=\"readonly\" ng-show=\"supportsFileUpload\" ng-disabled=\"disabled\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+    "<input type=\"text\" class=\"form-control\" ng-model=\"fileName\" readonly=\"readonly\" ng-show=\"supportsFileUpload\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
     "<span class=\"input-group-btn\">\n" +
+<<<<<<< bc9ad1ef9bdce611a438ae9b9544f233bbeda548
     "<span class=\"btn btn-default btn-file\" ng-show=\"supportsFileUpload\" ng-attr-disabled=\"{{ disabled || undefined }}\">\n" +
     "<translate>Browse&hellip;</translate>\n" +
     "<input type=\"file\" ng-disabled=\"disabled\" class=\"form-control\">\n" +
+=======
+    "<span class=\"btn btn-default btn-file\" ng-show=\"supportsFileUpload\" ng-attr-disabled=\"{{ (disabled || readonly) || undefined }}\">\n" +
+    "Browse&hellip;\n" +
+    "<input type=\"file\" ng-disabled=\"disabled || readonly\" class=\"form-control\">\n" +
+>>>>>>> Add canI checks for route custom hosts
     "</span>\n" +
     "</span>\n" +
     "</div>\n" +
@@ -8229,13 +8235,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"has-error\" ng-show=\"uploadError\">\n" +
     "<span class=\"help-block\" translate>There was an error reading the file. Please copy the file content into the text area.</span>\n" +
     "</div>\n" +
-    "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+    "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
     "  </textarea>\n" +
+<<<<<<< bc9ad1ef9bdce611a438ae9b9544f233bbeda548
 <<<<<<< 4c90bbeb06cb1c3b6110ce79a149d15b4a595d99
     "<a href=\"\" ng-show=\"(model || fileName) && !disabled\" ng-click=\"cleanInputValues()\" translate>Clear Value</a>\n" +
 =======
     "<a href=\"\" ng-show=\"(model || fileName) && !disabled && !hideClear\" ng-click=\"cleanInputValues()\">Clear Value</a>\n" +
 >>>>>>> Improve YAML editor validation and feedback
+=======
+    "<a href=\"\" ng-show=\"(model || fileName) && !disabled && !readonly && !hideClear\" ng-click=\"cleanInputValues()\">Clear Value</a>\n" +
+>>>>>>> Add canI checks for route custom hosts
     "</div>"
   );
 
@@ -8557,7 +8567,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"host\" translate>Hostname</label>\n" +
     "<span ng-class=\"{ 'has-error': routeForm.host.$invalid && routeForm.host.$touched && !routingDisabled }\">\n" +
-    "<input id=\"host\" class=\"form-control\" type=\"text\" name=\"host\" ng-model=\"route.host\" ng-pattern=\"hostnamePattern\" ng-maxlength=\"hostnameMaxLength\" ng-readonly=\"hostReadOnly\" placeholder=\"www.example.com\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"route-host-help\">\n" +
+    "<input id=\"host\" class=\"form-control\" type=\"text\" name=\"host\" ng-model=\"route.host\" ng-pattern=\"hostnamePattern\" ng-maxlength=\"hostnameMaxLength\" ng-readonly=\"isHostnameReadOnly()\" placeholder=\"www.example.com\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"route-host-help\">\n" +
     "</span>\n" +
     "<div>\n" +
     "<span id=\"route-host-help\" class=\"help-block\">\n" +
@@ -8570,7 +8580,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "You can use <var>*.example.com</var> with routers that support wildcard subdomains.\n" +
     "</span>\n" +
     "</p>\n" +
+<<<<<<< bc9ad1ef9bdce611a438ae9b9544f233bbeda548
     "<p translate>The hostname can't be changed after the route is created.</p>\n" +
+=======
+    "<p ng-if=\"(existingRoute || canICreateCustomHosts) && !canIUpdateCustomHosts\">The hostname can't be changed after the route is created.</p>\n" +
+>>>>>>> Add canI checks for route custom hosts
     "</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"routeForm.host.$error.pattern && routeForm.host.$touched && !routingDisabled\">\n" +
@@ -8747,6 +8761,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<fieldset class=\"mar-top-md\">\n" +
     "<div>\n" +
     "<div class=\"form-group\" id=\"certificate-file\">\n" +
+<<<<<<< bc9ad1ef9bdce611a438ae9b9544f233bbeda548
     "<label translate>Certificate</label>\n" +
     "<osc-file-input model=\"route.tls.certificate\" drop-zone-id=\"certificate-file\" show-text-area=\"true\" help-text=\"{{'The PEM format certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipbard.'|translate}}\" ng-disabled=\"disableCertificateInputs()\">\n" +
     "</osc-file-input>\n" +
@@ -8764,6 +8779,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\" id=\"dest-ca-certificate-file\">\n" +
     "<label translate>Destination CA Certificate</label>\n" +
     "<osc-file-input model=\"route.tls.destinationCACertificate\" show-text-area=\"true\" drop-zone-id=\"dest-ca-certificate-file\" help-text=\"{{'The PEM format CA certificate to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}\" ng-disabled=\"route.tls.termination !== 'reencrypt'\">\n" +
+=======
+    "<label>Certificate</label>\n" +
+    "<osc-file-input model=\"route.tls.certificate\" drop-zone-id=\"certificate-file\" show-text-area=\"true\" help-text=\"The PEM format certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipbard.\" ng-readonly=\"areCertificateInputsReadOnly()\" ng-disabled=\"areCertificateInputsDisabled()\">\n" +
+    "</osc-file-input>\n" +
+    "</div>\n" +
+    "<div class=\"form-group\" id=\"private-key-file\">\n" +
+    "<label>Private Key</label>\n" +
+    "<osc-file-input model=\"route.tls.key\" drop-zone-id=\"private-key-file\" show-text-area=\"true\" help-text=\"The PEM format key. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-readonly=\"areCertificateInputsReadOnly()\" ng-disabled=\"areCertificateInputsDisabled()\">\n" +
+    "</osc-file-input>\n" +
+    "</div>\n" +
+    "<div class=\"form-group\" id=\"ca-certificate-file\">\n" +
+    "<label>CA Certificate</label>\n" +
+    "<osc-file-input model=\"route.tls.caCertificate\" drop-zone-id=\"ca-certificate-file\" show-text-area=\"true\" help-text=\"The PEM format CA certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-readonly=\"areCertificateInputsReadOnly()\" ng-disabled=\"areCertificateInputsDisabled()\">\n" +
+    "</osc-file-input>\n" +
+    "</div>\n" +
+    "<div class=\"form-group\" id=\"dest-ca-certificate-file\">\n" +
+    "<label>Destination CA Certificate</label>\n" +
+    "<osc-file-input model=\"route.tls.destinationCACertificate\" show-text-area=\"true\" drop-zone-id=\"dest-ca-certificate-file\" help-text=\"The PEM format CA certificate to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-readonly=\"areCertificateInputsReadOnly()\" ng-disabled=\"isDestinationCACertInputDisabled()\">\n" +
+>>>>>>> Add canI checks for route custom hosts
     "</osc-file-input>\n" +
     "\n" +
     "<div ng-if=\"route.tls.destinationCACertificate && route.tls.termination !== 'reencrypt' && !showCertificatesNotUsedWarning\" class=\"has-warning\">\n" +
@@ -10556,7 +10590,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<form name=\"form\" novalidate>\n" +
     "<fieldset ng-disabled=\"disableInputs\" ng-if=\"!loading\">\n" +
-    "<osc-routing model=\"routing\" services=\"services\" show-name-input=\"false\" host-read-only=\"true\">\n" +
+    "<osc-routing model=\"routing\" services=\"services\" show-name-input=\"false\" existing-route=\"true\">\n" +
     "</osc-routing>\n" +
     "<div class=\"button-group gutter-top gutter-bottom\">\n" +
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"updateRoute()\" ng-disabled=\"form.$invalid || disableInputs\" value=\"\" translate>Save</button>\n" +
