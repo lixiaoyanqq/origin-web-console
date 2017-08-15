@@ -5013,7 +5013,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</osc-routing>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Labels for this route.'|translate}}\">\n" +
     "</label-editor>\n" +
+<<<<<<< 4c674be1a59fa96c08071b64d77448b696a02c94
     "<a href=\"\" ng-click=\"copyServiceLabels()\" translate>Copy Service Labels</a>\n" +
+=======
+>>>>>>> Prefill service labels when creating route
     "<div class=\"button-group gutter-top gutter-bottom\">\n" +
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"createRoute()\" ng-disabled=\"createRouteForm.$invalid || disableInputs || !createRoute\" value=\"\" translate>Create</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"\" ng-click=\"cancel()\" translate>Cancel</a>\n" +
