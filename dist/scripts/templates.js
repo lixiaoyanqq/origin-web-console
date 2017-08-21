@@ -14121,6 +14121,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"isProjectListIncomplete\">\n" +
     "<div class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
     "<translate>The complete list of your projects could not be loaded.</translate>\n" +
     "<translate>Type a project name to go to that project.</translate>\n" +
@@ -14128,12 +14129,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form>\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"typed-project-name\" translate>Project Name</label>\n" +
+=======
+    "<span class=\"sr-only\">Warning:</span>\n" +
+    "The complete list of your projects could not be loaded. Type a project name to go to that project.\n" +
+    "</div>\n" +
+    "<form>\n" +
+    "<div class=\"form-group\">\n" +
+    "<label for=\"typed-project-name\">Project Name</label>\n" +
+>>>>>>> Bug 1481127 - More robust handling of large project lists
     "<div class=\"input-group\">\n" +
     "<input class=\"form-control\" type=\"text\" id=\"typed-project-name\" required minlength=\"2\" ng-model=\"input.typedProjectName\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "<span class=\"input-group-btn\">\n" +
     "<button class=\"btn btn-default\" type=\"submit\" ng-disabled=\"!input.typedProjectName\" ng-click=\"goToProject(input.typedProjectName)\">\n" +
     "<i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i>\n" +
+<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
     "<span class=\"sr-only\" translate>Go to Project</span>\n" +
+=======
+    "<span class=\"sr-only\">Go to Project</span>\n" +
+>>>>>>> Bug 1481127 - More robust handling of large project lists
     "</button>\n" +
     "</span>\n" +
     "</div>\n" +
@@ -14141,8 +14154,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</div>\n" +
     "<div ng-if=\"!projects.length && !isProjectListIncomplete\" class=\"h3\">\n" +
+<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
     "<translate>The current filter is hiding all projects.</translate>\n" +
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "The current filter is hiding all projects.\n" +
+    "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\">Clear Filter</a>\n" +
+>>>>>>> Bug 1481127 - More robust handling of large project lists
     "</div>\n" +
     "<div class=\"list-group list-view-pf projects-list\">\n" +
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-group-item project-info tile-click\">\n" +
@@ -14189,7 +14207,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\">\n" +
+<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
     "<delete-project label=\"{{'Delete Project'|translate}}\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
+=======
+    "<delete-project label=\"Delete Project\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
+>>>>>>> Bug 1481127 - More robust handling of large project lists
     "</delete-project>\n" +
     "</li>\n" +
 >>>>>>> Edit/Create Projects on page in a popup
@@ -14206,8 +14228,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"projects.length > limitListTo\">\n" +
+<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
     "<translate>Only the first {{limitListTo}} projects are displayed.</translate>\n" +
     "<translate>Filter by keyword or change sort options to see other projects.</translate>\n" +
+=======
+    "Only the first {{limitListTo}} projects are displayed. Filter by keyword or change sort options to see other projects.\n" +
+>>>>>>> Bug 1481127 - More robust handling of large project lists
     "</p>\n" +
     "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
     "</div>\n" +

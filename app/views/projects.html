@@ -64,42 +64,46 @@
                         <pf-sort config="sortConfig" class="sort-controls"></pf-sort>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div ng-if="isProjectListIncomplete">
-                <div class="alert alert-warning">
-                  <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-                  <span class="sr-only" translate>Warning:</span>
-                  <translate>The complete list of your projects could not be loaded.</translate>
-                  <translate>Type a project name to go to that project.</translate>
-                </div>
-                <form>
-                  <div class="form-group">
-                    <label for="typed-project-name" translate>Project Name</label>
-                    <div class="input-group">
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="typed-project-name"
-                        required
-                        minlength="2"
-                        ng-model="input.typedProjectName"
-                        autocorrect="off"
-                        autocapitalize="none"
-                        spellcheck="false">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default"
-                                type="submit"
-                                ng-disabled="!input.typedProjectName"
-                                ng-click="goToProject(input.typedProjectName)">
-                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          <span class="sr-only" translate>Go to Project</span>
-                        </button>
-                      </span>
+                    <div ng-if="isProjectListIncomplete">
+                      <div class="alert alert-warning">
+                        <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
+                        <span class="sr-only" translate>Warning:</span>
+			<translate>The complete list of your projects could not be loaded.
+			Type a project name to go to that project.</translate>
+                      </div>
+                      <form>
+                        <div class="form-group">
+                          <label for="typed-project-name" translate>Project Name</label>
+                          <div class="input-group">
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="typed-project-name"
+                              required
+                              minlength="2"
+                              ng-model="input.typedProjectName"
+                              autocorrect="off"
+                              autocapitalize="none"
+                              spellcheck="false">
+                            <span class="input-group-btn">
+                              <button class="btn btn-default"
+                                      type="submit"
+                                      ng-disabled="!input.typedProjectName"
+                                      ng-click="goToProject(input.typedProjectName)">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <span class="sr-only" translate>Go to Project</span>
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div ng-if="!projects.length && !isProjectListIncomplete" class="h3">
+			    <translate>The current filter is hiding all projects.</translate>
+                      <a href="" ng-click="search.text = ''" role="button" translate>Clear Filter</a>
                     </div>
                     <div class="list-group list-view-pf projects-list">
-                      <div ng-repeat="project in projects" class="list-group-item project-info tile-click">
+                      <div ng-repeat="project in projects | limitTo: limitListTo track by (project | uid)" class="list-group-item project-info tile-click">
                         <div class="list-view-pf-main-info">
                           <div class="list-view-pf-description project-names">
                             <div class="list-group-item-heading project-name-item">
@@ -140,16 +144,13 @@
                                 </a>
                               </li>
                               <li role="menuitem">
-                                <delete-link
-                                  kind="Project"
+                                <delete-project
                                   label="Delete Project"
-                                  resource-name="{{project.metadata.name}}"
-                                  project-name="{{project.metadata.name}}"
-                                  display-name="{{(project | displayName)}}"
+                                  project="project"
                                   type-name-to-confirm="true"
                                   stay-on-current-page="true"
-                                  alerts="alerts">
-                                </delete-link>
+                                  success="onDeleteProject">
+                                </delete-project>
                               </li>
                             </ul>
                           </div>
@@ -161,6 +162,12 @@
                         </origin-modal-popup>
                       </div>
                     </div>
+                    <p ng-if="projects.length > limitListTo" translate>
+                      Only the first {{limitListTo}} projects are displayed.
+                      Filter by keyword or change sort options to see other
+                      projects.
+                    </p>
+                    <p class="projects-instructions" ng-if="canCreate === false" ng-include="'views/_cannot-create-project.html'"></p>
                   </div>
                   <div row class="list-view-pf-actions list-pf-actions" ng-if="project.status.phase == 'Active'">
                     <div uib-dropdown>

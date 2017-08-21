@@ -176,19 +176,7 @@ angular.module('openshiftConsole')
       }
     };
   })
-  .directive('oscHeader',
-    function(
-      $filter,
-      $location,
-      $rootScope,
-      $routeParams,
-      $timeout,
-      AuthorizationService,
-      Constants,
-      ProjectsService,
-      projectOverviewURLFilter,
-      gettext,
-      gettextCatalog) {
+  .directive('projectHeader', function($timeout, $location, $filter, ProjectsService, projectOverviewURLFilter, Constants) {
 
     // cache these to eliminate flicker
     var projects = {};
@@ -202,46 +190,6 @@ angular.module('openshiftConsole')
       templateUrl: 'views/directives/header/header.html',
       link: function($scope, $elem) {
         var MAX_PROJETS_TO_DISPLAY = 100;
-        var NAV_COLLAPSED_STORAGE_KEY = 'openshift/vertical-nav-collapsed';
-        $scope.currentProject = projects[ $routeParams.project ];
-
-        var setCollapsed = function(collapsed, updateSavedState) {
-          var storageValue;
-          _.set($rootScope, 'nav.collapsed', collapsed);
-
-          if (updateSavedState) {
-            storageValue = collapsed ? 'true' : 'false';
-            localStorage.setItem(NAV_COLLAPSED_STORAGE_KEY, storageValue);
-          }
-        };
-
-        var readSavedCollapsedState = function() {
-          var savedState = localStorage.getItem(NAV_COLLAPSED_STORAGE_KEY) === 'true';
-          setCollapsed(savedState);
-        };
-        readSavedCollapsedState();
-
-        var isCollapsed = function() {
-          return _.get($rootScope, 'nav.collapsed', false);
-        };
-
-        var setMobileNavVisible = function(visible) {
-          _.set($rootScope, 'nav.showMobileNav', visible);
-        };
-
-        $scope.toggleNav = function() {
-          var collapsed = isCollapsed();
-          setCollapsed(!collapsed, true);
-        };
-
-        $scope.toggleMobileNav = function() {
-          var showMobileNav = _.get($rootScope, 'nav.showMobileNav');
-          setMobileNavVisible(!showMobileNav);
-        };
-
-        $scope.closeMobileNav = function() {
-          setMobileNavVisible(false);
-        };
 
         $scope.closeOrderingPanel = function() {
           _.set($scope, 'ordering.panelName', "");
@@ -288,10 +236,35 @@ angular.module('openshiftConsole')
             options = [ makeOption(projects[name], true) ];
           }
 
+          var makeOption = function(project, skipUniqueCheck) {
+            var option = $('<option>').attr("value", project.metadata.name).attr("selected", project.metadata.name === name);
+            if (skipUniqueCheck) {
+              option.text(displayName(project));
+            } else {
+              // FIXME: This is pretty inefficient, but probably OK if
+              // MAX_PROJETS_TO_DISPLAY is not too large.
+              option.text(uniqueDisplayName(project, sortedProjects));
+            }
+
+            return option;
+          };
+
+          // Only show all projects in the dropdown if less than a max number.
+          // Otherwise it's not usable and might impact performance.
+          if (_.size(projects) <= MAX_PROJETS_TO_DISPLAY) {
+            sortedProjects = $filter('orderByDisplayName')(projects);
+            options = _.map(sortedProjects, function(project) {
+              return makeOption(project, false);
+            });
+          } else {
+            // Show the current project and a "View all Projects" link.
+            options = [ makeOption(projects[name], true) ];
+          }
+
           select.empty();
           select.append(options);
           select.append($('<option data-divider="true"></option>'));
-          select.append($('<option value="">' + gettextCatalog.getString(gettext('View All Projects')) + '</option>'));
+          select.append($('<option value="">View all Projects</option>'));
           select.selectpicker('refresh');
         };
 
@@ -301,12 +274,10 @@ angular.module('openshiftConsole')
           });
         };
 
-        var onRouteChange = function() {
-          var currentProjectName = $routeParams.project;
-          if ($scope.currentProjectName === currentProjectName) {
-            // The project hasn't changed.
-            return;
-          }
+        ProjectsService.list().then(function(items) {
+          projects = items.by("metadata.name");
+          updateOptions();
+        });
 
           $scope.currentProjectName = currentProjectName;
           $scope.chromeless = $routeParams.view === "chromeless";

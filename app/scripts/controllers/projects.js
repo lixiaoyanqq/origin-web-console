@@ -18,10 +18,9 @@ angular.module('openshiftConsole')
                                               KeywordService,
                                               Navigate,
                                               Logger,
-                                              ProjectsService,
-                                              gettext,
-                                              gettextCatalog) {
+                                              ProjectsService) {
     var MAX_PROJETS_TO_WATCH = 250;
+
     var projects, sortedProjects;
     var watches = [];
     var filterKeywords = [];
@@ -70,19 +69,19 @@ angular.module('openshiftConsole')
         // Sort by display name. Use `metadata.name` as a secondary sort when
         // projects have the same display name.
         sortedProjects = _.orderBy(projects,
-                                       [ displayNameLower, 'metadata.name' ],
-                                       [ primarySortOrder ]);
+                                   [ displayNameLower, 'metadata.name' ],
+                                   [ primarySortOrder ]);
         break;
       case 'metadata.annotations["openshift.io/requester"]':
         // Sort by requester, then display name. Secondary sort is always ascending.
         sortedProjects = _.orderBy(projects,
-                                       [ sortID, displayNameLower ],
-                                       [ primarySortOrder, 'asc' ]);
+                                   [ sortID, displayNameLower ],
+                                   [ primarySortOrder, 'asc' ]);
         break;
       default:
         sortedProjects = _.orderBy(projects,
-                                       [ sortID ],
-                                       [ primarySortOrder ]);
+                                   [ sortID ],
+                                   [ primarySortOrder ]);
       }
 
       // Remember the previous sort ID.
@@ -117,6 +116,21 @@ angular.module('openshiftConsole')
       onSortChange: update
     };
 
+    var updateProjects = function(projectData) {
+      projects = _.toArray(projectData.by("metadata.name"));
+      $scope.loading = false;
+      $scope.showGetStarted = _.isEmpty(projects) && !$scope.isProjectListIncomplete;
+      update();
+    };
+
+    // On create / edit / delete, manually update the project list if not
+    // watching. This uses cached project data, so is not expensive.
+    var onChanges = function() {
+      if (!watchingProjects) {
+        ProjectsService.list().then(updateProjects);
+      }
+    };
+
     $scope.newProjectPanelShown = false;
 
     $scope.createProject = function() {
@@ -129,6 +143,7 @@ angular.module('openshiftConsole')
 
     $scope.onNewProject = function() {
       $scope.newProjectPanelShown = false;
+      onChanges();
     };
 
     $scope.editProjectPanelShown = false;
@@ -144,6 +159,13 @@ angular.module('openshiftConsole')
 
     $scope.onEditProject = function() {
       $scope.editProjectPanelShown = false;
+      onChanges();
+    };
+
+    $scope.onDeleteProject = onChanges;
+
+    $scope.goToProject = function(projectName) {
+      Navigate.toProjectOverview(projectName);
     };
 
     $scope.$watch('search.text', _.debounce(function(searchText) {
