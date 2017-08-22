@@ -70,7 +70,7 @@
       <div ng-if="!loaded" translate>Loading...</div>
       <div class="row" ng-if="loaded">
         <div class="col-md-12" ng-class="{ 'hide-tabs' : !deployment }">
-          <div ng-if="deployment.spec.paused" class="alert alert-info animate-if">
+          <div ng-if="deployment.spec.paused && !updatingPausedState" class="alert alert-info animate-if">
             <span class="pficon pficon-info" aria-hidden="true"></span>
             <strong>{{deployment.metadata.name}} is paused.</strong>
             <translate>This pauses any in-progress rollouts and stops new
