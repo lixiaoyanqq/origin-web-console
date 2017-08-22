@@ -7897,6 +7897,7 @@ href: "",
 label: "Resume Rollouts",
 onClick: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 return n.setPaused(t, !1, {
 namespace: t.metadata.namespace
 }).then(_.noop, function(n) {
@@ -7911,6 +7912,9 @@ details: e("getErrorDetails")(n)
 }), r;
 =======
 n.setPaused(t, !1, {
+=======
+return n.setPaused(t, !1, {
+>>>>>>> Fix problem where UI appears unresponsive while waiting for websocket update
 namespace: t.metadata.namespace
 }).then(_.noop, function(n) {
 a[t.metadata.uid + "-pause-error"] = {
@@ -7918,7 +7922,7 @@ type: "error",
 message: "An error occurred resuming the " + s(t.kind) + ".",
 details: e("getErrorDetails")(n)
 };
-});
+}), !0;
 }
 } ]
 }), a;
