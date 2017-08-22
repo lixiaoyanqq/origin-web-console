@@ -2666,7 +2666,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
     "<div class=\"row\" ng-if=\"loaded\">\n" +
     "<div class=\"col-md-12\" ng-class=\"{ 'hide-tabs' : !deploymentConfig }\">\n" +
-    "<div ng-if=\"deploymentConfig.spec.paused\" class=\"alert alert-info animate-if\">\n" +
+    "<div ng-if=\"deploymentConfig.spec.paused && !updatingPausedState\" class=\"alert alert-info animate-if\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
 <<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
     "<strong translate>{{deploymentConfig.metadata.name}} is paused.</strong>\n" +
@@ -3044,7 +3044,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
     "<div class=\"row\" ng-if=\"loaded\">\n" +
     "<div class=\"col-md-12\" ng-class=\"{ 'hide-tabs' : !deployment }\">\n" +
-    "<div ng-if=\"deployment.spec.paused\" class=\"alert alert-info animate-if\">\n" +
+    "<div ng-if=\"deployment.spec.paused && !updatingPausedState\" class=\"alert alert-info animate-if\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<strong translate>{{deployment.metadata.name}} is paused.</strong>\n" +
