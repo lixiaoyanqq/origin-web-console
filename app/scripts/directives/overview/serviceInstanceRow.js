@@ -61,14 +61,32 @@
       }
     };
 
+    var updateInstanceStatus = function() {
+      var conditions = _.get(row.apiObject, 'status.conditions');
+      var readyCondition = _.find(conditions, {type: 'Ready'});
+
+      row.instanceError = _.find(conditions, {type: 'Failed', status: 'True'});
+
+      if (_.get(row.apiObject, 'metadata.deletionTimestamp')) {
+        row.instanceStatus = 'deleted';
+      } else if (row.instanceError) {
+        row.instanceStatus = 'failed';
+      } else if (readyCondition && readyCondition.status === 'True') {
+        row.instanceStatus = 'ready';
+      } else {
+        row.instanceStatus = 'pending';
+        row.pendingMessage = _.get(readyCondition, 'message') || 'The instance is being provisioned asynchronously.';
+      }
+    };
+
     row.$doCheck = function() {
       updateInstanceStatus();
 
       row.notifications = ListRowUtils.getNotifications(row.apiObject, row.state);
-      row.serviceClass = getServiceClass();
-      row.servicePlan = getServicePlan();
-      row.displayName = serviceInstanceDisplayName(row.apiObject, row.serviceClass);
-      row.isBindable = BindingService.isServiceBindable(row.apiObject, row.serviceClass, row.servicePlan);
+      row.displayName = serviceInstanceDisplayName(row.apiObject, row.state.serviceClasses);
+      row.isBindable = !row.instanceError &&
+                       BindingService.isServiceBindable(row.apiObject, row.state.serviceClasses);
+      row.description = getDescription();
     };
 
     row.$onChanges = function(changes) {
