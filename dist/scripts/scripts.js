@@ -26148,10 +26148,13 @@ uniqueForValue: r.uniqueForValue,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 dragControlListeners: {
 accept: function(e, t) {
-return e.itemScope.sortableScope.$id === t.$id;
+return console.log("accept?"), e.itemScope.sortableScope.$id === t.$id;
 },
 orderChanged: function() {
 t.forms.keyValueEditor.$setDirty();
+},
+itemMoved: function(e) {
+console.log("itemMoved"), console.log("event", e), console.log("source", e.source), console.log("dest", e.dest), e.source.itemScope.modelValue.status = e.dest.sortableScope.$parent.column.name, t.forms.keyValueEditor.$setDirty();
 }
 },
 deleteEntry: function(e, n) {
