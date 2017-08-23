@@ -8205,8 +8205,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/key-value-editor.html',
     "<ng-form name=\"forms.keyValueEditor\" novalidate ng-if=\"entries\">\n" +
     "<div ng-if=\"showHeader\" class=\"key-value-editor-entry key-value-editor-entry-header\">\n" +
+<<<<<<< c496450276b46a24d4cb0af80b3756ee16c504eb
     "<div class=\"key-value-editor-header key-header\">\n" +
     "{{keyPlaceholder}}\n" +
+=======
+    "<div class=\"form-group key-value-editor-header key-header\">\n" +
+    "<div class=\"input-group\">\n" +
+    "<span class=\"help-block\">{{keyPlaceholder}}</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"form-group key-value-editor-header value-header\">\n" +
+    "<div class=\"input-group\">\n" +
+    "<span class=\"help-block\">{{valuePlaceholder}}</span>\n" +
+>>>>>>> Fix issue #1863, kve sort quirks, and bump ng-sortable
     "</div>\n" +
     "<div class=\"key-value-editor-header value-header\">\n" +
     "{{valuePlaceholder}}\n" +

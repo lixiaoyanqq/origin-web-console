@@ -3,11 +3,15 @@
   <div
     ng-if="showHeader"
     class="key-value-editor-entry key-value-editor-entry-header">
-    <div class="key-value-editor-header key-header">
-      {{keyPlaceholder}}
+    <div class="form-group key-value-editor-header key-header">
+      <div class="input-group">
+        <span class="help-block">{{keyPlaceholder}}</span>
+      </div>
     </div>
-    <div class="key-value-editor-header value-header">
-      {{valuePlaceholder}}
+    <div class="form-group key-value-editor-header value-header">
+      <div class="input-group">
+        <span class="help-block">{{valuePlaceholder}}</span>
+      </div>
     </div>
   </div>
 

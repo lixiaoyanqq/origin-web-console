@@ -164,14 +164,6 @@
     }
   }
 
-  .key-value-editor-entry {
-    display: table;
-    margin-bottom: 15px;
-    padding-right: (@as-sortable-item-button-width * 2);
-    position: relative;
-    table-layout: fixed;
-    width: 100%;
-  }
   .key-value-editor-input .ui-select {
     @media(min-width: @screen-md-min) {
       float: left;
@@ -187,23 +179,19 @@
   }
 }
 
-.environment-from-editor-header {
-  &.config-map-header,
-  &.prefix-header {
-    @media(max-width: @screen-xxs-max) {
-      display: none;
-      width: 100%;
-    }
-    &.config-map-header-mobile,
-    &.prefix-header-mobile {
-      display: block;
-      margin-bottom: 0;
-      margin-top: 5px;
-      @media(min-width: @screen-xs-min) {
-        display: none;
-      }
-    }
-  }
+.key-value-editor .key-value-editor-input,
+.key-value-editor-header {
+  float: left;
+  padding-right: 5px;
+  width: 50%;
+}
+
+.key-value-editor-entry-header {
+  padding-right: (@as-sortable-item-button-width * 2);
+}
+
+.key-value-editor-header {
+  margin-bottom: 5px;
 }
 
 .key-value-editor .key-value-editor-input,
