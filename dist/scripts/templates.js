@@ -13842,8 +13842,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
     "<div class=\"list-pf-details\" ng-if=\"!row.expanded\">\n" +
+=======
+    "<div class=\"list-pf-details\" ng-if=\"!row.expanded\" ng-switch=\"row.instanceStatus\">\n" +
+    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.instanceError.message}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
+    "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
+    "<span>Error</span>\n" +
+    "</span>\n" +
+    "<span ng-switch-when=\"deleted\">\n" +
+    "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
+    "<span>Marked for Deletion</span>\n" +
+    "</span>\n" +
+    "<span ng-switch-when=\"pending\">\n" +
+    "<span class=\"spinner spinner-xs spinner-inline\" aria-hidden=\"true\"></span>\n" +
+    "<span>Pending</span>\n" +
+    "</span>\n" +
+    "<div ng-switch-default>\n" +
+    "<div class=\"hidden-xs hidden-sm\">\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "<span ng-if=\"!row.bindings.length\n" +
 <<<<<<< HEAD
     "                    && row.isBindable\n" +
@@ -13876,6 +13894,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</p>\n" +
     "</div>\n" +
+<<<<<<< HEAD
+=======
+    "</div>\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "<div class=\"hidden-xs\" ng-if=\"(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL\">\n" +
     "<a ng-href=\"{{row.apiObject.status.dashboardURL}}\" target=\"_blank\">\n" +
     "<translate>Dashboard</translate> <i class=\"fa fa-external-link small\" aria-hidden=\"true\"></i>\n" +
@@ -13884,10 +13906,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"list-pf-actions\">\n" +
+<<<<<<< HEAD
     "<div class=\"dropdown-kebab-pf\" uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
     "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
     "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span>\n" +
     "</button>\n" +
+=======
+    "<div uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
+    "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\">Actions</span></a>\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
 <<<<<<< HEAD
     "<li role=\"menuitem\" ng-if=\"row.isBindable && (row.serviceBindingsVersion | canI : 'create')\">\n" +
@@ -13913,13 +13940,50 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-expansion collapse\" ng-if=\"row.expanded\" ng-class=\"{ in: row.expanded }\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<alerts alerts=\"row.notifications\"></alerts>\n" +
+<<<<<<< HEAD
+=======
+    "\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "<div ng-switch=\"row.instanceStatus\">\n" +
     "<div ng-switch-when=\"deleted\" class=\"row\">\n" +
     "<div class=\"col-sm-12\">\n" +
     "<div class=\"alert word-break alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<span class=\"sr-only\" translate>warning</span>\n" +
     "<span class=\"strong\" translate>The service was marked for deletion.</span>\n" +
+=======
+    "<span class=\"sr-only\">warning</span>\n" +
+    "<span class=\"strong\">The service was marked for deletion</span>\n" +
+    "<span class=\"strong\" am-time-ago=\"row.apiObject.metadata.deletionTimestamp\"></span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-switch-when=\"failed\" class=\"row\">\n" +
+    "<div class=\"col-sm-12\">\n" +
+    "<div class=\"alert word-break alert-danger\">\n" +
+    "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">error</span>\n" +
+    "<span class=\"strong\">{{row.instanceError.message}}</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-switch-when=\"pending\" class=\"row\">\n" +
+    "<div class=\"col-sm-12\">\n" +
+    "<div class=\"alert word-break alert-info\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">info</span>\n" +
+    "<span>The service is not yeat ready.</span>\n" +
+    "<span>{{row.pendingMessage}}</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-switch-default>\n" +
+    "<div class=\"row\">\n" +
+    "<div class=\"col-sm-12\" ng-if=\"row.description\">\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"row.description | linky\"></p>\n" +
+    "</div>\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13990,7 +14054,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<overlay-panel show-panel=\"row.overlay.panelVisible\" handle-close=\"row.closeOverlayPanel\">\n" +
+=======
+    "</div>\n" +
+    "</div>\n" +
+    "<overlay-panel single-column=\"true\" show-panel=\"row.overlay.panelVisible\" show-close=\"true\" handle-close=\"row.closeOverlayPanel\">\n" +
+>>>>>>> Show provision status of service instances on the overview page.
     "<div ng-if=\"row.overlay.panelName === 'bindService'\">\n" +
     "<bind-service target=\"row.overlay.state.target\" project=\"row.state.project\" on-close=\"row.closeOverlayPanel\"></bind-service>\n" +
     "</div>\n" +

@@ -27,6 +27,7 @@ e.projectName = n.project;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E, N, D = t("annotation"), I = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), A = t("imageObjectRef"), L = t("isJenkinsPipelineStrategy"), U = t("isNewerResource"), O = t("label"), x = t("podTemplate"), F = {}, M = {}, V = {}, q = R.state = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -53,6 +54,9 @@ var E, T, N = t("annotation"), I = t("buildConfigForBuild"), D = t("deploymentIs
 =======
 var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), x = {}, F = {}, M = {}, V = P.state = {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+var E, T, N = t("annotation"), I = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
+>>>>>>> Show provision status of service instances on the overview page.
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -334,7 +338,7 @@ P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationCont
 P.viewBy = localStorage.getItem(se) || "app", e.$watch(function() {
 return P.viewBy;
 }, function(e) {
-localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? f.setLabelSuggestions(F) : f.setLabelSuggestions(x);
+localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? f.setLabelSuggestions(x) : f.setLabelSuggestions(F);
 }), c.DISABLE_OVERVIEW_METRICS || (v.isAvailable(!0).then(function(e) {
 V.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
@@ -642,9 +646,9 @@ e.$evalAsync(function() {
 Se(), ve(), Ce();
 });
 }, 500), we = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, x), "pipeline" !== P.viewBy && f.setLabelSuggestions(x));
+_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, F), "pipeline" !== P.viewBy && f.setLabelSuggestions(F));
 }, ke = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, F), "pipeline" === P.viewBy && f.setLabelSuggestions(F));
+_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, x), "pipeline" === P.viewBy && f.setLabelSuggestions(x));
 }, je = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!U(e, "openshift.io/deployer-pod-for.name") && (!I(e, "openshift.io/build.name") && "slave" !== U(e, "jenkins")));
 }, Pe = function() {
@@ -714,13 +718,13 @@ _.each(a, function(t) {
 V.recentPipelinesByDeploymentConfig[t] = V.recentPipelinesByDeploymentConfig[t] || [], V.recentPipelinesByDeploymentConfig[t].push(e);
 }), X();
 }
-}, Oe = {}, xe = function() {
+}, Oe = {}, Fe = function() {
 Oe = i.groupBuildConfigsByOutputImage(P.buildConfigs);
-}, Fe = function(e) {
+}, xe = function(e) {
 var t = H(e);
 if (t) return _.get(V, [ "buildConfigsByObjectUID", t ], []);
 }, Me = function(e) {
-var t = [], n = Fe(e);
+var t = [], n = xe(e);
 _.each(n, function(e) {
 var n = _.get(V, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
 t = t.concat(n);
@@ -1002,7 +1006,7 @@ P.routes = e.by("metadata.name"), Be(), h.log("routes (subscribe)", P.routes);
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("buildConfigs", a, function(e) {
-P.buildConfigs = e.by("metadata.name"), xe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
+P.buildConfigs = e.by("metadata.name"), Fe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
 }, {
 poll: R,
 pollInterval: 6e4
@@ -11803,9 +11807,9 @@ details: t("getErrorDetails")(n)
 };
 });
 };
-var x = t("hasDeploymentConfig");
+var F = t("hasDeploymentConfig");
 e.isScalable = function() {
-return !!_.isEmpty(e.autoscalers) && (!x(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
+return !!_.isEmpty(e.autoscalers) && (!F(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
 }, e.removeVolume = function(n) {
 var a = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
 n.persistentVolumeClaim ? a += " It will not delete the persistent volume claim." : n.secret ? a += " It will not delete the secret." : n.configMap && (a += " It will not delete the config map.");
@@ -22353,7 +22357,7 @@ var t = r.defer();
 return A ? (A.onClose(function() {
 t.resolve();
 }), A.stop()) : t.resolve(), e || (U.cancel(), l && (l.innerHTML = ""), L = document.createDocumentFragment()), t.promise;
-}, x = function() {
+}, F = function() {
 O().then(function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 t.$evalAsync(function() {
@@ -22531,7 +22535,7 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && B();
 >>>>>>> Add bindings list to resource pages
 },
 goChromeless: d.chromelessLink,
-restartLogs: x
+restartLogs: F
 }), t.$on("$destroy", function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22563,7 +22567,7 @@ O(), p.off("resize", N), p.off("scroll", P), g.off("scroll", P);
 O(), p.off("resize", D), p.off("scroll", P), g.off("scroll", P);
 >>>>>>> Bug 1481127 - More robust handling of large project lists
 }), "deploymentconfigs/logs" === b && !C) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
-t.$watchGroup([ "name", "options.container", "run" ], x);
+t.$watchGroup([ "name", "options.container", "run" ], F);
 } ],
 require: "logViewer",
 link: function(e, n, a, r) {
@@ -25594,24 +25598,32 @@ _.extend(s, r.ui);
 var c = e("getErrorDetails"), l = e("serviceInstanceDisplayName"), u = function() {
 var e = s.apiObject.spec.serviceClassName;
 return _.get(s, [ "state", "serviceClasses", e, "description" ]);
+}, d = function() {
+var e = _.get(s.apiObject, "status.conditions"), t = _.find(e, {
+type: "Ready"
+});
+s.instanceError = _.find(e, {
+type: "Failed",
+status: "True"
+}), _.get(s.apiObject, "metadata.deletionTimestamp") ? s.instanceStatus = "deleted" : s.instanceError ? s.instanceStatus = "failed" : t && "True" === t.status ? s.instanceStatus = "ready" : (s.instanceStatus = "pending", s.pendingMessage = _.get(t, "message") || "The instance is being provisioned asynchronously.");
 };
 s.$doCheck = function() {
-s.notifications = r.getNotifications(s.apiObject, s.state), s.displayName = l(s.apiObject, s.state.serviceClasses), s.isBindable = a.isServiceBindable(s.apiObject, s.state.serviceClasses), s.description = u();
+d(), s.notifications = r.getNotifications(s.apiObject, s.state), s.displayName = l(s.apiObject, s.state.serviceClasses), s.isBindable = !s.instanceError && a.isServiceBindable(s.apiObject, s.state.serviceClasses), s.description = u();
 }, s.$onChanges = function(e) {
 e.bindings && (s.deleteableBindings = _.reject(s.bindings, "metadata.deletionTimestamp"));
 }, s.getSecretForBinding = function(e) {
 return e && _.get(s, [ "state", "secrets", e.spec.secretName ]);
 }, s.actionsDropdownVisible = function() {
-return !(!s.isBindable || !i.canI({
+return !(_.get(s.apiObject, "metadata.deletionTimestamp") || (!s.isBindable || !i.canI({
 resource: "bindings",
 group: "servicecatalog.k8s.io"
-}, "create")) || !(_.isEmpty(s.deleteableBindings) || !i.canI({
+}, "create")) && (_.isEmpty(s.deleteableBindings) || !i.canI({
 resource: "bindings",
 group: "servicecatalog.k8s.io"
-}, "delete")) || !!i.canI({
+}, "delete")) && !i.canI({
 resource: "instances",
 group: "servicecatalog.k8s.io"
-}, "delete");
+}, "delete"));
 }, s.closeOverlayPanel = function() {
 _.set(s, "overlay.panelVisible", !1);
 }, s.showOverlayPanel = function(e, t) {
@@ -27302,7 +27314,7 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 C(r.project).then(function() {
 k(r.project, B), $(r.project), A();
 });
-}, x = function() {
+}, F = function() {
 r.project && O(), f.push(o.$on("$routeChangeSuccess", function(e, t, n) {
 U(t, n) && (g.customScope.projectName = r.project, O());
 })), f.push(o.$on("NotificationDrawerWrapper.toggle", function() {
@@ -27310,7 +27322,7 @@ g.drawerHidden = !g.drawerHidden;
 }));
 };
 g.$onInit = function() {
-m || p || x();
+m || p || F();
 }, g.$onDestroy = function() {
 j(), w(), D();
 };
