@@ -8286,7 +8286,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"/\">Browse Catalog</a></li>\n" +
     "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\">Deploy Image</a></li>\n" +
     "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\">Import YAML / JSON</a></li>\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromProject')\">Select from Project</a></li>\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "</ul>\n" +
     "</div>\n" +
     "<div row extension-point extension-name=\"nav-system-status-mobile\" extension-types=\"dom\" class=\"navbar-flex-btn hide-if-empty\"></div>\n" +
@@ -8296,6 +8300,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"project\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+    "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"project\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "</overlay-panel>"
   );
 
@@ -10166,14 +10171,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/process-template-dialog.html',
     "<div class=\"order-service\">\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
     "<pf-wizard wizard-title=\"{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project'}}\" hide-sidebar=\"true\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\">\n" +
     "<pf-wizard-step ng-repeat=\"step in $ctrl.steps track by step.id\" step-title=\"{{step.label}}\" wz-disabled=\"{{step.hidden}}\" allow-click-nav=\"step.allowClickNav\" next-enabled=\"step.valid\" prev-enabled=\"step.prevEnabled\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
 =======
     "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" class=\"pf-wizard-no-back\">\n" +
+=======
+    "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"!$ctrl.useProjectTemplate\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" ng-class=\"{'pf-wizard-no-back': !$ctrl.useProjectTemplate}\">\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "<pf-wizard-step ng-repeat=\"step in $ctrl.steps track by step.id\" step-title=\"{{step.label}}\" wz-disabled=\"{{step.hidden}}\" allow-click-nav=\"step.allowed\" next-enabled=\"step.valid\" prev-enabled=\"step.prevEnabled\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
     "<div ng-show=\"step.selected\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
@@ -10196,6 +10206,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/process-template-dialog/process-template-info.html',
     "<div class=\"order-service-details\">\n" +
     "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
+=======
+    "<div class=\"order-service-details\" ng-if=\"!$ctrl.selectStep.selected\">\n" +
+    "<div class=\"order-service-details-top\">\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "<div class=\"service-icon\">\n" +
     "<span ng-if=\"$ctrl.image\" class=\"image\"><img ng-src=\"{{$ctrl.image}}\" alt=\"\"></span>\n" +
     "<span ng-if=\"!$ctrl.image\" class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
@@ -10230,7 +10244,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-bind-html=\"$ctrl.template | description | linky : '_blank'\" class=\"description\"></p>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"order-service-config\">\n" +
+    "<div class=\"order-service-config\" ng-class=\"{'order-service-config-single-column': $ctrl.selectStep.selected}\">\n" +
     "<div ng-if=\"step.selected\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10241,15 +10255,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
   $templateCache.put('views/directives/process-template-dialog/process-template-results.html',
     "<div class=\"order-service-config\">\n" +
     "\n" +
     "<next-steps ng-if=\"$ctrl.wizardDone\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.template | displayName\">\n" +
     "</next-steps>\n" +
+=======
+  $templateCache.put('views/directives/process-template-dialog/process-template-config.html',
+    "<div class=\"osc-form\">\n" +
+    "<form name=\"$ctrl.form\">\n" +
+    "<process-template template=\"$ctrl.template\" project=\"$ctrl.preSelectedProject\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.unfilteredProjects\" is-dialog=\"true\"></process-template>\n" +
+    "</form>\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "</div>"
   );
 
 
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
   $templateCache.put('views/directives/process-template-dialog/process-template-select.html',
     "<div class=\"order-service-config\">\n" +
     "<div class=\"config-top\">\n" +
@@ -10290,6 +10313,50 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>"
+=======
+  $templateCache.put('views/directives/process-template-dialog/process-template-results.html',
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\">\n" +
+    "</next-steps>"
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+  );
+
+
+  $templateCache.put('views/directives/process-template-dialog/process-template-select.html',
+    "<div class=\"config-top\">\n" +
+    "<div class=\"select-project-for-template\">\n" +
+    "<h2>Select from Project</h2>\n" +
+    "<ui-select name=\"selectProject\" ng-model=\"$ctrl.templateProject\" ng-change=\"$ctrl.templateProjectChange()\" search-enabled=\"$ctrl.searchEnabled\">\n" +
+    "<ui-select-match placeholder=\"Select a Project\">\n" +
+    "{{$select.selected | displayName}}\n" +
+    "</ui-select-match>\n" +
+    "<ui-select-choices repeat=\"project in $ctrl.templateProjects | searchProjects : $select.search track by (project | uid)\">\n" +
+    "<span ng-bind-html=\"project | displayName | highlightKeywords : $select.search\"></span>\n" +
+    "<span ng-if=\"project | displayName : true\" class=\"small text-muted\">\n" +
+    "<span ng-if=\"project.metadata.name\">&ndash;</span>\n" +
+    "<span ng-bind-html=\"project.metadata.name | highlightKeywords : $select.search\"></span>\n" +
+    "</span>\n" +
+    "</ui-select-choices>\n" +
+    "</ui-select>\n" +
+    "</div>\n" +
+    "<pf-empty-state ng-if=\"!$ctrl.templateProject\" config=\"$ctrl.projectEmptyState\"></pf-empty-state>\n" +
+    "<pf-empty-state ng-if=\"$ctrl.templateProject && !$ctrl.catalogItems.length\" config=\"$ctrl.templatesEmptyState\"></pf-empty-state>\n" +
+    "<div class=\"services-view\">\n" +
+    "<div ng-if=\"$ctrl.templateProject && $ctrl.catalogItems.length\" class=\"services-items\">\n" +
+    "<pf-filter config=\"$ctrl.filterConfig\" class=\"services-items-filter order-services-filter\"></pf-filter>\n" +
+    "<a href=\"\" class=\"services-item show-selection\" ng-class=\"{'active': item === $ctrl.selectedTemplate}\" ng-repeat=\"item in $ctrl.filteredItems track by item.resource.metadata.uid\" ng-click=\"$ctrl.templateSelected(item)\">\n" +
+    "<div ng-if=\"!item.imageUrl\" class=\"services-item-icon\">\n" +
+    "<span class=\"{{item.iconClass}}\"></span>\n" +
+    "</div>\n" +
+    "<div ng-if=\"item.imageUrl\" class=\"services-item-icon\">\n" +
+    "<img ng-src=\"{{item.imageUrl}}\" alt=\"\">\n" +
+    "</div>\n" +
+    "<div class=\"services-item-name\" title=\"{{item.name}}\">\n" +
+    "{{item.name}}\n" +
+    "</div>\n" +
+    "</a>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>"
   );
 
 
@@ -10299,6 +10366,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
     "<span ng-show=\"!$ctrl.noProjectsCantCreate\">\n" +
     "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
+=======
+    "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "</template-options>\n" +
 <<<<<<< 0b6e0c0321bd8895dd0292e7e94a096ab205c99e
     "<label-editor labels=\"$ctrl.labels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
@@ -11902,7 +11973,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+    "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "</overlay-panel>\n" +
     "<landing-page base-project-url=\"project\" on-template-selected=\"templateSelected\">\n" +
     "<landingsearch>\n" +
@@ -11914,12 +11989,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</landingheader>\n" +
     "<landingbody>\n" +
+<<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
 <<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\" on-create-from-project=\"fromProjectSelected\">\n" +
     "</services-view>\n" +
 =======
     "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\"></services-view>\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" on-deploy-image-selected=\"deployImageSelected\" on-from-file-selected=\"fromFileSelected\" on-create-from-project=\"fromProjectSelected\">\n" +
+    "</services-view>\n" +
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "</landingbody>\n" +
     "<landingside>\n" +
     "<projects-summary base-project-url=\"project\" projects-url=\"projects\" start-tour=\"startGuidedTour\" view-edit-membership=\"viewMembership\" catalog-items=\"catalogItems\"></projects-summary>\n" +

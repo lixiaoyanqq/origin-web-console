@@ -5,7 +5,6 @@
     controller: [
       '$scope',
       '$filter',
-      '$routeParams',
       'Catalog',
       'DataService',
       'KeywordService',
@@ -26,7 +25,6 @@
 
   function ProcessTemplateDialog($scope,
                                  $filter,
-                                 $routeParams,
                                  Catalog,
                                  DataService,
                                  KeywordService,
@@ -59,6 +57,16 @@
       onShow: showInfo
     };
 
+    ctrl.selectStep = {
+      id: 'projectTemplates',
+      label: 'Selection',
+      view: 'views/directives/process-template-dialog/process-template-select.html',
+      hidden: ctrl.useProjectTemplate !== true,
+      allowed: true,
+      valid: false,
+      onShow: showSelect
+    };
+
     ctrl.configStep = {
       id: 'configuration',
       label: 'Configuration',
@@ -85,30 +93,16 @@
     ctrl.$onInit = function() {
       ctrl.loginBaseUrl = DataService.openshiftAPIBaseUrl();
       ctrl.preSelectedProject = ctrl.selectedProject = ctrl.project;
-      if (ctrl.useProjectTemplate) {
-        if (ctrl.project) {
-          ctrl.templateProject = ctrl.project;
-          ctrl.templateProjectChange();
-        }
-        listProjects();
-      }
-
-      ctrl.noProjectsCantCreate = false;
-      $scope.$on('no-projects-cannot-create', function() {
-        ctrl.noProjectsCantCreate = true;
-      });
-
-      ctrl.noProjectsEmptyState = {
-        title: 'No Available Projects',
-        info: 'There are no projects available from which to load templates.'
-      };
+      listProjects();
 
       ctrl.projectEmptyState = {
+        icon: 'pficon pficon-info',
         title: 'No Project Selected',
-        info: 'Please select a project from the dropdown to load templates from that project.'
+        info: 'Please select a project from the dropdown to load Templates from that project.'
       };
 
       ctrl.templatesEmptyState = {
+        icon: 'pficon pficon-info',
         title: 'No Templates',
         info: 'The selected project has no templates available to import.'
       };
@@ -130,10 +124,6 @@
         appliedFilters: [],
         onFilterChange: filterChange
       };
-      // if on the landing page, show the project name in next-steps
-      if (!$routeParams.project) {
-        ctrl.showProjectName = true;
-      }
     };
 
     ctrl.$onChanges = function(changes) {
@@ -192,11 +182,6 @@
       ctrl.selectedTemplate = template;
       ctrl.template = _.get(template, 'resource');
       ctrl.selectStep.valid = !!template;
-      ctrl.iconClass = getIconClass();
-      ctrl.image = getImage();
-      ctrl.docUrl = annotation(ctrl.template, "openshift.io/documentation-url");
-      ctrl.supportUrl = annotation(ctrl.template, "openshift.io/support-url");
-      ctrl.vendor = annotation(ctrl.template, "openshift.io/provider-display-name");
     };
 
     ctrl.templateProjectChange = function () {
@@ -209,9 +194,7 @@
       Catalog.getProjectCatalogItems(ctrl.templateProjectName, false, true).then( _.spread(function(catalogServiceItems, errorMessage) {
         ctrl.catalogItems = catalogServiceItems;
         ctrl.totalCount = ctrl.catalogItems.length;
-
-        // Clear previous filters
-        filterChange();
+        filterItems();
 
         if (errorMessage) {
           NotificationsService.addNotification(
@@ -222,15 +205,6 @@
           );
         }
       }));
-    };
-
-    // TODO: Update the select-project component in the origin-web-catalog to optionally
-    // disable creating new projects, so we can reuse it.
-    ctrl.groupChoicesBy = function (item) {
-      if (RecentlyViewedProjectsService.isRecentlyViewed(item.metadata.uid)) {
-        return "Recently Viewed";
-      }
-      return "Other Projects";
     };
 
     function getIconClass() {
@@ -245,7 +219,7 @@
 
     function initializeSteps() {
       if (!ctrl.steps) {
-        ctrl.steps = [ctrl.selectStep, ctrl.infoStep, ctrl.configStep, ctrl.resultsStep];
+        ctrl.steps = [ctrl.selectStep, ctrl.configStep, ctrl.resultsStep];
       }
     }
 
@@ -256,17 +230,7 @@
       }
     }
 
-    function showInfo() {
-      ctrl.infoStep.selected = true;
-      ctrl.selectStep.selected = false;
-      ctrl.configStep.selected = false;
-      ctrl.resultsStep.selected = false;
-      ctrl.nextTitle = "Next >";
-      clearValidityWatcher();
-    }
-
     function showSelect() {
-      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = true;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = false;
@@ -276,7 +240,6 @@
     }
 
     function showConfig() {
-      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = true;
       ctrl.resultsStep.selected = false;
@@ -284,13 +247,12 @@
       ctrl.resultsStep.allowed = ctrl.configStep.valid;
 
       validityWatcher = $scope.$watch("$ctrl.form.$valid", function(isValid) {
-        ctrl.configStep.valid = isValid && !ctrl.noProjectsCantCreate && ctrl.selectedProject;
+        ctrl.configStep.valid = isValid && ctrl.selectedProject;
         ctrl.resultsStep.allowed = isValid;
       });
     }
 
     function showResults() {
-      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = true;
@@ -319,11 +281,22 @@
           ctrl.filteredItems = filterForKeywords(filter.value, ctrl.filteredItems);
         });
       }
-      ctrl.filterConfig.resultsCount = ctrl.filteredItems.length;
 
       // Deselect the currently selected template if it was filtered out
       if (!_.includes(ctrl.filteredItems, ctrl.selectedTemplate)) {
         ctrl.templateSelected();
+      }
+
+      updateFilterControls();
+    }
+
+    function updateFilterControls() {
+      ctrl.filterConfig.resultsCount = ctrl.filteredItems.length;
+
+      if (ctrl.totalCount <= 1) {
+        $('.filter-pf.filter-fields input').attr('disabled', '');
+      } else {
+        $('.filter-pf.filter-fields input').removeAttr("disabled");
       }
     }
 
@@ -333,12 +306,6 @@
       ctrl.searchEnabled = !_.isEmpty(filteredProjects);
 
       ctrl.templateProjects = RecentlyViewedProjectsService.orderByMostRecentlyViewed(projects);
-      ctrl.numTemplateProjects = _.size(ctrl.templateProjects);
-
-      if (ctrl.numTemplateProjects === 1) {
-        ctrl.templateProject = _.head(ctrl.templateProjects);
-        ctrl.templateProjectChange();
-      }
     };
 
     function listProjects() {

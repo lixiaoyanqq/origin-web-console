@@ -86,6 +86,10 @@ angular.module('openshiftConsole')
       _.set($scope, 'ordering.panelName', 'fromFile');
     };
 
+    $scope.fromProjectSelected = function() {
+      _.set($scope, 'ordering.panelName', 'fromProject');
+    };
+
     AuthService.withUser().then(function() {
       var includeTemplates = !CatalogService.isTemplateServiceBrokerEnabled();
       Catalog.getCatalogItems(includeTemplates).then(_.spread(function(items, errorMessage) {
