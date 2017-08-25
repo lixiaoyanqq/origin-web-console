@@ -5576,9 +5576,13 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .info-popover,.warnings-popover{cursor:help;vertical-align:middle;margin-left:2px}
 .info-popover.pficon-info,.warnings-popover.pficon-info{color:#4d5258}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-config .services-item.show-selection:focus,.order-service-config .services-item.show-selection:focus .services-item-name{color:#363636}
 .label-tech-preview{display:inline-block;line-height:normal;margin-top:7px}
 =======
+=======
+.order-service-config .services-item.show-selection:focus,.order-service-config .services-item.show-selection:focus .services-item-name{color:#363636}
+>>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
 .label-tech-preview{display:inline-block;margin-top:7px}
 >>>>>>> Improving display of tech-preview label
 @media (min-width:480px){.label-tech-preview{float:right;margin-left:10px}
@@ -5833,6 +5837,7 @@ h2+.list-view-pf{margin-top:20px}
 .navbar-pf-vertical .navbar-iconic>li{display:inline-block}
 .navbar-pf-vertical .navbar-toggle{margin:13px 15px}
 .navbar-pf-vertical .navbar-toggle .icon-bar{width:22px}
+.order-service-config-single-column{padding-left:0}
 }
 <<<<<<< HEAD
 .tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;text-align:center;text-transform:uppercase;width:100%;z-index:1030}

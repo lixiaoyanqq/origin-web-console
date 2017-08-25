@@ -63,6 +63,16 @@
       onShow: showInfo
     };
 
+    ctrl.selectStep = {
+      id: 'projectTemplates',
+      label: 'Selection',
+      view: 'views/directives/process-template-dialog/process-template-select.html',
+      hidden: ctrl.useProjectTemplate !== true,
+      allowed: true,
+      valid: false,
+      onShow: showSelect
+    };
+
     ctrl.configStep = {
       id: 'configuration',
       label: gettextCatalog.getString(gettext('Configuration')),
