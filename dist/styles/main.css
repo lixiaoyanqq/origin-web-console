@@ -799,7 +799,10 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 =======
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:13px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
+<<<<<<< HEAD
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+>>>>>>> Bump common and catalog depedencies
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .btn.focus,.btn:focus,.btn:hover{color:#4d5258;text-decoration:none}
 .btn.active,.btn:active{outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}
@@ -2596,6 +2599,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bs-searchbox .form-control{margin-bottom:0;width:100%;float:none}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
@@ -2603,6 +2607,9 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+>>>>>>> Bump common and catalog depedencies
 .c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
 .bootstrap-switch .bootstrap-switch-container{display:inline-block;top:0;border-radius:1px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bootstrap-switch .bootstrap-switch-handle-off,.bootstrap-switch .bootstrap-switch-handle-on,.bootstrap-switch .bootstrap-switch-label{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:inline-block!important;height:100%;padding:2px 6px;font-size:12px;line-height:20px}
@@ -4579,8 +4586,19 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-config .related-services-container{background-color:#ededed;margin-top:62px;padding:14px;display:flex;align-items:center}
 .order-service-config .related-services-container .related-services-label{font-size:14px;font-weight:600;padding-right:14px}
 .order-service-config .related-services-container .related-services-row .card{background-color:#fff;border:1px solid #bbb;float:right;margin-right:6px;padding:11px}
+<<<<<<< HEAD
 .order-service-wizard-step .schema-form-fieldset{margin-bottom:40px;margin-top:40px}
 .order-service-wizard-step .schema-form-fieldset legend{border-bottom:none;border-top:solid 1px rgba(0,0,0,.15);margin-bottom:10px;padding-top:20px}
+=======
+.order-service-config .review-message{padding-left:10px}
+.order-service-config .review-status{display:flex;font-size:16px}
+.order-service-config .review-status .pficon{margin-top:3px}
+.order-service-config .review-status .spinner.spinner-sm{height:16px;margin:3px 0 0;width:16px}
+@media (min-width:768px){.order-service-wizard-step.wizard-pf-main{height:450px;max-height:calc(100vh - 300px);min-height:200px;overflow-y:auto}
+}
+.order-service-wizard-step.wizard-pf-main .schema-form-fieldset{margin-bottom:40px;margin-top:40px}
+.order-service-wizard-step.wizard-pf-main .schema-form-fieldset legend{border-bottom:none;border-top:solid 1px rgba(0,0,0,.15);margin-bottom:10px;padding-top:20px}
+>>>>>>> Bump common and catalog depedencies
 body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar{overflow:hidden}
 .catalogs-overlay-modal{display:block}
 .catalogs-overlay-modal .modal-backdrop.ng-enter{animation:modalBackdropIn .15s ease-out forwards}
@@ -4724,12 +4742,17 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .saas-offerings-container .sass-list-expander-container{margin-bottom:10px;text-align:center}
 .saas-offerings-container .spinner-container{padding-top:60px;padding-bottom:60px}
 .services-view,services-view{display:flex;flex:1 1 auto}
+<<<<<<< HEAD
 .services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;padding-left:2px;vertical-align:middle}
 .services-view .blank-slate-pf{background-color:transparent;border:none}
 .services-view .filter-panel-container ul{margin-bottom:10px}
 .services-view .flash-filter-tag{animation:flash linear 1s 1}
 .services-view .pf-empty-state{margin:0 20px;width:100%}
 .services-view .services-item{color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
+=======
+.services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;vertical-align:middle;padding-left:2px}
+.services-view .services-item{animation:catalogItemFade .2s ease-out;color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
+>>>>>>> Bump common and catalog depedencies
 @media (min-width:480px){.services-view .services-item{width:33.3333%}
 }
 @media (min-width:768px){.services-view .services-item{width:50%}
@@ -4763,17 +4786,6 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 =======
 .services-view .services-items{align-content:flex-start;background-color:#fff;display:flex;flex:1 1 auto;flex-wrap:wrap;padding-bottom:30px;z-index:9}
 .services-view .services-items-filter{flex:1 1 100%;margin:20px 20px 10px}
-.services-view .services-items-filter .filter-pf pf-filter-fields,.services-view .services-items-filter .filter-pf pf-filter-results{display:inline-block}
-.services-view .services-items-filter .filter-pf .filter-fields button{display:none}
-.services-view .services-items-filter .filter-pf .form-group{margin-bottom:0}
-@media (min-width:345px){.services-view .services-items-filter .filter-pf .form-group{margin-right:20px}
-}
-.services-view .services-items-filter .toolbar-pf-results{border-top:none;margin:0}
-.services-view .services-items-filter .toolbar-pf-results .col-sm-12{float:left;padding:0}
-.services-view .services-items-filter .toolbar-pf-results h5,.services-view .services-items-filter .toolbar-pf-results p,.services-view .services-items-filter .toolbar-pf-results ul{line-height:1.66666667;padding-bottom:2px;padding-top:2px}
-.services-view .services-items-filter .toolbar-pf-results .list-inline{margin-bottom:-5px;padding-right:5px}
-.services-view .services-items-filter .toolbar-pf-results .list-inline>li{margin-bottom:5px}
-.services-view .services-items-filter .toolbar-pf-results p{margin-right:10px;text-transform:capitalize}
 @media (min-width:480px){.services-view .services-sub-category .services-sub-category-tab:focus .services-sub-category-tab-image img,.services-view .services-sub-category .services-sub-category-tab:hover .services-sub-category-tab-image img,.services-view .services-sub-category.active .services-sub-category-tab .services-sub-category-tab-image img{opacity:1}
 .services-view .services-no-sub-categories{display:flex;flex:1 1 auto;padding:15px 20px 12px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
@@ -6483,12 +6495,17 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-line:hover{background-color:#22262b;color:#ededed}
 .log-line-number:before{content:attr(data-line-number)}
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+<<<<<<< HEAD
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
 .log-line-text :not(a)::-moz-selection,.log-line-text::-moz-selection{background:#a0a1a1;color:#101214}
 .log-line-text a::-moz-selection{background:#a0a1a1;color:#006da5}
 .log-line-text ::selection,.log-line-text::selection{background:#f7f7f7;color:#101214}
 .log-line-text a::selection{background:#f7f7f7;color:#006da5}
+=======
+.log-line-text{padding:0 10px;white-space:pre-wrap;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+.log-line-text::-moz-selection{color:#101214;background:#e5e5e5}
+>>>>>>> Bump common and catalog depedencies
 .table-log-pods{background-color:#fff;border:1px solid #D1D1D1}
 .table-log-pods>tbody+tbody{border-top-width:1px}
 .log-fixed-height.empty-state-message{margin-top:0}
