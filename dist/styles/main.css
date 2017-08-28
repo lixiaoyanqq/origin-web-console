@@ -4174,6 +4174,8 @@ div.hopscotch-bubble .hopscotch-nav-button.prev{color:#030303}
 .order-service-config .review-status .spinner.spinner-sm{height:16px;margin:3px 0 0;width:16px}
 @media (min-width:768px){.order-service-wizard-step.wizard-pf-main{height:450px;max-height:calc(100vh - 300px);min-height:200px;overflow-y:auto}
 }
+.order-service-wizard-step.wizard-pf-main .schema-form-fieldset{margin-bottom:40px;margin-top:40px}
+.order-service-wizard-step.wizard-pf-main .schema-form-fieldset legend{border-bottom:none;border-top:solid 1px rgba(0,0,0,.15);margin-bottom:10px;padding-top:20px}
 body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar{overflow:hidden}
 .catalogs-overlay-modal{display:block}
 .catalogs-overlay-modal .modal-backdrop.ng-enter{animation:modalBackdropIn .15s ease-out forwards}
@@ -4304,6 +4306,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .saas-offerings-container .sass-list-expander-container{margin-bottom:10px;text-align:center}
 .saas-offerings-container .spinner-container{padding-top:60px;padding-bottom:60px}
 .services-view,services-view{display:flex;flex:1 1 auto}
+.services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;vertical-align:middle;padding-left:2px}
 .services-view .services-item{animation:catalogItemFade .2s ease-out;color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
 @media (min-width:480px){.services-view .services-item{width:33.3333%}
 }
@@ -4329,17 +4332,6 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-item-name{flex:1 1 0%;font-size:14px;font-weight:600;display:-webkit-box;line-height:1.4em;max-height:4.2em;overflow:hidden;padding:0!important;-webkit-box-orient:vertical;-webkit-line-clamp:3;position:relative;word-wrap:break-word}
 .services-view .services-items{align-content:flex-start;background-color:#fff;display:flex;flex:1 1 auto;flex-wrap:wrap;padding-bottom:30px;z-index:9}
 .services-view .services-items-filter{flex:1 1 100%;margin:20px 20px 10px}
-.services-view .services-items-filter .filter-pf pf-filter-fields,.services-view .services-items-filter .filter-pf pf-filter-results{display:inline-block}
-.services-view .services-items-filter .filter-pf .filter-fields button{display:none}
-.services-view .services-items-filter .filter-pf .form-group{margin-bottom:0}
-@media (min-width:345px){.services-view .services-items-filter .filter-pf .form-group{margin-right:20px}
-}
-.services-view .services-items-filter .toolbar-pf-results{border-top:none;margin:0}
-.services-view .services-items-filter .toolbar-pf-results .col-sm-12{float:left;padding:0}
-.services-view .services-items-filter .toolbar-pf-results h5,.services-view .services-items-filter .toolbar-pf-results p,.services-view .services-items-filter .toolbar-pf-results ul{line-height:1.66666667;padding-bottom:2px;padding-top:2px}
-.services-view .services-items-filter .toolbar-pf-results .list-inline{margin-bottom:-5px;padding-right:5px}
-.services-view .services-items-filter .toolbar-pf-results .list-inline>li{margin-bottom:5px}
-.services-view .services-items-filter .toolbar-pf-results p{margin-right:10px;text-transform:capitalize}
 @media (min-width:480px){.services-view .services-sub-category .services-sub-category-tab:focus .services-sub-category-tab-image img,.services-view .services-sub-category .services-sub-category-tab:hover .services-sub-category-tab-image img,.services-view .services-sub-category.active .services-sub-category-tab .services-sub-category-tab-image img{opacity:1}
 .services-view .services-no-sub-categories{display:flex;flex:1 1 auto;padding:15px 20px 12px}
 .services-view .services-no-sub-categories .services-items{left:0;margin:0 0 8px;right:0}
@@ -5875,8 +5867,12 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-line:hover{background-color:#22262b;color:#ededed}
 .log-line-number:before{content:attr(data-line-number)}
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+<<<<<<< 358e6d83355ff3ea81f5e5545b7c7962befd6348
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
+=======
+.log-line-text{padding:0 10px;white-space:pre-wrap;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+>>>>>>> Bump common and catalog depedencies
 .log-line-text::-moz-selection{color:#101214;background:#e5e5e5}
 .table-log-pods{background-color:#fff;border:1px solid #D1D1D1}
 .table-log-pods>tbody+tbody{border-top-width:1px}
