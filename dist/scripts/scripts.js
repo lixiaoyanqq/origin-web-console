@@ -28,6 +28,7 @@ e.projectName = n.project;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E, N, D = t("annotation"), I = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), A = t("imageObjectRef"), L = t("isJenkinsPipelineStrategy"), U = t("isNewerResource"), O = t("label"), x = t("podTemplate"), F = {}, M = {}, V = {}, q = R.state = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -57,6 +58,9 @@ var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIs
 =======
 var E, T, N = t("annotation"), I = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
 >>>>>>> Show provision status of service instances on the overview page.
+=======
+var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), x = {}, F = {}, M = {}, V = P.state = {
+>>>>>>> Adjust events to show in the drawer
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -338,7 +342,7 @@ P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationCont
 P.viewBy = localStorage.getItem(se) || "app", e.$watch(function() {
 return P.viewBy;
 }, function(e) {
-localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? f.setLabelSuggestions(x) : f.setLabelSuggestions(F);
+localStorage.setItem(se, e), ee(), ne = "app" === P.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ie(), "pipeline" === P.viewBy ? f.setLabelSuggestions(F) : f.setLabelSuggestions(x);
 }), c.DISABLE_OVERVIEW_METRICS || (v.isAvailable(!0).then(function(e) {
 V.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
@@ -646,9 +650,9 @@ e.$evalAsync(function() {
 Se(), ve(), Ce();
 });
 }, 500), we = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, F), "pipeline" !== P.viewBy && f.setLabelSuggestions(F));
+_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, x), "pipeline" !== P.viewBy && f.setLabelSuggestions(x));
 }, ke = function(e) {
-_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, x), "pipeline" === P.viewBy && f.setLabelSuggestions(x));
+_.isEmpty(e) || (f.addLabelSuggestionsFromResources(e, F), "pipeline" === P.viewBy && f.setLabelSuggestions(F));
 }, je = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!U(e, "openshift.io/deployer-pod-for.name") && (!I(e, "openshift.io/build.name") && "slave" !== U(e, "jenkins")));
 }, Pe = function() {
@@ -718,13 +722,13 @@ _.each(a, function(t) {
 V.recentPipelinesByDeploymentConfig[t] = V.recentPipelinesByDeploymentConfig[t] || [], V.recentPipelinesByDeploymentConfig[t].push(e);
 }), X();
 }
-}, Oe = {}, Fe = function() {
+}, Oe = {}, xe = function() {
 Oe = i.groupBuildConfigsByOutputImage(P.buildConfigs);
-}, xe = function(e) {
+}, Fe = function(e) {
 var t = H(e);
 if (t) return _.get(V, [ "buildConfigsByObjectUID", t ], []);
 }, Me = function(e) {
-var t = [], n = xe(e);
+var t = [], n = Fe(e);
 _.each(n, function(e) {
 var n = _.get(V, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
 t = t.concat(n);
@@ -1006,7 +1010,7 @@ P.routes = e.by("metadata.name"), Be(), h.log("routes (subscribe)", P.routes);
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("buildConfigs", a, function(e) {
-P.buildConfigs = e.by("metadata.name"), Fe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
+P.buildConfigs = e.by("metadata.name"), xe(), He(), Ge(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
 }, {
 poll: R,
 pollInterval: 6e4
@@ -1499,27 +1503,40 @@ EVENTS_TO_SHOW: {
 FailedCreate: !0,
 FailedDelete: !0,
 FailedUpdate: !0,
-BuildStarted: !0,
+BuildCancelled: !0,
 BuildCompleted: !0,
 BuildFailed: !0,
-BuildCancelled: !0,
+BuildStarted: !0,
+BuildConfigInstantiateFailed: !0,
+DeploymentCancelled: !0,
 Failed: !0,
 ScalingReplicaSet: !0,
-DeploymentCancelled: !0,
 DeploymentCreated: !0,
 DeploymentCreationFailed: !0,
-FailedSync: !0,
-BackOff: !0,
-Unhealthy: !0,
-Pulling: !0,
-Pulled: !0,
-SuccessfulRescale: !0,
 FailedRescale: !0,
-LoadBalancerUpdateFailed: !0,
-VolumeDeleted: !0,
+SuccessfulRescale: !0,
+BackOff: !0,
+FailedSync: !0,
+Unhealthy: !0,
 FailedBinding: !0,
+<<<<<<< HEAD
 ProvisioningFailed: !0
 >>>>>>> Add notification-drawer to show curated list of events to user
+=======
+ProvisioningFailed: !0,
+VolumeDeleted: !0,
+LoadBalancerUpdateFailed: !0,
+Deprovisioning: !0,
+ErrorAsyncOperationInProgress: !0,
+ErrorCallingProvision: !0,
+ErrorInjectingBindResult: !0,
+ProvisionedSuccessfully: !0,
+Provisioning: !0,
+ReferencesNonexistentInstance: !0,
+ReferencesNonexistentServiceClass: !0,
+ReferencesNonexistentServicePlan: !0,
+UnbindCallFailed: !0
+>>>>>>> Adjust events to show in the drawer
 },
 PROJECT_NAVIGATION: [ {
 label: gettext("Overview"),
@@ -9426,6 +9443,7 @@ return e ? r + (S(e, "description") || "") : "";
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var $ = function(e, t, n, a) {
 =======
 var N = function(e, t, n, r) {
@@ -9433,6 +9451,9 @@ var N = function(e, t, n, r) {
 =======
 var I = function(e, t, n, r) {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+var I = function(e, t, n, r) {
+>>>>>>> Adjust events to show in the drawer
 var o = {
 title: "Confirm Removal",
 alerts: {},
@@ -11279,15 +11300,26 @@ e.autoscalers = e.hpaForRS.concat(t);
 var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 } else e.autoscalers = e.hpaForRS;
+<<<<<<< HEAD
 }, b = function() {
 x.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
+=======
+}, I = function() {
+j.push(o.watch(e.resource, f, function(t) {
+var n, a = [];
+>>>>>>> Adjust events to show in the drawer
 angular.forEach(t.by("metadata.name"), function(t) {
 (P(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
 }), n = s.getActiveDeployment(r), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
 }));
+<<<<<<< HEAD
 }, S = function() {
 c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t) {
+=======
+}, N = function() {
+s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
+>>>>>>> Adjust events to show in the drawer
 e.hpaWarnings = t;
 });
 <<<<<<< HEAD
@@ -11807,9 +11839,9 @@ details: t("getErrorDetails")(n)
 };
 });
 };
-var F = t("hasDeploymentConfig");
+var x = t("hasDeploymentConfig");
 e.isScalable = function() {
-return !!_.isEmpty(e.autoscalers) && (!F(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
+return !!_.isEmpty(e.autoscalers) && (!x(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
 }, e.removeVolume = function(n) {
 var a = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
 n.persistentVolumeClaim ? a += " It will not delete the persistent volume claim." : n.secret ? a += " It will not delete the secret." : n.configMap && (a += " It will not delete the config map.");
@@ -14927,6 +14959,7 @@ value: ""
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, E = t("orderByDisplayName"), N = t("getErrorDetails"), D = {}, I = function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification("create-builder-list-secrets-error"), _.each(D, function(e) {
@@ -14980,6 +15013,10 @@ f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification(
 }, T = t("orderByDisplayName"), I = t("getErrorDetails"), N = {}, D = function() {
 f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+}, T = t("orderByDisplayName"), I = t("getErrorDetails"), N = {}, D = function() {
+f.hideNotification("create-builder-list-config-maps-error"), f.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
+>>>>>>> Adjust events to show in the drawer
 !e.id || "error" !== e.type && "warning" !== e.type || f.hideNotification(e.id);
 });
 };
@@ -15298,6 +15335,7 @@ e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })) : _.isEmpty(D) ? A() : (L(D), e.disableInputs = !1);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -15321,6 +15359,9 @@ e.id = _.uniqueId("create-builder-alert-"), f.addNotification(e);
 =======
 })) : _.isEmpty(N) ? B() : (L(N), e.disableInputs = !1);
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+})) : _.isEmpty(N) ? B() : (L(N), e.disableInputs = !1);
+>>>>>>> Adjust events to show in the drawer
 };
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
@@ -18501,6 +18542,7 @@ c.hideNotification("from-file-error"), _.each(T, function(e) {
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, N = function(e) {
 I(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
@@ -18512,6 +18554,10 @@ N(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata
 }, N = function(e) {
 I(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+}, N = function(e) {
+I(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+>>>>>>> Adjust events to show in the drawer
 var t = e.quotaAlerts || [];
 T = T.concat(t), _.filter(T, {
 type: "error"
@@ -18623,6 +18669,7 @@ m.$on("importFileFromYAMLOrJSON", m.create), m.$on("$destroy", E);
 =======
 var $ = e("displayName");
 <<<<<<< HEAD
+<<<<<<< HEAD
 p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", I);
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 =======
@@ -18631,6 +18678,9 @@ p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", N);
 =======
 p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", I);
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", I);
+>>>>>>> Adjust events to show in the drawer
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
@@ -21217,6 +21267,7 @@ case "cpu/usage_rate":
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var r = D(t);
 if (r) return d(r);
 }
@@ -21243,6 +21294,9 @@ var a = I(t);
 =======
 var a = N(t);
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+var a = N(t);
+>>>>>>> Adjust events to show in the drawer
 if (a) return d(a);
 }
 return null;
@@ -21773,6 +21827,7 @@ function u(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
@@ -21806,6 +21861,11 @@ k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (I[i].lastValue = (I[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+var a, r = o(e, n), i = n.descriptor;
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (I[i].lastValue = (I[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
+>>>>>>> Adjust events to show in the drawer
 }));
 }
 function d() {
@@ -21833,6 +21893,7 @@ return w || (n.containerName = t.options.selectedContainer.name), n.start = j ||
 }
 }
 function f(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21879,6 +21940,12 @@ status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
 }; else if (!(N < 2) && t.alerts) {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+if (!k) if (N++, t.noData) t.metricsError = {
+status: _.get(e, "status", 0),
+details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
+}; else if (!(N < 2) && t.alerts) {
+>>>>>>> Adjust events to show in the drawer
 var n = "metrics-failed-" + t.uniqueID;
 t.alerts[n] = {
 type: "error",
@@ -21887,6 +21954,7 @@ links: [ {
 href: "",
 label: "Retry",
 onClick: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21912,6 +21980,9 @@ delete t.alerts[n], I = 1, y();
 =======
 delete t.alerts[n], N = 1, y();
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+delete t.alerts[n], N = 1, y();
+>>>>>>> Adjust events to show in the drawer
 }
 } ]
 };
@@ -22050,6 +22121,7 @@ chartID: "network-rx-" + t.uniqueID
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
@@ -22097,6 +22169,13 @@ l.showComputeUnitsHelp();
 };
 var N = 0;
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+var I = _.keyBy(t.metrics, "descriptor");
+t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
+l.showComputeUnitsHelp();
+};
+var N = 0;
+>>>>>>> Adjust events to show in the drawer
 c.getMetricsURL().then(function(e) {
 t.metricsURL = e;
 }), t.options = {
@@ -22275,6 +22354,7 @@ t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T = function() {
 =======
 }, D = function() {
@@ -22294,6 +22374,9 @@ t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
 =======
 }, N = function() {
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+}, N = function() {
+>>>>>>> Adjust events to show in the drawer
 if (!S) {
 var e = function() {
 clearInterval(S), S = null, t.$evalAsync(function() {
@@ -22301,6 +22384,7 @@ t.sized = !0;
 });
 }, n = 0;
 S = setInterval(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22340,6 +22424,9 @@ n > 10 ? e() : (n++, T().is(":visible") && (N(), e()));
 =======
 n > 10 ? e() : (n++, T().is(":visible") && (I(), e()));
 >>>>>>> bug 1480988. Use project annotation to determine kibana url for ops namespaces
+=======
+n > 10 ? e() : (n++, T().is(":visible") && (I(), e()));
+>>>>>>> Adjust events to show in the drawer
 }, 100);
 }
 }, D = _.debounce(function() {
@@ -22357,7 +22444,7 @@ var t = r.defer();
 return A ? (A.onClose(function() {
 t.resolve();
 }), A.stop()) : t.resolve(), e || (U.cancel(), l && (l.innerHTML = ""), L = document.createDocumentFragment()), t.promise;
-}, F = function() {
+}, x = function() {
 O().then(function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 t.$evalAsync(function() {
@@ -22535,8 +22622,9 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && B();
 >>>>>>> Add bindings list to resource pages
 },
 goChromeless: d.chromelessLink,
-restartLogs: F
+restartLogs: x
 }), t.$on("$destroy", function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22568,6 +22656,11 @@ O(), p.off("resize", D), p.off("scroll", P), g.off("scroll", P);
 >>>>>>> Bug 1481127 - More robust handling of large project lists
 }), "deploymentconfigs/logs" === b && !C) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 t.$watchGroup([ "name", "options.container", "run" ], F);
+=======
+O(), p.off("resize", D), p.off("scroll", P), g.off("scroll", P);
+}), "deploymentconfigs/logs" === b && !C) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
+t.$watchGroup([ "name", "options.container", "run" ], x);
+>>>>>>> Adjust events to show in the drawer
 } ],
 require: "logViewer",
 link: function(e, n, a, r) {
@@ -27314,7 +27407,7 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 C(r.project).then(function() {
 k(r.project, B), $(r.project), A();
 });
-}, F = function() {
+}, x = function() {
 r.project && O(), f.push(o.$on("$routeChangeSuccess", function(e, t, n) {
 U(t, n) && (g.customScope.projectName = r.project, O());
 })), f.push(o.$on("NotificationDrawerWrapper.toggle", function() {
@@ -27322,7 +27415,7 @@ g.drawerHidden = !g.drawerHidden;
 }));
 };
 g.$onInit = function() {
-m || p || F();
+m || p || x();
 }, g.$onDestroy = function() {
 j(), w(), D();
 };
