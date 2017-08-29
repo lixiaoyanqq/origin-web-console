@@ -28,27 +28,24 @@
               </li>
             </ul>
           </div>
-          {{imageStream.metadata.name}}
-          <small class="meta"><translate>created</translate> <span am-time-ago="imageStream.metadata.creationTimestamp"></span></small>
-        </h1>
-        <labels labels="imageStream.metadata.labels" clickable="true" kind="images" project-name="{{imageStream.metadata.namespace}}" limit="3"></labels>
-      </div>
-    </div>
-  </div><!-- /middle-header-->
-  <div class="middle-content">
-    <div class="container-fluid">
-      <div class="row" ng-if="imageStream">
-        <div class="col-md-12">
-          <registry-imagestream-body imagestream="imageStream">
-          </registry-imagestream-body>
-          <registry-imagestream-meta imagestream="imageStream">
-          </registry-imagestream-meta>
-          <registry-image-listing imagestream="imageStream" imagestream-path="imagestreamPath">
-          </registry-image-listing>
-          <registry-imagestream-push settings="settings" imagestream="imageStream">
-          </registry-imagestream-push>
-        </div><!-- /col-* -->
-      </div>
-    </div>
-  </div><!-- /middle-content -->
-</div>
+        </div>
+      </div><!-- /middle-header-->
+      <div class="middle-content">
+        <div class="container-fluid">
+          <div class="row" ng-if="imageStream">
+            <div class="col-md-12">
+              <registry-imagestream-body imagestream="imageStream">
+              </registry-imagestream-body>
+              <registry-imagestream-meta imagestream="imageStream">
+              </registry-imagestream-meta>
+              <registry-image-listing imagestream="imageStream" imagestream-path="imagestreamPath">
+              </registry-image-listing>
+              <registry-imagestream-push settings="settings" imagestream="imageStream">
+              </registry-imagestream-push>
+            </div><!-- /col-* -->
+          </div>
+        </div>
+      </div><!-- /middle-content -->
+    </div><!-- /middle-container -->
+  </div><!-- /middle-section -->
+  </project-page>
