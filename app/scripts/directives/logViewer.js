@@ -435,7 +435,7 @@ angular.module('openshiftConsole')
             // Kibana archives -------------------------------------------------
 
             APIDiscovery
-              .getLoggingURL()
+              .getLoggingURL($scope.context.project)
               .then(function(url) {
                 var projectName = _.get($scope.context, 'project.metadata.name');
                 var containerName = _.get($scope.options, 'container');
