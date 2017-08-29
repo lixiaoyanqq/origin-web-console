@@ -8976,11 +8976,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/notifications/notification-drawer-wrapper.html',
+<<<<<<< 443c718ea12ef495fc5e5633a3fc36fd76bfdfc1
 <<<<<<< b9f74dc9163281caa65a7366573d340fa288654d
     "<pf-notification-drawer allow-expand=\"$ctrl.allowExpand\" custom-scope=\"$ctrl.customScope\" drawer-expanded=\"$ctrl.drawerExpanded\" drawer-hidden=\"$ctrl.drawerHidden\" drawer-title=\"{{$ctrl.drawerTitle}}\" heading-include=\"{{$ctrl.headingInclude}}\" notification-body-include=\"{{$ctrl.notificationBodyInclude}}\" notification-groups=\"$ctrl.notificationGroups\" notification-track-field=\"trackByID\" on-close=\"$ctrl.onClose\" on-clear-all=\"$ctrl.onClearAll\" on-mark-all-read=\"$ctrl.onMarkAllRead\" show-clear-all=\"$ctrl.showClearAll\" show-mark-all-read=\"$ctrl.showMarkAllRead\"></pf-notification-drawer>"
 =======
     "<pf-notification-drawer drawer-hidden=\"$ctrl.drawerHidden\" allow-expand=\"$ctrl.allowExpand\" drawer-expanded=\"$ctrl.drawerExpanded\" drawer-title=\"{{$ctrl.drawerTitle}}\" show-clear-all=\"$ctrl.showClearAll\" show-mark-all-read=\"$ctrl.showMarkAllRead\" notification-groups=\"$ctrl.notificationGroups\" heading-include=\"{{$ctrl.headingInclude}}\" notification-body-include=\"{{$ctrl.notificationBodyInclude}}\" on-close=\"$ctrl.onClose\" on-mark-all-read=\"$ctrl.onMarkAllRead\" on-clear-all=\"$ctrl.onClearAll\" custom-scope=\"$ctrl.customScope\"></pf-notification-drawer>"
 >>>>>>> Add notification-drawer to show curated list of events to user
+=======
+    "<pf-notification-drawer allow-expand=\"$ctrl.allowExpand\" custom-scope=\"$ctrl.customScope\" drawer-expanded=\"$ctrl.drawerExpanded\" drawer-hidden=\"$ctrl.drawerHidden\" drawer-title=\"{{$ctrl.drawerTitle}}\" heading-include=\"{{$ctrl.headingInclude}}\" notification-body-include=\"{{$ctrl.notificationBodyInclude}}\" notification-groups=\"$ctrl.notificationGroups\" notification-track-field=\"uid\" on-close=\"$ctrl.onClose\" on-clear-all=\"$ctrl.onClearAll\" on-mark-all-read=\"$ctrl.onMarkAllRead\" show-clear-all=\"$ctrl.showClearAll\" show-mark-all-read=\"$ctrl.showMarkAllRead\"></pf-notification-drawer>"
+>>>>>>> Add track by to notification drawer
   );
 
 
