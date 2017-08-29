@@ -13655,9 +13655,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!(networking.routesByService[service.metadata.name] | size)\">\n" +
     "<a ng-if=\"'routes' | canI : 'create'\" ng-href=\"project/{{service.metadata.namespace}}/create-route?service={{service.metadata.name}}\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<translate>Create Route</translate>\n" +
     "</a>\n" +
     "<span ng-if=\"!('routes' | canI : 'create')\" class=\"text-muted\" translate>No Routes</span>\n" +
+=======
+    "Create Route\n" +
+    "</a>\n" +
+    "<span ng-if=\"!('routes' | canI : 'create')\" class=\"text-muted\">No Routes</span>\n" +
+>>>>>>> Use circle add icon for overview create route link
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
