@@ -128,7 +128,7 @@ describe('', () => {
           h.goToPage('projects');
           goToCreateProjectPage();
           projectHelpers.createProject(project, 'project/' + project['name'] + '/create');
-          h.waitForPresence('.project-bar option[selected]', project['displayName']);
+          h.waitForPresence('.project-bar option[selected][value="' + project['name'] + '"]');
           checkProjectSettings(project['name'], project['displayName'], project['description']);
         });
 

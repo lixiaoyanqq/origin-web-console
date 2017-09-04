@@ -20087,6 +20087,7 @@ apiObject: "<",
 createBinding: "&"
 },
 templateUrl: "views/directives/resource-service-bindings.html"
+<<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 }), angular.module("openshiftConsole").component("serviceInstanceBindings", {
@@ -20115,6 +20116,10 @@ var a = t("canI"), r = function(e, t) {
 }), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, a, r, o, i) {
 var s = function(e, t) {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+}), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, a, r, o, i, s) {
+var c = function(e, t) {
+>>>>>>> Make sure there's always a menu item for the current project
 return e.href === t || _.some(e.prefixes, function(e) {
 return _.startsWith(t, e);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -20123,6 +20128,7 @@ return _.startsWith(t, e);
 return {
 restrict: "E",
 templateUrl: "views/_sidebar.html",
+<<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 controller: [ "$scope", function(j) {
@@ -20184,36 +20190,44 @@ var u = function() {
 _.set(c, "sidebar.secondaryOpen", !1), _.set(a, "nav.showMobileNav", !1), c.activeSecondary = null, c.activePrimary = _.find(c.navItems, function(t) {
 return l = e.path().replace("/project/" + c.projectName, ""), s(t, l) ? (c.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+controller: [ "$scope", function(l) {
+var u;
+l.navItems = i.PROJECT_NAVIGATION, l.sidebar = {};
+var d = function() {
+l.projectName = r.project, _.set(l, "sidebar.secondaryOpen", !1), _.set(a, "nav.showMobileNav", !1), l.activeSecondary = null, l.activePrimary = _.find(l.navItems, function(t) {
+return u = e.path().replace("/project/" + l.projectName, ""), c(t, u) ? (l.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
+>>>>>>> Make sure there's always a menu item for the current project
 var t = _.find(e.items, function(e) {
-return s(e, l);
+return c(e, u);
 });
-return !!t && (c.activeSecondary = t, !0);
+return !!t && (l.activeSecondary = t, !0);
 });
 });
 };
-u(), c.$on("$routeChangeSuccess", u);
-var d = function() {
-_.each(c.navItems, function(e) {
+d(), l.$on("$routeChangeSuccess", d);
+var m = function() {
+_.each(l.navItems, function(e) {
 e.isHover = !1;
 });
 };
-c.navURL = function(e) {
-return e ? t("isAbsoluteURL")(e) ? e : "project/" + c.projectName + e : "";
-}, c.show = function(e) {
-return !(e.isValid && !e.isValid()) && (!e.canI || r.canI({
+l.navURL = function(e) {
+return e ? t("isAbsoluteURL")(e) ? e : "project/" + l.projectName + e : "";
+}, l.show = function(e) {
+return !(e.isValid && !e.isValid()) && (!e.canI || o.canI({
 resource: e.canI.resource,
 group: e.canI.group
-}, e.canI.verb, c.projectName));
-}, c.itemClicked = function(e) {
-if (e.href) return c.nav.showMobileNav = !1, void (c.sidebar.secondaryOpen = !1);
-d(), e.isHover = !0, e.mobileSecondary = c.isMobile, c.sidebar.showMobileSecondary = c.isMobile, c.sidebar.secondaryOpen = !0;
-}, c.onMouseEnter = function(e) {
+}, e.canI.verb, l.projectName));
+}, l.itemClicked = function(e) {
+if (e.href) return l.nav.showMobileNav = !1, void (l.sidebar.secondaryOpen = !1);
+m(), e.isHover = !0, e.mobileSecondary = l.isMobile, l.sidebar.showMobileSecondary = l.isMobile, l.sidebar.secondaryOpen = !0;
+}, l.onMouseEnter = function(e) {
 _.isEmpty(e.secondaryNavSections) || (e.mouseLeaveTimeout && (n.cancel(e.mouseLeaveTimeout), e.mouseLeaveTimeout = null), e.mouseEnterTimeout = n(function() {
-e.isHover = !0, e.mouseEnterTimeout = null, c.sidebar.secondaryOpen = !0;
+e.isHover = !0, e.mouseEnterTimeout = null, l.sidebar.secondaryOpen = !0;
 }, 300));
-}, c.onMouseLeave = function(e) {
+}, l.onMouseLeave = function(e) {
 _.isEmpty(e.secondaryNavSections) || (e.mouseEnterTimeout && (n.cancel(e.mouseEnterTimeout), e.mouseEnterTimeout = null), e.mouseLeaveTimeout = n(function() {
-e.isHover = !1, e.mouseLeaveTimeout = null, c.sidebar.secondaryOpen = _.some(c.navItems, function(e) {
+e.isHover = !1, e.mouseLeaveTimeout = null, l.sidebar.secondaryOpen = _.some(l.navItems, function(e) {
 return e.isHover && !_.isEmpty(e.secondaryNavSections);
 });
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -20235,25 +20249,29 @@ a.mobileSecondary = !1;
 $(window).on("resize.verticalnav", q), j.$on("$destroy", function() {
 =======
 }, 500));
-}, c.closeNav = function() {
-d(), c.nav.showMobileNav = !1, c.sidebar.secondaryOpen = !1;
-}, c.collapseMobileSecondary = function(e, t) {
+}, l.closeNav = function() {
+m(), l.nav.showMobileNav = !1, l.sidebar.secondaryOpen = !1;
+}, l.collapseMobileSecondary = function(e, t) {
 e.mobileSecondary = !1, t.stopPropagation();
 };
-var m = function() {
-return i.isWindowBelowBreakpoint(i.WINDOW_SIZE_SM);
+var p = function() {
+return s.isWindowBelowBreakpoint(s.WINDOW_SIZE_SM);
 };
-c.isMobile = m();
-var p = _.throttle(function() {
-var e = m();
-e !== c.isMobile && c.$evalAsync(function() {
-c.isMobile = e, e || (_.set(a, "nav.showMobileNav", !1), _.each(c.navItems, function(e) {
+l.isMobile = p();
+var f = _.throttle(function() {
+var e = p();
+e !== l.isMobile && l.$evalAsync(function() {
+l.isMobile = e, e || (_.set(a, "nav.showMobileNav", !1), _.each(l.navItems, function(e) {
 e.mobileSecondary = !1;
 }));
 });
 }, 50);
+<<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
 $(window).on("resize.verticalnav", p), c.$on("$destroy", function() {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+$(window).on("resize.verticalnav", f), l.$on("$destroy", function() {
+>>>>>>> Make sure there's always a menu item for the current project
 $(window).off(".verticalnav");
 });
 } ]
@@ -20389,7 +20407,7 @@ _.set(r, "ordering.panelName", "");
 _.set(r, "ordering.panelName", e);
 }, r.catalogLandingPageEnabled = _.get(i, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page");
 var v = p.find(".selectpicker"), y = [], b = function() {
-var t = r.projectName;
+var t = r.currentProjectName;
 if (t) {
 var n = function(e, n) {
 var a = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
@@ -20406,10 +20424,14 @@ l = e.by("metadata.name");
 };
 r.$on("$routeChangeSuccess", function() {
 var e = a.project;
-r.projectName !== e && (r.projectName = e, r.chromeless = "chromeless" === a.view, e && !r.chromeless ? (_.set(n, "view.hasProject", !0), r.canIAddToProject = !1, o.getProjectRules(e).then(function() {
-r.projectName === e && (r.canIAddToProject = o.canIAddToProject(e));
+r.currentProjectName !== e && (r.currentProjectName = e, r.chromeless = "chromeless" === a.view, e && !r.chromeless ? (_.set(n, "view.hasProject", !0), r.canIAddToProject = !1, o.getProjectRules(e).then(function() {
+r.currentProjectName === e && (r.canIAddToProject = o.canIAddToProject(e));
 }), C().then(function() {
-r.projectName = e, r.currentProject = _.get(l, [ e ]), b();
+r.currentProjectName && l && (l[r.currentProjectName] || (l[r.currentProjectName] = {
+metadata: {
+name: r.currentProjectName
+}
+}), r.currentProject = l[r.currentProjectName], b());
 })) : _.set(n, "view.hasProject", !1));
 }), v.selectpicker({
 iconBase: "fa",
