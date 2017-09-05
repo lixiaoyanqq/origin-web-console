@@ -12636,6 +12636,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-expansion collapse\" ng-if=\"expanded.replicationControllers[replicationController.metadata.name]\" ng-class=\"{'in': expanded.replicationControllers[replicationController.metadata.name]}\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "\n" +
@@ -12652,6 +12653,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>Logs are not available for replica sets.</translate>\n" +
     "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | size\">\n" +
     "<translate>To see application logs, view the logs for one of the replica set's</translate>\n" +
+=======
+    "<div ng-repeat-end ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\" class=\"list-group-expanded-section\" ng-class=\"{'expanded': expanded.replicaSets[replicaSet.metadata.name]}\">\n" +
+    "Logs are not available for replica sets.\n" +
+    "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | hashSize\">\n" +
+    "To see application logs, view the logs for one of the replica set's\n" +
+>>>>>>> Bug 1488288 - Fix pods link on monitoring page
     "<a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\">pods</a>.\n" +
     "</span>\n" +
     "<div class=\"mar-top-lg\" ng-if=\"metricsAvailable\">\n" +
