@@ -82,9 +82,9 @@
 
     var showParameters = function() {
       ctrl.nextTitle = 'Bind';
-      if (!parametersValidityWatcher) {
-        parametersValidityWatcher = $scope.$watch("ctrl.parametersForm.$valid", function(isValid) {
-          bindParametersStep.valid = isValid;
+      if (ctrl.podPresets) {
+        validityWatcher = $scope.$watch("ctrl.selectionForm.$valid", function(isValid) {
+          ctrl.steps[0].valid = isValid;
         });
       }
     };
@@ -206,7 +206,6 @@
       ctrl.serviceSelection = {};
       ctrl.projectDisplayName = $filter('displayName')(ctrl.project);
       ctrl.podPresets = enableTechPreviewFeature('pod_presets');
-      ctrl.parameterData = {};
 
       ctrl.steps = [ bindFormStep, bindParametersStep, resultsStep ];
       ctrl.hideBack = bindParametersStep.hidden;
