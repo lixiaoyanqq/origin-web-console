@@ -12630,9 +12630,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-repeat-end ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\" class=\"list-group-expanded-section\" ng-class=\"{'expanded': expanded.replicaSets[replicaSet.metadata.name]}\">\n" +
+<<<<<<< f7a929908851bafc58d476e4ab4c6482f3045960
     "<translate>Logs are not available for replica sets.</translate>\n" +
     "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | hashSize\" translate>\n" +
     "To see application logs, view the logs for one of the replica set's <a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\">pods</a>.\n" +
+=======
+    "Logs are not available for replica sets.\n" +
+    "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | hashSize\">\n" +
+    "To see application logs, view the logs for one of the replica set's\n" +
+    "<a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\">pods</a>.\n" +
+>>>>>>> Bug 1488288 - Fix pods link on monitoring page
     "</span>\n" +
     "<div class=\"mar-top-lg\" ng-if=\"metricsAvailable\">\n" +
     "<deployment-metrics pods=\"podsByOwnerUID[replicaSet.metadata.uid]\" containers=\"replicaSet.spec.template.spec.containers\" alerts=\"alerts\">\n" +
@@ -12685,9 +12692,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-repeat-end ng-if=\"expanded.statefulSets[set.metadata.name]\" class=\"list-group-expanded-section\" ng-class=\"{'expanded': expanded.statefulSets[set.metadata.name]}\">\n" +
+<<<<<<< f7a929908851bafc58d476e4ab4c6482f3045960
     "<translate>Logs are not available for stateful sets.</translate>\n" +
     "<span ng-if=\"podsByOwnerUID[set.metadata.uid] | hashSize\" translate>\n" +
     "To see application logs, view the logs for one of the stateful sets's <a href=\"\" ng-click=\"viewPodsForSet(set)\">pods</a>.\n" +
+=======
+    "Logs are not available for stateful sets.\n" +
+    "<span ng-if=\"podsByOwnerUID[set.metadata.uid] | hashSize\">\n" +
+    "To see application logs, view the logs for one of the stateful sets's\n" +
+    "<a href=\"\" ng-click=\"viewPodsForSet(set)\">pods</a>.\n" +
+>>>>>>> Bug 1488288 - Fix pods link on monitoring page
     "</span>\n" +
     "<div class=\"mar-top-lg\" ng-if=\"metricsAvailable\">\n" +
     "<deployment-metrics pods=\"podsByOwnerUID[set.metadata.uid]\" containers=\"set.spec.template.spec.containers\" alerts=\"alerts\">\n" +
