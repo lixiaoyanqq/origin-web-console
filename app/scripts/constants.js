@@ -222,6 +222,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     // General events that apply to more than one api object
     FailedCreate: true,
     FailedDelete: true,
+    FailedScheduling: true,
     FailedUpdate: true,
     // Build
     BuildCancelled: true,
@@ -233,7 +234,6 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     // Deployment
     DeploymentCancelled: true,
     Failed: true,
-    ScalingReplicaSet: true,
     // DeploymentConfig
     DeploymentCreated: true,
     DeploymentCreationFailed: true,
@@ -243,6 +243,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     // Pod
     BackOff: true,
     FailedSync: true,
+    InvalidEnvironmentVariableNames: true,
     Unhealthy: true,
     // PVC
     FailedBinding: true,
@@ -252,12 +253,9 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     LoadBalancerUpdateFailed: true,
     // Service Catalog
     Deprovisioning: true,
-    ErrorAsyncOperationInProgress: true,
     ErrorCallingProvision: true,
     ErrorInjectingBindResult: true,
-    ProvisionedSuccessfully: true,
     Provisioning: true,
-    ReferencesNonexistentInstance: true,
     ReferencesNonexistentServiceClass: true,
     ReferencesNonexistentServicePlan: true,
     UnbindCallFailed: true
