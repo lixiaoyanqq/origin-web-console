@@ -461,6 +461,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/_sidebar.html',
+<<<<<<< c38c93df5eea41e44ff7c7d9d34505dd8b185af3
 <<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<nav class=\"navbar navbar-sidebar\">\n" +
     "<ul class=\"nav nav-sidenav-primary\">\n" +
@@ -486,13 +487,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
 =======
     "<div ng-if=\"view.hasProject\" class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
+=======
+    "<div class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
+>>>>>>> Fix hamburger menu at mobile for pages with no project bar
     "    collapsed: nav.collapsed && !isMobile,\n" +
     "    'hide-mobile-nav': !nav.showMobileNav && isMobile,\n" +
     "    'hover-secondary-nav-pf': sidebar.secondaryOpen && !isMobile,\n" +
     "    'show-mobile-nav': nav.showMobileNav && isMobile,\n" +
     "    'show-mobile-secondary': nav.showMobileNav && sidebar.showMobileSecondary && isMobile\n" +
     "  }\" on-esc=\"closeNav()\">\n" +
-    "<nav class=\"nav-vertical-primary\">\n" +
+    "<nav ng-if=\"view.hasProject\" class=\"nav-vertical-primary\">\n" +
     "<ul class=\"list-group\">\n" +
     "\n" +
     "<li ng-repeat=\"primaryItem in navItems\" ng-class=\"{\n" +
