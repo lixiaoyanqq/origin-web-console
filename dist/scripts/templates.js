@@ -3940,22 +3940,38 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"secret\">\n" +
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\">\n" +
+<<<<<<< HEAD
     "\n" +
     "<button ng-if=\"project.metadata.name | canIAddToProject\" type=\"button\" class=\"btn btn-default hidden-xs\" ng-disabled=\"!secret.data\" ng-click=\"addToApplication()\" translate>\n" +
     "Add to Application\n" +
     "</button>\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" ng-hide=\"!('secrets' | canIDoAny)\">\n" +
     "<translate>Actions</translate>\n" +
+=======
+    "<button type=\"button\" class=\"btn btn-default hidden-xs\" ng-click=\"addToApplication()\">\n" +
+    "Add to Application\n" +
+    "</button>\n" +
+    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" ng-hide=\"!('secrets' | canIDoAny)\">\n" +
+    "Actions\n" +
+>>>>>>> Add the ability to add a secret to an application
     "<span class=\"caret\"></span>\n" +
     "</button>\n" +
     "\n" +
     "<a href=\"\" ng-if=\"project.metadata.name | canIAddToProject\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< HEAD
     "<li ng-if=\"(project.metadata.name | canIAddToProject)\" class=\"visible-xs\">\n" +
     "<a href=\"\" role=\"button\" ng-class=\"{ 'disabled-link': !secret.data }\" ng-attr-aria-disabled=\"{{!secret.data ? 'true' : undefined}}\" ng-click=\"addToApplication()\" translate>Add to Application</a>\n" +
     "</li>\n" +
     "<li ng-if=\"secretsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{secret | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<li class=\"visible-xs\">\n" +
+    "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"'secrets' | canI : 'update'\">\n" +
+    "<a ng-href=\"{{secret | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Add the ability to add a secret to an application
     "</li>\n" +
     "<li ng-if=\"secretsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Secret\" resource-name=\"{{secret.metadata.name}}\" project-name=\"{{secret.metadata.namespace}}\" alerts=\"alerts\">\n" +
@@ -4013,8 +4029,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 <<<<<<< HEAD
     "</div>\n" +
+<<<<<<< HEAD
     "<overlay-panel class=\"overlay-panel-as-modal add-config-to-application\" show-panel=\"addToApplicationVisible\" handle-close=\"closeAddToApplication\">\n" +
     "<add-config-to-application project=\"project\" api-object=\"secret\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-config-to-application>\n" +
+=======
+    "<overlay-panel class=\"add-secret-to-application\" show-panel=\"addToApplicationVisible\" show-close=\"true\" handle-close=\"closeAddToApplication\">\n" +
+    "<add-secret-to-application project=\"project\" secret=\"secret\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-secret-to-application>\n" +
+>>>>>>> Add the ability to add a secret to an application
     "</overlay-panel>\n" +
     "</div>\n" +
 =======
@@ -6300,6 +6321,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/directives/add-config-to-application.html',
     "<div class=\"modal-add-config-to-application\">\n" +
     "<div class=\"modal-header\">\n" +
@@ -6307,6 +6329,99 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
     "<h1 class=\"modal-title\" translate>Add to Application</h1>\n" +
+=======
+  $templateCache.put('views/directives/add-secret-to-application.html',
+    "<div>\n" +
+    "<div class=\"dialog-title\">\n" +
+    "<h3>Add to Application</h3>\n" +
+    "</div>\n" +
+    "<div class=\"dialog-body\">\n" +
+    "<form name=\"addToApplicationForm\" novalidate>\n" +
+    "<fieldset ng-disabled=\"disableInputs\">\n" +
+    "<legend>Add this secret to application:</legend>\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"application-select\">\n" +
+    "<ui-select id=\"application\" ng-model=\"ctrl.application\" required=\"true\" ng-disabled=\"ctrl.disableInputs\">\n" +
+    "<ui-select-match placeholder=\"{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}\">\n" +
+    "<span>\n" +
+    "{{$select.selected.metadata.name}}\n" +
+    "<small class=\"text-muted\">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>\n" +
+    "</span>\n" +
+    "</ui-select-match>\n" +
+    "<ui-select-choices repeat=\"application in (ctrl.applications) | filter : { metadata: { name: $select.search } } track by (application | uid)\" group-by=\"ctrl.groupByKind\">\n" +
+    "<span ng-bind-html=\"application.metadata.name | highlight : $select.search\"></span>\n" +
+    "</ui-select-choices>\n" +
+    "</ui-select>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<legend>Add secret as:</legend>\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"radio\">\n" +
+    "<label class=\"add-choice\" for=\"envFrom\">\n" +
+    "<input id=\"envFrom\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"env\" ng-disabled=\"ctrl.disableInputs\">\n" +
+    "Environment variables\n" +
+    "</label>\n" +
+    "<div>\n" +
+    "<label class=\"add-choice\" for=\"mountVolume\">\n" +
+    "<input type=\"radio\" ng-model=\"ctrl.addType\" value=\"volume\" ng-disabled=\"ctrl.disableInputs\">\n" +
+    "Volume\n" +
+    "</label>\n" +
+    "</div>\n" +
+    "<div class=\"volume-options\">\n" +
+    "<div ng-class=\"{'has-error': (addToApplicationForm.mountVolume.$error.pattern && addToApplicationForm.mountVolume.$touched)}\">\n" +
+    "<input class=\"form-control\" name=\"mountVolume\" id=\"mountVolume\" placeholder=\"Enter a mount path\" type=\"text\" required ng-pattern=\"/^\\/.*$/\" osc-unique=\"ctrl.existingMountPaths\" aria-describedby=\"mount-path-help\" ng-disabled=\"ctrl.addType !== 'volume' || ctrl.disableInputs\" ng-model=\"ctrl.mountVolume\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
+    "</div>\n" +
+    "<div class=\"help-block bind-description\">\n" +
+    "Mount Path for the volume. A file will be created in this director for each key from the secret. The file contents will be the value of the key.\n" +
+    "</div>\n" +
+    "<div class=\"has-error\" ng-show=\"addToApplicationForm.mountVolume.$error.oscUnique\">\n" +
+    "<span class=\"help-block\">\n" +
+    "The mount path is already used. Please choose another mount path.\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"button-group pull-right\">\n" +
+    "<button class=\"btn btn-default\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.onCancel()\">\n" +
+    "Cancel\n" +
+    "</button>\n" +
+    "<button type=\"submit\" class=\"btn btn-primary\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.addToApplication()\" ng-disabled=\"ctrl.addType === 'volume' && addToApplicationForm.$invalid || !ctrl.application\" value=\"\">\n" +
+    "Save\n" +
+    "</button>\n" +
+    "</div>\n" +
+    "</fieldset>\n" +
+    "</form>\n" +
+    "<div class=\"updating\" ng-if=\"ctrl.updating\">\n" +
+    "<div class=\"spinner spinner-lg\" aria-hidden=\"true\"></div>\n" +
+    "<h3>\n" +
+    "<span class=\"sr-only\">Updating</span>\n" +
+    "</h3>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('views/directives/annotations.html',
+    "<p ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
+    "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"!expandAnnotations\">Show Annotations</a>\n" +
+    "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"expandAnnotations\">Hide Annotations</a>\n" +
+    "</p>\n" +
+    "<div ng-if=\"expandAnnotations\">\n" +
+    "<div ng-if=\"annotations\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
+    "<table class=\"table table-bordered table-bordered-columns key-value-table\">\n" +
+    "<tbody>\n" +
+    "<tr ng-repeat=\"(annotationKey, annotationValue) in annotations\">\n" +
+    "<td class=\"key\">{{annotationKey}}</td>\n" +
+    "<td class=\"value\">\n" +
+    "<truncate-long-text content=\"annotationValue | prettifyJSON\" limit=\"500\" newlinelimit=\"20\" expandable=\"true\">\n" +
+    "</truncate-long-text>\n" +
+    "</td>\n" +
+    "</tr>\n" +
+    "</tbody>\n" +
+    "</table>\n" +
+>>>>>>> Add the ability to add a secret to an application
     "</div>\n" +
     "<form name=\"addToApplicationForm\" novalidate>\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +

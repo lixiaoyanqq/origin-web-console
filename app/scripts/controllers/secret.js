@@ -33,7 +33,6 @@ angular.module('openshiftConsole')
       }
     ];
 
-
     $scope.secretsVersion = APIService.getPreferredVersion('secrets');
 
     var watches = [];
