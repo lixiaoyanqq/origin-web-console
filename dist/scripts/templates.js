@@ -7934,6 +7934,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 809bff8ddd5346961cacd4f7f945b2cdef22599e
 <<<<<<< 6386a2f204182c4d7534a943f6487a5d039cc2e2
 <<<<<<< 09aec676d45ef13c0609d6ece87170b1c79c051a
     "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
@@ -7943,6 +7944,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<table class=\"table table-bordered table-condensed table-layout-fixed events-table\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
+>>>>>>> Add table-mobile class that was inadvertently removed
     "<thead>\n" +
     "<tr>\n" +
     "<th id=\"time\" translate>Time</th>\n" +
