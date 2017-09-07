@@ -7165,7 +7165,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<table class=\"table table-bordered table-condensed table-layout-fixed events-table\">\n" +
+    "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
     "<thead>\n" +
     "<tr>\n" +
     "<th id=\"time\" translate>Time</th>\n" +
