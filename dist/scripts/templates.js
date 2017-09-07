@@ -7938,11 +7938,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<table class=\"table table-bordered table-condensed table-mobile table-hover table-layout-fixed events-table\">\n" +
 >>>>>>> Use table toolbar styles for events filter
 =======
     "<table class=\"table table-bordered table-condensed table-layout-fixed events-table\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<table class=\"table table-bordered table-condensed table-mobile table-layout-fixed events-table\">\n" +
+>>>>>>> Add table-mobile class that was inadvertently removed
     "<thead>\n" +
     "<tr>\n" +
     "<th id=\"time\" translate>Time</th>\n" +
