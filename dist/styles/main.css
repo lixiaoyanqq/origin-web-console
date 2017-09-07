@@ -4523,6 +4523,7 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .row-cards-pf-flex .card-pf-body-with-version{display:flex;flex-direction:column;justify-content:space-between}
 .row-cards-pf-flex .card-pf-footer .btn{margin-bottom:10px}
 .row-cards-pf-flex .card-pf-title{line-height:1.3;margin:0;overflow:hidden;text-overflow:ellipsis}
+<<<<<<< 4e2e6741c6958536b3f5bafecdee9908b028f458
 .landing .nav-tabs,.landing h1{margin-bottom:0!important;margin-top:0!important}
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 .landing-page{background:#2C343D;min-height:100%}
@@ -4532,6 +4533,19 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 @media (min-width:768px){.catalog-search,.landing-side-bar{top:59px}
 .tech-preview .catalog-search,.tech-preview .landing-side-bar{top:79px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.bind-service-config{padding:0 20px;width:100%}
+@media (min-width:768px){.bind-service-config{margin-bottom:-20px;margin-top:-20px;overflow-y:auto;padding-right:0;background-attachment:scroll;background-image:radial-gradient(ellipse at top,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 65%),radial-gradient(ellipse at bottom,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 65%);background-position:0 0,0 100%;background-repeat:no-repeat;background-size:100% 6px}
+.bind-service-config _::-webkit-full-page-media,.bind-service-config _:future,:root .bind-service-config{background-attachment:local,local,scroll,scroll;background-image:linear-gradient(#fff 30%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#fff 70%),radial-gradient(ellipse at top,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 65%),radial-gradient(ellipse at bottom,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 65%);background-position:0 0,0 100%;background-repeat:no-repeat;background-size:100% 12px,100% 12px,100% 6px,100% 6px}
+.bind-service-config .form-horizontal .control-label{padding-right:0}
+.landing{top:113px}
+.tech-preview .landing{top:133px}
+.wizard-pf-main.bind-service-wizard-step{height:350px;max-height:calc(100vh - 300px);min-height:200px;overflow-y:auto}
+}
+.landing .nav-tabs,.landing h1{margin-bottom:0!important;margin-top:0!important}
+@media (min-width:768px){.catalog-search,.landing-side-bar{top:61px}
+.tech-preview .catalog-search,.tech-preview .landing-side-bar{top:81px}
+>>>>>>> Minor height adjustment to correct navbar height at desktop
 }
 .collapse{display:none}
 .collapse.in{display:block}
@@ -5011,13 +5025,13 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .layout-pf.layout-pf-fixed body.tech-preview{padding-top:61px}
 @media (min-width:768px){.data-toolbar .data-toolbar-filter{flex:1 1 0%}
 .data-toolbar .vertical-divider+.data-toolbar-filter{margin-top:0}
-.layout-pf.layout-pf-fixed body{padding-top:59px}
-.layout-pf.layout-pf-fixed body.tech-preview{padding-top:79px}
+.layout-pf.layout-pf-fixed body{padding-top:61px}
+.layout-pf.layout-pf-fixed body.tech-preview{padding-top:81px}
 }
 .layout-pf.layout-pf-fixed body.has-project-bar{padding-top:69px}
 .layout-pf.layout-pf-fixed body.has-project-bar.tech-preview{padding-top:89px}
-@media (min-width:768px){.layout-pf.layout-pf-fixed body.has-project-bar{padding-top:99px}
-.layout-pf.layout-pf-fixed body.has-project-bar.tech-preview{padding-top:119px}
+@media (min-width:768px){.layout-pf.layout-pf-fixed body.has-project-bar{padding-top:101px}
+.layout-pf.layout-pf-fixed body.has-project-bar.tech-preview{padding-top:121px}
 .layout-pf.layout-pf-fixed body.has-project-bar .container-pf-nav-pf-vertical{margin-left:220px}
 .layout-pf.layout-pf-fixed body.has-project-bar .container-pf-nav-pf-vertical.collapsed-nav{margin-left:75px}
 }
@@ -5554,7 +5568,7 @@ to{background-color:transparent}
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 .project-bar{background-color:#292e34;border-bottom:1px solid #050505;display:flex;height:28px;left:0;position:fixed;right:0;top:41px;z-index:1029}
-@media (min-width:768px){.project-bar{height:40px;top:59px}
+@media (min-width:768px){.project-bar{height:40px;top:61px}
 }
 .project-bar .add-to-project{align-items:center;color:#d1d1d1;display:flex;flex:0 0 35px;font-weight:300;justify-content:center}
 .project-bar .add-to-project:before{background:rgba(255,255,255,.04);content:'';display:block;height:100%;left:0px;position:absolute;top:0;width:1px}
@@ -5646,7 +5660,7 @@ to{background-color:transparent}
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 =======
 .tech-preview .project-bar{top:61px}
-@media (min-width:768px){.tech-preview .project-bar{top:79px}
+@media (min-width:768px){.tech-preview .project-bar{top:81px}
 }
 >>>>>>> Patternfly vertical navigation and project bar
 @-ms-viewport{width:device-width}
@@ -6113,6 +6127,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-view .log-scroll-bottom{bottom:10px;position:absolute;right:25px}
 .log-view .log-scroll-top{position:absolute;right:25px;top:10px}
 .log-view .log-scroll-top.affix{position:fixed;right:45px;top:79px}
+<<<<<<< 4e2e6741c6958536b3f5bafecdee9908b028f458
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 @media (min-width:768px){.log-view .log-scroll-top.affix{top:111px}
 }
@@ -6121,17 +6136,24 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 @media (min-width:768px){.chromeless .log-view .log-scroll-top.affix{top:71px}
 =======
 @media (min-width:768px){.log-view .log-scroll-top.affix{top:109px}
+=======
+@media (min-width:768px){.log-view .log-scroll-top.affix{top:111px}
+>>>>>>> Minor height adjustment to correct navbar height at desktop
 }
 .chromeless .log-view .log-scroll-top.affix{right:25px;top:51px}
-@media (min-width:768px){.chromeless .log-view .log-scroll-top.affix{top:69px}
+@media (min-width:768px){.chromeless .log-view .log-scroll-top.affix{top:71px}
 }
 .tech-preview .log-view .log-scroll-top.affix{top:99px}
-@media (min-width:768px){.tech-preview .log-view .log-scroll-top.affix{top:129px}
+@media (min-width:768px){.tech-preview .log-view .log-scroll-top.affix{top:131px}
 }
 .tech-preview .chromeless .log-view .log-scroll-top.affix{top:71px}
 .log-view .log-view-output{font-size:11px;padding:40px 0}
+<<<<<<< 4e2e6741c6958536b3f5bafecdee9908b028f458
 @media (min-width:768px){.tech-preview .chromeless .log-view .log-scroll-top.affix{top:89px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+@media (min-width:768px){.tech-preview .chromeless .log-view .log-scroll-top.affix{top:91px}
+>>>>>>> Minor height adjustment to correct navbar height at desktop
 .log-view .log-view-output{font-size:12px}
 }
 @media only screen and (max-device-width:736px) and (-webkit-min-device-pixel-ratio:0){.log-view .log-view-output{padding-bottom:70px}
@@ -6214,7 +6236,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 >>>>>>> Changes to masthead and vertical nav based on ux designs
 .has-project-bar .nav-pf-vertical{top:69px}
 @media (min-width:768px){.nav-pf-vertical{display:none}
-.has-project-bar .nav-pf-vertical{display:block;top:99px}
+.has-project-bar .nav-pf-vertical{display:block;top:101px}
 }
 .nav-pf-vertical .list-group-item{border-color:#050505}
 .nav-pf-vertical .list-group-item:after{background:rgba(255,255,255,.04);content:'';display:block;height:1px;position:absolute;top:0px;width:100%}
@@ -6237,8 +6259,12 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .nav-pf-vertical.show-mobile-nav{box-shadow:2px 0 3px rgba(3,3,3,.15);left:0}
 .nav-pf-vertical .list-group-item.secondary-nav-item-pf:hover>a:after{color:#fff}
 .nav-pf-vertical .nav-pf-secondary-nav{background:#383f47;border-left:0;border-right:1px solid #050505;top:69px;width:221px}
+<<<<<<< 4e2e6741c6958536b3f5bafecdee9908b028f458
 @media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:99px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+@media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:101px}
+>>>>>>> Minor height adjustment to correct navbar height at desktop
 }
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item:after{display:none}
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a,.nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a:hover{background:#4a535e}
@@ -6249,11 +6275,11 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:hover{text-decoration:none;background:#4a535e}
 .tech-preview .nav-pf-vertical .nav-pf-secondary-nav{top:89px}
-@media (min-width:768px){.tech-preview .nav-pf-vertical .nav-pf-secondary-nav{top:119px}
+@media (min-width:768px){.tech-preview .nav-pf-vertical .nav-pf-secondary-nav{top:121px}
 }
 .nav-pf-vertical .nav-item-pf-header{font-size:14px}
 .tech-preview .nav-pf-vertical{top:61px}
-@media (min-width:768px){.tech-preview .nav-pf-vertical{top:79px}
+@media (min-width:768px){.tech-preview .nav-pf-vertical{top:81px}
 }
 .tech-preview.has-project-bar .nav-pf-vertical{top:89px}
 >>>>>>> Patternfly vertical navigation and project bar
@@ -6283,7 +6309,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 @media (min-width:660px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
 >>>>>>> Edit/Create Projects on page in a popup
 }
-@media (min-width:768px){.tech-preview.has-project-bar .nav-pf-vertical{top:119px}
+@media (min-width:768px){.tech-preview.has-project-bar .nav-pf-vertical{top:121px}
 .projects-bar .projects-add .origin-modal-popup{width:370px}
 }
 .projects-bar .projects-options{display:flex;flex-direction:column}
@@ -6534,11 +6560,11 @@ notification-drawer-wrapper .drawer-pf{height:calc(100vh - 69px);position:fixed;
 @media (max-width:350px){notification-drawer-wrapper .drawer-pf{left:0;width:100%}
 }
 notification-drawer-wrapper .drawer-pf.drawer-pf-expanded{left:0}
-@media (min-width:768px){notification-drawer-wrapper .drawer-pf{height:calc(100vh - 99px - 20px);top:99px}
+@media (min-width:768px){notification-drawer-wrapper .drawer-pf{height:calc(100vh - 101px - 20px);top:101px}
 notification-drawer-wrapper .drawer-pf.drawer-pf-expanded{left:270px}
 }
 .tech-preview notification-drawer-wrapper .drawer-pf{height:calc(100vh - 89px);top:89px}
-@media (min-width:768px){.tech-preview notification-drawer-wrapper .drawer-pf{height:calc(100vh - 119px - 20px);top:119px}
+@media (min-width:768px){.tech-preview notification-drawer-wrapper .drawer-pf{height:calc(100vh - 121px - 20px);top:121px}
 }
 >>>>>>> Patternfly vertical navigation and project bar
 notification-drawer-wrapper .drawer-pf-notification,notification-drawer-wrapper .drawer-pf-notification-info,notification-drawer-wrapper .drawer-pf-notification-message{cursor:pointer}
