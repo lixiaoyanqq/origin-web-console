@@ -37,9 +37,10 @@
       <li role="menuitem"><a ng-href="project/{{currentProjectName}}/create?tab=deployImage" translate>Deploy Image</a></li>
       <li ng-if-end role="menuitem"><a ng-href="project/{{currentProjectName}}/create?tab=fromFile" translate>Import YAML / JSON</a></li>
 
-      <li ng-if-start="catalogLandingPageEnabled" role="menuitem"><a href="/" translate>Browse Catalog</a></li>
+      <li ng-if-start="catalogLandingPageEnabled" role="menuitem"><a href="./" translate>Browse Catalog</a></li>
       <li role="menuitem"><a href="" ng-click="showOrderingPanel('deployImage')" translate>Deploy Image</a></li>
       <li ng-if-end role="menuitem"><a href="" ng-click="showOrderingPanel('fromFile')" translate>Import YAML / JSON</a></li>
+      <li role="menuitem"><a href="" ng-click="showOrderingPanel('fromProject')" translate>Select from Project</a></li>
     </ul>
   </div>
 </div> <!-- /project-bar -->
@@ -49,4 +50,5 @@
 <overlay-panel show-panel="ordering.panelName" show-close="true" handle-close="closeOrderingPanel">
   <deploy-image-dialog ng-if="ordering.panelName === 'deployImage'" project="currentProject" context="context" on-dialog-closed="closeOrderingPanel"></deploy-image-dialog>
   <from-file-dialog ng-if="ordering.panelName === 'fromFile'" project="currentProject" context="context" on-dialog-closed="closeOrderingPanel"></from-file-dialog>
+  <process-template-dialog ng-if="ordering.panelName === 'fromProject'" project="project" use-project-template="true" on-dialog-closed="closeOrderingPanel"></process-template-dialog>
 </overlay-panel>
