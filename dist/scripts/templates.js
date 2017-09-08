@@ -13262,6 +13262,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/projects.html',
     "<div class=\"middle surface-shaded\">\n" +
+    "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
+    "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
+    "</origin-modal-popup>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
@@ -13281,13 +13284,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 <<<<<<< 749dde880a390d6fa7372b37d6b0c9dad0515321
 =======
     "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
-    "<button ng-click=\"createProject()\" class=\"btn btn-md btn-primary\">\n" +
+    "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"icon-button-text\">Create Project</span>\n" +
     "</button>\n" +
-    "<origin-modal-popup shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\">\n" +
-    "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
-    "</origin-modal-popup>\n" +
     "</div>\n" +
 >>>>>>> Edit/Create Projects on page in a popup
     "<div class=\"projects-search\">\n" +
@@ -13416,6 +13416,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>\n" +
     "<translate>DataMan OS helps you quickly develop, host, and scale applications.</translate><br>\n" +
     "</p>\n" +
+<<<<<<< af71f5432798ef209671a42cfd7fd17d1c042946
+=======
+    "<div>\n" +
+    "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
+    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "</button>\n" +
+    "</div>\n" +
+    "<p>To learn more, visit the OpenShift <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
+    "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
+>>>>>>> Use create project popup rather than the create-project page
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
