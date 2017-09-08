@@ -8198,9 +8198,15 @@ d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmp
 }, k = function() {
 g || u.list().then(w);
 };
+<<<<<<< HEAD
 e.newProjectPanelShown = !1, e.createProject = function() {
 e.newProjectPanelShown = !0;
 >>>>>>> Bug 1481127 - More robust handling of large project lists
+=======
+e.newProjectPanelShown = !1, e.createProject = function(t) {
+for (var n = _.get(t, "target"); n && !angular.element(n).hasClass("btn"); ) n = n.parentElement;
+e.popupElement = n, e.newProjectPanelShown = !0;
+>>>>>>> Use create project popup rather than the create-project page
 }, e.closeNewProjectPanel = function() {
 e.newProjectPanelShown = !1;
 }, e.onNewProject = function() {
