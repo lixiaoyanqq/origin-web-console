@@ -14643,12 +14643,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/projects.html',
     "<div class=\"middle surface-shaded\">\n" +
+<<<<<<< 14d8945c9fea9e18afcd4dd2575bfe2d3685da77
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
     "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"{{'Create Project'|translate}}\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
     "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
     "</origin-modal-popup>\n" +
 =======
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
+    "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
+    "</origin-modal-popup>\n" +
+>>>>>>> Use create project popup rather than the create-project page
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
@@ -14666,6 +14672,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 translate>My Projects</h1>\n" +
     "<div class=\"projects-options\">\n" +
     "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
+<<<<<<< 14d8945c9fea9e18afcd4dd2575bfe2d3685da77
 <<<<<<< e5adaafafdb2ea9a6202b30ac26e6e2cf42f6d63
     "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
@@ -14680,6 +14687,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
     "</origin-modal-popup>\n" +
 >>>>>>> Edit/Create Projects on page in a popup
+=======
+    "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
+    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "</button>\n" +
+>>>>>>> Use create project popup rather than the create-project page
     "</div>\n" +
     "<div class=\"projects-search\">\n" +
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
@@ -14835,8 +14848,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div>\n" +
     "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< 14d8945c9fea9e18afcd4dd2575bfe2d3685da77
     "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
     "</button>\n" +
+=======
+    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "</button>\n" +
+    "</div>\n" +
+    "<p>To learn more, visit the OpenShift <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
+    "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
+    "</div>\n" +
+    "</div>\n" +
+>>>>>>> Use create project popup rather than the create-project page
     "</div>\n" +
     "<p translate>To learn more, visit the DMOS <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
     "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
