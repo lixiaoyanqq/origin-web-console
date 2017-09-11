@@ -4681,12 +4681,29 @@ body{padding-right:0px!important}
 @media (min-height:800px){.empty-state-message{margin-top:130px}
 alerts+.empty-state-message{margin-top:90px}
 .empty-state-message.loading{margin-top:0;padding-top:130px}
+<<<<<<< 2a5f9b0f0f4c1df9d127fde96ff2985a1f77199c
 }
 @media (min-height:1024px){.empty-state-message{margin-top:170px}
 alerts+.empty-state-message{margin-top:130px}
 .empty-state-message.loading{margin-top:0;padding-top:170px}
 }
 @media (min-width:480px){.empty-state-message{padding-left:20px;padding-right:20px}
+=======
+}
+@media (min-height:1024px){.empty-state-message{margin-top:170px}
+alerts+.empty-state-message{margin-top:130px}
+.empty-state-message.loading{margin-top:0;padding-top:170px}
+}
+@media (min-width:480px){.empty-state-message{padding-left:20px;padding-right:20px}
+}
+.empty-state-message .btn{margin:10px 0 20px}
+.empty-state-message .h2,.empty-state-message h2{line-height:1.4}
+@media (min-height:600px){.empty-state-message .hero-icon{display:inline-block;font-size:90px}
+}
+@media (min-height:800px){.empty-state-message .hero-icon{font-size:100px}
+}
+@media (min-height:1024px){.empty-state-message .hero-icon{font-size:120px}
+>>>>>>> Changing margin to padding on index.html .empty-state-message
 }
 .empty-state-message .btn{margin:10px 0 20px}
 .empty-state-message .h2,.empty-state-message h2{line-height:1.4}
@@ -6100,12 +6117,31 @@ a.subtle-link:active,a.subtle-link:focus,a.subtle-link:hover{color:#00659c;borde
 @media (min-height:800px){.chromeless .log-loading-msg{margin-top:130px}
 alerts+.chromeless .log-loading-msg{margin-top:90px}
 .chromeless .log-loading-msg.loading{margin-top:0;padding-top:130px}
+<<<<<<< 2a5f9b0f0f4c1df9d127fde96ff2985a1f77199c
 }
 @media (min-height:1024px){.chromeless .log-loading-msg{margin-top:170px}
 alerts+.chromeless .log-loading-msg{margin-top:130px}
 .chromeless .log-loading-msg.loading{margin-top:0;padding-top:170px}
 }
 @media (min-width:480px){.chromeless .log-loading-msg{padding-left:20px;padding-right:20px}
+=======
+}
+@media (min-height:1024px){.chromeless .log-loading-msg{margin-top:170px}
+alerts+.chromeless .log-loading-msg{margin-top:130px}
+.chromeless .log-loading-msg.loading{margin-top:0;padding-top:170px}
+}
+@media (min-width:480px){.chromeless .log-loading-msg{padding-left:20px;padding-right:20px}
+}
+.log-header .log-actions .btn-link,.log-view{padding:0}
+.chromeless .log-loading-msg .btn{margin:10px 0 20px}
+.chromeless .log-loading-msg .h2,.chromeless .log-loading-msg h2{line-height:1.4}
+.chromeless .log-loading-msg .hero-icon{display:none}
+@media (min-height:600px){.chromeless .log-loading-msg .hero-icon{display:inline-block;font-size:90px}
+}
+@media (min-height:800px){.chromeless .log-loading-msg .hero-icon{font-size:100px}
+}
+@media (min-height:1024px){.chromeless .log-loading-msg .hero-icon{font-size:120px}
+>>>>>>> Changing margin to padding on index.html .empty-state-message
 }
 .log-header .log-actions .btn-link,.log-view{padding:0}
 .chromeless .log-loading-msg .btn{margin:10px 0 20px}
