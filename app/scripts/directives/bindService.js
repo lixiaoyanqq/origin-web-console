@@ -154,8 +154,10 @@
         namespace: _.get(ctrl.target, 'metadata.namespace')
       };
 
-      var serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
-      DataService.list(serviceInstancesVersion, context).then(function(instances) {
+      DataService.list({
+        group: 'servicecatalog.k8s.io',
+        resource: 'serviceinstances'
+      }, context).then(function(instances) {
         ctrl.serviceInstances = instances.by('metadata.name');
         sortServiceInstances();
       });
@@ -190,7 +192,7 @@
         return;
       }
 
-      var instance = ctrl.target.kind === 'Instance' ? ctrl.target : ctrl.serviceToBind;
+      var instance = ctrl.target.kind === 'ServiceInstance' ? ctrl.target : ctrl.serviceToBind;
       if (!instance) {
         return;
       }
@@ -198,7 +200,7 @@
       ctrl.serviceClass = ctrl.serviceClasses[instance.spec.serviceClassName];
       ctrl.serviceClassName = instance.spec.serviceClassName;
       ctrl.plan = BindingService.getPlanForInstance(instance, ctrl.serviceClass);
-      ctrl.parameterSchema = _.get(ctrl.plan, 'alphaBindingCreateParameterSchema');
+      ctrl.parameterSchema = _.get(ctrl.plan, 'alphaServiceInstanceCredentialCreateParameterSchema');
       bindParametersStep.hidden = !_.has(ctrl.parameterSchema, 'properties');
       ctrl.nextTitle = bindParametersStep.hidden ? 'Bind' : 'Next >';
     };
@@ -219,14 +221,6 @@
         ctrl.serviceClasses = serviceClasses.by('metadata.name');
         updateInstance();
         sortServiceInstances();
-      });
-
-      // We'll need service plans for binding parameters.
-      // TODO: Only load plans for selected instance.
-      var servicePlansVersion = APIService.getPreferredVersion('clusterserviceplans');
-      DataService.list(servicePlansVersion, {}).then(function(plans) {
-        ctrl.servicePlans = plans.by('metadata.name');
-        updateInstance();
       });
 
       if (ctrl.target.kind === 'ServiceInstance') {

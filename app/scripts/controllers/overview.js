@@ -1337,10 +1337,10 @@ function OverviewController($scope,
     var servicePlanPromises = {};
 
     // The canI check on watch should be temporary until we have a different solution for handling secret parameters
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'watch')) {
       watches.push(DataService.watch({
         group: 'servicecatalog.k8s.io',
-        resource: 'instances'
+        resource: 'serviceinstances'
       }, context, function(serviceInstances) {
         state.serviceInstances = serviceInstances.by('metadata.name');
 
@@ -1363,10 +1363,10 @@ function OverviewController($scope,
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
     }
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'watch')) {
       watches.push(DataService.watch({
         group: 'servicecatalog.k8s.io',
-        resource: 'bindings'
+        resource: 'serviceinstancecredentials'
       }, context, function(bindings) {
         state.bindings = bindings.by('metadata.name');
         overview.bindingsByInstanceRef = _.groupBy(state.bindings, 'spec.instanceRef.name');
@@ -1380,7 +1380,7 @@ function OverviewController($scope,
       state.limitRanges = response.by("metadata.name");
     });
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'watch')) {
       // TODO: update to behave like ImageStreamResolver
       // - we may not even need to list these... perhaps just fetch the ones we need when needed
       // If we can't watch instances don't bother getting service classes either

@@ -180,13 +180,13 @@
         // Create Binding is displayed.
         if (enableTechPreviewFeature('pod_presets') &&
             !_.isEmpty(row.state.bindableServiceInstances) &&
-            canI(row.serviceBindingsVersion, 'create')) {
+            canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'create')) {
           return true;
         }
         // Delete Binding is displayed.
         if (enableTechPreviewFeature('pod_presets') &&
             !_.isEmpty(deleteableBindings) &&
-            canI(row.serviceBindingsVersion, 'delete')) {
+            canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'delete')) {
           return true;
         }
         // Check if one of the start build actions is displayed
@@ -216,13 +216,13 @@
         // Create Binding is displayed.
         if (enableTechPreviewFeature('pod_presets') &&
             !_.isEmpty(row.state.bindableServiceInstances) &&
-            canI(row.serviceBindingsVersion, 'create')) {
+            canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'create')) {
           return true;
         }
         // Delete Binding is displayed.
         if (enableTechPreviewFeature('pod_presets') &&
             !_.isEmpty(deleteableBindings) &&
-            canI(row.serviceBindingsVersion, 'delete')) {
+            canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'delete')) {
           return true;
         }
         return false;

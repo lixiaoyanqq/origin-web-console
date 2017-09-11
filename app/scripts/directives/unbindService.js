@@ -39,13 +39,16 @@
       // the result page since deleting the binding will remove them from the
       // map that is passed in.
       ctrl.unboundApps = ctrl.appsForBinding(bindingName);
-      DataService.delete(serviceBindingsVersion,
-                         bindingName,
-                         context,
-                         { propagationPolicy: null })
-        .then(_.noop, function(err) {
-          ctrl.error = err;
-        });
+      DataService.delete({
+        group: 'servicecatalog.k8s.io',
+        resource: 'serviceinstancecredentials'
+      },
+      bindingName,
+      context,
+      { propagationPolicy: null })
+      .then(_.noop, function(err) {
+        ctrl.error = err;
+      });
     };
 
     var setupValidator = function() {
@@ -82,13 +85,8 @@
     };
 
     ctrl.$onInit = function() {
-      var formStepLabel;
-      if (ctrl.target.kind === 'ServiceInstance') {
-        formStepLabel = enableTechPreviewFeature('pod_presets') ? 'Applications' : 'Bindings';
-      } else {
-        formStepLabel = 'Services';
-      }
-      ctrl.displayName = serviceInstanceDisplayName(ctrl.target, ctrl.serviceClass);
+      var formStepLabel = (ctrl.target.kind === 'ServiceInstance') ? 'Applications' : 'Services';
+      ctrl.displayName = serviceInstanceDisplayName(ctrl.target);
       ctrl.steps = [{
         id: 'deleteForm',
         label: formStepLabel,
