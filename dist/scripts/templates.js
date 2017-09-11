@@ -6632,10 +6632,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</bind-application-form>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"ctrl.target.kind === 'ServiceInstance'\">\n" +
     "<bind-service-form selected-project=\"ctrl.project\" service-class=\"ctrl.serviceClass\" form-name=\"ctrl.selectionForm\" show-pod-presets=\"ctrl.podPresets\" applications=\"ctrl.applications\" project-name=\"ctrl.projectDisplayName\" bind-type=\"ctrl.bindType\" app-to-bind=\"ctrl.appToBind\">\n" +
 =======
     "<div ng-if=\"ctrl.target.kind === 'Instance'\">\n" +
+=======
+    "<div ng-if=\"ctrl.target.kind === 'ServiceInstance'\">\n" +
+>>>>>>> Adopt new service catalog resource names
     "<bind-service-form selected-project=\"ctrl.project\" service-class=\"ctrl.serviceClass\" service-class-name=\"ctrl.serviceClassName\" form-name=\"ctrl.selectionForm\" show-pod-presets=\"ctrl.podPresets\" applications=\"ctrl.applications\" project-name=\"ctrl.projectDisplayName\" bind-type=\"ctrl.bindType\" app-to-bind=\"ctrl.appToBind\">\n" +
 >>>>>>> Do not allow binding to an application when pod_presets is false
     "</bind-service-form>\n" +
@@ -10515,7 +10519,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3>Service Bindings</h3>\n" +
     "<overview-service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
     "</overview-service-binding>\n" +
-    "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
@@ -10527,7 +10531,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"./\">Browse Catalog</a>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"!($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"!($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<span>There are no service bindings.</span>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13670,6 +13674,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"('pod_presets' | enableTechPreviewFeature)\n" +
     "                      && row.state.bindableServiceInstances.length\n" +
+<<<<<<< HEAD
     "                      && (row.serviceBindingsVersion | canI : 'create')\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\" translate>Create Binding</a>\n" +
     "</li>\n" +
@@ -13677,6 +13682,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "                      && row.state.deleteableBindingsByApplicationUID[row.apiObject.metadata.uid].length\n" +
     "                      && (row.serviceBindingsVersion | canI : 'delete')\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\" translate>Delete Binding</a>\n" +
+=======
+    "                      && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\" role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">Create Binding</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"('pod_presets' | enableTechPreviewFeature)\n" +
+    "                      && row.state.deleteableBindingsByApplicationUID[row.apiObject.metadata.uid].length\n" +
+    "                      && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
+>>>>>>> Adopt new service catalog resource names
     "</li>\n" +
     "<li ng-if=\"row.current && ('deploymentconfigs/log' | canI : 'get')\" role=\"menuitem\">\n" +
     "<a ng-href=\"{{row.current | navigateResourceURL}}?tab=logs\" translate>View Logs</a>\n" +
@@ -13710,6 +13724,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"('pod_presets' | enableTechPreviewFeature)\n" +
     "                      && row.state.bindableServiceInstances.length\n" +
+<<<<<<< HEAD
     "                      && (row.serviceBindingsVersion | canI : 'create')\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\" translate>Create Binding</a>\n" +
     "</li>\n" +
@@ -13717,6 +13732,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "                      && row.state.deleteableBindingsByApplicationUID[row.apiObject.metadata.uid].length\n" +
     "                      && (row.serviceBindingsVersion | canI : 'delete')\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\" translate>Delete Binding</a>\n" +
+=======
+    "                      && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\" role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">Create Binding</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"('pod_presets' | enableTechPreviewFeature)\n" +
+    "                      && row.state.deleteableBindingsByApplicationUID[row.apiObject.metadata.uid].length\n" +
+    "                      && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
+>>>>>>> Adopt new service catalog resource names
     "</li>\n" +
     "<li ng-if=\"(pod = row.firstPod(row.current)) && ('pods/log' | canI : 'get')\" role=\"menuitem\">\n" +
     "<a ng-href=\"{{pod | navigateResourceURL}}?tab=logs\" translate>View Logs</a>\n" +
@@ -14229,7 +14253,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"service-binding-actions\" ng-if=\"!ctrl.binding.metadata.deletionTimestamp\">\n" +
-    "<delete-link ng-if=\"({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" label=\"Delete Binding\" kind=\"binding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
+    "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" label=\"Delete Binding\" kind=\"binding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
     "</delete-link>\n" +
     "<a ng-if=\"('secrets' | canI : 'get')\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
     "View Secret\n" +
@@ -14244,7 +14268,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"section-title hidden-xs\">Service Bindings</div>\n" +
     "<overview-service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
     "</overview-service-binding>\n" +
-    "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
@@ -14342,7 +14366,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>Create Binding</translate>\n" +
 =======
     "                        && row.isBindable\n" +
-    "                        && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "                        && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
@@ -14388,21 +14412,33 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Show provision status of service instances on the overview page.
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<li role=\"menuitem\" ng-if=\"row.isBindable && (row.serviceBindingsVersion | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "<translate>Create Binding</translate>\n" +
 =======
     "<li role=\"menuitem\" ng-if=\"row.isBindable && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+=======
+    "<li role=\"menuitem\" ng-if=\"row.isBindable && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+>>>>>>> Adopt new service catalog resource names
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "Create Binding\n" +
 >>>>>>> Add bindings list to resource pages
     "</a>\n" +
     "</li>\n" +
+<<<<<<< HEAD
     "<li role=\"menuitem\" ng-if=\"row.deleteableBindings.length && (row.serviceBindingsVersion | canI : 'delete')\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\" translate>Delete Binding</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.deprovision()\" role=\"button\" ng-if=\"row.serviceInstancesVersion | canI : 'delete'\" translate>Delete</a>\n" +
+=======
+    "<li role=\"menuitem\" ng-if=\"row.deleteableBindings.length && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\">\n" +
+    "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
+    "</li>\n" +
+    "<li role=\"menuitem\">\n" +
+    "<a href=\"\" ng-click=\"row.deprovision()\" role=\"button\" ng-if=\"{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'\">Delete</a>\n" +
+>>>>>>> Adopt new service catalog resource names
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
@@ -14493,8 +14529,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "<div class=\"row\" ng-if=\"row.isBindable && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+=======
+    "<div class=\"row\" ng-if=\"row.isBindable && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+>>>>>>> Adopt new service catalog resource names
     "<div class=\"col-sm-12\">\n" +
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
@@ -14503,6 +14543,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Add bindings list to resource pages
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"expanded-section no-margin\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-sm-12\" ng-if=\"row.serviceClass.spec.description\">\n" +
@@ -14520,6 +14561,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"component-label section-label\" translate>Bindings</div>\n" +
     "<service-instance-bindings is-overview=\"true\" project=\"row.state.project\" bindings=\"row.bindings\" service-instance=\"row.apiObject\" service-class=\"row.serviceClass\" service-plan=\"row.servicePlan\">\n" +
     "</service-instance-bindings>\n" +
+=======
+    "<div class=\"row\" ng-if=\"!row.bindings.length && (!row.isBindable || !({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create'))\">\n" +
+    "<div class=\"col-sm-12\">\n" +
+    "<em>No bindings</em>\n" +
+>>>>>>> Adopt new service catalog resource names
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +

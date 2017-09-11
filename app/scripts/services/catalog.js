@@ -2,22 +2,17 @@
 
 angular.module("openshiftConsole")
   .factory("CatalogService", function($filter,
-<<<<<<< HEAD
                                       $q,
                                       $window,
                                       APIService,
                                       AuthService,
                                       Catalog,
-=======
-                                      APIService,
->>>>>>> Add bindings list to resource pages
                                       Constants,
                                       KeywordService,
                                       Logger,
                                       NotificationsService) {
     var getTags = $filter('tags');
 
-<<<<<<< HEAD
     // API versions
     var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
     var serviceClassesVersion = APIService.getPreferredVersion('clusterserviceclasses');
@@ -61,15 +56,6 @@ angular.module("openshiftConsole")
         return items;
       }));
     };
-=======
-    // Enable service catalog features if the new experience is enabled and the
-    // servicecatalog.k8s.io resources are available.
-    var SERVICE_CATALOG_ENABLED =
-      _.get(Constants, 'ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page') &&
-      APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'serviceclasses' }) &&
-      APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'instances' }) &&
-      APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'bindings' });
->>>>>>> Add bindings list to resource pages
 
     var categoryItemByID = {};
     _.each(Constants.CATALOG_CATEGORIES, function(category) {
@@ -305,10 +291,7 @@ angular.module("openshiftConsole")
 
     return {
       SERVICE_CATALOG_ENABLED: SERVICE_CATALOG_ENABLED,
-<<<<<<< HEAD
       getCatalogItems: getCatalogItems,
-=======
->>>>>>> Add bindings list to resource pages
       getCategoryItem: getCategoryItem,
       categorizeImageStreams: categorizeImageStreams,
       categorizeTemplates: categorizeTemplates,
