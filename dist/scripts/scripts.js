@@ -5776,25 +5776,35 @@ return n.$$nonprintable = t, n;
 =======
 }), angular.module("openshiftConsole").factory("SecretsService", function() {
 var e = function(e) {
-var t = {}, n = JSON.parse(window.atob(e));
+var t = {
+auths: {}
+}, n = JSON.parse(window.atob(e));
 return _.each(n, function(e, n) {
-t[n] = {
+t.auths[n] = {
 username: e.username,
 password: e.password,
 email: e.email
 };
 }), t;
 }, t = function(e) {
-var t = {}, n = JSON.parse(window.atob(e));
+var t = {
+auths: {}
+}, n = JSON.parse(window.atob(e));
 return _.each(n.auths, function(e, n) {
+if (e.auth) {
 var a = window.atob(e.auth).split(":");
-t[n] = {
+t.auths[n] = {
 username: a[0],
 password: a[1],
 email: e.email
 };
+<<<<<<< HEAD
 }), t;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} else t.auths[n] = e;
+}), n.credsStore && (t.credsStore = n.credsStore), t;
+>>>>>>> Avoid runtime error for some dockerconfigjson secrets
 };
 return {
 groupSecretsByType: function(e) {
