@@ -12575,7 +12575,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"kind === 'Deployment'\" translate>\n" +
     "This will delete the deployment, all rollout history, and any running pods.\n" +
     "</span>\n" +
+<<<<<<< acc73debc76d37f62295f9b6f20682fd276a4aff
     "<span ng-if=\"kind === 'ReplicationController' || kind === 'ReplicaSet' || kind === 'StatefulSet'\" translate>\n" +
+=======
+    "<span ng-if=\"kind === 'ReplicationController' || kind === 'ReplicaSet' || kind === 'StatefulSet'\">\n" +
+>>>>>>> Remove incorrect warning when deleting build config
     "This will delete the {{typeDisplayName || (kind | humanizeKind)}} and any running pods.\n" +
     "</span>\n" +
     "<span ng-if=\"kind === 'ServiceInstance'\" translate>\n" +
