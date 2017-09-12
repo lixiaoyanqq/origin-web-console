@@ -87,6 +87,10 @@
       getApplications();
     };
 
+    var isContainerSelected = function(container) {
+      return ctrl.attachAllContainers || ctrl.attachContainers[container.name];
+    };
+
     ctrl.$postLink = function() {
       $scope.$watch(function() {
         return ctrl.application;
@@ -94,6 +98,7 @@
         // Look at the existing mount paths so that we can warn if the new value is not unique.
         var podTemplate = _.get(ctrl.application, 'spec.template');
         ctrl.existingMountPaths = StorageService.getMountPaths(podTemplate);
+        ctrl.attachAllContainers = true;
       });
     };
 
@@ -113,8 +118,10 @@
 
         // For each container, add the new volume mount.
         _.each(podTemplate.spec.containers, function(container) {
-          container.envFrom = container.envFrom || [];
-          container.envFrom.push(newEnvFrom);
+          if (isContainerSelected(container)) {
+            container.envFrom = container.envFrom || [];
+            container.envFrom.push(newEnvFrom);
+          }
         });
       } else {
         var generateName = $filter('generateName');
@@ -127,8 +134,10 @@
 
         // For each selected container, add the new volume mount.
         _.each(podTemplate.spec.containers, function(container) {
-          container.volumeMounts = container.volumeMounts || [];
-          container.volumeMounts.push(newVolumeMount);
+          if (isContainerSelected(container)) {
+            container.volumeMounts = container.volumeMounts || [];
+            container.volumeMounts.push(newVolumeMount);
+          }
         });
 
         var newVolume = {
