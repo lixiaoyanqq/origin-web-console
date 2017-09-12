@@ -130,15 +130,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/_config-file-params.html',
     "<div ng-repeat=\"(serverName, data) in secretData.auths\" class=\"image-source-item\">\n" +
     "<h3>{{serverName}}</h3>\n" +
+<<<<<<< 2c46e612e12d74ae5c1c179bf8cfa5f66c483b57
     "<dt ng-if-start=\"data.username\" translate>username</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.username}}</dd>\n" +
     "<dt ng-if-start=\"data.password\" translate>password</dt>\n" +
+=======
+    "<dt ng-if-start=\"data.username\">username</dt>\n" +
+    "<dd ng-if-end class=\"word-break\">{{data.username}}</dd>\n" +
+    "<dt ng-if-start=\"data.password\">password</dt>\n" +
+>>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "<dd ng-if-end>\n" +
     "<span ng-if=\"view.showSecret\">\n" +
     "<copy-to-clipboard clipboard-text=\"data.password\" display-wide=\"true\"></copy-to-clipboard>\n" +
     "</span>\n" +
     "<span ng-if=\"!view.showSecret\">*****</span>\n" +
     "</dd>\n" +
+<<<<<<< 2c46e612e12d74ae5c1c179bf8cfa5f66c483b57
     "<dt ng-if-start=\"data.email\" translate>email</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.email}}</dd>\n" +
     "<div ng-if=\"!data.username && !data.password && !data.email\" translate>\n" +
@@ -146,6 +153,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<h3 ng-if-start=\"secretData.credsStore\" translate>Credentials Store</h3>\n" +
+=======
+    "<dt ng-if-start=\"data.email\">email</dt>\n" +
+    "<dd ng-if-end class=\"word-break\">{{data.email}}</dd>\n" +
+    "<div ng-if=\"!data.username && !data.password && !data.email\">\n" +
+    "No username and password.\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<h3 ng-if-start=\"secretData.credsStore\">Credentials Store</h3>\n" +
+>>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "<div ng-if-end>\n" +
     "<span ng-if=\"view.showSecret\">\n" +
     "<copy-to-clipboard clipboard-text=\"secretData.credsStore\" display-wide=\"true\"></copy-to-clipboard>\n" +
