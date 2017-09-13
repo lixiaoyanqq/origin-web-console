@@ -270,6 +270,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\"> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
     "</span>\n" +
     "</div>"
+<<<<<<< HEAD
   );
 
 
@@ -279,6 +280,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ng-pluralize>\n" +
     "<a ng-href=\"{{$ctrl.apiObject | navigateToTabURL:$ctrl.tab}}\" translate>View Details</a>\n" +
     "</span>"
+=======
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
   );
 
 
@@ -12819,7 +12822,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready\n" +
     "</small>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
+=======
+    "<div class=\"list-view-pf-additional-info\">\n" +
+    "<div class=\"list-view-pf-additional-info-item\">\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "<image-names pod-template=\"pod\" pods=\"[pod]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -12899,7 +12907,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
+=======
+    "<div class=\"list-view-pf-additional-info\">\n" +
+    "<div class=\"list-view-pf-additional-info-item\">\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "<image-names pod-template=\"replicationController.spec.template\" pods=\"podsByOwnerUID[replicationController.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -12955,7 +12968,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
+=======
+    "<div class=\"list-view-pf-additional-info\">\n" +
+    "<div class=\"list-view-pf-additional-info-item\">\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "<image-names pod-template=\"replicaSet.spec.template\" pods=\"podsByOwnerUID[replicaSet.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -13045,7 +13063,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
+=======
+    "<div class=\"list-view-pf-additional-info\">\n" +
+    "<div class=\"list-view-pf-additional-info-item\">\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "<image-names pod-template=\"set.spec.template\" pods=\"podsByOwnerUID[set.metadata.uid]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13108,7 +13131,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-additional-content-item\">\n" +
     "<build-status build=\"build\"></build-status>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
+=======
+    "<div class=\"list-view-pf-additional-info\">\n" +
+    "<div class=\"list-view-pf-additional-info-item\">\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "<div class=\"text-prepended-icon word-break\" ng-if=\"build.spec.source.type || build.spec.revision.git.commit || build.spec.source.git.uri\">\n" +
     "<span class=\"fa fa-code\" aria-hidden=\"true\"></span>\n" +
     "<span ng-if=\"build.spec.revision.git.commit\">\n" +
@@ -13124,6 +13152,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"build.spec.source.type && !build.spec.source.git\">\n" +
     "Source: {{build.spec.source.type}}\n" +
     "</span>\n" +
+<<<<<<< HEAD
+=======
+    "</div>\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +

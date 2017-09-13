@@ -440,7 +440,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.log-view,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10px 20px;margin:0 0 20px;font-size:15px;border-left:5px solid #f1f1f1}
@@ -5179,9 +5179,13 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .copy-to-clipboard-multiline{display:block;overflow-x:auto}
 .copy-to-clipboard-multiline a{box-shadow:none;position:absolute;right:0;top:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .card-pf,.tile{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
 .collapsing,pod-donut[mini]{position:relative}
 =======
+=======
+.card-pf,.tile{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .collapsing,.wizard-pf-footer.wizard-pf-position-override{position:relative}
 >>>>>>> Improve YAML editor validation and feedback
 .copy-to-clipboard-multiline pre{background-color:#fff;word-break:normal;word-wrap:normal}
@@ -5200,12 +5204,15 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .health-checks-form .pause-rollouts-checkbox,.set-limits-form .pause-rollouts-checkbox{margin-top:20px}
 .checkbox-inline,.checkbox-inline+.checkbox-inline,.radio-inline,.radio-inline+.radio-inline{margin-left:0;margin-right:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .ui-select-dropdown{z-index:1031}
 .card-pf .image-icon{font-size:28px;line-height:1;margin-right:15px}
 .card-pf .image-icon img{width:30px}
 .card-pf .image-icon span{opacity:.38}
 =======
 .card-pf{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
+=======
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .card-pf .image-icon{font-size:28px;line-height:1;margin-right:15px;opacity:.38}
 >>>>>>> Improve YAML editor validation and feedback
 .card-pf-badge{color:#999;font-size:11px;text-transform:uppercase}
@@ -5847,12 +5854,21 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#757575}
 .list-view-pf .list-group-item-text{margin-bottom:5px}
 .list-view-pf-additional-info-item{display:inline-block;text-align:left;width:100%}
+<<<<<<< HEAD
 .list-view-pf-additional-info-item image-names,.monitoring-page .list-pf-expansion .list-pf-container{display:block}
+=======
+.list-view-pf-additional-info-item image-names{display:block}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .list-view-pf-description{flex:1 0 55%}
 .list-view-pf-main-info{padding-bottom:10px;padding-top:10px}
 @media (max-width:991px){.list-view-pf-main-info .list-view-pf-body{display:block}
 }
+<<<<<<< HEAD
 @media (min-width:992px){.list-view-pf .list-group-item-heading,.list-view-pf .list-group-item-text{flex:1 0 auto;margin:0;padding:0 20px 0 0;width:50%}
+=======
+@media (min-width:992px){.data-toolbar .data-toolbar-filter{max-width:787px}
+.list-view-pf .list-group-item-heading,.list-view-pf .list-group-item-text{flex:1 0 auto;margin:0;padding:0 20px 0 0;width:50%}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .list-view-pf-additional-info{width:40%}
 .list-view-pf-description{width:60%}
 <<<<<<< HEAD
@@ -6664,7 +6680,11 @@ dl.secret-data pre{margin-bottom:0}
 td[role=presentation]{display:none}
 }
 .tooltip-inner,h1.contains-actions{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+<<<<<<< HEAD
 .table-responsive{margin-bottom:20px}
+=======
+.table-responsive{margin-bottom:21px}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .table-responsive.scroll-shadows-horizontal{border-left:1px solid #d1d1d1;border-right:1px solid #d1d1d1;background-attachment:scroll;background-color:#fff;background-image:radial-gradient(ellipse at left,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 75%),radial-gradient(ellipse at right,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 75%);background-position:0 0,100% 0;background-repeat:no-repeat;background-size:8px 100%;-ms-overflow-style:auto;overflow-x:auto}
 .table-responsive.scroll-shadows-horizontal .table{background-color:transparent}
 .table-responsive.scroll-shadows-horizontal td,.table-responsive.scroll-shadows-horizontal th{background-attachment:local;background-repeat:no-repeat;background-size:20px 100%}
@@ -6685,7 +6705,7 @@ td[role=presentation].arrow:after{content:"\2192"}
 td[role=presentation].arrow:after{content:"\2193"}
 @media (min-width:768px){td[role=presentation].arrow:after{content:"\2192"}
 }
-.tile{background:#fff;padding:20px;box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09);margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
+.tile{background:#fff;padding:20px;margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
 .tile h1,.tile h2,.tile h3{margin:10.5px 0px}
 >>>>>>> Improve YAML editor validation and feedback
 .tile-click:hover .image-icon{opacity:.75}
@@ -6897,7 +6917,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-size-warning{margin:0}
 @media (max-width:991px){.log-size-warning{margin-top:20px}
 }
-.log-view{clear:both;margin-bottom:20px;position:relative}
+.log-view{margin-bottom:20px;position:relative}
 .log-end-msg,.log-view .log-scroll a{font-family:"Open Sans",Helvetica,Arial,sans-serif}
 .chromeless .log-view{margin-bottom:0}
 .log-view pre,.log-view pre code{background-color:transparent;border:0;margin-bottom:0;overflow:visible;padding:0 10px}
@@ -6955,6 +6975,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
 .log-line-text :not(a)::-moz-selection,.log-line-text::-moz-selection{background:#a0a1a1;color:#101214}
@@ -6978,6 +7001,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .hide-if-empty:empty{display:none!important}
 .appended-icon{display:inline-block}
 .block{display:block}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .text-prepended-icon{align-items:baseline;display:flex}
@@ -7016,6 +7040,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .nav-pf-vertical{background-color:#30363d;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
 =======
+=======
+.text-prepended-icon{align-items:baseline;display:flex}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .nav-pf-vertical{background-color:#292e34;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
 >>>>>>> Changes to masthead and vertical nav based on ux designs
 .has-project-bar .nav-pf-vertical{top:69px}
