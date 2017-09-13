@@ -8326,11 +8326,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<navbar-utility></navbar-utility>\n" +
     "</nav>\n" +
+<<<<<<< 63ebec021a5e8acd37c0843cd577e8b05ea0ae92
 <<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
     "<div ng-show=\"view.hasProject\" class=\"project-bar\">\n" +
 =======
     "<div ng-show=\"currentProjectName && !chromeless\" class=\"project-bar\">\n" +
 >>>>>>> Make sure there's always a menu item for the current project
+=======
+    "<div ng-show=\"view.hasProject\" class=\"project-bar\">\n" +
+>>>>>>> Make sure project bar always appears on page load
     "<div class=\"toggle-menu\">\n" +
     "<button type=\"button\" class=\"navbar-toggle project-action-btn\" ng-click=\"toggleNav()\">\n" +
     "<span class=\"sr-only\">Toggle navigation</span>\n" +
