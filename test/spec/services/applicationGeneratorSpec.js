@@ -289,8 +289,7 @@ describe("ApplicationGenerator", function(){
             "sourceStrategy" : {
               "from": {
                 "kind": "ImageStreamTag",
-                "name": "origin-ruby-sample:latest",
-                "namespace": "openshift"
+                "name": "origin-ruby-sample:latest"
               },
               "env": [{
                 "name": "BUILD_ENV_1",
