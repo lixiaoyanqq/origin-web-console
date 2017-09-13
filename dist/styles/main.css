@@ -405,7 +405,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.log-view,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10.5px 21px;margin:0 0 21px;font-size:16.25px;border-left:5px solid #f1f1f1}
@@ -4482,9 +4482,13 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .copy-to-clipboard input.form-control[readonly]{background-color:#fff;color:#363636}
 .copy-to-clipboard-multiline{display:block;overflow-x:auto}
 .copy-to-clipboard-multiline a{box-shadow:none;position:absolute;right:0;top:0}
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
 <<<<<<< 9854a04a93530a5cbed260dddc4991d2b65730e5
 .card-pf,.tile{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
 =======
+=======
+.card-pf,.tile{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .collapsing,.wizard-pf-footer.wizard-pf-position-override{position:relative}
 >>>>>>> Improve YAML editor validation and feedback
 .copy-to-clipboard-multiline pre{background-color:#fff;word-break:normal;word-wrap:normal}
@@ -4503,6 +4507,7 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .osc-file-input textarea{margin:5px 0}
 .health-checks-form .pause-rollouts-checkbox,.set-limits-form .pause-rollouts-checkbox{margin-top:21px}
 .checkbox-inline,.checkbox-inline+.checkbox-inline,.radio-inline,.radio-inline+.radio-inline{margin-left:0;margin-right:10px}
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
 <<<<<<< 9854a04a93530a5cbed260dddc4991d2b65730e5
 .ui-select-dropdown{z-index:1031}
 .card-pf .image-icon{font-size:28px;line-height:1;margin-right:15px}
@@ -4510,6 +4515,8 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .card-pf .image-icon span{opacity:.38}
 =======
 .card-pf{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
+=======
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .card-pf .image-icon{font-size:28px;line-height:1;margin-right:15px;opacity:.38}
 >>>>>>> Improve YAML editor validation and feedback
 .card-pf-badge{color:#999;font-size:11px;text-transform:uppercase}
@@ -5962,8 +5969,12 @@ td[role=presentation].arrow:after{content:"\2192"}
 td[role=presentation].arrow:after{content:"\2193"}
 @media (min-width:768px){td[role=presentation].arrow:after{content:"\2192"}
 }
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
 .tile{background:#fff;padding:20px;box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09);margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
 >>>>>>> Improve YAML editor validation and feedback
+=======
+.tile{background:#fff;padding:20px;margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .tile h1,.tile h2,.tile h3{margin:10.5px 0px}
 .tile-click:hover .image-icon{opacity:.75}
 .tile-click .image-icon{font-size:48px;line-height:1;margin-bottom:15px;opacity:.38}
@@ -6165,7 +6176,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-size-warning{margin:0}
 @media (max-width:991px){.log-size-warning{margin-top:20px}
 }
-.log-view{clear:both;margin-bottom:20px;position:relative}
+.log-view{margin-bottom:20px;position:relative}
 .log-end-msg,.log-view .log-scroll a{font-family:"Open Sans",Helvetica,Arial,sans-serif}
 .chromeless .log-view{margin-bottom:0}
 .log-view pre,.log-view pre code{background-color:transparent;border:0;margin-bottom:0;overflow:visible;padding:0 10px}
@@ -6222,7 +6233,10 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< 579cbe4ce2e640c919f9687b5c885f661897db96
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
 <<<<<<< 358e6d83355ff3ea81f5e5545b7c7962befd6348
+=======
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
 =======
@@ -6242,6 +6256,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .hide-if-empty:empty{display:none!important}
 .appended-icon{display:inline-block}
 .block{display:block}
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
 <<<<<<< 699ea1438488d7ea0b1141fe63e987ce9bb8c0cd
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 .text-prepended-icon{align-items:baseline;display:flex}
@@ -6279,6 +6294,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .nav-pf-vertical{background-color:#30363d;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
 =======
+=======
+.text-prepended-icon{align-items:baseline;display:flex}
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .nav-pf-vertical{background-color:#292e34;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
 >>>>>>> Changes to masthead and vertical nav based on ux designs
 .has-project-bar .nav-pf-vertical{top:69px}

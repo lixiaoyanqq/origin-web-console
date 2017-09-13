@@ -266,6 +266,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"word-break-all\">{{podTemplate.spec.containers[0].image | imageStreamName}}\n" +
     "<span ng-repeat=\"id in imageIDs\" title=\"{{id}}\">\n" +
     "<span class=\"hash nowrap\">{{id | stripSHAPrefix | limitTo: 7}}</span><span ng-if=\"!$last\">,</span>\n" +
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
     "</span>\n" +
     "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\" translate> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
     "</span>\n" +
@@ -279,6 +280,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ng-pluralize>\n" +
     "<a ng-href=\"{{$ctrl.apiObject | navigateToTabURL:$ctrl.tab}}\">View Details</a>\n" +
     "</span>"
+=======
+    "</span>\n" +
+    "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\"> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
+    "</span>\n" +
+    "</div>"
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
   );
 
 
@@ -13070,8 +13077,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<osc-git-link uri=\"build.spec.source.git.uri\">{{build.spec.source.git.uri}}</osc-git-link>\n" +
     "</span>\n" +
     "<span ng-if=\"build.spec.source.type && !build.spec.source.git\">\n" +
+<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
     "<translate>Source:</translate> {{build.spec.source.type}}\n" +
     "</span>\n" +
+=======
+    "Source: {{build.spec.source.type}}\n" +
+    "</span>\n" +
+    "</div>\n" +
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
