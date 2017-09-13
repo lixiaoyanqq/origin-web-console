@@ -258,11 +258,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/_image-names.html',
-    "<span>{{podTemplate.spec.containers[0].image | imageStreamName}}</span>\n" +
+    "<div class=\"text-prepended-icon\">\n" +
+    "<span class=\"pficon pficon-image\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"word-break-all\">{{podTemplate.spec.containers[0].image | imageStreamName}}\n" +
     "<span ng-repeat=\"id in imageIDs\" title=\"{{id}}\">\n" +
-    "<span class=\"hash\">{{id | stripSHAPrefix | limitTo: 7}}</span><span ng-if=\"!$last\">,</span>\n" +
+    "<span class=\"hash nowrap\">{{id | stripSHAPrefix | limitTo: 7}}</span><span ng-if=\"!$last\">,</span>\n" +
     "</span>\n" +
+    "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\"> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
+    "</span>\n" +
+<<<<<<< 2a3b9aaf2e4a8e4b233f459022c9d81cf393a74c
     "<span ng-if=\"podTemplate.spec.containers.length > 1\" translate> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>"
+=======
+    "</div>"
+>>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
   );
 
 
@@ -11533,7 +11541,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
-    "<span class=\"pficon fa-fw pficon-image\"></span>\n" +
     "<image-names pod-template=\"pod\" pods=\"[pod]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11604,7 +11611,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
-    "<span class=\"pficon fa-fw pficon-image\"></span>\n" +
     "<image-names pod-template=\"replicationController.spec.template\" pods=\"podsByOwnerUID[replicationController.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -11650,7 +11656,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
-    "<span class=\"pficon fa-fw pficon-image\"></span>\n" +
     "<image-names pod-template=\"replicaSet.spec.template\" pods=\"podsByOwnerUID[replicaSet.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -11720,7 +11725,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
-    "<span class=\"pficon fa-fw pficon-image\"></span>\n" +
     "<image-names pod-template=\"set.spec.template\" pods=\"podsByOwnerUID[set.metadata.uid]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11781,8 +11785,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
-    "<span ng-if=\"build.spec.source.type || build.spec.revision.git.commit || build.spec.source.git.uri\">\n" +
-    "<span class=\"fa fa-fw fa-code\"></span>\n" +
+    "<div class=\"text-prepended-icon word-break\" ng-if=\"build.spec.source.type || build.spec.revision.git.commit || build.spec.source.git.uri\">\n" +
+    "<span class=\"fa fa-code\" aria-hidden=\"true\"></span>\n" +
     "<span ng-if=\"build.spec.revision.git.commit\">\n" +
     "{{build.spec.revision.git.message}}\n" +
     "<osc-git-link class=\"hash\" uri=\"build.spec.source.git.uri\" ref=\"build.spec.revision.git.commit\">{{build.spec.revision.git.commit | limitTo:7}}</osc-git-link>\n" +
@@ -11796,7 +11800,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"build.spec.source.type && !build.spec.source.git\">\n" +
     "<translate>Source:</translate> {{build.spec.source.type}}\n" +
     "</span>\n" +
-    "</span>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
