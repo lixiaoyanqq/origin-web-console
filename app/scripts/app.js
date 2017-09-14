@@ -43,18 +43,18 @@ angular
       templateUrl: 'views/projects.html',
       controller: 'ProjectsController'
     };
-    if (_.get(window, 'OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page')) {
+    if (_.get(window, 'OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE')) {
+      landingPageRoute = projectsPageRoute;
+      $routeProvider.when('/projects', {
+        redirectTo: '/'
+      });
+    } else {
       landingPageRoute = {
         templateUrl: 'views/landing-page.html',
         controller: 'LandingPageController',
         reloadOnSearch: false
       };
       $routeProvider.when('/projects', projectsPageRoute);
-    } else {
-      landingPageRoute = projectsPageRoute;
-      $routeProvider.when('/projects', {
-        redirectTo: '/'
-      });
     }
 
     $routeProvider
@@ -498,24 +498,6 @@ angular
       // content (e.g. using :before pseudo-elements).
       $('body').addClass('ios');
     }
-  })
-  .run(function($rootScope){
-    // if the service catalog landing page is enabled,
-    // set global variable for use in views
-    // and add class to body
-    if (_.get(window, 'OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page')) {
-      $rootScope.globalTechPreviewIndicator = true;
-      $('body').addClass('tech-preview');
-    }
-  })
-  .run(function(DataService, AuthService){
-    var userStore = AuthService.UserStore();
-    var opts = {errorNotification: false, http: {auth: {token: userStore.getToken(), triggerLogin: false}}};
-    DataService.get("users", "~", {}, opts)
-      .then(function(user) {
-          // Persist the user
-        userStore.setUser(user, 86400);
-      });
   });
 
 hawtioPluginLoader.addModule('openshiftConsole');
