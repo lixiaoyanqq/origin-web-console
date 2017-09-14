@@ -13342,6 +13342,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>\n" +
     "Add content to your project from the catalog of web frameworks, databases, and other components. You may also deploy an existing image, create or replace resources from their YAML or JSON definitions, or select an item shared from another project.\n" +
     "</p>\n" +
+<<<<<<< HEAD
     "<div class=\"empty-state-message-main-action\">\n" +
     "<button class=\"btn btn-primary btn-lg\" ng-click=\"browseCatalog()\" translate>\n" +
     "Browse Catalog\n" +
@@ -13355,6 +13356,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Import YAML / JSON\n" +
     "</button>\n" +
     "</div>\n" +
+=======
+    "<p class=\"gutter-top\">\n" +
+    "<a ng-if=\"overview.catalogLandingPageEnabled\" href=\"./\" class=\"btn btn-lg btn-primary\">\n" +
+    "Browse Catalog\n" +
+    "</a>\n" +
+    "<a ng-if=\"!overview.catalogLandingPageEnabled\" ng-href=\"project/{{projectName}}/create\" class=\"btn btn-lg btn-primary\">\n" +
+    "Add to Project\n" +
+    "</a>\n" +
+    "</p>\n" +
+>>>>>>> Enable new landing page experience by default
     "</div>\n" +
     "<div ng-if=\"!(project.metadata.name | canIAddToProject)\">\n" +
     "<h2 translate>Welcome to project {{projectName}}.</h2>\n" +
