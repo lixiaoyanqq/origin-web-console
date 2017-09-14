@@ -127,7 +127,8 @@ describe('', () => {
         it('should successfully create a new project', () => {
           h.goToPage('projects');
           goToCreateProjectPage();
-          projectHelpers.createProject(project, 'project/' + project['name'] + '/create');
+          projectHelpers.createProject(project, 'projects');
+          h.goToPage('project/' + project['name'] + '/overview');
           h.waitForPresence('.project-bar option[selected][value="' + project['name'] + '"]');
           checkProjectSettings(project['name'], project['displayName'], project['description']);
         });

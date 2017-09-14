@@ -55,6 +55,7 @@ var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIs
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, h, v, y, b, C, S, w, k, j) {
 var P = this, R = t("isIE")() || t("isEdge")();
+<<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
 e.projectName = n.project;
 <<<<<<< 579cbe4ce2e640c919f9687b5c885f661897db96
 var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
@@ -62,6 +63,10 @@ var E, T, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIs
 =======
 var T, E, I = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
 >>>>>>> Add the ability to add a secret to an application
+=======
+e.projectName = n.project, P.catalogLandingPageEnabled = !c.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var T, I, E = t("annotation"), N = t("buildConfigForBuild"), D = t("deploymentIsInProgress"), A = t("imageObjectRef"), B = t("isJenkinsPipelineStrategy"), L = t("isNewerResource"), U = t("label"), O = t("podTemplate"), F = {}, x = {}, M = {}, V = P.state = {
+>>>>>>> Enable new landing page experience by default
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -213,12 +218,12 @@ var z = function(e) {
 return _.get(e, "metadata.name");
 }, H = function(e) {
 return _.get(e, "metadata.uid");
-}, W = function() {
+}, G = function() {
 return _.size(P.deploymentConfigs) + _.size(P.vanillaReplicationControllers) + _.size(P.deployments) + _.size(P.vanillaReplicaSets) + _.size(P.statefulSets) + _.size(P.monopods) + _.size(P.state.serviceInstances);
 }, K = function() {
 return _.size(P.filteredDeploymentConfigs) + _.size(P.filteredReplicationControllers) + _.size(P.filteredDeployments) + _.size(P.filteredReplicaSets) + _.size(P.filteredStatefulSets) + _.size(P.filteredMonopods) + _.size(P.filteredServiceInstances);
-}, G = function() {
-P.size = W(), P.filteredSize = K();
+}, W = function() {
+P.size = G(), P.filteredSize = K();
 var e = 0 === P.size, t = P.deploymentConfigs && P.replicationControllers && P.deployments && P.replicaSets && P.statefulSets && P.pods && P.state.serviceInstances;
 V.expandAll = t && 1 === P.size, P.showGetStarted = t && e, P.showLoading = !t && e, P.everythingFiltered = !e && !P.filteredSize, P.hidePipelineOtherResources = "pipeline" === P.viewBy && (P.filterActive || _.isEmpty(P.pipelineBuildConfigs));
 }, Q = function(e) {
@@ -356,7 +361,7 @@ case "name":
 return !_.isEmpty(V.filterKeywords);
 }
 }, ie = function() {
-P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationControllers = re(P.vanillaReplicationControllers), P.filteredDeployments = re(P.deployments), P.filteredReplicaSets = re(P.vanillaReplicaSets), P.filteredStatefulSets = re(P.statefulSets), P.filteredMonopods = re(P.monopods), P.filteredPipelineBuildConfigs = re(P.pipelineBuildConfigs), P.filteredServiceInstances = re(V.orderedServiceInstances), P.filterActive = oe(), Z(), G();
+P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationControllers = re(P.vanillaReplicationControllers), P.filteredDeployments = re(P.deployments), P.filteredReplicaSets = re(P.vanillaReplicaSets), P.filteredStatefulSets = re(P.statefulSets), P.filteredMonopods = re(P.monopods), P.filteredPipelineBuildConfigs = re(P.pipelineBuildConfigs), P.filteredServiceInstances = re(V.orderedServiceInstances), P.filterActive = oe(), Z(), W();
 }, se = n.project + "/overview/view-by";
 P.viewBy = localStorage.getItem(se) || "app", e.$watch(function() {
 return P.viewBy;
@@ -803,14 +808,14 @@ _.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, F), "pipeline" !== P.view
 }, ke = function(e) {
 _.isEmpty(e) || (g.addLabelSuggestionsFromResources(e, x), "pipeline" === P.viewBy && g.setLabelSuggestions(x));
 }, je = function(e) {
-return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!U(e, "openshift.io/deployer-pod-for.name") && (!I(e, "openshift.io/build.name") && "slave" !== U(e, "jenkins")));
+return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!U(e, "openshift.io/deployer-pod-for.name") && (!E(e, "openshift.io/build.name") && "slave" !== U(e, "jenkins")));
 }, Pe = function() {
 V.podsByOwnerUID = C.groupByOwnerUID(P.pods), P.monopods = _.filter(V.podsByOwnerUID[""], je);
 }, Re = function(e) {
-return !!_.get(e, "status.replicas") || (!I(e, "deploymentConfig") || D(e));
+return !!_.get(e, "status.replicas") || (!E(e, "deploymentConfig") || D(e));
 }, Te = function(e) {
-return I(e, "deploymentConfig");
-}, Ee = function() {
+return E(e, "deploymentConfig");
+}, Ie = function() {
 if (P.deploymentConfigs && P.replicationControllers) {
 var e = [];
 P.replicationControllersByDeploymentConfig = {}, P.currentByDeploymentConfig = {}, M = {};
@@ -821,7 +826,7 @@ var r = Te(a) || "";
 var o = M[r];
 o && !L(a, o) || (M[r] = a);
 var i;
-"Complete" === I(a, "deploymentStatus") && ((i = t[r]) && !L(a, i) || (t[r] = a)), Re(a) && _.set(n, [ r, a.metadata.name ], a);
+"Complete" === E(a, "deploymentStatus") && ((i = t[r]) && !L(a, i) || (t[r] = a)), Re(a) && _.set(n, [ r, a.metadata.name ], a);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
@@ -829,7 +834,7 @@ var n = u.sortByDeploymentVersion(e, !0);
 P.replicationControllersByDeploymentConfig[t] = n, P.currentByDeploymentConfig[t] = _.head(n);
 }), P.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ve();
 }
-}, Ie = function(e, t) {
+}, Ee = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
 var n = u.getRevision(e);
 return !n || !!t && u.getRevision(t) === n;
@@ -837,7 +842,7 @@ return !n || !!t && u.getRevision(t) === n;
 P.replicaSets && T && (P.replicaSetsByDeploymentUID = b.groupByControllerUID(P.replicaSets), P.currentByDeploymentUID = {}, _.each(P.replicaSetsByDeploymentUID, function(e, t) {
 if (t) {
 var n = T[t], a = _.filter(e, function(e) {
-return Ie(e, n);
+return Ee(e, n);
 }), r = u.sortByRevision(a);
 P.replicaSetsByDeploymentUID[t] = r, P.currentByDeploymentUID[t] = _.head(r);
 }
@@ -911,7 +916,7 @@ _.isEmpty(o) || (t = t.concat(o));
 });
 }, He = function() {
 qe(), ze();
-}, We = function() {
+}, Ge = function() {
 _.each(P.deploymentConfigs, Me);
 }, Ke = function() {
 if (V.builds && P.buildConfigs) {
@@ -926,9 +931,9 @@ return i.sortBuilds(e, !0);
 return i.sortBuilds(e, !0);
 }), V.recentBuildsByBuildConfig = _.mapValues(e, function(e) {
 return i.sortBuilds(e, !0);
-}), We();
+}), Ge();
 }
-}, Ge = function() {
+}, We = function() {
 k.setGenericQuotaWarning(V.quotas, V.clusterQuotas, n.project, V.alerts);
 };
 P.clearFilter = function() {
@@ -979,9 +984,9 @@ P.pods && p.fetchReferencedImageStreamImages(P.pods, V.imagesByDockerReference, 
 Ye.push(l.watch("pods", a, function(e) {
 P.pods = e.by("metadata.name"), Pe(), r(), _e(), $e(P.monopods), pe(P.monopods), we(P.monopods), ie(), h.log("pods (subscribe)", P.pods);
 })), Ye.push(l.watch("replicationcontrollers", a, function(e) {
-P.replicationControllers = e.by("metadata.name"), Ee(), $e(P.vanillaReplicationControllers), $e(P.monopods), pe(P.vanillaReplicationControllers), we(P.vanillaReplicationControllers), Qe(), ie(), h.log("replicationcontrollers (subscribe)", P.replicationControllers);
+P.replicationControllers = e.by("metadata.name"), Ie(), $e(P.vanillaReplicationControllers), $e(P.monopods), pe(P.vanillaReplicationControllers), we(P.vanillaReplicationControllers), Qe(), ie(), h.log("replicationcontrollers (subscribe)", P.replicationControllers);
 })), Ye.push(l.watch("deploymentconfigs", a, function(e) {
-P.deploymentConfigs = e.by("metadata.name"), Ee(), $e(P.deploymentConfigs), $e(P.vanillaReplicationControllers), we(P.deploymentConfigs), Ce(), He(), We(), Qe(), ie(), h.log("deploymentconfigs (subscribe)", P.deploymentConfigs);
+P.deploymentConfigs = e.by("metadata.name"), Ie(), $e(P.deploymentConfigs), $e(P.vanillaReplicationControllers), we(P.deploymentConfigs), Ce(), He(), Ge(), Qe(), ie(), h.log("deploymentconfigs (subscribe)", P.deploymentConfigs);
 })), Ye.push(l.watch({
 group: "extensions",
 resource: "replicasets"
@@ -1027,17 +1032,17 @@ P.horizontalPodAutoscalers = e.by("metadata.name"), Le(), h.log("autoscalers (su
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("imagestreams", a, function(e) {
-E = e.by("metadata.name"), p.buildDockerRefMapForImageStreams(E, V.imageStreamImageRefByDockerReference), r(), h.log("imagestreams (subscribe)", E);
+I = e.by("metadata.name"), p.buildDockerRefMapForImageStreams(I, V.imageStreamImageRefByDockerReference), r(), h.log("imagestreams (subscribe)", I);
 }, {
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("resourcequotas", a, function(e) {
-V.quotas = e.by("metadata.name"), Ge();
+V.quotas = e.by("metadata.name"), We();
 }, {
 poll: !0,
 pollInterval: 6e4
 })), Ye.push(l.watch("appliedclusterresourcequotas", a, function(e) {
-V.clusterQuotas = e.by("metadata.name"), Ge();
+V.clusterQuotas = e.by("metadata.name"), We();
 }, {
 poll: !0,
 pollInterval: 6e4
@@ -1275,6 +1280,7 @@ DISABLE_OVERVIEW_METRICS: !1,
 DISABLE_CUSTOM_METRICS: !1,
 DISABLE_WILDCARD_ROUTES: !0,
 DISABLE_CONFIRM_ON_EXIT: !1,
+<<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 DISABLE_SERVICE_CATALOG_LANDING_PAGE: !1,
 AVAILABLE_KINDS_BLACKLIST: [],
@@ -1283,10 +1289,12 @@ DISABLE_COPY_LOGIN_COMMAND: !1,
 TEMPLATE_SERVICE_BROKER_ENABLED: !1,
 ENABLE_TECH_PREVIEW_FEATURE: {
 =======
+=======
+DISABLE_SERVICE_CATALOG_LANDING_PAGE: !1,
+>>>>>>> Enable new landing page experience by default
 AVAILABLE_KINDS_BLACKLIST: [],
 DISABLE_GLOBAL_EVENT_WATCH: !1,
 ENABLE_TECH_PREVIEW_FEATURE: {
-service_catalog_landing_page: !1,
 template_service_broker: !1,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 pod_presets: !1
@@ -2009,13 +2017,13 @@ var t, n = {
 templateUrl: "views/projects.html",
 controller: "ProjectsController"
 };
-_.get(window, "OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page") ? (t = {
+_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE") ? (t = n, e.when("/projects", {
+redirectTo: "/"
+})) : (t = {
 templateUrl: "views/landing-page.html",
 controller: "LandingPageController",
 reloadOnSearch: !1
-}, e.when("/projects", n)) : (t = n, e.when("/projects", {
-redirectTo: "/"
-})), e.when("/", t).when("/create-project", {
+}, e.when("/projects", n)), e.when("/", t).when("/create-project", {
 templateUrl: "views/create-project.html",
 controller: "CreateProjectController"
 }).when("/project/:project", {
@@ -2423,8 +2431,6 @@ return $(this).data("time-only") ? t(r, null) || a : e(r, null, o, i) || a;
 }, 1e3);
 } ]).run([ "IS_IOS", function(e) {
 e && $("body").addClass("ios");
-} ]).run([ "$rootScope", function(e) {
-_.get(window, "OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page") && (e.globalTechPreviewIndicator = !0, $("body").addClass("tech-preview"));
 } ]), hawtioPluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
 var e = {
 local: window.localStorage,
@@ -6993,7 +6999,7 @@ var a = e("tags"), r = {};
 _.each(t.CATALOG_CATEGORIES, function(e) {
 =======
 }), angular.module("openshiftConsole").factory("CatalogService", [ "$filter", "APIService", "Constants", "KeywordService", function(e, t, n, a) {
-var r = e("tags"), o = _.get(n, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page") && t.apiInfo({
+var r = e("tags"), o = !n.SERVICE_CATALOG_ENABLED && t.apiInfo({
 group: "servicecatalog.k8s.io",
 resource: "serviceclasses"
 }) && t.apiInfo({
@@ -9325,15 +9331,15 @@ t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCa
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
 }, T = function() {
 n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), S, w);
-}, E = function() {
+}, I = function() {
 b = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(b, S, w);
-}, I = a("isIncompleteBuild"), N = a("buildConfigForBuild"), D = a("isRecentBuild"), A = function() {
+}, E = a("isIncompleteBuild"), N = a("buildConfigForBuild"), D = a("isRecentBuild"), A = function() {
 moment().subtract(5, "m");
 h = _.filter(n.builds, function(e) {
 if (!n.filters.hideOlderResources) return !0;
-if (I(e)) return !0;
+if (E(e)) return !0;
 var t = N(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : D(e);
 }), n.filteredBuilds = s.filterForKeywords(h, S, w);
@@ -9455,7 +9461,7 @@ var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
 _.isEmpty(t) || u.toPodsForDeployment(e, t);
 }, m.get(e.project).then(_.spread(function(e, a) {
 n.project = e, n.projectContext = a, o.watch("pods", a, function(e) {
-n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, j), E(), c.log("pods", n.pods);
+n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, j), I(), c.log("pods", n.pods);
 }), o.watch({
 resource: "statefulsets",
 group: "apps",
@@ -9474,7 +9480,7 @@ n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, O(), c.l
 }), n.$on("$destroy", function() {
 o.unwatchAll(f);
 }), n.$watch("filters.hideOlderResources", function() {
-E(), A(), U(), O(), T();
+I(), A(), U(), O(), T();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -9646,7 +9652,7 @@ httpErr: e("getErrorDetails")(a)
 });
 }, T = {};
 n.tab && (T[n.tab] = !0);
-var E = u.getSubjectKinds();
+var I = u.getSubjectKinds();
 angular.extend(a, {
 <<<<<<< 579cbe4ce2e640c919f9687b5c885f661897db96
 selectedTab: E,
@@ -9660,7 +9666,7 @@ selectedTab: T,
 projectName: g,
 >>>>>>> Patternfly vertical navigation and project bar
 forms: {},
-subjectKinds: E,
+subjectKinds: I,
 newBinding: {
 role: "",
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -9776,7 +9782,7 @@ return e ? a + (v(e, "description") || "") : "";
 }
 }
 });
-var I = function(e, t, n, r) {
+var E = function(e, t, n, r) {
 var o = {
 alerts: {},
 detailsMarkup: C.remove.areYouSure.html.subject({
@@ -9819,10 +9825,10 @@ e && !_.includes(a.projects, e) ? a.projects = [ e ].concat(t) : a.projects = t;
 }), l.get(n.project).then(_.spread(function(n, r) {
 f = r, j(), k(f), angular.extend(a, {
 project: n,
-subjectKinds: E,
+subjectKinds: I,
 canUpdateRolebindings: y("rolebindings", "update", g),
 confirmRemove: function(n, r, i) {
-var c = null, l = I(n, r, i, a.user.metadata.name);
+var c = null, l = E(n, r, i, a.user.metadata.name);
 _.isEqual(n, a.user.metadata.name) && u.isLastRole(a.user.metadata.name, a.roleBindings) && (c = !0), o.open({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 animation: !0,
@@ -11711,7 +11717,7 @@ e.logCanRun = !_.includes([ "New", "Pending" ], P(t));
 }, T = t("isIE")() || t("isEdge")();
 g.get(n.project).then(_.spread(function(u, g) {
 e.project = u, e.projectContext = g;
-var v = {}, E = function() {
+var v = {}, I = function() {
 if (e.hpaForRS = s.filterHPA(v, y, n.replicaSet), e.deploymentConfigName && e.isActive) {
 var t = s.filterHPA(v, "DeploymentConfig", e.deploymentConfigName);
 e.autoscalers = e.hpaForRS.concat(t);
@@ -11719,12 +11725,12 @@ e.autoscalers = e.hpaForRS.concat(t);
 var a = s.filterHPA(v, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(a);
 } else e.autoscalers = e.hpaForRS;
-}, I = function() {
+}, E = function() {
 j.push(o.watch(e.resource, g, function(t) {
 var n, a = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
-}), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, E();
+}), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, I();
 }));
 }, N = function() {
 s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
@@ -11782,7 +11788,7 @@ title: e.deployment.metadata.name,
 link: m.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
-}), $(), E();
+}), $(), I();
 })), j.push(o.watch({
 group: "extensions",
 resource: "replicasets"
@@ -12105,12 +12111,16 @@ message: "This " + S + " has been deleted."
 }), e.replicaSet = t, R(t), D(), U(), e.deployment && $();
 =======
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && $();
+<<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 >>>>>>> Adjust events to show in the drawer
 })), e.deploymentConfigName && I(), j.push(o.watch("pods", f, function(t) {
 =======
 })), e.deploymentConfigName && I(), j.push(o.watch("pods", g, function(t) {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+})), e.deploymentConfigName && E(), j.push(o.watch("pods", g, function(t) {
+>>>>>>> Enable new landing page experience by default
 var n = t.by("metadata.name");
 e.podsForDeployment = f.filterForOwner(n, e.replicaSet);
 }));
@@ -12140,7 +12150,7 @@ group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, g, function(e) {
-v = e.by("metadata.name"), E(), N();
+v = e.by("metadata.name"), I(), N();
 }, {
 poll: T,
 pollInterval: 6e4
@@ -15374,7 +15384,7 @@ title: R
 var T = {
 name: "app",
 value: ""
-}, E = t("orderByDisplayName"), I = t("getErrorDetails"), N = {}, D = function() {
+}, I = t("orderByDisplayName"), E = t("getErrorDetails"), N = {}, D = function() {
 g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
@@ -15544,18 +15554,18 @@ var o = [], i = [];
 e.valueFromObjects = [], c.list("configmaps", n, null, {
 errorNotification: !1
 }).then(function(t) {
-o = E(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
+o = I(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
 }, function(e) {
 403 !== e.code && g.addNotification({
 id: "create-builder-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: I(e)
+details: E(e)
 });
 }), c.list("secrets", n, null, {
 errorNotification: !1
 }).then(function(t) {
-i = E(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
+i = I(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
 var n = b.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
@@ -15567,7 +15577,7 @@ e.unshift("");
 id: "create-builder-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: I(e)
+details: E(e)
 });
 }), c.get("imagestreams", a.imageName, {
 namespace: a.namespace || r.project
@@ -16417,7 +16427,7 @@ e.canCreateProject = !0;
 e.canCreateProject = !1;
 });
 } ]), angular.module("openshiftConsole").controller("CreateProjectController", [ "$scope", "$location", "$window", "AuthService", "Constants", function(e, t, n, a, r) {
-var o = _.get(r, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page");
+var o = !r.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 e.onProjectCreated = function(e) {
 o ? n.history.back() : t.path("project/" + e + "/create");
 }, a.withUser();
@@ -18569,7 +18579,7 @@ t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
 }
 function b() {
 var e, n;
-I(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+E(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
 project: p.input.selectedProject,
 template: p.resource
 }) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
@@ -18871,18 +18881,18 @@ cancelButtonText: "Cancel"
 }
 }
 }).result.then(y);
-}, E = {}, I = function() {
-c.hideNotification("from-file-error"), _.each(E, function(e) {
+}, I = {}, E = function() {
+c.hideNotification("from-file-error"), _.each(I, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
 });
 }, N = function(e) {
-I(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+E(), I = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
-E = E.concat(t), _.filter(E, {
+I = I.concat(t), _.filter(I, {
 type: "error"
-}).length ? (_.each(E, function(e) {
+}).length ? (_.each(I, function(e) {
 e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
-}), p.disableInputs = !1) : E.length ? (T(E), p.disableInputs = !1) : y();
+}), p.disableInputs = !1) : I.length ? (T(I), p.disableInputs = !1) : y();
 }, D = function() {
 if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
 var t = p.input.selectedProject.metadata.name, a = p.input.selectedProject.metadata.annotations["new-display-name"], r = e("description")(p.input.selectedProject);
@@ -18914,10 +18924,10 @@ details: R(e)
 });
 }
 }, p.cancel = function() {
-I(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+E(), s.toProjectOverview(p.input.selectedProject.metadata.name);
 };
 var $ = e("displayName");
-p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", I);
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", E);
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
@@ -20430,7 +20440,7 @@ h(!1);
 _.set(r, "ordering.panelName", "");
 }, r.showOrderingPanel = function(e) {
 _.set(r, "ordering.panelName", e);
-}, r.catalogLandingPageEnabled = _.get(i, "ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page");
+}, r.catalogLandingPageEnabled = !i.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var v = p.find(".selectpicker"), y = [], b = function() {
 var t = r.currentProjectName;
 if (t) {
@@ -21917,7 +21927,7 @@ if (!m.pod) return null;
 var t = m.options.selectedContainer;
 switch (e) {
 case "memory/usage":
-var n = I(t);
+var n = E(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
@@ -21952,10 +21962,10 @@ _.each(e.datasets, function(e) {
 t[e.id] = e.data;
 });
 var n, r = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
-E[o] ? E[o].load(r) : ((n = L(e)).data = r, e.chartDataColors && (n.color = {
+I[o] ? I[o].load(r) : ((n = L(e)).data = r, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), a(function() {
-$ || (E[o] = c3.generate(n));
+$ || (I[o] = c3.generate(n));
 }));
 }
 }
@@ -22135,7 +22145,7 @@ m.loaded = !0;
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var R, T = {}, E = {}, I = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, $ = !1;
+var R, T = {}, I = {}, E = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, $ = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -22307,14 +22317,14 @@ delete e.data;
 }, !0), R = t(P, c.getDefaultUpdateInterval(), !1);
 });
 var O = o.$on("metrics.charts.resize", function() {
-c.redraw(T), c.redraw(E);
+c.redraw(T), c.redraw(I);
 });
 m.$on("$destroy", function() {
 R && (t.cancel(R), R = null), O && (O(), O = null), angular.forEach(T, function(e) {
 e.destroy();
-}), T = null, angular.forEach(E, function(e) {
+}), T = null, angular.forEach(I, function(e) {
 e.destroy();
-}), E = null, $ = !0;
+}), I = null, $ = !0;
 });
 }
 };
@@ -22435,7 +22445,7 @@ return e[0];
 function u(e) {
 k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var a, r = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (I[i].lastValue = (I[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 }));
 }
 function d() {
@@ -22600,7 +22610,7 @@ t.loaded = !0;
 }
 var b, C = {}, S = 30, w = "compact" === t.profile, k = !1;
 t.uniqueID = s.uniqueID();
-var j, P, R = {}, T = w, E = function(e) {
+var j, P, R = {}, T = w, I = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -22608,10 +22618,10 @@ label: "Memory",
 units: "MiB",
 convert: i.bytesToMiB,
 formatUsage: function(e) {
-return E(e) && (e /= 1024), s.formatUsage(e);
+return I(e) && (e /= 1024), s.formatUsage(e);
 },
 usageUnits: function(e) {
-return E(e) ? "GiB" : "MiB";
+return I(e) ? "GiB" : "MiB";
 },
 descriptor: "memory/usage",
 type: "pod_container",
@@ -22714,7 +22724,7 @@ return c.lastChild.innerHTML = f, c;
 =======
 chartID: "network-rx-" + t.uniqueID
 } ];
-var I = _.keyBy(t.metrics, "descriptor");
+var E = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
 };
@@ -22886,17 +22896,17 @@ n > 10 ? e() : (n++, j().is(":visible") && (P(), e()));
 P(!0), b(), S();
 }, 100);
 m.on("resize", T);
-var E, I = function() {
+var I, E = function() {
 C = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && I(), t.showScrollLinks || b();
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && E(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = r.defer();
-return E ? (E.onClose(function() {
+return I ? (I.onClose(function() {
 t.resolve();
-}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), I.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
 A().then(function() {
 t.$evalAsync(function() {
@@ -22948,7 +22958,7 @@ limitBytes: 10485760
 }, t.options), n = 0, a = function(e) {
 n++, N.appendChild(f(n, e)), D();
 };
-(E = c.createStream(h, v, t.context, e)).onMessage(function(r, o, i) {
+(I = c.createStream(h, v, t.context, e)).onMessage(function(r, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", R());
 }), r && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
@@ -22956,17 +22966,18 @@ t.limitReached = !0, t.loading = !1;
 }), A(!0)), a(r), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), E.onClose(function() {
-E = null, t.$evalAsync(function() {
+}), I.onClose(function() {
+I = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), E.onError(function() {
-E = null, t.$evalAsync(function() {
+}), I.onError(function() {
+I = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
 <<<<<<< 579cbe4ce2e640c919f9687b5c885f661897db96
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
@@ -23008,6 +23019,9 @@ backlink: URI.encode(c.location.href)
 =======
 }), E.start();
 >>>>>>> Add the ability to add a secret to an application
+=======
+}), I.start();
+>>>>>>> Enable new landing page experience by default
 }
 });
 >>>>>>> Patternfly vertical navigation and project bar
@@ -23088,7 +23102,7 @@ onScrollTop: function() {
 t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
 },
 toggleAutoScroll: function() {
-t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && I();
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && E();
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
@@ -27017,7 +27031,7 @@ cancelButtonText: "Cancel"
 }
 }
 }).result.then(R);
-}, E = function(e) {
+}, I = function(e) {
 h = e.quotaAlerts || [];
 var t = _.filter(h, {
 type: "error"
@@ -27064,7 +27078,7 @@ namespace: n.input.selectedProject.metadata.name
 }), o = function(e) {
 return n.nameTaken = e.nameTaken, a;
 };
-t.then(o, o).then(E, E);
+t.then(o, o).then(I, I);
 }, function(e) {
 c.addNotification({
 id: "deploy-image-create-project-error",
@@ -28072,14 +28086,14 @@ e.totalUnread = j(e.notifications).length, e.hasUnread = !!e.totalUnread, o.$emi
 _.each(v, P);
 }, T = function(e) {
 return _.orderBy(e, [ "event.lastTimestamp", "event.firstTimestamp" ], [ "desc", "desc" ]);
-}, E = function(e) {
+}, I = function(e) {
 var t = _.sortBy(e, function(e) {
 return e.heading;
 });
 return _.each(t, function(e) {
 e.notifications = T(e.notifications), e.counts = P(e);
 }), t;
-}, I = function(e) {
+}, E = function(e) {
 var t = {};
 return C(t, r.project), _.each(e, function(e) {
 l.isImportantEvent(e) && !l.isCleared(e) && (C(t, e.metadata.namespace), t[e.metadata.namespace].notifications.push({
@@ -28102,7 +28116,7 @@ return e.project.metadata.name === r.project;
 });
 });
 }, A = function(e) {
-h = I(e.by("metadata.uid")), v = E(h), $();
+h = E(e.by("metadata.uid")), v = I(h), $();
 }, B = {
 Normal: "pficon pficon-info",
 Warning: "pficon pficon-warning-triangle-o"
@@ -30207,7 +30221,7 @@ var e = [];
 if (e.push({
 type: "dom",
 node: '<li><a target="_blank" href="{{\'default\' | helpLink}}">Documentation</a></li>'
-}), _.get(window, "OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page")) {
+}), !_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE")) {
 var t = _.get(window, "OPENSHIFT_CONSTANTS.GUIDED_TOURS.landing_page_tour");
 t && t.enabled && t.steps && e.push({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1

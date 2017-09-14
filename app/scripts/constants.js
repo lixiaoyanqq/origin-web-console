@@ -151,9 +151,13 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
   // they are unpersisted, disallowed for most end users, or not supported by
   // openshift but exist in kubernetes.
   AVAILABLE_KINDS_BLACKLIST: [],
-  // Currently disables watch on events used by the drawer
+
+  // Currently disables watch on events used by the drawer.
   DISABLE_GLOBAL_EVENT_WATCH: false,
+
   ENABLE_TECH_PREVIEW_FEATURE: {
+    // Set to true when the template service broker is enabled for the cluster in master-config.yaml.
+    template_service_broker: false,
     // Set to true if the service catalog supports pod presets for binding services to applications.
     pod_presets: false
   },

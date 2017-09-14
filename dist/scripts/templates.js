@@ -13275,10 +13275,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Use your source or an example repository to build an application image, or add components like databases and message queues.\n" +
     "</p>\n" +
     "<p class=\"gutter-top\">\n" +
+<<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
     "<a ng-if=\"overview.catalogLandingPageEnabled\" href=\"./\" class=\"btn btn-lg btn-primary\" translate>\n" +
     "Browse Catalog\n" +
     "</a>\n" +
     "<a ng-if=\"!overview.catalogLandingPageEnabled\" ng-href=\"project/{{projectName}}/create\" class=\"btn btn-lg btn-primary\" translate>\n" +
+=======
+    "<a ng-if=\"overview.catalogLandingPageEnabled\" href=\"./\" class=\"btn btn-lg btn-primary\">\n" +
+    "Browse Catalog\n" +
+    "</a>\n" +
+    "<a ng-if=\"!overview.catalogLandingPageEnabled\" ng-href=\"project/{{projectName}}/create\" class=\"btn btn-lg btn-primary\">\n" +
+>>>>>>> Enable new landing page experience by default
     "Add to Project\n" +
     "</a>\n" +
     "</p>\n" +

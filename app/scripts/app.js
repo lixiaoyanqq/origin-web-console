@@ -509,16 +509,6 @@ angular
       // content (e.g. using :before pseudo-elements).
       $('body').addClass('ios');
     }
-  })
-  .run(function($window, gettextCatalog, amMoment){
-    gettextCatalog.debug = false;
-    var lang = $window.OPENSHIFT_LANG;
-    if (lang !== 'en') {
-      gettextCatalog.loadRemote('languages/' + lang + '.json');
-      gettextCatalog.setCurrentLanguage(lang);
-
-      amMoment.changeLocale(lang.toLowerCase());
-    }
   });
 
 hawtioPluginLoader.addModule('openshiftConsole');
