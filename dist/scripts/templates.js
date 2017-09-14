@@ -78,8 +78,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
 =======
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}\">Amount</label>\n" +
+<<<<<<< HEAD
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d*\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
 >>>>>>> Bug 1470976 - Support number input on iOS
+=======
+    "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
+>>>>>>> Bug 1491495 - Allow decimals in some number inputs
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}-unit\" translate>Unit</label>\n" +
@@ -9466,10 +9470,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"resource-amount\">\n" +
     "<label for=\"claim-amount\" class=\"sr-only\">Amount</label>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<input type=\"number\" name=\"capacity\" id=\"claim-amount\" ng-model=\"claim.amount\" required min=\"0\" pattern=\"\\d+(\\.\\d+)?\" select-on-focus class=\"form-control\" aria-describedby=\"claim-capacity-help\">\n" +
 =======
     "<input type=\"number\" name=\"capacity\" id=\"claim-amount\" ng-model=\"claim.amount\" required min=\"0\" pattern=\"\\d*\" select-on-focus class=\"form-control\" aria-describedby=\"claim-capacity-help\">\n" +
 >>>>>>> Bug 1470976 - Support number input on iOS
+=======
+    "<input type=\"number\" name=\"capacity\" id=\"claim-amount\" ng-model=\"claim.amount\" required min=\"0\" pattern=\"\\d+(\\.\\d+)?\" select-on-focus class=\"form-control\" aria-describedby=\"claim-capacity-help\">\n" +
+>>>>>>> Bug 1491495 - Allow decimals in some number inputs
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\">Unit</label>\n" +
