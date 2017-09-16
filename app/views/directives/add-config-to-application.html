@@ -3,16 +3,16 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="ctrl.onCancel()">
       <span class="pficon pficon-close"></span>
     </button>
-    <h1 class="modal-title" translate>Add to Application</h1>
+    <h1 class="modal-title">Add to Application</h1>
   </div>
   <form name="addToApplicationForm" novalidate>
     <fieldset ng-disabled="disableInputs">
       <div class="modal-body">
-	      <legend ><translate>Add this</translate> {{ctrl.apiObject.kind | humanizeKind}} <translate>to application</translate>:</legend>
-        <div class="form-group">
+        <legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>
+        <div class="form-group"  ng-class="{'has-error' : ctrl.addType === 'env' && ctrl.application && !ctrl.canAddRefToApplication}">
           <div class="application-select">
             <ui-select autofocus id="application" ng-model="ctrl.application" on-select="ctrl.checkApplicationContainersRefs($item)" required="true" ng-disabled="ctrl.disableInputs">
-		    <ui-select-match placeholder="{{ctrl.applications.length ? '选择应用' : '当前项目中没有应用'}}">
+              <ui-select-match placeholder="{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}">
               <span>
                 {{$select.selected.metadata.name}}
                 <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>
@@ -26,26 +26,31 @@
             </ui-select>
           </div>
         </div>
-	<legend ><translate>Add</translate> <translate>{{ctrl.apiObject.kind | humanizeKind}}</translate> 作为:</legend>
+        <div class="has-error" ng-if="ctrl.addType === 'env' && ctrl.application && !ctrl.canAddRefToApplication">
+          <span class="help-block">
+            The {{ctrl.apiObject.kind | humanizeKind}} has already been added to this application.
+          </span>
+        </div>
+        <legend>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
         <div class="radio">
           <label for="env">
             <input id="env" type="radio" ng-model="ctrl.addType" value="env" >
-	    <translate>Environment variables</translate>
+            Environment variables
           </label>
         </div>
         <div ng-if="ctrl.addType === 'env'" class="choice-contents clearfix">
           <div class="has-warning" ng-if="ctrl.hasInvalidEnvVars">
             <div class="help-block">
               <span class="pf-icon pficon-warning-triangle-o" aria-hidden="true"></span>
-	      {{ctrl.apiObject.kind | humanizeKind | upperFirst | translate}} <strong>{{ctrl.apiObject.metadata.name}}</strong><translate>contains keys that are not valid environment variable names.</translate> <translate>Only</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>keys with valid names will be added as environment variables.</translate>
+              {{ctrl.apiObject.kind | humanizeKind | upperFirst}} <strong>{{ctrl.apiObject.metadata.name}}</strong> contains keys that are not valid environment variable names. Only {{ctrl.apiObject.kind | humanizeKind}} keys with valid names will be added as environment variables.
             </div>
           </div>
           <div class="form-group">
             <div class="control-label">
-              <label translate>Prefix</label>
+              <label>Prefix</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-		 uib-popover="可选的,还可以指定使用环境变量的前缀"
+                 uib-popover="Optionally, you can specify a prefix to use with environment variables."
                  popover-trigger="focus">
               </a>
             </div>
@@ -53,7 +58,7 @@
               <input class="form-control"
                      name="envPrefix"
                      id="envPrefix"
-		     placeholder="({{'optional'|translate}})"
+                     placeholder="(optional)"
                      type="text"
                      ng-pattern="/^[A-Za-z_][A-Za-z0-9_]*$/"
                      aria-describedby="env-prefix-help"
@@ -72,16 +77,18 @@
         <div class="radio">
           <label for="volume">
             <input id="volume" type="radio" ng-model="ctrl.addType" value="volume">
-	    <translate>Volume</translate>
+            Volume
           </label>
         </div>
         <div ng-if="ctrl.addType === 'volume'" class="choice-contents clearfix">
           <div class="form-group">
             <div class="control-label">
-              <label class="required" translate>Mount Path</label>
+              <label class="required">Mount Path</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-		 uib-popover="卷的挂载路径.从{{ctrl.apiObject.kind | humanizeKind}}的每一个键都会在该目录下创建一个文件,文件的内容是键的值。"
+                 uib-popover="Mount Path for the volume. A file will be created in this
+                              directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.
+                              The file contents will be the value of the key."
                  popover-trigger="focus">
               </a>
             </div>
@@ -113,21 +120,23 @@
             </div>
           </div>
         </div>
-        <legend ng-if-start="ctrl.application.spec.template.spec.containers.length > 1" translate>Containers:</legend>
-        <div ng-if-end class="form-group container-options">
-          <div ng-if="ctrl.attachAllContainers">
-            The {{ctrl.apiObject.kind | humanizeKind}} will be added to all containers. You can
-            <a href="" ng-click="ctrl.attachAllContainers = false">select specific containers</a>
-            instead.
-          </div>
-          <div ng-if="!ctrl.attachAllContainers" class="form-group">
-            <label class="sr-only required" translate>Containers</label>
-            <select-containers
-              ng-model="ctrl.attachContainers"
-              pod-template="ctrl.application.spec.template"
-              ng-required="true"
-              help-text="Add the {{ctrl.apiObject.kind | humanizeKind}} to the selected containers.">
-            </select-containers>
+        <div ng-if="ctrl.canAddRefToApplication">
+          <legend ng-if-start="ctrl.application.spec.template.spec.containers.length > 1">Containers:</legend>
+          <div ng-if-end class="form-group container-options">
+            <div ng-if="ctrl.attachAllContainers">
+              The {{ctrl.apiObject.kind | humanizeKind}} will be added to all containers. You can
+              <a href="" ng-click="ctrl.attachAllContainers = false">select specific containers</a>
+              instead.
+            </div>
+            <div ng-if="!ctrl.attachAllContainers" class="form-group">
+              <label class="sr-only required">Containers</label>
+              <select-containers
+                ng-model="ctrl.attachContainers"
+                pod-template="ctrl.application.spec.template"
+                ng-required="true"
+                help-text="Add the {{ctrl.apiObject.kind | humanizeKind}} to the selected containers.">
+              </select-containers>
+            </div>
           </div>
         </div>
       </div>
@@ -135,7 +144,7 @@
         <button
           class="btn btn-default"
           ng-class="{'dialog-btn': isDialog}"
-          ng-click="ctrl.onCancel()" translate>
+          ng-click="ctrl.onCancel()">
           Cancel
         </button>
         <button type="submit"
@@ -143,8 +152,8 @@
                 ng-class="{'dialog-btn': isDialog}"
                 ng-click="ctrl.addToApplication()"
                 ng-disabled="addToApplicationForm.$invalid || (ctrl.addType === 'env' && !ctrl.canAddRefToApplication)"
-                value="" translate>
-                Save
+                value="">
+          Save
         </button>
       </div>
     </fieldset>
@@ -152,7 +161,7 @@
   <div class="updating" ng-if="ctrl.updating">
     <div class="spinner spinner-lg" aria-hidden="true"></div>
     <h3>
-      <span class="sr-only" translate>Updating</span>
+      <span class="sr-only">Updating</span>
     </h3>
   </div>
 </div>
