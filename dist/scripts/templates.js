@@ -892,17 +892,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>{{error | getErrorDetails}}</p>\n" +
     "</div>\n" +
     "<div ng-if=\"targetObject && configMaps && secrets\">\n" +
+<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
     "<div ng-if=\"!configMaps.length && !secrets.length && !('configmaps' | canI : 'create') && !('secrets' | canI : 'create')\" class=\"empty-state-message empty-state-full-page\">\n" +
     "<h2 class=\"text-center\" translate>No config maps or secrets.</h2>\n" +
     "<p class=\"gutter-top\" translate>\n" +
+=======
+    "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page\">\n" +
+    "<h2 class=\"text-center\">No config maps or secrets.</h2>\n" +
+    "<p class=\"gutter-top\">\n" +
+>>>>>>> Update addConfigVolume controller
     "There are no config maps or secrets in project {{project | displayName}} to use as a volume for this {{kind | humanizeKind}}.\n" +
     "</p>\n" +
     "<p ng-if=\"targetObject\"><a ng-href=\"{{targetObject | navigateResourceURL}}\" translate>Back to {{kind | humanizeKind}} {{name}}</a></p>\n" +
     "</div>\n" +
+<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
     "<div ng-if=\"configMaps.length || secrets.length || ('configmaps' | canI : 'create') || ('secrets' | canI : 'create')\" class=\"mar-top-xl\">\n" +
 <<<<<<< 61041415d6b4b98ad75d6e0cc8152f245d39c51c
     "<h1 translate>Add Config Files</h1>\n" +
 =======
+=======
+    "<div ng-if=\"configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-xl\">\n" +
+>>>>>>> Update addConfigVolume controller
     "<h1>Add Config Files to {{name}}</h1>\n" +
 >>>>>>> Consistent add storage links
     "<div class=\"help-block\">\n" +
@@ -923,6 +933,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-bind-html=\"source.metadata.name | highlight : $select.search\"></span>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
+<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
     "<div ng-if=\"('configmaps' | canI : 'create') || ('secrets' | canI : 'create')\" class=\"mar-top-md\">\n" +
     "<span ng-if=\"'configmaps' | canI : 'create'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" translate>Create Config Map</a>\n" +
@@ -930,6 +941,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"'secrets' | canI : 'create'\">\n" +
     "<span ng-if=\"'configmaps' | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" translate>Create Secret</a>\n" +
+=======
+    "<div ng-if=\"(configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-md\">\n" +
+    "<span ng-if=\"configMapVersion | canI : 'create'\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\">Create Config Map</a>\n" +
+    "</span>\n" +
+    "<span ng-if=\"secretVersion | canI : 'create'\">\n" +
+    "<span ng-if=\"configMapVersion | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\">Create Secret</a>\n" +
+>>>>>>> Update addConfigVolume controller
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\" translate>\n" +

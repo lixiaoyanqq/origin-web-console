@@ -63,6 +63,9 @@ angular.module('openshiftConsole')
       subpage: 'Add Config Files'
     });
 
+    $scope.configMapVersion = APIService.getPreferredVersion('configmaps');
+    $scope.secretVersion = APIService.getPreferredVersion('secrets');
+
     var humanizeKind = $filter('humanizeKind');
     $scope.groupByKind = function(object) {
       return gettextCatalog.getString(humanizeKind(object.kind));
@@ -138,7 +141,7 @@ angular.module('openshiftConsole')
           }
         );
 
-        DataService.list("configmaps", context, null, { errorNotification: false }).then(function(configMapData) {
+        DataService.list($scope.configMapVersion, context, null, { errorNotification: false }).then(function(configMapData) {
           $scope.configMaps = orderByDisplayName(configMapData.by("metadata.name"));
         }, function(e) {
           if (e.code === 403) {
@@ -149,7 +152,7 @@ angular.module('openshiftConsole')
           displayError('Could not load config maps', getErrorDetails(e));
         });
 
-        DataService.list("secrets", context, null, { errorNotification: false }).then(function(secretData) {
+        DataService.list($scope.secretVersion, context, null, { errorNotification: false }).then(function(secretData) {
           $scope.secrets = orderByDisplayName(secretData.by("metadata.name"));
         }, function(e) {
           if (e.code === 403) {
