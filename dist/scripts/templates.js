@@ -2213,8 +2213,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-hide=\"!('builds' | canIDoAny)\">\n" +
     "\n" +
+<<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\" translate>Cancel Build</button>\n" +
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\" translate>Rebuild</button>\n" +
+=======
+    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\">Cancel Build</button>\n" +
+    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
+>>>>>>> Update build controller to use getPreferredVersion
     "\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
     "<translate>Actions</translate>\n" +
@@ -2234,13 +2239,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li class=\"divider\" ng-if=\"buildConfigsVersion | canI : 'update'\"></li>\n" +
     "<li ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\" class=\"visible-xs-inline\">\n" +
+<<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
     "<a href=\"\" role=\"button\" ng-click=\"cancelBuild()\" translate>Cancel Build</a>\n" +
+=======
+    "<a href=\"\" role=\"button\" ng-click=\"cancelBuild()\">Cancel Build</a>\n" +
+>>>>>>> Update build controller to use getPreferredVersion
     "</li>\n" +
     "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canBuild }\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"cloneBuild()\" ng-attr-aria-disabled=\"{{canBuild ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canBuild }\" translate>Rebuild</a>\n" +
     "</li>\n" +
     "<li ng-if=\"(buildsVersion | canI : 'update')\">\n" +
+<<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
     "<a ng-href=\"{{build | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"{{build | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update build controller to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"(buildsVersion | canI : 'delete')\">\n" +
     "<delete-link kind=\"Build\" resource-name=\"{{build.metadata.name}}\" project-name=\"{{build.metadata.namespace}}\" alerts=\"alerts\" redirect-url=\"{{build | configURLForResource}}\">\n" +
@@ -2268,9 +2281,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<build-pipeline build=\"build\" ng-if=\"build | isJenkinsPipelineStrategy\"></build-pipeline>\n" +
     "<ng-include src=\" 'views/browse/_build-details.html' \"></ng-include>\n" +
     "</uib-tab>\n" +
+<<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
     "<uib-tab heading=\"{{'Environment'|translate}}\" active=\"selectedTab.environment\" ng-if=\"!(build | isJenkinsPipelineStrategy)\">\n" +
     "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
     "<h3 translate>Environment Variables</h3>\n" +
+=======
+    "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\" ng-if=\"!(build | isJenkinsPipelineStrategy)\">\n" +
+    "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+    "<h3>Environment Variables</h3>\n" +
+>>>>>>> Update build controller to use getPreferredVersion
     "<p ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "<translate>Environment variables can be edited on the <a ng-href=\"{{build | configURLForResource}}?tab=environment\">build configuration</a>.</translate>\n" +
