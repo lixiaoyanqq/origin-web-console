@@ -18,6 +18,7 @@
         'DataService',
         'NotificationsService',
         'EventsService',
+        'NotificationsService',
         NotificationDrawerWrapper
       ]
     });
@@ -128,9 +129,25 @@
         });
       };
 
-      // currently we only show 1 at a time anyway
-      var countUnreadNotificationsForAllGroups = function() {
-        _.each(notificationGroups, countUnreadNotificationsForGroup);
+      var removeNotificationFromGroup = function(notification) {
+        _.each(drawer.notificationGroups, function(group) {
+          _.remove(group.notifications, { uid: notification.uid, namespace: notification.namespace });
+        });
+      };
+
+      var formatAPIEvents = function(apiEvents) {
+        return _.map(apiEvents, function(event) {
+          return {
+            actions: null,
+            uid: event.metadata.uid,
+            trackByID: event.metadata.uid,
+            unread: !EventsService.isRead(event.metadata.uid),
+            type: event.type,
+            lastTimestamp: event.lastTimestamp,
+            firstTimestamp: event.firstTimestamp,
+            event: event
+          };
+        });
       };
 
       var sortNotifications = function(notifications) {
@@ -205,19 +222,52 @@
         render();
       };
 
-      // TODO: Follow-on PR to update & add the internal notifications to the
-      // var notificationWatchCallback = function(event, notification) {
-      //   // will need to add .event = {} and immitate structure
-      //   if(!notification.lastTimestamp) {
-      //     // creates a timestamp that matches event format: 2017-08-09T19:55:35Z
-      //     notification.lastTimestamp = moment.parseZone(new Date()).utc().format();
-      //   }
-      //   clientGeneratedNotifications.push(notification);
-      // };
+      var notificationWatchCallback = function(event, notification) {
+        if(!notification.showInDrawer) {
+          return;
+        }
+        var project = notification.namespace || $routeParams.project;
+        var id = notification.id || _.uniqueId('notification_') + Date.now();
+        notificationsMap[project] = notificationsMap[project] || {};
+        notificationsMap[project][id] = {
+          actions: notification.actions,
+          unread: !EventsService.isRead(id),
+          // using uid to match API events and have one filed to pass
+          // to EventsService for read/cleared, etc
+          trackByID: notification.trackByID,
+          uid: id,
+          type: notification.type,
+          // API events have both lastTimestamp & firstTimestamp,
+          // but we sort based on lastTimestamp first.
+          lastTimestamp: notification.timestamp,
+          message: notification.message,
+          isHTML: notification.isHTML,
+          details: notification.details,
+          namespace: project,
+          links: notification.links
+        };
+        render();
+      };
 
-      var iconClassByEventSeverity = {
-        Normal: 'pficon pficon-info',
-        Warning: 'pficon pficon-warning-triangle-o'
+      var watchEvents = function(projectName, cb) {
+        deregisterAPIEventsWatch();
+        if(projectName) {
+          apiEventsWatcher = DataService.watch('events', {namespace: projectName}, _.debounce(cb, 400), { skipDigest: true });
+        }
+      };
+
+      var watchNotifications = _.once(function(projectName, cb) {
+        deregisterNotificationListener();
+        notificationListener = $rootScope.$on('NotificationsService.onNotificationAdded', cb);
+      });
+
+      var reset = function() {
+        getProject($routeParams.project).then(function() {
+          watchEvents($routeParams.project, apiEventWatchCallback);
+          watchNotifications($routeParams.project, notificationWatchCallback);
+          hideIfNoProject($routeParams.project);
+          render();
+        });
       };
 
       angular.extend(drawer, {
@@ -270,7 +320,8 @@
           },
           close: function() {
             drawer.drawerHidden = true;
-          }
+          },
+          countUnreadNotifications: countUnreadNotifications
         }
       });
 
@@ -306,6 +357,18 @@
         // event from the counter to signal the drawer to open/close
         rootScopeWatches.push($rootScope.$on('NotificationDrawerWrapper.toggle', function() {
           drawer.drawerHidden = !drawer.drawerHidden;
+        }));
+
+        // event to signal the drawer to close
+        rootScopeWatches.push($rootScope.$on('NotificationDrawerWrapper.hide', function() {
+          drawer.drawerHidden = true;
+        }));
+
+        // event to signal the drawer to clear a notification
+        rootScopeWatches.push($rootScope.$on('NotificationDrawerWrapper.clear', function(event, notification) {
+          EventsService.markCleared(notification.uid);
+          removeNotificationFromGroup(notification);
+          drawer.countUnreadNotifications();
         }));
       };
 

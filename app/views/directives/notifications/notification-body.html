@@ -4,7 +4,8 @@
   ng-click="$ctrl.customScope.markRead(notification)">
   <a
     class="pull-right"
-    tabindex="0"
+    href=""
+    ng-if="!notification.actions.length"
     ng-click="$ctrl.customScope.clear(notification, $index, notificationGroup)">
     <span class="sr-only" translate>Clear notification</span>
     <span
@@ -38,7 +39,7 @@
           href=""
           class="secondary-action"
           title="{{action.title}}"
-          ng-click="$ctrl.customScope.handleAction(notification, action)">
+          ng-click="action.onClick(notification)">
           {{action.name}}
         </a>
       </li>
@@ -69,6 +70,25 @@
           </a>
           <span ng-if="!(eventObjUrl)">{{notification.event.involvedObject.name}}</span>
         </span>
+
+        <span ng-if="!(notification.event.involvedObject)">
+          <span ng-if="notification.isHTML" ng-bind-html="notification.message"></span>
+          <span ng-if="!notification.isHTML">{{notification.message}}</span>
+          <span ng-repeat="link in notification.links">
+            <a
+              ng-if="!link.href"
+              href=""
+              ng-click="$ctrl.customScope.onLinkClick(link)"
+              role="button">{{link.label}}</a>
+            <a
+              ng-if="link.href"
+              ng-href="{{link.href}}"
+              ng-click="$ctrl.customScope.close()"
+              ng-attr-target="{{link.target}}">{{link.label}}</a>
+            <span ng-if="!$last" class="toast-action-divider">|</span>
+          </span>
+        </span>
+
       </div>
       <div
         ng-if="notification.event.count > 1"

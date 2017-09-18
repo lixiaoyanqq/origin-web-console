@@ -9244,8 +9244,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/notifications/notification-body.html',
+<<<<<<< 28651868c34b8ebf846f1da11eea62cc91408c4c
     "<div class=\"drawer-pf-notification-inner\" ng-class=\"{ 'is-clickable': notification.unread }\" ng-click=\"notification.unread && $ctrl.customScope.markRead(notification)\">\n" +
     "<button class=\"btn btn-link pull-right drawer-pf-notification-close\" type=\"button\" ng-if=\"!notification.actions.length\" ng-click=\"$ctrl.customScope.clear(notification, $index, notificationGroup)\">\n" +
+=======
+    "<div class=\"drawer-pf-notification-inner\" tabindex=\"0\" ng-click=\"$ctrl.customScope.markRead(notification)\">\n" +
+    "<a class=\"pull-right\" href=\"\" ng-if=\"!notification.actions.length\" ng-click=\"$ctrl.customScope.clear(notification, $index, notificationGroup)\">\n" +
+>>>>>>> Quota Notifications
     "<span class=\"sr-only\">Clear notification</span>\n" +
     "<span aria-hidden=\"true\" class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
