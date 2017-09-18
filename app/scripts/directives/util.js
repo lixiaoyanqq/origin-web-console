@@ -103,7 +103,7 @@ angular.module('openshiftConsole')
       }
     };
   })
-  .directive('copyLoginToClipboard', function(NotificationsService) {
+  .directive('copyLoginToClipboard', function(AlertMessageService, NotificationsService) {
     return {
       restrict: 'E',
       replace: true,
