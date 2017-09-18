@@ -9391,7 +9391,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>Drop file here</p>\n" +
     "</div>\n" +
     "<div class=\"input-group\">\n" +
-    "<input type=\"text\" class=\"form-control\" ng-model=\"fileName\" readonly=\"readonly\" ng-show=\"supportsFileUpload\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+    "<input type=\"text\" class=\"form-control\" ng-model=\"fileName\" readonly=\"readonly\" ng-show=\"supportsFileUpload\" ng-disabled=\"disabled\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
     "<span class=\"input-group-btn\">\n" +
     "<span class=\"btn btn-default btn-file\" ng-show=\"supportsFileUpload\" ng-attr-disabled=\"{{ (disabled || readonly) || undefined }}\">\n" +
 <<<<<<< 32ce7dc9188e66a92552db029fc5fde74d2e4f63
