@@ -5197,11 +5197,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<copy-to-clipboard ng-if=\"!sessionToken\" display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL\"></copy-to-clipboard>\n" +
 =======
     "After downloading and installing it, you can start by logging in. You are currently logged into this console as <strong>{{user.metadata.name}}</strong>. If you want to log into the CLI using the same session token:\n" +
+<<<<<<< f8cb892c3d9e864c3b7b3ba810c290ed7ce351f0
     "<copy-to-clipboard display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL + ' --token=' + sessionToken\" input-text=\"'oc login ' + loginBaseURL + ' --token=<hidden>'\"></copy-to-clipboard>\n" +
     "<pre class=\"code prettyprint ng-binding\" ng-if=\"!sessionToken\">\n" +
     "                oc login {{loginBaseURL}}\n" +
     "              </pre>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "<copy-to-clipboard ng-if=\"sessionToken\" display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL + ' --token=' + sessionToken\" input-text=\"'oc login ' + loginBaseURL + ' --token=<hidden>'\"></copy-to-clipboard>\n" +
+    "<copy-to-clipboard ng-if=\"!sessionToken\" display-wide=\"true\" clipboard-text=\"'oc login ' + loginBaseURL\"></copy-to-clipboard>\n" +
+>>>>>>> Let administrators disable "Copy Login Command"
     "</p>\n" +
     "<div ng-if=\"sessionToken\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
