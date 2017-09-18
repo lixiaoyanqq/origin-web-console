@@ -73,17 +73,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-if=\"label\">{{label}}</label>\n" +
     "<div class=\"resource-size\" ng-class=\"{ 'has-error': form.$invalid }\">\n" +
     "<div class=\"resource-amount\">\n" +
-<<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
-    "<label class=\"sr-only\" ng-attr-for=\"{{id}}\" translate>Amount</label>\n" +
-    "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
-=======
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}\">Amount</label>\n" +
-<<<<<<< 021799d33ca8c1808851babf18a3f3d1de3d9194
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d*\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
-=======
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
->>>>>>> Bug 1491495 - Allow decimals in some number inputs
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}-unit\" translate>Unit</label>\n" +
@@ -134,30 +126,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/_config-file-params.html',
     "<div ng-repeat=\"(serverName, data) in secretData.auths\" class=\"image-source-item\">\n" +
     "<h3>{{serverName}}</h3>\n" +
-<<<<<<< 2c46e612e12d74ae5c1c179bf8cfa5f66c483b57
-    "<dt ng-if-start=\"data.username\" translate>username</dt>\n" +
-    "<dd ng-if-end class=\"word-break\">{{data.username}}</dd>\n" +
-    "<dt ng-if-start=\"data.password\" translate>password</dt>\n" +
-=======
     "<dt ng-if-start=\"data.username\">username</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.username}}</dd>\n" +
     "<dt ng-if-start=\"data.password\">password</dt>\n" +
->>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "<dd ng-if-end>\n" +
     "<span ng-if=\"view.showSecret\">\n" +
     "<copy-to-clipboard clipboard-text=\"data.password\" display-wide=\"true\"></copy-to-clipboard>\n" +
     "</span>\n" +
     "<span ng-if=\"!view.showSecret\">*****</span>\n" +
     "</dd>\n" +
-<<<<<<< 2c46e612e12d74ae5c1c179bf8cfa5f66c483b57
-    "<dt ng-if-start=\"data.email\" translate>email</dt>\n" +
-    "<dd ng-if-end class=\"word-break\">{{data.email}}</dd>\n" +
-    "<div ng-if=\"!data.username && !data.password && !data.email\" translate>\n" +
-    "No username and password.\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<h3 ng-if-start=\"secretData.credsStore\" translate>Credentials Store</h3>\n" +
-=======
     "<dt ng-if-start=\"data.email\">email</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.email}}</dd>\n" +
     "<div ng-if=\"!data.username && !data.password && !data.email\">\n" +
@@ -165,7 +142,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<h3 ng-if-start=\"secretData.credsStore\">Credentials Store</h3>\n" +
->>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "<div ng-if-end>\n" +
     "<span ng-if=\"view.showSecret\">\n" +
     "<copy-to-clipboard clipboard-text=\"secretData.credsStore\" display-wide=\"true\"></copy-to-clipboard>\n" +
@@ -266,26 +242,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"word-break-all\">{{podTemplate.spec.containers[0].image | imageStreamName}}\n" +
     "<span ng-repeat=\"id in imageIDs\" title=\"{{id}}\">\n" +
     "<span class=\"hash nowrap\">{{id | stripSHAPrefix | limitTo: 7}}</span><span ng-if=\"!$last\">,</span>\n" +
-<<<<<<< de4903691e64d6e1d8d8ab5a5a389cc1e3dacd47
-    "</span>\n" +
-    "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\" translate> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
-    "</span>\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('views/_init-containers-summary.html',
-    "<span ng-if=\"$ctrl.podTemplate.spec.initContainers.length\" class=\"text-muted small\">\n" +
-    "<ng-pluralize class=\"mar-right-sm\" count=\"$ctrl.podTemplate.spec.initContainers.length\" when=\"{'1': '&nbsp;{} init container','other': '&nbsp;{} init containers'}\">\n" +
-    "</ng-pluralize>\n" +
-    "<a ng-href=\"{{$ctrl.apiObject | navigateToTabURL:$ctrl.tab}}\">View Details</a>\n" +
-    "</span>"
-=======
     "</span>\n" +
     "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\"> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
     "</span>\n" +
     "</div>"
->>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
   );
 
 
@@ -914,19 +874,29 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>{{error | getErrorDetails}}</p>\n" +
     "</div>\n" +
     "<div ng-if=\"targetObject && configMaps && secrets\">\n" +
+<<<<<<< 34cf664176c3ee60e328678a698cb71cede3cef9
     "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
     "<h2 translate>No config maps or secrets.</h2>\n" +
     "<p translate>\n" +
+=======
+    "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page\">\n" +
+    "<h2 class=\"text-center\">No config maps or secrets.</h2>\n" +
+    "<p class=\"gutter-top\">\n" +
+>>>>>>> Update addConfigVolume controller
     "There are no config maps or secrets in project {{project | displayName}} to use as a volume for this {{kind | humanizeKind}}.\n" +
     "</p>\n" +
     "<p ng-if=\"targetObject\"><a ng-href=\"{{targetObject | navigateResourceURL}}\" translate>Back to {{kind | humanizeKind}} {{name}}</a></p>\n" +
     "</div>\n" +
+<<<<<<< 34cf664176c3ee60e328678a698cb71cede3cef9
 <<<<<<< d9495b579b0df00e7a43fb7cf9c206ccce041bd9
     "<div ng-if=\"configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-xl\">\n" +
     "<h1 translate>Add Config Files to {{name}}</h1>\n" +
     "<div class=\"help-block\" translate>\n" +
 =======
     "<div ng-if=\"configMaps.length || secrets.length || ('configmaps' | canI : 'create') || ('secrets' | canI : 'create')\" class=\"mar-top-xl\">\n" +
+=======
+    "<div ng-if=\"configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-xl\">\n" +
+>>>>>>> Update addConfigVolume controller
     "<h1>Add Config Files to {{name}}</h1>\n" +
     "<div class=\"help-block\">\n" +
 >>>>>>> Consistent add storage links
@@ -949,11 +919,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "<div ng-if=\"(configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-md\">\n" +
     "<span ng-if=\"configMapVersion | canI : 'create'\">\n" +
+<<<<<<< 34cf664176c3ee60e328678a698cb71cede3cef9
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" translate>Create Config Map</a>\n" +
     "</span>\n" +
     "<span ng-if=\"secretVersion | canI : 'create'\">\n" +
     "<span ng-if=\"configMapVersion | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" translate>Create Secret</a>\n" +
+=======
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\">Create Config Map</a>\n" +
+    "</span>\n" +
+    "<span ng-if=\"secretVersion | canI : 'create'\">\n" +
+    "<span ng-if=\"configMapVersion | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\">Create Secret</a>\n" +
+>>>>>>> Update addConfigVolume controller
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\" translate>\n" +
