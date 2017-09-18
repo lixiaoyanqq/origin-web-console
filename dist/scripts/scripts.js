@@ -17377,7 +17377,11 @@ name: n.name,
 kind: n.kind,
 namespace: n.project,
 subpage: "Add Config Files"
+<<<<<<< HEAD
 }), r.configMapVersion = o.getPreferredVersion("configmaps"), r.secretVersion = o.getPreferredVersion("secrets");
+=======
+}), a.configMapVersion = o.getPreferredVersion("configmaps"), a.secretVersion = o.getPreferredVersion("secrets");
+>>>>>>> Update addConfigVolume controller
 var h = e("humanizeKind");
 r.groupByKind = function(e) {
 return g.getString(h(e.kind));
@@ -17667,13 +17671,13 @@ subpage: "Add Config Files"
 });
 }, function(e) {
 a.error = e;
-}), c.list("configmaps", r, null, {
+}), c.list(a.configMapVersion, r, null, {
 errorNotification: !1
 }).then(function(e) {
 a.configMaps = o(e.by("metadata.name"));
 }, function(e) {
 403 !== e.code ? b("Could not load config maps", d(e)) : a.configMaps = [];
-}), c.list("secrets", r, null, {
+}), c.list(a.secretVersion, r, null, {
 errorNotification: !1
 }).then(function(e) {
 a.secrets = o(e.by("metadata.name"));
