@@ -461,10 +461,14 @@ table.dataTable tbody td,table.dataTable tbody th{padding:2px 10px 3px}
 .selectize-dropdown .active.create{color:#495c68}
 .selectize-dropdown .create{color:rgba(48,48,48,.5)}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .selectize-dropdown-content{overflow-y:auto;overflow-x:hidden;max-height:200px;-webkit-overflow-scrolling:touch}
 =======
 .selectize-dropdown-content{overflow-y:auto;overflow-x:hidden;max-height:200px}
 >>>>>>> Update terminal to use xterm.js
+=======
+.selectize-dropdown-content{overflow-y:auto;overflow-x:hidden;max-height:200px;-webkit-overflow-scrolling:touch}
+>>>>>>> Bumping dependency version in bower.json
 .selectize-control.single .selectize-input,.selectize-control.single .selectize-input input{cursor:pointer}
 .selectize-control.single .selectize-input.input-active,.selectize-control.single .selectize-input.input-active input{cursor:text}
 .selectize-control.single .selectize-input:after{content:' ';display:block;position:absolute;top:50%;right:15px;margin-top:0;width:0;height:0;border-style:solid;border-width:0;border-color:grey transparent transparent}
