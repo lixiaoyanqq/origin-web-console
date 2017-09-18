@@ -10534,7 +10534,7 @@ i.unwatchAll(g);
 >>>>>>> Patternfly vertical navigation and project bar
 });
 }));
-} ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s) {
+} ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
 e.projectName = n.project, e.build = null, e.buildConfig = null, e.buildConfigName = n.buildconfig, e.builds = {}, e.alerts = {}, e.showSecret = !1, e.renderOptions = {
 hideFilterWidget: !0
 }, e.breadcrumbs = [], n.isPipeline ? (e.breadcrumbs.push({
@@ -10551,12 +10551,13 @@ title: n.buildconfig,
 link: "project/" + n.project + "/browse/builds/" + n.buildconfig
 })), e.breadcrumbs.push({
 title: n.build
-});
-var c, l = t("annotation"), u = [], d = function(t) {
+}), e.buildsVersion = a.getPreferredVersion("builds"), e.buildConfigsVersion = a.getPreferredVersion("buildconfigs"), e.podsVersion = a.getPreferredVersion("pods");
+var l, u = t("annotation"), d = [], p = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending", "Error" ], t.status.phase);
-}, p = function() {
-e.buildConfig ? e.canBuild = a.canBuild(e.buildConfig) : e.canBuild = !1;
+}, m = function() {
+e.buildConfig ? e.canBuild = r.canBuild(e.buildConfig) : e.canBuild = !1;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 h.get(c.project).then(_.spread(function(g, h) {
 a.project = g, a.projectContext = h, a.logOptions = {};
@@ -10615,28 +10616,39 @@ s.get(n.project).then(_.spread(function(i, s) {
 e.project = i, e.projectContext = s, e.logOptions = {};
 var m = function() {
 e.eventObjects = c ? [ e.build, c ] : [ e.build ];
+=======
+c.get(n.project).then(_.spread(function(a, s) {
+e.project = a, e.projectContext = s, e.logOptions = {};
+var c = function() {
+e.eventObjects = l ? [ e.build, l ] : [ e.build ];
+>>>>>>> Update build controller to use getPreferredVersion
 }, f = function(t, n) {
-e.loaded = !0, e.build = t, d(t), m();
-var a = l(t, "buildNumber");
+e.loaded = !0, e.build = t, p(t), c();
+var a = u(t, "buildNumber");
 a && (e.breadcrumbs[2].title = "#" + a), "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This build has been deleted."
 });
-var o;
-c || (o = l(t, "buildPod")) && r.get("pods", o, s, {
+var r;
+l || (r = u(t, "buildPod")) && o.get(e.podsVersion, r, s, {
 errorNotification: !1
 }).then(function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 c = e, p();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 c = e, m();
 >>>>>>> Updates for Service Instance & Bindings
+=======
+l = e, c();
+>>>>>>> Update build controller to use getPreferredVersion
 });
 }, g = function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "Build configuration " + e.buildConfigName + " has been deleted."
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }, e.buildConfigDeleted = !0), e.buildConfig = t, e.buildConfigPaused = a.isPaused(e.buildConfig), p();
@@ -10660,6 +10672,14 @@ g(e), u.push(r.watchObject("builds", n.build, s, g)), u.push(r.watchObject("buil
 =======
 f(e), u.push(r.watchObject("builds", n.build, s, f)), u.push(r.watchObject("buildconfigs", n.buildconfig, s, g));
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+}, e.buildConfigDeleted = !0), e.buildConfig = t, e.buildConfigPaused = r.isPaused(e.buildConfig), m();
+};
+o.get(e.buildsVersion, n.build, s, {
+errorNotification: !1
+}).then(function(t) {
+f(t), d.push(o.watchObject(e.buildsVersion, n.build, s, f)), d.push(o.watchObject(e.buildConfigsVersion, n.buildconfig, s, g));
+>>>>>>> Update build controller to use getPreferredVersion
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -10669,10 +10689,11 @@ details: t("getErrorDetails")(n)
 }), e.toggleSecret = function() {
 e.showSecret = !0;
 }, e.cancelBuild = function() {
-a.cancelBuild(e.build, e.buildConfigName);
+r.cancelBuild(e.build, e.buildConfigName);
 }, e.cloneBuild = function() {
-e.build && e.canBuild && a.cloneBuild(e.build, e.buildConfigName);
+e.build && e.canBuild && r.cloneBuild(e.build, e.buildConfigName);
 }, e.showJenkinsfileExamples = function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 i.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
@@ -10687,8 +10708,11 @@ var i = a[n.tag];
 i ? (delete t.alerts.load, m(i, r)) : t.alerts.load = {
 =======
 o.showJenkinsfileExamples();
+=======
+i.showJenkinsfileExamples();
+>>>>>>> Update build controller to use getPreferredVersion
 }, e.$on("$destroy", function() {
-r.unwatchAll(u);
+o.unwatchAll(d);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ImageController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", "ImageStreamsService", "imageLayers", function(e, t, n, a, r, o, i) {
