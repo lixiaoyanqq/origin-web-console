@@ -1105,7 +1105,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>\n" +
     "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project.\n" +
     "</p>\n" +
+<<<<<<< HEAD
     "\n" +
+=======
+    "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"text-center\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
+    "</div>\n" +
+>>>>>>> Update attachPVC controller to use getPreferredVersion
     "<p ng-if=\"project && !(pvcVersion | canI : 'create')\">\n" +
     "To claim storage from a persistent volume, refer to the documentation on <a target=\"_blank\" ng-href=\"{{'persistent_volumes' | helpLink}}\">using persistent volumes</a>.\n" +
     "</p>\n" +
@@ -1145,9 +1151,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "\n" +
     "<h3 translate>Volume</h3>\n" +
     "<div class=\"help-block\" translate>\n" +
+=======
+    "<div ng-if=\"!(project && (pvcVersion | canI : 'create'))\" class=\"help-block\">\n" +
+    "Select storage to use.\n" +
+    "</div>\n" +
+    "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"help-block\">\n" +
+    "Select storage to use<span ng-if=\"!outOfClaims\"> or <a ng-href=\"project/{{project.metadata.name}}/create-pvc\">create storage</a>.</span>\n" +
+    "<span ng-if=\"outOfClaims\">. You cannot create new storage since you are at quota.</span>\n" +
+    "</div>\n" +
+    "<h3>Volume</h3>\n" +
+    "<div class=\"help-block\">\n" +
+>>>>>>> Update attachPVC controller to use getPreferredVersion
     "Specify details about how volumes are going to be mounted inside containers.\n" +
     "</div>\n" +
     "<div class=\"form-group mar-top-xl\">\n" +

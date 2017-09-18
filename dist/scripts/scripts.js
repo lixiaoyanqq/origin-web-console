@@ -17407,6 +17407,7 @@ kind: t.kind,
 namespace: t.project,
 subpage: "Add Storage"
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), n.pvcVersion = a.getPreferredVersion("persistentvolumeclaims");
 var h = a.getPreferredVersion("resourcequotas"), y = a.getPreferredVersion("appliedclusterresourcequotas");
 d.get(t.project).then(_.spread(function(a, d) {
@@ -17417,12 +17418,20 @@ var p = e("orderByDisplayName"), g = e("getErrorDetails"), b = e("generateName")
 if (n.project = r, o.canI(h, "update", t.project)) {
 var p = e("orderByDisplayName"), f = e("getErrorDetails"), v = e("generateName"), y = function(e, t) {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+}), n.pvcVersion = r.getPreferredVersion("persistentvolumeclaims");
+var v = r.getPreferredVersion("resourcequotas"), y = r.getPreferredVersion("appliedclusterresourcequotas");
+d.get(t.project).then(_.spread(function(r, d) {
+if (n.project = r, o.canI(h, "update", t.project)) {
+var m = e("orderByDisplayName"), f = e("getErrorDetails"), b = e("generateName"), C = function(e, t) {
+>>>>>>> Update attachPVC controller to use getPreferredVersion
 n.disableInputs = !0, u.addNotification({
 id: "attach-pvc-error",
 type: "error",
 message: e,
 details: t
 });
+<<<<<<< HEAD
 }, C = function() {
 u.hideNotification("attach-pvc-error");
 };
@@ -17451,6 +17460,24 @@ r ? (n.attach.volumeName = r.name, n.volumeAlreadyMounted = !0) : n.volumeAlread
 };
 n.onPVCSelected = k;
 s.get(v, t.name, d).then(function(e) {
+=======
+}, S = function() {
+u.hideNotification("attach-pvc-error");
+};
+n.$on("$destroy", S);
+var w = function() {
+a.history.back();
+};
+n.cancel = w;
+var k = function(e) {
+return n.attach.allContainers || n.attach.containers[e.name];
+}, j = function() {
+var e = _.get(n, "attach.resource.spec.template");
+n.existingMountPaths = p.getMountPaths(e, k);
+};
+n.$watchGroup([ "attach.resource", "attach.allContainers" ], j), n.$watch("attach.containers", j, !0);
+s.get(h, t.name, d).then(function(e) {
+>>>>>>> Update attachPVC controller to use getPreferredVersion
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
 object: e,
 <<<<<<< HEAD
@@ -17464,6 +17491,7 @@ var t = _.get(e, "spec.template");
 n.existingVolumeNames = m.getVolumeNames(t), k();
 }, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 S(t.name + " could not be loaded.", g(e));
 }), s.list(n.pvcVersion, d).then(function(e) {
 n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs), k());
@@ -17474,6 +17502,12 @@ y(t.name + " could not be loaded.", f(e));
 n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
 }), s.list("resourcequotas", {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+C(t.name + " could not be loaded.", f(e));
+}), s.list(n.pvcVersion, d).then(function(e) {
+n.pvcs = m(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
+}), s.list(v, {
+>>>>>>> Update attachPVC controller to use getPreferredVersion
 namespace: n.projectName
 }, function(e) {
 n.quotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
@@ -17482,12 +17516,21 @@ namespace: n.projectName
 }, function(e) {
 n.clusterQuotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
 }), n.attachPVC = function() {
+<<<<<<< HEAD
 if (n.disableInputs = !0, C(), n.attachPVCForm.$valid) {
 n.attach.volumeName || (n.attach.volumeName = b("volume-"));
 var e = n.attach.resource, r = _.get(e, "spec.template"), a = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
 i && angular.forEach(r.spec.containers, function(e) {
 if (P(e)) {
 var t = m.createVolumeMount(o, i, c, l);
+=======
+if (n.disableInputs = !0, S(), n.attachPVCForm.$valid) {
+n.attach.volumeName || (n.attach.volumeName = b("volume-"));
+var e = n.attach.resource, a = _.get(e, "spec.template"), r = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
+i && angular.forEach(a.spec.containers, function(e) {
+if (k(e)) {
+var t = p.createVolumeMount(o, i, c, l);
+>>>>>>> Update attachPVC controller to use getPreferredVersion
 e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
 }
 }), n.volumeAlreadyMounted || (r.spec.volumes = r.spec.volumes || [], r.spec.volumes.push(m.createVolume(o, a))), s.update(v, e.metadata.name, n.attach.resource, d).then(function() {
@@ -17498,7 +17541,11 @@ message: "Persistent volume claim " + a.metadata.name + " added to " + f(t.kind)
 details: e
 }), w();
 }, function(e) {
+<<<<<<< HEAD
 S("An error occurred attaching the persistent volume claim to the " + f(t.kind) + ".", g(e)), n.disableInputs = !1;
+=======
+C("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
+>>>>>>> Update attachPVC controller to use getPreferredVersion
 });
 }
 };
