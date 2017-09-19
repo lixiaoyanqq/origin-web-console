@@ -18333,6 +18333,7 @@ id: "bindForm",
 label: "Binding",
 view: "views/directives/bind-service/bind-service-form.html",
 valid: !0,
+allowClickNav: !0,
 onShow: function() {
 d.nextTitle = i.hidden ? "Bind" : "Next >", d.podPresets && !c && (c = e.$watch("ctrl.selectionForm.$valid", function(e) {
 o.valid = e;
@@ -18343,6 +18344,7 @@ id: "bindParameters",
 label: "Parameters",
 view: "views/directives/bind-service/bind-parameters.html",
 hidden: !0,
+allowClickNav: !0,
 onShow: function() {
 d.nextTitle = "Bind", l || (l = e.$watch("ctrl.parametersForm.$valid", function(e) {
 i.valid = e;
@@ -18353,6 +18355,7 @@ id: "results",
 label: "Results",
 view: "views/directives/bind-service/results.html",
 valid: !0,
+allowClickNav: !1,
 onShow: function() {
 c && (c(), c = void 0), l && (l(), l = void 0), d.nextTitle = "Close", d.wizardComplete = !0, d.bindService();
 }
@@ -18814,6 +18817,7 @@ view: "views/directives/process-template-dialog/process-template-select.html",
 hidden: !0 !== v.useProjectTemplate,
 allowed: !0,
 valid: !1,
+allowClickNav: !0,
 onShow: function() {
 v.selectStep.selected = !0, v.configStep.selected = !1, v.resultsStep.selected = !1, v.nextTitle = "Next >", u(), g();
 }
@@ -18823,6 +18827,7 @@ label: "Configuration",
 view: "views/directives/process-template-dialog/process-template-config.html",
 valid: !1,
 allowed: !0,
+allowClickNav: !0,
 onShow: function() {
 v.selectStep.selected = !1, v.configStep.selected = !0, v.resultsStep.selected = !1, v.nextTitle = "Create", v.resultsStep.allowed = v.configStep.valid, h = e.$watch("$ctrl.form.$valid", function(e) {
 v.configStep.valid = e && v.selectedProject, v.resultsStep.allowed = e;
@@ -18835,6 +18840,7 @@ view: "views/directives/process-template-dialog/process-template-results.html",
 valid: !0,
 allowed: !1,
 prevEnabled: !1,
+allowClickNav: !1,
 onShow: function() {
 v.selectStep.selected = !1, v.configStep.selected = !1, v.resultsStep.selected = !0, v.nextTitle = "Close", u(), v.wizardDone = !0;
 }
