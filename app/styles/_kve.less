@@ -115,6 +115,7 @@
     width: (@as-sortable-item-button-width * 2);
   }
 
+  .key-value-editor-entry,
   .environment-from-entry {
     display: table;
     margin-bottom: 15px;
@@ -125,42 +126,26 @@
     position: relative;
     table-layout: fixed;
     width: 100%;
-    .environment-from-editor-button {
-      top: 26px; // position to align with config-map ui-select when stacked
-      @media(min-width: @screen-xs-min)  {
+    @media(min-width: @screen-md-min)  {
+      .environment-from-editor-button {
         float: left;
-        padding: 0 5px;
+        padding-right: 5px;
         position: relative;
-        top: 0; // position when not stacked
-        width: auto;
+        width: 50%;
       }
     }
     .environment-from-input {
       float: left;
-      margin-bottom: 0;
       padding-right: 5px;
       width: 100%;
-      @media(min-width: @screen-xs-min) {
-        width: calc(~"50% - 26px"); // Adjust env-from width to match kve input, when env-from row doesn't have padding-right;
-      }
-      &.prefix {
-        padding-right: 0;
-        width: calc(~"50% + 26px"); // Adjust prefix width to match kve input, when env-from row doesn't have padding-right;
-        @media(max-width: @screen-xxs-max) {
-          margin-top: 5px;
-          width: 100%;
-        }
+      @media(min-width: @screen-md-min) {
+        width: 50%;
       }
       .faux-input-group,
       .ui-select {
         float: left;
         width: 100%;
       }
-    }
-    .environment-from-view-details {
-      float: left;
-      line-height: 1;
-      padding: 6px 0 0;
     }
   }
 
@@ -186,11 +171,13 @@
   width: 50%;
 }
 
-.key-value-editor-entry-header {
+.key-value-editor-entry-header,
+.environment-from-editor-entry-header {
   padding-right: (@as-sortable-item-button-width * 2);
 }
 
-.key-value-editor-header {
+.key-value-editor-header,
+.environment-from-editor-header {
   margin-bottom: 5px;
 }
 

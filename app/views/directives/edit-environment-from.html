@@ -2,17 +2,10 @@
   <div
     ng-if="$ctrl.showHeader"
     class="environment-from-entry environment-from-editor-entry-header">
-    <div class="environment-from-editor-header config-map-header" translate>
-        Config Map/Secret
-    </div>
-    <div
-      class="environment-from-editor-header prefix-header"
-      ng-if="!$ctrl.isEnvFromReadonly() && $ctrl.hasOptions()">
-        <translate>Prefix</translate>
-        <small class="pficon pficon-help tooltip-default-icon"
-               aria-hidden="true"
-               data-toggle="tooltip"
-               data-original-title="{{'Optional prefix added to each environment variable name. A valid prefix is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"></small>
+    <div class="form-group environment-from-editor-header value-header">
+      <div class="input-group">
+        <span class="help-block">{{$ctrl.selectorPlaceholder}}</span>
+      </div>
     </div>
   </div>
 
@@ -24,25 +17,19 @@
       ng-repeat="entry in $ctrl.envFromEntries"
       as-sortable-item>
 
-      <div class="environment-from-input">
-        <div class="environment-from-editor-entry-header">
-          <div class="environment-from-editor-header config-map-header config-map-header-mobile" translate>
-            Config Map/Secret
-          </div>
-        </div>
-        <div ng-if="$ctrl.isEnvFromReadonly(entry) || !$ctrl.hasOptions()" class="faux-input-group">
+      <div class="form-group environment-from-input">
+        <div ng-if="$ctrl.isEnvFromReadonly(entry)" class="faux-input-group">
           <div ng-if="!entry.configMapRef.name && !entry.secretRef.name" translate>
-            No config maps or secrets have been added as Environment From.
+            No secrets or config maps have been added as Environment From.
           </div>
           <div ng-if="entry.configMapRef.name || entry.secretRef.name" class="faux-form-control readonly">
-            <translate>Use all keys and values from</translate>
-            <span ng-if="entry.configMapRef.name" translate>config map {{entry.configMapRef.name}}.</span>
-            <span ng-if="entry.secretRef.name" translate>secret {{entry.secretRef.name}}.</span>
-            <span ng-if="entry.prefix" translate>Names will be prefixed with "{{entry.prefix}}"</span>
+		  <translate>Use all keys and values from</translate>
+            <span ng-if="entry.configMapRef.name">config map {{entry.configMapRef.name}}</span>
+            <span ng-if="entry.secretRef.name">secret {{entry.secretRef.name}}</span>
           </div>
         </div>
 
-        <div ng-if="!$ctrl.isEnvFromReadonly(entry) && $ctrl.hasOptions()">
+        <div ng-if="!$ctrl.isEnvFromReadonly(entry)">
           <div class="ui-select">
             <ui-select ng-model="entry.selectedEnvFrom"
                        ng-required="entry.selectedEnvFrom"
@@ -64,124 +51,30 @@
         </div>
       </div>
 
-      <div class="environment-from-input prefix">
-        <div
-          class="environment-from-editor-header prefix-header prefix-header-mobile"
-          ng-if="!$ctrl.isEnvFromReadonly() && $ctrl.hasOptions()">
-            <translate>Prefix</translate>
-            <small class="pficon pficon-help tooltip-default-icon"
-                   aria-hidden="true"
-                   data-toggle="tooltip"
-                   data-original-title="{{'Optional prefix added to each environment variable name. A valid prefix is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"></small>
-        </div>
-        <div class="environment-from-input"
-             ng-if="!$ctrl.isEnvFromReadonly(entry) && $ctrl.hasOptions()"
-             ng-class="{ 'has-error': ($ctrl.editEnvironmentFromForm['envfrom-prefix-'+$index].$invalid && $ctrl.editEnvironmentFromForm['envfrom-prefix-'+$index].$touched) }">
-          <label for="envfrom-prefix-{{$index}}" class="sr-only" translate>Prefix</label>
-          <input type="text"
-                 class="form-control"
-                 placeholder="{{'Add prefix'|translate}}"
-                 id="envfrom-prefix-{{$index}}"
-                 name="envfrom-prefix-{{$index}}"
-                 ng-model="entry.prefix"
-                 ng-pattern="/^[A-Za-z_][A-Za-z0-9_]*$/">
-
-          <span ng-show="$ctrl.editEnvironmentFromForm['envfrom-prefix-'+$index].$touched">
-            <span class="help-block key-validation-error"
-                  ng-show="$ctrl.editEnvironmentFromForm['envfrom-prefix-'+$index].$error.pattern">
-              <span class="validation-text" translate>Please enter a valid prefix.</span>
-            </span>
-          </span>
-        </div>
-
-        <div ng-if="!$ctrl.isEnvFromReadonly(entry) && $ctrl.hasEntries()" class="environment-from-editor-button">
-          <span
-            ng-if="!$ctrl.cannotSort && $ctrl.entries.length > 1"
-            class="fa fa-bars sort-row"
-            role="button"
-            aria-label="{{'Move row'|translate}}"
-            aria-grabbed="false"
-            as-sortable-item-handle></span>
-          <a
-            ng-if="!$ctrl.cannotDeleteAny"
-            href=""
-            class="pficon pficon-close delete-row as-sortable-item-delete"
-            role="button"
-            aria-label="{{'Delete row'|translate}}"
-            ng-click="$ctrl.deleteEntry($index, 1)"></a>
-        </div>
-
-        <div class="environment-from-view-details">
-          <a
-            ng-if="entry.selectedEnvFrom"
-            href=""
-            ng-click="$ctrl.viewOverlayPanel(entry.selectedEnvFrom)" translate>View Details</a>
-        </div>
+      <div ng-if="!$ctrl.isEnvFromReadonly(entry)" class="environment-from-editor-button">
+        <span
+          ng-if="!$ctrl.cannotSort"
+          class="fa fa-bars sort-row"
+          role="button"
+          aria-label="Move row"
+          aria-grabbed="false"
+          as-sortable-item-handle></span>
+        <a
+          ng-if="!$ctrl.cannotDeleteAny"
+          href=""
+          class="pficon pficon-close delete-row as-sortable-item-delete"
+          role="button"
+          aria-label="Delete row"
+          ng-click="$ctrl.deleteEntry($index, 1)"></a>
       </div>
     </div>
 
-    <div class="environment-from-entry" ng-if="!$ctrl.isEnvFromReadonly() && $ctrl.hasOptions()">
+    <div class="environment-from-entry form-group" ng-if="!$ctrl.cannotAdd">
       <a
         href=""
         class="add-row-link"
         role="button"
-        ng-click="$ctrl.onAddRow()" translate>Add ALL Values from Config Map or Secret</a>
+        ng-click="$ctrl.onAddRow()">{{ $ctrl.addRowLink }}</a>
     </div>
   </div>
-
-  <overlay-panel class="add-config-to-application" show-panel="$ctrl.overlayPanelVisible" show-close="true" handle-close="$ctrl.closeOverlayPanel">
-    <div class="dialog-title">
-      <h3 translate>{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h3>
-    </div>
-    <div class="modal-body">
-      <h4>{{$ctrl.overlayPaneEntryDetails.metadata.name}}
-        <small ng-if="$ctrl.overlayPaneEntryDetails.kind === 'Secret'" class="mar-left-sm">
-          <a href=""
-             role="button"
-             ng-click="$ctrl.showSecret = !$ctrl.showSecret" translate>{{$ctrl.showSecret ? "Hide" : "Reveal"}} Secret</a>
-        </small>
-      </h4>
-
-      <div ng-if="!($ctrl.overlayPaneEntryDetails.data | size)" class="empty-state-message text-center" translate>
-        The {{$ctrl.overlayPaneEntryDetails.kind | humanizeKind}} has no properties.
-      </div>
-
-      <div ng-if="$ctrl.overlayPaneEntryDetails.data | size" class="table-responsive scroll-shadows-horizontal">
-        <table class="table table-bordered table-bordered-columns config-map-table key-value-table">
-          <tbody>
-            <tr ng-repeat="(prop, value) in $ctrl.decodedData">
-              <td class="key">{{prop}}</td>
-              <td class="value">
-                <truncate-long-text
-                  ng-if="$ctrl.overlayPaneEntryDetails.kind === 'ConfigMap'"
-                  content="value"
-                  limit="50"
-                  newline-limit="2"
-                  expandable="true">
-                </truncate-long-text>
-
-                <span ng-if="!$ctrl.showSecret && $ctrl.overlayPaneEntryDetails.kind === 'Secret'">&#42;&#42;&#42;&#42;&#42;</span>
-                <div ng-if="$ctrl.showSecret && $ctrl.overlayPaneEntryDetails.kind === 'Secret'">
-                  <truncate-long-text
-                    content="value"
-                    limit="50"
-                    newline-limit="2"
-                    expandable="true">
-                  </truncate-long-text>
-                  <div ng-if="decodedData.$$nonprintable[prop]" class="help-block" translate>
-                    This secret value contains non-printable characters and is displayed as a Base64-encoded string.
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button ng-click="$ctrl.closeOverlayPanel()"
-              type="button"
-              class="btn btn-primary pull-right" translate>Close</button>
-    </div>
-  </overlay-panel>
 </ng-form>
