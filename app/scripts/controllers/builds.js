@@ -44,7 +44,6 @@ angular.module('openshiftConsole')
         var isPipeline = $filter('isJenkinsPipelineStrategy');
 
         watches.push(DataService.watch(buildsVersion, context, function(builds) {
-          $scope.buildsLoaded = true;
           // Filter out pipeline builds, which have a separate page.
           $scope.builds = _.omitBy(builds.by("metadata.name"), isPipeline);
           $scope.emptyMessage = "No builds to show";

@@ -10203,6 +10203,7 @@ a.toggle.roles = !a.toggle.roles, a.toggle.roles ? a.filteredRoles = t : (a.filt
 });
 });
 }));
+<<<<<<< f5b8f5682c5430fbc1da32250e09c7df8cec61c9
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } ]), angular.module("openshiftConsole").controller("BuildsController", [ "$filter", "$location", "$routeParams", "$scope", "APIService", "BuildsService", "DataService", "LabelFilter", "Logger", "ProjectsService", function(a, b, c, d, e, f, g, h, i, j) {
 d.projectName = c.project, d.builds = {}, d.unfilteredBuildConfigs = {}, d.buildConfigs = void 0, d.labelSuggestions = {}, d.latestByConfig = {}, d.clearFilter = function() {
@@ -10257,18 +10258,30 @@ var n = r.getLabelSelector();
 if (n.isEmpty()) return !0;
 var a = l(e) || "";
 return a && t.unfilteredBuildConfigs[a] ? !!t.buildConfigs[a] : n.matches(e);
+=======
+} ]), angular.module("openshiftConsole").controller("BuildsController", [ "$filter", "$location", "$routeParams", "$scope", "APIService", "BuildsService", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
+a.projectName = n.project, a.builds = {}, a.unfilteredBuildConfigs = {}, a.buildConfigs = void 0, a.labelSuggestions = {}, a.alerts = a.alerts || {}, a.emptyMessage = "Loading...", a.latestByConfig = {};
+var u = e("buildConfigForBuild"), d = r.getPreferredVersion("builds"), p = r.getPreferredVersion("buildconfigs"), m = [];
+l.get(n.project).then(_.spread(function(t, n) {
+function r(e) {
+var t = s.getLabelSelector();
+if (t.isEmpty()) return !0;
+var n = u(e) || "";
+return n && a.unfilteredBuildConfigs[n] ? !!a.buildConfigs[n] : t.matches(e);
+>>>>>>> Update builds controller to use getPreferredVersion
 }
-function d(e) {
-if (l(e)) return !1;
-var t = r.getLabelSelector();
+function l(e) {
+if (u(e)) return !1;
+var t = s.getLabelSelector();
 return !!t.isEmpty() || t.matches(e);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
-function p() {
-t.latestByConfig = s.latestBuildByConfig(t.builds, c), t.buildsNoConfig = _.pickBy(t.builds, d), angular.forEach(t.buildConfigs, function(e, n) {
-t.latestByConfig[n] = t.latestByConfig[n] || null;
+function f() {
+a.latestByConfig = o.latestBuildByConfig(a.builds, r), a.buildsNoConfig = _.pickBy(a.builds, l), angular.forEach(a.buildConfigs, function(e, t) {
+a.latestByConfig[t] = a.latestByConfig[t] || null;
 });
 }
+<<<<<<< f5b8f5682c5430fbc1da32250e09c7df8cec61c9
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 function n() {
@@ -10351,9 +10364,27 @@ t.unfilteredBuildConfigs = _.omitBy(e.by("metadata.name"), f), r.addLabelSuggest
 })), r.onActiveFiltersChanged(function(e) {
 t.$apply(function() {
 t.buildConfigs = e.select(t.unfilteredBuildConfigs), p(), m();
+=======
+function g() {
+var e = _.omitBy(a.latestByConfig, _.isNull);
+!s.getLabelSelector().isEmpty() && _.isEmpty(a.buildConfigs) && _.isEmpty(e) ? a.alerts.builds = {
+type: "warning",
+details: "The active filters are hiding all builds."
+} : delete a.alerts.builds;
+}
+a.project = t;
+var h = e("isJenkinsPipelineStrategy");
+m.push(i.watch(d, n, function(e) {
+a.builds = _.omitBy(e.by("metadata.name"), h), a.emptyMessage = "No builds to show", f(), s.addLabelSuggestionsFromResources(a.builds, a.labelSuggestions), c.log("builds (subscribe)", a.builds);
+})), m.push(i.watch(p, n, function(e) {
+a.unfilteredBuildConfigs = _.omitBy(e.by("metadata.name"), h), s.addLabelSuggestionsFromResources(a.unfilteredBuildConfigs, a.labelSuggestions), s.setLabelSuggestions(a.labelSuggestions), a.buildConfigs = s.getLabelSelector().select(a.unfilteredBuildConfigs), f(), g(), c.log("buildconfigs (subscribe)", a.buildConfigs);
+})), s.onActiveFiltersChanged(function(e) {
+a.$apply(function() {
+a.buildConfigs = e.select(a.unfilteredBuildConfigs), f(), g();
+>>>>>>> Update builds controller to use getPreferredVersion
 });
-}), t.$on("$destroy", function() {
-n.unwatchAll(u);
+}), a.$on("$destroy", function() {
+i.unwatchAll(m);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("PipelinesController", [ "$filter", "$routeParams", "$scope", "Constants", "Navigate", "BuildsService", "DataService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
