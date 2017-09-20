@@ -46,9 +46,8 @@ angular.module('openshiftConsole')
 
     $scope.buildConfigsVersion = APIService.getPreferredVersion('buildconfigs');
     $scope.buildsVersion = APIService.getPreferredVersion('builds');
-    $scope.buildConfigsInstantiateVersion = APIService.getPreferredVersion('buildconfigs/instantiate');
 
-    $scope.emptyMessage = gettext("Loading...");
+    $scope.emptyMessage = "Loading...";
 
     $scope.aceLoaded = function(editor) {
       var session = editor.getSession();
@@ -198,7 +197,7 @@ angular.module('openshiftConsole')
         );
 
       watches.push(DataService.watch($scope.buildsVersion, context, function(builds, action, build) {
-        $scope.emptyMessage = gettext("No builds to show");
+        $scope.emptyMessage = "No builds to show";
         if (!action) {
           $scope.unfilteredBuilds = BuildsService.validatedBuildsForBuildConfig($routeParams.buildconfig, builds.by('metadata.name'));
         } else {
