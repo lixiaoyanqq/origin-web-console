@@ -2383,6 +2383,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"project.metadata.name | canIAddToProject\" class=\"visible-xs\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
     "</li>\n" +
+<<<<<<< 61754f449b386bd75b3a7d9c288912264b0851e6
     "<li ng-if=\"'configmaps' | canI : 'update'\">\n" +
     "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
     "</li>\n" +
@@ -2391,6 +2392,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"'configmaps' | canI : 'delete'\">\n" +
     "<delete-link kind=\"ConfigMap\" resource-name=\"{{configMap.metadata.name}}\" project-name=\"{{configMap.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
+=======
+    "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\">Edit</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{configMap | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"configMapsVersion | canI : 'delete'\">\n" +
+    "<delete-link kind=\"ConfigMap\" resource-name=\"{{configMap.metadata.name}}\" project-name=\"{{configMap.metadata.namespace}}\" alerts=\"alerts\">\n" +
+>>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -2439,8 +2450,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< 61754f449b386bd75b3a7d9c288912264b0851e6
     "<div class=\"pull-right\" ng-if=\"project && ('configmaps' | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\" translate>Create Config Map</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\">Create Config Map</a>\n" +
+>>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</div>\n" +
     "<h1>\n" +
     "<translate>Config Maps</translate>\n" +
