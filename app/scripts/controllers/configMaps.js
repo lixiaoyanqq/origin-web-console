@@ -19,9 +19,6 @@ angular.module('openshiftConsole')
     $scope.loaded = false;
     $scope.labelSuggestions = {};
     $scope.configMapsVersion = APIService.getPreferredVersion('configmaps');
-    $scope.clearFilter = function () {
-      LabelFilter.clear();
-    };
     var watches = [];
     var configMaps;
 
