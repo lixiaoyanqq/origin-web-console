@@ -2395,15 +2395,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"project.metadata.name | canIAddToProject\" class=\"visible-xs\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"'configmaps' | canI : 'update'\">\n" +
+    "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\">Edit</a>\n" +
 >>>>>>> "Add to Application" for config maps
     "</li>\n" +
     "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
     "</li>\n" +
     "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{configMap | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"{{configMap | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"configMapsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"ConfigMap\" resource-name=\"{{configMap.metadata.name}}\" project-name=\"{{configMap.metadata.namespace}}\" alerts=\"alerts\">\n" +
@@ -2463,8 +2467,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< HEAD
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create') && ((configMaps | hashSize) > 0 || filterWithZeroResults)\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\" translate>Create Config Map</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\">Create Config Map</a>\n" +
+>>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</div>\n" +
     "<h1>\n" +
     "<translate>Config Maps</translate>\n" +
