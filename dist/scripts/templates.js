@@ -1807,10 +1807,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</li>\n" +
     "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
     "</li>\n" +
     "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{buildConfig | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\">Edit</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{buildConfig | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update buildConfig controller to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"buildConfigsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"BuildConfig\" resource-name=\"{{buildConfig.metadata.name}}\" project-name=\"{{buildConfig.metadata.namespace}}\" alerts=\"alerts\">\n" +
