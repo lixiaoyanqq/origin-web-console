@@ -1795,6 +1795,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</a>\n" +
     "</li>\n" +
+<<<<<<< 84fbc73f2590b31bc1d19b7899a0fef63cc3f781
     "<li ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
     "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
     "</li>\n" +
@@ -1803,6 +1804,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"'buildconfigs' | canI : 'delete'\">\n" +
     "<delete-link kind=\"BuildConfig\" resource-name=\"{{buildConfig.metadata.name}}\" project-name=\"{{buildConfig.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
+=======
+    "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\">Edit</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{buildConfig | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"buildConfigsVersion | canI : 'delete'\">\n" +
+    "<delete-link kind=\"BuildConfig\" resource-name=\"{{buildConfig.metadata.name}}\" project-name=\"{{buildConfig.metadata.namespace}}\" alerts=\"alerts\">\n" +
+>>>>>>> Update buildConfig controller to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -2180,13 +2191,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<key-value-editor ng-if=\"expand.imageEnv\" entries=\"BCEnvVarsFromImage\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" is-readonly cannot-add cannot-sort cannot-delete show-header></key-value-editor>\n" +
     "<ng-form name=\"forms.bcEnvVars\" class=\"mar-bottom-xl block\">\n" +
-    "<div ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
+    "<div ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
     "<confirm-on-exit dirty=\"forms.bcEnvVars.$dirty\"></confirm-on-exit>\n" +
     "<key-value-editor entries=\"envVars\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'Please enter a valid key'|translate}}\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"{{'Add Environment Variable'|translate}}\" show-header></key-value-editor>\n" +
     "<button class=\"btn btn-default\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.bcEnvVars.$pristine || forms.bcEnvVars.$invalid\" translate>Save</button>\n" +
     "<a ng-if=\"!forms.bcEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\" translate>Clear Changes</a>\n" +
     "</div>\n" +
+<<<<<<< 84fbc73f2590b31bc1d19b7899a0fef63cc3f781
     "<key-value-editor ng-if=\"!('buildconfigs' | canI : 'update')\" entries=\"envVars\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" is-readonly cannot-add cannot-sort cannot-delete show-header></key-value-editor>\n" +
+=======
+    "<key-value-editor ng-if=\"!(buildConfigsVersion | canI : 'update')\" entries=\"envVars\" key-placeholder=\"Name\" value-placeholder=\"Value\" is-readonly cannot-add cannot-sort cannot-delete show-header></key-value-editor>\n" +
+>>>>>>> Update buildConfig controller to use getPreferredVersion
     "</ng-form>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
