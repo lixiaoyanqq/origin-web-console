@@ -6500,7 +6500,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"service-binding-actions\" ng-if=\"!ctrl.binding.metadata.deletionTimestamp\">\n" +
     "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" label=\"Delete Binding\" kind=\"binding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
     "</delete-link>\n" +
-    "<a ng-if=\"('secrets' | canI : 'get')\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
+    "<a ng-if=\"('secrets' | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
     "View Secret\n" +
     "</a>\n" +
     "</div>\n" +
@@ -14681,6 +14681,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< bf7d23da6b7f5ce543fda550108126f0f89c3ed8
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
     "<div ng-switch-when=\"failed\" class=\"row\">\n" +
     "<div class=\"col-sm-12\">\n" +
@@ -14692,9 +14693,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<truncate-long-text content=\"row.apiObject | serviceInstanceFailedMessage\" expandable=\"true\" limit=\"265\" newline-limit=\"4\"></truncate-long-text>\n" +
 =======
     "<a ng-if=\"('secrets' | canI : 'get')\" ng-href=\"{{binding.spec.secretName | navigateResourceURL : 'Secret' : row.apiObject.metadata.namespace}}\">\n" +
+=======
+    "<a ng-if=\"('secrets' | canI : 'get') && (binding | isBindingReady)\" ng-href=\"{{binding.spec.secretName | navigateResourceURL : 'Secret' : row.apiObject.metadata.namespace}}\">\n" +
+>>>>>>> Don't link to secret if binding isn't ready
     "{{binding.spec.secretName}}\n" +
     "</a>\n" +
-    "<span ng-if=\"!('secrets' | canI : 'get')\">\n" +
+    "<span ng-if=\"!('secrets' | canI : 'get') || !(binding | isBindingReady)\">\n" +
     "{{binding.spec.secretName}}\n" +
 >>>>>>> Add bindings list to resource pages
     "</span>\n" +
