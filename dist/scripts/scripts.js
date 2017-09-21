@@ -27178,7 +27178,8 @@ namespace: "<",
 binding: "<",
 refApiObject: "<?",
 serviceClasses: "<",
-serviceInstances: "<"
+serviceInstances: "<",
+isOverview: "<?"
 },
 templateUrl: "views/directives/_service-binding.html"
 });
@@ -27770,11 +27771,12 @@ return _.get(s, [ "state", "serviceClasses", e, "description" ]);
 var e = _.get(s.apiObject, "status.conditions"), t = _.find(e, {
 =======
 controller: [ "$filter", "AuthorizationService", "BindingService", "ListRowUtils", "ServiceInstancesService", function(e, t, n, a, r) {
-var o = this;
+var o = this, i = e("isBindingFailed"), s = e("isBindingReady");
 _.extend(o, a.ui);
-var i = e("serviceInstanceDisplayName"), s = function() {
+var c = e("serviceInstanceDisplayName"), l = function() {
 var e = o.apiObject.spec.serviceClassName;
 return _.get(o, [ "state", "serviceClasses", e, "description" ]);
+<<<<<<< HEAD
 }, c = function() {
 var e = _.get(o.apiObject, "status.conditions"), t = _.find(e, {
 >>>>>>> Updates for Service Instance & Bindings
@@ -27784,9 +27786,13 @@ o.instanceError = _.find(e, {
 type: "Failed",
 status: "True"
 }), _.get(o.apiObject, "metadata.deletionTimestamp") ? o.instanceStatus = "deleted" : o.instanceError ? o.instanceStatus = "failed" : t && "True" === t.status ? o.instanceStatus = "ready" : (o.instanceStatus = "pending", o.pendingMessage = _.get(t, "message") || "The instance is being provisioned asynchronously.");
+=======
+}, u = function() {
+_.get(o.apiObject, "metadata.deletionTimestamp") ? o.instanceStatus = "deleted" : i(o.apiObject) ? o.instanceStatus = "failed" : s(o.apiObject) ? o.instanceStatus = "ready" : o.instanceStatus = "pending";
+>>>>>>> Updates to service instance page, show failed bindings
 };
 o.$doCheck = function() {
-c(), o.notifications = a.getNotifications(o.apiObject, o.state), o.displayName = i(o.apiObject, o.state.serviceClasses), o.isBindable = !o.instanceError && n.isServiceBindable(o.apiObject, o.state.serviceClasses), o.description = s();
+u(), o.notifications = a.getNotifications(o.apiObject, o.state), o.displayName = c(o.apiObject, o.state.serviceClasses), o.isBindable = n.isServiceBindable(o.apiObject, o.state.serviceClasses), o.description = l();
 }, o.$onChanges = function(e) {
 e.bindings && (o.deleteableBindings = _.reject(o.bindings, "metadata.deletionTimestamp"));
 }, o.getSecretForBinding = function(e) {
@@ -27889,6 +27895,9 @@ controllerAs: "$ctrl",
 bindings: {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Updates to service instance page, show failed bindings
 sectionTitle: "@",
 namespace: "<",
 refApiObject: "<",

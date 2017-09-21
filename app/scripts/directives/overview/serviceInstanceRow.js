@@ -60,20 +60,14 @@
     };
 
     var updateInstanceStatus = function() {
-      var conditions = _.get(row.apiObject, 'status.conditions');
-      var readyCondition = _.find(conditions, {type: 'Ready'});
-
-      row.instanceError = _.find(conditions, {type: 'Failed', status: 'True'});
-
       if (_.get(row.apiObject, 'metadata.deletionTimestamp')) {
         row.instanceStatus = 'deleted';
-      } else if (row.instanceError) {
+      } else if (isBindingFailed(row.apiObject)) {
         row.instanceStatus = 'failed';
-      } else if (readyCondition && readyCondition.status === 'True') {
+      } else if (isBindingReady(row.apiObject)) {
         row.instanceStatus = 'ready';
       } else {
         row.instanceStatus = 'pending';
-        row.pendingMessage = _.get(readyCondition, 'message') || 'The instance is being provisioned asynchronously.';
       }
     };
 
