@@ -26395,12 +26395,17 @@ namespace: "<",
 binding: "<",
 refApiObject: "<?",
 serviceClasses: "<",
+<<<<<<< 564bfad6c6a2a2e087a95a77d3e86fc5e258bfdc
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 serviceInstances: "<",
 isOverview: "<?"
 =======
 serviceInstances: "<"
 >>>>>>> Updates for Service Instance & Bindings
+=======
+serviceInstances: "<",
+isOverview: "<?"
+>>>>>>> Updates to service instance page, show failed bindings
 },
 templateUrl: "views/directives/_service-binding.html"
 });
@@ -27041,22 +27046,16 @@ controller: [ "$filter", "APIService", "AuthorizationService", "BindingService",
 =======
 angular.module("openshiftConsole").component("serviceInstanceRow", {
 controller: [ "$filter", "AuthorizationService", "BindingService", "ListRowUtils", "ServiceInstancesService", function(e, t, n, a, r) {
-var o = this;
+var o = this, i = e("isBindingFailed"), s = e("isBindingReady");
 _.extend(o, a.ui);
-var i = e("serviceInstanceDisplayName"), s = function() {
+var c = e("serviceInstanceDisplayName"), l = function() {
 var e = o.apiObject.spec.serviceClassName;
 return _.get(o, [ "state", "serviceClasses", e, "description" ]);
-}, c = function() {
-var e = _.get(o.apiObject, "status.conditions"), t = _.find(e, {
-type: "Ready"
-});
-o.instanceError = _.find(e, {
-type: "Failed",
-status: "True"
-}), _.get(o.apiObject, "metadata.deletionTimestamp") ? o.instanceStatus = "deleted" : o.instanceError ? o.instanceStatus = "failed" : t && "True" === t.status ? o.instanceStatus = "ready" : (o.instanceStatus = "pending", o.pendingMessage = _.get(t, "message") || "The instance is being provisioned asynchronously.");
+}, u = function() {
+_.get(o.apiObject, "metadata.deletionTimestamp") ? o.instanceStatus = "deleted" : i(o.apiObject) ? o.instanceStatus = "failed" : s(o.apiObject) ? o.instanceStatus = "ready" : o.instanceStatus = "pending";
 };
 o.$doCheck = function() {
-c(), o.notifications = a.getNotifications(o.apiObject, o.state), o.displayName = i(o.apiObject, o.state.serviceClasses), o.isBindable = !o.instanceError && n.isServiceBindable(o.apiObject, o.state.serviceClasses), o.description = s();
+u(), o.notifications = a.getNotifications(o.apiObject, o.state), o.displayName = c(o.apiObject, o.state.serviceClasses), o.isBindable = n.isServiceBindable(o.apiObject, o.state.serviceClasses), o.description = l();
 }, o.$onChanges = function(e) {
 e.bindings && (o.deleteableBindings = _.reject(o.bindings, "metadata.deletionTimestamp"));
 }, o.getSecretForBinding = function(e) {
@@ -27106,6 +27105,7 @@ templateUrl: "views/overview/_pipelines.html"
 }), angular.module("openshiftConsole").component("overviewServiceBindings", {
 controllerAs: "$ctrl",
 bindings: {
+<<<<<<< 564bfad6c6a2a2e087a95a77d3e86fc5e258bfdc
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 sectionTitle: "@",
@@ -27114,6 +27114,9 @@ refApiObject: "<",
 =======
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
+=======
+sectionTitle: "@",
+>>>>>>> Updates to service instance page, show failed bindings
 namespace: "<",
 >>>>>>> Add bindings list to resource pages
 bindings: "<",
