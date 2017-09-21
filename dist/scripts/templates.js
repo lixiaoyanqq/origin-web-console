@@ -4086,7 +4086,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
     "</div>\n" +
     "{{serviceInstance | serviceInstanceDisplayName:serviceClasses}}\n" +
+    "<small class=\"list-row-longname\">{{serviceInstance.metadata.name}}</small>\n" +
+    "<div>\n" +
     "<small class=\"meta\">created <span am-time-ago=\"serviceInstance.metadata.creationTimestamp\"></span></small>\n" +
+    "</div>\n" +
     "</h1>\n" +
     "<labels labels=\"serviceInstance.metadata.labels\" clickable=\"true\" kind=\"service-instances\" project-name=\"{{serviceInstance.metadata.namespace}}\" limit=\"3\"></labels>\n" +
     "</div>\n" +
@@ -4110,11 +4113,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-lg-6\">\n" +
     "<p ng-bind-html=\"plan.description | linkify : '_blank'\"></p>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
-    "<dt ng-if-start=\"serviceClass.description || serviceClass.externalMetadata.longDescription\">Description:</dt>\n" +
-    "<dd ng-if-end>\n" +
-    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.description | linkify : '_blank'\"></p>\n" +
-    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.externalMetadata.longDescription | linkify : '_blank'\"></p>\n" +
-    "</dd>\n" +
     "<dt>Status:</dt>\n" +
     "<dd>\n" +
     "<status-icon status=\"serviceInstance | serviceInstanceStatus\" disable-animation></status-icon>\n" +
@@ -4123,6 +4121,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt ng-if-start=\"serviceInstance | serviceInstanceConditionMessage\">Status Reason:</dt>\n" +
     "<dd ng-if-end>\n" +
     "{{serviceInstance | serviceInstanceConditionMessage}}\n" +
+    "</dd>\n" +
+    "<dt ng-if-start=\"serviceClass.description || serviceClass.externalMetadata.longDescription\">Description:</dt>\n" +
+    "<dd ng-if-end>\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.description | linkify : '_blank'\"></p>\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"serviceClass.externalMetadata.longDescription | linkify : '_blank'\"></p>\n" +
     "</dd>\n" +
     "</dl>\n" +
     "</div>\n" +
@@ -6098,13 +6101,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/_service-binding.html',
     "<div class=\"service-binding\">\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-sm-5 col-md-6\">\n" +
-    "<h3 ng-if=\"$ctrl.serviceClass\">\n" +
+    "<div ng-class=\"{'col-sm-5 col-md-6': $ctrl.isOverview,\n" +
+    "                    'col-sm-8 col-md-6 col-lg-8': !$ctrl.isOverview}\">\n" +
+    "<h3>\n" +
+    "<div class=\"component-label\">\n" +
+    "Secret\n" +
+    "</div>\n" +
     "<span ng-if=\"$ctrl.serviceClass\">\n" +
-    "<span ng-if=\"$ctrl.refApiObject.kind !== 'Instance'\">\n" +
+    "<span ng-if=\"$ctrl.refApiObject.kind !== 'ServiceInstance'\">\n" +
     "{{$ctrl.serviceClass.externalMetadata.displayName || $ctrl.serviceClass.metadata.name}}\n" +
     "</span>\n" +
-    "<span ng-if=\"$ctrl.refApiObject.kind === 'Instance'\">\n" +
+    "<span ng-if=\"$ctrl.refApiObject.kind === 'ServiceInstance'\">\n" +
     "{{$ctrl.binding.spec.secretName}}\n" +
     "</span>\n" +
     "</span>\n" +
@@ -6115,18 +6122,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small>created <span am-time-ago=\"$ctrl.binding.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
-    "<div class=\"col-sm-7 col-md-6\" ng-if=\"$ctrl.binding.metadata.deletionTimestamp\">\n" +
+    "<div ng-if=\"$ctrl.binding.metadata.deletionTimestamp\" ng-class=\"{'col-sm-7 col-md-6': $ctrl.isOverview,\n" +
+    "                    'col-sm-4 col-md-3': !$ctrl.isOverview}\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "Marked for Deletion\n" +
     "</div>\n" +
-    "<div class=\"col-sm-7 col-md-6\" ng-if=\"!$ctrl.binding.metadata.deletionTimestamp && !($ctrl.binding | isBindingReady)\">\n" +
+    "<div ng-if=\"!$ctrl.binding.metadata.deletionTimestamp && ($ctrl.binding | isBindingFailed)\" ng-class=\"{'col-sm-7 col-md-6': $ctrl.isOverview,\n" +
+    "                    'col-sm-4 col-md-6 col-lg-4': !$ctrl.isOverview}\">\n" +
+    "<span dynamic-content=\"{{$ctrl.binding | bindingFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
+    "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
+    "<span>Error</span>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "<div ng-if=\"!$ctrl.binding.metadata.deletionTimestamp && !($ctrl.binding | isBindingFailed) && !($ctrl.binding | isBindingReady)\" ng-class=\"{'col-sm-7 col-md-6': $ctrl.isOverview,\n" +
+    "                    'col-sm-4 col-md-6 col-lg-4': !$ctrl.isOverview}\">\n" +
     "<status-icon status=\"'Pending'\"></status-icon>Pending\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"service-binding-actions\" ng-if=\"!ctrl.binding.metadata.deletionTimestamp\">\n" +
-    "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" label=\"Delete Binding\" kind=\"binding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
+    "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" kind=\"serviceinstancecredential\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
     "</delete-link>\n" +
-    "<a ng-if=\"('secrets' | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
+    "<a ng-if=\"('secrets' | canI : 'get') && !($ctrl.binding | isBindingFailed) && !(binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
     "View Secret\n" +
     "</a>\n" +
     "</div>\n" +
@@ -12948,8 +12964,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<uib-tab ng-if=\"row.showBindings && (row.bindings | size)\" active=\"row.selectedTab.bindings\">\n" +
     "<uib-tab-heading>Bindings</uib-tab-heading>\n" +
+<<<<<<< 05f278e3a813184e6d1d9bd4785874b063f9ead3
     "<overview-service-bindings namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 >>>>>>> Add bindings list to resource pages
+=======
+    "<overview-service-bindings section-title=\"Service Bindings\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+>>>>>>> Updates to service instance page, show failed bindings
     "</overview-service-bindings>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -12965,7 +12985,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<overview-builds build-configs=\"row.buildConfigs\" recent-builds-by-build-config=\"row.state.recentBuildsByBuildConfig\" context=\"row.state.context\" hide-log=\"row.state.limitWatches\">\n" +
     "</overview-builds>\n" +
-    "<overview-service-bindings ng-if=\"row.showBindings && (row.bindings | size)\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+    "<overview-service-bindings section-title=\"Service Bindings\" ng-if=\"row.showBindings && (row.bindings | size)\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "</overview-service-bindings>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13198,8 +13218,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\" translate>Create Binding</a>\n" +
 =======
     "<div class=\"expanded-section\">\n" +
-    "<div class=\"section-title hidden-xs\">Service Bindings</div>\n" +
-    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
+    "<div class=\"section-title hidden-xs\">{{$ctrl.sectionTitle}}</div>\n" +
+    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"true\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
     "</service-binding>\n" +
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
@@ -13257,7 +13277,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"list-pf-details\" ng-if=\"!row.expanded\" ng-switch=\"row.instanceStatus\">\n" +
-    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.instanceError.message}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
+    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.apiObject | serviceInstanceFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
     "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
     "<span>Error</span>\n" +
     "</span>\n" +
@@ -13371,7 +13391,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"alert word-break alert-danger\">\n" +
     "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">error</span>\n" +
-    "<span class=\"strong\">{{row.instanceError.message}}</span>\n" +
+    "<span class=\"strong\">{{row.apiObject | serviceInstanceFailedMessage}}</span>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13392,56 +13412,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p class=\"pre-wrap\" ng-bind-html=\"row.description | linky\"></p>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"section-title\" ng-if=\"row.isBindable || row.bindings\">\n" +
-    "Bindings\n" +
-    "</div>\n" +
-    "<div class=\"row overview-bindings\" ng-repeat=\"(name, binding) in row.bindings\">\n" +
-    "<div class=\"col-sm-5 col-md-6\">\n" +
-    "<div ng-if=\"!(row.state.applicationsByBinding[binding.metadata.name] | size)\">\n" +
-    "<h3>\n" +
-    "<div class=\"component-label\">\n" +
-    "Secret\n" +
-    "</div>\n" +
-    "<a ng-if=\"('secrets' | canI : 'get') && (binding | isBindingReady)\" ng-href=\"{{binding.spec.secretName | navigateResourceURL : 'Secret' : row.apiObject.metadata.namespace}}\">\n" +
-    "{{binding.spec.secretName}}\n" +
-    "</a>\n" +
-    "<span ng-if=\"!('secrets' | canI : 'get') || !(binding | isBindingReady)\">\n" +
-    "{{binding.spec.secretName}}\n" +
-    "</span>\n" +
-    "</h3>\n" +
-    "</div>\n" +
-    "<div ng-repeat=\"target in row.state.applicationsByBinding[binding.metadata.name] track by (target | uid)\">\n" +
-    "<h3>\n" +
-    "<div class=\"component-label\">\n" +
-    "{{target.kind | humanizeKind : true}}\n" +
-    "</div>\n" +
-    "<a ng-href=\"{{target | navigateResourceURL}}\">{{target.metadata.name}}</a>\n" +
-    "</h3>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div class=\"col-sm-7 col-md-6 overview-bindings\">\n" +
-    "<span ng-if=\"binding.metadata.deletionTimestamp\">\n" +
-    "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
-    "Marked for Deletion\n" +
-    "</span>\n" +
-    "<span ng-if=\"!(binding | isBindingReady) && !binding.metadata.deletionTimestamp\">\n" +
-    "<status-icon status=\"'Pending'\"></status-icon> Pending\n" +
-    "</span>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div class=\"row\" ng-if=\"row.isBindable && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
-    "<div class=\"col-sm-12\">\n" +
-    "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
-    "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
-    "Create Binding\n" +
-    "</a>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div class=\"row\" ng-if=\"!row.bindings.length && (!row.isBindable || !({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create'))\">\n" +
-    "<div class=\"col-sm-12\">\n" +
-    "<em>No bindings</em>\n" +
-    "</div>\n" +
-    "</div>\n" +
+    "<overview-service-bindings ng-if=\"row.isBindable || row.bindings\" section-title=\"Bindings\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+    "</overview-service-bindings>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14163,6 +14135,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<thead>\n" +
     "<tr>\n" +
     "<th>Name</th>\n" +
+    "<th>Instance Name</th>\n" +
     "<th>Status</th>\n" +
     "<th>Created</th>\n" +
     "<th>Bindings</th>\n" +
@@ -14176,6 +14149,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<tbody ng-if=\"(serviceInstances | size) > 0\">\n" +
     "<tr ng-repeat=\"serviceInstance in serviceInstances track by (serviceInstance | uid)\">\n" +
     "<td data-title=\"Name\"><a ng-href=\"{{serviceInstance | navigateResourceURL}}\">{{serviceInstance | serviceInstanceDisplayName:serviceClasses}}</a></td>\n" +
+    "<td data-title=\"Instance Name\"><span>{{serviceInstance.metadata.name}}</span></td>\n" +
     "<td data-title=\"Status\">\n" +
     "<div row class=\"status\">\n" +
     "<status-icon status=\"serviceInstance | serviceInstanceStatus\" disable-animation></status-icon>\n" +
