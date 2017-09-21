@@ -25792,7 +25792,11 @@ var e = _.get(y, "template.metadata.annotations.iconClass", "fa fa-clone");
 return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
 }
 function l() {
+<<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
 y.steps || (y.steps = [ y.selectStep, y.configStep, y.resultsStep ]);
+=======
+v.steps || (v.steps = [ v.selectStep, v.infoStep, v.configStep, v.resultsStep ]);
+>>>>>>> Changing overlay layout to a single column
 }
 function u() {
 v && (v(), v = void 0);
@@ -25850,7 +25854,21 @@ hidden: !0 !== y.useProjectTemplate,
 allowed: !0,
 valid: !1,
 onShow: function() {
+<<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
 y.selectStep.selected = !0, y.configStep.selected = !1, y.resultsStep.selected = !1, y.nextTitle = "Next >", u(), h();
+=======
+v.infoStep.selected = !1, v.selectStep.selected = !0, v.configStep.selected = !1, v.resultsStep.selected = !1, v.nextTitle = "Next >", u(), g();
+}
+}, v.infoStep = {
+id: "info",
+label: "Information",
+view: "views/directives/process-template-dialog/process-template-info.html",
+allowed: !0,
+valid: !0,
+allowClickNav: !0,
+onShow: function() {
+v.infoStep.selected = !0, v.selectStep.selected = !1, v.configStep.selected = !1, v.resultsStep.selected = !1, v.nextTitle = "Next >", u();
+>>>>>>> Changing overlay layout to a single column
 }
 }, y.configStep = {
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
@@ -25865,8 +25883,13 @@ onShow: p
 }, x.resultsStep = {
 =======
 onShow: function() {
+<<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
 y.selectStep.selected = !1, y.configStep.selected = !0, y.resultsStep.selected = !1, y.nextTitle = "Create", y.resultsStep.allowed = y.configStep.valid, v = e.$watch("$ctrl.form.$valid", function(e) {
 y.configStep.valid = e && y.selectedProject, y.resultsStep.allowed = e;
+=======
+v.infoStep.selected = !1, v.selectStep.selected = !1, v.configStep.selected = !0, v.resultsStep.selected = !1, v.nextTitle = "Create", v.resultsStep.allowed = v.configStep.valid, h = e.$watch("$ctrl.form.$valid", function(e) {
+v.configStep.valid = e && v.selectedProject, v.resultsStep.allowed = e;
+>>>>>>> Changing overlay layout to a single column
 });
 }
 <<<<<<< a3f0653fa08af6dea27dfd8409132aa1a2c0091f
@@ -25950,7 +25973,11 @@ project: "<",
 useProjectTemplate: "<",
 =======
 onShow: function() {
+<<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
 y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected = !0, y.nextTitle = "Close", u(), y.wizardDone = !0;
+=======
+v.infoStep.selected = !1, v.selectStep.selected = !1, v.configStep.selected = !1, v.resultsStep.selected = !0, v.nextTitle = "Close", u(), v.wizardDone = !0;
+>>>>>>> Changing overlay layout to a single column
 }
 }, y.$onInit = function() {
 y.loginBaseUrl = a.openshiftAPIBaseUrl(), y.preSelectedProject = y.selectedProject = y.project, h(), y.projectEmptyState = {
@@ -25999,7 +26026,7 @@ y.catalogItems = e, y.totalCount = y.catalogItems.length, f(), t && o.addNotific
 }, v.onProjectSelected = function(t) {
 v.selectedProject = t, v.configStep.valid = e.$ctrl.form.$valid && v.selectedProject;
 }, v.templateSelected = function(e) {
-v.selectedTemplate = e, v.template = _.get(e, "resource"), v.selectStep.valid = !!e;
+v.selectedTemplate = e, v.template = _.get(e, "resource"), v.selectStep.valid = !!e, v.iconClass = c();
 }, v.templateProjectChange = function() {
 v.templateProjectName = _.get(v.templateProject, "metadata.name"), v.catalogItems = {}, v.templateSelected(), n.getProjectCatalogItems(v.templateProjectName, !1, !0).then(_.spread(function(e, t) {
 v.catalogItems = e, v.totalCount = v.catalogItems.length, m(), t && o.addNotification({

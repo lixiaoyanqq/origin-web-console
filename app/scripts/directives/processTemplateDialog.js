@@ -57,16 +57,6 @@
       onShow: showInfo
     };
 
-    ctrl.selectStep = {
-      id: 'projectTemplates',
-      label: 'Selection',
-      view: 'views/directives/process-template-dialog/process-template-select.html',
-      hidden: ctrl.useProjectTemplate !== true,
-      allowed: true,
-      valid: false,
-      onShow: showSelect
-    };
-
     ctrl.configStep = {
       id: 'configuration',
       label: 'Configuration',
@@ -182,6 +172,7 @@
       ctrl.selectedTemplate = template;
       ctrl.template = _.get(template, 'resource');
       ctrl.selectStep.valid = !!template;
+      ctrl.iconClass = getIconClass();
     };
 
     ctrl.templateProjectChange = function () {
@@ -219,7 +210,7 @@
 
     function initializeSteps() {
       if (!ctrl.steps) {
-        ctrl.steps = [ctrl.selectStep, ctrl.configStep, ctrl.resultsStep];
+        ctrl.steps = [ctrl.selectStep, ctrl.infoStep, ctrl.configStep, ctrl.resultsStep];
       }
     }
 
@@ -230,7 +221,17 @@
       }
     }
 
+    function showInfo() {
+      ctrl.infoStep.selected = true;
+      ctrl.selectStep.selected = false;
+      ctrl.configStep.selected = false;
+      ctrl.resultsStep.selected = false;
+      ctrl.nextTitle = "Next >";
+      clearValidityWatcher();
+    }
+
     function showSelect() {
+      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = true;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = false;
@@ -240,6 +241,7 @@
     }
 
     function showConfig() {
+      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = true;
       ctrl.resultsStep.selected = false;
@@ -253,6 +255,7 @@
     }
 
     function showResults() {
+      ctrl.infoStep.selected = false;
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = true;
