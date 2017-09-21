@@ -236,10 +236,10 @@ return _.get(e, "metadata.name");
 return _.get(e, "metadata.uid");
 }, G = function() {
 return _.size(P.deploymentConfigs) + _.size(P.vanillaReplicationControllers) + _.size(P.deployments) + _.size(P.vanillaReplicaSets) + _.size(P.statefulSets) + _.size(P.monopods) + _.size(P.state.serviceInstances);
-}, W = function() {
-return _.size(P.filteredDeploymentConfigs) + _.size(P.filteredReplicationControllers) + _.size(P.filteredDeployments) + _.size(P.filteredReplicaSets) + _.size(P.filteredStatefulSets) + _.size(P.filteredMonopods) + _.size(P.filteredServiceInstances);
 }, K = function() {
-P.size = G(), P.filteredSize = W();
+return _.size(P.filteredDeploymentConfigs) + _.size(P.filteredReplicationControllers) + _.size(P.filteredDeployments) + _.size(P.filteredReplicaSets) + _.size(P.filteredStatefulSets) + _.size(P.filteredMonopods) + _.size(P.filteredServiceInstances);
+}, W = function() {
+P.size = G(), P.filteredSize = K();
 var e = 0 === P.size, t = P.deploymentConfigs && P.replicationControllers && P.deployments && P.replicaSets && P.statefulSets && P.pods && P.state.serviceInstances;
 V.expandAll = t && 1 === P.size, P.showGetStarted = t && e, P.showLoading = !t && e, P.everythingFiltered = !e && !P.filteredSize, P.hidePipelineOtherResources = "pipeline" === P.viewBy && (P.filterActive || _.isEmpty(P.pipelineBuildConfigs));
 }, Q = function(e) {
@@ -377,7 +377,7 @@ case "name":
 return !_.isEmpty(V.filterKeywords);
 }
 }, ie = function() {
-P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationControllers = re(P.vanillaReplicationControllers), P.filteredDeployments = re(P.deployments), P.filteredReplicaSets = re(P.vanillaReplicaSets), P.filteredStatefulSets = re(P.statefulSets), P.filteredMonopods = re(P.monopods), P.filteredPipelineBuildConfigs = re(P.pipelineBuildConfigs), P.filteredServiceInstances = re(V.orderedServiceInstances), P.filterActive = oe(), Z(), K();
+P.filteredDeploymentConfigs = re(P.deploymentConfigs), P.filteredReplicationControllers = re(P.vanillaReplicationControllers), P.filteredDeployments = re(P.deployments), P.filteredReplicaSets = re(P.vanillaReplicaSets), P.filteredStatefulSets = re(P.statefulSets), P.filteredMonopods = re(P.monopods), P.filteredPipelineBuildConfigs = re(P.pipelineBuildConfigs), P.filteredServiceInstances = re(V.orderedServiceInstances), P.filterActive = oe(), Z(), W();
 }, se = n.project + "/overview/view-by";
 P.viewBy = localStorage.getItem(se) || "app", e.$watch(function() {
 return P.viewBy;
@@ -934,7 +934,7 @@ _.isEmpty(o) || (t = t.concat(o));
 qe(), ze();
 }, Ge = function() {
 _.each(P.deploymentConfigs, Me);
-}, We = function() {
+}, Ke = function() {
 if (V.builds && P.buildConfigs) {
 P.recentPipelinesByBuildConfig = {}, V.recentBuildsByBuildConfig = {}, V.recentPipelinesByDeploymentConfig = {};
 var e = {};
@@ -949,7 +949,7 @@ return i.sortBuilds(e, !0);
 return i.sortBuilds(e, !0);
 }), Ge();
 }
-}, Ke = function() {
+}, We = function() {
 k.setQuotaNotifications(V.quotas, V.clusterQuotas, n.project);
 };
 P.clearFilter = function() {
@@ -1014,7 +1014,7 @@ resource: "deployments"
 }, a, function(e) {
 I = e.by("metadata.uid"), P.deployments = _.sortBy(I, "metadata.name"), Ee(), Ae(P.deployments), Ae(P.vanillaReplicaSets), we(P.deployments), Qe(), ie(), h.log("deployments (subscribe)", P.deploymentsByUID);
 })), Ye.push(l.watch("builds", a, function(e) {
-V.builds = e.by("metadata.name"), We(), h.log("builds (subscribe)", V.builds);
+V.builds = e.by("metadata.name"), Ke(), h.log("builds (subscribe)", V.builds);
 })), Ye.push(l.watch({
 group: "apps",
 resource: "statefulsets"
@@ -1034,7 +1034,7 @@ P.routes = e.by("metadata.name"), Be(), h.log("routes (subscribe)", P.routes);
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("buildConfigs", a, function(e) {
-P.buildConfigs = e.by("metadata.name"), Fe(), He(), We(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
+P.buildConfigs = e.by("metadata.name"), Fe(), He(), Ke(), ie(), h.log("buildconfigs (subscribe)", P.buildConfigs);
 }, {
 poll: R,
 pollInterval: 6e4
@@ -1053,12 +1053,12 @@ T = e.by("metadata.name"), m.buildDockerRefMapForImageStreams(T, V.imageStreamIm
 poll: R,
 pollInterval: 6e4
 })), Ye.push(l.watch("resourcequotas", a, function(e) {
-V.quotas = e.by("metadata.name"), Ke();
+V.quotas = e.by("metadata.name"), We();
 }, {
 poll: !0,
 pollInterval: 6e4
 })), Ye.push(l.watch("appliedclusterresourcequotas", a, function(e) {
-V.clusterQuotas = e.by("metadata.name"), Ke();
+V.clusterQuotas = e.by("metadata.name"), We();
 }, {
 poll: !0,
 pollInterval: 6e4
@@ -21834,7 +21834,7 @@ name: i.apiObject.metadata.name
 }), function() {
 angular.module("openshiftConsole").component("addConfigToApplication", {
 controller: [ "$filter", "$scope", "APIService", "ApplicationsService", "DataService", "Navigate", "NotificationsService", "StorageService", function(e, t, n, a, r, o, i, s) {
-var c = this, l = function() {
+var c = this, l = e("humanizeKind"), u = function() {
 var e = {
 namespace: c.project.metadata.name
 };
@@ -21850,19 +21850,23 @@ m.addType = "env", m.disableInputs = !1, f();
 =======
 =======
 c.$onInit = function() {
+<<<<<<< 487a4537f7801eb3b7805112505ac2fba069d737
 c.addType = "env", c.disableInputs = !1, l();
 <<<<<<< 6d5e9a5aa4a6d93c06a5519a2feb6650bd482f4a
 >>>>>>> Use new ApplicationsService.getApplications utility
 var e = new RegExp("^[A-Za-z_]{1}[A-Za-z0-9_]*$");
 c.hasInvalidEnvVars = _.some(c.secret.data, function(t, n) {
 =======
+=======
+c.addType = "env", c.disableInputs = !1, u();
+>>>>>>> Show application kind when add to application dropdown is open
 var e = new RegExp("^[A-Za-z_][A-Za-z0-9_]*$");
 c.hasInvalidEnvVars = _.some(c.apiObject.data, function(t, n) {
 >>>>>>> "Add to Application" for config maps
 return !e.test(n);
 });
 };
-var u = function(e) {
+var d = function(e) {
 return c.attachAllContainers || c.attachContainers[e.name];
 };
 <<<<<<< 974ec410f422a21b1aa09a77ba11e3c0cdbfe9fa
@@ -21877,6 +21881,8 @@ return c.application;
 var e = _.get(c.application, "spec.template");
 c.existingMountPaths = s.getMountPaths(e), c.attachAllContainers = !0;
 });
+}, c.groupByKind = function(e) {
+return l(e.kind);
 }, c.addToApplication = function() {
 var t = angular.copy(c.application), a = _.get(t, "spec.template");
 if (c.disableInputs = !0, "env" === c.addType) {
@@ -21894,16 +21900,16 @@ name: c.apiObject.metadata.name
 };
 }
 _.each(a.spec.containers, function(e) {
-u(e) && (e.envFrom = e.envFrom || [], e.envFrom.push(s));
+d(e) && (e.envFrom = e.envFrom || [], e.envFrom.push(s));
 });
 } else {
-var l = e("generateName")(c.apiObject.metadata.name + "-"), d = {
+var l = e("generateName")(c.apiObject.metadata.name + "-"), u = {
 name: l,
 mountPath: c.mountVolume,
 readOnly: !0
 };
 _.each(a.spec.containers, function(e) {
-u(e) && (e.volumeMounts = e.volumeMounts || [], e.volumeMounts.push(d));
+d(e) && (e.volumeMounts = e.volumeMounts || [], e.volumeMounts.push(u));
 });
 var p = {
 name: l
