@@ -6828,6 +6828,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"bind-service-wizard\">\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<pf-wizard title=\"Create Binding\" hide-sidebar=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" hide-back-button=\"{{ctrl.hideBack}}\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" wz-disabled=\"{{step.hidden}}\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\" allow-click-nav=\"step.allowClickNav\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
@@ -6839,6 +6840,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\">\n" +
 >>>>>>> Support binding parameters
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+=======
+    "<pf-wizard title=\"Create Binding\" hide-sidebar=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\">\n" +
+    "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by step.id\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\" allow-click-nav=\"step.allowClickNav\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"bind-service-config\">\n" +
     "<div ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
@@ -7331,6 +7336,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/deploy-image-dialog.html',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<pf-wizard wizard-title=\"{{'Deploy Image'|translate}}\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\">\n" +
     "\n" +
     "<pf-wizard-step step-title=\"{{'Image'|translate}}\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!!($ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated)\">\n" +
@@ -7341,6 +7347,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
+=======
+    "<pf-wizard title=\"Deploy Image\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"$ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated\">\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
@@ -8298,6 +8307,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/from-file-dialog.html',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<pf-wizard title=\"{{'Import'|translate}} YAML / JSON\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
     "<pf-wizard-step step-title=\"YAML / JSON\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
 =======
@@ -8306,6 +8316,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<pf-wizard on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-header=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+    "<pf-wizard title=\"Import YAML / JSON\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<pf-wizard-step step-title=\"JSON / YAML\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
@@ -8545,7 +8558,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div> \n" +
     "<sidebar></sidebar>\n" +
-    "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+    "<overlay-panel show-panel=\"ordering.panelName\" handle-close=\"closeOrderingPanel\">\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
 <<<<<<< HEAD
@@ -10511,7 +10524,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service\">\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<pf-wizard title=\"{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project' | translate}}\" hide-sidebar=\"true\" hide-back-button=\"!$ctrl.useProjectTemplate\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" ng-class=\"{'pf-wizard-no-back': !$ctrl.useProjectTemplate}\">\n" +
+=======
+    "<pf-wizard title=\"{{!$ctrl.useProjectTemplate && ($ctrl.template | displayName) || 'Select from Project'}}\" hide-sidebar=\"true\" hide-back-button=\"!$ctrl.useProjectTemplate\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" ng-class=\"{'pf-wizard-no-back': !$ctrl.useProjectTemplate}\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<pf-wizard-step ng-repeat=\"step in $ctrl.steps track by step.id\" step-title=\"{{step.label}}\" wz-disabled=\"{{step.hidden}}\" allow-click-nav=\"step.allowClickNav\" next-enabled=\"step.valid\" prev-enabled=\"step.prevEnabled\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
 =======
     "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"order-service-wizard-step\" wizard-ready=\"$ctrl.wizardReady\" next-title=\"$ctrl.nextTitle\" next-callback=\"$ctrl.next\" on-finish=\"$ctrl.close()\" on-cancel=\"$ctrl.close()\" wizard-done=\"$ctrl.wizardDone\" current-step=\"$ctrl.currentStep\" class=\"pf-wizard-no-back\">\n" +
@@ -10522,6 +10539,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Changing overlay layout to a single column
     "<div ng-if=\"step.selected\" ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
@@ -10543,14 +10563,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/process-template-dialog/process-template-info.html',
     "<div class=\"order-service-details\">\n" +
+<<<<<<< HEAD
     "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
 =======
     "<div class=\"order-service-details\" ng-if=\"!$ctrl.selectStep.selected\">\n" +
+=======
+>>>>>>> Changing overlay layout to a single column
     "<div class=\"order-service-details-top\">\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "<div class=\"service-icon\">\n" +
+<<<<<<< HEAD
     "<span ng-if=\"$ctrl.image\" class=\"image\"><img ng-src=\"{{$ctrl.image}}\" alt=\"\"></span>\n" +
     "<span ng-if=\"!$ctrl.image\" class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
+=======
+    "<span class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
+>>>>>>> Changing overlay layout to a single column
     "</div>\n" +
     "<div class=\"service-title-area\">\n" +
     "<div class=\"service-title\">\n" +
@@ -10569,6 +10596,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-description-block\">\n" +
     "<p ng-bind-html=\"$ctrl.template | description | linky : '_blank'\" class=\"description\"></p>\n" +
     "</div>\n" +
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     "</div>\n" +
@@ -10591,11 +10619,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<process-template template=\"$ctrl.template\" project=\"$ctrl.preSelectedProject\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.unfilteredProjects\" is-dialog=\"true\"></process-template>\n" +
     "</form>\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+>>>>>>> Changing overlay layout to a single column
     "</div>"
   );
 
 
   $templateCache.put('views/directives/process-template-dialog/process-template-results.html',
+<<<<<<< HEAD
 <<<<<<< HEAD
     "<div class=\"order-service-config\">\n" +
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.template | displayName\">\n" +
@@ -10605,10 +10636,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\">\n" +
     "</next-steps>"
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<div class=\"order-service-config\">\n" +
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\">\n" +
+    "</next-steps>\n" +
+    "</div>"
+>>>>>>> Changing overlay layout to a single column
   );
 
 
   $templateCache.put('views/directives/process-template-dialog/process-template-select.html',
+<<<<<<< HEAD
 <<<<<<< HEAD
     "<div class=\"order-service-config\">\n" +
     "<div class=\"config-top\">\n" +
@@ -10617,6 +10655,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ui-select name=\"selectProject\" ng-model=\"$ctrl.templateProject\" ng-change=\"$ctrl.templateProjectChange()\" search-enabled=\"$ctrl.searchEnabled\">\n" +
     "<ui-select-match placeholder=\"{{'Select a Project'|translate}}\">\n" +
 =======
+=======
+    "<div class=\"order-service-config\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<div class=\"config-top\">\n" +
     "<div class=\"select-project-for-template\">\n" +
     "<h2>Select from Project</h2>\n" +
@@ -10653,9 +10694,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "</div>\n" +
 =======
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "</div>\n" +
+>>>>>>> Changing overlay layout to a single column
     "</div>"
   );
 
@@ -10781,8 +10826,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span>There are no service bindings.</span>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<overlay-panel single-column=\"true\" show-panel=\"$ctrl.overlayPanelVisible\" show-close=\"true\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
 >>>>>>> Add bindings list to resource pages
+=======
+    "<overlay-panel show-panel=\"$ctrl.overlayPanelVisible\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<bind-service target=\"$ctrl.apiObject\" project=\"$ctrl.project\" on-close=\"$ctrl.closeOverlayPanel\"></bind-service>\n" +
     "</overlay-panel>"
   );
@@ -11015,12 +11064,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/unbind-service.html',
     "<div class=\"bind-service-wizard unbind-service\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<pf-wizard title=\"Delete Binding\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" allow-click-nav=\"false\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
 =======
     "<pf-wizard hide-header=\"true\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
     "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by $index\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "<pf-wizard title=\"Delete Binding\" hide-sidebar=\"true\" hide-back-button=\"true\" step-class=\"bind-service-wizard-step\" wizard-ready=\"ctrl.wizardReady\" next-title=\"ctrl.nextTitle\" on-finish=\"ctrl.closeWizard()\" on-cancel=\"ctrl.closeWizard()\" wizard-done=\"ctrl.wizardComplete\" class=\"pf-wizard-no-back\">\n" +
+    "<pf-wizard-step ng-repeat=\"step in ctrl.steps track by step.id\" step-title=\"{{step.label}}\" next-enabled=\"step.valid\" allow-click-nav=\"false\" on-show=\"step.onShow\" step-id=\"{{step.id}}\" step-priority=\"{{$index}}\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"bind-service-config\">\n" +
     "<div ng-include=\"step.view\" class=\"wizard-pf-main-form-contents\"></div>\n" +
@@ -12231,6 +12285,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle landing-page\">\n" +
     "<div class=\"middle-content\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<overlay-panel show-panel=\"ordering.panelName\" handle-close=\"closeOrderingPanel\">\n" +
     "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
@@ -12238,6 +12293,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
 =======
     "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
+=======
+    "<overlay-panel show-panel=\"ordering.panelName\" handle-close=\"closeOrderingPanel\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<process-template-dialog ng-if=\"template\" template=\"template\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
@@ -14869,8 +14927,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<overlay-panel single-column=\"true\" show-panel=\"row.overlay.panelVisible\" show-close=\"true\" handle-close=\"row.closeOverlayPanel\">\n" +
 >>>>>>> Show provision status of service instances on the overview page.
+=======
+    "<overlay-panel show-panel=\"row.overlay.panelVisible\" handle-close=\"row.closeOverlayPanel\">\n" +
+>>>>>>> Changing overlay layout to a single column
     "<div ng-if=\"row.overlay.panelName === 'bindService'\">\n" +
     "<bind-service target=\"row.overlay.state.target\" project=\"row.state.project\" on-close=\"row.closeOverlayPanel\"></bind-service>\n" +
     "</div>\n" +
