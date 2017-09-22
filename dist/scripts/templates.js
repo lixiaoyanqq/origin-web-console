@@ -13275,26 +13275,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{row.apiObject | navigateResourceURL}}\" ng-bind-html=\"row.displayName | highlightKeywords : row.state.filterKeywords\"></a>\n" +
     "<div ng-bind-html=\"row.apiObject.metadata.name | highlightKeywords : row.state.filterKeywords\" class=\"list-row-longname\"></div>\n" +
     "</h3>\n" +
-    "<div class=\"status-icons\">\n" +
-    "<notification-icon ng-if=\"!row.expanded\" alerts=\"row.notifications\"></notification-icon>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div class=\"list-pf-details\" ng-if=\"!row.expanded\" ng-switch=\"row.instanceStatus\">\n" +
-    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.apiObject | serviceInstanceFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
+    "<div class=\"status-icons\" ng-if=\"!row.expanded\">\n" +
+    "<notification-icon alerts=\"row.notifications\"></notification-icon>\n" +
+    "<div ng-switch=\"row.instanceStatus\">\n" +
+    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.apiObject | serviceInstanceFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\" class=\"notification-icon-count\">\n" +
     "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
     "<span>Error</span>\n" +
     "</span>\n" +
-    "<span ng-switch-when=\"deleted\">\n" +
+    "<span ng-switch-when=\"deleted\" class=\"notification-icon-count\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "Marked for Deletion\n" +
     "</span>\n" +
-    "<span ng-switch-when=\"pending\">\n" +
+    "<span ng-switch-when=\"pending\" class=\"notification-icon-count\">\n" +
     "<span class=\"spinner spinner-xs spinner-inline\" aria-hidden=\"true\"></span>\n" +
     "<span>Pending</span>\n" +
     "</span>\n" +
-    "<div ng-switch-default>\n" +
-    "<div class=\"hidden-xs hidden-sm\">\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"list-pf-details\" ng-if=\"!row.expanded\">\n" +
     "<span ng-if=\"!row.bindings.length\n" +
+<<<<<<< 5d3e04a4959fad9c6c052058599b414e9e1b9021
     "                        && row.isBindable\n" +
 <<<<<<< 3afdb5cdc2e1c6f17bcd15c48f0429db3bb4800a
     "                        && ({resource: 'bindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
@@ -13304,13 +13305,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "                        && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
 >>>>>>> Adopt new service catalog resource names
+=======
+    "                    && row.isBindable\n" +
+    "                    && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\" class=\"hidden-xs hidden-sm\">\n" +
+>>>>>>> Making display of errors for service rows consistent with others
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
     "</a>\n" +
 >>>>>>> Add bindings list to resource pages
     "</span>\n" +
+<<<<<<< 5d3e04a4959fad9c6c052058599b414e9e1b9021
     "<span ng-if=\"row.bindings.length\" class=\"component-label\" translate>Bindings</span>\n" +
+=======
+    "<div ng-if=\"row.bindings.length\" class=\"hidden-xs hidden-sm\">\n" +
+    "<span class=\"component-label\">Bindings</span>\n" +
+>>>>>>> Making display of errors for service rows consistent with others
     "<p ng-if=\"firstBinding = row.bindings[0]\" class=\"bindings\">\n" +
     "<span ng-if=\"application = row.state.applicationsByBinding[firstBinding.metadata.name][0]\">\n" +
     "{{application.metadata.name}}\n" +
@@ -13324,7 +13334,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>{{row.bindings.length -1}} other<span ng-if=\"row.bindings.length > 2\">s</span></translate></a>\n" +
     "</span>\n" +
     "</p>\n" +
-    "</div>\n" +
     "</div>\n" +
     "<div class=\"hidden-xs\" ng-if=\"(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL\">\n" +
     "<a ng-href=\"{{row.apiObject.status.dashboardURL}}\" target=\"_blank\">\n" +
