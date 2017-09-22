@@ -26387,8 +26387,10 @@ controller: [ "APIService", "AuthorizationService", "DataService", "Logger", "Se
 angular.module("openshiftConsole").component("serviceBinding", {
 controller: [ function() {
 var e = this, t = function() {
+if ("ServiceInstance" !== _.get(e.refApiObject, "kind")) {
 var t = _.get(e.binding, "spec.instanceRef.name"), n = _.get(e.serviceInstances, [ t ]), a = _.get(n, "spec.serviceClassName");
 e.serviceClass = _.get(e.serviceClasses, [ a ]);
+}
 };
 this.$onChanges = function(e) {
 (e.binding || e.serviceInstances || e.serviceClasses) && t();
@@ -27124,7 +27126,11 @@ refApiObject: "<",
 sectionTitle: "@",
 >>>>>>> Updates to service instance page, show failed bindings
 namespace: "<",
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
 >>>>>>> Add bindings list to resource pages
+=======
+refApiObject: "<",
+>>>>>>> Fix to correctly show binding name in bindings list
 bindings: "<",
 bindableServiceInstances: "<",
 serviceClasses: "<",

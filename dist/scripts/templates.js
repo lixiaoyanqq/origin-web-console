@@ -6489,19 +6489,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"component-label\">\n" +
     "Secret\n" +
     "</div>\n" +
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
 >>>>>>> Updates to service instance page, show failed bindings
     "<span ng-if=\"$ctrl.serviceClass\">\n" +
+=======
+    "{{$ctrl.binding.metadata.name}}\n" +
+>>>>>>> Fix to correctly show binding name in bindings list
     "<span ng-if=\"$ctrl.refApiObject.kind !== 'ServiceInstance'\">\n" +
+    "<small ng-if=\"$ctrl.serviceClass\">\n" +
     "{{$ctrl.serviceClass.externalMetadata.displayName || $ctrl.serviceClass.metadata.name}}\n" +
+    "</small>\n" +
+    "<small>{{$ctrl.binding.spec.instanceRef.name}}</small>\n" +
     "</span>\n" +
-    "<span ng-if=\"$ctrl.refApiObject.kind === 'ServiceInstance'\">\n" +
-    "{{$ctrl.binding.spec.secretName}}\n" +
-    "</span>\n" +
-    "</span>\n" +
-    "<span ng-if=\"!$ctrl.serviceClass\">\n" +
-    "{{$ctrl.binding.spec.instanceRef.name}}\n" +
-    "</span>\n" +
-    "<small ng-if=\"$ctrl.serviceClass\">{{$ctrl.binding.spec.instanceRef.name}}</small>\n" +
     "<small>created <span am-time-ago=\"$ctrl.binding.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
@@ -14280,12 +14279,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<overview-service-bindings section-title=\"Service Bindings\" ref-api-object=\"row.apiObject\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 =======
     "<uib-tab-heading>Bindings</uib-tab-heading>\n" +
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
 <<<<<<< 564bfad6c6a2a2e087a95a77d3e86fc5e258bfdc
     "<overview-service-bindings namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 >>>>>>> Add bindings list to resource pages
 =======
     "<overview-service-bindings section-title=\"Service Bindings\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 >>>>>>> Updates to service instance page, show failed bindings
+=======
+    "<overview-service-bindings section-title=\"Service Bindings\" ref-api-object=\"row.apiObject\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+>>>>>>> Fix to correctly show binding name in bindings list
     "</overview-service-bindings>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -14301,6 +14304,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<overview-builds build-configs=\"row.buildConfigs\" recent-builds-by-build-config=\"row.state.recentBuildsByBuildConfig\" context=\"row.state.context\" hide-log=\"row.state.limitWatches\">\n" +
     "</overview-builds>\n" +
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
 <<<<<<< 564bfad6c6a2a2e087a95a77d3e86fc5e258bfdc
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
     "<overview-service-bindings section-title=\"Service Bindings\" ng-if=\"row.showBindings && (row.bindings | size)\" ref-api-object=\"row.apiObject\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
@@ -14310,6 +14314,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<overview-service-bindings section-title=\"Service Bindings\" ng-if=\"row.showBindings && (row.bindings | size)\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 >>>>>>> Updates to service instance page, show failed bindings
+=======
+    "<overview-service-bindings section-title=\"Service Bindings\" ng-if=\"row.showBindings && (row.bindings | size)\" ref-api-object=\"row.apiObject\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" service-instances=\"row.state.serviceInstances\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+>>>>>>> Fix to correctly show binding name in bindings list
     "</overview-service-bindings>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14555,8 +14562,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
 =======
     "<div class=\"section-title hidden-xs\">{{$ctrl.sectionTitle}}</div>\n" +
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"true\" namespace=\"$ctrl.namespace\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
 >>>>>>> Updates to service instance page, show failed bindings
+=======
+    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"true\" namespace=\"$ctrl.namespace\" ref-api-object=\"$ctrl.refApiObject\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
+>>>>>>> Fix to correctly show binding name in bindings list
     "</service-binding>\n" +
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
@@ -14845,6 +14856,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"row.serviceClass.spec.externalMetadata.documentationUrl\" ng-href=\"{{row.serviceClass.spec.externalMetadata.documentationUrl}}\" target=\"_blank\" class=\"learn-more-link\"><translate>View Documentation</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
     "<a ng-if=\"row.serviceClass.spec.externalMetadata.supportUrl\" ng-href=\"{{row.serviceClass.spec.externalMetadata.supportUrl}}\" target=\"_blank\" class=\"learn-more-link\"><translate>Get Support</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
     "</div>\n" +
+<<<<<<< 6c8edd544179ba4c13819fe643c11051e3e612cb
     "</div>\n" +
 <<<<<<< 5985737c08b962a908ac7e4cb2134962ae561acf
 =======
@@ -14860,6 +14872,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 =======
     "<overview-service-bindings ng-if=\"row.isBindable || row.bindings\" section-title=\"Bindings\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+=======
+    "<overview-service-bindings ng-if=\"row.isBindable || row.bindings\" section-title=\"Bindings\" ref-api-object=\"row.apiObject\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
+>>>>>>> Fix to correctly show binding name in bindings list
     "</overview-service-bindings>\n" +
 >>>>>>> Updates to service instance page, show failed bindings
     "</div>\n" +
