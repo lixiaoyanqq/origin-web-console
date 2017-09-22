@@ -27188,8 +27188,10 @@ n.currentStage = t.getCurrentStage(a);
 angular.module("openshiftConsole").component("serviceBinding", {
 controller: [ function() {
 var e = this, t = function() {
+if ("ServiceInstance" !== _.get(e.refApiObject, "kind")) {
 var t = _.get(e.binding, "spec.instanceRef.name"), n = _.get(e.serviceInstances, [ t ]), a = _.get(n, "spec.serviceClassName");
 e.serviceClass = _.get(e.serviceClasses, [ a ]);
+}
 };
 this.$onChanges = function(e) {
 (e.binding || e.serviceInstances || e.serviceClasses) && t();
@@ -27924,11 +27926,14 @@ bindings: {
 sectionTitle: "@",
 namespace: "<",
 refApiObject: "<",
+<<<<<<< HEAD
 =======
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 namespace: "<",
 >>>>>>> Add bindings list to resource pages
+=======
+>>>>>>> Fix to correctly show binding name in bindings list
 bindings: "<",
 bindableServiceInstances: "<",
 serviceClasses: "<",
