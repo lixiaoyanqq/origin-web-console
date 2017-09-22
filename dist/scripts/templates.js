@@ -14621,6 +14621,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{row.apiObject | navigateResourceURL}}\" ng-bind-html=\"row.displayName | highlightKeywords : row.state.filterKeywords\"></a>\n" +
     "<div ng-bind-html=\"row.apiObject.metadata.name | highlightKeywords : row.state.filterKeywords\" class=\"list-row-longname\"></div>\n" +
     "</h3>\n" +
+<<<<<<< ebfb4713833677f09810434073ce6f54f5dd263d
     "<div class=\"status-icons\" ng-if=\"!row.expanded\" ng-init=\"tooltipID = 'instance-status-tooltip-' + $id\">\n" +
     "<notification-icon alerts=\"row.notifications\"></notification-icon>\n" +
     "<div ng-switch=\"row.instanceStatus\" class=\"instance-status-notification\" id=\"{{tooltipID}}\">\n" +
@@ -14645,17 +14646,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"list-pf-details\" ng-if=\"!row.expanded\" ng-switch=\"row.instanceStatus\">\n" +
     "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.apiObject | serviceInstanceFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\">\n" +
+=======
+    "<div class=\"status-icons\" ng-if=\"!row.expanded\">\n" +
+    "<notification-icon alerts=\"row.notifications\"></notification-icon>\n" +
+    "<div ng-switch=\"row.instanceStatus\">\n" +
+    "<span ng-switch-when=\"failed\" dynamic-content=\"{{row.apiObject | serviceInstanceFailedMessage}}\" data-toggle=\"tooltip\" data-trigger=\"hover\" class=\"notification-icon-count\">\n" +
+>>>>>>> Making display of errors for service rows consistent with others
     "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
     "<span>Error</span>\n" +
     "</span>\n" +
-    "<span ng-switch-when=\"deleted\">\n" +
+    "<span ng-switch-when=\"deleted\" class=\"notification-icon-count\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "<span>Marked for Deletion</span>\n" +
     "</span>\n" +
-    "<span ng-switch-when=\"pending\">\n" +
+    "<span ng-switch-when=\"pending\" class=\"notification-icon-count\">\n" +
     "<span class=\"spinner spinner-xs spinner-inline\" aria-hidden=\"true\"></span>\n" +
     "<span>Pending</span>\n" +
     "</span>\n" +
+<<<<<<< ebfb4713833677f09810434073ce6f54f5dd263d
     "<div ng-switch-default>\n" +
     "<div class=\"hidden-xs hidden-sm\">\n" +
 >>>>>>> Show provision status of service instances on the overview page.
@@ -14669,6 +14677,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "                        && row.isBindable\n" +
     "                        && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+=======
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"list-pf-details\" ng-if=\"!row.expanded\">\n" +
+    "<span ng-if=\"!row.bindings.length\n" +
+    "                    && row.isBindable\n" +
+    "                    && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\" class=\"hidden-xs hidden-sm\">\n" +
+>>>>>>> Making display of errors for service rows consistent with others
     "<a href=\"\" ng-click=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
@@ -14676,7 +14693,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</span>\n" +
     "<div ng-if=\"row.bindings.length\" class=\"hidden-xs hidden-sm\">\n" +
+<<<<<<< ebfb4713833677f09810434073ce6f54f5dd263d
     "<span class=\"component-label\" translate>Bindings</span>\n" +
+=======
+    "<span class=\"component-label\">Bindings</span>\n" +
+>>>>>>> Making display of errors for service rows consistent with others
     "<p ng-if=\"firstBinding = row.bindings[0]\" class=\"bindings\">\n" +
     "<span ng-if=\"application = row.state.applicationsByBinding[firstBinding.metadata.name][0]\">\n" +
     "{{application.metadata.name}}\n" +
@@ -14691,10 +14712,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</p>\n" +
     "</div>\n" +
+<<<<<<< ebfb4713833677f09810434073ce6f54f5dd263d
 <<<<<<< 72f2428654a3a28b0425e786505ad4ce7b45f7f6
 =======
     "</div>\n" +
 >>>>>>> Show provision status of service instances on the overview page.
+=======
+>>>>>>> Making display of errors for service rows consistent with others
     "<div class=\"hidden-xs\" ng-if=\"(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL\">\n" +
     "<a ng-href=\"{{row.apiObject.status.dashboardURL}}\" target=\"_blank\">\n" +
     "<translate>Dashboard</translate> <i class=\"fa fa-external-link small\" aria-hidden=\"true\"></i>\n" +
