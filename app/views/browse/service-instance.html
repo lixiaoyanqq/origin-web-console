@@ -75,10 +75,10 @@
                           <dd ng-if-end>
                             {{serviceInstance | serviceInstanceConditionMessage}}
                           </dd>
-                          <dt ng-if-start="serviceClass.description || serviceClass.externalMetadata.longDescription">Description:</dt>
+                          <dt ng-if-start="serviceClass.spec.description || serviceClass.spec.externalMetadata.longDescription">Description:</dt>
                           <dd ng-if-end>
-                            <p class="pre-wrap" ng-bind-html="serviceClass.description | linkify : '_blank'"></p>
-                            <p class="pre-wrap" ng-bind-html="serviceClass.externalMetadata.longDescription | linkify : '_blank'"></p>
+                            <p class="pre-wrap" ng-bind-html="serviceClass.spec.description | linkify : '_blank'"></p>
+                            <p class="pre-wrap" ng-bind-html="serviceClass.spec.externalMetadata.longDescription | linkify : '_blank'"></p>
                           </dd>
                         </dl>
                         <div class="hidden-lg">

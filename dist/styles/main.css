@@ -828,6 +828,7 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
 <<<<<<< HEAD
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
@@ -848,6 +849,9 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 =======
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+.bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
+>>>>>>> Adopt service catalog API changes
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .btn.focus,.btn:focus,.btn:hover{color:#4d5258;text-decoration:none}
 .btn.active,.btn:active{outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}
@@ -1285,7 +1289,11 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:focus,a.list-gro
 .list-group-item-heading{margin-top:0;margin-bottom:5px}
 .list-group-item-text{margin-bottom:0;line-height:1.3}
 .carousel-inner>.item>a>img,.carousel-inner>.item>img,.close{line-height:1}
+<<<<<<< HEAD
 .panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:1px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+=======
+.panel{margin-bottom:21px;background-color:#fff;border:1px solid transparent;border-radius:1px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+>>>>>>> Adopt service catalog API changes
 .panel-title,.panel>.list-group,.panel>.panel-collapse>.list-group,.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}
 .panel-body{padding:15px}
 .panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:0px;border-top-left-radius:0px}
@@ -2655,6 +2663,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
@@ -2687,6 +2696,10 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 .c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+.bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+.c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
+>>>>>>> Adopt service catalog API changes
 .bootstrap-switch .bootstrap-switch-container{display:inline-block;top:0;border-radius:1px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bootstrap-switch .bootstrap-switch-handle-off,.bootstrap-switch .bootstrap-switch-handle-on,.bootstrap-switch .bootstrap-switch-label{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:inline-block!important;height:100%;padding:2px 6px;font-size:12px;line-height:20px}
 .ie9.layout-pf-alt-fixed .nav-pf-vertical-alt,.ie9.layout-pf-fixed .nav-pf-secondary-nav,.ie9.layout-pf-fixed .nav-pf-tertiary-nav,.ie9.layout-pf-fixed .nav-pf-vertical,.list-group-item-header{box-sizing:content-box}
@@ -4958,6 +4971,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .landing-search-form .search-pf-input-group .pficon-close{font-size:17px;padding-top:.3em}
 .landing-search-form .dropdown-menu{margin-top:0;width:100%}
 .landing-search-form .dropdown-menu>li>a.catalog-search-match{display:flex;line-height:1.5;padding:3px 10px 3px 5px;white-space:normal}
+.order-service-details .order-service-description-block .description,.pre-wrap{white-space:pre-wrap}
 .landing-search-form .dropdown-menu .active>a.catalog-search-match,.landing-search-form .dropdown-menu :focus{background-color:#def3ff!important;border-color:#bee1f4!important;color:inherit!important}
 .landing-search-form .dropdown-menu .active>a.catalog-search-match.no-matches{background-color:transparent!important;border-color:transparent!important}
 >>>>>>> Updates to service instance page, show failed bindings
@@ -5009,6 +5023,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-details .order-service-description-block{margin-top:15px}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-details .order-service-description-block .description{white-space:pre-wrap}
 >>>>>>> Changing overlay layout to a single column
 =======
@@ -5016,6 +5031,8 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 .order-service-details .order-service-description-block .description{white-space:pre-wrap}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+>>>>>>> Adopt service catalog API changes
 .order-service-details .order-service-description-block .learn-more-link{font-size:11px;white-space:nowrap}
 .order-service-details .order-service-description-block .order-service-dependent-image{margin-bottom:5px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-description-block .order-service-dependent-image .pficon{margin-right:5px;vertical-align:-1px}
@@ -5279,6 +5296,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .saas-offerings-container .spinner-container{padding-top:60px;padding-bottom:60px}
 .services-view,services-view{display:flex;flex:1 1 auto}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;padding-left:2px;vertical-align:middle}
 .services-view .blank-slate-pf{background-color:transparent;border:none}
 .services-view .filter-panel-container ul{margin-bottom:10px}
@@ -5287,6 +5305,9 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-item{color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
 =======
 .services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;vertical-align:middle;padding-left:2px}
+=======
+.services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;padding-left:2px;vertical-align:middle}
+>>>>>>> Adopt service catalog API changes
 .services-view .services-item{animation:catalogItemFade .2s ease-out;color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
 >>>>>>> Bump common and catalog depedencies
 @media (min-width:480px){.services-view .services-item{width:33.3333%}
@@ -5334,6 +5355,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 .services-view .services-no-sub-categories .services-items{left:0;margin:0 0 8px;right:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .services-view .services-sub-categories{align-content:flex-start;align-items:flex-start;display:flex;flex:1 1 auto;flex-wrap:wrap;margin:0 20px 12px;padding:0;position:relative}
 .landing .services-view .services-sub-categories{margin-top:15px}
 .services-view .services-sub-categories .services-items{left:0;margin:5px 0;position:absolute;right:0}
@@ -5348,13 +5370,21 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 =======
 .services-view .services-sub-categories{align-content:flex-start;align-items:flex-start;display:flex;flex:1 1 auto;flex-wrap:wrap;padding:15px 20px 12px;position:relative}
 .services-view .services-sub-categories .services-items{left:20px;margin:10px 0;position:absolute;right:20px}
+=======
+.services-view .services-sub-categories{align-content:flex-start;align-items:flex-start;display:flex;flex:1 1 auto;flex-wrap:wrap;margin:15px 20px 12px;padding:0;position:relative}
+.services-view .services-sub-categories .services-items{left:0;margin:10px 0;position:absolute;right:0}
+>>>>>>> Adopt service catalog API changes
 .services-view .services-sub-category{background-color:#fff;display:inline-block;margin:0 3px 3px 0}
 .services-view .services-sub-category.active .services-sub-category-tab{color:#363636!important}
 .services-view .services-sub-category.active .services-sub-category-tab:after{animation:catalogItemFade .2s ease-out;border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:10px;border-left:10px solid transparent;border-right:10px solid transparent;bottom:-13px;content:"";display:block;left:50%;margin-left:-10px;opacity:1;position:absolute}
-.services-view .services-sub-category .services-sub-category-tab{color:#8b8d8f;display:flex;font-size:14px;font-weight:600;flex-direction:column;height:90px;justify-content:center;min-width:100px;padding:0 15px;position:relative;text-align:center}
+.services-view .services-sub-category .services-sub-category-tab{color:#8b8d8f;display:flex;font-size:14px;font-weight:600;flex-direction:column;height:110px;justify-content:center;line-height:1.3;padding:0 5px;position:relative;text-align:center;width:120px}
 .services-view .services-sub-category .services-sub-category-tab:focus,.services-view .services-sub-category .services-sub-category-tab:hover{color:#0088ce;text-decoration:none}
+<<<<<<< HEAD
 .services-view .services-sub-category .services-sub-category-tab-icon,.services-view .services-sub-category .services-sub-category-tab-image{margin:0 0 5px}
 >>>>>>> Support binding parameters
+=======
+.services-view .services-sub-category .services-sub-category-tab-icon,.services-view .services-sub-category .services-sub-category-tab-image{margin:0 0 10px}
+>>>>>>> Adopt service catalog API changes
 .services-view .services-sub-category .services-sub-category-tab-icon{font-size:36px}
 .services-view .services-sub-category .services-sub-category-tab-image{height:36px;position:relative}
 <<<<<<< HEAD
@@ -5436,7 +5466,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-view-container.mobile-categories-view .services-categories .active .services-back-link{display:none!important}
 .services-view .services-view-container.mobile-categories-view .services-items,.services-view .services-view-container.mobile-categories-view .services-sub-categories,.services-view .services-view-container.mobile-items-view .add-methods,.services-view .services-view-container.mobile-items-view .services-categories,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active:after,.services-view .services-view-container.mobile-items-view .services-sub-category:not(.active),.services-view .services-view-container.mobile-items-view .services-sub-category>a:after,.services-view .services-view-container.mobile-subcategories-view .add-methods,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active:after{display:none}
 .services-view .services-view-container.mobile-items-view .services-sub-categories>li.active,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active{background-color:transparent}
-.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-category-heading,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-sub-category-tab,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-category-heading,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-sub-category-tab{left:50%;position:absolute;transform:translateX(-50%);width:auto}
+.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-category-heading,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-sub-category-tab,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-category-heading,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-sub-category-tab{position:absolute;text-align:center}
 .services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-category-heading:focus,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-category-heading:hover,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-sub-category-tab:focus,.services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-sub-category-tab:hover,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-category-heading:focus,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-category-heading:hover,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-sub-category-tab:focus,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-sub-category-tab:hover{color:#fff;cursor:default}
 .services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-back-link,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-back-link{display:inline-block;font-size:10px;margin-left:15px;padding-left:15px;width:auto}
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
@@ -5470,14 +5500,17 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-view-container .services-categories>li>a,.services-view .services-view-container .services-sub-categories>li>a{color:#fff;display:inline-block;line-height:1;padding:10px 20px;position:relative;width:100%}
 .services-view .services-view-container .services-categories>li>a::after,.services-view .services-view-container .services-sub-categories>li>a::after{content:'\f061';color:#fff;display:block;font-family:FontAwesome;position:absolute;right:20px;top:50%;transform:translateY(-50%)}
 .services-view .services-view-container .services-categories>li>a:focus,.services-view .services-view-container .services-categories>li>a:hover,.services-view .services-view-container .services-sub-categories>li>a:focus,.services-view .services-view-container .services-sub-categories>li>a:hover{color:#0088ce;text-decoration:none}
-.services-view .services-view-container .services-categories>li>a .services-sub-category-tab-icon,.services-view .services-view-container .services-sub-categories>li>a .services-sub-category-tab-icon{display:none!important}
+.services-view .services-view-container .services-categories>li>a .services-sub-category-tab-icon,.services-view .services-view-container .services-categories>li>a .services-sub-category-tab-image,.services-view .services-view-container .services-sub-categories>li>a .services-sub-category-tab-icon,.services-view .services-view-container .services-sub-categories>li>a .services-sub-category-tab-image{display:none!important}
 }
 .services-view .spinner-container{background:#fff;display:flex;flex:1 1 auto;padding-top:100px;padding-bottom:100px}
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Updates to service instance page, show failed bindings
 =======
 .pre-wrap{white-space:pre-wrap}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+>>>>>>> Adopt service catalog API changes
 .visible-xlg-inline-block{display:none!important}
 @media (max-width:767px){.td-long-string{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 }
@@ -5492,7 +5525,11 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 }
 .btn-file{position:relative;overflow:hidden}
 .btn-file input[type=file]{position:absolute;top:0;right:0;min-width:100%;min-height:100%;font-size:100px;text-align:right;filter:alpha(opacity=0);opacity:0;cursor:inherit;display:block}
+<<<<<<< HEAD
 .donut-mini-text,.osc-form .icon,.service-table,.service-table thead tr th,.show-drag-and-drop-zone{text-align:center}
+=======
+.osc-form .icon,.service-table,.service-table thead tr th,.show-drag-and-drop-zone{text-align:center}
+>>>>>>> Adopt service catalog API changes
 .btn-flat-default{border:1px solid transparent}
 .btn-flat-default:focus,.btn-flat-default:hover{background-color:#f7f7f7;border-color:#e7e7e7}
 .btn-remove{color:#333;display:inline-block;font-size:15px;line-height:1;opacity:.65;padding:5px 7px;vertical-align:middle}
@@ -7377,6 +7414,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7394,6 +7432,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+.log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+>>>>>>> Adopt service catalog API changes
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
 .log-line-text :not(a)::-moz-selection,.log-line-text::-moz-selection{background:#a0a1a1;color:#101214}

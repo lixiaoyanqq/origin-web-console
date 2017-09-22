@@ -66,8 +66,8 @@ function OverviewController($scope,
                             ResourceAlertsService,
                             RoutesService,
                             ServiceInstancesService,
-			    gettext,
-			    gettextCatalog) {
+                            gettext,
+                            gettextCatalog) {
   var overview = this;
   var limitWatches = $filter('isIE')();
   var DEFAULT_POLL_INTERVAL = 60 * 1000; // milliseconds
@@ -109,7 +109,6 @@ function OverviewController($scope,
   var statefulSetsVersion = APIService.getPreferredVersion('statefulsets');
   var templatesVersion = APIService.getPreferredVersion('templates');
   overview.buildConfigsInstantiateVersion = APIService.getPreferredVersion('buildconfigs/instantiate');
-
 
   var deploymentsByUID;
   var imageStreams;
