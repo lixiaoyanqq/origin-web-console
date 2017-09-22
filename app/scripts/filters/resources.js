@@ -1324,9 +1324,28 @@ angular.module('openshiftConsole')
       return !_.isEmpty(alternateBackends);
     };
   })
-  .filter('readyConditionMessage', function(statusConditionFilter) {
-    return function(instance) {
-      return _.get(statusConditionFilter(instance, 'Ready'), 'message');
+  .filter('serviceClassDisplayName', function() {
+    return function(serviceClass) {
+      var serviceClassDisplayName = _.get(serviceClass, 'spec.externalMetadata.displayName');
+      if (serviceClassDisplayName) {
+        return serviceClassDisplayName;
+      }
+
+      var serviceClassExternalName = _.get(serviceClass, 'spec.externalName');
+      if (serviceClassExternalName) {
+        return serviceClassExternalName;
+      }
+
+      return _.get(serviceClass, 'metadata.name');
+    };
+  })
+  .filter('serviceInstanceDisplayName', function(serviceClassDisplayNameFilter) {
+    return function(instance, serviceClass) {
+      if (serviceClass) {
+        return serviceClassDisplayNameFilter(serviceClass);
+      }
+
+      return _.get(instance, 'metadata.name');
     };
   })
   .filter('serviceInstanceStatus', function(isServiceInstanceReadyFilter) {
