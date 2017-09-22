@@ -14230,7 +14230,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{row.urlForImageChangeTrigger(row.imageChangeTriggers[0])}}\">\n" +
     "{{row.imageChangeTriggers[0].imageChangeParams.from | imageObjectRef : row.apiObject.metadata.namespace}}</a>.\n" +
     "</span>\n" +
+<<<<<<< HEAD
     "<span ng-if=\"row.imageChangeTriggers.length > 1\" translate>\n" +
+=======
+    "<span ng-if=\"row.imageChangeTriggers.length > 1\">\n" +
+>>>>>>> Fix deployment empty state message when multiple ICT
     "one of the images referenced by this deployment config changes.\n" +
     "</span>\n" +
     "</div>\n" +
