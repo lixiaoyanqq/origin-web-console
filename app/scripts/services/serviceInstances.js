@@ -10,6 +10,7 @@ angular.module("openshiftConsole")
                                                DataService,
                                                Logger,
                                                NotificationsService) {
+<<<<<<< HEAD
     var serviceClassesVersion = APIService.getPreferredVersion('clusterserviceclasses');
     var servicePlansVersion = APIService.getPreferredVersion('clusterserviceplans');
 
@@ -42,6 +43,13 @@ angular.module("openshiftConsole")
         return $q.when(bindings);
       }
 
+=======
+    var getBindingsIfNecessary = function(apiObject, bindings) {
+      if (angular.isDefined(bindings)) {
+        return $q.when(bindings);
+      }
+
+>>>>>>> Delete bindings when deleting a service instance
       var context = {namespace: apiObject.metadata.namespace};
       var resource = APIService.getPreferredVersion('serviceinstancecredentials');
 

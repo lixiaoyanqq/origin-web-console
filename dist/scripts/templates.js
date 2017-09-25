@@ -6497,7 +6497,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"service-binding-actions\" ng-if=\"!$ctrl.binding.metadata.deletionTimestamp\">\n" +
+<<<<<<< HEAD
     "<delete-link ng-if=\"$ctrl.serviceBindingsVersion | canI : 'delete'\" kind=\"ServiceBinding\" group=\"servicecatalog.k8s.io\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
+=======
+    "<delete-link ng-if=\"({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'delete')\" kind=\"ServiceInstanceCredential\" group=\"servicecatalog.k8s.io\" type-display-name=\"binding\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
+>>>>>>> Delete bindings when deleting a service instance
     "</delete-link>\n" +
 <<<<<<< HEAD
     "<a ng-if=\"($ctrl.secretsVersion | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
@@ -10866,20 +10870,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3>Bindings</h3>\n" +
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" ref-api-object=\"$ctrl.apiObject\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
     "</service-binding>\n" +
+<<<<<<< HEAD
 >>>>>>> Updates for Service Instance & Bindings
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+=======
+    "<div ng-if=\"(($ctrl.apiObject.kind === 'ServiceInstance') || ($ctrl.bindableServiceInstances | size)) &&\n" +
+    "              ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create') &&\n" +
+    "              !$ctrl.apiObject.metadata.deletionTimestamp\">\n" +
+>>>>>>> Delete bindings when deleting a service instance
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
     "</a>\n" +
     "</div>\n" +
-    "<div ng-if=\"!($ctrl.bindableServiceInstances | size)\">\n" +
+    "<div ng-if=\"!$ctrl.apiObject.metadata.deletionTimestamp && ($ctrl.apiObject.kind !== 'ServiceInstance') && !($ctrl.bindableServiceInstances | size)\">\n" +
     "<span>You must have a bindable service in your namespace in order to create bindings.</span>\n" +
     "<div>\n" +
     "<a href=\"./\">Browse Catalog</a>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"!($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"($ctrl.apiObject.kind !== 'ServiceInstance') && !($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<span>There are no service bindings.</span>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14692,13 +14702,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"section-title hidden-xs\">{{$ctrl.sectionTitle}}</div>\n" +
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"true\" namespace=\"$ctrl.namespace\" ref-api-object=\"$ctrl.refApiObject\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
     "</service-binding>\n" +
-    "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"!$ctrl.refApiObject.metadata.deletionTimestamp && (($ctrl.refApiObject.kind === 'ServiceInstance') || ($ctrl.bindableServiceInstances | size)) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
     "</a>\n" +
     "</div>\n" +
-    "<div ng-if=\"!($ctrl.bindableServiceInstances | size)\">\n" +
+    "<div ng-if=\"($ctrl.refApiObject.kind !== 'ServiceInstance')  && !($ctrl.bindableServiceInstances | size)\">\n" +
     "<span>You must have a bindable service in your namespace in order to create bindings.</span>\n" +
     "<div>\n" +
     "<a href=\"./\">Browse Catalog</a>\n" +
