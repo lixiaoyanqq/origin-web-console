@@ -135,7 +135,7 @@
     };
 
     row.deprovision = function() {
-      ServiceInstancesService.deprovision(row.apiObject);
+      ServiceInstancesService.deprovision(row.apiObject, row.deleteableBindings);
     };
   }
 })();
