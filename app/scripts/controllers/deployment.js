@@ -56,7 +56,7 @@ angular.module('openshiftConsole')
     $scope.healthCheckURL = Navigate.healthCheckURL($routeParams.project,
                                                     "Deployment",
                                                     $routeParams.deployment,
-                                                    "apps");
+                                                    $scope.deploymentsVersion.group);
     var watches = [];
 
     ProjectsService
@@ -74,10 +74,7 @@ angular.module('openshiftConsole')
             });
         };
 
-        DataService.get({
-          group: 'apps',
-          resource: 'deployments'
-        }, $routeParams.deployment, context, { errorNotification: false }).then(
+        DataService.get($scope.deploymentsVersion, $routeParams.deployment, context, { errorNotification: false }).then(
           // success
           function(deployment) {
             $scope.loaded = true;
@@ -85,10 +82,7 @@ angular.module('openshiftConsole')
             updateHPAWarnings();
 
             // If we found the item successfully, watch for changes on it
-            watches.push(DataService.watchObject({
-              group: 'apps',
-              resource: 'deployments'
-            }, $routeParams.deployment, context, function(deployment, action) {
+            watches.push(DataService.watchObject($scope.deploymentsVersion, $routeParams.deployment, context, function(deployment, action) {
               if (action === "DELETED") {
                 $scope.alerts["deleted"] = {
                   type: "warning",
@@ -103,10 +97,7 @@ angular.module('openshiftConsole')
             }));
 
             // Watch replica sets for this deployment
-            watches.push(DataService.watch({
-              group: 'extensions',
-              resource: 'replicasets'
-            }, context, function(replicaSetData) {
+            watches.push(DataService.watch(replicaSetsVersion, context, function(replicaSetData) {
               $scope.emptyMessage = "No deployments to show";
 
               var replicaSets = replicaSetData.by('metadata.name');
@@ -140,7 +131,7 @@ angular.module('openshiftConsole')
           updateHPAWarnings();
         });
 
-        watches.push(DataService.watch("imagestreams", context, function(imageStreamData) {
+        watches.push(DataService.watch(imageStreamsVersion, context, function(imageStreamData) {
           var imageStreams = imageStreamData.by("metadata.name");
           ImageStreamResolver.buildDockerRefMapForImageStreams(imageStreams, imageStreamImageRefByDockerReference);
           // If the deployment has been loaded already
