@@ -15111,24 +15111,24 @@ e.loaded = !0, e.alerts.load = {
 e.projectTemplates = t.by("metadata.name");
 }));
 }));
-} ]), angular.module("openshiftConsole").controller("CreateFromURLController", [ "$scope", "$routeParams", "$location", "$filter", "AuthService", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
-a.withUser(), e.alerts = {}, e.selected = {};
-var l = function(t) {
+} ]), angular.module("openshiftConsole").controller("CreateFromURLController", [ "$scope", "$routeParams", "$location", "$filter", "APIService", "AuthService", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {
+o.withUser(), e.alerts = {}, e.selected = {};
+var u = function(t) {
 e.alerts.invalidImageStream = {
 type: "error",
 message: 'The requested image stream "' + t + '" could not be loaded.'
 };
-}, u = function(t) {
+}, d = function(t) {
 e.alerts.invalidImageTag = {
 type: "error",
 message: 'The requested image stream tag "' + t + '" could not be loaded.'
 };
-}, d = function(t) {
+}, m = function(t) {
 e.alerts.invalidTemplate = {
 type: "error",
 message: 'The requested template "' + t + '" could not be loaded.'
 };
-}, m = function() {
+}, p = function() {
 try {
 return t.templateParamsMap && JSON.parse(t.templateParamsMap) || {};
 } catch (t) {
@@ -15193,21 +15193,22 @@ i ? (delete t.alerts.load, m(i, a)) : t.alerts.load = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 }
-}, p = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, f = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], g = _.pickBy(t, function(e, t) {
-return _.includes(f, t) && _.isString(e);
+}, f = a.getPreferredVersion("imagestreams"), g = a.getPreferredVersion("imagestreamtags"), v = a.getPreferredVersion("templates"), h = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, y = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], b = _.pickBy(t, function(e, t) {
+return _.includes(y, t) && _.isString(e);
 });
-g.namespace = g.namespace || "openshift";
-_.includes(p, g.namespace) ? g.imageStream && g.template ? e.alerts.invalidResource = {
+b.namespace = b.namespace || "openshift";
+_.includes(h, b.namespace) ? b.imageStream && b.template ? e.alerts.invalidResource = {
 type: "error",
 message: "Image streams and templates cannot be combined."
-} : g.imageStream || g.template ? g.name && !function(e) {
+} : b.imageStream || b.template ? b.name && !function(e) {
 return _.size(e) < 25 && /^[a-z]([-a-z0-9]*[a-z0-9])?$/.test(e);
-}(g.name) ? function(t) {
+}(b.name) ? function(t) {
 e.alerts.invalidImageStream = {
 >>>>>>> Check if user can add to existing project during create from url
 type: "error",
 message: "The image tag was not found in the stream."
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 <<<<<<< HEAD
@@ -15230,28 +15231,32 @@ t.loaded = !0, t.alerts.load = {
 =======
 }(g.name) : (g.imageStream && i.get("imagestreams", g.imageStream, {
 namespace: g.namespace
+=======
+}(b.name) : (b.imageStream && s.get(f, b.imageStream, {
+namespace: b.namespace
+>>>>>>> Update CreateFromUrl controller to use getPreferredVersion
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.imageStream = t, i.get("imagestreamtags", t.metadata.name + ":" + g.imageTag, {
-namespace: g.namespace
+e.imageStream = t, s.get(g, t.metadata.name + ":" + b.imageTag, {
+namespace: b.namespace
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.imageStreamTag = t, e.validationPassed = !0, e.resource = t, g.displayName = r("displayName")(t);
+e.imageStreamTag = t, e.validationPassed = !0, e.resource = t, b.displayName = r("displayName")(t);
 }, function() {
-u(g.imageTag);
+d(b.imageTag);
 });
 }, function() {
-l(g.imageStream);
-}), g.template && i.get("templates", g.template, {
-namespace: g.namespace
+u(b.imageStream);
+}), b.template && s.get(v, b.template, {
+namespace: b.namespace
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.template = t, m() && (e.validationPassed = !0, e.resource = t);
+e.template = t, p() && (e.validationPassed = !0, e.resource = t);
 }, function() {
-d(g.template);
+m(b.template);
 })) : e.alerts.resourceRequired = {
 type: "error",
 message: "An image stream or template is required."
@@ -15262,6 +15267,7 @@ type: "error",
 message: "The image details could not be loaded.",
 details: e("getErrorDetails")(n)
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 });
 }, 200), p = function(e, n, r) {
@@ -15288,21 +15294,25 @@ t.loaded = !0, t.alerts.load = {
 =======
 }(g.namespace), angular.extend(e, {
 createDetails: g,
+=======
+}(b.namespace), angular.extend(e, {
+createDetails: b,
+>>>>>>> Update CreateFromUrl controller to use getPreferredVersion
 createWithProject: function(r) {
 r = r || e.selected.project.metadata.name;
-var a = t.imageStream ? s.createFromImageURL(e.imageStream, g.imageTag, r, g) : s.createFromTemplateURL(e.template, r, g);
+var a = t.imageStream ? c.createFromImageURL(e.imageStream, b.imageTag, r, b) : c.createFromTemplateURL(e.template, r, b);
 n.url(a);
 }
-}), e.projects = {}, e.canCreateProject = void 0, c.list().then(function(t) {
+}), e.projects = {}, e.canCreateProject = void 0, l.list().then(function(t) {
 e.loaded = !0, e.projects = r("orderByDisplayName")(t.by("metadata.name")), e.noProjects = _.isEmpty(e.projects);
-}), c.canCreate().then(function() {
+}), l.canCreate().then(function() {
 e.canCreateProject = !0;
 }, function() {
 e.canCreateProject = !1;
 }), e.forms = {}, e.canIAddToProject = !0, e.canIAddToSelectedProject = function(t) {
 var n = _.get(t, "metadata.name");
-o.getProjectRules(n).then(function() {
-e.canIAddToProject = o.canIAddToProject(n), e.forms && e.forms.selectProjectForm.selectProject.$setValidity("cannotAddToProject", e.canIAddToProject);
+i.getProjectRules(n).then(function() {
+e.canIAddToProject = i.canIAddToProject(n), e.forms && e.forms.selectProjectForm.selectProject.$setValidity("cannotAddToProject", e.canIAddToProject);
 });
 };
 } ]), angular.module("openshiftConsole").controller("CreateProjectController", [ "$scope", "$location", "$window", "AuthService", "Constants", function(e, t, n, r, a) {
