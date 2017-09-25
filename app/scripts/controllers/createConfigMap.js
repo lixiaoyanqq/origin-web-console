@@ -32,6 +32,8 @@ angular.module('openshiftConsole')
       }
     ];
 
+    var configMapsVersion = APIService.getPreferredVersion('configmaps');
+
     var hideErrorNotifications = function() {
       NotificationsService.hideNotification("create-config-map-error");
     };
@@ -65,8 +67,7 @@ angular.module('openshiftConsole')
           if ($scope.createConfigMapForm.$valid) {
             hideErrorNotifications();
             $scope.disableInputs = true;
-            var createConfigMapVersion = APIService.objectToResourceGroupVersion($scope.configMap);
-            DataService.create(createConfigMapVersion, null, $scope.configMap, context)
+            DataService.create(configMapsVersion, null, $scope.configMap, context)
               .then(function() { // Success
                 NotificationsService.addNotification({
                   type: "success",
