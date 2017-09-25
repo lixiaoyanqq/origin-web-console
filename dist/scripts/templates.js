@@ -1800,7 +1800,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"pull-right dropdown\" ng-if=\"buildConfig\" ng-hide=\"!('buildConfigs' | canIDoAny)\">\n" +
     "\n" +
     "<button class=\"btn btn-default hidden-xs\" ng-if=\"(buildConfigsInstantiateVersion | canI : 'create') && !(buildConfig | isBinaryBuild)\" ng-click=\"startBuild()\">\n" +
+<<<<<<< HEAD
     "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" translate>\n" +
+=======
+    "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\">\n" +
+>>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start Build\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig | isJenkinsPipelineStrategy\" translate>\n" +
@@ -1866,10 +1870,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 translate>No builds.</h2>\n" +
     "<p>\n" +
     "<span ng-if=\"!buildConfig.spec.strategy.jenkinsPipelineStrategy\">\n" +
+<<<<<<< HEAD
     "<span ng-if=\"!(buildConfigsInstantiateVersion | canI : 'create')\" translate>\n" +
     "Builds will create an image from\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfigsInstantiateVersion | canI : 'create'\" translate>\n" +
+=======
+    "<span ng-if=\"!(buildConfigsInstantiateVersion | canI : 'create')\">\n" +
+    "Builds will create an image from\n" +
+    "</span>\n" +
+    "<span ng-if=\"buildConfigsInstantiateVersion | canI : 'create'\">\n" +
+>>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start a new build to create an image from\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig.spec.source.type === 'Git'\" translate>\n" +
@@ -1895,7 +1906,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</p>\n" +
     "<button class=\"btn btn-primary btn-lg\" ng-click=\"startBuild()\" ng-if=\"(buildConfigsInstantiateVersion | canI : 'create') && !(buildConfig | isBinaryBuild)\">\n" +
+<<<<<<< HEAD
     "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" translate>\n" +
+=======
+    "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\">\n" +
+>>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start Build\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig | isJenkinsPipelineStrategy\" translate>\n" +
