@@ -2882,6 +2882,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
     "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\" translate>Pause Rollouts</a>\n" +
@@ -2898,24 +2899,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
 =======
     "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
+=======
+    "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && (deploymentsVersion | canI : 'update')\">\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\">Pause Rollouts</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"deployment.spec.paused && !updatingPausedState && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
+    "<li ng-if=\"deployment.spec.paused && !updatingPausedState && (deploymentsVersion | canI : 'update')\">\n" +
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
     "</li>\n" +
-    "<li class=\"divider\" ng-if=\"!updatingPausedState && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\"></li>\n" +
-    "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
+    "<li class=\"divider\" ng-if=\"!updatingPausedState && (deploymentsVersion | canI : 'update')\"></li>\n" +
+    "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Storage</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"!autoscalers.length && ({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\">\n" +
+    "<li ng-if=\"!autoscalers.length && (horizontalPodAutoscalersVersion | canI : 'create')\">\n" +
     "\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
 >>>>>>> Use `apps` API group for deployments
     "</li>\n" +
-    "<li ng-if=\"autoscalers.length === 1 && ({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'update')\">\n" +
+    "<li ng-if=\"autoscalers.length === 1 && (horizontalPodAutoscalersVersion | canI : 'update')\">\n" +
     "\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=HorizontalPodAutoscaler&group=autoscaling&name={{autoscalers[0].metadata.name}}\" role=\"button\" translate>Edit Autoscaler</a>\n" +
     "</li>\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Edit Resource Limits</a>\n" +
@@ -2924,12 +2929,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{healthCheckURL}}\" role=\"button\" translate>Edit Health Checks</a>\n" +
 =======
     "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
+=======
+    "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Edit Resource Limits</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
+    "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{healthCheckURL}}\" role=\"button\">Edit Health Checks</a>\n" +
 >>>>>>> Use `apps` API group for deployments
     "</li>\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
     "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<a ng-href=\"project/{{projectName}}/edit/yaml?kind=Deployment&group=apps&name={{deployment.metadata.name}}\" role=\"button\" translate>Edit YAML</a>\n" +
@@ -2938,10 +2947,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'delete'\">\n" +
     "<delete-link kind=\"Deployment\" group=\"extensions\" resource-name=\"{{deployment.metadata.name}}\" project-name=\"{{deployment.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\" translate>Delete\n" +
 =======
+=======
+    "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"{{deployment | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
     "</li>\n" +
-    "<li class=\"divider\" ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\"></li>\n" +
-    "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'delete'\">\n" +
+    "<li class=\"divider\" ng-if=\"deploymentsVersion | canI : 'update'\"></li>\n" +
+    "<li ng-if=\"deploymentsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Deployment\" group=\"apps\" resource-name=\"{{deployment.metadata.name}}\" project-name=\"{{deployment.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\">\n" +
 >>>>>>> Use `apps` API group for deployments
     "</delete-link>\n" +
@@ -2970,7 +2982,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<strong>{{deployment.metadata.name}} is paused.</strong>\n" +
     "This pauses any in-progress rollouts and stops new rollouts from running until the deployment is resumed.\n" +
-    "<span ng-if=\"!updatingPausedState && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\" class=\"nowrap\">\n" +
+    "<span ng-if=\"!updatingPausedState && (deploymentsVersion | canI : 'update')\" class=\"nowrap\">\n" +
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
 >>>>>>> Use `apps` API group for deployments
     "</span>\n" +
@@ -3099,7 +3111,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</dd>\n" +
     "</dl>\n" +
     "<h3>Template</h3>\n" +
-    "<pod-template pod-template=\"deployment.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{ ({ group: 'apps', resource: 'deployments' } | canI : 'update') ? healthCheckURL : '' }}\">\n" +
+    "<pod-template pod-template=\"deployment.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{ (deploymentsVersion | canI : 'update') ? healthCheckURL : '' }}\">\n" +
     "</pod-template>\n" +
     "</div>\n" +
     "<div class=\"col-lg-6\">\n" +
@@ -3108,12 +3120,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" translate>\n" +
 =======
     "<h3>Volumes</h3>\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
     "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
 >>>>>>> Use `apps` API group for deployments
+=======
+    "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !(deploymentsVersion | canI : 'update')\">\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "none\n" +
     "</p>\n" +
-    "<volumes volumes=\"deployment.spec.template.spec.volumes\" namespace=\"project.metadata.name\" can-remove=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\" remove-fn=\"removeVolume(volume)\">\n" +
+    "<volumes volumes=\"deployment.spec.template.spec.volumes\" namespace=\"project.metadata.name\" can-remove=\"deploymentsVersion | canI : 'update'\" remove-fn=\"removeVolume(volume)\">\n" +
     "</volumes>\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<div ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" translate>Add Storage</a>\n" +
@@ -3121,6 +3138,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" translate>Add Config Files</a>\n" +
 =======
     "<div ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
+=======
+    "<div ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Storage</a>\n" +
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Config Files</a>\n" +
@@ -3133,6 +3153,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
     "{{warning.message}}\n" +
     "\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
 <<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" ng-if=\"warning.reason === 'NoCPURequest' && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" role=\"button\" translate>Edit Resource <span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
     "</div>\n" +
@@ -3141,13 +3162,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
 =======
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" ng-if=\"warning.reason === 'NoCPURequest' && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\" role=\"button\">Edit Resource\n" +
+=======
+    "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" ng-if=\"warning.reason === 'NoCPURequest' && (deploymentsVersion | canI : 'update')\" role=\"button\">Edit Resource\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
     "</div>\n" +
     "\n" +
     "<div ng-if=\"!autoscalers.length\">\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
     "<a ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
 >>>>>>> Use `apps` API group for deployments
     "<span ng-if=\"!({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\">none</span>\n" +
+=======
+    "<a ng-if=\"horizontalPodAutoscalersVersion | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
+    "<span ng-if=\"!(horizontalPodAutoscalersVersion | canI : 'create')\">none</span>\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "</div>\n" +
     "\n" +
     "<div ng-repeat=\"hpa in autoscalers\">\n" +
@@ -3193,8 +3222,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<edit-environment-variables api-object=\"deployment\"></edit-environment-variables>\n" +
 >>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
+<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
     "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update deployment controller to get getPreferredVersion
     "<events api-objects=\"[ deployment ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
