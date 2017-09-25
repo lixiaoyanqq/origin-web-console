@@ -7,7 +7,17 @@
  * Controller of the openshiftConsole
  */
 angular.module('openshiftConsole')
-  .controller('CreateFromURLController', function ($scope, $routeParams, $location, $filter, AuthService, AuthorizationService, DataService, Navigate, ProjectsService ) {
+  .controller('CreateFromURLController', function (
+    $scope,
+    $routeParams,
+    $location,
+    $filter,
+    APIService,
+    AuthService,
+    AuthorizationService,
+    DataService,
+    Navigate,
+    ProjectsService) {
     AuthService.withUser();
 
     $scope.alerts = {};
@@ -76,6 +86,10 @@ angular.module('openshiftConsole')
       }
     };
 
+    var imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
+    var imageStreamTagsVersion = APIService.getPreferredVersion('imagestreamtags');
+    var templatesVersion = APIService.getPreferredVersion('templates');
+
     var namespaceWhitelist = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST;
     var whiteListedCreateDetailsKeys = ['namespace', 'name', 'imageStream', 'imageTag', 'sourceURI', 'sourceRef', 'contextDir', 'template', 'templateParamsMap'];
     var createDetails = _.pickBy($routeParams, function(value, key) {
@@ -92,13 +106,13 @@ angular.module('openshiftConsole')
     var getResources = function() {
       if (createDetails.imageStream) {
         DataService
-          .get("imagestreams", createDetails.imageStream, {namespace: createDetails.namespace}, {
+          .get(imageStreamsVersion, createDetails.imageStream, {namespace: createDetails.namespace}, {
             errorNotification: false
           })
           .then(function(imageStream) {
             $scope.imageStream = imageStream;
             DataService
-              .get("imagestreamtags", imageStream.metadata.name + ":" + createDetails.imageTag, {namespace: createDetails.namespace}, {
+              .get(imageStreamTagsVersion, imageStream.metadata.name + ":" + createDetails.imageTag, {namespace: createDetails.namespace}, {
                   errorNotification: false
               })
               .then(function(imageStreamTag){
@@ -115,7 +129,7 @@ angular.module('openshiftConsole')
       }
       if (createDetails.template) {
         DataService
-          .get("templates", createDetails.template, {namespace: createDetails.namespace}, {
+          .get(templatesVersion, createDetails.template, {namespace: createDetails.namespace}, {
             errorNotification: false
           })
           .then(function(template) {
