@@ -2602,9 +2602,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div>\n" +
     "<h1 class=\"contains-actions\">\n" +
     "\n" +
+<<<<<<< HEAD
     "<div class=\"pull-right dropdown\" ng-if=\"deploymentConfig\">\n" +
     "\n" +
     "<button ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\" class=\"btn btn-default hidden-xs\" ng-click=\"startLatestDeployment()\" ng-disabled=\"!canDeploy()\" translate>\n" +
+=======
+    "<button ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\" class=\"btn btn-default hidden-xs\" ng-click=\"startLatestDeployment()\" ng-disabled=\"!canDeploy()\">\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "Deploy\n" +
     "</button>\n" +
     "\n" +
@@ -2615,6 +2619,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canDeploy() }\" ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\">\n" +
+<<<<<<< HEAD
     "<a href=\"\" role=\"button\" ng-attr-aria-disabled=\"{{canDeploy() ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canDeploy() }\" ng-click=\"startLatestDeployment()\" translate>Deploy</a>\n" +
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
@@ -2629,6 +2634,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Add Storage</a>\n" +
+=======
+    "<a href=\"\" role=\"button\" ng-attr-aria-disabled=\"{{canDeploy() ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canDeploy() }\" ng-click=\"startLatestDeployment()\">Deploy</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{deploymentConfig | editResourceURL}}\" role=\"button\">Edit</a>\n" +
+    "</li>\n" +
+    "<li class=\"divider\" ng-if=\"deploymentConfigsVersion | canI : 'update'\"></li>\n" +
+    "<li ng-if=\"!deploymentConfig.spec.paused && !updatingPausedState && (deploymentConfigsVersion | canI : 'update')\">\n" +
+    "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\">Pause Rollouts</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"deploymentConfig.spec.paused && !updatingPausedState && (deploymentConfigsVersion | canI : 'update')\">\n" +
+    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Add Storage</a>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"!autoscalers.length && (horizontalPodAutoscalersVersion | canI : 'create')\">\n" +
     "\n" +
@@ -2639,6 +2660,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=HorizontalPodAutoscaler&group=autoscaling&name={{autoscalers[0].metadata.name}}\" role=\"button\" translate>Edit Autoscaler</a>\n" +
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Edit Resource Limits</a>\n" +
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
@@ -2646,6 +2668,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{deploymentConfig | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Edit Resource Limits</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{healthCheckURL}}\" role=\"button\">Edit Health Checks</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{deploymentConfig | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</li>\n" +
     "<li class=\"divider\" ng-if=\"deploymentConfigsVersion | canI : 'update'\"></li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'delete'\">\n" +
@@ -2672,7 +2703,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<strong>{{deploymentConfig.metadata.name}} is paused.</strong>\n" +
     "This will stop any new rollouts or triggers from running until resumed.\n" +
     "<span ng-if=\"!updatingPausedState && (deploymentConfigsVersion | canI : 'update')\" class=\"nowrap\">\n" +
+<<<<<<< HEAD
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
+=======
+    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</span>\n" +
     "</div>\n" +
     "<uib-tabset>\n" +
@@ -2798,17 +2833,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "\n" +
     "</dl>\n" +
+<<<<<<< HEAD
     "<h3 translate>Template</h3>\n" +
     "<pod-template pod-template=\"deploymentConfig.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{(deploymentConfigsVersion | canI : 'update') ? healthCheckURL : ''}}\">\n" +
     "</pod-template>\n" +
     "<h3 translate>Volumes</h3>\n" +
+=======
+    "<h3>Template</h3>\n" +
+    "<pod-template pod-template=\"deploymentConfig.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{(deploymentConfigsVersion | canI : 'update') ? healthCheckURL : ''}}\">\n" +
+    "</pod-template>\n" +
+    "<h3>Volumes</h3>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "<p ng-if=\"!deploymentConfig.spec.template.spec.volumes.length && !(deploymentConfigsVersion | canI : 'update')\">\n" +
     "none\n" +
     "</p>\n" +
     "<volumes volumes=\"deploymentConfig.spec.template.spec.volumes\" namespace=\"project.metadata.name\" can-remove=\"deploymentConfigsVersion | canI : 'update'\" remove-fn=\"removeVolume(volume)\">\n" +
     "</volumes>\n" +
     "<p ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Storage</a>\n" +
+=======
+    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\">Add Storage</a>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Config Files</a>\n" +
     "</p>\n" +
@@ -2852,6 +2898,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
     "{{warning.message}}\n" +
     "\n" +
+<<<<<<< HEAD
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" ng-if=\"warning.reason === 'NoCPURequest' && (deploymentConfigsVersion | canI : 'update')\" role=\"button\" translate>Edit Resource\n" +
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\" translate>Requests and</span><translate>Limits</translate></a>\n" +
     "</div>\n" +
@@ -2859,6 +2906,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!autoscalers.length\">\n" +
     "<a ng-if=\"horizontalPodAutoscalersVersion | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Add Autoscaler</a>\n" +
     "<span ng-if=\"!(horizontalPodAutoscalersVersion | canI : 'create')\" translate>Autoscaling is not enabled. There are no autoscalers for this deployment config.</span>\n" +
+=======
+    "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" ng-if=\"warning.reason === 'NoCPURequest' && (deploymentConfigsVersion | canI : 'update')\" role=\"button\">Edit Resource\n" +
+    "<span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div ng-if=\"!autoscalers.length\">\n" +
+    "<a ng-if=\"horizontalPodAutoscalersVersion | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Add Autoscaler</a>\n" +
+    "<span ng-if=\"!(horizontalPodAutoscalersVersion | canI : 'create')\">Autoscaling is not enabled. There are no autoscalers for this deployment config.</span>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</div>\n" +
     "\n" +
     "<div ng-repeat=\"hpa in autoscalers\">\n" +
@@ -2935,7 +2991,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<edit-environment-variables api-object=\"deploymentConfig\"></edit-environment-variables>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "<events api-objects=\"[ deploymentConfig ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
