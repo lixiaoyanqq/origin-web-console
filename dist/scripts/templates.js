@@ -3364,7 +3364,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"imageStreamsVersion | canI : 'update'\">\n" +
+<<<<<<< f5bee351fe1f2c950441897687b668e5bfdeb820
     "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update ImageController to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"imageStreamsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"ImageStream\" resource-name=\"{{imageStream.metadata.name}}\" project-name=\"{{imageStream.metadata.namespace}}\" alerts=\"alerts\">\n" +

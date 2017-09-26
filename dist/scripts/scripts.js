@@ -10940,43 +10940,49 @@ i.showJenkinsfileExamples();
 o.unwatchAll(d);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("ImageController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", "ImageStreamsService", "imageLayers", function(e, t, n, a, r, o, i) {
-function s(n, a) {
-var r = o.tagsByName(n);
-e.imageStream = n, e.tagsByName = r, e.tagName = t.tag;
-var i = r[t.tag];
-i ? (delete e.alerts.load, l(i, a)) : e.alerts.load = {
+} ]), angular.module("openshiftConsole").controller("ImageController", [ "$filter", "$scope", "$routeParams", "APIService", "DataService", "ImageStreamsService", "imageLayers", "ProjectsService", function(e, t, n, a, r, o, i, s) {
+function c(e, a) {
+var r = o.tagsByName(e);
+t.imageStream = e, t.tagsByName = r, t.tagName = n.tag;
+var i = r[n.tag];
+i ? (delete t.alerts.load, p(i, a)) : t.alerts.load = {
 type: "error",
 message: "The image tag was not found in the stream."
 };
 }
-e.projectName = t.project, e.imageStream = null, e.image = null, e.layers = null, e.tagsByName = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+t.projectName = n.project, t.imageStream = null, t.image = null, t.layers = null, t.tagsByName = {}, t.alerts = {}, t.renderOptions = t.renderOptions || {}, t.renderOptions.hideFilterWidget = !0, t.breadcrumbs = [ {
 title: "Image Streams",
-link: "project/" + t.project + "/browse/images"
+link: "project/" + n.project + "/browse/images"
 }, {
-title: t.imagestream,
-link: "project/" + t.project + "/browse/images/" + t.imagestream
+title: n.imagestream,
+link: "project/" + n.project + "/browse/images/" + n.imagestream
 }, {
-title: ":" + t.tag
+title: ":" + n.tag
 } ];
-var c = [], l = _.debounce(function(a, o) {
-var s = t.imagestream + ":" + t.tag;
-n.get("imagestreamtags", s, o).then(function(t) {
-e.loaded = !0, e.image = t.image, e.layers = i(e.image);
-}, function(t) {
-e.loaded = !0, e.alerts.load = {
+var l = a.getPreferredVersion("imagestreamtags"), u = a.getPreferredVersion("imagestreams"), d = [], p = _.debounce(function(a, o) {
+var s = n.imagestream + ":" + n.tag;
+r.get(l, s, o).then(function(e) {
+t.loaded = !0, t.image = e.image, t.layers = i(t.image);
+}, function(n) {
+t.loaded = !0, t.alerts.load = {
 type: "error",
 message: "The image details could not be loaded.",
-details: r("getErrorDetails")(t)
+details: e("getErrorDetails")(n)
 };
 });
+<<<<<<< f5bee351fe1f2c950441897687b668e5bfdeb820
 }, 200), u = function(t, n, a) {
 s(t, n), "DELETED" === a && (e.alerts.deleted = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, 200), m = function(e, n, a) {
+c(e, n), "DELETED" === a && (t.alerts.deleted = {
+>>>>>>> Update ImageController to use getPreferredVersion
 type: "warning",
 message: "This image stream has been deleted."
 });
 };
+<<<<<<< f5bee351fe1f2c950441897687b668e5bfdeb820
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 h.get(c.project).then(_.spread(function(d, f) {
 b.project = d, e.get(k, c.imagestream, f, {
@@ -11013,28 +11019,32 @@ e[a.name] || (d[a.name] = a);
 =======
 a.get(t.project).then(_.spread(function(a, o) {
 e.project = a, n.get("imagestreams", t.imagestream, o, {
+=======
+s.get(n.project).then(_.spread(function(a, o) {
+t.project = a, r.get(u, n.imagestream, o, {
+>>>>>>> Update ImageController to use getPreferredVersion
 errorNotification: !1
 }).then(function(e) {
-u(e, o), c.push(n.watchObject("imagestreams", t.imagestream, o, function(e, t) {
-u(e, o, t);
+m(e, o), d.push(r.watchObject(u, n.imagestream, o, function(e, t) {
+m(e, o, t);
 }));
-}, function(t) {
-e.loaded = !0, e.alerts.load = {
+}, function(n) {
+t.loaded = !0, t.alerts.load = {
 type: "error",
 message: "The image stream details could not be loaded.",
-details: r("getErrorDetails")(t)
+details: e("getErrorDetails")(n)
 };
-}), e.$on("$destroy", function() {
-n.unwatchAll(c);
+}), t.$on("$destroy", function() {
+r.unwatchAll(d);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("ImagesController", [ "$routeParams", "$scope", "DataService", "ProjectsService", "$filter", "LabelFilter", "Logger", function(e, t, n, a, r, o, i) {
-t.projectName = e.project, t.imageStreams = {}, t.unfilteredImageStreams = {}, t.missingStatusTagsByImageStream = {}, t.builds = {}, t.labelSuggestions = {}, t.alerts = t.alerts || {}, t.emptyMessage = "Loading...";
-var s = [];
-a.get(e.project).then(_.spread(function(e, a) {
-function r() {
-angular.forEach(t.unfilteredImageStreams, function(e, n) {
-var a = t.missingStatusTagsByImageStream[n] = {};
+} ]), angular.module("openshiftConsole").controller("ImagesController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s) {
+n.projectName = t.project, n.imageStreams = {}, n.unfilteredImageStreams = {}, n.missingStatusTagsByImageStream = {}, n.builds = {}, n.labelSuggestions = {}, n.alerts = n.alerts || {}, n.emptyMessage = "Loading...";
+var c = a.getPreferredVersion("imagestreams"), l = [];
+s.get(t.project).then(_.spread(function(e, t) {
+function a() {
+angular.forEach(n.unfilteredImageStreams, function(e, t) {
+var a = n.missingStatusTagsByImageStream[t] = {};
 if (e.spec && e.spec.tags) {
 var r = {};
 e.status && e.status.tags && angular.forEach(e.status.tags, function(e) {
@@ -11379,6 +11389,7 @@ d.then(e);
 }, a.$on("$destroy", function() {
 d.unwatchAll(o);
 });
+<<<<<<< f5bee351fe1f2c950441897687b668e5bfdeb820
 }));
 } ]), angular.module("openshiftConsole").controller("DeploymentConfigController", [ "$scope", "$filter", "$routeParams", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "NotificationsService", "Logger", "ProjectsService", "StorageService", "LabelFilter", "labelNameFilter", function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) {
 var q = {};
@@ -11433,48 +11444,53 @@ a.unfilteredDeployments[i] = f, b("deploymentIsInProgress")(f) ? (a.deploymentCo
 =======
 function c() {
 o.getLabelSelector().isEmpty() || !$.isEmptyObject(t.imageStreams) || $.isEmptyObject(t.unfilteredImageStreams) ? delete t.alerts.imageStreams : t.alerts.imageStreams = {
+=======
+}
+function s() {
+o.getLabelSelector().isEmpty() || !$.isEmptyObject(n.imageStreams) || $.isEmptyObject(n.unfilteredImageStreams) ? delete n.alerts.imageStreams : n.alerts.imageStreams = {
+>>>>>>> Update ImageController to use getPreferredVersion
 type: "warning",
 details: "The active filters are hiding all image streams."
 };
 }
-t.project = e, s.push(n.watch("imagestreams", a, function(e) {
-t.unfilteredImageStreams = e.by("metadata.name"), o.addLabelSuggestionsFromResources(t.unfilteredImageStreams, t.labelSuggestions), o.setLabelSuggestions(t.labelSuggestions), t.imageStreams = o.getLabelSelector().select(t.unfilteredImageStreams), t.emptyMessage = "No image streams to show", r(), c(), i.log("image streams (subscribe)", t.imageStreams);
+n.project = e, l.push(r.watch(c, t, function(e) {
+n.unfilteredImageStreams = e.by("metadata.name"), o.addLabelSuggestionsFromResources(n.unfilteredImageStreams, n.labelSuggestions), o.setLabelSuggestions(n.labelSuggestions), n.imageStreams = o.getLabelSelector().select(n.unfilteredImageStreams), n.emptyMessage = "No image streams to show", a(), s(), i.log("image streams (subscribe)", n.imageStreams);
 })), o.onActiveFiltersChanged(function(e) {
-t.$apply(function() {
-t.imageStreams = e.select(t.unfilteredImageStreams), c();
+n.$apply(function() {
+n.imageStreams = e.select(n.unfilteredImageStreams), s();
 });
-}), t.$on("$destroy", function() {
-n.unwatchAll(s);
+}), n.$on("$destroy", function() {
+r.unwatchAll(l);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("ImageStreamController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", "ImageStreamsService", "Navigate", function(e, t, n, a, r, o, i) {
-e.projectName = t.project, e.imageStream = null, e.tags = [], e.tagShowOlder = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+} ]), angular.module("openshiftConsole").controller("ImageStreamController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "ImageStreamsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s) {
+n.projectName = t.project, n.imageStream = null, n.tags = [], n.tagShowOlder = {}, n.alerts = {}, n.renderOptions = n.renderOptions || {}, n.renderOptions.hideFilterWidget = !0, n.breadcrumbs = [ {
 title: "Image Streams",
 link: "project/" + t.project + "/browse/images"
 }, {
 title: t.imagestream
-} ], e.emptyMessage = "Loading...";
-var s = [];
-a.get(t.project).then(_.spread(function(a, i) {
-e.project = a, n.get("imagestreams", t.imagestream, i, {
+} ], n.emptyMessage = "Loading...", n.imageStreamsVersion = a.getPreferredVersion("imagestreams");
+var c = [];
+s.get(t.project).then(_.spread(function(a, i) {
+n.project = a, r.get(n.imageStreamsVersion, t.imagestream, i, {
 errorNotification: !1
-}).then(function(a) {
-e.loaded = !0, e.imageStream = a, e.emptyMessage = "No tags to show", s.push(n.watchObject("imagestreams", t.imagestream, i, function(t, n) {
-"DELETED" === n && (e.alerts.deleted = {
+}).then(function(e) {
+n.loaded = !0, n.imageStream = e, n.emptyMessage = "No tags to show", c.push(r.watchObject(n.imageStreamsVersion, t.imagestream, i, function(e, t) {
+"DELETED" === t && (n.alerts.deleted = {
 type: "warning",
 message: "This image stream has been deleted."
-}), e.imageStream = t, e.tags = _.toArray(o.tagsByName(e.imageStream));
+}), n.imageStream = e, n.tags = _.toArray(o.tagsByName(n.imageStream));
 }));
 }, function(t) {
-e.loaded = !0, e.alerts.load = {
+n.loaded = !0, n.alerts.load = {
 type: "error",
 message: "The image stream details could not be loaded.",
-details: r("getErrorDetails")(t)
+details: e("getErrorDetails")(t)
 };
-}), e.$on("$destroy", function() {
-n.unwatchAll(s);
+}), n.$on("$destroy", function() {
+r.unwatchAll(c);
 });
-})), e.imagestreamPath = function(e, t) {
+})), n.imagestreamPath = function(e, t) {
 if (!t.status) return "";
 var n = i.resourceURL(e.metadata.name, "ImageStream", e.metadata.namespace);
 return t && (n += "/" + t.name), n;
@@ -30302,14 +30318,16 @@ group: "autoscaling",
 resource: "horizontalpodautoscalers",
 verbs: [ "update", "delete" ]
 } ],
-imageStreams: [ {
-group: "",
-resource: "imagestreams",
+imageStreams: [ _.assign({}, e.getPreferredVersion("imagestreams"), {
 verbs: [ "update", "delete" ]
+<<<<<<< f5bee351fe1f2c950441897687b668e5bfdeb820
 } ],
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
+=======
+}) ],
+>>>>>>> Update ImageController to use getPreferredVersion
 serviceInstances: [ {
 group: "servicecatalog.k8s.io",
 resource: "serviceinstances",

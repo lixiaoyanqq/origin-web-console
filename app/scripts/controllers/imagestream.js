@@ -15,8 +15,7 @@ angular.module('openshiftConsole')
     DataService,
     ImageStreamsService,
     Navigate,
-    ProjectsService,
-    gettext) {
+    ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.imageStream = null;
     $scope.tags = [];
@@ -34,6 +33,8 @@ angular.module('openshiftConsole')
       }
     ];
     $scope.emptyMessage = gettext("Loading...");
+
+    $scope.imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
 
     $scope.imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
 
