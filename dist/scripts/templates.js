@@ -5949,8 +5949,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"container-fluid next-steps\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+<<<<<<< HEAD
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\"></next-steps>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\" name=\"name\"></next-steps>\n" +
+>>>>>>> Making next steps/results messaging consistent
     "</div>\n" +
     "</div>\n" +
     "</div>"
@@ -7536,7 +7540,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
+<<<<<<< HEAD
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.appName\">\n" +
+=======
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.appName\" is-dialog=\"true\">\n" +
+>>>>>>> Making next steps/results messaging consistent
     "</next-steps>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -8563,9 +8571,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 =======
     "<pf-wizard title=\"Import YAML / JSON\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" wizard-done=\"$ctrl.wizardDone\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\">\n" +
+<<<<<<< HEAD
 >>>>>>> Changing overlay layout to a single column
     "<pf-wizard-step step-title=\"JSON / YAML\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+    "<pf-wizard-step step-title=\"YAML / JSON\" step-id=\"file\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.importForm.$invalid\">\n" +
+>>>>>>> Making next steps/results messaging consistent
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -8631,7 +8643,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
     "\n" +
+<<<<<<< HEAD
     "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" kind=\"$ctrl.kind\" name=\"$ctrl.name\" action-label=\"$ctrl.actionLabel\">\n" +
+=======
+    "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.name\" is-dialog=\"true\">\n" +
+>>>>>>> Making next steps/results messaging consistent
     "</next-steps>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9357,6 +9373,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-controller=\"TasksController\">\n" +
     "<div ng-if=\"$ctrl.pendingTasks(tasks()).length\">\n" +
     "<div class=\"results-status\">\n" +
+<<<<<<< HEAD
     "<span class=\"fa fa-clock-o text-muted\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">Pending</span>\n" +
     "<div class=\"results-message\">\n" +
@@ -9364,6 +9381,61 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
     "<strong>{{$ctrl.name}}</strong> is being {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
     "</h1>\n" +
+=======
+    "<span class=\"spinner spinner-sm\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Pending</span>\n" +
+    "<h1 class=\"results-message h3\">\n" +
+    "<strong>{{$ctrl.name}}</strong> is being created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"results-failure\" ng-if=\"!$ctrl.pendingTasks(tasks()).length && $ctrl.erroredTasks(tasks()).length\">\n" +
+    "<div class=\"results-status\">\n" +
+    "<span class=\"pficon pficon-error-circle-o text-danger\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Error</span>\n" +
+    "<h1 class=\"results-message h3\">\n" +
+    "<strong>{{$ctrl.name}}</strong> failed to be created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div ng-if=\"!tasks().length\">\n" +
+    "<div class=\"results-status\">\n" +
+    "<span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Success</span>\n" +
+    "<h1 class=\"results-message h3\">\n" +
+    "<strong>{{$ctrl.name}}</strong> has been created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-if=\"tasks().length && $ctrl.allTasksSuccessful(tasks())\">\n" +
+    "<div class=\"results-status\">\n" +
+    "<span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Success</span>\n" +
+    "<h1 class=\"results-message h3\">\n" +
+    "<strong>{{$ctrl.name}}</strong> has been created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<p ng-if=\"!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length\">\n" +
+    "<a href=\"\" ng-click=\"$ctrl.goToOverview()\">Continue to the project overview</a>.\n" +
+    "</p>\n" +
+    "\n" +
+    "<div ng-if=\"$ctrl.isDialog && hasTaskWithError()\">\n" +
+    "<ul ng-repeat=\"task in tasks()\">\n" +
+    "<li ng-repeat=\"alert in task.alerts\" ng-if=\"alert.type === 'error' || alert.type === 'warning'\">\n" +
+    "{{alert.message}} {{alert.details}}\n" +
+    "</li>\n" +
+    "</ul>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div ng-repeat=\"task in tasks()\" ng-if=\"!$ctrl.isDialog && tasks().length && !$ctrl.allTasksSuccessful(tasks())\">\n" +
+    "<div class=\"tasks\" ng-class=\"hasTaskWithError() ? 'failure' : 'success'\">\n" +
+    "<div class=\"task-content\">\n" +
+    "<i class=\"pficon task-icon\" ng-class=\"task.hasErrors ? 'pficon-error-circle-o' : 'pficon-ok'\"></i>\n" +
+    "<div class=\"task-info\">\n" +
+    "{{ task | taskTitle }}.\n" +
+>>>>>>> Making next steps/results messaging consistent
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9420,7 +9492,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"resource-description\" ng-bind-html=\"$ctrl.templateMessage | linkify : '_blank'\"></div>\n" +
     "</div>\n" +
     "<div ng-if=\"$ctrl.createdBuildConfig\">\n" +
+<<<<<<< HEAD
     "<h2 class=\"h3\" translate>Making code changes</h2>\n" +
+=======
+    "<h2 class=\"h3\">Making code changes</h2>\n" +
+>>>>>>> Making next steps/results messaging consistent
     "<p ng-if=\"$ctrl.fromSampleRepo\">\n" +
     "You are set up to use the example git repository. If you would like to modify the source code, fork the <osc-git-link uri=\"$ctrl.createdBuildConfig.spec.source.git.uri\">{{$ctrl.createdBuildConfig.spec.source.git.uri}}</osc-git-link> repository to an OpenShift-visible git account and <a href=\"{{$ctrl.createdBuildConfig | editResourceURL}}\">edit the <strong>{{$ctrl.createdBuildConfig.metadata.name}}</strong> build config</a> to point to your fork.\n" +
     "<span ng-if=\"$ctrl.createdBuildConfigWithConfigChangeTrigger()\">Note that this will start a new build.</span>\n" +
@@ -9442,9 +9518,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<copy-to-clipboard clipboard-text=\"$ctrl.createdBuildConfig.metadata.name | webhookURL : trigger.type : trigger.github : $ctrl.projectName\"></copy-to-clipboard>\n" +
     "</div>\n" +
-    "</div>\n" +
     "<div ng-if=\"$ctrl.parameters.all.length\">\n" +
+<<<<<<< HEAD
     "<h2 class=\"h3\" translate>Applied Parameter Values</h2>\n" +
+=======
+    "<h2 class=\"h3\">Applied Parameter Values</h2>\n" +
+>>>>>>> Making next steps/results messaging consistent
     "<p>These parameters often include things like passwords. If you will need to reference these values later, copy them to a safe location.\n" +
     "<span ng-if=\"$ctrl.parameters.generated.length > 1\">Parameters <span ng-repeat=\"paramName in $ctrl.parameters.generated\">{{paramName}}<span ng-if=\"!$last\">, </span></span> were generated automatically.</span>\n" +
     "<span ng-if=\"$ctrl.parameters.generated.length === 1\">Parameter {{$ctrl.parameters.generated[0]}} was generated automatically.</span>\n" +
@@ -10887,7 +10966,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
 =======
     "<div class=\"order-service-config\">\n" +
-    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\">\n" +
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.template | displayName\" is-dialog=\"true\">\n" +
     "</next-steps>\n" +
     "</div>"
 >>>>>>> Changing overlay layout to a single column
@@ -15038,10 +15117,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"hidden-xs\" ng-if=\"(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL\">\n" +
     "<a ng-href=\"{{row.apiObject.status.dashboardURL}}\" target=\"_blank\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<translate>Dashboard</translate> <i class=\"fa fa-external-link small\" aria-hidden=\"true\"></i>\n" +
 =======
     "Console <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
 >>>>>>> Overview instance row improvements
+=======
+    "Dashboard <i class=\"fa fa-external-link small\" aria-hidden=\"true\"></i>\n" +
+>>>>>>> Making next steps/results messaging consistent
     "</a>\n" +
     "</div>\n" +
     "</div>\n" +

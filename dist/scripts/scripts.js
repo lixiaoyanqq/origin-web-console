@@ -17108,7 +17108,7 @@ var n = _.get(e, "spec.triggers", []), r = _.find(n, function(e) {
 >>>>>>> Support EnvFrom in the Env Editors
 u("displayName");
 var f = [];
-e.alerts = [], e.loginBaseUrl = a.openshiftAPIBaseUrl(), e.buildConfigs = {}, e.projectName = n.project, e.fromSampleRepo = n.fromSample, e.breadcrumbs = [ {
+e.alerts = [], e.loginBaseUrl = a.openshiftAPIBaseUrl(), e.buildConfigs = {}, e.projectName = n.project, e.fromSampleRepo = n.fromSample, e.name = n.breadcrumbTitle || n.name, e.breadcrumbs = [ {
 title: "Add to Project",
 link: "project/" + e.projectName + "/create"
 }, {
@@ -20228,16 +20228,23 @@ var t;
 _.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(r.kindToResource(t.kind), t.metadata.name, t, {
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
+if (!p.isDialog) {
 var e = P(t.kind);
 c.addNotification({
 type: "success",
 message: _.capitalize(e) + " " + t.metadata.name + " was successfully updated."
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), y();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }), b();
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+});
+}
+b();
+>>>>>>> Making next steps/results messaging consistent
 }, function(n) {
 c.addNotification({
 id: "from-file-error",
@@ -20265,11 +20272,14 @@ details: e("getErrorDetails")(n)
 })) : (t = _.head(p.createResources), i.create(r.kindToResource(t.kind), null, t, {
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
+if (!p.isDialog) {
 var e = P(t.kind);
 c.addNotification({
 type: "success",
 message: _.capitalize(e) + " " + t.metadata.name + " was successfully created."
-}), b();
+});
+}
+b();
 }, function(n) {
 c.addNotification({
 id: "from-file-error",
@@ -27545,6 +27555,7 @@ templateUrl: "views/directives/process-template.html"
 angular.module("openshiftConsole").component("processTemplateDialog", {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 controller: [ "$scope", "$filter", "$routeParams", "Catalog", "DataService", "KeywordService", "NotificationsService", "ProjectsService", "RecentlyViewedProjectsService", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i, s, c, l, u) {
 function d() {
 var e = _.get(w, "template.metadata.annotations.iconClass", "fa fa-clone");
@@ -27643,13 +27654,23 @@ v.steps || (v.steps = [ v.selectStep, v.infoStep, v.configStep, v.resultsStep ])
 }
 function u() {
 v && (v(), v = void 0);
+=======
+controller: [ "$scope", "$filter", "$routeParams", "Catalog", "DataService", "KeywordService", "NotificationsService", "ProjectsService", "RecentlyViewedProjectsService", function(e, t, n, a, r, o, i, s, c) {
+function l() {
+var e = _.get(y, "template.metadata.annotations.iconClass", "fa fa-clone");
+return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
+}
+function u() {
+y.steps || (y.steps = [ y.selectStep, y.infoStep, y.configStep, y.resultsStep ]);
+>>>>>>> Making next steps/results messaging consistent
 }
 function d() {
+v && (v(), v = void 0);
+}
+function m() {
 e.$broadcast("instantiateTemplate");
 }
-function m(e, t) {
-return r.filterForKeywords(t, [ "name", "tags" ], r.generateKeywords(e));
-}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 function p(e) {
@@ -27677,6 +27698,21 @@ y.filterConfig.resultsCount = y.filteredItems.length, y.totalCount <= 1 ? $(".fi
 }
 function h() {
 y.unfilteredProjects || i.list().then(function(e) {
+=======
+function p(e, t) {
+return o.filterForKeywords(t, [ "name", "tags" ], o.generateKeywords(e));
+}
+function f(e) {
+y.filterConfig.appliedFilters = e, g();
+}
+function g() {
+y.filteredItems = y.catalogItems, y.filterConfig.appliedFilters && y.filterConfig.appliedFilters.length > 0 && _.each(y.filterConfig.appliedFilters, function(e) {
+y.filteredItems = p(e.value, y.filteredItems);
+}), y.filterConfig.resultsCount = y.filteredItems.length, _.includes(y.filteredItems, y.selectedTemplate) || y.templateSelected();
+}
+function h() {
+y.unfilteredProjects || s.list().then(function(e) {
+>>>>>>> Making next steps/results messaging consistent
 y.unfilteredProjects = _.toArray(e.by("metadata.name"));
 }, function() {
 y.unfilteredProjects = [];
@@ -27694,11 +27730,15 @@ allowed: !0,
 valid: !1,
 onShow: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 y.selectStep.selected = !0, y.configStep.selected = !1, y.resultsStep.selected = !1, y.nextTitle = "Next >", u(), h();
 =======
 v.infoStep.selected = !1, v.selectStep.selected = !0, v.configStep.selected = !1, v.resultsStep.selected = !1, v.nextTitle = "Next >", u(), g();
+=======
+y.infoStep.selected = !1, y.selectStep.selected = !0, y.configStep.selected = !1, y.resultsStep.selected = !1, y.nextTitle = "Next >", d(), h();
+>>>>>>> Making next steps/results messaging consistent
 }
-}, v.infoStep = {
+}, y.infoStep = {
 id: "info",
 label: "Information",
 view: "views/directives/process-template-dialog/process-template-info.html",
@@ -27706,8 +27746,12 @@ allowed: !0,
 valid: !0,
 allowClickNav: !0,
 onShow: function() {
+<<<<<<< HEAD
 v.infoStep.selected = !0, v.selectStep.selected = !1, v.configStep.selected = !1, v.resultsStep.selected = !1, v.nextTitle = "Next >", u();
 >>>>>>> Changing overlay layout to a single column
+=======
+y.infoStep.selected = !0, y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected = !1, y.nextTitle = "Next >", d();
+>>>>>>> Making next steps/results messaging consistent
 }
 }, y.configStep = {
 id: "configuration",
@@ -27717,12 +27761,17 @@ valid: !1,
 allowed: !0,
 onShow: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 y.selectStep.selected = !1, y.configStep.selected = !0, y.resultsStep.selected = !1, y.nextTitle = "Create", y.resultsStep.allowed = y.configStep.valid, v = e.$watch("$ctrl.form.$valid", function(e) {
 y.configStep.valid = e && y.selectedProject, y.resultsStep.allowed = e;
 =======
 v.infoStep.selected = !1, v.selectStep.selected = !1, v.configStep.selected = !0, v.resultsStep.selected = !1, v.nextTitle = "Create", v.resultsStep.allowed = v.configStep.valid, h = e.$watch("$ctrl.form.$valid", function(e) {
 v.configStep.valid = e && v.selectedProject, v.resultsStep.allowed = e;
 >>>>>>> Changing overlay layout to a single column
+=======
+y.infoStep.selected = !1, y.selectStep.selected = !1, y.configStep.selected = !0, y.resultsStep.selected = !1, y.nextTitle = "Create", y.resultsStep.allowed = y.configStep.valid, v = e.$watch("$ctrl.form.$valid", function(e) {
+y.configStep.valid = e && y.selectedProject, y.resultsStep.allowed = e;
+>>>>>>> Making next steps/results messaging consistent
 });
 }
 }, y.resultsStep = {
@@ -27736,6 +27785,7 @@ prevEnabled: !1,
 <<<<<<< HEAD
 allowClickNav: !1,
 onShow: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 w.infoStep.selected = !1, w.selectStep.selected = !1, w.configStep.selected = !1, w.resultsStep.selected = !0, w.nextTitle = u.getString(l("Close")), g(), w.wizardDone = !0;
 =======
@@ -27754,6 +27804,20 @@ icon: "pficon pficon-info",
 title: u.getString(l("No Templates")),
 info: u.getString(l("The selected project has no templates available to import."))
 }, w.filterConfig = {
+=======
+y.infoStep.selected = !1, y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected = !0, y.nextTitle = "Close", d(), y.wizardDone = !0;
+}
+}, y.$onInit = function() {
+y.loginBaseUrl = r.openshiftAPIBaseUrl(), y.preSelectedProject = y.selectedProject = y.project, h(), y.projectEmptyState = {
+icon: "pficon pficon-info",
+title: "No Project Selected",
+info: "Please select a project from the dropdown to load Templates from that project."
+}, y.templatesEmptyState = {
+icon: "pficon pficon-info",
+title: "No Templates",
+info: "The selected project has no templates available to import."
+}, y.filterConfig = {
+>>>>>>> Making next steps/results messaging consistent
 fields: [ {
 id: "keyword",
 title: "Keyword",
@@ -27766,6 +27830,7 @@ itemsLabel: "Item",
 itemsLabelPlural: "Items",
 resultsCount: 0,
 appliedFilters: [],
+<<<<<<< HEAD
 <<<<<<< HEAD
 onFilterChange: h
 }, n.project || (w.showProjectName = !0);
@@ -27871,6 +27936,28 @@ v.catalogItems = e, v.totalCount = v.catalogItems.length, m(), t && o.addNotific
 =======
 v.catalogItems = e, v.totalCount = v.catalogItems.length, p(), t && o.addNotification({
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+onFilterChange: f
+}, n.project || (y.showProjectName = !0);
+}, y.$onChanges = function(e) {
+e.template && y.template && (u(), y.iconClass = l()), e.useProjectTemplate && u();
+}, e.$on("templateInstantiated", function(e, t) {
+y.selectedProject = t.project, y.currentStep = y.resultsStep.label;
+}), y.$onDestroy = function() {
+d();
+}, y.next = function(e) {
+return e.stepId === y.configStep.id ? (m(), !1) : e.stepId !== y.resultsStep.id || (y.close(), !1);
+}, y.close = function() {
+var e = y.onDialogClosed();
+_.isFunction(e) && e();
+}, y.onProjectSelected = function(t) {
+y.selectedProject = t, y.configStep.valid = e.$ctrl.form.$valid && y.selectedProject;
+}, y.templateSelected = function(e) {
+y.selectedTemplate = e, y.template = _.get(e, "resource"), y.selectStep.valid = !!e, y.iconClass = l();
+}, y.templateProjectChange = function() {
+y.templateProjectName = _.get(y.templateProject, "metadata.name"), y.catalogItems = {}, y.templateSelected(), a.getProjectCatalogItems(y.templateProjectName, !1, !0).then(_.spread(function(e, t) {
+y.catalogItems = e, y.totalCount = y.catalogItems.length, f(), t && i.addNotification({
+>>>>>>> Making next steps/results messaging consistent
 type: "error",
 message: t
 });
@@ -27878,8 +27965,12 @@ message: t
 };
 var b = function() {
 var e = _.reject(y.unfilteredProjects, "metadata.deletionTimestamp"), n = _.sortBy(e, t("displayName"));
+<<<<<<< HEAD
 y.searchEnabled = !_.isEmpty(e), y.templateProjects = s.orderByMostRecentlyViewed(n);
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+y.searchEnabled = !_.isEmpty(e), y.templateProjects = c.orderByMostRecentlyViewed(n);
+>>>>>>> Making next steps/results messaging consistent
 };
 } ],
 controllerAs: "$ctrl",
@@ -27901,6 +27992,7 @@ templateUrl: "views/directives/process-template-dialog.html"
 });
 }(), function() {
 angular.module("openshiftConsole").component("deployImageDialog", {
+<<<<<<< HEAD
 <<<<<<< HEAD
 controller: [ "$scope", "$routeParams", "DataService", "gettext", "gettextCatalog", function(e, t, n, r, a) {
 var o = this;
@@ -27936,6 +28028,23 @@ return _.isFunction(e) && e(), n.wizardDone = !1, !0;
 }), n.nextCallback = function(e) {
 return "image" === e.stepId ? (n.deployImage(), !1) : ("results" === e.stepId && n.close(), !0);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+controller: [ "$scope", "$routeParams", "DataService", function(e, t, n) {
+var a = this;
+a.$onInit = function() {
+a.loginBaseUrl = n.openshiftAPIBaseUrl(), a.currentStep = "Image", t.project || (a.showProjectName = !0);
+}, a.deployImage = function() {
+e.$broadcast("newAppFromDeployImage");
+}, e.$on("deployImageNewAppCreated", function(e, t) {
+a.selectedProject = t.project, a.appName = t.appName, a.deployImageNewAppCreated = !0, a.currentStep = "Results";
+}), a.close = function() {
+var e = a.onDialogClosed();
+return _.isFunction(e) && e(), a.wizardDone = !1, !0;
+}, a.stepChanged = function(e) {
+"results" === e.stepId ? (a.nextButtonTitle = "Close", a.wizardDone = !0) : a.nextButtonTitle = "Deploy";
+}, a.nextCallback = function(e) {
+return "image" === e.stepId ? (a.deployImage(), !1) : "results" !== e.stepId || (a.close(), !1);
+>>>>>>> Making next steps/results messaging consistent
 };
 } ],
 controllerAs: "$ctrl",
@@ -27955,6 +28064,7 @@ templateUrl: "views/directives/deploy-image-dialog.html"
 });
 }(), function() {
 angular.module("openshiftConsole").component("fromFileDialog", {
+<<<<<<< HEAD
 <<<<<<< HEAD
 controller: [ "$scope", "$timeout", "$routeParams", "$filter", "DataService", function(e, t, n, r, a) {
 function o() {
@@ -27992,20 +28102,26 @@ return "file" === e.stepId ? (s.importFile(), !1) : "template" === e.stepId ? (s
 controller: [ "$scope", "$timeout", "DataService", function(e, t, n) {
 function a() {
 var e = _.get(r, "template.metadata.annotations.iconClass", "fa fa-clone");
+=======
+controller: [ "$scope", "$timeout", "$routeParams", "$filter", "DataService", function(e, t, n, a, r) {
+function o() {
+var e = _.get(i, "template.metadata.annotations.iconClass", "fa fa-clone");
+>>>>>>> Making next steps/results messaging consistent
 return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
 }
-var r = this;
-r.$onInit = function() {
-r.alerts = {}, r.loginBaseUrl = n.openshiftAPIBaseUrl();
-}, r.importFile = function() {
+var i = this;
+i.$onInit = function() {
+i.alerts = {}, i.loginBaseUrl = r.openshiftAPIBaseUrl(), n.project || (i.showProjectName = !0);
+}, i.importFile = function() {
 e.$broadcast("importFileFromYAMLOrJSON");
-}, r.instantiateTemplate = function() {
+}, i.instantiateTemplate = function() {
 e.$broadcast("instantiateTemplate");
 }, e.$on("fileImportedFromYAMLOrJSON", function(e, n) {
-r.selectedProject = n.project, r.template = n.template, r.iconClass = a(), t(function() {
-r.currentStep = r.template ? "Template Configuration" : "Results";
+i.selectedProject = n.project, i.template = n.template, i.iconClass = o(), i.name = "YAML / JSON", t(function() {
+i.currentStep = i.template ? "Template Configuration" : "Results";
 }, 0);
 }), e.$on("templateInstantiated", function(e, t) {
+<<<<<<< HEAD
 r.selectedProject = t.project, r.currentStep = "Results";
 }), r.close = function() {
 r.template = null;
@@ -28016,6 +28132,17 @@ return _.isFunction(e) && e(), r.wizardDone = !1, !0;
 }), r.currentStep = "JSON / YAML", r.nextCallback = function(e) {
 return "file" === e.stepId ? (r.importFile(), !1) : "template" === e.stepId ? (r.instantiateTemplate(), !1) : "results" !== e.stepId || (r.close(), !1);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+i.selectedProject = t.project, i.name = a("displayName")(i.template), i.currentStep = "Results";
+}), i.close = function() {
+i.template = null;
+var e = i.onDialogClosed();
+return _.isFunction(e) && e(), i.wizardDone = !1, !0;
+}, i.stepChanged = function(e) {
+"results" === e.stepId ? (i.nextButtonTitle = "Close", i.wizardDone = !0) : i.nextButtonTitle = "Create";
+}, i.currentStep = "YAML / JSON", i.nextCallback = function(e) {
+return "file" === e.stepId ? (i.importFile(), !1) : "template" === e.stepId ? (i.instantiateTemplate(), !1) : "results" !== e.stepId || (i.close(), !1);
+>>>>>>> Making next steps/results messaging consistent
 };
 } ],
 controllerAs: "$ctrl",
@@ -28159,7 +28286,10 @@ projectName: "<",
 loginBaseUrl: "<",
 fromSampleRepo: "<",
 createdBuildConfig: "<",
-onContinue: "<"
+onContinue: "<",
+showProjectName: "<",
+name: "<",
+isDialog: "<"
 },
 templateUrl: "views/directives/next-steps.html"
 });
