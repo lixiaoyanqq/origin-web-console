@@ -2220,6 +2220,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Update buildConfig controller to use getPreferredVersion
     "</ng-form>\n" +
     "</uib-tab>\n" +
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"('events' | canI : 'watch')\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+    "<events api-objects=\"[ buildConfig ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
+    "</uib-tab>\n" +
     "</uib-tabset>\n" +
     "</div>\n" +
     "</div>\n" +

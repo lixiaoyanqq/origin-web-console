@@ -7531,13 +7531,13 @@ title: n.buildconfig
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var p, m = t("buildConfigForBuild"), f = t("buildStrategy"), g = [], h = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
+var p = t("buildConfigForBuild"), m = t("buildStrategy"), f = [], g = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = m(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update("buildconfigs", n.buildconfig, e.updatedBuildConfig, p).then(function() {
+l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), m(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update("buildconfigs", n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
 l.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
@@ -7551,14 +7551,14 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.clearEnvVarUpdates = function() {
-h(e.buildConfig), e.forms.bcEnvVars.$setPristine();
+g(e.buildConfig), e.forms.bcEnvVars.$setPristine();
 };
-var v, y = function(n, s) {
+var h, v = function(n, s) {
 e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = r.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 }));
-var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
-v !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (v = l, i.get(a.kindToResource(c.kind), c.name, {
+var c = _.get(m(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+h !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (h = l, i.get(a.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }, {
@@ -7587,10 +7587,10 @@ onClick:function() {
 return a.clearEnvVarUpdates(), !0;
 =======
 e.BCEnvVarsFromImage = [];
-})) : e.BCEnvVarsFromImage = []), h(n), "DELETED" === s && (e.alerts.deleted = {
+})) : e.BCEnvVarsFromImage = []), g(n), "DELETED" === s && (e.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
-}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? h(n) : e.alerts.background_update = {
+}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? g(n) : e.alerts.background_update = {
 type: "warning",
 message: "This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links: [ {
@@ -7647,19 +7647,19 @@ type: "warning",
 details: "The active filters are hiding all builds."
 };
 }
-e.project = a, p = o, i.get(e.buildConfigsVersion, n.buildconfig, o, {
+e.project = a, e.projectContext = o, i.get(e.buildConfigsVersion, n.buildconfig, o, {
 errorNotification: !1
 }).then(function(t) {
-y(t), g.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, y));
+v(t), f.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, v));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: 404 === n.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
-}), g.push(i.watch(e.buildsVersion, o, function(t, a, o) {
+}), f.push(i.watch(e.buildsVersion, o, function(t, a, o) {
 if (e.emptyMessage = "No builds to show", a) {
-if (m(o) === n.buildconfig) {
+if (p(o) === n.buildconfig) {
 var i = o.metadata.name;
 switch (a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -7704,12 +7704,16 @@ r.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
 c.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
+<<<<<<< e6328fcb7cce18e96c77b0e6b9f55b6084527cad
 <<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
 i.unwatchAll(f);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 i.unwatchAll(g);
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+i.unwatchAll(f);
+>>>>>>> Bug 1495491 - Show events tab on build config page
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
