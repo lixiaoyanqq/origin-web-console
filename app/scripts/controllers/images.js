@@ -29,6 +29,8 @@ angular.module('openshiftConsole')
 
     var imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
 
+    var imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
+
     var watches = [];
 
     ProjectsService
