@@ -92,7 +92,7 @@ angular.module('openshiftConsole')
       $scope.envVars = _.filter($scope.envVars, 'name');
       buildStrategy($scope.updatedBuildConfig).env = keyValueEditorUtils.compactEntries(angular.copy($scope.envVars));
       DataService
-        .update("buildconfigs", $routeParams.buildconfig, $scope.updatedBuildConfig, requestContext)
+        .update("buildconfigs", $routeParams.buildconfig, $scope.updatedBuildConfig, $scope.projectContext)
         .then(function success() {
           NotificationsService.addNotification({
             type: "success",

@@ -2191,7 +2191,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ng-form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"('events' | canI : 'watch')\">\n" +
+<<<<<<< 82ecd105133e58ecd5737b3b3c3909bdc4572ffb
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Bug 1495491 - Show events tab on build config page
     "<events api-objects=\"[ buildConfig ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
