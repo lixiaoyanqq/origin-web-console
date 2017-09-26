@@ -27,10 +27,6 @@
       if (!$routeParams.project) {
         ctrl.showProjectName = true;
       }
-      $scope.$on('no-projects-cannot-create', function() {
-        ctrl.deployForm.$setValidity('required', false);
-        ctrl.deployImageNewAppCreated = false;
-      });
     };
 
     ctrl.deployImage = function() {
@@ -39,6 +35,7 @@
 
     $scope.$on('deployImageNewAppCreated', function(event, message) {
       ctrl.selectedProject = message.project;
+      ctrl.appName = message.appName;
       ctrl.deployImageNewAppCreated = true;
       ctrl.currentStep = "Results";
     });
