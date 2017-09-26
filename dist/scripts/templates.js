@@ -14759,7 +14759,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Making display of errors for service rows consistent with others
     "<div class=\"hidden-xs\" ng-if=\"(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL\">\n" +
     "<a ng-href=\"{{row.apiObject.status.dashboardURL}}\" target=\"_blank\">\n" +
+<<<<<<< 7226bcfa00d32ae0e844b413a5fd0dd3be3821f3
     "<translate>Dashboard</translate> <i class=\"fa fa-external-link small\" aria-hidden=\"true\"></i>\n" +
+=======
+    "Console <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
+>>>>>>> Overview instance row improvements
     "</a>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14832,7 +14836,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"alert word-break alert-danger\">\n" +
     "<span class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">error</span>\n" +
-    "<span class=\"strong\">{{row.apiObject | serviceInstanceFailedMessage}}</span>\n" +
+    "<span class=\"strong\">The service failed.</span>\n" +
+    "<span class=\"mar-right-md\">\n" +
+    "<truncate-long-text content=\"row.apiObject | serviceInstanceFailedMessage\" limit=\"265\"></truncate-long-text>\n" +
+    "</span>\n" +
+    "<span ng-if=\"{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'\" class=\"nowrap\">\n" +
+    "<a href=\"\" ng-click=\"row.deprovision()\">Delete This Service</a>\n" +
+    "</span>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14841,15 +14851,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"alert word-break alert-info\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">info</span>\n" +
+<<<<<<< 7226bcfa00d32ae0e844b413a5fd0dd3be3821f3
     "<span>The service is not yeat ready.</span>\n" +
     "<span>{{row.pendingMessage}}</span>\n" +
+=======
+    "<span class=\"strong\">The service is not yet ready.</span>\n" +
+    "<truncate-long-text content=\"row.pendingMessage\" limit=\"265\"></truncate-long-text>\n" +
+>>>>>>> Overview instance row improvements
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-switch-default>\n" +
     "<div class=\"row\">\n" +
-    "<div class=\"col-sm-12\" ng-if=\"row.description\">\n" +
-    "<p class=\"pre-wrap\" ng-bind-html=\"row.description | linky\"></p>\n" +
+    "<div class=\"col-sm-12\" ng-if=\"row.serviceClass.description\">\n" +
+    "<p class=\"pre-wrap\" ng-bind-html=\"row.serviceClass.description | linky\"></p>\n" +
+    "<div ng-if=\"row.serviceClass.externalMetadata.documentationUrl || row.serviceClass.externalMetadata.supportUrl\">\n" +
+    "<a ng-if=\"row.serviceClass.externalMetadata.documentationUrl\" ng-href=\"{{row.serviceClass.externalMetadata.documentationUrl}}\" target=\"_blank\" class=\"learn-more-link\">View Documentation <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "<a ng-if=\"row.serviceClass.externalMetadata.supportUrl\" ng-href=\"{{row.serviceClass.externalMetadata.supportUrl}}\" target=\"_blank\" class=\"learn-more-link\">Get Support <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "</div>\n" +
     "</div>\n" +
 >>>>>>> Show provision status of service instances on the overview page.
     "</div>\n" +

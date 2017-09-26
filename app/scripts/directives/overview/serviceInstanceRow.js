@@ -32,31 +32,6 @@
 
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
 
-    row.serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
-    row.serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
-
-    var getServiceClass = function() {
-      var serviceClassName = ServiceInstancesService.getServiceClassNameForInstance(row.apiObject);
-      return _.get(row, ['state','serviceClasses', serviceClassName]);
-    };
-
-    var getServicePlan = function() {
-      var servicePlanName = ServiceInstancesService.getServicePlanNameForInstance(row.apiObject);
-      return _.get(row, ['state', 'servicePlans', servicePlanName]);
-    };
-
-    var updateInstanceStatus = function() {
-      if (_.get(row.apiObject, 'metadata.deletionTimestamp')) {
-        row.instanceStatus = 'deleted';
-      } else if (isBindingFailed(row.apiObject)) {
-        row.instanceStatus = 'failed';
-      } else if (isBindingReady(row.apiObject)) {
-        row.instanceStatus = 'ready';
-      } else {
-        row.instanceStatus = 'pending';
-      }
-    };
-
     var updateInstanceStatus = function() {
       if (_.get(row.apiObject, 'metadata.deletionTimestamp')) {
         row.instanceStatus = 'deleted';
@@ -75,7 +50,7 @@
       row.notifications = ListRowUtils.getNotifications(row.apiObject, row.state);
       row.displayName = serviceInstanceDisplayName(row.apiObject, row.state.serviceClasses);
       row.isBindable = BindingService.isServiceBindable(row.apiObject, row.state.serviceClasses);
-      row.description = getDescription();
+      row.serviceClass = _.get(row, ['state', 'serviceClasses', row.apiObject.spec.serviceClassName]);
     };
 
     row.$onChanges = function(changes) {
