@@ -3271,11 +3271,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< 660775648bdefd3e6cf49f2ab3d8b4fb8e2d0e4b
     "<li ng-if=\"'imagestreams' | canI : 'update'\">\n" +
     "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
     "</li>\n" +
     "<li ng-if=\"'imagestreams' | canI : 'delete'\">\n" +
     "<delete-link kind=\"ImageStream\" resource-name=\"{{imageStream.metadata.name}}\" project-name=\"{{imageStream.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
+=======
+    "<li ng-if=\"imageStreamsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"imageStreamsVersion | canI : 'delete'\">\n" +
+    "<delete-link kind=\"ImageStream\" resource-name=\"{{imageStream.metadata.name}}\" project-name=\"{{imageStream.metadata.namespace}}\" alerts=\"alerts\">\n" +
+>>>>>>> Update ImageController to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
