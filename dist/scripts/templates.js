@@ -7626,12 +7626,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 017447d4b6cf09d48cba7f5c45dc9c1374b6118a
 <<<<<<< 1df4d542d8c3bf866e9b29ab4efc5e37947b6a6f
     "<div ng-if-end>\n" +
 =======
     "<div class=\"row\" ng-if-end>\n" +
     "<div class=\"col-sm-12\">\n" +
 >>>>>>> Bug 1473601 - Fix form validation for deploy image
+=======
+    "<div ng-if-end>\n" +
+>>>>>>> Fixes bug where required field indicator was misaligned in deploy image overlay
     "<ng-form name=\"forms.deployImage\" class=\"osc-form\">\n" +
     "<div class=\"form-group\">\n" +
 <<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
@@ -7706,8 +7710,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ng-form>\n" +
 >>>>>>> Bug 1473601 - Fix form validation for deploy image
     "</div>\n" +
+<<<<<<< 017447d4b6cf09d48cba7f5c45dc9c1374b6118a
     "</ng-form>\n" +
     "</div>\n" +
+=======
+>>>>>>> Fixes bug where required field indicator was misaligned in deploy image overlay
     "<div ng-if=\"!loading && import.error\" class=\"empty-state-message text-center\">\n" +
     "<h2>\n" +
     "<i class=\"pficon pficon-error-circle-o\" aria-hidden=\"true\"></i>\n" +
