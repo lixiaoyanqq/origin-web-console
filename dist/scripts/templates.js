@@ -6558,9 +6558,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-class=\"{'col-sm-5 col-md-6': $ctrl.isOverview,\n" +
     "                    'col-sm-8 col-md-6 col-lg-8': !$ctrl.isOverview}\">\n" +
     "<h3>\n" +
-    "<div class=\"component-label\">\n" +
-    "Secret\n" +
-    "</div>\n" +
     "{{$ctrl.binding.metadata.name}}\n" +
     "<span ng-if=\"$ctrl.refApiObject.kind !== 'ServiceInstance'\">\n" +
     "<small ng-if=\"$ctrl.serviceClass\">\n" +
