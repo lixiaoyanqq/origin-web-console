@@ -3859,10 +3859,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"showRouterHostnameAlert(ingress, admittedCondition)\" class=\"mar-top-lg\">\n" +
     "<div class=\"alert alert-info\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< 744d6735b0d45b49ccfdd4ee9e2deea10aa1b381
     "<span class=\"mar-right-sm\" translate>\n" +
     "The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}}, to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.\n" +
     "</span>\n" +
     "<a href=\"\" ng-click=\"hideRouterHostnameAlert(ingress)\" role=\"button\" class=\"nowrap\" translate>Don't Show Me Again</a>\n" +
+=======
+    "The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}}, to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.\n" +
+>>>>>>> Don't let users accidentally and permanently dismiss router hostname message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
