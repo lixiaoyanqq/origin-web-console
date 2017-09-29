@@ -159,6 +159,12 @@
           <div class="has-error" ng-show="nameTaken">
             <span class="help-block" translate>This name is already in use within the project. Please choose a different name.</span>
           </div>
+          <div class="help-block" ng-show="forms.deployImage.name.$error.maxlength">
+            Name can't have more than 24 characters.
+          </div>
+        </div>
+        <div class="has-error" ng-show="nameTaken">
+          <span class="help-block">This name is already in use within the project. Please choose a different name.</span>
         </div>
         <osc-form-section
           header="{{'Environment Variables'|translate}}"
@@ -196,7 +202,7 @@
         </div>
       </ng-form>
     </div>
-
+    
     <div ng-if="!loading && import.error" class="empty-state-message text-center">
       <h2>
         <i class="pficon pficon-error-circle-o" aria-hidden="true"></i>
