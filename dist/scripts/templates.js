@@ -7048,8 +7048,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"row\" ng-if-end>\n" +
-    "<div class=\"col-sm-12\">\n" +
+    "<div ng-if-end>\n" +
     "<ng-form name=\"forms.deployImage\" class=\"osc-form\">\n" +
     "<div class=\"form-group\">\n" +
 <<<<<<< b2a818e850e88a4bf76ea4c6fa6c3f16fe16818f
@@ -7122,7 +7121,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Bug 1473601 - Fix form validation for deploy image
     "</div>\n" +
     "</ng-form>\n" +
-    "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!loading && import.error\" class=\"empty-state-message text-center\">\n" +
     "<h2>\n" +
