@@ -14163,11 +14163,15 @@ n.projectName = e.project, n.labelSuggestions = {}, n.alerts = n.alerts || {}, n
 disabled: !0
 }, n.kinds = _.filter(l.availableKinds(), function(e) {
 switch (e.kind) {
+<<<<<<< HEAD
 case "ReplicationController":
 case "Deployment":
 case "DeploymentConfig":
 case "BuildConfig":
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+case "AppliedClusterResourceQuota":
+>>>>>>> Don't show "Service Instance" in Other Resources list
 case "Build":
 case "BuildConfig":
 case "ConfigMap":
