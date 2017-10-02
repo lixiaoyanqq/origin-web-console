@@ -13239,8 +13239,8 @@ name: e.metadata.name
 }
 return t;
 };
-a.checkEntries = function(e) {
-return !!l(e);
+a.checkEntries = function(e, t) {
+return e !== t && !!l(e);
 };
 var u = function(e, t) {
 a.cannotAdd = a.isReadonlyAny || _.isEmpty(t), t && _.each(t, function(e) {
