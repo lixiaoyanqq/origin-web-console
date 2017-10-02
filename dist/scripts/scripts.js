@@ -9662,28 +9662,36 @@ n.projectName = e.project, n.labelSuggestions = {}, n.alerts = n.alerts || {}, n
 disabled: !0
 }, n.kinds = _.filter(l.availableKinds(), function(e) {
 switch (e.kind) {
+<<<<<<< 6825e87c7c4f8633043fa9d7d39679dd90409e2a
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case "ReplicationController":
 case "Deployment":
 case "DeploymentConfig":
 case "BuildConfig":
+=======
+case "AppliedClusterResourceQuota":
+>>>>>>> Don't show "Service Instance" in Other Resources list
 case "Build":
+case "BuildConfig":
 case "ConfigMap":
-case "Pod":
-case "PersistentVolumeClaim":
+case "Deployment":
+case "DeploymentConfig":
 case "Event":
-case "Secret":
-case "Service":
-case "Route":
 case "ImageStream":
-case "ImageStreamTag":
 case "ImageStreamImage":
 case "ImageStreamImport":
 case "ImageStreamMapping":
+case "ImageStreamTag":
 case "LimitRange":
+case "PersistentVolumeClaim":
+case "Pod":
 case "ReplicaSet":
+case "ReplicationController":
 case "ResourceQuota":
-case "AppliedClusterResourceQuota":
+case "Route":
+case "Secret":
+case "Service":
+case "ServiceInstance":
 case "StatefulSet":
 return !1;
 
