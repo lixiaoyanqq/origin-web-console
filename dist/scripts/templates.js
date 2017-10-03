@@ -10940,12 +10940,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-details-top\">\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
     "<div class=\"service-icon\">\n" +
+<<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 <<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
     "<span ng-if=\"$ctrl.image\" class=\"image\"><img ng-src=\"{{$ctrl.image}}\" alt=\"\"></span>\n" +
     "<span ng-if=\"!$ctrl.image\" class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
 =======
     "<span class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
 >>>>>>> Changing overlay layout to a single column
+=======
+    "<span ng-if=\"$ctrl.image\" class=\"image\"><img ng-src=\"{{$ctrl.image}}\" alt=\"\"></span>\n" +
+    "<span ng-if=\"!$ctrl.image\" class=\"icon {{$ctrl.iconClass}}\" aria-hidden=\"true\"></span>\n" +
+>>>>>>> Add SVG icons
     "</div>\n" +
     "<div class=\"service-title-area\">\n" +
     "<div class=\"service-title\">\n" +

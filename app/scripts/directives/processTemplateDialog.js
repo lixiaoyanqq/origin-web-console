@@ -36,7 +36,6 @@
     var ctrl = this;
     var validityWatcher;
     var imageForIconClass = $filter('imageForIconClass');
-    var annotation = $filter('annotation');
 
     ctrl.selectStep = {
       id: 'projectTemplates',
@@ -128,9 +127,6 @@
           initializeSteps();
           ctrl.iconClass = getIconClass();
           ctrl.image = getImage();
-          ctrl.docUrl = annotation(ctrl.template, "openshift.io/documentation-url");
-          ctrl.supportUrl = annotation(ctrl.template, "openshift.io/support-url");
-          ctrl.vendor = annotation(ctrl.template, "openshift.io/provider-display-name");
         }
       }
       if (changes.useProjectTemplate) {
@@ -179,6 +175,7 @@
       ctrl.template = _.get(template, 'resource');
       ctrl.selectStep.valid = !!template;
       ctrl.iconClass = getIconClass();
+      ctrl.image = getImage();
     };
 
     ctrl.templateProjectChange = function () {
