@@ -16031,11 +16031,14 @@ angular.element("#" + e).focus();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
 };
+<<<<<<< 99afa1d5984c600d464a5f050008e6fc160b08e5
 } ]), angular.module("openshiftConsole").directive("tasks", function() {
 return {
 restrict: "E",
 templateUrl: "views/_tasks.html"
 };
+=======
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
 }), angular.module("openshiftConsole").directive("catalog", [ "CatalogService", "Constants", "KeywordService", "Logger", function(e, t, n, a) {
 return {
 restrict: "E",
@@ -19382,8 +19385,7 @@ fromSampleRepo: "<",
 createdBuildConfig: "<",
 onContinue: "<",
 showProjectName: "<",
-name: "<",
-isDialog: "<"
+name: "<"
 },
 templateUrl: "views/directives/next-steps.html"
 });
