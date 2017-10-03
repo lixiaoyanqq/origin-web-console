@@ -43,7 +43,7 @@
       <div class="results-message">
         <h1 class="h3">
           <span ng-if="$ctrl.kind">{{$ctrl.kind | humanizeKind | upperFirst}}</span>
-          <strong>{{$ctrl.name}}</strong> 部署成功<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
+          <strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
         </h1>
       </div>
     </div>

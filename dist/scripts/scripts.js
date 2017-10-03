@@ -23407,6 +23407,7 @@ angular.element("#" + e).focus();
 }, t.singleText = e("Collapse to a single line input This may strip any new lines you have entered."), t.multiText = e("Expand to enter multiple lines of content. This is required if you need to include newline characters.");
 }
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("catalog", [ "CatalogService", "Constants", "KeywordService", "Logger", function(e, t, n, r) {
 return {
 restrict: "E",
@@ -23443,6 +23444,8 @@ return {
 restrict: "E",
 templateUrl: "views/_tasks.html"
 };
+=======
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
 }), angular.module("openshiftConsole").directive("catalog", [ "CatalogService", "Constants", "KeywordService", "Logger", function(e, t, n, a) {
 return {
 restrict: "E",
@@ -28292,8 +28295,7 @@ fromSampleRepo: "<",
 createdBuildConfig: "<",
 onContinue: "<",
 showProjectName: "<",
-name: "<",
-isDialog: "<"
+name: "<"
 },
 templateUrl: "views/directives/next-steps.html"
 });
