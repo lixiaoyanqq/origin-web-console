@@ -1,107 +1,50 @@
 <div ng-controller="TasksController">
   <div ng-if="$ctrl.pendingTasks(tasks()).length">
     <div class="results-status">
-      <span class="spinner spinner-sm" aria-hidden="true"></span>
+      <span class="fa fa-clock-o text-muted" aria-hidden="true"></span>
       <span class="sr-only">Pending</span>
-      <h1 class="results-message h3">
-        <strong>{{$ctrl.name}}</strong> is being created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong></span>.
-      </h1>
+      <div class="results-message">
+        <h1 class="h3">
+          <strong>{{$ctrl.name}}</strong> is being created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong></span>.
+        </h1>
+      </div>
     </div>
   </div>
   <div class="results-failure" ng-if="!$ctrl.pendingTasks(tasks()).length && $ctrl.erroredTasks(tasks()).length">
     <div class="results-status">
       <span class="pficon pficon-error-circle-o text-danger" aria-hidden="true"></span>
       <span class="sr-only">Error</span>
-      <h1 class="results-message h3">
-        <strong>{{$ctrl.name}}</strong> failed to be created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong></span>.
-      </h1>
+      <div class="results-message">
+        <h1 class="h3">
+          <strong>{{$ctrl.name}}</strong> failed to be created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong></span>.
+        </h1>
+      </div>
     </div>
   </div>
   <!-- if the user refreshes the next steps page -->
   <div ng-if="!tasks().length">
-    <div class="results-status">
-      <span class="pficon pficon-ok" aria-hidden="true"></span>
-      <span class="sr-only">Success</span>
-      <h1 class="results-message h3">
-        <strong>{{$ctrl.name}}</strong> has been created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
-      </h1>
+    <div class="results-status results-status-unknown">
+      <div class="results-message">
+        <h1 class="h3">
+          <strong>{{$ctrl.name}}</strong> completed.
+        </h1>
+      </div>
     </div>
   </div>
   <div ng-if="tasks().length && $ctrl.allTasksSuccessful(tasks())">
     <div class="results-status">
       <span class="pficon pficon-ok" aria-hidden="true"></span>
       <span class="sr-only">Success</span>
-      <h1 class="results-message h3">
-        <strong>{{$ctrl.name}}</strong> has been created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
-      </h1>
+      <div class="results-message">
+        <h1 class="h3">
+          <strong>{{$ctrl.name}}</strong> has been created<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
+        </h1>
+      </div>
     </div>
   </div>
 
   <p ng-if="!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length">
     <a href="" ng-click="$ctrl.goToOverview()">Continue to the project overview</a>.
-  </p>
-
-  <!-- Show a simple bulleted list of errors if the tasks list is displayed in a dialog. -->
-  <div ng-if="$ctrl.isDialog && hasTaskWithError()">
-    <ul ng-repeat="task in tasks()">
-      <li ng-repeat="alert in task.alerts" ng-if="alert.type === 'error' || alert.type === 'warning'">
-        {{alert.message}}
-        {{alert.details}}
-      </li>
-    </ul>
-  </div>
-
-  <!-- Show a larger message if full page. -->
-  <div ng-repeat="task in tasks()" ng-if="!$ctrl.isDialog && tasks().length && !$ctrl.allTasksSuccessful(tasks())">
-    <div class="tasks" ng-class="hasTaskWithError() ? 'failure' : 'success'">
-      <div class="task-content">
-        <i class="pficon task-icon" ng-class="task.hasErrors ? 'pficon-error-circle-o' : 'pficon-ok'"></i>
-        <div class="task-info">
-          {{ task | taskTitle }}.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="results-failure" ng-if="!$ctrl.pendingTasks(tasks()).length && $ctrl.erroredTasks(tasks()).length">
-    <div class="results-status">
-      <span class="pficon pficon-error-circle-o text-danger" aria-hidden="true"></span>
-      <span class="sr-only" translate>Error</span>
-      <div class="results-message">
-        <h1 class="h3">
-          <span ng-if="$ctrl.kind">{{$ctrl.kind | humanizeKind | upperFirst}}</span>
-          <translate><strong>{{$ctrl.name}}</strong> failed to be {{$ctrl.actionLabel}}<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong></span>.</translate>
-        </h1>
-      </div>
-    </div>
-  </div>
-  <!-- Import YAML of a single resource. -->
-  <div ng-if="!tasks().length">
-    <div class="results-status">
-      <span class="pficon pficon-ok" aria-hidden="true"></span>
-      <span class="sr-only" translate>Success</span>
-      <div class="results-message">
-        <h1 class="h3">
-          <span ng-if="$ctrl.kind">{{$ctrl.kind | humanizeKind | upperFirst}}</span>
-          <translate><strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.</translate>
-        </h1>
-      </div>
-    </div>
-  </div>
-  <div ng-if="tasks().length && $ctrl.allTasksSuccessful(tasks())">
-    <div class="results-status">
-      <span class="pficon pficon-ok" aria-hidden="true"></span>
-      <span class="sr-only" translate>Success</span>
-      <div class="results-message">
-        <h1 class="h3">
-          <span ng-if="$ctrl.kind">{{$ctrl.kind | humanizeKind | upperFirst}}</span>
-          <translate><strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.</translate>
-        </h1>
-      </div>
-    </div>
-  </div>
-
-  <p ng-if="!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length">
-    <a href="" ng-click="$ctrl.goToOverview()" translate>Continue to the project overview</a>.
   </p>
 
   <div ng-if="hasTaskWithError()">

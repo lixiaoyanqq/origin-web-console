@@ -22440,6 +22440,7 @@ c.disableInputs = !1;
 >>>>>>> Use new ApplicationsService.getApplications utility
 });
 };
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 }
 angular.module("openshiftConsole").component("addConfigToApplication", {
 controller: [ "$filter", "$scope", "APIService", "ApplicationsService", "DataService", "Navigate", "NotificationsService", "StorageService", a ],
@@ -22476,6 +22477,8 @@ angular.element("#" + a).focus();
 =======
 templateUrl: "views/_tasks.html"
 };
+=======
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
 }), angular.module("openshiftConsole").directive("catalog", [ "CatalogService", "Constants", "KeywordService", "Logger", function(e, t, n, a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 return {
@@ -26901,8 +26904,7 @@ fromSampleRepo: "<",
 createdBuildConfig: "<",
 onContinue: "<",
 showProjectName: "<",
-name: "<",
-isDialog: "<"
+name: "<"
 },
 templateUrl: "views/directives/next-steps.html"
 });

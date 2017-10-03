@@ -565,6 +565,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
   $templateCache.put('views/_tasks.html',
     "<div ng-controller=\"TasksController\">\n" +
     "<div ng-repeat=\"task in tasks()\" ng-if=\"!task.namespace || !projectName || task.namespace === projectName\">\n" +
@@ -609,6 +610,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
   $templateCache.put('views/_templateopt.html',
     "<div class=\"template-options\" ng-form=\"paramForm\">\n" +
     "<div ng-if=\"!isDialog && parameters.length\" class=\"flow\">\n" +
@@ -7504,11 +7507,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 <<<<<<< f69fceda0d306e0128582971b9a9daa9bb1fc547
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.appName\">\n" +
 =======
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.appName\" is-dialog=\"true\">\n" +
 >>>>>>> Making next steps/results messaging consistent
+=======
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.appName\">\n" +
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
     "</next-steps>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -8601,11 +8608,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
     "\n" +
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 <<<<<<< f69fceda0d306e0128582971b9a9daa9bb1fc547
     "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" kind=\"$ctrl.kind\" name=\"$ctrl.name\" action-label=\"$ctrl.actionLabel\">\n" +
 =======
     "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.name\" is-dialog=\"true\">\n" +
 >>>>>>> Making next steps/results messaging consistent
+=======
+    "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.name\">\n" +
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
     "</next-steps>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9380,6 +9391,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-controller=\"TasksController\">\n" +
     "<div ng-if=\"$ctrl.pendingTasks(tasks()).length\">\n" +
     "<div class=\"results-status\">\n" +
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 <<<<<<< f69fceda0d306e0128582971b9a9daa9bb1fc547
     "<span class=\"fa fa-clock-o text-muted\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Pending</span>\n" +
@@ -9390,51 +9402,60 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h1>\n" +
 =======
     "<span class=\"spinner spinner-sm\" aria-hidden=\"true\"></span>\n" +
+=======
+    "<span class=\"fa fa-clock-o text-muted\" aria-hidden=\"true\"></span>\n" +
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
     "<span class=\"sr-only\">Pending</span>\n" +
-    "<h1 class=\"results-message h3\">\n" +
+    "<div class=\"results-message\">\n" +
+    "<h1 class=\"h3\">\n" +
     "<strong>{{$ctrl.name}}</strong> is being created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
     "</h1>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"results-failure\" ng-if=\"!$ctrl.pendingTasks(tasks()).length && $ctrl.erroredTasks(tasks()).length\">\n" +
     "<div class=\"results-status\">\n" +
     "<span class=\"pficon pficon-error-circle-o text-danger\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">Error</span>\n" +
-    "<h1 class=\"results-message h3\">\n" +
+    "<div class=\"results-message\">\n" +
+    "<h1 class=\"h3\">\n" +
     "<strong>{{$ctrl.name}}</strong> failed to be created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +
+    "</div>\n" +
     "\n" +
     "<div ng-if=\"!tasks().length\">\n" +
-    "<div class=\"results-status\">\n" +
-    "<span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\">Success</span>\n" +
-    "<h1 class=\"results-message h3\">\n" +
-    "<strong>{{$ctrl.name}}</strong> has been created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
+    "<div class=\"results-status results-status-unknown\">\n" +
+    "<div class=\"results-message\">\n" +
+    "<h1 class=\"h3\">\n" +
+    "<strong>{{$ctrl.name}}</strong> completed.\n" +
     "</h1>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"tasks().length && $ctrl.allTasksSuccessful(tasks())\">\n" +
     "<div class=\"results-status\">\n" +
     "<span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\">Success</span>\n" +
-    "<h1 class=\"results-message h3\">\n" +
+    "<div class=\"results-message\">\n" +
+    "<h1 class=\"h3\">\n" +
     "<strong>{{$ctrl.name}}</strong> has been created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
     "</h1>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.goToOverview()\">Continue to the project overview</a>.\n" +
     "</p>\n" +
-    "\n" +
-    "<div ng-if=\"$ctrl.isDialog && hasTaskWithError()\">\n" +
+    "<div ng-if=\"hasTaskWithError()\">\n" +
     "<ul ng-repeat=\"task in tasks()\">\n" +
     "<li ng-repeat=\"alert in task.alerts\" ng-if=\"alert.type === 'error' || alert.type === 'warning'\">\n" +
     "{{alert.message}} {{alert.details}}\n" +
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
     "\n" +
     "<div ng-repeat=\"task in tasks()\" ng-if=\"!$ctrl.isDialog && tasks().length && !$ctrl.allTasksSuccessful(tasks())\">\n" +
     "<div class=\"tasks\" ng-class=\"hasTaskWithError() ? 'failure' : 'success'\">\n" +
@@ -9493,6 +9514,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
+=======
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
     "</div>\n" +
     "<div class=\"alert alert-info template-message\" ng-if=\"$ctrl.templateMessage.length\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
@@ -11027,6 +11050,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
   $templateCache.put('views/directives/process-template-dialog/process-template-results.html',
     "<div class=\"order-service-config\">\n" +
+<<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 <<<<<<< f69fceda0d306e0128582971b9a9daa9bb1fc547
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\">\n" +
 <<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
@@ -11036,6 +11060,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.template | displayName\" is-dialog=\"true\">\n" +
 >>>>>>> Making next steps/results messaging consistent
+=======
+    "<next-steps project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.template | displayName\">\n" +
+>>>>>>> Improving display of results status messages and removing orphaned tasks directive
     "</next-steps>\n" +
     "</div>"
 >>>>>>> Changing overlay layout to a single column
