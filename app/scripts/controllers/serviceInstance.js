@@ -62,6 +62,7 @@ angular.module('openshiftConsole')
     var serviceInstanceReady = $filter('isServiceInstanceReady');
 
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
+    var serviceInstanceReady = $filter('isServiceInstanceReady');
 
     // API Versions
     var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
