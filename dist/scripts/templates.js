@@ -6465,12 +6465,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/annotations.html',
+<<<<<<< 6b89057caf0ad4845545e3a7095b653e4e13e4db
     "<p ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
     "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"!expandAnnotations\" translate>Show Annotations</a>\n" +
     "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"expandAnnotations\" translate>Hide Annotations</a>\n" +
+=======
+    "<p ng-if=\"annotations\" ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
+    "<a href=\"\" ng-click=\"toggleAnnotations()\">{{!expandAnnotations ? 'Hide Annotations' : 'Show Annotations'}}</a>\n" +
+>>>>>>> Do not show "Show Annotations" link when there are none
     "</p>\n" +
-    "<div ng-if=\"expandAnnotations\">\n" +
-    "<div ng-if=\"annotations\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
+    "<div ng-if=\"expandAnnotations && annotations\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
     "<table class=\"table table-bordered table-bordered-columns key-value-table\">\n" +
     "<tbody>\n" +
     "<tr ng-repeat=\"(annotationKey, annotationValue) in annotations\">\n" +
@@ -6485,8 +6489,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<p ng-if=\"!annotations\" class=\"mar-bottom-xl\" translate>\n" +
     "There are no annotations on this resource.\n" +
-    "</p>\n" +
-    "</div>"
+    "</p>"
   );
 
 
