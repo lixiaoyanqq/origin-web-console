@@ -16024,10 +16024,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "</div>\n" +
     "</div>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+>>>>>>> Fixes unnecessary scrollbar when there's a quota status alert and...
     "</div>"
   );
 
