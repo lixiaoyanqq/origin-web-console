@@ -18417,9 +18417,31 @@ n.existingMountPaths = m.getMountPaths(e, k);
 };
 n.$watchGroup([ "attach.resource", "attach.allContainers" ], j), n.$watch("attach.containers", j, !0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 s.get(h, t.name, d).then(function(e) {
 >>>>>>> Update attachPVC controller to use getPreferredVersion
 =======
+=======
+var P = function(e, t) {
+var n = _.find(t.volumeMounts, function(t) {
+return t.mountPath === e && t.name !== e.name;
+});
+return !n || (C('The volume mount "' + n.mountPath + '" with name "' + n.name + '" already exists for container "' + t.name + '"'), !1);
+}, R = function(e, t) {
+var n = _.findIndex(t.volumeMounts, {
+name: e.name
+});
+return -1 !== n && (t.volumeMounts[n] = e, !0);
+}, I = function(e, t, n, a, r) {
+var o = !0;
+return _.each(e.spec.containers, function(e) {
+if (k(e)) {
+var i = m.createVolumeMount(t, n, a, r);
+return e.volumeMounts || (e.volumeMounts = []), P(i, e) ? !R(i, e) && void e.volumeMounts.push(i) : (o = !1, !1);
+}
+}), o;
+};
+>>>>>>> add "overwrite" option to attachPVC view
 s.get(v, t.name, d).then(function(e) {
 >>>>>>> Add SVG icons
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
@@ -18479,6 +18501,7 @@ var t = m.createVolumeMount(o, i, c, l);
 if (n.disableInputs = !0, S(), n.attachPVCForm.$valid) {
 n.attach.volumeName || (n.attach.volumeName = b("volume-"));
 var e = n.attach.resource, a = _.get(e, "spec.template"), r = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
+<<<<<<< HEAD
 i && angular.forEach(a.spec.containers, function(e) {
 if (k(e)) {
 <<<<<<< HEAD
@@ -18698,8 +18721,13 @@ var t = m.createVolumeMount(o, i, c, l);
 e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
 }
 });
+=======
+if (i && !I(a, o, i, c, l)) return void (n.disableInputs = !1);
+>>>>>>> add "overwrite" option to attachPVC view
 var p = m.createVolume(o, r);
-a.spec.volumes || (a.spec.volumes = []), a.spec.volumes.push(p), s.update(v, e.metadata.name, n.attach.resource, d).then(function() {
+a.spec.volumes || (a.spec.volumes = []), _.some(a.spec.volumes, {
+name: p.name
+}) || a.spec.volumes.push(p), s.update(v, e.metadata.name, n.attach.resource, d).then(function() {
 var e;
 i || (e = "No mount path was provided. The volume reference was added to the configuration, but it will not be mounted into running pods."), u.addNotification({
 type: "success",
