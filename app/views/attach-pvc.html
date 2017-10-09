@@ -83,6 +83,7 @@
                       ng-model="attach.mountPath"
                       ng-pattern="/^\/.*$/"
                       osc-unique="existingMountPaths"
+                      osc-unique-disabled="attach.overwrite"
                       placeholder="example: /data"
                       autocorrect="off"
                       autocapitalize="none"
@@ -143,6 +144,7 @@
                       name="volumeName"
                       ng-model="attach.volumeName"
                       osc-unique="existingVolumeNames"
+                      osc-unique-disabled="attach.overwrite"
                       ng-pattern="/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/"
                       maxlength="63"
                       placeholder="(generated if empty)"
@@ -174,8 +176,20 @@
                 <div class="form-group">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" ng-model="attach.readOnly" aria-describedby="read-only-help" translate>
-                      <translate>Read only</translate>
+                      <input type="checkbox" ng-model="attach.overwrite" aria-describedby="overwrite-help">
+                      Overwrite
+                    </label>
+                    <div id="overwrite-help" class="help-block">
+                      Overwrite a volume mount if it already exists.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="attach.readOnly" aria-describedby="read-only-help">
+                      Read only
                     </label>
                     <div id="read-only-help" class="help-block" translate>
                       Mount the volume as read-only.
