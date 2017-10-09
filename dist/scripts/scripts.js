@@ -106,8 +106,12 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 >>>>>>> Add SVG icons
 var R = this, I = t("isIE")() || t("isEdge")();
 e.projectName = n.project, R.catalogLandingPageEnabled = !l.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< HEAD
 var E, T, N = t("annotation"), D = t("canI"), A = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), L = t("imageObjectRef"), U = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), M = r.getPreferredVersion("servicebindings"), V = r.getPreferredVersion("clusterserviceclasses"), q = r.getPreferredVersion("serviceinstances"), z = r.getPreferredVersion("clusterserviceplans"), H = {}, G = {}, K = {}, W = R.state = {
 >>>>>>> Adopt service catalog API changes
+=======
+var E, T, N = t("annotation"), D = t("canI"), A = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), L = t("imageObjectRef"), U = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), V = r.getPreferredVersion("servicebindings"), M = r.getPreferredVersion("clusterserviceclasses"), q = r.getPreferredVersion("serviceinstances"), z = r.getPreferredVersion("clusterserviceplans"), H = {}, G = {}, K = {}, W = R.state = {
+>>>>>>> Adopt more service catalog API changes
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -402,7 +406,7 @@ R.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), R.pipelineViewHasO
 R.disableFilter = "pipeline" === R.viewBy && _.isEmpty(R.pipelineBuildConfigs);
 }, se = function(e) {
 return v.getLabelSelector().select(e);
-}, ce = [ "metadata.name", "spec.externalServiceClassName" ], le = function(e) {
+}, ce = [ "metadata.name", "spec.externalClusterServiceClassName" ], le = function(e) {
 return g.filterForKeywords(e, ce, W.filterKeywords);
 }, ue = function(e) {
 switch (R.filterBy) {
@@ -797,10 +801,10 @@ return new LabelSelector(e.spec.selector);
 var e = [ R.deploymentConfigs, R.vanillaReplicationControllers, R.deployments, R.vanillaReplicaSets, R.statefulSets, R.monopods ];
 _.each(e, Fe), ae();
 }
-}, Me = function() {
+}, Ve = function() {
 var e = j.groupByService(R.routes, !0);
 W.routesByService = _.mapValues(e, j.sortRoutesByScore), ae();
-}, Ve = function() {
+}, Me = function() {
 W.hpaByResource = m.groupHPAs(R.horizontalPodAutoscalers);
 }, qe = function(e) {
 var t = A(e), n = R.buildConfigs[t];
@@ -1116,7 +1120,7 @@ W.allServices = e.by("metadata.name"), xe(), h.log("services (subscribe)", W.all
 poll: I,
 pollInterval: 6e4
 })), at.push(u.watch("routes", n, function(e) {
-R.routes = e.by("metadata.name"), Me(), h.log("routes (subscribe)", R.routes);
+R.routes = e.by("metadata.name"), Ve(), h.log("routes (subscribe)", R.routes);
 }, {
 poll: I,
 pollInterval: 6e4
@@ -1130,7 +1134,7 @@ group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, n, function(e) {
-R.horizontalPodAutoscalers = e.by("metadata.name"), Ve(), h.log("autoscalers (subscribe)", R.horizontalPodAutoscalers);
+R.horizontalPodAutoscalers = e.by("metadata.name"), Me(), h.log("autoscalers (subscribe)", R.horizontalPodAutoscalers);
 }, {
 poll: I,
 pollInterval: 6e4
@@ -1310,7 +1314,7 @@ V.serviceInstances = e.by("metadata.name"), _.each(V.serviceInstances, function(
 var r, o, i = {}, s = {};
 c.SERVICE_CATALOG_ENABLED && D(q, "watch") && (r = function(e) {
 var t = P.getServiceClassNameForInstance(e);
-_.has(W, [ "serviceClasses", t ]) || i[t] || (i[t] = u.get(V, t, {}).then(function(e) {
+_.has(W, [ "serviceClasses", t ]) || i[t] || (i[t] = u.get(M, t, {}).then(function(e) {
 W.serviceClasses[t] = e;
 }).finally(function() {
 delete s[t];
@@ -1331,7 +1335,7 @@ ve(e, t), r(e), o(e);
 }, {
 poll: I,
 pollInterval: 6e4
-}))), c.SERVICE_CATALOG_ENABLED && D(M, "watch") && at.push(u.watch(M, n, function(e) {
+}))), c.SERVICE_CATALOG_ENABLED && D(V, "watch") && at.push(u.watch(V, n, function(e) {
 W.bindings = e.by("metadata.name"), R.bindingsByInstanceRef = _.groupBy(W.bindings, "spec.instanceRef.name"), tt();
 }, {
 poll: I,
@@ -8339,9 +8343,9 @@ deprovision: {
 =======
 }), angular.module("openshiftConsole").factory("ServiceInstancesService", [ "$filter", "$q", "$uibModal", "APIService", "BindingService", "CatalogService", "DataService", "Logger", "NotificationsService", function(e, t, n, a, r, o, i, s, c) {
 var l = a.getPreferredVersion("clusterserviceclasses"), u = a.getPreferredVersion("clusterserviceplans"), d = function(e) {
-return _.get(e, "spec.serviceClassRef.name");
+return _.get(e, "spec.clusterServiceClassRef.name");
 }, m = function(e) {
-return _.get(e, "spec.servicePlanRef.name");
+return _.get(e, "spec.clusterServicePlanRef.name");
 }, p = function(e, n) {
 if (angular.isDefined(n)) return t.when(n);
 var o = {
@@ -14010,29 +14014,31 @@ link: "project/" + n.project + "/browse/service-instances"
 } ], e.deprovision = function() {
 i.deprovision(e.serviceInstance);
 };
-var s = [], c = t("serviceInstanceDisplayName"), l = a.getPreferredVersion("serviceinstances"), u = function() {
+var s = [], c = t("serviceInstanceDisplayName");
+e.serviceInstancesVersion = a.getPreferredVersion("serviceinstances");
+var l = function() {
 e.breadcrumbs.push({
 title: e.displayName
 });
-}, d = function() {
+}, u = function() {
 e.serviceClass || i.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
-e.serviceClass = t, e.displayName = c(e.serviceInstance, t), u();
+e.serviceClass = t, e.displayName = c(e.serviceInstance, t), l();
 });
-}, m = function() {
+}, d = function() {
 i.isCurrentPlan(e.serviceInstance, e.plan) || i.fetchServicePlanForInstance(e.serviceInstance).then(function(t) {
 e.plan = t;
 });
-}, p = function(t, n) {
+}, m = function(t, n) {
 e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This provisioned service has been deleted."
-}), d(), m();
+}), u(), d();
 };
 o.get(n.project).then(_.spread(function(a, o) {
-e.project = a, e.projectContext = o, r.get(l, n.instance, o, {
+e.project = a, e.projectContext = o, r.get(e.serviceInstancesVersion, n.instance, o, {
 errorNotification: !1
-}).then(function(e) {
-p(e), s.push(r.watchObject(l, n.instance, o, p));
+}).then(function(t) {
+m(t), s.push(r.watchObject(e.serviceInstancesVersion, n.instance, o, m));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -29039,15 +29045,17 @@ n.currentStage = t.getCurrentStage(a);
 =======
 } ]), function() {
 angular.module("openshiftConsole").component("serviceBinding", {
-controller: [ function() {
-var e = this, t = function() {
-if ("ServiceInstance" !== _.get(e.refApiObject, "kind")) {
-var t = _.get(e.binding, "spec.instanceRef.name"), n = _.get(e.serviceInstances, [ t ]), a = _.get(n, "spec.serviceClassRef.name");
-e.serviceClass = _.get(e.serviceClasses, [ a ]);
+controller: [ "APIService", "ServiceInstancesService", function(e, t) {
+var n = this;
+n.serviceBindingsVersion = e.getPreferredVersion("servicebindings");
+var a = function() {
+if ("ServiceInstance" !== _.get(n.refApiObject, "kind")) {
+var e = _.get(n.binding, "spec.instanceRef.name"), a = _.get(n.serviceInstances, [ e ]), r = t.getServiceClassNameForInstance(a);
+n.serviceClass = _.get(n.serviceClasses, [ r ]);
 }
 };
 this.$onChanges = function(e) {
-(e.binding || e.serviceInstances || e.serviceClasses) && t();
+(e.binding || e.serviceInstances || e.serviceClasses) && a();
 };
 } ],
 controllerAs: "$ctrl",
@@ -29449,6 +29457,7 @@ _.extend(l, i.ui);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature"), g = function(e) {
 >>>>>>> Add bindings list to resource pages
 =======
@@ -29460,6 +29469,11 @@ var u = e("canI"), d = e("deploymentIsInProgress"), p = e("isBinaryBuild"), m = 
 =======
 var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature"), f = function(e) {
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature");
+l.serviceBindingsVersion = n.getPreferredVersion("servicebindings");
+var f = function(e) {
+>>>>>>> Adopt more service catalog API changes
 var t = _.get(e, "spec.triggers");
 _.isEmpty(t) || (l.imageChangeTriggers = _.filter(t, function(e) {
 return "ImageChange" === e.type && _.get(e, "imageChangeParams.automatic");
@@ -29508,25 +29522,13 @@ return !(!l.current || !l.previous) || d(l.current);
 var e = _.get(l, "apiObject.kind"), t = _.get(l, "apiObject.metadata.uid"), n = _.get(l.state.deleteableBindingsByApplicationUID, t);
 switch (e) {
 case "DeploymentConfig":
-return !!u("deploymentconfigs/instantiate", "create") || !!u("deploymentconfigs", "update") || !(!l.current || !u("deploymentconfigs/log", "get")) || !(!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u({
-resource: "serviceinstancecredentials",
-group: "servicecatalog.k8s.io"
-}, "create")) || !(!p("pod_presets") || _.isEmpty(n) || !u({
-resource: "serviceinstancecredentials",
-group: "servicecatalog.k8s.io"
-}, "delete")) || l.showStartPipelineAction() || l.showStartBuildAction();
+return !!u("deploymentconfigs/instantiate", "create") || !!u("deploymentconfigs", "update") || !(!l.current || !u("deploymentconfigs/log", "get")) || !(!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u(l.serviceBindingsVersion, "create")) || !(!p("pod_presets") || _.isEmpty(n) || !u(l.serviceBindingsVersion, "delete")) || l.showStartPipelineAction() || l.showStartBuildAction();
 
 case "Pod":
 return !!u("pods/log", "get") || !!u("pods", "update");
 
 default:
-return !((!l.firstPod(l.current) || !u("pods/log", "get")) && !u(l.rgv, "update") && (!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u({
-resource: "serviceinstancecredentials",
-group: "servicecatalog.k8s.io"
-}, "create")) && (!p("pod_presets") || _.isEmpty(n) || !u({
-resource: "serviceinstancecredentials",
-group: "servicecatalog.k8s.io"
-}, "delete")));
+return !((!l.firstPod(l.current) || !u("pods/log", "get")) && !u(l.rgv, "update") && (!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u(l.serviceBindingsVersion, "create")) && (!p("pod_presets") || _.isEmpty(n) || !u(l.serviceBindingsVersion, "delete")));
 }
 }, l.showStartBuildAction = function() {
 if (!_.isEmpty(l.pipelines)) return !1;
@@ -29638,14 +29640,21 @@ templateUrl: "views/overview/_list-row.html"
 angular.module("openshiftConsole").component("serviceInstanceRow", {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 controller: [ "$filter", "APIService", "AuthorizationService", "BindingService", "ListRowUtils", "ServiceInstancesService", function(e, t, n, r, a, o) {
 var i = this, s = e("isBindingFailed"), c = e("isBindingReady");
 _.extend(i, a.ui);
+=======
+controller: [ "$filter", "APIService", "AuthorizationService", "BindingService", "ListRowUtils", "ServiceInstancesService", function(e, t, n, a, r, o) {
+var i = this, s = e("isBindingFailed"), c = e("isBindingReady");
+_.extend(i, r.ui);
+>>>>>>> Adopt more service catalog API changes
 var l = e("serviceInstanceDisplayName");
 i.serviceBindingsVersion = t.getPreferredVersion("servicebindings"), i.serviceInstancesVersion = t.getPreferredVersion("serviceinstances");
 var u = function() {
 var e = o.getServiceClassNameForInstance(i.apiObject);
 return _.get(i, [ "state", "serviceClasses", e ]);
+<<<<<<< HEAD
 }, d = function() {
 var e = o.getServicePlanNameForInstance(i.apiObject);
 return _.get(i, [ "state", "servicePlans", e ]);
@@ -29793,6 +29802,28 @@ r.deprovision(o.apiObject);
 =======
 r.deprovision(o.apiObject, o.deleteableBindings);
 >>>>>>> Delete bindings when deleting a service instance
+=======
+}, d = function() {
+var e = o.getServicePlanNameForInstance(i.apiObject);
+return _.get(i, [ "state", "servicePlans", e ]);
+}, m = function() {
+_.get(i.apiObject, "metadata.deletionTimestamp") ? i.instanceStatus = "deleted" : s(i.apiObject) ? i.instanceStatus = "failed" : c(i.apiObject) ? i.instanceStatus = "ready" : i.instanceStatus = "pending";
+};
+i.$doCheck = function() {
+m(), i.notifications = r.getNotifications(i.apiObject, i.state), i.serviceClass = u(), i.servicePlan = d(), i.displayName = l(i.apiObject, i.serviceClass), i.isBindable = a.isServiceBindable(i.apiObject, i.serviceClass, i.servicePlan);
+}, i.$onChanges = function(e) {
+e.bindings && (i.deleteableBindings = _.reject(i.bindings, "metadata.deletionTimestamp"));
+}, i.getSecretForBinding = function(e) {
+return e && _.get(i, [ "state", "secrets", e.spec.secretName ]);
+}, i.actionsDropdownVisible = function() {
+return !(_.get(i.apiObject, "metadata.deletionTimestamp") || (!i.isBindable || !n.canI(i.serviceBindingsVersion, "create")) && (_.isEmpty(i.deleteableBindings) || !n.canI(i.serviceBindingsVersion, "delete")) && !n.canI(i.serviceInstancesVersion, "delete"));
+}, i.closeOverlayPanel = function() {
+_.set(i, "overlay.panelVisible", !1);
+}, i.showOverlayPanel = function(e, t) {
+_.set(i, "overlay.panelVisible", !0), _.set(i, "overlay.panelName", e), _.set(i, "overlay.state", t);
+}, i.deprovision = function() {
+o.deprovision(i.apiObject, i.deleteableBindings);
+>>>>>>> Adopt more service catalog API changes
 };
 } ],
 controllerAs: "row",
@@ -32835,26 +32866,7 @@ return function(e) {
 var t = _.get(e, "spec.alternateBackends", []);
 return !_.isEmpty(t);
 };
-}).filter("serviceClassDisplayName", function() {
-return function(e) {
-var t = _.get(e, "spec.externalMetadata.displayName");
-if (t) return t;
-var n = _.get(e, "spec.externalName");
-return n || _.get(e, "metadata.name");
-};
-}).filter("serviceInstanceDisplayName", [ "serviceClassDisplayNameFilter", function(e) {
-return function(t, n) {
-return n ? e(n) : _.get(t, "metadata.name");
-};
-} ]).filter("serviceInstanceStatus", [ "isServiceInstanceReadyFilter", function(e) {
-return function(t) {
-var n = "Pending", a = _.get(t, "status.conditions");
-return _.find(a, {
-type: "Failed",
-status: "True"
-}) ? n = "Failed" : e(t) && (n = "Ready"), n;
-};
-} ]).filter("readyConditionMessage", [ "statusConditionFilter", function(e) {
+}).filter("readyConditionMessage", [ "statusConditionFilter", function(e) {
 return function(t) {
 return _.get(e(t, "Ready"), "message");
 };
@@ -32973,6 +32985,7 @@ verbs: [ "update", "delete" ]
 =======
 =======
 }) ],
+<<<<<<< HEAD
 >>>>>>> Update ImageController to use getPreferredVersion
 serviceInstances: [ {
 group: "servicecatalog.k8s.io",
@@ -32980,6 +32993,11 @@ resource: "serviceinstances",
 verbs: [ "update", "delete" ]
 } ],
 >>>>>>> Updates for Service Instance & Bindings
+=======
+serviceInstances: [ _.assign({}, e.getPreferredVersion("serviceinstances"), {
+verbs: [ "update", "delete" ]
+}) ],
+>>>>>>> Adopt more service catalog API changes
 persistentVolumeClaims: [ {
 group: "",
 resource: "persistentvolumeclaims",

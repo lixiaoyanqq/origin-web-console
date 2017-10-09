@@ -5324,8 +5324,13 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-item:focus .services-item-icon:after,.services-view .services-item:hover .services-item-icon:after{border:2px solid #0088ce}
 .services-view .services-item:focus .services-item-name,.services-view .services-item:hover .services-item-name{color:#0088ce}
 .services-view .services-item .services-item-icon:after{border:2px solid transparent;border-radius:84px;content:"";height:84px;left:50%;margin:-42px 0 0 -42px;position:absolute;top:50%;transition:border 125ms linear;width:84px;will-change:border}
+<<<<<<< HEAD
 .services-view .services-item .services-item-icon .fa,.services-view .services-item .services-item-icon .font-icon,.services-view .services-item .services-item-icon .pficon,.services-view .services-item .services-item-icon img{position:relative;z-index:1}
 .services-view .services-item .services-item-icon img[src$=".svg"]{width:50px}
+=======
+.services-view .services-item .services-item-icon .fa,.services-view .services-item .services-item-icon .font-icon,.services-view .services-item .services-item-icon img{position:relative;z-index:1}
+.services-view .services-item .services-item-icon img[src$=".svg"]{height:50px}
+>>>>>>> Adopt more service catalog API changes
 .services-view .services-item .fa-question,.services-view .services-item .icon-ruby{right:2px}
 .services-view .services-item .icon-wildfly{right:-1px}
 .services-view .services-item-icon{align-items:center;display:flex;font-size:48px;height:92px;justify-content:center;position:relative}
