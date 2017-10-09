@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -123,9 +124,13 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w, k, j, P) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w, k, P, j) {
+>>>>>>> Update template service broker flag name
 var R = this, I = t("isIE")();
 >>>>>>> Allow unlimited websockets on Edge - also fix leaking websockets on monitoring page
 e.projectName = n.project, R.catalogLandingPageEnabled = !l.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -144,6 +149,9 @@ var E, T, N = t("annotation"), D = t("canI"), A = t("buildConfigForBuild"), B = 
 =======
 var E, N, T = t("annotation"), D = t("canI"), A = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), L = t("imageObjectRef"), U = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), V = r.getPreferredVersion("servicebindings"), M = r.getPreferredVersion("clusterserviceclasses"), q = r.getPreferredVersion("serviceinstances"), z = r.getPreferredVersion("clusterserviceplans"), H = {}, G = {}, K = {}, W = R.state = {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var E, T, N = t("annotation"), D = t("canI"), A = t("buildConfigForBuild"), B = t("deploymentIsInProgress"), L = t("imageObjectRef"), U = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), V = r.getPreferredVersion("servicebindings"), M = r.getPreferredVersion("clusterserviceclasses"), q = r.getPreferredVersion("serviceinstances"), z = r.getPreferredVersion("clusterserviceplans"), H = {}, G = {}, K = {}, W = R.state = {
+>>>>>>> Update template service broker flag name
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -316,7 +324,7 @@ return o.groupByApp(e, "metadata.name");
 }, ne = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? j.getPreferredDisplayRoute(t, e) : e;
+t = t ? P.getPreferredDisplayRoute(t, e) : e;
 }), t;
 }, ae = _.debounce(function() {
 e.$evalAsync(function() {
@@ -768,32 +776,32 @@ _.each(R.deploymentConfigs, _e);
 }, ke = function(e) {
 var t = Y(e);
 return t ? _.get(R, [ "replicaSetsByDeploymentUID", t ]) : {};
-}, je = function(e) {
+}, Pe = function(e) {
 var t = k.getPausedDeploymentAlerts(e), n = ke(e);
 _.each(n, function(e) {
 var n = he(e);
 _.assign(t, n);
 }), ve(e, t);
-}, Pe = function() {
-_.each(R.deployments, je);
+}, je = function() {
+_.each(R.deployments, Pe);
 }, Re = function() {
 be(R.replicationControllers), be(R.replicaSets), be(R.statefulSets), be(R.monopods);
 }, Ie = _.debounce(function() {
 e.$evalAsync(function() {
-Re(), we(), Pe();
+Re(), we(), je();
 });
 }, 500), Ee = function(e) {
 _.isEmpty(e) || (v.addLabelSuggestionsFromResources(e, H), "pipeline" !== R.viewBy && v.setLabelSuggestions(H));
-}, Ne = function(e) {
-_.isEmpty(e) || (v.addLabelSuggestionsFromResources(e, G), "pipeline" === R.viewBy && v.setLabelSuggestions(G));
 }, Te = function(e) {
-return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!F(e, "openshift.io/deployer-pod-for.name") && (!T(e, "openshift.io/build.name") && "slave" !== F(e, "jenkins")));
+_.isEmpty(e) || (v.addLabelSuggestionsFromResources(e, G), "pipeline" === R.viewBy && v.setLabelSuggestions(G));
+}, Ne = function(e) {
+return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!F(e, "openshift.io/deployer-pod-for.name") && (!N(e, "openshift.io/build.name") && "slave" !== F(e, "jenkins")));
 }, De = function() {
-W.podsByOwnerUID = S.groupByOwnerUID(R.pods), R.monopods = _.filter(W.podsByOwnerUID[""], Te);
+W.podsByOwnerUID = S.groupByOwnerUID(R.pods), R.monopods = _.filter(W.podsByOwnerUID[""], Ne);
 }, Ae = function(e) {
-return !!_.get(e, "status.replicas") || (!T(e, "deploymentConfig") || B(e));
+return !!_.get(e, "status.replicas") || (!N(e, "deploymentConfig") || B(e));
 }, $e = function(e) {
-return T(e, "deploymentConfig");
+return N(e, "deploymentConfig");
 }, Be = function() {
 if (R.deploymentConfigs && R.replicationControllers) {
 var e = [];
@@ -805,7 +813,7 @@ var r = $e(a) || "";
 var o = K[r];
 o && !O(a, o) || (K[r] = a);
 var i;
-"Complete" === T(a, "deploymentStatus") && ((i = t[r]) && !O(a, i) || (t[r] = a)), Ae(a) && _.set(n, [ r, a.metadata.name ], a);
+"Complete" === N(a, "deploymentStatus") && ((i = t[r]) && !O(a, i) || (t[r] = a)), Ae(a) && _.set(n, [ r, a.metadata.name ], a);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
@@ -825,7 +833,7 @@ return Le(e, n);
 }), r = d.sortByRevision(a);
 R.replicaSetsByDeploymentUID[t] = r, R.currentByDeploymentUID[t] = _.head(r);
 }
-}), R.vanillaReplicaSets = _.sortBy(R.replicaSetsByDeploymentUID[""], "metadata.name"), Pe());
+}), R.vanillaReplicaSets = _.sortBy(R.replicaSetsByDeploymentUID[""], "metadata.name"), je());
 }, Oe = {}, Fe = function(e) {
 e && W.allServices && _.each(e, function(e) {
 var t = [], n = Y(e), a = x(e);
@@ -842,8 +850,8 @@ var e = [ R.deploymentConfigs, R.vanillaReplicationControllers, R.deployments, R
 _.each(e, Fe), ae();
 }
 }, Ve = function() {
-var e = j.groupByService(R.routes, !0);
-W.routesByService = _.mapValues(e, j.sortRoutesByScore), ae();
+var e = P.groupByService(R.routes, !0);
+W.routesByService = _.mapValues(e, P.sortRoutesByScore), ae();
 }, Me = function() {
 W.hpaByResource = m.groupHPAs(R.horizontalPodAutoscalers);
 }, qe = function(e) {
@@ -881,7 +889,7 @@ _.set(R, [ "deploymentConfigsByPipeline", a ], n), _.each(n, function(e) {
 W.pipelinesByDeploymentConfig[e] = W.pipelinesByDeploymentConfig[e] || [], W.pipelinesByDeploymentConfig[e].push(t);
 });
 }
-}), R.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), oe(), Ne(R.pipelineBuildConfigs), ie();
+}), R.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), oe(), Te(R.pipelineBuildConfigs), ie();
 }, Je = function() {
 W.buildConfigsByObjectUID = {}, _.each(R.deploymentConfigs, function(e) {
 var t = [], n = _.get(e, "spec.triggers");
@@ -1140,7 +1148,7 @@ R.pods = e.by("metadata.name"), De(), a(), Ie(), Fe(R.monopods), be(R.monopods),
 })), at.push(u.watch("replicationcontrollers", n, function(e) {
 R.replicationControllers = e.by("metadata.name"), Be(), Fe(R.vanillaReplicationControllers), Fe(R.monopods), be(R.vanillaReplicationControllers), Ee(R.vanillaReplicationControllers), tt(), me(), h.log("replicationcontrollers (subscribe)", R.replicationControllers);
 })), at.push(u.watch("deploymentconfigs", n, function(e) {
-R.deploymentConfigs = e.by("metadata.name"), Be(), Fe(R.deploymentConfigs), Fe(R.vanillaReplicationControllers), Ee(R.deploymentConfigs), Pe(), Ye(), Ze(), tt(), me(), h.log("deploymentconfigs (subscribe)", R.deploymentConfigs);
+R.deploymentConfigs = e.by("metadata.name"), Be(), Fe(R.deploymentConfigs), Fe(R.vanillaReplicationControllers), Ee(R.deploymentConfigs), je(), Ye(), Ze(), tt(), me(), h.log("deploymentconfigs (subscribe)", R.deploymentConfigs);
 })), at.push(u.watch({
 >>>>>>> Adopt service catalog API changes
 group: "extensions",
@@ -1187,7 +1195,7 @@ R.horizontalPodAutoscalers = e.by("metadata.name"), Me(), h.log("autoscalers (su
 poll: I,
 pollInterval: 6e4
 })), at.push(u.watch("imagestreams", n, function(e) {
-N = e.by("metadata.name"), f.buildDockerRefMapForImageStreams(N, W.imageStreamImageRefByDockerReference), a(), h.log("imagestreams (subscribe)", N);
+T = e.by("metadata.name"), f.buildDockerRefMapForImageStreams(T, W.imageStreamImageRefByDockerReference), a(), h.log("imagestreams (subscribe)", T);
 }, {
 poll: I,
 pollInterval: 6e4
@@ -1369,14 +1377,14 @@ V.serviceInstances = e.by("metadata.name"), _.each(V.serviceInstances, function(
 =======
 var r, o, i = {}, s = {};
 c.SERVICE_CATALOG_ENABLED && D(q, "watch") && (r = function(e) {
-var t = P.getServiceClassNameForInstance(e);
+var t = j.getServiceClassNameForInstance(e);
 _.has(W, [ "serviceClasses", t ]) || i[t] || (i[t] = u.get(M, t, {}).then(function(e) {
 W.serviceClasses[t] = e;
 }).finally(function() {
 delete s[t];
 }));
 }, o = function(e) {
-var t = P.getServicePlanNameForInstance(e);
+var t = j.getServicePlanNameForInstance(e);
 _.has(W, [ "servicePlans", t ]) || s[t] || (s[t] = u.get(z, t, {}).then(function(e) {
 W.servicePlans[t] = e;
 }).finally(function() {
@@ -1585,9 +1593,13 @@ DISABLE_SERVICE_CATALOG_LANDING_PAGE: !1,
 AVAILABLE_KINDS_BLACKLIST: [],
 DISABLE_GLOBAL_EVENT_WATCH: !1,
 DISABLE_COPY_LOGIN_COMMAND: !1,
+TEMPLATE_SERVICE_BROKER_ENABLED: !1,
 ENABLE_TECH_PREVIEW_FEATURE: {
+<<<<<<< HEAD
 template_service_broker: !1,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+>>>>>>> Update template service broker flag name
 pod_presets: !1
 },
 SAMPLE_PIPELINE_TEMPLATE: {
@@ -6893,6 +6905,7 @@ target: "_blank"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, I = function(e, t) {
 var n = [], r = "Pod" === e.kind ? e : _.get(e, "spec.template");
 return r ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(a) {
@@ -7031,6 +7044,9 @@ var i = S(t, e, r);
 =======
 }, j = function(e, t) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, P = function(e, t) {
+>>>>>>> Update template service broker flag name
 var n = [], a = "Pod" === e.kind ? e : _.get(e, "spec.template");
 return a ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(r) {
 var o = t.status.total || t.status;
@@ -7047,7 +7063,7 @@ s && n.push(s);
 }
 }
 }), n) : n;
-}, P = function(t, n, a) {
+}, j = function(t, n, a) {
 var r = [];
 return t && n ? (_.each(t, function(t) {
 var o = y(t, n), i = y(t, a), s = e.objectToResourceGroupVersion(t);
@@ -7065,7 +7081,7 @@ href: "project/" + e.metadata.namespace + "/quota",
 label: "View Quota",
 target: "_blank"
 } ]
-}), r = r.concat(j(t, e));
+}), r = r.concat(P(t, e));
 };
 _.each(o, p), _.each(i, p);
 }
@@ -7091,8 +7107,8 @@ return {
 filterQuotasForResource: y,
 isBestEffortPod: g,
 isTerminatingPod: v,
-getResourceLimitAlerts: j,
-getQuotaAlerts: P,
+getResourceLimitAlerts: P,
+getQuotaAlerts: j,
 getLatestQuotaAlerts: function(e, t) {
 var n, a, r = [];
 return r.push(s.list("resourcequotas", t).then(function(e) {
@@ -7101,7 +7117,7 @@ n = e.by("metadata.name"), l.log("quotas", n);
 a = e.by("metadata.name"), l.log("cluster quotas", a);
 })), o.all(r).then(function() {
 return {
-quotaAlerts: P(e, n, a)
+quotaAlerts: j(e, n, a)
 };
 });
 },
@@ -7432,6 +7448,9 @@ return e.from && "ImageStreamTag" === e.from.kind && -1 === e.from.name.indexOf(
 }, f = e("displayName"), g = [ "metadata.name", 'metadata.annotations["openshift.io/display-name"]', "metadata.annotations.description" ];
 return {
 SERVICE_CATALOG_ENABLED: l,
+isTemplateServiceBrokerEnabled: function() {
+return !!n.TEMPLATE_SERVICE_BROKER_ENABLED;
+},
 getCategoryItem: function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8563,9 +8582,9 @@ g(e, t), f(e);
 });
 }
 };
-} ]), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
-function g() {
-var t = f.search();
+} ]), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "Catalog", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g) {
+function v() {
+var t = g.search();
 return t.serviceExternalName ? _.find(e.catalogItems, {
 resource: {
 <<<<<<< HEAD
@@ -8593,6 +8612,7 @@ externalName: t.serviceExternalName
 }
 }) : null;
 }
+<<<<<<< HEAD
 function v() {
 var n = f();
 if (n) e.$broadcast("open-overlay-panel", n); else if (y) if (p.startTour) d(function() {
@@ -8794,10 +8814,20 @@ f.replace(), f.search("startTour", null), e.startGuidedTour();
 }, 500); else if (_.get(h, "auto_launch")) {
 var a = "openshift/viewedHomePage/" + t.user.metadata.name;
 "true" !== localStorage.getItem(a) && d(function() {
+=======
+function h() {
+var n = v();
+if (n) e.$broadcast("open-overlay-panel", n); else if (b) if (f.startTour) m(function() {
+g.replace(), g.search("startTour", null), e.startGuidedTour();
+}, 500); else if (_.get(y, "auto_launch")) {
+var a = "openshift/viewedHomePage/" + t.user.metadata.name;
+"true" !== localStorage.getItem(a) && m(function() {
+>>>>>>> Update template service broker flag name
 e.startGuidedTour() && localStorage.setItem(a, "true");
 }, 500);
 }
 }
+<<<<<<< HEAD
 var h = _.get(r, "GUIDED_TOURS.landing_page_tour"), y = h && h.enabled && h.steps;
 >>>>>>> Bug 1506153 - Use query param serviceExternalName
 e.saasOfferings = r.SAAS_OFFERINGS, e.viewMembership = function(e) {
@@ -8806,21 +8836,30 @@ i.toProjectMembership(e.metadata.name);
 return !u.isWindowBelowBreakpoint(u.WINDOW_SIZE_SM) && (l.startTour(h.steps), !0);
 }), s.clearNotifications();
 var b = function() {
+=======
+var y = _.get(o, "GUIDED_TOURS.landing_page_tour"), b = y && y.enabled && y.steps;
+e.saasOfferings = o.SAAS_OFFERINGS, e.viewMembership = function(e) {
+s.toProjectMembership(e.metadata.name);
+}, b && (e.startGuidedTour = function() {
+return !d.isWindowBelowBreakpoint(d.WINDOW_SIZE_SM) && (u.startTour(y.steps), !0);
+}), c.clearNotifications();
+var C = function() {
+>>>>>>> Update template service broker flag name
 var t = _.get(e, "template.metadata.uid");
-t && c.addItem(t);
-}, C = function(e) {
-return "PartialObjectMetadata" === e.kind;
+t && l.addItem(t);
 }, S = function(e) {
-return C(e) ? o.get("templates", e.metadata.name, {
+return "PartialObjectMetadata" === e.kind;
+}, w = function(e) {
+return S(e) ? i.get("templates", e.metadata.name, {
 namespace: e.metadata.namespace
-}) : m.when(e);
+}) : p.when(e);
 };
 e.templateSelected = function(t) {
-S(t).then(function(t) {
+w(t).then(function(t) {
 _.set(e, "ordering.panelName", "template"), e.template = t;
 });
 }, e.closeOrderingPanel = function() {
-e.template && (b(), e.template = null), _.set(e, "ordering.panelName", "");
+e.template && (C(), e.template = null), _.set(e, "ordering.panelName", "");
 }, e.deployImageSelected = function() {
 _.set(e, "ordering.panelName", "deployImage");
 }, e.fromFileSelected = function() {
@@ -8828,21 +8867,21 @@ _.set(e, "ordering.panelName", "fromFile");
 }, e.fromProjectSelected = function() {
 _.set(e, "ordering.panelName", "fromProject");
 }, n.withUser().then(function() {
-var t = !_.get(r, "ENABLE_TECH_PREVIEW_FEATURE.template_service_broker");
+var t = !r.isTemplateServiceBrokerEnabled();
 a.getCatalogItems(t).then(_.spread(function(t, n) {
 if (n) {
 var a = {
 type: "error",
 message: n
 };
-s.addNotification(a);
+c.addNotification(a);
 }
-e.catalogItems = t, v();
+e.catalogItems = t, h();
 }));
 }), e.$on("$destroy", function() {
-b();
-}), y && e.$on("$locationChangeStart", function(t) {
-f.search().startTour && (e.startGuidedTour(), t.preventDefault());
+C();
+}), b && e.$on("$locationChangeStart", function(t) {
+g.search().startTour && (e.startGuidedTour(), t.preventDefault());
 });
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
 var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
@@ -9367,7 +9406,7 @@ name: t.containerName
 }), a = b(n);
 t.containerState = a;
 });
-}, k = t("annotation"), j = function(t, n) {
+}, k = t("annotation"), P = function(t, n) {
 if (e.loaded = !0, e.pod = t, e.dcName = k(t, "deploymentConfig"), e.rcName = k(t, "deployment"), e.deploymentVersion = k(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), g(), delete e.controllerRef, !e.dcName) {
 var a = u.getControllerReferences(t);
 e.controllerRef = _.find(a, function(e) {
@@ -9386,11 +9425,19 @@ message: "This pod has been deleted."
 g.get(n.project).then(_.spread(function(t, a) {
 b = a, r.project = t, r.projectContext = a, s.get(r.podsVersion, n.pod, a, {
 errorNotification: !1
+<<<<<<< HEAD
 }).then(function(e) {
 D(e);
 var t = {};
 t[e.metadata.name] = e, r.logOptions.container = n.container || e.spec.containers[0].name, r.containerTerminals = R(), T(e), l.fetchReferencedImageStreamImages(t, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, b), h.push(s.watchObject(r.podsVersion, n.pod, a, function(e, t) {
 D(e, t), E(r.containerTerminals), T(e);
+=======
+}).then(function(t) {
+P(t);
+var a = {};
+a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = C(), S(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, f), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
+P(t, n), w(e.containerTerminals), S(t);
+>>>>>>> Update template service broker flag name
 }));
 }, function(t) {
 r.loaded = !0, r.alerts.load = {
@@ -9886,9 +9933,9 @@ var h, y, b, C;
 l.isAvailable().then(function(e) {
 n.metricsAvailable = e;
 });
-var S = a("orderObjectsByDate"), w = [ "metadata.name" ], k = [], j = function() {
+var S = a("orderObjectsByDate"), w = [ "metadata.name" ], k = [], P = function() {
 n.filteredPods = s.filterForKeywords(C, w, k), n.filteredReplicationControllers = s.filterForKeywords(y, w, k), n.filteredReplicaSets = s.filterForKeywords(b, w, k), n.filteredBuilds = s.filterForKeywords(h, w, k), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
-}, P = function(e) {
+}, j = function(e) {
 n.logOptions.pods[e.metadata.name] = {
 container: e.spec.containers[0].name
 }, n.logCanRun.pods[e.metadata.name] = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase);
@@ -9900,15 +9947,15 @@ t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCa
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
 }, E = function() {
 n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
-}, N = function() {
+}, T = function() {
 C = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(C, w, k);
-}, T = a("isIncompleteBuild"), D = a("buildConfigForBuild"), A = a("isRecentBuild"), B = function() {
+}, N = a("isIncompleteBuild"), D = a("buildConfigForBuild"), A = a("isRecentBuild"), B = function() {
 moment().subtract(5, "m");
 h = _.filter(n.builds, function(e) {
 if (!n.filters.hideOlderResources) return !0;
-if (T(e)) return !0;
+if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
 }), n.filteredBuilds = s.filterForKeywords(h, w, k);
@@ -10056,7 +10103,7 @@ n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwne
 }), o.watch({
 =======
 n.project = e, n.projectContext = a, g.push(o.watch("pods", a, function(e) {
-n.podsByName = e.by("metadata.name"), n.pods = S(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, P), N(), c.log("pods", n.pods);
+n.podsByName = e.by("metadata.name"), n.pods = S(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, j), T(), c.log("pods", n.pods);
 })), g.push(o.watch({
 >>>>>>> Allow unlimited websockets on Edge - also fix leaking websockets on monitoring page
 resource: "statefulsets",
@@ -10082,6 +10129,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10120,12 +10168,16 @@ T(), B(), O(), F(), E();
 =======
 N(), B(), O(), F(), E();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+T(), B(), O(), F(), E();
+>>>>>>> Update template service broker flag name
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
 var e = t.search();
 e.kind = n.kindSelector.selected.kind, t.replace().search(e);
 }), n.$watch("filters.text", _.debounce(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10188,6 +10240,9 @@ n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(P);
 =======
 n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(j);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(P);
+>>>>>>> Update template service broker flag name
 }, 50, {
 maxWait: 250
 })), n.$watch("renderOptions.collapseEventsSidebar", function(e, t) {
@@ -10299,6 +10354,7 @@ e && !_.includes(r.serviceAccounts, e) ? r.serviceAccounts = [ e ].concat(t) : r
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T = function(e) {
 l.list(r.roleBindingsVersion, h, null, {
 errorNotification: !1
@@ -10358,6 +10414,9 @@ subjectKinds: A,
 =======
 }, j = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, P = function(e) {
+>>>>>>> Update template service broker flag name
 c.list("rolebindings", f, null, {
 errorNotification: !1
 }).then(function(e) {
@@ -10369,14 +10428,14 @@ subjectKindsForUI: u.mapRolebindingsForUI(e.by("metadata.name"), b)
 }, function() {
 e && (a.roleBindings[e.metadata.name] = e, a.subjectKindsForUI = u.mapRolebindingsForUI(a.roleBindings, b)), w();
 });
-}, P = function(t, n) {
+}, j = function(t, n) {
 a.disableAddForm = !0, m.create(t, n, g, f).then(function() {
-j(), S("success", C.update.subject.success({
+P(), S("success", C.update.subject.success({
 roleName: t.metadata.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), j(), S("error", C.update.subject.error({
+w(), P(), S("error", C.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
 }), C.errorReason({
@@ -10385,12 +10444,12 @@ httpErr: e("getErrorDetails")(a)
 });
 }, R = function(t, n, r) {
 a.disableAddForm = !0, m.addSubject(t, n, r, f).then(function() {
-j(), S("success", C.update.subject.success({
+P(), S("success", C.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), j(), S("error", C.update.subject.error({
+w(), P(), S("error", C.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
 }), C.errorReason({
@@ -10506,7 +10565,7 @@ return e ? a + (h(e, "description") || "") : "";
 }
 }
 });
-var N = function(e, t, n, r) {
+var T = function(e, t, n, r) {
 var o = {
 alerts: {},
 detailsMarkup: C.remove.areYouSure.html.subject({
@@ -10591,12 +10650,12 @@ e && !_.includes(a.projects, e) ? a.projects = [ e ].concat(t) : a.projects = t;
 }
 });
 }), l.get(n.project).then(_.spread(function(n, r) {
-f = r, j(), k(f), angular.extend(a, {
+f = r, P(), k(f), angular.extend(a, {
 project: n,
 subjectKinds: E,
 canUpdateRolebindings: y("rolebindings", "update", g),
 confirmRemove: function(n, r, i) {
-var c = null, l = N(n, r, i, a.user.metadata.name);
+var c = null, l = T(n, r, i, a.user.metadata.name);
 _.isEqual(n, a.user.metadata.name) && u.isLastRole(a.user.metadata.name, a.roleBindings) && (c = !0), o.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -10627,7 +10686,7 @@ return l;
 }).result.then(function() {
 m.removeSubject(n, i, a.roleBindings, f).then(function(e) {
 c ? t.url("./") : (s.getProjectRules(g, !0).then(function() {
-j(e[0]);
+P(e[0]);
 var t = y("rolebindings", "update", g);
 angular.extend(a, {
 canUpdateRolebindings: t,
@@ -10716,7 +10775,7 @@ i && _.some(i.subjects, o) ? S("error", C.update.subject.exists({
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 roleName: n.metadata.name,
 subjectName: e
-})) : i ? R(i, o, r) : P(n, o);
+})) : i ? R(i, o, r) : j(n, o);
 }
 }), p.listAllRoles(f, {
 errorNotification: !1
@@ -10730,6 +10789,7 @@ name: e
 }
 });
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10751,6 +10811,9 @@ P(), angular.extend(a, {
 =======
 j(), angular.extend(a, {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+P(), angular.extend(a, {
+>>>>>>> Update template service broker flag name
 toggle: {
 roles: !1
 },
@@ -12593,7 +12656,7 @@ namespace: n.project
 }), e.emptyMessage = "Loading...", e.deploymentConfigsInstantiateVersion = a.getPreferredVersion("deploymentconfigs/instantiate"), e.deploymentConfigsVersion = a.getPreferredVersion("deploymentconfigs"), e.eventsVersion = a.getPreferredVersion("events"), e.horizontalPodAutoscalersVersion = a.getPreferredVersion("horizontalpodautoscalers");
 var y = a.getPreferredVersion("builds"), b = a.getPreferredVersion("imagestreams"), C = a.getPreferredVersion("limitranges"), S = a.getPreferredVersion("replicationcontrollers");
 e.healthCheckURL = u.healthCheckURL(n.project, "DeploymentConfig", n.deploymentconfig, e.deploymentConfigsVersion.group);
-var w = t("mostRecent"), k = t("orderObjectsByDate"), j = [];
+var w = t("mostRecent"), k = t("orderObjectsByDate"), P = [];
 p.get(n.project).then(_.spread(function(a, r) {
 function u() {
 g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
@@ -12610,7 +12673,7 @@ e.hpaWarnings = t;
 o.get(e.deploymentConfigsVersion, n.deploymentconfig, r, {
 errorNotification: !1
 }).then(function(a) {
-e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), j.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
+e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), P.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This deployment configuration has been deleted."
@@ -12622,7 +12685,7 @@ type: "error",
 message: 404 === n.status ? "This deployment configuration can not be found, it may have been deleted." : "The deployment configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining deployment history for this deployment will be shown." : t("getErrorDetails")(n)
 };
-}), j.push(o.watch(S, r, function(a, r, o) {
+}), P.push(o.watch(S, r, function(a, r, o) {
 var s = n.deploymentconfig;
 =======
 >>>>>>> Support EnvFrom in the Env Editors
@@ -12725,13 +12788,17 @@ d = e.by("metadata.name"), p();
 =======
 })), o.list(C, r).then(function(e) {
 d = e.by("metadata.name"), p();
+<<<<<<< HEAD
 }), j.push(o.watch(b, r, function(t) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), P.push(o.watch(b, r, function(t) {
+>>>>>>> Update template service broker flag name
 var n = t.by("metadata.name");
 c.buildDockerRefMapForImageStreams(n, h), e.deploymentConfig && c.fetchReferencedImageStreamImages([ e.deploymentConfig.spec.template ], e.imagesByDockerReference, h, r), m.log("imagestreams (subscribe)", e.imageStreams);
-})), j.push(o.watch(y, r, function(t) {
+})), P.push(o.watch(y, r, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
-})), j.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
+})), P.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
 e.autoscalers = s.filterHPA(t.by("metadata.name"), "DeploymentConfig", n.deploymentconfig), p();
 })), g.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
@@ -12827,6 +12894,7 @@ details: t("getErrorDetails")(r)
 };
 <<<<<<< HEAD
 });
+<<<<<<< HEAD
 }, e.setPaused = function(n) {
 e.updatingPausedState = !0, o.setPaused(e.deploymentConfig, n, l).then(_.noop, function(a) {
 e.updatingPausedState = !1, e.alerts["pause-error"] = {
@@ -12856,6 +12924,10 @@ var j = function() {
 =======
 var P = function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+};
+var j = function() {
+>>>>>>> Update template service broker flag name
 if (_.get(e, "deploymentConfig.spec.paused")) return !1;
 var t = _.get(e, "deploymentConfig.spec.triggers", []);
 return _.some(t, {
@@ -12864,6 +12936,7 @@ type: "ConfigChange"
 };
 e.removeVolume = function(t) {
 var n;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12886,6 +12959,9 @@ n = j() ? "This will remove the volume from the deployment config and trigger a 
 =======
 n = P() ? "This will remove the volume from the deployment config and trigger a new deployment." : "This will remove the volume from the deployment config.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+n = j() ? "This will remove the volume from the deployment config and trigger a new deployment." : "This will remove the volume from the deployment config.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
+>>>>>>> Update template service broker flag name
 l.confirm({
 message: "Remove volume " + t.name + "?",
 >>>>>>> Update DeploymentConfig controller to use getPreferredVersion
@@ -12911,6 +12987,7 @@ f.removeVolume(e.deploymentConfig, t, r);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 o.unwatchAll(j);
 >>>>>>> Update DeploymentConfig controller to use getPreferredVersion
 =======
@@ -12925,6 +13002,9 @@ o.unwatchAll(P);
 =======
 o.unwatchAll(j);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+o.unwatchAll(P);
+>>>>>>> Update template service broker flag name
 });
 }));
 <<<<<<< HEAD
@@ -12994,10 +13074,11 @@ e.logCanRun = !_.includes([ "New", "Pending" ], P(t));
 =======
 var k = {};
 e.projectName = n.project, e.kind = y, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
-var j = [];
+var P = [];
 u.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13016,6 +13097,10 @@ e.logCanRun = !_.includes([ "New", "Pending" ], j(t));
 var P = t("deploymentStatus"), R = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], P(t));
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var j = t("deploymentStatus"), R = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], j(t));
+>>>>>>> Update template service broker flag name
 }, I = t("isIE")();
 >>>>>>> Allow unlimited websockets on Edge - also fix leaking websockets on monitoring page
 g.get(n.project).then(_.spread(function(u, g) {
@@ -13043,6 +13128,7 @@ var a = s.filterHPA(h, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(a);
 >>>>>>> Add SVG icons
 } else e.autoscalers = e.hpaForRS;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13079,6 +13165,10 @@ P.push(o.watch(e.resource, g, function(t) {
 }, N = function() {
 j.push(o.watch(e.resource, g, function(t) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, T = function() {
+P.push(o.watch(e.resource, g, function(t) {
+>>>>>>> Update template service broker flag name
 var n, a = [];
 >>>>>>> Adjust events to show in the drawer
 angular.forEach(t.by("metadata.name"), function(t) {
@@ -13118,8 +13208,12 @@ c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t)
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
 }), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, E();
 }));
+<<<<<<< HEAD
 }, T = function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, N = function() {
+>>>>>>> Update template service broker flag name
 s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
 >>>>>>> Adjust events to show in the drawer
 e.hpaWarnings = t;
@@ -13187,7 +13281,7 @@ a && o.get({
 group: "apps",
 resource: "deployments"
 }, a.name, g).then(function(t) {
-e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), j.push(o.watchObject({
+e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), P.push(o.watchObject({
 group: "apps",
 resource: "deployments"
 }, t.metadata.name, g, function(t, a) {
@@ -13219,7 +13313,7 @@ link: m.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), A(), E();
-})), j.push(o.watch({
+})), P.push(o.watch({
 group: "extensions",
 resource: "replicasets"
 }, g, function(e) {
@@ -13362,6 +13456,7 @@ case "ReplicaSet":
 z();
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 S(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 E(), e.breadcrumbs = r.getBreadcrumbs({
@@ -13369,6 +13464,11 @@ E(), e.breadcrumbs = r.getBreadcrumbs({
 object: t
 <<<<<<< HEAD
 }), x.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
+=======
+N(), e.breadcrumbs = r.getBreadcrumbs({
+object: t
+}), P.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
+>>>>>>> Update template service broker flag name
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 <<<<<<< HEAD
@@ -13378,6 +13478,7 @@ message: "This " + j + " has been deleted."
 =======
 message: "This " + S + " has been deleted."
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && $();
 })), e.deploymentConfigName && E(), j.push(o.watch("pods", g, function(t) {
 >>>>>>> Enable new landing page experience by default
@@ -13385,6 +13486,10 @@ message: "This " + S + " has been deleted."
 }), e.replicaSet = t, R(t), E(), U(), e.deployment && A();
 })), e.deploymentConfigName && N(), j.push(o.watch("pods", g, function(t) {
 >>>>>>> Quota Notifications
+=======
+}), e.replicaSet = t, R(t), N(), U(), e.deployment && A();
+})), e.deploymentConfigName && T(), P.push(o.watch("pods", g, function(t) {
+>>>>>>> Update template service broker flag name
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -13398,6 +13503,7 @@ name: n.replicaSet,
 kind: d,
 namespace: n.project
 });
+<<<<<<< HEAD
 }), x.push(i.watch(e.resource, u, function(n, r, a) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, i;
@@ -13405,6 +13511,15 @@ a && (o = P(a, "deploymentConfig"), i = a.metadata.name), e.deploymentConfigDepl
 e.causes = t("deploymentCauses")(e);
 });
 })), x.push(i.watch(R, u, function(e) {
+=======
+}), P.push(o.watch(e.resource, g, function(n, a, r) {
+e.replicaSets = n.by("metadata.name"), "ReplicationController" === y && (e.deploymentsByDeploymentConfig = i.associateDeploymentsToDeploymentConfig(e.replicaSets));
+var o, s;
+r && (o = C(r, "deploymentConfig"), s = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][s] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][s] : e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
+e.causes = t("deploymentCauses")(e);
+});
+})), P.push(o.watch("imagestreams", g, function(e) {
+>>>>>>> Update template service broker flag name
 var t = e.by("metadata.name");
 <<<<<<< HEAD
 l.buildDockerRefMapForImageStreams(t, L), H(), m.log("imagestreams (subscribe)", t);
@@ -13416,18 +13531,22 @@ p = e.by("metadata.name"), y(), S();
 poll: U,
 =======
 c.buildDockerRefMapForImageStreams(t, k), U(), l.log("imagestreams (subscribe)", t);
-})), j.push(o.watch("builds", g, function(t) {
+})), P.push(o.watch("builds", g, function(t) {
 e.builds = t.by("metadata.name"), l.log("builds (subscribe)", e.builds);
-})), j.push(o.watch({
+})), P.push(o.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, g, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 v = e.by("metadata.name"), I(), N();
 =======
 v = e.by("metadata.name"), T(), E();
 >>>>>>> Quota Notifications
+=======
+h = e.by("metadata.name"), E(), N();
+>>>>>>> Update template service broker flag name
 }, {
 poll: T,
 >>>>>>> Add the ability to add a secret to an application
@@ -13437,15 +13556,25 @@ pollInterval: 6e4
 e.limitRanges = t.by("metadata.name"), S();
 =======
 })), o.list("limitranges", g).then(function(t) {
+<<<<<<< HEAD
 e.limitRanges = t.by("metadata.name"), E();
 >>>>>>> Quota Notifications
 });
 x.push(i.watch($, u, function(t) {
+=======
+e.limitRanges = t.by("metadata.name"), N();
+});
+P.push(o.watch("resourcequotas", g, function(t) {
+>>>>>>> Update template service broker flag name
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
+<<<<<<< HEAD
 })), x.push(i.watch(B, u, function(t) {
+=======
+})), P.push(o.watch("appliedclusterresourcequotas", g, function(t) {
+>>>>>>> Update template service broker flag name
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -13453,7 +13582,11 @@ pollInterval: 6e4
 }));
 var G = t("deploymentIsLatest");
 e.showRollbackAction = function() {
+<<<<<<< HEAD
 return "Complete" === V(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
+=======
+return "Complete" === j(e.replicaSet) && !O(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
+>>>>>>> Update template service broker flag name
 }, e.retryFailedDeployment = function(t) {
 s.retryFailedDeployment(t, u, e);
 }, e.rollbackToDeployment = function(t, n, r, a) {
@@ -13487,6 +13620,7 @@ cancelButtonText: a.getString(r("Cancel"))
 C.removeVolume(e.replicaSet, n, u);
 });
 }, e.$on("$destroy", function() {
+<<<<<<< HEAD
 i.unwatchAll(x);
 =======
 I = H(b);
@@ -13496,6 +13630,9 @@ m.removeVolume(e.deploymentConfig, t, l);
 });
 }, e.$on("$destroy", function() {
 r.unwatchAll(b);
+=======
+o.unwatchAll(P);
+>>>>>>> Update template service broker flag name
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, p, m, f, g, h, v, y) {
@@ -15694,7 +15831,7 @@ return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
-}), j();
+}), P();
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -15941,6 +16078,7 @@ return _.has(e, "disabled") && !e.disabled || e.present;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, j = function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -15955,6 +16093,9 @@ return _.has(e, "disabled") && !e.disabled || e.present;
 =======
 }, j = function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, P = function() {
+>>>>>>> Update template service broker flag name
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -16006,6 +16147,7 @@ mountPath: ""
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, A = function(e, t, n) {
 t.name ? e[n] = t : delete e[n];
 }, $ = function(t, n) {
@@ -16031,6 +16173,9 @@ _.isEmpty(a) ? delete t.secrets : t.secrets = a;
 =======
 }, P = function(e, t, n) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, j = function(e, t, n) {
+>>>>>>> Update template service broker flag name
 t.name ? e[n] = t : delete e[n];
 }, R = function(t, n) {
 var a = "Custom" === e.strategyType ? "secretSource" : "secret", r = _.filter(n, function(e) {
@@ -16098,6 +16243,7 @@ case "JenkinsPipeline":
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 case "Source":
 case "Docker":
@@ -16138,6 +16284,9 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = S(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), P(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), P(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), P(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = S(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Update template service broker flag name
 case "Source":
 case "Docker":
 R(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -16760,7 +16909,7 @@ command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
-var j = function(e, t, n, a) {
+var P = function(e, t, n, a) {
 var r = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -16774,12 +16923,12 @@ containerNames: [ e ],
 from: r
 }
 }, n;
-}, P = function() {
+}, j = function() {
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 });
 return _.each(e.containerConfigByName, function(n, a) {
-n.hasDeploymentTrigger ? t.push(j(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(P(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: a
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
@@ -16817,6 +16966,7 @@ _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = f.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = j(), R(), c.update("deploymentconfigs", e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 >>>>>>> Service instance details configuration and edit
 =======
@@ -16828,6 +16978,9 @@ _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) 
 =======
 }), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = f.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = P(), R(), c.update("deploymentconfigs", e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = f.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = j(), R(), c.update("deploymentconfigs", e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+>>>>>>> Update template service broker flag name
 d.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
@@ -17547,11 +17700,11 @@ e.projectTemplates = t.by("metadata.name");
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
 } else l.toErrorPage("Catalog category " + r.category + " not found.");
 } ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w) {
-var k = t("displayName"), j = t("humanize");
+var k = t("displayName"), P = t("humanize");
 e.projectName = r.project, e.sourceURLPattern = y;
-var P = r.imageStream;
-if (P) if (r.imageTag) {
-var R = r.displayName || P;
+var j = r.imageStream;
+if (j) if (r.imageTag) {
+var R = r.displayName || j;
 e.displayName = r.displayName, e.advancedOptions = "true" === r.advanced, e.breadcrumbs = [ {
 title: "Add to Project",
 link: "project/" + e.projectName + "/create"
@@ -17564,6 +17717,7 @@ title: R
 var I = {
 name: "app",
 value: ""
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -17669,6 +17823,10 @@ g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification(
 }, E = t("orderByDisplayName"), N = t("getErrorDetails"), T = {}, D = function() {
 g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, E = t("orderByDisplayName"), T = t("getErrorDetails"), N = {}, D = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(N, function(e) {
+>>>>>>> Update template service broker flag name
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 };
@@ -17720,6 +17878,7 @@ I.value && I.value !== t || (I.value = e);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 a.name = r.name, a.imageName = P, a.imageTag = r.imageTag, a.namespace = r.namespace, a.buildConfig = {
 >>>>>>> Patternfly vertical navigation and project bar
 =======
@@ -17734,6 +17893,9 @@ a.name = r.name, a.imageName = j, a.imageTag = r.imageTag, a.namespace = r.names
 =======
 a.name = r.name, a.imageName = P, a.imageTag = r.imageTag, a.namespace = r.namespace, a.buildConfig = {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+a.name = r.name, a.imageName = j, a.imageTag = r.imageTag, a.namespace = r.namespace, a.buildConfig = {
+>>>>>>> Update template service broker flag name
 buildOnSourceChange: !0,
 buildOnImageChange: !0,
 buildOnConfigChange: !0,
@@ -17860,7 +18022,7 @@ o = E(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
 id: "create-builder-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: N(e)
+details: T(e)
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -17896,7 +18058,7 @@ e.unshift("");
 id: "create-builder-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: N(e)
+details: T(e)
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -18027,13 +18189,13 @@ message: "All resources for application " + e.name + " were created successfully
 }) : (r = !0, n.failure.forEach(function(e) {
 a.push({
 type: "error",
-message: "Cannot create " + j(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+message: "Cannot create " + P(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 details: e.data.message
 });
 }), n.success.forEach(function(e) {
 a.push({
 type: "success",
-message: "Created " + j(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+message: "Created " + P(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 });
 })), t.resolve({
 alerts: a,
@@ -18080,8 +18242,9 @@ cancelButtonText: "Cancel"
 }
 }).result.then($);
 }, L = function(t) {
-D(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
+D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
 type: "error"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -18145,6 +18308,11 @@ e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 })) : _.isEmpty(T) ? $() : (B(T), e.disableInputs = !1);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}) ? (e.disableInputs = !1, _.each(N, function(e) {
+e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
+})) : _.isEmpty(N) ? $() : (B(N), e.disableInputs = !1);
+>>>>>>> Update template service broker flag name
 };
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
@@ -19538,12 +19706,21 @@ a.history.back();
 n.cancel = C;
 var S = function(e) {
 return n.attach.allContainers || n.attach.containers[e.name];
+<<<<<<< HEAD
 }, w = function() {
+=======
+}, P = function() {
+>>>>>>> Update template service broker flag name
 var e = _.get(n, "attach.resource.spec.template");
 n.existingMountPaths = p.getMountPaths(e, S);
 };
+<<<<<<< HEAD
 n.$watchGroup([ "attach.resource", "attach.allContainers" ], w), n.$watch("attach.containers", w, !0);
 s.get(h, t.name, d).then(function(e) {
+=======
+n.$watchGroup([ "attach.resource", "attach.allContainers" ], P), n.$watch("attach.containers", P, !0);
+s.get(v, t.name, d).then(function(e) {
+>>>>>>> Update template service broker flag name
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
 object: e,
 project: r,
@@ -21518,7 +21695,7 @@ scope: p
 }).result.then(function() {
 l.getLatestQuotaAlerts(p.createResources, {
 namespace: p.input.selectedProject.metadata.name
-}).then(T);
+}).then(N);
 });
 }
 function y() {
@@ -21531,7 +21708,7 @@ t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
 }
 function b() {
 var e, n;
-N(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+T(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
 project: p.input.selectedProject,
 template: p.resource
 }) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
@@ -21563,7 +21740,7 @@ _.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(r.kindTo
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
 if (!p.isDialog) {
-var e = P(t.kind);
+var e = j(t.kind);
 c.addNotification({
 type: "success",
 message: _.capitalize(e) + " " + t.metadata.name + " was successfully updated."
@@ -21583,6 +21760,7 @@ b();
 c.addNotification({
 id: "from-file-error",
 type: "error",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21617,13 +21795,16 @@ message: "Unable to update the " + j(t.kind) + " '" + t.metadata.name + "'.",
 =======
 message: "Unable to update the " + P(t.kind) + " '" + t.metadata.name + "'.",
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+message: "Unable to update the " + j(t.kind) + " '" + t.metadata.name + "'.",
+>>>>>>> Update template service broker flag name
 details: e("getErrorDetails")(n)
 });
 })) : (t = _.head(p.createResources), i.create(r.kindToResource(t.kind), null, t, {
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
 if (!p.isDialog) {
-var e = P(t.kind);
+var e = j(t.kind);
 c.addNotification({
 type: "success",
 message: _.capitalize(e) + " " + t.metadata.name + " was successfully created."
@@ -21634,7 +21815,7 @@ b();
 c.addNotification({
 id: "from-file-error",
 type: "error",
-message: "Unable to create the " + P(t.kind) + " '" + t.metadata.name + "'.",
+message: "Unable to create the " + j(t.kind) + " '" + t.metadata.name + "'.",
 details: e("getErrorDetails")(n)
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
@@ -21691,6 +21872,7 @@ type: "error",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 message: "Cannot create " + j(e.object.kind) + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -21708,11 +21890,15 @@ message: "Cannot create " + j(e.object.kind) + ' "' + e.object.metadata.name + '
 =======
 message: "Cannot create " + P(e.object.kind) + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+message: "Cannot create " + j(e.object.kind) + ' "' + e.object.metadata.name + '". ',
+>>>>>>> Update template service broker flag name
 details: e.data.message
 });
 }), t.success.forEach(function(e) {
 n.push({
 type: "success",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21743,10 +21929,13 @@ message: "Created " + j(e.kind) + ' "' + e.metadata.name + '" successfully. '
 =======
 message: "Created " + P(e.kind) + ' "' + e.metadata.name + '" successfully. '
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+message: "Created " + j(e.kind) + ' "' + e.metadata.name + '" successfully. '
+>>>>>>> Update template service broker flag name
 });
 }); else {
 var r;
-r = p.isList ? "All items in list were created successfully." : P(p.resourceKind) + " " + p.resourceName + " was successfully created.", n.push({
+r = p.isList ? "All items in list were created successfully." : j(p.resourceKind) + " " + p.resourceName + " was successfully created.", n.push({
 type: "success",
 message: r
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -21805,6 +21994,7 @@ type: "error",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 message: "Cannot update " + j(e.object.kind) + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -21822,11 +22012,15 @@ message: "Cannot update " + j(e.object.kind) + ' "' + e.object.metadata.name + '
 =======
 message: "Cannot update " + P(e.object.kind) + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+message: "Cannot update " + j(e.object.kind) + ' "' + e.object.metadata.name + '". ',
+>>>>>>> Update template service broker flag name
 details: e.data.message
 });
 }), t.success.forEach(function(e) {
 n.push({
 type: "success",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21889,10 +22083,13 @@ message: "Updated " + j(e.kind) + ' "' + e.metadata.name + '" successfully. '
 =======
 message: "Updated " + P(e.kind) + ' "' + e.metadata.name + '" successfully. '
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+message: "Updated " + j(e.kind) + ' "' + e.metadata.name + '" successfully. '
+>>>>>>> Update template service broker flag name
 });
 }); else {
 var r;
-r = p.isList ? "All items in list were updated successfully." : P(p.resourceKind) + " " + p.resourceName + " was successfully updated.", n.push({
+r = p.isList ? "All items in list were updated successfully." : j(p.resourceKind) + " " + p.resourceName + " was successfully updated.", n.push({
 type: "success",
 message: r
 });
@@ -21913,15 +22110,15 @@ alerts: n
 }), e.promise;
 });
 }
-var j;
+var P;
 p.noProjectsCantCreate = !1;
-var P = e("humanizeKind"), R = e("getErrorDetails");
+var j = e("humanizeKind"), R = e("getErrorDetails");
 d.clear(), p.$on("no-projects-cannot-create", function() {
 p.noProjectsCantCreate = !0;
 }), p.input = {
 selectedProject: p.project
 }, p.aceLoaded = function(e) {
-(j = e.getSession()).setOption("tabSize", 2), j.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
+(P = e.getSession()).setOption("tabSize", 2), P.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 };
 var I = function(e) {
 a.open({
@@ -21985,10 +22182,11 @@ E(), P = u.getSecurityAlerts(m.createResources, m.project.metadata.name);
 >>>>>>> Add bindings list to resource pages
 =======
 }).result.then(y);
-}, E = {}, N = function() {
+}, E = {}, T = function() {
 c.hideNotification("from-file-error"), _.each(E, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22034,6 +22232,10 @@ T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata
 }, T = function(e) {
 N(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, N = function(e) {
+T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+>>>>>>> Update template service broker flag name
 var t = e.quotaAlerts || [];
 E = E.concat(t), _.filter(E, {
 type: "error"
@@ -22137,7 +22339,7 @@ e.push(C(t));
 p.input.selectedProject = t, n.all(e).then(function() {
 p.errorOccurred || (1 === p.createResources.length && "Template" === p.resourceList[0].kind ? v() : _.isEmpty(p.updateResources) ? l.getLatestQuotaAlerts(p.createResources, {
 namespace: p.input.selectedProject.metadata.name
-}).then(T) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
+}).then(N) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
 });
 }, function(e) {
 c.addNotification({
@@ -22149,7 +22351,7 @@ details: R(e)
 });
 }
 }, p.cancel = function() {
-N(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22173,6 +22375,7 @@ m.$on("importFileFromYAMLOrJSON", m.create), m.$on("$destroy", T);
 var I = e("displayName");
 =======
 var A = e("displayName");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22209,6 +22412,9 @@ p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
 =======
 p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", N);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
+>>>>>>> Update template service broker flag name
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
@@ -25183,11 +25389,12 @@ var t = p.options.selectedContainer;
 >>>>>>> Support EnvFrom in the Env Editors
 switch (e) {
 case "memory/usage":
-var n = N(t);
+var n = T(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
 case "cpu/usage_rate":
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -25236,6 +25443,9 @@ var a = N(t);
 =======
 var a = T(t);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var a = N(t);
+>>>>>>> Update template service broker flag name
 if (a) return d(a);
 }
 return null;
@@ -25447,6 +25657,7 @@ onClick: function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 delete p.alerts[t], V = 1, I();
 =======
 delete m.alerts[t], U = 1, R();
@@ -25472,6 +25683,9 @@ delete m.alerts[t], U = 1, j();
 =======
 delete m.alerts[t], U = 1, P();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+delete m.alerts[t], U = 1, j();
+>>>>>>> Update template service broker flag name
 }
 } ]
 };
@@ -25516,12 +25730,12 @@ t.total = p(t.id), t.total && (m.hasLimits = !0);
 var a = _.get(n, "usage.value");
 isNaN(a) && (a = 0), e.convert && (a = e.convert(a)), t.used = d3.round(a, e.usagePrecision), t.total && (t.available = d3.round(t.total - a, e.usagePrecision)), e.totalUsed += t.used;
 }
-function j(e, t) {
+function P(e, t) {
 m.noData = !1;
 var n = _.initial(t.data);
 e.data ? e.data = _.chain(e.data).takeRight(D).concat(n).value() : e.data = n;
 }
-function P() {
+function j() {
 if (w()) {
 var e = v(), t = [];
 angular.forEach(m.metrics, function(n) {
@@ -25540,6 +25754,7 @@ A || angular.forEach(e, function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 e && j(_.find(n.datasets, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -25554,6 +25769,9 @@ e && P(_.find(n.datasets, {
 =======
 e && j(_.find(n.datasets, {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+e && P(_.find(n.datasets, {
+>>>>>>> Update template service broker flag name
 id: e.metricID
 }), e);
 });
@@ -25594,7 +25812,7 @@ p.uniqueID = c.uniqueID(), p.metrics = [], _.includes(p.includedMetrics, "memory
 >>>>>>> Updates for Service Instance & Bindings
 =======
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var R, I = {}, E = {}, N = n("resources.limits.memory"), T = n("resources.limits.cpu"), D = 30, A = !1;
+var R, I = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 >>>>>>> Support EnvFrom in the Env Editors
 label: "Memory",
@@ -25779,6 +25997,7 @@ _.each(e.datasets, function(e) {
 delete e.data;
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), delete m.metricsError, R();
 }, !0), P = t(R, c.getDefaultUpdateInterval(), !1);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -25822,6 +26041,10 @@ delete e.data;
 }), delete m.metricsError, P();
 }, !0), R = t(P, c.getDefaultUpdateInterval(), !1);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), delete m.metricsError, j();
+}, !0), R = t(j, c.getDefaultUpdateInterval(), !1);
+>>>>>>> Update template service broker flag name
 });
 var O = o.$on("metrics.charts.resize", function() {
 c.redraw(I), c.redraw(E);
@@ -25908,7 +26131,7 @@ return _.each(R[e.descriptor], function(e) {
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 _.each(e, function(e) {
 var t = s(e);
-(!j || j < e.end) && (j = e.end), n(e) || (t.total += e.value, t.count = t.count + 1);
+(!P || P < e.end) && (P = e.end), n(e) || (t.total += e.value, t.count = t.count + 1);
 });
 <<<<<<< HEAD
 }), _.each(r, function(t, n) {
@@ -25948,7 +26171,7 @@ var a = t + "-dates";
 _.set(i, [ "xs", t ], a);
 var s = [ a ], c = [ t ];
 o.push(s), o.push(c), _.each(R[r.descriptor][t], function(e) {
-if (s.push(e.start), (!j || j < e.end) && (j = e.end), n(e)) c.push(e.value); else {
+if (s.push(e.start), (!P || P < e.end) && (P = e.end), n(e)) c.push(e.value); else {
 var t = r.convert ? r.convert(e.value) : e.value;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 c.push(t);
@@ -25959,6 +26182,7 @@ return e[0];
 }), i);
 }
 function u(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26030,6 +26254,11 @@ k || (T = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (N[i].lastValue = (N[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+var a, r = o(e, n), i = n.descriptor;
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
+>>>>>>> Update template service broker flag name
 }));
 }
 function d() {
@@ -26071,7 +26300,7 @@ pods: t.pods,
 namespace: e.metadata.namespace,
 bucketDuration: p()
 };
-return w || (n.containerName = t.options.selectedContainer.name), n.start = j || d(), n;
+return w || (n.containerName = t.options.selectedContainer.name), n.start = P || d(), n;
 }
 }
 <<<<<<< HEAD
@@ -26142,15 +26371,19 @@ details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " +
 >>>>>>> Quota Notifications
 =======
 function g(e) {
-if (!k) if (T++, t.noData) t.metricsError = {
+if (!k) if (N++, t.noData) t.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
+<<<<<<< HEAD
 <<<<<<< HEAD
 }; else if (!(N < 2) && t.alerts) {
 >>>>>>> Support EnvFrom in the Env Editors
 =======
 }; else if (!(T < 2) && t.alerts) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}; else if (!(N < 2) && t.alerts) {
+>>>>>>> Update template service broker flag name
 var n = "metrics-failed-" + t.uniqueID;
 t.alerts[n] = {
 type: "error",
@@ -26159,6 +26392,7 @@ links: [ {
 href: "",
 label: "Retry",
 onClick: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26200,6 +26434,9 @@ delete t.alerts[n], N = 1, y();
 =======
 delete t.alerts[n], T = 1, y();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+delete t.alerts[n], N = 1, y();
+>>>>>>> Update template service broker flag name
 }
 } ]
 };
@@ -26226,11 +26463,15 @@ function h() {
 =======
 function v() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Add SVG icons
 return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && N < 2;
 =======
 return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && T < 2;
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && N < 2;
+>>>>>>> Update template service broker flag name
 }
 function h(e, n, a) {
 t.noData = !1;
@@ -26261,6 +26502,7 @@ if (!I && v()) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Add SVG icons
 P = Date.now();
 <<<<<<< HEAD
@@ -26280,6 +26522,9 @@ j = Date.now();
 =======
 P = Date.now();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+j = Date.now();
+>>>>>>> Update template service broker flag name
 var e = f();
 c.getPodMetrics(e).then(u, g).finally(function() {
 >>>>>>> Patternfly vertical navigation and project bar
@@ -26296,6 +26541,7 @@ var j, k, I = {}, R = w, T = function(e) {
 =======
 var b, C = {}, S = 30, w = "compact" === t.profile, k = !1;
 t.uniqueID = s.uniqueID();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26340,6 +26586,9 @@ var b, C = {}, S = 30, w = "compact" === t.profile, k = !1;
 t.uniqueID = s.uniqueID();
 var j, P, R = {}, I = w, E = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var P, j, R = {}, I = w, E = function(e) {
+>>>>>>> Update template service broker flag name
 return e >= 1024;
 };
 t.metrics = [ {
@@ -26448,6 +26697,7 @@ chartID: "network-rx-" + t.uniqueID
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var E = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
@@ -26526,6 +26776,13 @@ l.showComputeUnitsHelp();
 };
 var T = 0;
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var T = _.keyBy(t.metrics, "descriptor");
+t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
+l.showComputeUnitsHelp();
+};
+var N = 0;
+>>>>>>> Update template service broker flag name
 c.getMetricsURL().then(function(e) {
 t.metricsURL = e;
 }), t.options = {
@@ -26548,6 +26805,7 @@ var n = s.getDefaultSparklineConfig(e.chartID, e.units, w);
 return _.set(n, "legend.show", !w && !t.showAverage), n;
 };
 t.$watch("options", function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26637,8 +26895,11 @@ R = {}, P = null, delete t.metricsError, y();
 =======
 R = {}, j = null, delete t.metricsError, y();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+R = {}, P = null, delete t.metricsError, y();
+>>>>>>> Update template service broker flag name
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
-I = !e, e && (!P || Date.now() > P + s.getDefaultUpdateInterval()) && y();
+I = !e, e && (!j || Date.now() > j + s.getDefaultUpdateInterval()) && y();
 };
 var A = r.$on("metrics.charts.resize", function() {
 s.redraw(C);
@@ -26696,10 +26957,10 @@ offset: {
 top: t.followAffixTop || 0
 }
 });
-}, j = function() {
+}, P = function() {
 return $("#" + t.logViewerID + " .log-view-output");
-}, P = function(e) {
-var n = j(), a = n.offset().top;
+}, j = function(e) {
+var n = P(), a = n.offset().top;
 if (!(a < 0)) {
 var r = $(".ellipsis-pulser").outerHeight(!0), o = t.fixedHeight ? t.fixedHeight : Math.floor($(window).height() - a - r);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -26798,6 +27059,7 @@ y = setInterval(function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 n > 10 ? e() : (n++, j().is(":visible") && (P(), e()));
 >>>>>>> Patternfly vertical navigation and project bar
 =======
@@ -26812,22 +27074,26 @@ n > 10 ? e() : (n++, P().is(":visible") && (j(), e()));
 =======
 n > 10 ? e() : (n++, j().is(":visible") && (P(), e()));
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+n > 10 ? e() : (n++, P().is(":visible") && (j(), e()));
+>>>>>>> Update template service broker flag name
 }, 100);
 }
 }, I = _.debounce(function() {
-P(!0), b(), S();
+j(!0), b(), S();
 }, 100);
 m.on("resize", I);
-var E, N = function() {
+var E, T = function() {
 C = !0, d.scrollBottom(u);
-}, T = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(T), T = document.createDocumentFragment(), t.autoScrollActive && N(), t.showScrollLinks || b();
+}, N = document.createDocumentFragment(), D = _.debounce(function() {
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = r.defer();
 return E ? (E.onClose(function() {
 t.resolve();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26859,6 +27125,9 @@ O().then(function() {
 =======
 }), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), T = document.createDocumentFragment()), t.promise;
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+>>>>>>> Update template service broker flag name
 }, B = function() {
 A().then(function() {
 >>>>>>> Patternfly vertical navigation and project bar
@@ -26902,7 +27171,7 @@ autoScrollActive: !1
 }), N.start();
 =======
 }, t.options), n = 0, a = function(e) {
-n++, T.appendChild(f(n, e)), D();
+n++, N.appendChild(f(n, e)), D();
 };
 (E = c.createStream(v, h, t.context, e)).onMessage(function(r, o, i) {
 t.$evalAsync(function() {
@@ -27073,6 +27342,7 @@ toggleAutoScroll: function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && A();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -27099,6 +27369,9 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
 =======
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && N();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
+>>>>>>> Update template service broker flag name
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
@@ -29219,7 +29492,7 @@ cancelButtonText: "Cancel"
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
-}, j = function(e) {
+}, P = function(e) {
 k(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
 w = w.concat(t), _.filter(w, {
@@ -29227,17 +29500,17 @@ type: "error"
 }).length ? (v.disableInputs = !1, _.each(w, function(e) {
 e.id = _.uniqueId("process-template-alert-"), i.addNotification(e);
 })) : w.length ? (S(w), v.disableInputs = !1) : C();
-}, P = function() {
+}, j = function() {
 if (_.has(v.selectedProject, "metadata.uid")) return t.when(v.selectedProject);
 var n = v.selectedProject.metadata.name, a = v.selectedProject.metadata.annotations["new-display-name"], r = e("description")(v.selectedProject);
 return c.create(n, a, r);
 };
 v.createFromTemplate = function() {
-v.disableInputs = !0, P().then(function(e) {
+v.disableInputs = !0, j().then(function(e) {
 v.selectedProject = e, g = {
 namespace: v.selectedProject.metadata.name
 }, v.template.labels = m.mapEntries(m.compactEntries(v.labels)), r.create("processedtemplates", null, v.template, g).then(function(e) {
-s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(j);
+s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(P);
 }, function(e) {
 v.disableInputs = !1;
 var t;
@@ -31764,15 +32037,15 @@ details: f(e)
 }
 } else n.mode = "istag";
 });
-var j, P = e("displayName"), R = function() {
+var P, j = e("displayName"), R = function() {
 var e = {
-started: "Deploying image " + n.app.name + " to project " + P(n.input.selectedProject),
-success: "Deployed image " + n.app.name + " to project " + P(n.input.selectedProject),
-failure: "Failed to deploy image " + n.app.name + " to project " + P(n.input.selectedProject)
+started: "Deploying image " + n.app.name + " to project " + j(n.input.selectedProject),
+success: "Deployed image " + n.app.name + " to project " + j(n.input.selectedProject),
+failure: "Failed to deploy image " + n.app.name + " to project " + j(n.input.selectedProject)
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
-return o.batch(j, {
+return o.batch(P, {
 namespace: n.input.selectedProject.metadata.name
 }).then(function(t) {
 var a, r = !_.isEmpty(t.failure);
@@ -31865,9 +32138,15 @@ e.id = _.uniqueId("deploy-image-alert-"), c.addNotification(e);
 })) : h.length ? (I(h), n.disableInputs = !1) : R();
 };
 n.create = function() {
+<<<<<<< HEAD
 n.disableInputs = !0, v(), y().then(function(e) {
 n.input.selectedProject = e, j = m();
 var t = r.ifResourcesDontExist(j, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(j, {
+=======
+n.disableInputs = !0, h(), y().then(function(e) {
+n.input.selectedProject = e, P = m();
+var t = r.ifResourcesDontExist(P, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(P, {
+>>>>>>> Update template service broker flag name
 namespace: n.input.selectedProject.metadata.name
 }), o = function(e) {
 return n.nameTaken = e.nameTaken, a;
@@ -32889,6 +33168,7 @@ return e.heading;
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 return _.each(t, function(e) {
 e.notifications = I(e.notifications), e.counts = P(e);
 }), t;
@@ -32929,6 +33209,9 @@ _.each(m.notificationGroups, function(t) {
 =======
 }, j = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, P = function(e) {
+>>>>>>> Update template service broker flag name
 _.each(p.notificationGroups, function(t) {
 >>>>>>> Support EnvFrom in the Env Editors
 _.remove(t.notifications, {
@@ -32937,6 +33220,7 @@ namespace: e.namespace
 });
 <<<<<<< HEAD
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -32960,6 +33244,10 @@ v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][
 }, P = function(e) {
 v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][e.uid], j(e);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, j = function(e) {
+v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][e.uid], P(e);
+>>>>>>> Update template service broker flag name
 }, R = function() {
 g[r.project] = {}, v[r.project] = {};
 }, I = function(e) {
@@ -32981,6 +33269,7 @@ return _.reduce(e, function(e, t) {
 return c.isImportantAPIEvent(t) && !c.isCleared(t.metadata.uid) && (e[t.metadata.uid] = t), e;
 }, {});
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, I = function(e, t) {
 var n = r.project;
 return _.assign({}, e[n], t[n]);
@@ -32991,14 +33280,24 @@ var n = r.project;
 return _.assign({}, e[n], t[n]);
 }, T = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, T = function(e, t) {
+var n = r.project;
+return _.assign({}, e[n], t[n]);
+}, N = function(e) {
+>>>>>>> Update template service broker flag name
 return _.orderBy(e, [ "event.lastTimestamp", "event.firstTimestamp" ], [ "desc", "desc" ]);
 }, T = function() {
 o.$evalAsync(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 p.notificationGroups = [ C(r.project, E(I(g, v))) ], k();
 =======
 p.notificationGroups = [ S(r.project, T(N(g, v))) ], k();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+p.notificationGroups = [ S(r.project, N(T(g, v))) ], k();
+>>>>>>> Update template service broker flag name
 });
 }, N = function() {
 _.each(f, function(e) {
@@ -33123,6 +33422,7 @@ customScope: {
 clear: function(e, t, n) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 l.markCleared(e.event), n.notifications.splice(t, 1), R();
 =======
 c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D();
@@ -33130,6 +33430,9 @@ c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D()
 =======
 c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), P(e), D();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D();
+>>>>>>> Update template service broker flag name
 },
 markRead: function(e) {
 e.unread = !1, l.markRead(e.event), R();
@@ -33183,7 +33486,7 @@ p.drawerHidden = !p.drawerHidden;
 })), f.push(o.$on("NotificationDrawerWrapper.hide", function() {
 p.drawerHidden = !0;
 })), f.push(o.$on("NotificationDrawerWrapper.clear", function(e, t) {
-c.markCleared(t.uid), P(t), p.countUnreadNotifications();
+c.markCleared(t.uid), j(t), p.countUnreadNotifications();
 }));
 };
 <<<<<<< HEAD
