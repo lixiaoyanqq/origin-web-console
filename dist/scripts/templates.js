@@ -1141,8 +1141,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label for=\"mount-path\" translate>Mount Path</label>\n" +
 =======
     "<label for=\"mount-path\">Mount Path</label>\n" +
+<<<<<<< 792063926dc3258cb2256a0bb09b1ed7645ddd52
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
+=======
+    "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" osc-unique-disabled=\"attach.overwrite\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
+>>>>>>> add "overwrite" option to attachPVC view
     "<div>\n" +
     "<span id=\"mount-path-help\" class=\"help-block\" translate>Mount path for the volume inside the container. If not specified, the volume will not be mounted automatically.</span>\n" +
     "</div>\n" +
@@ -1178,11 +1182,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"volume-name\" translate>Volume Name</label>\n" +
     "\n" +
+<<<<<<< 792063926dc3258cb2256a0bb09b1ed7645ddd52
 <<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"{{'(generated if empty)'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
 =======
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" osc-unique-disabled=\"attach.overwrite\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
+>>>>>>> add "overwrite" option to attachPVC view
     "<div>\n" +
     "<span id=\"volume-name-help\" class=\"help-block\" translate>Unique name used to identify this volume. If not specified, a volume name is generated.</span>\n" +
     "</div>\n" +
@@ -1201,6 +1209,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\" translate>\n" +
     "Volume name already exists. Please choose another name.\n" +
     "</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"checkbox\">\n" +
+    "<label>\n" +
+    "<input type=\"checkbox\" ng-model=\"attach.overwrite\" aria-describedby=\"overwrite-help\">\n" +
+    "Overwrite\n" +
+    "</label>\n" +
+    "<div id=\"overwrite-help\" class=\"help-block\">\n" +
+    "Overwrite a volume mount if it already exists.\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
