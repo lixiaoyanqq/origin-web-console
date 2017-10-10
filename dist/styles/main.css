@@ -5012,6 +5012,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 <<<<<<< HEAD
 .order-service-details .order-service-details-top .service-title-area{flex:1 1 0%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-details-top .service-vendor{margin-top:5px}
+<<<<<<< HEAD
 .order-service-details .order-service-details-top .sub-title{color:#72767b;font-size:20px;font-weight:600}
 .order-service-details .order-service-description-block{margin-top:15px}
 =======
@@ -5019,6 +5020,8 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 .order-service-details .order-service-details-top .service-title-area{flex:1 1 0%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 >>>>>>> Making next steps/results messaging consistent
+=======
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 .order-service-details .order-service-details-top .sub-title{font-size:20px;font-weight:600;color:#72767b}
 .order-service-details .order-service-description-block{margin-top:15px}
 <<<<<<< HEAD
@@ -5040,6 +5043,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-details .order-service-documentation-url{margin-top:4px}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-details .order-service-tags{color:#757575;margin-top:5px}
 =======
 .order-service-details .order-service-documentation-url a{margin-right:10px}
@@ -5047,6 +5051,9 @@ body>.ui-select-bootstrap.open{z-index:1050}
 >>>>>>> Improving display of results status messages and removing orphaned tasks directive
 .order-service-details .order-service-tags{margin-top:5px}
 >>>>>>> Changing overlay layout to a single column
+=======
+.order-service-details .order-service-tags{color:#9c9c9c;margin-top:5px}
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 .order-service-details .order-service-tags .tag{margin-right:5px;text-transform:uppercase}
 .order-service-config .config-top .adv-ops{height:30%}
 .order-service-config .config-top .adv-ops-href{cursor:pointer;font-size:14px}

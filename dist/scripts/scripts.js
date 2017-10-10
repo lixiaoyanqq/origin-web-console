@@ -28604,8 +28604,12 @@ e.template && y.template && (u(), y.iconClass = l()), e.useProjectTemplate && u(
 onFilterChange: g
 }, n.project || (b.showProjectName = !0);
 }, b.$onChanges = function(e) {
+<<<<<<< HEAD
 e.template && b.template && (d(), b.iconClass = l(), b.image = u()), e.useProjectTemplate && d();
 >>>>>>> Add SVG icons
+=======
+e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = S(b.template, "template.openshift.io/documentation-url"), b.supportUrl = S(b.template, "template.openshift.io/support-url"), b.vendor = S(b.template, "template.openshift.io/provider-display-name")), e.useProjectTemplate && d();
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 }, e.$on("templateInstantiated", function(e, t) {
 b.selectedProject = t.project, b.currentStep = b.resultsStep.label;
 }), b.$onDestroy = function() {
@@ -28628,7 +28632,7 @@ y.catalogItems = e, y.totalCount = y.catalogItems.length, f(), t && i.addNotific
 }, b.onProjectSelected = function(t) {
 b.selectedProject = t, b.configStep.valid = e.$ctrl.form.$valid && b.selectedProject;
 }, b.templateSelected = function(e) {
-b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u();
+b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = S(b.template, "template.openshift.io/documentation-url"), b.supportUrl = S(b.template, "template.openshift.io/support-url"), b.vendor = S(b.template, "template.openshift.io/provider-display-name");
 }, b.templateProjectChange = function() {
 b.templateProjectName = _.get(b.templateProject, "metadata.name"), b.catalogItems = {}, b.templateSelected(), a.getProjectCatalogItems(b.templateProjectName, !1, !0).then(_.spread(function(e, t) {
 b.catalogItems = e, b.totalCount = b.catalogItems.length, g(), t && i.addNotification({
@@ -28786,22 +28790,31 @@ var e = _.get(r, "template.metadata.annotations.iconClass", "fa fa-clone");
 =======
 controller: [ "$scope", "$timeout", "$routeParams", "$filter", "DataService", function(e, t, n, a, r) {
 function o() {
+<<<<<<< HEAD
 var e = _.get(i, "template.metadata.annotations.iconClass", "fa fa-clone");
 >>>>>>> Making next steps/results messaging consistent
+=======
+var e = _.get(s, "template.metadata.annotations.iconClass", "fa fa-clone");
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
 }
-var i = this;
-i.$onInit = function() {
-i.alerts = {}, i.loginBaseUrl = r.openshiftAPIBaseUrl(), n.project || (i.showProjectName = !0);
-}, i.importFile = function() {
+function i() {
+var e = _.get(s, "template.metadata.annotations.iconClass", "fa fa-clone");
+return l(e);
+}
+var s = this, c = a("annotation"), l = a("imageForIconClass");
+s.$onInit = function() {
+s.alerts = {}, s.loginBaseUrl = r.openshiftAPIBaseUrl(), n.project || (s.showProjectName = !0);
+}, s.importFile = function() {
 e.$broadcast("importFileFromYAMLOrJSON");
-}, i.instantiateTemplate = function() {
+}, s.instantiateTemplate = function() {
 e.$broadcast("instantiateTemplate");
 }, e.$on("fileImportedFromYAMLOrJSON", function(e, n) {
-i.selectedProject = n.project, i.template = n.template, i.iconClass = o(), i.name = "YAML / JSON", t(function() {
-i.currentStep = i.template ? "Template Configuration" : "Results";
+s.selectedProject = n.project, s.template = n.template, s.iconClass = o(), s.image = i(), s.vendor = c(n.template, "template.openshift.io/provider-display-name"), s.docUrl = c(s.template, "template.openshift.io/documentation-url"), s.supportUrl = c(s.template, "template.openshift.io/support-url"), s.name = "YAML / JSON", t(function() {
+s.currentStep = s.template ? "Template Configuration" : "Results";
 }, 0);
 }), e.$on("templateInstantiated", function(e, t) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 r.selectedProject = t.project, r.currentStep = "Results";
 }), r.close = function() {
@@ -28824,6 +28837,17 @@ return _.isFunction(e) && e(), i.wizardDone = !1, !0;
 }, i.currentStep = "YAML / JSON", i.nextCallback = function(e) {
 return "file" === e.stepId ? (i.importFile(), !1) : "template" === e.stepId ? (i.instantiateTemplate(), !1) : "results" !== e.stepId || (i.close(), !1);
 >>>>>>> Making next steps/results messaging consistent
+=======
+s.selectedProject = t.project, s.name = a("displayName")(s.template), s.currentStep = "Results";
+}), s.close = function() {
+s.template = null;
+var e = s.onDialogClosed();
+return _.isFunction(e) && e(), s.wizardDone = !1, !0;
+}, s.stepChanged = function(e) {
+"results" === e.stepId ? (s.nextButtonTitle = "Close", s.wizardDone = !0) : s.nextButtonTitle = "Create";
+}, s.currentStep = "YAML / JSON", s.nextCallback = function(e) {
+return "file" === e.stepId ? (s.importFile(), !1) : "template" === e.stepId ? (s.instantiateTemplate(), !1) : "results" !== e.stepId || (s.close(), !1);
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 };
 } ],
 controllerAs: "$ctrl",

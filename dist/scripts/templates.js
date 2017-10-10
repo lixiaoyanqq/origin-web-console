@@ -10941,6 +10941,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/process-template-dialog/process-template-info.html',
     "<div class=\"order-service-details\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
 =======
     "<div class=\"order-service-details\" ng-if=\"!$ctrl.selectStep.selected\">\n" +
@@ -10948,6 +10949,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Changing overlay layout to a single column
     "<div class=\"order-service-details-top\">\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
     "<div class=\"service-icon\">\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
