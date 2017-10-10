@@ -8600,10 +8600,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<ul ng-if=\"$ctrl.docUrl || $ctrl.supportUrl\" class=\"list-inline order-service-documentation-url\">\n" +
     "<li ng-if=\"$ctrl.docUrl\">\n" +
+<<<<<<< 1f773a75a1c4f13a7de152b306d3b15340ae8ad8
     "<a ng-href=\"{{$ctrl.docUrl}}\" target=\"_blank\" class=\"learn-more-link\"><translate>View Documentation</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
     "</li>\n" +
     "<li ng-if=\"$ctrl.supportUrl\">\n" +
     "<a ng-href=\"{{$ctrl.supportUrl}}\" target=\"_blank\" class=\"learn-more-link\"><translate>Get Support</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+=======
+    "<a ng-href=\"{{$ctrl.docUrl}}\" target=\"_blank\" class=\"learn-more-link\">View Documentation <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"$ctrl.supportUrl\">\n" +
+    "<a ng-href=\"{{$ctrl.supportUrl}}\" target=\"_blank\" class=\"learn-more-link\">Get Support <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
@@ -10954,6 +10961,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/process-template-dialog/process-template-info.html',
     "<div class=\"order-service-details\">\n" +
+<<<<<<< 1f773a75a1c4f13a7de152b306d3b15340ae8ad8
 <<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
     "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
 =======
@@ -10962,6 +10970,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Changing overlay layout to a single column
     "<div class=\"order-service-details-top\">\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.serviceClass.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
+>>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
     "<div class=\"service-icon\">\n" +
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 <<<<<<< ccf80f118591f812a727baefcf6bf957e4daea8c
