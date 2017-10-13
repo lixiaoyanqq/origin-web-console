@@ -6499,8 +6499,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"expandAnnotations\" translate>Hide Annotations</a>\n" +
 =======
     "<p ng-if=\"annotations\" ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
+<<<<<<< 84f8e90872ec1018294e527299274f0eb5f34209
     "<a href=\"\" ng-click=\"toggleAnnotations()\">{{!expandAnnotations ? 'Hide Annotations' : 'Show Annotations'}}</a>\n" +
 >>>>>>> Do not show "Show Annotations" link when there are none
+=======
+    "<a href=\"\" ng-click=\"toggleAnnotations()\">{{expandAnnotations ? 'Hide Annotations' : 'Show Annotations'}}</a>\n" +
+>>>>>>> Bug 1501849 - Fix show/hide annotations label
     "</p>\n" +
     "<div ng-if=\"expandAnnotations && annotations\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
     "<table class=\"table table-bordered table-bordered-columns key-value-table\">\n" +
