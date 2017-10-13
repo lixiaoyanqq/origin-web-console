@@ -203,10 +203,16 @@ angular.module('openshiftConsole')
             var readOnly = $scope.attach.readOnly;
             if (mountPath) {
               // for each container in the pod spec, add the new volume mount
-              if(!setVolumeMount(podTemplate, name, mountPath, subPath, readOnly)) {
-                $scope.disableInputs = false;
-                return;
-              }
+              angular.forEach(podTemplate.spec.containers, function(container) {
+                if (isContainerSelected(container)) {
+                  var newVolumeMount =
+                    StorageService.createVolumeMount(name, mountPath, subPath, readOnly);
+                  if (!container.volumeMounts) {
+                    container.volumeMounts = [];
+                  }
+                  container.volumeMounts.push(newVolumeMount);
+                }
+              });
             }
 
             // add the new volume to the pod template
