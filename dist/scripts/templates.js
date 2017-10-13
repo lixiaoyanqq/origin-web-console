@@ -1450,7 +1450,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dd>\n" +
     "<status-icon status=\"pod | podStatus\"></status-icon>\n" +
     "{{pod | podStatus | humanizePodStatus}}<span ng-if=\"pod | podCompletionTime\">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>\n" +
+<<<<<<< HEAD
     "<span ng-if=\"pod.metadata.deletionTimestamp\">(<translate>expires</translate> {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
+=======
+    "<span ng-if=\"pod.metadata.deletionTimestamp\">(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
+>>>>>>> Special case some humanized reasons codes
     "</dd>\n" +
     "<dt ng-if-start=\"pod.status.message\" translate>Message:</dt>\n" +
     "<dd ng-if-end>{{pod.status.message}}</dd>\n" +
@@ -10870,7 +10874,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td data-title=\"Status\">\n" +
     "<div row class=\"status\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
+<<<<<<< HEAD
     "<span flex>{{pod | podStatus | humanizePodStatus | translate}}</span>\n" +
+=======
+    "<span flex>{{pod | podStatus | humanizePodStatus}}</span>\n" +
+>>>>>>> Special case some humanized reasons codes
     "</div>\n" +
     "</td>\n" +
     "<td data-title=\"Ready\">{{pod | numContainersReady}}/{{pod.spec.containers.length}}</td>\n" +
@@ -13139,7 +13147,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small class=\"text-muted\">\n" +
     "{{debugPod.metadata.name}} &mdash;\n" +
     "<status-icon status=\"debugPod | podStatus\"></status-icon>\n" +
+<<<<<<< HEAD
     "{{debugPod | podStatus | humanizePodStatus | translate}}\n" +
+=======
+    "{{debugPod | podStatus | humanizePodStatus}}\n" +
+>>>>>>> Special case some humanized reasons codes
     "</small>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
@@ -13508,7 +13520,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"list-group-item-text\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
-    "{{pod | podStatus | sentenceCase}}\n" +
+    "{{pod | podStatus | humanizeReason}}\n" +
     "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
     "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready\n" +
     "</small>\n" +
