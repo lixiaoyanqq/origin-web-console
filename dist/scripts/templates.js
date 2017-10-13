@@ -12852,8 +12852,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-bind=\"subject.newRole.metadata.name\"></span>\n" +
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"role as role in filteredRoles | filter: excludeExistingRoles(subject.roles) | filter: { metadata: { name: $select.search } } track by (role | uid)\">\n" +
+<<<<<<< HEAD
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
+=======
+    "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\"></div>\n" +
+    "<div ng-if=\"role | annotation : 'description'\">\n" +
+>>>>>>> Improve role select when editing membership
     "<small>{{role | annotation : 'description'}}</small>\n" +
     "</div>\n" +
     "</ui-select-choices>\n" +
@@ -12905,8 +12910,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-bind=\"newBinding.newRole.metadata.name\"></span>\n" +
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"role as role in filteredRoles | filter: { metadata: { name: $select.search } } track by (role | uid)\">\n" +
+<<<<<<< HEAD
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
+=======
+    "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\"></div>\n" +
+    "<div ng-if=\"role | annotation : 'description'\">\n" +
+>>>>>>> Improve role select when editing membership
     "<small>{{role | annotation : 'description'}}</small>\n" +
     "</div>\n" +
     "</ui-select-choices>\n" +
