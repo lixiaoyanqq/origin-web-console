@@ -1453,8 +1453,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt translate>Status:</dt>\n" +
     "<dd>\n" +
     "<status-icon status=\"pod | podStatus\"></status-icon>\n" +
+<<<<<<< 1018cfdf47f60618c7d6b47ca05e3a2ec180b2e8
     "{{pod | podStatus | sentenceCase | translate}}<span ng-if=\"pod | podCompletionTime\" translate>, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>\n" +
     "<span ng-if=\"pod.metadata.deletionTimestamp\" translate>(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
+=======
+    "{{pod | podStatus | humanizePodStatus}}<span ng-if=\"pod | podCompletionTime\">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>\n" +
+    "<span ng-if=\"pod.metadata.deletionTimestamp\">(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
+>>>>>>> Special case some humanized reasons codes
     "</dd>\n" +
     "<dt ng-if-start=\"pod.status.message\" translate>Message:</dt>\n" +
     "<dd ng-if-end>{{pod.status.message}}</dd>\n" +
@@ -7672,7 +7677,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"event-details\">\n" +
     "<div class=\"detail-group\">\n" +
     "<div class=\"event-reason\">\n" +
-    "{{event.reason | sentenceCase}}\n" +
+    "{{event.reason | humanizeReason}}\n" +
     "</div>\n" +
     "<div class=\"event-object\" ng-init=\"resourceURL = (event | navigateEventInvolvedObjectURL)\">\n" +
     "<a ng-if=\"resourceURL\" ng-attr-title=\"Navigate to {{event.involvedObject.name}}\" href=\"{{resourceURL}}\">\n" +
@@ -7792,11 +7797,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\">{{event.type}}</span>\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" ng-show=\"event.type === 'Warning'\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"Warning\"></span></td>\n" +
     "<td class=\"hidden-sm hidden-md\" data-title=\"Reason\">\n" +
-    "<span ng-bind-html=\"event.reason | sentenceCase | highlightKeywords : filterExpressions\"></span>&nbsp;<span class=\"visible-xs-inline pficon pficon-warning-triangle-o\" ng-show=\"event.type === 'Warning'\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"Warning\"></span>\n" +
+    "<span ng-bind-html=\"event.reason | humanizeReason | highlightKeywords : filterExpressions\"></span>&nbsp;<span class=\"visible-xs-inline pficon pficon-warning-triangle-o\" ng-show=\"event.type === 'Warning'\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"Warning\"></span>\n" +
     "</td>\n" +
     "<td data-title=\"Message\">\n" +
     "<div class=\"hidden-xs-block visible-sm-block visible-md-block hidden-lg-block\">\n" +
-    "<span ng-bind-html=\"event.reason | sentenceCase | highlightKeywords : filterExpressions\"></span>&nbsp;\n" +
+    "<span ng-bind-html=\"event.reason | humanizeReason | highlightKeywords : filterExpressions\"></span>&nbsp;\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" ng-show=\"event.type === 'Warning'\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"Warning\"></span>\n" +
     "</div>\n" +
     "\n" +
@@ -9868,7 +9873,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td data-title=\"Status\">\n" +
     "<div row class=\"status\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
+<<<<<<< 1018cfdf47f60618c7d6b47ca05e3a2ec180b2e8
     "<span flex>{{pod | podStatus | translate}}</span>\n" +
+=======
+    "<span flex>{{pod | podStatus | humanizePodStatus}}</span>\n" +
+>>>>>>> Special case some humanized reasons codes
     "</div>\n" +
     "</td>\n" +
     "<td data-title=\"Ready\">{{pod | numContainersReady}}/{{pod.spec.containers.length}}</td>\n" +
@@ -11891,7 +11900,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<small class=\"text-muted\">\n" +
     "{{debugPod.metadata.name}} &mdash;\n" +
     "<status-icon status=\"debugPod | podStatus\"></status-icon>\n" +
+<<<<<<< 1018cfdf47f60618c7d6b47ca05e3a2ec180b2e8
     "{{debugPod | podStatus | sentenceCase | translate}}\n" +
+=======
+    "{{debugPod | podStatus | humanizePodStatus}}\n" +
+>>>>>>> Special case some humanized reasons codes
     "</small>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
@@ -12164,10 +12177,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-group-item-text\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
+<<<<<<< 1018cfdf47f60618c7d6b47ca05e3a2ec180b2e8
 <<<<<<< 2aa1efe595273b032eb0b88fede2630e791463cb
     "{{pod | podStatus | sentenceCase | translate}}\n" +
 =======
     "{{pod | podStatus | sentenceCase}}\n" +
+=======
+    "{{pod | podStatus | humanizeReason}}\n" +
+>>>>>>> Special case some humanized reasons codes
     "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
     "&ndash; {{pod | numContainersReady}}/{{pod.spec.containers.length}} ready\n" +
     "</small>\n" +

@@ -12,7 +12,7 @@
         <dt translate>Status:</dt>
         <dd>
           <status-icon status="pod | podStatus"></status-icon>
-          {{pod | podStatus | sentenceCase | translate}}<span ng-if="pod | podCompletionTime" translate>, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>
+          {{pod | podStatus | humanizePodStatus | translate}}<span ng-if="pod | podCompletionTime">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>
           <span ng-if="pod.metadata.deletionTimestamp" translate>(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>
         </dd>
         <dt ng-if-start="pod.status.message" translate>Message:</dt>
