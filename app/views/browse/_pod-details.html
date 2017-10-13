@@ -13,7 +13,7 @@
         <dd>
           <status-icon status="pod | podStatus"></status-icon>
           {{pod | podStatus | humanizePodStatus}}<span ng-if="pod | podCompletionTime">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>
-          <span ng-if="pod.metadata.deletionTimestamp">(<translate>expires</translate> {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>
+	  <span ng-if="pod.metadata.deletionTimestamp">(<translate>expires</translate> {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>
         </dd>
         <dt ng-if-start="pod.status.message" translate>Message:</dt>
         <dd ng-if-end>{{pod.status.message}}</dd>
