@@ -13153,6 +13153,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div column class=\"content-pane\" ng-class=\"'content-' + subjectKind.name.toLowerCase()\">\n" +
     "<div class=\"col-heading\" flex-collapse-fix>\n" +
     "<div class=\"col-name\" flex ng-class=\"{ 'half-width': !mode.edit }\">\n" +
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
     "<h3 translate>Name</h3>\n" +
     "</div>\n" +
     "<div class=\"col-roles\" flex>\n" +
@@ -13160,6 +13161,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"mode.edit\" class=\"col-add-role visible-md-block visible-lg-block\" flex-collapse-fix>\n" +
     "<h3 translate>\n" +
+=======
+    "<h3>Name</h3>\n" +
+    "</div>\n" +
+    "<div class=\"col-roles\" flex>\n" +
+    "<h3>Roles</h3>\n" +
+    "</div>\n" +
+    "<div ng-if=\"mode.edit\" class=\"col-add-role visible-md-block visible-lg-block\" flex-collapse-fix>\n" +
+    "<h3>\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "Add Another Role\n" +
     "</h3>\n" +
     "</div>\n" +
@@ -13190,7 +13200,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"action-set\">\n" +
     "<div class=\"col-roles\">\n" +
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
     "<action-chip ng-repeat=\"role in subject.roles\" key=\"role.metadata.name\" key-help=\"roleHelp(role)\" show-action=\"mode.edit\" action=\"confirmRemove(subject.name, subjectKind.name, role.metadata.name, subject.namespace)\" action-title=\"Remove role {{role.metadata.name}} from {{subject.name}}\"></action-chip>\n" +
+=======
+    "<action-chip ng-repeat=\"role in subject.roles\" key=\"role.metadata.name\" key-help=\"roleHelp(role)\" show-action=\"mode.edit\" action=\"confirmRemove(subject.name, subjectKind.name, role.metadata.name)\" action-title=\"Remove role {{role.metadata.name}} from {{subject.name}}\"></action-chip>\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "</div>\n" +
     "<div ng-if=\"mode.edit\" class=\"col-add-role\">\n" +
     "<div row>\n" +
@@ -13215,7 +13229,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-form class=\"new-binding\" novalidate name=\"forms.newBindingForm\" ng-if=\"newBinding\">\n" +
     "<div ng-if=\"mode.edit\" class=\"item-row form-new-role\" row mobile=\"column\">\n" +
     "<div class=\"col-name service-account\" row mobile=\"column\" tablet=\"column\">\n" +
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
     "<label ng-attr-for=\"newBindingName\" class=\"sr-only\" translate>\n" +
+=======
+    "<label ng-attr-for=\"newBindingName\" class=\"sr-only\">\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "Name\n" +
     "</label>\n" +
     "\n" +
@@ -13226,7 +13244,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
     "\n" +
     "<div ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"service-account-namespace\" aria-hidden=\"true\">\n" +
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
     "<ui-select ng-model=\"newBinding.namespace\" on-select=\"selectProject($item, $model)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"{{'Select a project'|translate}}\" class=\"select-role\">\n" +
+=======
+    "<ui-select ng-model=\"newBinding.namespace\" on-select=\"selectProject($item, $model)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"Select a project\" class=\"select-role\">\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "<ui-select-match placeholder=\"Select a project\">\n" +
     "<span>{{newBinding.namespace}}</span>\n" +
     "</ui-select-match>\n" +

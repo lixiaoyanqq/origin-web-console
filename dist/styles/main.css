@@ -6044,7 +6044,11 @@ dl.secret-data pre{margin-bottom:0}
 =======
 .events-sidebar .sidebar-header.right-header{align-items:center;display:flex;justify-content:space-between;margin-top:17.5px}
 .events-sidebar .sidebar-header.right-header h2{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-top:10.5px;margin-bottom:10.5px;font-size:14px;display:inline-block}
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
 .config-map-table .key,.config-map-table .truncated-content,.edit-yaml .editor,.log-view{font-family:Menlo,Monaco,Consolas,monospace}
+=======
+.config-map-table .key,.config-map-table .truncated-content,.log-view{font-family:Menlo,Monaco,Consolas,monospace}
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 .events-sidebar .sidebar-header.right-header h2 .small,.events-sidebar .sidebar-header.right-header h2 small{font-weight:400;line-height:1;color:#9c9c9c;font-size:75%}
 >>>>>>> Improve YAML editor validation and feedback
 .events-sidebar .sidebar-header.right-header .warning-count{white-space:nowrap;margin-left:2px}
@@ -6442,6 +6446,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 >>>>>>> Adopt service catalog API changes
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
 =======
 =======
 .log-line-number{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
@@ -6451,6 +6456,8 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 >>>>>>> Add the ability to add a secret to an application
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 >>>>>>> Bump common and catalog depedencies
+=======
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 .log-line-text::-moz-selection{color:#101214;background:#e5e5e5}
 .table-log-pods{background-color:#fff;border:1px solid #D1D1D1}
 .table-log-pods>tbody+tbody{border-top-width:1px}
@@ -6755,6 +6762,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor .key-value-editor-input .ui-select+.ui-select,.key-value-editor .key-value-editor-input .ui-select+.ui-select{padding-top:0;padding-left:5px}
 >>>>>>> Support EnvFrom in the Env Editors
 }
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
 .key-value-editor .key-value-editor-input,.key-value-editor-header{float:left;padding-right:5px;width:50%}
 .environment-from-editor-entry-header,.key-value-editor-entry-header{padding-right:52px}
 .environment-from-editor-header,.key-value-editor-header{margin-bottom:5px}
@@ -6763,6 +6771,17 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .membership .content-pane{width:100%}
 .membership .content-pane .col-add-role{padding:10px 0;min-width:150px}
 >>>>>>> Improve YAML editor validation and feedback
+=======
+.key-value-editor .key-value-editor-input,.key-value-editor-header{float:left;margin-bottom:0;padding-right:5px;width:50%}
+.membership .content-pane,.membership .content-pane .col-add-role{width:100%}
+.environment-from-editor-entry-header,.key-value-editor-entry-header{padding-right:52px}
+.environment-from-editor-header,.key-value-editor-header{margin-bottom:5px}
+.membership .action-set{display:flex;flex-direction:column;justify-content:space-between;width:100%}
+@media (min-width:768px){.membership .action-set{flex-wrap:nowrap}
+}
+@media (min-width:992px){.membership .action-set{flex-direction:row}
+}
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 .membership .content-pane .add-role-to{margin-left:-1px}
 .membership .content-pane .col-heading{border-bottom:1px solid #ededed;display:none}
 @media (min-width:480px){.membership .content-pane .col-add-role{min-width:245px;width:auto}
@@ -6790,6 +6809,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .membership .content-pane .select-project{width:150px}
 .membership .content-pane .select-role small{color:#999;display:inline-block;line-height:1.4;white-space:pre-line}
 .membership .content-pane .select-role .active small{color:#c0e0f0}
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
 <<<<<<< 0aa8ce112f5b823ab02134a44616dfc1603863dc
 <<<<<<< 9854a04a93530a5cbed260dddc4991d2b65730e5
 @media (max-width:991px){.membership .content-pane .service-account{flex-direction:column}
@@ -6805,11 +6825,18 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .membership .content-pane .col-name input{max-width:175px}
 .membership .content-pane .select-role{width:150px}
 >>>>>>> Bump origin-web-common to v0.0.68
+=======
+@media (max-width:991px){.membership .content-pane .service-account{flex-direction:column}
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 }
 .membership .content-pane .service-account .select-role{padding-bottom:5px;width:auto}
 @media (min-width:992px){.membership .content-pane .service-account .select-role{width:150px}
 }
 .membership .content-pane .col-add-role,.membership .content-pane .col-heading,.membership .content-pane .col-name,.membership .content-pane .item-row,.membership .content-pane [flex-collapse-fix],.membership .content-pane [flex]{flex-shrink:0;flex-basis:auto}
+<<<<<<< efe93e8ec3b3a15a040d7208ae11118ad64886c4
+=======
+.membership .ui-select-bootstrap>.ui-select-choices{max-height:300px}
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 notification-drawer-wrapper .blank-state-pf-title{font-size:14px}
 notification-drawer-wrapper .drawer-pf{height:calc(100vh - 69px);opacity:1;position:fixed;right:0;top:69px;transition:top 150ms ease-in-out,opacity 150ms;z-index:1028}
 @media (max-width:350px){notification-drawer-wrapper .drawer-pf{left:0;width:100%}
@@ -6935,7 +6962,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .ace-inline{height:300px}
 .ace-inline-small{height:200px}
 .ace_editor.dockerfile-mode .ace_constant.ace_numeric,.editor.yaml-mode .ace_constant.ace_numeric{color:inherit}
-.edit-yaml .ace_editor.editor{line-height:1.5;width:100%;min-height:140px;height:50vh}
+.edit-yaml .ace_editor.editor{font-family:Menlo,Monaco,Consolas,monospace;line-height:1.5;width:100%;min-height:140px;height:50vh}
 @media (min-height:700px){.edit-yaml .ace_editor.editor{height:60vh}
 }
 .edit-yaml .ace_editor.editor .ace_gutter{color:#8b8d8f}
