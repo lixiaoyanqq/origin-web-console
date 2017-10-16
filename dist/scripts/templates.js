@@ -11878,6 +11878,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div column class=\"content-pane\" ng-class=\"'content-' + subjectKind.name.toLowerCase()\">\n" +
+<<<<<<< 06b016cebb8af6df4af82aa361c28459826e6918
     "<div class=\"col-heading item-row\" row mobile=\"column\" flex-collapse-fix>\n" +
     "<div class=\"col-name\" flex conceal=\"mobile\" ng-class=\"{ 'half-width': !mode.edit }\">\n" +
     "<h3 translate>Name</h3>\n" +
@@ -11887,11 +11888,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"mode.edit\" class=\"col-add-role\" conceal=\"tablet\" flex-collapse-fix>\n" +
     "<h3 translate>\n" +
+=======
+    "<div class=\"col-heading\" flex-collapse-fix>\n" +
+    "<div class=\"col-name\" flex ng-class=\"{ 'half-width': !mode.edit }\">\n" +
+    "<h3>Name</h3>\n" +
+    "</div>\n" +
+    "<div class=\"col-roles\" flex>\n" +
+    "<h3>Roles</h3>\n" +
+    "</div>\n" +
+    "<div ng-if=\"mode.edit\" class=\"col-add-role visible-md-block visible-lg-block\" flex-collapse-fix>\n" +
+    "<h3>\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "Add Another Role\n" +
     "</h3>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"(subjectKind.subjects | hashSize) === 0\">\n" +
+    "<div ng-if=\"(subjectKind.subjects | hashSize) === 0\" class=\"membership-empty\">\n" +
     "<p>\n" +
     "<em translate>There are no {{ subjectKind.name | humanizeKind }}s with access to this project.</em>\n" +
     "</p>\n" +
@@ -11915,8 +11927,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</span>\n" +
     "</div>\n" +
-    "<div class=\"action-set\" flex row tablet=\"column\" mobile=\"column\">\n" +
-    "<div class=\"col-roles\" row tablet=\"column\" flex wrap axis=\"start\">\n" +
+    "<div class=\"action-set\">\n" +
+    "<div class=\"col-roles\">\n" +
     "<action-chip ng-repeat=\"role in subject.roles\" key=\"role.metadata.name\" key-help=\"roleHelp(role)\" show-action=\"mode.edit\" action=\"confirmRemove(subject.name, subjectKind.name, role.metadata.name)\" action-title=\"Remove role {{role.metadata.name}} from {{subject.name}}\"></action-chip>\n" +
     "</div>\n" +
     "<div ng-if=\"mode.edit\" class=\"col-add-role\">\n" +
@@ -11941,7 +11953,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<ng-form class=\"new-binding\" novalidate name=\"forms.newBindingForm\" ng-if=\"newBinding\">\n" +
     "<div ng-if=\"mode.edit\" class=\"item-row form-new-role\" row mobile=\"column\">\n" +
-    "<div class=\"col-name pad-bottom-none\" row mobile=\"column\" tablet=\"column\">\n" +
+    "<div class=\"col-name service-account\" row mobile=\"column\" tablet=\"column\">\n" +
     "<label ng-attr-for=\"newBindingName\" class=\"sr-only\">\n" +
     "Name\n" +
     "</label>\n" +
@@ -11953,8 +11965,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
     "\n" +
     "<div ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"service-account-namespace\" aria-hidden=\"true\">\n" +
+<<<<<<< 06b016cebb8af6df4af82aa361c28459826e6918
     "<ui-select ng-model=\"newBinding.namespace\" on-select=\"selectProject($item, $model)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"{{'Select a project'|translate}}\" class=\"select-role pad-bottom-sm\">\n" +
     "<ui-select-match placeholder=\"{{'Select a project'|translate}}\">\n" +
+=======
+    "<ui-select ng-model=\"newBinding.namespace\" on-select=\"selectProject($item, $model)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"Select a project\" class=\"select-role\">\n" +
+    "<ui-select-match placeholder=\"Select a project\">\n" +
+>>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
     "<span>{{newBinding.namespace}}</span>\n" +
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"projectName in projects | filter: $select.search\" refresh=\"refreshProjects($select.search)\" refresh-delay=\"200\">\n" +
@@ -11962,7 +11979,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
     "</div>\n" +
-    "<span ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"mar-left-md mar-right-md hidden-xs\">/</span>\n" +
+    "<span ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"mar-left-md mar-right-md hidden-xs hidden-sm\">/</span>\n" +
     "\n" +
     "<div ng-if=\"newBinding.kind === 'ServiceAccount'\" class=\"service-account-name\">\n" +
     "<ui-select ng-model=\"newBinding.name\" theme=\"bootstrap\" search-enabled=\"true\" title=\"{{'Select a service account'|translate}}\" class=\"select-role\">\n" +
@@ -11975,8 +11992,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"action-set\" flex row tablet=\"column\" mobile=\"column\">\n" +
-    "<div class=\"col-roles\" flex row tablet=\"column\">&nbsp;</div>\n" +
+    "<div class=\"action-set\">\n" +
     "<div class=\"col-add-role\">\n" +
     "<div ng-show=\"mode.edit\" row>\n" +
     "<ui-select ng-if=\"filteredRoles.length\" ng-model=\"newBinding.newRole\" theme=\"bootstrap\" search-enabled=\"true\" title=\"new {{subjectKind.name}} role\" class=\"select-role\" flex>\n" +
@@ -11998,11 +12014,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</ng-form>\n" +
-    "<div ng-if=\"mode.edit\" row mobile=\"column\">\n" +
-    "<div class=\"col-name hidden-xs\">&nbsp;</div>\n" +
-    "<div class=\"action-set\" flex row tablet=\"column\" mobile=\"column\">\n" +
-    "<div class=\"col-roles hidden-xs\" flex>&nbsp;</div>\n" +
-    "<div class=\"col-add-role\" row>\n" +
+    "<div ng-if=\"mode.edit\" class=\"show-hidden-roles\">\n" +
+    "<div class=\"action-set\">\n" +
+    "<div class=\"col-add-role\">\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
 <<<<<<< 8ab27f982aa50ac9706cd4da963b5c807e271bf9
