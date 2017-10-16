@@ -1371,7 +1371,7 @@ u.unwatchAll(at), $(window).off(".overview");
 
 function ResourceServiceBindings(e, t, n, a, r) {
 var o, i = this, s = e("enableTechPreviewFeature");
-i.bindings = [], i.bindableServiceInstances = [], i.serviceClasses = [], i.serviceInstances = [], i.showBindings = a.SERVICE_CATALOG_ENABLED && ("ServiceInstance" === _.get(i, "apiObject.kind") || s("pod_presets"));
+i.bindings = [], i.bindableServiceInstances = [], i.serviceClasses = [], i.serviceInstances = [], i.showBindings = a.SERVICE_CATALOG_ENABLED && s("pod_presets");
 var c = e("isIE")() || e("isEdge")(), l = [], u = e("canI"), d = i.serviceBindingsVersion = t.getPreferredVersion("servicebindings"), m = t.getPreferredVersion("clusterserviceclasses"), p = t.getPreferredVersion("serviceinstances"), f = t.getPreferredVersion("clusterserviceplans"), g = function() {
 i.apiObject && i.bindings && (i.bindings = n.getBindingsForResource(i.bindings, i.apiObject));
 }, v = function() {
@@ -1411,6 +1411,19 @@ i.$onChanges = function(e) {
 e.projectContext && i.showBindings && h();
 }, i.$onDestroy = function() {
 r.unwatchAll(l);
+};
+}
+
+function ServiceInstanceBindings(e, t, n) {
+var a = this, r = e("canI"), o = a.serviceBindingsVersion = t.getPreferredVersion("servicebindings"), i = function() {
+a.bindable = r(o, "create") && n.isServiceBindable(a.serviceInstance, a.serviceClass, a.servicePlan);
+};
+a.createBinding = function() {
+a.overlayPanelVisible = !0;
+}, a.closeOverlayPanel = function() {
+a.overlayPanelVisible = !1;
+}, a.$onChanges = function() {
+i();
 };
 }
 
@@ -14007,15 +14020,20 @@ e.serviceInstances = t.select(e.unfilteredServiceInstances), r();
 i.unwatchAll(u);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("ServiceInstanceController", [ "$scope", "$filter", "$routeParams", "APIService", "DataService", "ProjectsService", "ServiceInstancesService", function(e, t, n, a, r, o, i) {
+} ]), angular.module("openshiftConsole").controller("ServiceInstanceController", [ "$scope", "$filter", "$routeParams", "APIService", "BindingService", "DataService", "ProjectsService", "ServiceInstancesService", function(e, t, n, a, r, o, i, s) {
 e.alerts = {}, e.projectName = n.project, e.serviceInstance = null, e.serviceClass = null, e.breadcrumbs = [ {
 title: "Provisioned Services",
 link: "project/" + n.project + "/browse/service-instances"
 } ], e.deprovision = function() {
+<<<<<<< HEAD
 i.deprovision(e.serviceInstance);
+=======
+e.serviceInstance.metadata.deletionTimestamp || s.deprovision(e.serviceInstance, e.bindings);
+>>>>>>> Fix issues with bindings widget for service instances
 };
-var s = [], c = t("serviceInstanceDisplayName");
+var c = [], l = t("serviceInstanceDisplayName"), u = a.getPreferredVersion("servicebindings");
 e.serviceInstancesVersion = a.getPreferredVersion("serviceinstances");
+<<<<<<< HEAD
 var l = function() {
 e.breadcrumbs.push({
 title: e.displayName
@@ -14033,12 +14051,38 @@ e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This provisioned service has been deleted."
 }), u(), d();
+=======
+var d, m = function() {
+e.breadcrumbs.push({
+title: e.displayName
+});
+}, p = function() {
+e.serviceClass || d || (d = s.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
+e.serviceClass = t, e.displayName = l(e.serviceInstance, t), m(), d = null;
+}));
+}, f = function() {
+s.isCurrentPlan(e.serviceInstance, e.plan) || s.fetchServicePlanForInstance(e.serviceInstance).then(function(t) {
+e.plan = t;
+});
+}, g = function(t, n) {
+e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This provisioned service has been deleted."
+}), p(), f();
+>>>>>>> Fix issues with bindings widget for service instances
 };
-o.get(n.project).then(_.spread(function(a, o) {
-e.project = a, e.projectContext = o, r.get(e.serviceInstancesVersion, n.instance, o, {
+i.get(n.project).then(_.spread(function(a, i) {
+e.project = a, e.projectContext = i, o.get(e.serviceInstancesVersion, n.instance, i, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 m(t), s.push(r.watchObject(e.serviceInstancesVersion, n.instance, o, m));
+=======
+g(t), c.push(o.watchObject(e.serviceInstancesVersion, n.instance, i, g)), c.push(o.watch(u, i, function(n) {
+var a = n.by("metadata.name");
+e.bindings = r.getBindingsForResource(a, t);
+}));
+>>>>>>> Fix issues with bindings widget for service instances
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -14054,7 +14098,7 @@ e.serviceClasses = t.by("metadata.name"), c(), s();
 =======
 >>>>>>> Adopt service catalog API changes
 }), e.$on("$destroy", function() {
-r.unwatchAll(s);
+o.unwatchAll(c);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "DataService", "ProjectsService", function(e, t, n, a) {
@@ -22324,6 +22368,9 @@ templateUrl: "views/directives/resource-service-bindings.html"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Fix issues with bindings widget for service instances
 }), angular.module("openshiftConsole").component("serviceInstanceBindings", {
 controller: [ "$filter", "APIService", "BindingService", ServiceInstanceBindings ],
 controllerAs: "$ctrl",
@@ -22336,6 +22383,7 @@ serviceClass: "<",
 servicePlan: "<"
 },
 templateUrl: "views/directives/service-instance-bindings.html"
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "APIService", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, r, a, o, i, s, c) {
 var l = function(e, t) {
 =======
@@ -22349,6 +22397,8 @@ var a = t("canI"), r = function(e, t) {
 var s = function(e, t) {
 >>>>>>> Patternfly vertical navigation and project bar
 =======
+=======
+>>>>>>> Fix issues with bindings widget for service instances
 }), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, a, r, o, i, s) {
 var c = function(e, t) {
 >>>>>>> Make sure there's always a menu item for the current project
