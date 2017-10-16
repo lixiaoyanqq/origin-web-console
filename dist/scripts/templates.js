@@ -8423,7 +8423,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading\" ng-if=\"!events\" class=\"events\"></ellipsis-pulser>\n" +
     "<div ng-if=\"events\" class=\"events\">\n" +
     "<div ng-if=\"!(events | hashSize)\" class=\"event\">\n" +
+<<<<<<< HEAD
     "<em translate>No events.</em>\n" +
+=======
+    "<em>No events.</em>\n" +
+>>>>>>> Use existing event class to set padding top and left
     "</div>\n" +
     "<div ng-repeat=\"event in events track by (event | uid)\" class=\"event animate-repeat\" ng-class=\"{'highlight': highlightedEvents[event.involvedObject.kind + '/' + event.involvedObject.name]}\">\n" +
     "<span class=\"sr-only\">{{event.type}}</span>\n" +
