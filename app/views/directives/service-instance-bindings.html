@@ -2,20 +2,19 @@
   <h3 ng-if="$ctrl.showHeader">Bindings</h3>
   <service-binding
     ng-repeat="binding in $ctrl.bindings track by (binding | uid)"
-    is-overview="$ctrl.isOverview"
     namespace="binding.metadata.namespace"
     binding="binding"
     ref-api-object="$ctrl.serviceInstance">
   </service-binding>
-  <p ng-if="$ctrl.bindable">
+  <div ng-if="$ctrl.bindable">
     <a href="" ng-click="$ctrl.createBinding()" role="button">
       <span class="pficon pficon-add-circle-o" aria-hidden="true"></span>
-      <translate>Create Binding</translate>
+      <translate>Create Binding</tanslate>
     </a>
-  </p>
-  <p ng-if="!$ctrl.bindable && !($ctrl.bindings | size)">
+  </div>
+  <div ng-if="!$ctrl.bindable && !($ctrl.bindings | size)">
     <span translate>There are no service bindings.</span>
-  </p>
+  </div>
 </div>
 <overlay-panel show-panel="$ctrl.overlayPanelVisible" handle-close="$ctrl.closeOverlayPanel">
   <bind-service target="$ctrl.serviceInstance"

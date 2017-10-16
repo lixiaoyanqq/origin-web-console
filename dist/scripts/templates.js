@@ -4404,9 +4404,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</dd>\n" +
     "</dl>\n" +
     "</div>\n" +
-    "<div class=\"col-lg-6\">\n" +
-    "<resource-service-bindings project=\"project\" project-context=\"projectContext\" api-object=\"serviceInstance\">\n" +
-    "</resource-service-bindings>\n" +
+    "<div class=\"col-lg-6 mar-bottom-xl\">\n" +
+    "<service-instance-bindings show-header=\"true\" project=\"project\" bindings=\"bindings\" service-instance=\"serviceInstance\" service-class=\"serviceClass\" service-plan=\"plan\">\n" +
+    "</service-instance-bindings>\n" +
     "</div>\n" +
     "</div>\n" +
     "<annotations annotations=\"serviceInstance.metadata.annotations\"></annotations>\n" +
@@ -11269,11 +11269,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3>Bindings</h3>\n" +
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"$ctrl.projectContext.projectName\" binding=\"binding\" ref-api-object=\"$ctrl.apiObject\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\">\n" +
     "</service-binding>\n" +
+<<<<<<< ed7141d71afeea314ad6d1183c760dedc6ee73fe
 <<<<<<< 5cd156712e95103dd73694bd0ac71c85e2c6cdcb
 >>>>>>> Updates for Service Instance & Bindings
     "<div ng-if=\"($ctrl.bindableServiceInstances | size) && ({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
 =======
     "<div ng-if=\"(($ctrl.apiObject.kind === 'ServiceInstance') || ($ctrl.bindableServiceInstances | size)) &&\n" +
+=======
+    "<div ng-if=\"($ctrl.bindableServiceInstances | size) &&\n" +
+>>>>>>> Fix issues with bindings widget for service instances
     "              ($ctrl.serviceBindingsVersion | canI : 'create') &&\n" +
     "              !$ctrl.apiObject.metadata.deletionTimestamp\">\n" +
 >>>>>>> Delete bindings when deleting a service instance
@@ -11282,13 +11286,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Create Binding\n" +
     "</a>\n" +
     "</div>\n" +
-    "<div ng-if=\"!$ctrl.apiObject.metadata.deletionTimestamp && ($ctrl.apiObject.kind !== 'ServiceInstance') && !($ctrl.bindableServiceInstances | size)\">\n" +
+    "<div ng-if=\"!$ctrl.apiObject.metadata.deletionTimestamp && !($ctrl.bindableServiceInstances | size)\">\n" +
     "<span>You must have a bindable service in your namespace in order to create bindings.</span>\n" +
     "<div>\n" +
     "<a href=\"./\">Browse Catalog</a>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"($ctrl.apiObject.kind !== 'ServiceInstance') && !($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !($ctrl.serviceBindingsVersion | canI : 'create')\">\n" +
+    "<div ng-if=\"!($ctrl.bindings | size) && ($ctrl.bindableServiceInstances | size) && !($ctrl.serviceBindingsVersion | canI : 'create')\">\n" +
     "<span>There are no service bindings.</span>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11373,6 +11377,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/service-instance-bindings.html',
     "<div ng-if=\"$ctrl.bindable || ($ctrl.bindings | size)\">\n" +
     "<h3 ng-if=\"$ctrl.showHeader\">Bindings</h3>\n" +
+<<<<<<< ed7141d71afeea314ad6d1183c760dedc6ee73fe
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"$ctrl.isOverview\" namespace=\"binding.metadata.namespace\" binding=\"binding\" ref-api-object=\"$ctrl.serviceInstance\">\n" +
     "</service-binding>\n" +
     "<p ng-if=\"$ctrl.bindable\">\n" +
@@ -11384,6 +11389,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-if=\"!$ctrl.bindable && !($ctrl.bindings | size)\">\n" +
     "<span translate>There are no service bindings.</span>\n" +
     "</p>\n" +
+=======
+    "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" namespace=\"binding.metadata.namespace\" binding=\"binding\" ref-api-object=\"$ctrl.serviceInstance\">\n" +
+    "</service-binding>\n" +
+    "<div ng-if=\"$ctrl.bindable\">\n" +
+    "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
+    "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
+    "Create Binding\n" +
+    "</a>\n" +
+    "</div>\n" +
+    "<div ng-if=\"!$ctrl.bindable && !($ctrl.bindings | size)\">\n" +
+    "<span>There are no service bindings.</span>\n" +
+    "</div>\n" +
+>>>>>>> Fix issues with bindings widget for service instances
     "</div>\n" +
     "<overlay-panel show-panel=\"$ctrl.overlayPanelVisible\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
     "<bind-service target=\"$ctrl.serviceInstance\" project=\"$ctrl.project\" on-close=\"$ctrl.closeOverlayPanel\"></bind-service>\n" +
@@ -14970,7 +14988,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<service-binding ng-repeat=\"binding in $ctrl.bindings track by (binding | uid)\" is-overview=\"true\" namespace=\"$ctrl.namespace\" ref-api-object=\"$ctrl.refApiObject\" binding=\"binding\" service-classes=\"$ctrl.serviceClasses\" service-instances=\"$ctrl.serviceInstances\" secrets=\"$ctrl.secrets\">\n" +
 >>>>>>> Fix to correctly show binding name in bindings list
     "</service-binding>\n" +
-    "<div ng-if=\"!$ctrl.refApiObject.metadata.deletionTimestamp && (($ctrl.refApiObject.kind === 'ServiceInstance') || ($ctrl.bindableServiceInstances | size)) && ({resource: 'servicebindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
+    "<div ng-if=\"!$ctrl.refApiObject.metadata.deletionTimestamp && ($ctrl.bindableServiceInstances | size) && ({resource: 'servicebindings', group: 'servicecatalog.k8s.io'} | canI : 'create')\">\n" +
     "<a href=\"\" ng-click=\"$ctrl.createBinding()\" role=\"button\">\n" +
     "<span class=\"pficon pficon-add-circle-o\" aria-hidden=\"true\"></span>\n" +
     "Create Binding\n" +
@@ -15334,6 +15352,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<service-instance-bindings is-overview=\"true\" project=\"row.state.project\" bindings=\"row.bindings\" service-instance=\"row.apiObject\" service-class=\"row.serviceClass\" service-plan=\"row.servicePlan\">\n" +
     "</service-instance-bindings>\n" +
     "</div>\n" +
+<<<<<<< ed7141d71afeea314ad6d1183c760dedc6ee73fe
 =======
     "<overview-service-bindings ng-if=\"row.isBindable || row.bindings\" section-title=\"Bindings\" namespace=\"row.apiObject.metadata.namespace\" bindings=\"row.bindings\" bindable-service-instances=\"row.state.bindableServiceInstances\" service-classes=\"row.state.serviceClasses\" create-binding=\"row.showOverlayPanel('bindService', {target: row.apiObject})\">\n" +
 =======
@@ -15341,6 +15360,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Fix to correctly show binding name in bindings list
     "</overview-service-bindings>\n" +
 >>>>>>> Updates to service instance page, show failed bindings
+=======
+    "<div ng-if=\"row.isBindable || (row.bindings | size)\">\n" +
+    "<div class=\"section-title\">Bindings</div>\n" +
+    "<service-instance-bindings project=\"row.state.project\" bindings=\"row.bindings\" service-instance=\"row.apiObject\" service-class=\"row.serviceClass\" service-plan=\"row.servicePlan\">\n" +
+    "</service-instance-bindings>\n" +
+>>>>>>> Fix issues with bindings widget for service instances
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +

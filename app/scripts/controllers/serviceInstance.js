@@ -5,6 +5,7 @@ angular.module('openshiftConsole')
                                                      $filter,
                                                      $routeParams,
                                                      APIService,
+                                                     BindingService,
                                                      DataService,
                                                      ProjectsService,
                                                      ServiceInstancesService) {
@@ -21,7 +22,10 @@ angular.module('openshiftConsole')
     ];
 
     $scope.deprovision = function() {
-      ServiceInstancesService.deprovision($scope.serviceInstance);
+      if ($scope.serviceInstance.metadata.deletionTimestamp) {
+        return;
+      }
+      ServiceInstancesService.deprovision($scope.serviceInstance, $scope.bindings);
     };
 
     var watches = [];
@@ -29,6 +33,7 @@ angular.module('openshiftConsole')
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
 
     // API Versions
+    var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
     $scope.serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
 
     var updateBreadcrumbs = function() {
@@ -85,6 +90,11 @@ angular.module('openshiftConsole')
           .then(function(serviceInstance) {
             serviceResolved(serviceInstance);
             watches.push(DataService.watchObject($scope.serviceInstancesVersion, $routeParams.instance, context, serviceResolved));
+
+            watches.push(DataService.watch(serviceBindingsVersion, context, function(bindingsData) {
+              var allBindings = bindingsData.by('metadata.name');
+              $scope.bindings = BindingService.getBindingsForResource(allBindings, serviceInstance);
+            }));
           }, function(error) {
             $scope.loaded = true;
             $scope.alerts["load"] = {

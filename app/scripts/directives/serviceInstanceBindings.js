@@ -9,7 +9,6 @@ angular.module('openshiftConsole').component('serviceInstanceBindings', {
   ],
   controllerAs: '$ctrl',
   bindings: {
-    isOverview: '<?',
     showHeader: '<?',
     project: '<',
     bindings: '<',
