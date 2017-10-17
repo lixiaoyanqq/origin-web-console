@@ -13104,11 +13104,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" class=\"toggle-hidden\" ng-click=\"toggleRoles($event)\" ng-checked=\"toggle.roles\">\n" +
+<<<<<<< HEAD
     "<translate>Show hidden roles</translate>\n" +
     "</label>&nbsp;\n" +
     "<a href=\"\" class=\"action-inline\" data-toggle=\"popover\" data-trigger=\"hover focus\" data-content=\"System roles are hidden by default and do not typically need to be managed.\">\n" +
     "<i class=\"pficon pficon-help\"></i>\n" +
     "</a>\n" +
+=======
+    "Show hidden roles</label>&nbsp;<a href=\"\" class=\"action-inline\" data-toggle=\"popover\" data-trigger=\"hover focus\" data-content=\"System roles are hidden by default and do not typically need to be managed.\"><i class=\"pficon pficon-help\"></i></a>\n" +
+>>>>>>> Fix issue 2272: Show hidden roles checkbox isnt functioning properly
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +

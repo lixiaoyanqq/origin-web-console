@@ -10492,10 +10492,14 @@ roles: !1
 },
 filteredRoles: n,
 <<<<<<< HEAD
+<<<<<<< HEAD
 toggleRoles: function() {
 r.toggle.roles = !r.toggle.roles, r.toggle.roles ? r.filteredRoles = t : (r.filteredRoles = n, a(r.newBinding.role, n) || (r.newBinding.role = null));
 =======
 showAllRoles: function() {
+=======
+toggleRoles: function() {
+>>>>>>> Fix issue 2272: Show hidden roles checkbox isnt functioning properly
 a.toggle.roles = !a.toggle.roles, a.toggle.roles ? a.filteredRoles = t : (a.filteredRoles = n, r(a.newBinding.role, n) || (a.newBinding.role = null));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
