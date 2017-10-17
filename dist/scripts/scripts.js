@@ -7473,7 +7473,7 @@ roles: !1
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 },
 filteredRoles: n,
-showAllRoles: function() {
+toggleRoles: function() {
 a.toggle.roles = !a.toggle.roles, a.toggle.roles ? a.filteredRoles = t : (a.filteredRoles = n, r(a.newBinding.role, n) || (a.newBinding.role = null));
 }
 });
