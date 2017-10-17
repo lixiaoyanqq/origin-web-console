@@ -16,8 +16,6 @@ angular.module('openshiftConsole')
     gettextCatalog) {
     $scope.projectName = $routeParams.project;
     $scope.labelSuggestions = {};
-    $scope.alerts = $scope.alerts || {};
-    $scope.emptyMessage = gettext("Select a resource from the list above ...");
     $scope.kindSelector = {disabled: true};
     $scope.kinds = _.filter(APIService.availableKinds(), function(kind) {
       switch (kind.kind) {
@@ -49,6 +47,9 @@ angular.module('openshiftConsole')
           return true;
       }
     });
+    $scope.clearFilter = function () {
+      LabelFilter.clear();
+    };
 
     var isListable = function(kind) {
       if(!kind) {
@@ -127,16 +128,8 @@ angular.module('openshiftConsole')
         }
       }));
 
-    function updateFilterWarning() {
-      if (!LabelFilter.getLabelSelector().isEmpty() && $.isEmptyObject($scope.resources)  && !$.isEmptyObject($scope.unfilteredResources)) {
-        $scope.alerts["resources"] = {
-          type: "warning",
-          details: "The active filters are hiding all " + APIService.kindToResource($scope.kindSelector.selected.kind, true) + "."
-        };
-      }
-      else {
-        delete $scope.alerts["resources"];
-      }
+    function updateFilterMessage() {
+      $scope.filterWithZeroResults = !LabelFilter.getLabelSelector().isEmpty() && _.isEmpty($scope.resources)  && !_.isEmpty($scope.unfilteredResources);
     }
 
     function loadKind() {
@@ -160,15 +153,13 @@ angular.module('openshiftConsole')
         LabelFilter.addLabelSuggestionsFromResources($scope.unfilteredResources, $scope.labelSuggestions);
         LabelFilter.setLabelSuggestions($scope.labelSuggestions);
         $scope.resources = LabelFilter.getLabelSelector().select($scope.unfilteredResources);
-        $scope.emptyMessage = gettextCatalog.getString(gettext("No")) + " " +
-          gettextCatalog.getString(APIService.kindToResource(selected.kind, true)) + " " +
-          gettextCatalog.getString(gettext("to show"));
-        updateFilterWarning();
+        $scope.resourceName = APIService.kindToResource(selected.kind, true);
+        updateFilterMessage();
       });
     }
     $scope.loadKind = loadKind;
     $scope.$watch("kindSelector.selected", function() {
-      $scope.alerts = {};
+      LabelFilter.clear();
       loadKind();
     });
 
@@ -179,9 +170,9 @@ angular.module('openshiftConsole')
 
     LabelFilter.onActiveFiltersChanged(function(labelSelector) {
       // trigger a digest loop
-      $scope.$apply(function() {
+      $scope.$evalAsync(function() {
         $scope.resources = labelSelector.select($scope.unfilteredResources);
-        updateFilterWarning();
+        updateFilterMessage();
       });
     });
   });

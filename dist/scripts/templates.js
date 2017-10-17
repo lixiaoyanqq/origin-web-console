@@ -2532,11 +2532,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
 <<<<<<< 61754f449b386bd75b3a7d9c288912264b0851e6
     "<div class=\"pull-right\" ng-if=\"project && ('configmaps' | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\" translate>Create Config Map</a>\n" +
 =======
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create') && ((configMaps | hashSize) > 0 || filterWithZeroResults)\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\">Create Config Map</a>\n" +
 >>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</div>\n" +
@@ -2549,7 +2553,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(configMaps | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -2558,12 +2562,32 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
     "<div ng-if=\"loaded\">\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+=======
+    "<div ng-if=\"(configMaps | hashSize) == 0\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No config maps.</h2>\n" +
+    "<p>No config maps have been added to project {{projectName}}.</p>\n" +
+    "<p ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-primary btn-lg\">Create Config Map</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all config maps. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(configMaps | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -2574,10 +2598,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Labels</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(configMaps | hashSize) == 0\">\n" +
     "<tr><td colspan=\"3\"><em translate>No config maps to show</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(configMaps | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"configMap in configMaps\">\n" +
     "<td data-title=\"Name\">\n" +
     "<a href=\"{{configMap | navigateResourceURL}}\">{{configMap.metadata.name}}</a>\n" +
@@ -2592,7 +2620,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "</tbody>\n" +
     "</table>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -4048,8 +4075,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\" translate>Create Route</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\">Create Route</a>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "<h1>\n" +
     "<translate>Routes</translate>\n" +
@@ -4060,7 +4092,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(routes | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -4069,10 +4101,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(routes | hashSize) == 0\">\n" +
+    "<p ng-if=\"!routesLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"routesLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No routes.</h2>\n" +
+    "<p>No routes have been added to project {{projectName}}.</p>\n" +
+    "<p ng-if=\"project && ('routes' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-primary btn-lg\">Create Route</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all routes. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(routes | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-3\">\n" +
@@ -4098,10 +4146,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Route table tweaks
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(routes | hashSize) == 0\">\n" +
     "<tr><td colspan=\"5\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(routes | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"route in routes | orderObjectsByDate : true\">\n" +
     "<td data-title=\"{{ customNameHeader || ('Name'|translate) }}\">\n" +
     "<a href=\"{{route | navigateResourceURL}}\">{{route.metadata.name}}</a>\n" +
@@ -4599,7 +4651,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"((statefulSets | hashSize) > 0) || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -4608,11 +4660,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\" persist-tab-state>\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<div class=\"row\" ng-if=\"loaded\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(statefulSets | hashSize) == 0\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No stateful sets.</h2>\n" +
+    "<p>No stateful sets have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all stateful sets. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(statefulSets | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -4623,11 +4692,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(statefulSets | hashSize) == 0\">\n" +
     "<tr>\n" +
     "<td colspan=\"3\"><em translate>No stateful sets to show</em></td>\n" +
     "</tr>\n" +
     "</tbody>\n" +
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<tbody ng-repeat=\"(statefulSetName, statefulSet) in statefulSets\">\n" +
     "<tr>\n" +
     "<td data-title=\"Name\">\n" +
@@ -4665,7 +4737,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(((latestByConfig | hashSize) || (buildsNoConfig | hashSize)) || filterWithZeroResults)\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -4674,10 +4746,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"!(latestByConfig | hashSize) && !(buildsNoConfig | hashSize)\">\n" +
+    "<p ng-if=\"!buildsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"buildsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No builds.</h2>\n" +
+    "<p>No builds have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all builds. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table class=\"table table-bordered table-mobile table-layout-fixed\" ng-if=\"(latestByConfig | hashSize) || (buildsNoConfig | hashSize)\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-2\">\n" +
     "<col class=\"col-sm-1\">\n" +
@@ -4698,6 +4783,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th ng-class=\"{'hidden-sm' : (latestByConfig | hashSize)}\" translate>Source</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
 <<<<<<< 7ea42e6b4e3b96e22cca5e6ddfdd988bed433e85
     "<tbody ng-if=\"!(latestByConfig | hashSize)\">\n" +
     "<tr><td colspan=\"7\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
@@ -4707,6 +4793,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Fix missing builds with no build config
     "</tbody>\n" +
     "<tbody ng-if=\"(latestByConfig | hashSize) || (buildsNoConfig | hashSize)\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"(buildConfigName, latestBuild) in latestByConfig\" ng-if=\"buildConfigName !== ''\">\n" +
     "\n" +
     "<td ng-if-start=\"!latestBuild\" data-title=\"Name\">\n" +
@@ -5739,7 +5828,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"!showEmptyState || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -5748,9 +5837,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
 <<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
     "<h3 ng-if=\"(deployments | size) || (replicaSets | size)\" translate>Deployment Configurations</h3>\n" +
     "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
@@ -5758,6 +5847,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3 ng-if=\"(deployments | size) || (replicaSets | size)\">Deployment Configurations</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<p ng-if=\"!deploymentConfigsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"(showEmptyState || filterWithZeroResults) && deploymentConfigsLoaded\">\n" +
+    "<div class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"showEmptyState\">\n" +
+    "<h2>No deployments.</h2>\n" +
+    "<p>No deployments have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all deployments. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\">Deployment Configurations</h3>\n" +
+    "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -5774,12 +5882,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Trigger</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "\n" +
     "<tbody ng-if=\"showEmptyMessage()\">\n" +
     "\n" +
     "<tr><td colspan=\"5\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"!showEmptyMessage()\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat-start=\"(dcName, replicationControllersForDC) in replicationControllersByDC\" ng-if=\"dcName && (deploymentConfigs[dcName] || !unfilteredDeploymentConfigs[dcName])\" style=\"display: none\"></tr>\n" +
     "\n" +
     "<tr ng-if=\"(replicationControllersForDC | hashSize) == 0 && dcName\">\n" +
@@ -5841,11 +5953,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<tr ng-repeat-end style=\"display: none\"></tr>\n" +
     "</tbody>\n" +
     "</table>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div ng-if=\"deployments | size\">\n" +
 <<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
     "<h3 translate>Deployments</h3>\n" +
     "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
 =======
+=======
+    "<div ng-if=\"(deployments | size)\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h3>Deployments</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
@@ -5891,7 +6007,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
-    "<div ng-if=\"replicaSets | hashSize\" id=\"replica-sets\">\n" +
+    "<div ng-if=\"(replicaSets | size)\" id=\"replica-sets\">\n" +
     "<h3>Replica Sets</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
@@ -5919,11 +6035,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div ng-if=\"(unfilteredReplicationControllers | hashSize) > 0\" id=\"replica-controllers\">\n" +
 <<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
     "<h3 translate>Other Replication Controllers</h3>\n" +
     "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
 =======
+=======
+    "<div ng-if=\"(replicationControllersByDC[''] | size)\" id=\"replica-controllers\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h3>Other Replication Controllers</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
@@ -5937,9 +6057,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(replicationControllersByDC[''] | hashSize) === 0\"><tr><td colspan=\"3\"><em translate>No replication controllers to show</em></td></tr></tbody>\n" +
     "<tbody ng-if=\"(replicationControllersByDC[''] | hashSize) > 0\">\n" +
     "\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"deployment in replicationControllersByDC[''] | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\">\n" +
     "<a ng-href=\"{{deployment | navigateResourceURL}}\">{{deployment.metadata.name}}</a>\n" +
@@ -5953,6 +6077,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "</tbody>\n" +
     "</table>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11470,7 +11595,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>Image Streams</translate>\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(imageStreams | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -11479,10 +11604,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(imageStreams | hashSize) == 0\">\n" +
+    "<p ng-if=\"!imageStreamsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"imageStreamsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No image streams.</h2>\n" +
+    "<p>No image streams have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all image streams. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(imageStreams | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-5\">\n" +
@@ -11497,10 +11635,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Updated</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(imageStreams | hashSize) == 0\">\n" +
     "<tr><td colspan=\"4\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(imageStreams | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"imageStream in imageStreams | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\"><a href=\"{{imageStream | navigateResourceURL}}\">{{imageStream.metadata.name}}</a></td>\n" +
     "<td data-title=\"Docker Repo\">\n" +
@@ -12588,10 +12730,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\" ng-class=\"{ 'table-empty': (resources | hashSize) === 0 }\">\n" +
+    "<div ng-if=\"(resources | hashSize) == 0\">\n" +
+    "<p ng-if=\"!kindSelector.selected\">\n" +
+    "<em>Select a resource from the list above...</em>\n" +
+    "</p>\n" +
+    "<div ng-if=\"kindSelector.selected\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No {{resourceName}}.</h2>\n" +
+    "<p>\n" +
+    "No {{resourceName}} have been added to project {{projectName}}.\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all {{resourceName}}. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(resources | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -12606,10 +12763,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th><span class=\"sr-only\" translate>Actions</span></th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(resources | hashSize) == 0\">\n" +
     "<tr><td colspan=\"4\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(resources | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"resource in resources | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\">{{resource.metadata.name}}</td>\n" +
     "<td data-title=\"Created\"><span am-time-ago=\"resource.metadata.creationTimestamp\"></span></td>\n" +
@@ -12627,7 +12788,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{resource | editYamlURL : getReturnURL()}}\" role=\"button\" translate>Edit YAML</a>\n" +
     "</li>\n" +
     "<li ng-if=\"selectedResource | canI : 'delete'\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<delete-link kind=\"{{kindSelector.selected.kind}}\" group=\"{{kindSelector.selected.group}}\" resource-name=\"{{resource.metadata.name}}\" project-name=\"{{resource.metadata.namespace}}\" alerts=\"alerts\" stay-on-current-page=\"true\" success=\"loadKind\" translate>Delete\n" +
+=======
+    "<delete-link kind=\"{{kindSelector.selected.kind}}\" group=\"{{kindSelector.selected.group}}\" resource-name=\"{{resource.metadata.name}}\" project-name=\"{{resource.metadata.namespace}}\" stay-on-current-page=\"true\" success=\"loadKind\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -12683,7 +12848,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Loading...\n" +
     "</div>\n" +
     "<div ng-if=\"!overview.showGetStarted && !overview.showLoading\">\n" +
-    "<div class=\"middle-header header-toolbar\">\n" +
+    "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid toolbar-container\">\n" +
     "<div class=\"data-toolbar\" role=\"toolbar\" aria-label=\"Filter Toolbar\">\n" +
     "<div class=\"data-toolbar-filter\" role=\"group\">\n" +
@@ -13954,7 +14119,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "\n" +
     "<p ng-if=\"(project.metadata.name | canIAddToProject) && createSampleURL\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<a ng-href=\"{{createSampleURL}}\" class=\"btn btn-lg btn-primary\" translate>\n" +
+=======
+    "<a ng-href=\"{{createSampleURL}}\" class=\"btn btn-primary btn-lg\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Create Sample Pipeline\n" +
     "</a>\n" +
     "</p>\n" +
@@ -14050,7 +14219,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"((pods | hashSize) > 0) || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -14059,10 +14228,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<pods-table pods=\"pods\" empty-message=\"emptyMessage|translate\"></pods-table>\n" +
+=======
+    "<div ng-if=\"(pods | hashSize) == 0\">\n" +
+    "<p ng-if=\"!podsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"podsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No pods.</h2>\n" +
+    "<p>No pods have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all pods. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<pods-table ng-if=\"(pods | hashSize) > 0\" pods=\"pods\"></pods-table>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14509,8 +14695,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div class=\"pull-right\" ng-if=\"project && ('secrets' | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-default\" translate>Create Secret</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && ('secrets' | canI : 'create') && secrets.length\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-default\">Create Secret</a>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "<h1>\n" +
     "<translate>Secrets</translate>\n" +
@@ -14525,11 +14716,29 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!loaded\" class=\"mar-top-xl\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<div ng-if=\"loaded\" class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
+    "<div ng-if=\"!secrets.length\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
+    "<h2>No secrets.</h2>\n" +
+    "<p>\n" +
+    "No secrets have been added to project {{projectName}}.\n" +
+    "</p>\n" +
+    "<p ng-if=\"project && ('secrets' | canI : 'create') && !secrets.length\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-primary\">Create Secret</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"secrets.length\" class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "<col class=\"col-sm-5\">\n" +
@@ -14541,12 +14750,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "\n" +
     "<tbody ng-if=\"!secrets.length\">\n" +
     "\n" +
     "<tr><td colspan=\"3\"><em translate>No secrets</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"secrets.length\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"secret in secrets track by (secret | uid)\">\n" +
     "<td data-title=\"Name\">\n" +
     "<a ng-href=\"{{secret | navigateResourceURL}}\">{{secret.metadata.name}}</a>\n" +
@@ -14581,7 +14794,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Provisioned Services\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(serviceInstances | size) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -14590,10 +14803,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(serviceInstances | hashSize) == 0\">\n" +
+    "<p ng-if=\"!serviceInstancesLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"serviceInstancesLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No provisioned services.</h2>\n" +
+    "<p>No provisioned services have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all provisioned services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(serviceInstances | size) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "</colgroup>\n" +
@@ -14606,11 +14832,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th>Bindings</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-    "<tbody ng-if=\"(serviceInstances | size) === 0\">\n" +
-    "<tr>\n" +
-    "<td colspan=\"4\"><em>{{emptyMessage}}</em></td>\n" +
-    "</tr>\n" +
-    "</tbody>\n" +
     "<tbody ng-if=\"(serviceInstances | size) > 0\">\n" +
     "<tr ng-repeat=\"serviceInstance in serviceInstances track by (serviceInstance | uid)\">\n" +
     "<td data-title=\"Name\">\n" +
@@ -14670,7 +14891,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(services | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -14679,10 +14900,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(services | hashSize) == 0\">\n" +
+    "<p ng-if=\"!servicesLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"servicesLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No services.</h2>\n" +
+    "<p>No services have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(services | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "</colgroup>\n" +
@@ -14696,10 +14930,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Age</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(services | hashSize) == 0\">\n" +
     "<tr><td colspan=\"6\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(services | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"service in services | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\"><a href=\"{{service | navigateResourceURL}}\">{{service.metadata.name}}</a></td>\n" +
     "<td data-title=\"Cluster IP\">{{service.spec.clusterIP}}</td>\n" +
@@ -14793,6 +15031,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+    "<div class=\"pull-right\" ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
+    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\">Create Storage</a>\n" +
+    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
+    "</div>\n" +
     "<h1>\n" +
     "<translate>Storage</translate>\n" +
     "\n" +
@@ -14802,7 +15044,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div ng-if=\"!renderOptions.showGetStarted\" class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(pvcs | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -14814,6 +15056,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<div class=\"section-header page-header-bleed-right page-header-bleed-left\">\n" +
     "<div class=\"hidden-xs pull-right\" ng-if=\"project && ('persistentvolumeclaims' | canI : 'create')\">\n" +
     "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
@@ -14823,9 +15066,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"visible-xs-block mar-bottom-sm\" ng-if=\"project && ('persistentvolumeclaims' | canI : 'create')\">\n" +
     "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
     "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
+=======
+    "<div ng-if=\"(pvcs | hashSize) === 0\">\n" +
+    "<p ng-if=\"!pvcsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"pvcsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<h2>No persistent volume claims.</h2>\n" +
+    "<p ng-if=\"!filterWithZeroResults\">\n" +
+    "No persistent volume claims have been added to project {{projectName}}.\n" +
+    "</p>\n" +
+    "<p ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
+    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
+    "</p>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\" ng-class=\"{ 'table-empty': (pvcs | hashSize) === 0 }\">\n" +
+    "<table ng-if=\"(pvcs | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -14838,10 +15096,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Age</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
     "<tbody ng-if=\"(pvcs | hashSize) === 0\">\n" +
     "<tr><td colspan=\"5\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(pvcs | hashSize) > 0\">\n" +
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"pvc in pvcs | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\"><a ng-href=\"{{pvc | navigateResourceURL}}\">{{pvc.metadata.name}}</a>\n" +
     "<span ng-if=\"pvc | storageClass\" class=\"text-muted\" translate> using storage class {{pvc | storageClass}}</span>\n" +
