@@ -15,9 +15,6 @@ angular.module('openshiftConsole')
     $scope.labelSuggestions = {};
     $scope.alerts = $scope.alerts || {};
     $scope.outOfClaims = false;
-    $scope.clearFilter = function() {
-      LabelFilter.clear();
-    };
 
     var setOutOfClaimsWarning = function() {
       var isHidden = AlertMessageService.isAlertPermanentlyHidden("storage-quota-limit-reached", $scope.projectName);
@@ -67,7 +64,17 @@ angular.module('openshiftConsole')
         }));
 
         function updateFilterWarning() {
-          $scope.filterWithZeroResults = !LabelFilter.getLabelSelector().isEmpty() && $.isEmptyObject($scope.pvcs)  && !$.isEmptyObject($scope.unfilteredPVCs);
+          if (!LabelFilter.getLabelSelector().isEmpty() && $.isEmptyObject($scope.pvcs)  && !$.isEmptyObject($scope.unfilteredPVCs)) {
+            $scope.alerts["storage"] = {
+              type: "warning",
+              details: "The active filters are hiding all persistent volume claims."
+            };
+            $scope.filterWithZeroResults = true;
+          }
+          else {
+            delete $scope.alerts["storage"];
+            $scope.filterWithZeroResults = false;
+          }
         }
 
         LabelFilter.onActiveFiltersChanged(function(labelSelector) {

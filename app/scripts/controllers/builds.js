@@ -44,9 +44,9 @@ angular.module('openshiftConsole')
         var isPipeline = $filter('isJenkinsPipelineStrategy');
 
         watches.push(DataService.watch(buildsVersion, context, function(builds) {
+          $scope.buildsLoaded = true;
           // Filter out pipeline builds, which have a separate page.
           $scope.builds = _.omitBy(builds.by("metadata.name"), isPipeline);
-          $scope.emptyMessage = "No builds to show";
           associateBuildsToBuildConfig();
           LabelFilter.addLabelSuggestionsFromResources($scope.builds, $scope.labelSuggestions);
 
@@ -114,19 +114,9 @@ angular.module('openshiftConsole')
           });
         }
 
-        function updateFilterWarning() {
+        function updateFilterMessage() {
           var visibleBuilds = _.omitBy($scope.latestByConfig, _.isNull);
-          if (!LabelFilter.getLabelSelector().isEmpty() &&
-              _.isEmpty($scope.buildConfigs) &&
-              _.isEmpty(visibleBuilds)) {
-            $scope.alerts["builds"] = {
-              type: "warning",
-              details: "The active filters are hiding all builds."
-            };
-          }
-          else {
-            delete $scope.alerts["builds"];
-          }
+          $scope.filterWithZeroResults = !LabelFilter.getLabelSelector().isEmpty() && _.isEmpty($scope.buildConfigs) && _.isEmpty(visibleBuilds);
         }
 
         LabelFilter.onActiveFiltersChanged(function(labelSelector) {

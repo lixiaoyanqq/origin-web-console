@@ -29,8 +29,6 @@ angular.module('openshiftConsole')
 
     var imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
 
-    var imageStreamsVersion = APIService.getPreferredVersion('imagestreams');
-
     var watches = [];
 
     ProjectsService
@@ -38,6 +36,7 @@ angular.module('openshiftConsole')
       .then(_.spread(function(project, context) {
         $scope.project = project;
         watches.push(DataService.watch(imageStreamsVersion, context, function(imageStreams) {
+          $scope.imageStreamsLoaded = true;
           $scope.unfilteredImageStreams = imageStreams.by("metadata.name");
           LabelFilter.addLabelSuggestionsFromResources($scope.unfilteredImageStreams, $scope.labelSuggestions);
           LabelFilter.setLabelSuggestions($scope.labelSuggestions);

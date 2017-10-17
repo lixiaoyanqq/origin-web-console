@@ -11,7 +11,6 @@ angular.module('openshiftConsole')
   .controller('SecretsController', function ($routeParams, $scope, DataService, ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.secretsByType = {};
-    var watches = [];
 
     ProjectsService
       .get($routeParams.project)
