@@ -2528,10 +2528,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create') && ((configMaps | hashSize) > 0 || filterWithZeroResults)\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\" translate>Create Config Map</a>\n" +
 =======
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create') && ((configMaps | hashSize) > 0 || filterWithZeroResults)\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\">Create Config Map</a>\n" +
 >>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</div>\n" +
@@ -2556,12 +2560,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(configMaps | hashSize) == 0\">\n" +
     "<p ng-if=\"!loaded\" translate>\n" +
+=======
+    "<div ng-if=\"(configMaps | hashSize) == 0\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2><translate>No config maps.</translate></h2>\n" +
     "<p><translate>No config maps have been added to project {{projectName}}.</translate></p>\n" +
     "<p ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
@@ -2570,15 +2580,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all config maps.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No config maps.</h2>\n" +
+    "<p>No config maps have been added to project {{projectName}}.</p>\n" +
+    "<p ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-primary btn-lg\">Create Config Map</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all config maps. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(configMaps | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+<<<<<<< HEAD
 =======
     "<div ng-if=\"!loaded\">Loading...</div>\n" +
     "<div ng-if=\"loaded\">\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -2609,9 +2632,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "</div>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+>>>>>>> Replacing empty tables with empty state message
     "</div>"
   );
 
@@ -4059,8 +4085,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< HEAD
     "<div class=\"pull-right\" ng-if=\"project && (routesVersion | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\" translate>Create Route</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\">Create Route</a>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "<h1>\n" +
     "<translate>Routes</translate>\n" +
@@ -4083,12 +4114,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(routes | hashSize) == 0\">\n" +
     "<p ng-if=\"!routesLoaded\" translate>\n" +
+=======
+    "<div ng-if=\"(routes | hashSize) == 0\">\n" +
+    "<p ng-if=\"!routesLoaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"routesLoaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2 translate>No routes.</h2>\n" +
     "<p><translate>No routes have been added to project</translate> {{projectName}}.</p>\n" +
     "<p ng-if=\"project && (routesVersion | canI : 'create') && !filterWithZeroResults\">\n" +
@@ -4097,13 +4134,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all routes.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No routes.</h2>\n" +
+    "<p>No routes have been added to project {{projectName}}.</p>\n" +
+    "<p ng-if=\"project && ('routes' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-primary btn-lg\">Create Route</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all routes. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(routes | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+<<<<<<< HEAD
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-3\">\n" +
@@ -4789,24 +4839,40 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\" ng-if=\"loaded\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(statefulSets | hashSize) == 0\">\n" +
     "<p ng-if=\"!loaded\" translate>\n" +
+=======
+    "<div ng-if=\"(statefulSets | hashSize) == 0\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2><translate>No stateful sets.</translate></h2>\n" +
     "<p><translate>No stateful sets have been added to project {{projectName}}.</translate></p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all stateful sets.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No stateful sets.</h2>\n" +
+    "<p>No stateful sets have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all stateful sets. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(statefulSets | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+<<<<<<< HEAD
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -4861,24 +4927,40 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"!(latestByConfig | hashSize) && !(buildsNoConfig | hashSize)\">\n" +
     "<p ng-if=\"!buildsLoaded\" translate>\n" +
+=======
+    "<div ng-if=\"!(latestByConfig | hashSize) && !(buildsNoConfig | hashSize)\">\n" +
+    "<p ng-if=\"!buildsLoaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"buildsLoaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2 translate>No builds.</h2>\n" +
     "<p translate>No builds have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all builds.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No builds.</h2>\n" +
+    "<p>No builds have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all builds. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\" ng-if=\"(latestByConfig | hashSize) || (buildsNoConfig | hashSize)\">\n" +
+<<<<<<< HEAD
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-2\">\n" +
     "<col class=\"col-sm-1\">\n" +
@@ -4900,6 +4982,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "</thead>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<tbody>\n" +
 =======
     "<tbody ng-if=\"!(latestByConfig | hashSize) && !(buildsNoConfig | hashSize)\">\n" +
@@ -4907,6 +4990,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "<tbody ng-if=\"(latestByConfig | hashSize) || (buildsNoConfig | hashSize)\">\n" +
 >>>>>>> Fix missing builds with no build config
+=======
+    "<tbody>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"(buildConfigName, latestBuild) in latestByConfig\" ng-if=\"buildConfigName !== ''\">\n" +
     "\n" +
     "<td ng-if-start=\"!latestBuild\" data-title=\"Name\">\n" +
@@ -6007,27 +6093,44 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<p ng-if=\"!deploymentConfigsLoaded\" translate>\n" +
+=======
+    "<p ng-if=\"!deploymentConfigsLoaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"(showEmptyState || filterWithZeroResults) && deploymentConfigsLoaded\">\n" +
     "<div class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"showEmptyState\">\n" +
+<<<<<<< HEAD
     "<h2 translate>No deployments.</h2>\n" +
     "<p><translate>No deployments have been added to project</translate> {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all deployments.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No deployments.</h2>\n" +
+    "<p>No deployments have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all deployments. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\" translate>Deployment Configs</h3>\n" +
     "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 =======
     "<h3 ng-if=\"(deployments | size) || (replicaSets | size)\">Deployment Configurations</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\">Deployment Configurations</h3>\n" +
+    "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -6107,10 +6210,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(deployments | size)\">\n" +
     "<h3 translate>Deployments</h3>\n" +
 =======
     "<div ng-if=\"deployments | size\">\n" +
+=======
+    "<div ng-if=\"(deployments | size)\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h3>Deployments</h3>\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
@@ -6157,10 +6264,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</table>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(replicaSets | size)\" id=\"replica-sets\">\n" +
     "<h3 translate>Replica Sets</h3>\n" +
 =======
     "<div ng-if=\"replicaSets | hashSize\" id=\"replica-sets\">\n" +
+=======
+    "<div ng-if=\"(replicaSets | size)\" id=\"replica-sets\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h3>Replica Sets</h3>\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
@@ -6190,10 +6301,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</table>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(replicationControllersByDC[''] | size)\" id=\"replica-controllers\">\n" +
     "<h3 translate>Other Replication Controllers</h3>\n" +
 =======
     "<div ng-if=\"(unfilteredReplicationControllers | hashSize) > 0\" id=\"replica-controllers\">\n" +
+=======
+    "<div ng-if=\"(replicationControllersByDC[''] | size)\" id=\"replica-controllers\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h3>Other Replication Controllers</h3>\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
@@ -6227,9 +6342,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "</div>\n" +
 =======
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "</div>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>"
   );
 
@@ -12648,24 +12767,40 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"(imageStreams | hashSize) == 0\">\n" +
     "<p ng-if=\"!imageStreamsLoaded\" translate>\n" +
+=======
+    "<div ng-if=\"(imageStreams | hashSize) == 0\">\n" +
+    "<p ng-if=\"!imageStreamsLoaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"imageStreamsLoaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2 translate>No image streams.</h2>\n" +
     "<p><translate>No image streams have been added to project</translate> {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all image streams.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>No image streams.</h2>\n" +
+    "<p>No image streams have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all image streams. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(imageStreams | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+<<<<<<< HEAD
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-5\">\n" +
@@ -14003,7 +14138,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"(resources | hashSize) == 0\">\n" +
     "<p ng-if=\"!kindSelector.selected\">\n" +
+<<<<<<< HEAD
     "<em translate>Select a resource from the list above...</em>\n" +
+=======
+    "<em>Select a resource from the list above...</em>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</p>\n" +
     "<div ng-if=\"kindSelector.selected\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
@@ -14013,7 +14152,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2>The filter is hiding all {{resourceName}}. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
+=======
+    "<h2>The filter is hiding all {{resourceName}}. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -15540,7 +15683,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>No pipelines have been added to project {{projectName}}.</translate>\n" +
     "</p>\n" +
     "<p ng-if=\"(project.metadata.name | canIAddToProject) && createSampleURL\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"{{createSampleURL}}\" class=\"btn btn-primary btn-lg\" translate>\n" +
+=======
+    "<a ng-href=\"{{createSampleURL}}\" class=\"btn btn-primary btn-lg\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Create Sample Pipeline\n" +
     "</a>\n" +
     "</p>\n" +
@@ -15644,11 +15791,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"(pods | hashSize) == 0\">\n" +
+<<<<<<< HEAD
     "<p ng-if=\"!podsLoaded\" translate>\n" +
+=======
+    "<p ng-if=\"!podsLoaded\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"podsLoaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< HEAD
     "<h2><translate>No</translate> pods.</h2>\n" +
     "<p><translate>No</translate> pods <translate>have been added to project</translate> {{projectName}}.</p>\n" +
     "</div>\n" +
@@ -15656,6 +15808,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2>The filter is hiding all pods. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
     "</div>\n" +
     "</div>\n" +
+=======
+    "<h2>No pods.</h2>\n" +
+    "<p>No pods have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all pods. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<pods-table ng-if=\"(pods | hashSize) > 0\" pods=\"pods\"></pods-table>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
 <<<<<<< HEAD
     "<pods-table ng-if=\"(pods | hashSize) > 0\" pods=\"pods\"></pods-table>\n" +
@@ -16154,8 +16317,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< HEAD
     "<div class=\"pull-right\" ng-if=\"project && (secretsVersion | canI : 'create') && secrets.length\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-default\" translate>Create Secret</a>\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && ('secrets' | canI : 'create') && secrets.length\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-default\">Create Secret</a>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "<h1>\n" +
     "<translate>Secrets</translate>\n" +
@@ -16170,6 +16338,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< HEAD
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
@@ -16194,6 +16363,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<table class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+    "<div ng-if=\"loaded\" class=\"row\">\n" +
+    "<div class=\"col-md-12\">\n" +
+    "<div ng-if=\"!secrets.length\">\n" +
+    "<p ng-if=\"!loaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
+    "<h2>No secrets.</h2>\n" +
+    "<p>\n" +
+    "No secrets have been added to project {{projectName}}.\n" +
+    "</p>\n" +
+    "<p ng-if=\"project && ('secrets' | canI : 'create') && !secrets.length\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-primary\">Create Secret</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"secrets.length\" class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "<col class=\"col-sm-5\">\n" +
@@ -16248,7 +16437,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Provisioned Services\n" +
     "</h1>\n" +
     "</div>\n" +
-    "<div class=\"data-toolbar\">\n" +
+    "<div ng-if=\"(serviceInstances | size) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -16257,10 +16446,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
-    "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+    "<div ng-if=\"(serviceInstances | hashSize) == 0\">\n" +
+    "<p ng-if=\"!serviceInstancesLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"serviceInstancesLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No provisioned services.</h2>\n" +
+    "<p>No provisioned services have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all provisioned services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(serviceInstances | size) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "</colgroup>\n" +
@@ -16273,11 +16475,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th>Bindings</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-    "<tbody ng-if=\"(serviceInstances | size) === 0\">\n" +
-    "<tr>\n" +
-    "<td colspan=\"4\"><em>{{emptyMessage}}</em></td>\n" +
-    "</tr>\n" +
-    "</tbody>\n" +
     "<tbody ng-if=\"(serviceInstances | size) > 0\">\n" +
     "<tr ng-repeat=\"serviceInstance in serviceInstances track by (serviceInstance | uid)\">\n" +
     "<td data-title=\"Name\">\n" +
@@ -16334,7 +16531,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Provisioned Services\n" +
     "</h1>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"(serviceInstances | size) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
+=======
+    "<div ng-if=\"(services | hashSize) > 0 || filterWithZeroResults\" class=\"data-toolbar\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<div class=\"data-toolbar-filter\">\n" +
     "<project-filter></project-filter>\n" +
     "</div>\n" +
@@ -16345,6 +16546,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< HEAD
 <<<<<<< HEAD
     "<div ng-if=\"(serviceInstances | hashSize) == 0\">\n" +
     "<p ng-if=\"!serviceInstancesLoaded\" translate>\n" +
@@ -16364,6 +16566,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<div ng-if=\"(services | hashSize) == 0\">\n" +
+    "<p ng-if=\"!servicesLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"servicesLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No services.</h2>\n" +
+    "<p>No services have been added to project {{projectName}}.</p>\n" +
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(services | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "</colgroup>\n" +
@@ -16376,6 +16595,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Bindings</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+<<<<<<< HEAD
     "<tbody ng-if=\"(serviceInstances | size) > 0\">\n" +
     "<tr ng-repeat=\"serviceInstance in serviceInstances track by (serviceInstance | uid)\">\n" +
     "<td data-title=\"Name\">\n" +
@@ -16469,6 +16689,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Age</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
+=======
+>>>>>>> Replacing empty tables with empty state message
     "<tbody>\n" +
     "<tr ng-repeat=\"service in services | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\"><a href=\"{{service | navigateResourceURL}}\">{{service.metadata.name}}</a></td>\n" +
@@ -16561,7 +16783,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< HEAD
     "\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
+    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\">Create Storage</a>\n" +
+    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
+    "</div>\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<h1>\n" +
     "<translate>Storage</translate>\n" +
     "</h1>\n" +
@@ -16579,6 +16808,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"(pvcs | hashSize) === 0\">\n" +
+<<<<<<< HEAD
     "<p ng-if=\"!pvcsLoaded\" translate>\n" +
     "Loading...\n" +
     "</p>\n" +
@@ -16600,6 +16830,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\" ng-class=\"{ 'table-empty': (pvcs | hashSize) === 0 }\">\n" +
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
+=======
+    "<p ng-if=\"!pvcsLoaded\">\n" +
+    "Loading...\n" +
+    "</p>\n" +
+    "<div ng-if=\"pvcsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<h2>No persistent volume claims.</h2>\n" +
+    "<p ng-if=\"!filterWithZeroResults\">\n" +
+    "No persistent volume claims have been added to project {{projectName}}.\n" +
+    "</p>\n" +
+    "<p ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
+    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(pvcs | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
+>>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
