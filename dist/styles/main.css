@@ -4130,6 +4130,7 @@ div.hopscotch-bubble .hopscotch-nav-button.prev{color:#030303}
 .origin-modal-popup .origin-modal-popup-title{background:#f5f5f5;margin-left:-20px;margin-right:-20px;margin-top:0;padding:10px 40px 10px 20px}
 .origin-modal-popup-backdrop.modal-backdrop{background-color:transparent;cursor:not-allowed;z-index:1031}
 .toast-action-divider{color:#9c9c9c}
+.toast-notification-details{margin-right:-15px;max-height:300px;overflow-y:auto}
 .toast-notification-details .truncated-content{white-space:pre-line}
 .toast-notification-message{font-weight:700;margin-right:5px}
 .toast-notifications-list-pf{top:28px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0;z-index:1055}
