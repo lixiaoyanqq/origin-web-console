@@ -7748,8 +7748,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"separator\"></div>\n" +
     "</div>\n" +
     "<div ng-if=\"loading || !import\" class=\"empty-state-message text-center\">\n" +
+<<<<<<< e55ce2d3708c2c2f2729b609a0a1feba8417c7e8
     "<h2 ng-if=\"!loading\" class=\"h2\" translate>Select an image stream tag or enter an image name.</h2>\n" +
     "<h2 ng-if=\"loading\" class=\"h2\" translate>Loading image metadata for <span class=\"word-break\">{{imageName | stripSHA}}</span>...</h2>\n" +
+=======
+    "<h2 ng-if=\"!loading\" class=\"h2\">Select an image stream tag or enter an image name.</h2>\n" +
+    "<h2 ng-if=\"loading\" class=\"h2\">Loading image metadata for <span class=\"word-break\">{{imageName | stripSHA}}</span>...</h2>\n" +
+>>>>>>> Remove hero-icon and make empty-state-message more consistent
     "</div>\n" +
     "<div class=\"row mar-bottom-md\" ng-if-start=\"!loading && import.image\">\n" +
     "<div class=\"col-sm-2 hidden-xs text-right h2\">\n" +
