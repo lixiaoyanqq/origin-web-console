@@ -90,6 +90,11 @@
       }
       listProjects();
 
+      ctrl.noProjectsCantCreate = false;
+      $scope.$on('no-projects-cannot-create', function() {
+        ctrl.noProjectsCantCreate = true;
+      });
+
       ctrl.projectEmptyState = {
         icon: 'pficon pficon-info',
         title: 'No Project Selected',
@@ -262,7 +267,7 @@
       ctrl.resultsStep.allowed = ctrl.configStep.valid;
 
       validityWatcher = $scope.$watch("$ctrl.form.$valid", function(isValid) {
-        ctrl.configStep.valid = isValid && ctrl.selectedProject;
+        ctrl.configStep.valid = isValid && !ctrl.noProjectsCantCreate && ctrl.selectedProject;
         ctrl.resultsStep.allowed = isValid;
       });
     }

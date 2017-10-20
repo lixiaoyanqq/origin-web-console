@@ -29,6 +29,10 @@ angular.module("openshiftConsole")
         var getErrorDetails = $filter('getErrorDetails');
         TaskList.clear();
 
+        $scope.$on('no-projects-cannot-create', function() {
+          $scope.noProjectsCantCreate = true;
+        });
+
         $scope.input = {
           selectedProject: $scope.project
         };

@@ -28,14 +28,6 @@ angular.module("openshiftConsole")
         // Must be initialized the controller. The link function is too late.
         $scope.forms = {};
         $scope.noProjectsCantCreate = false;
-
-        $scope.input = {
-          selectedProject: $scope.project
-        };
-
-        $scope.$watch('input.selectedProject.metadata.name', function() {
-          $scope.projectNameTaken = false;
-        });
       },
       link: function($scope) {
         $scope.input = {
@@ -54,6 +46,10 @@ angular.module("openshiftConsole")
           name: 'app',
           value: ''
         }];
+
+        $scope.$on('no-projects-cannot-create', function() {
+          $scope.noProjectsCantCreate = true;
+        });
 
         var orderByDisplayName = $filter('orderByDisplayName');
         var getErrorDetails = $filter('getErrorDetails');

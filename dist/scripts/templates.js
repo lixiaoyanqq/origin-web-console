@@ -7797,10 +7797,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/deploy-image.html',
     "<div class=\"deploy-image\">\n" +
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
+<<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
 =======
+=======
+    "<span ng-show=\"!noProjectsCantCreate\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "<p>\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Deploy an existing image from an image stream tag or docker pull spec.\n" +
@@ -8928,10 +8932,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/from-file.html',
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
+<<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
 =======
+=======
+    "<span ng-show=\"!noProjectsCantCreate\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "<p>\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Create or replace resources from their YAML or JSON definitions. If adding a template, you'll have the option to process the template.\n" +
@@ -11423,6 +11431,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/process-template.html',
     "<fieldset ng-if=\"$ctrl.template\" ng-disabled=\"disableInputs\">\n" +
     "<ng-form name=\"$ctrl.templateForm\">\n" +
+<<<<<<< a19b22733566f12a68db59a49bc16848fffba594
     "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
     "<span ng-show=\"!$ctrl.noProjectsCantCreate\">\n" +
     "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
@@ -11430,6 +11439,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
+    "<span ng-show=\"!$ctrl.noProjectsCantCreate\">\n" +
+    "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "</template-options>\n" +
 <<<<<<< 0b6e0c0321bd8895dd0292e7e94a096ab205c99e
     "<label-editor labels=\"$ctrl.labels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
