@@ -54,6 +54,8 @@
     var displayName = $filter('displayName');
     var humanize = $filter('humanize');
 
+    ctrl.noProjectsCantCreate = false;
+
     function getHelpLinks(template) {
       var helpLinkName = /^helplink\.(.*)\.title$/;
       var helpLinkURL = /^helplink\.(.*)\.url$/;
@@ -84,6 +86,11 @@
       ctrl.template = angular.copy(ctrl.template);
       ctrl.templateDisplayName = displayName(ctrl.template);
       ctrl.selectedProject = ctrl.project;
+
+      $scope.$on('no-projects-cannot-create', function() {
+        ctrl.noProjectsCantCreate = true;
+      });
+
       setTemplateParams();
     };
 
