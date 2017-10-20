@@ -9972,8 +9972,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Add notification-drawer to show curated list of events to user
 =======
     "\n" +
+<<<<<<< 5a8038b3f7e1ff99e5ca27092b47e68bd4c72286
     "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\"><span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span><span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge\"> </span><span class=\"sr-only\">Notifications</span></a>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "<a href=\"\" class=\"nav-item-iconic\" ng-click=\"$ctrl.onClick()\"><span class=\"fa fa-bell\" title=\"Notifications\" aria-hidden=\"true\"></span><span ng-if=\"$ctrl.showUnreadNotificationsIndicator\" class=\"badge badge-pf-bordered\"> </span><span class=\"sr-only\">Notifications</span></a>\n" +
+>>>>>>> Incorporate badge-pf-bordered on notification drawer bell
     "</li>"
   );
 
