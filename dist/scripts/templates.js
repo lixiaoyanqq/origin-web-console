@@ -7827,9 +7827,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"deploy-image\">\n" +
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
 =======
+=======
+    "<span ng-show=\"!noProjectsCantCreate\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "<p>\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Deploy an existing image from an image stream tag or docker pull spec.\n" +
@@ -8949,9 +8953,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/from-file.html',
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<span ng-show=\"!noProjectsCantCreate\">\n" +
     "<p translate>\n" +
 =======
+=======
+    "<span ng-show=\"!noProjectsCantCreate\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "<p>\n" +
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Create or replace resources from their YAML or JSON definitions. If adding a template, you'll have the option to process the template.\n" +
@@ -11359,6 +11367,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 <<<<<<< HEAD
     "<fieldset ng-if=\"$ctrl.template\" ng-disabled=\"disableInputs\">\n" +
     "<ng-form name=\"$ctrl.templateForm\">\n" +
+<<<<<<< HEAD
     "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
     "<span ng-show=\"!$ctrl.noProjectsCantCreate\">\n" +
     "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
@@ -11368,6 +11377,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
     "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<select-project ng-if=\"!$ctrl.project\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.availableProjects\" selected-project=\"$ctrl.selectedProject\" name-taken=\"$ctrl.projectNameTaken\"></select-project>\n" +
+    "<span ng-show=\"!$ctrl.noProjectsCantCreate\">\n" +
+    "<template-options is-dialog=\"$ctrl.isDialog\" parameters=\"$ctrl.template.parameters\" expand=\"true\" can-toggle=\"false\">\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "</template-options>\n" +
     "<label-editor labels=\"$ctrl.labels\" expand=\"true\" can-toggle=\"false\" help-text=\"Each label is applied to each created resource.\">\n" +
     "</label-editor>\n" +
@@ -11381,7 +11395,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-primary btn-lg\" ng-click=\"$ctrl.createFromTemplate()\" ng-disabled=\"$ctrl.templateForm.$invalid || $ctrl.disableInputs\">Create</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"\" ng-click=\"$ctrl.cancel()\" role=\"button\">Cancel</a>\n" +
     "</div>\n" +
+<<<<<<< HEAD
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "</span>\n" +
+>>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
     "</ng-form>\n" +
     "</fieldset>"
   );

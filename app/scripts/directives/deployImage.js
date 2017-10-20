@@ -33,7 +33,6 @@ angular.module("openshiftConsole")
         // Must be initialized the controller. The link function is too late.
         $scope.forms = {};
         $scope.noProjectsCantCreate = false;
-
         $scope.input = {
           selectedProject: $scope.project
         };
@@ -350,7 +349,7 @@ angular.module("openshiftConsole")
                     okButtonText: "Create Anyway",
                     okButtonClass: "btn-danger",
                     //cancelButtonText: gettextCatalog.getString(gettext("Cancel"))
-                    cancelButtonText: '取消' 
+                    cancelButtonText: '取消'
                   };
                 }
               }

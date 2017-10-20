@@ -112,6 +112,11 @@
         ctrl.noProjectsCantCreate = true;
       });
 
+      ctrl.noProjectsCantCreate = false;
+      $scope.$on('no-projects-cannot-create', function() {
+        ctrl.noProjectsCantCreate = true;
+      });
+
       ctrl.projectEmptyState = {
         icon: 'pficon pficon-info',
         title: gettextCatalog.getString(gettext('No Project Selected')),

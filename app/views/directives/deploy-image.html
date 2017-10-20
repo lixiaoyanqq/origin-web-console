@@ -159,8 +159,8 @@
           <div class="has-error" ng-show="nameTaken">
             <span class="help-block" translate>This name is already in use within the project. Please choose a different name.</span>
           </div>
-          <div class="help-block" ng-show="forms.deployImage.name.$error.maxlength">
-            Name can't have more than 24 characters.
+          <div class="has-error" ng-show="nameTaken">
+            <span class="help-block">This name is already in use within the project. Please choose a different name.</span>
           </div>
         </div>
         <div class="has-error" ng-show="nameTaken">
