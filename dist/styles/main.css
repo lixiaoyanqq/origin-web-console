@@ -5045,6 +5045,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-parameters.readonly .control-label{padding-right:0;word-wrap:break-word}
 .catalog-parameters.readonly form{margin-top:10px}
 .catalog-parameters.readonly .form-group{margin-bottom:0}
+<<<<<<< HEAD
 .catalog-parameters.readonly fieldset,.catalog-parameters.readonly fieldset>div{padding-left:20px}
 .catalog-parameters.readonly legend{border:0;font-size:12px;font-weight:600;margin-bottom:5px}
 .catalog-parameters.readonly .schema-form-array{margin-left:0}
@@ -5054,6 +5055,8 @@ body>.ui-select-bootstrap.open{z-index:1050}
 >>>>>>> Changing overlay layout to a single column
 =======
 .catalog-parameters input.form-control[disabled]{background-color:transparent;border:0;color:#363636;cursor:default;margin-top:-3px}
+=======
+>>>>>>> Handle displaying parameters when secrets are not available.
 .catalog-parameters.readonly fieldset,.catalog-parameters.readonly fieldset>div{padding-left:20px}
 .catalog-parameters.readonly legend{border:0;font-size:13px;font-weight:600;margin-bottom:5px}
 .catalog-parameters.readonly .schema-form-array{margin-left:0}
@@ -5104,7 +5107,11 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-details .order-service-description-block .learn-more-link{font-size:11px;white-space:nowrap}
 .order-service-details .order-service-description-block .order-service-dependent-image{margin-bottom:5px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-description-block .order-service-dependent-image .pficon{margin-right:5px;vertical-align:-1px}
+<<<<<<< HEAD
 .order-service-details .order-service-description-block .order-service-subheading{display:inline-block;font-size:13px;margin-bottom:7px;margin-top:10px}
+=======
+.order-service-details .order-service-description-block .order-service-subheading{display:inline-block;font-size:14px;margin-bottom:7px;margin-top:10px}
+>>>>>>> Handle displaying parameters when secrets are not available.
 .order-service-details .order-service-documentation-url{margin-top:4px}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -5441,6 +5448,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-items{align-content:flex-start;background-color:#fff;display:flex;flex:1 1 auto;flex-wrap:wrap;padding-bottom:30px;width:100%;z-index:9}
 >>>>>>> Improving display of results status messages and removing orphaned tasks directive
 .services-view .services-items-filter{flex:1 1 100%;margin:20px 20px 10px}
+.services-view .services-items-filter div.checkbox{margin-bottom:0;margin-top:0}
 @media (min-width:480px){.services-view .services-sub-category .services-sub-category-tab:focus .services-sub-category-tab-image img,.services-view .services-sub-category .services-sub-category-tab:hover .services-sub-category-tab-image img,.services-view .services-sub-category.active .services-sub-category-tab .services-sub-category-tab-image img{opacity:1}
 .services-view .services-no-sub-categories{display:flex;flex:1 1 auto;padding:15px 20px 12px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
