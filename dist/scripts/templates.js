@@ -2907,11 +2907,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Config Files</a>\n" +
     "</p>\n" +
+<<<<<<< HEAD
     "<h3 translate>Triggers</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
     "<dt><translate>Manual</translate> (CLI):\n" +
     "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
     "<span class=\"learn-more-block\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
+=======
+    "<h3>Triggers</h3>\n" +
+    "<dl class=\"dl-horizontal left\">\n" +
+    "<dt>Manual (CLI):\n" +
+    "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
+    "<span class=\"learn-more-block\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "</a>\n" +
     "</dt>\n" +
     "<dd>\n" +
@@ -2921,15 +2929,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-switch=\"trigger.type\">\n" +
     "<span ng-switch-default>{{trigger.type}}</span>\n" +
     "<span ng-switch-when=\"ImageChange\" ng-if=\"trigger.imageChangeParams.from\">\n" +
+<<<<<<< HEAD
     "<dt translate>New Image For:</dt>\n" +
+=======
+    "<dt>New Image For:</dt>\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "<dd>\n" +
     "{{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}\n" +
     "<small ng-if=\"!trigger.imageChangeParams.automatic\" class=\"text-muted\">(disabled)</small>\n" +
     "</dd>\n" +
     "</span>\n" +
     "<span ng-switch-when=\"ConfigChange\">\n" +
+<<<<<<< HEAD
     "<dt translate>Change Of:</dt>\n" +
     "<dd translate>Config</dd>\n" +
+=======
+    "<dt>Change Of:</dt>\n" +
+    "<dd>Config</dd>\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "</span>\n" +
     "</span>\n" +
     "</div>\n" +
@@ -2991,6 +3008,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "<div class=\"col-lg-6\">\n" +
     "<h3>Triggers</h3>\n" +
@@ -3027,6 +3045,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</resource-service-bindings>\n" +
     "</div>\n" +
 >>>>>>> Add bindings list to resource pages
+=======
+>>>>>>> Fix bug where blank space appears in dc config page
     "</div>\n" +
     "<annotations annotations=\"deploymentConfig.metadata.annotations\"></annotations>\n" +
     "</div>\n" +
