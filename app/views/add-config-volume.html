@@ -11,10 +11,10 @@
         </div>
 
         <div ng-if="targetObject && configMaps && secrets">
-          <div ng-if="!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')" class="empty-state-message empty-state-full-page">
-            <h2 class="text-center" translate>No config maps or secrets.</h2>
+          <div ng-if="!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')" class="empty-state-message empty-state-full-page text-center">
+            <h2 translate>No config maps or secrets.</h2>
 
-            <p class="gutter-top">
+            <p translate>
               There are no config maps or secrets in project {{project | displayName}} to use
               as a volume for this {{kind | humanizeKind}}.
             </p>
@@ -23,8 +23,8 @@
           </div>
 
           <div ng-if="configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')" class="mar-top-xl">
-            <h1>Add Config Files to {{name}}</h1>
-            <div class="help-block">
+            <h1 translate>Add Config Files to {{name}}</h1>
+            <div class="help-block" translate>
               Add values from a config map or secret as volume. This will make the data available as files for {{kind | humanizeKind}} {{name}}.
             </div>
             <form name="forms.addConfigVolumeForm" class="mar-top-lg">
