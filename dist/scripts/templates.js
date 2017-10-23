@@ -73,17 +73,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-if=\"label\">{{label}}</label>\n" +
     "<div class=\"resource-size\" ng-class=\"{ 'has-error': form.$invalid }\">\n" +
     "<div class=\"resource-amount\">\n" +
-<<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}\" translate>Amount</label>\n" +
-    "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" ng-attr-placeholder=\"{{placeholder}}\" class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
-=======
-    "<label class=\"sr-only\" ng-attr-for=\"{{id}}\">Amount</label>\n" +
-<<<<<<< 8a34936c48f608fee0ba519704760e330f592798
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d*\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
-=======
     "<input type=\"number\" name=\"amount\" ng-attr-id=\"{{id}}\" ng-model=\"input.amount\" min=\"0\" pattern=\"\\d+(\\.\\d+)?\" ng-attr-placeholder=\"{{placeholder}}\" select-on-focus class=\"form-control\" ng-attr-aria-describedby=\"{{description ? id + '-help' : undefined}}\">\n" +
->>>>>>> Bug 1491495 - Allow decimals in some number inputs
     "</div>\n" +
     "<div class=\"resource-unit\">\n" +
     "<label class=\"sr-only\" ng-attr-for=\"{{id}}-unit\" translate>Unit</label>\n" +
@@ -134,28 +126,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/_config-file-params.html',
     "<div ng-repeat=\"(serverName, data) in secretData.auths\" class=\"image-source-item\">\n" +
     "<h3>{{serverName}}</h3>\n" +
-<<<<<<< 730ff1edbd20e4d9f17e1e656ece6f394b2fa6b1
-    "<dt translate>username</dt>\n" +
-    "<dd class=\"word-break\">{{data.username}}</dd>\n" +
-    "<dt translate>password</dt>\n" +
-    "<dd ng-if=\"view.showSecret\">\n" +
-=======
     "<dt ng-if-start=\"data.username\">username</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.username}}</dd>\n" +
     "<dt ng-if-start=\"data.password\">password</dt>\n" +
     "<dd ng-if-end>\n" +
     "<span ng-if=\"view.showSecret\">\n" +
->>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "<copy-to-clipboard clipboard-text=\"data.password\" display-wide=\"true\"></copy-to-clipboard>\n" +
     "</span>\n" +
     "<span ng-if=\"!view.showSecret\">*****</span>\n" +
     "</dd>\n" +
-<<<<<<< 730ff1edbd20e4d9f17e1e656ece6f394b2fa6b1
-    "<dd ng-if=\"!view.showSecret\">*****</dd>\n" +
-    "<dt translate>email</dt>\n" +
-    "<dd class=\"word-break\">{{data.email}}</dd>\n" +
-=======
-    "<dt ng-if-start=\"data.email\">email</dt>\n" +
+    "<dt ng-if-start=\"data.email\" translate>email</dt>\n" +
     "<dd ng-if-end class=\"word-break\">{{data.email}}</dd>\n" +
     "<div ng-if=\"!data.username && !data.password && !data.email\">\n" +
     "No username and password.\n" +
@@ -167,7 +147,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<copy-to-clipboard clipboard-text=\"secretData.credsStore\" display-wide=\"true\"></copy-to-clipboard>\n" +
     "</span>\n" +
     "<span ng-if=\"!view.showSecret\">*****</span>\n" +
->>>>>>> Avoid runtime error for some dockerconfigjson secrets
     "</div>"
   );
 
@@ -266,11 +245,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "<span class=\"nowrap\" ng-if=\"podTemplate.spec.containers.length > 1\"> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>\n" +
     "</span>\n" +
-<<<<<<< 2a3b9aaf2e4a8e4b233f459022c9d81cf393a74c
-    "<span ng-if=\"podTemplate.spec.containers.length > 1\" translate> and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span></span>"
-=======
     "</div>"
->>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
   );
 
 
@@ -522,11 +497,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-repeat-end style=\"display:none\"></li>\n" +
     "</ul>\n" +
-=======
-    "<div ng-if=\"view.hasProject\" class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
-=======
     "<div class=\"nav-pf-vertical nav-pf-vertical-with-sub-menus\" ng-class=\"{\n" +
->>>>>>> Fix hamburger menu at mobile for pages with no project bar
     "    collapsed: nav.collapsed && !isMobile,\n" +
     "    'hide-mobile-nav': !nav.showMobileNav && isMobile,\n" +
     "    'hover-secondary-nav-pf': sidebar.secondaryOpen && !isMobile,\n" +
@@ -555,21 +526,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"nav-item-pf-header\">\n" +
     "<a href=\"\" class=\"secondary-collapse-toggle-pf\" ng-click=\"collapseMobileSecondary(primaryItem, $event)\" role=\"button\"><span class=\"sr-only\">Back</span></a>\n" +
     "<span>{{primaryItem.label}}</span>\n" +
->>>>>>> Patternfly vertical navigation and project bar
-    "</div>\n" +
-    "<ul class=\"list-group\">\n" +
-    "<li ng-repeat-start=\"secondarySection in primaryItem.secondaryNavSections\" ng-if=\"secondarySection.header\" class=\"nav-item-pf-header\">\n" +
-    "{{secondarySection.header}}\n" +
-    "</li>\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
     "<li ng-repeat=\"secondaryItem in secondarySection.items\" ng-class=\"{ active: secondaryItem === activeSecondary }\" ng-if=\"show(secondaryItem)\">\n" +
     "<a ng-href=\"{{navURL(secondaryItem.href)}}\">{{secondaryItem.label|translate}}</a>\n" +
-=======
     "<li ng-repeat=\"secondaryItem in secondarySection.items\" ng-class=\"{ active: secondaryItem === activeSecondary }\" ng-if=\"show(secondaryItem)\" class=\"list-group-item\">\n" +
     "<a ng-href=\"{{navURL(secondaryItem.href)}}\" ng-click=\"primaryItem.mobileSecondary = false;\">\n" +
     "<span class=\"list-group-item-value\">{{secondaryItem.label}}</span>\n" +
     "</a>\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "</li>\n" +
     "<li ng-repeat-end style=\"display:none\"></li>\n" +
     "</ul>\n" +
@@ -584,53 +546,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
-<<<<<<< 99afa1d5984c600d464a5f050008e6fc160b08e5
-  $templateCache.put('views/_tasks.html',
-    "<div ng-controller=\"TasksController\">\n" +
-    "<div ng-repeat=\"task in tasks()\" ng-if=\"!task.namespace || !projectName || task.namespace === projectName\">\n" +
-    "<div class=\"tasks\" ng-class=\"hasTaskWithError() ? 'failure' : 'success'\">\n" +
-    "<div class=\"task-content\">\n" +
-    "<i class=\"pficon task-icon\" ng-class=\"task.hasErrors ? 'pficon-error-circle-o' : 'pficon-ok'\"></i>\n" +
-    "<div class=\"task-info\">\n" +
-    "<span class=\"task-title\">\n" +
-    "{{ task | taskTitle }}.\n" +
-    "</span>\n" +
-    "<span class=\"task-links\">\n" +
-    "<span>\n" +
-    "<a href=\"\" ng-click=\"expanded = !expanded\" role=\"button\">\n" +
-    "<span ng-hide=\"expanded\" translate>Show Details</span>\n" +
-    "<span ng-show=\"expanded\" translate>Hide Details</span>\n" +
-    "</a>\n" +
-    "</span>\n" +
-    "<span ng-show=\"task.status=='completed'\">\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<a href=\"\" ng-click=\"delete(task)\" role=\"button\" translate>\n" +
-    "Dismiss\n" +
-    "</a>\n" +
-    "</span>\n" +
-    "</span>\n" +
-    "<div ng-if=\"task.helpLinks.length\">\n" +
-    "<h4>Helpful Links</h4>\n" +
-    "<ul class=\"list-unstyled\">\n" +
-    "<li ng-repeat=\"link in task.helpLinks\">\n" +
-    "<a href=\"{{ link.link }}\" target=\"_blank\">{{ link.title }}</a>\n" +
-    "</li>\n" +
-    "</ul>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div ng-show=\"expanded\" class=\"task-expanded-details\">\n" +
-    "\n" +
-    "<alerts alerts=\"task.alerts\" hide-close-button=\"true\"></alerts>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</div>"
-  );
-
-
-=======
->>>>>>> Improving display of results status messages and removing orphaned tasks directive
   $templateCache.put('views/_templateopt.html',
     "<div class=\"template-options\" ng-form=\"paramForm\">\n" +
     "<div ng-if=\"!isDialog && parameters.length\" class=\"flow\">\n" +
@@ -649,15 +564,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "          'has-error': (paramForm[paramID].$error.required && paramForm[paramID].$touched && !cleared),\n" +
     "          'has-warning': isOnlyWhitespace(parameter.value)\n" +
     "        }\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<input ng-if=\"!expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" type=\"text\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\">\n" +
-    "<a href=\"\" ng-click=\"expandedParameter = !expandedParameter\" class=\"resize-input action-button\" data-toggle=\"tooltip\" data-trigger=\"hover\" dynamic-content=\"{{expandedParameter ? singleText : multiText|translate}}\"><i class=\"fa\" ng-class=\"{'fa-expand': !expandedParemeter, 'fa-compress': expandedParameter}\" aria-hidden=\"true\" role=\"presentation\"/><span class=\"sr-only\" ng-if=\"expandedParameter\" translate>Collapse to a single line input</span><span class=\"sr-only\" ng-if=\"!expandedParameter\" translate>Expand to enter multiline input</span></a>\n" +
-    "<textarea ng-if=\"expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" rows=\"6\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\"></textarea>\n" +
-=======
     "<input ng-if=\"!expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" type=\"text\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\">\n" +
     "<a href=\"\" ng-click=\"expandedParameter = !expandedParameter\" class=\"resize-input action-button\" data-toggle=\"tooltip\" data-trigger=\"hover\" dynamic-content=\"{{expandedParameter ? 'Collapse to a single line input. This may strip any new lines you have entered.' : 'Expand to enter multiple lines of content. This is required if you need to include newline characters.'}}\"><i class=\"fa\" ng-class=\"{'fa-expand': !expandedParemeter, 'fa-compress': expandedParameter}\" aria-hidden=\"true\" role=\"presentation\"/><span class=\"sr-only\" ng-if=\"expandedParameter\">Collapse to a single line input</span><span class=\"sr-only\" ng-if=\"!expandedParameter\">Expand to enter multiline input</span></a>\n" +
     "<textarea ng-if=\"expandedParameter\" ng-attr-id=\"{{paramID}}\" ng-attr-name=\"{{paramID}}\" class=\"form-control hide-ng-leave\" placeholder=\"{{ parameter | parameterPlaceholder }}\" ng-model=\"parameter.value\" ng-required=\"parameter.required && !parameter.generate\" ng-blur=\"cleared = false\" ng-trim=\"false\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" rows=\"6\" ng-attr-aria-describedby=\"{{parameter.description ? (paramID + '-description') : undefined}}\"></textarea>\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<div class=\"help-block\" ng-if=\"parameter.description\" ng-attr-id=\"{{paramID}}-description\">{{parameter.description}}</div>\n" +
     "<div ng-show=\"paramForm[paramID].$error.required && paramForm[paramID].$touched && !cleared\" class=\"has-error\">\n" +
     "<div class=\"help-block\">{{parameter.displayName || parameter.name}} is required.</div>\n" +
@@ -895,29 +804,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>{{error | getErrorDetails}}</p>\n" +
     "</div>\n" +
     "<div ng-if=\"targetObject && configMaps && secrets\">\n" +
-<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
-    "<div ng-if=\"!configMaps.length && !secrets.length && !('configmaps' | canI : 'create') && !('secrets' | canI : 'create')\" class=\"empty-state-message empty-state-full-page\">\n" +
-    "<h2 class=\"text-center\" translate>No config maps or secrets.</h2>\n" +
-    "<p class=\"gutter-top\" translate>\n" +
-=======
     "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page\">\n" +
     "<h2 class=\"text-center\">No config maps or secrets.</h2>\n" +
     "<p class=\"gutter-top\">\n" +
->>>>>>> Update addConfigVolume controller
     "There are no config maps or secrets in project {{project | displayName}} to use as a volume for this {{kind | humanizeKind}}.\n" +
     "</p>\n" +
     "<p ng-if=\"targetObject\"><a ng-href=\"{{targetObject | navigateResourceURL}}\" translate>Back to {{kind | humanizeKind}} {{name}}</a></p>\n" +
     "</div>\n" +
-<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
-    "<div ng-if=\"configMaps.length || secrets.length || ('configmaps' | canI : 'create') || ('secrets' | canI : 'create')\" class=\"mar-top-xl\">\n" +
-<<<<<<< 61041415d6b4b98ad75d6e0cc8152f245d39c51c
-    "<h1 translate>Add Config Files</h1>\n" +
-=======
-=======
     "<div ng-if=\"configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-xl\">\n" +
->>>>>>> Update addConfigVolume controller
     "<h1>Add Config Files to {{name}}</h1>\n" +
->>>>>>> Consistent add storage links
     "<div class=\"help-block\">\n" +
     "<translate>Add values from a config map or secret as volume. This will make the data available as files for {{kind | humanizeKind}} {{name}}</translate>.\n" +
     "</div>\n" +
@@ -936,15 +831,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-bind-html=\"source.metadata.name | highlight : $select.search\"></span>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
-<<<<<<< b22a810eb81508b860fd0b231e5c8714840d3e31
-    "<div ng-if=\"('configmaps' | canI : 'create') || ('secrets' | canI : 'create')\" class=\"mar-top-md\">\n" +
-    "<span ng-if=\"'configmaps' | canI : 'create'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" translate>Create Config Map</a>\n" +
-    "</span>\n" +
-    "<span ng-if=\"'secrets' | canI : 'create'\">\n" +
-    "<span ng-if=\"'configmaps' | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" translate>Create Secret</a>\n" +
-=======
     "<div ng-if=\"(configMapVersion | canI : 'create') || (secretVersion | canI : 'create')\" class=\"mar-top-md\">\n" +
     "<span ng-if=\"configMapVersion | canI : 'create'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\">Create Config Map</a>\n" +
@@ -952,7 +838,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"secretVersion | canI : 'create'\">\n" +
     "<span ng-if=\"configMapVersion | canI : 'create'\" class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\">Create Secret</a>\n" +
->>>>>>> Update addConfigVolume controller
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\" translate>\n" +
@@ -960,13 +845,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"mount-path\" class=\"required\" translate>Mount Path</label>\n" +
-    "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" required ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"{{'example: /data'|translate}}\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
-=======
     "<label for=\"mount-path\" class=\"required\">Mount Path</label>\n" +
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" required ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<div>\n" +
     "<span id=\"mount-path-help\" class=\"help-block\">\n" +
     "<translate>Mount path for the volume.</translate>\n" +
@@ -1018,13 +898,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
     "<div class=\"form-group col-md-6\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label ng-attr-for=\"path-{{$id}}\" class=\"required\" translate>Path</label>\n" +
-    "<input ng-attr-id=\"path-{{$id}}\" class=\"form-control\" ng-class=\"{ 'has-error': forms.addConfigVolumeForm['path-' + $id].$invalid && forms.addConfigVolumeForm['path-' + $id].$touched }\" type=\"text\" name=\"path-{{$id}}\" ng-model=\"item.path\" ng-pattern=\"RELATIVE_PATH_PATTERN\" required osc-unique=\"itemPaths\" placeholder=\"{{'example: config/app.properties'|translate}}\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<label ng-attr-for=\"path-{{$id}}\" class=\"required\">Path</label>\n" +
     "<input ng-attr-id=\"path-{{$id}}\" class=\"form-control\" ng-class=\"{ 'has-error': forms.addConfigVolumeForm['path-' + $id].$invalid && forms.addConfigVolumeForm['path-' + $id].$touched }\" type=\"text\" name=\"path-{{$id}}\" ng-model=\"item.path\" ng-pattern=\"RELATIVE_PATH_PATTERN\" required osc-unique=\"itemPaths\" placeholder=\"example: config/app.properties\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<div class=\"has-error\" ng-show=\"forms.addConfigVolumeForm['path-' + $id].$error.pattern\">\n" +
     "<span class=\"help-block\" translate>\n" +
     "Path must be a relative path. It cannot start with <code>/</code> or contain <code>..</code> path elements.\n" +
@@ -1085,29 +960,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p class=\"gutter-top\">\n" +
     "<translate>A <b>persistent volume claim</b> is required to attach to this</translate> {{kind | humanizeKind | translate}}, <translate>but none are loaded on this project.</translate>\n" +
     "</p>\n" +
-<<<<<<< 83dfd850f1e43e63d71e87e991c4e58001871c03
-    "<div ng-if=\"project && ('persistentvolumeclaims' | canI : 'create')\" class=\"text-center\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
-    "</div>\n" +
-    "<p ng-if=\"project && !('persistentvolumeclaims' | canI : 'create')\" translate>\n" +
-=======
     "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"text-center\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
     "</div>\n" +
     "<p ng-if=\"project && !(pvcVersion | canI : 'create')\">\n" +
->>>>>>> Update attachPVC controller to use getPreferredVersion
     "To claim storage from a persistent volume, refer to the documentation on <a target=\"_blank\" ng-href=\"{{'persistent_volumes' | helpLink}}\">using persistent volumes</a>.\n" +
     "</p>\n" +
     "<p ng-if=\"attach.resource\"><a ng-href=\"{{attach.resource | navigateResourceURL}}\"><translate>Back to</translate> {{kind | humanizeKind | translate}} {{name}}</a></p>\n" +
     "</div>\n" +
     "<div ng-show=\"pvcs && pvcs.length && attach.resource\" class=\"mar-top-xl\">\n" +
-<<<<<<< 61041415d6b4b98ad75d6e0cc8152f245d39c51c
-    "<h1 translate>Add Storage</h1>\n" +
-    "<div class=\"help-block\" translate>\n" +
-=======
     "<h1>Add Storage to {{name}}</h1>\n" +
     "<div class=\"help-block\">\n" +
->>>>>>> Consistent add storage links
     "Add an existing persistent volume claim to the template of {{kind | humanizeKind}} {{name}}.\n" +
     "</div>\n" +
     "<form name=\"attachPVCForm\" class=\"mar-top-lg\">\n" +
@@ -1134,42 +997,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
-<<<<<<< 83dfd850f1e43e63d71e87e991c4e58001871c03
-    "<div ng-if=\"!(project && ('persistentvolumeclaims' | canI : 'create'))\" class=\"help-block\" translate>\n" +
-    "Select storage to use.\n" +
-    "</div>\n" +
-    "<div ng-if=\"project && ('persistentvolumeclaims' | canI : 'create')\" class=\"help-block\">\n" +
-    "<translate>Select storage to use<span ng-if=\"!outOfClaims\"> or <a ng-href=\"project/{{project.metadata.name}}/create-pvc\">create storage</a>.</span></translate>\n" +
-    "<span ng-if=\"outOfClaims\" translate>. You cannot create new storage since you are at quota.</span>\n" +
-=======
     "<div ng-if=\"!(project && (pvcVersion | canI : 'create'))\" class=\"help-block\">\n" +
     "Select storage to use.\n" +
     "</div>\n" +
     "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"help-block\">\n" +
     "Select storage to use<span ng-if=\"!outOfClaims\"> or <a ng-href=\"project/{{project.metadata.name}}/create-pvc\">create storage</a>.</span>\n" +
     "<span ng-if=\"outOfClaims\">. You cannot create new storage since you are at quota.</span>\n" +
->>>>>>> Update attachPVC controller to use getPreferredVersion
     "</div>\n" +
     "<h3 translate>Volume</h3>\n" +
     "<div class=\"help-block\" translate>\n" +
     "Specify details about how volumes are going to be mounted inside containers.\n" +
     "</div>\n" +
     "<div class=\"form-group mar-top-xl\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"mount-path\" translate>Mount Path</label>\n" +
-    "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"{{'example: /data'|translate}}\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
-=======
     "<label for=\"mount-path\">Mount Path</label>\n" +
-<<<<<<< 1802464c83aedb3863464f1d29a875142a09677b
-<<<<<<< 03b0ff53ceda7c7e7cc9a3206f423b40c1315f2a
-    "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
-=======
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" osc-unique-disabled=\"attach.overwrite\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
->>>>>>> add "overwrite" option to attachPVC view
-=======
     "<input id=\"mount-path\" class=\"form-control\" type=\"text\" name=\"mountPath\" ng-model=\"attach.mountPath\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"existingMountPaths\" placeholder=\"example: /data\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"mount-path-help\">\n" +
->>>>>>> Revert "add "overwrite" option to attachPVC view"
     "<div>\n" +
     "<span id=\"mount-path-help\" class=\"help-block\" translate>Mount path for the volume inside the container. If not specified, the volume will not be mounted automatically.</span>\n" +
     "</div>\n" +
@@ -1185,15 +1027,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"sub-path\" translate>Subpath</label>\n" +
-    "<input id=\"sub-path\" class=\"form-control\" type=\"text\" name=\"subPath\" ng-model=\"attach.subPath\" placeholder=\"{{'example: application/resources'|translate}}\" ng-pattern=\"RELATIVE_PATH_PATTERN\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" aria-describedby=\"sub-path-help\">\n" +
-    "<div id=\"sub-path-help\" class=\"help-block\" translate>\n" +
-=======
     "<label for=\"sub-path\">Subpath</label>\n" +
     "<input id=\"sub-path\" class=\"form-control\" type=\"text\" name=\"subPath\" ng-model=\"attach.subPath\" placeholder=\"example: application/resources\" ng-pattern=\"RELATIVE_PATH_PATTERN\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"sub-path-help\">\n" +
     "<div id=\"sub-path-help\" class=\"help-block\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "Optional path within the volume from which it will be mounted into the container. Defaults to the volume's root.\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"attachPVCForm.subPath.$error.pattern && attachPVCForm.subPath.$touched\">\n" +
@@ -1203,23 +1039,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
-<<<<<<< 1802464c83aedb3863464f1d29a875142a09677b
-    "<label for=\"volume-name\" translate>Volume Name</label>\n" +
-    "\n" +
-<<<<<<< 03b0ff53ceda7c7e7cc9a3206f423b40c1315f2a
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"{{'(generated if empty)'|translate}}\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
-=======
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
-=======
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" osc-unique-disabled=\"attach.overwrite\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
->>>>>>> add "overwrite" option to attachPVC view
-=======
     "<label for=\"volume-name\">Volume Name</label>\n" +
     "\n" +
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
->>>>>>> Revert "add "overwrite" option to attachPVC view"
     "<div>\n" +
     "<span id=\"volume-name-help\" class=\"help-block\" translate>Unique name used to identify this volume. If not specified, a volume name is generated.</span>\n" +
     "</div>\n" +
@@ -1243,11 +1067,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
-<<<<<<< 1802464c83aedb3863464f1d29a875142a09677b
-<<<<<<< 03b0ff53ceda7c7e7cc9a3206f423b40c1315f2a
     "<input type=\"checkbox\" ng-model=\"attach.readOnly\" aria-describedby=\"read-only-help\" translate>\n" +
     "<translate>Read only</translate>\n" +
-=======
     "<input type=\"checkbox\" ng-model=\"attach.overwrite\" aria-describedby=\"overwrite-help\">\n" +
     "Overwrite\n" +
     "</label>\n" +
@@ -1259,11 +1080,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
-=======
->>>>>>> Revert "add "overwrite" option to attachPVC view"
     "<input type=\"checkbox\" ng-model=\"attach.readOnly\" aria-describedby=\"read-only-help\">\n" +
     "Read only\n" +
->>>>>>> add "overwrite" option to attachPVC view
     "</label>\n" +
     "<div id=\"read-only-help\" class=\"help-block\" translate>\n" +
     "Mount the volume as read-only.\n" +
@@ -1453,13 +1271,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt translate>Status:</dt>\n" +
     "<dd>\n" +
     "<status-icon status=\"pod | podStatus\"></status-icon>\n" +
-<<<<<<< 1018cfdf47f60618c7d6b47ca05e3a2ec180b2e8
-    "{{pod | podStatus | sentenceCase | translate}}<span ng-if=\"pod | podCompletionTime\" translate>, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>\n" +
-    "<span ng-if=\"pod.metadata.deletionTimestamp\" translate>(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
-=======
     "{{pod | podStatus | humanizePodStatus}}<span ng-if=\"pod | podCompletionTime\">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>\n" +
     "<span ng-if=\"pod.metadata.deletionTimestamp\">(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>\n" +
->>>>>>> Special case some humanized reasons codes
     "</dd>\n" +
     "<dt ng-if-start=\"pod.status.message\" translate>Message:</dt>\n" +
     "<dd ng-if-end>{{pod.status.message}}</dd>\n" +
@@ -1537,13 +1350,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<li ng-if=\"deployment && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Storage</a>\n" +
-=======
     "<li ng-if=\"deployment && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\">Add Storage</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</li>\n" +
     "<li ng-if=\"!deployment && ({ group: 'extensions', resource: 'replicasets' } | canI : 'update')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=ReplicaSet&name={{replicaSet.metadata.name}}&group=extensions\" role=\"button\" translate>Add Storage</a>\n" +
@@ -1552,24 +1360,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=ReplicaSet&name={{replicaSet.metadata.name}}&group=extensions\" ng-if=\"!deployment\" role=\"button\" translate>Add Autoscaler</a>\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" ng-if=\"deployment\" role=\"button\" translate>Add Autoscaler</a>\n" +
     "</li>\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<li ng-if=\"deployment && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
-    "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Edit Resource Limits</a>\n" +
-=======
     "<li ng-if=\"deployment && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\">Edit Resource Limits</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</li>\n" +
     "<li ng-if=\"!deployment && ({ group: 'extensions', resource: 'replicasets' } | canI : 'update')\">\n" +
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=ReplicaSet&name={{replicaSet.metadata.name}}&group=extensions\" role=\"button\" translate>Edit Resource Limits</a>\n" +
     "</li>\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<li ng-if=\"(!deployment && ({ group: 'extensions', resource: 'replicasets' } | canI : 'update')) || (deployment && ({group: 'extensions', resource: 'deployments' } | canI : 'update'))\">\n" +
-    "<a ng-href=\"{{healthCheckURL}}\" role=\"button\" translate>Edit Health Checks</a>\n" +
-=======
     "<li ng-if=\"(!deployment && ({ group: 'extensions', resource: 'replicasets' } | canI : 'update')) || (deployment && ({group: 'apps', resource: 'deployments' } | canI : 'update'))\">\n" +
     "<a ng-href=\"{{healthCheckURL}}\" role=\"button\">Edit Health Checks</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</li>\n" +
     "<li ng-if=\"{ group: 'extensions', resource: 'replicasets' } | canI : 'update'\">\n" +
     "<a ng-href=\"{{replicaSet | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
@@ -1665,21 +1463,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"kind === 'ReplicaSet'\">\n" +
     "<div ng-if=\"deployment\">\n" +
     "<volumes volumes=\"replicaSet.spec.template.spec.volumes\" namespace=\"project.metadata.name\"></volumes>\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<div ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" translate>Add Storage</a>\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}\" translate>Add Config Files</a>\n" +
-    "</div>\n" +
-    "<div ng-if=\"!replicaSet.spec.template.spec.volumes.length && !({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" translate>none</div>\n" +
-=======
     "<div ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Storage</a>\n" +
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Config Files</a>\n" +
     "</div>\n" +
     "<div ng-if=\"!replicaSet.spec.template.spec.volumes.length && !({ group: 'apps', resource: 'deployments' } | canI : 'update')\">none</div>\n" +
->>>>>>> Use `apps` API group for deployments
     "</div>\n" +
     "<div ng-if=\"!deployment\">\n" +
     "<div ng-if=\"resource | canI : 'update'\">\n" +
@@ -1699,15 +1488,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"deploymentConfigName\">\n" +
     "<volumes volumes=\"replicaSet.spec.template.spec.volumes\" namespace=\"project.metadata.name\"></volumes>\n" +
     "<div ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-<<<<<<< 61041415d6b4b98ad75d6e0cc8152f245d39c51c
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfigName}}\" translate>Add Storage to {{deploymentConfigName}}</a>\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfigName}}\" translate>Add Config Files to {{deploymentConfigName}}</a>\n" +
-=======
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfigName}}\">Add Storage</a>\n" +
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfigName}}\">Add Config Files</a>\n" +
->>>>>>> Consistent add storage links
     "</div>\n" +
     "<div ng-if=\"!replicaSet.spec.template.spec.volumes.length && !('deploymentconfigs' | canI : 'update')\" translate>none</div>\n" +
     "</div>\n" +
@@ -1748,17 +1531,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div ng-if=\"!autoscalers.length\">\n" +
     "<span ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\">\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<a ng-if=\"replicaSet.kind === 'ReplicaSet' && !deployment\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=ReplicaSet&name={{replicaSet.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
-    "<a ng-if=\"replicaSet.kind === 'ReplicaSet' && deployment\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
-    "<a ng-if=\"replicaSet.kind === 'ReplicationController' && !deploymentConfigName\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=ReplicationController&name={{replicaSet.metadata.name}}\" role=\"button\" translate>Add Autoscaler</a>\n" +
-    "<a ng-if=\"replicaSet.kind === 'ReplicationController' && deploymentConfigName\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfigName}}\" role=\"button\" translate>Add Autoscaler</a>\n" +
-=======
     "<a ng-if=\"replicaSet.kind === 'ReplicaSet' && !deployment\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=ReplicaSet&name={{replicaSet.metadata.name}}&group=extensions\" role=\"button\">Add Autoscaler</a>\n" +
     "<a ng-if=\"replicaSet.kind === 'ReplicaSet' && deployment\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
     "<a ng-if=\"replicaSet.kind === 'ReplicationController' && !deploymentConfigName\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=ReplicationController&name={{replicaSet.metadata.name}}\" role=\"button\">Add Autoscaler</a>\n" +
     "<a ng-if=\"replicaSet.kind === 'ReplicationController' && deploymentConfigName\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfigName}}\" role=\"button\">Add Autoscaler</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</span>\n" +
     "<span ng-if=\"!({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\">\n" +
     "<translate>Autoscaling is not enabled. There are no autoscalers for this</translate>\n" +
@@ -1831,13 +1607,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-if=\"buildConfig\" ng-hide=\"!('buildConfigs' | canIDoAny)\">\n" +
     "\n" +
-<<<<<<< 329d5d044dde764a8c86eb04c1991f00b6a64ef0
-    "<button class=\"btn btn-default hidden-xs\" ng-if=\"('buildconfigs/instantiate' | canI : 'create') && !(buildConfig | isBinaryBuild)\" ng-click=\"startBuild()\">\n" +
-    "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" translate>\n" +
-=======
     "<button class=\"btn btn-default hidden-xs\" ng-if=\"(buildConfigsInstantiateVersion | canI : 'create') && !(buildConfig | isBinaryBuild)\" ng-click=\"startBuild()\">\n" +
     "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\">\n" +
->>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start Build\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig | isJenkinsPipelineStrategy\" translate>\n" +
@@ -1861,16 +1632,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</a>\n" +
     "</li>\n" +
-<<<<<<< 84fbc73f2590b31bc1d19b7899a0fef63cc3f781
-    "<li ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{buildConfig | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'buildconfigs' | canI : 'delete'\">\n" +
-    "<delete-link kind=\"BuildConfig\" resource-name=\"{{buildConfig.metadata.name}}\" project-name=\"{{buildConfig.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
-=======
     "<li ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\">Edit</a>\n" +
     "</li>\n" +
@@ -1879,7 +1640,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"buildConfigsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"BuildConfig\" resource-name=\"{{buildConfig.metadata.name}}\" project-name=\"{{buildConfig.metadata.namespace}}\" alerts=\"alerts\">\n" +
->>>>>>> Update buildConfig controller to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -1907,17 +1667,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 translate>No builds.</h2>\n" +
     "<p>\n" +
     "<span ng-if=\"!buildConfig.spec.strategy.jenkinsPipelineStrategy\">\n" +
-<<<<<<< 329d5d044dde764a8c86eb04c1991f00b6a64ef0
-    "<span ng-if=\"!('buildconfigs/instantiate' | canI : 'create')\" translate>\n" +
-    "Builds will create an image from\n" +
-    "</span>\n" +
-    "<span ng-if=\"'buildconfigs/instantiate' | canI : 'create'\" translate>\n" +
-=======
     "<span ng-if=\"!(buildConfigsInstantiateVersion | canI : 'create')\">\n" +
     "Builds will create an image from\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfigsInstantiateVersion | canI : 'create'\">\n" +
->>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start a new build to create an image from\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig.spec.source.type === 'Git'\">\n" +
@@ -1942,13 +1695,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</span>\n" +
     "</p>\n" +
-<<<<<<< 329d5d044dde764a8c86eb04c1991f00b6a64ef0
-    "<button class=\"btn btn-primary btn-lg\" ng-click=\"startBuild()\" ng-if=\"('buildconfigs/instantiate' | canI : 'create') && !(buildConfig | isBinaryBuild)\">\n" +
-    "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\" translate>\n" +
-=======
     "<button class=\"btn btn-primary btn-lg\" ng-click=\"startBuild()\" ng-if=\"(buildConfigsInstantiateVersion | canI : 'create') && !(buildConfig | isBinaryBuild)\">\n" +
     "<span ng-if=\"!(buildConfig | isJenkinsPipelineStrategy)\">\n" +
->>>>>>> Update buildConfig ctrl/view with getPreferredVersion for buildconfigs/instantiate
     "Start Build\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig | isJenkinsPipelineStrategy\" translate>\n" +
@@ -2043,13 +1791,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</table>\n" +
     "<div ng-if=\"buildConfig | isJenkinsPipelineStrategy\">\n" +
     "<build-pipeline build=\"build\" ng-repeat=\"build in orderedBuilds track by (build | uid)\"></build-pipeline>\n" +
-<<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
-    "<table ng-if=\"(builds | hashSize) === 0\" class=\"table table-bordered table-hover table-mobile\">\n" +
-    "<tbody><tr><td><em>{{emptyMessage|translate}}</em></td></tr></tbody>\n" +
-=======
     "<table ng-if=\"(builds | hashSize) === 0\" class=\"table table-bordered table-mobile\">\n" +
     "<tbody><tr><td><em>{{emptyMessage}}</em></td></tr></tbody>\n" +
->>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "</table>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -2275,11 +2018,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-default\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.bcEnvVars.$pristine || forms.bcEnvVars.$invalid\" translate>Save</button>\n" +
     "<a ng-if=\"!forms.bcEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\" translate>Clear Changes</a>\n" +
     "</div>\n" +
-<<<<<<< 84fbc73f2590b31bc1d19b7899a0fef63cc3f781
-    "<key-value-editor ng-if=\"!('buildconfigs' | canI : 'update')\" entries=\"envVars\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" is-readonly cannot-add cannot-sort cannot-delete show-header></key-value-editor>\n" +
-=======
     "<key-value-editor ng-if=\"!(buildConfigsVersion | canI : 'update')\" entries=\"envVars\" key-placeholder=\"Name\" value-placeholder=\"Value\" is-readonly cannot-add cannot-sort cannot-delete show-header></key-value-editor>\n" +
->>>>>>> Update buildConfig controller to use getPreferredVersion
     "</ng-form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"('events' | canI : 'watch')\">\n" +
@@ -2306,13 +2045,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-hide=\"!('builds' | canIDoAny)\">\n" +
     "\n" +
-<<<<<<< 02f3daeac59a5264384e0b5f52d3f2a7b447e34e
-    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && ('builds' | canI : 'update')\" translate>Cancel Build</button>\n" +
-    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\" translate>Rebuild</button>\n" +
-=======
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\">Cancel Build</button>\n" +
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
->>>>>>> Update build controller to use getPreferredVersion
     "\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
     "<translate>Actions</translate>\n" +
@@ -2330,32 +2064,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</a>\n" +
     "</li>\n" +
-<<<<<<< 02f3daeac59a5264384e0b5f52d3f2a7b447e34e
-    "<li class=\"divider\" ng-if=\"'buildconfigs' | canI : 'update'\"></li>\n" +
-    "<li ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && ('builds' | canI : 'update')\" class=\"visible-xs-inline\">\n" +
-    "<a href=\"\" role=\"button\" ng-click=\"cancelBuild()\" translate>Cancel Build</a>\n" +
-=======
     "<li class=\"divider\" ng-if=\"buildConfigsVersion | canI : 'update'\"></li>\n" +
     "<li ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\" class=\"visible-xs-inline\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"cancelBuild()\">Cancel Build</a>\n" +
->>>>>>> Update build controller to use getPreferredVersion
     "</li>\n" +
     "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canBuild }\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"cloneBuild()\" ng-attr-aria-disabled=\"{{canBuild ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canBuild }\" translate>Rebuild</a>\n" +
     "</li>\n" +
-<<<<<<< 02f3daeac59a5264384e0b5f52d3f2a7b447e34e
-    "<li ng-if=\"('builds' | canI : 'update')\">\n" +
-    "<a ng-href=\"{{build | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"('builds' | canI : 'delete')\">\n" +
-    "<delete-link kind=\"Build\" resource-name=\"{{build.metadata.name}}\" project-name=\"{{build.metadata.namespace}}\" alerts=\"alerts\" redirect-url=\"{{build | configURLForResource}}\" translate>Delete\n" +
-=======
     "<li ng-if=\"(buildsVersion | canI : 'update')\">\n" +
     "<a ng-href=\"{{build | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
     "</li>\n" +
     "<li ng-if=\"(buildsVersion | canI : 'delete')\">\n" +
     "<delete-link kind=\"Build\" resource-name=\"{{build.metadata.name}}\" project-name=\"{{build.metadata.namespace}}\" alerts=\"alerts\" redirect-url=\"{{build | configURLForResource}}\">\n" +
->>>>>>> Update build controller to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -2381,25 +2101,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-include src=\" 'views/browse/_build-details.html' \"></ng-include>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\" ng-if=\"!(build | isJenkinsPipelineStrategy)\">\n" +
-<<<<<<< 02f3daeac59a5264384e0b5f52d3f2a7b447e34e
-    "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
-    "<h3 translate>Environment Variables</h3>\n" +
-    "<p ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
-=======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
     "<h3>Environment Variables</h3>\n" +
     "<p ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
->>>>>>> Update build controller to use getPreferredVersion
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "<translate>Environment variables can be edited on the <a ng-href=\"{{build | configURLForResource}}?tab=environment\">build configuration</a>.</translate>\n" +
     "</p>\n" +
-<<<<<<< 5a5753a171c0a009fb50393c1e7d14479bfa4b18
-    "<key-value-editor entries=\"(build | buildStrategy).env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" cannot-add cannot-delete cannot-sort is-readonly show-header class=\"mar-bottom-xl block\"></key-value-editor>\n" +
-    "<p ng-if=\"!(build | buildStrategy).env\"><em translate>The build strategy had no environment variables defined.</em></p>\n" +
-=======
     "<key-value-editor ng-if=\"(build | buildStrategy).env | size\" entries=\"(build | buildStrategy).env\" key-placeholder=\"Name\" value-placeholder=\"Value\" cannot-add cannot-delete cannot-sort is-readonly show-header class=\"mar-bottom-xl block\"></key-value-editor>\n" +
     "<p ng-if=\"!(build | buildStrategy).env\"><em>The build strategy had no environment variables defined.</em></p>\n" +
->>>>>>> Ensure kve does not render on browser builds if no envs to show
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.logs\" ng-if=\"!(build | isJenkinsPipelineStrategy) && ('builds/log' | canI : 'get')\">\n" +
     "<uib-tab-heading translate>Logs</uib-tab-heading>\n" +
@@ -2441,14 +2150,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"loaded && !error\">\n" +
     "<h1 class=\"contains-actions\">\n" +
-<<<<<<< 77a84f3b9523d505db1f61deeab577b84ba7c99d
-    "<div class=\"pull-right dropdown\" ng-if=\"'configmaps' | canIDoAny\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
-    "<translate>Actions</translate>\n" +
-    "<span class=\"caret\"></span>\n" +
-    "</button>\n" +
-    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
-=======
     "<div class=\"pull-right dropdown\">\n" +
     "\n" +
     "<button ng-if=\"project.metadata.name | canIAddToProject\" type=\"button\" class=\"btn btn-default hidden-xs\" ng-click=\"addToApplication()\">\n" +
@@ -2460,21 +2161,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "\n" +
     "<a href=\"\" ng-if=\"project.metadata.name | canIAddToProject\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
->>>>>>> "Add to Application" for config maps
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"project.metadata.name | canIAddToProject\" class=\"visible-xs\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
     "</li>\n" +
-<<<<<<< 61754f449b386bd75b3a7d9c288912264b0851e6
-    "<li ng-if=\"'configmaps' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'configmaps' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{configMap | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'configmaps' | canI : 'delete'\">\n" +
-    "<delete-link kind=\"ConfigMap\" resource-name=\"{{configMap.metadata.name}}\" project-name=\"{{configMap.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
-=======
     "<li ng-if=\"configMapsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{configMap | editResourceURL}}\" role=\"button\">Edit</a>\n" +
     "</li>\n" +
@@ -2483,7 +2173,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"configMapsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"ConfigMap\" resource-name=\"{{configMap.metadata.name}}\" project-name=\"{{configMap.metadata.namespace}}\" alerts=\"alerts\">\n" +
->>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -2532,17 +2221,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-<<<<<<< 61754f449b386bd75b3a7d9c288912264b0851e6
-    "<div class=\"pull-right\" ng-if=\"project && ('configmaps' | canI : 'create')\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\" translate>Create Config Map</a>\n" +
-=======
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
-=======
     "<div class=\"pull-right\" ng-if=\"project && (configMapsVersion | canI : 'create') && ((configMaps | hashSize) > 0 || filterWithZeroResults)\">\n" +
->>>>>>> Replacing empty tables with empty state message
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-default\">Create Config Map</a>\n" +
->>>>>>> Update configMap/configMaps controllers to use getPreferredVersion
     "</div>\n" +
     "<h1>\n" +
     "<translate>Config Maps</translate>\n" +
@@ -2564,11 +2245,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
-    "<div ng-if=\"loaded\">\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
-=======
     "<div ng-if=\"(configMaps | hashSize) == 0\">\n" +
     "<p ng-if=\"!loaded\">\n" +
     "Loading...\n" +
@@ -2587,7 +2263,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(configMaps | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -2598,14 +2273,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Labels</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<tbody ng-if=\"(configMaps | hashSize) == 0\">\n" +
-    "<tr><td colspan=\"3\"><em translate>No config maps to show</em></td></tr>\n" +
-    "</tbody>\n" +
-    "<tbody ng-if=\"(configMaps | hashSize) > 0\">\n" +
-=======
     "<tbody>\n" +
->>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"configMap in configMaps\">\n" +
     "<td data-title=\"Name\">\n" +
     "<a href=\"{{configMap | navigateResourceURL}}\">{{configMap.metadata.name}}</a>\n" +
@@ -2638,11 +2306,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-if=\"deploymentConfig\" ng-hide=\"!('deploymentConfigs' | canIDoAny)\">\n" +
     "\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<button ng-if=\"'deploymentconfigs/instantiate' | canI : 'create'\" class=\"btn btn-default hidden-xs\" ng-click=\"startLatestDeployment()\" ng-disabled=\"!canDeploy()\" translate>\n" +
-=======
     "<button ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\" class=\"btn btn-default hidden-xs\" ng-click=\"startLatestDeployment()\" ng-disabled=\"!canDeploy()\">\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "Deploy\n" +
     "</button>\n" +
     "\n" +
@@ -2652,23 +2316,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canDeploy() }\" ng-if=\"'deploymentconfigs/instantiate' | canI : 'create'\">\n" +
-    "<a href=\"\" role=\"button\" ng-attr-aria-disabled=\"{{canDeploy() ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canDeploy() }\" ng-click=\"startLatestDeployment()\" translate>Deploy</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{deploymentConfig | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
-    "</li>\n" +
-    "<li class=\"divider\" ng-if=\"'deploymentconfigs' | canI : 'update'\"></li>\n" +
-    "<li ng-if=\"!deploymentConfig.spec.paused && !updatingPausedState && ('deploymentconfigs' | canI : 'update')\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\" translate>Pause Rollouts</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"deploymentConfig.spec.paused && !updatingPausedState && ('deploymentconfigs' | canI : 'update')\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Add Storage</a>\n" +
-=======
     "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canDeploy() }\" ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\">\n" +
     "<a href=\"\" role=\"button\" ng-attr-aria-disabled=\"{{canDeploy() ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canDeploy() }\" ng-click=\"startLatestDeployment()\">Deploy</a>\n" +
     "</li>\n" +
@@ -2684,7 +2331,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Add Storage</a>\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"!autoscalers.length && (horizontalPodAutoscalersVersion | canI : 'create')\">\n" +
     "\n" +
@@ -2694,20 +2340,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=HorizontalPodAutoscaler&group=autoscaling&name={{autoscalers[0].metadata.name}}\" role=\"button\" translate>Edit Autoscaler</a>\n" +
     "</li>\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<li ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Edit Resource Limits</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{healthCheckURL}}\" role=\"button\" translate>Edit Health Checks</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{deploymentConfig | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li class=\"divider\" ng-if=\"'deploymentconfigs' | canI : 'update'\"></li>\n" +
-    "<li ng-if=\"'deploymentconfigs' | canI : 'delete'\">\n" +
-    "<delete-link kind=\"DeploymentConfig\" resource-name=\"{{deploymentConfig.metadata.name}}\" project-name=\"{{deploymentConfig.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\" translate>Delete\n" +
-=======
     "<li ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Edit Resource Limits</a>\n" +
     "</li>\n" +
@@ -2720,7 +2352,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li class=\"divider\" ng-if=\"deploymentConfigsVersion | canI : 'update'\"></li>\n" +
     "<li ng-if=\"deploymentConfigsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"DeploymentConfig\" resource-name=\"{{deploymentConfig.metadata.name}}\" project-name=\"{{deploymentConfig.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\">\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -2740,17 +2371,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-md-12\" ng-class=\"{ 'hide-tabs' : !deploymentConfig }\">\n" +
     "<div ng-if=\"deploymentConfig.spec.paused && !updatingPausedState\" class=\"alert alert-info animate-if\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<strong translate>{{deploymentConfig.metadata.name}} is paused.</strong>\n" +
-    "<translate>This will stop any new rollouts or triggers from running until resumed.</translate>\n" +
-    "<span ng-if=\"!updatingPausedState && ('deploymentconfigs' | canI : 'update')\" class=\"nowrap\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
-=======
     "<strong>{{deploymentConfig.metadata.name}} is paused.</strong>\n" +
     "This will stop any new rollouts or triggers from running until resumed.\n" +
     "<span ng-if=\"!updatingPausedState && (deploymentConfigsVersion | canI : 'update')\" class=\"nowrap\">\n" +
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</span>\n" +
     "</div>\n" +
     "<uib-tabset>\n" +
@@ -2868,33 +2492,50 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "\n" +
     "</dl>\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<h3 translate>Template</h3>\n" +
-    "<pod-template pod-template=\"deploymentConfig.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{('deploymentconfigs' | canI : 'update') ? healthCheckURL : ''}}\">\n" +
-    "</pod-template>\n" +
-    "<h3 translate>Volumes</h3>\n" +
-    "<p ng-if=\"!deploymentConfig.spec.template.spec.volumes.length && !('deploymentconfigs' | canI : 'update')\" translate>\n" +
-=======
     "<h3>Template</h3>\n" +
     "<pod-template pod-template=\"deploymentConfig.spec.template\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"true\" add-health-check-url=\"{{(deploymentConfigsVersion | canI : 'update') ? healthCheckURL : ''}}\">\n" +
     "</pod-template>\n" +
     "<h3>Volumes</h3>\n" +
     "<p ng-if=\"!deploymentConfig.spec.template.spec.volumes.length && !(deploymentConfigsVersion | canI : 'update')\">\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "none\n" +
     "</p>\n" +
     "<volumes volumes=\"deploymentConfig.spec.template.spec.volumes\" namespace=\"project.metadata.name\" can-remove=\"deploymentConfigsVersion | canI : 'update'\" remove-fn=\"removeVolume(volume)\">\n" +
     "</volumes>\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<p ng-if=\"'deploymentconfigs' | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Storage</a>\n" +
-=======
     "<p ng-if=\"deploymentConfigsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\">Add Storage</a>\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Config Files</a>\n" +
     "</p>\n" +
+    "<h3>Triggers</h3>\n" +
+    "<dl class=\"dl-horizontal left\">\n" +
+    "<dt>Manual (CLI):\n" +
+    "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
+    "<span class=\"learn-more-block\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
+    "</a>\n" +
+    "</dt>\n" +
+    "<dd>\n" +
+    "<copy-to-clipboard clipboard-text=\"'oc rollout latest dc/' + deploymentConfig.metadata.name + ' -n ' + project.metadata.name\"></copy-to-clipboard>\n" +
+    "</dd>\n" +
+    "<div ng-repeat=\"trigger in deploymentConfig.spec.triggers\">\n" +
+    "<span ng-switch=\"trigger.type\">\n" +
+    "<span ng-switch-default>{{trigger.type}}</span>\n" +
+    "<span ng-switch-when=\"ImageChange\" ng-if=\"trigger.imageChangeParams.from\">\n" +
+    "<dt>New Image For:</dt>\n" +
+    "<dd>\n" +
+    "{{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}\n" +
+    "<small ng-if=\"!trigger.imageChangeParams.automatic\" class=\"text-muted\">(disabled)</small>\n" +
+    "</dd>\n" +
+    "</span>\n" +
+    "<span ng-switch-when=\"ConfigChange\">\n" +
+    "<dt>Change Of:</dt>\n" +
+    "<dd>Config</dd>\n" +
+    "</span>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "</dl>\n" +
+    "\n" +
+    "<resource-service-bindings project=\"project\" project-context=\"projectContext\" api-object=\"deploymentConfig\">\n" +
+    "</resource-service-bindings>\n" +
     "</div>\n" +
     "\n" +
     "<div class=\"col-lg-6\">\n" +
@@ -2905,14 +2546,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
     "{{warning.message}}\n" +
     "\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" ng-if=\"warning.reason === 'NoCPURequest' && ('deploymentconfigs' | canI : 'update')\" role=\"button\" translate>Edit Resource <span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
-    "</div>\n" +
-    "\n" +
-    "<div ng-if=\"!autoscalers.length\">\n" +
-    "<a ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\" translate>Add Autoscaler</a>\n" +
-    "<span ng-if=\"!({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\" translate>Autoscaling is not enabled. There are no autoscalers for this deployment config.</span>\n" +
-=======
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" ng-if=\"warning.reason === 'NoCPURequest' && (deploymentConfigsVersion | canI : 'update')\" role=\"button\">Edit Resource\n" +
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
     "</div>\n" +
@@ -2920,14 +2553,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!autoscalers.length\">\n" +
     "<a ng-if=\"horizontalPodAutoscalersVersion | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" role=\"button\">Add Autoscaler</a>\n" +
     "<span ng-if=\"!(horizontalPodAutoscalersVersion | canI : 'create')\">Autoscaling is not enabled. There are no autoscalers for this deployment config.</span>\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "</div>\n" +
     "\n" +
     "<div ng-repeat=\"hpa in autoscalers\">\n" +
     "<hpa hpa=\"hpa\" project=\"project\" show-scale-target=\"false\" alerts=\"alerts\"></hpa>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "<div class=\"col-lg-6\" ng-if=\"deploymentConfig.spec.strategy.type !== 'Custom'\">\n" +
+    "<div ng-if=\"deploymentConfig.spec.strategy.type !== 'Custom'\">\n" +
     "<h3>\n" +
     "<translate>Hooks</translate>\n" +
     "</h3>\n" +
@@ -2940,10 +2571,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"strategyParams.post\">\n" +
     "<lifecycle-hook deployment-config=\"deploymentConfig\" type=\"post\"></lifecycle-hook>\n" +
     "</div>\n" +
-    "<div ng-if=\"!strategyParams.pre && !strategyParams.mid && !strategyParams.post\" translate>\n" +
+    "<p ng-if=\"!strategyParams.pre && !strategyParams.mid && !strategyParams.post\">\n" +
     "none\n" +
+    "</p>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"col-lg-6\">\n" +
     "<h3 translate>Triggers</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
@@ -2970,36 +2603,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<resource-service-bindings project=\"project\" project-context=\"projectContext\" api-object=\"deploymentConfig\">\n" +
     "</resource-service-bindings>\n" +
     "</div>\n" +
+=======
+>>>>>>> Fix bug where blank space appears in dc config page
     "</div>\n" +
     "<annotations annotations=\"deploymentConfig.metadata.annotations\"></annotations>\n" +
     "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\" ng-if=\"deploymentConfig\">\n" +
-<<<<<<< 1b792d60b2c6a082587b9c534c202445d006a985
-    "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
-    "<ng-form name=\"forms.dcEnvVars\" class=\"mar-bottom-xl block\">\n" +
-    "<confirm-on-exit ng-if=\"'deploymentconfigs' | canI : 'update'\" dirty=\"forms.dcEnvVars.$dirty\">\n" +
-    "</confirm-on-exit>\n" +
-    "<div ng-repeat=\"container in updatedDeploymentConfig.spec.template.spec.containers\">\n" +
-    "<h3 translate>Container {{container.name}} Environment Variables</h3>\n" +
-    "<key-value-editor ng-if=\"!('deploymentconfigs' | canI : 'update')\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" cannot-add cannot-sort cannot-delete is-readonly show-header></key-value-editor>\n" +
-    "<key-value-editor ng-if=\"'deploymentconfigs' | canI : 'update'\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"valueFromObjects\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'Please enter a valid key'|translate}}\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"{{'Add Environment Variable'|translate}}\" add-row-with-selectors-link=\"{{'Add Environment Variable Using a Config Map or Secret'|translate}}\" show-header></key-value-editor>\n" +
-    "</div>\n" +
-    "<button class=\"btn btn-default\" ng-if=\"'deploymentconfigs' | canI : 'update'\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.dcEnvVars.$pristine || forms.dcEnvVars.$invalid\" translate>Save</button>\n" +
-    "<a ng-if=\"!forms.dcEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\" translate>Clear Changes</a>\n" +
-    "</ng-form>\n" +
-=======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
     "<edit-environment-variables api-object=\"deploymentConfig\"></edit-environment-variables>\n" +
->>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
-<<<<<<< 2034b9b80e9ca1b69f4aecca51a0ee1ac5403419
-    "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
-    "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
-=======
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
     "<uib-tab-heading>Events</uib-tab-heading>\n" +
->>>>>>> Update DeploymentConfig controller to use getPreferredVersion
     "<events api-objects=\"[ deploymentConfig ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -3026,26 +2641,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\" translate>Pause Rollouts</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"deployment.spec.paused && !updatingPausedState && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
-    "</li>\n" +
-    "<li class=\"divider\" ng-if=\"!updatingPausedState && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\"></li>\n" +
-    "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Storage</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"!autoscalers.length && ({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\">\n" +
-    "\n" +
-    "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
-=======
     "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
-=======
     "<li ng-if=\"!deployment.spec.paused && !updatingPausedState && (deploymentsVersion | canI : 'update')\">\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<a href=\"\" ng-click=\"setPaused(true)\" role=\"button\">Pause Rollouts</a>\n" +
     "</li>\n" +
     "<li ng-if=\"deployment.spec.paused && !updatingPausedState && (deploymentsVersion | canI : 'update')\">\n" +
@@ -3058,48 +2655,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"!autoscalers.length && (horizontalPodAutoscalersVersion | canI : 'create')\">\n" +
     "\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</li>\n" +
     "<li ng-if=\"autoscalers.length === 1 && (horizontalPodAutoscalersVersion | canI : 'update')\">\n" +
     "\n" +
     "<a ng-href=\"project/{{projectName}}/edit/autoscaler?kind=HorizontalPodAutoscaler&group=autoscaling&name={{autoscalers[0].metadata.name}}\" role=\"button\" translate>Edit Autoscaler</a>\n" +
     "</li>\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Edit Resource Limits</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
-    "<a ng-href=\"{{healthCheckURL}}\" role=\"button\" translate>Edit Health Checks</a>\n" +
-=======
     "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
-=======
     "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Edit Resource Limits</a>\n" +
     "</li>\n" +
     "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{healthCheckURL}}\" role=\"button\">Edit Health Checks</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</li>\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-    "<li ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<a ng-href=\"project/{{projectName}}/edit/yaml?kind=Deployment&group=apps&name={{deployment.metadata.name}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li class=\"divider\" ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\"></li>\n" +
-    "<li ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'delete'\">\n" +
-    "<delete-link kind=\"Deployment\" group=\"extensions\" resource-name=\"{{deployment.metadata.name}}\" project-name=\"{{deployment.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\" translate>Delete\n" +
-=======
-=======
     "<li ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"{{deployment | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
     "</li>\n" +
     "<li class=\"divider\" ng-if=\"deploymentsVersion | canI : 'update'\"></li>\n" +
     "<li ng-if=\"deploymentsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Deployment\" group=\"apps\" resource-name=\"{{deployment.metadata.name}}\" project-name=\"{{deployment.metadata.namespace}}\" alerts=\"alerts\" hpa-list=\"autoscalers\">\n" +
->>>>>>> Use `apps` API group for deployments
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -3118,25 +2691,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-md-12\" ng-class=\"{ 'hide-tabs' : !deployment }\">\n" +
     "<div ng-if=\"deployment.spec.paused && !updatingPausedState\" class=\"alert alert-info animate-if\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<strong translate>{{deployment.metadata.name}} is paused.</strong>\n" +
-    "<translate>This pauses any in-progress rollouts and stops new rollouts from running until the deployment is resumed.</translate>\n" +
-    "<span ng-if=\"!updatingPausedState && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" class=\"nowrap\">\n" +
-    "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
-=======
     "<strong>{{deployment.metadata.name}} is paused.</strong>\n" +
     "This pauses any in-progress rollouts and stops new rollouts from running until the deployment is resumed.\n" +
     "<span ng-if=\"!updatingPausedState && (deploymentsVersion | canI : 'update')\" class=\"nowrap\">\n" +
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\">Resume Rollouts</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</span>\n" +
     "</div>\n" +
     "<uib-tabset>\n" +
     "<uib-tab active=\"selectedTab.history\">\n" +
-<<<<<<< f0c1e251e488c363375b718cecb05c866e8925a2
-    "<uib-tab-heading translate>History</uib-tab-heading>\n" +
-    "<div ng-if=\"replicaSetsForDeployment | hashSize\">\n" +
-=======
     "<uib-tab-heading>History</uib-tab-heading>\n" +
     "<div class=\"table-filter-extension\">\n" +
     "<div class=\"data-toolbar\">\n" +
@@ -3145,12 +2707,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-<<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
->>>>>>> Label Filter for Kubernetes Deployment History Tab
-    "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
-=======
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<colgroup>\n" +
     "<col class=\"col-sm-2\">\n" +
     "<col class=\"col-sm-4\">\n" +
@@ -3259,36 +2816,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</pod-template>\n" +
     "</div>\n" +
     "<div class=\"col-lg-6\">\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<h3 translate>Volumes</h3>\n" +
-    "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" translate>\n" +
-=======
     "<h3>Volumes</h3>\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
     "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
->>>>>>> Use `apps` API group for deployments
-=======
     "<p ng-if=\"!deployment.spec.template.spec.volumes.length && !(deploymentsVersion | canI : 'update')\">\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "none\n" +
     "</p>\n" +
     "<volumes volumes=\"deployment.spec.template.spec.volumes\" namespace=\"project.metadata.name\" can-remove=\"deploymentsVersion | canI : 'update'\" remove-fn=\"removeVolume(volume)\">\n" +
     "</volumes>\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<div ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" translate>Add Storage</a>\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" translate>Add Config Files</a>\n" +
-=======
     "<div ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\">\n" +
-=======
     "<div ng-if=\"deploymentsVersion | canI : 'update'\">\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Storage</a>\n" +
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=Deployment&name={{deployment.metadata.name}}&group=apps\">Add Config Files</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</div>\n" +
     "<h3 translate>Autoscaling</h3>\n" +
     "\n" +
@@ -3297,30 +2836,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
     "{{warning.message}}\n" +
     "\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
-    "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" ng-if=\"warning.reason === 'NoCPURequest' && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" role=\"button\" translate>Edit Resource <span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
-    "</div>\n" +
-    "\n" +
-    "<div ng-if=\"!autoscalers.length\">\n" +
-    "<a ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=extensions\" role=\"button\" translate>Add Autoscaler</a>\n" +
-=======
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" ng-if=\"warning.reason === 'NoCPURequest' && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\" role=\"button\">Edit Resource\n" +
-=======
     "<a ng-href=\"project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" ng-if=\"warning.reason === 'NoCPURequest' && (deploymentsVersion | canI : 'update')\" role=\"button\">Edit Resource\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\">Requests and</span> Limits</a>\n" +
     "</div>\n" +
     "\n" +
     "<div ng-if=\"!autoscalers.length\">\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-    "<a ng-if=\"{resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "<span ng-if=\"!({resource: 'horizontalpodautoscalers', group: 'autoscaling'} | canI : 'create')\">none</span>\n" +
-=======
     "<a ng-if=\"horizontalPodAutoscalersVersion | canI : 'create'\" ng-href=\"project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps\" role=\"button\">Add Autoscaler</a>\n" +
     "<span ng-if=\"!(horizontalPodAutoscalersVersion | canI : 'create')\">none</span>\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "</div>\n" +
     "\n" +
     "<div ng-repeat=\"hpa in autoscalers\">\n" +
@@ -3339,40 +2863,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\" ng-if=\"deployment\">\n" +
-<<<<<<< 1b792d60b2c6a082587b9c534c202445d006a985
-    "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
-    "<ng-form name=\"forms.deploymentEnvVars\">\n" +
-    "<confirm-on-exit ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\" dirty=\"forms.deploymentEnvVars.$dirty\">\n" +
-    "</confirm-on-exit>\n" +
-    "<div ng-repeat=\"container in updatedDeployment.spec.template.spec.containers\">\n" +
-<<<<<<< e7d8160eadef8c5a8b06e1e9f7b7bf096659df31
     "<h3 translate>Container {{container.name}} Environment Variables</h3>\n" +
     "<key-value-editor ng-if=\"!({ group: 'extensions', resource: 'deployments' } | canI : 'update')\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" cannot-add cannot-sort cannot-delete is-readonly show-header></key-value-editor>\n" +
     "<key-value-editor ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"valueFromObjects\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'Please enter a valid key'|translate}}\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"{{'Add Environment Variable'|translate}}\" add-row-with-selectors-link=\"{{'Add Environment Variable Using a Config Map or Secret'|translate}}\" show-header></key-value-editor>\n" +
     "</div>\n" +
     "<button class=\"btn btn-default\" ng-if=\"{ group: 'extensions', resource: 'deployments' } | canI : 'update'\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.deploymentEnvVars.$pristine || forms.deploymentEnvVars.$invalid\" translate>Save</button>\n" +
     "<a ng-if=\"!forms.deploymentEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\" translate>Clear Changes</a>\n" +
-=======
-    "<h3>Container {{container.name}} Environment Variables</h3>\n" +
-    "<key-value-editor ng-if=\"!({ group: 'apps', resource: 'deployments' } | canI : 'update')\" entries=\"container.env\" key-placeholder=\"Name\" value-placeholder=\"Value\" cannot-add cannot-sort cannot-delete is-readonly show-header></key-value-editor>\n" +
-    "<key-value-editor ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\" entries=\"container.env\" key-placeholder=\"Name\" value-placeholder=\"Value\" value-from-selector-options=\"valueFromObjects\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"Please enter a valid key\" key-validator-error-tooltip=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" add-row-link=\"Add Environment Variable\" add-row-with-selectors-link=\"Add Environment Variable Using a Config Map or Secret\" show-header></key-value-editor>\n" +
-    "</div>\n" +
-    "<button class=\"btn btn-default\" ng-if=\"{ group: 'apps', resource: 'deployments' } | canI : 'update'\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.deploymentEnvVars.$pristine || forms.deploymentEnvVars.$invalid\">Save</button>\n" +
-    "<a ng-if=\"!forms.deploymentEnvVars.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\">Clear Changes</a>\n" +
->>>>>>> Use `apps` API group for deployments
     "</ng-form>\n" +
-=======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
     "<edit-environment-variables api-object=\"deployment\"></edit-environment-variables>\n" +
->>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
-<<<<<<< 1f2aaca58152c7855cde9393986cf5558c16062a
-    "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
-    "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
-=======
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
     "<uib-tab-heading>Events</uib-tab-heading>\n" +
->>>>>>> Update deployment controller to get getPreferredVersion
     "<events api-objects=\"[ deployment ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -3449,19 +2951,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
-<<<<<<< 660775648bdefd3e6cf49f2ab3d8b4fb8e2d0e4b
-    "<li ng-if=\"'imagestreams' | canI : 'update'\">\n" +
-    "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li ng-if=\"'imagestreams' | canI : 'delete'\">\n" +
-    "<delete-link kind=\"ImageStream\" resource-name=\"{{imageStream.metadata.name}}\" project-name=\"{{imageStream.metadata.namespace}}\" alerts=\"alerts\" translate>Delete\n" +
-=======
     "<li ng-if=\"imageStreamsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
     "</li>\n" +
     "<li ng-if=\"imageStreamsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"ImageStream\" resource-name=\"{{imageStream.metadata.name}}\" project-name=\"{{imageStream.metadata.namespace}}\" alerts=\"alerts\">\n" +
->>>>>>> Update ImageController to use getPreferredVersion
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -3626,17 +3120,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-include src=\" 'views/browse/_pod-details.html' \"></ng-include>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\">\n" +
-<<<<<<< 1b792d60b2c6a082587b9c534c202445d006a985
-    "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
-    "<div ng-repeat=\"container in containersEnv\">\n" +
-    "<h3 translate>Container {{container.name}} Environment Variables</h3>\n" +
-    "<key-value-editor entries=\"container.env\" is-readonly cannot-add cannot-sort cannot-delete ng-if=\"container.env.length\"></key-value-editor>\n" +
-    "<em ng-if=\"!container.env.length\" translate>The container specification has no environment variables set.</em>\n" +
-    "</div>\n" +
-=======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
     "<edit-environment-variables api-object=\"pod\" ng-readonly=\"true\"></edit-environment-variables>\n" +
->>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
     "<uib-tab ng-if=\"metricsAvailable\" heading=\"{{'Metrics'|translate}}\" active=\"selectedTab.metrics\">\n" +
     "\n" +
@@ -3777,54 +3262,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab heading=\"Environment\" active=\"selectedTab.environment\">\n" +
-<<<<<<< 1b792d60b2c6a082587b9c534c202445d006a985
-    "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
-    "\n" +
-    "<div ng-if=\"(replicaSet | hasDeployment) || (replicaSet | hasDeploymentConfig)\">\n" +
-    "<p ng-if=\"deployment && ({ group: 'apps', resource: 'deployments' } | canI : 'update')\">\n" +
-    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-    "<translate>Environment variables can be edited on the <a ng-href=\"{{deployment | navigateResourceURL}}?tab=environment\">deployment</a>.</translate>\n" +
-=======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
     "<p ng-if=\"deployment && ({ group: 'extensions', resource: 'deployments' } | canI : 'update')\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "Environment variables can be edited on the deployment\n" +
     "<a ng-href=\"{{deployment | navigateResourceURL}}?tab=environment\">{{deployment.metadata.name}}</a>.\n" +
->>>>>>> Create reusable edit-environment-variables component
     "</p>\n" +
     "<p ng-if=\"deploymentConfigName && ('deploymentconfigs' | canI : 'update')\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-<<<<<<< 1b792d60b2c6a082587b9c534c202445d006a985
-    "<translate>Environment variables can be edited on the <a ng-href=\"{{replicaSet | configURLForResource}}?tab=environment\">deployment configuration</a>.</translate>\n" +
-    "</p>\n" +
-    "<div ng-repeat=\"container in updatedReplicaSet.spec.template.spec.containers\">\n" +
-    "<h3 translate>Container {{container.name}} Environment Variables</h3>\n" +
-    "<key-value-editor ng-if=\"container.env.length\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" cannot-add cannot-delete cannot-sort is-readonly show-header></key-value-editor>\n" +
-    "<em ng-if=\"!container.env.length\" translate>The container specification has no environment variables set.</em>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<ng-form ng-if=\"!(replicaSet | hasDeployment) && !(replicaSet | hasDeploymentConfig)\" name=\"forms.envForm\">\n" +
-    "<confirm-on-exit dirty=\"forms.envForm.$dirty\"></confirm-on-exit>\n" +
-    "<div ng-repeat=\"container in updatedReplicaSet.spec.template.spec.containers\">\n" +
-    "<div ng-if=\"resource | canI : 'update'\">\n" +
-    "<key-value-editor entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"valueFromObjects\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'Please enter a valid key'|translate}}\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"{{'Add Environment Variable'|translate}}\" add-row-with-selectors-link=\"{{'Add Environment Variable Using a Config Map or Secret'|translate}}\" show-header></key-value-editor>\n" +
-    "<button class=\"btn btn-default\" ng-click=\"saveEnvVars()\" ng-disabled=\"forms.envForm.$pristine || forms.envForm.$invalid\">Save</button>\n" +
-    "<a ng-if=\"!forms.envForm.$pristine\" href=\"\" ng-click=\"clearEnvVarUpdates()\" class=\"mar-left-sm\" style=\"vertical-align: -2px\">Clear changes</a>\n" +
-    "</div>\n" +
-    "<div ng-if=\"!(resource | canI : 'update')\">\n" +
-    "<key-value-editor ng-if=\"container.env.length\" entries=\"container.env\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" cannot-add cannot-delete cannot-sort is-readonly show-header></key-value-editor>\n" +
-    "<em ng-if=\"!container.env.length\" translate>The container specification has no environment variables set.</em>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "</ng-form>\n" +
-=======
     "Environment variables can be edited on deployment config\n" +
     "<a ng-href=\"{{replicaSet | configURLForResource}}?tab=environment\">{{deploymentConfigName}}</a>.\n" +
     "</p>\n" +
     "\n" +
     "<edit-environment-variables api-object=\"replicaSet\" ng-readonly=\"(replicaSet | hasDeployment) || (replicaSet | hasDeploymentConfig)\">\n" +
     "</edit-environment-variables>\n" +
->>>>>>> Create reusable edit-environment-variables component
     "</uib-tab>\n" +
     "<uib-tab ng-if=\"metricsAvailable\" heading=\"{{'Metrics'|translate}}\" active=\"selectedTab.metrics\">\n" +
     "\n" +
@@ -3931,14 +3382,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"showRouterHostnameAlert(ingress, admittedCondition)\" class=\"mar-top-lg\">\n" +
     "<div class=\"alert alert-info\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-<<<<<<< 744d6735b0d45b49ccfdd4ee9e2deea10aa1b381
-    "<span class=\"mar-right-sm\" translate>\n" +
     "The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}}, to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.\n" +
-    "</span>\n" +
-    "<a href=\"\" ng-click=\"hideRouterHostnameAlert(ingress)\" role=\"button\" class=\"nowrap\" translate>Don't Show Me Again</a>\n" +
-=======
-    "The DNS admin should set up a CNAME from the route's hostname, {{ingress.host}}, to the router's canonical hostname, {{ingress.routerCanonicalHostname}}.\n" +
->>>>>>> Don't let users accidentally and permanently dismiss router hostname message
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -4075,13 +3519,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create')\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\" translate>Create Route</a>\n" +
-=======
     "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\">Create Route</a>\n" +
->>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
     "<h1>\n" +
     "<translate>Routes</translate>\n" +
@@ -4130,30 +3569,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</colgroup>\n" +
     "<thead>\n" +
     "<tr>\n" +
-<<<<<<< 914f4fd3ecefd0e8a749768f3b6a32da7fa1e3d1
-    "<th>{{customNameHeader || ('Name'|translate)}}</th>\n" +
-    "<th translate>Hostname</th>\n" +
-    "<th translate>Routes To</th>\n" +
-    "<th translate>Target Port</th>\n" +
-    "<th translate>TLS Termination</th>\n" +
-=======
     "<th>{{customNameHeader || 'Name'}}</th>\n" +
     "<th>Hostname</th>\n" +
     "\n" +
     "<th>Service</th>\n" +
     "<th>Target Port</th>\n" +
     "<th>TLS Termination</th>\n" +
->>>>>>> Route table tweaks
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<tbody ng-if=\"(routes | hashSize) == 0\">\n" +
-    "<tr><td colspan=\"5\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
-    "</tbody>\n" +
-    "<tbody ng-if=\"(routes | hashSize) > 0\">\n" +
-=======
     "<tbody>\n" +
->>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"route in routes | orderObjectsByDate : true\">\n" +
     "<td data-title=\"{{ customNameHeader || ('Name'|translate) }}\">\n" +
     "<a href=\"{{route | navigateResourceURL}}\">{{route.metadata.name}}</a>\n" +
@@ -4175,12 +3599,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Pending</span>\n" +
     "</span>\n" +
     "</td>\n" +
-<<<<<<< 914f4fd3ecefd0e8a749768f3b6a32da7fa1e3d1
-    "<td data-title=\"{{'Routes To'|translate}}\">\n" +
-=======
     "\n" +
     "<td data-title=\"Service\">\n" +
->>>>>>> Route table tweaks
     "<span ng-if=\"route.spec.to.kind !== 'Service'\">{{route.spec.to.kind}}: {{route.spec.to.name}}</span>\n" +
     "<span ng-if=\"route.spec.to.kind === 'Service'\"><a ng-href=\"{{route.spec.to.name | navigateResourceURL : 'Service': route.metadata.namespace}}\">{{route.spec.to.name}}</a></span>\n" +
     "</td>\n" +
@@ -4224,11 +3644,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"loaded && !error\">\n" +
     "<h1 class=\"contains-actions\">\n" +
-<<<<<<< 74daf8dfb26526d2e4312f5e74aefbe159df9ec0
-    "<div class=\"pull-right dropdown\" ng-hide=\"!('secrets' | canIDoAny)\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
-    "<translate>Actions</translate>\n" +
-=======
     "<div class=\"pull-right dropdown\">\n" +
     "\n" +
     "<button ng-if=\"project.metadata.name | canIAddToProject\" type=\"button\" class=\"btn btn-default hidden-xs\" ng-click=\"addToApplication()\">\n" +
@@ -4236,15 +3651,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" ng-hide=\"!('secrets' | canIDoAny)\">\n" +
     "Actions\n" +
->>>>>>> Add the ability to add a secret to an application
     "<span class=\"caret\"></span>\n" +
     "</button>\n" +
-<<<<<<< 77a84f3b9523d505db1f61deeab577b84ba7c99d
-    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
-=======
     "\n" +
     "<a href=\"\" ng-if=\"project.metadata.name | canIAddToProject\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
->>>>>>> "Add to Application" for config maps
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"project.metadata.name | canIAddToProject\" class=\"visible-xs\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
@@ -4554,13 +3964,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
-<<<<<<< e7b3dbb2b9bd5db03eb750245f5ba7183c2be1fd
-    "<span class=\"pad-top-md\">\n" +
-    "<span class=\"label label-warning\" translate>Technology Preview</span>\n" +
-    "</span>\n" +
-    "</div>\n" +
-=======
->>>>>>> Improving display of tech-preview label
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div>\n" +
     "<h1>\n" +
@@ -4672,13 +4075,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
-<<<<<<< e7b3dbb2b9bd5db03eb750245f5ba7183c2be1fd
-    "<span class=\"pad-top-xs pull-right\">\n" +
-    "<span class=\"label label-warning\" translate>Technology Preview</span>\n" +
-    "</span>\n" +
-=======
     "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
->>>>>>> Improving display of tech-preview label
     "<h1>\n" +
     "<translate>Stateful Sets</translate>\n" +
     "\n" +
@@ -4693,11 +4090,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\" persist-tab-state>\n" +
     "<div class=\"container-fluid\">\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<alerts alerts=\"alerts\"></alerts>\n" +
-    "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
-=======
->>>>>>> Replacing empty tables with empty state message
     "<div class=\"row\" ng-if=\"loaded\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"(statefulSets | hashSize) == 0\">\n" +
@@ -4725,14 +4117,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<tbody ng-if=\"(statefulSets | hashSize) == 0\">\n" +
-    "<tr>\n" +
-    "<td colspan=\"3\"><em translate>No stateful sets to show</em></td>\n" +
-    "</tr>\n" +
-    "</tbody>\n" +
-=======
->>>>>>> Replacing empty tables with empty state message
     "<tbody ng-repeat=\"(statefulSetName, statefulSet) in statefulSets\">\n" +
     "<tr>\n" +
     "<td data-title=\"Name\">\n" +
@@ -4816,19 +4200,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th ng-class=\"{'hidden-sm' : (latestByConfig | hashSize)}\" translate>Source</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-<<<<<<< 7ea42e6b4e3b96e22cca5e6ddfdd988bed433e85
-    "<tbody ng-if=\"!(latestByConfig | hashSize)\">\n" +
-    "<tr><td colspan=\"7\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
-=======
     "<tbody ng-if=\"!(latestByConfig | hashSize) && !(buildsNoConfig | hashSize)\">\n" +
     "<tr><td colspan=\"7\"><em>{{emptyMessage}}</em></td></tr>\n" +
->>>>>>> Fix missing builds with no build config
-    "</tbody>\n" +
-    "<tbody ng-if=\"(latestByConfig | hashSize) || (buildsNoConfig | hashSize)\">\n" +
-=======
     "<tbody>\n" +
->>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"(buildConfigName, latestBuild) in latestByConfig\" ng-if=\"buildConfigName !== ''\">\n" +
     "\n" +
     "<td ng-if-start=\"!latestBuild\" data-title=\"Name\">\n" +
@@ -4858,12 +4232,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<td ng-if-start=\"latestBuild && (buildConfigs[buildConfigName] || !unfilteredBuildConfigs[buildConfigName])\" data-title=\"Name\">\n" +
     "<a ng-if=\"buildConfigName\" href=\"{{latestBuild | configURLForResource}}\">{{buildConfigName}}</a>\n" +
-<<<<<<< 7ea42e6b4e3b96e22cca5e6ddfdd988bed433e85
-    "<span ng-if=\"buildConfigs && buildConfigName && !buildConfigs[buildConfigName]\" class=\"pficon pficon-warning-triangle-o\" data-toggle=\"tooltip\" title=\"{{'This build config no longer exists'|translate}}\" style=\"cursor: help\"></span>\n" +
-    "<span ng-if=\"buildConfigName == ''\"><em>none</em></span>\n" +
-=======
     "<span ng-if=\"buildConfigs && buildConfigName && !buildConfigs[buildConfigName]\" class=\"pficon pficon-warning-triangle-o\" data-toggle=\"tooltip\" title=\"This build config no longer exists\" style=\"cursor: help\"></span>\n" +
->>>>>>> Fix missing builds with no build config
     "</td>\n" +
     "<td data-title=\"Last Build\">\n" +
     "\n" +
@@ -5060,13 +4429,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group has-clear\">\n" +
     "\n" +
     "<div class=\"search-pf-input-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"search\" class=\"sr-only\" translate>Filter by name or description</label>\n" +
-    "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"{{'Filter by name or description'|translate}}\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<label for=\"search\" class=\"sr-only\">Filter by name or description</label>\n" +
     "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"Filter by name or description\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.keyword\" ng-click=\"filter.keyword = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -5168,13 +4532,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group has-clear\">\n" +
     "\n" +
     "<div class=\"search-pf-input-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"search\" class=\"sr-only\" translate>Filter by name or description</label>\n" +
-    "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"{{'Filter by name or description'|translate}}\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<label for=\"search\" class=\"sr-only\">Filter by name or description</label>\n" +
     "<input ng-model=\"filter.keyword\" type=\"search\" id=\"search\" placeholder=\"Filter by name or description\" class=\"search-input form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.keyword\" ng-click=\"filter.keyword = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -5409,23 +4768,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"help-block\" translate>\n" +
     "Routing is a way to make your application publicly visible.\n" +
     "</div>\n" +
-<<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
-    "<form name=\"createRouteForm\" class=\"mar-top-xl osc-form\">\n" +
-    "<div ng-if=\"!services\" translate>Loading...</div>\n" +
-=======
     "<form name=\"createRouteForm\" class=\"mar-top-xl osc-form\" novalidate>\n" +
     "<div ng-if=\"!services\">Loading...</div>\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
     "<div ng-if=\"services\">\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
     "<osc-routing model=\"routing\" services=\"services\" show-name-input=\"true\">\n" +
     "</osc-routing>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Labels for this route.'|translate}}\">\n" +
     "</label-editor>\n" +
-<<<<<<< 4c674be1a59fa96c08071b64d77448b696a02c94
-    "<a href=\"\" ng-click=\"copyServiceLabels()\" translate>Copy Service Labels</a>\n" +
-=======
->>>>>>> Prefill service labels when creating route
     "<div class=\"button-group gutter-top gutter-bottom\">\n" +
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"createRoute()\" ng-disabled=\"createRouteForm.$invalid || disableInputs || !createRoute\" value=\"\" translate>Create</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"\" ng-click=\"cancel()\" translate>Cancel</a>\n" +
@@ -5447,13 +4797,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-    "<div class=\"col-md-10 col-md-offset-1\">\n" +
-    "<div ng-if=\"!project\" class=\"mar-top-md\" translate>Loading...</div>\n" +
-=======
     "<div class=\"col-md-10\">\n" +
     "<div ng-if=\"!project\" class=\"mar-top-md\">Loading...</div>\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "<div ng-if=\"project\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
@@ -5495,13 +4840,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.fromFile\">\n" +
-<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
-    "<uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>\n" +
-    "<from-file project=\"project\" context=\"context\"></from-file>\n" +
-=======
     "<uib-tab-heading>Import YAML / JSON</uib-tab-heading>\n" +
     "<from-file ng-if=\"project\" project=\"project\"></from-file>\n" +
->>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
     "</div>\n" +
@@ -5517,15 +4857,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-    "<div class=\"row\">\n" +
-    "<div class=\"col-md-12\">\n" +
-    "<h1>{{category.label|translate}}</h1>\n" +
-    "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description|translate}}</div>\n" +
-=======
     "<h1>{{category.label}}</h1>\n" +
     "<div ng-if=\"category.description\" class=\"help-block mar-bottom-lg\">{{category.description}}</div>\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "\n" +
     "<div ng-if=\"category.subcategories\">\n" +
     "<catalog project-name=\"projectName\" project-image-streams=\"projectImageStreams\" openshift-image-streams=\"openshiftImageStreams\" project-templates=\"projectTemplates\" openshift-templates=\"openshiftTemplates\" squid-tab=\"squidTab\" category=\"category\">\n" +
@@ -5653,12 +4986,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</osc-routing>\n" +
     "</osc-form-section>\n" +
     "\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-    "<osc-form-section header=\"Build Configuration\" about-title=\"Build Configuration\" about=\"{{'A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds.'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
-=======
     "<osc-form-section header=\"Build Configuration\" about-title=\"Build Configuration\" about=\"A build configuration describes how to build your deployable image.  This includes\n" +
     "                            your source, the base builder image, and when to launch new builds.\" expand=\"true\" can-toggle=\"false\">\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"buildConfig.buildOnSourceChange\"/>\n" +
@@ -5695,12 +5024,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<key-value-editor entries=\"buildConfigEnvVars\" key-placeholder=\"{{'name'|translate}}\" value-placeholder=\"{{'value'|translate}}\" key-validator=\"[a-zA-Z_][a-zA-Z0-9_]*\" key-validator-error-tooltip=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" add-row-link=\"Add Environment Variable\"></key-value-editor>\n" +
     "</osc-form-section>\n" +
     "\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-    "<osc-form-section header=\"Deployment Configuration\" about-title=\"{{'Deployment Configuration'|translate}}\" about=\"{{'Deployment configurations describe how your application is configured by the cluster and under what conditions it should be recreated (e.g. when the image changes).'|translate}}\" expand=\"true\" can-toggle=\"false\">\n" +
-=======
     "<osc-form-section header=\"Deployment Configuration\" about-title=\"Deployment Configuration\" about=\"Deployment configurations describe how your application is configured\n" +
     "                            by the cluster and under what conditions it should be recreated (e.g. when the image changes).\" expand=\"true\" can-toggle=\"false\">\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "<div class=\"animate-drawer\" ng-show=\"$parent.expand\">\n" +
     "<h3 translate>Autodeploy when</h3>\n" +
     "<div class=\"checkbox\">\n" +
@@ -5755,15 +5080,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
-<<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
-    "<div class=\"form-group\" ng-if=\"!scaling.autoscale\">\n" +
-    "<label class=\"number\" translate>Replicas</label>\n" +
-    "<input type=\"number\" class=\"form-control\" min=\"0\" name=\"replicas\" ng-model=\"scaling.replicas\" ng-required=\"!scaling.autoscale\" ng-disabled=\"scaling.autoscale\" ng-pattern=\"/^\\d+$/\" aria-describedby=\"replicas-help\">\n" +
-=======
     "<div ng-if=\"!scaling.autoscale\" class=\"form-group\" ng-class=\"{ 'has-error': form.replicas.$dirty && form.replicas.$invalid }\">\n" +
     "<label class=\"number\">Replicas</label>\n" +
     "<input type=\"number\" class=\"form-control\" min=\"0\" name=\"replicas\" ng-model=\"scaling.replicas\" ng-required=\"!scaling.autoscale\" ng-disabled=\"scaling.autoscale\" pattern=\"\\d*\" select-on-focus aria-describedby=\"replicas-help\">\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
     "<div id=\"replicas-help\">\n" +
     "<span class=\"help-block\" translate>The number of instances of your image.</span>\n" +
     "</div>\n" +
@@ -5799,11 +5118,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</osc-form-section>\n" +
     "\n" +
-<<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
-    "<label-editor labels=\"userDefinedLabels\" system-labels=\"systemLabels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
-=======
     "<label-editor labels=\"labelArray\" expand=\"true\" can-toggle=\"false\" help-text=\"Each label is applied to each created resource.\">\n" +
->>>>>>> Let users edit app label directly for "add to project"
     "</label-editor>\n" +
     "</div>\n" +
     "<div class=\"mar-top-md\">\n" +
@@ -5813,14 +5128,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>for source, routes, builds, and deployments.</translate>\n" +
     "</div>\n" +
     "<div class=\"buttons gutter-bottom\" ng-class=\"{'gutter-top': !alerts.length}\">\n" +
-<<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
-    "\n" +
-    "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs\" translate>Create</button>\n" +
-    "<a class=\"btn btn-default btn-lg\" href=\"\" ng-click=\"cancel()\" role=\"button\" translate>Cancel</a>\n" +
-=======
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-disabled=\"form.$invalid || nameTaken || cpuProblems.length || memoryProblems.length || disableInputs\">Create</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"\" ng-click=\"cancel()\" role=\"button\">Cancel</a>\n" +
->>>>>>> Let users edit app label directly for "add to project"
     "</div>\n" +
     "</form>\n" +
     "</fieldset>\n" +
@@ -5872,15 +5181,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-<<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
-    "<h3 ng-if=\"(deployments | size) || (replicaSets | size)\" translate>Deployment Configurations</h3>\n" +
-    "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
-=======
-    "<h3 ng-if=\"(deployments | size) || (replicaSets | size)\">Deployment Configurations</h3>\n" +
-    "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Removing table-hover from tables to address inconsistency in hover color
-=======
     "<p ng-if=\"!deploymentConfigsLoaded\">\n" +
     "Loading...\n" +
     "</p>\n" +
@@ -5898,7 +5198,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!filterWithZeroResults\">\n" +
     "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\">Deployment Configurations</h3>\n" +
     "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
     "<col class=\"col-sm-3\">\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -5915,16 +5214,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Trigger</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "\n" +
-    "<tbody ng-if=\"showEmptyMessage()\">\n" +
-    "\n" +
-    "<tr><td colspan=\"5\"><em>{{emptyMessage|translate}}</em></td></tr>\n" +
-    "</tbody>\n" +
-    "<tbody ng-if=\"!showEmptyMessage()\">\n" +
-=======
     "<tbody>\n" +
->>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat-start=\"(dcName, replicationControllersForDC) in replicationControllersByDC\" ng-if=\"dcName && (deploymentConfigs[dcName] || !unfilteredDeploymentConfigs[dcName])\" style=\"display: none\"></tr>\n" +
     "\n" +
     "<tr ng-if=\"(replicationControllersForDC | hashSize) == 0 && dcName\">\n" +
@@ -5986,18 +5276,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<tr ng-repeat-end style=\"display: none\"></tr>\n" +
     "</tbody>\n" +
     "</table>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<div ng-if=\"deployments | size\">\n" +
-<<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
-    "<h3 translate>Deployments</h3>\n" +
-    "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
-=======
-=======
     "<div ng-if=\"(deployments | size)\">\n" +
->>>>>>> Replacing empty tables with empty state message
     "<h3>Deployments</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<colgroup>\n" +
     "<col class=\"col-sm-4\">\n" +
     "<col class=\"col-sm-2\">\n" +
@@ -6068,18 +5349,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<div ng-if=\"(unfilteredReplicationControllers | hashSize) > 0\" id=\"replica-controllers\">\n" +
-<<<<<<< 96de671426db59fb68bd3b8af93d73f5d6503d3e
     "<h3 translate>Other Replication Controllers</h3>\n" +
     "<table class=\"table table-bordered table-hover table-mobile table-layout-fixed\">\n" +
-=======
-=======
     "<div ng-if=\"(replicationControllersByDC[''] | size)\" id=\"replica-controllers\">\n" +
->>>>>>> Replacing empty tables with empty state message
     "<h3>Other Replication Controllers</h3>\n" +
     "<table class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
->>>>>>> Removing table-hover from tables to address inconsistency in hover color
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "</colgroup>\n" +
@@ -6090,13 +5364,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<th translate>Created</th>\n" +
     "</tr>\n" +
     "</thead>\n" +
-<<<<<<< 2a3d518f8accb19b77ed445e1bcabc202f1d0ba9
-    "<tbody ng-if=\"(replicationControllersByDC[''] | hashSize) === 0\"><tr><td colspan=\"3\"><em translate>No replication controllers to show</em></td></tr></tbody>\n" +
-    "<tbody ng-if=\"(replicationControllersByDC[''] | hashSize) > 0\">\n" +
-    "\n" +
-=======
     "<tbody>\n" +
->>>>>>> Replacing empty tables with empty state message
     "<tr ng-repeat=\"deployment in replicationControllersByDC[''] | orderObjectsByDate : true\">\n" +
     "<td data-title=\"Name\">\n" +
     "<a ng-href=\"{{deployment | navigateResourceURL}}\">{{deployment.metadata.name}}</a>\n" +
@@ -6189,14 +5457,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"pipeline-actions\" ng-if=\"stage | pipelineStagePendingInput\">\n" +
     "<a ng-href=\"{{build | jenkinsInputURL}}\" target=\"_blank\" translate>Input Required</a>\n" +
     "</div>\n" +
-<<<<<<< 4d542bc2628b834a06eb2a70c0e5568b927e0d3d
-    "<div class=\"pipeline-time\" ng-class=\"stage.status\" ng-if=\"stage.durationMillis && !(stage | pipelineStagePendingInput)\">{{stage.durationMillis | timeOnlyDuration}}</div>\n" +
-    "<div class=\"pipeline-time\" ng-class=\"stage.status\" ng-if=\"!stage.durationMillis && !(stage | pipelineStagePendingInput)\" translate>not started</div>\n" +
-=======
     "<div class=\"pipeline-time\" ng-class=\"stage.status\" ng-if=\"!stage.durationMillis && !(stage | pipelineStagePendingInput)\">not started</div>\n" +
     "<div class=\"pipeline-time\" ng-class=\"stage.status\" ng-if=\"stage.startTimeMillis && !(stage | pipelineStagePendingInput) && !(stage | pipelineStageComplete)\"><time-only-duration-until-now timestamp=\"stage.startTimeMillis\"></time-only-duration-until-now></div>\n" +
     "<div class=\"pipeline-time\" ng-class=\"stage.status\" ng-if=\"stage.durationMillis && (stage | pipelineStageComplete)\">{{stage.durationMillis | timeOnlyDuration}}</div>\n" +
->>>>>>> Changing in progress pipeline stages to use timeOnlyDurationUntilNow on stage.startTimeMillis since stage.durationMillis will only update every 30s
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -6268,11 +5531,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "\n" +
     "<span ng-show=\"!multiline\" class=\"input-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<input type=\"text\" ng-model=\"nextArg\" name=\"nextArg\" ng-attr-id=\"{{id}}-add-arg\" on-enter=\"addArg()\" ng-attr-placeholder=\"{{placeholder || ('Add argument' | translate)}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<input type=\"text\" ng-model=\"nextArg\" name=\"nextArg\" ng-attr-id=\"{{id}}-add-arg\" on-enter=\"addArg()\" ng-attr-placeholder=\"{{placeholder || 'Add argument'}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<span class=\"input-group-btn\">\n" +
     "\n" +
     "<a class=\"btn btn-default\" href=\"\" ng-click=\"addArg()\" ng-disabled=\"!nextArg\" ng-attr-aria-disabled=\"!nextArg\" role=\"button\" translate>Add</a>\n" +
@@ -6280,11 +5539,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "\n" +
     "<span ng-show=\"multiline\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<textarea ng-model=\"nextArg\" name=\"nextArg\" rows=\"10\" ng-attr-id=\"{{id}}-add-arg\" ng-attr-placeholder=\"{{placeholder || ('Add argument' | translate)}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<textarea ng-model=\"nextArg\" name=\"nextArg\" rows=\"10\" ng-attr-id=\"{{id}}-add-arg\" ng-attr-placeholder=\"{{placeholder || 'Add argument'}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "      </textarea>\n" +
     "<div class=\"mar-top-md\">\n" +
     "<a class=\"btn btn-default\" href=\"\" ng-click=\"addArg()\" ng-disabled=\"!nextArg\" ng-attr-aria-disabled=\"!nextArg\" role=\"button\" translate>Add</a>\n" +
@@ -6361,13 +5616,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label ng-attr-for=\"{{id}}-initial-delay\" translate>Initial Delay</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.initialDelaySeconds.$invalid && form.initialDelaySeconds.$touched }\">\n" +
-<<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
-    "<input type=\"number\" name=\"initialDelaySeconds\" ng-model=\"probe.initialDelaySeconds\" ng-pattern=\"/^\\d+$/\" min=\"0\" select-on-focus ng-attr-id=\"{{id}}-initial-delay\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-delay-description\">\n" +
-    "<span class=\"input-group-addon\" translate>seconds</span>\n" +
-=======
     "<input type=\"number\" name=\"initialDelaySeconds\" ng-model=\"probe.initialDelaySeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus ng-attr-id=\"{{id}}-initial-delay\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-delay-description\">\n" +
     "<span class=\"input-group-addon\">seconds</span>\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" ng-attr-id=\"{{id}}-delay-description\" translate>\n" +
     "How long to wait after the container starts before checking its health.\n" +
@@ -6387,13 +5637,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label ng-attr-for=\"{{id}}-timeout\" translate>Timeout</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.timeoutSeconds.$invalid && form.timeoutSeconds.$touched }\">\n" +
-<<<<<<< 19ff3fa880c4a6d5649c9d06bdf380003f47c508
-    "<input type=\"number\" name=\"timeoutSeconds\" ng-model=\"probe.timeoutSeconds\" ng-pattern=\"/^\\d+$/\" min=\"1\" placeholder=\"1\" select-on-focus ng-attr-id=\"{{id}}-timeout\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-timeout-description\">\n" +
-    "<span class=\"input-group-addon\" translate>seconds</span>\n" +
-=======
     "<input type=\"number\" name=\"timeoutSeconds\" ng-model=\"probe.timeoutSeconds\" pattern=\"\\d*\" min=\"1\" placeholder=\"1\" select-on-focus ng-attr-id=\"{{id}}-timeout\" class=\"form-control\" ng-attr-aria-describedby=\"{{id}}-timeout-description\">\n" +
     "<span class=\"input-group-addon\">seconds</span>\n" +
->>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
     "<div class=\"help-block\" ng-attr-id=\"{{id}}-timeout-description\" translate>\n" +
     "How long to wait for the probe to finish. If the time is exceeded, the probe is considered failed.\n" +
@@ -6685,16 +5930,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/annotations.html',
-<<<<<<< 6b89057caf0ad4845545e3a7095b653e4e13e4db
-    "<p ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
-    "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"!expandAnnotations\" translate>Show Annotations</a>\n" +
-    "<a href=\"\" ng-click=\"toggleAnnotations()\" ng-if=\"expandAnnotations\" translate>Hide Annotations</a>\n" +
-=======
     "<p ng-if=\"annotations\" ng-class=\"{'mar-bottom-xl': !expandAnnotations}\">\n" +
-<<<<<<< 84f8e90872ec1018294e527299274f0eb5f34209
-    "<a href=\"\" ng-click=\"toggleAnnotations()\">{{!expandAnnotations ? 'Hide Annotations' : 'Show Annotations'}}</a>\n" +
->>>>>>> Do not show "Show Annotations" link when there are none
-=======
     "<a href=\"\" ng-click=\"toggleAnnotations()\">{{expandAnnotations ? 'Hide Annotations' : 'Show Annotations'}}</a>\n" +
 >>>>>>> Bug 1501849 - Fix show/hide annotations label
     "</p>\n" +
@@ -6881,9 +6117,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/build-status.html',
     "<status-icon status=\"build.status.phase\" disable-animation></status-icon>\n" +
-<<<<<<< 2aa1efe595273b032eb0b88fede2630e791463cb
-    "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase | translate}}</span><span ng-if=\"build.status.reason && build.status.phase !== 'Cancelled'\">{{build.status.reason | sentenceCase}}</span><span ng-switch=\"build.status.phase\" class=\"hide-ng-leave\" ng-if=\"build.status.startTimestamp\"><span ng-switch-when=\"Complete\">, <translate>ran for</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span ng-switch-when=\"Failed\">, <translate>ran for</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span ng-switch-when=\"Cancelled\"> <translate>after</translate> {{build.status.startTimestamp | timeOnlyDurationFromTimestamps : build.status.completionTimestamp}}</span><span ng-switch-when=\"Running\"> <translate>for</translate> <time-only-duration-until-now timestamp=\"build.status.startTimestamp\" time-only></time-only-duration-until-now></span><span ng-switch-when=\"New\"></span><span ng-switch-when=\"Pending\"></span><span ng-switch-default>, <translate>ran for</translate> {{build.status.startTimestamp | duration : build.status.completionTimestamp}}</span>\n" +
-=======
     "<span ng-if=\"!build.status.reason || build.status.phase === 'Cancelled'\">{{build.status.phase}}</span>\n" +
     "<span ng-if=\"build.status.reason && build.status.phase !== 'Cancelled'\">{{build.status.reason | sentenceCase}}</span>\n" +
     "<span ng-if=\"build.status.startTimestamp\" class=\"small text-muted\">\n" +
@@ -6894,7 +6127,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!build.status.completionTimestamp\">\n" +
     "<time-only-duration-until-now timestamp=\"build.status.startTimestamp\" time-only></time-only-duration-until-now>\n" +
     "</span>\n" +
->>>>>>> Improve monitoring page collapsed rows
     "</span>"
   );
 
@@ -6956,13 +6188,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.passwordToken.$invalid && secretForm.passwordToken.$touched }\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"passwordToken\" translate>Password or Token</label>\n" +
-    "<input class=\"form-control\" id=\"passwordToken\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
-=======
     "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"passwordToken\">Password or Token</label>\n" +
     "<input class=\"form-control\" id=\"passwordToken\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.passwordToken.$error.required && secretForm.passwordToken.$touched\">\n" +
     "<div class=\"help-block\" translate>\n" +
@@ -7175,12 +6402,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/directives/deploy-image.html',
     "<div class=\"deploy-image\">\n" +
-<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
-    "<p translate>\n" +
-=======
     "<select-project ng-if=\"!project\" selected-project=\"input.selectedProject\" name-taken=\"projectNameTaken\"></select-project>\n" +
     "<p>\n" +
->>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "Deploy an existing image from an image stream tag or docker pull spec.\n" +
     "</p>\n" +
     "<ng-form name=\"forms.imageSelection\">\n" +
@@ -7204,24 +6427,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div class=\"radio\" ng-class=\"{disabled : !input.selectedProject.metadata.uid}\">\n" +
     "<label>\n" +
-<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
-    "<input type=\"radio\" ng-model=\"mode\" value=\"dockerImage\">\n" +
-    "<translate>Image Name</translate>\n" +
-=======
     "<input type=\"radio\" ng-model=\"mode\" value=\"dockerImage\" ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
     "Image Name\n" +
->>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</label>\n" +
     "</div>\n" +
     "<fieldset ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"imageName\" class=\"sr-only\" translate>Image name or pull spec</label>\n" +
     "<div class=\"input-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<input type=\"search\" id=\"imageName\" name=\"imageName\" ng-model=\"imageName\" ng-required=\"mode === 'dockerImage'\" select-on-focus ng-disabled=\"mode !== 'dockerImage'\" placeholder=\"{{'Image name or pull spec'|translate}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<input type=\"search\" id=\"imageName\" name=\"imageName\" ng-model=\"imageName\" ng-required=\"mode === 'dockerImage'\" select-on-focus ng-disabled=\"mode !== 'dockerImage'\" placeholder=\"Image name or pull spec\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<span class=\"input-group-btn\">\n" +
     "<button class=\"btn btn-default\" type=\"submit\" ng-disabled=\"!imageName\" ng-click=\"findImage()\">\n" +
     "<i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n" +
@@ -7236,17 +6450,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</fieldset>\n" +
     "</fieldset>\n" +
     "</ng-form>\n" +
-<<<<<<< 2b3861967e0639ca08d7c0a92c7bce42d2f419c2
-    "<div ng-if=\"loading || !import\" class=\"empty-state-message text-muted text-center\">\n" +
-    "<span class=\"fa fa-cube icon-lg hero-icon\" aria-hidden=\"true\"></span>\n" +
-    "<div ng-if=\"!loading\" class=\"h2\" translate>Select an image stream tag or enter an image name.</div>\n" +
-    "<div ng-if=\"loading\" class=\"h2\" translate>Loading image metadata for <span class=\"word-break\">{{imageName | stripSHA}}</span>...</div>\n" +
-    "</div>\n" +
-    "<div class=\"row mar-bottom-md\" ng-if-start=\"!loading && import.image\">\n" +
-    "<div class=\"col-sm-12 mar-top-lg mar-bottom-lg\">\n" +
-=======
     "<div class=\"mar-top-lg mar-bottom-lg\">\n" +
->>>>>>> Remove hero-icon and make empty-state-message more consistent
     "<div class=\"separator\"></div>\n" +
     "</div>\n" +
     "<div ng-if=\"loading || !import\" class=\"empty-state-message text-center\">\n" +
@@ -7295,25 +6499,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if-end>\n" +
     "<ng-form name=\"forms.deployImage\" class=\"osc-form\">\n" +
     "<div class=\"form-group\">\n" +
-<<<<<<< b2a818e850e88a4bf76ea4c6fa6c3f16fe16818f
-    "<label for=\"name\" class=\"required\" translate>Name</label>\n" +
-    "<div ng-class=\"{'has-error': form.name.$invalid || nameTaken}\">\n" +
-    "<input type=\"text\" required select-on-focus minlength=\"2\" maxlength=\"24\" pattern=\"[a-z]([-a-z0-9]*[a-z0-9])?\" ng-model=\"app.name\" id=\"name\" name=\"name\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
-    "</div>\n" +
-    "<div class=\"help-block\" translate>Identifies the resources created for this image.</div>\n" +
-    "<div class=\"has-error\" ng-show=\"form.name.$invalid\">\n" +
-    "<div class=\"help-block\" ng-show=\"form.name.$error.required\" translate>\n" +
-    "A name is required.\n" +
-    "</div>\n" +
-    "<div class=\"help-block\" ng-show=\"form.name.$error.pattern\">\n" +
-    "<translate>Name must be an alphanumeric (a-z, 0-9) string with a maximum length of 24 characters where the first character is a letter (a-z).</translate>\n" +
-    "<translate>The '-' character is allowed anywhere except the first or last character.</translate>\n" +
-    "</div>\n" +
-    "<div class=\"help-block\" ng-show=\"form.name.$error.minlength\" translate>\n" +
-    "Name must have at least 2 characters.\n" +
-    "</div>\n" +
-    "<div class=\"help-block\" ng-show=\"form.name.$error.maxlength\" translate>\n" +
-=======
     "<label for=\"name\" class=\"required\">Name</label>\n" +
     "<div ng-class=\"{'has-error': (forms.deployImage.name.$invalid && forms.deployImage.name.$touched) || nameTaken}\">\n" +
     "<input type=\"text\" required select-on-focus minlength=\"2\" maxlength=\"24\" pattern=\"[a-z]([-a-z0-9]*[a-z0-9])?\" ng-model=\"app.name\" id=\"name\" name=\"name\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
@@ -7330,7 +6515,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Name must have at least 2 characters.\n" +
     "</div>\n" +
     "<div class=\"help-block\" ng-show=\"forms.deployImage.name.$error.maxlength\">\n" +
->>>>>>> Bug 1473601 - Fix form validation for deploy image
     "Name can't have more than 24 characters.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7338,31 +6522,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\" translate>This name is already in use within the project. Please choose a different name.</span>\n" +
     "</div>\n" +
     "</div>\n" +
-<<<<<<< e18215bce11e8ea7691b5e1111d724a7c7a3426a
-    "<osc-secrets model=\"pullSecrets\" namespace=\"project.metadata.name\" display-type=\"pull\" type=\"image\" secrets-by-type=\"secretsByType\" service-account-to-link=\"default\" alerts=\"alerts\" allow-multiple-secrets=\"true\">\n" +
-    "</osc-secrets>\n" +
-    "<osc-form-section header=\"{{'Environment Variables'|translate}}\" about-title=\"{{'Environment Variables'|translate}}\" about=\"{{'Environment variables are used to configure and pass information to running containers.'|translate}}\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
-    "<key-value-editor entries=\"env\" key-placeholder=\"{{'Name'|translate}}\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" value-from-selector-options=\"valueFromObjects\" add-row-link=\"{{'Add Environment Variable'|translate}}\" add-row-with-selectors-link=\"{{'Add Environment Variable Using a Config Map or Secret'|translate}}\"></key-value-editor>\n" +
-=======
     "<osc-form-section header=\"Environment Variables\" about-title=\"Environment Variables\" about=\"Environment variables are used to configure and pass information to running containers.\" expand=\"true\" can-toggle=\"false\" class=\"first-section\">\n" +
     "<key-value-editor entries=\"env\" key-placeholder=\"Name\" key-validator=\"[A-Za-z_][A-Za-z0-9_]*\" key-validator-error=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" value-placeholder=\"Value\" value-from-selector-options=\"input.selectedProject.metadata.uid && valueFromNamespace[input.selectedProject.metadata.name]\" add-row-link=\"Add Environment Variable\" add-row-with-selectors-link=\"Add Environment Variable Using a Config Map or Secret\"></key-value-editor>\n" +
->>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
     "</osc-form-section>\n" +
-<<<<<<< 2ce10c6042fed19b2d41d321f79dfff5933b7bea
-    "<label-editor labels=\"labels\" system-labels=\"systemLabels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Each label is applied to each created resource.'|translate}}\">\n" +
-=======
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\" help-text=\"Each label is applied to each created resource.\">\n" +
->>>>>>> Let users edit app label directly for "add to project"
     "</label-editor>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!isDialog\" class=\"button-group gutter-bottom\" ng-class=\"{'gutter-top': !alerts.length}\">\n" +
-<<<<<<< b2a818e850e88a4bf76ea4c6fa6c3f16fe16818f
-    "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"create()\" value=\"\" ng-disabled=\"form.$invalid || nameTaken || disableInputs\" translate>Create</button>\n" +
-    "<a class=\"btn btn-default btn-lg\" href=\"#\" back translate>Cancel</a>\n" +
-=======
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"create()\" value=\"\" ng-disabled=\"forms.deployImage.$invalid || nameTaken || disableInputs\">Create</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"#\" back>Cancel</a>\n" +
->>>>>>> Bug 1473601 - Fix form validation for deploy image
     "</div>\n" +
     "</ng-form>\n" +
     "</div>\n" +
@@ -7878,13 +7046,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"right-content\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading\" ng-if=\"!events\" class=\"events\"></ellipsis-pulser>\n" +
     "<div ng-if=\"events\" class=\"events\">\n" +
-<<<<<<< e45f57ed9deaa8236c40b19901903a80b116b9b9
-    "<div ng-if=\"!(events | hashSize)\" class=\"mar-left-xl\">\n" +
-    "<em translate>No events.</em>\n" +
-=======
     "<div ng-if=\"!(events | hashSize)\" class=\"event\">\n" +
     "<em>No events.</em>\n" +
->>>>>>> Use existing event class to set padding top and left
     "</div>\n" +
     "<div ng-repeat=\"event in events track by (event | uid)\" class=\"event animate-repeat\" ng-class=\"{'highlight': highlightedEvents[event.involvedObject.kind + '/' + event.involvedObject.name]}\">\n" +
     "<span class=\"sr-only\">{{event.type}}</span>\n" +
@@ -7938,13 +7101,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group filter-controls has-clear\">\n" +
     "<div class=\"search-pf-input-group\">\n" +
-<<<<<<< 656845f3b114502a31696acaa1a9a9eb3b3d0d2c
-    "<label for=\"events-filter\" class=\"sr-only\" translate>Filter</label>\n" +
-    "<input type=\"search\" placeholder=\"{{'Filter by keyword'|translate}}\" class=\"form-control\" id=\"events-filter\" ng-model=\"filter.text\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
-=======
     "<label for=\"events-filter\" class=\"sr-only\">Filter</label>\n" +
     "<input type=\"search\" placeholder=\"Filter by keyword\" class=\"form-control\" id=\"events-filter\" ng-model=\"filter.text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
->>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"filter.text\" ng-click=\"filter.text = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -7953,13 +7111,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "<div class=\"vertical-divider\"></div>\n" +
     "<div class=\"sort-group\">\n" +
-<<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
-    "<span class=\"sort-label\" translate>Sort by</span>\n" +
-    "<div pf-sort config=\"sortConfig\" class=\"sort-controls\"></div>\n" +
-=======
     "<span class=\"sort-label\">Sort by</span>\n" +
     "<pf-sort config=\"sortConfig\" class=\"sort-controls\"></pf-sort>\n" +
->>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -8051,13 +7204,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-<<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
-    "</div>\n" +
-    "<div pf-wizard-step wz-disabled=\"{{!$ctrl.template}}\" step-title=\"{{'Template Configuration'|translate}}\" step-id=\"template\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.templateForm.$invalid\">\n" +
-=======
     "</pf-wizard-step>\n" +
     "<pf-wizard-step wz-disabled=\"{{!$ctrl.template}}\" step-title=\"Template Configuration\" step-id=\"template\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!$ctrl.templateForm.$invalid\">\n" +
->>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<div class=\"wizard-pf-main-inner-shadow-covers\" ng-if=\"$ctrl.template\">\n" +
     "<div class=\"order-service-details\">\n" +
     "<div class=\"order-service-details-top\" ng-class=\"{'order-service-details-top-icon-top': ($ctrl.vendor || ($ctrl.docUrl || $ctrl.supportUrl))}\">\n" +
@@ -8127,29 +7275,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<parse-error error=\"error\" ng-show=\"error\"></parse-error>\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-sm-12 pod-bottom-xl\">\n" +
-<<<<<<< 4c90bbeb06cb1c3b6110ce79a149d15b4a595d99
-    "<form name=\"form\">\n" +
-    "<div class=\"form-group\" id=\"from-file\">\n" +
-    "<osc-file-input model=\"editorContent\" drop-zone-id=\"from-file\" help-text=\"{{'Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}\" ng-disabled=\"false\"></osc-file-input>\n" +
-    "<div ui-ace=\"{\n" +
-    "          mode: 'yaml',\n" +
-    "          theme: 'eclipse',\n" +
-    "          onLoad: aceLoaded,\n" +
-    "          onChange: aceChanged,\n" +
-    "          rendererOptions: {\n" +
-    "            fadeFoldWidgets: true,\n" +
-    "            showPrintMargin: false\n" +
-    "          }\n" +
-    "        }\" ng-model=\"editorContent\" class=\"editor ace-bordered yaml-mode\" id=\"add-component-editor\" required></div>\n" +
-    "</div>\n" +
-    "<div ng-if=\"!isDialog\" class=\"buttons gutter-bottom\">\n" +
-    "<button type=\"submit\" ng-click=\"create()\" ng-disabled=\"editorErrorAnnotation || !editorContent\" class=\"btn btn-primary btn-lg\" translate>\n" +
-=======
     "<form name=\"form\" id=\"from-file\">\n" +
     "<ui-ace-yaml resource=\"resource\" ng-required=\"true\" show-file-input=\"true\"></ui-ace-yaml>\n" +
     "<div ng-if=\"!isDialog\" class=\"buttons gutter-bottom\">\n" +
     "<button type=\"submit\" ng-click=\"create()\" ng-disabled=\"form.$invalid\" class=\"btn btn-primary btn-lg\">\n" +
->>>>>>> Improve YAML editor validation and feedback
     "Create\n" +
     "</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"\" role=\"button\" ng-click=\"cancel()\" translate>\n" +
@@ -8172,26 +7301,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/header/_navbar-utility.html',
     "<ul class=\"nav navbar-nav navbar-right navbar-iconic\">\n" +
     "<li extension-point extension-name=\"nav-system-status\" extension-types=\"dom\"></li>\n" +
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-<<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
-    "<li ng-if=\"launcherApps.length > 0\" pf-application-launcher items=\"launcherApps\" is-list=\"true\"></li>\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-=======
-=======
     "<notification-counter ng-hide=\"chromeless\"></notification-counter>\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "<li ng-if=\"launcherApps.length > 0\">\n" +
     "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
     "</li>\n" +
@@ -8203,7 +7313,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "<ul uib-dropdown-menu aria-labelledby=\"help-dropdown\" extension-point extension-name=\"nav-help-dropdown\" extension-types=\"dom html\"></ul>\n" +
     "</li>\n" +
->>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
     "<li uib-dropdown ng-cloak ng-if=\"user\">\n" +
     "<a href=\"\" uib-dropdown-toggle id=\"user-dropdown\" class=\"nav-item-iconic\">\n" +
     "<span class=\"fa pf-icon pficon-user\" aria-hidden=\"true\"></span>\n" +
@@ -8215,28 +7324,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
-<<<<<<< 5479afb30c5f67d0d51d56d622dc9a98171c3daa
-  $templateCache.put('views/directives/header/_tech-preview-banner.html',
-    "<translate>Technology preview is enabled</translate>"
-  );
-
-
-  $templateCache.put('views/directives/header/default-header.html',
-    "<ng-include ng-if=\"globalTechPreviewIndicator\" src=\"'views/directives/header/_tech-preview-banner.html'\" class=\"tech-preview-banner\"></ng-include>\n" +
-    "<nav class=\"navbar navbar-pf-alt\" role=\"navigation\">\n" +
-    "<div row class=\"nav\">\n" +
-    "<div class=\"navbar-header\">\n" +
-    "\n" +
-    "<div row class=\"navbar-flex-btn toggle-menu\">\n" +
-    "<button type=\"button\" class=\"navbar-toggle project-action-btn ng-isolate-scope\" data-toggle=\"collapse\" data-target=\".navbar-collapse-2\">\n" +
-    "<span class=\"sr-only\" translate>Toggle navigation</span>\n" +
-=======
   $templateCache.put('views/directives/header/header.html',
     "<nav class=\"navbar navbar-pf-vertical\" role=\"navigation\">\n" +
     "<div class=\"navbar-header\">\n" +
     "<button type=\"button\" class=\"navbar-toggle visible-xs\" ng-click=\"toggleMobileNav()\" on-esc=\"closeMobileNav()\">\n" +
     "<span class=\"sr-only\">Toggle navigation</span>\n" +
->>>>>>> Patternfly vertical navigation and project bar
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
     "<span class=\"icon-bar\"></span>\n" +
@@ -8281,15 +7373,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<overlay-panel show-panel=\"ordering.panelName\" show-close=\"true\" handle-close=\"closeOrderingPanel\">\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
-<<<<<<< e1088ec935a680b4e5ec942a6c12c3d7a1b07edd
-    "</overlay-panel>"
-  );
-
-
-  $templateCache.put('views/directives/header/project-header.html',
-    "<ng-include ng-if=\"globalTechPreviewIndicator\" src=\"'views/directives/header/_tech-preview-banner.html'\" class=\"tech-preview-banner\"></ng-include>\n" +
-    "<nav class=\"navbar navbar-pf-alt\" role=\"navigation\">\n" +
-    "<div class=\"navbar-header hidden-xs\">\n" +
     "<a class=\"navbar-home\" href=\"./\"><span class=\"fa-fw pficon pficon-home\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"visible-xlg-inline-block\">\n" +
     "<span ng-if=\"'service_catalog_landing_page' | enableTechPreviewFeature\" translate>\n" +
