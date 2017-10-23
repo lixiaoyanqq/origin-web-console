@@ -15173,8 +15173,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Loading...\n" +
     "</p>\n" +
     "<div ng-if=\"pvcsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
     "<h2>No persistent volume claims.</h2>\n" +
-    "<p ng-if=\"!filterWithZeroResults\">\n" +
+    "<p>\n" +
     "No persistent volume claims have been added to project {{projectName}}.\n" +
     "</p>\n" +
     "<p ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && !filterWithZeroResults\">\n" +
@@ -15182,6 +15183,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
     "</p>\n" +
 >>>>>>> Replacing empty tables with empty state message
+    "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all persistent volume claims. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<table ng-if=\"(pvcs | hashSize) > 0\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
