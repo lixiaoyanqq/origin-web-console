@@ -2861,11 +2861,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}\" translate>Add Config Files</a>\n" +
     "</p>\n" +
+<<<<<<< 50f25cdefddb29902774d2514dea6d7066cf7fae
     "<h3 translate>Triggers</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
     "<dt><translate>Manual (CLI):</translate>\n" +
     "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
     "<span class=\"learn-more-block\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
+=======
+    "<h3>Triggers</h3>\n" +
+    "<dl class=\"dl-horizontal left\">\n" +
+    "<dt>Manual (CLI):\n" +
+    "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
+    "<span class=\"learn-more-block\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "</a>\n" +
     "</dt>\n" +
     "<dd>\n" +
@@ -2875,6 +2883,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-switch=\"trigger.type\">\n" +
     "<span ng-switch-default>{{trigger.type}}</span>\n" +
     "<span ng-switch-when=\"ImageChange\" ng-if=\"trigger.imageChangeParams.from\">\n" +
+<<<<<<< 50f25cdefddb29902774d2514dea6d7066cf7fae
     "<dt translate>New Image For:</dt>\n" +
     "<dd>\n" +
     "{{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}\n" +
@@ -2884,6 +2893,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-switch-when=\"ConfigChange\">\n" +
     "<dt translate>Change Of:</dt>\n" +
     "<dd translate>Config</dd>\n" +
+=======
+    "<dt>New Image For:</dt>\n" +
+    "<dd>\n" +
+    "{{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}\n" +
+    "<small ng-if=\"!trigger.imageChangeParams.automatic\" class=\"text-muted\">(disabled)</small>\n" +
+    "</dd>\n" +
+    "</span>\n" +
+    "<span ng-switch-when=\"ConfigChange\">\n" +
+    "<dt>Change Of:</dt>\n" +
+    "<dd>Config</dd>\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "</span>\n" +
     "</span>\n" +
     "</div>\n" +
@@ -2938,11 +2958,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"strategyParams.post\">\n" +
     "<lifecycle-hook deployment-config=\"deploymentConfig\" type=\"post\"></lifecycle-hook>\n" +
     "</div>\n" +
+<<<<<<< 50f25cdefddb29902774d2514dea6d7066cf7fae
     "<p ng-if=\"!strategyParams.pre && !strategyParams.mid && !strategyParams.post\" translate>\n" +
+=======
+    "<p ng-if=\"!strategyParams.pre && !strategyParams.mid && !strategyParams.post\">\n" +
+>>>>>>> Fix bug where blank space appears in dc config page
     "none\n" +
     "</p>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2959,6 +2984,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"{{'deployment-operations' | helpLink}}\" target=\"_blank\">\n" +
     "<span class=\"learn-more-block\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span>\n" +
 =======
+=======
+<<<<<<< 50f25cdefddb29902774d2514dea6d7066cf7fae
+>>>>>>> Fix bug where blank space appears in dc config page
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 =======
     "<div class=\"col-lg-6\">\n" +
@@ -3027,6 +3055,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
 >>>>>>> Add bindings list to resource pages
 >>>>>>> Add bindings list to resource pages
+=======
+>>>>>>> Fix bug where blank space appears in dc config page
     "</div>\n" +
     "<annotations annotations=\"deploymentConfig.metadata.annotations\"></annotations>\n" +
     "</div>\n" +
