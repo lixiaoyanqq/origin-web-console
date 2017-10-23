@@ -6022,6 +6022,7 @@ dl.secret-data pre{margin-bottom:0}
 @media (min-width:1600px){.show-sidebar-right .sidebar-right{flex:0 0 480px}
 .show-sidebar-right .sidebar-right .right-section{width:480px}
 }
+<<<<<<< f95e3dc7dfd282235622a5725f29bf6a27bcf43f
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 .events-badge{font-size:14px;margin-top:9px}
 .events-badge:hover{text-decoration:none}
@@ -6037,6 +6038,15 @@ dl.secret-data pre{margin-bottom:0}
 >>>>>>> Patternfly vertical navigation and project bar
 .events-sidebar .pficon{vertical-align:middle}
 .events-sidebar .events-sidebar-collapse{margin-left:3px;margin-right:8px}
+=======
+.events-badge{font-size:14px;margin-top:9px}
+.events-badge:hover{text-decoration:none}
+.events-badge:hover .event-label{text-decoration:underline}
+.events-badge .event-count{color:#363636}
+.events-badge .pficon-info,.events-sidebar .pficon.pficon-info{color:#4d5258}
+.events-sidebar .pficon{vertical-align:middle}
+.events-sidebar .events-sidebar-collapse{font-size:16px;margin-right:10px}
+>>>>>>> Make pficon-info color in events match what's in notification drawer
 .events-sidebar .events-sidebar-collapse a{text-decoration:none}
 <<<<<<< 9854a04a93530a5cbed260dddc4991d2b65730e5
 .events-sidebar .sidebar-header.right-header{align-items:baseline;display:flex;justify-content:space-between;margin-top:0;padding-bottom:22px;padding-top:27px}
