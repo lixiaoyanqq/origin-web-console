@@ -1102,6 +1102,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"row\">\n" +
     "<div class=\"col-md-10\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
+<<<<<<< HEAD
     "<div ng-show=\"!pvcs || !attach.resource\" translate>Loading...</div>\n" +
     "<div ng-show=\"pvcs && !pvcs.length && attach.resource\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
     "<h2 translate>No persistent volume claims.</h2>\n" +
@@ -1112,6 +1113,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
 =======
     "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"text-center\">\n" +
+=======
+    "<div ng-show=\"!pvcs || !attach.resource\">Loading...</div>\n" +
+    "<div ng-show=\"pvcs && !pvcs.length && attach.resource\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
+    "<h2>No persistent volume claims.</h2>\n" +
+    "<p>\n" +
+    "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project.\n" +
+    "</p>\n" +
+    "<div ng-if=\"project && (pvcVersion | canI : 'create')\">\n" +
+>>>>>>> Center-align "Back to..." link on attach pic page
     "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
     "</div>\n" +
 >>>>>>> Update attachPVC controller to use getPreferredVersion
