@@ -144,7 +144,7 @@ angular.module('openshiftConsole')
         DataService.list($scope.configMapVersion, context, null, { errorNotification: false }).then(function(configMapData) {
           $scope.configMaps = orderByDisplayName(configMapData.by("metadata.name"));
         }, function(e) {
-          if (e.code === 403) {
+          if (e.status === 403) {
             $scope.configMaps = [];
             return;
           }
@@ -155,7 +155,7 @@ angular.module('openshiftConsole')
         DataService.list($scope.secretVersion, context, null, { errorNotification: false }).then(function(secretData) {
           $scope.secrets = orderByDisplayName(secretData.by("metadata.name"));
         }, function(e) {
-          if (e.code === 403) {
+          if (e.status === 403) {
             $scope.secrets = [];
             return;
           }

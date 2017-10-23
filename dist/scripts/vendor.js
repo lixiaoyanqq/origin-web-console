@@ -75151,7 +75151,7 @@ return e.reject(i);
 } ]), angular.module("openshiftCommonServices").factory("AuthorizationService", [ "$q", "$cacheFactory", "Logger", "$interval", "APIService", "DataService", function(e, t, n, i, r, o) {
 var a = null, s = t("rulesCache", {
 number: 10
-}), l = !1, c = [ "localresourceaccessreviews", "localsubjectaccessreviews", "resourceaccessreviews", "selfsubjectaccessreviews", "selfsubjectrulesreviews", "subjectaccessreviews" ], u = function(e) {
+}), l = !1, c = [ "localresourceaccessreviews", "localsubjectaccessreviews", "resourceaccessreviews", "selfsubjectaccessreviews", "selfsubjectrulesreviews", "subjectaccessreviews", "subjectrulesreviews", "podsecuritypolicyreviews", "podsecuritypolicysubjectreviews", "podsecuritypolicyselfsubjectreviews", "tokenreviews" ], u = function(e) {
 var t = {};
 return _.each(e, function(e) {
 _.each(e.apiGroups, function(n) {
@@ -75766,7 +75766,12 @@ s._listOpComplete(o, e, n, i, t);
 }).error(function(t, n, r, a) {
 s._listInFlight(o, !1);
 var l = s._listDeferred(o);
-delete s._listDeferredMap[o], l.reject(t, n, r, a), _.get(i, "errorNotification", !0) && b("Failed to list " + e, n);
+delete s._listDeferredMap[o], l.reject({
+data: t,
+status: n,
+headers: r,
+config: a
+}), _.get(i, "errorNotification", !0) && b("Failed to list " + e, n);
 });
 }) : t({
 method: "GET",
@@ -75778,7 +75783,12 @@ s._listOpComplete(o, e, n, i, t);
 }).error(function(t, n, r, a) {
 s._listInFlight(o, !1);
 var l = s._listDeferred(o);
-delete s._listDeferredMap[o], l.reject(t, n, r, a), _.get(i, "errorNotification", !0) && b("Failed to list " + e, n);
+delete s._listDeferredMap[o], l.reject({
+data: t,
+status: n,
+headers: r,
+config: a
+}), _.get(i, "errorNotification", !0) && b("Failed to list " + e, n);
 });
 }, f.prototype._listOpComplete = function(e, t, n, i, r) {
 r.items || console.warn("List request for " + t + " returned a null items array.  This is an invalid API response.");
