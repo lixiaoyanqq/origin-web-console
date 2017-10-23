@@ -10043,8 +10043,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"form.minReplicas.$error.pattern\" class=\"help-block\" translate>\n" +
     "Min pods must be a whole number.\n" +
     "</span>\n" +
+<<<<<<< HEAD
     "<span class=\"help-block\" ng-if=\"form.maxReplicas.$error.min\" translate>\n" +
     "Max pods must be greater than or equal to <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}}.\n" +
+=======
+    "<span class=\"help-block\" ng-if=\"form.maxReplicas.$error.min\">\n" +
+    "Max pods must be greater than or equal to\n" +
+    "<span ng-if=\"autoscaling.minReplicas\">min pods, which is</span>\n" +
+    "{{autoscaling.minReplicas || 1}}.\n" +
+>>>>>>> Bug 1505289 - Fix visible expression in HPA error message
     "</span>\n" +
     "<span class=\"help-block\" ng-if=\"form.maxReplicas.$error.required\" translate>\n" +
     "Max pods is a required field.\n" +
