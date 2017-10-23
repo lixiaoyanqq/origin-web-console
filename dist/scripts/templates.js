@@ -8096,7 +8096,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"osc-form\">\n" +
     "<alerts alerts=\"$ctrl.alerts\"></alerts>\n" +
     "<form name=\"$ctrl.templateForm\">\n" +
-    "<process-template project=\"$ctrl.selectedProject\" template=\"$ctrl.template\" alerts=\"$ctrl.alerts\" is-dialog=\"true\"></process-template>\n" +
+    "<process-template ng-if=\"$ctrl.template\" project=\"$ctrl.selectedProject\" template=\"$ctrl.template\" alerts=\"$ctrl.alerts\" is-dialog=\"true\"></process-template>\n" +
     "</form>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10149,7 +10149,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-config\">\n" +
     "<div class=\"osc-form\">\n" +
     "<form name=\"$ctrl.form\">\n" +
-    "<process-template template=\"$ctrl.template\" project=\"$ctrl.preSelectedProject\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.unfilteredProjects\" is-dialog=\"true\"></process-template>\n" +
+    "<process-template ng-if=\"$ctrl.template\" template=\"$ctrl.template\" project=\"$ctrl.preSelectedProject\" on-project-selected=\"$ctrl.onProjectSelected\" available-projects=\"$ctrl.unfilteredProjects\" is-dialog=\"true\"></process-template>\n" +
     "</form>\n" +
     "</div>\n" +
     "</div>"
