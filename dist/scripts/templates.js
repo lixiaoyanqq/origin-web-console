@@ -921,6 +921,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"targetObject && configMaps && secrets\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
     "<h2 translate>No config maps or secrets.</h2>\n" +
     "<p translate>\n" +
@@ -929,6 +930,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 class=\"text-center\">No config maps or secrets.</h2>\n" +
     "<p class=\"gutter-top\">\n" +
 >>>>>>> Update addConfigVolume controller
+=======
+    "<div ng-if=\"!configMaps.length && !secrets.length && !(configMapVersion | canI : 'create') && !(secretVersion | canI : 'create')\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
+    "<h2>No config maps or secrets.</h2>\n" +
+    "<p>\n" +
+>>>>>>> Making empty state formatting consistent with add volume
     "There are no config maps or secrets in project {{project | displayName}} to use as a volume for this {{kind | humanizeKind}}.\n" +
     "</p>\n" +
     "<p ng-if=\"targetObject\"><a ng-href=\"{{targetObject | navigateResourceURL}}\"><translate>Back to</translate> {{kind | humanizeKind}} {{name}}</a></p>\n" +
