@@ -9101,6 +9101,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "</overlay-panel>"
   );
 
@@ -9192,6 +9193,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Add 'Select from Project' option in the 'Add to Project' dropdown
     "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"project\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
+=======
+    "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"currentProject\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+>>>>>>> Preselect current project in 'Select from Project'
     "</overlay-panel>"
   );
 

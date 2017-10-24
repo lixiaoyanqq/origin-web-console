@@ -29287,8 +29287,12 @@ b.infoStep.selected = !1, b.selectStep.selected = !1, b.configStep.selected = !1
 >>>>>>> Add SVG icons
 }
 }, b.$onInit = function() {
+<<<<<<< HEAD
 b.loginBaseUrl = r.openshiftAPIBaseUrl(), b.preSelectedProject = b.selectedProject = b.project, h(), b.projectEmptyState = {
 icon: "pficon pficon-info",
+=======
+b.loginBaseUrl = r.openshiftAPIBaseUrl(), b.preSelectedProject = b.selectedProject = b.project, b.project && (b.templateProject = b.project, b.templateProjectChange()), h(), b.projectEmptyState = {
+>>>>>>> Preselect current project in 'Select from Project'
 title: "No Project Selected",
 info: "Please select a project from the dropdown to load Templates from that project."
 }, b.templatesEmptyState = {
