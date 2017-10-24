@@ -8337,15 +8337,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<overlay-panel class=\"add-config-to-application\" show-panel=\"$ctrl.overlayPanelVisible\" show-close=\"true\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
     "<div class=\"dialog-title\">\n" +
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
     "<h3 translate>{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h3>\n" +
+=======
+    "<h3>{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h3>\n" +
+>>>>>>> Reveal and hide secrets
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<h4>{{$ctrl.overlayPaneEntryDetails.metadata.name}}\n" +
     "<small ng-if=\"$ctrl.overlayPaneEntryDetails.kind === 'Secret'\" class=\"mar-left-sm\">\n" +
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
     "<a href=\"\" role=\"button\" ng-click=\"$ctrl.showSecret = !$ctrl.showSecret\" translate>{{$ctrl.showSecret ? \"Hide\" : \"Reveal\"}} Secret</a>\n" +
     "</small>\n" +
     "</h4>\n" +
     "<div ng-if=\"!($ctrl.overlayPaneEntryDetails.data | size)\" class=\"empty-state-message text-center\" translate>\n" +
+=======
+    "<a href=\"\" role=\"button\" ng-click=\"$ctrl.showSecret = !$ctrl.showSecret\">{{$ctrl.showSecret ? \"Hide\" : \"Reveal\"}} Secret</a>\n" +
+    "</small>\n" +
+    "</h4>\n" +
+    "<div ng-if=\"!($ctrl.overlayPaneEntryDetails.data | size)\" class=\"empty-state-message text-center\">\n" +
+>>>>>>> Reveal and hide secrets
     "The {{$ctrl.overlayPaneEntryDetails.kind | humanizeKind}} has no properties.\n" +
     "</div>\n" +
     "<div ng-if=\"$ctrl.overlayPaneEntryDetails.data | size\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
@@ -8360,7 +8371,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"$ctrl.showSecret && $ctrl.overlayPaneEntryDetails.kind === 'Secret'\">\n" +
     "<truncate-long-text content=\"value\" limit=\"50\" newline-limit=\"2\" expandable=\"true\">\n" +
     "</truncate-long-text>\n" +
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
     "<div ng-if=\"decodedData.$$nonprintable[prop]\" class=\"help-block\" translate>\n" +
+=======
+    "<div ng-if=\"decodedData.$$nonprintable[prop]\" class=\"help-block\">\n" +
+>>>>>>> Reveal and hide secrets
     "This secret value contains non-printable characters and is displayed as a Base64-encoded string.\n" +
     "</div>\n" +
     "</div>\n" +

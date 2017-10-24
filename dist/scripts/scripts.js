@@ -19803,6 +19803,7 @@ a.events = j(b), s();
 =======
 } ]), function() {
 angular.module("openshiftConsole").component("editEnvironmentFrom", {
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
 controller: [ "$attrs", "$filter", "keyValueEditorUtils", function(e, t, n) {
 var a = this, r = t("canI"), o = t("humanizeKind"), i = _.uniqueId();
 a.setFocusClass = "edit-environment-from-set-focus-" + i;
@@ -19818,26 +19819,54 @@ return a.isReadonlyAny || !0 === e.isReadonlyValue || (e.secretRef || e.configMa
 }, a.groupByKind = function(e) {
 return o(e.kind);
 }, a.dragControlListeners = {
+=======
+controller: [ "$attrs", "$filter", "keyValueEditorUtils", "SecretsService", function(e, t, n, a) {
+var r = this, o = t("canI"), i = t("humanizeKind"), s = _.uniqueId();
+r.setFocusClass = "edit-environment-from-set-focus-" + s, r.viewOverlayPanel = function(e) {
+r.decodedData = e.data, r.overlayPaneEntryDetails = e, "Secret" === e.kind && (r.decodedData = a.decodeSecretData(e.data)), r.overlayPanelVisible = !0;
+}, r.closeOverlayPanel = function() {
+r.showSecret = !1, r.overlayPanelVisible = !1;
+};
+var c = function(e, t) {
+e && e.push(t || {});
+};
+r.onAddRow = function() {
+c(r.envFromEntries), n.setFocusOn("." + r.setFocusClass);
+}, r.deleteEntry = function(e, t) {
+r.envFromEntries && !r.envFromEntries.length || (r.envFromEntries.splice(e, t), r.envFromEntries.length || c(r.envFromEntries), r.updateEntries(r.envFromEntries), r.editEnvironmentFromForm.$setDirty());
+}, r.hasOptions = function() {
+return !_.isEmpty(r.envFromSelectorOptions);
+}, r.hasEntries = function() {
+return _.some(r.entries, function(e) {
+return _.get(e, "configMapRef.name") || _.get(e, "secretRef.name");
+});
+}, r.isEnvFromReadonly = function(e) {
+return !0 === r.isReadonly || e && !0 === e.isReadonly;
+}, r.groupByKind = function(e) {
+return i(e.kind);
+}, r.dragControlListeners = {
+>>>>>>> Reveal and hide secrets
 accept: function(e, t) {
 return e.itemScope.sortableScope.$id === t.$id;
 },
 orderChanged: function() {
-a.editEnvironmentFromForm.$setDirty();
+r.editEnvironmentFromForm.$setDirty();
 }
-}, a.envFromObjectSelected = function(e, t, n) {
-var r = {};
+}, r.envFromObjectSelected = function(e, t, n) {
+var a = {};
 switch (n.kind) {
 case "Secret":
-r.secretRef = {
+a.secretRef = {
 name: n.metadata.name
-}, delete a.envFromEntries[e].configMapRef;
+}, delete r.envFromEntries[e].configMapRef;
 break;
 
 case "ConfigMap":
-r.configMapRef = {
+a.configMapRef = {
 name: n.metadata.name
-}, delete a.envFromEntries[e].secretRef;
+}, delete r.envFromEntries[e].secretRef;
 }
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
 _.assign(a.envFromEntries[e], r), a.updateEntries(a.envFromEntries);
 }, a.updateEntries = function(e) {
 a.entries = _.filter(e, function(e) {
@@ -19851,6 +19880,18 @@ e && (e.configMapRef && !r("configmaps", "get") && (e.isReadonlyValue = !0), e.s
 }, l = function(e) {
 var t;
 switch (e.kind) {
+=======
+t.prefix && (a.prefix = t.prefix), _.assign(r.envFromEntries[e], a), r.updateEntries(r.envFromEntries);
+}, r.updateEntries = function(e) {
+r.entries = _.filter(e, function(e) {
+return e.secretRef || e.configMapRef;
+});
+};
+var l = function() {
+var e = {}, t = {};
+r.envFromEntries = r.entries || [], r.envFromEntries.length || c(r.envFromEntries), _.each(r.envFromSelectorOptions, function(n) {
+switch (n.kind) {
+>>>>>>> Reveal and hide secrets
 case "ConfigMap":
 t = _.find(a.envFromEntries, {
 configMapRef: {
@@ -19864,7 +19905,15 @@ t = _.find(a.envFromEntries, {
 secretRef: {
 name: e.metadata.name
 }
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
 });
+=======
+}), _.each(r.envFromEntries, function(n) {
+var a, r;
+if (n.configMapRef && (a = "configMapRef", r = "configmaps"), n.secretRef && (a = "secretRef", r = "secrets"), a && r) {
+var i = n[a].name;
+n.configMapRef && i in e && (n.selectedEnvFrom = e[i]), n.secretRef && i in t && (n.selectedEnvFrom = t[i]), o(r, "get") || (n.isReadonly = !0);
+>>>>>>> Reveal and hide secrets
 }
 return t;
 };
@@ -19877,10 +19926,17 @@ var t = l(e);
 t && _.set(t, "selectedEnvFrom", e);
 });
 };
+<<<<<<< 4bdfc5346f158d79461ae79781718a557897b98f
 a.$onInit = function() {
 c(a.entries), u(a.entries, a.envFromSelectorOptions), "cannotDelete" in e && (a.cannotDeleteAny = !0), "cannotSort" in e && (a.cannotSort = !0), "isReadonly" in e && (a.isReadonlyAny = !0), "showHeader" in e && (a.showHeader = !0), a.envFromEntries && !a.envFromEntries.length && s(a.envFromEntries);
 }, a.$onChanges = function(e) {
 e.entries && c(e.entries.currentValue), e.envFromSelectorOptions && u(a.envFromEntries, e.envFromSelectorOptions.currentValue);
+=======
+r.$onInit = function() {
+l(), "cannotDelete" in e && (r.cannotDeleteAny = !0), "cannotSort" in e && (r.cannotSort = !0), "showHeader" in e && (r.showHeader = !0), r.envFromEntries && !r.envFromEntries.length && c(r.envFromEntries);
+}, r.$onChanges = function(e) {
+(e.entries || e.envFromSelectorOptions) && l();
+>>>>>>> Reveal and hide secrets
 };
 } ],
 bindings: {
