@@ -6,15 +6,15 @@
     binding="binding"
     ref-api-object="$ctrl.serviceInstance">
   </service-binding>
-  <div ng-if="$ctrl.bindable">
+  <p ng-if="$ctrl.bindable">
     <a href="" ng-click="$ctrl.createBinding()" role="button">
       <span class="pficon pficon-add-circle-o" aria-hidden="true"></span>
       <translate>Create Binding</tanslate>
     </a>
-  </div>
-  <div ng-if="!$ctrl.bindable && !($ctrl.bindings | size)">
+  </p>
+  <p ng-if="!$ctrl.bindable && !($ctrl.bindings | size)">
     <span translate>There are no service bindings.</span>
-  </div>
+  </p>
 </div>
 <overlay-panel show-panel="$ctrl.overlayPanelVisible" handle-close="$ctrl.closeOverlayPanel">
   <bind-service target="$ctrl.serviceInstance"
