@@ -9143,6 +9143,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<overlay-panel show-panel=\"ordering.panelName\" handle-close=\"closeOrderingPanel\">\n" +
     "<deploy-image-dialog ng-if=\"ordering.panelName === 'deployImage'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></deploy-image-dialog>\n" +
     "<from-file-dialog ng-if=\"ordering.panelName === 'fromFile'\" project=\"currentProject\" context=\"context\" on-dialog-closed=\"closeOrderingPanel\"></from-file-dialog>\n" +
+<<<<<<< d465b55549af1e0d90fe94a5f0ce3d32b3092794
 <<<<<<< d584607a62ec1f60b54c42b7aa064aa0d4934951
     "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"currentProject\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
     "</overlay-panel>"
@@ -9215,6 +9216,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
 >>>>>>> Add 'Select from Project' option in the 'Add to Project' dropdown
     "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"project\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+=======
+    "<process-template-dialog ng-if=\"ordering.panelName === 'fromProject'\" project=\"currentProject\" use-project-template=\"true\" on-dialog-closed=\"closeOrderingPanel\"></process-template-dialog>\n" +
+>>>>>>> Preselect current project in 'Select from Project'
     "</overlay-panel>"
   );
 
