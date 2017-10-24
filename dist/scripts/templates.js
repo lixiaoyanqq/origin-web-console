@@ -8381,6 +8381,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"!$ctrl.cannotDeleteAny\" href=\"\" class=\"pficon pficon-close delete-row as-sortable-item-delete\" role=\"button\" aria-label=\"Delete row\" ng-click=\"$ctrl.deleteEntry($index, 1)\"></a>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"environment-from-entry form-group\" ng-if=\"!$ctrl.cannotAdd\">\n" +
     "<a href=\"\" class=\"add-row-link\" role=\"button\" ng-click=\"$ctrl.onAddRow()\">{{ $ctrl.addRowLink }}</a>\n" +
     "</div>\n" +
@@ -8391,6 +8392,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
     "<h1 class=\"modal-title\">{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h1>\n" +
+=======
+    "<overlay-panel class=\"add-config-to-application\" show-panel=\"$ctrl.overlayPanelVisible\" show-close=\"true\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
+    "<div class=\"dialog-title\">\n" +
+    "<h3>{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h3>\n" +
+>>>>>>> Reveal and hide secrets
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<h4>{{$ctrl.overlayPaneEntryDetails.metadata.name}}\n" +
@@ -8404,11 +8410,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"$ctrl.overlayPaneEntryDetails.data | size\" class=\"table-responsive scroll-shadows-horizontal\">\n" +
     "<table class=\"table table-bordered table-bordered-columns config-map-table key-value-table\">\n" +
     "<tbody>\n" +
+<<<<<<< HEAD
     "<tr ng-repeat=\"(key, value) in $ctrl.decodedData\">\n" +
     "<td class=\"key\">\n" +
     "{{key}}\n" +
     "<span ng-if=\"$ctrl.isEnvVarInvalid(key)\" class=\"pficon pficon-warning-triangle-o tooltip-default-icon\" data-toggle=\"popover\" data-trigger=\"hover\" dynamic-content=\"{{key}} is not a valid environment variable name and will not be added.\"></span>\n" +
     "</td>\n" +
+=======
+    "<tr ng-repeat=\"(prop, value) in $ctrl.decodedData\">\n" +
+    "<td class=\"key\">{{prop}}</td>\n" +
+>>>>>>> Reveal and hide secrets
     "<td class=\"value\">\n" +
     "<truncate-long-text ng-if=\"$ctrl.overlayPaneEntryDetails.kind === 'ConfigMap'\" content=\"value\" limit=\"50\" newline-limit=\"2\" expandable=\"true\">\n" +
     "</truncate-long-text>\n" +
@@ -8416,7 +8427,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"$ctrl.showSecret && $ctrl.overlayPaneEntryDetails.kind === 'Secret'\">\n" +
     "<truncate-long-text content=\"value\" limit=\"50\" newline-limit=\"2\" expandable=\"true\">\n" +
     "</truncate-long-text>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"decodedData.$$nonprintable[key]\" class=\"help-block\" translate>\n" +
+=======
+    "<div ng-if=\"decodedData.$$nonprintable[prop]\" class=\"help-block\">\n" +
+>>>>>>> Reveal and hide secrets
     "This secret value contains non-printable characters and is displayed as a Base64-encoded string.\n" +
     "</div>\n" +
     "</div>\n" +
