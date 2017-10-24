@@ -4065,7 +4065,10 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 .icon-rh-integration:before{content:"\e907"}
 .icon-rh-tomcat:before{content:"\e908"}
 .icon-sso:before{content:"\e909"}
+<<<<<<< e75ba8e4de38bf7bcd4e46962095aa8901e011fa
 .icon-openshift:before{content:"\e90a"}
+=======
+>>>>>>> Bump openshift-logos-icon to v1.2.0 to add Red Hat product icons
 @keyframes toastSlideIn{0%{opacity:0;transform:translateX(150px)}
 100%{opacity:1;transform:translateX(0)}
 }
