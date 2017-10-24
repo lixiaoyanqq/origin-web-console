@@ -6502,6 +6502,7 @@ h2+.list-view-pf{margin-top:20px}
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;text-align:center;text-transform:uppercase;width:100%;z-index:1030}
 =======
 .order-service-config-single-column,.overview .data-toolbar-filter .name-filter form,.overview .data-toolbar-filter .name-filter input{width:100%}
@@ -6520,6 +6521,16 @@ h2+.list-view-pf{margin-top:20px}
 .wizard-pf-main .deploy-image .empty-state-message{margin:60px auto 0}
 .build-count .icon-count,.builds-label{margin-right:5px;display:inline-block}
 >>>>>>> Changing overlay layout to a single column
+=======
+.build-count .icon-count,.builds-label{margin-right:5px;display:inline-block}
+.navbar-toggle:focus{color:#fff;outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
+.wizard-pf-main .ace_editor.editor{height:265px}
+.landing-page .wizard-pf-main .ace_editor.editor{height:175px}
+.wizard-pf-main .deploy-image .empty-state-message{margin-bottom:0;margin-top:35px}
+@media (min-width:768px){.wizard-pf-main .deploy-image .empty-state-message{margin-top:90px}
+.landing-page .wizard-pf-main .deploy-image .empty-state-message{margin-top:50px}
+}
+>>>>>>> Adjust display of empty state message and Ace editor
 .build-count .builds,.build-count .pipelines{display:block}
 .build-count .icon-count,.builds-label{display:inline-block}
 .build-count .running-stage{font-size:91%;color:#757575}
