@@ -25,6 +25,7 @@ angular.module('openshiftConsole').controller('OverviewController', [
   'OwnerReferencesService',
   'PodsService',
   'ProjectsService',
+  'PromiseUtils',
   'ResourceAlertsService',
   'RoutesService',
   'ServiceInstancesService',
@@ -55,6 +56,7 @@ function OverviewController($scope,
                             OwnerReferencesService,
                             PodsService,
                             ProjectsService,
+                            PromiseUtils,
                             ResourceAlertsService,
                             RoutesService,
                             ServiceInstancesService) {
@@ -1338,32 +1340,48 @@ function OverviewController($scope,
     // The canI check on watch should be temporary until we have a different solution for handling secret parameters
     if (CatalogService.SERVICE_CATALOG_ENABLED && canI(serviceInstancesVersion, 'watch')) {
 
-      // Get the service class for this instance.
+      // Get the service class for this instance. Returns a promise.
       fetchServiceClass = function(instance) {
         var serviceClassName = ServiceInstancesService.getServiceClassNameForInstance(instance);
 
+        var serviceClass = _.get(state, ['serviceClasses', serviceClassName]);
+        if (serviceClass) {
+          return $q.when(serviceClass);
+        }
+
         // Check if we already have the service class or if a request is already in flight.
-        if (!_.has(state, ['serviceClasses', serviceClassName]) && !serviceClassPromises[serviceClassName]) {
+        if (!serviceClassPromises[serviceClassName]) {
           serviceClassPromises[serviceClassName] = DataService.get(serviceClassesVersion, serviceClassName, {}).then(function(serviceClass) {
             state.serviceClasses[serviceClassName] = serviceClass;
+            return serviceClass;
           }).finally(function() {
             delete servicePlanPromises[serviceClassName];
           });
         }
+
+        return serviceClassPromises[serviceClassName];
       };
 
-      // Get the service plan for this instance.
+      // Get the service plan for this instance. Returns a promise.
       fetchServicePlan = function(instance) {
         var servicePlanName = ServiceInstancesService.getServicePlanNameForInstance(instance);
 
         // Check if we already have the service plan or if a request is already in flight.
-        if (!_.has(state, ['servicePlans', servicePlanName]) && !servicePlanPromises[servicePlanName]) {
+        var servicePlan = _.get(state, ['servicePlans', servicePlanName]);
+        if (servicePlan) {
+          return $q.when(servicePlan);
+        }
+
+        if (!servicePlanPromises[servicePlanName]) {
           servicePlanPromises[servicePlanName] = DataService.get(servicePlansVersion, servicePlanName, {}).then(function(servicePlan) {
             state.servicePlans[servicePlanName] = servicePlan;
+            return servicePlan;
           }).finally(function() {
             delete servicePlanPromises[servicePlanName];
           });
         }
+
+        return servicePlanPromises[servicePlanName];
       };
 
       watches.push(DataService.watch(serviceInstancesVersion, context, function(serviceInstances) {
@@ -1374,8 +1392,15 @@ function OverviewController($scope,
           var notifications = ResourceAlertsService.getServiceInstanceAlerts(instance);
           setNotifications(instance, notifications);
 
-          fetchServiceClass(instance);
-          fetchServicePlan(instance);
+          promises.push(fetchServiceClass(instance));
+          promises.push(fetchServicePlan(instance));
+        });
+
+        // Wait for all promises to complete before trying to sort the
+        // instances and check bindability.
+        PromiseUtils.waitForAll(promises).finally(function() {
+          sortServiceInstances();
+          updateFilter();
         });
         updateLabelSuggestions(state.serviceInstances);
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
