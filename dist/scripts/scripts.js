@@ -6260,6 +6260,7 @@ var n, o = {
 auths: {}
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 try {
 n = JSON.parse(window.atob(e));
 } catch (e) {
@@ -6291,16 +6292,30 @@ email: e.email
 }), t;
 }, t = function(e) {
 var t = {
+=======
+}), angular.module("openshiftConsole").factory("SecretsService", [ "$filter", "Logger", "NotificationsService", function(e, t, n) {
+var a = function(a, r) {
+n.addNotification({
+type: "error",
+message: "Base64-encoded " + r + " string could not be decoded.",
+details: e("getErrorDetails")(a)
+}), t.error("Base64-encoded " + r + " string could not be decoded.", a);
+}, r = function(e) {
+var t = _.pick(e, [ "email", "username", "password" ]);
+if (e.auth) try {
+_.spread(function(e, n) {
+t.username = e, t.password = n;
+})(_.split(window.atob(e.auth), ":", 2));
+} catch (e) {
+return void a(e, "username:password");
+}
+return t;
+}, o = function(e, t) {
+var n, o = {
+>>>>>>> Check 'auth' field when displaying .dockercfg config
 auths: {}
-}, n = JSON.parse(window.atob(e));
-return _.each(n.auths, function(e, n) {
-if (e.auth) {
-var a = window.atob(e.auth).split(":");
-t.auths[n] = {
-username: a[0],
-password: a[1],
-email: e.email
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), t;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -6308,6 +6323,18 @@ email: e.email
 } else t.auths[n] = e;
 }), n.credsStore && (t.credsStore = n.credsStore), t;
 >>>>>>> Avoid runtime error for some dockerconfigjson secrets
+=======
+try {
+n = JSON.parse(window.atob(e));
+} catch (e) {
+a(e, t);
+}
+return ".dockercfg" === t ? _.each(n, function(e, t) {
+o.auths[t] = r(e);
+}) : (_.each(n.auths, function(e, t) {
+e.auth ? o.auths[t] = r(e) : o.auths[t] = e;
+}), n.credsStore && (o.credsStore = n.credsStore)), o;
+>>>>>>> Check 'auth' field when displaying .dockercfg config
 };
 return {
 groupSecretsByType: function(e) {
@@ -6343,6 +6370,7 @@ t.other.push(e);
 }), t;
 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 decodeSecretData: i,
 getWebhookSecretValue: function(e, t) {
 if (_.get(e, "secretReference.name") && t) {
@@ -6373,11 +6401,17 @@ return t(n);
 default:
 return o = window.atob(n), /[\x00-\x09\x0E-\x1F]/.test(o) ? (a[r] = !0, n) : o;
 }
+=======
+decodeSecretData: function(e) {
+var t = {}, n = _.mapValues(e, function(e, n) {
+var a;
+return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (a = window.atob(e), /[\x00-\x09\x0E-\x1F]/.test(a) ? (t[n] = !0, e) : a);
+>>>>>>> Check 'auth' field when displaying .dockercfg config
 });
-return r.$$nonprintable = a, r;
+return n.$$nonprintable = t, n;
 }
 };
-}), angular.module("openshiftConsole").factory("ServicesService", [ "$filter", "$q", "DataService", function(e, t, n) {
+} ]), angular.module("openshiftConsole").factory("ServicesService", [ "$filter", "$q", "DataService", function(e, t, n) {
 var a = "service.alpha.openshift.io/dependencies", r = e("annotation"), o = function(e) {
 var t = r(e, a);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1

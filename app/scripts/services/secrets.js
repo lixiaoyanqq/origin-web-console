@@ -114,6 +114,7 @@ angular.module("openshiftConsole")
       return decodedSecretData;
     };
 
+
     var decodeSecretData = function(secretData) {
       var nonPrintable = {};
       var decodedSecret = _.mapValues(secretData, function(data, configType) {
