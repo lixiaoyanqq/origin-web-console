@@ -1655,6 +1655,7 @@ group: ""
 resource: "statefulsets",
 group: "apps"
 } ],
+<<<<<<< 373acb86a812f2eeb568a237dd49fd219af53c6d
 <<<<<<< b9f74dc9163281caa65a7366573d340fa288654d
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 MEMBERSHIP_WHITELIST: [ "admin", "basic-user", "edit", "system:deployer", "system:image-builder", "system:image-puller", "system:image-pusher", "view" ],
@@ -1747,6 +1748,9 @@ prefixes: [ "/browse/pipelines/", "/edit/pipelines/" ]
 label: gettext("Images"),
 =======
 =======
+=======
+MEMBERSHIP_WHITELIST: [ "admin", "basic-user", "edit", "system:deployer", "system:image-builder", "system:image-puller", "system:image-pusher", "view" ],
+>>>>>>> Update membership filter to use MEMBERSHIP_WHITELIST in Constants.js
 EVENTS_TO_SHOW: {
 FailedCreate: !0,
 FailedDelete: !0,
@@ -4666,6 +4670,7 @@ t[e.tag] = t[e.tag] || {}, t[e.tag].name = e.tag, t[e.tag].status = angular.copy
 }), t;
 }
 };
+<<<<<<< 373acb86a812f2eeb568a237dd49fd219af53c6d
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "Constants", "gettext", "gettextCatalog", function(a, b, c, d) {
 var e = (a("annotation"), function(a, b) {
@@ -4682,6 +4687,11 @@ return b ? _.isEqual(c, 0) ? b : a + "-" + b : a;
 =======
 }), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", function(e) {
 var t = e("annotation"), n = function() {
+=======
+}), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "Constants", function(e, t) {
+e("annotation");
+var n = function() {
+>>>>>>> Update membership filter to use MEMBERSHIP_WHITELIST in Constants.js
 return _.reduce(_.slice(arguments), function(e, t, n) {
 return t ? _.isEqual(n, 0) ? t : e + "-" + t : e;
 }, "");
@@ -4861,7 +4871,7 @@ return _.sortBy(e, "metadata.name");
 },
 filterRoles: function(e) {
 return _.filter(e, function(e) {
-return "true" !== t(e, "systemOnly");
+return _.includes(t.MEMBERSHIP_WHITELIST, e.metadata.name);
 });
 },
 mapRolesForUI: function(e, t) {
