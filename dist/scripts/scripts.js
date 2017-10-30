@@ -1572,6 +1572,7 @@ group: ""
 resource: "statefulsets",
 group: "apps"
 } ],
+<<<<<<< fce845ac475083a480f27cc975493c487a044135
 <<<<<<< d51cbc2f44eb91a4212c45e46bc274ba1641b76b
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 PROJECT_NAVIGATION:[ {
@@ -1833,6 +1834,9 @@ templateUrl:"views/create-project.html",
 controller:"CreateProjectController"
 =======
 =======
+=======
+MEMBERSHIP_WHITELIST: [ "admin", "basic-user", "edit", "system:deployer", "system:image-builder", "system:image-puller", "system:image-pusher", "view" ],
+>>>>>>> Update membership filter to use MEMBERSHIP_WHITELIST in Constants.js
 EVENTS_TO_SHOW: {
 FailedCreate: !0,
 FailedDelete: !0,
@@ -3500,6 +3504,7 @@ t[e.tag] = t[e.tag] || {}, t[e.tag].name = e.tag, t[e.tag].status = angular.copy
 }), t;
 }
 };
+<<<<<<< fce845ac475083a480f27cc975493c487a044135
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 }), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "gettext", "gettextCatalog", function(a, b, c) {
 var d = a("annotation"), e = function(a, b) {
@@ -3647,6 +3652,11 @@ c = a.by("metadata.name"), d(a);
 =======
 }), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", function(e) {
 var t = e("annotation"), n = function() {
+=======
+}), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "Constants", function(e, t) {
+e("annotation");
+var n = function() {
+>>>>>>> Update membership filter to use MEMBERSHIP_WHITELIST in Constants.js
 return _.reduce(_.slice(arguments), function(e, t, n) {
 return t ? _.isEqual(n, 0) ? t : e + "-" + t : e;
 }, "");
@@ -3701,7 +3711,7 @@ return _.sortBy(e, "metadata.name");
 },
 filterRoles: function(e) {
 return _.filter(e, function(e) {
-return "true" !== t(e, "systemOnly");
+return _.includes(t.MEMBERSHIP_WHITELIST, e.metadata.name);
 });
 },
 mapRolesForUI: function(e, t) {
