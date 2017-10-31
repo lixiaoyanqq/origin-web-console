@@ -7149,6 +7149,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"pf-icon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "{{ctrl.apiObject.kind | humanizeKind | upperFirst | translate}} <strong>{{ctrl.apiObject.metadata.name}}</strong><translate>contains keys that are not valid environment variable names.</translate> <translate>Only</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>keys with valid names will be added as environment variables.</translate>\n" +
     "</div>\n" +
+<<<<<<< HEAD
+=======
+    "<div ng-if=\"!(ctrl.unboundApps | size)\">\n" +
+    "{{ctrl.selectedBinding.metadata.name}}\n" +
+>>>>>>> Correct binding name
     "</div>\n" +
     "<div class=\"form-group\">\n" +
     "<div class=\"control-label\">\n" +

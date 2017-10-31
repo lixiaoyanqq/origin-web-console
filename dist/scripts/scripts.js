@@ -29402,7 +29402,7 @@ i.nextTitle = "Close", i.wizardComplete = !0, u(), m();
 };
 i.$onInit = function() {
 var e;
-e = "ServiceInstance" === i.target.kind ? s("pod_presets") ? "Applications" : "Bindings" : "Services", i.displayName = c(i.target), i.steps = [ {
+e = "ServiceInstance" === i.target.kind ? s("pod_presets") ? "Applications" : "Bindings" : "Services", i.displayName = c(i.target, i.serviceClass), i.steps = [ {
 id: "deleteForm",
 label: e,
 view: "views/directives/bind-service/delete-binding-select-form.html",
@@ -29452,11 +29452,16 @@ target: "<",
 bindings: "<",
 applicationsByBinding: "<",
 <<<<<<< HEAD
+<<<<<<< HEAD
 onClose: "<",
 serviceClass: "<"
 =======
 onClose: "<"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+onClose: "<",
+serviceClass: "<"
+>>>>>>> Correct binding name
 },
 templateUrl: "views/directives/unbind-service.html"
 });
