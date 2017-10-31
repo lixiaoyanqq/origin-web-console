@@ -13347,7 +13347,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
+<<<<<<< d6848eefe63accb697a40024d4255528b14890b8
     "<button ng-disabled=\"disableAddForm || (!subject.newRole)\" ng-click=\"addRoleTo(subject.name, subjectKind.name, subject.newRole, subject.namespace)\" class=\"btn btn-default add-role-to\" translate>\n" +
+=======
+    "<button ng-disabled=\"disableAddForm || (!subject.newRole)\" ng-click=\"addRoleTo(subject.name, subjectKind.name, subject.newRole, subject.namespace)\" class=\"btn btn-default add-role-to\">\n" +
+>>>>>>> Fix adding role to service account where namespace is sometimes missed
     "Add\n" +
     "</button>\n" +
     "</div>\n" +
