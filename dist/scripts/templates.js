@@ -6008,7 +6008,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "{{appForBinding.metadata.name}} <small class=\"text-muted\">&ndash; {{ appForBinding.kind | humanizeKind : true}}</small>\n" +
     "</div>\n" +
     "<div ng-if=\"!(ctrl.unboundApps | size)\">\n" +
+<<<<<<< 1cd5045ad3e413e9756c62b44216f6699dc07a35
     "{{ctrl.selectedBinding.spec.secretName}} <small class=\"text-muted\">&ndash; <translate>Secret</translate></small>\n" +
+=======
+    "{{ctrl.selectedBinding.metadata.name}}\n" +
+>>>>>>> Correct binding name
     "</div>\n" +
     "\n" +
     "<p ng-if=\"ctrl.unboundApps | size\" class=\"mar-top-lg\">\n" +
@@ -6043,9 +6047,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"ctrl.appsForBinding(binding.metadata.name) | size\" ng-repeat=\"appForBinding in ctrl.appsForBinding(binding.metadata.name)\">\n" +
     "{{appForBinding.metadata.name}} <small class=\"text-muted\">&ndash; {{ appForBinding.kind | humanizeKind : true}}</small>\n" +
     "</div>\n" +
-    "<div ng-if=\"!(ctrl.appsForBinding(binding.metadata.name)  | size)\">\n" +
-    "{{binding.spec.secretName}}\n" +
-    "<small class=\"text-muted\">&ndash; Secret</small>\n" +
+    "<div ng-if=\"!(ctrl.appsForBinding(binding.metadata.name) | size)\">\n" +
+    "{{binding.metadata.name}}\n" +
     "</div>\n" +
     "<div>\n" +
     "<small class=\"text-muted\">Created <span am-time-ago=\"binding.metadata.creationTimestamp\"></span></small>\n" +
@@ -13327,7 +13330,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<bind-service target=\"row.overlay.state.target\" project=\"row.state.project\" on-close=\"row.closeOverlayPanel\"></bind-service>\n" +
     "</div>\n" +
     "<div ng-if=\"row.overlay.panelName === 'unbindService'\">\n" +
-    "<unbind-service target=\"row.overlay.state.target\" bindings=\"row.deleteableBindings\" applications-by-binding=\"row.state.applicationsByBinding\" on-close=\"row.closeOverlayPanel\"></unbind-service>\n" +
+    "<unbind-service target=\"row.overlay.state.target\" bindings=\"row.deleteableBindings\" applications-by-binding=\"row.state.applicationsByBinding\" on-close=\"row.closeOverlayPanel\" service-class=\"row.serviceClass\"></unbind-service>\n" +
     "</div>\n" +
     "</overlay-panel>"
   );
