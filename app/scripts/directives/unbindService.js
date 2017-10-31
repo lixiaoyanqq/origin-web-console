@@ -82,8 +82,13 @@
     };
 
     ctrl.$onInit = function() {
-      var formStepLabel = (ctrl.target.kind === 'ServiceInstance') ? 'Applications' : 'Services';
-      ctrl.displayName = serviceInstanceDisplayName(ctrl.target);
+      var formStepLabel;
+      if (ctrl.target.kind === 'ServiceInstance') {
+        formStepLabel = enableTechPreviewFeature('pod_presets') ? 'Applications' : 'Bindings';
+      } else {
+        formStepLabel = 'Services';
+      }
+      ctrl.displayName = serviceInstanceDisplayName(ctrl.target, ctrl.serviceClass);
       ctrl.steps = [{
         id: 'deleteForm',
         label: formStepLabel,

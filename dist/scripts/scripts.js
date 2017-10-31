@@ -27023,7 +27023,7 @@ i.nextTitle = "Close", i.wizardComplete = !0, u(), m();
 };
 i.$onInit = function() {
 var e;
-e = "ServiceInstance" === i.target.kind ? s("pod_presets") ? "Applications" : "Bindings" : "Services", i.displayName = c(i.target), i.steps = [ {
+e = "ServiceInstance" === i.target.kind ? s("pod_presets") ? "Applications" : "Bindings" : "Services", i.displayName = c(i.target, i.serviceClass), i.steps = [ {
 id: "deleteForm",
 label: e,
 view: "views/directives/bind-service/delete-binding-select-form.html",
@@ -27088,12 +27088,17 @@ bindings: {
 target: "<",
 bindings: "<",
 applicationsByBinding: "<",
+<<<<<<< 89e9e057ade5f9f44ac58180a42f84b845daa0c2
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 onClose: "<",
 serviceClass: "<"
 =======
 onClose: "<"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+onClose: "<",
+serviceClass: "<"
+>>>>>>> Correct binding name
 },
 templateUrl: "views/directives/unbind-service.html"
 });
