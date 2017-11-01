@@ -8934,6 +8934,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
     "\n" +
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< daacfa8335cad520ada64404e0071f82c5fc81ce
 <<<<<<< f69fceda0d306e0128582971b9a9daa9bb1fc547
     "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" kind=\"$ctrl.kind\" name=\"$ctrl.name\" action-label=\"$ctrl.actionLabel\">\n" +
@@ -8943,6 +8944,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" name=\"$ctrl.name\">\n" +
 >>>>>>> Improving display of results status messages and removing orphaned tasks directive
+=======
+    "<next-steps ng-if=\"$ctrl.currentStep === 'Results'\" project=\"$ctrl.selectedProject\" project-name=\"$ctrl.selectedProject.metadata.name\" login-base-url=\"$ctrl.loginBaseUrl\" on-continue=\"$ctrl.close\" show-project-name=\"$ctrl.showProjectName\" kind=\"$ctrl.kind\" name=\"$ctrl.name\" action-label=\"$ctrl.actionLabel\">\n" +
+>>>>>>> Bug 1505281 - Improve import YAML results message
     "</next-steps>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9742,7 +9746,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\">Pending</span>\n" +
     "<div class=\"results-message\">\n" +
     "<h1 class=\"h3\">\n" +
-    "<strong>{{$ctrl.name}}</strong> is being created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
+    "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
+    "<strong>{{$ctrl.name}}</strong> is being {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9753,17 +9758,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\">Error</span>\n" +
     "<div class=\"results-message\">\n" +
     "<h1 class=\"h3\">\n" +
-    "<strong>{{$ctrl.name}}</strong> failed to be created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
+    "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
+    "<strong>{{$ctrl.name}}</strong> failed to be {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong></span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "\n" +
     "<div ng-if=\"!tasks().length\">\n" +
-    "<div class=\"results-status results-status-unknown\">\n" +
+    "<div class=\"results-status\">\n" +
+    "<span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Success</span>\n" +
     "<div class=\"results-message\">\n" +
     "<h1 class=\"h3\">\n" +
-    "<strong>{{$ctrl.name}}</strong> completed.\n" +
+    "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
+    "<strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9774,7 +9783,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\">Success</span>\n" +
     "<div class=\"results-message\">\n" +
     "<h1 class=\"h3\">\n" +
-    "<strong>{{$ctrl.name}}</strong> has been created<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
+    "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
+    "<strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +

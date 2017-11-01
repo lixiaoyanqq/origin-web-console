@@ -59,10 +59,17 @@
       ctrl.template = message.template;
       ctrl.iconClass = getIconClass();
       ctrl.image = getImage();
-      ctrl.vendor = annotation(message.template, "template.openshift.io/provider-display-name");
-      ctrl.docUrl = annotation(ctrl.template, "template.openshift.io/documentation-url");
-      ctrl.supportUrl = annotation(ctrl.template, "template.openshift.io/support-url");
-      ctrl.name = "YAML / JSON";
+      ctrl.vendor = annotation(message.template, "openshift.io/provider-display-name");
+      ctrl.docUrl = annotation(ctrl.template, "openshift.io/documentation-url");
+      ctrl.supportUrl = annotation(ctrl.template, "openshift.io/support-url");
+      ctrl.actionLabel = "imported";
+      if (message.isList) {
+        ctrl.kind = null;
+        ctrl.name = "YAML / JSON";
+      } else if (message.resource) {
+        ctrl.kind = message.resource.kind;
+        ctrl.name = message.resource.metadata.name;
+      }
       // Need to let the current digest loop finish so the template config step becomes visible or the wizard will throw an error
       // from the change to currentStep
       $timeout(function() {
@@ -73,6 +80,8 @@
     $scope.$on('templateInstantiated', function(event, message) {
       ctrl.selectedProject = message.project;
       ctrl.name = $filter('displayName')(ctrl.template);
+      ctrl.actionLabel = null;
+      ctrl.kind = null;
       ctrl.currentStep = "Results";
     });
 

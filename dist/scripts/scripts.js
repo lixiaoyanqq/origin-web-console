@@ -1,5 +1,6 @@
 "use strict";
 
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 13bb99b3a012682f72ebab813cdb86be2a15f55e
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
@@ -149,6 +150,9 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w, P, k, j, R, I) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w, k, P, j, R, I) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
@@ -973,7 +977,7 @@ E.getPreviousReplicationController = function(e) {
 var t = we(e);
 return _.size(t) < 2 ? null : t[1];
 };
-var Pe = function(e) {
+var ke = function(e) {
 var t = {}, n = _e(e);
 _.assign(t, j.getDeploymentStatusAlerts(e, n), j.getPausedDeploymentAlerts(e));
 var a = we(e);
@@ -981,8 +985,8 @@ _.each(a, function(e) {
 var n = be(e);
 _.assign(t, n);
 }), ye(e, t);
-}, ke = function() {
-_.each(E.deploymentConfigs, Pe);
+}, Pe = function() {
+_.each(E.deploymentConfigs, ke);
 }, je = function(e) {
 var t = X(e);
 return t ? _.get(E, [ "replicaSetsByDeploymentUID", t ]) : {};
@@ -998,7 +1002,7 @@ _.each(E.deployments, Re);
 Se(E.replicationControllers), Se(E.replicaSets), Se(E.statefulSets), Se(E.monopods);
 }, Te = _.debounce(function() {
 e.$evalAsync(function() {
-Ee(), ke(), Ie();
+Ee(), Pe(), Ie();
 });
 }, 500), Ne = function(e) {
 _.isEmpty(e) || (h.addLabelSuggestionsFromResources(e, K), "pipeline" !== E.viewBy && h.setLabelSuggestions(K));
@@ -1029,7 +1033,7 @@ _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
 var n = m.sortByDeploymentVersion(e, !0);
 E.replicationControllersByDeploymentConfig[t] = n, E.currentByDeploymentConfig[t] = _.head(n);
-}), E.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ke();
+}), E.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), Pe();
 }
 }, Oe = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
@@ -1173,7 +1177,7 @@ return _.get(_.head(t), [ "metadata", "name" ]) || e.metadata.name;
 }, rt = function() {
 J.bindableServiceInstances = s.filterBindableServiceInstances(J.serviceInstances, J.serviceClasses, J.servicePlans), J.orderedServiceInstances = s.sortServiceInstances(J.serviceInstances, J.serviceClasses);
 }, ot = [];
-P.get(a.project).then(_.spread(function(t, a) {
+k.get(a.project).then(_.spread(function(t, a) {
 J.project = e.project = t, J.context = a;
 var r = function() {
 E.pods && g.fetchReferencedImageStreamImages(E.pods, J.imagesByDockerReference, J.imageStreamImageRefByDockerReference, a);
@@ -1265,7 +1269,7 @@ var t = [];
 _.each(J.serviceInstances, function(e) {
 var n = j.getServiceInstanceAlerts(e);
 ye(e, n), t.push(o(e)), t.push(i(e));
-}), k.waitForAll(t).finally(function() {
+}), P.waitForAll(t).finally(function() {
 rt(), fe();
 }), Ne(J.serviceInstances);
 }, {
@@ -7003,6 +7007,7 @@ memory: "resources.requests.memory",
 "limits.memory": "resources.limits.memory",
 persistentvolumeclaims: "resources.limits.persistentvolumeclaims",
 "requests.storage": "resources.request.storage"
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 28651868c34b8ebf846f1da11eea62cc91408c4c
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -7032,6 +7037,9 @@ var r = e.status.total || e.status, o = f[a], s = 0;
 =======
 }, P = function(e, t, n, a) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}, k = function(e, t, n, a) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var r = e.status.total || e.status, o = w[a], i = 0;
 >>>>>>> Quota Notifications
 if (_.each(n.spec.containers, function(e) {
@@ -7051,6 +7059,7 @@ target: "_blank"
 } ]
 };
 }
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }, y = function(a, b) {
@@ -7234,6 +7243,9 @@ var i = S(t, e, r);
 =======
 }, k = function(e, t) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}, P = function(e, t) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var n = [], a = "Pod" === e.kind ? e : _.get(e, "spec.template");
 return a ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(r) {
 var o = t.status.total || t.status;
@@ -7245,7 +7257,7 @@ var i = C(t, e, r);
 var i = S(t, e, r);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 if (i) n.push(i); else if ("pods" !== r) {
-var s = P(t, e, a, r);
+var s = k(t, e, a, r);
 s && n.push(s);
 }
 }
@@ -7268,7 +7280,7 @@ href: "project/" + e.metadata.namespace + "/quota",
 label: "View Quota",
 target: "_blank"
 } ]
-}), r = r.concat(k(t, e));
+}), r = r.concat(P(t, e));
 };
 _.each(o, p), _.each(i, p);
 }
@@ -7294,7 +7306,7 @@ return {
 filterQuotasForResource: y,
 isBestEffortPod: g,
 isTerminatingPod: v,
-getResourceLimitAlerts: k,
+getResourceLimitAlerts: P,
 getQuotaAlerts: j,
 getLatestQuotaAlerts: function(e, t) {
 var n, a, r = [];
@@ -9186,7 +9198,7 @@ onSortChange: S
 };
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, S();
-}, P = function() {
+}, k = function() {
 g || u.list().then(w);
 };
 e.newProjectPanelShown = !1, e.createProject = function(t) {
@@ -9195,14 +9207,14 @@ e.popupElement = n, e.newProjectPanelShown = !0;
 }, e.closeNewProjectPanel = function() {
 e.newProjectPanelShown = !1;
 }, e.onNewProject = function() {
-e.newProjectPanelShown = !1, P();
+e.newProjectPanelShown = !1, k();
 }, e.editProjectPanelShown = !1, e.editProject = function(t) {
 e.editingProject = t, e.editProjectPanelShown = !0;
 }, e.closeEditProjectPanel = function() {
 e.editProjectPanelShown = !1;
 }, e.onEditProject = function() {
-e.editProjectPanelShown = !1, P();
-}, e.onDeleteProject = P, e.goToProject = function(e) {
+e.editProjectPanelShown = !1, k();
+}, e.onDeleteProject = k, e.goToProject = function(e) {
 c.toProjectOverview(e);
 }, e.$watch("search.text", _.debounce(function(t) {
 e.keywords = f = s.generateKeywords(t), e.$applyAsync(y);
@@ -9657,8 +9669,8 @@ name: t.containerName
 }), a = b(n);
 t.containerState = a;
 });
-}, P = t("annotation"), k = function(t, n) {
-if (e.loaded = !0, e.pod = t, e.dcName = P(t, "deploymentConfig"), e.rcName = P(t, "deployment"), e.deploymentVersion = P(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), g(), delete e.controllerRef, !e.dcName) {
+}, k = t("annotation"), P = function(t, n) {
+if (e.loaded = !0, e.pod = t, e.dcName = k(t, "deploymentConfig"), e.rcName = k(t, "deployment"), e.deploymentVersion = k(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), g(), delete e.controllerRef, !e.dcName) {
 var a = u.getControllerReferences(t);
 e.controllerRef = _.find(a, function(e) {
 return "ReplicationController" === e.kind || "ReplicaSet" === e.kind || "Build" === e.kind;
@@ -9842,10 +9854,10 @@ m.get(n.project).then(_.spread(function(a, l) {
 f = l, e.project = a, e.projectContext = l, i.get("pods", n.pod, l, {
 errorNotification: !1
 }).then(function(t) {
-k(t);
+P(t);
 var a = {};
 a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = C(), S(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, f), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
-k(t, n), w(e.containerTerminals), S(t);
+P(t, n), w(e.containerTerminals), S(t);
 }));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
@@ -10114,8 +10126,8 @@ var h, y, b, C;
 l.isAvailable().then(function(e) {
 n.metricsAvailable = e;
 });
-var S = a("orderObjectsByDate"), w = [ "metadata.name" ], P = [], k = function() {
-n.filteredPods = s.filterForKeywords(C, w, P), n.filteredReplicationControllers = s.filterForKeywords(y, w, P), n.filteredReplicaSets = s.filterForKeywords(b, w, P), n.filteredBuilds = s.filterForKeywords(h, w, P), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+var S = a("orderObjectsByDate"), w = [ "metadata.name" ], k = [], P = function() {
+n.filteredPods = s.filterForKeywords(C, w, k), n.filteredReplicationControllers = s.filterForKeywords(y, w, k), n.filteredReplicaSets = s.filterForKeywords(b, w, k), n.filteredBuilds = s.filterForKeywords(h, w, k), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
 }, j = function(e) {
 n.logOptions.pods[e.metadata.name] = {
 container: e.spec.containers[0].name
@@ -10127,11 +10139,11 @@ t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCa
 }, I = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
 }, E = function() {
-n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
 }, T = function() {
 C = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
-}), n.filteredPods = s.filterForKeywords(C, w, P);
+}), n.filteredPods = s.filterForKeywords(C, w, k);
 }, N = a("isIncompleteBuild"), D = a("buildConfigForBuild"), A = a("isRecentBuild"), B = function() {
 moment().subtract(5, "m");
 h = _.filter(n.builds, function(e) {
@@ -10139,15 +10151,15 @@ if (!n.filters.hideOlderResources) return !0;
 if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
-}), n.filteredBuilds = s.filterForKeywords(h, w, P);
+}), n.filteredBuilds = s.filterForKeywords(h, w, k);
 }, L = a("deploymentStatus"), U = a("deploymentIsInProgress"), O = function() {
 y = _.filter(n.replicationControllers, function(e) {
 return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
-}), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
+}), n.filteredReplicationControllers = s.filterForKeywords(y, w, k);
 }, F = function() {
 b = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
-}), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
+}), n.filteredReplicaSets = s.filterForKeywords(b, w, k);
 };
 n.toggleItem = function(e, t, r) {
 var o = $(e.target);
@@ -10308,7 +10320,7 @@ e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replac
 var e = t.search();
 e.kind = n.kindSelector.selected.kind, t.replace().search(e);
 }), n.$watch("filters.text", _.debounce(function() {
-n.filterKeywords = P = s.generateKeywords(n.filters.text), n.$apply(k);
+n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(P);
 }, 50, {
 maxWait: 250
 })), n.$watch("renderOptions.collapseEventsSidebar", function(e, t) {
@@ -10429,7 +10441,7 @@ details: n
 });
 }, w = function() {
 a.disableAddForm = !1, a.newBinding.name = "", a.newBinding.namespace = g, a.newBinding.newRole = null;
-}, P = function(e) {
+}, k = function(e) {
 c.list("serviceaccounts", e).then(function(e) {
 var t = _.keys(e.by("metadata.name")).sort();
 angular.extend(a, {
@@ -10439,7 +10451,7 @@ e && !_.includes(a.serviceAccounts, e) ? a.serviceAccounts = [ e ].concat(t) : a
 }
 });
 });
-}, k = function(e) {
+}, P = function(e) {
 c.list("rolebindings", f, null, {
 errorNotification: !1
 }).then(function(e) {
@@ -10453,12 +10465,12 @@ e && (a.roleBindings[e.metadata.name] = e, a.subjectKindsForUI = u.mapRolebindin
 });
 }, j = function(t, n) {
 a.disableAddForm = !0, m.create(t, n, g, f).then(function() {
-k(), S("success", C.update.subject.success({
+P(), S("success", C.update.subject.success({
 roleName: t.metadata.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), k(), S("error", C.update.subject.error({
+w(), P(), S("error", C.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
 }), C.errorReason({
@@ -10467,12 +10479,12 @@ httpErr: e("getErrorDetails")(a)
 });
 }, R = function(t, n, r) {
 a.disableAddForm = !0, m.addSubject(t, n, r, f).then(function() {
-k(), S("success", C.update.subject.success({
+P(), S("success", C.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), k(), S("error", C.update.subject.error({
+w(), P(), S("error", C.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
 }), C.errorReason({
@@ -10647,7 +10659,7 @@ var t = _.keys(e.by("metadata.name")).sort();
 angular.extend(a, {
 projects: t,
 selectProject: function(e) {
-a.newBinding.name = "", P({
+a.newBinding.name = "", k({
 namespace: e
 });
 },
@@ -10656,7 +10668,7 @@ e && !_.includes(a.projects, e) ? a.projects = [ e ].concat(t) : a.projects = t;
 }
 });
 }), l.get(n.project).then(_.spread(function(n, r) {
-f = r, k(), P(f), angular.extend(a, {
+f = r, P(), k(f), angular.extend(a, {
 project: n,
 subjectKinds: E,
 canUpdateRolebindings: y("rolebindings", "update", g),
@@ -10735,8 +10747,12 @@ P(e[0]);
 =======
 m.removeSubject(n, i, c, a.roleBindings, f).then(function(e) {
 l ? t.url("./") : (s.getProjectRules(g, !0).then(function() {
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 k(e[0]);
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+P(e[0]);
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var t = y("rolebindings", "update", g);
 angular.extend(a, {
 canUpdateRolebindings: t,
@@ -10822,7 +10838,7 @@ name: e
 }
 });
 };
-k(), angular.extend(a, {
+P(), angular.extend(a, {
 toggle: {
 roles: !1
 },
@@ -12313,7 +12329,7 @@ namespace: n.project
 }), e.emptyMessage = "Loading...", e.deploymentConfigsInstantiateVersion = a.getPreferredVersion("deploymentconfigs/instantiate"), e.deploymentConfigsVersion = a.getPreferredVersion("deploymentconfigs"), e.eventsVersion = a.getPreferredVersion("events"), e.horizontalPodAutoscalersVersion = a.getPreferredVersion("horizontalpodautoscalers");
 var y = a.getPreferredVersion("builds"), b = a.getPreferredVersion("imagestreams"), C = a.getPreferredVersion("limitranges"), S = a.getPreferredVersion("replicationcontrollers");
 e.healthCheckURL = u.healthCheckURL(n.project, "DeploymentConfig", n.deploymentconfig, e.deploymentConfigsVersion.group);
-var w = t("mostRecent"), P = t("orderObjectsByDate"), k = [];
+var w = t("mostRecent"), k = t("orderObjectsByDate"), P = [];
 p.get(n.project).then(_.spread(function(a, r) {
 function u() {
 g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
@@ -12330,7 +12346,7 @@ e.hpaWarnings = t;
 o.get(e.deploymentConfigsVersion, n.deploymentconfig, r, {
 errorNotification: !1
 }).then(function(a) {
-e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), k.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
+e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), P.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This deployment configuration has been deleted."
@@ -12342,7 +12358,7 @@ type: "error",
 message: 404 === n.status ? "This deployment configuration can not be found, it may have been deleted." : "The deployment configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining deployment history for this deployment will be shown." : t("getErrorDetails")(n)
 };
-}), k.push(o.watch(S, r, function(a, r, o) {
+}), P.push(o.watch(S, r, function(a, r, o) {
 var s = n.deploymentconfig;
 if (e.emptyMessage = "No deployments to show", r) {
 if (i.deploymentBelongsToConfig(o, n.deploymentconfig)) {
@@ -12452,7 +12468,7 @@ e.unfilteredDeployments = l[n.deploymentconfig] || {}, angular.forEach(e.unfilte
 e.causes = t("deploymentCauses")(e);
 }), e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(l);
 }
-e.deployments = g.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = P(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = w(e.unfilteredDeployments), u(), g.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), g.setLabelSuggestions(e.labelSuggestions);
+e.deployments = g.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = k(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = w(e.unfilteredDeployments), u(), g.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), g.setLabelSuggestions(e.labelSuggestions);
 }, {
 http: {
 params: {
@@ -12461,16 +12477,16 @@ labelSelector: v("deploymentConfig") + "=" + e.deploymentConfigName
 }
 })), o.list(C, r).then(function(e) {
 d = e.by("metadata.name"), p();
-}), k.push(o.watch(b, r, function(t) {
+}), P.push(o.watch(b, r, function(t) {
 var n = t.by("metadata.name");
 c.buildDockerRefMapForImageStreams(n, h), e.deploymentConfig && c.fetchReferencedImageStreamImages([ e.deploymentConfig.spec.template ], e.imagesByDockerReference, h, r), m.log("imagestreams (subscribe)", e.imageStreams);
-})), k.push(o.watch(y, r, function(t) {
+})), P.push(o.watch(y, r, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
-})), k.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
+})), P.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
 e.autoscalers = s.filterHPA(t.by("metadata.name"), "DeploymentConfig", n.deploymentconfig), p();
 })), g.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
-e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = P(e.deployments, !0), u();
+e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = k(e.deployments, !0), u();
 });
 }), e.canDeploy = function() {
 return !!e.deploymentConfig && (!e.deploymentConfig.metadata.deletionTimestamp && (!e.deploymentInProgress && !e.deploymentConfig.spec.paused));
@@ -12558,6 +12574,7 @@ cancelButtonText: "Cancel"
 f.removeVolume(e.deploymentConfig, t, r);
 });
 }, e.$on("$destroy", function() {
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -12588,6 +12605,9 @@ o.unwatchAll(P);
 =======
 o.unwatchAll(k);
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+o.unwatchAll(P);
+>>>>>>> Bug 1505281 - Improve import YAML results message
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y) {
@@ -12607,6 +12627,7 @@ resource:"replicasets"
 break;
 
 case "ReplicationController":
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< d21c662f039266e2dd235fa32bd86d3647c082ae
@@ -12646,6 +12667,15 @@ c === a.deploymentConfigName && d.push(b);
 }, E = function() {
 h.getHPAWarnings(a.replicaSet, a.autoscalers, a.limitRanges, k).then(function(b) {
 a.hpaWarnings = b;
+=======
+e.resource = "replicationcontrollers", e.healthCheckURL = m.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
+}
+var k = {};
+e.projectName = n.project, e.kind = y, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
+var P = [];
+u.isAvailable().then(function(t) {
+e.metricsAvailable = t;
+>>>>>>> Bug 1505281 - Improve import YAML results message
 });
 }, F = function(d) {
 var e = u(d, "deploymentConfig");
@@ -12795,7 +12825,7 @@ var a = s.filterHPA(h, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(a);
 } else e.autoscalers = e.hpaForRS;
 }, T = function() {
-k.push(o.watch(e.resource, g, function(t) {
+P.push(o.watch(e.resource, g, function(t) {
 var n, a = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
@@ -12841,7 +12871,7 @@ a && o.get({
 group: "apps",
 resource: "deployments"
 }, a.name, g).then(function(t) {
-e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), k.push(o.watchObject({
+e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), P.push(o.watchObject({
 group: "apps",
 resource: "deployments"
 }, t.metadata.name, g, function(t, a) {
@@ -12858,7 +12888,7 @@ link: m.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), A(), E();
-})), k.push(o.watch({
+})), P.push(o.watch({
 group: "extensions",
 resource: "replicasets"
 }, g, function(e) {
@@ -12881,9 +12911,9 @@ B = $(t);
 }));
 });
 }, U = function() {
-if (!_.isEmpty(P)) {
+if (!_.isEmpty(k)) {
 var t = _.get(e, "replicaSet.spec.template");
-t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, P, g);
+t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, g);
 }
 };
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -13199,7 +13229,7 @@ T(), e.breadcrumbs = r.getBreadcrumbs({
 N(), e.breadcrumbs = r.getBreadcrumbs({
 >>>>>>> Update template service broker flag name
 object: t
-}), k.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
+}), P.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -13249,12 +13279,16 @@ message: "This " + S + " has been deleted."
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 =======
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && A();
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 })), e.deploymentConfigName && T(), P.push(o.watch("pods", g, function(t) {
 >>>>>>> Update template service broker flag name
 =======
 })), e.deploymentConfigName && T(), k.push(o.watch("pods", g, function(t) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+})), e.deploymentConfigName && T(), P.push(o.watch("pods", g, function(t) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var n = t.by("metadata.name");
 e.podsForDeployment = f.filterForOwner(n, e.replicaSet);
 }));
@@ -13268,18 +13302,18 @@ name: n.replicaSet,
 kind: y,
 namespace: n.project
 });
-}), k.push(o.watch(e.resource, g, function(n, a, r) {
+}), P.push(o.watch(e.resource, g, function(n, a, r) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === y && (e.deploymentsByDeploymentConfig = i.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, s;
 r && (o = C(r, "deploymentConfig"), s = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][s] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][s] : e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
 });
-})), k.push(o.watch("imagestreams", g, function(e) {
+})), P.push(o.watch("imagestreams", g, function(e) {
 var t = e.by("metadata.name");
-c.buildDockerRefMapForImageStreams(t, P), U(), l.log("imagestreams (subscribe)", t);
-})), k.push(o.watch("builds", g, function(t) {
+c.buildDockerRefMapForImageStreams(t, k), U(), l.log("imagestreams (subscribe)", t);
+})), P.push(o.watch("builds", g, function(t) {
 e.builds = t.by("metadata.name"), l.log("builds (subscribe)", e.builds);
-})), k.push(o.watch({
+})), P.push(o.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
@@ -13315,12 +13349,12 @@ e.limitRanges = t.by("metadata.name"), T();
 e.limitRanges = t.by("metadata.name"), N();
 >>>>>>> Update template service broker flag name
 });
-k.push(o.watch("resourcequotas", g, function(t) {
+P.push(o.watch("resourcequotas", g, function(t) {
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
-})), k.push(o.watch("appliedclusterresourcequotas", g, function(t) {
+})), P.push(o.watch("appliedclusterresourcequotas", g, function(t) {
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -13361,7 +13395,7 @@ cancelButtonText: "Cancel"
 v.removeVolume(e.replicaSet, n, g);
 });
 }, e.$on("$destroy", function() {
-o.unwatchAll(k);
+o.unwatchAll(P);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, a, r, o) {
@@ -13981,19 +14015,25 @@ e.plan = t[a], C(), S();
 =======
 =======
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), C();
-}, P = function() {
+}, k = function() {
 var t = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.plan = _.find(e.servicePlans, {
 metadata: {
 name: t
 }
 }), w(), S();
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 }, k = function() {
 e.serviceClass && !p && (e.servicePlans ? P() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}, P = function() {
+e.serviceClass && !p && (e.servicePlans ? k() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var n = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.servicePlans = _.reject(t, function(e) {
 return _.get(e, "status.removedFromBrokerCatalog") && e.metadata.name !== n;
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 }), e.plan = t[n], S(), C();
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
@@ -14005,6 +14045,13 @@ return _.get(e, "status.removedFromBrokerCatalog") && e.metadata.name !== n;
 e.serviceInstance && !m && (e.serviceClass ? k() : m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
 e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m = null, k();
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}), k(), p = null;
+}));
+}, j = function() {
+e.serviceInstance && !m && (e.serviceClass ? P() : m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
+e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m = null, P();
+>>>>>>> Bug 1505281 - Improve import YAML results message
 }));
 }, k = function(t, n) {
 e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
@@ -15108,7 +15155,7 @@ return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
-}), k();
+}), P();
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -15372,12 +15419,12 @@ name: _.last(a)
 }).namespace = 1 !== _.size(a) ? _.head(a) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, P = function() {
+}, k = function() {
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
-}, k = function() {
+}, P = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -15558,6 +15605,7 @@ break;
 case "Custom":
 R(h(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 a.updatedBuildConfig.spec.triggers = x(), t(), h.update("buildconfigs", a.updatedBuildConfig.metadata.name, a.updatedBuildConfig, a.context).then(function() {
@@ -15648,6 +15696,9 @@ e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.update
 =======
 e.updatedBuildConfig.spec.triggers = P(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 l.addNotification({
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
@@ -15922,7 +15973,7 @@ details: t("getErrorDetails")(n)
 }));
 var w = function() {
 return "Custom" !== e.strategyData.type && "Custom" !== e.originalStrategy && e.strategyData.type !== e.originalStrategy;
-}, P = function(t) {
+}, k = function(t) {
 _.has(e.strategyData, t) || r.open({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 animation: !0,
@@ -15954,14 +16005,21 @@ a.strategyData[b] = {};
 });
 }
 };
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 a.strategyChanged = function() {
 var b = v(a.strategyData.type);
 w() ? x(b) : _.has(a.strategyData, b) || ("Custom" !== a.strategyData.type ? a.strategyData[b] = {} : a.strategyData[b] = {
+=======
+e.strategyChanged = function() {
+var t = S(e.strategyData.type);
+w() ? k(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 image: "",
 command: [],
 environment: []
 }), a.strategyParamsPropertyName = b;
 };
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< d21c662f039266e2dd235fa32bd86d3647c082ae
 var y = function(a, b, c, d) {
@@ -15969,6 +16027,8 @@ var e = {
 =======
 =======
 >>>>>>> Update template service broker flag name
+=======
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var P = function(e, t, n, a) {
 var r = {
 >>>>>>> Handle displaying parameters when secrets are not available.
@@ -15990,6 +16050,7 @@ from: e
 var b = _.reject(a.updatedDeploymentConfig.spec.triggers, function(a) {
 return "ImageChange" === a.type || "ConfigChange" === a.type;
 });
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 return _.each(a.containerConfigByName, function(c, d) {
 if (c.hasDeploymentTrigger) b.push(y(d, c.triggerData.istag, c.triggerData.data, c.triggerData.automatic)); else {
 var e = _.find(a.updatedDeploymentConfig.spec.template.spec.containers, {
@@ -15998,6 +16059,13 @@ name: d
 e.image = c.image;
 }
 }), a.triggers.hasConfigTrigger && b.push({
+=======
+return _.each(e.containerConfigByName, function(n, a) {
+n.hasDeploymentTrigger ? t.push(P(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+name: a
+}).image = n.image;
+}), e.triggers.hasConfigTrigger && t.push({
+>>>>>>> Bug 1505281 - Improve import YAML results message
 type: "ConfigChange"
 }), b;
 }, A = function() {
@@ -16928,7 +16996,7 @@ e.projectTemplates = t.by("metadata.name");
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
 } else l.toErrorPage("Catalog category " + r.category + " not found.");
 } ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w) {
-var P = t("displayName"), k = t("humanize");
+var k = t("displayName"), P = t("humanize");
 e.projectName = r.project, e.sourceURLPattern = y;
 var j = r.imageStream;
 if (j) if (r.imageTag) {
@@ -17281,13 +17349,13 @@ message: "All resources for application " + e.name + " were created successfully
 }) : (r = !0, n.failure.forEach(function(e) {
 a.push({
 type: "error",
-message: "Cannot create " + k(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+message: "Cannot create " + P(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 details: e.data.message
 });
 }), n.success.forEach(function(e) {
 a.push({
 type: "success",
-message: "Created " + k(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+message: "Created " + P(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 });
 })), t.resolve({
 alerts: a,
@@ -17399,7 +17467,7 @@ e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 })) : _.isEmpty(N) ? $() : (B(N), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
-return P(this.project) || this.projectName;
+return k(this.project) || this.projectName;
 }, e.createApp = function() {
 e.disableInputs = !0, D(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
 var t = s.generate(e);
@@ -17498,7 +17566,7 @@ return t;
 }
 function m() {
 var e = g();
-r.templateImages = _.map(P, function(t) {
+r.templateImages = _.map(k, function(t) {
 return _.isEmpty(t.usesParameters) ? t : {
 name: _.template(t.name, {
 interpolate: w
@@ -17515,12 +17583,12 @@ r && (a = r), a && t.push(a);
 }), t;
 }
 function f(e) {
-P = [];
+k = [];
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
 var a = S(b(e), h);
-a && P.push({
+a && k.push({
 name: a,
 usesParameters: d(a)
 });
@@ -17529,10 +17597,11 @@ r && (n[r] = !0);
 }
 "DeploymentConfig" === e.kind && (t = t.concat(p(e)));
 }), t.forEach(function(e) {
-n[e] || P.push({
+n[e] || k.push({
 name: e,
 usesParameters: d(e)
 });
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
@@ -17547,6 +17616,9 @@ usesParameters: d(e)
 =======
 }), P = _.uniqBy(P, "name");
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}), k = _.uniqBy(k, "name");
+>>>>>>> Bug 1505281 - Improve import YAML results message
 }
 function g() {
 var e = {};
@@ -17623,13 +17695,13 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 });
 }
 }());
-var w = /\${([a-zA-Z0-9\_]+)}/g, P = [];
+var w = /\${([a-zA-Z0-9\_]+)}/g, k = [];
 l.get(a.project).then(_.spread(function(n) {
 if (r.project = n, h) i.get("templates", v, {
 namespace: h || r.project.metadata.name
 }).then(function(t) {
 r.template = t, r.breadcrumbs[2].title = e("displayName")(t), f(t);
-_.some(P, function(e) {
+_.some(k, function(e) {
 return !_.isEmpty(e.usesParameters);
 }) ? (r.parameterDisplayNames = {}, _.each(t.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
@@ -17637,6 +17709,7 @@ r.parameterDisplayNames[e.name] = e.displayName || e.name;
 r.$apply(m);
 }, 50, {
 maxWait: 250
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 }), !0)) : r.templateImages = j;
@@ -17647,6 +17720,9 @@ maxWait: 250
 =======
 }), !0)) : r.templateImages = P;
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}), !0)) : r.templateImages = k;
+>>>>>>> Bug 1505281 - Improve import YAML results message
 }, function() {
 s.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
@@ -18494,13 +18570,13 @@ var w = function() {
 a.history.back();
 };
 n.cancel = w;
-var P = function(e) {
+var k = function(e) {
 return n.attach.allContainers || n.attach.containers[e.name];
-}, k = function() {
+}, P = function() {
 var e = _.get(n, "attach.resource.spec.template");
-n.existingMountPaths = m.getMountPaths(e, P);
+n.existingMountPaths = m.getMountPaths(e, k);
 };
-n.$watchGroup([ "attach.resource", "attach.allContainers" ], k), n.$watch("attach.containers", k, !0);
+n.$watchGroup([ "attach.resource", "attach.allContainers" ], P), n.$watch("attach.containers", P, !0);
 s.get(v, t.name, d).then(function(e) {
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
 object: e,
@@ -18526,7 +18602,7 @@ if (n.disableInputs = !0, S(), n.attachPVCForm.$valid) {
 n.attach.volumeName || (n.attach.volumeName = b("volume-"));
 var e = n.attach.resource, a = _.get(e, "spec.template"), r = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
 i && angular.forEach(a.spec.containers, function(e) {
-if (P(e)) {
+if (k(e)) {
 var t = m.createVolumeMount(o, i, c, l);
 e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
 }
@@ -20519,7 +20595,7 @@ function y() {
 var e = p.createResources.length, t = p.updateResources.length;
 if (p.resourceKind.endsWith("List")) {
 var a = [];
-t > 0 && a.push(P()), e > 0 && a.push(w()), n.all(a).then(b);
+t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
 } else S();
 }
 function b() {
@@ -20530,7 +20606,9 @@ template: p.resource
 }) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
 namespace: n
 }), t.url(e)) : p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
-project: p.input.selectedProject
+project: p.input.selectedProject,
+resource: p.resource,
+isList: p.isList
 }) : (e = s.projectOverviewURL(p.input.selectedProject.metadata.name), t.url(e));
 }
 function C(e) {
@@ -20628,6 +20706,7 @@ hasErrors: a
 }), e.promise;
 });
 }
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -20642,6 +20721,9 @@ var a = c.defer();
 return g.batch(p.updateResources, {
 =======
 function P() {
+=======
+function k() {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 var e = {
 started: "Updating resources in project " + A(p.input.selectedProject),
 success: "Updated resources in project " + A(p.input.selectedProject),
@@ -20735,6 +20817,7 @@ alerts: n
 }), e.promise;
 });
 }
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -20797,6 +20880,9 @@ var P;
 =======
 var k;
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+var P;
+>>>>>>> Bug 1505281 - Improve import YAML results message
 p.noProjectsCantCreate = !1;
 var j = e("humanizeKind"), R = e("getErrorDetails");
 d.clear(), p.$on("no-projects-cannot-create", function() {
@@ -20804,6 +20890,7 @@ p.noProjectsCantCreate = !0;
 }), p.input = {
 selectedProject: p.project
 }, p.aceLoaded = function(e) {
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 (j = e.getSession()).setOption("tabSize", 2), j.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
@@ -20814,6 +20901,9 @@ selectedProject: p.project
 =======
 (k = e.getSession()).setOption("tabSize", 2), k.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+(P = e.getSession()).setOption("tabSize", 2), P.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
+>>>>>>> Bug 1505281 - Improve import YAML results message
 };
 var I = function(e) {
 a.open({
@@ -24241,12 +24331,12 @@ A(b, a);
 function w() {
 return !(m.metricsError || U > 1) && (m.pod && _.get(m, "options.selectedContainer"));
 }
-function P(e, t, n) {
+function k(e, t, n) {
 t.total = p(t.id), t.total && (m.hasLimits = !0);
 var a = _.get(n, "usage.value");
 isNaN(a) && (a = 0), e.convert && (a = e.convert(a)), t.used = d3.round(a, e.usagePrecision), t.total && (t.available = d3.round(t.total - a, e.usagePrecision)), e.totalUsed += t.used;
 }
-function k(e, t) {
+function P(e, t) {
 m.noData = !1;
 var n = _.initial(t.data);
 e.data ? e.data = _.chain(e.data).takeRight(D).concat(n).value() : e.data = n;
@@ -24261,13 +24351,13 @@ var o = b(n, r, e);
 if (o) {
 var i = l.get(o);
 a.push(i), p(r.id) && t.push(l.getCurrentUsage(o).then(function(e) {
-P(n, r, e);
+k(n, r, e);
 }));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
 }), t = t.concat(a), r.all(a).then(function(e) {
 A || angular.forEach(e, function(e) {
-e && k(_.find(n.datasets, {
+e && P(_.find(n.datasets, {
 id: e.metricID
 }), e);
 });
@@ -24584,7 +24674,7 @@ count: 0
 return _.each(R[e.descriptor], function(e) {
 _.each(e, function(e) {
 var t = s(e);
-(!k || k < e.end) && (k = e.end), n(e) || (t.total += e.value, t.count = t.count + 1);
+(!P || P < e.end) && (P = e.end), n(e) || (t.total += e.value, t.count = t.count + 1);
 });
 }), _.each(a, function(t, n) {
 var a;
@@ -24603,7 +24693,7 @@ var a = t + "-dates";
 _.set(i, [ "xs", t ], a);
 var s = [ a ], c = [ t ];
 o.push(s), o.push(c), _.each(R[r.descriptor][t], function(e) {
-if (s.push(e.start), (!k || k < e.end) && (k = e.end), n(e)) c.push(e.value); else {
+if (s.push(e.start), (!P || P < e.end) && (P = e.end), n(e)) c.push(e.value); else {
 var t = r.convert ? r.convert(e.value) : e.value;
 c.push(t);
 }
@@ -24613,7 +24703,7 @@ return e[0];
 }), i);
 }
 function u(e) {
-P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 }));
@@ -24679,11 +24769,11 @@ pods: t.pods,
 namespace: e.metadata.namespace,
 bucketDuration: p()
 };
-return w || (n.containerName = t.options.selectedContainer.name), n.start = k || d(), n;
+return w || (n.containerName = t.options.selectedContainer.name), n.start = P || d(), n;
 }
 }
 function g(e) {
-if (!P) if (N++, t.noData) t.metricsError = {
+if (!k) if (N++, t.noData) t.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
 }; else if (!(N < 2) && t.alerts) {
@@ -24824,9 +24914,9 @@ t.loaded = !0;
 });
 }
 }
-var b, C = {}, S = 30, w = "compact" === t.profile, P = !1;
+var b, C = {}, S = 30, w = "compact" === t.profile, k = !1;
 t.uniqueID = s.uniqueID();
-var k, j, R = {}, I = w, E = function(e) {
+var P, j, R = {}, I = w, E = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -24955,7 +25045,7 @@ var n = s.getDefaultSparklineConfig(e.chartID, e.units, w);
 return _.set(n, "legend.show", !w && !t.showAverage), n;
 };
 t.$watch("options", function() {
-R = {}, k = null, delete t.metricsError, y();
+R = {}, P = null, delete t.metricsError, y();
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
 I = !e, e && (!j || Date.now() > j + s.getDefaultUpdateInterval()) && y();
 };
@@ -24965,7 +25055,7 @@ s.redraw(C);
 t.$on("$destroy", function() {
 b && (e.cancel(b), b = null), A && (A(), A = null), angular.forEach(C, function(e) {
 e.destroy();
-}), C = null, P = !0;
+}), C = null, k = !0;
 });
 }
 };
@@ -25080,17 +25170,17 @@ t.autoScrollActive = !1;
 });
 }, w = function() {
 u ? $(u).on("scroll", S) : m.on("scroll", S);
-}, P = function() {
+}, k = function() {
 t.fixedHeight || p.affix({
 target: window,
 offset: {
 top: t.followAffixTop || 0
 }
 });
-}, k = function() {
+}, P = function() {
 return $("#" + t.logViewerID + " .log-view-output");
 }, j = function(e) {
-var n = k(), a = n.offset().top;
+var n = P(), a = n.offset().top;
 if (!(a < 0)) {
 var r = $(".ellipsis-pulser").outerHeight(!0), o = t.fixedHeight ? t.fixedHeight : Math.floor($(window).height() - a - r);
 t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
@@ -25105,7 +25195,7 @@ t.sized = !0;
 });
 }, n = 0;
 y = setInterval(function() {
-n > 10 ? e() : (n++, k().is(":visible") && (j(), e()));
+n > 10 ? e() : (n++, P().is(":visible") && (j(), e()));
 }, 100);
 }
 }, I = _.debounce(function() {
@@ -25287,7 +25377,7 @@ l = e;
 }, this.cacheAffixable = function(e) {
 p = $(e);
 }, this.start = function() {
-w(), P();
+w(), k();
 }, angular.extend(t, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 ready: !0,
@@ -27453,12 +27543,12 @@ cancelButtonText: "Cancel"
 }
 }
 }).result.then(C);
-}, w = {}, P = function() {
+}, w = {}, k = function() {
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
-}, k = function(e) {
-P(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
+}, P = function(e) {
+k(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
 w = w.concat(t), _.filter(w, {
 type: "error"
@@ -27475,7 +27565,7 @@ v.disableInputs = !0, j().then(function(e) {
 v.selectedProject = e, g = {
 namespace: v.selectedProject.metadata.name
 }, v.template.labels = m.mapEntries(m.compactEntries(v.labels)), r.create("processedtemplates", null, v.template, g).then(function(e) {
-s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(k);
+s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(P);
 }, function(e) {
 v.disableInputs = !1;
 var t;
@@ -27497,8 +27587,8 @@ details: t
 });
 });
 }, v.cancel = function() {
-P(), o.toProjectOverview(v.project.metadata.name);
-}, n.$on("instantiateTemplate", v.createFromTemplate), n.$on("$destroy", P);
+k(), o.toProjectOverview(v.project.metadata.name);
+}, n.$on("instantiateTemplate", v.createFromTemplate), n.$on("$destroy", k);
 var R = function() {
 return !_.get(v.template, "labels.app") && !_.some(v.template.objects, "metadata.labels.app");
 };
@@ -28203,6 +28293,7 @@ e.$broadcast("importFileFromYAMLOrJSON");
 }, s.instantiateTemplate = function() {
 e.$broadcast("instantiateTemplate");
 }, e.$on("fileImportedFromYAMLOrJSON", function(e, n) {
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 s.selectedProject = n.project, s.template = n.template, s.iconClass = o(), s.image = i(), s.vendor = c(n.template, "template.openshift.io/provider-display-name"), s.docUrl = c(s.template, "template.openshift.io/documentation-url"), s.supportUrl = c(s.template, "template.openshift.io/support-url"), s.name = "YAML / JSON", t(function() {
 s.currentStep = s.template ? "Template Configuration" : "Results";
 }, 0);
@@ -28231,6 +28322,13 @@ return "file" === e.stepId ? (i.importFile(), !1) : "template" === e.stepId ? (i
 >>>>>>> Making next steps/results messaging consistent
 =======
 s.selectedProject = t.project, s.name = a("displayName")(s.template), s.currentStep = "Results";
+=======
+s.selectedProject = n.project, s.template = n.template, s.iconClass = o(), s.image = i(), s.vendor = c(n.template, "openshift.io/provider-display-name"), s.docUrl = c(s.template, "openshift.io/documentation-url"), s.supportUrl = c(s.template, "openshift.io/support-url"), s.actionLabel = "imported", n.isList ? (s.kind = null, s.name = "YAML / JSON") : n.resource && (s.kind = n.resource.kind, s.name = n.resource.metadata.name), t(function() {
+s.currentStep = s.template ? "Template Configuration" : "Results";
+}, 0);
+}), e.$on("templateInstantiated", function(e, t) {
+s.selectedProject = t.project, s.name = a("displayName")(s.template), s.actionLabel = null, s.kind = null, s.currentStep = "Results";
+>>>>>>> Bug 1505281 - Improve import YAML results message
 }), s.close = function() {
 s.template = null;
 var e = s.onDialogClosed();
@@ -28339,7 +28437,7 @@ e.hasErrors && t.push(e);
 }), t;
 }
 var r = this;
-r.showParamsTable = !1;
+r.showParamsTable = !1, r.actionLabel = r.actionLabel || "created";
 var o = e.getTemplateData();
 r.parameters = o.params, r.templateMessage = o.message, e.clearTemplateData();
 var i = function(e) {
@@ -28369,7 +28467,9 @@ fromSampleRepo: "<",
 createdBuildConfig: "<",
 onContinue: "<",
 showProjectName: "<",
-name: "<"
+kind: "<?",
+name: "<",
+actionLabel: "<?"
 },
 templateUrl: "views/directives/next-steps.html"
 });
@@ -29588,7 +29688,7 @@ var a = n.input.selectedProject.metadata.name, r = n.input.selectedProject.metad
 return l.create(a, r, o);
 }, b = e("stripTag"), C = e("stripSHA"), S = e("humanizeKind"), w = function(e) {
 return e.length > 24 ? e.substring(0, 24) : e;
-}, P = function() {
+}, k = function() {
 var e = _.last(n.import.name.split("/"));
 return e = C(e), e = b(e), e = w(e);
 };
@@ -29599,7 +29699,7 @@ namespace: n.input.selectedProject.metadata.name
 if (n.import = e, n.loading = !1, "Success" === _.get(e, "result.status")) {
 n.forms.imageSelection.imageName.$setValidity("imageLoaded", !0);
 var t = n.import.image;
-t && (n.app.name = P(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t), n.volumes = i.getVolumes(t), n.createImageStream = !0);
+t && (n.app.name = k(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t), n.volumes = i.getVolumes(t), n.createImageStream = !0);
 } else n.import.error = _.get(e, "result.message", "An error occurred finding the image.");
 }, function(t) {
 n.import.error = e("getErrorDetails")(t) || "An error occurred finding the image.", n.loading = !1;
@@ -29661,7 +29761,7 @@ details: g(e)
 }
 } else n.mode = "istag";
 });
-var k, j = e("displayName"), R = function() {
+var P, j = e("displayName"), R = function() {
 var e = {
 started: "Deploying image " + n.app.name + " to project " + j(n.input.selectedProject),
 success: "Deployed image " + n.app.name + " to project " + j(n.input.selectedProject),
@@ -29669,7 +29769,7 @@ failure: "Failed to deploy image " + n.app.name + " to project " + j(n.input.sel
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
-return o.batch(k, {
+return o.batch(P, {
 namespace: n.input.selectedProject.metadata.name
 }).then(function(t) {
 var a, r = !_.isEmpty(t.failure);
@@ -29763,8 +29863,8 @@ e.id = _.uniqueId("deploy-image-alert-"), c.addNotification(e);
 };
 n.create = function() {
 n.disableInputs = !0, h(), y().then(function(e) {
-n.input.selectedProject = e, k = m();
-var t = r.ifResourcesDontExist(k, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(k, {
+n.input.selectedProject = e, P = m();
+var t = r.ifResourcesDontExist(P, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(P, {
 namespace: n.input.selectedProject.metadata.name
 }), o = function(e) {
 return n.nameTaken = e.nameTaken, a;
@@ -30800,7 +30900,7 @@ notifications: n
 };
 }, w = function(e) {
 return _.filter(e, "unread");
-}, P = function() {
+}, k = function() {
 _.each(p.notificationGroups, function(e) {
 e.totalUnread = w(e.notifications).length, e.hasUnread = !!e.totalUnread, o.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 >>>>>>> Support EnvFrom in the Env Editors
@@ -30825,6 +30925,7 @@ return _.filter(e, "unread");
 o.$applyAsync(function() {
 e.totalUnread = j(e.notifications).length, e.hasUnread = !!e.totalUnread, o.$emit("NotificationDrawerWrapper.count", e.totalUnread);
 });
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 }, R = function() {
 _.each(v, P);
@@ -30881,6 +30982,9 @@ _.each(m.notificationGroups, function(t) {
 =======
 }, k = function(e) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+}, P = function(e) {
+>>>>>>> Bug 1505281 - Improve import YAML results message
 _.each(p.notificationGroups, function(t) {
 >>>>>>> Support EnvFrom in the Env Editors
 _.remove(t.notifications, {
@@ -30917,10 +31021,13 @@ v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][
 =======
 }, j = function(e) {
 v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][e.uid], P(e);
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 >>>>>>> Update template service broker flag name
 =======
 v[r.project] && delete v[r.project][e.uid], g[r.project] && delete g[r.project][e.uid], k(e);
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+>>>>>>> Bug 1505281 - Improve import YAML results message
 }, R = function() {
 g[r.project] = {}, v[r.project] = {};
 }, I = function(e) {
@@ -30962,6 +31069,7 @@ return _.assign({}, e[n], t[n]);
 return _.orderBy(e, [ "event.lastTimestamp", "event.firstTimestamp" ], [ "desc", "desc" ]);
 }, T = function() {
 o.$evalAsync(function() {
+<<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -30975,6 +31083,9 @@ p.notificationGroups = [ S(r.project, N(T(g, v))) ], k();
 =======
 p.notificationGroups = [ S(r.project, N(T(g, v))) ], P();
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+p.notificationGroups = [ S(r.project, N(T(g, v))) ], k();
+>>>>>>> Bug 1505281 - Improve import YAML results message
 });
 }, N = function() {
 _.each(f, function(e) {
@@ -31151,7 +31262,7 @@ k(), S(), N();
 onLinkClick: function(e) {
 e.onClick(), p.drawerHidden = !0;
 },
-countUnreadNotifications: P
+countUnreadNotifications: k
 }
 });
 var F = function() {

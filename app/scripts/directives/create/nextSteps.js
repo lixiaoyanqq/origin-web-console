@@ -15,7 +15,11 @@
       createdBuildConfig: '<',
       onContinue: '<',
       showProjectName: '<',
-      name: '<'
+      // Optional kind to show in front of the name
+      kind: '<?',
+      name: '<',
+      // Optional action to use instead of "created" (for example, "imported")
+      actionLabel: '<?'
     },
     templateUrl: 'views/directives/next-steps.html'
   });
