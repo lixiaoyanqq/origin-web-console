@@ -202,11 +202,11 @@
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" ng-model="useLabels" translate>
-        Use label selectors to request storage
+        <input type="checkbox" ng-model="useLabels">
+	<translate>Use label selectors to request storage</translate>
       </label>
       <div class="help-block learn-more-block mar-bottom-xl">
-        <a ng-href="{{'selector_label' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+	      <a ng-href="{{'selector_label' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
       </div>
     </div>
     <div ng-show="useLabels" class="form-group osc-form">

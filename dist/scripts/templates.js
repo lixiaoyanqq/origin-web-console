@@ -10376,8 +10376,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$dirty && !claimDisabled }\">\n" +
 =======
     "<label for=\"claim-name\" class=\"required\">Name</label>\n" +
+<<<<<<< 150d3e137b84f2c4d5bc24655bf27af787d3c955
     "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$touched && !claimDisabled }\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<span ng-class=\"{ 'has-error': persistentVolumeClaimForm.name.$invalid && persistentVolumeClaimForm.name.$dirty && !claimDisabled }\">\n" +
+>>>>>>> Use label-editor for PVC labels
     "<input id=\"claim-name\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"claim.name\" ng-required=\"true\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" placeholder=\"my-storage-claim\" take-focus select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"claim-name-help\">\n" +
 >>>>>>> rebase from poc 3.6
     "</span>\n" +
@@ -10385,7 +10389,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span id=\"claim-name-help\" class=\"help-block\" translate>A unique name for the storage claim within the project.</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"persistentVolumeClaimForm.name.$error.required && persistentVolumeClaimForm.name.$dirty && !claimDisabled\">\n" +
+<<<<<<< 150d3e137b84f2c4d5bc24655bf27af787d3c955
     "<span class=\"help-block\" translate>\n" +
+=======
+    "<span class=\"help-block\">\n" +
+>>>>>>> Use label-editor for PVC labels
     "Name is required.\n" +
     "</span>\n" +
     "</div>\n" +
@@ -10505,6 +10513,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
+<<<<<<< 150d3e137b84f2c4d5bc24655bf27af787d3c955
     "<input type=\"checkbox\" ng-model=\"useLabels\" translate>\n" +
     "Use label selectors to request storage\n" +
     "</label>\n" +
@@ -10514,6 +10523,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-show=\"useLabels\" class=\"form-group osc-form\">\n" +
     "<label-editor labels=\"claim.selectedLabels\" expand=\"true\" can-toggle=\"false\" help-text=\"{{'Enter a label and value to use for your storage.'|translate}}\">\n" +
+=======
+    "<input type=\"checkbox\" ng-model=\"useLabels\">\n" +
+    "Use label selectors to request storage\n" +
+    "</label>\n" +
+    "<div class=\"help-block learn-more-block mar-bottom-xl\">\n" +
+    "<a ng-href=\"{{'selector_label' | helpLink}}\" target=\"_blank\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-show=\"useLabels\" class=\"form-group osc-form\">\n" +
+    "<label-editor labels=\"claim.selectedLabels\" expand=\"true\" can-toggle=\"false\" help-text=\"Enter a label and value to use for your storage.\">\n" +
+>>>>>>> Use label-editor for PVC labels
     "</label-editor>\n" +
     "</div>\n" +
     "</fieldset>\n" +
