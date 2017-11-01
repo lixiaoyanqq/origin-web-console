@@ -43,22 +43,8 @@ angular.module("openshiftConsole")
       return;
     }
 
-    var breadcrumbTitle = $routeParams.displayName || imageName;
     $scope.displayName = $routeParams.displayName;
     $scope.advancedOptions = $routeParams.advanced === 'true';
-    $scope.breadcrumbs = [
-      {
-        title: "Add to Project",
-        link: "project/" + $scope.projectName + "/create"
-      },
-      {
-        title: gettext("Catalog"),
-        link: "project/" + $scope.projectName + "/create?tab=fromCatalog"
-      },
-      {
-        title: breadcrumbTitle
-      }
-    ];
 
     var appLabel = {name: 'app', value: ''};
 
@@ -335,8 +321,7 @@ angular.module("openshiftConsole")
                 return d.promise;
               });
           Navigate.toNextSteps($scope.name, $scope.projectName, {
-            usingSampleRepo: $scope.usingSampleRepo(),
-            breadcrumbTitle: breadcrumbTitle
+            usingSampleRepo: $scope.usingSampleRepo()
           });
         };
 
