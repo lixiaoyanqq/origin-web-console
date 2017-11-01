@@ -16569,6 +16569,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
 <<<<<<< HEAD
@@ -16596,12 +16597,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
     "<div ng-if=\"loaded\" class=\"row\">\n" +
+=======
+    "<div ng-if=\"!secretsLoaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+    "<div ng-if=\"secretsLoaded\" class=\"row\">\n" +
+>>>>>>> Add watcher to secrets page
     "<div class=\"col-md-12\">\n" +
     "<div ng-if=\"!secrets.length\">\n" +
-    "<p ng-if=\"!loaded\">\n" +
-    "Loading...\n" +
-    "</p>\n" +
-    "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
+    "<div class=\"empty-state-message text-center\">\n" +
     "<h2>No secrets.</h2>\n" +
     "<p>\n" +
     "No secrets have been added to project {{projectName}}.\n" +

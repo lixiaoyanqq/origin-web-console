@@ -14180,8 +14180,19 @@ cancelButtonText: "Cancel"
 }).then(function() {
 v.removeVolume(e.replicaSet, n, g);
 });
+<<<<<<< HEAD
 }, e.$on("$destroy", function() {
 o.unwatchAll(j);
+=======
+} ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "DataService", "ProjectsService", function(e, t, n, a) {
+t.projectName = e.project, t.secretsByType = {};
+var r = [];
+a.get(e.project).then(_.spread(function(e, a) {
+t.project = e, t.context = a, r.push(n.watch("secrets", a, function(e) {
+t.secrets = _.sortBy(e.by("metadata.name"), [ "type", "metadata.name" ]), t.secretsLoaded = !0;
+})), t.$on("$destroy", function() {
+n.unwatchAll(r);
+>>>>>>> Add watcher to secrets page
 });
 }));
 } ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, a, r, o) {
