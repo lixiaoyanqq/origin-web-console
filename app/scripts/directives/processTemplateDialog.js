@@ -84,11 +84,13 @@
     ctrl.$onInit = function() {
       ctrl.loginBaseUrl = DataService.openshiftAPIBaseUrl();
       ctrl.preSelectedProject = ctrl.selectedProject = ctrl.project;
-      if (ctrl.project) {
-        ctrl.templateProject = ctrl.project;
-        ctrl.templateProjectChange();
+      if (ctrl.useProjectTemplate) {
+        if (ctrl.project) {
+          ctrl.templateProject = ctrl.project;
+          ctrl.templateProjectChange();
+        }
+        listProjects();
       }
-      listProjects();
 
       ctrl.noProjectsCantCreate = false;
       $scope.$on('no-projects-cannot-create', function() {
