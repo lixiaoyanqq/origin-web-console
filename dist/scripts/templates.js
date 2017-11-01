@@ -5799,11 +5799,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\" persist-tab-state>\n" +
     "<div class=\"container-fluid\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<alerts alerts=\"alerts\" class=\"mar-top-md\"></alerts>\n" +
 =======
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+    "<alerts alerts=\"alerts\" class=\"mar-top-md\"></alerts>\n" +
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<uib-tabset class=\"mar-top-md\" ng-if=\"project\">\n" +
@@ -5869,7 +5873,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< HEAD
     "<div ng-hide=\"imageStream\" class=\"mar-top-lg\" translate>\n" +
+=======
+    "<div ng-hide=\"imageStream\" class=\"mar-top-lg\">\n" +
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
     "Loading...\n" +
     "</div>\n" +
     "<div class=\"osc-form\" ng-show=\"imageStream\">\n" +
@@ -6146,6 +6154,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle surface-shaded\">\n" +
     "<div class=\"middle-content\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"container-fluid next-steps pad-top-xl\">\n" +
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\" name=\"name\"></next-steps>\n" +
 =======
@@ -6155,6 +6164,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\"></next-steps>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
 =======
+=======
+    "<div class=\"container-fluid next-steps pad-top-xl\">\n" +
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
     "<next-steps project=\"project\" project-name=\"projectName\" login-base-url=\"loginBaseUrl\" from-sample-repo=\"fromSampleRepo\" created-build-config=\"createdBuildConfig\" name=\"name\"></next-steps>\n" +
 >>>>>>> Making next steps/results messaging consistent
     "</div>\n" +
@@ -14321,7 +14333,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"row\">\n" +
     "<div class=\"col-md-12\">\n" +
+<<<<<<< HEAD
     "<div ng-hide=\"template\" class=\"mar-top-lg\" translate>\n" +
+=======
+    "<div ng-hide=\"template\" class=\"mar-top-lg\">\n" +
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
     "Loading...\n" +
     "</div>\n" +
     "<div ng-if=\"template\" class=\"row osc-form\">\n" +

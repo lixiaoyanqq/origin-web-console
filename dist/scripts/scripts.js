@@ -16191,6 +16191,7 @@ r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("con
 });
 } else u.toErrorPage("You do not have authority to update " + f(a.kind) + " " + a.name + ".", "access_denied");
 }));
+<<<<<<< HEAD
 } else u.toErrorPage("Health checks are not supported for kind " + a.kind + ".");
 } else u.toErrorPage("Kind or name parameter missing.");
 } ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
@@ -16282,6 +16283,30 @@ label: "GitHub"
 =======
 title: e.category.label
 }), u.get(r.project).then(_.spread(function(t, n) {
+=======
+} else l.toErrorPage("Kind or name parameter missing.");
+} ]), angular.module("openshiftConsole").controller("BrowseCategoryController", [ "$scope", "$filter", "$location", "$q", "$routeParams", "$uibModal", "Constants", "DataService", "LabelFilter", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
+e.projectName = r.project;
+var d = function(t, n) {
+var a;
+return _.some(t, function(t) {
+if (a = _.find(t.items, {
+id: n
+})) {
+e.category = a;
+var r = _.get(a, "subcategories", []);
+return e.subcategories = [ {
+id: "",
+label: ""
+} ].concat(r), !0;
+}
+return !1;
+}), a;
+}, m = i.CATALOG_CATEGORIES, p = "none" === r.category ? "" : r.category;
+if (e.category = d(m, p), e.category) {
+var f;
+!r.subcategory || (e.category, p = "none" === r.subcategory ? "" : r.subcategory, f = _.get(e.category, "subcategories", []), e.category = d(f, p), e.category) ? (e.alerts = e.alerts || {}, u.get(r.project).then(_.spread(function(t, n) {
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 e.project = t, e.context = n, s.list("imagestreams", {
 namespace: "openshift"
 }).then(function(t) {
@@ -16306,6 +16331,7 @@ var k = t("displayName"), P = t("humanize");
 e.projectName = r.project, e.sourceURLPattern = y;
 var j = r.imageStream;
 if (j) if (r.imageTag) {
+<<<<<<< HEAD
 var R = r.displayName || j;
 e.displayName = r.displayName, e.advancedOptions = "true" === r.advanced, e.breadcrumbs = [ {
 title: "Add to Project",
@@ -16370,6 +16396,15 @@ var r;
 r = t && n ? "commandArgs" : t && a ? "scriptArgs" : t ? "args" : a ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
 id: r
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+e.displayName = r.displayName, e.advancedOptions = "true" === r.advanced;
+var R = {
+name: "app",
+value: ""
+}, I = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 });
 }, g = function() {
 if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
@@ -16393,6 +16428,7 @@ case "commandArgs":
 delete e.updatedBuildConfig.spec.postCommit.script;
 } else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
 };
+<<<<<<< HEAD
 e.secrets = {};
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -16401,11 +16437,18 @@ e.valueFromObjects = [];
 var j = function() {
 var t;
 e.buildConfig ? (t = c.resourceURL(e.buildConfig), n.path(t)) : a.history.back();
+=======
+e.$on("$destroy", N), v.get(r.project).then(_.spread(function(t, n) {
+e.project = t, r.sourceURI && (e.sourceURIinParams = !0);
+var i = function() {
+e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 };
 e.cancel = j;
 var k = function() {
 l.hideNotification("edit-build-config-error"), l.hideNotification("edit-build-config-conflict"), l.hideNotification("edit-build-config-deleted");
 };
+<<<<<<< HEAD
 e.$on("$destroy", k), u.get(r.project).then(_.spread(function(n, a) {
 e.project = n, e.context = a, i.canI("buildconfigs", "update", r.project) ? (s.get(v, r.buildconfig, a, {
 errorNotification: !1
@@ -16413,6 +16456,64 @@ errorNotification: !1
 e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = b(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), i.canI(h, "list", r.project) && s.list(h, a).then(function(t) {
 var n = m.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
+=======
+c.list("resourcequotas", n).then(function(e) {
+v = e.by("metadata.name"), m.log("quotas", v);
+}), c.list("appliedclusterresourcequotas", n).then(function(e) {
+y = e.by("metadata.name"), m.log("cluster quotas", y);
+}), e.$watch("scaling.autoscale", S), e.$watch("container", S, !0), e.$watch("name", function(e, t) {
+R.value && R.value !== t || (R.value = e);
+}), function(a) {
+a.name = r.name, a.imageName = j, a.imageTag = r.imageTag, a.namespace = r.namespace, a.buildConfig = {
+buildOnSourceChange: !0,
+buildOnImageChange: !0,
+buildOnConfigChange: !0,
+secrets: {
+gitSecret: [ {
+name: ""
+} ]
+},
+sourceUrl: r.sourceURI,
+gitRef: r.sourceRef,
+contextDir: r.contextDir
+}, a.buildConfigEnvVars = [], a.deploymentConfig = {
+deployOnNewImage: !0,
+deployOnConfigChange: !0
+}, a.DCEnvVarsFromImage, a.DCEnvVarsFromUser = [], a.routing = {
+include: !0,
+portOptions: []
+}, a.labelArray = [ R ], a.annotations = {}, a.scaling = {
+replicas: 1,
+autoscale: !1,
+autoscaleOptions: [ {
+label: "Manual",
+value: !1
+}, {
+label: "Automatic",
+value: !0
+} ]
+}, a.container = {
+resources: {}
+}, a.cpuRequestCalculated = d.isRequestCalculated("cpu", t), a.cpuLimitCalculated = d.isLimitCalculated("cpu", t), a.memoryRequestCalculated = d.isRequestCalculated("memory", t), a.fillSampleRepo = function() {
+var e;
+(a.image || a.image.metadata || a.image.metadata.annotations) && (e = a.image.metadata.annotations, a.buildConfig.sourceUrl = e.sampleRepo || "", a.buildConfig.gitRef = e.sampleRef || "", a.buildConfig.contextDir = e.sampleContextDir || "", (e.sampleRef || e.sampleContextDir) && (a.advancedSourceOptions = !0));
+}, a.usingSampleRepo = function() {
+return a.buildConfig.sourceUrl === _.get(a, "image.metadata.annotations.sampleRepo");
+}, p.isAvailable().then(function(t) {
+e.metricsWarning = !t;
+});
+var o = [], i = [];
+e.valueFromObjects = [], c.list("configmaps", n, null, {
+errorNotification: !1
+}).then(function(t) {
+o = I(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
+}, function(e) {
+403 !== e.code && g.addNotification({
+id: "create-builder-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: E(e)
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 });
 e.webhookSecrets = m.groupSecretsByType(t).webhook, e.webhookSecrets.unshift(""), e.secrets.secretsByType = _.each(r, function(e) {
 e.unshift("");
@@ -16438,14 +16539,20 @@ e.$on("$destroy", b), u.get(a.project).then(_.spread(function(n, r) {
 e.project = n, e.context = r, i.canI("buildconfigs", "update", a.project) ? s.get("buildconfigs", a.buildconfig, r, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = h(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = C(e.triggers, e.buildConfig.spec.triggers), e.sources = I(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
 var n = m.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+=======
+i = I(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
+var n = b.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
 }), P();
 });
+<<<<<<< HEAD
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
 var a = {}, r = "", o = "";
@@ -16469,10 +16576,32 @@ tag: ""
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 n(e.imageOptions.from, e.buildStrategy.from), n(e.imageOptions.to, e.updatedBuildConfig.spec.output.to), e.sources.images && (e.sourceImages = e.buildConfig.spec.source.images, 1 === _.size(e.sourceImages) ? (e.imageSourceTypes = angular.copy(e.buildFromTypes), n(e.imageOptions.fromSource, e.sourceImages[0].from), e.imageSourcePaths = _.map(e.sourceImages[0].paths, function(e) {
+=======
+}, function(e) {
+403 !== e.code && g.addNotification({
+id: "create-builder-list-secrets-error",
+type: "error",
+message: "Could not load secrets.",
+details: E(e)
+});
+}), c.get("imagestreams", a.imageName, {
+namespace: a.namespace || r.project
+}).then(function(e) {
+a.imageStream = e;
+var t = a.imageTag;
+c.get("imagestreamtags", e.metadata.name + ":" + t, {
+namespace: a.namespace
+}).then(function(e) {
+a.image = e.image, a.DCEnvVarsFromImage = u.getEnvironment(e);
+var t = s.parsePorts(e.image);
+_.isEmpty(t) ? (a.routing.include = !1, a.routing.portOptions = []) : (a.routing.portOptions = _.map(t, function(e) {
+var t = s.getServicePort(e);
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 return {
 name: e.sourcePath,
 value: e.destinationDir
 };
+<<<<<<< HEAD
 })) : (e.imageSourceFromObjects = [], e.sourceImages.forEach(function(t) {
 e.imageSourceFromObjects.push(t.from);
 <<<<<<< HEAD
@@ -16509,6 +16638,31 @@ w = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
 }, function(e) {
 403 !== e.code && l.addNotification({
 id: "edit-build-config-list-config-maps-error",
+=======
+}), a.routing.targetPort = a.routing.portOptions[0].port);
+}, function() {
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+});
+}, function() {
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+});
+}(e);
+var D, A = function() {
+var t = {
+started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
+success: "Created application " + e.name + " in project " + e.projectDisplayName(),
+failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
+}, o = {};
+C.clear(), C.add(t, o, r.project, function() {
+var t = a.defer();
+return c.batch(D, n).then(function(n) {
+var a = [], r = !1;
+_.isEmpty(n.failure) ? a.push({
+type: "success",
+message: "All resources for application " + e.name + " were created successfully."
+}) : (r = !0, n.failure.forEach(function(e) {
+a.push({
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 type: "error",
 message: "Could not load config maps.",
 details: C(e)
@@ -16559,6 +16713,7 @@ n.githubWebhooks.push({
 disabled: !1,
 data: e
 });
+<<<<<<< HEAD
 break;
 
 case "GitLab":
@@ -16576,6 +16731,13 @@ disabled: !1,
 data: e
 =======
 }, B = function(e) {
+=======
+}), t.promise;
+}), f.toNextSteps(e.name, e.projectName, {
+usingSampleRepo: e.usingSampleRepo()
+});
+}, $ = function(e) {
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 o.open({
 animation: !0,
 templateUrl: "views/modals/confirm.html",
@@ -16591,19 +16753,20 @@ cancelButtonText: "Cancel"
 };
 }
 }
-}).result.then($);
-}, L = function(t) {
-D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
+}).result.then(A);
+}, B = function(t) {
+N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 type: "error"
-}) ? (e.disableInputs = !1, _.each(N, function(e) {
+}) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(N) ? $() : (B(N), e.disableInputs = !1);
+})) : _.isEmpty(T) ? A() : ($(T), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return k(this.project) || this.projectName;
 }, e.createApp = function() {
-e.disableInputs = !0, D(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
+e.disableInputs = !0, N(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
 var t = s.generate(e);
+<<<<<<< HEAD
 A = [], angular.forEach(t, function(e) {
 null !== e && (m.debug("Generated resource definition:", e), A.push(e));
 >>>>>>> Bug 1505281 - Improve import YAML results message
@@ -16623,6 +16786,15 @@ a(t, o) ? n.builderImageChangeTrigger = r : n.imageChangeTriggers.push(r);
 var a = {
 present: !0,
 data: e
+=======
+D = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), D.push(e));
+});
+var a = s.ifResourcesDontExist(D, e.projectName), r = h.getLatestQuotaAlerts(D, n), o = function(t) {
+return e.nameTaken = t.nameTaken, r;
+};
+a.then(o, o).then(B, B);
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 };
 r(t, o) ? n.builderImageChangeTrigger = a : n.imageChangeTriggers.push(a);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -16633,6 +16805,28 @@ n.configChangeTrigger = {
 present: !0,
 data: e
 };
+<<<<<<< HEAD
+=======
+} else f.toErrorPage("Cannot create from source: a base image tag was not specified"); else f.toErrorPage("Cannot create from source: a base image was not specified");
+} ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$scope", "$http", "$routeParams", "DataService", "$q", "$location", "TaskList", "$parse", "Navigate", "Logger", "$filter", "imageObjectRefFilter", "failureObjectNameFilter", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
+u("displayName");
+var f = [];
+e.alerts = [], e.loginBaseUrl = a.openshiftAPIBaseUrl(), e.buildConfigs = {}, e.projectName = n.project, e.fromSampleRepo = n.fromSample, e.name = n.name, p.get(n.project).then(_.spread(function(t, r) {
+e.project = t, f.push(a.watch("buildconfigs", r, function(t) {
+e.buildConfigs = t.by("metadata.name"), e.createdBuildConfig = e.buildConfigs[n.name], l.log("buildconfigs (subscribe)", e.buildConfigs);
+})), e.$on("$destroy", function() {
+a.unwatchAll(f);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
+function u(e, t) {
+var n = _.get(e, "spec.triggers", []), a = _.find(n, function(e) {
+if ("ImageChange" !== e.type) return !1;
+var n = _.get(e, "imageChangeParams.containerNames", []);
+return _.includes(n, t.name);
+});
+return _.get(a, "imageChangeParams.from.name");
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 }
 }), _.isEmpty(n.builderImageChangeTrigger) && (n.builderImageChangeTrigger = {
 present: !1,
@@ -16772,6 +16966,7 @@ e[t.name] = t.value;
 }), e;
 >>>>>>> Bug 1505281 - Improve import YAML results message
 }
+<<<<<<< HEAD
 return n;
 }, k = function() {
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
@@ -16846,6 +17041,10 @@ mountPath: ""
 } ];
 <<<<<<< HEAD
 =======
+=======
+var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), S = e("imageObjectRef");
+if (v) {
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 a.templateParamsMap && (r.prefillParameters = function() {
 try {
 return JSON.parse(a.templateParamsMap);
@@ -16859,14 +17058,14 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 }
 }());
 var w = /\${([a-zA-Z0-9\_]+)}/g, k = [];
-l.get(a.project).then(_.spread(function(n) {
-if (r.project = n, h) i.get("templates", v, {
+l.get(a.project).then(_.spread(function(e) {
+if (r.project = e, h) i.get("templates", v, {
 namespace: h || r.project.metadata.name
-}).then(function(t) {
-r.template = t, r.breadcrumbs[2].title = e("displayName")(t), f(t);
+}).then(function(e) {
+r.template = e, f(e);
 _.some(k, function(e) {
 return !_.isEmpty(e.usesParameters);
-}) ? (r.parameterDisplayNames = {}, _.each(t.parameters, function(e) {
+}) ? (r.parameterDisplayNames = {}, _.each(e.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
 }), r.$watch("template.parameters", _.debounce(function() {
 r.$apply(m);
@@ -16877,11 +17076,11 @@ maxWait: 250
 s.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
 if (r.template = o.getTemplate(), _.isEmpty(r.template)) {
-var a = URI("error").query({
+var n = URI("error").query({
 error: "not_found",
 error_description: "Template wasn't found in cache."
 }).toString();
-t.url(a);
+t.url(n);
 }
 o.clearTemplate();
 >>>>>>> Bug 1505281 - Improve import YAML results message
@@ -17040,6 +17239,7 @@ break;
 case "Custom":
 R(h(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< HEAD
 e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
 type: "success",
@@ -17049,6 +17249,39 @@ message: "Build config " + e.updatedBuildConfig.metadata.name + " was successful
 }, function(n) {
 e.disableInputs = !1, l.addNotification({
 id: "edit-build-config-error",
+=======
+n.error_description && (e.errorDetails = n.error_description), e.reloadConsole = function() {
+t.location.href = "/";
+};
+} ]), angular.module("openshiftConsole").controller("LogoutController", [ "$scope", "$log", "AuthService", "AUTH_CFG", function(e, t, n, a) {
+t.debug("LogoutController"), n.isLoggedIn() ? (t.debug("LogoutController, logged in, initiating logout"), e.logoutMessage = "Logging out...", n.startLogout().finally(function() {
+n.isLoggedIn() ? (t.debug("LogoutController, logout failed, still logged in"), e.logoutMessage = 'You could not be logged out. Return to the <a href="./">console</a>.') : a.logout_uri ? (t.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", a.logout_uri), window.location.href = a.logout_uri) : (t.debug("LogoutController, logout completed, reloading the page"), window.location.reload(!1));
+})) : a.logout_uri ? (t.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", a.logout_uri), e.logoutMessage = "Logging out...", window.location.href = a.logout_uri) : (t.debug("LogoutController, not logged in, logout complete"), e.logoutMessage = 'You are logged out. Return to the <a href="./">console</a>.');
+} ]), angular.module("openshiftConsole").controller("CreateController", [ "$scope", "$filter", "$location", "$q", "$routeParams", "$uibModal", "CatalogService", "Constants", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d) {
+e.projectName = r.project, e.categories = s.CATALOG_CATEGORIES, e.alerts = e.alerts || {}, d.get(r.project).then(_.spread(function(t, n) {
+e.project = t, e.context = n, c.list("imagestreams", {
+namespace: "openshift"
+}).then(function(t) {
+e.openshiftImageStreams = t.by("metadata.name");
+}), c.list("templates", {
+namespace: "openshift"
+}, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
+e.openshiftTemplates = t.by("metadata.name");
+}), "openshift" === r.project ? (e.projectImageStreams = [], e.projectTemplates = []) : (c.list("imagestreams", n).then(function(t) {
+e.projectImageStreams = t.by("metadata.name");
+}), c.list("templates", n, null, {
+partialObjectMetadataList: !0
+}).then(function(t) {
+e.projectTemplates = t.by("metadata.name");
+}));
+}));
+} ]), angular.module("openshiftConsole").controller("CreateFromURLController", [ "$scope", "$routeParams", "$location", "$filter", "AuthService", "DataService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s) {
+r.withUser(), e.alerts = {}, e.selected = {};
+var c = function(t) {
+e.alerts.invalidImageStream = {
+>>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 type: "error",
 message: "An error occurred updating build config " + e.updatedBuildConfig.metadata.name + ".",
 details: t("getErrorDetails")(n)
