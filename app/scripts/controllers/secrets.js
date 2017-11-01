@@ -11,6 +11,7 @@ angular.module('openshiftConsole')
   .controller('SecretsController', function ($routeParams, $scope, DataService, ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.secretsByType = {};
+    var watches = [];
 
     ProjectsService
       .get($routeParams.project)
@@ -22,9 +23,8 @@ angular.module('openshiftConsole')
           $scope.secretsLoaded = true;
         }));
 
-        DataService.list("secrets", context).then(function(secrets) {
-          $scope.secrets = _.sortBy(secrets.by("metadata.name"), ["type", "metadata.name"]);
-          $scope.loaded = true;
+        $scope.$on('$destroy', function(){
+          DataService.unwatchAll(watches);
         });
     }));
   });
