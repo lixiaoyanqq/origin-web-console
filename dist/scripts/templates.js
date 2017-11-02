@@ -4317,7 +4317,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
+<<<<<<< b35ad5a2b7aaaa00bf933f4343c5ad044b215bf7
     "<div ng-if=\"!loaded\" class=\"mar-top-xl\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+>>>>>>> Add watcher to secrets browse page
     "<div ng-if=\"secret\">\n" +
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\">\n" +

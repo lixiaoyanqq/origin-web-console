@@ -32,6 +32,20 @@ angular.module('openshiftConsole')
       }
     ];
 
+    var watches = [];
+
+    var secretResolved = function(secret, action) {
+      $scope.secret = secret;
+      if (action === "DELETED") {
+        $scope.alerts["deleted"] = {
+          type: "warning",
+          message: "This secret has been deleted."
+        };
+        return;
+      }
+      $scope.decodedSecretData = SecretsService.decodeSecretData($scope.secret.data);
+    };
+
     $scope.addToApplicationVisible = false;
 
     $scope.addToApplication = function() {
