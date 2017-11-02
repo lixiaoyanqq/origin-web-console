@@ -44,7 +44,7 @@
 
   <div ng-if="!filteredBuilderImages.length && !filteredTemplates.length && loaded" class="empty-state-message text-center h2">
     <translate>All content is hidden by the current filter.</translate>
-    <a href="" ng-click="filter.keyword = ''" translate>Clear Filter</a>
+    <a href="" ng-click="filter.keyword = ''" role="button" class="nowrap" translate>Clear Filter</a>
   </div>
 
   <div class="row row-cards-pf row-cards-pf-flex mar-top-xl">

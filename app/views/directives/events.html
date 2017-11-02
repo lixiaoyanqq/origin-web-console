@@ -56,15 +56,16 @@
         <td class="hidden-lg" colspan="{{showKindAndName ? 3 : 2}}">
           <span ng-if="(events | hashSize) === 0"><em translate>No events to show.</em></span>
           <span ng-if="(events | hashSize) > 0">
-            <translate>All events hidden by filter.</translate>
             <a href="" ng-click="filter.text = ''" role="button" translate>Clear Filter</a>
+            <translate>All events hidden by filter.</translate>
+            <a href="" ng-click="filter.text = ''" role="button" class="nowrap" translate>Clear Filter</a>
           </span>
         </td>
           <td class="hidden-xs hidden-sm hidden-md" colspan="{{showKindAndName ? 6 : 4}}">
           <span ng-if="(events | hashSize) === 0"><em translate>No events to show.</em></span>
           <span ng-if="(events | hashSize) > 0">
             <translate>All events hidden by filter.</translate>
-            <a href="" ng-click="filter.text = ''" role="button" translate>Clear Filter</a>
+            <a href="" ng-click="filter.text = ''" role="button" class="nowrap" translate>Clear Filter</a>
           </span>
         </td>
       </tr>
