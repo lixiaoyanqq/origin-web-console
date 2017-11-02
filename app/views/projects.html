@@ -91,8 +91,8 @@
                 </form>
               </div>
               <div ng-if="!projects.length && !isProjectListIncomplete" class="h3">
-		      <translate>The current filter is hiding all projects.</translate>
-                <a href="" ng-click="search.text = ''" role="button" translate>Clear Filter</a>
+                <translate>The current filter is hiding all projects.</translate>
+                <a href="" ng-click="search.text = ''" role="button" class="nowrap" translate>Clear Filter</a>
               </div>
               <div class="list-group list-view-pf projects-list">
                 <div ng-repeat="project in projects | limitTo: limitListTo track by (project | uid)" class="list-group-item project-info tile-click">

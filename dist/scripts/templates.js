@@ -2559,8 +2559,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all config maps. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all config maps. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -4208,8 +4212,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all routes. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all routes. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -4971,8 +4979,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No stateful sets have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all stateful sets. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all stateful sets. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -5064,8 +5076,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No builds have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all builds. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all builds. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -5396,8 +5412,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</form>\n" +
     "<div ng-if=\"allContentHidden\" class=\"empty-state-message text-center h2\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>All content is hidden by the current filter.</translate>\n" +
     "<a href=\"\" ng-click=\"filter.keyword = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "All content is hidden by the current filter.\n" +
+    "<a href=\"\" ng-click=\"filter.keyword = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "<div ng-if=\"!filterActive\">\n" +
     "<div ng-repeat=\"category in categories\" ng-if=\"hasContent[category.id]\">\n" +
@@ -5504,8 +5525,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</form>\n" +
     "<div ng-if=\"!filteredBuilderImages.length && !filteredTemplates.length && loaded\" class=\"empty-state-message text-center h2\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>All content is hidden by the current filter.</translate>\n" +
     "<a href=\"\" ng-click=\"filter.keyword = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "All content is hidden by the current filter.\n" +
+    "<a href=\"\" ng-click=\"filter.keyword = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "<div class=\"row row-cards-pf row-cards-pf-flex mar-top-xl\">\n" +
     "<catalog-image image-stream=\"builder\" project=\"{{projectName}}\" is-builder=\"true\" keywords=\"keywords\" ng-repeat=\"builder in filteredBuilderImages track by (builder | uid)\">\n" +
@@ -6242,8 +6268,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No deployments have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all deployments. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all deployments. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -8785,15 +8815,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td class=\"hidden-lg\" colspan=\"{{showKindAndName ? 3 : 2}}\">\n" +
     "<span ng-if=\"(events | hashSize) === 0\"><em translate>No events to show.</em></span>\n" +
     "<span ng-if=\"(events | hashSize) > 0\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>All events hidden by filter.</translate>\n" +
     "<a href=\"\" ng-click=\"filter.text = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "All events hidden by filter.\n" +
+    "<a href=\"\" ng-click=\"filter.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</span>\n" +
     "</td>\n" +
     "<td class=\"hidden-xs hidden-sm hidden-md\" colspan=\"{{showKindAndName ? 6 : 4}}\">\n" +
     "<span ng-if=\"(events | hashSize) === 0\"><em translate>No events to show.</em></span>\n" +
     "<span ng-if=\"(events | hashSize) > 0\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>All events hidden by filter.</translate>\n" +
     "<a href=\"\" ng-click=\"filter.text = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "All events hidden by filter.\n" +
+    "<a href=\"\" ng-click=\"filter.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</span>\n" +
     "</td>\n" +
     "</tr>\n" +
@@ -13131,8 +13171,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No image streams have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all image streams. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all image streams. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14327,11 +14371,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
 <<<<<<< 5ee4e8975cd809cf7a654cbc903e7d305ed5ecb9
     "<h2><translate>The filter is hiding all {{resourceName}}.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
 =======
     "<h2>The filter is hiding all {{resourceName}}. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all {{resourceName}}. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14484,8 +14532,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<alerts alerts=\"overview.state.alerts\"></alerts>\n" +
     "<div ng-if=\"overview.everythingFiltered && overview.viewBy !== 'pipeline'\">\n" +
     "<div class=\"empty-state-message text-center h2\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>The filter is hiding all resources.</translate>\n" +
     "<a href=\"\" ng-click=\"overview.clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "The filter is hiding all resources.\n" +
+    "<a href=\"\" ng-click=\"overview.clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!overview.everythingFiltered || overview.viewBy === 'pipeline'\">\n" +
@@ -14601,8 +14654,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"(overview.pipelineBuildConfigs | hashSize) && !(overview.filteredPipelineBuildConfigs | hashSize)\">\n" +
     "<div class=\"empty-state-message text-center h2\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<translate>All pipelines are filtered.</translate>\n" +
     "<a href=\"\" ng-click=\"overview.clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
+=======
+    "All pipelines are filtered.\n" +
+    "<a href=\"\" ng-click=\"overview.clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "<div ng-repeat=\"pipeline in overview.filteredPipelineBuildConfigs track by (pipeline | uid)\">\n" +
@@ -16013,7 +16071,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No pods have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
-    "<h2>The filter is hiding all pods. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "<h2>The filter is hiding all pods. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -16151,8 +16209,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a>\n" +
 =======
     "The current filter is hiding all projects.\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\">Clear Filter</a>\n" +
 >>>>>>> Bug 1481127 - More robust handling of large project lists
+=======
+    "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "<div class=\"list-group list-view-pf projects-list\">\n" +
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-group-item project-info tile-click\">\n" +
@@ -16696,7 +16758,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No provisioned services have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
-    "<h2>The filter is hiding all provisioned services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "<h2>The filter is hiding all provisioned services. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -16839,8 +16901,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>No services have been added to project {{projectName}}.</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
+<<<<<<< 494a210635fa9e65007f3fb82df1f79b998eaa74
     "<h2>The filter is hiding all services. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<h2>The filter is hiding all services. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
+>>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -17035,7 +17101,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
-    "<h2>The filter is hiding all persistent volume claims. <a href=\"\" ng-click=\"clearFilter()\">Clear Filter</a></h2>\n" +
+    "<h2>The filter is hiding all persistent volume claims. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
