@@ -6068,6 +6068,7 @@ dl.secret-data pre{margin-bottom:0}
 .events-badge .event-count{color:#363636}
 .events-badge .pficon-info,.events-sidebar .pficon.pficon-info{color:#4d5258}
 .events-sidebar .pficon{vertical-align:middle}
+<<<<<<< 4e2e711e0928e5d5cf96103218adafa4b976e5c7
 .events-sidebar .events-sidebar-collapse{font-size:16px;margin-right:10px}
 >>>>>>> Make pficon-info color in events match what's in notification drawer
 .events-sidebar .events-sidebar-collapse a{text-decoration:none}
@@ -6095,6 +6096,15 @@ dl.secret-data pre{margin-bottom:0}
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 >>>>>>> Remove independent scroll from events sidebar
+=======
+.events-sidebar .events-sidebar-collapse{margin-left:3px;margin-right:8px}
+.events-sidebar .events-sidebar-collapse a{text-decoration:none}
+.events-sidebar .sidebar-header.right-header{align-items:baseline;display:flex;justify-content:space-between;margin-top:0;padding-bottom:22px;padding-top:27px}
+.events-sidebar .sidebar-header.right-header h2{font-size:14px;line-height:1;margin-bottom:0;margin-top:0}
+.events-sidebar .sidebar-header.right-header .warning-count{white-space:nowrap;margin-left:2px}
+.events-sidebar .sidebar-header.right-header .warning-count .pficon{vertical-align:-1px}
+.events-sidebar .sidebar-header.right-header .event-details-link{font-size:11px;line-height:1;margin-right:20px}
+>>>>>>> Fix bugs with headings
 .events-sidebar .right-content .event{display:flex;align-items:center;padding:10px 20px}
 .events-sidebar .right-content .event.highlight{background-color:#f5f5f5;border-bottom-width:0;border-color:#d1d1d1!important}
 .events-sidebar .right-content .event+.event{border-top:1px solid #ededed}
@@ -6109,10 +6119,13 @@ dl.secret-data pre{margin-bottom:0}
 .events-sidebar .right-content .event .event-details .event-timestamp{text-align:right;margin-left:5px;min-width:100px}
 }
 .events-sidebar .right-content .event.highlight+.event{border-top:1px solid #d1d1d1}
+<<<<<<< 4e2e711e0928e5d5cf96103218adafa4b976e5c7
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 =======
 .events-sidebar-expand{font-size:16px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+>>>>>>> Fix bugs with headings
 .events-sidebar-expand a{text-decoration:none}
 [extension-name=nav-system-status]{display:inline-block!important}
 @media (max-width:350px){.nav-item-iconic.system-status{padding-right:5px!important}
