@@ -1478,11 +1478,15 @@ webhooks: "dev_guide/builds/triggering_builds.html#webhook-triggers",
 new_app: "dev_guide/application_lifecycle/new_app.html",
 "start-build": "dev_guide/builds/basic_build_operations.html#starting-a-build",
 "deployment-operations": "cli_reference/basic_cli_operations.html#build-and-deployment-cli-operations",
+<<<<<<< 11bdf2e442e6d1fb79d0c34d63ccfccee6de82dd
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 "route-types": "architecture/networking/routes.html#route-types",
 =======
 "route-types": "architecture/core_concepts/routes.html#route-types",
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+"route-types": "architecture/networking/routes.html#route-types",
+>>>>>>> Fix broken route links
 persistent_volumes: "dev_guide/persistent_volumes.html",
 compute_resources: "dev_guide/compute_resources.html",
 pod_autoscaling: "dev_guide/pod_autoscaling.html",
@@ -1511,11 +1515,15 @@ secrets: "dev_guide/secrets.html",
 deployments: "dev_guide/deployments/how_deployments_work.html",
 pods: "architecture/core_concepts/pods_and_services.html#pods",
 services: "architecture/core_concepts/pods_and_services.html#services",
+<<<<<<< 11bdf2e442e6d1fb79d0c34d63ccfccee6de82dd
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 routes: "architecture/networking/routes.html",
 =======
 routes: "architecture/core_concepts/routes.html",
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+routes: "architecture/networking/routes.html",
+>>>>>>> Fix broken route links
 builds: "architecture/core_concepts/builds_and_image_streams.html#builds",
 "image-streams": "architecture/core_concepts/builds_and_image_streams.html#image-streams",
 storage: "architecture/additional_concepts/storage.html",
