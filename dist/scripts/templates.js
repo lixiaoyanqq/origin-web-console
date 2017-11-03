@@ -4333,8 +4333,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"btn btn-default hidden-xs\" ng-click=\"addToApplication()\">\n" +
 =======
     "\n" +
+<<<<<<< 1e5bce61153841123190bad953bf3b2f36a395db
     "<button ng-if=\"project.metadata.name | canIAddToProject\" type=\"button\" class=\"btn btn-default hidden-xs\" ng-click=\"addToApplication()\">\n" +
 >>>>>>> "Add to Application" for config maps
+=======
+    "<button ng-if=\"project.metadata.name | canIAddToProject\" type=\"button\" class=\"btn btn-default hidden-xs\" ng-disabled=\"!secret.data\" ng-click=\"addToApplication()\">\n" +
+>>>>>>> Bug 1509142 - Should not display the 'Reveal Secret' link when secrets without 'data' field
     "Add to Application\n" +
     "</button>\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" ng-hide=\"!('secrets' | canIDoAny)\">\n" +
@@ -4354,10 +4358,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<a href=\"\" ng-if=\"project.metadata.name | canIAddToProject\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< 1e5bce61153841123190bad953bf3b2f36a395db
     "<li ng-if=\"project.metadata.name | canIAddToProject\" class=\"visible-xs\">\n" +
 >>>>>>> "Add to Application" for config maps
     "<a href=\"\" role=\"button\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
 >>>>>>> Add the ability to add a secret to an application
+=======
+    "<li ng-if=\"(project.metadata.name | canIAddToProject)\" class=\"visible-xs\">\n" +
+    "<a href=\"\" role=\"button\" ng-class=\"{ 'disabled-link': !secret.data }\" ng-attr-aria-disabled=\"{{!secret.data ? 'true' : undefined}}\" ng-click=\"addToApplication()\">Add to Application</a>\n" +
+>>>>>>> Bug 1509142 - Should not display the 'Reveal Secret' link when secrets without 'data' field
     "</li>\n" +
     "<li ng-if=\"'secrets' | canI : 'update'\">\n" +
     "<a ng-href=\"{{secret | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
@@ -4381,7 +4390,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"resource-details\">\n" +
     "<h2 class=\"mar-top-none\">\n" +
     "{{secret.type}}\n" +
+<<<<<<< 1e5bce61153841123190bad953bf3b2f36a395db
     "<small class=\"mar-left-sm\"><a href=\"\" ng-if=\"secret.data\" ng-click=\"view.showSecret = !view.showSecret\" translate>{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret</a></small>\n" +
+=======
+    "<small class=\"mar-left-sm\"><a href=\"\" ng-if=\"secret.data\" ng-click=\"view.showSecret = !view.showSecret\">{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret</a></small>\n" +
+>>>>>>> Bug 1509142 - Should not display the 'Reveal Secret' link when secrets without 'data' field
     "</h2>\n" +
     "<dl class=\"secret-data left\">\n" +
     "<div ng-repeat=\"(secretDataName, secretData) in decodedSecretData\" class=\"image-source-item\">\n" +
@@ -4408,8 +4421,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</dl>\n" +
     "<div ng-if=\"!secret.data\" class=\"empty-state-message text-center\">\n" +
+<<<<<<< 1e5bce61153841123190bad953bf3b2f36a395db
     "<h2 translate>No data.</h2>\n" +
     "<p translate>This secret has no data.</p>\n" +
+=======
+    "<h2>No data.</h2>\n" +
+    "<p>This secret has no data.</p>\n" +
+>>>>>>> Bug 1509142 - Should not display the 'Reveal Secret' link when secrets without 'data' field
     "</div>\n" +
     "<annotations annotations=\"secret.metadata.annotations\"></annotations>\n" +
     "</div>\n" +
