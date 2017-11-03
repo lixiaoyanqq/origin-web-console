@@ -14481,6 +14481,7 @@ d.clear(), p.$on("no-projects-cannot-create", function() {
 p.noProjectsCantCreate = !0;
 }), p.input = {
 selectedProject: p.project
+<<<<<<< 5d473d534ce31f4c128f6e1a1a4078ded74cb47f
 }, p.aceLoaded = function(e) {
 <<<<<<< d1374e0d38bda427a8abc969a26c800a8655527a
 <<<<<<< a7ac38734e283c62b66f3704534cf85a8c2e57ea
@@ -14494,6 +14495,11 @@ selectedProject: p.project
 (k = e.getSession()).setOption("tabSize", 2), k.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 >>>>>>> Fix for adding non-builder templates to a project
 =======
+=======
+}, p.$watch("input.selectedProject.metadata.name", function() {
+p.projectNameTaken = !1;
+}), p.aceLoaded = function(e) {
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 (P = e.getSession()).setOption("tabSize", 2), P.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 >>>>>>> Bug 1505281 - Improve import YAML results message
 };
@@ -14630,10 +14636,10 @@ namespace: p.input.selectedProject.metadata.name
 }).then(N) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
 });
 }, function(e) {
-c.addNotification({
+"AlreadyExists" === e.data.reason ? p.projectNameTaken = !0 : c.addNotification({
 id: "import-create-project-error",
 type: "error",
-message: "An error occurred creating project",
+message: "An error occurred creating project.",
 details: R(e)
 });
 });
@@ -19656,7 +19662,9 @@ value: v.template.metadata.name
 }
 var g, v = this, h = e("displayName"), y = e("humanize");
 v.noProjectsCantCreate = !1, v.$onInit = function() {
-v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$on("no-projects-cannot-create", function() {
+v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
+v.projectNameTaken = !1;
+}), n.$on("no-projects-cannot-create", function() {
 v.noProjectsCantCreate = !0;
 }), f();
 };
@@ -19744,7 +19752,7 @@ details: t
 });
 });
 }, function(e) {
-v.disableInputs = !1;
+if (v.disableInputs = !1, "AlreadyExists" === e.data.reason) v.projectNameTaken = !0; else {
 var t;
 e.data && e.data.message && (t = e.data.message), i.addNotification({
 id: "process-template-error",
@@ -19752,6 +19760,7 @@ type: "error",
 message: "An error occurred creating the project.",
 details: t
 });
+}
 });
 }, v.cancel = function() {
 k(), o.toProjectOverview(v.project.metadata.name);
@@ -21000,7 +21009,11 @@ isDialog: "="
 },
 templateUrl: "views/directives/deploy-image.html",
 controller: [ "$scope", function(e) {
-e.forms = {}, e.noProjectsCantCreate = !1;
+e.forms = {}, e.noProjectsCantCreate = !1, e.input = {
+selectedProject: e.project
+}, e.$watch("input.selectedProject.metadata.name", function() {
+e.projectNameTaken = !1;
+});
 } ],
 link: function(n) {
 function m() {
@@ -21016,9 +21029,7 @@ env: p.compactEntries(n.env),
 labels: e
 });
 }
-n.input = {
-selectedProject: n.project
-}, n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
+n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
 name: "app",
 value: ""
 } ], n.$on("no-projects-cannot-create", function() {
@@ -21206,12 +21217,12 @@ return n.nameTaken = e.nameTaken, a;
 };
 t.then(o, o).then(E, E);
 }, function(e) {
-c.addNotification({
+n.disableInputs = !1, "AlreadyExists" === e.data.reason ? n.projectNameTaken = !0 : c.addNotification({
 id: "deploy-image-create-project-error",
 type: "error",
-message: "An error occurred creating project",
+message: "An error occurred creating project.",
 details: g(e)
-}), n.disableInputs = !1;
+});
 });
 <<<<<<< 16329d90debdb77c067a7c660602894462bf426f
 }, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", v);
