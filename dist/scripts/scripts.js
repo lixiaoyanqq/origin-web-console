@@ -20910,6 +20910,7 @@ d.clear(), p.$on("no-projects-cannot-create", function() {
 p.noProjectsCantCreate = !0;
 }), p.input = {
 selectedProject: p.project
+<<<<<<< 0a63ff3eb6cc8e59249ea875eb290dafbf03cad2
 }, p.aceLoaded = function(e) {
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -20917,6 +20918,11 @@ selectedProject: p.project
 (j = e.getSession()).setOption("tabSize", 2), j.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 =======
+=======
+}, p.$watch("input.selectedProject.metadata.name", function() {
+p.projectNameTaken = !1;
+}), p.aceLoaded = function(e) {
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 (P = e.getSession()).setOption("tabSize", 2), P.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 >>>>>>> Update template service broker flag name
 =======
@@ -21041,10 +21047,10 @@ namespace: p.input.selectedProject.metadata.name
 }).then(N) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
 });
 }, function(e) {
-c.addNotification({
+"AlreadyExists" === e.data.reason ? p.projectNameTaken = !0 : c.addNotification({
 id: "import-create-project-error",
 type: "error",
-message: "An error occurred creating project",
+message: "An error occurred creating project.",
 details: R(e)
 });
 });
@@ -27511,7 +27517,9 @@ value: v.template.metadata.name
 }
 var g, v = this, h = e("displayName"), y = e("humanize");
 v.noProjectsCantCreate = !1, v.$onInit = function() {
-v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$on("no-projects-cannot-create", function() {
+v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
+v.projectNameTaken = !1;
+}), n.$on("no-projects-cannot-create", function() {
 v.noProjectsCantCreate = !0;
 }), f();
 };
@@ -27599,7 +27607,7 @@ details: t
 });
 });
 }, function(e) {
-v.disableInputs = !1;
+if (v.disableInputs = !1, "AlreadyExists" === e.data.reason) v.projectNameTaken = !0; else {
 var t;
 e.data && e.data.message && (t = e.data.message), i.addNotification({
 id: "process-template-error",
@@ -27607,6 +27615,7 @@ type: "error",
 message: "An error occurred creating the project.",
 details: t
 });
+}
 });
 }, v.cancel = function() {
 k(), o.toProjectOverview(v.project.metadata.name);
@@ -29669,7 +29678,11 @@ templateUrl: "views/directives/deploy-image.html",
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 =======
 controller: [ "$scope", function(e) {
-e.forms = {}, e.noProjectsCantCreate = !1;
+e.forms = {}, e.noProjectsCantCreate = !1, e.input = {
+selectedProject: e.project
+}, e.$watch("input.selectedProject.metadata.name", function() {
+e.projectNameTaken = !1;
+});
 } ],
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 link: function(n) {
@@ -29686,6 +29699,7 @@ env: p.compactEntries(n.env),
 labels: e
 });
 }
+<<<<<<< 0a63ff3eb6cc8e59249ea875eb290dafbf03cad2
 <<<<<<< 7d5cc388b34d6a87a5e2ae6b26f6b146dae1daa3
 n.forms = {}, n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
 =======
@@ -29693,6 +29707,9 @@ n.input = {
 selectedProject: n.project
 }, n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 name: "app",
 value: ""
 } ], n.$on("no-projects-cannot-create", function() {
@@ -29893,12 +29910,12 @@ return n.nameTaken = e.nameTaken, a;
 };
 t.then(o, o).then(E, E);
 }, function(e) {
-c.addNotification({
+n.disableInputs = !1, "AlreadyExists" === e.data.reason ? n.projectNameTaken = !0 : c.addNotification({
 id: "deploy-image-create-project-error",
 type: "error",
-message: "An error occurred creating project",
+message: "An error occurred creating project.",
 details: g(e)
-}), n.disableInputs = !1;
+});
 });
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 }, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", v);

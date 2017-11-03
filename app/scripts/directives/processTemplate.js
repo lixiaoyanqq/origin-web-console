@@ -87,6 +87,10 @@
       ctrl.templateDisplayName = displayName(ctrl.template);
       ctrl.selectedProject = ctrl.project;
 
+      $scope.$watch('$ctrl.selectedProject.metadata.name', function() {
+        ctrl.projectNameTaken = false;
+      });
+
       $scope.$on('no-projects-cannot-create', function() {
         ctrl.noProjectsCantCreate = true;
       });
