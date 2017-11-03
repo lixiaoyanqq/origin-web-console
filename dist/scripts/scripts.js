@@ -19351,6 +19351,7 @@ type: "error",
 message: "Cannot create " + k(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 details: e.data.message
 });
+<<<<<<< HEAD
 }), n.success.forEach(function(e) {
 a.push({
 type: "success",
@@ -19367,6 +19368,23 @@ breadcrumbTitle: R
 });
 }, B = function(e) {
 o.open({
+=======
+}
+var P;
+p.noProjectsCantCreate = !1;
+var j = e("humanizeKind"), R = e("getErrorDetails");
+d.clear(), p.$on("no-projects-cannot-create", function() {
+p.noProjectsCantCreate = !0;
+}), p.input = {
+selectedProject: p.project
+}, p.$watch("input.selectedProject.metadata.name", function() {
+p.projectNameTaken = !1;
+}), p.aceLoaded = function(e) {
+(P = e.getSession()).setOption("tabSize", 2), P.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
+};
+var I = function(e) {
+a.open({
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 templateUrl: "views/modals/confirm.html",
@@ -19565,6 +19583,7 @@ n.buildConfigs = e.by("metadata.name"), n.createdBuildConfig = n.buildConfigs[t.
 })), n.$on("$destroy", function() {
 a.unwatchAll(s);
 });
+<<<<<<< HEAD
 }));
 } ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "AuthorizationService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u) {
 function d(e, t) {
@@ -19596,6 +19615,14 @@ e.project = t, f.push(a.watch("buildconfigs", r, function(t) {
 e.buildConfigs = t.by("metadata.name"), e.createdBuildConfig = e.buildConfigs[n.name], l.log("buildconfigs (subscribe)", e.buildConfigs);
 })), e.$on("$destroy", function() {
 a.unwatchAll(f);
+=======
+}, function(e) {
+"AlreadyExists" === e.data.reason ? p.projectNameTaken = !0 : c.addNotification({
+id: "import-create-project-error",
+type: "error",
+message: "An error occurred creating project.",
+details: R(e)
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 });
 }));
 } ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
@@ -24363,8 +24390,19 @@ var r = !1;
 a.$watch("autoscaling.targetCPU", function(t) {
 r ? r = !1 : (t && a.isRequestCalculated && (t = e.convertRequestPercentToLimit(t, a.project)), _.set(a, "targetCPUInput.percent", t));
 });
+<<<<<<< HEAD
 var o = function(t) {
 t && a.isRequestCalculated && (t = e.convertLimitPercentToRequest(t, a.project)), r = !0, _.set(a, "autoscaling.targetCPU", t);
+=======
+}
+var g, v = this, h = e("displayName"), y = e("humanize");
+v.noProjectsCantCreate = !1, v.$onInit = function() {
+v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
+v.projectNameTaken = !1;
+}), n.$on("no-projects-cannot-create", function() {
+v.noProjectsCantCreate = !0;
+}), f();
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 };
 a.$watch("targetCPUInput.percent", function(e, t) {
 e !== t && o(e);
@@ -24429,10 +24467,22 @@ namespace: t.namespace
 var r = a.groupSecretsByType(n), o = _.mapValues(r, function(e) {
 return _.map(e, "metadata.name");
 });
+<<<<<<< HEAD
 t.secretsByType = _.each(o, function(e) {
 e.unshift("");
 }), t.setLastSecretsName(e.metadata.name), t.secretsForm.$setDirty();
+=======
+}, function(e) {
+if (v.disableInputs = !1, "AlreadyExists" === e.data.reason) v.projectNameTaken = !0; else {
+var t;
+e.data && e.data.message && (t = e.data.message), i.addNotification({
+id: "process-template-error",
+type: "error",
+message: "An error occurred creating the project.",
+details: t
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 });
+}
 });
 };
 }
@@ -25238,6 +25288,7 @@ e.launcherApps = t.APP_LAUNCHER_NAVIGATION;
 }).directive("navbarUtilityMobile", [ "$timeout", function(e) {
 return {
 restrict: "E",
+<<<<<<< HEAD
 transclude: !0,
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -25264,6 +25315,43 @@ n.href && (a[n.href] = t);
 }), n.contents().filter(function() {
 return 3 === this.nodeType && $.trim(this.nodeValue).length;
 }).wrap('<span class="list-group-item-value"/>');
+=======
+scope: {
+project: "=",
+isDialog: "="
+},
+templateUrl: "views/directives/deploy-image.html",
+controller: [ "$scope", function(e) {
+e.forms = {}, e.noProjectsCantCreate = !1, e.input = {
+selectedProject: e.project
+}, e.$watch("input.selectedProject.metadata.name", function() {
+e.projectNameTaken = !1;
+});
+} ],
+link: function(n) {
+function m() {
+var e = p.mapEntries(p.compactEntries(n.labels));
+return i.getResources({
+name: n.app.name,
+image: n.import.name,
+namespace: n.import.namespace,
+tag: n.import.tag || "latest",
+ports: n.ports,
+volumes: n.volumes,
+env: p.compactEntries(n.env),
+labels: e
+});
+}
+n.mode = "istag", n.istag = {}, n.app = {}, n.env = [], n.labels = [ {
+name: "app",
+value: ""
+} ], n.$on("no-projects-cannot-create", function() {
+n.noProjectsCantCreate = !0;
+});
+var f = e("orderByDisplayName"), g = e("getErrorDetails"), v = {}, h = function() {
+c.hideNotification("deploy-image-list-config-maps-error"), c.hideNotification("deploy-image-list-secrets-error"), _.each(v, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 });
 <<<<<<< HEAD
 var a = function() {
@@ -25294,11 +25382,24 @@ r(), t.$on("$routeChangeSuccess", r);
 }
 >>>>>>> Patternfly vertical navigation and project bar
 };
+<<<<<<< HEAD
 } ]).directive("navPfVerticalAlt", function() {
 return {
 restrict: "EAC",
 link: function() {
 $.fn.navigation();
+=======
+t.then(o, o).then(E, E);
+}, function(e) {
+n.disableInputs = !1, "AlreadyExists" === e.data.reason ? n.projectNameTaken = !0 : c.addNotification({
+id: "deploy-image-create-project-error",
+type: "error",
+message: "An error occurred creating project.",
+details: g(e)
+});
+});
+}, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", h);
+>>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 }
 };
 }).directive("breadcrumbs", function() {
