@@ -14437,8 +14437,45 @@ n.unwatchAll(r);
 >>>>>>> Add watcher to secrets page
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, a, r, o) {
 e.projectName = t.project, e.labelSuggestions = {}, e.clearFilter = function() {
+=======
+} ]), angular.module("openshiftConsole").controller("SecretController", [ "$routeParams", "$filter", "$scope", "DataService", "ProjectsService", "SecretsService", function(e, t, n, a, r, o) {
+n.projectName = e.project, n.secretName = e.secret, n.view = {
+showSecret: !1
+}, n.alerts = n.alerts || {}, n.breadcrumbs = [ {
+title: "Secrets",
+link: "project/" + e.project + "/browse/secrets"
+}, {
+title: n.secretName
+} ], n.addToApplicationVisible = !1, n.addToApplication = function() {
+n.secret.data && (n.addToApplicationVisible = !0);
+}, n.closeAddToApplication = function() {
+n.addToApplicationVisible = !1;
+}, r.get(e.project).then(_.spread(function(e, t) {
+n.project = e, n.context = t, a.get("secrets", n.secretName, t, {
+errorNotification: !1
+}).then(function(e) {
+n.secret = e, n.decodedSecretData = o.decodeSecretData(n.secret.data), n.loaded = !0;
+}, function(e) {
+n.loaded = !0, n.error = e;
+});
+}));
+} ]), angular.module("openshiftConsole").controller("CreateSecretController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
+a.alerts = {}, a.projectName = n.project, a.breadcrumbs = [ {
+title: "Secrets",
+link: "project/" + a.projectName + "/browse/secrets"
+}, {
+title: "Create Secret"
+} ], l.get(n.project).then(_.spread(function(e, o) {
+a.project = e, a.context = o, i.canI("secrets", "create", n.project) ? a.navigateBack = function() {
+n.then ? t.url(n.then) : r.history.back();
+} : c.toErrorPage("You do not have authority to create secrets in project " + n.project + ".", "access_denied");
+}));
+} ]), angular.module("openshiftConsole").controller("ConfigMapsController", [ "$scope", "$routeParams", "APIService", "DataService", "LabelFilter", "ProjectsService", function(e, t, n, a, r, o) {
+e.projectName = t.project, e.loaded = !1, e.labelSuggestions = {}, e.configMapsVersion = n.getPreferredVersion("configmaps"), e.clearFilter = function() {
+>>>>>>> Bug 1509142 - Should not display the 'Reveal Secret' link when secrets without 'data' field
 r.clear();
 };
 var i = [];
