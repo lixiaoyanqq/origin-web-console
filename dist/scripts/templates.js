@@ -9637,7 +9637,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"env.valueFrom.configMapKeyRef || env.valueFrom.secretKeyRef\">\n" +
     "{{env.name}} set to key\n" +
     "<span ng-if=\"env.valueFrom.configMapKeyRef\">\n" +
+<<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
     "<translate>{{env.valueFrom.configMapKeyRef.key}} in config map</translate>\n" +
+=======
+    "{{env.valueFrom.configMapKeyRef.key}} in config map\n" +
+>>>>>>> Fix problems with env valueFrom for DC hooks
     "<span ng-if=\"!('configmaps' | canI : 'get')\">\n" +
     "{{env.valueFrom.configMapKeyRef.name}}\n" +
     "</span>\n" +
@@ -9646,7 +9650,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</span>\n" +
     "<span ng-if=\"env.valueFrom.secretKeyRef\">\n" +
+<<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
     "<translate>{{env.valueFrom.secretKeyRef.key}} in secret</translate>\n" +
+=======
+    "{{env.valueFrom.secretKeyRef.key}} in secret\n" +
+>>>>>>> Fix problems with env valueFrom for DC hooks
     "<span ng-if=\"!('secrets' | canI : 'get')\">\n" +
     "{{env.valueFrom.secretKeyRef.name}}\n" +
     "</span>\n" +
@@ -12754,17 +12762,29 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-show=\"view.advancedStrategyOptions\">\n" +
     "<div class=\"lifecycle-hooks\">\n" +
     "<div class=\"lifecycle-hook\" id=\"pre-lifecycle-hook\">\n" +
+<<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
     "<h3 translate>Pre Lifecycle Hook</h3>\n" +
+=======
+    "<h3>Pre Lifecycle Hook</h3>\n" +
+>>>>>>> Fix problems with env valueFrom for DC hooks
     "<edit-lifecycle-hook model=\"strategyData[strategyParamsPropertyName].pre\" type=\"pre\" available-volumes=\"volumeNames\" available-containers=\"containerNames\" available-secrets=\"availableSecrets\" available-config-maps=\"availableConfigMaps\" namespace=\"projectName\">\n" +
     "</edit-lifecycle-hook>\n" +
     "</div>\n" +
     "<div ng-if=\"strategyData.type !== 'Rolling'\" class=\"lifecycle-hook\" id=\"mid-lifecycle-hook\">\n" +
+<<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
     "<h3 translate>Mid Lifecycle Hook</h3>\n" +
+=======
+    "<h3>Mid Lifecycle Hook</h3>\n" +
+>>>>>>> Fix problems with env valueFrom for DC hooks
     "<edit-lifecycle-hook model=\"strategyData[strategyParamsPropertyName].mid\" type=\"mid\" available-volumes=\"volumeNames\" available-containers=\"containerNames\" available-secrets=\"availableSecrets\" available-config-maps=\"availableConfigMaps\" namespace=\"projectName\">\n" +
     "</edit-lifecycle-hook>\n" +
     "</div>\n" +
     "<div class=\"lifecycle-hook\" id=\"post-lifecycle-hook\">\n" +
+<<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
     "<h3 translate>Post Lifecycle Hook</h3>\n" +
+=======
+    "<h3>Post Lifecycle Hook</h3>\n" +
+>>>>>>> Fix problems with env valueFrom for DC hooks
     "<edit-lifecycle-hook model=\"strategyData[strategyParamsPropertyName].post\" type=\"post\" available-volumes=\"volumeNames\" available-containers=\"containerNames\" available-secrets=\"availableSecrets\" available-config-maps=\"availableConfigMaps\" namespace=\"projectName\">\n" +
     "</edit-lifecycle-hook>\n" +
     "</div>\n" +
