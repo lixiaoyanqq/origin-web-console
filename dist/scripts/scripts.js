@@ -15606,6 +15606,7 @@ n.routes = e.select(n.unfilteredRoutes), r();
 }), n.$on("$destroy", function() {
 a.unwatchAll(c);
 });
+<<<<<<< HEAD
 }));
 } ]), angular.module("openshiftConsole").controller("RouteController", [ "$scope", "$filter", "$routeParams", "AlertMessageService", "APIService", "DataService", "ProjectsService", "RoutesService", function(e, t, n, r, a, o, i, s) {
 =======
@@ -15616,6 +15617,56 @@ t.services = e.by("metadata.name");
 })), r.onActiveFiltersChanged(function(e) {
 t.$evalAsync(function() {
 t.routes = e.select(t.unfilteredRoutes), o();
+=======
+return _.each(t, function(t) {
+var n = _.find(r, function(e) {
+return _.includes(e.imageChangeParams.containerNames, t.name);
+}), o = {};
+if (t.env = t.env || [], a[t.name] = {
+env: t.env,
+image: t.image,
+hasDeploymentTrigger: !_.isEmpty(n)
+}, n) {
+var i = n.imageChangeParams.from, s = i.name.split(":");
+o = {
+data: n,
+istag: {
+namespace: i.namespace || e.projectName,
+imageStream: s[0],
+tagObject: {
+tag: s[1]
+}
+},
+automatic: _.get(n, "imageChangeParams.automatic", !1)
+};
+} else o = {
+istag: {
+namespace: "",
+imageStream: ""
+},
+automatic: !0
+};
+_.set(a, [ t.name, "triggerData" ], o);
+}), a;
+}(e.updatedDeploymentConfig.spec.template.spec.containers, e.updatedDeploymentConfig.spec.triggers), e.secrets = {
+pullSecrets: angular.copy(e.deploymentConfig.spec.template.spec.imagePullSecrets) || [ {
+name: ""
+} ]
+}, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = S(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
+type: "ConfigChange"
+}), "Custom" !== e.strategyData.type || _.has(e.strategyData, "customParams.environment") || (e.strategyData.customParams.environment = []), c.list("configmaps", r, null, {
+errorNotification: !1
+}).then(function(t) {
+b = g(t.by("metadata.name")), e.availableConfigMaps = b, e.valueFromObjects = b.concat(C);
+}, function(e) {
+403 !== e.status && h("Could not load config maps", v(e));
+}), c.list("secrets", r, null, {
+errorNotification: !1
+}).then(function(t) {
+C = g(t.by("metadata.name")), e.availableSecrets = C, e.valueFromObjects = b.concat(C);
+var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+return _.map(e, "metadata.name");
+>>>>>>> Fix problems with env valueFrom for DC hooks
 });
 }), t.$on("$destroy", function() {
 n.unwatchAll(i);
@@ -28075,8 +28126,18 @@ I = {}, j = null, delete t.metricsError, y();
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
 R = !e, e && (!k || Date.now() > k + s.getDefaultUpdateInterval()) && y();
 };
+<<<<<<< HEAD
 var A = a.$on("metrics.charts.resize", function() {
 s.redraw(S);
+=======
+e.$watchGroup([ "hookParams", "action.type" ], function() {
+e.hookParams && ("execNewPod" === e.action.type ? (e.hookParams.tagImages && (e.removedHookParams.tagImages = e.hookParams.tagImages, delete e.hookParams.tagImages), r()) : "tagImages" === e.action.type && (e.hookParams.execNewPod && (e.removedHookParams.execNewPod = e.hookParams.execNewPod, delete e.hookParams.execNewPod), r()));
+}), e.valueFromObjects = [], e.$watchGroup([ "availableSecrets", "availableConfigMaps" ], function() {
+var t = e.availableConfigMaps || [], n = e.availableSecrets || [];
+e.valueFromObjects = t.concat(n);
+}), e.$watch("istagHook.tagObject.tag", function() {
+_.has(e.istagHook, [ "tagObject", "tag" ]) && (_.set(e.hookParams, "tagImages[0].to.kind", "ImageStreamTag"), _.set(e.hookParams, "tagImages[0].to.namespace", e.istagHook.namespace), _.set(e.hookParams, "tagImages[0].to.name", e.istagHook.imageStream + ":" + e.istagHook.tagObject.tag));
+>>>>>>> Fix problems with env valueFrom for DC hooks
 });
 t.$on("$destroy", function() {
 b && (e.cancel(b), b = null), A && (A(), A = null), angular.forEach(S, function(e) {
