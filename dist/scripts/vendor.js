@@ -74847,7 +74847,19 @@ group: t[0],
 version: t[1]
 } : void o.warn('Invalid apiVersion "' + e + '"');
 }
-}, g = function(n) {
+}, g = [ {
+group: "authorization.openshift.io"
+} ], m = [ {
+group: "extensions",
+kind: "HorizontalPodAutoscaler"
+} ], v = function(e, t) {
+return !(!_.find(m, {
+group: e,
+kind: t
+}) && !_.find(g, {
+group: e
+}));
+}, b = function(n) {
 var i = [], o = _.map(r.AVAILABLE_KINDS_BLACKLIST, function(e) {
 return _.isString(e) ? {
 kind: e,
@@ -74887,7 +74899,7 @@ _.each(e.versions[t].resources, function(t) {
 _.includes(t.name, "/") || _.find(o, {
 kind: t.kind,
 group: e.name
-}) || "extensions" === e.name && "HorizontalPodAutoscaler" === t.kind || (t.namespaced || n) && i.push({
+}) || v(e.name, t.kind) || (t.namespaced || n) && i.push({
 kind: t.kind,
 group: e.name
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -74896,6 +74908,7 @@ group: e.name
 }), _.uniqBy(i, function(e) {
 return e.group + "/" + e.kind;
 });
+<<<<<<< 3cae342443e79edfe8d16500185a3841c92bae3a
 <<<<<<< 629fde58737ae015a28fda6f75179aa78c3627af
 <<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
@@ -74921,6 +74934,9 @@ availableKinds:z
 =======
 }, m = g(!1), v = g(!0);
 >>>>>>> Bumping dependency version in bower.json
+=======
+}, y = b(!1), w = b(!0);
+>>>>>>> Bump common to v0.0.74
 return {
 toResourceGroupVersion: f,
 parseGroupVersion: p,
@@ -74994,7 +75010,7 @@ var t = "<none>", n = "<none>";
 return e && e.kind && (t = e.kind), e && e.apiVersion && (n = e.apiVersion), "The API version " + n + " for kind " + t + " is not supported by this server";
 },
 availableKinds: function(e) {
-return e ? v : m;
+return e ? w : y;
 },
 getPreferredVersion: function(e) {
 var t = n[e];
