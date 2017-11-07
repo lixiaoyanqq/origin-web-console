@@ -833,6 +833,7 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
 <<<<<<< HEAD
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
@@ -858,6 +859,9 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 >>>>>>> Adopt service catalog API changes
 =======
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+.bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
+>>>>>>> Fix project list view styles per UXD feedback
 .btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .btn.focus,.btn:focus,.btn:hover{color:#4d5258;text-decoration:none}
 .btn.active,.btn:active{outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}
@@ -2531,7 +2535,7 @@ td>.progress:first-child:last-child{margin-bottom:0;margin-top:3px}
 .datepicker-dropdown.datepicker-orient-bottom:after{top:-6px}
 .datepicker-dropdown.datepicker-orient-top:before{bottom:-7px;border-bottom:0;border-top:7px solid #bbb}
 .datepicker-dropdown.datepicker-orient-top:after{bottom:-6px;border-bottom:0;border-top:6px solid #fff}
-.datepicker table{margin:0;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.datepicker table{margin:0;-webkit-touch-callout:none;-khtml-user-select:none;-ms-user-select:none;user-select:none}
 .datepicker table tr td,.datepicker table tr th{text-align:center;width:30px;height:30px;border:none}
 .table-striped .datepicker table tr td,.table-striped .datepicker table tr th{background-color:transparent}
 .datepicker table tr td.new,.datepicker table tr td.old{color:#9c9c9c}
@@ -2679,6 +2683,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
@@ -2718,6 +2723,10 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 =======
 .bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+.bootstrap-switch{display:inline-block;direction:ltr;cursor:pointer;border-radius:1px;border:1px solid #bbb;position:relative;text-align:left;overflow:hidden;line-height:8px;z-index:0;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+.c3 text,.log-line-number{-moz-user-select:none;-webkit-user-select:none}
+>>>>>>> Fix project list view styles per UXD feedback
 .bootstrap-switch .bootstrap-switch-container{display:inline-block;top:0;border-radius:1px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bootstrap-switch .bootstrap-switch-handle-off,.bootstrap-switch .bootstrap-switch-handle-on,.bootstrap-switch .bootstrap-switch-label{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:inline-block!important;height:100%;padding:2px 6px;font-size:12px;line-height:20px}
 .ie9.layout-pf-alt-fixed .nav-pf-vertical-alt,.ie9.layout-pf-fixed .nav-pf-secondary-nav,.ie9.layout-pf-fixed .nav-pf-tertiary-nav,.ie9.layout-pf-fixed .nav-pf-vertical,.list-group-item-header{box-sizing:content-box}
@@ -2750,7 +2759,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .bootstrap-touchspin .input-group-btn-vertical i{position:absolute;font-weight:400}
 .c3 svg{font:10px sans-serif}
 .c3 line,.c3 path{fill:none;stroke:#000}
-.c3 text{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+.c3 text{user-select:none}
 .c3-bars path,.c3-event-rect,.c3-legend-item-tile,.c3-xgrid-focus,.c3-ygrid{shape-rendering:crispEdges}
 .c3-chart-arc text{fill:#fff;font-size:13px}
 .c3-grid text{fill:#aaa}
@@ -5037,6 +5046,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .landing-search-form .search-pf-input-group .pficon-close{font-size:17px;padding-top:.3em}
 .landing-search-form .dropdown-menu{margin-top:0;width:100%}
 .landing-search-form .dropdown-menu>li>a.catalog-search-match{display:flex;line-height:1.5;padding:3px 10px 3px 5px;white-space:normal}
+.order-service-details .order-service-description-block .description,.pre-wrap{white-space:pre-wrap}
 .landing-search-form .dropdown-menu .active>a.catalog-search-match,.landing-search-form .dropdown-menu :focus{background-color:#def3ff!important;border-color:#bee1f4!important;color:inherit!important}
 .landing-search-form .dropdown-menu .active>a.catalog-search-match.no-matches{background-color:transparent!important;border-color:transparent!important}
 >>>>>>> Updates to service instance page, show failed bindings
@@ -5093,6 +5103,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-details .order-service-details-top .sub-title{color:#72767b;font-size:20px;font-weight:600}
 .order-service-details .order-service-description-block{margin-top:15px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .order-service-details .order-service-details-top .service-title-area{flex:1 1 0%}
 =======
@@ -5117,6 +5128,8 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 .order-service-details .order-service-description-block .description{white-space:pre-wrap}
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+>>>>>>> Fix project list view styles per UXD feedback
 .order-service-details .order-service-description-block .learn-more-link{font-size:11px;white-space:nowrap}
 .order-service-details .order-service-description-block .order-service-dependent-image{margin-bottom:5px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-description-block .order-service-dependent-image .pficon{margin-right:5px;vertical-align:-1px}
@@ -5618,6 +5631,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Updates to service instance page, show failed bindings
 =======
 .pre-wrap{white-space:pre-wrap}
@@ -5627,6 +5641,8 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 =======
 .pre-wrap{white-space:pre-wrap}
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+>>>>>>> Fix project list view styles per UXD feedback
 .visible-xlg-inline-block{display:none!important}
 @media (max-width:767px){.td-long-string{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 }
@@ -6115,11 +6131,11 @@ label.checkbox{font-weight:400}
 .tasks .task-content .task-info{margin-left:45px}
 .tasks .task-content .task-title{margin-right:10px}
 .tasks .task-content .task-links{font-size:13px;font-weight:300;white-space:nowrap}
+.k8s-label:before,.list-view-pf .list-group-item-expandable .list-group-item-heading,code{white-space:normal}
 .tasks .task-expanded-details{margin-top:20px}
 .tasks .task-expanded-details .alert{margin-bottom:7px}
 .btn-group-xs>.btn,.btn-xs{padding:0 4px}
 .btn-group-lg>.btn,.btn-lg{line-height:1.334}
-code{white-space:normal}
 .nowrap,.truncate{white-space:nowrap}
 div.code,pre.code{border:none;border-left:2px solid #ccc}
 abbr[data-original-title],abbr[title]{text-decoration:none}
@@ -6133,7 +6149,6 @@ abbr[data-original-title],abbr[title]{text-decoration:none}
 .gutter-bottom.gutter-bottom-2x{padding-bottom:40px}
 select:invalid{box-shadow:none}
 .truncate{overflow:hidden;text-overflow:ellipsis}
-.k8s-label:before,.list-view-pf .list-group-item-expandable .list-group-item-heading{white-space:normal}
 .well h1:first-child,.well h2:first-child,.well h3:first-child,.well h4:first-child,.well h5:first-child{margin:5px 0 15px}
 .spinner.spinner-xs{height:12px;width:12px}
 .spinner.spinner-inverse{border-color:rgba(0,153,211,.25);border-top-color:rgba(0,153,211,.75)}
@@ -6325,6 +6340,7 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical,.layout-pf.layout-pf-fixed .container-pf-nav-pf-vertical.collapsed-nav{margin-left:0}
 .layout-pf.layout-pf-fixed .has-project-bar .container-pf-nav-pf-vertical{transition:margin-left .1s ease-in-out}
 .surface-shaded{background-color:#ededed;min-height:100%}
+<<<<<<< HEAD
 .list-pf.list-pf-empty{border-bottom:0}
 .list-pf.list-pf-empty .list-pf-item:hover{background-color:transparent}
 .list-pf.list-pf-empty .list-pf-item>.list-pf-container{cursor:initial}
@@ -6370,6 +6386,11 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .list-pf-content .alert:first-child{margin-top:0}
 .list-pf-content .alert-wrapper:last-child{margin-bottom:20px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.list-pf-actions .dropdown-kebab-pf .dropdown-toggle{font-size:18px;margin-right:-5px}
+.list-pf-actions .dropdown-kebab-pf .dropdown-menu.dropdown-menu-right{right:-10px}
+.list-pf-content .alert:first-child{margin-top:0}
+>>>>>>> Fix project list view styles per UXD feedback
 .list-pf-chevron+.list-pf-content{align-items:center;display:flex;flex-grow:1}
 .list-pf-chevron+.list-pf-content .list-pf-details,.list-pf-chevron+.list-pf-content .list-pf-name{flex-grow:1}
 .list-pf-chevron+.list-pf-content .list-pf-details{align-items:center;display:flex}
@@ -7625,6 +7646,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7648,6 +7670,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .log-line-number{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+.log-line-number{-ms-user-select:none;border-right:1px #272b30 solid;padding-right:10px;vertical-align:top;white-space:nowrap;width:60px;color:#72767b}
+>>>>>>> Fix project list view styles per UXD feedback
 .log-line-text{padding:0 10px;white-space:pre-wrap;width:100%}
 .appended-icon,.project-date [am-time-ago],.projects-list [am-time-ago]{white-space:nowrap}
 <<<<<<< HEAD
@@ -7710,6 +7735,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .nav-pf-vertical .nav-pf-secondary-nav{background:#383f47;border-left:0;border-right:1px solid #050505;top:69px;width:221px}
 @media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:101px}
 .projects-bar .projects-add .origin-modal-popup{width:370px}
+<<<<<<< HEAD
 =======
 .nav-pf-vertical{background-color:#30363d;top:41px;transition:width .1s ease-in-out,left .1s ease-in-out;z-index:990}
 =======
@@ -7749,6 +7775,8 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 @media (min-width:768px){.nav-pf-vertical .nav-pf-secondary-nav{border-left:1px solid #050505;top:101px}
 >>>>>>> Minor height adjustment to correct navbar height at desktop
+=======
+>>>>>>> Fix project list view styles per UXD feedback
 }
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item:after{display:none}
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a,.nav-pf-vertical .nav-pf-secondary-nav .list-group-item.active>a:hover{background:#4a535e}
@@ -7775,10 +7803,14 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .col-md-12>.alerts:first-child{margin-top:20px}
 .empty-state-message .projects-instructions code{display:inline-block}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Fix project list view styles per UXD feedback
 .project-additional-content.list-pf-additional-content{display:block}
 .project-description.list-pf-description{color:#393f44}
 .project-description.list-pf-description .highlighted-content,.project-description.list-pf-description .truncated-content{display:block;white-space:pre-line;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .project-description.list-pf-description .truncation-block{margin:0}
+<<<<<<< HEAD
 .project-info.list-pf-item{border-bottom:0;border-color:#e0e0e0;padding:0}
 @media (max-width:992px){.project-name-item.list-pf-title{margin-bottom:10px}
 }
@@ -7800,6 +7832,17 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .project-name-item.list-group-item-heading .h1 a{display:block;line-height:normal;overflow:hidden;text-overflow:ellipsis}
 .project-name-item.list-group-item-heading p{margin-bottom:0;margin-top:5px}
 >>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
+=======
+.project-info.list-pf-item{border-bottom:0;border-color:#e0e0e0;padding:10px 20px}
+@media (max-width:768px){.project-name-item.list-pf-title{margin-bottom:18px}
+}
+.project-name-item.list-pf-title .h3{align-items:center;display:flex;margin-bottom:0;margin-top:0}
+@media (max-width:768px){.project-name-item.list-pf-title .h3{margin-bottom:12px}
+}
+.project-name-item.list-pf-title .h3 [data-toggle=tooltip]{cursor:help;margin-left:7px}
+.project-name-item.list-pf-title .h3 a{display:block;line-height:normal;overflow:hidden;text-overflow:ellipsis}
+.project-name-item.list-pf-title small{color:#72767b;font-size:13px;font-weight:400;margin:0}
+>>>>>>> Fix project list view styles per UXD feedback
 .projects-bar{display:flex;flex-direction:column}
 @media (min-width:685px){.projects-bar{flex-direction:row;justify-content:space-between}
 }
@@ -7808,6 +7851,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 @media (min-width:685px){.projects-bar .projects-add{display:block;margin-bottom:20px;margin-left:40px;margin-top:0;order:2}
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7829,6 +7873,8 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 @media (min-width:768px){.projects-bar .projects-add .origin-modal-popup{width:370px}
 >>>>>>> Removing orphaned tech-preview less and markup
 }
+=======
+>>>>>>> Fix project list view styles per UXD feedback
 .projects-bar .projects-options{display:flex;flex-direction:column}
 .projects-bar .projects-search{display:flex;margin-bottom:20px;margin-top:20px}
 @media (min-width:660px){.projects-bar .projects-options{flex-direction:row}

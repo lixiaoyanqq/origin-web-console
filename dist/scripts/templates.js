@@ -16403,6 +16403,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "The current filter is hiding all projects.\n" +
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-group list-view-pf projects-list\">\n" +
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-group-item project-info tile-click\">\n" +
     "<div class=\"list-view-pf-main-info\">\n" +
@@ -16411,6 +16412,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 class=\"h1\">\n" +
     "<a class=\"tile-target\" ng-href=\"project/{{project.metadata.name}}\" title=\"{{project | displayName}}\"><span ng-bind-html=\"project | displayName | highlightKeywords : keywords\"></span></a>\n" +
 >>>>>>> Bug 1481127 - More robust handling of large project lists
+=======
+    "<div class=\"list-pf list-group projects-list\">\n" +
+    "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-pf-item list-group-item project-info tile-click\">\n" +
+    "<div class=\"list-pf-container\">\n" +
+    "<div class=\"list-pf-content list-pf-content-flex\">\n" +
+    "<div class=\"list-pf-content-wrapper\">\n" +
+    "<div class=\"list-pf-main-content\">\n" +
+    "<div class=\"list-pf-title project-name-item\">\n" +
+    "<h2 class=\"h3\">\n" +
+    "<a class=\"tile-target\" ng-href=\"project/{{project.metadata.name}}\" title=\"{{project | displayName}}\">\n" +
+    "<span ng-bind-html=\"project | displayName | highlightKeywords : keywords\"></span>\n" +
+    "</a>\n" +
+>>>>>>> Fix project list view styles per UXD feedback
     "<span ng-if=\"project.status.phase != 'Active'\" data-toggle=\"tooltip\" title=\"This project has been marked for deletion.\" class=\"pficon pficon-warning-triangle-o\"></span>\n" +
     "</h2>\n" +
     "<small class=\"project-date\">\n" +
@@ -16427,6 +16441,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
     "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
     "</origin-modal-popup>\n" +
@@ -16434,6 +16449,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div row class=\"list-view-pf-actions list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
     "<div uib-dropdown>\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></a>\n" +
+=======
+    "<div class=\"list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
+    "<div uib-dropdown class=\"dropdown pull-right dropdown-kebab-pf\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></button>\n" +
+>>>>>>> Fix project list view styles per UXD feedback
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/membership\">\n" +
@@ -16456,6 +16476,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
     "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
     "</origin-modal-popup>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"projects.length > limitListTo\">\n" +
