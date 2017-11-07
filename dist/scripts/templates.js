@@ -16321,6 +16321,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
 >>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
+<<<<<<< 148d93b663771cede3ec9e3fa9aef0e29f9b4f35
     "<div class=\"list-group list-view-pf projects-list\">\n" +
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-group-item project-info tile-click\">\n" +
     "<div class=\"list-view-pf-main-info\">\n" +
@@ -16329,25 +16330,43 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 class=\"h1\">\n" +
     "<a class=\"tile-target\" ng-href=\"project/{{project.metadata.name}}\" title=\"{{project | displayName}}\"><span ng-bind-html=\"project | displayName | highlightKeywords : keywords\"></span></a>\n" +
     "<span ng-if=\"project.status.phase != 'Active'\" data-toggle=\"tooltip\" title=\"{{'This project has been marked for deletion.'|translate}}\" class=\"pficon pficon-warning-triangle-o\"></span>\n" +
+=======
+    "<div class=\"list-pf list-group projects-list\">\n" +
+    "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-pf-item list-group-item project-info tile-click\">\n" +
+    "<div class=\"list-pf-container\">\n" +
+    "<div class=\"list-pf-content list-pf-content-flex\">\n" +
+    "<div class=\"list-pf-content-wrapper\">\n" +
+    "<div class=\"list-pf-main-content\">\n" +
+    "<div class=\"list-pf-title project-name-item\">\n" +
+    "<h2 class=\"h3\">\n" +
+    "<a class=\"tile-target\" ng-href=\"project/{{project.metadata.name}}\" title=\"{{project | displayName}}\">\n" +
+    "<span ng-bind-html=\"project | displayName | highlightKeywords : keywords\"></span>\n" +
+    "</a>\n" +
+    "<span ng-if=\"project.status.phase != 'Active'\" data-toggle=\"tooltip\" title=\"This project has been marked for deletion.\" class=\"pficon pficon-warning-triangle-o\"></span>\n" +
+>>>>>>> Fix project list view styles per UXD feedback
     "</h2>\n" +
-    "<small>\n" +
+    "<small class=\"project-date\">\n" +
     "<span ng-if=\"project | displayName : true\"><span ng-bind-html=\"project.metadata.name | highlightKeywords : keywords\"></span> &ndash;</span>\n" +
     "created\n" +
     "<span ng-if=\"project | annotation : 'openshift.io/requester'\">by <span ng-bind-html=\"project | annotation : 'openshift.io/requester' | highlightKeywords : keywords\"></span></span>\n" +
     "<span am-time-ago=\"project.metadata.creationTimestamp\"></span>\n" +
     "</small>\n" +
     "</div>\n" +
-    "<div class=\"list-view-pf-additional-info project-additional-info\">\n" +
-    "<span class=\"list-group-item-text project-description\">\n" +
+    "<div class=\"list-pf-description project-description\">\n" +
     "<truncate-long-text ng-if=\"!keywords.length\" content=\"project | description\" limit=\"265\" newline-limit=\"10\" use-word-boundary=\"true\"></truncate-long-text>\n" +
     "<span class=\"highlighted-content\" ng-if=\"keywords.length\" ng-bind-html=\"project | description | truncate : 1000 | highlightKeywords : keywords\"></span>\n" +
-    "</span>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 148d93b663771cede3ec9e3fa9aef0e29f9b4f35
     "<div row class=\"list-view-pf-actions list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
     "<div uib-dropdown>\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
+=======
+    "<div class=\"list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
+    "<div uib-dropdown class=\"dropdown pull-right dropdown-kebab-pf\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></button>\n" +
+>>>>>>> Fix project list view styles per UXD feedback
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/membership\" translate>\n" +
@@ -16384,6 +16403,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Edit/Create Projects on page in a popup
     "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
     "</origin-modal-popup>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"projects.length > limitListTo\">\n" +
