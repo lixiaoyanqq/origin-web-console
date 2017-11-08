@@ -11,9 +11,10 @@
         '$filter',
         '$interval',
         '$location',
-        '$timeout',
-        '$routeParams',
         '$rootScope',
+        '$routeParams',
+        '$scope',
+        '$timeout',
         'Constants',
         'DataService',
         'NotificationsService',
@@ -27,9 +28,10 @@
       $filter,
       $interval,
       $location,
-      $timeout,
-      $routeParams,
       $rootScope,
+      $routeParams,
+      $scope,
+      $timeout,
       Constants,
       DataService,
       NotificationsService,
@@ -38,6 +40,7 @@
       // kill switch if watching events is too expensive
       var DISABLE_GLOBAL_EVENT_WATCH = _.get(Constants, 'DISABLE_GLOBAL_EVENT_WATCH');
       var LIMIT_WATCHES = $filter('isIE')();
+      var DRAWER_EXPANDED_STORAGE_KEY = 'openshift/notification-drawer-expanded';
 
       var drawer = this;
 
@@ -273,7 +276,7 @@
       angular.extend(drawer, {
         drawerHidden: true,
         allowExpand: true,
-        drawerExpanded: false,
+        drawerExpanded: localStorage.getItem(DRAWER_EXPANDED_STORAGE_KEY) === 'true',
         drawerTitle: 'Notifications',
         hasUnread: false,
         showClearAll: true,
@@ -325,18 +328,9 @@
         }
       });
 
-      var projectChanged = function(next, current) {
-        return _.get(next, 'params.project') !== _.get(current, 'params.project');
-      };
-
-      var reset = function() {
-        getProject($routeParams.project).then(function() {
-          watchEvents($routeParams.project, eventWatchCallback);
-          //watchNotifications($routeParams.project, notificationWatchCallback);
-          hideIfNoProject($routeParams.project);
-          render();
-        });
-      };
+      $scope.$watch('$ctrl.drawerExpanded', function(expanded) {
+        localStorage.setItem(DRAWER_EXPANDED_STORAGE_KEY, expanded ? 'true' : 'false');
+      });
 
       var initWatches = function() {
         if($routeParams.project) {
