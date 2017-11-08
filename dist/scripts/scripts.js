@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -167,6 +168,9 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, k, P, j, R, I) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, k, P, j, R, I) {
+>>>>>>> Adding label filter to ste secrets page
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
@@ -6980,6 +6984,7 @@ return e ? "Pod" === e.kind ? h(e, t) : _.has(e, "spec.template") ? h(e.spec.tem
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, b = t("humanizeQuotaResource"), C = t("humanizeKind"), S = function(e, t, n) {
 >>>>>>> Quota Notifications
 =======
@@ -6991,6 +6996,9 @@ return e ? "Pod" === e.kind ? h(e, t) : _.has(e, "spec.template") ? h(e.spec.tem
 =======
 }, b = t("humanizeQuotaResource"), S = t("humanizeKind"), C = function(e, t, n) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, b = t("humanizeQuotaResource"), S = t("humanizeKind"), C = function(e, t, n) {
+>>>>>>> Adding label filter to ste secrets page
 var a = e.status.total || e.status;
 if (m(a.hard[n]) <= m(a.used[n])) {
 var r, o;
@@ -7245,6 +7253,7 @@ var o = t.status.total || t.status;
 if (("Pod" !== e.kind || "pods" !== r) && _.has(o, [ "hard", r ]) && _.has(o, [ "used", r ])) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var i = C(t, e, r);
 >>>>>>> Service instance details configuration and edit
 =======
@@ -7253,6 +7262,9 @@ var i = S(t, e, r);
 =======
 var i = C(t, e, r);
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var i = C(t, e, r);
+>>>>>>> Adding label filter to ste secrets page
 if (i) n.push(i); else if ("pods" !== r) {
 var s = k(t, e, a, r);
 s && n.push(s);
@@ -9040,11 +9052,15 @@ s.toProjectMembership(e.metadata.name);
 return !d.isWindowBelowBreakpoint(d.WINDOW_SIZE_SM) && (u.startTour(y.steps), !0);
 }), c.clearNotifications();
 <<<<<<< HEAD
+<<<<<<< HEAD
 var C = function() {
 >>>>>>> Update template service broker flag name
 =======
 var S = function() {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var S = function() {
+>>>>>>> Adding label filter to ste secrets page
 var t = _.get(e, "template.metadata.uid");
 t && l.addItem(t);
 }, C = function(e) {
@@ -9141,6 +9157,7 @@ v = t;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Add SVG icons
 }, S = function() {
 C(), y();
@@ -9157,6 +9174,10 @@ C(), y();
 }, C = function() {
 S(), y();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, C = function() {
+S(), y();
+>>>>>>> Adding label filter to ste secrets page
 };
 e.sortConfig = {
 fields: [ {
@@ -9182,6 +9203,7 @@ isAscending: !0,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 onSortChange: P
 };
 var j = function(t) {
@@ -9203,6 +9225,9 @@ onSortChange: S
 =======
 onSortChange: C
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+onSortChange: C
+>>>>>>> Adding label filter to ste secrets page
 };
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, C();
@@ -9644,10 +9669,15 @@ D(e, t), E(r.containerTerminals), T(e);
 }).then(function(t) {
 k(t);
 var a = {};
+<<<<<<< HEAD
 a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = C(), S(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, f), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
 <<<<<<< HEAD
 P(t, n), w(e.containerTerminals), S(t);
 >>>>>>> Update template service broker flag name
+=======
+a[t.metadata.name] = t, e.logOptions.container = n.container || t.spec.containers[0].name, e.containerTerminals = S(), C(t), c.fetchReferencedImageStreamImages(a, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, f), p.push(i.watchObject("pods", n.pod, l, function(t, n) {
+P(t, n), w(e.containerTerminals), C(t);
+>>>>>>> Adding label filter to ste secrets page
 }));
 }, function(t) {
 r.loaded = !0, r.alerts.load = {
@@ -10510,6 +10540,7 @@ serviceAccount: _.template(v.getString(f("Removing a system role granted to a se
 } ]), angular.module("openshiftConsole").controller("MembershipController", [ "$filter", "$location", "$routeParams", "$scope", "$timeout", "$uibModal", "AuthService", "AuthorizationService", "DataService", "ProjectsService", "MembershipService", "NotificationsService", "RoleBindingsService", "RolesService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Support EnvFrom in the Env Editors
 var f, g = n.project, h = e("humanizeKind"), v = e("annotation"), y = e("canI"), b = [], C = {
 =======
@@ -10524,6 +10555,9 @@ var f, g = n.project, v = e("humanizeKind"), h = e("annotation"), y = e("canI"),
 =======
 var f, g = n.project, v = e("humanizeKind"), h = e("annotation"), y = e("canI"), b = [], S = {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var f, g = n.project, v = e("humanizeKind"), h = e("annotation"), y = e("canI"), b = [], S = {
+>>>>>>> Adding label filter to ste secrets page
 notice: {
 yourLastRole: _.template('Removing the role "<%= roleName %>" may completely remove your ability to see this project.')
 },
@@ -10835,6 +10869,7 @@ type: "error",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 message: C.notice.yourLastRole({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10846,10 +10881,14 @@ message: C.notice.yourLastRole({
 =======
 message: S.notice.yourLastRole({
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: S.notice.yourLastRole({
+>>>>>>> Adding label filter to ste secrets page
 roleName: n
 })
 })), _.isEqual(t, "ServiceAccount") && _.startsWith(n, "system:") && (o.alerts.editingServiceAccountRole = {
 type: "error",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10876,6 +10915,9 @@ message: C.warning.serviceAccount()
 =======
 message: S.warning.serviceAccount()
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: S.warning.serviceAccount()
+>>>>>>> Adding label filter to ste secrets page
 }), o;
 };
 i.withUser().then(function(e) {
@@ -10973,6 +11015,7 @@ edit: !!a.mode.edit && t
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), S("success", C.remove.success({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10984,10 +11027,14 @@ edit: !!a.mode.edit && t
 =======
 }), C("success", S.remove.success({
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), C("success", S.remove.success({
+>>>>>>> Adding label filter to ste secrets page
 roleName: i,
 subjectName: n
 })));
 }, function(t) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -11011,6 +11058,9 @@ S("error", C.remove.error({
 =======
 C("error", S.remove.error({
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+C("error", S.remove.error({
+>>>>>>> Adding label filter to ste secrets page
 roleName: i,
 subjectName: n
 }), S.errorReason({
@@ -11040,6 +11090,7 @@ name: n.metadata.name
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 i && _.some(i.subjects, o) ? k("error", j.update.subject.exists({
 roleName: n.metadata.name,
 subjectName: e
@@ -11061,6 +11112,9 @@ i && _.some(i.subjects, o) ? S("error", C.update.subject.exists({
 =======
 i && _.some(i.subjects, o) ? C("error", S.update.subject.exists({
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+i && _.some(i.subjects, o) ? C("error", S.update.subject.exists({
+>>>>>>> Adding label filter to ste secrets page
 roleName: n.metadata.name,
 subjectName: e
 })) : i ? R(i, o, r) : j(n, o);
@@ -13057,6 +13111,7 @@ labelSelector: v("deploymentConfig") + "=" + e.deploymentConfigName
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })), r.list("limitranges", l).then(function(e) {
 <<<<<<< HEAD
 p = e.by("metadata.name"), C();
@@ -13087,6 +13142,9 @@ d = e.by("metadata.name"), p();
 =======
 })), o.list(S, r).then(function(e) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+})), o.list(S, r).then(function(e) {
+>>>>>>> Adding label filter to ste secrets page
 d = e.by("metadata.name"), p();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13346,6 +13404,7 @@ switch (d) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Add SVG icons
 var b = !1, C = t("annotation"), S = t("humanizeKind")(y), w = t("hasDeployment");
 =======
@@ -13357,6 +13416,9 @@ var b = !1, C = t("annotation"), S = t("humanizeKind")(y), w = t("hasDeployment"
 =======
 var b = !1, S = t("annotation"), C = t("humanizeKind")(y), w = t("hasDeployment");
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var b = !1, S = t("annotation"), C = t("humanizeKind")(y), w = t("hasDeployment");
+>>>>>>> Adding label filter to ste secrets page
 switch (y) {
 >>>>>>> Patternfly vertical navigation and project bar
 case "ReplicaSet":
@@ -13521,6 +13583,7 @@ angular.forEach(t.by("metadata.name"), function(t) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 (P(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
 }), n = s.getActiveDeployment(r), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
 =======
@@ -13556,6 +13619,9 @@ c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t)
 >>>>>>> Support EnvFrom in the Env Editors
 =======
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
+=======
+(S(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
+>>>>>>> Adding label filter to ste secrets page
 }), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, E();
 }));
 <<<<<<< HEAD
@@ -13578,6 +13644,7 @@ var o = P(r, "deploymentVersion");
 o && (e.logOptions.version = o), e.healthCheckURL = f.healthCheckURL(n.project, "DeploymentConfig", a), i.get(e.deploymentConfigsVersion, a, u, {
 =======
 }, D = function(a) {
+<<<<<<< HEAD
 var r = C(a, "deploymentConfig");
 =======
 s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
@@ -13586,6 +13653,9 @@ e.hpaWarnings = t;
 }, D = function(a) {
 var r = S(a, "deploymentConfig");
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var r = S(a, "deploymentConfig");
+>>>>>>> Adding label filter to ste secrets page
 if (r) {
 b = !0, e.deploymentConfigName = r;
 var i = S(a, "deploymentVersion");
@@ -13849,6 +13919,7 @@ object: t
 type: "warning",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 message: "This " + j + " has been deleted."
 }), e.replicaSet = t, O(t), S(), H(), e.deployment && F();
 })), e.deploymentConfigName && b(), x.push(i.watch(N, u, function(t) {
@@ -13867,6 +13938,9 @@ message: "This " + S + " has been deleted."
 =======
 message: "This " + C + " has been deleted."
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: "This " + C + " has been deleted."
+>>>>>>> Adding label filter to ste secrets page
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && A();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13885,10 +13959,13 @@ e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 e.loaded = !0, e.alerts.load = {
 type: "error",
 <<<<<<< HEAD
+<<<<<<< HEAD
 message: "The " + j + " details could not be loaded.",
 details: t("getErrorDetails")(r)
 }, e.breadcrumbs = o.getBreadcrumbs({
 =======
+=======
+>>>>>>> Adding label filter to ste secrets page
 message: "The " + C + " details could not be loaded.",
 details: t("getErrorDetails")(a)
 }, e.breadcrumbs = r.getBreadcrumbs({
@@ -14538,6 +14615,7 @@ details: t("getErrorDetails")(n)
 };
 });
 };
+<<<<<<< HEAD
 var F = t("hasDeploymentConfig");
 e.isScalable = function() {
 return !!_.isEmpty(e.autoscalers) && (!F(e.replicaSet) && !w(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !B)));
@@ -14572,6 +14650,30 @@ n.unwatchAll(r);
 } ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, a, r, o) {
 e.projectName = t.project, e.labelSuggestions = {}, e.clearFilter = function() {
 =======
+=======
+})), e.$on("$destroy", function() {
+s.unwatchAll(f), s.unwatchAll(g);
+});
+} ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "DataService", "LabelFilter", "ProjectsService", function(e, t, n, a, r) {
+t.projectName = e.project, t.labelSuggestions = {}, t.clearFilter = function() {
+a.clear();
+};
+var o = [];
+r.get(e.project).then(_.spread(function(e, r) {
+function i() {
+t.filterWithZeroResults = !a.getLabelSelector().isEmpty() && _.isEmpty(t.secrets) && !_.isEmpty(t.unfilteredSecrets);
+}
+t.project = e, t.context = r, o.push(n.watch("secrets", r, function(e) {
+t.unfilteredSecrets = _.sortBy(e.by("metadata.name"), [ "type", "metadata.name" ]), t.secretsLoaded = !0, a.addLabelSuggestionsFromResources(t.unfilteredSecrets, t.labelSuggestions), a.setLabelSuggestions(t.labelSuggestions), t.secrets = a.getLabelSelector().select(t.unfilteredSecrets), i();
+})), a.onActiveFiltersChanged(function(e) {
+t.$evalAsync(function() {
+t.secrets = e.select(t.unfilteredSecrets), i();
+});
+}), t.$on("$destroy", function() {
+n.unwatchAll(o);
+});
+}));
+>>>>>>> Adding label filter to ste secrets page
 } ]), angular.module("openshiftConsole").controller("SecretController", [ "$routeParams", "$filter", "$scope", "DataService", "ProjectsService", "SecretsService", function(e, t, n, a, r, o) {
 n.projectName = e.project, n.secretName = e.secret, n.view = {
 showSecret: !1
@@ -16859,7 +16961,11 @@ e.project = n, e.context = r, i.canI("buildconfigs", "update", a.project) ? s.ge
 errorNotification: !1
 }).then(function(t) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = h(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = C(e.triggers, e.buildConfig.spec.triggers), e.sources = I(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
+=======
+e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = h(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = S(e.triggers, e.buildConfig.spec.triggers), e.sources = I(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
+>>>>>>> Adding label filter to ste secrets page
 var n = m.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 =======
 i = I(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
@@ -17004,7 +17110,7 @@ lastTriggerType: e.type,
 =======
 }) : c.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 }));
-var C = function(n, a) {
+var S = function(n, a) {
 function r(n, a) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(a, e.projectName);
 }
@@ -17168,6 +17274,7 @@ t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var R = function(e) {
 =======
 var S = function(e) {
@@ -17185,6 +17292,9 @@ var C = function(e) {
 =======
 var S = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var C = function(e) {
+>>>>>>> Adding label filter to ste secrets page
 return _.map(p.compactEntries(e), function(e) {
 >>>>>>> Support EnvFrom in the Env Editors
 return {
@@ -17512,6 +17622,7 @@ case "JenkinsPipeline":
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 case "Source":
 case "Docker":
@@ -17555,6 +17666,9 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = S(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Update template service broker flag name
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = C(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Adding label filter to ste secrets page
 case "Source":
 case "Docker":
 R(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -17845,6 +17959,7 @@ details: n
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, C = i.getPreferredVersion("deploymentconfigs"), w = i.getPreferredVersion("configmaps"), P = i.getPreferredVersion("secrets"), j = [], k = [], I = [];
 e.valueFromObjects = [];
 var R = function(e) {
@@ -17868,6 +17983,11 @@ var C = function(e) {
 e.valueFromObjects = [];
 var S = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}, y = [], b = [], S = [];
+e.valueFromObjects = [];
+var C = function(e) {
+>>>>>>> Adding label filter to ste secrets page
 switch (e) {
 case "Recreate":
 return "recreateParams";
@@ -18274,6 +18394,7 @@ maxReplicas: e.autoscaling.maxReplicas,
 targetCPUUtilizationPercentage: e.autoscaling.targetCPU
 }
 };
+<<<<<<< HEAD
 s.create(y, null, t, r).then(function(e) {
 d.addNotification({
 type: "success",
@@ -18285,6 +18406,28 @@ id: "edit-hpa-error",
 type: "error",
 message: "An error occurred creating the horizontal pod autoscaler.",
 details: f(t)
+=======
+_.set(a, [ t.name, "triggerData" ], o);
+}), a;
+}(e.updatedDeploymentConfig.spec.template.spec.containers, e.updatedDeploymentConfig.spec.triggers), e.secrets = {
+pullSecrets: angular.copy(e.deploymentConfig.spec.template.spec.imagePullSecrets) || [ {
+name: ""
+} ]
+}, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = C(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
+type: "ConfigChange"
+}), "Custom" !== e.strategyData.type || _.has(e.strategyData, "customParams.environment") || (e.strategyData.customParams.environment = []), c.list("configmaps", r, null, {
+errorNotification: !1
+}).then(function(t) {
+b = g(t.by("metadata.name")), e.availableConfigMaps = b, e.valueFromObjects = b.concat(S);
+}, function(e) {
+403 !== e.status && h("Could not load config maps", v(e));
+}), c.list("secrets", r, null, {
+errorNotification: !1
+}).then(function(t) {
+S = g(t.by("metadata.name")), e.availableSecrets = S, e.valueFromObjects = b.concat(S);
+var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+return _.map(e, "metadata.name");
+>>>>>>> Adding label filter to ste secrets page
 });
 });
 };
@@ -18298,13 +18441,13 @@ s.list(b, r).then(function(e) {
 }
 }
 }).result.then(function() {
-e.strategyData[t] = angular.copy(e.strategyData[S(e.originalStrategy)]);
+e.strategyData[t] = angular.copy(e.strategyData[C(e.originalStrategy)]);
 }, function() {
 e.strategyData[t] = {};
 });
 };
 e.strategyChanged = function() {
-var t = S(e.strategyData.type);
+var t = C(e.strategyData.type);
 w() ? k(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
 image: "",
 command: [],
@@ -18349,11 +18492,15 @@ name: n
 =======
 }).env = f.compactEntries(t.env);
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), w() && delete e.strategyData[C(e.originalStrategy)], "Rolling" === e.strategyData.type) {
 >>>>>>> Service instance details configuration and edit
 =======
 }), w() && delete e.strategyData[S(e.originalStrategy)], "Rolling" === e.strategyData.type) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), w() && delete e.strategyData[C(e.originalStrategy)], "Rolling" === e.strategyData.type) {
+>>>>>>> Adding label filter to ste secrets page
 var a = e.strategyData[e.strategyParamsPropertyName].maxSurge, r = Number(a);
 "" === a ? e.strategyData[e.strategyParamsPropertyName].maxSurge = null : _.isFinite(r) && (e.strategyData[e.strategyParamsPropertyName].maxSurge = r);
 var o = e.strategyData[e.strategyParamsPropertyName].maxUnavailable, i = Number(o);
@@ -19149,8 +19296,13 @@ e.projectTemplates = t.by("metadata.name");
 }));
 }))) : l.toErrorPage("Catalog category " + r.category + "/" + r.subcategory + " not found.");
 } else l.toErrorPage("Catalog category " + r.category + " not found.");
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, C, S, w) {
 var P = t("displayName"), k = t("humanize");
+=======
+} ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w) {
+var k = t("displayName"), P = t("humanize");
+>>>>>>> Adding label filter to ste secrets page
 e.projectName = r.project, e.sourceURLPattern = y;
 var j = r.imageStream;
 if (j) if (r.imageTag) {
@@ -19289,13 +19441,14 @@ c.list("limitranges", n).then(function(t) {
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 >>>>>>> Patternfly vertical navigation and project bar
 });
-var v, y, S = function() {
+var v, y, C = function() {
 e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
 c.list("resourcequotas", n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
 }), c.list("appliedclusterresourcequotas", n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), e.$watch("scaling.autoscale", S), e.$watch("container", S, !0), e.$watch("name", function(e, t) {
@@ -19323,6 +19476,10 @@ T.value && T.value !== t || (T.value = e);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 I.value && I.value !== t || (I.value = e);
 >>>>>>> Updates for Service Instance & Bindings
+=======
+}), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
+R.value && R.value !== t || (R.value = e);
+>>>>>>> Adding label filter to ste secrets page
 }), function(a) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19629,7 +19786,7 @@ started: "Creating application " + e.name + " in project " + e.projectDisplayNam
 success: "Created application " + e.name + " in project " + e.projectDisplayName(),
 failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
 }, o = {};
-C.clear(), C.add(t, o, r.project, function() {
+S.clear(), S.add(t, o, r.project, function() {
 var t = a.defer();
 return c.batch(A, n).then(function(n) {
 var a = [], r = !1;
@@ -20031,12 +20188,17 @@ P = [];
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
+<<<<<<< HEAD
 var a = S(b(e), h);
 a && P.push({
+=======
+var a = C(b(e), h);
+a && k.push({
+>>>>>>> Adding label filter to ste secrets page
 name: a,
 usesParameters: d(a)
 });
-var r = S(C(e), h);
+var r = C(S(e), h);
 r && (n[r] = !0);
 }
 "DeploymentConfig" === e.kind && (t = t.concat(p(e)));
@@ -20053,7 +20215,7 @@ return _.each(r.template.parameters, function(t) {
 e[t.name] = t.value;
 }), e;
 }
-var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), S = e("imageObjectRef");
+var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), S = n("spec.output.to"), C = e("imageObjectRef");
 if (v) {
 r.breadcrumbs = [ {
 title: "Add to Project",
@@ -21209,6 +21371,7 @@ containers: {}
 name: t.name,
 kind: t.kind,
 namespace: t.project,
+<<<<<<< HEAD
 subpage: "Add Storage",
 includeProject: !0
 }), d.get(t.project).then(_.spread(function(r, d) {
@@ -21219,17 +21382,33 @@ var p = e("orderByDisplayName"), g = e("getErrorDetails"), v = e("generateName")
 if (n.project = r, o.canI(h, "update", t.project)) {
 var m = e("orderByDisplayName"), f = e("getErrorDetails"), v = e("generateName"), y = function(e, t) {
 >>>>>>> Updates for Service Instance & Bindings
+=======
+subpage: "Add Storage"
+}), n.pvcVersion = r.getPreferredVersion("persistentvolumeclaims");
+var h = r.getPreferredVersion("resourcequotas"), y = r.getPreferredVersion("appliedclusterresourcequotas");
+d.get(t.project).then(_.spread(function(r, d) {
+if (n.project = r, o.canI(v, "update", t.project)) {
+var p = e("orderByDisplayName"), f = e("getErrorDetails"), b = e("generateName"), S = function(e, t) {
+>>>>>>> Adding label filter to ste secrets page
 n.disableInputs = !0, u.addNotification({
 id: "attach-pvc-error",
 type: "error",
 message: e,
 details: t
 });
+<<<<<<< HEAD
 }, b = function() {
 u.hideNotification("attach-pvc-error");
 };
 n.$on("$destroy", b);
 var C = function() {
+=======
+}, C = function() {
+u.hideNotification("attach-pvc-error");
+};
+n.$on("$destroy", C);
+var w = function() {
+>>>>>>> Adding label filter to ste secrets page
 a.history.back();
 };
 <<<<<<< HEAD
@@ -21270,10 +21449,17 @@ includeProject: !0
 var t = _.get(e, "spec.template");
 n.existingVolumeNames = p.getVolumeNames(t);
 }, function(e) {
+<<<<<<< HEAD
 y(t.name + " could not be loaded.", g(e));
 }), s.list("persistentvolumeclaims", d).then(function(e) {
 n.pvcs = m(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
 }), s.list("resourcequotas", {
+=======
+S(t.name + " could not be loaded.", f(e));
+}), s.list(n.pvcVersion, d).then(function(e) {
+n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
+}), s.list(h, {
+>>>>>>> Adding label filter to ste secrets page
 namespace: n.projectName
 }, function(e) {
 n.quotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
@@ -21282,8 +21468,13 @@ namespace: n.projectName
 }, function(e) {
 n.clusterQuotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
 }), n.attachPVC = function() {
+<<<<<<< HEAD
 if (n.disableInputs = !0, b(), n.attachPVCForm.$valid) {
 n.attach.volumeName || (n.attach.volumeName = v("volume-"));
+=======
+if (n.disableInputs = !0, C(), n.attachPVCForm.$valid) {
+n.attach.volumeName || (n.attach.volumeName = b("volume-"));
+>>>>>>> Adding label filter to ste secrets page
 var e = n.attach.resource, a = _.get(e, "spec.template"), r = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
 i && angular.forEach(a.spec.containers, function(e) {
 <<<<<<< HEAD
@@ -21320,6 +21511,7 @@ details: e
 }, function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 y("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
 =======
 S("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
@@ -21327,6 +21519,9 @@ S("An error occurred attaching the persistent volume claim to the " + g(t.kind) 
 =======
 C("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+S("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
+>>>>>>> Adding label filter to ste secrets page
 });
 }
 };
@@ -21377,9 +21572,10 @@ type: "error",
 message: e,
 details: t
 });
-}, C = function() {
+}, S = function() {
 u.hideNotification("add-config-volume-error");
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21436,6 +21632,9 @@ a.$on("$destroy", S), a.addItem = function() {
 =======
 a.$on("$destroy", C), a.addItem = function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+a.$on("$destroy", S), a.addItem = function() {
+>>>>>>> Adding label filter to ste secrets page
 a.attach.items.push({}), h();
 }, a.removeItem = function(e) {
 a.attach.items.splice(e, 1), h();
@@ -21671,6 +21870,7 @@ e.availableProjects = _.toArray(t.by("metadata.name")), e.availableProjects = _.
 metadata: {
 name: e.preselectedProjectName
 }
+<<<<<<< HEAD
 }));
 }), e.setHomePage = function() {
 var r = {
@@ -21714,9 +21914,17 @@ c.update(g, t.metadata.name, a.targetObject, r).then(function() {
 u.addNotification({
 type: "success",
 message: "Succesfully added " + S + " " + o.metadata.name + " to " + w + " " + n.name + "."
+=======
+i.spec.volumes = i.spec.volumes || [], i.spec.volumes.push(v), a.disableInputs = !0, S();
+var h = e("humanizeKind"), C = h(o.kind), w = h(n.kind);
+c.update(g, t.metadata.name, a.targetObject, r).then(function() {
+u.addNotification({
+type: "success",
+message: "Successfully added " + C + " " + o.metadata.name + " to " + w + " " + n.name + "."
+>>>>>>> Adding label filter to ste secrets page
 }), y();
 }, function(e) {
-a.disableInputs = !1, b("An error occurred attaching the " + S + " to the " + w + ".", d(e));
+a.disableInputs = !1, b("An error occurred attaching the " + C + " to the " + w + ".", d(e));
 });
 }
 };
@@ -23578,8 +23786,13 @@ var e = p.createResources.length, t = p.updateResources.length;
 if (p.resourceKind.endsWith("List")) {
 >>>>>>> Support EnvFrom in the Env Editors
 var a = [];
+<<<<<<< HEAD
 t > 0 && a.push(P()), e > 0 && a.push(w()), n.all(a).then(b);
 } else S();
+=======
+t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
+} else C();
+>>>>>>> Adding label filter to ste secrets page
 }
 function b() {
 var e, n;
@@ -23592,7 +23805,7 @@ namespace: n
 project: p.input.selectedProject
 }) : (e = s.projectOverviewURL(p.input.selectedProject.metadata.name), t.url(e));
 }
-function C(e) {
+function S(e) {
 var t = r.objectToResourceGroupVersion(e);
 return t ? r.apiInfo(t) ? i.get(t, e.metadata.name, {
 namespace: p.input.selectedProject.metadata.name
@@ -23609,7 +23822,7 @@ message: r.unsupportedObjectKindOrVersion(e)
 message: r.invalidObjectKindOrVersion(e)
 }));
 }
-function S() {
+function C() {
 var t;
 _.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(r.kindToResource(t.kind), t.metadata.name, t, {
 namespace: p.input.selectedProject.metadata.name
@@ -24213,7 +24426,7 @@ add: !1
 var e = [];
 p.errorOccurred = !1, _.forEach(p.resourceList, function(t) {
 if (!g(t)) return p.errorOccurred = !0, !1;
-e.push(C(t));
+e.push(S(t));
 }), D().then(function(t) {
 p.input.selectedProject = t, n.all(e).then(function() {
 p.errorOccurred || (1 === p.createResources.length && "Template" === p.resourceList[0].kind ? v() : _.isEmpty(p.updateResources) ? l.getLatestQuotaAlerts(p.createResources, {
@@ -25756,15 +25969,15 @@ return n(e, !1);
 })) : y = [ n(l[t], !0) ], h.empty(), h.append(y), h.append($('<option data-divider="true"></option>')), h.append($('<option value="">View All Projects</option>')), h.selectpicker("refresh");
 >>>>>>> Add SVG icons
 }
-}, C = function() {
+}, S = function() {
 return s.list().then(function(e) {
 l = e.by("metadata.name");
 });
-}, S = function() {
+}, C = function() {
 var e = a.project;
 r.currentProjectName !== e && (r.currentProjectName = e, r.chromeless = "chromeless" === a.view, e && !r.chromeless ? (_.set(n, "view.hasProject", !0), r.canIAddToProject = !1, o.getProjectRules(e).then(function() {
 r.currentProjectName === e && (r.canIAddToProject = o.canIAddToProject(e));
-}), C().then(function() {
+}), S().then(function() {
 r.currentProjectName && l && (l[r.currentProjectName] || (l[r.currentProjectName] = {
 metadata: {
 name: r.currentProjectName
@@ -25772,7 +25985,7 @@ name: r.currentProjectName
 }), r.currentProject = l[r.currentProjectName], b());
 })) : _.set(n, "view.hasProject", !1));
 };
-S(), r.$on("$routeChangeSuccess", S), h.selectpicker({
+C(), r.$on("$routeChangeSuccess", C), h.selectpicker({
 iconBase: "fa",
 tickIcon: "fa-check"
 }).change(function() {
@@ -27615,12 +27828,12 @@ pod: m.pod,
 containerName: e.containerMetric ? m.options.selectedContainer.name : "pod"
 }) : null;
 }
-function C() {
+function S() {
 A || (U = 0, _.each(m.metrics, function(e) {
 g(e), f(e);
 }));
 }
-function S(e) {
+function C(e) {
 if (!A) if (U++, m.noData) m.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
@@ -27776,6 +27989,7 @@ id: e.metricID
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), a.all(t).then(C, w).finally(function() {
 p.loaded = !0;
 });
@@ -27792,6 +28006,9 @@ p.uniqueID = c.uniqueID(), p.metrics = [], _.includes(p.includedMetrics, "memory
 =======
 }), r.all(t).then(C, S).finally(function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+}), r.all(t).then(S, C).finally(function() {
+>>>>>>> Adding label filter to ste secrets page
 m.loaded = !0;
 });
 }
@@ -28242,6 +28459,7 @@ w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (N[i].las
 k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var a, r = o(e, n), i = n.descriptor;
 <<<<<<< HEAD
+<<<<<<< HEAD
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> Support EnvFrom in the Env Editors
 =======
@@ -28260,6 +28478,9 @@ P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> Update template service broker flag name
+=======
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(r), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((a = D(n)).data = r, S[i] = c3.generate(a));
+>>>>>>> Adding label filter to ste secrets page
 }));
 }
 function d() {
@@ -28271,6 +28492,7 @@ return 60 * t.options.timeRange.value * 1e3;
 <<<<<<< HEAD
 <<<<<<< HEAD
 function p() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 return w ? "1mn" : Math.floor(m() / C) + "ms";
 =======
@@ -28292,6 +28514,9 @@ return w ? "1mn" : Math.floor(m() / C) + "ms";
 =======
 return w ? "1mn" : Math.floor(m() / S) + "ms";
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+return w ? "1mn" : Math.floor(m() / C) + "ms";
+>>>>>>> Adding label filter to ste secrets page
 }
 function f() {
 var e = _.find(t.pods, "metadata.namespace");
@@ -28482,7 +28707,7 @@ function h(e, n, a) {
 t.noData = !1;
 var r = _.initial(a), o = _.get(R, [ e, n ]);
 if (o) {
-var i = _.takeRight(o.concat(r), S);
+var i = _.takeRight(o.concat(r), C);
 _.set(R, [ e, n ], i);
 } else _.set(R, [ e, n ], r);
 }
@@ -28541,6 +28766,7 @@ t.loaded = !0;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
 var j, k, I = {}, R = w, T = function(e) {
@@ -28589,6 +28815,9 @@ var P, j, R = {}, I = w, E = function(e) {
 >>>>>>> Handle displaying parameters when secrets are not available.
 =======
 var b, C = {}, S = 30, w = "compact" === t.profile, k = !1;
+=======
+var b, S = {}, C = 30, w = "compact" === t.profile, k = !1;
+>>>>>>> Adding label filter to ste secrets page
 t.uniqueID = s.uniqueID();
 var j, P, R = {}, I = w, E = function(e) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
@@ -28927,12 +29156,16 @@ R = {}, k = null, delete t.metricsError, y();
 I = !e, e && (!j || Date.now() > j + s.getDefaultUpdateInterval()) && y();
 };
 var A = r.$on("metrics.charts.resize", function() {
-s.redraw(C);
+s.redraw(S);
 });
 t.$on("$destroy", function() {
-b && (e.cancel(b), b = null), A && (A(), A = null), angular.forEach(C, function(e) {
+b && (e.cancel(b), b = null), A && (A(), A = null), angular.forEach(S, function(e) {
 e.destroy();
+<<<<<<< HEAD
 }), C = null, P = !0;
+=======
+}), S = null, k = !0;
+>>>>>>> Adding label filter to ste secrets page
 });
 }
 };
@@ -28969,13 +29202,18 @@ t.$apply(function() {
 var e = l.getBoundingClientRect();
 t.fixedHeight ? t.showScrollLinks = e && e.height > t.fixedHeight : t.showScrollLinks = e && (e.top < 0 || e.bottom > g.clientHeight);
 });
-}, C = !1, S = function() {
-C ? C = !1 : t.$evalAsync(function() {
+}, S = !1, C = function() {
+S ? S = !1 : t.$evalAsync(function() {
 t.autoScrollActive = !1;
 });
 }, w = function() {
+<<<<<<< HEAD
 u ? $(u).on("scroll", S) : m.on("scroll", S);
 }, P = function() {
+=======
+u ? $(u).on("scroll", C) : m.on("scroll", C);
+}, k = function() {
+>>>>>>> Adding label filter to ste secrets page
 t.fixedHeight || p.affix({
 target: window,
 offset: {
@@ -29109,11 +29347,11 @@ n > 10 ? e() : (n++, k().is(":visible") && (j(), e()));
 }, 100);
 }
 }, I = _.debounce(function() {
-j(!0), b(), S();
+j(!0), b(), C();
 }, 100);
 m.on("resize", I);
 var E, T = function() {
-C = !0, d.scrollBottom(u);
+S = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
 l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
@@ -29420,6 +29658,7 @@ restartLogs: B
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 L(), g.off("resize", E), g.off("scroll", P), u && $(u).off("scroll", P);
 }), "deploymentconfigs/logs" === y && !b) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 t.$watchGroup([ "name", "options.container", "run" ], x);
@@ -29472,6 +29711,9 @@ A(), m.off("resize", I), m.off("scroll", C), u && $(u).off("scroll", C);
 =======
 A(), m.off("resize", I), m.off("scroll", S), u && $(u).off("scroll", S);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+A(), m.off("resize", I), m.off("scroll", C), u && $(u).off("scroll", C);
+>>>>>>> Adding label filter to ste secrets page
 }), "deploymentconfigs/logs" === v && !h) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 >>>>>>> Add SVG icons
 t.$watchGroup([ "name", "options.container", "run" ], B);
@@ -31236,6 +31478,7 @@ u && (u(), u = void 0), d && (d(), d = void 0), p.nextTitle = "Close", p.wizardC
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var y = function() {
 if (d.serviceClasses) {
 var e = "ServiceInstance" === d.target.kind ? d.target : d.serviceToBind;
@@ -31267,6 +31510,9 @@ var S = function() {
 =======
 var C = function() {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+var S = function() {
+>>>>>>> Adding label filter to ste secrets page
 if (p.serviceClasses && p.servicePlans) {
 var e = "ServiceInstance" === p.target.kind ? p.target : p.serviceToBind;
 if (e) {
@@ -31277,15 +31523,15 @@ p.plan = p.servicePlans[n], p.parameterSchema = _.get(p.plan, "spec.serviceBindi
 }
 }
 };
-e.$watch("ctrl.serviceToBind", C), p.$onInit = function() {
+e.$watch("ctrl.serviceToBind", S), p.$onInit = function() {
 p.serviceSelection = {}, p.projectDisplayName = t("displayName")(p.project), p.podPresets = g("pod_presets"), p.parameterData = {}, p.steps = [ s, c, l ], p.hideBack = c.hidden;
 var e = n.getPreferredVersion("clusterserviceclasses");
 o.list(e, {}).then(function(e) {
-p.serviceClasses = e.by("metadata.name"), C(), h();
+p.serviceClasses = e.by("metadata.name"), S(), h();
 });
 var a = n.getPreferredVersion("clusterserviceplans");
 o.list(a, {}).then(function(e) {
-p.servicePlans = e.by("metadata.name"), C();
+p.servicePlans = e.by("metadata.name"), S();
 }), "ServiceInstance" === p.target.kind ? (p.bindType = "secret-only", p.appToBind = null, p.serviceToBind = p.target, p.podPresets && y()) : (p.bindType = "application", p.appToBind = p.target, b());
 }, p.$onChanges = function(e) {
 e.project && !e.project.isFirstChange() && (p.projectDisplayName = t("displayName")(p.project));
@@ -31611,7 +31857,7 @@ v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(
 v.noProjectsCantCreate = !0;
 }), f();
 };
-var b, C = function() {
+var b, S = function() {
 var e = {
 started: "Creating " + v.templateDisplayName + " in project " + h(v.selectedProject),
 success: "Created " + v.templateDisplayName + " in project " + h(v.selectedProject),
@@ -31673,7 +31919,7 @@ hasErrors: a
 project: v.selectedProject,
 template: v.template
 }) : o.toNextSteps(v.templateDisplayName, v.selectedProject.metadata.name);
-}, S = function(e) {
+}, C = function(e) {
 a.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -31733,8 +31979,13 @@ cancelButtonText: "Cancel"
 };
 }
 }
+<<<<<<< HEAD
 }).result.then(C);
 }, w = {}, P = function() {
+=======
+}).result.then(S);
+}, w = {}, k = function() {
+>>>>>>> Adding label filter to ste secrets page
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
@@ -31745,7 +31996,7 @@ w = w.concat(t), _.filter(w, {
 type: "error"
 }).length ? (v.disableInputs = !1, _.each(w, function(e) {
 e.id = _.uniqueId("process-template-alert-"), i.addNotification(e);
-})) : w.length ? (S(w), v.disableInputs = !1) : C();
+})) : w.length ? (C(w), v.disableInputs = !1) : S();
 }, j = function() {
 if (_.has(v.selectedProject, "metadata.uid")) return t.when(v.selectedProject);
 var n = v.selectedProject.metadata.name, a = v.selectedProject.metadata.annotations["new-display-name"], r = e("description")(v.selectedProject);
@@ -31901,7 +32152,7 @@ return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
 }
 function u() {
 var e = _.get(b, "template.metadata.annotations.iconClass", "fa fa-clone");
-return C(e);
+return S(e);
 }
 function d() {
 b.steps || (b.steps = [ b.selectStep, b.infoStep, b.configStep, b.resultsStep ]);
@@ -32081,8 +32332,13 @@ y.unfilteredProjects = [];
 b();
 });
 }
+<<<<<<< HEAD
 var v, y = this;
 y.selectStep = {
+=======
+var y, b = this, S = t("imageForIconClass"), C = t("annotation");
+b.selectStep = {
+>>>>>>> Adding label filter to ste secrets page
 id: "projectTemplates",
 label: "Selection",
 view: "views/directives/process-template-dialog/process-template-select.html",
@@ -32352,6 +32608,7 @@ onFilterChange: g
 }, b.$onChanges = function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 e.template && b.template && (d(), b.iconClass = l(), b.image = u()), e.useProjectTemplate && d();
 >>>>>>> Add SVG icons
 =======
@@ -32360,6 +32617,9 @@ e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = S
 =======
 e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "template.openshift.io/documentation-url"), b.supportUrl = C(b.template, "template.openshift.io/support-url"), b.vendor = C(b.template, "template.openshift.io/provider-display-name")), e.useProjectTemplate && d();
 >>>>>>> Service instance details configuration and edit
+=======
+e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name")), e.useProjectTemplate && d();
+>>>>>>> Adding label filter to ste secrets page
 }, e.$on("templateInstantiated", function(e, t) {
 b.selectedProject = t.project, b.currentStep = b.resultsStep.label;
 }), b.$onDestroy = function() {
@@ -32387,8 +32647,12 @@ b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = 
 }, b.onProjectSelected = function(t) {
 b.selectedProject = t, b.configStep.valid = e.$ctrl.form.$valid && b.selectedProject;
 }, b.templateSelected = function(e) {
+<<<<<<< HEAD
 b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = S(b.template, "openshift.io/documentation-url"), b.supportUrl = S(b.template, "openshift.io/support-url"), b.vendor = S(b.template, "openshift.io/provider-display-name");
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
+=======
+b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name");
+>>>>>>> Adding label filter to ste secrets page
 }, b.templateProjectChange = function() {
 b.templateProjectName = _.get(b.templateProject, "metadata.name"), b.catalogItems = {}, b.templateSelected(), a.getProjectCatalogItems(b.templateProjectName, !1, !0).then(_.spread(function(e, t) {
 b.catalogItems = e, b.totalCount = b.catalogItems.length, g(), t && i.addNotification({
@@ -34531,11 +34795,11 @@ var y = function() {
 if (_.has(n.input.selectedProject, "metadata.uid")) return t.when(n.input.selectedProject);
 var a = n.input.selectedProject.metadata.name, r = n.input.selectedProject.metadata.annotations["new-display-name"], o = e("description")(n.input.selectedProject);
 return l.create(a, r, o);
-}, b = e("stripTag"), C = e("stripSHA"), S = e("humanizeKind"), w = function(e) {
+}, b = e("stripTag"), S = e("stripSHA"), C = e("humanizeKind"), w = function(e) {
 return e.length > 24 ? e.substring(0, 24) : e;
 }, k = function() {
 var e = _.last(n.import.name.split("/"));
-return e = C(e), e = b(e), e = w(e);
+return e = S(e), e = b(e), e = w(e);
 };
 n.findImage = function() {
 n.loading = !0, i.findImage(n.imageName, {
@@ -34621,13 +34885,13 @@ var a, r = !_.isEmpty(t.failure);
 a = r ? (a = _.map(t.failure, function(e) {
 return {
 type: "error",
-message: "Cannot create " + S(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+message: "Cannot create " + C(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 details: e.data.message
 };
 })).concat(_.map(t.success, function(e) {
 return {
 type: "success",
-message: "Created " + S(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+message: "Created " + C(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 };
 })) : [ {
 type: "success",
@@ -35733,6 +35997,7 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, C = function(e) {
 >>>>>>> Quota Notifications
 =======
@@ -35744,6 +36009,9 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 =======
 }, S = function(e) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, S = function(e) {
+>>>>>>> Adding label filter to ste secrets page
 return s.get("projects", e, {}, {
 errorNotification: !1
 }).then(function(e) {
@@ -35760,6 +36028,7 @@ notifications: []
 =======
 return h[e.metadata.name] = e, e;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35788,6 +36057,9 @@ return y[e.metadata.name] = e, e;
 });
 }, w = function(t, n) {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, C = function(t, n) {
+>>>>>>> Adding label filter to ste secrets page
 return {
 heading: e("displayName")(y[t]),
 project: y[t],
@@ -36001,6 +36273,7 @@ o.$evalAsync(function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 p.notificationGroups = [ C(r.project, E(I(g, v))) ], k();
 =======
 p.notificationGroups = [ S(r.project, T(N(g, v))) ], k();
@@ -36017,6 +36290,9 @@ p.notificationGroups = [ S(r.project, N(T(g, v))) ], k();
 =======
 p.notificationGroups = [ C(r.project, N(T(g, v))) ], k();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+p.notificationGroups = [ C(r.project, N(T(g, v))) ], k();
+>>>>>>> Adding label filter to ste secrets page
 });
 }, N = function() {
 _.each(f, function(e) {
