@@ -4411,7 +4411,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-switch-default>\n" +
     "<dt ng-attr-title=\"{{secretDataName}}\">{{secretDataName}}</dt>\n" +
+<<<<<<< ebc7e052b7434de4afee0a2a1b7d0644f80ad84d
     "<dd ng-if=\"view.showSecret && !secretData\"><em translate>No value</em></dd>\n" +
+=======
+    "<dd ng-if=\"view.showSecret && !secretData\"><em>No value</em></dd>\n" +
+>>>>>>> Bug 1510346 - Don't let users copy empty secret value
     "<dd ng-if=\"view.showSecret && secretData\">\n" +
     "<copy-to-clipboard clipboard-text=\"secretData\" multiline=\"secretData | isMultiline : true\" display-wide=\"true\">\n" +
     "</copy-to-clipboard>\n" +
