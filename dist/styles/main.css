@@ -6977,6 +6977,7 @@ to{background-color:transparent}
 .pipeline-circle:after{position:absolute;color:#fff;font-family:FontAwesome;font-size:12px;transform:translate(-50%,-50%) rotate(90deg);top:50%;left:50%;opacity:0;animation:fadeIn .1s 875ms linear forwards}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 =======
@@ -6984,6 +6985,9 @@ to{background-color:transparent}
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 .config-map-table .key,.config-map-table .truncated-content,.edit-yaml .ace_editor.editor,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
+=======
+.config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
+>>>>>>> Allow setting environment variable prefix when adding secret to application
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 >>>>>>> Add search catalog in project context
 .pipeline-circle .clip1{position:absolute;clip:rect(0,18px,18px,9px);z-index:-9}
@@ -8345,6 +8349,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .panel-heading .small{font-size:84%;color:#030303}
 >>>>>>> Patternfly vertical navigation and project bar
 .action-chip{margin:0 5px 2px 0;font-size:12px;display:flex;flex-direction:row}
+.add-config-to-application .choice-contents .has-warning,.build-triggers .copy-to-clipboard{margin-bottom:10px}
 .action-chip .item{padding:.2em .6em .3em}
 .action-chip .item:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}
 .action-chip .item:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px}
@@ -8384,7 +8389,6 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .pf-wizard-no-back .wizard-pf-footer .btn-cancel{margin-right:0}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 .wizard-pf-steps-indicator .wizard-pf-step-number{font-size:12px}
-.build-triggers .copy-to-clipboard{margin-bottom:10px}
 .ace-bordered{border:1px solid #8b8d8f}
 .ace-bordered.ace-read-only{border-color:#d1d1d1;background-color:#fafafa}
 <<<<<<< HEAD
@@ -8428,7 +8432,9 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 >>>>>>> Improve YAML editor validation and feedback
 =======
 .edit-yaml-errors{font-size:84%;height:2em;text-align:right}
+.add-config-to-application .application-select{width:100%}
 .add-config-to-application .catalogs-overlay-panel{max-width:600px}
+.add-config-to-application .choice-contents{margin-bottom:10px;margin-left:20px}
 .add-config-to-application .container-options{margin-left:20px}
 .add-config-to-application .container-options .select-container{max-height:200px;overflow-y:auto}
 .add-config-to-application .container-options .select-container .checkbox:first-of-type{margin-top:0}
@@ -8441,5 +8447,14 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .add-config-to-application .env-warning,.add-config-to-application .volume-options{margin-left:20px}
 .add-config-to-application .dialog-body legend{border-bottom:0;font-size:14px;font-weight:600;margin-bottom:10px}
 .add-config-to-application .dialog-body .radio{margin-top:0}
+.add-config-to-application .field-help{position:relative;text-decoration:none;top:1px}
+.add-config-to-application .form-group{display:flex;margin-bottom:10px}
+.add-config-to-application .form-group .control-label{margin-bottom:0;margin-right:20px;padding-top:3px}
+.add-config-to-application .form-group .control-label label.required:before{left:30px}
+.add-config-to-application .form-group .control-input{flex:1 0 0%}
 .add-config-to-application .updating{background-color:#fff;bottom:55px;left:0;padding-top:60px;position:absolute;right:0;top:55px;z-index:1000}
+<<<<<<< HEAD
 >>>>>>> "Add to Application" for config maps
+=======
+.service-instance-details .instance-status-message{white-space:pre-line}
+>>>>>>> Allow setting environment variable prefix when adding secret to application

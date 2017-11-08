@@ -7156,7 +7156,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>\n" +
     "<div class=\"form-group\">\n" +
     "<div class=\"application-select\">\n" +
+<<<<<<< HEAD
     "<ui-select id=\"application\" ng-model=\"ctrl.application\" required=\"true\" ng-disabled=\"ctrl.disableInputs\">\n" +
+=======
+    "<ui-select autofocus id=\"application\" ng-model=\"ctrl.application\" on-select=\"ctrl.checkApplicationContainersRefs($item)\" required=\"true\" ng-disabled=\"ctrl.disableInputs\">\n" +
+>>>>>>> Allow setting environment variable prefix when adding secret to application
     "<ui-select-match placeholder=\"{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}\">\n" +
     "<span>\n" +
     "{{$select.selected.metadata.name}}\n" +
@@ -7170,8 +7174,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<legend>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>\n" +
-    "<div class=\"form-group\">\n" +
     "<div class=\"radio\">\n" +
+<<<<<<< HEAD
     "<label class=\"add-choice\" for=\"envFrom\">\n" +
     "<input id=\"envFrom\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"env\" ng-disabled=\"ctrl.disableInputs\">\n" +
     "Environment variables\n" +
@@ -7194,18 +7198,71 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"volume-options\">\n" +
     "<div ng-class=\"{'has-error': (addToApplicationForm.mountVolume.$error.pattern && addToApplicationForm.mountVolume.$touched)}\">\n" +
     "<input class=\"form-control\" name=\"mountVolume\" id=\"mountVolume\" placeholder=\"Enter a mount path\" type=\"text\" required ng-pattern=\"/^\\/.*$/\" osc-unique=\"ctrl.existingMountPaths\" aria-describedby=\"mount-path-help\" ng-disabled=\"ctrl.addType !== 'volume' || ctrl.disableInputs\" ng-model=\"ctrl.mountVolume\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
+=======
+    "<label for=\"env\">\n" +
+    "<input id=\"env\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"env\">\n" +
+    "Environment variables\n" +
+    "</label>\n" +
     "</div>\n" +
-    "<div class=\"help-block bind-description\">\n" +
-    "Mount Path for the volume. A file will be created in this directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}. The file contents will be the value of the key.\n" +
+    "<div ng-if=\"ctrl.addType === 'env'\" class=\"choice-contents clearfix\">\n" +
+    "<div class=\"has-warning\" ng-if=\"ctrl.hasInvalidEnvVars\">\n" +
+    "<div class=\"help-block\">\n" +
+    "<span class=\"pf-icon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
+    "Some of the keys for {{ctrl.apiObject.kind | humanizeKind}} <strong>{{ctrl.apiObject.metadata.name}}</strong> are not valid environment variable names and will not be added.\n" +
     "</div>\n" +
-    "<div class=\"has-error\" ng-show=\"addToApplicationForm.mountVolume.$error.oscUnique\">\n" +
-    "<span class=\"help-block\">\n" +
+    "</div>\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"control-label\">\n" +
+    "<label>Prefix</label>\n" +
+    "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"Optionally, you can specify a prefix to use with environment variables.\" popover-trigger=\"focus\">\n" +
+    "</a>\n" +
+    "</div>\n" +
+    "<span class=\"control-input\" ng-class=\"{'has-error': addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched}\">\n" +
+    "<input class=\"form-control\" name=\"envPrefix\" id=\"envPrefix\" placeholder=\"(optional)\" type=\"text\" ng-pattern=\"/^[A-Za-z_][A-Za-z0-9_]*$/\" aria-describedby=\"env-prefix-help\" ng-disabled=\"ctrl.addType !== 'env' || !ctrl.application\" ng-model=\"ctrl.envPrefix\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
+    "<div class=\"help-block\" ng-show=\"addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched\">\n" +
+    "Prefix can contain numbers, letters, and underscores, but can not start with a number.\n" +
+    "</div>\n" +
+    "<span class=\"sr-only\" id=\"env-prefix-help\">Optionally, you can specify a prefix to use with environment variables.</span>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"radio\">\n" +
+    "<label for=\"volume\">\n" +
+    "<input id=\"volume\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"volume\">\n" +
+    "Volume\n" +
+    "</label>\n" +
+    "</div>\n" +
+    "<div ng-if=\"ctrl.addType === 'volume'\" class=\"choice-contents clearfix\">\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"control-label\">\n" +
+    "<label class=\"required\">Mount Path</label>\n" +
+    "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"Mount Path for the volume. A file will be created in this\n" +
+    "                              directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.\n" +
+    "                              The file contents will be the value of the key.\" popover-trigger=\"focus\">\n" +
+    "</a>\n" +
+>>>>>>> Allow setting environment variable prefix when adding secret to application
+    "</div>\n" +
+    "<div class=\"control-input\" ng-class=\"{'has-error': (addToApplicationForm.mountVolume.$error.oscUnique || (addToApplicationForm.mountVolume.$error.pattern && addToApplicationForm.mountVolume.$touched))}\">\n" +
+    "<input class=\"form-control\" name=\"mountVolume\" id=\"mountVolume\" type=\"text\" ng-pattern=\"/^\\/.*$/\" osc-unique=\"ctrl.existingMountPaths\" aria-describedby=\"mount-path-help\" ng-disabled=\"ctrl.addType !== 'volume' || !ctrl.application\" ng-required=\"ctrl.addType === 'volume'\" ng-model=\"ctrl.mountVolume\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
+    "<div class=\"help-block\" ng-show=\"addToApplicationForm.mountVolume.$error.pattern && addToApplicationForm.mountVolume.$touched\">\n" +
+    "Mount path must be a valid path to a directory starting with <code>/</code>.\n" +
+    "</div>\n" +
+    "<div class=\"help-block\" ng-show=\"addToApplicationForm.mountVolume.$error.oscUnique\">\n" +
     "The mount path is already used. Please choose another mount path.\n" +
+    "</div>\n" +
+<<<<<<< HEAD
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+=======
+    "<span class=\"sr-only\" id=\"mount-path-help\">\n" +
+    "Mount Path for the volume. A file will be created in this directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}. The file contents will be the value of the key.\n" +
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>\n" +
+    "<div ng-if=\"ctrl.canAddRefToApplication\">\n" +
+>>>>>>> Allow setting environment variable prefix when adding secret to application
     "<legend ng-if-start=\"ctrl.application.spec.template.spec.containers.length > 1\">Containers:</legend>\n" +
     "<div ng-if-end class=\"form-group container-options\">\n" +
     "<div ng-if=\"ctrl.attachAllContainers\">\n" +
