@@ -88,7 +88,11 @@
             break;
         }
 
-        // For each container, add the new volume mount.
+        if (ctrl.envPrefix) {
+          newEnvFrom.prefix = ctrl.envPrefix;
+        }
+
+        // For each container, add the new envFrom.
         _.each(podTemplate.spec.containers, function(container) {
           if (isContainerSelected(container)) {
             container.envFrom = container.envFrom || [];

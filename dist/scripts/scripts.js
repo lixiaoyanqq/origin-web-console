@@ -24610,8 +24610,13 @@ s.configMapRef = {
 name: c.apiObject.metadata.name
 };
 }
+<<<<<<< 8cadcc21048d8859b23e157e6bb9565b9e14728a
 _.each(a.spec.containers, function(e) {
 d(e) && (e.envFrom = e.envFrom || [], e.envFrom.push(s));
+=======
+c.envPrefix && (s.prefix = c.envPrefix), _.each(a.spec.containers, function(e) {
+m(e) && !u(e) && (e.envFrom = e.envFrom || [], e.envFrom.push(s));
+>>>>>>> Allow setting environment variable prefix when adding secret to application
 });
 } else {
 var l = e("generateName")(c.apiObject.metadata.name + "-"), u = {
