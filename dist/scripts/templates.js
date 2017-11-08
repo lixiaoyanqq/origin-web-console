@@ -16643,10 +16643,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</h1>\n" +
     "</div>\n" +
+    "<div ng-if=\"unfilteredSecrets\" class=\"data-toolbar\">\n" +
+    "<div class=\"data-toolbar-filter\">\n" +
+    "<project-filter></project-filter>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< bb8a8dc4ecc8e98d16c5a2d7a5b05776336e2eda
 <<<<<<< 5ee4e8975cd809cf7a654cbc903e7d305ed5ecb9
     "<div ng-if=\"!secretsLoaded\" class=\"mar-top-xl\" translate>Loading...</div>\n" +
@@ -16668,19 +16674,32 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!secretsLoaded\" class=\"mar-top-xl\">Loading...</div>\n" +
     "<div ng-if=\"secretsLoaded\" class=\"row\">\n" +
 >>>>>>> Add watcher to secrets page
+=======
+    "<div class=\"row\">\n" +
+>>>>>>> Adding label filter to ste secrets page
     "<div class=\"col-md-12\">\n" +
-    "<div ng-if=\"!secrets.length\">\n" +
-    "<div class=\"empty-state-message text-center\">\n" +
-    "<h2>No secrets.</h2>\n" +
-    "<p>\n" +
-    "No secrets have been added to project {{projectName}}.\n" +
+    "<div ng-if=\"(secrets | size) === 0\">\n" +
+    "<p ng-if=\"!secretsLoaded\">\n" +
+    "Loading...\n" +
     "</p>\n" +
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
     "<p ng-if=\"project && ('secrets' | canI : 'create') && !secrets.length\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-primary\">Create Secret</a>\n" +
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "<div ng-if=\"secretsLoaded\" class=\"empty-state-message text-center\">\n" +
+    "<div ng-if=\"!filterWithZeroResults\">\n" +
+    "<h2>No secrets.</h2>\n" +
+    "<p>No secrets have been added to project {{projectName}}.</p>\n" +
+    "<p ng-if=\"project && ('secrets' | canI : 'create')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-secret\" class=\"btn btn-primary btn-lg\">Create Secret</a>\n" +
+>>>>>>> Adding label filter to ste secrets page
     "</p>\n" +
     "</div>\n" +
+    "<div ng-if=\"filterWithZeroResults\">\n" +
+    "<h2>The filter is hiding all secrets. <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\">Clear Filter</a></h2>\n" +
     "</div>\n" +
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
     "<table ng-if=\"secrets.length\" class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
 <<<<<<< 5ee4e8975cd809cf7a654cbc903e7d305ed5ecb9
 =======
@@ -16688,9 +16707,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
 =======
 >>>>>>> Replacing empty tables with empty state message
+=======
+    "</div>\n" +
+    "</div>\n" +
+    "<table ng-if=\"(secrets | size) > 0\" class=\"table table-bordered table-mobile secrets-table table-layout-fixed\">\n" +
+>>>>>>> Adding label filter to ste secrets page
     "<colgroup>\n" +
     "<col class=\"col-sm-5\">\n" +
     "<col class=\"col-sm-5\">\n" +
+    "<col class=\"col-sm-2\">\n" +
     "</colgroup>\n" +
     "<thead>\n" +
     "<tr>\n" +

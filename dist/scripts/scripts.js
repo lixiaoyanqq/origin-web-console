@@ -1,5 +1,6 @@
 "use strict";
 
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -157,6 +158,9 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, k, P, j, R, I) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, k, P, j, R, I) {
+>>>>>>> Adding label filter to ste secrets page
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
@@ -7265,6 +7269,7 @@ var n = [], a = "Pod" === e.kind ? e : _.get(e, "spec.template");
 return a ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(r) {
 var o = t.status.total || t.status;
 if (("Pod" !== e.kind || "pods" !== r) && _.has(o, [ "hard", r ]) && _.has(o, [ "used", r ])) {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 var i = C(t, e, r);
@@ -7275,6 +7280,9 @@ var i = S(t, e, r);
 =======
 var i = C(t, e, r);
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var i = C(t, e, r);
+>>>>>>> Adding label filter to ste secrets page
 if (i) n.push(i); else if ("pods" !== r) {
 var s = k(t, e, a, r);
 s && n.push(s);
@@ -8993,6 +9001,7 @@ m = _.orderBy(d, [ t ], [ a ]);
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 =======
 v = t;
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -9011,6 +9020,10 @@ C(), y();
 }, C = function() {
 S(), y();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, C = function() {
+S(), y();
+>>>>>>> Adding label filter to ste secrets page
 };
 return d = c.open({
 animation: !0,
@@ -9168,6 +9181,7 @@ title: m.getString(l("Creation Date")),
 sortType: "alpha"
 } ],
 isAscending: !0,
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -9223,6 +9237,9 @@ onSortChange: S
 =======
 onSortChange: C
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+onSortChange: C
+>>>>>>> Adding label filter to ste secrets page
 };
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, C();
@@ -10387,6 +10404,7 @@ exists: _.template('The role "<%= roleName %>" has already been granted to "<%= 
 }
 },
 errorReason: _.template('Reason: "<%= httpErr %>"')
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -10466,6 +10484,9 @@ projectName: r,
 =======
 }, C = function(e, t, n) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, C = function(e, t, n) {
+>>>>>>> Adding label filter to ste secrets page
 d.addNotification({
 type: e,
 message: t,
@@ -10606,6 +10627,7 @@ var N = function(e, t, n, r) {
 var o = {
 >>>>>>> Add notification-drawer to show curated list of events to user
 alerts: {},
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 detailsMarkup: w.remove.areYouSure.html.subject({
 roleName: c,
 kindName: p.getString(s(b)),
@@ -10662,6 +10684,8 @@ return e ? a + (h(e, "description") || "") : "";
 var T = function(e, t, n, r) {
 var o = {
 alerts: {},
+=======
+>>>>>>> Adding label filter to ste secrets page
 detailsMarkup: S.remove.areYouSure.html.subject({
 roleName: n,
 kindName: v(t),
@@ -13264,6 +13288,7 @@ object: t
 }), P.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -13314,6 +13339,9 @@ message: "This " + S + " has been deleted."
 =======
 message: "This " + C + " has been deleted."
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: "This " + C + " has been deleted."
+>>>>>>> Adding label filter to ste secrets page
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && A();
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -14010,11 +14038,15 @@ var y = function() {
 e.breadcrumbs.push({
 title: e.displayName
 });
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 }, b = function() {
 =======
 }, S = function() {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, S = function() {
+>>>>>>> Adding label filter to ste secrets page
 if (e.serviceInstance && e.parameterSchema) {
 s.unwatchAll(f), f = [], e.allowParametersReveal = o.canI("secrets", "get", e.projectName), e.parameterData = {}, e.opaqueParameterKeys = [];
 var t = e.allowParametersReveal ? "" : "*****";
@@ -14043,6 +14075,7 @@ e.editAvailable = n && v(e.serviceInstance) && !_.get(e.serviceInstance, "metada
 }, S = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), b();
 }, w = function() {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 !e.serviceInstance || e.serviceClass || m || (m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
@@ -14059,12 +14092,16 @@ e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.sc
 =======
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), S();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), S();
+>>>>>>> Adding label filter to ste secrets page
 }, k = function() {
 var t = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.plan = _.find(e.servicePlans, {
 metadata: {
 name: t
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 }), w(), S();
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
@@ -14075,6 +14112,9 @@ e.serviceClass && !p && (e.servicePlans ? P() : p = i.getServicePlansForServiceC
 =======
 }), w(), C();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), w(), C();
+>>>>>>> Adding label filter to ste secrets page
 }, P = function() {
 e.serviceClass && !p && (e.servicePlans ? k() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
@@ -14105,6 +14145,7 @@ e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m
 e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This provisioned service has been deleted."
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -14119,6 +14160,9 @@ message: "This provisioned service has been deleted."
 =======
 }), j(), S(), C();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), j(), S(), C();
+>>>>>>> Adding label filter to ste secrets page
 };
 l.get(n.project).then(_.spread(function(a, o) {
 e.project = a, e.projectContext = o, s.get(e.serviceInstancesVersion, n.instance, o, {
@@ -14165,14 +14209,23 @@ details: t("getErrorDetails")(n)
 })), e.$on("$destroy", function() {
 s.unwatchAll(p), s.unwatchAll(f);
 });
-} ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "DataService", "ProjectsService", function(e, t, n, a) {
-t.projectName = e.project, t.secretsByType = {};
-var r = [];
-a.get(e.project).then(_.spread(function(e, a) {
-t.project = e, t.context = a, r.push(n.watch("secrets", a, function(e) {
-t.secrets = _.sortBy(e.by("metadata.name"), [ "type", "metadata.name" ]), t.secretsLoaded = !0;
-})), t.$on("$destroy", function() {
-n.unwatchAll(r);
+} ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "DataService", "LabelFilter", "ProjectsService", function(e, t, n, a, r) {
+t.projectName = e.project, t.labelSuggestions = {}, t.clearFilter = function() {
+a.clear();
+};
+var o = [];
+r.get(e.project).then(_.spread(function(e, r) {
+function i() {
+t.filterWithZeroResults = !a.getLabelSelector().isEmpty() && _.isEmpty(t.secrets) && !_.isEmpty(t.unfilteredSecrets);
+}
+t.project = e, t.context = r, o.push(n.watch("secrets", r, function(e) {
+t.unfilteredSecrets = _.sortBy(e.by("metadata.name"), [ "type", "metadata.name" ]), t.secretsLoaded = !0, a.addLabelSuggestionsFromResources(t.unfilteredSecrets, t.labelSuggestions), a.setLabelSuggestions(t.labelSuggestions), t.secrets = a.getLabelSelector().select(t.unfilteredSecrets), i();
+})), a.onActiveFiltersChanged(function(e) {
+t.$evalAsync(function() {
+t.secrets = e.select(t.unfilteredSecrets), i();
+});
+}), t.$on("$destroy", function() {
+n.unwatchAll(o);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("SecretController", [ "$routeParams", "$filter", "$scope", "DataService", "ProjectsService", "SecretsService", function(e, t, n, a, r, o) {
@@ -15624,6 +15677,7 @@ switch (a.sources.images && !_.isEmpty(a.sourceImages) && (a.updatedBuildConfig.
 =======
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -15666,6 +15720,9 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = C(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = C(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Adding label filter to ste secrets page
 case "Source":
 case "Docker":
 R(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -15954,11 +16011,15 @@ a.updatedDeploymentConfig = angular.copy(a.deploymentConfig), a.containerNames =
 pullSecrets: angular.copy(a.deploymentConfig.spec.template.spec.imagePullSecrets) || [ {
 name: ""
 } ]
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 }, a.volumeNames = _.map(a.deploymentConfig.spec.template.spec.volumes, "name"), a.strategyData = angular.copy(a.deploymentConfig.spec.strategy), a.originalStrategy = a.strategyData.type, a.strategyParamsPropertyName = v(a.strategyData.type), a.triggers.hasConfigTrigger = _.some(a.updatedDeploymentConfig.spec.triggers, {
 =======
 }, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = C(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = C(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
+>>>>>>> Adding label filter to ste secrets page
 type: "ConfigChange"
 }), "Custom" !== a.strategyData.type || _.has(a.strategyData, "customParams.environment") || (a.strategyData.customParams.environment = []), i.list("configmaps", e, null, {
 errorNotification: !1
@@ -16277,8 +16338,13 @@ e.strategyData[t] = {};
 });
 };
 e.strategyChanged = function() {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 var t = S(e.strategyData.type);
 w() ? P(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+=======
+var t = C(e.strategyData.type);
+w() ? k(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+>>>>>>> Adding label filter to ste secrets page
 image: "",
 command: [],
 environment: []
@@ -17101,6 +17167,7 @@ c.list("resourcequotas", n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
 }), c.list("appliedclusterresourcequotas", n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -17134,6 +17201,9 @@ I.value && I.value !== t || (I.value = e);
 =======
 }), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
+>>>>>>> Adding label filter to ste secrets page
 R.value && R.value !== t || (R.value = e);
 >>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 }), function(a) {
@@ -17704,6 +17774,7 @@ return _.each(r.template.parameters, function(t) {
 e[t.name] = t.value;
 }), e;
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< b82d21ade915b9a1bae21ca36e0909ca0174c557
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -17770,6 +17841,10 @@ var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
 if (v) {
 >>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
+=======
+var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), S = n("spec.output.to"), C = e("imageObjectRef");
+if (v) {
+>>>>>>> Adding label filter to ste secrets page
 a.templateParamsMap && (r.prefillParameters = function() {
 try {
 return JSON.parse(a.templateParamsMap);
@@ -18705,6 +18780,7 @@ message: "Persistent volume claim " + r.metadata.name + " added to " + g(t.kind)
 details: e
 }), w();
 }, function(e) {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -18727,6 +18803,9 @@ C("An error occurred attaching the persistent volume claim to the " + g(t.kind) 
 =======
 S("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+S("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
+>>>>>>> Adding label filter to ste secrets page
 });
 }
 };
@@ -18865,6 +18944,7 @@ type: "error",
 message: e,
 details: t
 });
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -18888,6 +18968,9 @@ items: p
 =======
 }, S = function() {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, S = function() {
+>>>>>>> Adding label filter to ste secrets page
 u.hideNotification("add-config-volume-error");
 };
 a.$on("$destroy", S), a.addItem = function() {
@@ -18990,6 +19073,7 @@ var h = e("humanizeKind"), C = h(o.kind), w = h(n.kind);
 c.update(g, t.metadata.name, a.targetObject, r).then(function() {
 u.addNotification({
 type: "success",
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -19016,6 +19100,12 @@ message: "Successfully added " + C + " " + o.metadata.name + " to " + w + " " + 
 }, function(e) {
 a.disableInputs = !1, b("An error occurred attaching the " + C + " to the " + w + ".", d(e));
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: "Successfully added " + C + " " + o.metadata.name + " to " + w + " " + n.name + "."
+}), y();
+}, function(e) {
+a.disableInputs = !1, b("An error occurred attaching the " + C + " to the " + w + ".", d(e));
+>>>>>>> Adding label filter to ste secrets page
 });
 }
 };
@@ -20543,7 +20633,10 @@ b > 0 && d.push(z()), a > 0 && d.push(y()), c.all(d).then(v);
 var a = [];
 t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
 } else C();
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+>>>>>>> Adding label filter to ste secrets page
 }
 function v() {
 var a, c;
@@ -20558,11 +20651,14 @@ resource: p.resource,
 isList: p.isList
 }) : (a = h.projectOverviewURL(p.input.selectedProject.metadata.name), b.url(a));
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 function w(a) {
 var b = e.objectToResourceGroupVersion(a);
 return b ? e.apiInfo(b) ? g.get(b, a.metadata.name, {
 =======
+=======
+>>>>>>> Adding label filter to ste secrets page
 function S(e) {
 var t = r.objectToResourceGroupVersion(e);
 return t ? r.apiInfo(t) ? i.get(t, e.metadata.name, {
@@ -20581,11 +20677,14 @@ message: e.unsupportedObjectKindOrVersion(a)
 message: e.invalidObjectKindOrVersion(a)
 }));
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 function x() {
 var b;
 _.isEmpty(p.createResources) ? (b = _.head(p.updateResources), g.update(e.kindToResource(b.kind), b.metadata.name, b, {
 =======
+=======
+>>>>>>> Adding label filter to ste secrets page
 function C() {
 var t;
 _.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(r.kindToResource(t.kind), t.metadata.name, t, {
@@ -24491,6 +24590,7 @@ id: e.metricID
 }), e);
 });
 });
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -24529,6 +24629,9 @@ convert: h.millicoresToCores,
 =======
 }), r.all(t).then(S, C).finally(function() {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), r.all(t).then(S, C).finally(function() {
+>>>>>>> Adding label filter to ste secrets page
 m.loaded = !0;
 });
 }
@@ -24883,6 +24986,7 @@ return w ? "1mn" : Math.floor(p() / S) + "ms";
 >>>>>>> Updates for Service Instance & Bindings
 =======
 function p() {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -24897,6 +25001,9 @@ return w ? "1mn" : Math.floor(m() / S) + "ms";
 =======
 return w ? "1mn" : Math.floor(m() / C) + "ms";
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+return w ? "1mn" : Math.floor(m() / C) + "ms";
+>>>>>>> Adding label filter to ste secrets page
 }
 function f() {
 var e = _.find(t.pods, "metadata.namespace");
@@ -27179,6 +27286,7 @@ onShow: function() {
 u && (u(), u = void 0), d && (d(), d = void 0), p.nextTitle = "Close", p.wizardComplete = !0, p.bindService();
 }
 };
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -27217,6 +27325,9 @@ var C = function() {
 =======
 var S = function() {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var S = function() {
+>>>>>>> Adding label filter to ste secrets page
 if (p.serviceClasses && p.servicePlans) {
 var e = "ServiceInstance" === p.target.kind ? p.target : p.serviceToBind;
 if (e) {
@@ -27859,6 +27970,7 @@ y.steps || (y.steps = [ y.selectStep, y.infoStep, y.configStep, y.resultsStep ])
 >>>>>>> Making next steps/results messaging consistent
 =======
 var e = _.get(b, "template.metadata.annotations.iconClass", "fa fa-clone");
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -27873,6 +27985,9 @@ return C(e);
 =======
 return S(e);
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+return S(e);
+>>>>>>> Adding label filter to ste secrets page
 }
 function d() {
 b.steps || (b.steps = [ b.selectStep, b.infoStep, b.configStep, b.resultsStep ]);
@@ -27953,6 +28068,7 @@ b.unfilteredProjects = [];
 S();
 });
 }
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -27966,6 +28082,9 @@ var y, b = this, C = t("imageForIconClass"), S = t("annotation");
 =======
 var y, b = this, S = t("imageForIconClass"), C = t("annotation");
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+var y, b = this, S = t("imageForIconClass"), C = t("annotation");
+>>>>>>> Adding label filter to ste secrets page
 b.selectStep = {
 id: "projectTemplates",
 label: "Selection",
@@ -28236,6 +28355,7 @@ e.template && y.template && (u(), y.iconClass = l()), e.useProjectTemplate && u(
 onFilterChange: g
 }, n.project || (b.showProjectName = !0);
 }, b.$onChanges = function(e) {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -28254,6 +28374,9 @@ e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = S
 =======
 e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name")), e.useProjectTemplate && d();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+e.template && b.template && (d(), b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name")), e.useProjectTemplate && d();
+>>>>>>> Adding label filter to ste secrets page
 }, e.$on("templateInstantiated", function(e, t) {
 b.selectedProject = t.project, b.currentStep = b.resultsStep.label;
 }), b.$onDestroy = function() {
@@ -28276,6 +28399,7 @@ y.catalogItems = e, y.totalCount = y.catalogItems.length, f(), t && i.addNotific
 }, b.onProjectSelected = function(t) {
 b.selectedProject = t, b.configStep.valid = e.$ctrl.form.$valid && b.selectedProject;
 }, b.templateSelected = function(e) {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "template.openshift.io/documentation-url"), b.supportUrl = C(b.template, "template.openshift.io/support-url"), b.vendor = C(b.template, "template.openshift.io/provider-display-name");
@@ -28285,6 +28409,9 @@ b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = 
 =======
 b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name");
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+b.selectedTemplate = e, b.template = _.get(e, "resource"), b.selectStep.valid = !!e, b.iconClass = l(), b.image = u(), b.docUrl = C(b.template, "openshift.io/documentation-url"), b.supportUrl = C(b.template, "openshift.io/support-url"), b.vendor = C(b.template, "openshift.io/provider-display-name");
+>>>>>>> Adding label filter to ste secrets page
 }, b.templateProjectChange = function() {
 b.templateProjectName = _.get(b.templateProject, "metadata.name"), b.catalogItems = {}, b.templateSelected(), a.getProjectCatalogItems(b.templateProjectName, !1, !0).then(_.spread(function(e, t) {
 b.catalogItems = e, b.totalCount = b.catalogItems.length, g(), t && i.addNotification({
@@ -31026,6 +31153,7 @@ var l, u, d = _.get(i, "DISABLE_GLOBAL_EVENT_WATCH"), m = e("isIE")(), p = this,
 e || (p.drawerHidden = !0);
 }, b = function(e, t) {
 return _.get(e, "params.project") !== _.get(t, "params.project");
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -31040,6 +31168,9 @@ return _.get(e, "params.project") !== _.get(t, "params.project");
 =======
 }, S = function(e) {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}, S = function(e) {
+>>>>>>> Adding label filter to ste secrets page
 return s.get("projects", e, {}, {
 errorNotification: !1
 }).then(function(e) {
@@ -31056,6 +31187,7 @@ notifications: []
 =======
 return h[e.metadata.name] = e, e;
 });
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
@@ -31084,6 +31216,9 @@ return y[e.metadata.name] = e, e;
 });
 }, w = function(t, n) {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, C = function(t, n) {
+>>>>>>> Adding label filter to ste secrets page
 return {
 heading: e("displayName")(y[t]),
 project: y[t],
@@ -31291,6 +31426,7 @@ return _.assign({}, e[n], t[n]);
 return _.orderBy(e, [ "event.lastTimestamp", "event.firstTimestamp" ], [ "desc", "desc" ]);
 }, T = function() {
 o.$evalAsync(function() {
+<<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -31312,6 +31448,9 @@ p.notificationGroups = [ S(r.project, N(T(g, v))) ], k();
 =======
 p.notificationGroups = [ C(r.project, N(T(g, v))) ], k();
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+p.notificationGroups = [ C(r.project, N(T(g, v))) ], k();
+>>>>>>> Adding label filter to ste secrets page
 });
 }, N = function() {
 _.each(f, function(e) {
