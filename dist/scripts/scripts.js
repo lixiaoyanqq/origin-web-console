@@ -17653,8 +17653,8 @@ a.unwatchAll(f);
 >>>>>>> Patternfly vertical navigation and project bar
 });
 }));
-} ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
-function u(e, t) {
+} ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "AuthorizationService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
+function d(e, t) {
 var n = _.get(e, "spec.triggers", []), a = _.find(n, function(e) {
 if ("ImageChange" !== e.type) return !1;
 var n = _.get(e, "imageChangeParams.containerNames", []);
@@ -17662,6 +17662,7 @@ return _.includes(n, t.name);
 });
 return _.get(a, "imageChangeParams.from.name");
 }
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 function l(a) {
 for (var b = [], c = x.exec(a); c; ) b.push(c[1]), c = x.exec(a);
@@ -17718,37 +17719,50 @@ r.templateImages = _.map(k, function(t) {
 return _.isEmpty(t.usesParameters) ? t : {
 name: _.template(t.name, {
 interpolate: w
+=======
+function m(e) {
+for (var t = [], n = k.exec(e); n; ) t.push(n[1]), n = k.exec(e);
+return t;
+}
+function p() {
+var e = v();
+r.templateImages = _.map(P, function(t) {
+return _.isEmpty(t.usesParameters) ? t : {
+name: _.template(t.name, {
+interpolate: k
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 })(e),
 usesParameters: t.usesParameters
 };
 });
 }
-function p(e) {
-var t = [], n = y(e);
+function f(e) {
+var t = [], n = b(e);
 return n && angular.forEach(n, function(n) {
-var a = n.image, r = u(e, n);
+var a = n.image, r = d(e, n);
 r && (a = r), a && t.push(a);
 }), t;
 }
-function f(e) {
-k = [];
+function g(e) {
+P = [];
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
-var a = C(b(e), h);
-a && k.push({
+var a = w(S(e), y);
+a && P.push({
 name: a,
-usesParameters: d(a)
+usesParameters: m(a)
 });
-var r = C(S(e), h);
+var r = w(C(e), y);
 r && (n[r] = !0);
 }
-"DeploymentConfig" === e.kind && (t = t.concat(p(e)));
+"DeploymentConfig" === e.kind && (t = t.concat(f(e)));
 }), t.forEach(function(e) {
-n[e] || k.push({
+n[e] || P.push({
 name: e,
-usesParameters: d(e)
+usesParameters: m(e)
 });
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -17767,13 +17781,17 @@ usesParameters: d(e)
 =======
 }), k = _.uniqBy(k, "name");
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}), P = _.uniqBy(P, "name");
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 }
-function g() {
+function v() {
 var e = {};
 return _.each(r.template.parameters, function(t) {
 e[t.name] = t.value;
 }), e;
 }
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< b82d21ade915b9a1bae21ca36e0909ca0174c557
@@ -17845,11 +17863,15 @@ if (v) {
 var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), S = n("spec.output.to"), C = e("imageObjectRef");
 if (v) {
 >>>>>>> Adding label filter to ste secrets page
+=======
+var h = a.template, y = a.namespace || "", b = n("spec.template.spec.containers"), S = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), w = e("imageObjectRef");
+if (h) {
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 a.templateParamsMap && (r.prefillParameters = function() {
 try {
 return JSON.parse(a.templateParamsMap);
 } catch (e) {
-c.addNotification({
+l.addNotification({
 id: "template-params-invalid-json",
 type: "error",
 message: "Could not prefill parameter values.",
@@ -17857,20 +17879,21 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 });
 }
 }());
-var w = /\${([a-zA-Z0-9\_]+)}/g, k = [];
-l.get(a.project).then(_.spread(function(e) {
-if (r.project = e, h) i.get("templates", v, {
-namespace: h || r.project.metadata.name
+var k = /\${([a-zA-Z0-9\_]+)}/g, P = [];
+u.get(a.project).then(_.spread(function(e) {
+if (r.project = e, o.canI("processedtemplates", "create", a.project)) if (y) s.get("templates", h, {
+namespace: y || r.project.metadata.name
 }).then(function(e) {
-r.template = e, f(e);
-_.some(k, function(e) {
+r.template = e, g(e);
+_.some(P, function(e) {
 return !_.isEmpty(e.usesParameters);
 }) ? (r.parameterDisplayNames = {}, _.each(e.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
 }), r.$watch("template.parameters", _.debounce(function() {
-r.$apply(m);
+r.$apply(p);
 }, 50, {
 maxWait: 250
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -17885,9 +17908,13 @@ maxWait: 250
 =======
 }), !0)) : r.templateImages = k;
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}), !0)) : r.templateImages = P;
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 }, function() {
-s.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
+c.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 if (e.template = f.getTemplate(), _.isEmpty(e.template)) {
 var c = URI("error").query({
@@ -17897,6 +17924,9 @@ error_description: "Template wasn't found in cache."
 b.url(c);
 =======
 if (r.template = o.getTemplate(), _.isEmpty(r.template)) {
+=======
+if (r.template = i.getTemplate(), _.isEmpty(r.template)) {
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 var n = URI("error").query({
 error: "not_found",
 error_description: "Template wasn't found in cache."
@@ -17908,9 +17938,10 @@ t.url(a);
 t.url(n);
 >>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 }
-o.clearTemplate();
-}
+i.clearTemplate();
+} else c.toErrorPage("You do not have authority to process templates in project " + a.project + ".", "access_denied");
 }));
+<<<<<<< 9cfcd8c347f6f7d2523c31df7fe5a250fecec817
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } ]), angular.module("openshiftConsole").controller("LabelsController", [ "$scope", function(a) {
 a.expanded = !0, a.toggleExpanded = function() {
@@ -17954,6 +17985,9 @@ auth: {
 token: d,
 =======
 } else s.toErrorPage("Cannot create from template: a template name was not specified.");
+=======
+} else c.toErrorPage("Cannot create from template: a template name was not specified.");
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 } ]), angular.module("openshiftConsole").controller("LabelsController", [ "$scope", function(e) {
 e.expanded = !0, e.toggleExpanded = function() {
 e.expanded = !e.expanded;
