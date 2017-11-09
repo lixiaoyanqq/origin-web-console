@@ -20091,8 +20091,8 @@ details: R(e)
 >>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
 });
 }));
-} ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
-function u(e, t) {
+} ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "AuthorizationService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
+function d(e, t) {
 var n = _.get(e, "spec.triggers", []), a = _.find(n, function(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 if ("ImageChange" !== e.type) return !1;
@@ -20161,33 +20161,43 @@ l.addNotification({
 =======
 return _.get(a, "imageChangeParams.from.name");
 }
-function d(e) {
-for (var t = [], n = w.exec(e); n; ) t.push(n[1]), n = w.exec(e);
+function m(e) {
+for (var t = [], n = k.exec(e); n; ) t.push(n[1]), n = k.exec(e);
 return t;
 }
+<<<<<<< HEAD
 function m() {
 var e = g();
+=======
+function p() {
+var e = v();
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 r.templateImages = _.map(P, function(t) {
 return _.isEmpty(t.usesParameters) ? t : {
 name: _.template(t.name, {
-interpolate: w
+interpolate: k
 })(e),
 usesParameters: t.usesParameters
 };
 });
 }
-function p(e) {
-var t = [], n = y(e);
+function f(e) {
+var t = [], n = b(e);
 return n && angular.forEach(n, function(n) {
-var a = n.image, r = u(e, n);
+var a = n.image, r = d(e, n);
 r && (a = r), a && t.push(a);
 }), t;
 }
+<<<<<<< HEAD
 function f(e) {
+=======
+function g(e) {
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 P = [];
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 var a = S(b(e), h);
 a && P.push({
@@ -20195,26 +20205,31 @@ a && P.push({
 var a = C(b(e), h);
 a && k.push({
 >>>>>>> Adding label filter to ste secrets page
+=======
+var a = w(S(e), y);
+a && P.push({
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 name: a,
-usesParameters: d(a)
+usesParameters: m(a)
 });
-var r = C(S(e), h);
+var r = w(C(e), y);
 r && (n[r] = !0);
 }
-"DeploymentConfig" === e.kind && (t = t.concat(p(e)));
+"DeploymentConfig" === e.kind && (t = t.concat(f(e)));
 }), t.forEach(function(e) {
 n[e] || P.push({
 name: e,
-usesParameters: d(e)
+usesParameters: m(e)
 });
 }), P = _.uniqBy(P, "name");
 }
-function g() {
+function v() {
 var e = {};
 return _.each(r.template.parameters, function(t) {
 e[t.name] = t.value;
 }), e;
 }
+<<<<<<< HEAD
 var v = a.template, h = a.namespace || "", y = n("spec.template.spec.containers"), b = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), S = n("spec.output.to"), C = e("imageObjectRef");
 if (v) {
 r.breadcrumbs = [ {
@@ -20226,12 +20241,20 @@ link: "project/" + a.project + "/create?tab=fromCatalog"
 }, {
 title: v
 } ];
+=======
+var h = a.template, y = a.namespace || "", b = n("spec.template.spec.containers"), S = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), w = e("imageObjectRef");
+if (h) {
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 a.templateParamsMap && (r.prefillParameters = function() {
 try {
 return JSON.parse(a.templateParamsMap);
 } catch (e) {
+<<<<<<< HEAD
 c.addNotification({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+l.addNotification({
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 id: "template-params-invalid-json",
 type: "error",
 message: "Could not prefill parameter values.",
@@ -20239,6 +20262,7 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 });
 }
 }());
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -20284,30 +20308,47 @@ if (r.project = n, h) i.get("templates", v, {
 namespace: h || r.project.metadata.name
 }).then(function(t) {
 r.template = t, r.breadcrumbs[2].title = e("displayName")(t), f(t);
+=======
+var k = /\${([a-zA-Z0-9\_]+)}/g, P = [];
+u.get(a.project).then(_.spread(function(e) {
+if (r.project = e, o.canI("processedtemplates", "create", a.project)) if (y) s.get("templates", h, {
+namespace: y || r.project.metadata.name
+}).then(function(e) {
+r.template = e, g(e);
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 _.some(P, function(e) {
 return !_.isEmpty(e.usesParameters);
 }) ? (r.parameterDisplayNames = {}, _.each(t.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
 }), r.$watch("template.parameters", _.debounce(function() {
-r.$apply(m);
+r.$apply(p);
 }, 50, {
 maxWait: 250
 }), !0)) : r.templateImages = P;
 }, function() {
-s.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
+c.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
+<<<<<<< HEAD
 if (r.template = o.getTemplate(), _.isEmpty(r.template)) {
 var a = URI("error").query({
+=======
+if (r.template = i.getTemplate(), _.isEmpty(r.template)) {
+var n = URI("error").query({
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 error: "not_found",
 error_description: "Template wasn't found in cache."
 }).toString();
 t.url(a);
 }
-o.clearTemplate();
-}
+i.clearTemplate();
+} else c.toErrorPage("You do not have authority to process templates in project " + a.project + ".", "access_denied");
 }));
+<<<<<<< HEAD
 } else s.toErrorPage("Cannot create from template: a template name was not specified.");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} else c.toErrorPage("Cannot create from template: a template name was not specified.");
+>>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 } ]), angular.module("openshiftConsole").controller("LabelsController", [ "$scope", function(e) {
 e.expanded = !0, e.toggleExpanded = function() {
 e.expanded = !e.expanded;
