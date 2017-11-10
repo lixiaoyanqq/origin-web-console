@@ -8396,6 +8396,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
     "</div>\n" +
+    "<div class=\"has-warning\" ng-if=\"$ctrl.hasInvalidEnvVar(entry.selectedEnvFrom.data)\">\n" +
+    "<div class=\"help-block\">Some of the keys for {{entry.selectedEnvFrom.kind | humanizeKind}} <strong>{{entry.selectedEnvFrom.metadata.name}}</strong> are not valid environment variable names and will not be added.</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!$ctrl.isEnvFromReadonly(entry)\" class=\"environment-from-editor-button\">\n" +
@@ -8503,15 +8506,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<table class=\"table table-bordered table-bordered-columns config-map-table key-value-table\">\n" +
     "<tbody>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
     "<tr ng-repeat=\"(key, value) in $ctrl.decodedData\">\n" +
     "<td class=\"key\">\n" +
     "{{key}}\n" +
     "<span ng-if=\"$ctrl.isEnvVarInvalid(key)\" class=\"pficon pficon-warning-triangle-o tooltip-default-icon\" data-toggle=\"popover\" data-trigger=\"hover\" dynamic-content=\"{{key}} is not a valid environment variable name and will not be added.\"></span>\n" +
     "</td>\n" +
+<<<<<<< HEAD
 =======
     "<tr ng-repeat=\"(prop, value) in $ctrl.decodedData\">\n" +
     "<td class=\"key\">{{prop}}</td>\n" +
 >>>>>>> Reveal and hide secrets
+=======
+>>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
     "<td class=\"value\">\n" +
     "<truncate-long-text ng-if=\"$ctrl.overlayPaneEntryDetails.kind === 'ConfigMap'\" content=\"value\" limit=\"50\" newline-limit=\"2\" expandable=\"true\">\n" +
     "</truncate-long-text>\n" +
@@ -8520,10 +8529,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<truncate-long-text content=\"value\" limit=\"50\" newline-limit=\"2\" expandable=\"true\">\n" +
     "</truncate-long-text>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-if=\"decodedData.$$nonprintable[key]\" class=\"help-block\" translate>\n" +
 =======
     "<div ng-if=\"decodedData.$$nonprintable[prop]\" class=\"help-block\">\n" +
 >>>>>>> Reveal and hide secrets
+=======
+    "<div ng-if=\"decodedData.$$nonprintable[key]\" class=\"help-block\">\n" +
+>>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
     "This secret value contains non-printable characters and is displayed as a Base64-encoded string.\n" +
     "</div>\n" +
     "</div>\n" +
