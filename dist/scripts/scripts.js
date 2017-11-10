@@ -20345,19 +20345,25 @@ return o(e.kind);
 }, a.dragControlListeners = {
 =======
 controller: [ "$attrs", "$filter", "keyValueEditorUtils", "SecretsService", function(e, t, n, a) {
-var r = this, o = t("canI"), i = t("humanizeKind"), s = _.uniqueId();
-r.setFocusClass = "edit-environment-from-set-focus-" + s, r.viewOverlayPanel = function(e) {
+var r = this, o = t("canI"), i = t("humanizeKind"), s = _.uniqueId(), c = /^[A-Za-z_][A-Za-z0-9_]*$/;
+r.setFocusClass = "edit-environment-from-set-focus-" + s, r.isEnvVarInvalid = function(e) {
+return !c.test(e);
+}, r.hasInvalidEnvVar = function(e) {
+return _.some(e, function(e, t) {
+return r.isEnvVarInvalid(t);
+});
+}, r.viewOverlayPanel = function(e) {
 r.decodedData = e.data, r.overlayPaneEntryDetails = e, "Secret" === e.kind && (r.decodedData = a.decodeSecretData(e.data)), r.overlayPanelVisible = !0;
 }, r.closeOverlayPanel = function() {
 r.showSecret = !1, r.overlayPanelVisible = !1;
 };
-var c = function(e, t) {
+var l = function(e, t) {
 e && e.push(t || {});
 };
 r.onAddRow = function() {
-c(r.envFromEntries), n.setFocusOn("." + r.setFocusClass);
+l(r.envFromEntries), n.setFocusOn("." + r.setFocusClass);
 }, r.deleteEntry = function(e, t) {
-r.envFromEntries && !r.envFromEntries.length || (r.envFromEntries.splice(e, t), r.envFromEntries.length || c(r.envFromEntries), r.updateEntries(r.envFromEntries), r.editEnvironmentFromForm.$setDirty());
+r.envFromEntries && !r.envFromEntries.length || (r.envFromEntries.splice(e, t), r.envFromEntries.length || l(r.envFromEntries), r.updateEntries(r.envFromEntries), r.editEnvironmentFromForm.$setDirty());
 }, r.hasOptions = function() {
 return !_.isEmpty(r.envFromSelectorOptions);
 }, r.hasEntries = function() {
@@ -20411,9 +20417,9 @@ r.entries = _.filter(e, function(e) {
 return e.secretRef || e.configMapRef;
 });
 };
-var l = function() {
+var u = function() {
 var e = {}, t = {};
-r.envFromEntries = r.entries || [], r.envFromEntries.length || c(r.envFromEntries), _.each(r.envFromSelectorOptions, function(n) {
+r.envFromEntries = r.entries || [], r.envFromEntries.length || l(r.envFromEntries), _.each(r.envFromSelectorOptions, function(n) {
 switch (n.kind) {
 >>>>>>> Reveal and hide secrets
 case "ConfigMap":
@@ -20457,10 +20463,14 @@ c(a.entries), u(a.entries, a.envFromSelectorOptions), "cannotDelete" in e && (a.
 e.entries && c(e.entries.currentValue), e.envFromSelectorOptions && u(a.envFromEntries, e.envFromSelectorOptions.currentValue);
 =======
 r.$onInit = function() {
-l(), "cannotDelete" in e && (r.cannotDeleteAny = !0), "cannotSort" in e && (r.cannotSort = !0), "showHeader" in e && (r.showHeader = !0), r.envFromEntries && !r.envFromEntries.length && c(r.envFromEntries);
+u(), "cannotDelete" in e && (r.cannotDeleteAny = !0), "cannotSort" in e && (r.cannotSort = !0), "showHeader" in e && (r.showHeader = !0), r.envFromEntries && !r.envFromEntries.length && l(r.envFromEntries);
 }, r.$onChanges = function(e) {
+<<<<<<< 0933cf1365f93cd28f584ec4cc173ec5bf00b351
 (e.entries || e.envFromSelectorOptions) && l();
 >>>>>>> Reveal and hide secrets
+=======
+(e.entries || e.envFromSelectorOptions) && u();
+>>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
 };
 } ],
 bindings: {
