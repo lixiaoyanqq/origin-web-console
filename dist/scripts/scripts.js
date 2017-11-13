@@ -9288,6 +9288,7 @@ e.message && r.push(e.message);
 }), a.$on("$destroy", function() {
 g.unwatchAll(q);
 });
+<<<<<<< 95206a3cd766f0f406b7c662340a8a718268b5cc
 } ]), angular.module("openshiftConsole").controller("PodsController", [ "$routeParams", "$scope", "DataService", "ProjectsService", "$filter", "LabelFilter", "Logger", function(a, b, c, d, e, f, g) {
 b.projectName = a.project, b.pods = {}, b.unfilteredPods = {}, b.labelSuggestions = {}, b.clearFilter = function() {
 f.clear();
@@ -9499,9 +9500,25 @@ t.podsLoaded = !0, t.unfilteredPods = e.by("metadata.name"), t.pods = o.getLabel
 t.$evalAsync(function() {
 t.pods = e.select(t.unfilteredPods), r();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").controller("PodsController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "ProjectsService", "LabelFilter", "Logger", function(e, t, n, a, r, o, i, s) {
+n.projectName = t.project, n.pods = {}, n.unfilteredPods = {}, n.labelSuggestions = {}, n.clearFilter = function() {
+i.clear();
+};
+var c = a.getPreferredVersion("pods"), l = [];
+o.get(t.project).then(_.spread(function(e, t) {
+function a() {
+n.filterWithZeroResults = !i.getLabelSelector().isEmpty() && _.isEmpty(n.pods) && !_.isEmpty(n.unfilteredPods);
+}
+n.project = e, l.push(r.watch(c, t, function(e) {
+n.podsLoaded = !0, n.unfilteredPods = e.by("metadata.name"), n.pods = i.getLabelSelector().select(n.unfilteredPods), i.addLabelSuggestionsFromResources(n.unfilteredPods, n.labelSuggestions), i.setLabelSuggestions(n.labelSuggestions), a(), s.log("pods (subscribe)", n.unfilteredPods);
+})), i.onActiveFiltersChanged(function(e) {
+n.$evalAsync(function() {
+n.pods = e.select(n.unfilteredPods), a();
+>>>>>>> Update pods controller to use getPreferredVersion
 });
-}), t.$on("$destroy", function() {
-n.unwatchAll(s);
+}), n.$on("$destroy", function() {
+r.unwatchAll(l);
 });
 }));
 <<<<<<< 9bc0af8cb56dcc9609307333b9424f396867cab5
