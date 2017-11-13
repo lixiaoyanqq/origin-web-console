@@ -3676,10 +3676,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"(pod | annotation:'deploymentConfig') && (deploymentConfigsVersion | canI : 'update')\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{pod | annotation:'deploymentConfig'}}\" role=\"button\" translate>Add Storage</a>\n" +
     "</li>\n" +
     "<li ng-if=\"podsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{pod | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{pod | annotation:'deploymentConfig'}}\" role=\"button\">Add Storage</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"podsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{pod | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update pod controller to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"podsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Pod\" resource-name=\"{{pod.metadata.name}}\" project-name=\"{{pod.metadata.namespace}}\" alerts=\"alerts\">\n" +
@@ -3720,7 +3727,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</pod-metrics>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.logs\" ng-if=\"podsLogVersion | canI : 'get'\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Logs</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Logs</uib-tab-heading>\n" +
+>>>>>>> Update pod controller to use getPreferredVersion
     "<log-viewer ng-if=\"selectedTab.logs\" follow-affix-top=\"390\" object=\"pod\" context=\"projectContext\" options=\"logOptions\" empty=\"logEmpty\" run=\"logCanRun\" ng-class=\"{'log-viewer-select': pod.spec.containers.length > 1}\">\n" +
     "<span class=\"container-details\">\n" +
     "<label for=\"selectLogContainer\" translate>Container:</label>\n" +
@@ -3804,7 +3815,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update pod controller to use getPreferredVersion
     "<events api-objects=\"[ pod ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +

@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -171,6 +172,9 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, k, P, j, R, I) {
 >>>>>>> Adding label filter to ste secrets page
+=======
+function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, k, j, R, I) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
@@ -829,7 +833,7 @@ E.getPreviousReplicationController = function(e) {
 var t = we(e);
 return _.size(t) < 2 ? null : t[1];
 };
-var ke = function(e) {
+var Pe = function(e) {
 var t = {}, n = _e(e);
 _.assign(t, j.getDeploymentStatusAlerts(e, n), j.getPausedDeploymentAlerts(e));
 var a = we(e);
@@ -837,8 +841,8 @@ _.each(a, function(e) {
 var n = be(e);
 _.assign(t, n);
 }), ye(e, t);
-}, Pe = function() {
-_.each(E.deploymentConfigs, ke);
+}, ke = function() {
+_.each(E.deploymentConfigs, Pe);
 }, je = function(e) {
 var t = X(e);
 return t ? _.get(E, [ "replicaSetsByDeploymentUID", t ]) : {};
@@ -854,7 +858,7 @@ _.each(E.deployments, Re);
 Ce(E.replicationControllers), Ce(E.replicaSets), Ce(E.statefulSets), Ce(E.monopods);
 }, Te = _.debounce(function() {
 e.$evalAsync(function() {
-Ee(), Pe(), Ie();
+Ee(), ke(), Ie();
 });
 }, 500), Ne = function(e) {
 _.isEmpty(e) || (h.addLabelSuggestionsFromResources(e, K), "pipeline" !== E.viewBy && h.setLabelSuggestions(K));
@@ -885,7 +889,7 @@ _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
 var n = m.sortByDeploymentVersion(e, !0);
 E.replicationControllersByDeploymentConfig[t] = n, E.currentByDeploymentConfig[t] = _.head(n);
-}), E.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), Pe();
+}), E.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ke();
 }
 }, Oe = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
@@ -1226,7 +1230,7 @@ R.deploymentConfigs = e.by("metadata.name"), Be(), Fe(R.deploymentConfigs), Fe(R
 }, rt = function() {
 J.bindableServiceInstances = s.filterBindableServiceInstances(J.serviceInstances, J.serviceClasses, J.servicePlans), J.orderedServiceInstances = s.sortServiceInstances(J.serviceInstances, J.serviceClasses);
 }, ot = [];
-k.get(a.project).then(_.spread(function(t, a) {
+P.get(a.project).then(_.spread(function(t, a) {
 J.project = e.project = t, J.context = a;
 var r = function() {
 E.pods && g.fetchReferencedImageStreamImages(E.pods, J.imagesByDockerReference, J.imageStreamImageRefByDockerReference, a);
@@ -1517,7 +1521,7 @@ var t = [];
 _.each(J.serviceInstances, function(e) {
 var n = j.getServiceInstanceAlerts(e);
 ye(e, n), t.push(o(e)), t.push(i(e));
-}), P.waitForAll(t).finally(function() {
+}), k.waitForAll(t).finally(function() {
 rt(), fe();
 }), Ne(J.serviceInstances);
 }, {
@@ -7041,6 +7045,7 @@ persistentvolumeclaims: "resources.limits.persistentvolumeclaims",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, k = function(e, t, n, r) {
 var a = e.status.total || e.status, o = j[r], i = 0;
 if (_.each(n.spec.containers, function(e) {
@@ -7067,6 +7072,9 @@ var r = e.status.total || e.status, o = f[a], s = 0;
 =======
 }, k = function(e, t, n, a) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}, P = function(e, t, n, a) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var r = e.status.total || e.status, o = w[a], i = 0;
 >>>>>>> Quota Notifications
 if (_.each(n.spec.containers, function(e) {
@@ -7091,6 +7099,7 @@ target: "_blank"
 } ]
 };
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7247,6 +7256,9 @@ var i = S(t, e, r);
 =======
 }, P = function(e, t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}, k = function(e, t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var n = [], a = "Pod" === e.kind ? e : _.get(e, "spec.template");
 return a ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(r) {
 var o = t.status.total || t.status;
@@ -7266,7 +7278,7 @@ var i = C(t, e, r);
 var i = C(t, e, r);
 >>>>>>> Adding label filter to ste secrets page
 if (i) n.push(i); else if ("pods" !== r) {
-var s = k(t, e, a, r);
+var s = P(t, e, a, r);
 s && n.push(s);
 }
 }
@@ -7289,7 +7301,7 @@ href: "project/" + e.metadata.namespace + "/quota",
 label: "View Quota",
 target: "_blank"
 } ]
-}), r = r.concat(P(t, e));
+}), r = r.concat(k(t, e));
 };
 _.each(o, p), _.each(i, p);
 }
@@ -7315,7 +7327,7 @@ return {
 filterQuotasForResource: y,
 isBestEffortPod: g,
 isTerminatingPod: v,
-getResourceLimitAlerts: P,
+getResourceLimitAlerts: k,
 getQuotaAlerts: j,
 getLatestQuotaAlerts: function(e, t) {
 var n, a, r = [];
@@ -9231,7 +9243,7 @@ onSortChange: C
 };
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, C();
-}, k = function() {
+}, P = function() {
 g || u.list().then(w);
 };
 <<<<<<< HEAD
@@ -9246,14 +9258,14 @@ e.popupElement = n, e.newProjectPanelShown = !0;
 }, e.closeNewProjectPanel = function() {
 e.newProjectPanelShown = !1;
 }, e.onNewProject = function() {
-e.newProjectPanelShown = !1, k();
+e.newProjectPanelShown = !1, P();
 }, e.editProjectPanelShown = !1, e.editProject = function(t) {
 e.editingProject = t, e.editProjectPanelShown = !0;
 }, e.closeEditProjectPanel = function() {
 e.editProjectPanelShown = !1;
 }, e.onEditProject = function() {
-e.editProjectPanelShown = !1, k();
-}, e.onDeleteProject = k, e.goToProject = function(e) {
+e.editProjectPanelShown = !1, P();
+}, e.onDeleteProject = P, e.goToProject = function(e) {
 c.toProjectOverview(e);
 <<<<<<< HEAD
 }, e.$watch("search.text", _.debounce(function(t) {
@@ -9409,12 +9421,18 @@ n.pods = e.select(n.unfilteredPods), a();
 r.unwatchAll(l);
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("PodController", [ "$scope", "$filter", "$routeParams", "$timeout", "$uibModal", "Logger", "DataService", "FullscreenService", "ImageStreamResolver", "MetricsService", "OwnerReferencesService", "PodsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
 e.projectName = n.project, e.pod = null, e.imageStreams = {}, e.imagesByDockerReference = {}, e.imageStreamImageRefByDockerReference = {}, e.builds = {}, e.alerts = {}, e.terminalDisconnectAlert = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.logOptions = {}, e.terminalTabWasSelected = !1, e.breadcrumbs = [ {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").controller("PodController", [ "$filter", "$routeParams", "$scope", "$timeout", "$uibModal", "APIService", "DataService", "FullscreenService", "ImageStreamResolver", "Logger", "MetricsService", "OwnerReferencesService", "PodsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
+n.projectName = t.project, n.pod = null, n.imageStreams = {}, n.imagesByDockerReference = {}, n.imageStreamImageRefByDockerReference = {}, n.builds = {}, n.alerts = {}, n.terminalDisconnectAlert = {}, n.renderOptions = n.renderOptions || {}, n.renderOptions.hideFilterWidget = !0, n.logOptions = {}, n.terminalTabWasSelected = !1, n.breadcrumbs = [ {
+>>>>>>> Update pod controller to use getPreferredVersion
 title: "Pods",
-link: "project/" + n.project + "/browse/pods"
+link: "project/" + t.project + "/browse/pods"
 }, {
+<<<<<<< HEAD
 title: n.pod
 <<<<<<< HEAD
 } ], r.terminalDisconnectAlert.disconnect = {
@@ -9465,25 +9483,37 @@ var p = [], f = null;
 l.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+title: t.pod
+} ], n.terminalDisconnectAlert.disconnect = {
+type: "warning",
+message: "This terminal has been disconnected. If you reconnect, your terminal history will be lost."
+}, n.noContainersYet = !0, n.selectedTab = {};
+var f = o.getPreferredVersion("imagestreams"), g = o.getPreferredVersion("builds");
+n.podsVersion = o.getPreferredVersion("pods"), n.podsLogVersion = o.getPreferredVersion("pods/log"), n.eventsVersion = o.getPreferredVersion("events"), n.deploymentConfigsVersion = o.getPreferredVersion("deploymentconfigs");
+var v = [], h = null;
+u.isAvailable().then(function(e) {
+n.metricsAvailable = e;
+>>>>>>> Update pod controller to use getPreferredVersion
 });
-var g = function() {
-if (e.pod) {
-var t = _.find(e.pod.status.containerStatuses, {
-name: e.logOptions.container
-}), n = _.get(t, "state"), a = _.head(_.keys(n)), r = _.includes([ "running", "waiting", "terminated" ], a) ? a : "", o = _.get(t, "lastState"), i = _.head(_.keys(o)), s = _.get(t, "state.waiting");
-angular.extend(e, {
+var y = function() {
+if (n.pod) {
+var e = _.find(n.pod.status.containerStatuses, {
+name: n.logOptions.container
+}), t = _.get(e, "state"), a = _.head(_.keys(t)), r = _.includes([ "running", "waiting", "terminated" ], a) ? a : "", o = _.get(e, "lastState"), i = _.head(_.keys(o)), s = _.get(e, "state.waiting");
+angular.extend(n, {
 containerStatusKey: r,
-containerStateReason: _.get(n, [ a, "reason" ])
-}), s ? angular.extend(e, {
+containerStateReason: _.get(t, [ a, "reason" ])
+}), s ? angular.extend(n, {
 lasStatusKey: i,
 containerStartTime: _.get(o, [ i, "startedAt" ]),
 containerEndTime: _.get(o, [ i, "finishedAt" ])
-}) : angular.extend(e, {
-containerStartTime: _.get(n, [ a, "startedAt" ]),
-containerEndTime: _.get(n, [ a, "finishedAt" ])
+}) : angular.extend(n, {
+containerStartTime: _.get(t, [ a, "startedAt" ]),
+containerEndTime: _.get(t, [ a, "finishedAt" ])
 });
 }
-}, v = function() {
+}, b = function() {
 var e = $("<span>").css({
 position: "absolute",
 top: "-100px"
@@ -9492,29 +9522,30 @@ width: e.width() / 10,
 height: e.height()
 };
 return e.remove(), t;
-}(), h = $(window), y = function(t) {
-t || (t = 0), v.height && v.width && e.selectedTab.terminal && !(t > 10) && e.$apply(function() {
-var n = $(".container-terminal-wrapper").get(0);
-if (n) {
-var r = n.getBoundingClientRect();
+}(), S = $(window), C = function(e) {
+e || (e = 0), b.height && b.width && n.selectedTab.terminal && !(e > 10) && n.$apply(function() {
+var t = $(".container-terminal-wrapper").get(0);
+if (t) {
+var r = t.getBoundingClientRect();
 if (0 !== r.left || 0 !== r.top || 0 !== r.width || 0 !== r.height) {
-var o = h.width(), i = h.height(), s = o - r.left - 54, c = i - r.top - 36;
-e.terminalCols = Math.max(_.floor(s / v.width), 80), e.terminalRows = Math.max(_.floor(c / v.height), 24);
+var o = S.width(), i = S.height(), s = o - r.left - 54, c = i - r.top - 36;
+n.terminalCols = Math.max(_.floor(s / b.width), 80), n.terminalRows = Math.max(_.floor(c / b.height), 24);
 } else a(function() {
-y(t + 1);
+C(e + 1);
 }, 50);
 } else a(function() {
-y(t + 1);
+C(e + 1);
 }, 50);
 });
 };
-e.$watch("selectedTab.terminal", function(e) {
-e ? (v.height && v.width ? $(window).on("resize.terminalsize", _.debounce(y, 100)) : o.warn("Unable to calculate the bounding box for a character.  Terminal will not be able to resize."), a(y, 0)) : $(window).off("resize.terminalsize");
-}), e.onTerminalSelectChange = function(t) {
-_.each(e.containerTerminals, function(e) {
+n.$watch("selectedTab.terminal", function(e) {
+e ? (b.height && b.width ? $(window).on("resize.terminalsize", _.debounce(C, 100)) : l.warn("Unable to calculate the bounding box for a character.  Terminal will not be able to resize."), a(C, 0)) : $(window).off("resize.terminalsize");
+}), n.onTerminalSelectChange = function(e) {
+_.each(n.containerTerminals, function(e) {
 e.isVisible = !1;
-}), t.isVisible = !0, t.isUsed = !0, e.selectedTerminalContainer = t;
+}), e.isVisible = !0, e.isUsed = !0, n.selectedTerminalContainer = e;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 var u = function(a) {
 var b = _.get(a, "state", {});
@@ -9627,45 +9658,53 @@ return "ReplicationController" === e.kind || "ReplicaSet" === e.kind || "Build" 
 "DELETED" === t && (r.alerts.deleted = {
 =======
 var b = function(e) {
+=======
+var w = function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var t = _.get(e, "state", {});
 return _.head(_.keys(t));
-}, S = function() {
-var t = [];
-_.each(e.pod.spec.containers, function(n) {
-var a = _.find(e.pod.status.containerStatuses, {
-name: n.name
-}), r = b(a);
-t.push({
-containerName: n.name,
+}, P = function() {
+var e = [];
+_.each(n.pod.spec.containers, function(t) {
+var a = _.find(n.pod.status.containerStatuses, {
+name: t.name
+}), r = w(a);
+e.push({
+containerName: t.name,
 isVisible: !1,
 isUsed: !1,
 containerState: r
 });
 });
-var n = _.head(t);
-return n.isVisible = !0, n.isUsed = !0, e.selectedTerminalContainer = n, t;
-}, C = function(t) {
-e.noContainersYet && (e.noContainersYet = 0 === e.containersRunning(t.status.containerStatuses));
-}, w = function(t) {
-_.each(t, function(t) {
-var n = _.find(e.pod.status.containerStatuses, {
-name: t.containerName
-}), a = b(n);
-t.containerState = a;
+var t = _.head(e);
+return t.isVisible = !0, t.isUsed = !0, n.selectedTerminalContainer = t, e;
+}, k = function(e) {
+n.noContainersYet && (n.noContainersYet = 0 === n.containersRunning(e.status.containerStatuses));
+}, j = function(e) {
+_.each(e, function(e) {
+var t = _.find(n.pod.status.containerStatuses, {
+name: e.containerName
+}), a = w(t);
+e.containerState = a;
 });
-}, k = t("annotation"), P = function(t, n) {
-if (e.loaded = !0, e.pod = t, e.dcName = k(t, "deploymentConfig"), e.rcName = k(t, "deployment"), e.deploymentVersion = k(t, "deploymentVersion"), e.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], t.status.phase), g(), delete e.controllerRef, !e.dcName) {
-var a = u.getControllerReferences(t);
-e.controllerRef = _.find(a, function(e) {
+}, R = e("annotation"), I = function(e, t) {
+if (n.loaded = !0, n.pod = e, n.dcName = R(e, "deploymentConfig"), n.rcName = R(e, "deployment"), n.deploymentVersion = R(e, "deploymentVersion"), n.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase), y(), delete n.controllerRef, !n.dcName) {
+var a = d.getControllerReferences(e);
+n.controllerRef = _.find(a, function(e) {
 return "ReplicationController" === e.kind || "ReplicaSet" === e.kind || "Build" === e.kind;
 });
 }
+<<<<<<< HEAD
 "DELETED" === n && (e.alerts.deleted = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+"DELETED" === t && (n.alerts.deleted = {
+>>>>>>> Update pod controller to use getPreferredVersion
 type: "warning",
 message: "This pod has been deleted."
 });
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9804,38 +9843,55 @@ e.loaded = !0, e.alerts.load = {
 type: "error",
 message: "The pod details could not be loaded.",
 details: t("getErrorDetails")(n)
-};
-}), e.$watch("logOptions.container", g), p.push(i.watch("imagestreams", l, function(t) {
-e.imageStreams = t.by("metadata.name"), c.buildDockerRefMapForImageStreams(e.imageStreams, e.imageStreamImageRefByDockerReference), c.fetchReferencedImageStreamImages(e.pods, e.imagesByDockerReference, e.imageStreamImageRefByDockerReference, l), o.log("imagestreams (subscribe)", e.imageStreams);
-})), p.push(i.watch("builds", l, function(t) {
-e.builds = t.by("metadata.name"), o.log("builds (subscribe)", e.builds);
+=======
+p.get(t.project).then(_.spread(function(a, o) {
+h = o, n.project = a, n.projectContext = o, i.get(n.podsVersion, t.pod, o, {
+errorNotification: !1
+}).then(function(e) {
+I(e);
+var a = {};
+a[e.metadata.name] = e, n.logOptions.container = t.container || e.spec.containers[0].name, n.containerTerminals = P(), k(e), c.fetchReferencedImageStreamImages(a, n.imagesByDockerReference, n.imageStreamImageRefByDockerReference, h), v.push(i.watchObject(n.podsVersion, t.pod, o, function(e, t) {
+I(e, t), j(n.containerTerminals), k(e);
 }));
-var u, m = function() {
-var n = e.debugPod;
-u && (i.unwatch(u), u = null), $(window).off("beforeunload.debugPod"), n && (i.delete("pods", n.metadata.name, l, {
+}, function(t) {
+n.loaded = !0, n.alerts.load = {
+type: "error",
+message: "The pod details could not be loaded.",
+details: e("getErrorDetails")(t)
+>>>>>>> Update pod controller to use getPreferredVersion
+};
+}), n.$watch("logOptions.container", y), v.push(i.watch(f, o, function(e) {
+n.imageStreams = e.by("metadata.name"), c.buildDockerRefMapForImageStreams(n.imageStreams, n.imageStreamImageRefByDockerReference), c.fetchReferencedImageStreamImages(n.pods, n.imagesByDockerReference, n.imageStreamImageRefByDockerReference, o), l.log("imagestreams (subscribe)", n.imageStreams);
+})), v.push(i.watch(g, o, function(e) {
+n.builds = e.by("metadata.name"), l.log("builds (subscribe)", n.builds);
+}));
+var u, d = function() {
+var t = n.debugPod;
+u && (i.unwatch(u), u = null), $(window).off("beforeunload.debugPod"), t && (i.delete(n.podsVersion, t.metadata.name, o, {
 gracePeriodSeconds: 0
 }).then(_.noop, function(a) {
-e.alerts["debug-container-error"] = {
+n.alerts["debug-container-error"] = {
 type: "error",
-message: "Could not delete pod " + n.metadata.name,
-details: t("getErrorDetails")(a)
+message: "Could not delete pod " + t.metadata.name,
+details: e("getErrorDetails")(a)
 };
-}), e.debugPod = null);
-}, v = function() {
+}), n.debugPod = null);
+}, p = function() {
 $(".terminal:visible").focus();
 };
-e.hasFullscreen = s.hasFullscreen(!0), e.fullscreenTerminal = function() {
-s.requestFullscreen("#container-terminal-wrapper"), setTimeout(v);
-}, e.exitFullscreen = function() {
+n.hasFullscreen = s.hasFullscreen(!0), n.fullscreenTerminal = function() {
+s.requestFullscreen("#container-terminal-wrapper"), setTimeout(p);
+}, n.exitFullscreen = function() {
 s.exitFullscreen();
-}, e.debugTerminal = function(n) {
-var a = d.generateDebugPod(e.pod, n);
-a ? i.create("pods", null, a, l).then(function(t) {
-var o = _.find(e.pod.spec.containers, {
-name: n
+}, n.debugTerminal = function(t) {
+var a = m.generateDebugPod(n.pod, t);
+a ? i.create(n.podsVersion, null, a, o).then(function(e) {
+var s = _.find(n.pod.spec.containers, {
+name: t
 });
-e.debugPod = t, $(window).on("beforeunload.debugPod", function() {
+n.debugPod = e, $(window).on("beforeunload.debugPod", function() {
 return "Are you sure you want to leave with the debug terminal open? The debug pod will not be deleted unless you close the dialog.";
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), k = g.watchObject("pods", d.metadata.name, j, function(b) {
 a.debugPod = b;
@@ -9870,37 +9926,46 @@ message: "Could not debug container " + t
 =======
 }), u = i.watchObject("pods", a.metadata.name, l, function(t) {
 e.debugPod = t;
+=======
+}), u = i.watchObject(n.podsVersion, a.metadata.name, o, function(e) {
+n.debugPod = e;
+>>>>>>> Update pod controller to use getPreferredVersion
 }), r.open({
 animation: !0,
 templateUrl: "views/modals/debug-terminal.html",
 controller: "DebugTerminalModalController",
-scope: e,
+scope: n,
 resolve: {
 container: function() {
-return o;
+return s;
 },
 image: function() {
-return _.get(e, [ "imagesByDockerReference", o.image ]);
+return _.get(n, [ "imagesByDockerReference", s.image ]);
 }
 },
 backdrop: "static"
-}).result.then(m);
+}).result.then(d);
 }, function(a) {
-e.alerts["debug-container-error"] = {
+n.alerts["debug-container-error"] = {
 type: "error",
-message: "Could not debug container " + n,
-details: t("getErrorDetails")(a)
+message: "Could not debug container " + t,
+details: e("getErrorDetails")(a)
 };
-}) : e.alerts["debug-container-error"] = {
+}) : n.alerts["debug-container-error"] = {
 type: "error",
-message: "Could not debug container " + n
+message: "Could not debug container " + t
 };
+<<<<<<< HEAD
 }, e.containersRunning = function(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, n.containersRunning = function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var t = 0;
 return e && e.forEach(function(e) {
 e.state && e.state.running && t++;
 }), t;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9933,6 +9998,10 @@ g.unwatchAll(n), m(), $(window).off("resize.terminalsize");
 }, e.$on("$destroy", function() {
 i.unwatchAll(p), m(), $(window).off("resize.terminalsize");
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+}, n.$on("$destroy", function() {
+i.unwatchAll(v), d(), $(window).off("resize.terminalsize");
+>>>>>>> Update pod controller to use getPreferredVersion
 });
 }));
 <<<<<<< HEAD
@@ -10206,8 +10275,8 @@ var h, y, b, S;
 l.isAvailable().then(function(e) {
 n.metricsAvailable = e;
 });
-var C = a("orderObjectsByDate"), w = [ "metadata.name" ], k = [], P = function() {
-n.filteredPods = s.filterForKeywords(S, w, k), n.filteredReplicationControllers = s.filterForKeywords(y, w, k), n.filteredReplicaSets = s.filterForKeywords(b, w, k), n.filteredBuilds = s.filterForKeywords(h, w, k), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
+var C = a("orderObjectsByDate"), w = [ "metadata.name" ], P = [], k = function() {
+n.filteredPods = s.filterForKeywords(S, w, P), n.filteredReplicationControllers = s.filterForKeywords(y, w, P), n.filteredReplicaSets = s.filterForKeywords(b, w, P), n.filteredBuilds = s.filterForKeywords(h, w, P), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, j = function(e) {
 n.logOptions.pods[e.metadata.name] = {
 container: e.spec.containers[0].name
@@ -10219,11 +10288,11 @@ t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCa
 }, I = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
 }, E = function() {
-n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, k);
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, T = function() {
 S = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
-}), n.filteredPods = s.filterForKeywords(S, w, k);
+}), n.filteredPods = s.filterForKeywords(S, w, P);
 }, N = a("isIncompleteBuild"), D = a("buildConfigForBuild"), A = a("isRecentBuild"), B = function() {
 moment().subtract(5, "m");
 h = _.filter(n.builds, function(e) {
@@ -10231,15 +10300,15 @@ if (!n.filters.hideOlderResources) return !0;
 if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
-}), n.filteredBuilds = s.filterForKeywords(h, w, k);
+}), n.filteredBuilds = s.filterForKeywords(h, w, P);
 }, L = a("deploymentStatus"), U = a("deploymentIsInProgress"), O = function() {
 y = _.filter(n.replicationControllers, function(e) {
 return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
-}), n.filteredReplicationControllers = s.filterForKeywords(y, w, k);
+}), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
 }, F = function() {
 b = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
-}), n.filteredReplicaSets = s.filterForKeywords(b, w, k);
+}), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
 };
 n.toggleItem = function(e, t, r) {
 var o = $(e.target);
@@ -10459,6 +10528,7 @@ e.kind = n.kindSelector.selected.kind, t.replace().search(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(I);
 =======
 g = !c.expanded.statefulSets[e.metadata.name], c.expanded.statefulSets[e.metadata.name] = g, h = g ? "event.resource.highlight" :"event.resource.clear-highlight", n.$emit(h, e);
@@ -10524,6 +10594,9 @@ n.filterKeywords = P = s.generateKeywords(n.filters.text), n.$apply(k);
 =======
 n.filterKeywords = k = s.generateKeywords(n.filters.text), n.$apply(P);
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+n.filterKeywords = P = s.generateKeywords(n.filters.text), n.$apply(k);
+>>>>>>> Update pod controller to use getPreferredVersion
 }, 50, {
 maxWait: 250
 })), n.$watch("renderOptions.collapseEventsSidebar", function(e, t) {
@@ -10611,7 +10684,7 @@ details: n
 });
 }, w = function() {
 a.disableAddForm = !1, a.newBinding.name = "", a.newBinding.namespace = g, a.newBinding.newRole = null;
-}, k = function(e) {
+}, P = function(e) {
 c.list("serviceaccounts", e).then(function(e) {
 var t = _.keys(e.by("metadata.name")).sort();
 angular.extend(a, {
@@ -10639,6 +10712,7 @@ e && !_.includes(r.serviceAccounts, e) ? r.serviceAccounts = [ e ].concat(t) : r
 }
 });
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10714,6 +10788,9 @@ subjectKinds: A,
 =======
 }, P = function(e) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}, k = function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 c.list("rolebindings", f, null, {
 errorNotification: !1
 }).then(function(e) {
@@ -10727,12 +10804,12 @@ e && (a.roleBindings[e.metadata.name] = e, a.subjectKindsForUI = u.mapRolebindin
 });
 }, j = function(t, n) {
 a.disableAddForm = !0, m.create(t, n, g, f).then(function() {
-P(), C("success", S.update.subject.success({
+k(), C("success", S.update.subject.success({
 roleName: t.metadata.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), P(), C("error", S.update.subject.error({
+w(), k(), C("error", S.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
 }), S.errorReason({
@@ -10741,12 +10818,12 @@ httpErr: e("getErrorDetails")(a)
 });
 }, R = function(t, n, r) {
 a.disableAddForm = !0, m.addSubject(t, n, r, f).then(function() {
-P(), C("success", S.update.subject.success({
+k(), C("success", S.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
 }));
 }, function(a) {
-w(), P(), C("error", S.update.subject.error({
+w(), k(), C("error", S.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
 }), S.errorReason({
@@ -10942,6 +11019,7 @@ projects: t,
 selectProject: function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 a.newBinding.name = "", k({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10950,6 +11028,9 @@ a.newBinding.name = "", P({
 =======
 a.newBinding.name = "", k({
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+a.newBinding.name = "", P({
+>>>>>>> Update pod controller to use getPreferredVersion
 namespace: e
 });
 },
@@ -10971,7 +11052,7 @@ e && !_.includes(a.projects, e) ? a.projects = [ e ].concat(t) : a.projects = t;
 }
 });
 }), l.get(n.project).then(_.spread(function(n, r) {
-f = r, P(), k(f), angular.extend(a, {
+f = r, k(), P(f), angular.extend(a, {
 project: n,
 subjectKinds: E,
 canUpdateRolebindings: y("rolebindings", "update", g),
@@ -11013,11 +11094,15 @@ P(e[0]);
 m.removeSubject(n, i, c, a.roleBindings, f).then(function(e) {
 l ? t.url("./") : (s.getProjectRules(g, !0).then(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 k(e[0]);
 >>>>>>> Fix for adding non-builder templates to a project
 =======
 P(e[0]);
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+k(e[0]);
+>>>>>>> Update pod controller to use getPreferredVersion
 var t = y("rolebindings", "update", g);
 angular.extend(a, {
 canUpdateRolebindings: t,
@@ -11152,6 +11237,7 @@ name: e
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 T(), angular.extend(r, {
 =======
 j(), angular.extend(a, {
@@ -11177,6 +11263,9 @@ k(), angular.extend(a, {
 =======
 P(), angular.extend(a, {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+k(), angular.extend(a, {
+>>>>>>> Update pod controller to use getPreferredVersion
 toggle: {
 roles: !1
 },
@@ -13019,7 +13108,7 @@ namespace: n.project
 }), e.emptyMessage = "Loading...", e.deploymentConfigsInstantiateVersion = a.getPreferredVersion("deploymentconfigs/instantiate"), e.deploymentConfigsVersion = a.getPreferredVersion("deploymentconfigs"), e.eventsVersion = a.getPreferredVersion("events"), e.horizontalPodAutoscalersVersion = a.getPreferredVersion("horizontalpodautoscalers");
 var y = a.getPreferredVersion("builds"), b = a.getPreferredVersion("imagestreams"), S = a.getPreferredVersion("limitranges"), C = a.getPreferredVersion("replicationcontrollers");
 e.healthCheckURL = u.healthCheckURL(n.project, "DeploymentConfig", n.deploymentconfig, e.deploymentConfigsVersion.group);
-var w = t("mostRecent"), k = t("orderObjectsByDate"), P = [];
+var w = t("mostRecent"), P = t("orderObjectsByDate"), k = [];
 p.get(n.project).then(_.spread(function(a, r) {
 function u() {
 g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
@@ -13036,7 +13125,7 @@ e.hpaWarnings = t;
 o.get(e.deploymentConfigsVersion, n.deploymentconfig, r, {
 errorNotification: !1
 }).then(function(a) {
-e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), P.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
+e.loaded = !0, e.deploymentConfig = a, e.strategyParams = t("deploymentStrategyParams")(a), p(), k.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, r, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This deployment configuration has been deleted."
@@ -13048,7 +13137,7 @@ type: "error",
 message: 404 === n.status ? "This deployment configuration can not be found, it may have been deleted." : "The deployment configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining deployment history for this deployment will be shown." : t("getErrorDetails")(n)
 };
-}), P.push(o.watch(C, r, function(a, r, o) {
+}), k.push(o.watch(C, r, function(a, r, o) {
 var s = n.deploymentconfig;
 =======
 >>>>>>> Support EnvFrom in the Env Editors
@@ -13113,7 +13202,7 @@ e.unfilteredDeployments = l[n.deploymentconfig] || {}, angular.forEach(e.unfilte
 e.causes = t("deploymentCauses")(e);
 }), e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(l);
 }
-e.deployments = g.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = k(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = w(e.unfilteredDeployments), u(), g.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), g.setLabelSuggestions(e.labelSuggestions);
+e.deployments = g.getLabelSelector().select(e.unfilteredDeployments), e.orderedDeployments = P(e.deployments, !0), e.deploymentInProgress = !!_.size(e.deploymentConfigDeploymentsInProgress[s]), e.mostRecent = w(e.unfilteredDeployments), u(), g.addLabelSuggestionsFromResources(e.unfilteredDeployments, e.labelSuggestions), g.setLabelSuggestions(e.labelSuggestions);
 }, {
 http: {
 params: {
@@ -13162,6 +13251,7 @@ d = e.by("metadata.name"), p();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), j.push(o.watch(b, r, function(t) {
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 =======
@@ -13173,14 +13263,18 @@ d = e.by("metadata.name"), p();
 =======
 }), P.push(o.watch(b, r, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}), k.push(o.watch(b, r, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var n = t.by("metadata.name");
 c.buildDockerRefMapForImageStreams(n, h), e.deploymentConfig && c.fetchReferencedImageStreamImages([ e.deploymentConfig.spec.template ], e.imagesByDockerReference, h, r), m.log("imagestreams (subscribe)", e.imageStreams);
-})), P.push(o.watch(y, r, function(t) {
+})), k.push(o.watch(y, r, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
-})), P.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
+})), k.push(o.watch(e.horizontalPodAutoscalersVersion, r, function(t) {
 e.autoscalers = s.filterHPA(t.by("metadata.name"), "DeploymentConfig", n.deploymentconfig), p();
 })), g.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13195,6 +13289,9 @@ e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = P(e.de
 =======
 e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = k(e.deployments, !0), u();
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = P(e.deployments, !0), u();
+>>>>>>> Update pod controller to use getPreferredVersion
 });
 }), e.canDeploy = function() {
 return !!e.deploymentConfig && (!e.deploymentConfig.metadata.deletionTimestamp && (!e.deploymentInProgress && !e.deploymentConfig.spec.paused));
@@ -13377,6 +13474,7 @@ f.removeVolume(e.deploymentConfig, t, r);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 o.unwatchAll(j);
 >>>>>>> Update DeploymentConfig controller to use getPreferredVersion
 =======
@@ -13400,6 +13498,9 @@ o.unwatchAll(k);
 =======
 o.unwatchAll(P);
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+o.unwatchAll(k);
+>>>>>>> Update pod controller to use getPreferredVersion
 });
 }));
 <<<<<<< HEAD
@@ -13483,10 +13584,14 @@ var P = {};
 >>>>>>> Fix for adding non-builder templates to a project
 =======
 }
+<<<<<<< HEAD
 var k = {};
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+var P = {};
+>>>>>>> Update pod controller to use getPreferredVersion
 e.projectName = n.project, e.kind = y, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
-var P = [];
+var k = [];
 u.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 });
@@ -13581,6 +13686,7 @@ j.push(o.watch(e.resource, g, function(t) {
 }, T = function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 P.push(o.watch(e.resource, g, function(t) {
 >>>>>>> Update template service broker flag name
 =======
@@ -13589,6 +13695,9 @@ k.push(o.watch(e.resource, g, function(t) {
 =======
 P.push(o.watch(e.resource, g, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+k.push(o.watch(e.resource, g, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var n, a = [];
 >>>>>>> Adjust events to show in the drawer
 angular.forEach(t.by("metadata.name"), function(t) {
@@ -13721,7 +13830,7 @@ a && o.get({
 group: "apps",
 resource: "deployments"
 }, a.name, g).then(function(t) {
-e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), P.push(o.watchObject({
+e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), k.push(o.watchObject({
 group: "apps",
 resource: "deployments"
 }, t.metadata.name, g, function(t, a) {
@@ -13753,7 +13862,7 @@ link: m.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), A(), E();
-})), P.push(o.watch({
+})), k.push(o.watch({
 group: "extensions",
 resource: "replicasets"
 }, g, function(e) {
@@ -13884,14 +13993,18 @@ i.get(e.resource, n.replicaSet, u, {
 t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, g);
 =======
 }, U = function() {
-if (!_.isEmpty(k)) {
+if (!_.isEmpty(P)) {
 var t = _.get(e, "replicaSet.spec.template");
+<<<<<<< HEAD
 <<<<<<< HEAD
 t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, P, g);
 >>>>>>> Fix for adding non-builder templates to a project
 =======
 t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, g);
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, P, g);
+>>>>>>> Update pod controller to use getPreferredVersion
 }
 };
 o.get(e.resource, n.replicaSet, g, {
@@ -13920,6 +14033,7 @@ N(), e.breadcrumbs = r.getBreadcrumbs({
 object: t
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), P.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
 >>>>>>> Update template service broker flag name
 =======
@@ -13928,6 +14042,9 @@ object: t
 =======
 }), P.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}), k.push(o.watchObject(e.resource, n.replicaSet, g, function(t, n) {
+>>>>>>> Update pod controller to use getPreferredVersion
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 <<<<<<< HEAD
@@ -13957,6 +14074,7 @@ message: "This " + C + " has been deleted."
 }), e.replicaSet = t, R(t), N(), U(), e.deployment && A();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })), e.deploymentConfigName && T(), P.push(o.watch("pods", g, function(t) {
 >>>>>>> Update template service broker flag name
 =======
@@ -13965,6 +14083,9 @@ message: "This " + C + " has been deleted."
 =======
 })), e.deploymentConfigName && T(), P.push(o.watch("pods", g, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+})), e.deploymentConfigName && T(), k.push(o.watch("pods", g, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -13990,6 +14111,7 @@ namespace: n.project
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), x.push(i.watch(e.resource, u, function(n, r, a) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, i;
@@ -14005,11 +14127,15 @@ e.causes = t("deploymentCauses")(e);
 =======
 }), P.push(o.watch(e.resource, g, function(n, a, r) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+}), k.push(o.watch(e.resource, g, function(n, a, r) {
+>>>>>>> Update pod controller to use getPreferredVersion
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === y && (e.deploymentsByDeploymentConfig = i.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, s;
 r && (o = S(r, "deploymentConfig"), s = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][s] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][s] : e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 })), P.push(o.watch("imagestreams", g, function(e) {
@@ -14038,8 +14164,14 @@ var t = e.by("metadata.name");
 c.buildDockerRefMapForImageStreams(t, k), U(), l.log("imagestreams (subscribe)", t);
 })), P.push(o.watch("builds", g, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+})), k.push(o.watch("imagestreams", g, function(e) {
+var t = e.by("metadata.name");
+c.buildDockerRefMapForImageStreams(t, P), U(), l.log("imagestreams (subscribe)", t);
+})), k.push(o.watch("builds", g, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 e.builds = t.by("metadata.name"), l.log("builds (subscribe)", e.builds);
-})), P.push(o.watch({
+})), k.push(o.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
@@ -14072,6 +14204,7 @@ e.limitRanges = t.by("metadata.name"), N();
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 P.push(o.watch("resourcequotas", g, function(t) {
 >>>>>>> Update template service broker flag name
 =======
@@ -14080,10 +14213,14 @@ k.push(o.watch("resourcequotas", g, function(t) {
 =======
 P.push(o.watch("resourcequotas", g, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+k.push(o.watch("resourcequotas", g, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14097,6 +14234,9 @@ pollInterval: 6e4
 =======
 })), P.push(o.watch("appliedclusterresourcequotas", g, function(t) {
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+})), k.push(o.watch("appliedclusterresourcequotas", g, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -14143,6 +14283,7 @@ C.removeVolume(e.replicaSet, n, u);
 });
 }, e.$on("$destroy", function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 i.unwatchAll(x);
 =======
 I = H(b);
@@ -14163,6 +14304,9 @@ o.unwatchAll(k);
 =======
 o.unwatchAll(P);
 >>>>>>> Bug 1505281 - Improve import YAML results message
+=======
+o.unwatchAll(k);
+>>>>>>> Update pod controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, p, m, f, g, h, v, y) {
@@ -14573,23 +14717,23 @@ e.editAvailable = n && h(e.serviceInstance) && !_.get(e.serviceInstance, "metada
 }
 }, w = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), S();
-}, k = function() {
+}, P = function() {
 var t = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.plan = _.find(e.servicePlans, {
 metadata: {
 name: t
 }
 }), w(), C();
-}, P = function() {
-e.serviceClass && !p && (e.servicePlans ? k() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
+}, k = function() {
+e.serviceClass && !p && (e.servicePlans ? P() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
 var n = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.servicePlans = _.reject(t.by("metadata.name"), function(e) {
 return _.get(e, "status.removedFromBrokerCatalog") && e.metadata.name !== n;
-}), k(), p = null;
+}), P(), p = null;
 }));
 }, j = function() {
-e.serviceInstance && !m && (e.serviceClass ? P() : m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
-e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m = null, P();
+e.serviceInstance && !m && (e.serviceClass ? k() : m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
+e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m = null, k();
 }));
 }, R = function(t, n) {
 e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
@@ -16988,7 +17132,7 @@ return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
-}), P();
+}), k();
 });
 <<<<<<< HEAD
 var n = function(e, n) {
@@ -17411,11 +17555,12 @@ e[t.name] = t.value;
 <<<<<<< HEAD
 <<<<<<< HEAD
 return n;
-}, k = function() {
+}, P = function() {
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -17438,6 +17583,9 @@ return _.has(e, "disabled") && !e.disabled || e.present;
 =======
 }, P = function() {
 >>>>>>> Update template service broker flag name
+=======
+}, k = function() {
+>>>>>>> Update pod controller to use getPreferredVersion
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -17691,7 +17839,11 @@ case "Custom":
 R(h(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+=======
+e.updatedBuildConfig.spec.triggers = P(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+>>>>>>> Update pod controller to use getPreferredVersion
 l.addNotification({
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
@@ -18444,12 +18596,33 @@ return _.map(e, "metadata.name");
 });
 });
 };
+<<<<<<< HEAD
 var o = {}, l = function() {
 var n = _.get(a, "spec.template.spec.containers", []);
 e.showCPURequestWarning = !c.hasCPURequest(n, o, t);
 };
 s.list(b, r).then(function(e) {
 =======
+=======
+}) : u.toErrorPage("You do not have authority to update deployment config " + a.deploymentconfig + ".", "access_denied");
+}));
+var w = function() {
+return "Custom" !== e.strategyData.type && "Custom" !== e.originalStrategy && e.strategyData.type !== e.originalStrategy;
+}, P = function(t) {
+_.has(e.strategyData, t) || r.open({
+animation: !0,
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return {
+alerts: e.alerts,
+message: "Some of your existing " + e.originalStrategy.toLowerCase() + " strategy parameters can be used for the " + e.strategyData.type.toLowerCase() + " strategy. Keep parameters?",
+details: "The timeout parameter and any pre or post lifecycle hooks will be copied from " + e.originalStrategy.toLowerCase() + " strategy to " + e.strategyData.type.toLowerCase() + " strategy. After saving the changes, " + e.originalStrategy.toLowerCase() + " strategy parameters will be removed.",
+okButtonText: "Yes",
+okButtonClass: "btn-primary",
+cancelButtonText: "No"
+>>>>>>> Update pod controller to use getPreferredVersion
 };
 }
 }
@@ -18461,13 +18634,13 @@ e.strategyData[t] = {};
 };
 e.strategyChanged = function() {
 var t = C(e.strategyData.type);
-w() ? k(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+w() ? P(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
 image: "",
 command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
-var P = function(e, t, n, a) {
+var k = function(e, t, n, a) {
 var r = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -18486,7 +18659,7 @@ var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 });
 return _.each(e.containerConfigByName, function(n, a) {
-n.hasDeploymentTrigger ? t.push(P(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(k(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: a
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
@@ -19314,8 +19487,12 @@ e.projectTemplates = t.by("metadata.name");
 var P = t("displayName"), k = t("humanize");
 =======
 } ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w) {
+<<<<<<< HEAD
 var k = t("displayName"), P = t("humanize");
 >>>>>>> Adding label filter to ste secrets page
+=======
+var P = t("displayName"), k = t("humanize");
+>>>>>>> Update pod controller to use getPreferredVersion
 e.projectName = r.project, e.sourceURLPattern = y;
 var j = r.imageStream;
 if (j) if (r.imageTag) {
@@ -20175,7 +20352,7 @@ l.addNotification({
 return _.get(a, "imageChangeParams.from.name");
 }
 function m(e) {
-for (var t = [], n = k.exec(e); n; ) t.push(n[1]), n = k.exec(e);
+for (var t = [], n = P.exec(e); n; ) t.push(n[1]), n = P.exec(e);
 return t;
 }
 <<<<<<< HEAD
@@ -20184,11 +20361,15 @@ var e = g();
 =======
 function p() {
 var e = v();
+<<<<<<< HEAD
 >>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 r.templateImages = _.map(P, function(t) {
+=======
+r.templateImages = _.map(k, function(t) {
+>>>>>>> Update pod controller to use getPreferredVersion
 return _.isEmpty(t.usesParameters) ? t : {
 name: _.template(t.name, {
-interpolate: k
+interpolate: P
 })(e),
 usesParameters: t.usesParameters
 };
@@ -20205,8 +20386,12 @@ r && (a = r), a && t.push(a);
 function f(e) {
 =======
 function g(e) {
+<<<<<<< HEAD
 >>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 P = [];
+=======
+k = [];
+>>>>>>> Update pod controller to use getPreferredVersion
 var t = [], n = {};
 angular.forEach(e.objects, function(e) {
 if ("BuildConfig" === e.kind) {
@@ -20220,8 +20405,12 @@ a && k.push({
 >>>>>>> Adding label filter to ste secrets page
 =======
 var a = w(S(e), y);
+<<<<<<< HEAD
 a && P.push({
 >>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
+=======
+a && k.push({
+>>>>>>> Update pod controller to use getPreferredVersion
 name: a,
 usesParameters: m(a)
 });
@@ -20230,11 +20419,11 @@ r && (n[r] = !0);
 }
 "DeploymentConfig" === e.kind && (t = t.concat(f(e)));
 }), t.forEach(function(e) {
-n[e] || P.push({
+n[e] || k.push({
 name: e,
 usesParameters: m(e)
 });
-}), P = _.uniqBy(P, "name");
+}), k = _.uniqBy(k, "name");
 }
 function v() {
 var e = {};
@@ -20275,6 +20464,7 @@ details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
 });
 }
 }());
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -20323,13 +20513,20 @@ namespace: h || r.project.metadata.name
 r.template = t, r.breadcrumbs[2].title = e("displayName")(t), f(t);
 =======
 var k = /\${([a-zA-Z0-9\_]+)}/g, P = [];
+=======
+var P = /\${([a-zA-Z0-9\_]+)}/g, k = [];
+>>>>>>> Update pod controller to use getPreferredVersion
 u.get(a.project).then(_.spread(function(e) {
 if (r.project = e, o.canI("processedtemplates", "create", a.project)) if (y) s.get("templates", h, {
 namespace: y || r.project.metadata.name
 }).then(function(e) {
 r.template = e, g(e);
+<<<<<<< HEAD
 >>>>>>> Bug 1510786 - Error info should be more precise when create app in project with view role
 _.some(P, function(e) {
+=======
+_.some(k, function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 return !_.isEmpty(e.usesParameters);
 }) ? (r.parameterDisplayNames = {}, _.each(t.parameters, function(e) {
 r.parameterDisplayNames[e.name] = e.displayName || e.name;
@@ -20337,7 +20534,7 @@ r.parameterDisplayNames[e.name] = e.displayName || e.name;
 r.$apply(p);
 }, 50, {
 maxWait: 250
-}), !0)) : r.templateImages = P;
+}), !0)) : r.templateImages = k;
 }, function() {
 c.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
 }); else {
@@ -21466,6 +21663,7 @@ var w = function() {
 a.history.back();
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 n.cancel = C;
 var S = function(e) {
 return n.attach.allContainers || n.attach.containers[e.name];
@@ -21492,6 +21690,16 @@ n.existingMountPaths = m.getMountPaths(e, P);
 };
 n.$watchGroup([ "attach.resource", "attach.allContainers" ], k), n.$watch("attach.containers", k, !0);
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+n.cancel = w;
+var P = function(e) {
+return n.attach.allContainers || n.attach.containers[e.name];
+}, k = function() {
+var e = _.get(n, "attach.resource.spec.template");
+n.existingMountPaths = m.getMountPaths(e, P);
+};
+n.$watchGroup([ "attach.resource", "attach.allContainers" ], k), n.$watch("attach.containers", k, !0);
+>>>>>>> Update pod controller to use getPreferredVersion
 s.get(v, t.name, d).then(function(e) {
 >>>>>>> Update template service broker flag name
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
@@ -21532,6 +21740,7 @@ n.attach.volumeName || (n.attach.volumeName = b("volume-"));
 var e = n.attach.resource, a = _.get(e, "spec.template"), r = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
 i && angular.forEach(a.spec.containers, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (S(e)) {
 var t = p.createVolumeMount(o, i, c, l);
 =======
@@ -21549,6 +21758,9 @@ if (k(e)) {
 =======
 if (P(e)) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+if (P(e)) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var t = m.createVolumeMount(o, i, c, l);
 e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
 }
@@ -23841,10 +24053,14 @@ if (p.resourceKind.endsWith("List")) {
 >>>>>>> Support EnvFrom in the Env Editors
 var a = [];
 <<<<<<< HEAD
+<<<<<<< HEAD
 t > 0 && a.push(P()), e > 0 && a.push(w()), n.all(a).then(b);
 } else S();
 =======
 t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
+=======
+t > 0 && a.push(P()), e > 0 && a.push(w()), n.all(a).then(b);
+>>>>>>> Update pod controller to use getPreferredVersion
 } else C();
 >>>>>>> Adding label filter to ste secrets page
 }
@@ -24097,6 +24313,7 @@ hasErrors: a
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function k() {
 var e = {
 started: "Updating resources in project " + B(f.input.selectedProject),
@@ -24121,6 +24338,9 @@ function k() {
 =======
 function P() {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+function P() {
+>>>>>>> Update pod controller to use getPreferredVersion
 var e = {
 started: "Updating resources in project " + A(p.input.selectedProject),
 success: "Updated resources in project " + A(p.input.selectedProject),
@@ -24263,7 +24483,13 @@ d.clear(), p.$on("no-projects-cannot-create", function() {
 p.noProjectsCantCreate = !0;
 }), p.input = {
 selectedProject: p.project
+<<<<<<< HEAD
 }, p.aceLoaded = function(e) {
+=======
+}, p.$watch("input.selectedProject.metadata.name", function() {
+p.projectNameTaken = !1;
+}), p.aceLoaded = function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 (k = e.getSession()).setOption("tabSize", 2), k.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
 };
 var I = function(e) {
@@ -28016,6 +28242,7 @@ A || angular.forEach(e, function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 e && j(_.find(n.datasets, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -28036,6 +28263,9 @@ e && P(_.find(n.datasets, {
 =======
 e && k(_.find(n.datasets, {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+e && k(_.find(n.datasets, {
+>>>>>>> Update pod controller to use getPreferredVersion
 id: e.metricID
 }), e);
 });
@@ -28462,6 +28692,7 @@ function u(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
@@ -28529,6 +28760,9 @@ k || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function
 =======
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+>>>>>>> Update pod controller to use getPreferredVersion
 var a, r = o(e, n), i = n.descriptor;
 w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), C[i] ? (C[i].load(r), t.showAverage ? C[i].legend.hide() : C[i].legend.show()) : ((a = D(n)).data = r, C[i] = c3.generate(a));
 >>>>>>> Update template service broker flag name
@@ -28655,7 +28889,7 @@ details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " +
 >>>>>>> Quota Notifications
 =======
 function g(e) {
-if (!k) if (N++, t.noData) t.metricsError = {
+if (!P) if (N++, t.noData) t.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
 <<<<<<< HEAD
@@ -28821,6 +29055,7 @@ t.loaded = !0;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
 var j, k, I = {}, R = w, T = function(e) {
@@ -28883,6 +29118,11 @@ var b, C = {}, S = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
 var k, j, R = {}, I = w, E = function(e) {
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
+t.uniqueID = s.uniqueID();
+var k, j, R = {}, I = w, E = function(e) {
+>>>>>>> Update pod controller to use getPreferredVersion
 return e >= 1024;
 };
 t.metrics = [ {
@@ -29107,6 +29347,7 @@ t.$watch("options", function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 I = {}, j = null, delete t.metricsError, y();
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
 R = !e, e && (!k || Date.now() > k + s.getDefaultUpdateInterval()) && y();
@@ -29206,6 +29447,9 @@ R = {}, P = null, delete t.metricsError, y();
 =======
 R = {}, k = null, delete t.metricsError, y();
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+R = {}, k = null, delete t.metricsError, y();
+>>>>>>> Update pod controller to use getPreferredVersion
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
 I = !e, e && (!j || Date.now() > j + s.getDefaultUpdateInterval()) && y();
 };
@@ -29216,10 +29460,14 @@ t.$on("$destroy", function() {
 b && (e.cancel(b), b = null), A && (A(), A = null), angular.forEach(S, function(e) {
 e.destroy();
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), C = null, P = !0;
 =======
 }), S = null, k = !0;
 >>>>>>> Adding label filter to ste secrets page
+=======
+}), S = null, P = !0;
+>>>>>>> Update pod controller to use getPreferredVersion
 });
 }
 };
@@ -29266,8 +29514,12 @@ u ? $(u).on("scroll", S) : m.on("scroll", S);
 }, P = function() {
 =======
 u ? $(u).on("scroll", C) : m.on("scroll", C);
+<<<<<<< HEAD
 }, k = function() {
 >>>>>>> Adding label filter to ste secrets page
+=======
+}, P = function() {
+>>>>>>> Update pod controller to use getPreferredVersion
 t.fixedHeight || p.affix({
 target: window,
 offset: {
@@ -29378,6 +29630,7 @@ y = setInterval(function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 n > 10 ? e() : (n++, j().is(":visible") && (P(), e()));
 >>>>>>> Patternfly vertical navigation and project bar
 =======
@@ -29398,6 +29651,9 @@ n > 10 ? e() : (n++, P().is(":visible") && (j(), e()));
 =======
 n > 10 ? e() : (n++, k().is(":visible") && (j(), e()));
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+n > 10 ? e() : (n++, k().is(":visible") && (j(), e()));
+>>>>>>> Update pod controller to use getPreferredVersion
 }, 100);
 }
 }, I = _.debounce(function() {
@@ -29620,6 +29876,7 @@ p = $(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 w(), P(), T();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -29634,6 +29891,9 @@ w(), k();
 =======
 w(), P();
 >>>>>>> Fix for adding non-builder templates to a project
+=======
+w(), P();
+>>>>>>> Update pod controller to use getPreferredVersion
 }, angular.extend(t, {
 ready: !0,
 loading: !0,
@@ -32038,8 +32298,12 @@ cancelButtonText: "Cancel"
 }, w = {}, P = function() {
 =======
 }).result.then(S);
+<<<<<<< HEAD
 }, w = {}, k = function() {
 >>>>>>> Adding label filter to ste secrets page
+=======
+}, w = {}, P = function() {
+>>>>>>> Update pod controller to use getPreferredVersion
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
@@ -34851,7 +35115,7 @@ var a = n.input.selectedProject.metadata.name, r = n.input.selectedProject.metad
 return l.create(a, r, o);
 }, b = e("stripTag"), S = e("stripSHA"), C = e("humanizeKind"), w = function(e) {
 return e.length > 24 ? e.substring(0, 24) : e;
-}, k = function() {
+}, P = function() {
 var e = _.last(n.import.name.split("/"));
 return e = S(e), e = b(e), e = w(e);
 };
@@ -34862,7 +35126,7 @@ namespace: n.input.selectedProject.metadata.name
 if (n.import = e, n.loading = !1, "Success" === _.get(e, "result.status")) {
 n.forms.imageSelection.imageName.$setValidity("imageLoaded", !0);
 var t = n.import.image;
-t && (n.app.name = k(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t), n.volumes = i.getVolumes(t), n.createImageStream = !0);
+t && (n.app.name = P(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t), n.volumes = i.getVolumes(t), n.createImageStream = !0);
 } else n.import.error = _.get(e, "result.message", "An error occurred finding the image.");
 }, function(t) {
 n.import.error = e("getErrorDetails")(t) || "An error occurred finding the image.", n.loading = !1;
@@ -34924,7 +35188,7 @@ details: f(e)
 }
 } else n.mode = "istag";
 });
-var P, j = e("displayName"), R = function() {
+var k, j = e("displayName"), R = function() {
 var e = {
 started: "Deploying image " + n.app.name + " to project " + j(n.input.selectedProject),
 success: "Deployed image " + n.app.name + " to project " + j(n.input.selectedProject),
@@ -34932,7 +35196,7 @@ failure: "Failed to deploy image " + n.app.name + " to project " + j(n.input.sel
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
-return o.batch(P, {
+return o.batch(k, {
 namespace: n.input.selectedProject.metadata.name
 }).then(function(t) {
 var a, r = !_.isEmpty(t.failure);
@@ -35031,9 +35295,14 @@ n.input.selectedProject = e, j = m();
 var t = r.ifResourcesDontExist(j, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(j, {
 =======
 n.disableInputs = !0, h(), y().then(function(e) {
+<<<<<<< HEAD
 n.input.selectedProject = e, P = m();
 var t = r.ifResourcesDontExist(P, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(P, {
 >>>>>>> Update template service broker flag name
+=======
+n.input.selectedProject = e, k = m();
+var t = r.ifResourcesDontExist(k, n.input.selectedProject.metadata.name), a = u.getLatestQuotaAlerts(k, {
+>>>>>>> Update pod controller to use getPreferredVersion
 namespace: n.input.selectedProject.metadata.name
 }), o = function(e) {
 return n.nameTaken = e.nameTaken, a;
@@ -36119,8 +36388,9 @@ heading: e("displayName")(y[t]),
 project: y[t],
 notifications: n
 };
-}, k = function(e) {
+}, P = function(e) {
 return _.filter(e, "unread");
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, k = function() {
 _.each(p.notificationGroups, function(e) {
@@ -36212,8 +36482,11 @@ _.each(p.notificationGroups, function(t) {
 >>>>>>> Support EnvFrom in the Env Editors
 =======
 }, P = function() {
+=======
+}, k = function() {
+>>>>>>> Update pod controller to use getPreferredVersion
 _.each(f.notificationGroups, function(e) {
-e.totalUnread = k(e.notifications).length, e.hasUnread = !!e.totalUnread, a.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
+e.totalUnread = P(e.notifications).length, e.hasUnread = !!e.totalUnread, a.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 });
 }, j = function(e) {
 _.each(f.notificationGroups, function(t) {
@@ -36375,7 +36648,7 @@ return _.assign({}, e[n], t[n]);
 return _.orderBy(e, [ "event.lastTimestamp", "event.metadata.resourceVersion" ], [ "desc", "desc" ]);
 }, A = function() {
 a.$evalAsync(function() {
-f.notificationGroups = [ w(r.project, D(N(v, h))) ], P();
+f.notificationGroups = [ w(r.project, D(N(v, h))) ], k();
 });
 }, $ = function() {
 _.each(g, function(e) {
@@ -36622,7 +36895,7 @@ A(), D(), N();
 =======
 e.onClick(), f.drawerHidden = !0;
 },
-countUnreadNotifications: P
+countUnreadNotifications: k
 }
 }), o.$watch("$ctrl.drawerExpanded", function(e) {
 localStorage.setItem("openshift/notification-drawer-expanded", e ? "true" : "false");
