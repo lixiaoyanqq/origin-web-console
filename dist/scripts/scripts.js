@@ -11455,14 +11455,21 @@ a.buildConfigs = e.select(a.unfilteredBuildConfigs), f(), g();
 i.unwatchAll(p);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("PipelinesController", [ "$filter", "$routeParams", "$scope", "Constants", "Navigate", "BuildsService", "DataService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
+} ]), angular.module("openshiftConsole").controller("PipelinesController", [ "$filter", "$routeParams", "$scope", "APIService", "BuildsService", "Constants", "DataService", "Logger", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
 n.projectName = t.project, n.alerts = n.alerts || {}, n.buildConfigs = {};
-var l = [];
-c.get(t.project).then(_.spread(function(t, s) {
+var u = a.getPreferredVersion("builds"), d = a.getPreferredVersion("templates");
+n.buildConfigsVersion = a.getPreferredVersion("buildconfigs"), n.buildConfigsInstantiateVersion = a.getPreferredVersion("buildconfigs/instantiate");
+var m = [];
+l.get(t.project).then(_.spread(function(t, a) {
 n.project = t;
+<<<<<<< HEAD
 var c = {}, u = e("buildConfigForBuild"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), f = function(e, t) {
 if (!d(t)) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var s = {}, l = e("buildConfigForBuild"), p = e("isIncompleteBuild"), f = e("isJenkinsPipelineStrategy"), g = e("isNewerResource"), v = function(e, t) {
+if (!p(t)) {
+>>>>>>> Update pipelines controller to use getPreferredVersion
 n.statsByConfig[e] || (n.statsByConfig[e] = {
 count: 0,
 totalDuration: 0
@@ -11479,10 +11486,11 @@ var a = l(r) || "";
 n.buildConfigs[a] || (n.buildConfigs[a] = null), p(r) ? _.set(e, [ a, r.metadata.name ], r) : f(r, t[a]) && (t[a] = r), v(a, r);
 =======
 var a = n.statsByConfig[e];
-a.count++, a.totalDuration += o.getDuration(t), a.avgDuration = _.round(a.totalDuration / a.count);
+a.count++, a.totalDuration += r.getDuration(t), a.avgDuration = _.round(a.totalDuration / a.count);
 }
-}, g = function() {
+}, h = function() {
 var e = {}, t = {};
+<<<<<<< HEAD
 n.statsByConfig = {}, _.each(c, function(a) {
 if (m(a)) {
 var r = u(a) || "";
@@ -11500,11 +11508,18 @@ n.buildConfigs[r] || (n.buildConfigs[r] = null), d(a) ? _.set(e, [ r, a.metadata
 =======
 n.buildConfigs[r] || (n.buildConfigs[r] = null), d(a) ? _.set(e, [ r, a.metadata.name ], a) : p(a, t[r]) && (t[r] = a), f(r, a);
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+n.statsByConfig = {}, _.each(s, function(a) {
+if (f(a)) {
+var r = l(a) || "";
+n.buildConfigs[r] || (n.buildConfigs[r] = null), p(a) ? _.set(e, [ r, a.metadata.name ], a) : g(a, t[r]) && (t[r] = a), v(r, a);
+>>>>>>> Update pipelines controller to use getPreferredVersion
 }
 }), _.each(t, function(t, n) {
 _.set(e, [ n, t.metadata.name ], t);
 }), n.interestingBuildsByConfig = e;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 m.push(i.watch(u, r, function(e) {
 n.buildsLoaded = !0, s = e.by("metadata.name"), h();
@@ -11605,16 +11620,33 @@ if (n.buildConfigsLoaded = !0, n.buildConfigs = _.pickBy(e.by("metadata.name"), 
 var t = a.SAMPLE_PIPELINE_TEMPLATE.name, o = a.SAMPLE_PIPELINE_TEMPLATE.namespace;
 i.get("templates", t, {
 namespace: o
+=======
+m.push(i.watch(u, a, function(e) {
+n.buildsLoaded = !0, s = e.by("metadata.name"), h();
+}));
+var y = !1;
+m.push(i.watch(n.buildConfigsVersion, a, function(e) {
+if (n.buildConfigsLoaded = !0, n.buildConfigs = _.pickBy(e.by("metadata.name"), f), _.isEmpty(n.buildConfigs) && !y && (y = !0, o.SAMPLE_PIPELINE_TEMPLATE)) {
+var t = o.SAMPLE_PIPELINE_TEMPLATE.name, a = o.SAMPLE_PIPELINE_TEMPLATE.namespace;
+i.get(d, t, {
+namespace: a
+>>>>>>> Update pipelines controller to use getPreferredVersion
 }, {
 errorNotification: !1
 }).then(function(e) {
-n.createSampleURL = r.createFromTemplateURL(e, n.projectName);
+n.createSampleURL = c.createFromTemplateURL(e, n.projectName);
 });
 }
+<<<<<<< HEAD
 g();
 })), n.startBuild = o.startBuild, n.$on("$destroy", function() {
 i.unwatchAll(l);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+h();
+})), n.startBuild = r.startBuild, n.$on("$destroy", function() {
+i.unwatchAll(m);
+>>>>>>> Update pipelines controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d) {
