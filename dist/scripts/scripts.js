@@ -15788,6 +15788,7 @@ t.secrets = e.select(t.unfilteredSecrets), o();
 }), t.$on("$destroy", function() {
 r.unwatchAll(i);
 });
+<<<<<<< HEAD
 }));
 } ]), angular.module("openshiftConsole").controller("SecretController", [ "$routeParams", "$filter", "$scope", "APIService", "DataService", "ProjectsService", "SecretsService", function(e, t, n, r, a, o, i) {
 =======
@@ -15804,9 +15805,21 @@ title: n.secretName
 } ], n.secretsVersion = r.getPreferredVersion("secrets");
 var s = [], c = function(e, t) {
 n.secret = e, "DELETED" !== t ? n.decodedSecretData = i.decodeSecretData(n.secret.data) : n.alerts.deleted = {
+=======
+} ]), angular.module("openshiftConsole").controller("PersistentVolumeClaimController", [ "$filter", "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", function(e, t, n, a, r, o) {
+t.projectName = n.project, t.pvc = null, t.alerts = {}, t.renderOptions = t.renderOptions || {}, t.renderOptions.hideFilterWidget = !0, t.breadcrumbs = [ {
+title: "Persistent Volume Claims",
+link: "project/" + n.project + "/browse/storage"
+}, {
+title: n.pvc
+} ], t.pvcVersion = a.getPreferredVersion("persistentvolumeclaims"), t.eventsVersion = a.getPreferredVersion("events");
+var i = [], s = function(e, n) {
+t.pvc = e, t.loaded = !0, "DELETED" === n && (t.alerts.deleted = {
+>>>>>>> Update PersistentVolumeClaim controller to use getPreferredVersion
 type: "warning",
 message: "This secret has been deleted."
 };
+<<<<<<< HEAD
 };
 n.addToApplicationVisible = !1, n.addToApplication = function() {
 n.secret.data && (n.addToApplicationVisible = !0);
@@ -15825,6 +15838,21 @@ details: t("getErrorDetails")(e)
 };
 }), n.$on("$destroy", function() {
 a.unwatchAll(s);
+=======
+o.get(n.project).then(_.spread(function(a, o) {
+t.project = a, t.projectContext = o, r.get(t.pvcVersion, n.pvc, o, {
+errorNotification: !1
+}).then(function(e) {
+s(e), i.push(r.watchObject(t.pvcVersion, n.pvc, o, s));
+}, function(n) {
+t.loaded = !0, t.alerts.load = {
+type: "error",
+message: "The persistent volume claim details could not be loaded.",
+details: e("getErrorDetails")(n)
+};
+}), t.$on("$destroy", function() {
+r.unwatchAll(i);
+>>>>>>> Update PersistentVolumeClaim controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("CreateSecretController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {
