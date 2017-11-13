@@ -16068,7 +16068,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"(buildConfigName, buildConfig) in buildConfigs\" ng-if=\"!buildConfig || (buildConfig | isJenkinsPipelineStrategy)\" class=\"animate-repeat\">\n" +
     "<div ng-if=\"buildConfig\">\n" +
     "<div class=\"pull-right\">\n" +
+<<<<<<< 86d55f4cdc436b66183150c9e1fd887e82687d52
     "<button class=\"btn btn-default\" ng-if=\"'buildconfigs/instantiate' | canI : 'create'\" ng-click=\"startBuild(buildConfig)\" translate>\n" +
+=======
+    "<button class=\"btn btn-default\" ng-if=\"buildConfigsInstantiateVersion | canI : 'create'\" ng-click=\"startBuild(buildConfig)\">\n" +
+>>>>>>> Update pipelines controller to use getPreferredVersion
     "Start Pipeline\n" +
     "</button>\n" +
     "</div>\n" +
@@ -16118,8 +16122,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<build-pipeline build=\"build\"></build-pipeline>\n" +
     "</div>\n" +
     "<div ng-if=\"buildConfig\" class=\"mar-top-sm mar-bottom-xl\">\n" +
+<<<<<<< 86d55f4cdc436b66183150c9e1fd887e82687d52
     "<a ng-href=\"{{buildConfigs[buildConfigName] | navigateResourceURL}}\" translate>View Pipeline Runs</a>\n" +
     "<span ng-if=\"'buildconfigs' | canI : 'update'\">\n" +
+=======
+    "<a ng-href=\"{{buildConfigs[buildConfigName] | navigateResourceURL}}\">View Pipeline Runs</a>\n" +
+    "<span ng-if=\"buildConfigsVersion | canI : 'update'\">\n" +
+>>>>>>> Update pipelines controller to use getPreferredVersion
     "<span class=\"action-divider\">|</span>\n" +
     "<a ng-href=\"{{buildConfig | editResourceURL}}\" role=\"button\" translate>Edit Pipeline</a>\n" +
     "</span>\n" +
