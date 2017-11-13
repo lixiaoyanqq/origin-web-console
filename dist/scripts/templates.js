@@ -3617,7 +3617,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-href=\"{{pvc | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
     "</li>\n" +
     "<li>\n" +
-    "<delete-link ng-if=\"'persistentvolumeclaims' | canI : 'delete'\" kind=\"PersistentVolumeClaim\" resource-name=\"{{pvc.metadata.name}}\" project-name=\"{{pvc.metadata.namespace}}\" alerts=\"alerts\">\n" +
+    "<delete-link ng-if=\"pvcVersion | canI : 'delete'\" kind=\"PersistentVolumeClaim\" resource-name=\"{{pvc.metadata.name}}\" project-name=\"{{pvc.metadata.namespace}}\" alerts=\"alerts\">\n" +
     "</delete-link>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -3669,8 +3669,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</dl>\n" +
     "</div>\n" +
     "</uib-tab>\n" +
+<<<<<<< c1662a43b64d2a3c9b199692a5fea18601a03302
     "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update PersistentVolumeClaim controller to use getPreferredVersion
     "<events api-objects=\"[ pvc ] \" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
