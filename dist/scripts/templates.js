@@ -14093,15 +14093,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'Pods'\">\n" +
+=======
+    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Pods'\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<h2>Pods</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredPods | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredPods | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading pods\" ng-if=\"!podsLoaded\"></ellipsis-pulser>\n" +
     "<em>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"(pods | size) > 0\" translate>The current filters are hiding all pods.</div>\n" +
     "<span ng-if=\"podsLoaded && (pods | size) === 0\" translate>There are no pods in this project.</span>\n" +
+=======
+    "<div ng-if=\"(pods | size) > 0\">The current filters are hiding all pods.</div>\n" +
+    "<span ng-if=\"podsLoaded && (pods | size) === 0\">There are no pods in this project.</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</em>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14111,11 +14120,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"toggleItem($event, this, pod, true)\" role=\"button\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.pods[pod.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.pods[pod.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Expand</span>\n" +
+=======
+    "<span class=\"sr-only\">Collapse</span>\n" +
+    "</span>\n" +
+    "<span ng-if=\"!expanded.pods[pod.metadata.name]\">\n" +
+    "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Expand</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -14125,12 +14142,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-title\">\n" +
     "<h3>\n" +
     "<a ng-href=\"{{pod | navigateResourceURL}}\"><span ng-bind-html=\"pod.metadata.name | highlightKeywords : filterKeywords\"></span></a>\n" +
+<<<<<<< HEAD
     "<small><translate>created</translate> <span am-time-ago=\"pod.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
 <<<<<<< HEAD
 =======
     "<div class=\"list-group-item-text\">\n" +
+=======
+    "<small>created <span am-time-ago=\"pod.metadata.creationTimestamp\"></span></small>\n" +
+    "</h3>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"list-pf-additional-content\">\n" +
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
     "{{pod | podStatus | humanizeReason}}\n" +
     "<small ng-if=\"(pod | podStatus) === 'Running'\" class=\"text-muted\">\n" +
@@ -14138,6 +14164,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</small>\n" +
 >>>>>>> Improve monitoring page collapsed rows
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
     "<status-icon status=\"pod | podStatus\" disable-animation></status-icon>\n" +
@@ -14152,6 +14179,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<image-names pod-template=\"pod\" pods=\"[pod]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14183,15 +14213,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'ReplicationControllers'\">\n" +
     "<h2 translate>Deployments</h2>\n" +
+=======
+    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'ReplicationControllers'\">\n" +
+    "<h2>Deployments</h2>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredReplicationControllers | size) && !(filteredReplicaSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredReplicationControllers | size) && !(filteredReplicaSets | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading deployments\" ng-if=\"!replicationControllersLoaded\"></ellipsis-pulser>\n" +
     "<em>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"(replicationControllers | size) > 0 || (replicaSets | size) > 0\" translate>The current filters are hiding all deployments.</div>\n" +
     "<span ng-if=\"replicationControllersLoaded && !(replicationControllers | size) && replicaSetsLoaded && !(replicaSets | size)\" translate>There are no deployments in this project.</span>\n" +
+=======
+    "<div ng-if=\"(replicationControllers | size) > 0 || (replicaSets | size) > 0\">The current filters are hiding all deployments.</div>\n" +
+    "<span ng-if=\"replicationControllersLoaded && !(replicationControllers | size) && replicaSetsLoaded && !(replicaSets | size)\">There are no deployments in this project.</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</em>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14201,11 +14241,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" role=\"button\" ng-click=\"toggleItem($event, this, replicationController, true)\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.replicationControllers[replicationController.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.replicationControllers[replicationController.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Expand</span>\n" +
+=======
+    "<span class=\"sr-only\">Collapse</span>\n" +
+    "</span>\n" +
+    "<span ng-if=\"!expanded.replicationControllers[replicationController.metadata.name]\">\n" +
+    "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Expand</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -14215,6 +14263,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-title\">\n" +
     "<h3>\n" +
     "<a ng-href=\"{{replicationController | navigateResourceURL}}\"><span ng-bind-html=\"replicationController.metadata.name | highlightKeywords : filterKeywords\"></span></a>\n" +
+<<<<<<< HEAD
     "<small><translate>created</translate> <span am-time-ago=\"replicationController.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
@@ -14226,10 +14275,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"list-group-item-text\">\n" +
 >>>>>>> Improve monitoring page collapsed rows
+=======
+    "<small>created <span am-time-ago=\"replicationController.metadata.creationTimestamp\"></span></small>\n" +
+    "</h3>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"list-pf-additional-content\">\n" +
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<a href=\"\" ng-click=\"viewPodsForSet(replicationController)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[replicationController.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[replicationController.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
 <<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
@@ -14237,6 +14295,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<image-names pod-template=\"replicationController.spec.template\" pods=\"podsByOwnerUID[replicationController.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -14262,11 +14323,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"toggleItem($event, this, replicaSet, true)\" role=\"button\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.replicaSets[replicaSet.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Expand</span>\n" +
+=======
+    "<span class=\"sr-only\">Collapse</span>\n" +
+    "</span>\n" +
+    "<span ng-if=\"!expanded.replicaSets[replicaSet.metadata.name]\">\n" +
+    "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Expand</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -14276,6 +14345,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-title\">\n" +
     "<h3>\n" +
     "<a ng-href=\"{{replicaSet | navigateResourceURL}}\"><span ng-bind-html=\"replicaSet.metadata.name | highlightKeywords : filterKeywords\"></span></a>\n" +
+<<<<<<< HEAD
     "<small><translate>created</translate> <span am-time-ago=\"replicaSet.metadata.creationTimestamp\"></span></small>\n" +
     "</h3>\n" +
     "</div>\n" +
@@ -14287,10 +14357,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"list-group-item-text\">\n" +
 >>>>>>> Improve monitoring page collapsed rows
+=======
+    "<small>created <span am-time-ago=\"replicaSet.metadata.creationTimestamp\"></span></small>\n" +
+    "</h3>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"list-pf-additional-content\">\n" +
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[replicaSet.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[replicaSet.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
 <<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
@@ -14298,6 +14377,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<image-names pod-template=\"replicaSet.spec.template\" pods=\"podsByOwnerUID[replicaSet.metadata.uid]\">\n" +
     "</image-names>\n" +
     "</div>\n" +
@@ -14306,6 +14388,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<div class=\"list-pf-expansion collapse\" ng-if=\"expanded.replicationControllers[replicationController.metadata.name]\" ng-class=\"{'in': expanded.replicationControllers[replicationController.metadata.name]}\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "\n" +
@@ -14319,13 +14404,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-pf-expansion collapse\" ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\" ng-class=\"{'in': expanded.replicaSets[replicaSet.metadata.name]}\">\n" +
     "<div class=\"list-pf-container\">\n" +
+<<<<<<< HEAD
     "<translate>Logs are not available for replica sets.</translate>\n" +
     "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | size\">\n" +
     "<translate>To see application logs, view the logs for one of the replica set's</translate>\n" +
 =======
     "<div ng-repeat-end ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\" class=\"list-group-expanded-section\" ng-class=\"{'expanded': expanded.replicaSets[replicaSet.metadata.name]}\">\n" +
+=======
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "Logs are not available for replica sets.\n" +
-    "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | hashSize\">\n" +
+    "<span ng-if=\"podsByOwnerUID[replicaSet.metadata.uid] | size\">\n" +
     "To see application logs, view the logs for one of the replica set's\n" +
 >>>>>>> Bug 1488288 - Fix pods link on monitoring page
     "<a href=\"\" ng-click=\"viewPodsForSet(replicaSet)\">pods</a>.\n" +
@@ -14339,15 +14427,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '有状态集群'\">\n" +
     "<h2 translate>Stateful Sets</h2>\n" +
+=======
+    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'StatefulSets'\">\n" +
+    "<h2>Stateful Sets</h2>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredStatefulSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredStatefulSets | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading stateful sets\" ng-if=\"!statefulSetsLoaded\"></ellipsis-pulser>\n" +
     "<em>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"(statefulSets | size) > 0\"><translate>The current filters are hiding all stateful sets.</translate></div>\n" +
     "<span ng-if=\"statefulSetsLoaded && (statefulSets | size) === 0\"><translate>There are no stateful sets in this project.</translate></span>\n" +
+=======
+    "<div ng-if=\"(statefulSets | size) > 0\">The current filters are hiding all stateful sets.</div>\n" +
+    "<span ng-if=\"statefulSetsLoaded && (statefulSets | size) === 0\">There are no stateful sets in this project.</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</em>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14375,6 +14473,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</h3>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "</div>\n" +
     "<div class=\"list-pf-additional-content\">\n" +
     "<div class=\"list-pf-additional-content-item\">\n" +
@@ -14382,10 +14481,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"list-group-item-text\">\n" +
 >>>>>>> Improve monitoring page collapsed rows
+=======
+    "</div>\n" +
+    "<div class=\"list-pf-additional-content\">\n" +
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<a href=\"\" ng-click=\"viewPodsForSet(set)\" class=\"mini-donut-link\" ng-class=\"{ 'disabled-link': !(podsByOwnerUID[set.metadata.uid] | size) }\">\n" +
     "<pod-donut pods=\"podsByOwnerUID[set.metadata.uid]\" mini=\"true\"></pod-donut>\n" +
     "</a>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "</div>\n" +
 <<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
@@ -14393,6 +14498,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<image-names pod-template=\"set.spec.template\" pods=\"podsByOwnerUID[set.metadata.uid]\"></image-names>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14415,15 +14523,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '构建'\" class=\"mar-bottom-xl\">\n" +
     "<h2 translate>Builds</h2>\n" +
+=======
+    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Builds'\" class=\"mar-bottom-xl\">\n" +
+    "<h2>Builds</h2>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredBuilds | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredBuilds | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading builds\" ng-if=\"!buildsLoaded\"></ellipsis-pulser>\n" +
     "<em>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"(builds | size) > 0\" translate>The current filters are hiding all builds.</div>\n" +
     "<span ng-if=\"buildsLoaded && (builds | size) === 0\" translate>当前项目中没有构建</span>\n" +
+=======
+    "<div ng-if=\"(builds | size) > 0\">The current filters are hiding all builds.</div>\n" +
+    "<span ng-if=\"buildsLoaded && (builds | size) === 0\">There are no builds in this project.</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</em>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14433,11 +14551,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"toggleItem($event, this, build, true)\" role=\"button\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.builds[build.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
+<<<<<<< HEAD
     "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.builds[build.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Expand</span>\n" +
+=======
+    "<span class=\"sr-only\">Collapse</span>\n" +
+    "</span>\n" +
+    "<span ng-if=\"!expanded.builds[build.metadata.name]\">\n" +
+    "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Expand</span>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -14447,7 +14573,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-title\">\n" +
     "<h3>\n" +
     "<a ng-href=\"{{build | navigateResourceURL}}\"><span ng-bind-html=\"build.metadata.name | highlightKeywords : filterKeywords\"></span></a>\n" +
+<<<<<<< HEAD
     "<small><translate>created</translate> <span am-time-ago=\"build.metadata.creationTimestamp\"></span></small>\n" +
+=======
+    "<small>created <span am-time-ago=\"build.metadata.creationTimestamp\"></span></small>\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "</h3>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -14456,11 +14586,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<build-status build=\"build\"></build-status>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"list-pf-additional-content-item\">\n" +
 =======
     "<div class=\"list-view-pf-additional-info\">\n" +
     "<div class=\"list-view-pf-additional-info-item\">\n" +
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+    "<div class=\"list-pf-additional-content-item\">\n" +
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
     "<div class=\"text-prepended-icon word-break\" ng-if=\"build.spec.source.type || build.spec.revision.git.commit || build.spec.source.git.uri\">\n" +
     "<span class=\"fa fa-code\" aria-hidden=\"true\"></span>\n" +
     "<span ng-if=\"build.spec.revision.git.commit\">\n" +
