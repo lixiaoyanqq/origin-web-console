@@ -10271,32 +10271,37 @@ b = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
 }), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
 };
-n.toggleItem = function(e, t, r) {
-var o = $(e.target);
-if (!o || !o.closest("a", t).length) {
-var i, s;
+n.toggleItem = function(e, t, r, o) {
+var i = $(e.target);
+if (o || !i || !i.closest("a", t).length) {
+var s, c;
 switch (r.kind) {
 case "Build":
-i = !n.expanded.builds[r.metadata.name], n.expanded.builds[r.metadata.name] = i, s = i ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(s, r);
-var c = _.get(n.podsByName, a("annotation")(r, "buildPod"));
-c && p.$emit(s, c);
+s = !n.expanded.builds[r.metadata.name], n.expanded.builds[r.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, r);
+var l = _.get(n.podsByName, a("annotation")(r, "buildPod"));
+l && p.$emit(c, l);
 break;
 
 case "ReplicationController":
-i = !n.expanded.replicationControllers[r.metadata.name], n.expanded.replicationControllers[r.metadata.name] = i, s = i ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(s, r);
-var l = a("annotation")(r, "deployerPod");
-l && p.$emit(s, {
+s = !n.expanded.replicationControllers[r.metadata.name], n.expanded.replicationControllers[r.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, r);
+var u = a("annotation")(r, "deployerPod");
+u && p.$emit(c, {
 kind: "Pod",
 metadata: {
+<<<<<<< fe16a6e429c93aa50d8bc5da7b91ea5e273b7593
 name: l
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+name: u
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 }
 }), _.each(n.podsByOwnerUID[r.metadata.uid], function(e) {
-p.$emit(s, e);
+p.$emit(c, e);
 });
 break;
 
 case "ReplicaSet":
+<<<<<<< fe16a6e429c93aa50d8bc5da7b91ea5e273b7593
 <<<<<<< 9bc0af8cb56dcc9609307333b9424f396867cab5
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -10314,10 +10319,15 @@ m.$emit(s, e);
 i = !n.expanded.replicaSets[r.metadata.name], n.expanded.replicaSets[r.metadata.name] = i, s = i ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(s, r), _.each(n.podsByOwnerUID[r.metadata.uid], function(e) {
 p.$emit(s, e);
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+s = !n.expanded.replicaSets[r.metadata.name], n.expanded.replicaSets[r.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, r), _.each(n.podsByOwnerUID[r.metadata.uid], function(e) {
+p.$emit(c, e);
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 });
 break;
 
 case "Pod":
+<<<<<<< fe16a6e429c93aa50d8bc5da7b91ea5e273b7593
 <<<<<<< 9bc0af8cb56dcc9609307333b9424f396867cab5
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -10387,10 +10397,13 @@ i = !n.expanded.pods[r.metadata.name], n.expanded.pods[r.metadata.name] = i, s =
 =======
 i = !n.expanded.pods[r.metadata.name], n.expanded.pods[r.metadata.name] = i, s = i ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(s, r);
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+s = !n.expanded.pods[r.metadata.name], n.expanded.pods[r.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, r);
+>>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 break;
 
 case "StatefulSet":
-i = !n.expanded.statefulSets[r.metadata.name], n.expanded.statefulSets[r.metadata.name] = i, s = i ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(s, r);
+s = !n.expanded.statefulSets[r.metadata.name], n.expanded.statefulSets[r.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, r);
 }
 }
 }, n.viewPodsForSet = function(e) {
