@@ -4809,13 +4809,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< 1720db6ea0b4aec9cceca2f9ada6a6dabb2f3546
     "<li ng-if=\"'routes' | canI : 'create'\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route?service={{service.metadata.name}}\" role=\"button\" translate>Create Route</a>\n" +
     "</li>\n" +
     "<li ng-if=\"'services' | canI : 'update'\">\n" +
     "<a ng-href=\"{{service | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<li ng-if=\"routesVersion | canI : 'create'\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route?service={{service.metadata.name}}\" role=\"button\">Create Route</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"'services' | canI : 'delete'\">\n" +
+    "<li ng-if=\"servicesVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{service | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update service, services controllers to use getPreferredVersion
+    "</li>\n" +
+    "<li ng-if=\"servicesVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Service\" resource-name=\"{{service.metadata.name}}\" project-name=\"{{service.metadata.namespace}}\" alerts=\"alerts\">\n" +
     "</delete-link>\n" +
     "</li>\n" +
@@ -4868,8 +4876,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt ng-if-start=\"(routesForService | hashSize) == 0\" translate>Routes:</dt>\n" +
     "<dd ng-if-end>\n" +
     "<span>\n" +
+<<<<<<< 1720db6ea0b4aec9cceca2f9ada6a6dabb2f3546
     "<a ng-href=\"project/{{project.metadata.name}}/create-route?service={{service.metadata.name}}\" ng-if=\"'routes' | canI : 'create'\">Create route</a>\n" +
     "<span ng-if=\"!('routes' | canI : 'create')\"><em translate>None</em></span>\n" +
+=======
+    "<a ng-href=\"project/{{project.metadata.name}}/create-route?service={{service.metadata.name}}\" ng-if=\"routesVersion | canI : 'create'\">Create route</a>\n" +
+    "<span ng-if=\"!(routesVersion | canI : 'create')\"><em>None</em></span>\n" +
+>>>>>>> Update service, services controllers to use getPreferredVersion
     "</span>\n" +
     "</dd>\n" +
     "</dl>\n" +
@@ -4887,8 +4900,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<annotations annotations=\"service.metadata.annotations\"></annotations>\n" +
     "</div>\n" +
     "</uib-tab>\n" +
+<<<<<<< 1720db6ea0b4aec9cceca2f9ada6a6dabb2f3546
     "<uib-tab active=\"selectedTab.events\" ng-if=\"'events' | canI : 'watch'\">\n" +
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"eventsVersion | canI : 'watch'\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update service, services controllers to use getPreferredVersion
     "<events api-objects=\"[ service ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
