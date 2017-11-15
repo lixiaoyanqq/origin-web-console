@@ -178,11 +178,15 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Wait for service classes and plans to load
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), V = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update routes controller to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), V = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -13514,6 +13518,7 @@ o.unwatchAll(k);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "gettext", "gettextCatalog", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y, b, S, C) {
 var w = !1, P = t("annotation"), j = t("humanizeKind")(d), k = t("hasDeployment"), I = r.getPreferredVersion("builds"), R = r.getPreferredVersion("imagestreams"), T = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), N = r.getPreferredVersion("pods"), D = r.getPreferredVersion("replicasets"), A = r.getPreferredVersion("replicationcontrollers"), $ = r.getPreferredVersion("resourcequotas"), B = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
@@ -13543,6 +13548,11 @@ var b = !1, S = t("annotation"), C = t("humanizeKind")(y), w = t("hasDeployment"
 >>>>>>> Adding label filter to ste secrets page
 switch (y) {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+} ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment");
+switch (d) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 case "ReplicaSet":
 <<<<<<< HEAD
 e.resource = D, e.healthCheckURL = f.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
@@ -13554,10 +13564,11 @@ e.resource = A, e.healthCheckURL = f.healthCheckURL(n.project, "ReplicationContr
 e.resource = {
 group: "extensions",
 resource: "replicasets"
-}, e.healthCheckURL = m.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+}, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
 break;
 
 case "ReplicationController":
+<<<<<<< HEAD
 e.resource = "replicationcontrollers", e.healthCheckURL = m.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
 <<<<<<< HEAD
 >>>>>>> Support EnvFrom in the Env Editors
@@ -13647,12 +13658,33 @@ e.autoscalers = e.hpaForRS.concat(r);
 var h = {}, E = function() {
 if (e.hpaForRS = s.filterHPA(h, y, n.replicaSet), e.deploymentConfigName && e.isActive) {
 var t = s.filterHPA(h, "DeploymentConfig", e.deploymentConfigName);
+=======
+e.resource = "replicationcontrollers", e.healthCheckURL = g.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
+}
+var k = {};
+e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
+var j = a.getPreferredVersion("builds"), R = a.getPreferredVersion("imagestreams"), I = a.getPreferredVersion("horizontalpodautoscalers"), E = a.getPreferredVersion("limitranges"), T = a.getPreferredVersion("pods"), N = a.getPreferredVersion("replicasets"), D = a.getPreferredVersion("resourcequotas"), A = a.getPreferredVersion("appliedclusterresourcequotas");
+e.deploymentsVersion = a.getPreferredVersion("deployments"), e.deploymentConfigsVersion = a.getPreferredVersion("deploymentconfigs"), e.eventsVersion = a.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
+var $ = [];
+p.isAvailable().then(function(t) {
+e.metricsAvailable = t;
+});
+var B = t("deploymentStatus"), L = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
+}, U = t("isIE")();
+y.get(n.project).then(_.spread(function(a, u) {
+e.project = a, e.projectContext = u;
+var p = {}, y = function() {
+if (e.hpaForRS = c.filterHPA(p, d, n.replicaSet), e.deploymentConfigName && e.isActive) {
+var t = c.filterHPA(p, "DeploymentConfig", e.deploymentConfigName);
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 e.autoscalers = e.hpaForRS.concat(t);
 } else if (e.deployment && e.isActive) {
-var a = s.filterHPA(h, "Deployment", e.deployment.metadata.name);
+var a = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(a);
 >>>>>>> Add SVG icons
 } else e.autoscalers = e.hpaForRS;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13706,9 +13738,14 @@ P.push(o.watch(e.resource, g, function(t) {
 =======
 k.push(o.watch(e.resource, g, function(t) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+}, O = function() {
+$.push(i.watch(e.resource, u, function(t) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 var n, a = [];
 >>>>>>> Adjust events to show in the drawer
 angular.forEach(t.by("metadata.name"), function(t) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13794,6 +13831,21 @@ i && (e.logOptions.version = i), e.healthCheckURL = m.healthCheckURL(n.project, 
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+(C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
+}), n = s.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
+}));
+}, F = function() {
+c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, a).then(function(t) {
+e.hpaWarnings = t;
+});
+}, V = function(a) {
+var r = C(a, "deploymentConfig");
+if (r) {
+S = !0, e.deploymentConfigName = r;
+var o = C(a, "deploymentVersion");
+o && (e.logOptions.version = o), e.healthCheckURL = g.healthCheckURL(n.project, "DeploymentConfig", r), i.get(e.deploymentConfigsVersion, r, u, {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 errorNotification: !1
 }).then(function(t) {
 e.deploymentConfig = t;
@@ -13805,21 +13857,30 @@ details: t("getErrorDetails")(n)
 } : e.deploymentConfigMissing = !0;
 });
 }
+<<<<<<< HEAD
 }, F = function() {
+=======
+}, x = function() {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 e.isActive = s.isActiveReplicaSet(e.replicaSet, e.deployment);
 }, M = function(t) {
 return _.some(t, function(t) {
 if (_.get(t, "status.replicas") && _.get(t, "metadata.uid") !== _.get(e.replicaSet, "metadata.uid")) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 var n = v.getControllerReferences(t);
 =======
 var n = p.getControllerReferences(t);
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+var n = v.getControllerReferences(t);
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 return _.some(n, {
 uid: e.deployment.metadata.uid
 });
 }
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, q = !1, z = function() {
 var t = v.getControllerReferences(e.replicaSet), r = _.find(t, {
@@ -13842,10 +13903,19 @@ e.deployment = t, e.healthCheckURL = m.healthCheckURL(n.project, "Deployment", t
 group: "apps",
 resource: "deployments"
 }, t.metadata.name, g, function(t, a) {
+=======
+}, q = !1, z = function() {
+var t = v.getControllerReferences(e.replicaSet), a = _.find(t, {
+kind: "Deployment"
+});
+a && i.get(e.deploymentsVersion, a.name, u).then(function(t) {
+e.deployment = t, e.healthCheckURL = g.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), $.push(i.watchObject(e.deploymentsVersion, t.metadata.name, u, function(t, a) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 if ("DELETED" === a) return e.alerts["deployment-deleted"] = {
 >>>>>>> Patternfly vertical navigation and project bar
 type: "warning",
 message: "The deployment controlling this replica set has been deleted."
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, e.healthCheckURL = f.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions"), e.deploymentMissing = !0, void delete e.deployment;
 e.deployment = t, e.breadcrumbs = o.getBreadcrumbs({
@@ -13853,10 +13923,15 @@ e.deployment = t, e.breadcrumbs = o.getBreadcrumbs({
 }, e.healthCheckURL = m.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions"), e.deploymentMissing = !0, void delete e.deployment;
 e.deployment = t, e.breadcrumbs = r.getBreadcrumbs({
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+}, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions"), e.deploymentMissing = !0, void delete e.deployment;
+e.deployment = t, e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 object: e.replicaSet,
 displayName: "#" + s.getRevision(e.replicaSet),
 parent: {
 title: e.deployment.metadata.name,
+<<<<<<< HEAD
 <<<<<<< HEAD
 link: f.resourceURL(e.deployment)
 },
@@ -14022,11 +14097,35 @@ errorNotification: !1
 switch (e.loaded = !0, e.replicaSet = t, O(t), d) {
 case "ReplicationController":
 A(t);
+=======
+link: g.resourceURL(e.deployment)
+},
+humanizedKind: "Deployments"
+}), x(), y();
+})), $.push(i.watch(N, u, function(e) {
+var t = e.by("metadata.name");
+q = M(t);
+}));
+});
+}, H = function() {
+if (!_.isEmpty(k)) {
+var t = _.get(e, "replicaSet.spec.template");
+t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, u);
+}
+};
+i.get(e.resource, n.replicaSet, u, {
+errorNotification: !1
+}).then(function(t) {
+switch (e.loaded = !0, e.replicaSet = t, L(t), d) {
+case "ReplicationController":
+V(t);
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 break;
 
 case "ReplicaSet":
 z();
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 S(), e.breadcrumbs = o.getBreadcrumbs({
@@ -14094,12 +14193,23 @@ message: "This " + C + " has been deleted."
 =======
 })), e.deploymentConfigName && T(), k.push(o.watch("pods", g, function(t) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+F(), e.breadcrumbs = o.getBreadcrumbs({
+object: t
+}), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
+"DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This " + w + " has been deleted."
+}), e.replicaSet = t, L(t), F(), H(), e.deployment && x();
+})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
 }, function(r) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 message: "The " + j + " details could not be loaded.",
@@ -14112,10 +14222,16 @@ message: "The " + C + " details could not be loaded.",
 details: t("getErrorDetails")(a)
 }, e.breadcrumbs = r.getBreadcrumbs({
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: "The " + w + " details could not be loaded.",
+details: t("getErrorDetails")(a)
+}, e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 name: n.replicaSet,
 kind: d,
 namespace: n.project
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14224,10 +14340,33 @@ P.push(o.watch("resourcequotas", g, function(t) {
 =======
 k.push(o.watch("resourcequotas", g, function(t) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+}), $.push(i.watch(e.resource, u, function(n, a, r) {
+e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
+var o, i;
+r && (o = C(r, "deploymentConfig"), i = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][i] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][i] : e.deploymentConfigDeploymentsInProgress = s.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
+e.causes = t("deploymentCauses")(e);
+});
+})), $.push(i.watch(R, u, function(e) {
+var t = e.by("metadata.name");
+l.buildDockerRefMapForImageStreams(t, k), H(), m.log("imagestreams (subscribe)", t);
+})), $.push(i.watch(j, u, function(t) {
+e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
+})), $.push(i.watch(I, u, function(e) {
+p = e.by("metadata.name"), y(), F();
+}, {
+poll: U,
+pollInterval: 6e4
+})), i.list(E, u).then(function(t) {
+e.limitRanges = t.by("metadata.name"), F();
+});
+$.push(i.watch(D, u, function(t) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14245,6 +14384,9 @@ pollInterval: 6e4
 =======
 })), k.push(o.watch("appliedclusterresourcequotas", g, function(t) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+})), $.push(i.watch(A, u, function(t) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -14252,6 +14394,7 @@ pollInterval: 6e4
 }));
 var G = t("deploymentIsLatest");
 e.showRollbackAction = function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 return "Complete" === V(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
 =======
@@ -14266,6 +14409,18 @@ s.cancelRunningDeployment(e, u);
 }, e.scale = function(n) {
 var r = e.deployment || e.deploymentConfig || e.replicaSet;
 s.scale(r, n).then(_.noop, function(n) {
+=======
+return "Complete" === B(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && r.canI("deploymentconfigrollbacks", "create");
+}, e.retryFailedDeployment = function(t) {
+s.retryFailedDeployment(t, u, e);
+}, e.rollbackToDeployment = function(t, n, a, r) {
+s.rollbackToDeployment(t, n, a, r, u, e);
+}, e.cancelRunningDeployment = function(e) {
+s.cancelRunningDeployment(e, u);
+}, e.scale = function(n) {
+var a = e.deployment || e.deploymentConfig || e.replicaSet;
+s.scale(a, n).then(_.noop, function(n) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 e.alerts = e.alerts || {}, e.alerts.scale = {
 type: "error",
 message: "An error occurred scaling.",
@@ -14275,6 +14430,7 @@ details: t("getErrorDetails")(n)
 };
 var K = t("hasDeploymentConfig");
 e.isScalable = function() {
+<<<<<<< HEAD
 return !!_.isEmpty(e.autoscalers) && (!K(e.replicaSet) && !k(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !q)));
 }, e.removeVolume = function(n, r, a) {
 var o = a.getString(r("This will remove the volume from the")) + "  " + t("humanizeKind")(e.replicaSet.kind) + ".";
@@ -14283,9 +14439,20 @@ g.confirm({
 title: a.getString(r("Remove volume")) + " " + n.name + "?",
 details: o,
 okButtonText: a.getString(r("Remove")),
+=======
+return !!_.isEmpty(e.autoscalers) && (!K(e.replicaSet) && !P(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !q)));
+}, e.removeVolume = function(n) {
+var a = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
+n.persistentVolumeClaim ? a += " It will not delete the persistent volume claim." : n.secret ? a += " It will not delete the secret." : n.configMap && (a += " It will not delete the config map.");
+f.confirm({
+message: "Remove volume " + n.name + "?",
+details: a,
+okButtonText: "Remove",
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 okButtonClass: "btn-danger",
 cancelButtonText: a.getString(r("Cancel"))
 }).then(function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 C.removeVolume(e.replicaSet, n, u);
 });
@@ -14315,6 +14482,12 @@ o.unwatchAll(P);
 =======
 o.unwatchAll(k);
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+b.removeVolume(e.replicaSet, n, u);
+});
+}, e.$on("$destroy", function() {
+i.unwatchAll($);
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, p, m, f, g, h, v, y) {
@@ -36792,6 +36965,7 @@ skipDigest: !0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, U = _.once(function(e, t) {
 A(), l = o.$on("NotificationsService.onNotificationAdded", t);
 }), O = function() {
@@ -36832,6 +37006,9 @@ angular.extend(p, {
 =======
 }, V = _.once(function(e, t) {
 >>>>>>> Update routes controller to use getPreferredVersion
+=======
+}, V = _.once(function(e, t) {
+>>>>>>> Update replicaSets controller to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {

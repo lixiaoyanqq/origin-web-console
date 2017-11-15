@@ -27,8 +27,8 @@ angular.module('openshiftConsole')
                         OwnerReferencesService,
                         PodsService,
                         ProjectsService,
-		        gettext,
-		        gettextCatalog,
+                        gettext,
+                        gettextCatalog,
                         StorageService) {
     var hasDC = false;
 
