@@ -4161,10 +4161,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"pull-right\" ng-if=\"project && (routesVersion | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\" translate>Create Route</a>\n" +
 =======
     "<div class=\"pull-right\" ng-if=\"project && ('routes' | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (routesVersion | canI : 'create') && ((routes | hashSize) > 0 || filterWithZeroResults)\">\n" +
+>>>>>>> Update routes controller to use getPreferredVersion
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-default\">Create Route</a>\n" +
 >>>>>>> Replacing empty tables with empty state message
     "</div>\n" +
@@ -4212,7 +4216,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<h2>No routes.</h2>\n" +
     "<p>No routes have been added to project {{projectName}}.</p>\n" +
-    "<p ng-if=\"project && ('routes' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<p ng-if=\"project && (routesVersion | canI : 'create') && !filterWithZeroResults\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-route\" class=\"btn btn-primary btn-lg\">Create Route</a>\n" +
     "</p>\n" +
     "</div>\n" +
