@@ -167,6 +167,7 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 >>>>>>> Update pod controller to use getPreferredVersion
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 5bd87652785e7e3c71d4b7b194cb0eb0fca57124
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 <<<<<<< dcc2597a3dba049aabc111ffd8a8e1cd9f390594
@@ -181,6 +182,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), V = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update secret, secrets controllers to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), V = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -14064,23 +14068,24 @@ n.unwatchAll(i);
 e.bindingsByInstanceRef = {}, e.labelSuggestions = {}, e.projectName = n.project, e.serviceClasses = {}, e.serviceInstances = {}, e.unfilteredServiceInstances = {}, e.clearFilter = function() {
 s.clear();
 };
-var u = [], d = function() {
+var u = a.getPreferredVersion("servicebindings"), d = a.getPreferredVersion("clusterserviceclasses");
+e.serviceInstancesVersion = a.getPreferredVersion("serviceinstances");
+var m = [], p = function() {
 e.serviceInstances = s.getLabelSelector().select(e.unfilteredServiceInstances);
-}, m = function() {
+}, f = function() {
 e.unfilteredServiceInstances = r.sortServiceInstances(e.unfilteredServiceInstances, e.serviceClasses);
 };
 e.getServiceClass = function(t) {
 var n = _.get(t, "spec.clusterServiceClassRef.name");
 return _.get(e, [ "serviceClasses", n ]);
 }, l.get(n.project).then(_.spread(function(t, n) {
-function r() {
+function a() {
 e.filterWithZeroResults = !s.getLabelSelector().isEmpty() && _.isEmpty(e.serviceInstances) && !_.isEmpty(e.unfilteredServiceInstances);
 }
-e.project = t, e.projectContext = n;
-var o = a.getPreferredVersion("servicebindings");
-u.push(i.watch(o, n, function(t) {
+e.project = t, e.projectContext = n, m.push(i.watch(u, n, function(t) {
 var n = t.by("metadata.name");
 e.bindingsByInstanceRef = _.groupBy(n, "spec.instanceRef.name");
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 0ba73cbc37b88f92a6380ccc93fc8e3d978020aa
 })), u.push(i.watch({
 group: "servicecatalog.k8s.io",
@@ -14106,12 +14111,18 @@ i.list(p, {}, function(t) {
 >>>>>>> Adopt service catalog API changes
 e.serviceClasses = t.by("metadata.name"), m(), d();
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+})), m.push(i.watch(e.serviceInstancesVersion, n, function(t) {
+e.serviceInstancesLoaded = !0, e.unfilteredServiceInstances = t.by("metadata.name"), f(), p(), a(), s.addLabelSuggestionsFromResources(e.unfilteredServiceInstances, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), c.log("provisioned services (subscribe)", e.unfilteredServiceInstances);
+})), i.list(d, {}, function(t) {
+e.serviceClasses = t.by("metadata.name"), f(), p();
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 }), s.onActiveFiltersChanged(function(t) {
 e.$evalAsync(function() {
-e.serviceInstances = t.select(e.unfilteredServiceInstances), r();
+e.serviceInstances = t.select(e.unfilteredServiceInstances), a();
 });
 }), e.$on("$destroy", function() {
-i.unwatchAll(u);
+i.unwatchAll(m);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ServiceInstanceController", [ "$scope", "$filter", "$routeParams", "APIService", "BindingService", "AuthorizationService", "Catalog", "DataService", "Logger", "ProjectsService", "SecretsService", "ServiceInstancesService", function(e, t, n, a, r, o, i, s, c, l, u, d) {
@@ -14157,10 +14168,16 @@ e.showParameterValues = !e.showParameterValues;
 }, e.closeEditDialog = function() {
 e.editDialogShown = !1;
 };
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 var m, p = [], f = [], g = t("serviceInstanceDisplayName"), v = t("isServiceInstanceReady"), h = a.getPreferredVersion("servicebindings");
 e.serviceInstancesVersion = a.getPreferredVersion("serviceinstances");
 var y = function() {
 >>>>>>> Service instance details configuration and edit
+=======
+var m = a.getPreferredVersion("servicebindings");
+e.eventsVersion = a.getPreferredVersion("events"), e.serviceInstancesVersion = a.getPreferredVersion("serviceinstances");
+var p, f, g = [], v = [], h = t("serviceInstanceDisplayName"), y = t("isServiceInstanceFailed"), b = function() {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 e.breadcrumbs.push({
 title: e.displayName
 });
@@ -14174,7 +14191,11 @@ title: e.displayName
 }, S = function() {
 >>>>>>> Adding label filter to ste secrets page
 if (e.serviceInstance && e.parameterSchema) {
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 s.unwatchAll(f), f = [], e.allowParametersReveal = o.canI("secrets", "get", e.projectName), e.parameterData = {}, e.opaqueParameterKeys = [];
+=======
+s.unwatchAll(v), v = [], e.allowParametersReveal = o.canI("secrets", "get", e.projectName), e.parameterData = {}, e.opaqueParameterKeys = [];
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 var t = e.allowParametersReveal ? "" : "*****";
 _.each(_.keys(_.get(e.parameterSchema, "properties")), function(n) {
 e.parameterData[n] = t;
@@ -14183,7 +14204,11 @@ var n = _.get(e.serviceInstance, "status.externalProperties.parameters", {});
 _.each(_.keys(n), function(t) {
 "<redacted>" === n[t] ? e.parameterData[t] = "*****" : (e.parameterData[t] = n[t], e.opaqueParameterKeys.push(t));
 }), e.allowParametersReveal && _.each(_.get(e.serviceInstance, "spec.parametersFrom"), function(t) {
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 f.push(s.watchObject("secrets", _.get(t, "secretKeyRef.name"), e.projectContext, function(n) {
+=======
+v.push(s.watchObject("secrets", _.get(t, "secretKeyRef.name"), e.projectContext, function(n) {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 try {
 var a = JSON.parse(u.decodeSecretData(n.data)[t.secretKeyRef.key]);
 _.extend(e.parameterData, a);
@@ -14196,7 +14221,11 @@ c.warn("Unable to load parameters from secret " + _.get(t, "secretKeyRef.name"),
 }, C = function() {
 if (e.plan && e.serviceClass && e.serviceInstance) {
 var t = _.get(e.plan, "spec.instanceUpdateParameterSchema"), n = _.size(_.get(t, "properties")) > 0 || _.get(e.serviceClass, "spec.planUpdatable") && _.size(e.servicePlans) > 1;
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 e.editAvailable = n && v(e.serviceInstance) && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
+=======
+e.editAvailable = n && !y(e.serviceInstance) && !_.get(e.serviceInstance, "status.asyncOpInProgress") && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 }
 }, S = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), b();
@@ -14251,11 +14280,16 @@ e.serviceClass && !p && (e.servicePlans ? k() : p = i.getServicePlansForServiceC
 >>>>>>> Bug 1505281 - Improve import YAML results message
 =======
 }, k = function() {
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 e.serviceClass && !p && (e.servicePlans ? P() : p = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+e.serviceClass && !f && (e.servicePlans ? P() : f = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 var n = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
 e.servicePlans = _.reject(t, function(e) {
 return _.get(e, "status.removedFromBrokerCatalog") && e.metadata.name !== n;
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 2ce32f87748ff2fe030a6b53ff9490fcb80d856d
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -14271,6 +14305,13 @@ e.serviceClass = t, e.displayName = v(e.serviceInstance, e.serviceClass), b(), m
 >>>>>>> Fix for adding non-builder templates to a project
 =======
 }), k(), p = null;
+=======
+}), P(), f = null;
+}));
+}, j = function() {
+e.serviceInstance && !p && (e.serviceClass ? k() : p = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
+e.serviceClass = t, e.displayName = h(e.serviceInstance, e.serviceClass), b(), p = null, k();
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 }));
 }, j = function() {
 e.serviceInstance && !m && (e.serviceClass ? P() : m = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
@@ -14311,6 +14352,7 @@ l.get(n.project).then(_.spread(function(a, o) {
 e.project = a, e.projectContext = o, s.get(e.serviceInstancesVersion, n.instance, o, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 46344541d4f20e3585d6ea01425f784292c0d84a
 <<<<<<< ed7141d71afeea314ad6d1183c760dedc6ee73fe
 m(t), s.push(r.watchObject(e.serviceInstancesVersion, n.instance, o, m));
@@ -14319,6 +14361,9 @@ g(t), c.push(o.watchObject(e.serviceInstancesVersion, n.instance, i, g)), c.push
 =======
 k(t), p.push(s.watchObject(e.serviceInstancesVersion, n.instance, o, k)), p.push(s.watch(h, o, function(n) {
 >>>>>>> Service instance details configuration and edit
+=======
+R(t), g.push(s.watchObject(e.serviceInstancesVersion, n.instance, o, R)), g.push(s.watch(m, o, function(n) {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 var a = n.by("metadata.name");
 e.bindings = r.getBindingsForResource(a, t);
 }));
@@ -14350,7 +14395,11 @@ message: "The service details could not be loaded.",
 details: t("getErrorDetails")(n)
 };
 })), e.$on("$destroy", function() {
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 s.unwatchAll(p), s.unwatchAll(f);
+=======
+s.unwatchAll(g), s.unwatchAll(v);
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 });
 } ]), angular.module("openshiftConsole").controller("SecretsController", [ "$routeParams", "$scope", "APIService", "DataService", "LabelFilter", "ProjectsService", function(e, t, n, a, r, o) {
 t.projectName = e.project, t.labelSuggestions = {}, t.clearFilter = function() {
@@ -31780,6 +31829,7 @@ namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
 }));
+<<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 5bd87652785e7e3c71d4b7b194cb0eb0fca57124
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 <<<<<<< dcc2597a3dba049aabc111ffd8a8e1cd9f390594
@@ -31830,6 +31880,9 @@ angular.extend(p, {
 =======
 }, V = _.once(function(e, t) {
 >>>>>>> Update secret, secrets controllers to use getPreferredVersion
+=======
+}, V = _.once(function(e, t) {
+>>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {

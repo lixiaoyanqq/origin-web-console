@@ -48,16 +48,16 @@ angular.module('openshiftConsole')
       $scope.editDialogShown = false;
     };
 
+    var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
+    $scope.eventsVersion = APIService.getPreferredVersion('events');
+    $scope.serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
+
     var watches = [];
     var secretWatchers = [];
     var serviceClassPromise;
 
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
     var serviceInstanceReady = $filter('isServiceInstanceReady');
-
-    // API Versions
-    var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
-    $scope.serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
 
     var updateBreadcrumbs = function() {
       $scope.breadcrumbs.push({
