@@ -9714,6 +9714,7 @@ details: e("getErrorDetails")(n)
 });
 }
 };
+<<<<<<< HEAD
 return {
 getServiceClassNameForInstance: d,
 fetchServiceClassForInstance: function(e) {
@@ -9770,6 +9771,58 @@ name: n
 }
 })).result.then(function() {
 f(e, t), g(e);
+=======
+});
+})), t.$on("$destroy", function() {
+o.unwatchAll(p);
+});
+} ]), angular.module("openshiftConsole").controller("ServicesController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "ProjectsService", "LabelFilter", "Logger", function(e, t, n, r, a, o, i, s) {
+n.projectName = t.project, n.services = {}, n.unfilteredServices = {}, n.routesByService = {}, n.routes = {}, n.labelSuggestions = {}, n.clearFilter = function() {
+i.clear();
+};
+var c = r.getPreferredVersion("services"), l = [];
+o.get(t.project).then(_.spread(function(e, t) {
+function r() {
+n.filterWithZeroResults = !i.getLabelSelector().isEmpty() && _.isEmpty(n.services) && !_.isEmpty(n.unfilteredServices);
+}
+n.project = e, l.push(a.watch(c, t, function(e) {
+n.servicesLoaded = !0, n.unfilteredServices = e.by("metadata.name"), i.addLabelSuggestionsFromResources(n.unfilteredServices, n.labelSuggestions), i.setLabelSuggestions(n.labelSuggestions), n.services = i.getLabelSelector().select(n.unfilteredServices), r(), s.log("services (subscribe)", n.unfilteredServices);
+})), i.onActiveFiltersChanged(function(e) {
+n.$evalAsync(function() {
+n.services = e.select(n.unfilteredServices), r();
+});
+}), n.$on("$destroy", function() {
+a.unwatchAll(l);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("ServiceController", [ "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", "$filter", function(e, t, n, r, a, o) {
+e.projectName = t.project, e.service = null, e.services = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+title: "Services",
+link: "project/" + t.project + "/browse/services"
+}, {
+title: t.service
+} ], e.podFailureReasons = {
+Pending: "This pod will not receive traffic until all of its containers have been created."
+};
+var i = n.getPreferredVersion("pods"), s = n.getPreferredVersion("endpoints");
+e.eventsVersion = n.getPreferredVersion("events"), e.routesVersion = n.getPreferredVersion("routes"), e.servicesVersion = n.getPreferredVersion("services");
+var c = {}, l = [], u = function() {
+e.service && (e.portsByRoute = {}, _.each(e.service.spec.ports, function(t) {
+var n = !1;
+t.nodePort && (e.showNodePorts = !0), _.each(e.routesForService, function(r) {
+r.spec.port && r.spec.port.targetPort !== t.name && r.spec.port.targetPort !== t.targetPort || (e.portsByRoute[r.metadata.name] = e.portsByRoute[r.metadata.name] || [], e.portsByRoute[r.metadata.name].push(t), n = !0);
+}), n || (e.portsByRoute[""] = e.portsByRoute[""] || [], e.portsByRoute[""].push(t));
+}));
+}, d = function() {
+if (e.podsForService = {}, e.service) {
+var t = new LabelSelector(e.service.spec.selector);
+e.podsForService = t.select(c);
+}
+}, m = function(t, n) {
+e.loaded = !0, e.service = t, d(), u(), "DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This service has been deleted."
+>>>>>>> Update service, services controllers to use getPreferredVersion
 });
 }
 <<<<<<< HEAD
@@ -9777,6 +9830,7 @@ f(e, t), g(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g) {
 function f() {
 var t = g.search();
@@ -9845,6 +9899,29 @@ namespace: e.metadata.namespace
 e.templateSelected = function(t) {
 C(t).then(function(t) {
 _.set(e, "ordering.panelName", "template"), e.template = t;
+=======
+a.get(t.project).then(_.spread(function(n, a) {
+e.project = n, e.projectContext = a, r.get(e.servicesVersion, t.service, a, {
+errorNotification: !1
+}).then(function(n) {
+m(n), l.push(r.watchObject(e.servicesVersion, t.service, a, m));
+}, function(t) {
+e.loaded = !0, e.alerts.load = {
+type: "error",
+message: "The service details could not be loaded.",
+details: o("getErrorDetails")(t)
+};
+}), l.push(r.watch(e.servicesVersion, a, function(t) {
+e.services = t.by("metadata.name");
+})), l.push(r.watch(i, a, function(e) {
+c = e.by("metadata.name"), d();
+})), l.push(r.watch(s, a, function(n) {
+e.podsWithEndpoints = {};
+var r = n.by("metadata.name")[t.service];
+r && _.each(r.subsets, function(t) {
+_.each(t.addresses, function(t) {
+"Pod" === _.get(t, "targetRef.kind") && (e.podsWithEndpoints[t.targetRef.name] = !0);
+>>>>>>> Update service, services controllers to use getPreferredVersion
 });
 }, e.closeOrderingPanel = function() {
 e.template && (b(), e.template = null), _.set(e, "ordering.panelName", "");
@@ -9858,6 +9935,7 @@ _.set(e, "ordering.panelName", "fromProject");
 r.getCatalogItems().then(function(t) {
 e.catalogItems = t, v();
 });
+<<<<<<< HEAD
 }), e.$on("$destroy", function() {
 b();
 }), y && e.$on("$locationChangeStart", function(t) {
@@ -9874,6 +9952,14 @@ r = e;
 l = e, t && c.addNotification({
 type: "error",
 message: t
+=======
+})), l.push(r.watch(e.routesVersion, a, function(n) {
+e.routesForService = {}, angular.forEach(n.by("metadata.name"), function(n) {
+"Service" === n.spec.to.kind && n.spec.to.name === t.service && (e.routesForService[n.metadata.name] = n);
+}), u(), Logger.log("routes (subscribe)", e.routesByService);
+})), e.$on("$destroy", function() {
+r.unwatchAll(l);
+>>>>>>> Update service, services controllers to use getPreferredVersion
 });
 }));
 t.all([ d, m ]).then(function() {
