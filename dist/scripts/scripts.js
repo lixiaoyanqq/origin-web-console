@@ -15088,6 +15088,7 @@ t.services = e.select(t.unfilteredServices), r();
 n.unwatchAll(s);
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ServiceController", [ "$scope", "$routeParams", "DataService", "ProjectsService", "$filter", function(e, t, n, a, r) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 e.projectName = t.project, e.service = null, e.services = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
@@ -15115,9 +15116,23 @@ e.podsForService = t.select(d);
 }
 }, f = function(t, n) {
 e.loaded = !0, e.service = t, g(), p(), "DELETED" === n && (e.alerts.deleted = {
+=======
+} ]), angular.module("openshiftConsole").controller("RouteController", [ "$scope", "$filter", "$routeParams", "AlertMessageService", "APIService", "DataService", "ProjectsService", "RoutesService", function(e, t, n, a, r, o, i, s) {
+e.projectName = n.project, e.route = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+title: "Routes",
+link: "project/" + n.project + "/browse/routes"
+}, {
+title: n.route
+} ];
+var c = r.getPreferredVersion("services");
+e.routesVersion = r.getPreferredVersion("routes");
+var l, u = [], d = function(t, n) {
+e.loaded = !0, e.route = t, l = s.isCustomHost(t), "DELETED" === n && (e.alerts.deleted = {
+>>>>>>> Update route controller to use getPreferredVersion
 type: "warning",
 message: i.getString(o("This service has been deleted."))
 });
+<<<<<<< HEAD
 };
 s.get(t.project).then(_.spread(function(n, s) {
 e.project = n, e.projectContext = s, r.get(e.servicesVersion, t.service, s, {
@@ -15125,11 +15140,29 @@ errorNotification: !1
 }).then(function(n) {
 f(n), m.push(r.watchObject(e.servicesVersion, t.service, s, f));
 }, function(t) {
+=======
+}, m = function(t) {
+return "router-host-" + _.get(e, "route.metadata.uid") + "-" + t.host + "-" + t.routerCanonicalHostname;
+};
+e.showRouterHostnameAlert = function(t, n) {
+if (!l) return !1;
+if (!t || !t.host || !t.routerCanonicalHostname) return !1;
+if (!n || "True" !== n.status) return !1;
+var r = m(t);
+return !a.isAlertPermanentlyHidden(r, e.projectName);
+}, i.get(n.project).then(_.spread(function(a, r) {
+e.project = a, o.get(e.routesVersion, n.route, r, {
+errorNotification: !1
+}).then(function(t) {
+d(t), u.push(o.watchObject(e.routesVersion, n.route, r, d));
+}, function(n) {
+>>>>>>> Update route controller to use getPreferredVersion
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: i.getString(o("The service details could not be loaded.")),
 details: c("getErrorDetails")(t)
 };
+<<<<<<< HEAD
 }), m.push(r.watch(e.servicesVersion, s, function(t) {
 e.services = t.by("metadata.name");
 })), m.push(r.watch(l, s, function(e) {
@@ -15145,6 +15178,13 @@ var n = !1;
 t.nodePort && (e.showNodePorts = !0), _.each(e.routesForService, function(a) {
 a.spec.port && a.spec.port.targetPort !== t.name && a.spec.port.targetPort !== t.targetPort || (e.portsByRoute[a.metadata.name] = e.portsByRoute[a.metadata.name] || [], e.portsByRoute[a.metadata.name].push(t), n = !0);
 }), n || (e.portsByRoute[""] = e.portsByRoute[""] || [], e.portsByRoute[""].push(t));
+=======
+}), u.push(o.watch(c, r, function(t) {
+e.services = t.by("metadata.name");
+})), e.$on("$destroy", function() {
+o.unwatchAll(u);
+});
+>>>>>>> Update route controller to use getPreferredVersion
 }));
 }, c = function() {
 if (e.podsForService = {}, e.service) {
