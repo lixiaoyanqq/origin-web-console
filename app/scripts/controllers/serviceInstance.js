@@ -64,10 +64,6 @@ angular.module('openshiftConsole')
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
     var serviceInstanceReady = $filter('isServiceInstanceReady');
 
-    // API Versions
-    var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
-    $scope.serviceInstancesVersion = APIService.getPreferredVersion('serviceinstances');
-
     var updateBreadcrumbs = function() {
       $scope.breadcrumbs.push({
         title: $scope.displayName
