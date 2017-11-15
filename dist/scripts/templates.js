@@ -3972,13 +3972,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
+<<<<<<< 608c094bb49d96caec6ebbc1443b6f0112ac66d6
     "<li ng-if=\"'routes' | canI : 'update'\">\n" +
     "<a ng-href=\"{{route | editResourceURL}}\" role=\"button\" translate>Edit</a>\n" +
     "</li>\n" +
     "<li ng-if=\"'routes' | canI : 'update'\">\n" +
     "<a ng-href=\"{{route | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<li ng-if=\"routesVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{route | editResourceURL}}\" role=\"button\">Edit</a>\n" +
     "</li>\n" +
-    "<li ng-if=\"'routes' | canI : 'delete'\">\n" +
+    "<li ng-if=\"routesVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{route | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update route controller to use getPreferredVersion
+    "</li>\n" +
+    "<li ng-if=\"routesVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"Route\" resource-name=\"{{route.metadata.name}}\" project-name=\"{{route.metadata.namespace}}\" alerts=\"alerts\">\n" +
     "</delete-link>\n" +
     "</li>\n" +
@@ -4153,8 +4161,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</dl>\n" +
     "<p ng-if=\"!route.spec.tls\">\n" +
+<<<<<<< 608c094bb49d96caec6ebbc1443b6f0112ac66d6
     "<translate>TLS is not enabled.</translate>\n" +
     "<span ng-if=\"'routes' | canI : 'update'\" translate>\n" +
+=======
+    "TLS is not enabled.\n" +
+    "<span ng-if=\"routesVersion | canI : 'update'\">\n" +
+>>>>>>> Update route controller to use getPreferredVersion
     "<a ng-href=\"{{route | editResourceURL}}\" role=\"button\">Edit</a> this route to enable secure network traffic.\n" +
     "</span>\n" +
     "</p>\n" +

@@ -15,13 +15,13 @@
                class="dropdown-toggle actions-dropdown-kebab visible-xs-inline"
                data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i><span class="sr-only" translate>Actions</span></a>
             <ul class="dropdown-menu dropdown-menu-right actions action-button">
-              <li ng-if="'routes' | canI : 'update'">
+              <li ng-if="routesVersion | canI : 'update'">
                 <a ng-href="{{route | editResourceURL}}" role="button" translate>Edit</a>
               </li>
-              <li ng-if="'routes' | canI : 'update'">
+              <li ng-if="routesVersion | canI : 'update'">
                 <a ng-href="{{route | editYamlURL}}" role="button" translate>Edit YAML</a>
               </li>
-              <li ng-if="'routes' | canI : 'delete'">
+              <li ng-if="routesVersion | canI : 'delete'">
                 <delete-link
                   kind="Route"
                   resource-name="{{route.metadata.name}}"
@@ -201,8 +201,8 @@
               </dl>
               <p ng-if="!route.spec.tls">
                 <translate>TLS is not enabled.</translate>
-                <span ng-if="'routes' | canI : 'update'" translate>
-                  <a ng-href="{{route | editResourceURL}}" role="button" translate>Edit</a> this route to enable secure network traffic.
+                <span ng-if="routesVersion | canI : 'update'">
+			<a ng-href="{{route | editResourceURL}}" role="button" translate>Edit</a> <translate>this route to enable secure network traffic.</translate>
                 </span>
               </p>
             </div>
