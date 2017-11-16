@@ -15123,6 +15123,7 @@ t.url(r.resourceURL);
 }, b = function() {
 d.hideNotification("set-compute-limits-error");
 };
+<<<<<<< decd0ff023f645c465c71b42b736f9215234cb3d
 <<<<<<< 9bc0af8cb56dcc9609307333b9424f396867cab5
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -15159,6 +15160,11 @@ r.cancel = y, r.$on("$destroy", b), p.get(a.project).then(_.spread(function(e, t
 =======
 r.cancel = y, r.$on("$destroy", b), m.get(a.project).then(_.spread(function(e, t) {
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+r.cancel = y, r.$on("$destroy", b);
+var S = o.getPreferredVersion("limitranges");
+m.get(a.project).then(_.spread(function(e, t) {
+>>>>>>> Update setLimits controller to use getPreferrdVersion
 var n = {
 >>>>>>> Patternfly vertical navigation and project bar
 resource: o.kindToResource(a.kind),
@@ -15227,7 +15233,7 @@ r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("con
 var m = function() {
 r.hideCPU || (r.cpuProblems = l.validatePodLimits(r.limitRanges, "cpu", r.containers, e)), r.memoryProblems = l.validatePodLimits(r.limitRanges, "memory", r.containers, e);
 };
-c.list("limitranges", t).then(function(e) {
+c.list(S, t).then(function(e) {
 r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("containers", m, !0);
 >>>>>>> Support EnvFrom in the Env Editors
 });
