@@ -17189,11 +17189,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< 7a6dbd904f5a082f9a43fe184b714646f7504a7c
     "<div class=\"pull-right\" ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
 <<<<<<< 5ee4e8975cd809cf7a654cbc903e7d305ed5ecb9
     "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
     "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
 =======
+=======
+    "<div class=\"pull-right\" ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
+>>>>>>> Update storage controller to use getPreferredVersion
     "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\">Create Storage</a>\n" +
     "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
 >>>>>>> Replacing empty tables with empty state message
@@ -17255,7 +17259,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p>\n" +
     "No persistent volume claims have been added to project {{projectName}}.\n" +
     "</p>\n" +
-    "<p ng-if=\"project && ('persistentvolumeclaims' | canI : 'create') && !filterWithZeroResults\">\n" +
+    "<p ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && !filterWithZeroResults\">\n" +
     "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\">Create Storage</a>\n" +
     "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
     "</p>\n" +
