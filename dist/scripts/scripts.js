@@ -15687,6 +15687,7 @@ n.then ? t.url(n.then) : a.history.back();
 e.projectName = t.project, e.loaded = !1, e.labelSuggestions = {}, e.configMapsVersion = n.getPreferredVersion("configmaps"), e.clearFilter = function() {
 a.clear();
 };
+<<<<<<< HEAD
 var i, s = [], c = function() {
 e.filterWithZeroResults = !a.getLabelSelector().isEmpty() && _.isEmpty(e.configMaps) && !_.isEmpty(i);
 }, l = function() {
@@ -15694,6 +15695,14 @@ a.addLabelSuggestionsFromResources(i, e.labelSuggestions), a.setLabelSuggestions
 }, u = function() {
 var t = a.getLabelSelector().select(i);
 e.configMaps = _.sortBy(t, "metadata.name"), c();
+=======
+r.cancel = y, r.$on("$destroy", b);
+var S = o.getPreferredVersion("limitranges");
+m.get(a.project).then(_.spread(function(e, t) {
+var n = {
+resource: o.kindToResource(a.kind),
+group: a.group
+>>>>>>> Update setLimits controller to use getPreferrdVersion
 };
 o.get(t.project).then(_.spread(function(t, n) {
 e.project = t, s.push(r.watch(e.configMapsVersion, n, function(t) {
@@ -15716,6 +15725,7 @@ type: "warning",
 message: "This config map has been deleted."
 });
 };
+<<<<<<< HEAD
 e.addToApplicationVisible = !1, e.addToApplication = function() {
 e.addToApplicationVisible = !0;
 }, e.closeAddToApplication = function() {
@@ -15736,6 +15746,10 @@ e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.bu
 var n = m.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+c.list(S, t).then(function(e) {
+r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("containers", m, !0);
+>>>>>>> Update setLimits controller to use getPreferrdVersion
 });
 <<<<<<< HEAD
 }));
