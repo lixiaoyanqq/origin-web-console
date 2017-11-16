@@ -15523,6 +15523,7 @@ o.unwatchAll(u);
 });
 >>>>>>> Update route controller to use getPreferredVersion
 }));
+<<<<<<< HEAD
 }, c = function() {
 if (e.podsForService = {}, e.service) {
 var t = new LabelSelector(e.service.spec.selector);
@@ -15598,6 +15599,54 @@ e.serviceInstances = t.select(e.unfilteredServiceInstances), r();
 });
 }), e.$on("$destroy", function() {
 i.unwatchAll(m);
+=======
+} ]), angular.module("openshiftConsole").controller("StorageController", [ "$filter", "$routeParams", "$scope", "APIService", "AlertMessageService", "DataService", "LabelFilter", "Logger", "ProjectsService", "QuotaService", function(e, t, n, a, r, o, i, s, c, l) {
+n.projectName = t.project, n.pvcs = {}, n.unfilteredPVCs = {}, n.labelSuggestions = {}, n.alerts = n.alerts || {}, n.outOfClaims = !1, n.clearFilter = function() {
+i.clear();
+};
+var u = function() {
+var e = r.isAlertPermanentlyHidden("storage-quota-limit-reached", n.projectName);
+if (n.outOfClaims = l.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas), !e && n.outOfClaims) {
+if (n.alerts.quotaExceeded) return;
+n.alerts.quotaExceeded = {
+type: "warning",
+message: "Storage quota limit has been reached. You will not be able to create any new storage.",
+links: [ {
+href: "project/" + n.projectName + "/quota",
+label: "View Quota"
+}, {
+href: "",
+label: "Don't Show Me Again",
+onClick: function() {
+return r.permanentlyHideAlert("storage-quota-limit-reached", n.projectName), !0;
+}
+} ]
+};
+} else delete n.alerts.quotaExceeded;
+}, d = a.getPreferredVersion("resourcequotas"), m = a.getPreferredVersion("appliedclusterresourcequotas");
+n.persistentVolumeClaimsVersion = a.getPreferredVersion("persistentvolumeclaims");
+var p = [];
+c.get(t.project).then(_.spread(function(e, t) {
+function a() {
+n.filterWithZeroResults = !i.getLabelSelector().isEmpty() && $.isEmptyObject(n.pvcs) && !$.isEmptyObject(n.unfilteredPVCs);
+}
+n.project = e, p.push(o.watch(n.persistentVolumeClaimsVersion, t, function(e) {
+n.pvcsLoaded = !0, n.unfilteredPVCs = e.by("metadata.name"), i.addLabelSuggestionsFromResources(n.unfilteredPVCs, n.labelSuggestions), i.setLabelSuggestions(n.labelSuggestions), n.pvcs = i.getLabelSelector().select(n.unfilteredPVCs), a(), s.log("pvcs (subscribe)", n.unfilteredPVCs);
+})), i.onActiveFiltersChanged(function(e) {
+n.$evalAsync(function() {
+n.pvcs = e.select(n.unfilteredPVCs), a();
+});
+}), n.$on("$destroy", function() {
+o.unwatchAll(p);
+}), o.list(d, {
+namespace: n.projectName
+}, function(e) {
+n.quotas = e.by("metadata.name"), u();
+}), o.list(m, {
+namespace: n.projectName
+}, function(e) {
+n.clusterQuotas = e.by("metadata.name"), u();
+>>>>>>> Update storage controller to use getPreferredVersion
 });
 }));
 <<<<<<< HEAD
