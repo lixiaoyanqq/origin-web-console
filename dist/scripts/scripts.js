@@ -14498,6 +14498,7 @@ i.unwatchAll($);
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 });
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", "keyValueEditorUtils", "kind", function(e, t, n, a, r, o, i, s, c, l, u, d, p, m, f, g, h, v, y) {
 var b = !1, C = t("annotation"), S = t("humanizeKind")(y), w = t("hasDeployment");
 switch (y) {
@@ -14517,6 +14518,30 @@ e.projectName = n.project, e.kind = y, e.replicaSet = null, e.deploymentConfig =
 var j = [];
 u.isAvailable().then(function(t) {
 e.metricsAvailable = t;
+=======
+} ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, a, r, o, i) {
+e.projectName = t.project, e.labelSuggestions = {}, e.clearFilter = function() {
+o.clear();
+};
+var s = n.getPreferredVersion("pods"), c = n.getPreferredVersion("statefulsets"), l = [];
+r.get(t.project).then(_.spread(function(t, n) {
+function r() {
+e.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(e.statefulSets) && !_.isEmpty(e.unfilteredStatefulSets);
+}
+e.project = t, l.push(a.watch(c, n, function(t) {
+angular.extend(e, {
+loaded: !0,
+unfilteredStatefulSets: t.by("metadata.name")
+}), e.statefulSets = o.getLabelSelector().select(e.unfilteredStatefulSets), o.addLabelSuggestionsFromResources(e.unfilteredStatefulSets, e.labelSuggestions), o.setLabelSuggestions(e.labelSuggestions), r();
+})), l.push(a.watch(s, n, function(t) {
+e.pods = t.by("metadata.name"), e.podsByOwnerUID = i.groupByOwnerUID(e.pods);
+})), o.onActiveFiltersChanged(function(t) {
+e.$evalAsync(function() {
+e.statefulSets = t.select(e.unfilteredStatefulSets), r();
+});
+}), e.$on("$destroy", function() {
+a.unwatchAll(l);
+>>>>>>> Update stateful sets controllers to use getPreferredVersion
 });
 var P = t("deploymentStatus"), R = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], P(t));
@@ -14544,6 +14569,7 @@ angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && a.push(t);
 }), n = i.getActiveDeployment(a), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, T();
 }));
+<<<<<<< HEAD
 }, N = function() {
 s.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, u).then(function(t) {
 e.hpaWarnings = t;
@@ -14561,6 +14587,49 @@ i && (e.logOptions.version = i), e.healthCheckURL = p.healthCheckURL(n.project, 
 errorNotification: !1
 }).then(function(t) {
 e.deploymentConfig = t;
+=======
+} ]), angular.module("openshiftConsole").controller("StatefulSetController", [ "$filter", "$scope", "$routeParams", "APIService", "BreadcrumbsService", "DataService", "MetricsService", "ProjectsService", "PodsService", function(e, t, n, a, r, o, i, s, c) {
+t.projectName = n.project, t.statefulSetName = n.statefulset, t.forms = {}, t.alerts = {}, t.breadcrumbs = r.getBreadcrumbs({
+name: t.statefulSetName,
+kind: "StatefulSet",
+namespace: n.project
+});
+var l = a.getPreferredVersion("pods"), u = a.getPreferredVersion("resourcequotas"), d = a.getPreferredVersion("appliedclusterresourcequotas");
+t.statefulSetsVersion = a.getPreferredVersion("statefulsets");
+var m, p = [];
+i.isAvailable().then(function(e) {
+t.metricsAvailable = e;
+}), s.get(n.project).then(_.spread(function(n, a) {
+m = a, o.get(t.statefulSetsVersion, t.statefulSetName, a, {
+errorNotification: !1
+}).then(function(e) {
+angular.extend(t, {
+project: n,
+projectContext: a,
+statefulSet: e,
+loaded: !0,
+isScalable: function() {
+return !1;
+},
+scale: function() {}
+}), p.push(o.watchObject(t.statefulSetsVersion, t.statefulSetName, a, function(e) {
+t.statefulSet = e;
+})), p.push(o.watch(l, a, function(n) {
+var a = n.by("metadata.name");
+t.podsForStatefulSet = c.filterForOwner(a, e);
+}));
+p.push(o.watch(u, a, function(e) {
+t.quotas = e.by("metadata.name");
+}, {
+poll: !0,
+pollInterval: 6e4
+})), p.push(o.watch(d, a, function(e) {
+t.clusterQuotas = e.by("metadata.name");
+}, {
+poll: !0,
+pollInterval: 6e4
+}));
+>>>>>>> Update stateful sets controllers to use getPreferredVersion
 }, function(n) {
 404 !== n.status ? e.alerts.load = {
 type: "error",
@@ -14568,6 +14637,7 @@ message: "The deployment configuration details could not be loaded.",
 details: t("getErrorDetails")(n)
 } : e.deploymentConfigMissing = !0;
 });
+<<<<<<< HEAD
 }
 }, A = function() {
 e.isActive = i.isActiveReplicaSet(e.replicaSet, e.deployment);
@@ -14577,6 +14647,10 @@ if (_.get(t, "status.replicas") && _.get(t, "metadata.uid") !== _.get(e.replicaS
 var n = m.getControllerReferences(t);
 return _.some(n, {
 uid: e.deployment.metadata.uid
+=======
+})), t.$on("$destroy", function() {
+o.unwatchAll(p);
+>>>>>>> Update stateful sets controllers to use getPreferredVersion
 });
 }
 });

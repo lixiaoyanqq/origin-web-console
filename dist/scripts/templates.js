@@ -4882,7 +4882,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"statefulSetsVersion | canI : 'update'\">\n" +
+<<<<<<< HEAD
     "<a ng-href=\"{{statefulSet | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
+=======
+    "<a ng-href=\"{{statefulSet | editYamlURL}}\" role=\"button\">Edit YAML</a>\n" +
+>>>>>>> Update stateful sets controllers to use getPreferredVersion
     "</li>\n" +
     "<li ng-if=\"statefulSetsVersion | canI : 'delete'\">\n" +
     "<delete-link kind=\"StatefulSet\" group=\"apps\" resource-name=\"{{statefulSet.metadata.name}}\" project-name=\"{{statefulSet.metadata.namespace}}\" alerts=\"alerts\">\n" +
