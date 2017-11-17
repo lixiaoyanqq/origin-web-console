@@ -171,6 +171,7 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 >>>>>>> Add search catalog in project context
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
@@ -201,6 +202,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -13513,6 +13517,7 @@ N(), e.breadcrumbs = r.getBreadcrumbs({
 =======
 z();
 }
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
@@ -13527,6 +13532,9 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -13654,6 +13662,7 @@ l.buildDockerRefMapForImageStreams(t, k), H(), m.log("imagestreams (subscribe)",
 })), $.push(i.watch(j, u, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
 })), $.push(i.watch(R, u, function(e) {
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
@@ -13668,6 +13677,9 @@ p = e.by("metadata.name"), y(), V();
 =======
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+p = e.by("metadata.name"), y(), V();
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 }, {
 poll: U,
 pollInterval: 6e4
@@ -13688,6 +13700,7 @@ e.limitRanges = t.by("metadata.name"), N();
 >>>>>>> Update template service broker flag name
 =======
 })), i.list(E, u).then(function(t) {
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
@@ -13702,6 +13715,9 @@ e.limitRanges = t.by("metadata.name"), V();
 =======
 e.limitRanges = t.by("metadata.name"), V();
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+e.limitRanges = t.by("metadata.name"), V();
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 });
 $.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
@@ -18190,6 +18206,7 @@ a.then(o, o).then(B, B);
 f.toProjectOverview(e.projectName);
 };
 } else f.toErrorPage("Cannot create from source: a base image tag was not specified"); else f.toErrorPage("Cannot create from source: a base image was not specified");
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 } ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$scope", "$http", "$routeParams", "DataService", "$q", "$location", "TaskList", "$parse", "Navigate", "Logger", "$filter", "imageObjectRefFilter", "failureObjectNameFilter", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 u("displayName");
 var f = [];
@@ -18203,6 +18220,18 @@ a.unwatchAll(g);
 =======
 a.unwatchAll(f);
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+} ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i) {
+e("displayName");
+var s = [];
+n.alerts = [], n.loginBaseUrl = r.openshiftAPIBaseUrl(), n.buildConfigs = {}, n.projectName = t.project, n.fromSampleRepo = t.fromSample, n.name = t.name;
+var c = a.getPreferredVersion("buildconfigs");
+i.get(t.project).then(_.spread(function(e, a) {
+n.project = e, s.push(r.watch(c, a, function(e) {
+n.buildConfigs = e.by("metadata.name"), n.createdBuildConfig = n.buildConfigs[t.name], o.log("buildconfigs (subscribe)", n.buildConfigs);
+})), n.$on("$destroy", function() {
+r.unwatchAll(s);
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "AuthorizationService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
@@ -32422,6 +32451,7 @@ namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
 }));
+<<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
@@ -32488,6 +32518,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {
