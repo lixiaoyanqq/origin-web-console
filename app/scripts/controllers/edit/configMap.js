@@ -13,6 +13,7 @@ angular.module('openshiftConsole')
                         $routeParams,
                         $scope,
                         $window,
+                        APIService,
                         DataService,
                         BreadcrumbsService,
                         Navigate,
@@ -44,11 +45,13 @@ angular.module('openshiftConsole')
     };
     $scope.cancel = navigateBack;
 
+    var configMapsVersion = APIService.getPreferredVersion('configmaps');
+
     ProjectsService
       .get($routeParams.project)
       .then(_.spread(function(project, context) {
         DataService
-          .get("configmaps", $routeParams.configMap, context, { errorNotification: false })
+          .get(configMapsVersion, $routeParams.configMap, context, { errorNotification: false })
           .then(function(configMap) {
             $scope.loaded = true;
             $scope.breadcrumbs = BreadcrumbsService.getBreadcrumbs({
@@ -58,7 +61,7 @@ angular.module('openshiftConsole')
               subpage: gettextCatalog.getString(gettext('Edit Config Map'))
             });
             $scope.configMap = configMap;
-            watches.push(DataService.watchObject("configmaps", $routeParams.configMap, context, function(newValue, action) {
+            watches.push(DataService.watchObject(configMapsVersion, $routeParams.configMap, context, function(newValue, action) {
               $scope.resourceChanged = getVersion(newValue) !== getVersion($scope.configMap);
               $scope.resourceDeleted = action === "DELETED";
             }));
@@ -72,7 +75,7 @@ angular.module('openshiftConsole')
             hideErrorNotifications();
             $scope.disableInputs = true;
 
-            DataService.update('configmaps', $scope.configMap.metadata.name, $scope.configMap, context)
+            DataService.update(configMapsVersion, $scope.configMap.metadata.name, $scope.configMap, context)
               .then(function() { // Success
                 NotificationsService.addNotification({
                   type: "success",
