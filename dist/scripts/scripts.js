@@ -15257,8 +15257,8 @@ DockerImage: "Docker Image Repository"
 =======
 } else u.toErrorPage("Health checks are not supported for kind " + a.kind + ".");
 } else u.toErrorPage("Kind or name parameter missing.");
-} ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
-e.projectName = a.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = d, e.options = {}, e.jenkinsfileOptions = {
+} ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "APIService", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
+e.projectName = a.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = m, e.options = {}, e.jenkinsfileOptions = {
 type: "path"
 }, e.selectTypes = {
 ImageStreamTag: "Image Stream Tag",
@@ -15397,6 +15397,7 @@ return "Enter the arguments that will be appended to the script.";
 }
 return null;
 };
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 var o = function() {
@@ -15413,13 +15414,16 @@ var g = function() {
 =======
 var f = function() {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+var g = function() {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), a = !!_.get(e, "buildConfig.spec.postCommit.script");
 e.view.hasHooks = t || n || a;
 var r;
 r = t && n ? "commandArgs" : t && a ? "scriptArgs" : t ? "args" : a ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
 id: r
 });
-}, g = function() {
+}, v = function() {
 if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case "script":
@@ -15477,25 +15481,25 @@ delete e.updatedBuildConfig.spec.postCommit.script;
 } else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
 };
 e.secrets = {};
-var v = [], h = t("buildStrategy"), y = function() {
+var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = function() {
 var t;
-e.buildConfig ? (t = c.resourceURL(e.buildConfig), n.path(t)) : r.history.back();
+e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : r.history.back();
 };
-e.cancel = y;
-var b = function() {
-l.hideNotification("edit-build-config-error"), l.hideNotification("edit-build-config-conflict"), l.hideNotification("edit-build-config-deleted");
+e.cancel = C;
+var w = function() {
+u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
 };
-e.$on("$destroy", b), u.get(a.project).then(_.spread(function(n, r) {
-e.project = n, e.context = r, i.canI("buildconfigs", "update", a.project) ? s.get("buildconfigs", a.buildconfig, r, {
+e.$on("$destroy", w), d.get(a.project).then(_.spread(function(n, r) {
+e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? c.get(h, a.buildconfig, r, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = h(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = S(e.triggers, e.buildConfig.spec.triggers), e.sources = I(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), s.list("secrets", r).then(function(t) {
-var n = m.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = P(e.triggers, e.buildConfig.spec.triggers), e.sources = N(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
+var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
-}), k();
+}), I();
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -15551,12 +15555,12 @@ value: e.destinationDir
 };
 })) : (e.imageSourceFromObjects = [], e.sourceImages.forEach(function(t) {
 e.imageSourceFromObjects.push(t.from);
-}))), e.options.forcePull = !!e.buildStrategy.forcePull, "Docker" === e.strategyType && (e.options.noCache = !!e.buildConfig.spec.strategy.dockerStrategy.noCache, e.buildFromTypes.push("None")), v.push(s.watchObject("buildconfigs", a.buildconfig, r, function(t, n) {
-"MODIFIED" === n && l.addNotification({
+}))), e.options.forcePull = !!e.buildStrategy.forcePull, "Docker" === e.strategyType && (e.options.noCache = !!e.buildConfig.spec.strategy.dockerStrategy.noCache, e.buildFromTypes.push("None")), b.push(c.watchObject(h, a.buildconfig, r, function(t, n) {
+"MODIFIED" === n && u.addNotification({
 id: "edit-build-config-conflict",
 type: "warning",
 message: "This build configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
-}), "DELETED" === n && (l.addNotification({
+}), "DELETED" === n && (u.addNotification({
 id: "edit-build-config-deleted",
 type: "warning",
 message: "This build configuration has been deleted."
@@ -15568,14 +15572,18 @@ type: "error",
 message: "The build configuration details could not be loaded.",
 details: "Reason: " + t("getErrorDetails")(n)
 };
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 }) : c.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 }));
-var S = function(n, a) {
+var P = function(n, a) {
 function r(n, a) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(a, e.projectName);
 }
-var o = h(e.buildConfig).from;
+var o = S(e.buildConfig).from;
 return a.forEach(function(e) {
 switch (e.type) {
 case "Generic":
@@ -15686,8 +15694,8 @@ e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var C = function(e) {
-return _.map(p.compactEntries(e), function(e) {
+var k = function(e) {
+return _.map(f.compactEntries(e), function(e) {
 return {
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 sourcePath: a.name,
@@ -15698,7 +15706,7 @@ destinationDir: e.value
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 });
-}, w = function(t) {
+}, j = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -15759,17 +15767,17 @@ name: _.last(a)
 }).namespace = 1 !== _.size(a) ? _.head(a) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, P = function() {
+}, R = function() {
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
-}, k = function() {
+}, I = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
 } ],
-pullSecret: h(e.buildConfig).pullSecret ? [ h(e.buildConfig).pullSecret ] : [ {
+pullSecret: S(e.buildConfig).pullSecret ? [ S(e.buildConfig).pullSecret ] : [ {
 name: ""
 } ],
 pushSecret: e.buildConfig.spec.output.pushSecret ? [ e.buildConfig.spec.output.pushSecret ] : [ {
@@ -15792,6 +15800,7 @@ destinationDir: ""
 break;
 
 case "Custom":
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 a.secrets.picked.sourceSecrets = r(a.buildConfig).secrets || [ {
@@ -15801,12 +15810,16 @@ e.secrets.picked.sourceSecrets = v(e.buildConfig).secrets || [ {
 =======
 e.secrets.picked.sourceSecrets = h(e.buildConfig).secrets || [ {
 >>>>>>> Add SVG icons
+=======
+e.secrets.picked.sourceSecrets = S(e.buildConfig).secrets || [ {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 secretSource: {
 name: ""
 },
 mountPath: ""
 } ];
 }
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 <<<<<<< d21c662f039266e2dd235fa32bd86d3647c082ae
@@ -15859,13 +15872,16 @@ secret: f._generateSecret()
 =======
 }, j = function(e, t, n) {
 >>>>>>> Update template service broker flag name
+=======
+}, E = function(e, t, n) {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 t.name ? e[n] = t : delete e[n];
-}, R = function(t, n) {
+}, T = function(t, n) {
 var a = "Custom" === e.strategyType ? "secretSource" : "secret", r = _.filter(n, function(e) {
 return e[a].name;
 });
 _.isEmpty(r) ? delete t.secrets : t.secrets = r;
-}, I = function(e, t) {
+}, N = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
@@ -15881,14 +15897,14 @@ type: t
 return e.label === t;
 }).type;
 n.data[a] = {
-secret: o._generateSecret()
+secret: i._generateSecret()
 }, e.triggers[a + "Webhooks"].push(n);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
 }, e.save = function() {
-switch (e.disableInputs = !0, g(), h(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
+switch (e.disableInputs = !0, v(), S(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
 case "Docker":
-h(e.updatedBuildConfig).noCache = e.options.noCache;
+S(e.updatedBuildConfig).noCache = e.options.noCache;
 break;
 
 case "JenkinsPipeline":
@@ -15899,6 +15915,7 @@ switch (a.sources.images && !_.isEmpty(a.sourceImages) && (a.updatedBuildConfig.
 =======
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
@@ -15945,14 +15962,18 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = C(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Adding label filter to ste secrets page
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = k(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = j(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = j(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = j(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), E(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), E(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), E(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 case "Source":
 case "Docker":
-R(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+T(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-R(h(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+T(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 2ce32f87748ff2fe030a6b53ff9490fcb80d856d
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
@@ -16052,11 +16073,15 @@ e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.update
 e.updatedBuildConfig.spec.triggers = P(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 >>>>>>> Update pod controller to use getPreferredVersion
 l.addNotification({
+=======
+e.updatedBuildConfig.spec.triggers = R(), w(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+u.addNotification({
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
-}), y();
+}), C();
 }, function(n) {
-e.disableInputs = !1, l.addNotification({
+e.disableInputs = !1, u.addNotification({
 id: "edit-build-config-error",
 type: "error",
 message: "An error occurred updating build config " + e.updatedBuildConfig.metadata.name + ".",
@@ -16064,7 +16089,7 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.$on("$destroy", function() {
-s.unwatchAll(v);
+c.unwatchAll(b);
 });
 } ]), angular.module("openshiftConsole").controller("EditConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "DataService", "BreadcrumbsService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
 var l = [];
