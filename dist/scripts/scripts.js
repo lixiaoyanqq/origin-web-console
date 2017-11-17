@@ -21769,6 +21769,7 @@ title: "Events"
 t.project = e, t.projectContext = n;
 }));
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("OAuthController", [ "$scope", "$location", "$q", "APIService", "AuthService", "DataService", "Logger", "RedirectLoginService", function(e, t, n, r, a, o, i, s) {
 var c = i.get("auth");
 e.completeLogin = function() {}, e.cancelLogin = function() {
@@ -21784,10 +21785,16 @@ token: r,
 =======
 } ]), angular.module("openshiftConsole").controller("OAuthController", [ "$scope", "$location", "$q", "RedirectLoginService", "DataService", "AuthService", "Logger", function(e, t, n, a, r, o, i) {
 var s = i.get("auth");
+=======
+} ]), angular.module("openshiftConsole").controller("OAuthController", [ "$scope", "$location", "$q", "APIService", "AuthService", "DataService", "Logger", "RedirectLoginService", function(e, t, n, a, r, o, i, s) {
+var c = i.get("auth");
+>>>>>>> Update util/oauth controller to use getPreferredVersion
 e.completeLogin = function() {}, e.cancelLogin = function() {
 t.replace(), t.url("./");
-}, a.finish().then(function(n) {
-var a = n.token, i = n.then, c = n.verified, l = n.ttl, u = {
+};
+var l = a.getPreferredVersion("users");
+s.finish().then(function(n) {
+var a = n.token, i = n.then, s = n.verified, u = n.ttl, d = {
 errorNotification: !1,
 http: {
 auth: {
@@ -21797,6 +21804,7 @@ triggerLogin: !1
 }
 }
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 c.log("OAuthController, got token, fetching user", d), o.get(l, "~", {}, d).then(function(n) {
 if (c.log("OAuthController, got user", n), e.completeLogin = function() {
@@ -21811,23 +21819,37 @@ o && o.metadata.name !== n.metadata.name && (e.overriddenUser = o);
 s.log("OAuthController, got token, fetching user", u), r.get("users", "~", {}, u).then(function(n) {
 if (s.log("OAuthController, got user", n), e.completeLogin = function() {
 o.setUser(n, a, l);
+=======
+c.log("OAuthController, got token, fetching user", d), o.get(l, "~", {}, d).then(function(n) {
+if (c.log("OAuthController, got user", n), e.completeLogin = function() {
+r.setUser(n, a, u);
+>>>>>>> Update util/oauth controller to use getPreferredVersion
 var e = i || "./";
-URI(e).is("absolute") && (s.log("OAuthController, invalid absolute redirect", e), e = "./"), s.log("OAuthController, redirecting", e), t.replace(), t.url(e);
-}, c) e.completeLogin(); else {
+URI(e).is("absolute") && (c.log("OAuthController, invalid absolute redirect", e), e = "./"), c.log("OAuthController, redirecting", e), t.replace(), t.url(e);
+}, s) e.completeLogin(); else {
 e.confirmUser = n;
+<<<<<<< HEAD
 var r = o.UserStore().getUser();
 r && r.metadata.name !== n.metadata.name && (e.overriddenUser = r);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var o = r.UserStore().getUser();
+o && o.metadata.name !== n.metadata.name && (e.overriddenUser = o);
+>>>>>>> Update util/oauth controller to use getPreferredVersion
 }
 }).catch(function(e) {
 var n = URI("error").query({
 error: "user_fetch_failed"
 }).toString();
 <<<<<<< HEAD
+<<<<<<< HEAD
 c.error("OAuthController, error fetching user", e, "redirecting", n), t.replace(), t.url(n);
 =======
 s.error("OAuthController, error fetching user", e, "redirecting", n), t.replace(), t.url(n);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+c.error("OAuthController, error fetching user", e, "redirecting", n), t.replace(), t.url(n);
+>>>>>>> Update util/oauth controller to use getPreferredVersion
 });
 }).catch(function(e) {
 var n = URI("error").query({
@@ -21836,6 +21858,7 @@ error_description: e.error_description || "",
 error_uri: e.error_uri || ""
 }).toString();
 <<<<<<< HEAD
+<<<<<<< HEAD
 c.error("OAuthController, error", e, "redirecting", n), t.replace(), t.url(n);
 });
 } ]), angular.module("openshiftConsole").controller("ErrorController", [ "$scope", "$window", "gettext", "gettextCatalog", function(e, t, n, r) {
@@ -21843,6 +21866,9 @@ var a = URI(window.location.href).query(!0);
 switch (a.error) {
 =======
 s.error("OAuthController, error", e, "redirecting", n), t.replace(), t.url(n);
+=======
+c.error("OAuthController, error", e, "redirecting", n), t.replace(), t.url(n);
+>>>>>>> Update util/oauth controller to use getPreferredVersion
 });
 } ]), angular.module("openshiftConsole").controller("ErrorController", [ "$scope", "$window", function(e, t) {
 var n = URI(window.location.href).query(!0);
