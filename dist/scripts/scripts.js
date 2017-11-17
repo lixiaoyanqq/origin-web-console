@@ -189,6 +189,7 @@ e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATA
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Wait for service classes and plans to load
 =======
@@ -215,6 +216,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -10614,6 +10618,7 @@ o.unwatchAll(g);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 E(), B(), U(), O(), T();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10658,6 +10663,9 @@ T(), B(), O(), V(), E();
 =======
 T(), B(), O(), V(), E();
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+T(), B(), O(), V(), E();
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -14336,6 +14344,7 @@ case "ReplicationController":
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 V(t);
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
@@ -14350,11 +14359,15 @@ F(t);
 =======
 F(t);
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+F(t);
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 break;
 
 case "ReplicaSet":
 z();
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14441,6 +14454,9 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -20797,21 +20813,27 @@ g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification(
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 };
+<<<<<<< HEAD
 e.$on("$destroy", D), v.get(r.project).then(_.spread(function(t, n) {
+=======
+e.$on("$destroy", N);
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), U = i.getPreferredVersion("resourcequotas"), O = i.getPreferredVersion("appliedclusterresourcequotas");
+v.get(r.project).then(_.spread(function(t, n) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 e.project = t, r.sourceURI && (e.sourceURIinParams = !0);
 var i = function() {
 e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
 };
-c.list("limitranges", n).then(function(t) {
+c.list(A, n).then(function(t) {
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 >>>>>>> Patternfly vertical navigation and project bar
 });
 var v, y, C = function() {
 e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
-c.list("resourcequotas", n).then(function(e) {
+c.list(U, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
-}), c.list("appliedclusterresourcequotas", n).then(function(e) {
+}), c.list(O, n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -20968,7 +20990,7 @@ return a.buildConfig.sourceUrl === _.get(a, "image.metadata.annotations.sampleRe
 e.metricsWarning = !t;
 });
 var o = [], i = [];
-e.valueFromObjects = [], c.list("configmaps", n, null, {
+e.valueFromObjects = [], c.list(D, n, null, {
 errorNotification: !1
 }).then(function(t) {
 <<<<<<< HEAD
@@ -21010,6 +21032,7 @@ details: T(e)
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), c.list(V, n, null, {
 errorNotification: !1
 }).then(function(t) {
@@ -21027,6 +21050,9 @@ o = T(t.by("metadata.name")), e.valueFromObjects = o.concat(a);
 var n = b.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 =======
 }), c.list("secrets", n, null, {
+=======
+}), c.list(L, n, null, {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 errorNotification: !1
 }).then(function(t) {
 <<<<<<< HEAD
@@ -21054,6 +21080,7 @@ details: T(e)
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), c.get(L, r.imageName, {
 namespace: r.namespace || a.project
 }).then(function(e) {
@@ -21070,12 +21097,15 @@ _.isEmpty(t) ? (r.routing.include = !1, r.routing.portOptions = []) : (r.routing
 namespace: t.namespace || r.project
 =======
 }), c.get("imagestreams", a.imageName, {
+=======
+}), c.get($, a.imageName, {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 namespace: a.namespace || r.project
 >>>>>>> Patternfly vertical navigation and project bar
 }).then(function(e) {
 a.imageStream = e;
 var t = a.imageTag;
-c.get("imagestreamtags", e.metadata.name + ":" + t, {
+c.get(B, e.metadata.name + ":" + t, {
 namespace: a.namespace
 }).then(function(e) {
 <<<<<<< HEAD
@@ -21109,6 +21139,7 @@ f.toErrorPage("Cannot create from source: the specified image could not be retri
 f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
 });
 }(e);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21166,6 +21197,9 @@ var $, A = function() {
 =======
 var A, $ = function() {
 >>>>>>> Let administrators disable "Copy Login Command"
+=======
+var V, F = function() {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 var t = {
 started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
 success: "Created application " + e.name + " in project " + e.projectDisplayName(),
@@ -21173,7 +21207,11 @@ failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
 }, o = {};
 S.clear(), S.add(t, o, r.project, function() {
 var t = a.defer();
+<<<<<<< HEAD
 return c.batch(A, n).then(function(n) {
+=======
+return c.batch(V, n).then(function(n) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 var a = [], r = !1;
 _.isEmpty(n.failure) ? a.push({
 type: "success",
@@ -21199,7 +21237,11 @@ hasErrors: r
 usingSampleRepo: e.usingSampleRepo(),
 breadcrumbTitle: R
 });
+<<<<<<< HEAD
 }, B = function(e) {
+=======
+}, x = function(e) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 o.open({
 =======
 }
@@ -21250,9 +21292,15 @@ cancelButtonText: "Cancel"
 };
 }
 }
+<<<<<<< HEAD
 }).result.then($);
 }, L = function(t) {
 D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
+=======
+}).result.then(F);
+}, M = function(t) {
+N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 type: "error"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21316,6 +21364,7 @@ e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 =======
 }) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
+<<<<<<< HEAD
 })) : _.isEmpty(T) ? $() : (B(T), e.disableInputs = !1);
 >>>>>>> Added 'no projects and cant create' empty state to process-template, deploy-image, and from-file
 =======
@@ -21323,6 +21372,9 @@ e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
 })) : _.isEmpty(N) ? $() : (B(N), e.disableInputs = !1);
 >>>>>>> Update template service broker flag name
+=======
+})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 };
 <<<<<<< HEAD
 e.projectDisplayName = function() {
@@ -21366,6 +21418,7 @@ e.disableInputs = !0, D(), e.buildConfig.envVars = w.compactEntries(e.buildConfi
 var t = s.generate(e);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 A = [], angular.forEach(t, function(e) {
 null !== e && (m.debug("Generated resource definition:", e), A.push(e));
 >>>>>>> Add bindings list to resource pages
@@ -21399,6 +21452,15 @@ n.then(r, r).then(U, U);
 =======
 a.then(o, o).then(L, L);
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+V = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), V.push(e));
+});
+var a = s.ifResourcesDontExist(V, e.projectName), r = h.getLatestQuotaAlerts(V, n), o = function(t) {
+return e.nameTaken = t.nameTaken, r;
+};
+a.then(o, o).then(M, M);
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 };
 })), e.cancel = function() {
 f.toProjectOverview(e.projectName);
@@ -38429,6 +38491,7 @@ skipDigest: !0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, U = _.once(function(e, t) {
 A(), l = o.$on("NotificationsService.onNotificationAdded", t);
 }), O = function() {
@@ -38490,6 +38553,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {
