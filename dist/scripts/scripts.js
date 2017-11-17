@@ -16140,25 +16140,25 @@ details: e("getErrorDetails")(t)
 o.unwatchAll(u), m();
 });
 }));
-} ]), angular.module("openshiftConsole").controller("EditDeploymentConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$uibModal", "$window", "AuthorizationService", "BreadcrumbsService", "DataService", "EnvironmentService", "Navigate", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
+} ]), angular.module("openshiftConsole").controller("EditDeploymentConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$uibModal", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "EnvironmentService", "Navigate", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g) {
 e.projectName = a.project, e.deploymentConfig = null, e.alerts = {}, e.view = {
 advancedStrategyOptions: !1,
 advancedImageOptions: !1
-}, e.triggers = {}, e.breadcrumbs = s.getBreadcrumbs({
+}, e.triggers = {}, e.breadcrumbs = c.getBreadcrumbs({
 name: a.name,
 kind: a.kind,
 namespace: a.project,
 subpage: "Edit Deployment Config"
 }), e.deploymentConfigStrategyTypes = [ "Recreate", "Rolling", "Custom" ];
-var g = t("orderByDisplayName"), v = t("getErrorDetails"), h = function(t, n) {
+var v = t("orderByDisplayName"), h = t("getErrorDetails"), y = function(t, n) {
 e.alerts["from-value-objects"] = {
 type: "error",
 message: t,
 details: n
 };
-}, y = [], b = [], S = [];
+}, b = i.getPreferredVersion("deploymentconfigs"), S = i.getPreferredVersion("configmaps"), C = i.getPreferredVersion("secrets"), w = [], P = [], k = [];
 e.valueFromObjects = [];
-var C = function(e) {
+var j = function(e) {
 switch (e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case "Recreate":
@@ -16214,11 +16214,11 @@ automatic: _.get(c, "imageChangeParams.automatic", !1)
 return void Logger.error("Unknown deployment strategy type: " + e);
 }
 };
-m.get(a.project).then(_.spread(function(n, r) {
-e.project = n, e.context = r, i.canI("deploymentconfigs", "update", a.project) ? c.get("deploymentconfigs", a.deploymentconfig, r, {
+p.get(a.project).then(_.spread(function(n, r) {
+e.project = n, e.context = r, s.canI("deploymentconfigs", "update", a.project) ? l.get(b, a.deploymentconfig, r, {
 errorNotification: !1
 }).then(function(t) {
-e.deploymentConfig = t, e.breadcrumbs = s.getBreadcrumbs({
+e.deploymentConfig = t, e.breadcrumbs = c.getBreadcrumbs({
 object: t,
 project: n,
 subpage: "Edit"
@@ -16264,6 +16264,7 @@ a.updatedDeploymentConfig = angular.copy(a.deploymentConfig), a.containerNames =
 pullSecrets: angular.copy(a.deploymentConfig.spec.template.spec.imagePullSecrets) || [ {
 name: ""
 } ]
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 }, a.volumeNames = _.map(a.deploymentConfig.spec.template.spec.volumes, "name"), a.strategyData = angular.copy(a.deploymentConfig.spec.strategy), a.originalStrategy = a.strategyData.type, a.strategyParamsPropertyName = v(a.strategyData.type), a.triggers.hasConfigTrigger = _.some(a.updatedDeploymentConfig.spec.triggers, {
@@ -16275,6 +16276,11 @@ name: ""
 >>>>>>> Adding label filter to ste secrets page
 type: "ConfigChange"
 }), "Custom" !== a.strategyData.type || _.has(a.strategyData, "customParams.environment") || (a.strategyData.customParams.environment = []), i.list("configmaps", e, null, {
+=======
+}, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = j(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
+type: "ConfigChange"
+}), "Custom" !== e.strategyData.type || _.has(e.strategyData, "customParams.environment") || (e.strategyData.customParams.environment = []), l.list(S, r, null, {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 errorNotification: !1
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 }).then(function(b) {
@@ -16284,11 +16290,16 @@ t = p(b.by("metadata.name")), a.availableConfigMaps = t, a.valueFromObjects = t.
 }), i.list("secrets", e, null, {
 =======
 }).then(function(t) {
-b = g(t.by("metadata.name")), e.availableConfigMaps = b, e.valueFromObjects = b.concat(S);
+P = v(t.by("metadata.name")), e.availableConfigMaps = P, e.valueFromObjects = P.concat(k);
 }, function(e) {
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 403 !== e.status && h("Could not load config maps", v(e));
 }), c.list("secrets", r, null, {
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+403 !== e.status && y("Could not load config maps", h(e));
+}), l.list(C, r, null, {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 errorNotification: !1
 <<<<<<< 2751c43b89660d22c6785bf2aaa1cb0e72a4fb03
 }).then(function(b) {
@@ -16297,18 +16308,25 @@ var c = n.groupSecretsByType(b), d = _.mapValues(c, function(a) {
 return _.map(a, "metadata.name");
 =======
 }).then(function(t) {
-S = g(t.by("metadata.name")), e.availableSecrets = S, e.valueFromObjects = b.concat(S);
-var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+k = v(t.by("metadata.name")), e.availableSecrets = k, e.valueFromObjects = P.concat(k);
+var n = f.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 >>>>>>> Fix problems with env valueFrom for DC hooks
 });
 a.secretsByType = _.each(d, function(a) {
 a.unshift("");
 });
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 }, function(a) {
 403 !== a.status && r("Could not load secrets", q(a));
 }), s.push(i.watchObject("deploymentconfigs", d.deploymentconfig, e, function(b, c) {
 "MODIFIED" === c && (a.alerts["updated/deleted"] = {
+=======
+}, function(e) {
+403 !== e.status && y("Could not load secrets", h(e));
+}), w.push(l.watchObject(b, a.deploymentconfig, r, function(t, n) {
+"MODIFIED" === n && (e.alerts["updated/deleted"] = {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 type: "warning",
 message: "This deployment configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
 }), "DELETED" === c && (a.alerts["updated/deleted"] = {
@@ -16322,6 +16340,7 @@ type: "error",
 message: "The deployment configuration details could not be loaded.",
 details: b("getErrorDetails")(c)
 };
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 }) : void k.toErrorPage("You do not have authority to update deployment config " + d.deploymentconfig + ".", "access_denied");
 }));
 var w = function() {
@@ -16378,17 +16397,28 @@ return "Custom" !== e.strategyData.type && "Custom" !== e.originalStrategy && e.
 }, P = function(t) {
 _.has(e.strategyData, t) || r.open({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}) : d.toErrorPage("You do not have authority to update deployment config " + a.deploymentconfig + ".", "access_denied");
+}));
+var R = function() {
+return "Custom" !== e.strategyData.type && "Custom" !== e.originalStrategy && e.strategyData.type !== e.originalStrategy;
+}, I = function(t) {
+_.has(e.strategyData, t) || r.open({
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 animation: !0,
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 return {
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 alerts: a.alerts,
 message: "Some of your existing " + a.originalStrategy.toLowerCase() + " strategy parameters can be used for the " + a.strategyData.type.toLowerCase() + " strategy. Keep parameters?",
 details: "The timeout parameter and any pre or post lifecycle hooks will be copied from " + a.originalStrategy.toLowerCase() + " strategy to " + a.strategyData.type.toLowerCase() + " strategy. After saving the changes, " + a.originalStrategy.toLowerCase() + " strategy parameters will be removed.",
 =======
+=======
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 alerts: e.alerts,
 message: "Some of your existing " + e.originalStrategy.toLowerCase() + " strategy parameters can be used for the " + e.strategyData.type.toLowerCase() + " strategy. Keep parameters?",
 details: "The timeout parameter and any pre or post lifecycle hooks will be copied from " + e.originalStrategy.toLowerCase() + " strategy to " + e.strategyData.type.toLowerCase() + " strategy. After saving the changes, " + e.originalStrategy.toLowerCase() + " strategy parameters will be removed.",
@@ -16400,7 +16430,7 @@ cancelButtonText: "No"
 }
 }
 }).result.then(function() {
-e.strategyData[t] = angular.copy(e.strategyData[C(e.originalStrategy)]);
+e.strategyData[t] = angular.copy(e.strategyData[j(e.originalStrategy)]);
 }, function() {
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 a.strategyData[b] = {};
@@ -16591,6 +16621,7 @@ e.strategyData[t] = {};
 });
 };
 e.strategyChanged = function() {
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 var t = S(e.strategyData.type);
 w() ? P(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
@@ -16602,11 +16633,16 @@ w() ? k(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.s
 =======
 w() ? P(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+var t = j(e.strategyData.type);
+R() ? I(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 image: "",
 command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 <<<<<<< 2ce32f87748ff2fe030a6b53ff9490fcb80d856d
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 var j = function(e, t, n, a) {
@@ -16616,6 +16652,9 @@ var k = function(e, t, n, a) {
 =======
 var k = function(e, t, n, a) {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+var E = function(e, t, n, a) {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 var r = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -16629,6 +16668,7 @@ containerNames: [ e ],
 from: r
 }
 }, n;
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 }, P = function() {
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
@@ -16654,10 +16694,14 @@ n.hasDeploymentTrigger ? t.push(j(a, n.triggerData.istag, n.triggerData.data, n.
 =======
 }, n;
 }, j = function() {
+=======
+}, T = function() {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 });
 return _.each(e.containerConfigByName, function(n, a) {
+<<<<<<< 2c4be64ddfb5ed47b9ddbc182d8e69ad483c7914
 <<<<<<< 2ce32f87748ff2fe030a6b53ff9490fcb80d856d
 <<<<<<< 0c40bfb0d97d474f70b5801c1312be38074c32cb
 n.hasDeploymentTrigger ? t.push(P(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
@@ -16668,36 +16712,39 @@ n.hasDeploymentTrigger ? t.push(k(a, n.triggerData.istag, n.triggerData.data, n.
 =======
 n.hasDeploymentTrigger ? t.push(k(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 >>>>>>> Update pod controller to use getPreferredVersion
+=======
+n.hasDeploymentTrigger ? t.push(E(a, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+>>>>>>> Update edit/deployment-configs controller to use getPreferredVersion
 name: a
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
 type: "ConfigChange"
 }), t;
-}, R = function() {
-d.hideNotification("edit-deployment-config-error");
+}, N = function() {
+m.hideNotification("edit-deployment-config-error");
 };
 e.save = function() {
 if (e.disableInputs = !0, _.each(e.containerConfigByName, function(t, n) {
 _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: n
-}).env = f.compactEntries(t.env);
-}), w() && delete e.strategyData[C(e.originalStrategy)], "Rolling" === e.strategyData.type) {
+}).env = g.compactEntries(t.env);
+}), R() && delete e.strategyData[j(e.originalStrategy)], "Rolling" === e.strategyData.type) {
 var a = e.strategyData[e.strategyParamsPropertyName].maxSurge, r = Number(a);
 "" === a ? e.strategyData[e.strategyParamsPropertyName].maxSurge = null : _.isFinite(r) && (e.strategyData[e.strategyParamsPropertyName].maxSurge = r);
 var o = e.strategyData[e.strategyParamsPropertyName].maxUnavailable, i = Number(o);
 "" === o ? e.strategyData[e.strategyParamsPropertyName].maxUnavailable = null : _.isFinite(i) && (e.strategyData[e.strategyParamsPropertyName].maxUnavailable = i);
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
-_.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = f.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
-}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = f.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = j(), R(), c.update("deploymentconfigs", e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
-d.addNotification({
+_.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = g.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = T(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
 });
-var t = u.resourceURL(e.updatedDeploymentConfig);
+var t = d.resourceURL(e.updatedDeploymentConfig);
 n.url(t);
 }, function(n) {
-e.disableInputs = !1, d.addNotification({
+e.disableInputs = !1, m.addNotification({
 id: "edit-deployment-config-error",
 type: "error",
 message: "An error occurred updating deployment config " + e.updatedDeploymentConfig.metadata.name + ".",
@@ -16707,7 +16754,7 @@ details: t("getErrorDetails")(n)
 }, e.cancel = function() {
 o.history.back();
 }, e.$on("$destroy", function() {
-c.unwatchAll(y), R();
+l.unwatchAll(w), N();
 });
 } ]), angular.module("openshiftConsole").controller("EditAutoscalerController", [ "$scope", "$filter", "$routeParams", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "HPAService", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 if (n.kind && n.name) {
