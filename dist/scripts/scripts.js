@@ -15908,6 +15908,7 @@ r.limitRanges = e.by("metadata.name"), _.isEmpty(r.limitRanges) || r.$watch("con
 });
 <<<<<<< HEAD
 }));
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("CreateConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {
 n.projectName = t.project, n.breadcrumbs = [ {
 title: "Config Maps",
@@ -15921,6 +15922,153 @@ c.hideNotification("create-config-map-error");
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
 }), P();
+=======
+} else u.toErrorPage("Health checks are not supported for kind " + a.kind + ".");
+} else u.toErrorPage("Kind or name parameter missing.");
+} ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "APIService", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
+e.projectName = a.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = m, e.options = {}, e.jenkinsfileOptions = {
+type: "path"
+}, e.selectTypes = {
+ImageStreamTag: "Image Stream Tag",
+ImageStreamImage: "Image Stream Image",
+DockerImage: "Docker Image Repository"
+}, e.buildFromTypes = [ "ImageStreamTag", "ImageStreamImage", "DockerImage" ], e.pushToTypes = [ "ImageStreamTag", "DockerImage", "None" ], e.jenkinsfileTypes = [ {
+id: "path",
+title: "From Source Repository"
+}, {
+id: "inline",
+title: "Inline"
+} ], e.view = {
+advancedOptions: !1,
+hasHooks: !1
+}, e.breadcrumbs = [], a.isPipeline ? (e.breadcrumbs.push({
+title: "Pipelines",
+link: "project/" + a.project + "/browse/pipelines"
+}), e.breadcrumbs.push({
+title: a.buildconfig,
+link: "project/" + a.project + "/browse/pipelines/" + a.buildconfig
+})) : (e.breadcrumbs.push({
+title: "Builds",
+link: "project/" + a.project + "/browse/builds"
+}), e.breadcrumbs.push({
+title: a.buildconfig,
+link: "project/" + a.project + "/browse/builds/" + a.buildconfig
+})), e.breadcrumbs.push({
+title: a.isPipeline ? "Edit Pipelines" : "Edit Builds"
+}), e.imageOptions = {
+from: {},
+to: {},
+fromSource: {}
+}, e.sources = {
+binary: !1,
+dockerfile: !1,
+git: !1,
+images: !1,
+contextDir: !1,
+none: !0
+}, e.triggers = {
+githubWebhooks: [],
+gitlabWebhooks: [],
+bitbucketWebhooks: [],
+genericWebhooks: [],
+imageChangeTriggers: [],
+builderImageChangeTrigger: {},
+configChangeTrigger: {}
+}, e.createTriggerSelect = {
+selectedType: "",
+options: [ {
+type: "github",
+label: "GitHub"
+}, {
+type: "gitlab",
+label: "GitLab"
+}, {
+type: "bitbucket",
+label: "Bitbucket"
+}, {
+type: "generic",
+label: "Generic"
+} ]
+}, e.runPolicyTypes = [ "Serial", "Parallel", "SerialLatestOnly" ], e.buildHookTypes = [ {
+id: "command",
+label: "Command"
+}, {
+id: "script",
+label: "Shell Script"
+}, {
+id: "args",
+label: "Arguments to default image entry point"
+}, {
+id: "commandArgs",
+label: "Command with arguments"
+}, {
+id: "scriptArgs",
+label: "Shell script with arguments"
+} ], e.buildHookSelection = {
+type: {}
+}, e.getArgumentsDescription = function() {
+switch (_.get(e, "buildHookSelection.type.id", "")) {
+case "args":
+return "Enter the arguments that will be appended to the default image entry point.";
+
+case "commandArgs":
+return "Enter the arguments that will be appended to the command.";
+
+case "scriptArgs":
+return "Enter the arguments that will be appended to the script.";
+}
+return null;
+};
+var g = function() {
+var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), a = !!_.get(e, "buildConfig.spec.postCommit.script");
+e.view.hasHooks = t || n || a;
+var r;
+r = t && n ? "commandArgs" : t && a ? "scriptArgs" : t ? "args" : a ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
+id: r
+});
+}, v = function() {
+if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
+case "script":
+delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args;
+break;
+
+case "command":
+delete e.updatedBuildConfig.spec.postCommit.script, delete e.updatedBuildConfig.spec.postCommit.args;
+break;
+
+case "args":
+delete e.updatedBuildConfig.spec.postCommit.script, delete e.updatedBuildConfig.spec.postCommit.command;
+break;
+
+case "scriptArgs":
+delete e.updatedBuildConfig.spec.postCommit.command;
+break;
+
+case "commandArgs":
+delete e.updatedBuildConfig.spec.postCommit.script;
+} else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
+};
+e.secrets = {};
+var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = function() {
+var t;
+e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : r.history.back();
+};
+e.cancel = C;
+var w = function() {
+u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
+};
+e.$on("$destroy", w), d.get(a.project).then(_.spread(function(n, r) {
+e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? c.get(h, a.buildconfig, r, {
+errorNotification: !1
+}).then(function(t) {
+e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = P(e.triggers, e.buildConfig.spec.triggers), e.sources = N(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
+var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
+return _.map(e, "metadata.name");
+});
+e.secrets.secretsByType = _.each(a, function(e) {
+e.unshift("");
+}), I();
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -15944,6 +16092,7 @@ n.$on("$destroy", u);
 var d = function() {
 r.history.back();
 };
+<<<<<<< HEAD
 n.cancel = d, l.get(t.project).then(_.spread(function(r, l) {
 n.project = r, o.canI("configmaps", "create", t.project) ? (n.configMap = {
 apiVersion: "v1",
@@ -16002,10 +16151,35 @@ function r() {
 e.filterWithZeroResults = !s.getLabelSelector().isEmpty() && _.isEmpty(e.serviceInstances) && !_.isEmpty(e.unfilteredServiceInstances);
 =======
 var S = function(n, a) {
+=======
+})) : (e.imageSourceFromObjects = [], e.sourceImages.forEach(function(t) {
+e.imageSourceFromObjects.push(t.from);
+}))), e.options.forcePull = !!e.buildStrategy.forcePull, "Docker" === e.strategyType && (e.options.noCache = !!e.buildConfig.spec.strategy.dockerStrategy.noCache, e.buildFromTypes.push("None")), b.push(c.watchObject(h, a.buildconfig, r, function(t, n) {
+"MODIFIED" === n && u.addNotification({
+id: "edit-build-config-conflict",
+type: "warning",
+message: "This build configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
+}), "DELETED" === n && (u.addNotification({
+id: "edit-build-config-deleted",
+type: "warning",
+message: "This build configuration has been deleted."
+}), e.disableInputs = !0), e.buildConfig = t;
+})), e.loaded = !0;
+}, function(n) {
+e.loaded = !0, e.alerts.load = {
+type: "error",
+message: "The build configuration details could not be loaded.",
+details: "Reason: " + t("getErrorDetails")(n)
+};
+}) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
+}));
+var P = function(n, a) {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 function r(n, a) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(a, e.projectName);
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
 }
+<<<<<<< HEAD
 e.project = t, e.projectContext = n;
 var o = a.getPreferredVersion("servicebindings");
 u.push(i.watch(o, n, function(t) {
@@ -16039,6 +16213,15 @@ e.serviceClasses = t.by("metadata.name"), m(), d();
 }), s.onActiveFiltersChanged(function(t) {
 e.$evalAsync(function() {
 e.serviceInstances = t.select(e.unfilteredServiceInstances), r();
+=======
+var o = S(e.buildConfig).from;
+return a.forEach(function(e) {
+switch (e.type) {
+case "Generic":
+n.genericWebhooks.push({
+disabled: !1,
+data: e
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 });
 }), e.$on("$destroy", function() {
 i.unwatchAll(u);
@@ -16120,6 +16303,7 @@ if (e.plan && e.serviceClass && e.serviceInstance) {
 var t = _.get(e.plan, "spec.instanceUpdateParameterSchema"), n = _.size(_.get(t, "properties")) > 0 || _.get(e.serviceClass, "spec.planUpdatable") && _.size(e.servicePlans) > 1;
 e.editAvailable = n && v(e.serviceInstance) && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
 }
+<<<<<<< HEAD
 }, S = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), b();
 }, w = function() {
@@ -16179,6 +16363,16 @@ details: t("getErrorDetails")(n)
 =======
 var C = function(e) {
 return _.map(p.compactEntries(e), function(e) {
+=======
+}), n;
+};
+e.aceLoaded = function(e) {
+var t = e.getSession();
+t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
+};
+var k = function(e) {
+return _.map(f.compactEntries(e), function(e) {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 return {
 sourcePath: e.name,
 destinationDir: e.value
@@ -16199,8 +16393,12 @@ o.unwatchAll(c);
 >>>>>>> Service instance details configuration and edit
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }, w = function(t) {
+=======
+}, j = function(t) {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -16225,17 +16423,25 @@ name: _.last(a)
 }).namespace = 1 !== _.size(a) ? _.head(a) : e.buildConfig.metadata.namespace;
 }
 return n;
+<<<<<<< HEAD
 }, k = function() {
+=======
+}, R = function() {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
+<<<<<<< HEAD
 }, P = function() {
+=======
+}, I = function() {
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
 } ],
-pullSecret: h(e.buildConfig).pullSecret ? [ h(e.buildConfig).pullSecret ] : [ {
+pullSecret: S(e.buildConfig).pullSecret ? [ S(e.buildConfig).pullSecret ] : [ {
 name: ""
 } ],
 pushSecret: e.buildConfig.spec.output.pushSecret ? [ e.buildConfig.spec.output.pushSecret ] : [ {
@@ -16253,21 +16459,21 @@ destinationDir: ""
 break;
 
 case "Custom":
-e.secrets.picked.sourceSecrets = h(e.buildConfig).secrets || [ {
+e.secrets.picked.sourceSecrets = S(e.buildConfig).secrets || [ {
 secretSource: {
 name: ""
 },
 mountPath: ""
 } ];
 }
-}, j = function(e, t, n) {
+}, E = function(e, t, n) {
 t.name ? e[n] = t : delete e[n];
-}, R = function(t, n) {
+}, T = function(t, n) {
 var a = "Custom" === e.strategyType ? "secretSource" : "secret", r = _.filter(n, function(e) {
 return e[a].name;
 });
 _.isEmpty(r) ? delete t.secrets : t.secrets = r;
-}, I = function(e, t) {
+}, N = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
@@ -16283,27 +16489,28 @@ type: t
 return e.label === t;
 }).type;
 n.data[a] = {
-secret: o._generateSecret()
+secret: i._generateSecret()
 }, e.triggers[a + "Webhooks"].push(n);
 }
 }, e.save = function() {
-switch (e.disableInputs = !0, g(), h(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
+switch (e.disableInputs = !0, v(), S(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
 case "Docker":
-h(e.updatedBuildConfig).noCache = e.options.noCache;
+S(e.updatedBuildConfig).noCache = e.options.noCache;
 break;
 
 case "JenkinsPipeline":
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
-switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = C(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = w(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete h(e.updatedBuildConfig).from : h(e.updatedBuildConfig).from = w(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = w(e.imageOptions.to), h(e.updatedBuildConfig).env = p.compactEntries(e.envVars), j(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), j(h(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), j(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = k(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = j(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = j(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = j(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), E(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), E(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), E(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 case "Source":
 case "Docker":
-R(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+T(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-R(h(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+T(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< HEAD
 e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
 type: "success",
@@ -16312,6 +16519,16 @@ message: "Build config " + e.updatedBuildConfig.metadata.name + " was successful
 >>>>>>> Fix for adding non-builder templates to a project
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
+=======
+e.updatedBuildConfig.spec.triggers = R(), w(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+u.addNotification({
+type: "success",
+message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
+}), C();
+}, function(n) {
+e.disableInputs = !1, u.addNotification({
+id: "edit-build-config-error",
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 type: "error",
 message: "The service details could not be loaded.",
 details: t("getErrorDetails")(n)
@@ -16324,6 +16541,7 @@ t.projectName = e.project, t.secretsByType = {}, a.get(e.project).then(_.spread(
 t.project = e, t.context = a, n.list("secrets", a).then(function(e) {
 t.secrets = _.sortBy(e.by("metadata.name"), [ "type", "metadata.name" ]), t.loaded = !0;
 });
+<<<<<<< HEAD
 }));
 } ]), angular.module("openshiftConsole").controller("SecretController", [ "$routeParams", "$filter", "$scope", "DataService", "ProjectsService", "SecretsService", function(e, t, n, a, r, o) {
 n.projectName = e.project, n.secretName = e.secret, n.view = {
@@ -16347,6 +16565,10 @@ errorNotification: !1
 n.secret = e, n.decodedSecretData = o.decodeSecretData(n.secret.data), n.loaded = !0;
 }, function(e) {
 n.loaded = !0, n.error = e;
+=======
+}, e.$on("$destroy", function() {
+c.unwatchAll(b);
+>>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("CreateSecretController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {

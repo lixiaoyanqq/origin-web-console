@@ -488,7 +488,7 @@ angular.module('openshiftConsole')
       return imageObject;
     };
 
-    // Return only webhook triggers that have defined type and their type object. 
+    // Return only webhook triggers that have defined type and their type object.
     var filterValidWebhookTriggers = function(triggers) {
       return _.filter(triggers, function(trigger) {
         return (!_.isEmpty(trigger.data.type) && !_.isEmpty(trigger.data[_.toLower(trigger.data.type)]));
