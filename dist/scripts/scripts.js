@@ -19839,6 +19839,7 @@ f(p(d) + " could not be loaded.", m(e));
 } else c.toErrorPage("Health checks are not supported for kind " + n.kind + ".");
 } else c.toErrorPage("Kind or name parameter missing.");
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("EditRouteController", [ "$filter", "$location", "$routeParams", "$scope", "APIService", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "RoutesService", function(e, t, n, r, a, o, i, s, c, l, u) {
 r.renderOptions = {
 hideFilterWidget: !0
@@ -19896,9 +19897,12 @@ var i = _.get(r, "routing.alternateServices", []);
 return _.isEmpty(i) ? delete e.spec.alternateBackends : e.spec.alternateBackends = _.map(i, function(e) {
 =======
 } ]), angular.module("openshiftConsole").controller("EditRouteController", [ "$filter", "$location", "$routeParams", "$scope", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "RoutesService", function(e, t, n, a, r, o, i, s, c, l) {
+=======
+} ]), angular.module("openshiftConsole").controller("EditRouteController", [ "$filter", "$location", "$routeParams", "$scope", "APIService", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "RoutesService", function(e, t, n, a, r, o, i, s, c, l, u) {
+>>>>>>> Update edit/route controller to use getPreferredVersion
 a.renderOptions = {
 hideFilterWidget: !0
-}, a.projectName = n.project, a.routeName = n.route, a.loading = !0, a.routeURL = i.resourceURL(a.routeName, "Route", a.projectName), a.breadcrumbs = [ {
+}, a.projectName = n.project, a.routeName = n.route, a.loading = !0, a.routeURL = s.resourceURL(a.routeName, "Route", a.projectName), a.breadcrumbs = [ {
 title: "Routes",
 link: "project/" + a.projectName + "/browse/routes"
 }, {
@@ -19907,42 +19911,44 @@ link: a.routeURL
 }, {
 title: "Edit"
 } ];
-var u = function() {
-s.hideNotification("edit-route-error");
-};
-a.$on("$destroy", u);
 var d = function() {
+c.hideNotification("edit-route-error");
+};
+a.$on("$destroy", d);
+var m = function() {
 t.path(a.routeURL);
 };
-a.cancel = d, c.get(n.project).then(_.spread(function(t, c) {
-if (a.project = t, r.canI("routes", "update", n.project)) {
-var m, p = e("orderByDisplayName"), f = function() {
-i.toErrorPage('Editing routes with non-service targets is unsupported. You can edit the route with the "Edit YAML" action instead.');
+a.cancel = m;
+var p = r.getPreferredVersion("routes"), f = r.getPreferredVersion("services");
+l.get(n.project).then(_.spread(function(t, r) {
+if (a.project = t, o.canI("routes", "update", n.project)) {
+var l, g = e("orderByDisplayName"), v = function() {
+s.toErrorPage('Editing routes with non-service targets is unsupported. You can edit the route with the "Edit YAML" action instead.');
 };
-o.get("routes", a.routeName, c).then(function(e) {
+i.get(p, a.routeName, r).then(function(e) {
 if ("Service" === e.spec.to.kind) {
-m = angular.copy(e);
-var t = _.get(m, "spec.host");
-"Subdomain" === _.get(m, "spec.wildcardPolicy") && (t = "*." + l.getSubdomain(m)), a.routing = {
+l = angular.copy(e);
+var t = _.get(l, "spec.host");
+"Subdomain" === _.get(l, "spec.wildcardPolicy") && (t = "*." + u.getSubdomain(l)), a.routing = {
 host: t,
-wildcardPolicy: _.get(m, "spec.wildcardPolicy"),
-path: _.get(m, "spec.path"),
-targetPort: _.get(m, "spec.port.targetPort"),
-tls: angular.copy(_.get(m, "spec.tls"))
-}, o.list("services", c).then(function(e) {
+wildcardPolicy: _.get(l, "spec.wildcardPolicy"),
+path: _.get(l, "spec.path"),
+targetPort: _.get(l, "spec.port.targetPort"),
+tls: angular.copy(_.get(l, "spec.tls"))
+}, i.list(f, r).then(function(e) {
 a.loading = !1;
 var t = e.by("metadata.name");
-a.routing.to = m.spec.to, a.routing.alternateServices = [], _.each(_.get(m, "spec.alternateBackends"), function(e) {
-if ("Service" !== e.kind) return f(), !1;
+a.routing.to = l.spec.to, a.routing.alternateServices = [], _.each(_.get(l, "spec.alternateBackends"), function(e) {
+if ("Service" !== e.kind) return v(), !1;
 a.routing.alternateServices.push(e);
-}), a.services = p(t);
+}), a.services = g(t);
 });
-} else f();
+} else v();
 }, function() {
-i.toErrorPage("Could not load route " + a.routeName + ".");
+s.toErrorPage("Could not load route " + a.routeName + ".");
 });
-var g = function() {
-var e = angular.copy(m), t = _.get(a, "routing.to.name");
+var h = function() {
+var e = angular.copy(l), t = _.get(a, "routing.to.name");
 _.set(e, "spec.to.name", t);
 var n = _.get(a, "routing.to.weight");
 isNaN(n) || _.set(e, "spec.to.weight", n), e.spec.path = a.routing.path;
@@ -19958,6 +19964,7 @@ weight: e.weight
 };
 }), e;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 r.updateRoute = function() {
 if (r.form.$valid) {
@@ -20047,10 +20054,29 @@ errorNotification: !1
 var i = n;
 _.set(e, "updated.resource", angular.copy(n)), e.$watch("updated.resource", function(t, n) {
 t !== n && (e.modified = !0);
+=======
+a.updateRoute = function() {
+if (a.form.$valid) {
+d(), a.disableInputs = !0;
+var t = h();
+i.update(p, a.routeName, t, r).then(function() {
+c.addNotification({
+type: "success",
+message: "Route " + a.routeName + " was successfully updated."
+}), m();
+}, function(t) {
+a.disableInputs = !1, c.addNotification({
+type: "error",
+id: "edit-route-error",
+message: "An error occurred updating route " + a.routeName + ".",
+details: e("getErrorDetails")(t)
+});
+>>>>>>> Update edit/route controller to use getPreferredVersion
 });
 var l = function(e) {
 return _.get(e, "metadata.resourceVersion");
 };
+<<<<<<< HEAD
 e.save = function() {
 var n = e.updated.resource;
 if (e.modified = !1, n.kind === i.kind) {
@@ -20091,6 +20117,9 @@ message: g(r.kind, !0) + " " + r.name + " was successfully updated."
 }), f();
 =======
 } else i.toErrorPage("You do not have authority to update route " + n.routeName + ".", "access_denied");
+=======
+} else s.toErrorPage("You do not have authority to update route " + n.routeName + ".", "access_denied");
+>>>>>>> Update edit/route controller to use getPreferredVersion
 }));
 } ]), angular.module("openshiftConsole").controller("EditYAMLController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d) {
 if (a.kind && a.name) {
