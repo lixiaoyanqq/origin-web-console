@@ -171,6 +171,7 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 >>>>>>> Add search catalog in project context
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
@@ -205,6 +206,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -13517,6 +13521,7 @@ N(), e.breadcrumbs = r.getBreadcrumbs({
 =======
 z();
 }
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
@@ -13535,6 +13540,9 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -13662,6 +13670,7 @@ l.buildDockerRefMapForImageStreams(t, k), H(), m.log("imagestreams (subscribe)",
 })), $.push(i.watch(j, u, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
 })), $.push(i.watch(R, u, function(e) {
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
@@ -13680,6 +13689,9 @@ p = e.by("metadata.name"), y(), V();
 =======
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+p = e.by("metadata.name"), y(), V();
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 }, {
 poll: U,
 pollInterval: 6e4
@@ -13700,6 +13712,7 @@ e.limitRanges = t.by("metadata.name"), N();
 >>>>>>> Update template service broker flag name
 =======
 })), i.list(E, u).then(function(t) {
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
@@ -13718,6 +13731,9 @@ e.limitRanges = t.by("metadata.name"), V();
 =======
 e.limitRanges = t.by("metadata.name"), V();
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+e.limitRanges = t.by("metadata.name"), V();
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 });
 $.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
@@ -17712,20 +17728,22 @@ g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification(
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 };
-e.$on("$destroy", N), v.get(r.project).then(_.spread(function(t, n) {
+e.$on("$destroy", N);
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), U = i.getPreferredVersion("resourcequotas"), O = i.getPreferredVersion("appliedclusterresourcequotas");
+v.get(r.project).then(_.spread(function(t, n) {
 e.project = t, r.sourceURI && (e.sourceURIinParams = !0);
 var i = function() {
 e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
 };
-c.list("limitranges", n).then(function(t) {
+c.list(A, n).then(function(t) {
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 });
 var v, y, C = function() {
 e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
-c.list("resourcequotas", n).then(function(e) {
+c.list(U, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
-}), c.list("appliedclusterresourcequotas", n).then(function(e) {
+}), c.list(O, n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
@@ -17934,7 +17952,7 @@ return a.buildConfig.sourceUrl === _.get(a, "image.metadata.annotations.sampleRe
 e.metricsWarning = !t;
 });
 var o = [], i = [];
-e.valueFromObjects = [], c.list("configmaps", n, null, {
+e.valueFromObjects = [], c.list(D, n, null, {
 errorNotification: !1
 }).then(function(t) {
 o = R(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
@@ -17945,7 +17963,7 @@ type: "error",
 message: "Could not load config maps.",
 details: E(e)
 });
-}), c.list("secrets", n, null, {
+}), c.list(L, n, null, {
 errorNotification: !1
 }).then(function(t) {
 i = R(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
@@ -17962,12 +17980,12 @@ type: "error",
 message: "Could not load secrets.",
 details: E(e)
 });
-}), c.get("imagestreams", a.imageName, {
+}), c.get($, a.imageName, {
 namespace: a.namespace || r.project
 }).then(function(e) {
 a.imageStream = e;
 var t = a.imageTag;
-c.get("imagestreamtags", e.metadata.name + ":" + t, {
+c.get(B, e.metadata.name + ":" + t, {
 namespace: a.namespace
 }).then(function(e) {
 a.image = e.image, a.DCEnvVarsFromImage = u.getEnvironment(e);
@@ -18051,7 +18069,7 @@ f.toErrorPage("Cannot create from source: the specified image could not be retri
 >>>>>>> Patternfly vertical navigation and project bar
 });
 }(e);
-var D, A = function() {
+var V, F = function() {
 var t = {
 started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
 success: "Created application " + e.name + " in project " + e.projectDisplayName(),
@@ -18059,7 +18077,7 @@ failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
 }, o = {};
 S.clear(), S.add(t, o, r.project, function() {
 var t = a.defer();
-return c.batch(D, n).then(function(n) {
+return c.batch(V, n).then(function(n) {
 var a = [], r = !1;
 _.isEmpty(n.failure) ? a.push({
 type: "success",
@@ -18083,7 +18101,7 @@ hasErrors: r
 }), f.toNextSteps(e.name, e.projectName, {
 usingSampleRepo: e.usingSampleRepo()
 });
-}, $ = function(e) {
+}, x = function(e) {
 o.open({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 animation: !0,
@@ -18104,6 +18122,7 @@ cancelButtonText: "Cancel"
 };
 }
 }
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< b82d21ade915b9a1bae21ca36e0909ca0174c557
 <<<<<<< f8cb892c3d9e864c3b7b3ba810c290ed7ce351f0
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
@@ -18182,25 +18201,29 @@ D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
 =======
 }).result.then(A);
 }, B = function(t) {
+=======
+}).result.then(F);
+}, M = function(t) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 >>>>>>> Remove breadcrumbs from catalog, create, and next-steps pages
 type: "error"
 }) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(T) ? A() : ($(T), e.disableInputs = !1);
+})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return P(this.project) || this.projectName;
 }, e.createApp = function() {
 e.disableInputs = !0, N(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
 var t = s.generate(e);
-D = [], angular.forEach(t, function(e) {
-null !== e && (m.debug("Generated resource definition:", e), D.push(e));
+V = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), V.push(e));
 });
-var a = s.ifResourcesDontExist(D, e.projectName), r = h.getLatestQuotaAlerts(D, n), o = function(t) {
+var a = s.ifResourcesDontExist(V, e.projectName), r = h.getLatestQuotaAlerts(V, n), o = function(t) {
 return e.nameTaken = t.nameTaken, r;
 };
-a.then(o, o).then(B, B);
+a.then(o, o).then(M, M);
 };
 })), e.cancel = function() {
 f.toProjectOverview(e.projectName);
@@ -32451,6 +32474,7 @@ namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
 }));
+<<<<<<< 06fbfb52480e8cc20e5a3f4162b2ca9038ca931e
 <<<<<<< 7bf7823be61d31cbcc56164e8989102db4019779
 <<<<<<< efac32e4a13e2aac92238d69168ae1212cab677f
 <<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
@@ -32521,6 +32545,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update nextSteps controller to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update createFromImage controller to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {
