@@ -16570,6 +16570,7 @@ n.loaded = !0, n.error = e;
 c.unwatchAll(b);
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 });
+<<<<<<< HEAD
 }));
 } ]), angular.module("openshiftConsole").controller("CreateSecretController", [ "$filter", "$location", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
 a.alerts = {}, a.projectName = n.project, a.breadcrumbs = [ {
@@ -16617,6 +16618,11 @@ a.unwatchAll(s);
 }));
 } ]), angular.module("openshiftConsole").controller("ConfigMapController", [ "$scope", "$routeParams", "APIService", "BreadcrumbsService", "DataService", "ProjectsService", function(e, t, n, a, r, o) {
 e.projectName = t.project, e.alerts = e.alerts || {}, e.loaded = !1, e.labelSuggestions = {}, e.breadcrumbs = a.getBreadcrumbs({
+=======
+} ]), angular.module("openshiftConsole").controller("EditConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "DataService", "BreadcrumbsService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
+var u = [];
+n.forms = {}, n.projectName = t.project, n.breadcrumbs = i.getBreadcrumbs({
+>>>>>>> Update edit/config-map controller to use getPreferredVersion
 name: t.configMap,
 kind: "ConfigMap",
 namespace: t.project
@@ -16626,6 +16632,7 @@ e.loaded = !0, e.configMap = t, "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This config map has been deleted."
 });
+<<<<<<< HEAD
 };
 e.addToApplicationVisible = !1, e.addToApplication = function() {
 e.addToApplicationVisible = !0;
@@ -16640,6 +16647,47 @@ s(e), i.push(r.watchObject("configmaps", t.configMap, a, s));
 e.loaded = !0, e.error = t;
 }), e.$on("$destroy", function() {
 r.unwatchAll(i);
+=======
+var d = function(e) {
+return _.get(e, "metadata.resourceVersion");
+}, m = function() {
+c.hideNotification("edit-config-map-error");
+}, p = function() {
+a.history.back();
+};
+n.cancel = p;
+var f = r.getPreferredVersion("configmaps");
+l.get(t.project).then(_.spread(function(a, r) {
+o.get(f, t.configMap, r, {
+errorNotification: !1
+}).then(function(e) {
+n.loaded = !0, n.breadcrumbs = i.getBreadcrumbs({
+name: t.configMap,
+object: e,
+project: a,
+subpage: "Edit Config Map"
+}), n.configMap = e, u.push(o.watchObject(f, t.configMap, r, function(e, t) {
+n.resourceChanged = d(e) !== d(n.configMap), n.resourceDeleted = "DELETED" === t;
+}));
+}, function(n) {
+s.toErrorPage("Could not load config map " + t.configMap + ". " + e("getErrorDetails")(n));
+}), n.updateConfigMap = function() {
+n.forms.editConfigMapForm.$valid && (m(), n.disableInputs = !0, o.update(f, n.configMap.metadata.name, n.configMap, r).then(function() {
+c.addNotification({
+type: "success",
+message: "Config map " + n.configMap.metadata.name + " successfully updated."
+}), p();
+}, function(t) {
+n.disableInputs = !1, c.addNotification({
+id: "edit-config-map-error",
+type: "error",
+message: "An error occurred updating the config map.",
+details: e("getErrorDetails")(t)
+});
+}));
+}, n.$on("$destroy", function() {
+o.unwatchAll(u), m();
+>>>>>>> Update edit/config-map controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("CreateConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l) {
