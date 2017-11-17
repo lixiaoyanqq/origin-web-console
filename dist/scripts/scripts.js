@@ -188,6 +188,7 @@ e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATA
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Wait for service classes and plans to load
 =======
@@ -211,6 +212,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -10609,6 +10613,7 @@ o.unwatchAll(g);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 E(), B(), U(), O(), T();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10650,6 +10655,9 @@ T(), B(), O(), V(), E();
 =======
 T(), B(), O(), V(), E();
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+T(), B(), O(), V(), E();
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -14327,6 +14335,7 @@ case "ReplicationController":
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 V(t);
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
@@ -14338,11 +14347,15 @@ F(t);
 =======
 F(t);
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+F(t);
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 break;
 
 case "ReplicaSet":
 z();
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14425,6 +14438,9 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -21428,6 +21444,7 @@ var n = _.get(e, "spec.triggers", []), r = _.find(n, function(e) {
 } else f.toErrorPage("Cannot create from source: a base image tag was not specified"); else f.toErrorPage("Cannot create from source: a base image was not specified");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Patternfly vertical navigation and project bar
 } ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$scope", "$http", "$routeParams", "DataService", "$q", "$location", "TaskList", "$parse", "Navigate", "Logger", "$filter", "imageObjectRefFilter", "failureObjectNameFilter", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p) {
 =======
@@ -21458,6 +21475,18 @@ type: "error",
 message: "An error occurred creating project.",
 details: R(e)
 >>>>>>> Correct ProjectNameTaken error handling in deployImage, processTemplate, and fromFile wizards
+=======
+} ]), angular.module("openshiftConsole").controller("NextStepsController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "Logger", "ProjectsService", function(e, t, n, a, r, o, i) {
+e("displayName");
+var s = [];
+n.alerts = [], n.loginBaseUrl = r.openshiftAPIBaseUrl(), n.buildConfigs = {}, n.projectName = t.project, n.fromSampleRepo = t.fromSample, n.name = t.name;
+var c = a.getPreferredVersion("buildconfigs");
+i.get(t.project).then(_.spread(function(e, a) {
+n.project = e, s.push(r.watch(c, a, function(e) {
+n.buildConfigs = e.by("metadata.name"), n.createdBuildConfig = n.buildConfigs[t.name], o.log("buildconfigs (subscribe)", n.buildConfigs);
+})), n.$on("$destroy", function() {
+r.unwatchAll(s);
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 });
 }));
 } ]), angular.module("openshiftConsole").controller("NewFromTemplateController", [ "$filter", "$location", "$parse", "$routeParams", "$scope", "AuthorizationService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
@@ -38399,6 +38428,7 @@ skipDigest: !0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, U = _.once(function(e, t) {
 A(), l = o.$on("NotificationsService.onNotificationAdded", t);
 }), O = function() {
@@ -38457,6 +38487,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update nextSteps controller to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {
