@@ -14165,6 +14165,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/modals/set-home-page-modal.html',
     "<div class=\"set-home-page\">\n" +
     "<div class=\"modal-header\">\n" +
@@ -14173,6 +14174,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<h1 class=\"modal-title\" translate>Set Home Page</h1>\n" +
     "</div>\n" +
+=======
+  $templateCache.put('views/modals/logout.html',
+    "<div class=\"modal-resource-action inactivity-modal\">\n" +
+    "<form>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<h1>Your session is about to expire due to inactivity.</h1>\n" +
+    "<h2>You will be logged out in <strong><time-remaining-from-now end-timestamp=\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> seconds.</h2>\n" +
+    "</div>\n" +
+    "<div class=\"modal-footer\">\n" +
+    "<button class=\"btn btn-lg btn-default\" type=\"submit\" ng-click=\"logout();\">Log Out</button>\n" +
+    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancel();\">Continue Session</button>\n" +
+    "</div>\n" +
+    "</form>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('views/modals/process-or-save-template.html',
+    "<div class=\"modal-resource-action\">\n" +
+>>>>>>> Configurable inactivity timeout in console
     "<div class=\"modal-body\">\n" +
     "<p translate>\n" +
     "Note: This setting is browser-specific and will not be maintained across browsers.\n" +
