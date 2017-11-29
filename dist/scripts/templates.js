@@ -11179,10 +11179,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"osc-secret-actions\">\n" +
     "<span ng-if=\"canAddSourceSecret()\">\n" +
+<<<<<<< HEAD
     "<a href=\"\" role=\"button\" ng-click=\"addSourceSecret()\" translate>Add Another Secret</a>\n" +
     "<span ng-if=\"secretsVersion | canI : 'create'\" class=\"action-divider\">|</span>\n" +
     "</span>\n" +
     "<a href=\"\" ng-if=\"secretsVersion | canI : 'create'\" role=\"button\" ng-click=\"openCreateSecretModal()\" translate>Create New Secret</a>\n" +
+=======
+    "<a href=\"\" role=\"button\" ng-click=\"addSourceSecret()\">Add Another Secret</a>\n" +
+    "<span ng-if=\"secretsVersion | canI : 'create'\" class=\"action-divider\">|</span>\n" +
+    "</span>\n" +
+    "<a href=\"\" ng-if=\"secretsVersion | canI : 'create'\" role=\"button\" ng-click=\"openCreateSecretModal()\">Create New Secret</a>\n" +
+>>>>>>> Update oscSourceSecrets directive to use getPreferredVersion
     "</div>\n" +
     "</ng-form>"
   );
