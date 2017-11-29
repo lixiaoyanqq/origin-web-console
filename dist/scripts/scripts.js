@@ -23776,6 +23776,7 @@ endTimestamp: "="
 template: '<span data-timestamp="{{endTimestamp}}" class="countdown">{{endTimestamp | countdownToTimestamp}}</span>'
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").directive("deleteLink", [ "$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "DataService", "Navigate", "NotificationsService", "Logger", function(e, t, n, r, a, o, i, s, c, l) {
 var u = o.getPreferredVersion("horizontalpodautoscalers");
 =======
@@ -23876,6 +23877,10 @@ templateUrl: "views/directives/edit-environment-from.html"
 });
 }(), angular.module("openshiftConsole").directive("events", [ "$routeParams", "$filter", "DataService", "KeywordService", "ProjectsService", "Logger", function(e, t, n, a, r, o) {
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+}), angular.module("openshiftConsole").directive("deleteLink", [ "$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "DataService", "Navigate", "NotificationsService", "Logger", function(e, t, n, a, r, o, i, s, c, l) {
+var u = o.getPreferredVersion("horizontalpodautoscalers");
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -23899,16 +23904,28 @@ templateUrl: function(e, t) {
 return angular.isDefined(t.buttonOnly) ? "views/directives/delete-button.html" : "views/directives/delete-link.html";
 },
 replace: !0,
+<<<<<<< HEAD
 link: function(r, a, d) {
 "Project" === d.kind && (r.isProject = !0), r.options = {
+=======
+link: function(a, r, d) {
+"Project" === d.kind && (a.isProject = !0), a.options = {
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 deleteHPAs: !0,
 deleteImmediately: !1
 };
 var m = function(e) {
+<<<<<<< HEAD
 r.stayOnCurrentPage && r.alerts ? r.alerts[e.name] = e.data : c.addNotification(e.data);
 }, p = function(e) {
 return i.delete(u, e.metadata.name, {
 namespace: r.projectName
+=======
+a.stayOnCurrentPage && a.alerts ? a.alerts[e.name] = e.data : c.addNotification(e.data);
+}, p = function(e) {
+return i.delete(u, e.metadata.name, {
+namespace: a.projectName
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 }).then(function() {
 c.addNotification({
 type: "success",
@@ -23923,8 +23940,13 @@ message: "Horizontal pod autoscaler " + e.metadata.name + " could not be deleted
 }
 }), l.error("HPA " + e.metadata.name + " could not be deleted.", t);
 });
+<<<<<<< HEAD
 }, g = function() {
 if (!r.stayOnCurrentPage) if (r.redirectUrl) t.url(r.redirectUrl); else if ("Project" === r.kind) if ("/" !== t.path()) {
+=======
+}, f = function() {
+if (!a.stayOnCurrentPage) if (a.redirectUrl) t.url(a.redirectUrl); else if ("Project" === a.kind) if ("/" !== t.path()) {
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 var e = URI("/");
 t.url(e);
 } else r.$emit("deleteProject"); else s.toResourceList(o.kindToResource(r.kind), r.projectName);
@@ -23935,17 +23957,30 @@ templateUrl: "views/modals/delete-resource.html",
 controller: "DeleteModalController",
 scope: r
 }).result.then(function() {
+<<<<<<< HEAD
 var e = r.kind, t = r.resourceName, a = r.typeDisplayName || n("humanizeKind")(e), s = _.capitalize(a) + " '" + (r.displayName ? r.displayName : t) + "'", u = "Project" === r.kind ? {} : {
 namespace: r.projectName
 }, d = {};
 r.options.deleteImmediately && (d.gracePeriodSeconds = 0, d.propagationPolicy = null), "servicecatalog.k8s.io" === r.group && (d.propagationPolicy = null), i.delete({
 resource: o.kindToResource(e),
 group: r.group
+=======
+var e = a.kind, t = a.resourceName, r = a.typeDisplayName || n("humanizeKind")(e), s = _.capitalize(r) + " '" + (a.displayName ? a.displayName : t) + "'", u = "Project" === a.kind ? {} : {
+namespace: a.projectName
+}, d = {};
+a.options.deleteImmediately && (d.gracePeriodSeconds = 0, d.propagationPolicy = null), "servicecatalog.k8s.io" === a.group && (d.propagationPolicy = null), i.delete({
+resource: o.kindToResource(e),
+group: a.group
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 }, t, u, d).then(function() {
 c.addNotification({
 type: "success",
 message: s + " was marked for deletion."
+<<<<<<< HEAD
 }), r.success && r.success(), r.options.deleteHPAs && _.each(r.hpaList, p), g();
+=======
+}), a.success && a.success(), a.options.deleteHPAs && _.each(a.hpaList, p), f();
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 }).catch(function(e) {
 m({
 name: t,
