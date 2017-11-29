@@ -54,13 +54,32 @@ notification-drawer-wrapper {
       color: @color-pf-black;
     }
   }
-  .expanded-notification .drawer-pf-notification-message {
-    max-width: 35%; // keeps flex in check in case of a really long message
+  .expanded-notification {
+    .drawer-pf-notification-info {
+      .text-muted;
+    }
+    .drawer-pf-notification-message-expanded {
+      padding: 10px 10px 10px 42px;
+      .text-muted;
+    }
+    &.unread {
+      .drawer-pf-notification-info {
+        color: inherit;
+      }
+      .drawer-pf-notification-message-expanded {
+        color: inherit;
+        font-weight: normal;
+        .word-break();
+      }
+    }
   }
 }
 
 .panel-heading {
   .panel-title {
+    color: @color-pf-black-700;
+    font-weight: bold;
+    line-height: normal;
     // TODO: hack to eliminate side-to-side wobble
     // There is a hard-coded <h4> that wraps the header:
     //   - https://github.com/patternfly/angular-patternfly/issues/539

@@ -48,10 +48,9 @@
         color: @nav-pf-vertical-active-icon-color;
       }
     }
-    > a,
-    > a:focus {
-      font-size: @font-size-base;
-      font-weight: 300;
+    > a {
+      font-size: (@font-size-base + 1);
+      font-weight: 300 !important;
       text-decoration: none;
       @media(max-width: @screen-xs-max) {
         height: auto;
@@ -59,9 +58,9 @@
       }
       .fa, .pficon {
         color: @nav-pf-vertical-icon-color;
-        font-size: (@font-size-base + 2);
+        font-size: (@font-size-base + 3);
         @media(min-width: @screen-sm-min) {
-          font-size: (@font-size-base + 5);
+          font-size: (@font-size-base + 6);
         }
       }
       .list-group-item-value {
@@ -69,11 +68,21 @@
         text-decoration: none !important;
       }
     }
-    // padding aligns arrow vertically
-    &.secondary-nav-item-pf > a:after {
-      padding: 16px 0;
-      @media(max-width: @screen-xs-max) {
-        padding: 8px 0;
+    &.secondary-nav-item-pf {
+      > a:after {
+        font-size: @font-size-large; // make right arrow size consistent with project-bar arrows
+        padding: 16px 0; // padding aligns arrow vertically
+        @media(max-width: @screen-xs-max) {
+          padding: 8px 0;
+        }
+      }
+      &.is-hover > a {
+        width: @nav-pf-vertical-width + 1; // cover .nav-pf-vertical border-right
+        z-index: @zindex-navbar-fixed + 1; // raise z-index to overlay
+        &:after {
+          color: @nav-pf-vertical-active-color;
+          right: 21px; // move 1px to offset parent width 1px increase onHover due to pf rules
+        }
       }
     }
   }
