@@ -1,8 +1,12 @@
 div.code,pre,textarea{overflow:auto}
 <<<<<<< HEAD
+<<<<<<< HEAD
 body,div.code,legend,pre{color:#363636}
 =======
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+body,div.code,legend,pre{color:#363636}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 body,figure{margin:0}
 .text-left,caption,th{text-align:left}
 <<<<<<< HEAD
@@ -380,6 +384,7 @@ h2,h3{page-break-after:avoid}
 .slider-selection,.slider-track-high,.slider-track-low{-webkit-box-sizing:border-box;-moz-box-sizing:border-box}
 html{font-size:10px}
 body{font-family:"Open Sans",Helvetica,Arial,sans-serif;font-size:12px;line-height:1.66666667}
+<<<<<<< HEAD
 =======
 html{font-size:10px;-webkit-tap-highlight-color:transparent}
 =======
@@ -387,6 +392,8 @@ html{font-size:10px}
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 body{font-family:"Open Sans",Helvetica,Arial,sans-serif;font-size:13px;line-height:1.66666667;color:#363636}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}
 a{color:#0088ce;text-decoration:none}
 a:focus,a:hover{color:#00659c;text-decoration:underline}
@@ -457,7 +464,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.log-view,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10px 20px;margin:0 0 20px;font-size:15px;border-left:5px solid #f1f1f1}
@@ -697,7 +704,11 @@ pre code{padding:0;font-size:inherit;color:inherit;white-space:pre-wrap;border-r
 .col-lg-offset-1{margin-left:8.33333333%}
 .col-lg-offset-0{margin-left:0%}
 }
+<<<<<<< HEAD
 caption{padding-top:10px;padding-bottom:10px;color:#757575}
+=======
+caption{padding-top:10px;padding-bottom:10px;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .table{width:100%;max-width:100%;margin-bottom:20px}
 .table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{line-height:1.66666667;vertical-align:top;border-top:1px solid #d1d1d1}
 .table>thead>tr>th{vertical-align:bottom;border-bottom:2px solid #d1d1d1}
@@ -819,6 +830,7 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:12px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-ms-user-select:none;user-select:none}
 =======
 .btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:13px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-ms-user-select:none;user-select:none}
@@ -862,6 +874,9 @@ select[multiple].input-lg,textarea.input-lg{height:auto}
 =======
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
 =======
+=======
+.btn{display:inline-block;margin-bottom:0;font-weight:600;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:1px solid transparent;white-space:nowrap;padding:2px 6px;font-size:12px;line-height:1.66666667;border-radius:1px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .bootstrap-switch,.datepicker table{-webkit-user-select:none;-moz-user-select:none}
 >>>>>>> Fix project list view styles per UXD feedback
 =======
@@ -927,10 +942,14 @@ tbody.collapse.in{display:table-row-group}
 .caret{display:inline-block;margin-left:2px;border-top:0 dashed;border-top:0 solid\9;border-right:0 solid transparent;border-left:0 solid transparent}
 .dropdown,.dropup{position:relative}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;min-width:160px;padding:5px 0;margin:2px 0 0;list-style:none;font-size:12px;text-align:left;background-color:#fff;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175);background-clip:padding-box}
 =======
 .dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;min-width:160px;padding:5px 0;margin:2px 0 0;list-style:none;font-size:13px;text-align:left;background-color:#fff;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175);background-clip:padding-box}
 >>>>>>> Restore port icon with pficon-port
+=======
+.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;min-width:160px;padding:5px 0;margin:2px 0 0;list-style:none;font-size:12px;text-align:left;background-color:#fff;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175);background-clip:padding-box}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .dropdown-menu-right,.dropdown-menu.pull-right{left:auto;right:0}
 .btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle,.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){border-bottom-right-radius:0;border-top-right-radius:0}
 .btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child,.btn-group>.btn:last-child:not(:first-child),.btn-group>.dropdown-toggle:not(:first-child){border-bottom-left-radius:0;border-top-left-radius:0}
@@ -1046,7 +1065,11 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .tab-content>.tab-pane{display:none}
 .tab-content>.active{display:block}
 .nav-tabs .dropdown-menu{margin-top:-1px;border-top-right-radius:0;border-top-left-radius:0}
+<<<<<<< HEAD
 .navbar{position:relative;min-height:61px;margin-bottom:20px;border:1px solid transparent}
+=======
+.navbar{position:relative;min-height:72px;margin-bottom:20px;border:1px solid transparent}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-collapse{overflow-x:visible;padding-right:20px;padding-left:20px;border-top:1px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.1);-webkit-overflow-scrolling:touch}
 .navbar-collapse.in{overflow-y:auto}
 @media (min-width:768px){.navbar{border-radius:1px}
@@ -1064,7 +1087,11 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-fixed-bottom,.navbar-fixed-top{position:fixed;right:0;left:0;z-index:1030}
 .navbar-fixed-top{top:0;border-width:0 0 1px}
 .navbar-fixed-bottom{bottom:0;margin-bottom:0;border-width:1px 0 0}
+<<<<<<< HEAD
 .navbar-brand{float:left;padding:20.5px 20px;font-size:14px;line-height:20px;height:61px}
+=======
+.navbar-brand{float:left;padding:26px 20px;font-size:14px;line-height:20px;height:72px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-brand:focus,.navbar-brand:hover{text-decoration:none}
 .navbar-brand>img{display:block}
 @media (min-width:768px){.container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:0;margin-left:0}
@@ -1078,7 +1105,11 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 >>>>>>> Patternfly vertical navigation and project bar
 .navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}
 .navbar-toggle .icon-bar+.icon-bar{margin-top:4px}
+<<<<<<< HEAD
 .navbar-nav{margin:10.25px -20px}
+=======
+.navbar-nav{margin:13px -20px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}
 @media (max-width:767px){.navbar-nav .open .dropdown-menu{position:static;float:none;width:auto;margin-top:0;background-color:transparent;border:0;box-shadow:none}
 .navbar-nav .open .dropdown-menu .dropdown-header,.navbar-nav .open .dropdown-menu>li>a{padding:5px 15px 5px 25px}
@@ -1089,9 +1120,15 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 @media (min-width:768px){.navbar-toggle{display:none}
 .navbar-nav{float:left;margin:0}
 .navbar-nav>li{float:left}
+<<<<<<< HEAD
 .navbar-nav>li>a{padding-top:20.5px;padding-bottom:20.5px}
 }
 .navbar-form{padding:10px 20px;border-top:1px solid transparent;border-bottom:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);margin:17.5px -20px}
+=======
+.navbar-nav>li>a{padding-top:26px;padding-bottom:26px}
+}
+.navbar-form{padding:10px 20px;border-top:1px solid transparent;border-bottom:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);margin:23px -20px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:768px){.navbar-form .form-control-static,.navbar-form .form-group{display:inline-block}
 .navbar-form .control-label,.navbar-form .form-group{margin-bottom:0;vertical-align:middle}
 .navbar-form .form-control{display:inline-block;width:auto;vertical-align:middle}
@@ -1110,9 +1147,15 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 }
 .navbar-nav>li>.dropdown-menu{margin-top:0;border-top-right-radius:0;border-top-left-radius:0}
 .navbar-fixed-bottom .navbar-nav>li>.dropdown-menu{margin-bottom:0;border-radius:1px 1px 0 0}
+<<<<<<< HEAD
 .navbar-btn{margin-top:17.5px;margin-bottom:17.5px}
 .navbar-btn.btn-sm,.navbar-btn.btn-xs{margin-top:19.5px;margin-bottom:19.5px}
 .navbar-text{margin-top:20.5px;margin-bottom:20.5px}
+=======
+.navbar-btn{margin-top:23px;margin-bottom:23px}
+.navbar-btn.btn-sm,.navbar-btn.btn-xs{margin-top:25px;margin-bottom:25px}
+.navbar-text{margin-top:26px;margin-bottom:26px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:768px){.navbar-text{float:left;margin-left:20px;margin-right:20px}
 .navbar-left{float:left!important;float:left}
 .navbar-right{float:right!important;float:right;margin-right:-20px}
@@ -1310,10 +1353,14 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:focus,a.list-gro
 .list-group-item-text{margin-bottom:0;line-height:1.3}
 .carousel-inner>.item>a>img,.carousel-inner>.item>img,.close{line-height:1}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:1px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
 =======
 .panel{margin-bottom:21px;background-color:#fff;border:1px solid transparent;border-radius:1px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
 >>>>>>> Adopt service catalog API changes
+=======
+.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:1px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .panel-title,.panel>.list-group,.panel>.panel-collapse>.list-group,.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}
 .panel-body{padding:15px}
 .panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:0px;border-top-left-radius:0px}
@@ -1383,6 +1430,7 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:focus,a.list-gro
 .well-lg{padding:24px}
 .well-sm{padding:9px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .close{float:right;font-size:18px;color:#000}
 .popover,.tooltip{font-family:"Open Sans",Helvetica,Arial,sans-serif;font-style:normal;font-weight:400;letter-spacing:normal;line-break:auto;text-transform:none;white-space:normal;word-break:normal;word-spacing:normal;text-decoration:none}
 =======
@@ -1395,6 +1443,9 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:focus,a.list-gro
 .popover,.tooltip{font-family:"Open Sans",Helvetica,Arial,sans-serif;font-style:normal;font-weight:400;letter-spacing:normal;line-break:auto;text-transform:none;white-space:normal;word-break:normal;word-spacing:normal;text-decoration:none}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
+=======
+.close{float:right;font-size:18px;color:#000}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .popover,.tooltip{font-family:"Open Sans",Helvetica,Arial,sans-serif;font-style:normal;font-weight:400;letter-spacing:normal;line-break:auto;text-shadow:none;text-transform:none;white-space:normal;word-break:normal;word-spacing:normal;text-decoration:none}
 >>>>>>> Restore port icon with pficon-port
 .close:focus,.close:hover{color:#000;text-decoration:none;cursor:pointer}
@@ -2444,7 +2495,11 @@ td>.progress:first-child:last-child{margin-bottom:0;margin-top:3px}
 .table-treegrid span.collapse-icon,.table-treegrid span.expand-icon{cursor:pointer}
 .table-treegrid>tbody>tr.odd{background-color:#f5f5f5}
 .nav-tabs{font-size:14px}
+<<<<<<< HEAD
 .nav-tabs+.nav-tabs-pf,.nav-tabs.nav-tabs-pf-secondary,.tooltip{font-size:12px}
+=======
+.nav-tabs+.nav-tabs-pf,.tooltip{font-size:12px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .nav-tabs>li>a{color:#4d5258}
 .nav-tabs>li>a:active,.nav-tabs>li>a:focus,.nav-tabs>li>a:hover{background:0 0;border-color:#ededed;color:#252525}
 .nav-tabs>li>.dropdown-menu{border-top:0;border-color:#ededed}
@@ -3026,8 +3081,11 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 }
 .blank-slate-pf .blank-slate-pf-icon{color:#9c9c9c;font-size:57.6px;line-height:57.6px}
 .blank-slate-pf .blank-slate-pf-main-action,.blank-slate-pf .blank-slate-pf-secondary-action{margin-top:20px}
+<<<<<<< HEAD
 .blank-slate-pf button{margin-right:5px}
 .blank-slate-pf button:last-of-type{margin-right:0}
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .combobox-container.combobox-selected .glyphicon-remove{display:inline-block}
 .combobox-container .caret{margin-left:0}
 .combobox-container .combobox::-ms-clear{display:none}
@@ -3611,10 +3669,14 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .list-view-pf-expand.active,.list-view-pf-expand:hover{color:#0088ce}
 .list-view-pf-additional-info-item .list-view-pf-expand{margin:0;padding:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .list-view-pf-expand .fa-angle-right{cursor:pointer;font-size:17px;margin-right:5px;margin-top:2px;width:10px}
 =======
 .list-view-pf-expand .fa-angle-right{cursor:pointer;font-size:18px;margin-right:5px;margin-top:2px;width:10px}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.list-view-pf-expand .fa-angle-right{cursor:pointer;font-size:17px;margin-right:5px;margin-top:2px;width:10px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .list-group-item-container{background:#fff;border-top:solid 1px #bbb;box-sizing:content-box;margin:-1px -15px 0;order:3;padding:10px 15px;position:relative;width:100%}
 .list-view-pf-dnd .dndDragging.drag-original{display:none}
 .list-view-pf-dnd .dndDragging.drag-original .list-view-pf-dnd-original-items{display:block}
@@ -3638,8 +3700,13 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 }
 .login-pf .container .details p:first-child{border-top:1px solid rgba(255,255,255,.3);padding-top:25px;margin-top:25px}
 .login-pf .container .details p{margin-bottom:2px}
+<<<<<<< HEAD
 .login-pf .container .form-horizontal .control-label{font-size:13px;font-weight:400;text-align:left}
 .login-pf .container .form-horizontal .form-group:last-child,.login-pf .container .form-horizontal .form-group:last-child .help-block:last-child{margin-bottom:0}
+=======
+.login-pf .container .form-horizontal .form-group:last-child,.login-pf .container .form-horizontal .form-group:last-child .help-block:last-child,.navbar-pf{margin-bottom:0}
+.login-pf .container .form-horizontal .control-label{font-size:13px;font-weight:400;text-align:left}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .login-pf .container .help-block{color:#fff}
 @media (min-width:768px){.login-pf .container .details{border-left:1px solid rgba(255,255,255,.3);padding-left:40px}
 .login-pf .container .details p:first-child{border-top:0;padding-top:0;margin-top:0}
@@ -3731,7 +3798,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 =======
 .navbar-pf .navbar-nav>.open>a,.navbar-pf .navbar-nav>.open>a:focus,.navbar-pf .navbar-nav>.open>a:hover{background-color:#232323;color:#f5f5f5}
-.navbar-pf .navbar-nav .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:10px;font-weight:700;left:26px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:6px}
+.navbar-pf .navbar-nav .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;left:26px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:6px}
 @media (min-width:768px){.navbar-pf .navbar-nav .badge{left:auto;right:6px;top:3px}
 }
 .navbar-pf .navbar-nav .badge.badge-pf-bordered{border:1px solid #030303}
@@ -3783,12 +3850,17 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf .navbar-brand{padding:8px 0 7px}
 .navbar-pf .navbar-nav>li>a{padding-bottom:14px;padding-top:14px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .navbar-pf .navbar-persistent{font-size:14px}
 .navbar-pf .navbar-primary{font-size:14px;background-image:-webkit-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:-o-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:linear-gradient(to bottom,#1d1d1d 0%,#030303 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1d1d1d', endColorstr='#ff030303', GradientType=0)}
 =======
 .navbar-pf .navbar-persistent{font-size:15px}
 .navbar-pf .navbar-primary{font-size:15px;background-image:-webkit-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:-o-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:linear-gradient(to bottom,#1d1d1d 0%,#030303 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1d1d1d', endColorstr='#ff030303', GradientType=0)}
 >>>>>>> Changes to masthead and vertical nav based on ux designs
+=======
+.navbar-pf .navbar-persistent{font-size:14px}
+.navbar-pf .navbar-primary{font-size:14px;background-image:-webkit-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:-o-linear-gradient(top,#1d1d1d 0%,#030303 100%);background-image:linear-gradient(to bottom,#1d1d1d 0%,#030303 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1d1d1d', endColorstr='#ff030303', GradientType=0)}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-pf .navbar-primary.persistent-secondary .context .dropdown-menu{top:auto}
 .navbar-pf .navbar-primary.persistent-secondary .dropup .dropdown-menu{bottom:-5px;top:auto}
 .navbar-pf .navbar-primary.persistent-secondary>li{position:static}
@@ -3842,6 +3914,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
 .navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
 .navbar-pf-alt .nav .nav-item-iconic .caret{font-size:12px;width:auto}
@@ -3859,6 +3932,11 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:10px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
 .navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:17px}
 .navbar-pf-alt .nav .nav-item-iconic .caret{font-size:13px;width:auto}
+=======
+.navbar-pf-alt .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;margin:0 0 -11px -12px;min-width:0;padding:2px 4px}
+.navbar-pf-alt .nav .nav-item-iconic .caret,.navbar-pf-alt .nav .nav-item-iconic .fa,.navbar-pf-alt .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
+.navbar-pf-alt .nav .nav-item-iconic .caret{font-size:12px;width:auto}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-pf-alt .nav .open>.nav-item-iconic,.navbar-pf-alt .nav .open>.nav-item-iconic:focus,.navbar-pf-alt .nav .open>.nav-item-iconic:hover{background:0 0}
 .navbar-pf-alt .nav .open>.nav-item-iconic .caret,.navbar-pf-alt .nav .open>.nav-item-iconic .fa,.navbar-pf-alt .nav .open>.nav-item-iconic .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-alt .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
 <<<<<<< HEAD
@@ -3885,6 +3963,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .nav .nav-item-iconic:focus .caret,.navbar-pf-vertical .nav .nav-item-iconic:focus .fa,.navbar-pf-vertical .nav .nav-item-iconic:focus .glyphicon,.navbar-pf-vertical .nav .nav-item-iconic:focus .pficon,.navbar-pf-vertical .nav .nav-item-iconic:hover .caret,.navbar-pf-vertical .nav .nav-item-iconic:hover .fa,.navbar-pf-vertical .nav .nav-item-iconic:hover .glyphicon,.navbar-pf-vertical .nav .nav-item-iconic:hover .pficon{color:#fff}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .navbar-pf-vertical .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;left:20px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:18px}
 .navbar-pf-vertical .nav .nav-item-iconic .badge.badge-pf-bordered{border:1px solid #1d1d1d}
 .navbar-pf-vertical .nav .nav-item-iconic .caret,.navbar-pf-vertical .nav .nav-item-iconic .fa,.navbar-pf-vertical .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
@@ -3898,6 +3977,12 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .navbar-pf-vertical .nav .nav-item-iconic .caret,.navbar-pf-vertical .nav .nav-item-iconic .fa,.navbar-pf-vertical .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:17px}
 .navbar-pf-vertical .nav .nav-item-iconic .caret{font-size:13px;width:auto}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.navbar-pf-vertical .nav .nav-item-iconic .badge{background-color:#0088ce;border-radius:20px;color:#fff;cursor:pointer;font-size:9px;font-weight:700;left:20px;margin:0;padding:2px 4px;position:absolute;min-width:10px;min-height:10px;top:18px}
+.navbar-pf-vertical .nav .nav-item-iconic .badge.badge-pf-bordered{border:1px solid #1d1d1d}
+.navbar-pf-vertical .nav .nav-item-iconic .caret,.navbar-pf-vertical .nav .nav-item-iconic .fa,.navbar-pf-vertical .nav .nav-item-iconic .pficon{color:#d1d1d1;font-size:16px}
+.navbar-pf-vertical .nav .nav-item-iconic .caret{font-size:12px;width:auto}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .navbar-pf-vertical .nav .open>.nav-item-iconic,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover{background:0 0}
 .navbar-pf-vertical .nav .open>.nav-item-iconic .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic .pficon,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic:focus .pficon,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .caret,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .fa,.navbar-pf-vertical .nav .open>.nav-item-iconic:hover .pficon{color:#fff}
 .navbar-pf-vertical .navbar-brand{color:#fff;height:auto;margin:0 0 0 25px;min-height:35px}
@@ -3931,10 +4016,14 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .nav-pf-vertical-alt .list-group-item.active:before{background:#39a5dc;content:" ";display:block;height:100%;left:0;position:absolute;top:0;width:5px}
 .nav-pf-vertical-alt .list-group-item.active a{color:#39a5dc}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .nav-pf-vertical-alt .list-group-item .badge{background:#363636;border:1px solid #fff;border-radius:3px;color:#fff;font-weight:700;font-size:9px;padding:5px;position:absolute;right:15px;text-align:center;top:21px}
 =======
 .nav-pf-vertical-alt .list-group-item .badge{background:#363636;border:1px solid #fff;border-radius:3px;color:#fff;font-weight:700;font-size:10px;padding:5px;position:absolute;right:15px;text-align:center;top:21px}
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
+=======
+.nav-pf-vertical-alt .list-group-item .badge{background:#363636;border:1px solid #fff;border-radius:3px;color:#fff;font-weight:700;font-size:9px;padding:5px;position:absolute;right:15px;text-align:center;top:21px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .nav-pf-vertical-alt .list-group-item .badge.notifications{background:#0088ce}
 .nav-pf-vertical-alt .list-group-item .fa,.nav-pf-vertical-alt .list-group-item .glyphicon,.nav-pf-vertical-alt .list-group-item .pficon{float:left;font-size:18px;line-height:30px;margin-right:10px;text-align:center;width:18px}
 .nav-pf-vertical-alt .list-group-item .list-group-item-value{display:inline-block;line-height:30px;opacity:1;overflow:hidden;text-overflow:ellipsis;width:140px}
@@ -3987,6 +4076,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .drawer-pf-action-link:first-of-type{border-left-width:0}
 .drawer-pf-action-link .btn-link{padding:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .drawer-pf-loading{color:#4d5258;font-size:14px;padding:20px 15px}
 =======
 .drawer-pf-loading{color:#4d5258;font-size:15px;padding:20px 15px}
@@ -3999,6 +4089,13 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 =======
 .drawer-pf-notification .pficon{font-size:15px;margin-top:3px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+.drawer-pf-loading{color:#4d5258;font-size:14px;padding:20px 15px}
+.drawer-pf-notification{border-bottom:1px solid #d1d1d1;padding:15px}
+.drawer-pf-notification .date{border-right:1px solid #aaa;display:inline-block;line-height:1;margin-right:5px;padding-right:9px}
+.drawer-pf-notification>.dropdown-kebab-pf{margin-top:-3px}
+.drawer-pf-notification .pficon{font-size:14px;margin-top:3px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .drawer-pf-notification:last-of-type{border-bottom:none}
 .drawer-pf-notification:hover{background-color:#def3ff}
 .drawer-pf-notification.unread .drawer-pf-notification-message{font-weight:700}
@@ -4028,8 +4125,12 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .drawer-pf-title{background-color:#fafafa;border-bottom:1px solid #d1d1d1;position:absolute;width:318px}
 =======
 .drawer-pf-title{background-color:#fafafa;border-bottom:1px solid #d1d1d1;position:absolute;width:100%}
+<<<<<<< HEAD
 >>>>>>> Bump origin-web-console to 0.0.34, patternfly to 3.26.0, angular-patternfly to 4.2.0
 .drawer-pf-title h3{font-size:13px;margin:0;padding:6px 15px}
+=======
+.drawer-pf-title h3{font-size:12px;margin:0;padding:6px 15px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .drawer-pf-notification.expanded-notification .drawer-pf-notification-content{display:flex}
 @media (max-width:991px){.drawer-pf-notification.expanded-notification .drawer-pf-notification-content{flex-direction:column}
 }
@@ -4057,10 +4158,14 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .search-pf.has-button .form-group .btn.btn-sm{font-size:10.7px}
 .search-pf.has-button .form-group .form-control{float:left}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .search-pf .has-clear .clear{background:rgba(255,255,255,0);border:0;height:25px;line-height:1;padding:0;position:absolute;right:1px;top:1px;width:28px}
 =======
 .search-pf .has-clear .clear{background:rgba(255,255,255,0);border:0;height:26px;line-height:1;padding:0;position:absolute;right:1px;top:1px;width:28px}
 >>>>>>> Bumping dependency version in bower.json
+=======
+.search-pf .has-clear .clear{background:rgba(255,255,255,0);border:0;height:25px;line-height:1;padding:0;position:absolute;right:1px;top:1px;width:28px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .search-pf .has-clear .form-control{padding-right:30px}
 .search-pf .has-clear .form-control::-ms-clear{display:none}
 .search-pf .has-clear .input-lg+.clear{height:31px;width:28px}
@@ -4288,10 +4393,14 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-vertical .list-group-item-separator{border-top-color:#030303;border-top-width:2px}
 .nav-pf-vertical.nav-pf-vertical-with-badges,.nav-pf-vertical.nav-pf-vertical-with-badges .list-group-item>a{width:270px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .nav-pf-vertical h5{color:#fff;cursor:default;font-size:13px;font-weight:600;margin:30px 20px 10px}
 =======
 .nav-pf-vertical h5{color:#fff;cursor:default;font-size:14px;font-weight:600;margin:30px 20px 10px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.nav-pf-vertical h5{color:#fff;cursor:default;font-size:13px;font-weight:600;margin:30px 20px 10px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .nav-pf-vertical.hidden-icons-pf.collapsed,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .fa,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .glyphicon,.nav-pf-vertical.hidden-icons-pf>.list-group>.list-group-item>a .pficon{display:none}
 .nav-pf-vertical .badge-container-pf{position:absolute;right:15px;top:20px}
 @supports (display:flex){.nav-pf-vertical .list-group-item .list-group-item-value{flex:1;max-width:none;padding-right:15px}
@@ -4437,10 +4546,14 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .layout-pf-fixed-with-footer .nav-pf-secondary-nav{bottom:37px}
 .nav-pf-secondary-nav .list-group-item{border:none;padding:0 0 5px;width:220px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .nav-pf-secondary-nav .list-group-item>a{background-color:#383f47;color:#d1d1d1;font-size:12px;font-weight:inherit;height:inherit;padding:4px 0 2px;margin-left:20px;width:calc(220px - 20px)}
 =======
 .nav-pf-secondary-nav .list-group-item>a{background-color:#383f47;color:#d1d1d1;font-size:13px;font-weight:inherit;height:inherit;padding:4px 0 2px;margin-left:20px;width:calc(200px)}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.nav-pf-secondary-nav .list-group-item>a{background-color:#383f47;color:#d1d1d1;font-size:12px;font-weight:inherit;height:inherit;padding:4px 0 2px;margin-left:20px;width:calc(200px)}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .nav-pf-secondary-nav .list-group-item>a:hover .list-group-item-value{text-decoration:underline}
 .nav-pf-secondary-nav .list-group-item.active>a:before{display:none}
 .nav-pf-secondary-nav .list-group-item.active>a,.nav-pf-secondary-nav .list-group-item:hover>a{background-color:#4a535e;color:#fff}
@@ -4481,10 +4594,14 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .nav-pf-tertiary-nav h5{color:#fff;margin:30px 20px 10px}
 .nav-pf-tertiary-nav .list-group-item{border:none;padding:0 0 5px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .nav-pf-tertiary-nav .list-group-item>a{background-color:transparent;color:#d1d1d1;font-size:12px;font-weight:inherit;height:inherit;margin:0 20px;padding:4px 0 2px}
 =======
 .nav-pf-tertiary-nav .list-group-item>a{background-color:transparent;color:#d1d1d1;font-size:13px;font-weight:inherit;height:inherit;margin:0 20px;padding:4px 0 2px}
 >>>>>>> Bumping dependency version in bower.json
+=======
+.nav-pf-tertiary-nav .list-group-item>a{background-color:transparent;color:#d1d1d1;font-size:12px;font-weight:inherit;height:inherit;margin:0 20px;padding:4px 0 2px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .nav-pf-tertiary-nav .list-group-item.active>a:before{display:none}
 .collapsed .nav-pf-secondary-nav .list-group-item>a>.badge-container-pf,.collapsed .nav-pf-secondary-nav .list-group-item>a>.list-group-item-value,.collapsed .nav-pf-tertiary-nav .list-group-item>a>.badge-container-pf,.collapsed .nav-pf-tertiary-nav .list-group-item>a>.list-group-item-value{display:inline-block}
 .nav-pf-tertiary-nav .list-group-item.active>a,.nav-pf-tertiary-nav .list-group-item:hover>a{background-color:#393f44;color:#fff}
@@ -4600,7 +4717,7 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 =======
 >>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 .wizard-pf-steps{border-bottom:solid 1px #d1d1d1}
-.wizard-pf-steps-indicator{background:#ededed;border-top:1px solid #d1d1d1;display:inline-block;display:flex;font-size:18px;list-style:none;margin-bottom:0;padding:15px 0}
+.wizard-pf-steps-indicator{background:#ededed;border-top:1px solid #d1d1d1;display:inline-block;display:flex;font-size:16px;list-style:none;margin-bottom:0;padding:15px 0}
 @media (min-width:768px){.wizard-pf-steps{text-align:center}
 .wizard-pf-steps-indicator{background:#fff;height:120px;padding:38px 0 0;justify-content:space-around}
 }
@@ -4693,6 +4810,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 .wizard-pf-review-content .wizard-pf-review-item .wizard-pf-review-item-field:last-of-type{margin-bottom:0}
 .wizard-pf-review-content .wizard-pf-review-item .wizard-pf-review-item-field.sub-field{margin-left:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .wizard-pf-success-icon{color:#3f9c35;font-size:67.2px;line-height:67.2px}
 .wizard-pf-footer{background:#fff;border-top:1px solid #d1d1d1;margin-top:0;padding-bottom:17px}
 .wizard-pf-footer .btn-cancel{margin-right:25px}
@@ -4700,6 +4818,9 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 .wizard-pf-steps-alt{display:none}
 =======
 .wizard-pf-success-icon{color:#3f9c35;font-size:72.8px;line-height:72.8px}
+=======
+.wizard-pf-success-icon{color:#3f9c35;font-size:67.2px;line-height:67.2px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .wizard-pf-footer{background:#fff;border-top:1px solid #d1d1d1;margin-top:0;padding-bottom:17px}
 .wizard-pf-footer .btn-cancel{margin-right:25px}
 <<<<<<< HEAD
@@ -4888,7 +5009,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 >>>>>>> Improving display of results status messages and removing orphaned tasks directive
 .delete-resource-modal{background-color:#f1f1f1}
 .delete-resource-modal h1{font-size:21px;font-weight:500;margin-bottom:20px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
-.delete-resource-modal p{font-size:16px}
+.delete-resource-modal p{font-size:15px}
 .delete-resource-modal .help-block{margin-top:0px;margin-bottom:10px}
 >>>>>>> Support binding parameters
 .dialog-btn{float:right!important;margin-right:10px}
@@ -5039,6 +5160,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-search .dropdown-menu .active>a.catalog-search-show-all{background-color:#ededed!important;color:#00659c!important}
 .catalog-search .dropdown-menu .catalog-search-show-none{background-color:#ededed;border-color:#d1d1d1;border-width:0 0 1px;padding:5px 0;text-align:center}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .landing-search-area .catalog-search{z-index:1029}
 .landing-search-area .catalog-search .search-pf .has-clear .clear{height:28px}
 .landing-search-area .catalog-search .search-pf-input-group .form-control{font-size:14px;height:30px}
@@ -5047,6 +5169,10 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-search .search-pf-input-group .form-control{font-size:15px;height:2.2em}
 .catalog-search .search-pf-input-group .pficon-close{font-size:17px;margin-top:-.3em}
 >>>>>>> Add search catalog in project context
+=======
+.catalog-search .search-pf-input-group .form-control{font-size:14px;height:2.2em}
+.catalog-search .search-pf-input-group .pficon-close{font-size:16px;margin-top:-.3em}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media only screen and (max-device-width:736px) and (-webkit-min-device-pixel-ratio:0){.catalog-search .catalog-search-icon{top:9px}
 .catalog-search .landing-search-form .search-pf-input-group .form-control{font-size:16px}
 }
@@ -5110,7 +5236,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 >>>>>>> Handle displaying parameters when secrets are not available.
 .catalog-parameters.readonly fieldset,.catalog-parameters.readonly fieldset>div{padding-left:20px}
-.catalog-parameters.readonly legend{border:0;font-size:13px;font-weight:600;margin-bottom:5px}
+.catalog-parameters.readonly legend{border:0;font-size:12px;font-weight:600;margin-bottom:5px}
 .catalog-parameters.readonly .schema-form-array{margin-left:0}
 .catalog-parameters.readonly .schema-form-array>div.btn-group-vertical>.btn-group,.catalog-parameters.readonly .schema-form-array>div.btn-toolbar,.catalog-parameters.readonly .schema-form-array>div.clearfix,.catalog-parameters.readonly .schema-form-array>div.container,.catalog-parameters.readonly .schema-form-array>div.container-fluid,.catalog-parameters.readonly .schema-form-array>div.dl-horizontal dd,.catalog-parameters.readonly .schema-form-array>div.form-horizontal .form-group,.catalog-parameters.readonly .schema-form-array>div.modal-footer,.catalog-parameters.readonly .schema-form-array>div.modal-header,.catalog-parameters.readonly .schema-form-array>div.nav,.catalog-parameters.readonly .schema-form-array>div.navbar,.catalog-parameters.readonly .schema-form-array>div.navbar-collapse,.catalog-parameters.readonly .schema-form-array>div.navbar-header,.catalog-parameters.readonly .schema-form-array>div.pager,.catalog-parameters.readonly .schema-form-array>div.panel-body,.catalog-parameters.readonly .schema-form-array>div.row{margin-top:-30px}
 .catalog-parameters.readonly .schema-form-array .list-group,.catalog-parameters.readonly .schema-form-array .list-group-item{border:0;margin-bottom:0}
@@ -5171,10 +5297,14 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .order-service-details .order-service-description-block .order-service-dependent-image{margin-bottom:5px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-description-block .order-service-dependent-image .pficon{margin-right:5px;vertical-align:-1px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-details .order-service-description-block .order-service-subheading{display:inline-block;font-size:13px;margin-bottom:7px;margin-top:10px}
 =======
 .order-service-details .order-service-description-block .order-service-subheading{display:inline-block;font-size:14px;margin-bottom:7px;margin-top:10px}
 >>>>>>> Handle displaying parameters when secrets are not available.
+=======
+.order-service-details .order-service-description-block .order-service-subheading{display:inline-block;font-size:13px;margin-bottom:7px;margin-top:10px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .order-service-details .order-service-documentation-url{margin-top:4px}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -5380,16 +5510,24 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 }
 .catalog-projects-summary-panel .create-button-text,.catalog-projects-summary-panel .getting-started-button-text{padding-left:4px}
 .catalog-projects-summary-panel .code-block{background:#030303;margin-top:5px;padding:4px}
+<<<<<<< HEAD
 .catalog-projects-summary-panel .create-button{font-size:13px;float:right;-webkit-transform:translate3d(0,0,0)}
+=======
+.catalog-projects-summary-panel .create-button{font-size:13px;float:right}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .catalog-projects-summary-panel .getting-started-button{width:100%;font-size:13px}
 .catalog-projects-summary-panel .getting-started-button.with-projects{margin-top:15px}
 .catalog-projects-summary-panel .getting-started-panel{margin-top:20px}
 .catalog-projects-summary-panel h2.primary{margin-top:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .catalog-projects-summary-panel h2.secondary{font-size:18px}
 =======
 .catalog-projects-summary-panel h2.secondary{font-size:19px}
 >>>>>>> Bump versions of common, catalog, patternfly, and angular-patternfly
+=======
+.catalog-projects-summary-panel h2.secondary{font-size:18px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:768px){.catalog-projects-summary-panel .origin-modal-popup{width:295px}
 }
 @media (min-width:1200px){.catalog-projects-summary-panel .origin-modal-popup{width:345px}
@@ -5659,6 +5797,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-back-link,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-back-link{display:inline-block;font-size:10px;margin-left:15px;padding-left:15px;width:auto}
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
 .services-view .services-view-container.mobile-items-view .services-sub-categories>li.active>a.services-back-link:after,.services-view .services-view-container.mobile-subcategories-view .services-categories>li.active>a.services-back-link:after{content:'\f104';display:block;font-family:FontAwesome;position:absolute;left:5px;top:50%;transform:translateY(-50%)}
+<<<<<<< HEAD
 .services-view .services-view-container.mobile-subcategories-view .services-categories>li:not(.active),.services-view .services-view-container.mobile-subcategories-view .services-categories>li>a:after,.services-view .services-view-container.mobile-subcategories-view .services-sub-categories .services-items,.services-view .services-view-container.mobile-subcategories-view .services-sub-category.active>.services-back-link{display:none}
 .services-view .services-view-container.mobile-subcategories-view .services-categories>li{margin-bottom:0}
 .services-view .services-view-container .services-categories,.services-view .services-view-container .services-sub-categories{border-bottom:0;font-size:12px;padding:0!important}
@@ -5685,6 +5824,14 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .spinner-container{display:flex;flex:1 1 auto;padding-top:100px;padding-bottom:100px}
 .landing .services-view .spinner-container{background:#fff}
 =======
+=======
+.services-view .services-view-container .services-categories>li.active>a:before,.services-view .services-view-container .services-sub-categories>li.active>a:before,.services-view .services-view-container.mobile-subcategories-view .services-categories>li:not(.active),.services-view .services-view-container.mobile-subcategories-view .services-categories>li>a:after,.services-view .services-view-container.mobile-subcategories-view .services-sub-categories .services-items,.services-view .services-view-container.mobile-subcategories-view .services-sub-category.active>.services-back-link{display:none}
+.services-view .services-view-container .services-categories,.services-view .services-view-container .services-sub-categories{font-size:12px;padding:0}
+.services-view .services-view-container .services-categories>li,.services-view .services-view-container .services-sub-categories>li{background-color:rgba(0,34,53,.9);float:none;margin-bottom:1px;padding-right:0;position:relative}
+.services-view .services-view-container .services-categories>li:last-child,.services-view .services-view-container .services-sub-categories,.services-view .services-view-container .services-sub-categories>li:last-child{margin-bottom:0}
+.services-view .services-view-container .services-categories>li.active>a,.services-view .services-view-container .services-sub-categories>li.active>a{color:#fff;cursor:pointer}
+.services-view .services-view-container .services-categories>li.active .services-back-link,.services-view .services-view-container .services-sub-categories>li.active .services-back-link{cursor:pointer}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .services-view .services-view-container .services-categories>li>a,.services-view .services-view-container .services-sub-categories>li>a{color:#fff;display:inline-block;line-height:1;padding:10px 20px;position:relative;width:100%}
 .services-view .services-view-container .services-categories>li>a::after,.services-view .services-view-container .services-sub-categories>li>a::after{content:'\f061';color:#fff;display:block;font-family:FontAwesome;position:absolute;right:20px;top:50%;transform:translateY(-50%)}
 .services-view .services-view-container .services-categories>li>a:focus,.services-view .services-view-container .services-categories>li>a:hover,.services-view .services-view-container .services-sub-categories>li>a:focus,.services-view .services-view-container .services-sub-categories>li>a:hover{color:#0088ce;text-decoration:none}
@@ -5740,12 +5887,15 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 <<<<<<< HEAD
 .icon-button-text{padding-left:4px}
 .static-form-value-large{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-bottom:10px;font-size:16px;margin-top:3px}
+<<<<<<< HEAD
 =======
 =======
 .icon-button-text{padding-left:4px}
 >>>>>>> Edit/Create Projects on page in a popup
 .static-form-value-large{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-bottom:10.5px;font-size:16px;margin-top:3px}
 >>>>>>> Improve YAML editor validation and feedback
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-variables.table.table-bordered>tbody>tr>td:last-child .env-var-value,.hash,.osc-file-input textarea,.template-message .resource-description{font-family:Menlo,Monaco,Consolas,monospace}
 .static-form-value-large .small,.static-form-value-large small{font-weight:400;line-height:1;color:#9c9c9c;font-size:65%}
 <<<<<<< HEAD
@@ -5916,7 +6066,11 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .deployment-donut .scaling-controls a:active,.deployment-donut .scaling-controls a:hover{color:#72767b;text-decoration:none}
 .deployment-donut .scaling-controls a.disabled{opacity:.4;cursor:not-allowed}
 .deployment-donut .scaling-controls a.disabled:hover{color:#bbb}
+<<<<<<< HEAD
 .deployment-donut .scaling-details{font-size:91%;color:#757575;text-align:center;align-items:center;margin-top:-5px;margin-bottom:7px}
+=======
+.deployment-donut .scaling-details{font-size:91%;color:#9c9c9c;text-align:center;align-items:center;margin-top:-5px;margin-bottom:7px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .deployment-donut .scaling-details .check-events{white-space:nowrap}
 .deployment-donut .scaling-details .hpa-warning{cursor:help;margin-left:1px;vertical-align:-1px}
 .popover{font-size:13px;line-height:1.66667;min-width:300px;word-wrap:break-word}
@@ -5977,10 +6131,14 @@ body{padding-right:0px!important}
 .surface-shaded .nav-tabs{border-color:rgba(0,0,0,.15)}
 .surface-shaded .ui-select-bootstrap .ui-select-match>.btn{background-color:#fff;background-image:linear-gradient(to bottom,#fff 0%,#fbfbfb 100%)}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .breadcrumb{padding-bottom:0}
 =======
 .breadcrumb{font-size:12px;padding-bottom:0}
 >>>>>>> Add bindings list to resource pages
+=======
+.breadcrumb{padding-bottom:0}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .breadcrumb strong{font-weight:600}
 @media (min-width:768px){.nav-tabs.nav-justified{border-bottom:1px solid #ededed}
 }
@@ -6006,6 +6164,7 @@ body{padding-right:0px!important}
 .nav-tabs{margin-bottom:20px}
 .resource-details .config-parameters-form{margin-top:5px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .resource-details .config-parameters-form .hide-show-link{font-size:12px;margin-left:5px}
 =======
 .resource-details .config-parameters-form .control-label{padding-right:0;word-break:break-word}
@@ -6013,6 +6172,9 @@ body{padding-right:0px!important}
 .resource-details .config-parameters-form .form-group{margin-bottom:0}
 .resource-details .config-parameters-form .hide-show-link{font-size:13px;margin-left:5px}
 >>>>>>> Service instance details configuration and edit
+=======
+.resource-details .config-parameters-form .hide-show-link{font-size:12px;margin-left:5px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:1200px){.resource-details .config-parameters-form{margin-bottom:10px}
 }
 .resource-details h3{border-bottom:1px solid #eee;padding-bottom:10px}
@@ -6109,7 +6271,11 @@ registry-image-body dt:after,registry-image-config dt:after,registry-image-meta 
 @media (max-width:950px){.monitoring-page.sidebar-open .metrics-sparkline .c3-axis-x .tick{display:none}
 }
 .quota-chart{margin:0 20px}
+<<<<<<< HEAD
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#757575;display:inline-block;vertical-align:middle}
+=======
+.route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#9c9c9c;display:inline-block;vertical-align:middle}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .route-service-bar-chart .service-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:125px}
 .route-service-bar-chart .service-weight{margin-left:5px}
 .route-service-bar-chart .progress{background:0 0;box-shadow:none;display:inline-block;margin:0;width:125px;-webkit-box-shadow:none}
@@ -6254,6 +6420,7 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .contains-actions .dropdown .dropdown-menu.dropdown-menu-right{right:-4px}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .header-actions{font-size:91%;margin-left:5px}
 .modal-body.contains-form{padding-left:20px}
 .modal-body .buttons{display:flex;flex-direction:row-reverse;margin-top:9px}
@@ -6266,9 +6433,12 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .modal-debug-terminal .original-cmd-msg{margin-bottom:10px}
 =======
 .header-actions{font-size:84%;margin-left:5px}
+=======
+.header-actions{font-size:91%;margin-left:5px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .modal-resource-action{background-color:#f1f1f1}
 .modal-resource-action h1{font-size:21px;font-weight:500;margin-bottom:20px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
-.modal-resource-action p{font-size:15px}
+.modal-resource-action p{font-size:14px}
 .modal-resource-action .help-block{margin-top:0px;margin-bottom:10px}
 .debug-pod-action{margin-top:5px}
 .modal-debug-terminal .modal-header{padding:0 18px 5px}
@@ -6334,9 +6504,13 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 =======
 =======
 .order-service-config .services-item.show-selection:focus,.order-service-config .services-item.show-selection:focus .services-item-name{color:#363636}
+<<<<<<< HEAD
 >>>>>>> Add 'Select from Project' wizard to allow project templates/images to be imported
 .label-tech-preview{display:inline-block;margin-top:7px}
 >>>>>>> Improving display of tech-preview label
+=======
+.label-tech-preview{display:inline-block;line-height:normal;margin-top:7px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:480px){.label-tech-preview{float:right;margin-left:10px}
 }
 @media (max-width:479px){.label-tech-preview+h1{margin-top:11px}
@@ -6366,9 +6540,13 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .header-toolbar .data-toolbar{background-color:#fff;border-bottom:1px solid #e4e4e4;margin:0 -20px;padding-left:20px;padding-right:20px}
 .data-toolbar .vertical-divider+.data-toolbar-filter{margin-top:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .selectize-dropdown{font-size:12px}
 =======
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.selectize-dropdown{font-size:12px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .ellipsis-pulser{padding:10px;text-align:center}
 .ellipsis-pulser .dot{display:inline-block;height:4px;position:relative;width:4px}
 .ellipsis-pulser .dot:before{animation-name:anim;animation-duration:1.5s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:normal;border-radius:100em;content:" ";display:block;height:100%;left:0px;opacity:.33;position:absolute;top:0px;transform-origin:50% 50%;transform:scale(.66);width:100%}
@@ -6497,17 +6675,25 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf .list-group-item-expandable{cursor:pointer;border:1px solid #eaeaea;border-left-color:transparent;border-right-color:transparent}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.instance-status-notification [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
 =======
 .build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+.build-count .icon-count,.build-count .icon-count [data-toggle=tooltip],.instance-status-notification [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .list-view-pf .list-group-item-expandable.expanded{border-color:#d1d1d1}
 .list-view-pf .list-group-item-expandable.expanded,.list-view-pf .list-group-item-expandable.expanded:hover{background-color:#ededed}
 .list-view-pf .list-group-item-expandable.expanded .list-view-pf-checkbox{border-right-color:#d1d1d1}
 .list-view-pf .list-group-item-heading{font-size:12px}
+<<<<<<< HEAD
 .list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#757575}
+=======
+.list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .list-view-pf .list-group-item-text{margin-bottom:5px}
 .list-view-pf-additional-info-item{display:inline-block;text-align:left;width:100%}
 <<<<<<< HEAD
@@ -6542,14 +6728,18 @@ h2+.list-view-pf{margin-top:20px}
 .monitoring-page .list-pf-expansion .log-fixed-height.empty-state-message h2,.monitoring-page .list-pf-expansion .metrics .empty-state-message h2{margin-top:0}
 .monitoring-page .list-pf-expansion .metrics .empty-state-message .pficon-error-circle-o{display:none}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .monitoring-page .list-pf-main-content{font-size:12px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .monitoring-page .list-pf-main-content .list-pf-title{width:100%}
 .monitoring-page .list-pf-main-content .list-pf-title h3{font-size:12px;font-weight:700;line-height:inherit;margin-bottom:0;margin-top:0}
 .monitoring-page .list-pf-main-content .list-pf-title small{display:block;font-size:11px;font-weight:400;line-height:normal;overflow:hidden;text-overflow:ellipsis;color:#757575}
 =======
 .monitoring-page .list-pf-main-content{font-size:13px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+=======
+.monitoring-page .list-pf-main-content{font-size:12px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .monitoring-page .list-pf-main-content .list-pf-title{width:100%}
-.monitoring-page .list-pf-main-content .list-pf-title h3{font-size:13px;font-weight:700;line-height:inherit;margin-bottom:0;margin-top:0}
+.monitoring-page .list-pf-main-content .list-pf-title h3{font-size:12px;font-weight:700;line-height:inherit;margin-bottom:0;margin-top:0}
 .monitoring-page .list-pf-main-content .list-pf-title small{display:block;font-size:11px;font-weight:400;line-height:normal;overflow:hidden;text-overflow:ellipsis;color:#9c9c9c}
 >>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 .monitoring-page .list-pf-additional-content small{white-space:nowrap}
@@ -6671,6 +6861,7 @@ h2+.list-view-pf{margin-top:20px}
 >>>>>>> Adjust display of empty state message and Ace editor
 .build-count .builds,.build-count .pipelines{display:block}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .build-count .icon-count,.builds-label{display:inline-block}
 .build-count .running-stage{font-size:91%;color:#757575}
 .builds-label{margin-right:5px}
@@ -6678,13 +6869,15 @@ h2+.list-view-pf{margin-top:20px}
 .build-count .icon-count,.build-count .icon-count [data-toggle=tooltip]{cursor:help}
 .build-count .running-stage{font-size:84%;color:#9c9c9c}
 >>>>>>> Bug 1506998 - DC's environment tab not showing image secrets properly
+=======
+.build-count .running-stage{font-size:91%;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (max-width:991px){.builds-label{margin-top:5px}
 }
 .instance-status-message .truncated-content,.instance-status-notification .tooltip{white-space:pre-line}
 .instance-status-notification,.notification-icon-count{display:inline-block;margin:5px 5px 0 0}
 @media (min-width:992px){.instance-status-notification,.notification-icon-count{margin-top:0}
 }
-.instance-status-notification [data-toggle=tooltip],.notification-icon-count [data-toggle=tooltip]{cursor:help}
 .mini-donut-link{color:#252525}
 .mini-donut-link:active,.mini-donut-link:focus,.mini-donut-link:hover{color:#0088ce;text-decoration:none}
 .mini-donut-link.disabled-link,.mini-donut-link.disabled-link:active,.mini-donut-link.disabled-link:focus,.mini-donut-link.disabled-link:hover{color:#252525;opacity:1}
@@ -6731,6 +6924,13 @@ h2+.list-view-pf{margin-top:20px}
 }
 >>>>>>> Updates to service instance page, show failed bindings
 .overview .expanded-section h3{line-height:1.4;margin-bottom:5px;margin-top:0;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+<<<<<<< HEAD
+=======
+.overview .expanded-section .section-title{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-top:10px;margin-bottom:10px;font-size:15px;border-bottom:1px solid #dcdcdc;padding-bottom:10px}
+.overview .provisioned-service .list-pf-details .component-label,.overview h2>.component-label{padding-bottom:0}
+.overview .expanded-section .section-title .small,.overview .expanded-section .section-title small{font-weight:400;line-height:1;color:#9c9c9c;font-size:75%}
+.overview .expanded-section .section-title.no-border{border-bottom:0;padding-bottom:0}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .overview .filter-status{margin-bottom:5px}
 .overview h1,.overview h2{line-height:normal;min-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .overview h2{margin-top:0}
@@ -6805,10 +7005,14 @@ h2+.list-view-pf{margin-top:20px}
 .overview .provisioned-service .list-pf-details .component-label{padding-bottom:0}
 .overview .provisioned-service .list-pf-details .small{color:#9c9c9c;font-size:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .overview .provisioned-service .list-pf-expansion .learn-more-link{display:block;font-size:12px}
 =======
 .overview .provisioned-service .list-pf-expansion .learn-more-link{display:block;font-size:13px}
 >>>>>>> Overview instance row improvements
+=======
+.overview .provisioned-service .list-pf-expansion .learn-more-link{display:block;font-size:12px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:768px){.overview .provisioned-service .list-pf-details{justify-content:space-between}
 .overview .provisioned-service .list-pf-expansion .learn-more-link{display:inline;margin-right:10px}
 }
@@ -6830,7 +7034,11 @@ h2+.list-view-pf{margin-top:20px}
 >>>>>>> Replacing empty tables with empty state message
 .overview .triggers{margin-bottom:20px}
 .overview .usage-value{font-size:18px;font-weight:300;line-height:1}
+<<<<<<< HEAD
 .overview .usage-label{font-size:91%;color:#757575}
+=======
+.overview .usage-label{font-size:91%;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .overview .view-by-options{align-items:baseline;display:flex}
 @media (max-width:767px){.overview .view-by-options{margin-top:10px}
 }
@@ -6922,7 +7130,11 @@ to{background-color:transparent}
 .remove-stage{animation:flexShrink .5s ease forwards;flex:1 1 0%}
 .pipeline-actions,.pipeline-stage-name,.pipeline-time{font-size:12px;text-align:center}
 .pipeline-stage-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:13px}
+<<<<<<< HEAD
 .pipeline-actions,.pipeline-time{margin-top:12px;color:#757575}
+=======
+.pipeline-actions,.pipeline-time{margin-top:12px;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .pipeline-actions.IN_PROGRESS,.pipeline-time.IN_PROGRESS{color:#555}
 [class^=build-pipeline] .status-icon.Complete{color:#3f9c35}
 [class^=build-pipeline] .status-icon.Failed{color:#c00}
@@ -7096,7 +7308,7 @@ to{background-color:transparent}
 .project-bar .add-to-project{margin:5px 15px 0 5px}
 >>>>>>> Add search catalog in project context
 }
-.project-bar .add-to-project>.btn-link{align-items:center;color:#d1d1d1;display:flex;flex:1 1 auto;justify-content:center;margin:2px 2px 0;padding:0 2px}
+.project-bar .add-to-project>.btn-link{align-items:center;color:#d1d1d1;display:flex;flex:1 1 auto;font-size:13px;justify-content:center;margin:2px 2px 0;padding:0 2px}
 @media (min-width:768px){.project-bar .add-to-project>.btn-link{background-color:#292e34;border:1px solid #030303;padding:3px 5px 0}
 }
 .project-bar .add-to-project>.btn-link:active,.project-bar .add-to-project>.btn-link:focus,.project-bar .add-to-project>.btn-link:hover{color:#fff;text-decoration:none}
@@ -7120,7 +7332,7 @@ to{background-color:transparent}
 .project-bar .bootstrap-select.btn-group .dropdown-toggle.btn-default{border-right-width:1px;height:27px}
 @media (min-width:768px){.project-bar .bootstrap-select.btn-group .dropdown-toggle.btn-default{border-left-width:1px;border-right:0;height:39px}
 }
-.project-bar .bootstrap-select.btn-group .dropdown-toggle .caret{font-size:13px;margin-top:-5px;position:absolute;right:15px;top:50%}
+.project-bar .bootstrap-select.btn-group .dropdown-toggle .caret{font-size:12px;margin-top:-5px;position:absolute;right:15px;top:50%}
 .project-bar .bootstrap-select.btn-group .dropdown-menu{background-color:#000;border-color:#000;border-radius:0;color:#d1d1d1;margin-top:0;padding:0}
 .project-bar .bootstrap-select.btn-group .dropdown-menu li{background-color:#000}
 .project-bar .bootstrap-select.btn-group .dropdown-menu li.selected a{background-color:#3b424b!important;border-color:transparent!important;color:#fff}
@@ -7146,9 +7358,9 @@ to{background-color:transparent}
 }
 .project-bar .catalog-search .landing-search-form{width:300px}
 .project-bar .catalog-search .landing-search-form .search-pf-input-group button{color:#d1d1d1}
-.project-bar .catalog-search .landing-search-form .search-pf-input-group .form-control{background-color:#292e34;border-color:#030303;color:#d1d1d1;font-size:13px;height:2em}
+.project-bar .catalog-search .landing-search-form .search-pf-input-group .form-control{background-color:#292e34;border-color:#030303;color:#d1d1d1;font-size:12px;height:2em}
 .project-bar .catalog-search .landing-search-form .search-pf-input-group .form-control:focus{outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
-.project-bar .catalog-search .landing-search-form .search-pf-input-group .pficon-close{font-size:15px;margin-top:-.3em}
+.project-bar .catalog-search .landing-search-form .search-pf-input-group .pficon-close{font-size:14px;margin-top:-.3em}
 .project-bar .catalog-search.mobile-shown .catalog-search-toggle{color:#39a5dc;padding:0 5px}
 .project-bar .catalog-search.mobile-shown .catalog-search-toggle:active,.project-bar .catalog-search.mobile-shown .catalog-search-toggle:focus,.project-bar .catalog-search.mobile-shown .catalog-search-toggle:hover{color:#39a5dc}
 @media (max-width:767px){.project-bar .catalog-search.mobile-shown .landing-search-form{background-color:#292e34;border-top:solid 1px #292e34;display:block!important;left:0;padding:10px;position:fixed;right:0;top:69px;width:auto}
@@ -7299,6 +7511,7 @@ dl.secret-data pre{margin-bottom:0}
 .right-section .right-container .right-header{flex:0 0 auto;width:100%}
 .sidebar-right{background-color:#fff;border-left:1px solid #dadada;display:none;flex:0 0 210px;position:relative}
 .sidebar-right .dl-horizontal{margin:0 0 20px}
+<<<<<<< HEAD
 .sidebar-right .dl-horizontal dt{text-align:left}
 .sidebar-right .dl-horizontal dd{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .events-sidebar .right-content .event .event-details,.events-sidebar .right-content .event .event-details .event-message,.events-sidebar .right-content .event .event-details .event-object,.events-sidebar .right-content .event .event-details .event-reason{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -7319,6 +7532,12 @@ dl.secret-data pre{margin-bottom:0}
 .events-sidebar .right-content .event .event-details,.events-sidebar .right-content .event .event-details .event-message,.events-sidebar .right-content .event .event-details .event-object,.events-sidebar .right-content .event .event-details .event-reason{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .sidebar-right h3{border-top:1px solid #dfdfdf;margin-top:0;padding-top:21px}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.sidebar-right .dl-horizontal dt{text-align:left}
+.sidebar-right .dl-horizontal dd{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+.events-sidebar .right-content .event .event-details,.events-sidebar .right-content .event .event-details .event-message,.events-sidebar .right-content .event .event-details .event-object,.events-sidebar .right-content .event .event-details .event-reason{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sidebar-right h3{border-top:1px solid #dfdfdf;margin-top:0;padding-top:20px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .sidebar-right h3:last-child{border-top:0;padding-top:0}
 .sidebar-right .sidebar-header{border-color:#e4e4e4;margin-bottom:0;margin-top:20px}
 .sidebar-right .sidebar-header h2{margin-left:20px}
@@ -7406,7 +7625,11 @@ dl.secret-data pre{margin-bottom:0}
 .events-sidebar .right-content .event .event-details{flex-grow:1}
 .events-sidebar .right-content .event .event-details .detail-group{display:flex;flex-direction:column;justify-content:space-between}
 .events-sidebar .right-content .event .event-details .event-message{font-size:91%}
+<<<<<<< HEAD
 .events-sidebar .right-content .event .event-details .event-timestamp{font-size:91%;color:#757575}
+=======
+.events-sidebar .right-content .event .event-details .event-timestamp{font-size:91%;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 @media (min-width:1200px){.events-sidebar .right-content .event .event-details .detail-group{flex-direction:row}
 .events-sidebar .right-content .event .event-details .event-object{order:1}
 .events-sidebar .right-content .event .event-details .event-reason{order:2}
@@ -7472,10 +7695,14 @@ td[role=presentation]{display:none}
 }
 .tooltip-inner,h1.contains-actions{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .table-responsive{margin-bottom:20px}
 =======
 .table-responsive{margin-bottom:21px}
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+.table-responsive{margin-bottom:20px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .table-responsive.scroll-shadows-horizontal{border-left:1px solid #d1d1d1;border-right:1px solid #d1d1d1;background-attachment:scroll;background-color:#fff;background-image:radial-gradient(ellipse at left,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 75%),radial-gradient(ellipse at right,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 75%);background-position:0 0,100% 0;background-repeat:no-repeat;background-size:8px 100%;-ms-overflow-style:auto;overflow-x:auto}
 .table-responsive.scroll-shadows-horizontal .table{background-color:transparent}
 .table-responsive.scroll-shadows-horizontal td,.table-responsive.scroll-shadows-horizontal th{background-attachment:local;background-repeat:no-repeat;background-size:20px 100%}
@@ -7492,6 +7719,7 @@ td[role=presentation]{display:none}
 td[role=presentation].arrow:after{content:"\2192"}
 .tile{background:#fff;padding:20px;margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
 .tile h1,.tile h2,.tile h3{margin:10px 0px}
+<<<<<<< HEAD
 =======
 td[role=presentation].arrow:after{content:"\2193"}
 @media (min-width:768px){td[role=presentation].arrow:after{content:"\2192"}
@@ -7499,6 +7727,8 @@ td[role=presentation].arrow:after{content:"\2193"}
 .tile{background:#fff;padding:20px;margin-bottom:20px;word-wrap:break-word;overflow-x:hidden}
 .tile h1,.tile h2,.tile h3{margin:10.5px 0px}
 >>>>>>> Improve YAML editor validation and feedback
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .tile-click:hover .image-icon{opacity:.75}
 .tile-click .image-icon{font-size:48px;line-height:1;margin-bottom:15px;opacity:.38}
 .tile-row{display:flex;flex-wrap:wrap;margin-left:-10px;margin-right:-10px}
@@ -7517,10 +7747,14 @@ td[role=presentation].arrow:after{content:"\2193"}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .tooltip-default-icon{cursor:help;font-size:11px}
 =======
 .tooltip-default-icon{cursor:help;font-size:12px}
 >>>>>>> Fix bugs with headings
+=======
+.tooltip-default-icon{cursor:help;font-size:11px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .console-os breadcrumbs+.page-header{padding-top:0}
 .console-os .page-header{border-color:#e4e4e4;padding:18px 20px 19px;margin:0 -20px}
 =======
@@ -7719,7 +7953,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-size-warning{margin:0}
 @media (max-width:991px){.log-size-warning{margin-top:20px}
 }
-.log-view{margin-bottom:20px;position:relative}
+.log-view{clear:both;margin-bottom:20px;position:relative}
 .log-end-msg,.log-view .log-scroll a{font-family:"Open Sans",Helvetica,Arial,sans-serif}
 .chromeless .log-view{margin-bottom:0}
 .log-view pre,.log-view pre code{background-color:transparent;border:0;margin-bottom:0;overflow:visible;padding:0 10px}
@@ -7925,6 +8159,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 <<<<<<< HEAD
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:focus,.nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:hover{background:#4a535e;color:#fff;text-decoration:none}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .nav-pf-vertical .nav-item-pf-header{font-size:13px}
 =======
 .nav-pf-vertical .nav-pf-secondary-nav .list-group-item>a:hover{text-decoration:none;background:#4a535e}
@@ -7940,6 +8175,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 =======
 .nav-pf-vertical .nav-item-pf-header{font-size:14px}
 >>>>>>> Removing orphaned tech-preview less and markup
+=======
+.nav-pf-vertical .nav-item-pf-header{font-size:13px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .donut-title-med-pf{font-size:22.5px;font-weight:300}
 .col-md-12>.alerts:first-child{margin-top:20px}
 .empty-state-message .projects-instructions code{display:inline-block}
@@ -7959,6 +8197,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .project-name-item.list-pf-title .h3 [data-toggle=tooltip]{cursor:help;margin-left:7px}
 .project-name-item.list-pf-title .h3 a{display:block;line-height:normal;overflow:hidden;text-overflow:ellipsis}
 .project-name-item.list-pf-title small{color:#72767b;font-size:12px;font-weight:400;margin:0}
+<<<<<<< HEAD
 =======
 .project-additional-info.list-view-pf-additional-info,.project-info .list-view-pf-main-info{display:block}
 @media (min-width:992px){.project-additional-info.list-view-pf-additional-info{width:55%}
@@ -7984,6 +8223,8 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .project-name-item.list-pf-title .h3 a{display:block;line-height:normal;overflow:hidden;text-overflow:ellipsis}
 .project-name-item.list-pf-title small{color:#72767b;font-size:13px;font-weight:400;margin:0}
 >>>>>>> Fix project list view styles per UXD feedback
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .projects-bar{display:flex;flex-direction:column}
 @media (min-width:685px){.projects-bar{flex-direction:row;justify-content:space-between}
 }
@@ -8114,12 +8355,17 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 =======
 .environment-from-editor.as-sortable-dragging .as-sortable-item-delete,.environment-from-editor.as-sortable-dragging .input-group-addon,.environment-from-editor.as-sortable-dragging input,.key-value-editor.as-sortable-dragging .as-sortable-item-delete,.key-value-editor.as-sortable-dragging .input-group-addon,.key-value-editor.as-sortable-dragging input{opacity:.65}
 .environment-from-editor .as-sortable-DISABLED-item-delete:hover,.environment-from-editor .as-sortable-item-delete:hover,.environment-from-editor .as-sortable-item-handle:hover,.environment-from-editor.as-sortable-dragging .as-sortable-item-handle,.key-value-editor .as-sortable-DISABLED-item-delete:hover,.key-value-editor .as-sortable-item-delete:hover,.key-value-editor .as-sortable-item-handle:hover,.key-value-editor.as-sortable-dragging .as-sortable-item-handle{opacity:1}
+<<<<<<< HEAD
 .environment-from-editor .as-sortable-DISABLED-item-delete,.environment-from-editor .as-sortable-item-delete,.environment-from-editor .as-sortable-item-handle,.key-value-editor .as-sortable-DISABLED-item-delete,.key-value-editor .as-sortable-item-delete,.key-value-editor .as-sortable-item-handle{display:inline-block;font-size:15px;opacity:.65;padding:6px;vertical-align:middle}
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+.environment-from-editor .as-sortable-DISABLED-item-delete,.environment-from-editor .as-sortable-item-delete,.environment-from-editor .as-sortable-item-handle,.key-value-editor .as-sortable-DISABLED-item-delete,.key-value-editor .as-sortable-item-delete,.key-value-editor .as-sortable-item-handle{display:inline-block;font-size:14px;opacity:.65;padding:6px;vertical-align:middle}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-from-editor .as-sortable-DISABLED-item-delete,.environment-from-editor .as-sortable-item-delete,.key-value-editor .as-sortable-DISABLED-item-delete,.key-value-editor .as-sortable-item-delete{color:#333}
 .environment-from-editor .as-sortable-DISABLED-item-delete:active,.environment-from-editor .as-sortable-DISABLED-item-delete:focus,.environment-from-editor .as-sortable-DISABLED-item-delete:hover,.environment-from-editor .as-sortable-item-delete:active,.environment-from-editor .as-sortable-item-delete:focus,.environment-from-editor .as-sortable-item-delete:hover,.key-value-editor .as-sortable-DISABLED-item-delete:active,.key-value-editor .as-sortable-DISABLED-item-delete:focus,.key-value-editor .as-sortable-DISABLED-item-delete:hover,.key-value-editor .as-sortable-item-delete:active,.key-value-editor .as-sortable-item-delete:focus,.key-value-editor .as-sortable-item-delete:hover{text-decoration:none}
 .environment-from-editor .as-sortable-item-handle,.key-value-editor .as-sortable-item-handle{cursor:move}
 .environment-from-editor .as-sortable-placeholder,.key-value-editor .as-sortable-placeholder{border-top:2px solid #0088ce;clear:left;width:100%!important}
+<<<<<<< HEAD
 <<<<<<< HEAD
 .environment-from-editor .faux-form-control,.key-value-editor .faux-form-control{background-color:#fff;background-image:none;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);color:#363636;display:table-cell;font-size:12px;height:26px;line-height:1.66666667;padding:2px 6px;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;width:100%;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
 .environment-from-editor .faux-form-control.readonly,.key-value-editor .faux-form-control.readonly{background-color:#f5f5f5;-webkit-box-shadow:none;box-shadow:none;color:#8b8d8f;opacity:1}
@@ -8131,11 +8377,20 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor .faux-form-control.readonly:hover,.key-value-editor .faux-form-control.readonly:hover{border-color:#bbb}
 .environment-from-editor .faux-form-control-addon,.key-value-editor .faux-form-control-addon{background-color:#f1f1f1;border:1px solid #bbb;border-radius:1px;color:#363636;display:table-cell;font-size:13px;font-weight:400;line-height:1;margin-right:2px;padding:2px 6px;text-align:center;vertical-align:middle;white-space:nowrap;width:1%}
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+.environment-from-editor .faux-form-control,.key-value-editor .faux-form-control{background-color:#fff;background-image:none;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);color:#363636;display:table-cell;font-size:12px;height:26px;line-height:1.66666667;padding:2px 6px;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;width:100%;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
+.environment-from-editor .faux-form-control.readonly,.key-value-editor .faux-form-control.readonly{background-color:#f5f5f5;-webkit-box-shadow:none;box-shadow:none;color:#8b8d8f;opacity:1}
+.environment-from-editor .faux-form-control.readonly:hover,.key-value-editor .faux-form-control.readonly:hover{border-color:#bbb}
+.environment-from-editor .faux-form-control-addon,.key-value-editor .faux-form-control-addon{background-color:#f1f1f1;border:1px solid #bbb;border-radius:1px;color:#363636;display:table-cell;font-size:12px;font-weight:400;line-height:1;margin-right:2px;padding:2px 6px;text-align:center;vertical-align:middle;white-space:nowrap;width:1%}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-from-editor .faux-form-control-addon:first-child,.key-value-editor .faux-form-control-addon:first-child{border-right:0}
 .environment-from-editor .faux-form-control-addon span[title]:not([data-original-title=""]),.key-value-editor .faux-form-control-addon span[title]:not([data-original-title=""]){cursor:help}
 .environment-from-editor .faux-input-group,.key-value-editor .faux-input-group{border-collapse:separate;display:table;position:relative}
 .environment-from-editor .faux-input-group.faux-input-single-input,.key-value-editor .faux-input-group.faux-input-single-input{width:100%}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-from-editor .environment-from-editor-button,.environment-from-editor .key-value-editor-buttons,.key-value-editor .environment-from-editor-button,.key-value-editor .key-value-editor-buttons{position:absolute;right:0;top:0;width:50px}
 .environment-from-editor .environment-from-entry,.key-value-editor .environment-from-entry{display:table;margin-bottom:15px;padding-right:0;position:relative;table-layout:fixed;width:100%}
 @media (max-width:479px){.environment-from-editor .environment-from-entry,.key-value-editor .environment-from-entry{padding-right:50px}
@@ -8165,6 +8420,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor-header,.key-value-editor .key-value-editor-input,.key-value-editor-header{float:left;margin-bottom:0;padding-right:5px;width:50%}
 .membership .content-pane,.membership .content-pane .col-add-role{width:100%}
 .environment-from-editor-entry-header,.key-value-editor-entry-header{padding-right:50px}
+<<<<<<< HEAD
 .environment-from-editor-header,.key-value-editor-header{margin-bottom:5px}
 .membership .action-set{display:flex;flex-direction:column;justify-content:space-between;width:100%}
 @media (min-width:768px){.membership .action-set{flex-wrap:nowrap}
@@ -8218,6 +8474,8 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .key-value-editor .key-value-editor-input,.key-value-editor-header{float:left;margin-bottom:0;padding-right:5px;width:50%}
 .membership .content-pane,.membership .content-pane .col-add-role{width:100%}
 .environment-from-editor-entry-header,.key-value-editor-entry-header{padding-right:52px}
+=======
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-from-editor-header,.key-value-editor-header{margin-bottom:5px}
 .membership .action-set{display:flex;flex-direction:column;justify-content:space-between;width:100%}
 @media (min-width:768px){.membership .action-set{flex-wrap:nowrap}
@@ -8283,8 +8541,12 @@ notification-drawer-wrapper .blank-state-pf-title{font-size:15px}
 }
 .membership .content-pane .col-add-role,.membership .content-pane .col-heading,.membership .content-pane .col-name,.membership .content-pane .item-row,.membership .content-pane [flex-collapse-fix],.membership .content-pane [flex]{flex-shrink:0;flex-basis:auto}
 .membership .ui-select-bootstrap>.ui-select-choices{max-height:300px}
+<<<<<<< HEAD
 notification-drawer-wrapper .blank-state-pf-title{font-size:14px}
 >>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
+=======
+notification-drawer-wrapper .blank-state-pf-title{font-size:15px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 notification-drawer-wrapper .drawer-pf{height:calc(100vh - 69px);opacity:1;position:fixed;right:0;top:69px;transition:top 150ms ease-in-out,opacity 150ms;z-index:1028}
 @media (max-width:350px){notification-drawer-wrapper .drawer-pf{left:0;width:100%}
 }
@@ -8313,8 +8575,13 @@ notification-drawer-wrapper .drawer-pf-notification-inner{padding:15px}
 notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close{margin-right:-10px}
 notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close{color:#252525}
 notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:active,notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:focus,notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:hover{text-decoration:none}
+<<<<<<< HEAD
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-info{color:#757575}
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message-expanded{padding:10px 10px 10px 42px;color:#757575}
+=======
+notification-drawer-wrapper .expanded-notification .drawer-pf-notification-info{color:#9c9c9c}
+notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message-expanded{padding:10px 10px 10px 42px;color:#9c9c9c}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notification-info{color:inherit}
 notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notification-message-expanded{color:inherit;font-weight:400;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .panel-heading .panel-title{color:#4d5258;font-weight:700;line-height:normal;overflow:hidden}
@@ -8402,6 +8669,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .edit-yaml .ace_editor.editor .ace_gutter{color:#8b8d8f}
 .edit-yaml h1{line-height:1.3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .edit-yaml-errors{font-size:91%;height:2em;text-align:right}
 .add-config-to-application .application-select{width:100%}
 .add-config-to-application .choice-contents{margin-bottom:10px;margin-left:20px}
@@ -8432,6 +8700,9 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 >>>>>>> Improve YAML editor validation and feedback
 =======
 .edit-yaml-errors{font-size:84%;height:2em;text-align:right}
+=======
+.edit-yaml-errors{font-size:91%;height:2em;text-align:right}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .add-config-to-application .application-select{width:100%}
 .add-config-to-application .catalogs-overlay-panel{max-width:600px}
 .add-config-to-application .choice-contents{margin-bottom:10px;margin-left:20px}
@@ -8444,8 +8715,12 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .add-config-to-application .dialog-body .add-choice{margin-bottom:10px}
 .add-config-to-application .dialog-body .button-group .btn{margin-left:10px}
 .add-config-to-application .dialog-body .button-group .btn:first-of-type{margin-left:0}
+<<<<<<< HEAD
 .add-config-to-application .env-warning,.add-config-to-application .volume-options{margin-left:20px}
 .add-config-to-application .dialog-body legend{border-bottom:0;font-size:14px;font-weight:600;margin-bottom:10px}
+=======
+.add-config-to-application .dialog-body legend{border-bottom:0;font-size:13px;font-weight:600;margin-bottom:10px}
+>>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .add-config-to-application .dialog-body .radio{margin-top:0}
 .add-config-to-application .field-help{position:relative;text-decoration:none;top:1px}
 .add-config-to-application .form-group{display:flex;margin-bottom:10px}
