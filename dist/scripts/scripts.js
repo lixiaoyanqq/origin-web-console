@@ -20161,7 +20161,11 @@ template: '<span data-timestamp="{{timestamp}}" data-omit-single="{{omitSingle}}
 }), angular.module("openshiftConsole").directive("deleteLink", [ "$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "DataService", "Navigate", "NotificationsService", "Logger", function(a, b, c, d, e, f, g, h, i, j) {
 =======
 }), angular.module("openshiftConsole").directive("deleteLink", [ "$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "DataService", "Navigate", "NotificationsService", "Logger", function(e, t, n, a, r, o, i, s, c, l) {
+<<<<<<< fe2845a1014ecc7e4182707b1f7cc193c684d169
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var u = o.getPreferredVersion("horizontalpodautoscalers");
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -20257,18 +20261,15 @@ templateUrl: function(e, t) {
 return angular.isDefined(t.buttonOnly) ? "views/directives/delete-button.html" : "views/directives/delete-link.html";
 },
 replace: !0,
-link: function(a, r, u) {
-"Project" === u.kind && (a.isProject = !0), a.options = {
+link: function(a, r, d) {
+"Project" === d.kind && (a.isProject = !0), a.options = {
 deleteHPAs: !0,
 deleteImmediately: !1
 };
-var d = function(e) {
+var m = function(e) {
 a.stayOnCurrentPage && a.alerts ? a.alerts[e.name] = e.data : c.addNotification(e.data);
-}, m = function(e) {
-return i.delete({
-resource: "horizontalpodautoscalers",
-group: "autoscaling"
-}, e.metadata.name, {
+}, p = function(e) {
+return i.delete(u, e.metadata.name, {
 namespace: a.projectName
 }).then(function() {
 c.addNotification({
@@ -20277,7 +20278,7 @@ message: "Horizontal pod autoscaler " + e.metadata.name + " was marked for delet
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 }).catch(function(t) {
-d({
+m({
 name: e.metadata.name,
 data: {
 type: "error",
@@ -20285,7 +20286,7 @@ message: "Horizontal pod autoscaler " + e.metadata.name + " could not be deleted
 }
 }), l.error("HPA " + e.metadata.name + " could not be deleted.", t);
 });
-}, p = function() {
+}, f = function() {
 if (!a.stayOnCurrentPage) if (a.redirectUrl) t.url(a.redirectUrl); else if ("Project" === a.kind) if ("/" !== t.path()) {
 var e = URI("/");
 t.url(e);
@@ -20300,6 +20301,7 @@ scope: a
 }).result.then(function() {
 var e = a.kind, t = a.resourceName, r = (a.typeDisplayName || n("humanizeKind")(e)) + " '" + (a.displayName ? a.displayName : t) + "'", s = "Project" === a.kind ? {} : {
 namespace: a.projectName
+<<<<<<< fe2845a1014ecc7e4182707b1f7cc193c684d169
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< 952b26bc3acaa89a51e4aad5f965e515d3b007ae
 }, u = {};
@@ -20321,6 +20323,13 @@ resource: o.kindToResource(e),
 group: a.group
 }, t, u, f).then(function() {
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+}, d = {};
+a.options.deleteImmediately && (d.gracePeriodSeconds = 0, d.propagationPolicy = null), "servicecatalog.k8s.io" === a.group && (d.propagationPolicy = null), i.delete({
+resource: o.kindToResource(e),
+group: a.group
+}, t, u, d).then(function() {
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 c.addNotification({
 type: "success",
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
@@ -20328,14 +20337,18 @@ message: _.capitalize(r) + " was marked for deletion."
 }), a.success && a.success(), a.options.deleteHPAs && _.each(a.hpaList, m), p();
 =======
 message: s + " was marked for deletion."
+<<<<<<< fe2845a1014ecc7e4182707b1f7cc193c684d169
 <<<<<<< 9bc0af8cb56dcc9609307333b9424f396867cab5
 }), a.success && a.success(), a.options.deleteHPAs && _.each(a.hpaList, p), m();
 >>>>>>> Updates for Service Instance & Bindings
 =======
 }), a.success && a.success(), a.options.deleteHPAs && _.each(a.hpaList, m), p();
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+}), a.success && a.success(), a.options.deleteHPAs && _.each(a.hpaList, p), f();
+>>>>>>> Update deleteLink directive to use getPreferredVersion
 }).catch(function(e) {
-d({
+m({
 name: t,
 data: {
 type: "error",
