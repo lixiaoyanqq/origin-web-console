@@ -11649,7 +11649,7 @@ i.unwatchAll(m);
 >>>>>>> Update pipelines controller to use getPreferredVersion
 });
 }));
-} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d) {
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
 e.projectName = n.project, e.buildConfigName = n.buildconfig, e.buildConfig = null, e.labelSuggestions = {}, e.alerts = {}, e.breadcrumbs = [], e.forms = {}, e.expand = {
 imageEnv: !1
 }, n.isPipeline ? e.breadcrumbs.push({
@@ -11664,13 +11664,15 @@ title: n.buildconfig
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var m = t("buildConfigForBuild"), p = t("buildStrategy"), f = [], g = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = p(e.updatedBuildConfig).env || [];
+var p = t("buildConfigForBuild"), f = t("buildStrategy"), g = t("orderByDisplayName"), v = t("getErrorDetails"), h = [], y = [], b = [];
+e.valueFromObjects = [];
+var S = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), p(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
+l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = m.compactEntries(angular.copy(e.envVars)), i.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
 l.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
@@ -11684,8 +11686,9 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.clearEnvVarUpdates = function() {
-g(e.buildConfig), e.forms.bcEnvVars.$setPristine();
+S(e.buildConfig), e.forms.bcEnvVars.$setPristine();
 };
+<<<<<<< HEAD
 var h, v = function(n, s) {
 e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = r.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
@@ -11723,6 +11726,14 @@ h !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (h = 
 var c = _.get(p(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
 h !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (h = l, i.get(a.kindToResource(c.kind), c.name, {
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+var C, w = function(n, s) {
+e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = r.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
+e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
+}));
+var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+C !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (C = l, i.get(a.kindToResource(c.kind), c.name, {
+>>>>>>> Enable valueFrom values for build config env vars
 namespace: c.namespace || e.projectName
 }, {
 errorNotification: !1
@@ -11730,15 +11741,19 @@ errorNotification: !1
 e.BCEnvVarsFromImage = o.getEnvironment(t);
 }, function() {
 e.BCEnvVarsFromImage = [];
-})) : e.BCEnvVarsFromImage = []), g(n), "DELETED" === s && (e.alerts.deleted = {
+})) : e.BCEnvVarsFromImage = []), S(n), "DELETED" === s && (e.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? h(n) : e.alerts.background_update = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? g(n) : e.alerts.background_update = {
 >>>>>>> Bug 1495491 - Show events tab on build config page
+=======
+}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? S(n) : e.alerts.background_update = {
+>>>>>>> Enable valueFrom values for build config env vars
 type: "warning",
 message: "This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links: [ {
@@ -11847,7 +11862,7 @@ case "MODIFIED":
 e.unfilteredBuilds[i] = a;
 =======
 u.get(n.project).then(_.spread(function(a, o) {
-function l() {
+function u() {
 s.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
 type: "warning",
 details: "The active filters are hiding all builds."
@@ -11864,15 +11879,38 @@ e.project = a, e.projectContext = o, i.get(e.buildConfigsVersion, n.buildconfig,
 >>>>>>> Bug 1495491 - Show events tab on build config page
 errorNotification: !1
 }).then(function(t) {
-h(t), f.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, h));
+w(t), h.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, w));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: 404 === n.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
-}), f.push(i.watch(e.buildsVersion, o, function(t, a, o) {
+}), i.list("configmaps", o, null, {
+errorNotification: !1
+}).then(function(t) {
+y = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+}, function(e) {
+403 !== e.code && l.addNotification({
+id: "build-config-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: v(e)
+});
+}), i.list("secrets", o, null, {
+errorNotification: !1
+}).then(function(t) {
+b = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+}, function(e) {
+403 !== e.code && l.addNotification({
+id: "build-config-list-secrets-error",
+type: "error",
+message: "Could not load secrets.",
+details: v(e)
+});
+}), h.push(i.watch(e.buildsVersion, o, function(t, a, o) {
 if (e.emptyMessage = "No builds to show", a) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 if (p(o) === n.buildconfig) {
 <<<<<<< HEAD
@@ -11886,6 +11924,9 @@ if (m(o) === n.buildconfig) {
 =======
 if (m(o) === n.buildconfig) {
 >>>>>>> Support EnvFrom in the Env Editors
+=======
+if (p(o) === n.buildconfig) {
+>>>>>>> Enable valueFrom values for build config env vars
 var i = o.metadata.name;
 switch (a) {
 case "ADDED":
@@ -11913,7 +11954,7 @@ labelSelector: t("labelName")("buildConfig") + "=" + _.truncate(e.buildConfigNam
 =======
 >>>>>>> Updates for Service Instance & Bindings
 } else e.unfilteredBuilds = r.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
-e.builds = s.getLabelSelector().select(e.unfilteredBuilds), l(), s.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
+e.builds = s.getLabelSelector().select(e.unfilteredBuilds), u(), s.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
 }, {
 http: {
 params: {
@@ -11950,13 +11991,14 @@ g.unwatchAll(p);
 =======
 })), s.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
-e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), l();
+e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), u();
 });
 }), e.startBuild = function() {
 r.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
 c.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 i.unwatchAll(f);
@@ -11967,6 +12009,9 @@ i.unwatchAll(g);
 =======
 i.unwatchAll(f);
 >>>>>>> Bug 1495491 - Show events tab on build config page
+=======
+i.unwatchAll(h);
+>>>>>>> Enable valueFrom values for build config env vars
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, a, r, o, i, s, c) {
@@ -16077,26 +16122,32 @@ delete e.updatedBuildConfig.spec.postCommit.script;
 } else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
 };
 e.secrets = {};
-var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = function() {
+var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = t("orderByDisplayName"), w = t("getErrorDetails"), P = [], k = [];
+e.valueFromObjects = [];
+var j = function() {
 var t;
 e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : r.history.back();
 };
-e.cancel = C;
-var w = function() {
+e.cancel = j;
+var R = function() {
 u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
 };
-e.$on("$destroy", w), d.get(a.project).then(_.spread(function(n, r) {
-e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? c.get(h, a.buildconfig, r, {
+e.$on("$destroy", R), d.get(a.project).then(_.spread(function(n, r) {
+e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? (c.get(h, a.buildconfig, r, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = P(e.triggers, e.buildConfig.spec.triggers), e.sources = N(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
+e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
 var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
+<<<<<<< HEAD
 }), I();
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+}), D(), k = C(t.by("metadata.name")), e.valueFromObjects = P.concat(k);
+>>>>>>> Enable valueFrom values for build config env vars
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -16199,10 +16250,25 @@ type: "error",
 message: "The build configuration details could not be loaded.",
 details: "Reason: " + t("getErrorDetails")(n)
 };
-}) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
+}), c.list("configmaps", r, null, {
+errorNotification: !1
+}).then(function(t) {
+P = C(t.by("metadata.name")), e.valueFromObjects = P.concat(k);
+}, function(e) {
+403 !== e.code && u.addNotification({
+id: "edit-build-config-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: w(e)
+});
+})) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 }));
+<<<<<<< HEAD
 var P = function(n, a) {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+var I = function(n, a) {
+>>>>>>> Enable valueFrom values for build config env vars
 function r(n, a) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(a, e.projectName);
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
@@ -16398,7 +16464,7 @@ e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var k = function(e) {
+var E = function(e) {
 return _.map(f.compactEntries(e), function(e) {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 return {
@@ -16406,6 +16472,7 @@ sourcePath: e.name,
 destinationDir: e.value
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), a.list({
@@ -16427,6 +16494,10 @@ o.unwatchAll(c);
 =======
 }, j = function(t) {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+});
+}, T = function(t) {
+>>>>>>> Enable valueFrom values for build config env vars
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -16452,19 +16523,27 @@ name: _.last(a)
 }
 return n;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, k = function() {
 =======
 }, R = function() {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+}, N = function() {
+>>>>>>> Enable valueFrom values for build config env vars
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, P = function() {
 =======
 }, I = function() {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+}, D = function() {
+>>>>>>> Enable valueFrom values for build config env vars
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -16494,14 +16573,14 @@ name: ""
 mountPath: ""
 } ];
 }
-}, E = function(e, t, n) {
+}, A = function(e, t, n) {
 t.name ? e[n] = t : delete e[n];
-}, T = function(t, n) {
+}, $ = function(t, n) {
 var a = "Custom" === e.strategyType ? "secretSource" : "secret", r = _.filter(n, function(e) {
 return e[a].name;
 });
 _.isEmpty(r) ? delete t.secrets : t.secrets = r;
-}, N = function(e, t) {
+}, B = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
@@ -16529,15 +16608,16 @@ break;
 case "JenkinsPipeline":
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
-switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = k(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = j(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = j(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = j(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), E(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), E(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), E(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = E(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 case "Source":
 case "Docker":
-T(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+$(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-T(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+$(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 e.updatedBuildConfig.spec.triggers = k(), b(), s.update("buildconfigs", e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
@@ -16549,10 +16629,13 @@ message: "Build config " + e.updatedBuildConfig.metadata.name + " was successful
 e.loaded = !0, e.alerts.load = {
 =======
 e.updatedBuildConfig.spec.triggers = R(), w(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+=======
+e.updatedBuildConfig.spec.triggers = N(), R(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+>>>>>>> Enable valueFrom values for build config env vars
 u.addNotification({
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
-}), C();
+}), j();
 }, function(n) {
 e.disableInputs = !1, u.addNotification({
 id: "edit-build-config-error",
@@ -20742,7 +20825,11 @@ var n = b.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 }), c.list("secrets", n, null, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 i = E(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
+=======
+i = I(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
+>>>>>>> Enable valueFrom values for build config env vars
 var n = b.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 >>>>>>> Patternfly vertical navigation and project bar
 return _.map(e, "metadata.name");
