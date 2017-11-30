@@ -187,6 +187,7 @@ e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATA
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Wait for service classes and plans to load
 =======
@@ -207,6 +208,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update directives/serviceBinding to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -10604,6 +10608,7 @@ o.unwatchAll(g);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 E(), B(), U(), O(), T();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10642,6 +10647,9 @@ T(), B(), O(), V(), E();
 =======
 T(), B(), O(), V(), E();
 >>>>>>> Update directives/serviceBinding to use getPreferredVersion
+=======
+T(), B(), O(), V(), E();
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -14318,6 +14326,7 @@ switch (e.loaded = !0, e.replicaSet = t, L(t), d) {
 case "ReplicationController":
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 V(t);
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
@@ -14326,11 +14335,15 @@ F(t);
 =======
 F(t);
 >>>>>>> Update directives/serviceBinding to use getPreferredVersion
+=======
+F(t);
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 break;
 
 case "ReplicaSet":
 z();
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14409,6 +14422,9 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update directives/serviceBinding to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -26682,11 +26698,16 @@ e.optionNames = [], e.selectedExists = !1, e.optionNames = _.map(e.serviceOption
 }
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").directive("oscPersistentVolumeClaim", [ "$filter", "APIService", "DataService", "LimitRangesService", "QuotaService", "ModalsService", "gettextCatalog", "gettext", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, r, a, o, i, s, c) {
 var l = t.getPreferredVersion("storageclasses"), u = t.getPreferredVersion("limitranges"), d = t.getPreferredVersion("resourcequotas"), m = t.getPreferredVersion("appliedclusterresourcequotas");
 =======
 }), angular.module("openshiftConsole").directive("oscPersistentVolumeClaim", [ "$filter", "DataService", "LimitRangesService", "QuotaService", "ModalsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, a, r, o) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), angular.module("openshiftConsole").directive("oscPersistentVolumeClaim", [ "$filter", "APIService", "DataService", "LimitRangesService", "QuotaService", "ModalsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, a, r, o, i) {
+var s = t.getPreferredVersion("storageclasses"), c = t.getPreferredVersion("limitranges"), l = t.getPreferredVersion("resourcequotas"), u = t.getPreferredVersion("appliedclusterresourcequotas");
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -26694,6 +26715,7 @@ claim: "=model",
 projectName: "="
 },
 templateUrl: "views/directives/osc-persistent-volume-claim.html",
+<<<<<<< HEAD
 <<<<<<< HEAD
 link: function(t) {
 var p = e("amountAndUnit"), g = e("storageClassAccessMode"), f = e("usageValue");
@@ -26715,6 +26737,11 @@ e !== n && (e ? t.claim.selectedLabels = v : (v = t.claim.selectedLabels, t.clai
 link: function(i) {
 var s = e("amountAndUnit"), c = e("usageValue");
 i.nameValidation = o, i.storageClasses = [], i.defaultStorageClass = "", i.claim.unit = "Gi", i.units = [ {
+=======
+link: function(t) {
+var d = e("amountAndUnit"), m = e("usageValue");
+t.nameValidation = i, t.storageClasses = [], t.defaultStorageClass = "", t.claim.unit = "Gi", t.units = [ {
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 value: "Mi",
 label: "MiB"
 }, {
@@ -26733,6 +26760,7 @@ label: "GB"
 value: "T",
 label: "TB"
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ], i.claim.selectedLabels = [], i.groupUnits = function(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -26742,6 +26770,13 @@ i.$watch("useLabels", function(e, t) {
 e !== t && (e ? i.claim.selectedLabels = l : (l = i.claim.selectedLabels, i.claim.selectedLabels = []));
 }), i.groupUnits = function(e) {
 >>>>>>> Use label-editor for PVC labels
+=======
+} ], t.claim.selectedLabels = [];
+var p = [];
+t.$watch("useLabels", function(e, n) {
+e !== n && (e ? t.claim.selectedLabels = p : (p = t.claim.selectedLabels, t.claim.selectedLabels = []));
+}), t.groupUnits = function(e) {
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 switch (e.value) {
 case "Mi":
 case "Gi":
@@ -26754,6 +26789,7 @@ case "T":
 return i.getString(s("Decimal Units"));
 }
 return "";
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, t.showComputeUnitsHelp = function() {
 o.showComputeUnitsHelp();
@@ -26789,26 +26825,27 @@ t.storageClasses.unshift(o);
 =======
 }, i.showComputeUnitsHelp = function() {
 r.showComputeUnitsHelp();
+=======
+}, t.showComputeUnitsHelp = function() {
+o.showComputeUnitsHelp();
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 };
-var u = function() {
-var e = i.claim.amount && c(i.claim.amount + i.claim.unit), t = _.has(i, "limits.min") && c(i.limits.min), n = _.has(i, "limits.max") && c(i.limits.max), a = !0, r = !0;
-e && t && (a = e >= t), e && n && (r = e <= n), i.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMin", a), i.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMax", r);
-}, d = function() {
-var e = a.isAnyStorageQuotaExceeded(i.quotas, i.clusterQuotas), t = a.willRequestExceedQuota(i.quotas, i.clusterQuotas, "requests.storage", i.claim.amount + i.claim.unit);
-i.persistentVolumeClaimForm.capacity.$setValidity("willExceedStorage", !t), i.persistentVolumeClaimForm.capacity.$setValidity("outOfClaims", !e);
+var f = function() {
+var e = t.claim.amount && m(t.claim.amount + t.claim.unit), n = _.has(t, "limits.min") && m(t.limits.min), a = _.has(t, "limits.max") && m(t.limits.max), r = !0, o = !0;
+e && n && (r = e >= n), e && a && (o = e <= a), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMin", r), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMax", o);
+}, g = function() {
+var e = r.isAnyStorageQuotaExceeded(t.quotas, t.clusterQuotas), n = r.willRequestExceedQuota(t.quotas, t.clusterQuotas, "requests.storage", t.claim.amount + t.claim.unit);
+t.persistentVolumeClaimForm.capacity.$setValidity("willExceedStorage", !n), t.persistentVolumeClaimForm.capacity.$setValidity("outOfClaims", !e);
 };
-t.list({
-group: "storage.k8s.io",
-resource: "storageclasses"
-}, {}, function(t) {
-var n = t.by("metadata.name");
-if (!_.isEmpty(n)) {
-i.storageClasses = _.sortBy(n, "metadata.name");
-var a = e("annotation");
-if (i.defaultStorageClass = _.find(i.storageClasses, function(e) {
-return "true" === a(e, "storageclass.beta.kubernetes.io/is-default-class");
-}), i.defaultStorageClass) i.claim.storageClass = i.defaultStorageClass; else {
-var r = {
+n.list(s, {}, function(n) {
+var a = n.by("metadata.name");
+if (!_.isEmpty(a)) {
+t.storageClasses = _.sortBy(a, "metadata.name");
+var r = e("annotation");
+if (t.defaultStorageClass = _.find(t.storageClasses, function(e) {
+return "true" === r(e, "storageclass.beta.kubernetes.io/is-default-class");
+}), t.defaultStorageClass) t.claim.storageClass = t.defaultStorageClass; else {
+var o = {
 metadata: {
 name: "No Storage Class",
 labels: {},
@@ -26817,12 +26854,17 @@ description: "No storage class will be assigned"
 }
 }
 };
+<<<<<<< HEAD
 i.storageClasses.unshift(r);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+t.storageClasses.unshift(o);
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 }
 }
 }, {
 errorNotification: !1
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), n.list(u, {
 namespace: t.projectName
@@ -26848,21 +26890,25 @@ t.clusterQuotas = e.by("metadata.name");
 =======
 }), t.list("limitranges", {
 namespace: i.projectName
+=======
+}), n.list(c, {
+namespace: t.projectName
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 }, function(e) {
-var t = e.by("metadata.name");
-if (!_.isEmpty(t)) {
-i.limits = n.getEffectiveLimitRange(t, "storage", "PersistentVolumeClaim");
-var a;
-i.limits.min && i.limits.max && c(i.limits.min) === c(i.limits.max) && (a = s(i.limits.max), i.claim.amount = Number(a[0]), i.claim.unit = a[1], i.capacityReadOnly = !0), i.$watchGroup([ "claim.amount", "claim.unit" ], u);
+var n = e.by("metadata.name");
+if (!_.isEmpty(n)) {
+t.limits = a.getEffectiveLimitRange(n, "storage", "PersistentVolumeClaim");
+var r;
+t.limits.min && t.limits.max && m(t.limits.min) === m(t.limits.max) && (r = d(t.limits.max), t.claim.amount = Number(r[0]), t.claim.unit = r[1], t.capacityReadOnly = !0), t.$watchGroup([ "claim.amount", "claim.unit" ], f);
 }
-}), t.list("resourcequotas", {
-namespace: i.projectName
+}), n.list(l, {
+namespace: t.projectName
 }, function(e) {
-i.quotas = e.by("metadata.name"), i.$watchGroup([ "claim.amount", "claim.unit" ], d);
-}), t.list("appliedclusterresourcequotas", {
-namespace: i.projectName
+t.quotas = e.by("metadata.name"), t.$watchGroup([ "claim.amount", "claim.unit" ], g);
+}), n.list(u, {
+namespace: t.projectName
 }, function(e) {
-i.clusterQuotas = e.by("metadata.name");
+t.clusterQuotas = e.by("metadata.name");
 });
 }
 };
@@ -38326,6 +38372,7 @@ skipDigest: !0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, U = _.once(function(e, t) {
 A(), l = o.$on("NotificationsService.onNotificationAdded", t);
 }), O = function() {
@@ -38381,6 +38428,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update directives/serviceBinding to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {
