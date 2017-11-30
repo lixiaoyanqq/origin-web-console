@@ -11210,6 +11210,7 @@ h();
 i.unwatchAll(m);
 });
 }));
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 <<<<<<< 5331aa8bd38b5ec7e1c6383a5c6a470068e10b96
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", "gettext", function(a, b, c, d, e, f, g, h, i, j, k, l, m) {
@@ -11294,6 +11295,9 @@ message: "This build configuration has been deleted."
 }, a.buildConfigDeleted = !0), !a.forms.bcEnvVars || a.forms.bcEnvVars.$pristine ? q(c) : a.alerts.background_update = {
 =======
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d) {
+=======
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
+>>>>>>> Enable valueFrom values for build config env vars
 e.projectName = n.project, e.buildConfigName = n.buildconfig, e.buildConfig = null, e.labelSuggestions = {}, e.alerts = {}, e.breadcrumbs = [], e.forms = {}, e.expand = {
 imageEnv: !1
 }, n.isPipeline ? e.breadcrumbs.push({
@@ -11308,13 +11312,15 @@ title: n.buildconfig
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var m = t("buildConfigForBuild"), p = t("buildStrategy"), f = [], g = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = p(e.updatedBuildConfig).env || [];
+var p = t("buildConfigForBuild"), f = t("buildStrategy"), g = t("orderByDisplayName"), v = t("getErrorDetails"), h = [], y = [], b = [];
+e.valueFromObjects = [];
+var S = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), p(e.updatedBuildConfig).env = d.compactEntries(angular.copy(e.envVars)), i.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
+l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = m.compactEntries(angular.copy(e.envVars)), i.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
 l.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
@@ -11328,14 +11334,14 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.clearEnvVarUpdates = function() {
-g(e.buildConfig), e.forms.bcEnvVars.$setPristine();
+S(e.buildConfig), e.forms.bcEnvVars.$setPristine();
 };
-var v, h = function(n, s) {
+var C, w = function(n, s) {
 e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = r.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 }));
-var c = _.get(p(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
-v !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (v = l, i.get(a.kindToResource(c.kind), c.name, {
+var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+C !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (C = l, i.get(a.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
 }, {
 errorNotification: !1
@@ -11343,15 +11349,19 @@ errorNotification: !1
 e.BCEnvVarsFromImage = o.getEnvironment(t);
 }, function() {
 e.BCEnvVarsFromImage = [];
-})) : e.BCEnvVarsFromImage = []), g(n), "DELETED" === s && (e.alerts.deleted = {
+})) : e.BCEnvVarsFromImage = []), S(n), "DELETED" === s && (e.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 82ecd105133e58ecd5737b3b3c3909bdc4572ffb
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? h(n) : e.alerts.background_update = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? g(n) : e.alerts.background_update = {
 >>>>>>> Bug 1495491 - Show events tab on build config page
+=======
+}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? S(n) : e.alerts.background_update = {
+>>>>>>> Enable valueFrom values for build config env vars
 type: "warning",
 message: "This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links: [ {
@@ -11383,7 +11393,7 @@ function j() {
 h.getLabelSelector().isEmpty() || !$.isEmptyObject(a.builds) || $.isEmptyObject(a.unfilteredBuilds) ? delete a.alerts.builds : a.alerts.builds = {
 =======
 u.get(n.project).then(_.spread(function(a, o) {
-function l() {
+function u() {
 s.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 type: "warning",
@@ -11435,16 +11445,38 @@ e.project = a, e.projectContext = o, i.get(e.buildConfigsVersion, n.buildconfig,
 >>>>>>> Bug 1495491 - Show events tab on build config page
 errorNotification: !1
 }).then(function(t) {
-h(t), f.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, h));
+w(t), h.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, w));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: 404 === n.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
-}), f.push(i.watch(e.buildsVersion, o, function(t, a, o) {
+}), i.list("configmaps", o, null, {
+errorNotification: !1
+}).then(function(t) {
+y = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+}, function(e) {
+403 !== e.code && l.addNotification({
+id: "build-config-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: v(e)
+});
+}), i.list("secrets", o, null, {
+errorNotification: !1
+}).then(function(t) {
+b = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+}, function(e) {
+403 !== e.code && l.addNotification({
+id: "build-config-list-secrets-error",
+type: "error",
+message: "Could not load secrets.",
+details: v(e)
+});
+}), h.push(i.watch(e.buildsVersion, o, function(t, a, o) {
 if (e.emptyMessage = "No builds to show", a) {
-if (m(o) === n.buildconfig) {
+if (p(o) === n.buildconfig) {
 var i = o.metadata.name;
 switch (a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -11466,7 +11498,7 @@ params: {
 labelSelector: b("labelName")("buildConfig") + "=" + _.truncate(a.buildConfigName, {
 =======
 } else e.unfilteredBuilds = r.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
-e.builds = s.getLabelSelector().select(e.unfilteredBuilds), l(), s.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
+e.builds = s.getLabelSelector().select(e.unfilteredBuilds), u(), s.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
 }, {
 http: {
 params: {
@@ -11488,19 +11520,23 @@ a.builds = b.select(a.unfilteredBuilds), a.orderedBuilds = e.sortBuilds(a.builds
 =======
 })), s.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 8ab4f4a09cf53190c7bc08d260e963252c3ba6a5
 e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.first(e.orderedBuilds), l();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), l();
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), u();
+>>>>>>> Enable valueFrom values for build config env vars
 });
 }), e.startBuild = function() {
 r.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
 c.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
-i.unwatchAll(f);
+i.unwatchAll(h);
 });
 }));
 <<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
@@ -15493,25 +15529,27 @@ delete e.updatedBuildConfig.spec.postCommit.script;
 } else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
 };
 e.secrets = {};
-var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = function() {
+var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = t("orderByDisplayName"), w = t("getErrorDetails"), P = [], k = [];
+e.valueFromObjects = [];
+var j = function() {
 var t;
 e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : r.history.back();
 };
-e.cancel = C;
-var w = function() {
+e.cancel = j;
+var R = function() {
 u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
 };
-e.$on("$destroy", w), d.get(a.project).then(_.spread(function(n, r) {
-e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? c.get(h, a.buildconfig, r, {
+e.$on("$destroy", R), d.get(a.project).then(_.spread(function(n, r) {
+e.project = n, e.context = r, s.canI("buildconfigs", "update", a.project) ? (c.get(h, a.buildconfig, r, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = P(e.triggers, e.buildConfig.spec.triggers), e.sources = N(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
+e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, r).then(function(t) {
 var n = p.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
 e.secrets.secretsByType = _.each(a, function(e) {
 e.unshift("");
-}), I();
+}), D(), k = C(t.by("metadata.name")), e.valueFromObjects = P.concat(k);
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -15584,14 +15622,29 @@ type: "error",
 message: "The build configuration details could not be loaded.",
 details: "Reason: " + t("getErrorDetails")(n)
 };
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 }) : c.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 }) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+}), c.list("configmaps", r, null, {
+errorNotification: !1
+}).then(function(t) {
+P = C(t.by("metadata.name")), e.valueFromObjects = P.concat(k);
+}, function(e) {
+403 !== e.code && u.addNotification({
+id: "edit-build-config-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: w(e)
+});
+})) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
+>>>>>>> Enable valueFrom values for build config env vars
 }));
-var P = function(n, a) {
+var I = function(n, a) {
 function r(n, a) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(a, e.projectName);
 }
@@ -15706,7 +15759,7 @@ e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var k = function(e) {
+var E = function(e) {
 return _.map(f.compactEntries(e), function(e) {
 return {
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -15718,7 +15771,7 @@ destinationDir: e.value
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 });
-}, j = function(t) {
+}, T = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -15779,12 +15832,12 @@ name: _.last(a)
 }).namespace = 1 !== _.size(a) ? _.head(a) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, R = function() {
+}, N = function() {
 var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = _.map(t, "data");
-}, I = function() {
+}, D = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -15831,6 +15884,7 @@ name: ""
 mountPath: ""
 } ];
 }
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -15887,13 +15941,16 @@ secret: f._generateSecret()
 =======
 }, E = function(e, t, n) {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+}, A = function(e, t, n) {
+>>>>>>> Enable valueFrom values for build config env vars
 t.name ? e[n] = t : delete e[n];
-}, T = function(t, n) {
+}, $ = function(t, n) {
 var a = "Custom" === e.strategyType ? "secretSource" : "secret", r = _.filter(n, function(e) {
 return e[a].name;
 });
 _.isEmpty(r) ? delete t.secrets : t.secrets = r;
-}, N = function(e, t) {
+}, B = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
@@ -15927,6 +15984,7 @@ switch (a.sources.images && !_.isEmpty(a.sourceImages) && (a.updatedBuildConfig.
 =======
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
@@ -15977,14 +16035,18 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = k(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = j(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = j(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = j(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), E(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), E(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), E(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = E(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Enable valueFrom values for build config env vars
 case "Source":
 case "Docker":
-T(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+$(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-T(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+$(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 2ce32f87748ff2fe030a6b53ff9490fcb80d856d
 <<<<<<< 714c4a3ff94bc485f89078ceeb8105e8b94271be
@@ -16087,11 +16149,14 @@ e.updatedBuildConfig.spec.triggers = P(), b(), s.update("buildconfigs", e.update
 l.addNotification({
 =======
 e.updatedBuildConfig.spec.triggers = R(), w(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+=======
+e.updatedBuildConfig.spec.triggers = N(), R(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+>>>>>>> Enable valueFrom values for build config env vars
 u.addNotification({
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
-}), C();
+}), j();
 }, function(n) {
 e.disableInputs = !1, u.addNotification({
 id: "edit-build-config-error",
@@ -17724,7 +17789,7 @@ details: E(e)
 }), c.list("secrets", n, null, {
 errorNotification: !1
 }).then(function(t) {
-i = I(t.by("metadata.name")), e.valueFromObjects = i.concat(o);
+i = I(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
 var n = b.groupSecretsByType(t), a = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });

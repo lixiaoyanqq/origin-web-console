@@ -468,12 +468,14 @@
                   <confirm-on-exit dirty="forms.bcEnvVars.$dirty"></confirm-on-exit>
                   <key-value-editor
                     entries="envVars"
-                    key-placeholder="{{'Name'|translate}}"
-                    value-placeholder="{{'Value'|translate}}"
+		    key-placeholder="{{'Name'|translate}}"
+      		    value-placeholder="{{'Value'|translate}}"
+                    value-from-selector-options="valueFromObjects"
                     key-validator="[A-Za-z_][A-Za-z0-9_]*"
-                    key-validator-error="{{'Please enter a valid key'|translate}}"
-                    key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
-                    add-row-link="{{'Add Environment Variable'|translate}}"
+		    key-validator-error="{{'Please enter a valid key'|translate}}"
+      		    key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
+	            add-row-link="{{'Add Value'|translate}}"
+	     	    add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"
                     show-header></key-value-editor>
                   <button
                     class="btn btn-default"
