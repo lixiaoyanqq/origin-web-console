@@ -3,6 +3,7 @@
 angular.module("openshiftConsole")
   .directive("oscPersistentVolumeClaim",
              function($filter,
+                      APIService,
                       DataService,
                       LimitRangesService,
                       QuotaService,
@@ -10,6 +11,12 @@ angular.module("openshiftConsole")
 		      gettextCatalog,
 		      gettext,
                       DNS1123_SUBDOMAIN_VALIDATION) {
+
+    var storageClassesVersion = APIService.getPreferredVersion('storageclasses');
+    var limitRangesVersion = APIService.getPreferredVersion('limitranges');
+    var resourceQuotasVersion = APIService.getPreferredVersion('resourcequotas');
+    var appliedClusterResourceQuotasVersion = APIService.getPreferredVersion('appliedclusterresourcequotas');
+
     return {
       restrict: 'E',
       scope: {
@@ -101,7 +108,7 @@ angular.module("openshiftConsole")
           scope.persistentVolumeClaimForm.capacity.$setValidity('outOfClaims', !outOfClaims);
         };
 
-        DataService.list({group: 'storage.k8s.io', resource: 'storageclasses'}, {}, function(storageClassData) {
+        DataService.list(storageClassesVersion, {}, function(storageClassData) {
            var storageClasses = storageClassData.by('metadata.name');
            if (_.isEmpty(storageClasses)) {
              return;
@@ -128,7 +135,7 @@ angular.module("openshiftConsole")
            }
          }, {errorNotification: false});
 
-        DataService.list('limitranges', { namespace: scope.projectName }, function(limitRangeData) {
+        DataService.list(limitRangesVersion, { namespace: scope.projectName }, function(limitRangeData) {
           var limitRanges = limitRangeData.by('metadata.name');
           if (_.isEmpty(limitRanges)) {
             return;
@@ -151,11 +158,11 @@ angular.module("openshiftConsole")
           scope.$watchGroup(['claim.amount', 'claim.unit'], validateLimitRange);
         });
 
-        DataService.list('resourcequotas', { namespace: scope.projectName }, function(quotaData) {
+        DataService.list(resourceQuotasVersion, { namespace: scope.projectName }, function(quotaData) {
           scope.quotas = quotaData.by('metadata.name');
           scope.$watchGroup(['claim.amount', 'claim.unit'], validateQuota);
         });
-        DataService.list('appliedclusterresourcequotas', { namespace: scope.projectName }, function(quotaData) {
+        DataService.list(appliedClusterResourceQuotasVersion, { namespace: scope.projectName }, function(quotaData) {
           scope.clusterQuotas = quotaData.by('metadata.name');
         });
       }
