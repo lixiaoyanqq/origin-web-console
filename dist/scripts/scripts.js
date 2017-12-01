@@ -186,6 +186,7 @@ e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATA
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), V = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Wait for service classes and plans to load
 =======
@@ -203,6 +204,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -10595,6 +10599,7 @@ o.unwatchAll(g);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 E(), B(), U(), O(), T();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -10630,6 +10635,9 @@ T(), B(), O(), F(), E();
 =======
 T(), B(), O(), V(), E();
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+T(), B(), O(), V(), E();
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -14305,16 +14313,21 @@ errorNotification: !1
 switch (e.loaded = !0, e.replicaSet = t, L(t), d) {
 case "ReplicationController":
 <<<<<<< HEAD
+<<<<<<< HEAD
 V(t);
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 F(t);
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+F(t);
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 break;
 
 case "ReplicaSet":
 z();
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14389,6 +14402,9 @@ F(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -34927,7 +34943,7 @@ n.currentStage = t.getCurrentStage(a);
 angular.module("openshiftConsole").component("serviceBinding", {
 controller: [ "APIService", "AuthorizationService", "DataService", "Logger", "SecretsService", "ServiceInstancesService", function(e, t, n, a, r, o) {
 var i = this;
-i.serviceBindingsVersion = e.getPreferredVersion("servicebindings"), i.showParameterValues = !1;
+i.serviceBindingsVersion = e.getPreferredVersion("servicebindings"), i.secretsVersion = e.getPreferredVersion("secrets"), i.showParameterValues = !1;
 var s = {
 namespace: i.namespace
 }, c = function() {
@@ -34940,7 +34956,7 @@ var o = _.get(i.binding, "status.externalProperties.parameters", {});
 _.each(_.keys(o), function(e) {
 "<redacted>" === o[e] ? i.parameterData[e] = "*****" : (i.parameterData[e] = o[e], i.opaqueParameterKeys.push(e));
 }), i.allowParametersReveal && _.each(_.get(i.binding, "spec.parametersFrom"), function(e) {
-n.get("secrets", _.get(e, "secretKeyRef.name"), s).then(function(t) {
+n.get(i.secretsVersion, _.get(e, "secretKeyRef.name"), s).then(function(t) {
 try {
 var n = JSON.parse(r.decodeSecretData(t.data)[e.secretKeyRef.key]);
 _.extend(i.parameterData, n);
@@ -38305,6 +38321,7 @@ skipDigest: !0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, U = _.once(function(e, t) {
 A(), l = o.$on("NotificationsService.onNotificationAdded", t);
 }), O = function() {
@@ -38357,6 +38374,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {

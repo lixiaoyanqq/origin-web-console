@@ -6993,10 +6993,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Adopt more service catalog API changes
     "</delete-link>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<a ng-if=\"($ctrl.secretsVersion | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
 =======
     "<a ng-if=\"('secrets' | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
 >>>>>>> Fix binding ready logic
+=======
+    "<a ng-if=\"($ctrl.secretsVersion | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
     "View Secret\n" +
     "</a>\n" +
     "</div>\n" +
