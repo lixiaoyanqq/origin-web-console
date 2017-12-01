@@ -22627,11 +22627,15 @@ e !== t && o(e);
 });
 }
 };
+<<<<<<< 24a5ee2032408906cd9beac22fa6d367e656f677
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } ]), angular.module("openshiftConsole").directive("oscSecrets", [ "$uibModal", "$filter", "DataService", "SecretsService", function(a, b, c, d) {
 =======
 } ]), angular.module("openshiftConsole").directive("oscSecrets", [ "$uibModal", "$filter", "DataService", "SecretsService", function(e, t, n, a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").directive("oscSecrets", [ "$uibModal", "$filter", "APIService", "DataService", "SecretsService", function(e, t, n, a, r) {
+>>>>>>> Update directives/oscSecrets to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -22668,7 +22672,7 @@ b.newSecret = {};
 var e = a.open({
 =======
 link: function(t) {
-t.canAddSourceSecret = function() {
+t.secretsVersion = n.getPreferredVersion("secrets"), t.canAddSourceSecret = function() {
 if (!t.allowMultipleSecrets) return !1;
 var e = _.last(t.pickedSecrets);
 return !!e && e.name;
@@ -22705,10 +22709,10 @@ a.unshift("");
 =======
 scope: t
 }).result.then(function(e) {
-n.list("secrets", {
+a.list(t.secretsVersion, {
 namespace: t.namespace
 }, function(n) {
-var r = a.groupSecretsByType(n), o = _.mapValues(r, function(e) {
+var a = r.groupSecretsByType(n), o = _.mapValues(a, function(e) {
 return _.map(e, "metadata.name");
 });
 t.secretsByType = _.each(o, function(e) {
