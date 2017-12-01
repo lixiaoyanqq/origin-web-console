@@ -2268,7 +2268,7 @@ label: gettext("WildFly")
 label: "Storage",
 iconClass: "pficon pficon-container-node",
 href: "/browse/storage",
-prefixes: [ "/browse/storage/", "/create-pvc" ]
+prefixes: [ "/browse/storage/", "/browse/persistentvolumeclaims/", "/create-pvc" ]
 }, {
 label: "Monitoring",
 iconClass: "pficon pficon-screen",
@@ -15946,7 +15946,7 @@ n.secret = e, "DELETED" !== t ? n.decodedSecretData = i.decodeSecretData(n.secre
 =======
 } ]), angular.module("openshiftConsole").controller("PersistentVolumeClaimController", [ "$filter", "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", function(e, t, n, a, r, o) {
 t.projectName = n.project, t.pvc = null, t.alerts = {}, t.renderOptions = t.renderOptions || {}, t.renderOptions.hideFilterWidget = !0, t.breadcrumbs = [ {
-title: "Persistent Volume Claims",
+title: "Storage",
 link: "project/" + n.project + "/browse/storage"
 }, {
 title: n.pvc
