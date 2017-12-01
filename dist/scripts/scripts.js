@@ -23543,11 +23543,16 @@ e.hideBuild = n(t);
 templateUrl: "views/directives/_build-close.html"
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("createSecret", [ "$filter", "AuthorizationService", "APIService", "DataService", "NotificationsService", "gettext", "gettextCatalog", "ApplicationGenerator", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, r, a, o, i, s, c) {
 var l = n.getPreferredVersion("serviceaccounts"), u = n.getPreferredVersion("secrets");
 =======
 } ]), angular.module("openshiftConsole").directive("createSecret", [ "$filter", "AuthorizationService", "DataService", "NotificationsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, a, r) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").directive("createSecret", [ "$filter", "AuthorizationService", "APIService", "DataService", "NotificationsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, a, r, o) {
+var i = n.getPreferredVersion("serviceaccounts"), s = n.getPreferredVersion("secrets");
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -23558,6 +23563,7 @@ onCreate: "&",
 onCancel: "&"
 },
 templateUrl: "views/directives/create-secret.html",
+<<<<<<< HEAD
 <<<<<<< HEAD
 link: function(d) {
 d.nameValidation = c, d.secretReferenceValidation = {
@@ -23602,6 +23608,10 @@ pickedServiceAccountToLink: d.serviceAccountToLink || ""
 =======
 link: function(o) {
 o.nameValidation = r, o.secretAuthTypeMap = {
+=======
+link: function(n) {
+n.nameValidation = o, n.secretAuthTypeMap = {
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 image: {
 label: "Image Secret",
 authTypes: [ {
@@ -23622,19 +23632,26 @@ id: "kubernetes.io/ssh-auth",
 label: "SSH Key"
 } ]
 }
-}, o.secretTypes = _.keys(o.secretAuthTypeMap), o.type ? o.newSecret = {
-type: o.type,
-authType: o.secretAuthTypeMap[o.type].authTypes[0].id,
+}, n.secretTypes = _.keys(n.secretAuthTypeMap), n.type ? n.newSecret = {
+type: n.type,
+authType: n.secretAuthTypeMap[n.type].authTypes[0].id,
 data: {},
+<<<<<<< HEAD
 linkSecret: !_.isEmpty(o.serviceAccountToLink),
 pickedServiceAccountToLink: o.serviceAccountToLink || ""
 } : o.newSecret = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+linkSecret: !_.isEmpty(n.serviceAccountToLink),
+pickedServiceAccountToLink: n.serviceAccountToLink || ""
+} : n.newSecret = {
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 type: "source",
 authType: "kubernetes.io/basic-auth",
 data: {},
 linkSecret: !1,
 pickedServiceAccountToLink: ""
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, d.add = {
 gitconfig: !1,
@@ -23645,11 +23662,15 @@ d.serviceAccounts = e.by("metadata.name"), d.serviceAccountsNames = _.keys(d.ser
 var m = function(e, t) {
 =======
 }, o.add = {
+=======
+}, n.add = {
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 gitconfig: !1,
 cacert: !1
-}, t.canI("serviceaccounts", "list") && t.canI("serviceaccounts", "update") && n.list("serviceaccounts", o, function(e) {
-o.serviceAccounts = e.by("metadata.name"), o.serviceAccountsNames = _.keys(o.serviceAccounts);
+}, t.canI("serviceaccounts", "list") && t.canI("serviceaccounts", "update") && a.list(i, n, function(e) {
+n.serviceAccounts = e.by("metadata.name"), n.serviceAccountsNames = _.keys(n.serviceAccounts);
 });
+<<<<<<< HEAD
 var i = function(e, t) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 var n = {
@@ -23699,51 +23720,64 @@ case "source":
 o.secrets.push({
 =======
 name: o.newSecret.data.secretName
+=======
+var c = function(e, t) {
+var a = {
+apiVersion: "v1",
+kind: "Secret",
+metadata: {
+name: n.newSecret.data.secretName
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 },
 type: t,
 data: {}
 };
 switch (t) {
 case "kubernetes.io/basic-auth":
-e.passwordToken ? n.data = {
+e.passwordToken ? a.data = {
 password: window.btoa(e.passwordToken)
-} : n.type = "Opaque", e.username && (n.data.username = window.btoa(e.username)), e.gitconfig && (n.data[".gitconfig"] = window.btoa(e.gitconfig)), e.cacert && (n.data["ca.crt"] = window.btoa(e.cacert));
+} : a.type = "Opaque", e.username && (a.data.username = window.btoa(e.username)), e.gitconfig && (a.data[".gitconfig"] = window.btoa(e.gitconfig)), e.cacert && (a.data["ca.crt"] = window.btoa(e.cacert));
 break;
 
 case "kubernetes.io/ssh-auth":
-n.data = {
+a.data = {
 "ssh-privatekey": window.btoa(e.privateKey)
-}, e.gitconfig && (n.data[".gitconfig"] = window.btoa(e.gitconfig));
+}, e.gitconfig && (a.data[".gitconfig"] = window.btoa(e.gitconfig));
 break;
 
 case "kubernetes.io/dockerconfigjson":
-var a = window.btoa(e.dockerConfig);
-JSON.parse(e.dockerConfig).auths ? n.data[".dockerconfigjson"] = a : (n.type = "kubernetes.io/dockercfg", n.data[".dockercfg"] = a);
+var r = window.btoa(e.dockerConfig);
+JSON.parse(e.dockerConfig).auths ? a.data[".dockerconfigjson"] = r : (a.type = "kubernetes.io/dockercfg", a.data[".dockercfg"] = r);
 break;
 
 case "kubernetes.io/dockercfg":
-var r = window.btoa(e.dockerUsername + ":" + e.dockerPassword), i = {};
+var o = window.btoa(e.dockerUsername + ":" + e.dockerPassword), i = {};
 i[e.dockerServer] = {
 username: e.dockerUsername,
 password: e.dockerPassword,
 email: e.dockerMail,
-auth: r
-}, n.data[".dockercfg"] = window.btoa(JSON.stringify(i));
+auth: o
+}, a.data[".dockercfg"] = window.btoa(JSON.stringify(i));
 }
-return n;
-}, s = function() {
-a.hideNotification("create-secret-error");
-}, c = function(t) {
-var r = angular.copy(o.serviceAccounts[o.newSecret.pickedServiceAccountToLink]);
-switch (o.newSecret.type) {
+return a;
+}, l = function() {
+r.hideNotification("create-secret-error");
+}, u = function(t) {
+var o = angular.copy(n.serviceAccounts[n.newSecret.pickedServiceAccountToLink]);
+switch (n.newSecret.type) {
 case "source":
+<<<<<<< HEAD
 r.secrets.push({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+o.secrets.push({
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 name: t.metadata.name
 });
 break;
 
 case "image":
+<<<<<<< HEAD
 <<<<<<< HEAD
 o.imagePullSecrets.push({
 name: t.metadata.name
@@ -23756,21 +23790,29 @@ message: "Secret " + t.metadata.name + " was created and linked with service acc
 }), d.onCreate({
 =======
 r.imagePullSecrets.push({
+=======
+o.imagePullSecrets.push({
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 name: t.metadata.name
 });
 }
-n.update("serviceaccounts", o.newSecret.pickedServiceAccountToLink, r, o).then(function(e) {
-a.addNotification({
+a.update(i, n.newSecret.pickedServiceAccountToLink, o, n).then(function(e) {
+r.addNotification({
 type: "success",
 message: "Secret " + t.metadata.name + " was created and linked with service account " + e.metadata.name + "."
+<<<<<<< HEAD
 }), o.onCreate({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}), n.onCreate({
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 newSecret: t
 });
-}, function(n) {
-a.addNotification({
+}, function(a) {
+r.addNotification({
 type: "success",
 message: "Secret " + t.metadata.name + " was created."
+<<<<<<< HEAD
 <<<<<<< HEAD
 }), d.serviceAccountToLink || a.addNotification({
 id: "secret-sa-link-error",
@@ -23788,24 +23830,32 @@ JSON.parse(d.newSecret.data.dockerConfig), d.invalidConfigFormat = !1;
 d.invalidConfigFormat = !0;
 =======
 }), o.serviceAccountToLink || a.addNotification({
+=======
+}), n.serviceAccountToLink || r.addNotification({
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 id: "secret-sa-link-error",
 type: "error",
-message: "An error occurred while linking the secret with service account " + o.newSecret.pickedServiceAccountToLink + ".",
-details: e("getErrorDetails")(n)
-}), o.onCreate({
+message: "An error occurred while linking the secret with service account " + n.newSecret.pickedServiceAccountToLink + ".",
+details: e("getErrorDetails")(a)
+}), n.onCreate({
 newSecret: t
 });
 });
-}, l = _.debounce(function() {
+}, d = _.debounce(function() {
 try {
-JSON.parse(o.newSecret.data.dockerConfig), o.invalidConfigFormat = !1;
+JSON.parse(n.newSecret.data.dockerConfig), n.invalidConfigFormat = !1;
 } catch (e) {
+<<<<<<< HEAD
 o.invalidConfigFormat = !0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+n.invalidConfigFormat = !0;
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 }
 }, 300, {
 leading: !0
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 d.aceChanged = f, d.nameChanged = function() {
 d.nameTaken = !1;
@@ -23831,14 +23881,27 @@ type: "success",
 message: "Secret " + r.metadata.name + " was created."
 }), o.onCreate({
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+n.aceChanged = d, n.nameChanged = function() {
+n.nameTaken = !1;
+}, n.create = function() {
+l();
+var o = c(n.newSecret.data, n.newSecret.authType);
+a.create(s, null, o, n).then(function(e) {
+n.newSecret.linkSecret && n.serviceAccountsNames.contains(n.newSecret.pickedServiceAccountToLink) && t.canI("serviceaccounts", "update") ? u(e) : (r.addNotification({
+type: "success",
+message: "Secret " + o.metadata.name + " was created."
+}), n.onCreate({
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 newSecret: e
 }));
 }, function(t) {
-"AlreadyExists" !== (t.data || {}).reason ? a.addNotification({
+"AlreadyExists" !== (t.data || {}).reason ? r.addNotification({
 id: "create-secret-error",
 type: "error",
 message: "An error occurred while creating the secret.",
 details: e("getErrorDetails")(t)
+<<<<<<< HEAD
 <<<<<<< HEAD
 }) : d.nameTaken = !0;
 });
@@ -24007,6 +24070,12 @@ details: n("getErrorDetails")(e)
 }, l.error(r + " could not be deleted.", e);
 });
 });
+=======
+}) : n.nameTaken = !0;
+});
+}, n.cancel = function() {
+l(), n.onCancel();
+>>>>>>> Update directives/createSecret to use getPreferredVersion
 };
 }
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
