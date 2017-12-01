@@ -21161,11 +21161,16 @@ e();
 });
 } ]
 };
+<<<<<<< 298808b20c66df2b25a69a00c3517d94084f9ead
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "DataService", "Logger", function(a, b, c) {
 =======
 } ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "DataService", "Logger", function(e, t, n) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, a) {
+var r = t.getPreferredVersion("events");
+>>>>>>> Update direcives/eventsBadge to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -21173,6 +21178,7 @@ projectContext: "=",
 sidebarCollapsed: "="
 },
 templateUrl: "views/directives/events-badge.html",
+<<<<<<< 298808b20c66df2b25a69a00c3517d94084f9ead
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 controller: [ "$scope", function(d) {
 var e = [], f = a("orderObjectsByDate");
@@ -21200,14 +21206,21 @@ var r = [], o = e("orderObjectsByDate");
 r.push(t.watch("events", a.projectContext, function(e) {
 var t = e.by("metadata.name");
 a.events = o(t, !0), a.warningCount = _.size(_.filter(t, {
+=======
+controller: [ "$scope", function(t) {
+var o = [], i = e("orderObjectsByDate");
+o.push(n.watch(r, t.projectContext, function(e) {
+var n = e.by("metadata.name");
+t.events = i(n, !0), t.warningCount = _.size(_.filter(n, {
+>>>>>>> Update direcives/eventsBadge to use getPreferredVersion
 type: "Warning"
-})), a.normalCount = _.size(_.filter(t, {
+})), t.normalCount = _.size(_.filter(n, {
 type: "Normal"
-})), n.log("events (subscribe)", a.events);
-})), a.expandSidebar = function() {
-a.sidebarCollapsed = !1;
-}, a.$on("$destroy", function() {
-t.unwatchAll(r);
+})), a.log("events (subscribe)", t.events);
+})), t.expandSidebar = function() {
+t.sidebarCollapsed = !1;
+}, t.$on("$destroy", function() {
+n.unwatchAll(o);
 });
 } ]
 };
