@@ -21158,7 +21158,8 @@ a.unwatchAll(s);
 });
 } ]
 };
-} ]), angular.module("openshiftConsole").directive("eventsSidebar", [ "DataService", "Logger", "$rootScope", function(e, t, n) {
+} ]), angular.module("openshiftConsole").directive("eventsSidebar", [ "$rootScope", "APIService", "DataService", "Logger", function(e, t, n, a) {
+var r = t.getPreferredVersion("events");
 return {
 restrict: "E",
 scope: {
@@ -21166,6 +21167,7 @@ projectContext: "=",
 collapsed: "="
 },
 templateUrl: "views/directives/events-sidebar.html",
+<<<<<<< d68e7ad5932979ce26fc42422767fc0acd95bd44
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 controller: [ "$scope", function(d) {
 var e = [];
@@ -21180,29 +21182,40 @@ d.collapsed = !0;
 controller: [ "$scope", function(a) {
 var r = [];
 r.push(e.watch("events", a.projectContext, function(e) {
+=======
+controller: [ "$scope", function(t) {
+var o = [];
+o.push(n.watch(r, t.projectContext, function(e) {
+>>>>>>> Update directives/eventsSidebar to use getPreferredVersion
 var n = e.by("metadata.name");
-a.events = _.orderBy(n, [ "lastTimestamp" ], [ "desc" ]), a.warningCount = _.size(_.filter(n, {
+t.events = _.orderBy(n, [ "lastTimestamp" ], [ "desc" ]), t.warningCount = _.size(_.filter(n, {
 type: "Warning"
+<<<<<<< d68e7ad5932979ce26fc42422767fc0acd95bd44
 })), t.log("events (subscribe)", a.events);
 })), a.highlightedEvents = {}, a.collapseSidebar = function() {
 a.collapsed = !0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+})), a.log("events (subscribe)", t.events);
+})), t.highlightedEvents = {}, t.collapseSidebar = function() {
+t.collapsed = !0;
+>>>>>>> Update directives/eventsSidebar to use getPreferredVersion
 };
-var o = [];
-o.push(n.$on("event.resource.highlight", function(e, t) {
-var n = _.get(t, "kind"), r = _.get(t, "metadata.name");
-n && r && _.each(a.events, function(e) {
-e.involvedObject.kind === n && e.involvedObject.name === r && (a.highlightedEvents[n + "/" + r] = !0);
+var i = [];
+i.push(e.$on("event.resource.highlight", function(e, n) {
+var a = _.get(n, "kind"), r = _.get(n, "metadata.name");
+a && r && _.each(t.events, function(e) {
+e.involvedObject.kind === a && e.involvedObject.name === r && (t.highlightedEvents[a + "/" + r] = !0);
 });
-})), o.push(n.$on("event.resource.clear-highlight", function(e, t) {
-var n = _.get(t, "kind"), r = _.get(t, "metadata.name");
-n && r && _.each(a.events, function(e) {
-e.involvedObject.kind === n && e.involvedObject.name === r && (a.highlightedEvents[n + "/" + r] = !1);
+})), i.push(e.$on("event.resource.clear-highlight", function(e, n) {
+var a = _.get(n, "kind"), r = _.get(n, "metadata.name");
+a && r && _.each(t.events, function(e) {
+e.involvedObject.kind === a && e.involvedObject.name === r && (t.highlightedEvents[a + "/" + r] = !1);
 });
-})), a.$on("$destroy", function() {
-e.unwatchAll(r), _.each(o, function(e) {
+})), t.$on("$destroy", function() {
+n.unwatchAll(o), _.each(i, function(e) {
 e();
-}), o = null;
+}), i = null;
 });
 } ]
 };
