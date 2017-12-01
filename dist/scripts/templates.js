@@ -13511,7 +13511,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!(roleBindingsVersion | canI : 'list')\">\n" +
+<<<<<<< HEAD
     "<p translate>You do not have permission to view roles in this project.</p>\n" +
+=======
+    "<p>You do not have permission to view roles in this project.</p>\n" +
+>>>>>>> Update membership to use new rbac endpoints
     "</div>\n" +
     "<uib-tabset ng-if=\"roleBindingsVersion | canI : 'list'\">\n" +
     "<uib-tab ng-repeat=\"subjectKind in subjectKindsForUI | orderBy: 'sortOrder'\" active=\"selectedTab[subjectKind.name]\" select=\"selectTab(subjectKind.name)\">\n" +
