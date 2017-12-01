@@ -5,11 +5,16 @@ angular.module("openshiftConsole")
   .directive("createSecret",
              function($filter,
                       AuthorizationService,
+                      APIService,
                       DataService,
                       NotificationsService,
                       DNS1123_SUBDOMAIN_VALIDATION,
                       gettext,
                       gettextCatalog) {
+
+    var serviceAccountsVersion = APIService.getPreferredVersion('serviceaccounts');
+    var secretsVersion = APIService.getPreferredVersion('secrets');
+
     return {
       restrict: 'E',
       scope: {
@@ -87,7 +92,7 @@ angular.module("openshiftConsole")
 
         // List SA only if $scope.serviceAccountToLink is not defined so user has to pick one.
         if (AuthorizationService.canI('serviceaccounts', 'list') && AuthorizationService.canI('serviceaccounts', 'update')) {
-          DataService.list("serviceaccounts", $scope, function(result) {
+          DataService.list(serviceAccountsVersion, $scope, function(result) {
             $scope.serviceAccounts = result.by('metadata.name');
             $scope.serviceAccountsNames = _.keys($scope.serviceAccounts);
           });
@@ -167,7 +172,7 @@ angular.module("openshiftConsole")
             break;
           }
 
-          DataService.update('serviceaccounts', $scope.newSecret.pickedServiceAccountToLink, updatedSA, $scope).then(function(sa) {
+          DataService.update(serviceAccountsVersion, $scope.newSecret.pickedServiceAccountToLink, updatedSA, $scope).then(function(sa) {
             // Show a single success message saying the secret was both created and linked.
             NotificationsService.addNotification({
               type: "success",
@@ -214,7 +219,7 @@ angular.module("openshiftConsole")
         $scope.create = function() {
           hideErrorNotifications();
           var newSecret = constructSecretObject($scope.newSecret.data, $scope.newSecret.authType);
-          DataService.create('secrets', null, newSecret, $scope).then(function(secret) { // Success
+          DataService.create(secretsVersion, null, newSecret, $scope).then(function(secret) { // Success
             // In order to link:
             // - the SA has to be defined
             // - defined SA has to be present in the obtained SA list
