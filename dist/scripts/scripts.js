@@ -171,6 +171,7 @@ function OverviewController(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g, v, h
 >>>>>>> Add search catalog in project context
 var E = this, T = t("isIE")();
 e.projectName = a.project, E.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
 <<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 5bd87652785e7e3c71d4b7b194cb0eb0fca57124
@@ -193,6 +194,9 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -13505,12 +13509,16 @@ N(), e.breadcrumbs = r.getBreadcrumbs({
 =======
 z();
 }
+<<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
 F(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
@@ -13638,12 +13646,16 @@ l.buildDockerRefMapForImageStreams(t, k), H(), m.log("imagestreams (subscribe)",
 })), $.push(i.watch(j, u, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
 })), $.push(i.watch(R, u, function(e) {
+<<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
 p = e.by("metadata.name"), y(), F();
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+p = e.by("metadata.name"), y(), V();
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 }, {
 poll: U,
 pollInterval: 6e4
@@ -13664,12 +13676,16 @@ e.limitRanges = t.by("metadata.name"), N();
 >>>>>>> Update template service broker flag name
 =======
 })), i.list(E, u).then(function(t) {
+<<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
 e.limitRanges = t.by("metadata.name"), F();
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 e.limitRanges = t.by("metadata.name"), V();
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+e.limitRanges = t.by("metadata.name"), V();
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 });
 $.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
@@ -29632,7 +29648,7 @@ controller: [ "APIService", "AuthorizationService", "DataService", "Logger", "Se
 angular.module("openshiftConsole").component("serviceBinding", {
 controller: [ "APIService", "AuthorizationService", "DataService", "Logger", "SecretsService", "ServiceInstancesService", function(e, t, n, a, r, o) {
 var i = this;
-i.serviceBindingsVersion = e.getPreferredVersion("servicebindings"), i.showParameterValues = !1;
+i.serviceBindingsVersion = e.getPreferredVersion("servicebindings"), i.secretsVersion = e.getPreferredVersion("secrets"), i.showParameterValues = !1;
 var s = {
 namespace: i.namespace
 }, c = function() {
@@ -29645,7 +29661,7 @@ var o = _.get(i.binding, "status.externalProperties.parameters", {});
 _.each(_.keys(o), function(e) {
 "<redacted>" === o[e] ? i.parameterData[e] = "*****" : (i.parameterData[e] = o[e], i.opaqueParameterKeys.push(e));
 }), i.allowParametersReveal && _.each(_.get(i.binding, "spec.parametersFrom"), function(e) {
-n.get("secrets", _.get(e, "secretKeyRef.name"), s).then(function(t) {
+n.get(i.secretsVersion, _.get(e, "secretKeyRef.name"), s).then(function(t) {
 try {
 var n = JSON.parse(r.decodeSecretData(t.data)[e.secretKeyRef.key]);
 _.extend(i.parameterData, n);
@@ -32360,6 +32376,7 @@ namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
 }));
+<<<<<<< 95202452f2b81c9bc8bc144dd2acf1c4e4d42bb8
 <<<<<<< 108d45a2ac9babe3c2b0751225807b0260dca3b6
 <<<<<<< af20237e01df8756b3fcd23b6115674686c4e420
 <<<<<<< 5bd87652785e7e3c71d4b7b194cb0eb0fca57124
@@ -32418,6 +32435,9 @@ angular.extend(p, {
 =======
 }, F = _.once(function(e, t) {
 >>>>>>> Update directives/deployImage to use getPreferredVersion
+=======
+}, F = _.once(function(e, t) {
+>>>>>>> Update directives/serviceBinding to use getPreferredVersion
 L(), u = a.$on("NotificationsService.onNotificationAdded", t);
 }), x = function() {
 C(r.project).then(function() {

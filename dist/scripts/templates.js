@@ -7054,7 +7054,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<delete-link ng-if=\"$ctrl.serviceBindingsVersion | canI : 'delete'\" kind=\"ServiceBinding\" group=\"servicecatalog.k8s.io\" type-display-name=\"binding\" resource-name=\"{{$ctrl.binding.metadata.name}}\" project-name=\"{{$ctrl.binding.metadata.namespace}}\" stay-on-current-page=\"true\">\n" +
 >>>>>>> Adopt more service catalog API changes
     "</delete-link>\n" +
-    "<a ng-if=\"('secrets' | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
+    "<a ng-if=\"($ctrl.secretsVersion | canI : 'get') && ($ctrl.binding | isBindingReady)\" ng-href=\"{{$ctrl.binding.spec.secretName | navigateResourceURL : 'Secret' : $ctrl.namespace}}\">\n" +
     "View Secret\n" +
     "</a>\n" +
     "</div>\n" +
