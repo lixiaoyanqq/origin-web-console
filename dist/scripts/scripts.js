@@ -252,7 +252,7 @@ var N = this, D = t("isIE")();
 e.projectName = a.project;
 var A = a.isHomePage;
 N.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
-var B = t("annotation"), L = t("canI"), U = t("buildConfigForBuild"), V = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("deployments"), H = i.getPreferredVersion("horizontalpodautoscalers"), G = i.getPreferredVersion("servicebindings"), K = i.getPreferredVersion("clusterserviceclasses"), W = i.getPreferredVersion("serviceinstances"), Q = i.getPreferredVersion("clusterserviceplans"), J = i.getPreferredVersion("statefulsets"), Y = i.getPreferredVersion("replicasets");
+var B = t("annotation"), L = t("canI"), V = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("deployments"), H = i.getPreferredVersion("horizontalpodautoscalers"), G = i.getPreferredVersion("servicebindings"), K = i.getPreferredVersion("clusterserviceclasses"), W = i.getPreferredVersion("serviceinstances"), Q = i.getPreferredVersion("clusterserviceplans"), J = i.getPreferredVersion("statefulsets"), Y = i.getPreferredVersion("replicasets");
 N.buildConfigsInstantiateVersion = i.getPreferredVersion("buildconfigs/instantiate");
 var Z, X, ee = {}, te = {}, ne = {}, re = N.state = {
 >>>>>>> Set Home Page Preference
@@ -1245,11 +1245,11 @@ _.assign(t, n);
 _.each(N.deployments, $e);
 }, Le = function() {
 Re(N.replicationControllers), Re(N.replicaSets), Re(N.statefulSets), Re(N.monopods);
-}, Ue = _.debounce(function() {
+}, Ve = _.debounce(function() {
 e.$evalAsync(function() {
 Le(), De(), Be();
 });
-}, 500), Ve = function(e) {
+}, 500), Ue = function(e) {
 _.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, ee), "pipeline" !== N.viewBy && b.setLabelSuggestions(ee));
 }, Oe = function(e) {
 _.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, te), "pipeline" === N.viewBy && b.setLabelSuggestions(te));
@@ -1258,7 +1258,7 @@ return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!M(e, "
 }, xe = function() {
 re.podsByOwnerUID = j.groupByOwnerUID(N.pods), N.monopods = _.filter(re.podsByOwnerUID[""], Fe);
 }, Me = function(e) {
-return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || V(e));
+return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || U(e));
 }, qe = function(e) {
 return B(e, "deploymentConfig");
 }, ze = function() {
@@ -1314,7 +1314,7 @@ re.routesByService = _.mapValues(e, T.sortRoutesByScore), me();
 }, Ye = function() {
 re.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
 }, Ze = function(e) {
-var t = U(e), n = N.buildConfigs[t];
+var t = V(e), n = N.buildConfigs[t];
 if (n) {
 N.recentPipelinesByBuildConfig[t] = N.recentPipelinesByBuildConfig[t] || [], N.recentPipelinesByBuildConfig[t].push(e);
 var r = l.usesDeploymentConfigs(n);
@@ -1369,7 +1369,7 @@ if (re.builds && N.buildConfigs) {
 N.recentPipelinesByBuildConfig = {}, re.recentBuildsByBuildConfig = {}, re.recentPipelinesByDeploymentConfig = {};
 var e = {};
 _.each(l.interestingBuilds(re.builds), function(t) {
-var n = U(t);
+var n = V(t);
 F(t) ? Ze(t) : (e[n] = e[n] || [], e[n].push(t));
 }), N.recentPipelinesByBuildConfig = _.mapValues(N.recentPipelinesByBuildConfig, function(e) {
 return l.sortBuilds(e, !0);
@@ -1432,19 +1432,19 @@ var a = function() {
 N.pods && h.fetchReferencedImageStreamImages(N.pods, re.imagesByDockerReference, re.imageStreamImageRefByDockerReference, r);
 };
 mt.push(m.watch("pods", r, function(e) {
-N.pods = e.by("metadata.name"), xe(), a(), Ue(), We(N.monopods), Re(N.monopods), Ve(N.monopods), Ce(), S.log("pods (subscribe)", N.pods);
+N.pods = e.by("metadata.name"), xe(), a(), Ve(), We(N.monopods), Re(N.monopods), Ue(N.monopods), Ce(), S.log("pods (subscribe)", N.pods);
 })), mt.push(m.watch("replicationcontrollers", r, function(e) {
-N.replicationControllers = e.by("metadata.name"), ze(), We(N.vanillaReplicationControllers), We(N.monopods), Re(N.vanillaReplicationControllers), Ve(N.vanillaReplicationControllers), ut(), Ce(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
+N.replicationControllers = e.by("metadata.name"), ze(), We(N.vanillaReplicationControllers), We(N.monopods), Re(N.vanillaReplicationControllers), Ue(N.vanillaReplicationControllers), ut(), Ce(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
 })), mt.push(m.watch("deploymentconfigs", r, function(e) {
-N.deploymentConfigs = e.by("metadata.name"), ze(), We(N.deploymentConfigs), We(N.vanillaReplicationControllers), Ve(N.deploymentConfigs), Be(), it(), st(), ut(), Ce(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
+N.deploymentConfigs = e.by("metadata.name"), ze(), We(N.deploymentConfigs), We(N.vanillaReplicationControllers), Ue(N.deploymentConfigs), Be(), it(), st(), ut(), Ce(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
 })), mt.push(m.watch(Y, r, function(e) {
-N.replicaSets = e.by("metadata.name"), Ge(), We(N.vanillaReplicaSets), We(N.monopods), Re(N.vanillaReplicaSets), Ve(N.vanillaReplicaSets), ut(), Ce(), S.log("replicasets (subscribe)", N.replicaSets);
+N.replicaSets = e.by("metadata.name"), Ge(), We(N.vanillaReplicaSets), We(N.monopods), Re(N.vanillaReplicaSets), Ue(N.vanillaReplicaSets), ut(), Ce(), S.log("replicasets (subscribe)", N.replicaSets);
 })), mt.push(m.watch(z, r, function(e) {
-Z = e.by("metadata.uid"), N.deployments = _.sortBy(Z, "metadata.name"), Ge(), We(N.deployments), We(N.vanillaReplicaSets), Ve(N.deployments), ut(), Ce(), S.log("deployments (subscribe)", N.deploymentsByUID);
+Z = e.by("metadata.uid"), N.deployments = _.sortBy(Z, "metadata.name"), Ge(), We(N.deployments), We(N.vanillaReplicaSets), Ue(N.deployments), ut(), Ce(), S.log("deployments (subscribe)", N.deploymentsByUID);
 })), mt.push(m.watch("builds", r, function(e) {
 re.builds = e.by("metadata.name"), ct(), S.log("builds (subscribe)", re.builds);
 })), mt.push(m.watch(J, r, function(e) {
-N.statefulSets = e.by("metadata.name"), We(N.statefulSets), We(N.monopods), Re(N.statefulSets), Ve(N.statefulSets), ut(), Ce(), S.log("statefulsets (subscribe)", N.statefulSets);
+N.statefulSets = e.by("metadata.name"), We(N.statefulSets), We(N.monopods), Re(N.statefulSets), Ue(N.statefulSets), ut(), Ce(), S.log("statefulsets (subscribe)", N.statefulSets);
 }, {
 poll: D,
 pollInterval: 6e4
@@ -1511,7 +1511,7 @@ var n = R.getServiceInstanceAlerts(e);
 je(e, n), t.push(o(e)), t.push(i(e));
 }), I.waitForAll(t).finally(function() {
 dt(), Ce();
-}), Ve(re.serviceInstances);
+}), Ue(re.serviceInstances);
 }, {
 poll: D,
 pollInterval: 6e4
@@ -11038,9 +11038,9 @@ if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
 }), n.filteredBuilds = s.filterForKeywords(h, w, P);
-}, L = r("deploymentStatus"), U = r("deploymentIsInProgress"), V = function() {
+}, L = r("deploymentStatus"), V = r("deploymentIsInProgress"), U = function() {
 y = _.filter(n.replicationControllers, function(e) {
-return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
+return !n.filters.hideOlderResources || (V(e) || "Active" === L(e));
 }), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
 }, O = function() {
 b = _.filter(n.replicaSets, function(e) {
@@ -11206,7 +11206,7 @@ n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, T(), c.log("s
 poll: f,
 pollInterval: 6e4
 })), g.push(o.watch("replicationcontrollers", r, function(e) {
-n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), V(), c.log("replicationcontrollers", n.replicationControllers);
+n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), U(), c.log("replicationcontrollers", n.replicationControllers);
 })), g.push(o.watch("builds", r, function(e) {
 n.builds = C(e.by("metadata.name"), !0), n.latestBuildByConfig = a.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, R), B(), c.log("builds", n.builds);
 })), g.push(o.watch({
@@ -11220,7 +11220,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-E(), B(), V(), O(), T();
+E(), B(), U(), O(), T();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -13856,6 +13856,7 @@ p.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 >>>>>>> Bug 1505281 - Improve import YAML results message
 });
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
@@ -14028,6 +14029,11 @@ e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
 =======
 }, U = t("isIE")();
 >>>>>>> Set Home Page Preference
+=======
+var B = t("deploymentStatus"), L = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
+}, V = t("isIE")();
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 y.get(n.project).then(_.spread(function(r, u) {
 e.project = r, e.projectContext = u;
 var p = {}, y = function() {
@@ -14039,7 +14045,7 @@ var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 } else e.autoscalers = e.hpaForRS;
-}, V = function() {
+}, U = function() {
 $.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
@@ -14557,6 +14563,7 @@ message: "This " + w + " has been deleted."
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 }), e.replicaSet = t, L(t), O(), H(), e.deployment && x();
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 5c09bc4d158769cdc6f544531790994a3e776f20
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
@@ -14571,6 +14578,9 @@ message: "This " + w + " has been deleted."
 =======
 })), e.deploymentConfigName && V(), $.push(i.watch(E, u, function(t) {
 >>>>>>> Set Home Page Preference
+=======
+})), e.deploymentConfigName && U(), $.push(i.watch(E, u, function(t) {
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -14651,7 +14661,7 @@ p = e.by("metadata.name"), y(), V();
 p = e.by("metadata.name"), y(), O();
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 }, {
-poll: U,
+poll: V,
 pollInterval: 6e4
 <<<<<<< 5c09bc4d158769cdc6f544531790994a3e776f20
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
@@ -18972,7 +18982,7 @@ g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification(
 });
 };
 e.$on("$destroy", N);
-var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), U = i.getPreferredVersion("resourcequotas"), V = i.getPreferredVersion("appliedclusterresourcequotas");
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), V = i.getPreferredVersion("resourcequotas"), U = i.getPreferredVersion("appliedclusterresourcequotas");
 v.get(a.project).then(_.spread(function(t, n) {
 e.project = t, a.sourceURI && (e.sourceURIinParams = !0);
 var i = function() {
@@ -18984,9 +18994,9 @@ e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("con
 var v, y, C = function() {
 e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
-c.list(U, n).then(function(e) {
+c.list(V, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
-}), c.list(V, n).then(function(e) {
+}), c.list(U, n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
@@ -27165,15 +27175,15 @@ containerName: e.containerMetric ? m.options.selectedContainer.name : "pod"
 }) : null;
 }
 function S() {
-A || (U = 0, _.each(m.metrics, function(e) {
+A || (V = 0, _.each(m.metrics, function(e) {
 g(e), f(e);
 }));
 }
 function C(e) {
-if (!A) if (U++, m.noData) m.metricsError = {
+if (!A) if (V++, m.noData) m.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
-}; else if (!(U < 2)) {
+}; else if (!(V < 2)) {
 var t = "metrics-failed-" + m.uniqueID;
 m.alerts[t] = {
 type: "error",
@@ -27191,6 +27201,7 @@ links: [ {
 href: "",
 label: "Retry",
 onClick: function() {
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 13ac2d832bc56edf6bc5e2fc652da9b188ddae32
@@ -27240,6 +27251,9 @@ delete m.alerts[t], V = 1, k();
 =======
 delete m.alerts[t], U = 1, k();
 >>>>>>> Set Home Page Preference
+=======
+delete m.alerts[t], V = 1, k();
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 }
 } ]
 };
@@ -27303,7 +27317,7 @@ id: a.metricID
 A(b, a);
 =======
 function w() {
-return !(m.metricsError || U > 1) && (m.pod && _.get(m, "options.selectedContainer"));
+return !(m.metricsError || V > 1) && (m.pod && _.get(m, "options.selectedContainer"));
 }
 function P(e, t, n) {
 t.total = p(t.id), t.total && (m.hasLimits = !0);
@@ -27536,7 +27550,7 @@ a.destroy();
 }, L = function(e) {
 var t = e.chartPrefix + m.uniqueID + "-sparkline", n = c.getDefaultSparklineConfig(t, e.units);
 return 1 === e.datasets.length && _.set(n, "legend.show", !1), n;
-}, U = 0;
+}, V = 0;
 (window.OPENSHIFT_CONSTANTS.DISABLE_CUSTOM_METRICS ? a.when({}) : l.getCustomMetrics(m.pod).then(function(e) {
 angular.forEach(e, function(e) {
 var t = e.description || e.name, n = e.unit || "", r = "custom/" + e.id.replace(/.*\/custom\//, "");
@@ -27562,11 +27576,11 @@ delete e.data;
 }), delete m.metricsError, k();
 }, !0), I = t(k, c.getDefaultUpdateInterval(), !1);
 });
-var V = o.$on("metrics.charts.resize", function() {
+var U = o.$on("metrics.charts.resize", function() {
 c.redraw(R), c.redraw(T);
 });
 m.$on("$destroy", function() {
-I && (t.cancel(I), I = null), V && (V(), V = null), angular.forEach(R, function(e) {
+I && (t.cancel(I), I = null), U && (U(), U = null), angular.forEach(R, function(e) {
 e.destroy();
 }), R = null, angular.forEach(T, function(e) {
 e.destroy();
@@ -30572,6 +30586,7 @@ details: b
 =======
 }(), function() {
 angular.module("openshiftConsole").component("processTemplate", {
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 controller: [ "$filter", "$q", "$scope", "$uibModal", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "ProjectsService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
 function p(e) {
 var t = /^helplink\.(.*)\.title$/, n = /^helplink\.(.*)\.url$/, a = {};
@@ -30579,6 +30594,14 @@ for (var r in e.annotations) {
 var o, i = r.match(t);
 i ? ((o = a[i[1]] || {}).title = e.annotations[r], a[i[1]] = o) : (i = r.match(n)) && ((o = a[i[1]] || {}).url = e.annotations[r], a[i[1]] = o);
 >>>>>>> Updates for Service Instance & Bindings
+=======
+controller: [ "$filter", "$q", "$scope", "$uibModal", "APIService", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "ProjectsService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
+function f(e) {
+var t = /^helplink\.(.*)\.title$/, n = /^helplink\.(.*)\.url$/, r = {};
+for (var a in e.annotations) {
+var o, i = a.match(t);
+i ? ((o = r[i[1]] || {}).title = e.annotations[a], r[i[1]] = o) : (i = a.match(n)) && ((o = r[i[1]] || {}).url = e.annotations[a], r[i[1]] = o);
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 }
 });
 }, s.cancel = function() {
@@ -30588,6 +30611,7 @@ var C = function() {
 return !_.get(s.template, "labels.app") && !_.some(s.template.objects, "metadata.labels.app");
 };
 }
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 angular.module("openshiftConsole").component("processTemplate", {
 controller: [ "$filter", "$q", "$scope", "$uibModal", "DataService", "Navigate", "NotificationsService", "ProcessedTemplateService", "ProjectsService", "QuotaService", "SecurityCheckService", "TaskList", "keyValueEditorUtils", "gettext", "gettextCatalog", a ],
 =======
@@ -30610,57 +30634,63 @@ v.prefillParameters && _.each(v.template.parameters, function(e) {
 v.prefillParameters[e.name] && (e.value = v.prefillParameters[e.name]);
 }), v.labels = _.map(v.template.labels, function(e, t) {
 >>>>>>> Add SVG icons
+=======
+function g() {
+h.prefillParameters && _.each(h.template.parameters, function(e) {
+h.prefillParameters[e.name] && (e.value = h.prefillParameters[e.name]);
+}), h.labels = _.map(h.template.labels, function(e, t) {
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 return {
 name: t,
 value: e
 };
-}), I() && v.labels.push({
+}), T() && h.labels.push({
 name: "app",
-value: v.template.metadata.name
+value: h.template.metadata.name
 });
 }
-var g, v = this, h = e("displayName"), y = e("humanize");
-v.noProjectsCantCreate = !1, v.$onInit = function() {
-v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
-v.projectNameTaken = !1;
+var v, h = this, y = e("displayName"), b = e("humanize");
+h.noProjectsCantCreate = !1, h.$onInit = function() {
+h.labels = [], h.template = angular.copy(h.template), h.templateDisplayName = y(h.template), h.selectedProject = h.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
+h.projectNameTaken = !1;
 }), n.$on("no-projects-cannot-create", function() {
-v.noProjectsCantCreate = !0;
-}), f();
+h.noProjectsCantCreate = !0;
+}), g();
 };
-var b, S = function() {
+var S, C = function() {
 var e = {
-started: "Creating " + v.templateDisplayName + " in project " + h(v.selectedProject),
-success: "Created " + v.templateDisplayName + " in project " + h(v.selectedProject),
-failure: "Failed to create " + v.templateDisplayName + " in project " + h(v.selectedProject)
-}, r = p(v.template);
-d.clear(), d.add(e, r, v.selectedProject.metadata.name, function() {
+started: "Creating " + h.templateDisplayName + " in project " + y(h.selectedProject),
+success: "Created " + h.templateDisplayName + " in project " + y(h.selectedProject),
+failure: "Failed to create " + h.templateDisplayName + " in project " + y(h.selectedProject)
+}, r = f(h.template);
+m.clear(), m.add(e, r, h.selectedProject.metadata.name, function() {
 var e = t.defer();
-return a.batch(b, g).then(function(t) {
+return o.batch(S, v).then(function(t) {
 var n = [], r = !1;
 t.failure.length > 0 ? (r = !0, t.failure.forEach(function(e) {
 n.push({
 type: "error",
-message: "Cannot create " + y(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+message: "Cannot create " + b(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 details: e.data.message
 });
 }), t.success.forEach(function(e) {
 n.push({
 type: "success",
-message: "Created " + y(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+message: "Created " + b(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 });
 })) : n.push({
 type: "success",
-message: "All items in template " + v.templateDisplayName + " were created successfully."
+message: "All items in template " + h.templateDisplayName + " were created successfully."
 }), e.resolve({
 alerts: n,
 hasErrors: r
 });
 }), e.promise;
-}), v.isDialog ? n.$emit("templateInstantiated", {
-project: v.selectedProject,
-template: v.template
-}) : o.toNextSteps(v.templateDisplayName, v.selectedProject.metadata.name);
-}, C = function(e) {
+}), h.isDialog ? n.$emit("templateInstantiated", {
+project: h.selectedProject,
+template: h.template
+}) : i.toNextSteps(h.templateDisplayName, h.selectedProject.metadata.name);
+}, w = function(e) {
 r.open({
 animation: !0,
 backdrop: "static",
@@ -30677,34 +30707,39 @@ cancelButtonText: "Cancel"
 };
 }
 }
-}).result.then(S);
-}, w = {}, P = function() {
-i.hideNotification("process-template-error"), _.each(w, function(e) {
-!e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
+}).result.then(C);
+}, P = {}, j = function() {
+s.hideNotification("process-template-error"), _.each(P, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || s.hideNotification(e.id);
 });
-}, j = function(e) {
-P(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
+}, k = function(e) {
+j(), P = d.getSecurityAlerts(S, h.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
-w = w.concat(t), _.filter(w, {
+P = P.concat(t), _.filter(P, {
 type: "error"
-}).length ? (v.disableInputs = !1, _.each(w, function(e) {
-e.id = _.uniqueId("process-template-alert-"), i.addNotification(e);
-})) : w.length ? (C(w), v.disableInputs = !1) : S();
-}, k = function() {
-if (_.has(v.selectedProject, "metadata.uid")) return t.when(v.selectedProject);
-var n = v.selectedProject.metadata.name, r = v.selectedProject.metadata.annotations["new-display-name"], a = e("description")(v.selectedProject);
-return c.create(n, r, a);
+}).length ? (h.disableInputs = !1, _.each(P, function(e) {
+e.id = _.uniqueId("process-template-alert-"), s.addNotification(e);
+})) : P.length ? (w(P), h.disableInputs = !1) : C();
+}, I = function() {
+if (_.has(h.selectedProject, "metadata.uid")) return t.when(h.selectedProject);
+var n = h.selectedProject.metadata.name, r = h.selectedProject.metadata.annotations["new-display-name"], a = e("description")(h.selectedProject);
+return l.create(n, r, a);
+}, R = function(e) {
+var t = a.objectToResourceGroupVersion(e);
+return t.resource = "processedtemplates", t;
 };
-v.createFromTemplate = function() {
-v.disableInputs = !0, k().then(function(e) {
-v.selectedProject = e, g = {
-namespace: v.selectedProject.metadata.name
-}, v.template.labels = m.mapEntries(m.compactEntries(v.labels)), a.create("processedtemplates", null, v.template, g).then(function(e) {
-s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(j);
+h.createFromTemplate = function() {
+h.disableInputs = !0, I().then(function(e) {
+h.selectedProject = e, v = {
+namespace: h.selectedProject.metadata.name
+}, h.template.labels = p.mapEntries(p.compactEntries(h.labels));
+var t = R(h.template);
+o.create(t, null, h.template, v).then(function(e) {
+c.setTemplateData(e.parameters, h.template.parameters, e.message), S = e.objects, u.getLatestQuotaAlerts(S, v).then(k);
 }, function(e) {
-v.disableInputs = !1;
+h.disableInputs = !1;
 var t;
-e.data && e.data.message && (t = e.data.message), i.addNotification({
+e.data && e.data.message && (t = e.data.message), s.addNotification({
 id: "process-template-error",
 type: "error",
 message: "An error occurred processing the template.",
@@ -30712,9 +30747,9 @@ details: t
 });
 });
 }, function(e) {
-if (v.disableInputs = !1, "AlreadyExists" === e.data.reason) v.projectNameTaken = !0; else {
+if (h.disableInputs = !1, "AlreadyExists" === e.data.reason) h.projectNameTaken = !0; else {
 var t;
-e.data && e.data.message && (t = e.data.message), i.addNotification({
+e.data && e.data.message && (t = e.data.message), s.addNotification({
 id: "process-template-error",
 type: "error",
 message: "An error occurred creating the project.",
@@ -30722,11 +30757,11 @@ details: t
 });
 }
 });
-}, v.cancel = function() {
-P(), o.toProjectOverview(v.project.metadata.name);
-}, n.$on("instantiateTemplate", v.createFromTemplate), n.$on("$destroy", P);
-var I = function() {
-return !_.get(v.template, "labels.app") && !_.some(v.template.objects, "metadata.labels.app");
+}, h.cancel = function() {
+j(), i.toProjectOverview(h.project.metadata.name);
+}, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", j);
+var T = function() {
+return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
 };
 } ],
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -34609,7 +34644,7 @@ return _.orderBy(e, [ "event.lastTimestamp", "event.metadata.resourceVersion" ],
 r.$evalAsync(function() {
 h.notificationGroups = [ k(a.project, B($(b, S))) ], R();
 });
-}, U = function() {
+}, V = function() {
 _.each(y, function(e) {
 e();
 <<<<<<< b751e7cdd36536609ccfbc9bb12d212dfb7a136b
@@ -34631,7 +34666,7 @@ t.showInDrawer && !l.isCleared(r) && (h[n] = h[n] || {}, h[n][r] = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 }), y = [];
-}, V = function() {
+}, U = function() {
 m && (l.unwatch(m), m = null);
 }, O = function() {
 d && d(), d = null;
@@ -34666,6 +34701,7 @@ B(), e && (d = c.watch("events", {
 =======
 }, L());
 }, M = function(e, t) {
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
@@ -34680,6 +34716,9 @@ U(), e && (m = l.watch(p, {
 =======
 V(), e && (m = l.watch(p, {
 >>>>>>> Set Home Page Preference
+=======
+U(), e && (m = l.watch(p, {
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -34993,6 +35032,7 @@ L(), B(), $();
 h.$onInit = function() {
 g || v || H();
 }, h.$onDestroy = function() {
+<<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
@@ -35007,6 +35047,9 @@ O(), U(), V();
 =======
 O(), V(), U();
 >>>>>>> Set Home Page Preference
+=======
+O(), U(), V();
+>>>>>>> Update directives/processTemplate to use getPreferredVersion
 };
 } ]
 });

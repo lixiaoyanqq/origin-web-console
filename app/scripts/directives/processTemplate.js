@@ -7,6 +7,7 @@
       '$q',
       '$scope',
       '$uibModal',
+      'APIService',
       'DataService',
       'Navigate',
       'NotificationsService',
@@ -36,6 +37,7 @@
                           $q,
                           $scope,
                           $uibModal,
+                          APIService,
                           DataService,
                           Navigate,
                           NotificationsService,
@@ -232,6 +234,12 @@
       return ProjectsService.create(newProjName, newProjDisplayName, newProjDesc);
     };
 
+    var getProcessTemplateVersionForTemplate = function(template) {
+      var rgv = APIService.objectToResourceGroupVersion(template);
+      rgv.resource = 'processedtemplates';
+      return rgv;
+    };
+
     ctrl.createFromTemplate = function() {
       ctrl.disableInputs = true;
       createProjectIfNecessary().then(function(project) {
@@ -241,7 +249,9 @@
         };
         ctrl.template.labels = keyValueEditorUtils.mapEntries(keyValueEditorUtils.compactEntries(ctrl.labels));
 
-        DataService.create("processedtemplates", null, ctrl.template, context).then(
+        var rgv = getProcessTemplateVersionForTemplate(ctrl.template);
+
+        DataService.create(rgv, null, ctrl.template, context).then(
           function(config) { // success
             // Cache template parameters and message so they can be displayed in the nexSteps page
             ProcessedTemplateService.setTemplateData(config.parameters, ctrl.template.parameters, config.message);
