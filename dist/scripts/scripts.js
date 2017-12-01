@@ -26790,8 +26790,12 @@ e !== t && o(e);
 });
 }
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("oscSecrets", [ "$uibModal", "$filter", "DataService", "SecretsService", function(e, t, n, a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").directive("oscSecrets", [ "$uibModal", "$filter", "APIService", "DataService", "SecretsService", function(e, t, n, a, r) {
+>>>>>>> Update directives/oscSecrets to use getPreferredVersion
 return {
 restrict: "E",
 scope: {
@@ -26808,10 +26812,14 @@ allowMultipleSecrets: "=?"
 templateUrl: "views/directives/osc-secrets.html",
 link: function(t) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 t.secretsVersion = n.getPreferredVersion("secrets"), t.canAddSourceSecret = function() {
 =======
 t.canAddSourceSecret = function() {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+t.secretsVersion = n.getPreferredVersion("secrets"), t.canAddSourceSecret = function() {
+>>>>>>> Update directives/oscSecrets to use getPreferredVersion
 if (!t.allowMultipleSecrets) return !1;
 var e = _.last(t.pickedSecrets);
 return !!e && e.name;
@@ -26837,13 +26845,17 @@ controller: "CreateSecretModalController",
 scope: t
 }).result.then(function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 r.list(t.secretsVersion, {
 =======
 n.list("secrets", {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+a.list(t.secretsVersion, {
+>>>>>>> Update directives/oscSecrets to use getPreferredVersion
 namespace: t.namespace
 }, function(n) {
-var r = a.groupSecretsByType(n), o = _.mapValues(r, function(e) {
+var a = r.groupSecretsByType(n), o = _.mapValues(a, function(e) {
 return _.map(e, "metadata.name");
 });
 <<<<<<< HEAD
