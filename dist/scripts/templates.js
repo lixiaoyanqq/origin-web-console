@@ -13614,10 +13614,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-md-12\">\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
     "<div ng-if=\"!('rolebindings' | canI : 'list')\">\n" +
     "<p translate>You do not have permission to view roles in this project.</p>\n" +
+=======
+    "<div ng-if=\"!(roleBindingsVersion | canI : 'list')\">\n" +
+    "<p>You do not have permission to view roles in this project.</p>\n" +
+>>>>>>> Update membership to use new rbac endpoints
     "</div>\n" +
-    "<uib-tabset ng-if=\"'rolebindings' | canI : 'list'\">\n" +
+    "<uib-tabset ng-if=\"roleBindingsVersion | canI : 'list'\">\n" +
     "<uib-tab ng-repeat=\"subjectKind in subjectKindsForUI | orderBy: 'sortOrder'\" active=\"selectedTab[subjectKind.name]\" select=\"selectTab(subjectKind.name)\">\n" +
     "<uib-tab-heading>\n" +
     "{{subjectKind.name | startCase}}s&nbsp;({{subjectKind.subjects | hashSize}})\n" +

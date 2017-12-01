@@ -220,6 +220,7 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E) {
 var T = this, N = t("isIE")();
 e.projectName = a.project, T.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 18c5e54bc88f7af8cfcb949a411aa8b0da3e7e9c
 var D, A, B = t("annotation"), L = t("canI"), U = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), V = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = {}, Q = {}, J = {}, Y = T.state = {
@@ -229,6 +230,9 @@ var D = t("annotation"), A = t("canI"), B = t("buildConfigForBuild"), L = t("dep
 =======
 var D = t("annotation"), A = t("canI"), B = t("buildConfigForBuild"), L = t("deploymentIsInProgress"), U = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), M = i.getPreferredVersion("deployments"), q = i.getPreferredVersion("horizontalpodautoscalers"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = i.getPreferredVersion("statefulsets"), Q = i.getPreferredVersion("replicasets");
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+var D = t("annotation"), A = t("canI"), B = t("buildConfigForBuild"), L = t("deploymentIsInProgress"), V = t("imageObjectRef"), U = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), M = i.getPreferredVersion("deployments"), q = i.getPreferredVersion("horizontalpodautoscalers"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = i.getPreferredVersion("statefulsets"), Q = i.getPreferredVersion("replicasets");
+>>>>>>> Update membership to use new rbac endpoints
 T.buildConfigsInstantiateVersion = i.getPreferredVersion("buildconfigs/instantiate");
 var J, Y, Z = {}, X = {}, ee = {}, te = T.state = {
 >>>>>>> Additional getPreferredVersion updates to overview
@@ -1157,12 +1161,12 @@ $e(), Te(), Ae();
 });
 }, 500), Le = function(e) {
 _.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, Z), "pipeline" !== T.viewBy && y.setLabelSuggestions(Z));
-}, Ue = function(e) {
-_.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, X), "pipeline" === T.viewBy && y.setLabelSuggestions(X));
 }, Ve = function(e) {
+_.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, X), "pipeline" === T.viewBy && y.setLabelSuggestions(X));
+}, Ue = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!F(e, "openshift.io/deployer-pod-for.name") && (!D(e, "openshift.io/build.name") && "slave" !== F(e, "jenkins")));
 }, Oe = function() {
-te.podsByOwnerUID = P.groupByOwnerUID(T.pods), T.monopods = _.filter(te.podsByOwnerUID[""], Ve);
+te.podsByOwnerUID = P.groupByOwnerUID(T.pods), T.monopods = _.filter(te.podsByOwnerUID[""], Ue);
 }, Fe = function(e) {
 return !!_.get(e, "status.replicas") || (!D(e, "deploymentConfig") || L(e));
 }, xe = function(e) {
@@ -1247,21 +1251,21 @@ n && _.set(te, [ "buildConfigsByObjectUID", n ], e);
 }, nt = function() {
 var e = [];
 T.deploymentConfigsByPipeline = {}, te.pipelinesByDeploymentConfig = {}, _.each(T.buildConfigs, function(t) {
-if (V(t)) {
+if (U(t)) {
 e.push(t);
 var n = l.usesDeploymentConfigs(t), r = re(t);
 _.set(T, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
 te.pipelinesByDeploymentConfig[e] = te.pipelinesByDeploymentConfig[e] || [], te.pipelinesByDeploymentConfig[e].push(t);
 });
 }
-}), T.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), me(), Ue(T.pipelineBuildConfigs), pe();
+}), T.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), me(), Ve(T.pipelineBuildConfigs), pe();
 }, rt = function() {
 te.buildConfigsByObjectUID = {}, _.each(T.deploymentConfigs, function(e) {
 var t = [], n = _.get(e, "spec.triggers");
 _.each(n, function(n) {
 var r = _.get(n, "imageChangeParams.from");
 if (r) {
-var a = U(r, e.metadata.namespace), o = Ye[a];
+var a = V(r, e.metadata.namespace), o = Ye[a];
 _.isEmpty(o) || (t = t.concat(o));
 }
 }), t = _.sortBy(t, "metadata.name"), tt(t, e), et(e);
@@ -1276,7 +1280,7 @@ T.recentPipelinesByBuildConfig = {}, te.recentBuildsByBuildConfig = {}, te.recen
 var e = {};
 _.each(l.interestingBuilds(te.builds), function(t) {
 var n = B(t);
-V(t) ? Je(t) : (e[n] = e[n] || [], e[n].push(t));
+U(t) ? Je(t) : (e[n] = e[n] || [], e[n].push(t));
 }), T.recentPipelinesByBuildConfig = _.mapValues(T.recentPipelinesByBuildConfig, function(e) {
 return l.sortBuilds(e, !0);
 }), te.recentPipelinesByDeploymentConfig = _.mapValues(te.recentPipelinesByDeploymentConfig, function(e) {
@@ -5208,23 +5212,24 @@ subjects: {}
 return _.sortBy(r, "sortOrder");
 }
 };
-} ]), angular.module("openshiftConsole").factory("RolesService", [ "$q", "DataService", function(e, t) {
+} ]), angular.module("openshiftConsole").factory("RolesService", [ "$q", "APIService", "DataService", function(e, t, n) {
+var r = t.getPreferredVersion("rolebindings"), a = t.getPreferredVersion("clusterroles");
 return {
-listAllRoles: function(n) {
-return e.all([ t.list("roles", n, null), t.list("clusterroles", {}, null) ]);
+listAllRoles: function(t) {
+return e.all([ n.list(r, t, null), n.list(a, {}, null) ]);
 }
 };
-} ]), angular.module("openshiftConsole").factory("RoleBindingsService", [ "$q", "DataService", function(e, t) {
-var n = {}, r = function(e, t) {
-var a = t ? e + t : e;
-return _.some(n, _.matchesProperty("metadata.name", a)) ? r(e, _.uniqueId()) : a;
-}, a = function(e, t) {
+} ]), angular.module("openshiftConsole").factory("RoleBindingsService", [ "$q", "APIService", "DataService", function(e, t, n) {
+var r = t.getPreferredVersion("rolebindings"), a = {}, o = function(e, t) {
+var n = t ? e + t : e;
+return _.some(a, _.matchesProperty("metadata.name", n)) ? o(e, _.uniqueId()) : n;
+}, i = function(e, t) {
 var n = _.get(e, "metadata.name");
 return {
 kind: "RoleBinding",
 apiVersion: "v1",
 metadata: {
-name: n ? r(n) : null,
+name: n ? o(n) : null,
 namespace: t
 },
 roleRef: {
@@ -5233,30 +5238,31 @@ namespace: _.get(e, "metadata.namespace")
 },
 subjects: []
 };
-}, o = function(e, t) {
+}, s = function(e, t) {
 return _.isEqual(e.kind, "ServiceAccount") ? e.namespace = e.namespace || t : (_.isEqual(e.kind, "SystemUser") || _.isEqual(e.kind, "SystemGroup")) && (_.startsWith(e.name, "system:") || (e.name = "system:" + e.name)), e;
-}, i = function(e) {
+}, c = function(e) {
 e.userNames = null, e.groupNames = null;
 };
 return {
-list: function(e, r, a) {
-return t.list("rolebindings", e, function(e) {
-n = e.by("metadata.name"), r(e);
-}, a);
+list: function(e, t, o) {
+return n.list(r, e, function(e) {
+a = e.by("metadata.name"), t(e);
+}, o);
 },
-create: function(e, n, r, i) {
-var s = a(e, r);
-return n = o(n, r), s.subjects.push(angular.copy(n)), t.create("rolebindings", null, s, i);
+create: function(e, r, a, o) {
+var c = i(e, a), l = t.objectToResourceGroupVersion(c);
+return r = s(r, a), c.subjects.push(angular.copy(r)), n.create(l, null, c, o);
 },
-addSubject: function(e, n, r, s) {
-var c = a(), l = _.extend(c, e);
-if (!n) return l;
-if (n = o(n, r), _.isArray(l.subjects)) {
-if (_.includes(l.subjects, n)) return;
-l.subjects.push(n);
-} else l.subjects = [ n ];
-return i(l), t.update("rolebindings", l.metadata.name, l, s);
+addSubject: function(e, r, a, o) {
+var l = i(), u = _.extend(l, e), d = t.objectToResourceGroupVersion(u);
+if (!r) return u;
+if (r = s(r, a), _.isArray(u.subjects)) {
+if (_.includes(u.subjects, r)) return;
+u.subjects.push(r);
+} else u.subjects = [ r ];
+return c(u), n.update(d, u.metadata.name, u, o);
 },
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 removeSubject: function(n, a, o, s) {
 var c = _.filter(o, {
@@ -5264,10 +5270,15 @@ var c = _.filter(o, {
 removeSubject: function(n, r, o, s, c) {
 var l = _.filter(s, {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+removeSubject: function(t, a, o, s, l) {
+var u = _.filter(s, {
+>>>>>>> Update membership to use new rbac endpoints
 roleRef: {
-name: r
+name: a
 }
 });
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 return e.all(_.map(c, function(e) {
 var a = r();
@@ -5280,6 +5291,15 @@ var s = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 name: n
 }), e.subjects.length ? t.update("rolebindings", e.metadata.name, e, s) : t.delete("rolebindings", e.metadata.name, s).then(function() {
+=======
+return e.all(_.map(u, function(e) {
+var a = i();
+e = _.extend(a, e), c(e);
+var s = {
+name: t
+};
+return o && (s.namespace = o), e.subjects = _.reject(e.subjects, s), e.subjects.length ? n.update(r, e.metadata.name, e, l) : n.delete(r, e.metadata.name, l).then(function() {
+>>>>>>> Update membership to use new rbac endpoints
 return e;
 });
 }));
@@ -10783,9 +10803,9 @@ if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
 }), n.filteredBuilds = s.filterForKeywords(h, w, P);
-}, L = r("deploymentStatus"), U = r("deploymentIsInProgress"), V = function() {
+}, L = r("deploymentStatus"), V = r("deploymentIsInProgress"), U = function() {
 y = _.filter(n.replicationControllers, function(e) {
-return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
+return !n.filters.hideOlderResources || (V(e) || "Active" === L(e));
 }), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
 }, O = function() {
 b = _.filter(n.replicaSets, function(e) {
@@ -10951,7 +10971,7 @@ n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("s
 poll: f,
 pollInterval: 6e4
 })), g.push(o.watch("replicationcontrollers", r, function(e) {
-n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), V(), c.log("replicationcontrollers", n.replicationControllers);
+n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), U(), c.log("replicationcontrollers", n.replicationControllers);
 })), g.push(o.watch("builds", r, function(e) {
 n.builds = C(e.by("metadata.name"), !0), n.latestBuildByConfig = a.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, R), B(), c.log("builds", n.builds);
 })), g.push(o.watch({
@@ -10965,7 +10985,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-T(), B(), V(), O(), E();
+T(), B(), U(), O(), E();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -10979,8 +10999,10 @@ maxWait: 250
 e !== t && (localStorage.setItem("monitoring.eventsidebar.collapsed", n.renderOptions.collapseEventsSidebar ? "true" : "false"), p.$emit("metrics.charts.resize"));
 });
 }));
-} ]), angular.module("openshiftConsole").controller("MembershipController", [ "$filter", "$location", "$routeParams", "$scope", "$timeout", "$uibModal", "AuthService", "AuthorizationService", "DataService", "ProjectsService", "MembershipService", "NotificationsService", "RoleBindingsService", "RolesService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
-var f, g = n.project, v = e("humanizeKind"), h = e("annotation"), y = e("canI"), b = [], S = {
+} ]), angular.module("openshiftConsole").controller("MembershipController", [ "$filter", "$location", "$routeParams", "$scope", "$timeout", "$uibModal", "APIService", "AuthService", "AuthorizationService", "DataService", "ProjectsService", "MembershipService", "NotificationsService", "RoleBindingsService", "RolesService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f) {
+var g, v = n.project, h = e("humanizeKind"), y = e("annotation"), b = e("canI"), S = i.getPreferredVersion("serviceaccounts");
+r.roleBindingsVersion = i.getPreferredVersion("rolebindings");
+var C = [], w = {
 notice: {
 yourLastRole: _.template('Removing the role "<%= roleName %>" may completely remove your ability to see this project.')
 },
@@ -11011,6 +11033,7 @@ exists: _.template('The role "<%= roleName %>" has already been granted to "<%= 
 }
 },
 errorReason: _.template('Reason: "<%= httpErr %>"')
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -11095,14 +11118,18 @@ projectName: r,
 }, C = function(e, t, n) {
 >>>>>>> Adding label filter to ste secrets page
 d.addNotification({
+=======
+}, P = function(e, t, n) {
+m.addNotification({
+>>>>>>> Update membership to use new rbac endpoints
 type: e,
 message: t,
 details: n
 });
-}, w = function() {
-r.disableAddForm = !1, r.newBinding.name = "", r.newBinding.namespace = g, r.newBinding.newRole = null;
-}, P = function(e) {
-c.list("serviceaccounts", e).then(function(e) {
+}, j = function() {
+r.disableAddForm = !1, r.newBinding.name = "", r.newBinding.namespace = v, r.newBinding.newRole = null;
+}, k = function(e) {
+l.list(S, e).then(function(e) {
 var t = _.keys(e.by("metadata.name")).sort();
 angular.extend(r, {
 serviceAccounts: t,
@@ -11111,46 +11138,47 @@ e && !_.includes(r.serviceAccounts, e) ? r.serviceAccounts = [ e ].concat(t) : r
 }
 });
 });
-}, j = function(e) {
-c.list("rolebindings", f, null, {
+}, I = function(e) {
+l.list(r.roleBindingsVersion, g, null, {
 errorNotification: !1
 }).then(function(e) {
 angular.extend(r, {
 canShowRoles: !0,
 roleBindings: e.by("metadata.name"),
-subjectKindsForUI: u.mapRolebindingsForUI(e.by("metadata.name"), b)
-}), w();
+subjectKindsForUI: d.mapRolebindingsForUI(e.by("metadata.name"), C)
+}), j();
 }, function() {
-e && (r.roleBindings[e.metadata.name] = e, r.subjectKindsForUI = u.mapRolebindingsForUI(r.roleBindings, b)), w();
+e && (r.roleBindings[e.metadata.name] = e, r.subjectKindsForUI = d.mapRolebindingsForUI(r.roleBindings, C)), j();
 });
-}, k = function(t, n) {
-r.disableAddForm = !0, m.create(t, n, g, f).then(function() {
-j(), C("success", S.update.subject.success({
+}, R = function(t, n) {
+r.disableAddForm = !0, p.create(t, n, v, g).then(function() {
+I(), P("success", w.update.subject.success({
 roleName: t.metadata.name,
 subjectName: n.name
 }));
 }, function(r) {
-w(), j(), C("error", S.update.subject.error({
+j(), I(), P("error", w.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
-}), S.errorReason({
+}), w.errorReason({
 httpErr: e("getErrorDetails")(r)
 }));
 });
-}, I = function(t, n, a) {
-r.disableAddForm = !0, m.addSubject(t, n, a, f).then(function() {
-j(), C("success", S.update.subject.success({
+}, E = function(t, n, a) {
+r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
+I(), P("success", w.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
 }));
 }, function(r) {
-w(), j(), C("error", S.update.subject.error({
+j(), I(), P("error", w.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
-}), S.errorReason({
+}), w.errorReason({
 httpErr: e("getErrorDetails")(r)
 }));
 });
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 }, R = {};
 n.tab && (R[n.tab] = !0);
 var E = u.getSubjectKinds();
@@ -11178,8 +11206,16 @@ selectedTab: R,
 >>>>>>> Add search catalog in project context
 projectName: g,
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+}, T = {};
+n.tab && (T[n.tab] = !0);
+var N = d.getSubjectKinds();
+angular.extend(r, {
+selectedTab: T,
+projectName: v,
+>>>>>>> Update membership to use new rbac endpoints
 forms: {},
-subjectKinds: E,
+subjectKinds: N,
 newBinding: {
 role: "",
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -11193,12 +11229,16 @@ kind: n.tab || "User",
 name: ""
 },
 toggleEditMode: function() {
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 w(), a.mode.edit = !a.mode.edit;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 w(), r.mode.edit = !r.mode.edit;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+j(), r.mode.edit = !r.mode.edit;
+>>>>>>> Update membership to use new rbac endpoints
 },
 mode: {
 edit: !1
@@ -11248,25 +11288,37 @@ var N = function(e, t, n, r) {
 roleHelp: function(e) {
 if (e) {
 var t = _.get(e, "metadata.namespace"), n = _.get(e, "metadata.name"), r = t ? t + " / " + n + ": " : "";
-return e ? r + (h(e, "description") || "") : "";
+return e ? r + (y(e, "description") || "") : "";
 }
 }
 });
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 var T = function(e, t, n, a) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+var D = function(e, t, n, a) {
+>>>>>>> Update membership to use new rbac endpoints
 var o = {
 >>>>>>> Add notification-drawer to show curated list of events to user
 alerts: {},
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 detailsMarkup: w.remove.areYouSure.html.subject({
 roleName: c,
 kindName: p.getString(s(b)),
 subjectName: a
+=======
+detailsMarkup: w.remove.areYouSure.html.subject({
+roleName: n,
+kindName: h(t),
+subjectName: e
+>>>>>>> Update membership to use new rbac endpoints
 }),
 okButtonText: p.getString(o("Remove")),
 okButtonClass: "btn-danger",
 cancelButtonText: p.getString(o("Cancel"))
 };
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 return _.isEqual(a, e) && (f.detailsMarkup = w.remove.areYouSure.html.self({
 roleName: c,
 subjectName: a
@@ -11331,21 +11383,29 @@ subjectName: e
 }), u.isLastRole(r.user.metadata.name, r.roleBindings) && (o.alerts.currentUserLabelRole = {
 type: "error",
 message: S.notice.yourLastRole({
+=======
+return _.isEqual(e, a) && (o.detailsMarkup = w.remove.areYouSure.html.self({
+roleName: n,
+subjectName: e
+}), d.isLastRole(r.user.metadata.name, r.roleBindings) && (o.alerts.currentUserLabelRole = {
+type: "error",
+message: w.notice.yourLastRole({
+>>>>>>> Update membership to use new rbac endpoints
 roleName: n
 })
 })), _.isEqual(t, "ServiceAccount") && _.startsWith(n, "system:") && (o.alerts.editingServiceAccountRole = {
 type: "error",
-message: S.warning.serviceAccount()
+message: w.warning.serviceAccount()
 }), o;
 };
-i.withUser().then(function(e) {
+s.withUser().then(function(e) {
 r.user = e;
-}), l.list().then(function(e) {
+}), u.list().then(function(e) {
 var t = _.keys(e.by("metadata.name")).sort();
 angular.extend(r, {
 projects: t,
 selectProject: function(e) {
-r.newBinding.name = "", P({
+r.newBinding.name = "", k({
 namespace: e
 });
 },
@@ -11353,9 +11413,10 @@ refreshProjects: function(e) {
 e && !_.includes(r.projects, e) ? r.projects = [ e ].concat(t) : r.projects = t;
 }
 });
-}), l.get(n.project).then(_.spread(function(n, a) {
-f = a, j(), P(f), angular.extend(r, {
+}), u.get(n.project).then(_.spread(function(n, a) {
+g = a, I(), k(g), angular.extend(r, {
 project: n,
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 subjectKinds: E,
 canUpdateRolebindings: y("rolebindings", "update", g),
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
@@ -11368,11 +11429,19 @@ confirmRemove: function(n, a, i, c) {
 var l = null, d = T(n, a, i, r.user.metadata.name);
 _.isEqual(n, r.user.metadata.name) && u.isLastRole(r.user.metadata.name, r.roleBindings) && (l = !0), o.open({
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+subjectKinds: N,
+canUpdateRolebindings: b("rolebindings", "update", v),
+confirmRemove: function(n, a, i, s) {
+var l = null, u = D(n, a, i, r.user.metadata.name);
+_.isEqual(n, r.user.metadata.name) && d.isLastRole(r.user.metadata.name, r.roleBindings) && (l = !0), o.open({
+>>>>>>> Update membership to use new rbac endpoints
 animation: !0,
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 return l;
 }
 }
@@ -11458,21 +11527,31 @@ k(e[0]);
 j(e[0]);
 >>>>>>> Add Browse Catalog to Project context view.
 var t = y("rolebindings", "update", g);
+=======
+return u;
+}
+}
+}).result.then(function() {
+p.removeSubject(n, i, s, r.roleBindings, g).then(function(e) {
+l ? t.url("./") : (c.getProjectRules(v, !0).then(function() {
+I(e[0]);
+var t = b("rolebindings", "update", v);
+>>>>>>> Update membership to use new rbac endpoints
 angular.extend(r, {
 canUpdateRolebindings: t,
 mode: {
 edit: !!r.mode.edit && t
 }
 });
-}), C("success", S.remove.success({
+}), P("success", w.remove.success({
 roleName: i,
 subjectName: n
 })));
 }, function(t) {
-C("error", S.remove.error({
+P("error", w.remove.error({
 roleName: i,
 subjectName: n
-}), S.errorReason({
+}), w.errorReason({
 httpErr: e("getErrorDetails")(t)
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }));
@@ -11530,23 +11609,23 @@ roleRef: {
 name: n.metadata.name
 }
 });
-i && _.some(i.subjects, o) ? C("error", S.update.subject.exists({
+i && _.some(i.subjects, o) ? P("error", w.update.subject.exists({
 roleName: n.metadata.name,
 subjectName: e
-})) : i ? I(i, o, a) : k(n, o);
+})) : i ? E(i, o, a) : R(n, o);
 }
-}), p.listAllRoles(f, {
+}), f.listAllRoles(g, {
 errorNotification: !1
 }).then(function(e) {
-b = u.mapRolesForUI(_.head(e).by("metadata.name"), _.last(e).by("metadata.name"));
-var t = u.sortRoles(b), n = u.filterRoles(b), a = function(e, t) {
+C = d.mapRolesForUI(_.head(e).by("metadata.name"), _.last(e).by("metadata.name"));
+var t = d.sortRoles(C), n = d.filterRoles(C), a = function(e, t) {
 return _.some(t, {
 metadata: {
 name: e
 }
 });
 };
-j(), angular.extend(r, {
+I(), angular.extend(r, {
 toggle: {
 roles: !1
 },
@@ -13537,6 +13616,7 @@ p.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 >>>>>>> Bug 1505281 - Improve import YAML results message
 });
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 }, F = function(d) {
@@ -13699,6 +13779,11 @@ e.autoscalers = e.hpaForRS.concat(a);
 var B = t("deploymentStatus"), L = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
 }, U = t("isIE")();
+=======
+var B = t("deploymentStatus"), L = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
+}, V = t("isIE")();
+>>>>>>> Update membership to use new rbac endpoints
 y.get(n.project).then(_.spread(function(r, u) {
 e.project = r, e.projectContext = u;
 var p = {}, y = function() {
@@ -13710,7 +13795,7 @@ var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 } else e.autoscalers = e.hpaForRS;
-}, V = function() {
+}, U = function() {
 $.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
@@ -14228,8 +14313,12 @@ message: "This " + w + " has been deleted."
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 }), e.replicaSet = t, L(t), O(), H(), e.deployment && x();
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 })), e.deploymentConfigName && V(), $.push(i.watch(T, u, function(t) {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+})), e.deploymentConfigName && U(), $.push(i.watch(T, u, function(t) {
+>>>>>>> Update membership to use new rbac endpoints
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -14310,7 +14399,7 @@ p = e.by("metadata.name"), y(), V();
 p = e.by("metadata.name"), y(), O();
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 }, {
-poll: U,
+poll: V,
 pollInterval: 6e4
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 })), o.list("limitranges", g).then(function(t) {
@@ -18601,7 +18690,7 @@ g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification(
 });
 };
 e.$on("$destroy", N);
-var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), U = i.getPreferredVersion("resourcequotas"), V = i.getPreferredVersion("appliedclusterresourcequotas");
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), V = i.getPreferredVersion("resourcequotas"), U = i.getPreferredVersion("appliedclusterresourcequotas");
 v.get(a.project).then(_.spread(function(t, n) {
 e.project = t, a.sourceURI && (e.sourceURIinParams = !0);
 var i = function() {
@@ -18613,9 +18702,9 @@ e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("con
 var v, y, C = function() {
 e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
-c.list(U, n).then(function(e) {
+c.list(V, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
-}), c.list(V, n).then(function(e) {
+}), c.list(U, n).then(function(e) {
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
 <<<<<<< 247459038ac366429876741dd447ec652f2f5e7d
@@ -26720,15 +26809,15 @@ containerName: e.containerMetric ? m.options.selectedContainer.name : "pod"
 }) : null;
 }
 function S() {
-A || (U = 0, _.each(m.metrics, function(e) {
+A || (V = 0, _.each(m.metrics, function(e) {
 g(e), f(e);
 }));
 }
 function C(e) {
-if (!A) if (U++, m.noData) m.metricsError = {
+if (!A) if (V++, m.noData) m.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
-}; else if (!(U < 2)) {
+}; else if (!(V < 2)) {
 var t = "metrics-failed-" + m.uniqueID;
 m.alerts[t] = {
 type: "error",
@@ -26746,6 +26835,7 @@ links: [ {
 href: "",
 label: "Retry",
 onClick: function() {
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 13ac2d832bc56edf6bc5e2fc652da9b188ddae32
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
 <<<<<<< a19b22733566f12a68db59a49bc16848fffba594
@@ -26787,6 +26877,9 @@ delete m.alerts[t], U = 1, j();
 =======
 delete m.alerts[t], U = 1, k();
 >>>>>>> Add Browse Catalog to Project context view.
+=======
+delete m.alerts[t], V = 1, k();
+>>>>>>> Update membership to use new rbac endpoints
 }
 } ]
 };
@@ -26850,7 +26943,7 @@ id: a.metricID
 A(b, a);
 =======
 function w() {
-return !(m.metricsError || U > 1) && (m.pod && _.get(m, "options.selectedContainer"));
+return !(m.metricsError || V > 1) && (m.pod && _.get(m, "options.selectedContainer"));
 }
 function P(e, t, n) {
 t.total = p(t.id), t.total && (m.hasLimits = !0);
@@ -27083,7 +27176,7 @@ a.destroy();
 }, L = function(e) {
 var t = e.chartPrefix + m.uniqueID + "-sparkline", n = c.getDefaultSparklineConfig(t, e.units);
 return 1 === e.datasets.length && _.set(n, "legend.show", !1), n;
-}, U = 0;
+}, V = 0;
 (window.OPENSHIFT_CONSTANTS.DISABLE_CUSTOM_METRICS ? a.when({}) : l.getCustomMetrics(m.pod).then(function(e) {
 angular.forEach(e, function(e) {
 var t = e.description || e.name, n = e.unit || "", r = "custom/" + e.id.replace(/.*\/custom\//, "");
@@ -27109,11 +27202,11 @@ delete e.data;
 }), delete m.metricsError, k();
 }, !0), I = t(k, c.getDefaultUpdateInterval(), !1);
 });
-var V = o.$on("metrics.charts.resize", function() {
+var U = o.$on("metrics.charts.resize", function() {
 c.redraw(R), c.redraw(E);
 });
 m.$on("$destroy", function() {
-I && (t.cancel(I), I = null), V && (V(), V = null), angular.forEach(R, function(e) {
+I && (t.cancel(I), I = null), U && (U(), U = null), angular.forEach(R, function(e) {
 e.destroy();
 }), R = null, angular.forEach(E, function(e) {
 e.destroy();
@@ -34142,7 +34235,7 @@ return _.orderBy(e, [ "event.lastTimestamp", "event.metadata.resourceVersion" ],
 r.$evalAsync(function() {
 h.notificationGroups = [ k(a.project, B($(b, S))) ], R();
 });
-}, U = function() {
+}, V = function() {
 _.each(y, function(e) {
 e();
 <<<<<<< b751e7cdd36536609ccfbc9bb12d212dfb7a136b
@@ -34164,7 +34257,7 @@ t.showInDrawer && !l.isCleared(r) && (h[n] = h[n] || {}, h[n][r] = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 }), y = [];
-}, V = function() {
+}, U = function() {
 m && (l.unwatch(m), m = null);
 }, O = function() {
 d && d(), d = null;
@@ -34199,12 +34292,16 @@ B(), e && (d = c.watch("events", {
 =======
 }, L());
 }, M = function(e, t) {
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 O(), e && (m = l.watch(p, {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
 V(), e && (m = l.watch(p, {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+U(), e && (m = l.watch(p, {
+>>>>>>> Update membership to use new rbac endpoints
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -34514,12 +34611,16 @@ L(), B(), $();
 h.$onInit = function() {
 g || v || H();
 }, h.$onDestroy = function() {
+<<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 V(), O(), U();
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
 O(), V(), U();
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+O(), U(), V();
+>>>>>>> Update membership to use new rbac endpoints
 };
 } ]
 });
