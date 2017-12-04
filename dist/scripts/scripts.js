@@ -8628,11 +8628,15 @@ return n ? _.get(t, [ "notificationsByObjectUID", n ]) : null;
 ui: {
 toggleExpand: function(t, n) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (n || !($(t.target).closest("a").length > 0 || $(t.target).closest("button").length > 0)) {
 var r = e(this.apiObject);
 r && (this.expanded = !this.expanded, sessionStorage.setItem(r, this.expanded ? "true" : "false"));
 =======
 if (n || !($(t.target).closest("a").length > 0)) {
+=======
+if (n || !($(t.target).closest("a").length > 0 || $(t.target).closest("button").length > 0)) {
+>>>>>>> Fix overview kebab styling
 var a = e(this.apiObject);
 a && (this.expanded = !this.expanded, sessionStorage.setItem(a, this.expanded ? "true" : "false"));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1

@@ -15258,7 +15258,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-switch-when=\"DeploymentConfig\">\n" +
     "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
     "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+<<<<<<< HEAD
     "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span>\n" +
+=======
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+>>>>>>> Fix overview kebab styling
     "</button>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li ng-if=\"row.showStartPipelineAction()\" role=\"menuitem\">\n" +
