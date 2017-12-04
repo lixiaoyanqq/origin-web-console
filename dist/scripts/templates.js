@@ -15144,8 +15144,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"row.canIDoAny()\">\n" +
     "<div ng-switch=\"row.apiObject.kind\">\n" +
     "<div ng-switch-when=\"DeploymentConfig\">\n" +
+<<<<<<< 4c2651877e8f4939f10581dcde46b54f0d7cb0f2
     "<div uib-dropdown>\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
+=======
+    "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+    "</button>\n" +
+>>>>>>> Fix overview kebab styling
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li ng-if=\"row.showStartPipelineAction()\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.startBuild(row.pipelines[0])\" translate>Start Pipeline</a>\n" +

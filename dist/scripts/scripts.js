@@ -8638,7 +8638,7 @@ return n ? _.get(t, [ "notificationsByObjectUID", n ]) : null;
 },
 ui: {
 toggleExpand: function(t, n) {
-if (n || !($(t.target).closest("a").length > 0)) {
+if (n || !($(t.target).closest("a").length > 0 || $(t.target).closest("button").length > 0)) {
 var a = e(this.apiObject);
 a && (this.expanded = !this.expanded, sessionStorage.setItem(a, this.expanded ? "true" : "false"));
 }
