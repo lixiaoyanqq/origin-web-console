@@ -19,6 +19,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -225,12 +226,19 @@ var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = 
 =======
 var N, D, A = t("annotation"), B = t("canI"), L = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), F = t("isNewerResource"), x = t("label"), M = t("podTemplate"), q = o.getPreferredVersion("servicebindings"), z = o.getPreferredVersion("clusterserviceclasses"), H = o.getPreferredVersion("serviceinstances"), G = o.getPreferredVersion("clusterserviceplans"), K = {}, W = {}, Q = {}, J = E.state = {
 >>>>>>> Update createFromImage controller to use getPreferredVersion
+=======
+function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E) {
+var T = this, N = t("isIE")();
+e.projectName = a.project, T.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var D, A, B = t("annotation"), L = t("canI"), U = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), V = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = {}, Q = {}, J = {}, Y = T.state = {
+>>>>>>> Add Browse Catalog to Project context view.
 alerts: {},
 builds: {},
 clusterQuotas: {},
 imageStreamImageRefByDockerReference: {},
 imagesByDockerReference: {},
 limitRanges: {},
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -248,6 +256,9 @@ limitWatches: I,
 =======
 limitWatches: T,
 >>>>>>> Wait for service classes and plans to load
+=======
+limitWatches: N,
+>>>>>>> Add Browse Catalog to Project context view.
 notificationsByObjectUID: {},
 pipelinesByDeploymentConfig: {},
 podsByOwnerUID: {},
@@ -271,6 +282,7 @@ bindingsByApplicationUID: {},
 applicationsByBinding: {},
 showMetrics: !1
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -374,15 +386,22 @@ var t = f.getBreakpoint();
 E.state.breakpoint !== t && e.$evalAsync(function() {
 E.state.breakpoint = t;
 >>>>>>> Wait for service classes and plans to load
+=======
+T.state.breakpoint = g.getBreakpoint();
+var Z = _.throttle(function() {
+var t = g.getBreakpoint();
+T.state.breakpoint !== t && e.$evalAsync(function() {
+T.state.breakpoint = t;
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }, 50);
-$(window).on("resize.overview", Y), E.showGetStarted = !1, E.showLoading = !0, E.filterByOptions = [ {
+$(window).on("resize.overview", Z), T.showGetStarted = !1, T.showLoading = !0, T.filterByOptions = [ {
 id: "name",
 label: "Name"
 }, {
 id: "label",
 label: "Label"
-} ], E.filterBy = h.getLabelSelector().isEmpty() ? "name" : "label", E.viewByOptions = [ {
+} ], T.filterBy = y.getLabelSelector().isEmpty() ? "name" : "label", T.viewByOptions = [ {
 id: "app",
 label: "Application"
 }, {
@@ -392,40 +411,41 @@ label: "Resource Type"
 id: "pipeline",
 label: "Pipeline"
 } ];
-var Z = function(e) {
+var X = function(e) {
 return _.get(e, "metadata.name");
-}, X = function(e) {
+}, ee = function(e) {
 return _.get(e, "metadata.uid");
-}, ee = function() {
-return _.size(E.deploymentConfigs) + _.size(E.vanillaReplicationControllers) + _.size(E.deployments) + _.size(E.vanillaReplicaSets) + _.size(E.statefulSets) + _.size(E.monopods) + _.size(E.state.serviceInstances);
 }, te = function() {
-return _.size(E.filteredDeploymentConfigs) + _.size(E.filteredReplicationControllers) + _.size(E.filteredDeployments) + _.size(E.filteredReplicaSets) + _.size(E.filteredStatefulSets) + _.size(E.filteredMonopods) + _.size(E.filteredServiceInstances);
+return _.size(T.deploymentConfigs) + _.size(T.vanillaReplicationControllers) + _.size(T.deployments) + _.size(T.vanillaReplicaSets) + _.size(T.statefulSets) + _.size(T.monopods) + _.size(T.state.serviceInstances);
 }, ne = function() {
-E.size = ee(), E.filteredSize = te();
-var e = 0 === E.size, t = E.deploymentConfigs && E.replicationControllers && E.deployments && E.replicaSets && E.statefulSets && E.pods && E.state.serviceInstances;
-J.expandAll = t && 1 === E.size, E.showGetStarted = t && e, E.showLoading = !t && e, E.everythingFiltered = !e && !E.filteredSize, E.hidePipelineOtherResources = "pipeline" === E.viewBy && (E.filterActive || _.isEmpty(E.pipelineBuildConfigs));
-}, re = function(e) {
-return i.groupByApp(e, "metadata.name");
+return _.size(T.filteredDeploymentConfigs) + _.size(T.filteredReplicationControllers) + _.size(T.filteredDeployments) + _.size(T.filteredReplicaSets) + _.size(T.filteredStatefulSets) + _.size(T.filteredMonopods) + _.size(T.filteredServiceInstances);
+}, re = function() {
+T.size = te(), T.filteredSize = ne();
+var e = 0 === T.size, t = T.deploymentConfigs && T.replicationControllers && T.deployments && T.replicaSets && T.statefulSets && T.pods && T.state.serviceInstances;
+Y.expandAll = t && 1 === T.size, T.showGetStarted = t && e, T.showLoading = !t && e, T.everythingFiltered = !e && !T.filteredSize, T.hidePipelineOtherResources = "pipeline" === T.viewBy && (T.filterActive || _.isEmpty(T.pipelineBuildConfigs));
 }, ae = function(e) {
+return s.groupByApp(e, "metadata.name");
+}, oe = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? I.getPreferredDisplayRoute(t, e) : e;
+t = t ? R.getPreferredDisplayRoute(t, e) : e;
 }), t;
-}, oe = _.debounce(function() {
+}, ie = _.debounce(function() {
 e.$evalAsync(function() {
-if (E.bestRouteByApp = {}, E.routes) {
-var e = [ E.filteredDeploymentConfigsByApp, E.filteredReplicationControllersByApp, E.filteredDeploymentsByApp, E.filteredReplicaSetsByApp, E.filteredStatefulSetsByApp, E.filteredMonopodsByApp ];
-_.each(E.apps, function(t) {
+if (T.bestRouteByApp = {}, T.routes) {
+var e = [ T.filteredDeploymentConfigsByApp, T.filteredReplicationControllersByApp, T.filteredDeploymentsByApp, T.filteredReplicaSetsByApp, T.filteredStatefulSetsByApp, T.filteredMonopodsByApp ];
+_.each(T.apps, function(t) {
 var n = {};
 _.each(e, function(e) {
 var r = _.get(e, t, []);
 _.each(r, function(e) {
-var t = X(e), r = _.get(J, [ "servicesByObjectUID", t ], []);
+var t = ee(e), r = _.get(Y, [ "servicesByObjectUID", t ], []);
 _.each(r, function(e) {
-var t = _.get(J, [ "routesByService", e.metadata.name ], []);
+var t = _.get(Y, [ "routesByService", e.metadata.name ], []);
 _.assign(n, _.keyBy(t, "metadata.name"));
 });
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -448,11 +468,15 @@ _.assign(n, _.keyBy(t, "metadata.name"));
 =======
 }), E.bestRouteByApp[t] = ae(n);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}), T.bestRouteByApp[t] = oe(n);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }
 });
 }, 300, {
 maxWait: 1500
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -570,32 +594,50 @@ return v.filterForKeywords(e, ue, J.filterKeywords);
 }, me = function(e) {
 switch (E.filterBy) {
 >>>>>>> Wait for service classes and plans to load
+=======
+}), se = function() {
+T.filteredDeploymentConfigsByApp = ae(T.filteredDeploymentConfigs), T.filteredReplicationControllersByApp = ae(T.filteredReplicationControllers), T.filteredDeploymentsByApp = ae(T.filteredDeployments), T.filteredReplicaSetsByApp = ae(T.filteredReplicaSets), T.filteredStatefulSetsByApp = ae(T.filteredStatefulSets), T.filteredMonopodsByApp = ae(T.filteredMonopods), T.apps = _.union(_.keys(T.filteredDeploymentConfigsByApp), _.keys(T.filteredReplicationControllersByApp), _.keys(T.filteredDeploymentsByApp), _.keys(T.filteredReplicaSetsByApp), _.keys(T.filteredStatefulSetsByApp), _.keys(T.filteredMonopodsByApp)), s.sortAppNames(T.apps), ie();
+}, ce = function() {
+var e = _.filter(T.deploymentConfigs, function(e) {
+var t = X(e);
+return _.isEmpty(Y.pipelinesByDeploymentConfig[t]);
+});
+T.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), T.pipelineViewHasOtherResources = !(_.isEmpty(T.deploymentConfigsNoPipeline) && _.isEmpty(T.vanillaReplicationControllers) && _.isEmpty(T.deployments) && _.isEmpty(T.vanillaReplicaSets) && _.isEmpty(T.statefulSets) && _.isEmpty(T.monopods));
+}, le = function() {
+T.disableFilter = "pipeline" === T.viewBy && _.isEmpty(T.pipelineBuildConfigs);
+}, ue = function(e) {
+return y.getLabelSelector().select(e);
+}, de = [ "metadata.name", "spec.clusterServiceClassExternalName" ], me = function(e) {
+return h.filterForKeywords(e, de, Y.filterKeywords);
+}, pe = function(e) {
+switch (T.filterBy) {
+>>>>>>> Add Browse Catalog to Project context view.
 case "label":
-return le(e);
+return ue(e);
 
 case "name":
-return de(e);
+return me(e);
 }
 return e;
-}, pe = function() {
-switch (E.filterBy) {
+}, fe = function() {
+switch (T.filterBy) {
 case "label":
-return !h.getLabelSelector().isEmpty();
+return !y.getLabelSelector().isEmpty();
 
 case "name":
-return !_.isEmpty(J.filterKeywords);
+return !_.isEmpty(Y.filterKeywords);
 }
-}, fe = function() {
-E.filteredDeploymentConfigs = me(E.deploymentConfigs), E.filteredReplicationControllers = me(E.vanillaReplicationControllers), E.filteredDeployments = me(E.deployments), E.filteredReplicaSets = me(E.vanillaReplicaSets), E.filteredStatefulSets = me(E.statefulSets), E.filteredMonopods = me(E.monopods), E.filteredPipelineBuildConfigs = me(E.pipelineBuildConfigs), E.filteredServiceInstances = me(J.orderedServiceInstances), E.filterActive = pe(), ie(), ne();
-}, ge = r.project + "/overview/view-by";
-E.viewBy = localStorage.getItem(ge) || "app", e.$watch(function() {
-return E.viewBy;
+}, ge = function() {
+T.filteredDeploymentConfigs = pe(T.deploymentConfigs), T.filteredReplicationControllers = pe(T.vanillaReplicationControllers), T.filteredDeployments = pe(T.deployments), T.filteredReplicaSets = pe(T.vanillaReplicaSets), T.filteredStatefulSets = pe(T.statefulSets), T.filteredMonopods = pe(T.monopods), T.filteredPipelineBuildConfigs = pe(T.pipelineBuildConfigs), T.filteredServiceInstances = pe(Y.orderedServiceInstances), T.filterActive = fe(), se(), re();
+}, ve = a.project + "/overview/view-by";
+T.viewBy = localStorage.getItem(ve) || "app", e.$watch(function() {
+return T.viewBy;
 }, function(e) {
-localStorage.setItem(ge, e), ce(), ue = "app" === E.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], fe(), "pipeline" === E.viewBy ? h.setLabelSuggestions(W) : h.setLabelSuggestions(K);
-}), u.DISABLE_OVERVIEW_METRICS || (b.isAvailable(!0).then(function(e) {
-J.showMetrics = e;
+localStorage.setItem(ve, e), le(), de = "app" === T.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], ge(), "pipeline" === T.viewBy ? y.setLabelSuggestions(Q) : y.setLabelSuggestions(W);
+}), d.DISABLE_OVERVIEW_METRICS || (S.isAvailable(!0).then(function(e) {
+Y.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
-a.isAlertPermanentlyHidden("metrics-connection-failed") || J.alerts["metrics-connection-failed"] || (J.alerts["metrics-connection-failed"] = {
+o.isAlertPermanentlyHidden("metrics-connection-failed") || Y.alerts["metrics-connection-failed"] || (Y.alerts["metrics-connection-failed"] = {
 type: "warning",
 message: "An error occurred getting metrics.",
 links: [ {
@@ -608,6 +650,7 @@ label: "Don't Show Me Again",
 onClick: function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 return a.permanentlyHideAlert("metrics-connection-failed"), !0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -616,10 +659,14 @@ return r.permanentlyHideAlert("metrics-connection-failed"), !0;
 =======
 return a.permanentlyHideAlert("metrics-connection-failed"), !0;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+return o.permanentlyHideAlert("metrics-connection-failed"), !0;
+>>>>>>> Add Browse Catalog to Project context view.
 }
 } ]
 });
 }));
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -859,225 +906,231 @@ var fe = function(e) {
 =======
 var ve = function(e) {
 >>>>>>> Wait for service classes and plans to load
+=======
+var he = function(e) {
+>>>>>>> Add Browse Catalog to Project context view.
 return e && "Pod" === e.kind;
-}, he = function(e) {
-var t = X(e);
-return t ? ve(e) ? [ e ] : _.get(E, [ "state", "podsByOwnerUID", t ], []) : [];
-}, ye = function(e, t) {
-var n = X(e);
-J.notificationsByObjectUID[n] = t || {};
-}, be = function(e) {
-var t = X(e);
-return t ? _.get(J, [ "notificationsByObjectUID", t ], {}) : {};
+}, ye = function(e) {
+var t = ee(e);
+return t ? he(e) ? [ e ] : _.get(T, [ "state", "podsByOwnerUID", t ], []) : [];
+}, be = function(e, t) {
+var n = ee(e);
+Y.notificationsByObjectUID[n] = t || {};
 }, Se = function(e) {
-if (X(e)) {
-var t = he(e), n = j.getPodAlerts(t, r.project);
-ye(e, n);
-}
+var t = ee(e);
+return t ? _.get(Y, [ "notificationsByObjectUID", t ], {}) : {};
 }, Ce = function(e) {
-_.each(e, Se);
+if (ee(e)) {
+var t = ye(e), n = I.getPodAlerts(t, a.project);
+be(e, n);
+}
 }, _e = function(e) {
-var t = Z(e);
-return t ? Q[t] : null;
+_.each(e, Ce);
 }, we = function(e) {
-var t = Z(e);
-return t ? _.get(E, [ "replicationControllersByDeploymentConfig", t ]) : [];
+var t = X(e);
+return t ? J[t] : null;
+}, Pe = function(e) {
+var t = X(e);
+return t ? _.get(T, [ "replicationControllersByDeploymentConfig", t ]) : [];
 };
-E.getPreviousReplicationController = function(e) {
-var t = we(e);
+T.getPreviousReplicationController = function(e) {
+var t = Pe(e);
 return _.size(t) < 2 ? null : t[1];
 };
-var Pe = function(e) {
-var t = {}, n = _e(e);
-_.assign(t, j.getDeploymentStatusAlerts(e, n), j.getPausedDeploymentAlerts(e));
-var r = we(e);
+var je = function(e) {
+var t = {}, n = we(e);
+_.assign(t, I.getDeploymentStatusAlerts(e, n), I.getPausedDeploymentAlerts(e));
+var r = Pe(e);
 _.each(r, function(e) {
-var n = be(e);
+var n = Se(e);
 _.assign(t, n);
-}), ye(e, t);
+}), be(e, t);
 }, ke = function() {
-_.each(E.deploymentConfigs, Pe);
-}, je = function(e) {
-var t = X(e);
-return t ? _.get(E, [ "replicaSetsByDeploymentUID", t ]) : {};
+_.each(T.deploymentConfigs, je);
 }, Ie = function(e) {
-var t = j.getPausedDeploymentAlerts(e), n = je(e);
+var t = ee(e);
+return t ? _.get(T, [ "replicaSetsByDeploymentUID", t ]) : {};
+}, Re = function(e) {
+var t = I.getPausedDeploymentAlerts(e), n = Ie(e);
 _.each(n, function(e) {
-var n = be(e);
+var n = Se(e);
 _.assign(t, n);
-}), ye(e, t);
-}, Re = function() {
-_.each(E.deployments, Ie);
+}), be(e, t);
 }, Ee = function() {
-Ce(E.replicationControllers), Ce(E.replicaSets), Ce(E.statefulSets), Ce(E.monopods);
-}, Te = _.debounce(function() {
+_.each(T.deployments, Re);
+}, Te = function() {
+_e(T.replicationControllers), _e(T.replicaSets), _e(T.statefulSets), _e(T.monopods);
+}, Ne = _.debounce(function() {
 e.$evalAsync(function() {
-Ee(), ke(), Re();
+Te(), ke(), Ee();
 });
-}, 500), Ne = function(e) {
-_.isEmpty(e) || (h.addLabelSuggestionsFromResources(e, K), "pipeline" !== E.viewBy && h.setLabelSuggestions(K));
-}, De = function(e) {
-_.isEmpty(e) || (h.addLabelSuggestionsFromResources(e, W), "pipeline" === E.viewBy && h.setLabelSuggestions(W));
+}, 500), De = function(e) {
+_.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, W), "pipeline" !== T.viewBy && y.setLabelSuggestions(W));
 }, Ae = function(e) {
-return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!x(e, "openshift.io/deployer-pod-for.name") && (!A(e, "openshift.io/build.name") && "slave" !== x(e, "jenkins")));
-}, $e = function() {
-J.podsByOwnerUID = w.groupByOwnerUID(E.pods), E.monopods = _.filter(J.podsByOwnerUID[""], Ae);
-}, Be = function(e) {
-return !!_.get(e, "status.replicas") || (!A(e, "deploymentConfig") || U(e));
+_.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, Q), "pipeline" === T.viewBy && y.setLabelSuggestions(Q));
+}, $e = function(e) {
+return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!M(e, "openshift.io/deployer-pod-for.name") && (!B(e, "openshift.io/build.name") && "slave" !== M(e, "jenkins")));
+}, Be = function() {
+Y.podsByOwnerUID = P.groupByOwnerUID(T.pods), T.monopods = _.filter(Y.podsByOwnerUID[""], $e);
 }, Le = function(e) {
-return A(e, "deploymentConfig");
-}, Ue = function() {
-if (E.deploymentConfigs && E.replicationControllers) {
+return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || O(e));
+}, Ue = function(e) {
+return B(e, "deploymentConfig");
+}, Oe = function() {
+if (T.deploymentConfigs && T.replicationControllers) {
 var e = [];
-E.replicationControllersByDeploymentConfig = {}, E.currentByDeploymentConfig = {}, Q = {};
+T.replicationControllersByDeploymentConfig = {}, T.currentByDeploymentConfig = {}, J = {};
 var t = {}, n = {};
-_.each(E.replicationControllers, function(r) {
-var a = Le(r) || "";
-(!a || !E.deploymentConfigs[a] && _.get(r, "status.replicas")) && e.push(r);
-var o = Q[a];
-o && !F(r, o) || (Q[a] = r);
+_.each(T.replicationControllers, function(r) {
+var a = Ue(r) || "";
+(!a || !T.deploymentConfigs[a] && _.get(r, "status.replicas")) && e.push(r);
+var o = J[a];
+o && !x(r, o) || (J[a] = r);
 var i;
-"Complete" === A(r, "deploymentStatus") && ((i = t[a]) && !F(r, i) || (t[a] = r)), Be(r) && _.set(n, [ a, r.metadata.name ], r);
+"Complete" === B(r, "deploymentStatus") && ((i = t[a]) && !x(r, i) || (t[a] = r)), Le(r) && _.set(n, [ a, r.metadata.name ], r);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
-var n = m.sortByDeploymentVersion(e, !0);
-E.replicationControllersByDeploymentConfig[t] = n, E.currentByDeploymentConfig[t] = _.head(n);
-}), E.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ke();
+var n = p.sortByDeploymentVersion(e, !0);
+T.replicationControllersByDeploymentConfig[t] = n, T.currentByDeploymentConfig[t] = _.head(n);
+}), T.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ke();
 }
-}, Oe = function(e, t) {
+}, Ve = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
-var n = m.getRevision(e);
-return !n || !!t && m.getRevision(t) === n;
-}, Ve = function() {
-E.replicaSets && N && (E.replicaSetsByDeploymentUID = C.groupByControllerUID(E.replicaSets), E.currentByDeploymentUID = {}, _.each(E.replicaSetsByDeploymentUID, function(e, t) {
+var n = p.getRevision(e);
+return !n || !!t && p.getRevision(t) === n;
+}, Fe = function() {
+T.replicaSets && D && (T.replicaSetsByDeploymentUID = w.groupByControllerUID(T.replicaSets), T.currentByDeploymentUID = {}, _.each(T.replicaSetsByDeploymentUID, function(e, t) {
 if (t) {
-var n = N[t], r = _.filter(e, function(e) {
-return Oe(e, n);
-}), a = m.sortByRevision(r);
-E.replicaSetsByDeploymentUID[t] = a, E.currentByDeploymentUID[t] = _.head(a);
+var n = D[t], r = _.filter(e, function(e) {
+return Ve(e, n);
+}), a = p.sortByRevision(r);
+T.replicaSetsByDeploymentUID[t] = a, T.currentByDeploymentUID[t] = _.head(a);
 }
-}), E.vanillaReplicaSets = _.sortBy(E.replicaSetsByDeploymentUID[""], "metadata.name"), Re());
-}, Fe = {}, xe = function(e) {
-e && J.allServices && _.each(e, function(e) {
-var t = [], n = X(e), r = M(e);
-_.each(Fe, function(e, n) {
-e.matches(r) && t.push(J.allServices[n]);
-}), J.servicesByObjectUID[n] = _.sortBy(t, "metadata.name");
+}), T.vanillaReplicaSets = _.sortBy(T.replicaSetsByDeploymentUID[""], "metadata.name"), Ee());
+}, xe = {}, Me = function(e) {
+e && Y.allServices && _.each(e, function(e) {
+var t = [], n = ee(e), r = q(e);
+_.each(xe, function(e, n) {
+e.matches(r) && t.push(Y.allServices[n]);
+}), Y.servicesByObjectUID[n] = _.sortBy(t, "metadata.name");
 });
-}, Me = function() {
-if (J.allServices) {
-Fe = _.mapValues(J.allServices, function(e) {
+}, qe = function() {
+if (Y.allServices) {
+xe = _.mapValues(Y.allServices, function(e) {
 return new LabelSelector(e.spec.selector);
 });
-var e = [ E.deploymentConfigs, E.vanillaReplicationControllers, E.deployments, E.vanillaReplicaSets, E.statefulSets, E.monopods ];
-_.each(e, xe), oe();
+var e = [ T.deploymentConfigs, T.vanillaReplicationControllers, T.deployments, T.vanillaReplicaSets, T.statefulSets, T.monopods ];
+_.each(e, Me), ie();
 }
-}, qe = function() {
-var e = I.groupByService(E.routes, !0);
-J.routesByService = _.mapValues(e, I.sortRoutesByScore), oe();
 }, ze = function() {
-J.hpaByResource = p.groupHPAs(E.horizontalPodAutoscalers);
-}, He = function(e) {
-var t = L(e), n = E.buildConfigs[t];
+var e = R.groupByService(T.routes, !0);
+Y.routesByService = _.mapValues(e, R.sortRoutesByScore), ie();
+}, He = function() {
+Y.hpaByResource = f.groupHPAs(T.horizontalPodAutoscalers);
+}, Ge = function(e) {
+var t = U(e), n = T.buildConfigs[t];
 if (n) {
-E.recentPipelinesByBuildConfig[t] = E.recentPipelinesByBuildConfig[t] || [], E.recentPipelinesByBuildConfig[t].push(e);
-var r = c.usesDeploymentConfigs(n);
+T.recentPipelinesByBuildConfig[t] = T.recentPipelinesByBuildConfig[t] || [], T.recentPipelinesByBuildConfig[t].push(e);
+var r = l.usesDeploymentConfigs(n);
 _.each(r, function(t) {
-J.recentPipelinesByDeploymentConfig[t] = J.recentPipelinesByDeploymentConfig[t] || [], J.recentPipelinesByDeploymentConfig[t].push(e);
-}), se();
+Y.recentPipelinesByDeploymentConfig[t] = Y.recentPipelinesByDeploymentConfig[t] || [], Y.recentPipelinesByDeploymentConfig[t].push(e);
+}), ce();
 }
-}, Ge = {}, Ke = function() {
-Ge = c.groupBuildConfigsByOutputImage(E.buildConfigs);
-}, We = function(e) {
-var t = X(e);
-if (t) return _.get(J, [ "buildConfigsByObjectUID", t ], []);
+}, Ke = {}, We = function() {
+Ke = l.groupBuildConfigsByOutputImage(T.buildConfigs);
 }, Qe = function(e) {
-var t = [], n = We(e);
+var t = ee(e);
+if (t) return _.get(Y, [ "buildConfigsByObjectUID", t ], []);
+}, Je = function(e) {
+var t = [], n = Qe(e);
 _.each(n, function(e) {
-var n = _.get(J, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
+var n = _.get(Y, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
 t = t.concat(n);
 });
-var r = Z(e);
-_.set(J, [ "recentBuildsByDeploymentConfig", r ], t);
-}, Je = function(e, t) {
-var n = X(t);
-n && _.set(J, [ "buildConfigsByObjectUID", n ], e);
-}, Ye = function() {
+var r = X(e);
+_.set(Y, [ "recentBuildsByDeploymentConfig", r ], t);
+}, Ye = function(e, t) {
+var n = ee(t);
+n && _.set(Y, [ "buildConfigsByObjectUID", n ], e);
+}, Ze = function() {
 var e = [];
-E.deploymentConfigsByPipeline = {}, J.pipelinesByDeploymentConfig = {}, _.each(E.buildConfigs, function(t) {
-if (V(t)) {
+T.deploymentConfigsByPipeline = {}, Y.pipelinesByDeploymentConfig = {}, _.each(T.buildConfigs, function(t) {
+if (F(t)) {
 e.push(t);
-var n = c.usesDeploymentConfigs(t), r = Z(t);
-_.set(E, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
-J.pipelinesByDeploymentConfig[e] = J.pipelinesByDeploymentConfig[e] || [], J.pipelinesByDeploymentConfig[e].push(t);
+var n = l.usesDeploymentConfigs(t), r = X(t);
+_.set(T, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
+Y.pipelinesByDeploymentConfig[e] = Y.pipelinesByDeploymentConfig[e] || [], Y.pipelinesByDeploymentConfig[e].push(t);
 });
 }
-}), E.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), se(), De(E.pipelineBuildConfigs), ce();
-}, Ze = function() {
-J.buildConfigsByObjectUID = {}, _.each(E.deploymentConfigs, function(e) {
+}), T.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), ce(), Ae(T.pipelineBuildConfigs), le();
+}, Xe = function() {
+Y.buildConfigsByObjectUID = {}, _.each(T.deploymentConfigs, function(e) {
 var t = [], n = _.get(e, "spec.triggers");
 _.each(n, function(n) {
 var r = _.get(n, "imageChangeParams.from");
 if (r) {
-var a = O(r, e.metadata.namespace), o = Ge[a];
+var a = V(r, e.metadata.namespace), o = Ke[a];
 _.isEmpty(o) || (t = t.concat(o));
 }
-}), t = _.sortBy(t, "metadata.name"), Je(t, e), Qe(e);
+}), t = _.sortBy(t, "metadata.name"), Ye(t, e), Je(e);
 });
-}, Xe = function() {
-Ye(), Ze();
 }, et = function() {
-_.each(E.deploymentConfigs, Qe);
+Ze(), Xe();
 }, tt = function() {
-if (J.builds && E.buildConfigs) {
-E.recentPipelinesByBuildConfig = {}, J.recentBuildsByBuildConfig = {}, J.recentPipelinesByDeploymentConfig = {};
-var e = {};
-_.each(c.interestingBuilds(J.builds), function(t) {
-var n = L(t);
-V(t) ? He(t) : (e[n] = e[n] || [], e[n].push(t));
-}), E.recentPipelinesByBuildConfig = _.mapValues(E.recentPipelinesByBuildConfig, function(e) {
-return c.sortBuilds(e, !0);
-}), J.recentPipelinesByDeploymentConfig = _.mapValues(J.recentPipelinesByDeploymentConfig, function(e) {
-return c.sortBuilds(e, !0);
-}), J.recentBuildsByBuildConfig = _.mapValues(e, function(e) {
-return c.sortBuilds(e, !0);
-}), et();
-}
+_.each(T.deploymentConfigs, Je);
 }, nt = function() {
-j.setQuotaNotifications(J.quotas, J.clusterQuotas, r.project);
+if (Y.builds && T.buildConfigs) {
+T.recentPipelinesByBuildConfig = {}, Y.recentBuildsByBuildConfig = {}, Y.recentPipelinesByDeploymentConfig = {};
+var e = {};
+_.each(l.interestingBuilds(Y.builds), function(t) {
+var n = U(t);
+F(t) ? Ge(t) : (e[n] = e[n] || [], e[n].push(t));
+}), T.recentPipelinesByBuildConfig = _.mapValues(T.recentPipelinesByBuildConfig, function(e) {
+return l.sortBuilds(e, !0);
+}), Y.recentPipelinesByDeploymentConfig = _.mapValues(Y.recentPipelinesByDeploymentConfig, function(e) {
+return l.sortBuilds(e, !0);
+}), Y.recentBuildsByBuildConfig = _.mapValues(e, function(e) {
+return l.sortBuilds(e, !0);
+}), tt();
+}
+}, rt = function() {
+I.setQuotaNotifications(Y.quotas, Y.clusterQuotas, a.project);
 };
-E.clearFilter = function() {
-h.clear(), E.filterText = "";
+T.clearFilter = function() {
+y.clear(), T.filterText = "";
 }, e.$watch(function() {
-return E.filterText;
+return T.filterText;
 }, _.debounce(function(t, n) {
-t !== n && (J.filterKeywords = v.generateKeywords(t), e.$evalAsync(fe));
+t !== n && (Y.filterKeywords = h.generateKeywords(t), e.$evalAsync(ge));
 }, 50, {
 maxWait: 250
 })), e.$watch(function() {
-return E.filterBy;
+return T.filterBy;
 }, function(e, t) {
-e !== t && (E.clearFilter(), fe());
-}), h.onActiveFiltersChanged(function() {
-e.$evalAsync(fe);
-}), E.startBuild = c.startBuild;
-var rt = function() {
-if (J.bindingsByApplicationUID = {}, J.applicationsByBinding = {}, J.deleteableBindingsByApplicationUID = {}, !_.isEmpty(J.bindings)) {
-var e = [ E.deployments, E.deploymentConfigs, E.vanillaReplicationControllers, E.vanillaReplicaSets, E.statefulSets ];
+e !== t && (T.clearFilter(), ge());
+}), e.browseCatalog = function() {
+C.toProjectCatalog(e.projectName);
+}, y.onActiveFiltersChanged(function() {
+e.$evalAsync(ge);
+}), T.startBuild = l.startBuild;
+var at = function() {
+if (Y.bindingsByApplicationUID = {}, Y.applicationsByBinding = {}, Y.deleteableBindingsByApplicationUID = {}, !_.isEmpty(Y.bindings)) {
+var e = [ T.deployments, T.deploymentConfigs, T.vanillaReplicationControllers, T.vanillaReplicaSets, T.statefulSets ];
 if (!_.some(e, function(e) {
 return !e;
 })) {
-var t = s.getPodPresetSelectorsForBindings(J.bindings);
+var t = c.getPodPresetSelectorsForBindings(Y.bindings);
 _.each(e, function(e) {
 _.each(e, function(e) {
-var n = X(e), r = new LabelSelector(_.get(e, "spec.selector"));
-J.bindingsByApplicationUID[n] = [], J.deleteableBindingsByApplicationUID[n] = [], _.each(t, function(t, a) {
-t.covers(r) && (J.bindingsByApplicationUID[n].push(J.bindings[a]), _.get(J.bindings[a], "metadata.deletionTimestamp") || J.deleteableBindingsByApplicationUID[n].push(J.bindings[a]), J.applicationsByBinding[a] = J.applicationsByBinding[a] || [], J.applicationsByBinding[a].push(e));
+var n = ee(e), r = new LabelSelector(_.get(e, "spec.selector"));
+Y.bindingsByApplicationUID[n] = [], Y.deleteableBindingsByApplicationUID[n] = [], _.each(t, function(t, a) {
+t.covers(r) && (Y.bindingsByApplicationUID[n].push(Y.bindings[a]), _.get(Y.bindings[a], "metadata.deletionTimestamp") || Y.deleteableBindingsByApplicationUID[n].push(Y.bindings[a]), Y.applicationsByBinding[a] = Y.applicationsByBinding[a] || [], Y.applicationsByBinding[a].push(e));
 });
 });
-}), E.bindingsByInstanceRef = _.reduce(E.bindingsByInstanceRef, function(e, t, n) {
+}), T.bindingsByInstanceRef = _.reduce(T.bindingsByInstanceRef, function(e, t, n) {
 return e[n] = _.sortBy(t, function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1103,12 +1156,16 @@ var t = _.get(W.applicationsByBinding, [ e.metadata.name ]);
 =======
 var t = _.get(J.applicationsByBinding, [ e.metadata.name ]);
 >>>>>>> Wait for service classes and plans to load
+=======
+var t = _.get(Y.applicationsByBinding, [ e.metadata.name ]);
+>>>>>>> Add Browse Catalog to Project context view.
 return _.get(_.head(t), [ "metadata", "name" ]) || e.metadata.name;
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 }), e;
 }, {});
 }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1301,59 +1358,77 @@ E.replicationControllers = e.by("metadata.name"), Ue(), xe(E.vanillaReplicationC
 E.deploymentConfigs = e.by("metadata.name"), Ue(), xe(E.deploymentConfigs), xe(E.vanillaReplicationControllers), Ne(E.deploymentConfigs), Re(), Xe(), et(), rt(), fe(), y.log("deploymentconfigs (subscribe)", E.deploymentConfigs);
 })), ot.push(d.watch({
 >>>>>>> Wait for service classes and plans to load
+=======
+}, ot = function() {
+Y.bindableServiceInstances = c.filterBindableServiceInstances(Y.serviceInstances, Y.serviceClasses, Y.servicePlans), Y.orderedServiceInstances = c.sortServiceInstances(Y.serviceInstances, Y.serviceClasses);
+}, it = [];
+j.get(a.project).then(_.spread(function(t, r) {
+Y.project = e.project = t, Y.context = r;
+var a = function() {
+T.pods && v.fetchReferencedImageStreamImages(T.pods, Y.imagesByDockerReference, Y.imageStreamImageRefByDockerReference, r);
+};
+it.push(m.watch("pods", r, function(e) {
+T.pods = e.by("metadata.name"), Be(), a(), Ne(), Me(T.monopods), _e(T.monopods), De(T.monopods), ge(), b.log("pods (subscribe)", T.pods);
+})), it.push(m.watch("replicationcontrollers", r, function(e) {
+T.replicationControllers = e.by("metadata.name"), Oe(), Me(T.vanillaReplicationControllers), Me(T.monopods), _e(T.vanillaReplicationControllers), De(T.vanillaReplicationControllers), at(), ge(), b.log("replicationcontrollers (subscribe)", T.replicationControllers);
+})), it.push(m.watch("deploymentconfigs", r, function(e) {
+T.deploymentConfigs = e.by("metadata.name"), Oe(), Me(T.deploymentConfigs), Me(T.vanillaReplicationControllers), De(T.deploymentConfigs), Ee(), et(), tt(), at(), ge(), b.log("deploymentconfigs (subscribe)", T.deploymentConfigs);
+})), it.push(m.watch({
+>>>>>>> Add Browse Catalog to Project context view.
 group: "extensions",
 resource: "replicasets"
 }, r, function(e) {
-E.replicaSets = e.by("metadata.name"), Ve(), xe(E.vanillaReplicaSets), xe(E.monopods), Ce(E.vanillaReplicaSets), Ne(E.vanillaReplicaSets), rt(), fe(), y.log("replicasets (subscribe)", E.replicaSets);
-})), ot.push(d.watch({
+T.replicaSets = e.by("metadata.name"), Fe(), Me(T.vanillaReplicaSets), Me(T.monopods), _e(T.vanillaReplicaSets), De(T.vanillaReplicaSets), at(), ge(), b.log("replicasets (subscribe)", T.replicaSets);
+})), it.push(m.watch({
 group: "apps",
 resource: "deployments"
 }, r, function(e) {
-N = e.by("metadata.uid"), E.deployments = _.sortBy(N, "metadata.name"), Ve(), xe(E.deployments), xe(E.vanillaReplicaSets), Ne(E.deployments), rt(), fe(), y.log("deployments (subscribe)", E.deploymentsByUID);
-})), ot.push(d.watch("builds", r, function(e) {
-J.builds = e.by("metadata.name"), tt(), y.log("builds (subscribe)", J.builds);
-})), ot.push(d.watch({
+D = e.by("metadata.uid"), T.deployments = _.sortBy(D, "metadata.name"), Fe(), Me(T.deployments), Me(T.vanillaReplicaSets), De(T.deployments), at(), ge(), b.log("deployments (subscribe)", T.deploymentsByUID);
+})), it.push(m.watch("builds", r, function(e) {
+Y.builds = e.by("metadata.name"), nt(), b.log("builds (subscribe)", Y.builds);
+})), it.push(m.watch({
 group: "apps",
 resource: "statefulsets"
 }, r, function(e) {
-E.statefulSets = e.by("metadata.name"), xe(E.statefulSets), xe(E.monopods), Ce(E.statefulSets), Ne(E.statefulSets), rt(), fe(), y.log("statefulsets (subscribe)", E.statefulSets);
+T.statefulSets = e.by("metadata.name"), Me(T.statefulSets), Me(T.monopods), _e(T.statefulSets), De(T.statefulSets), at(), ge(), b.log("statefulsets (subscribe)", T.statefulSets);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch("services", r, function(e) {
-J.allServices = e.by("metadata.name"), Me(), y.log("services (subscribe)", J.allServices);
+})), it.push(m.watch("services", r, function(e) {
+Y.allServices = e.by("metadata.name"), qe(), b.log("services (subscribe)", Y.allServices);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch("routes", r, function(e) {
-E.routes = e.by("metadata.name"), qe(), y.log("routes (subscribe)", E.routes);
+})), it.push(m.watch("routes", r, function(e) {
+T.routes = e.by("metadata.name"), ze(), b.log("routes (subscribe)", T.routes);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch("buildConfigs", r, function(e) {
-E.buildConfigs = e.by("metadata.name"), Ke(), Xe(), tt(), fe(), y.log("buildconfigs (subscribe)", E.buildConfigs);
+})), it.push(m.watch("buildConfigs", r, function(e) {
+T.buildConfigs = e.by("metadata.name"), We(), et(), nt(), ge(), b.log("buildconfigs (subscribe)", T.buildConfigs);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch({
+})), it.push(m.watch({
 group: "autoscaling",
 resource: "horizontalpodautoscalers",
 version: "v1"
 }, r, function(e) {
-E.horizontalPodAutoscalers = e.by("metadata.name"), ze(), y.log("autoscalers (subscribe)", E.horizontalPodAutoscalers);
+T.horizontalPodAutoscalers = e.by("metadata.name"), He(), b.log("autoscalers (subscribe)", T.horizontalPodAutoscalers);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch("imagestreams", r, function(e) {
-D = e.by("metadata.name"), g.buildDockerRefMapForImageStreams(D, J.imageStreamImageRefByDockerReference), a(), y.log("imagestreams (subscribe)", D);
+})), it.push(m.watch("imagestreams", r, function(e) {
+A = e.by("metadata.name"), v.buildDockerRefMapForImageStreams(A, Y.imageStreamImageRefByDockerReference), a(), b.log("imagestreams (subscribe)", A);
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
-})), ot.push(d.watch("resourcequotas", r, function(e) {
-J.quotas = e.by("metadata.name"), nt();
+})), it.push(m.watch("resourcequotas", r, function(e) {
+Y.quotas = e.by("metadata.name"), rt();
 }, {
 poll: !0,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1408,6 +1483,10 @@ W.clusterQuotas = e.by("metadata.name"), et();
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 J.clusterQuotas = e.by("metadata.name"), nt();
 >>>>>>> Wait for service classes and plans to load
+=======
+})), it.push(m.watch("appliedclusterresourcequotas", r, function(e) {
+Y.clusterQuotas = e.by("metadata.name"), rt();
+>>>>>>> Add Browse Catalog to Project context view.
 }, {
 poll: !0,
 pollInterval: 6e4
@@ -1542,18 +1621,25 @@ _.has(W, [ "serviceClasses", t ]) || i[t] || (i[t] = u.get(M, t, {}).then(functi
 W.serviceClasses[t] = e;
 =======
 var o, i, s = {}, c = {};
+<<<<<<< HEAD
 l.SERVICE_CATALOG_ENABLED && B(H, "watch") && (o = function(e) {
 var t = R.getServiceClassNameForInstance(e), r = _.get(J, [ "serviceClasses", t ]);
 return r ? n.when(r) : (s[t] || (s[t] = d.get(z, t, {}).then(function(e) {
 return J.serviceClasses[t] = e, e;
 >>>>>>> Wait for service classes and plans to load
+=======
+u.SERVICE_CATALOG_ENABLED && L(G, "watch") && (o = function(e) {
+var t = E.getServiceClassNameForInstance(e), r = _.get(Y, [ "serviceClasses", t ]);
+return r ? n.when(r) : (s[t] || (s[t] = m.get(H, t, {}).then(function(e) {
+return Y.serviceClasses[t] = e, e;
+>>>>>>> Add Browse Catalog to Project context view.
 }).finally(function() {
 delete c[t];
 })), s[t]);
 }, i = function(e) {
-var t = R.getServicePlanNameForInstance(e), r = _.get(J, [ "servicePlans", t ]);
-return r ? n.when(r) : (c[t] || (c[t] = d.get(G, t, {}).then(function(e) {
-return J.servicePlans[t] = e, e;
+var t = E.getServicePlanNameForInstance(e), r = _.get(Y, [ "servicePlans", t ]);
+return r ? n.when(r) : (c[t] || (c[t] = m.get(K, t, {}).then(function(e) {
+return Y.servicePlans[t] = e, e;
 }).finally(function() {
 <<<<<<< HEAD
 delete s[t];
@@ -1577,24 +1663,29 @@ poll: I,
 =======
 delete c[t];
 })), c[t]);
-}, ot.push(d.watch(H, r, function(e) {
-J.serviceInstances = e.by("metadata.name");
+}, it.push(m.watch(G, r, function(e) {
+Y.serviceInstances = e.by("metadata.name");
 var t = [];
-_.each(J.serviceInstances, function(e) {
-var n = j.getServiceInstanceAlerts(e);
-ye(e, n), t.push(o(e)), t.push(i(e));
+_.each(Y.serviceInstances, function(e) {
+var n = I.getServiceInstanceAlerts(e);
+be(e, n), t.push(o(e)), t.push(i(e));
 }), k.waitForAll(t).finally(function() {
-at(), fe();
-}), Ne(J.serviceInstances);
+ot(), ge();
+}), De(Y.serviceInstances);
 }, {
+<<<<<<< HEAD
 poll: T,
 >>>>>>> Wait for service classes and plans to load
+=======
+poll: N,
+>>>>>>> Add Browse Catalog to Project context view.
 pollInterval: 6e4
-}))), l.SERVICE_CATALOG_ENABLED && B(q, "watch") && ot.push(d.watch(q, r, function(e) {
-J.bindings = e.by("metadata.name"), E.bindingsByInstanceRef = _.groupBy(J.bindings, "spec.instanceRef.name"), rt();
+}))), u.SERVICE_CATALOG_ENABLED && L(z, "watch") && it.push(m.watch(z, r, function(e) {
+Y.bindings = e.by("metadata.name"), T.bindingsByInstanceRef = _.groupBy(Y.bindings, "spec.instanceRef.name"), at();
 }, {
-poll: T,
+poll: N,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1627,16 +1718,20 @@ W.limitRanges = e.by("metadata.name");
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 J.limitRanges = e.by("metadata.name");
 >>>>>>> Wait for service classes and plans to load
+=======
+})), m.list("limitranges", r, function(e) {
+Y.limitRanges = e.by("metadata.name");
+>>>>>>> Add Browse Catalog to Project context view.
 });
-var m = u.SAMPLE_PIPELINE_TEMPLATE;
-m && d.get("templates", m.name, {
-namespace: m.namespace
+var l = d.SAMPLE_PIPELINE_TEMPLATE;
+l && m.get("templates", l.name, {
+namespace: l.namespace
 }, {
 errorNotification: !1
 }).then(function(t) {
-E.samplePipelineURL = S.createFromTemplateURL(t, e.projectName);
+T.samplePipelineURL = C.createFromTemplateURL(t, e.projectName);
 }), e.$on("$destroy", function() {
-d.unwatchAll(ot), $(window).off(".overview");
+m.unwatchAll(it), $(window).off(".overview");
 });
 }));
 }
@@ -2324,6 +2419,13 @@ label: "Monitoring",
 iconClass: "pficon pficon-screen",
 href: "/monitoring",
 prefixes: [ "/browse/events" ]
+}, {
+label: "Catalog",
+iconClass: "pficon pficon-service-catalog",
+href: "/catalog",
+canI: {
+addToProject: !0
+}
 } ],
 CATALOG_CATEGORIES: [ {
 id: "languages",
@@ -2578,6 +2680,7 @@ controller: "CreateProjectController"
 }).when("/project/:project/catalog", {
 templateUrl: "views/project-browse-catalog.html",
 controller: "ProjectBrowseCatalogController"
+<<<<<<< HEAD
 =======
 label: "Technologies",
 items: [ {
@@ -2699,6 +2802,8 @@ reloadOnSearch: !1
 templateUrl: "views/create-project.html",
 controller: "CreateProjectController"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+>>>>>>> Add Browse Catalog to Project context view.
 }).when("/project/:project", {
 redirectTo: function(e) {
 return "/project/" + encodeURIComponent(e.project) + "/overview";
@@ -3695,14 +3800,21 @@ toProjectMembership: function(t) {
 e.path(this.membershipURL(t));
 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 catalogURL: function(e) {
 var t = angular.isString(e) ? e : _.get(e, "metadata.name");
 return t ? "project/" + encodeURIComponent(t) + "/catalog" : "catalog";
+=======
+catalogURL: function(e) {
+var t = angular.isString(e) ? e : _.get(e, "metadata.name");
+return t ? "project/" + encodeURIComponent(t) + "/catalog" : "./";
+>>>>>>> Add Browse Catalog to Project context view.
 },
 toProjectCatalog: function(t, n) {
 var r = e.path(this.catalogURL(t));
 n && r.search(n);
 },
+<<<<<<< HEAD
 quotaURL: function(e) {
 return "project/" + encodeURIComponent(e) + "/quota";
 },
@@ -3747,6 +3859,8 @@ switch (t) {
 case "Build":
 var l = o("buildConfigForBuild")(e), u = d(e, a);
 =======
+=======
+>>>>>>> Add Browse Catalog to Project context view.
 quotaURL: function(e) {
 return "project/" + encodeURIComponent(e) + "/quota";
 },
@@ -6717,7 +6831,7 @@ target: "_blank"
 };
 }
 return null;
-}, k = {
+}, j = {
 cpu: "resources.requests.cpu",
 "requests.cpu": "resources.requests.cpu",
 "limits.cpu": "resources.limits.cpu",
@@ -6726,8 +6840,8 @@ memory: "resources.requests.memory",
 "limits.memory": "resources.limits.memory",
 persistentvolumeclaims: "resources.limits.persistentvolumeclaims",
 "requests.storage": "resources.request.storage"
-}, j = function(e, t, n, r) {
-var a = e.status.total || e.status, o = k[r], i = 0;
+}, k = function(e, t, n, r) {
+var a = e.status.total || e.status, o = j[r], i = 0;
 if (_.each(n.spec.containers, function(e) {
 var t = _.get(e, o);
 t && (i += f(t));
@@ -6751,7 +6865,7 @@ var o = t.status.total || t.status;
 if (("Pod" !== e.kind || "pods" !== a) && _.has(o, [ "hard", a ]) && _.has(o, [ "used", a ])) {
 var i = P(t, e, a);
 if (i) n.push(i); else if ("pods" !== a) {
-var s = j(t, e, r, a);
+var s = k(t, e, r, a);
 s && n.push(s);
 }
 }
@@ -8163,9 +8277,50 @@ var a = m(_.get(t, [ "used", r ]));
 return !!a && e <= a;
 }
 });
+<<<<<<< HEAD
 };
 return _.some(e, r) || _.some(t, r);
 };
+=======
+}, e.closeOrderingPanel = function() {
+e.template && (b(), e.template = null), _.set(e, "ordering.panelName", "");
+}, e.deployImageSelected = function() {
+_.set(e, "ordering.panelName", "deployImage");
+}, e.fromFileSelected = function() {
+_.set(e, "ordering.panelName", "fromFile");
+}, e.fromProjectSelected = function() {
+_.set(e, "ordering.panelName", "fromProject");
+}, n.withUser().then(function() {
+r.getCatalogItems().then(function(t) {
+e.catalogItems = t, v();
+});
+}), e.$on("$destroy", function() {
+b();
+}), y && e.$on("$locationChangeStart", function(t) {
+f.search().startTour && (e.startGuidedTour(), t.preventDefault());
+});
+} ]), angular.module("openshiftConsole").controller("ProjectBrowseCatalogController", [ "$scope", "$q", "$routeParams", "DataService", "AuthorizationService", "Catalog", "CatalogService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {
+var u = n.project;
+l.get(u).then(function() {
+a.getProjectRules(u).then(function() {
+if (a.canIAddToProject(u)) {
+var r, l, d = i.getCatalogItems().then(function(e) {
+r = e;
+}), m = o.getProjectCatalogItems(u).then(_.spread(function(e, t) {
+l = e, t && c.addNotification({
+type: "error",
+message: t
+});
+}));
+t.all([ d, m ]).then(function() {
+e.catalogItems = o.sortCatalogItems(_.concat(r, l)), n.filter && (e.keywordFilter = n.filter);
+});
+} else s.toProjectOverview(u);
+});
+});
+} ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
+var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
+>>>>>>> Add Browse Catalog to Project context view.
 return {
 filterQuotasForResource: y,
 isBestEffortPod: g,
@@ -8402,6 +8557,7 @@ i.length || _.set(a, [ "", t.metadata.name ], t), _.each(i, function(e) {
 var n = _.get(e, r.key || "metadata.name", "");
 _.set(a, [ n, t.metadata.name ], t);
 });
+<<<<<<< HEAD
 }
 }), a;
 }
@@ -8434,6 +8590,18 @@ if (!r.include || r.include(t)) {
 var i = _.filter(n, function(n) {
 var a = o[n.metadata.uid];
 return r.matchTemplate ? a.matches(e(t)) : r.matchSelector ? a.covers(new LabelSelector(t.spec.selector)) : a.matches(t);
+=======
+var t = _.head(e);
+return t.isVisible = !0, t.isUsed = !0, n.selectedTerminalContainer = t, e;
+}, j = function(e) {
+n.noContainersYet && (n.noContainersYet = 0 === n.containersRunning(e.status.containerStatuses));
+}, k = function(e) {
+_.each(e, function(e) {
+var t = _.find(n.pod.status.containerStatuses, {
+name: e.containerName
+}), r = w(t);
+e.containerState = r;
+>>>>>>> Add Browse Catalog to Project context view.
 });
 i.length || _.set(a, [ "", t.metadata.name ], t), _.each(i, function(e) {
 var n = _.get(e, r.key || "metadata.name", "");
@@ -8443,9 +8611,26 @@ _.set(a, [ n, t.metadata.name ], t);
 }), a;
 }
 };
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").factory("CatalogService", [ "$filter", "$q", "APIService", "AuthService", "Catalog", "Constants", "KeywordService", "Logger", "NotificationsService", function(e, t, n, r, a, o, i, s, c) {
 var l, u = e("tags"), d = n.getPreferredVersion("servicebindings"), m = n.getPreferredVersion("clusterserviceclasses"), p = n.getPreferredVersion("serviceinstances"), f = n.getPreferredVersion("clusterserviceplans"), g = !o.DISABLE_SERVICE_CATALOG_LANDING_PAGE && n.apiInfo(d) && n.apiInfo(m) && n.apiInfo(p) && n.apiInfo(f), v = function() {
 s.debug("ProjectsService: clearing catalog items cache"), l = null;
+=======
+p.get(t.project).then(_.spread(function(r, o) {
+h = o, n.project = r, n.projectContext = o, i.get(n.podsVersion, t.pod, o, {
+errorNotification: !1
+}).then(function(e) {
+R(e);
+var r = {};
+r[e.metadata.name] = e, n.logOptions.container = t.container || e.spec.containers[0].name, n.containerTerminals = P(), j(e), c.fetchReferencedImageStreamImages(r, n.imagesByDockerReference, n.imageStreamImageRefByDockerReference, h), v.push(i.watchObject(n.podsVersion, t.pod, o, function(e, t) {
+R(e, t), k(n.containerTerminals), j(e);
+}));
+}, function(t) {
+n.loaded = !0, n.alerts.load = {
+type: "error",
+message: "The pod details could not be loaded.",
+details: e("getErrorDetails")(t)
+>>>>>>> Add Browse Catalog to Project context view.
 };
 r.onUserChanged(v), r.onLogout(v);
 var h = function() {
@@ -8564,6 +8749,7 @@ c.addNotification(n);
 }
 return l = e, e;
 }));
+<<<<<<< HEAD
 },
 getCategoryItem: function(e) {
 <<<<<<< HEAD
@@ -8582,6 +8768,20 @@ return y[e];
 >>>>>>> Add search catalog in project context
 },
 categorizeImageStreams: function(e) {
+=======
+} ]), angular.module("openshiftConsole").controller("OverviewController", [ "$scope", "$filter", "$q", "$location", "$routeParams", "AlertMessageService", "APIService", "AppsService", "BindingService", "BuildsService", "CatalogService", "Constants", "DataService", "DeploymentsService", "HPAService", "HTMLService", "ImageStreamResolver", "KeywordService", "LabelFilter", "Logger", "MetricsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "PromiseUtils", "ResourceAlertsService", "RoutesService", "ServiceInstancesService", OverviewController ]), angular.module("openshiftConsole").controller("QuotaController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "Logger", "ProjectsService", function(e, t, n, r, a, o, i) {
+n.projectName = t.project, n.limitRanges = {}, n.limitsByType = {}, n.labelSuggestions = {}, n.alerts = n.alerts || {}, n.quotaHelp = "Limits resource usage within this project.", n.emptyMessageLimitRanges = "Loading...", n.limitRangeHelp = "Defines minimum and maximum constraints for runtime resources such as memory and CPU.", n.renderOptions = n.renderOptions || {}, n.renderOptions.hideFilterWidget = !0;
+var s = r.getPreferredVersion("appliedclusterresourcequotas"), c = r.getPreferredVersion("resourcequotas"), l = r.getPreferredVersion("limitranges"), u = [], d = e("usageValue");
+n.isAtLimit = function(e, t) {
+var n = e.status.total || e.status, r = d(_.get(n, [ "hard", t ]));
+if (!r) return !1;
+var a = d(_.get(n, [ "used", t ]));
+return !!a && a >= r;
+};
+var m = e("humanizeQuotaResource"), p = function(e, t) {
+return "cpu" === e || "requests.cpu" === e ? "cpu" === t || "requests.cpu" === t ? 0 : -1 : "cpu" === t || "requests.cpu" === t ? 1 : "memory" === e || "requests.memory" === e ? "memory" === t || "requests.memory" === t ? 0 : -1 : "memory" === t || "requests.memory" === t ? 1 : "limits.cpu" === e ? "limits.cpu" === t ? 0 : -1 : "limits.cpu" === t ? 1 : "limits.memory" === e ? "limits.memory" === t ? 0 : -1 : "limits.memory" === t ? 1 : (e = m(e), t = m(t), e.localeCompare(t));
+}, f = function(e) {
+>>>>>>> Add Browse Catalog to Project context view.
 var t = {};
 return _.each(e, function(e) {
 if (e.status) {
@@ -8742,6 +8942,7 @@ _.each(e.spec.tags, function(e) {
 if (C(e)) return i[e.name] = e.from.name, s[e.from.name] = s[e.from.name] || [], void s[e.from.name].push(e.name);
 o.push(e);
 });
+<<<<<<< HEAD
 var c = _.keyBy(o, "name");
 _.each(t, function(e) {
 e.test(r) || a && e.test(a) || _.each(o, function(t) {
@@ -8845,6 +9046,52 @@ break;
 
 case "DeploymentConfig":
 r = "oc logs dc/" + e.metadata.name;
+=======
+var C = r("orderObjectsByDate"), w = [ "metadata.name" ], P = [], j = function() {
+n.filteredPods = s.filterForKeywords(S, w, P), n.filteredReplicationControllers = s.filterForKeywords(y, w, P), n.filteredReplicaSets = s.filterForKeywords(b, w, P), n.filteredBuilds = s.filterForKeywords(h, w, P), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+}, k = function(e) {
+n.logOptions.pods[e.metadata.name] = {
+container: e.spec.containers[0].name
+}, n.logCanRun.pods[e.metadata.name] = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase);
+}, I = function(e) {
+n.logOptions.replicationControllers[e.metadata.name] = {};
+var t = r("annotation")(e, "deploymentVersion");
+t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
+}, R = function(e) {
+n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
+}, E = function() {
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+}, T = function() {
+S = _.filter(n.pods, function(e) {
+return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
+}), n.filteredPods = s.filterForKeywords(S, w, P);
+}, N = r("isIncompleteBuild"), D = r("buildConfigForBuild"), A = r("isRecentBuild"), B = function() {
+moment().subtract(5, "m");
+h = _.filter(n.builds, function(e) {
+if (!n.filters.hideOlderResources) return !0;
+if (N(e)) return !0;
+var t = D(e);
+return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
+}), n.filteredBuilds = s.filterForKeywords(h, w, P);
+}, L = r("deploymentStatus"), U = r("deploymentIsInProgress"), O = function() {
+y = _.filter(n.replicationControllers, function(e) {
+return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
+}), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
+}, V = function() {
+b = _.filter(n.replicaSets, function(e) {
+return !n.filters.hideOlderResources || _.get(e, "status.replicas");
+}), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
+};
+n.toggleItem = function(e, t, a, o) {
+var i = $(e.target);
+if (o || !i || !i.closest("a", t).length) {
+var s, c;
+switch (a.kind) {
+case "Build":
+s = !n.expanded.builds[a.metadata.name], n.expanded.builds[a.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, a);
+var l = _.get(n.podsByName, r("annotation")(a, "buildPod"));
+l && p.$emit(c, l);
+>>>>>>> Add Browse Catalog to Project context view.
 break;
 
 case "ReplicationController":
@@ -8897,6 +9144,7 @@ return null;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 return r += " -n " + e.metadata.namespace;
 }
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("EnvironmentService", [ "$filter", "keyValueEditorUtils", function(e, t) {
@@ -8921,6 +9169,50 @@ var b = c(a);
 _.each(b, function(a) {
 a.env = a.env || [];
 >>>>>>> Create reusable edit-environment-variables component
+=======
+}, n.viewPodsForSet = function(e) {
+var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
+_.isEmpty(t) || u.toPodsForDeployment(e, t);
+}, m.get(e.project).then(_.spread(function(e, r) {
+n.project = e, n.projectContext = r, g.push(o.watch("pods", r, function(e) {
+n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), T(), c.log("pods", n.pods);
+})), g.push(o.watch({
+resource: "statefulsets",
+group: "apps",
+version: "v1beta1"
+}, r, function(e) {
+n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("statefulSets", n.statefulSets);
+}, {
+poll: f,
+pollInterval: 6e4
+})), g.push(o.watch("replicationcontrollers", r, function(e) {
+n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), O(), c.log("replicationcontrollers", n.replicationControllers);
+})), g.push(o.watch("builds", r, function(e) {
+n.builds = C(e.by("metadata.name"), !0), n.latestBuildByConfig = a.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, R), B(), c.log("builds", n.builds);
+})), g.push(o.watch({
+group: "extensions",
+resource: "replicasets"
+}, r, function(e) {
+n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, V(), c.log("replicasets", n.replicaSets);
+}, {
+poll: f,
+pollInterval: 6e4
+})), n.$on("$destroy", function() {
+o.unwatchAll(g);
+}), n.$watch("filters.hideOlderResources", function() {
+T(), B(), O(), V(), E();
+var e = t.search();
+e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
+}), n.$watch("kindSelector.selected.kind", function() {
+var e = t.search();
+e.kind = n.kindSelector.selected.kind, t.replace().search(e);
+}), n.$watch("filters.text", _.debounce(function() {
+n.filterKeywords = P = s.generateKeywords(n.filters.text), n.$apply(j);
+}, 50, {
+maxWait: 250
+})), n.$watch("renderOptions.collapseEventsSidebar", function(e, t) {
+e !== t && (localStorage.setItem("monitoring.eventsidebar.collapsed", n.renderOptions.collapseEventsSidebar ? "true" : "false"), p.$emit("metrics.charts.resize"));
+>>>>>>> Add Browse Catalog to Project context view.
 });
 },
 compact: function(e) {
@@ -8986,7 +9278,70 @@ if (r[o].name !== a[o].name) return !1;
 if (i = r[o].env || [], s = a[o].env || [], c = r[o].envFrom || [], l = a[o].envFrom || [], !_.isEqual(i, s) || !_.isEqual(c, l)) return !1;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }
+<<<<<<< HEAD
 return !0;
+=======
+});
+});
+}, j = function(e) {
+c.list("rolebindings", f, null, {
+errorNotification: !1
+}).then(function(e) {
+angular.extend(r, {
+canShowRoles: !0,
+roleBindings: e.by("metadata.name"),
+subjectKindsForUI: u.mapRolebindingsForUI(e.by("metadata.name"), b)
+}), w();
+}, function() {
+e && (r.roleBindings[e.metadata.name] = e, r.subjectKindsForUI = u.mapRolebindingsForUI(r.roleBindings, b)), w();
+});
+}, k = function(t, n) {
+r.disableAddForm = !0, m.create(t, n, g, f).then(function() {
+j(), C("success", S.update.subject.success({
+roleName: t.metadata.name,
+subjectName: n.name
+}));
+}, function(r) {
+w(), j(), C("error", S.update.subject.error({
+roleName: t.metadata.name,
+subjectName: n.name
+}), S.errorReason({
+httpErr: e("getErrorDetails")(r)
+}));
+});
+}, I = function(t, n, a) {
+r.disableAddForm = !0, m.addSubject(t, n, a, f).then(function() {
+j(), C("success", S.update.subject.success({
+roleName: t.roleRef.name,
+subjectName: n.name
+}));
+}, function(r) {
+w(), j(), C("error", S.update.subject.error({
+roleName: t.roleRef.name,
+subjectName: n.name
+}), S.errorReason({
+httpErr: e("getErrorDetails")(r)
+}));
+});
+}, R = {};
+n.tab && (R[n.tab] = !0);
+var E = u.getSubjectKinds();
+angular.extend(r, {
+selectedTab: R,
+projectName: g,
+forms: {},
+subjectKinds: E,
+newBinding: {
+role: "",
+kind: n.tab || "User",
+name: ""
+},
+toggleEditMode: function() {
+w(), r.mode.edit = !r.mode.edit;
+},
+mode: {
+edit: !1
+>>>>>>> Add Browse Catalog to Project context view.
 },
 mergeEdits: function(e, t) {
 <<<<<<< HEAD
@@ -9087,12 +9442,58 @@ name: "",
 value: ""
 });
 },
+<<<<<<< HEAD
 addEntryWithSelectors: function(e) {
 e && e.push({
 name: "",
 selectedValueFrom: null,
 selectedValueFromKey: null,
 valueFrom: {}
+=======
+refreshProjects: function(e) {
+e && !_.includes(r.projects, e) ? r.projects = [ e ].concat(t) : r.projects = t;
+}
+});
+}), l.get(n.project).then(_.spread(function(n, a) {
+f = a, j(), P(f), angular.extend(r, {
+project: n,
+subjectKinds: E,
+canUpdateRolebindings: y("rolebindings", "update", g),
+confirmRemove: function(n, a, i, c) {
+var l = null, d = T(n, a, i, r.user.metadata.name);
+_.isEqual(n, r.user.metadata.name) && u.isLastRole(r.user.metadata.name, r.roleBindings) && (l = !0), o.open({
+animation: !0,
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return d;
+}
+}
+}).result.then(function() {
+m.removeSubject(n, i, c, r.roleBindings, f).then(function(e) {
+l ? t.url("./") : (s.getProjectRules(g, !0).then(function() {
+j(e[0]);
+var t = y("rolebindings", "update", g);
+angular.extend(r, {
+canUpdateRolebindings: t,
+mode: {
+edit: !!r.mode.edit && t
+}
+});
+}), C("success", S.remove.success({
+roleName: i,
+subjectName: n
+})));
+}, function(t) {
+C("error", S.remove.error({
+roleName: i,
+subjectName: n
+}), S.errorReason({
+httpErr: e("getErrorDetails")(t)
+}));
+});
+>>>>>>> Add Browse Catalog to Project context view.
 });
 },
 altTextForValueFrom: function(e, t) {
@@ -9110,14 +9511,30 @@ metadata: {
 name: e.valueFrom[n.config].name,
 namespace: t
 }
+<<<<<<< HEAD
 }, e.refType = n.config) : e.valueFrom[n.secret] ? (e.apiObj = {
 kind: "Secret",
 metadata: {
 name: e.valueFrom[n.secret].name,
 namespace: t
+=======
+});
+i && _.some(i.subjects, o) ? C("error", S.update.subject.exists({
+roleName: n.metadata.name,
+subjectName: e
+})) : i ? I(i, o, a) : k(n, o);
+>>>>>>> Add Browse Catalog to Project context view.
 }
 }, e.refType = n.secret, e.valueIcon = "fa fa-user-secret") : e.valueFrom[n.field] ? (e.isReadonlyValue = !0, e.refType = n.field, e.valueAlt = "Set to the field " + e.valueFrom.fieldRef.fieldPath + " in current object") : (e.isReadonlyValue = !0, e.valueAlt = "Set to a reference on a " + _.head(_.keys(e.valueFrom)));
 }
+<<<<<<< HEAD
+=======
+});
+};
+j(), angular.extend(r, {
+toggle: {
+roles: !1
+>>>>>>> Add Browse Catalog to Project context view.
 },
 setEntryPerms: function(e, t, n) {
 e.valueFrom && (e.valueFrom.configMapKeyRef && (n || (e.isReadonlyValue = !0)), e.valueFrom.secretKeyRef && (t || (e.isReadonlyValue = !0)));
@@ -9813,6 +10230,7 @@ details: e("getErrorDetails")(n)
 });
 });
 });
+<<<<<<< HEAD
 }
 };
 <<<<<<< HEAD
@@ -9840,6 +10258,24 @@ cancelButtonText: "Cancel",
 delete: function() {
 a.close("delete");
 }
+=======
+}));
+} ]), angular.module("openshiftConsole").controller("DeploymentConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "ModalsService", "Navigate", "NotificationsService", "Logger", "ProjectsService", "StorageService", "LabelFilter", "labelNameFilter", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v) {
+var h = {};
+e.projectName = n.project, e.deploymentConfigName = n.deploymentconfig, e.deploymentConfig = null, e.deployments = {}, e.unfilteredDeployments = {}, e.imagesByDockerReference = {}, e.builds = {}, e.labelSuggestions = {}, e.forms = {}, e.alerts = {}, e.breadcrumbs = a.getBreadcrumbs({
+name: n.deploymentconfig,
+kind: "DeploymentConfig",
+namespace: n.project
+}), e.emptyMessage = "Loading...", e.deploymentConfigsInstantiateVersion = r.getPreferredVersion("deploymentconfigs/instantiate"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.horizontalPodAutoscalersVersion = r.getPreferredVersion("horizontalpodautoscalers");
+var y = r.getPreferredVersion("builds"), b = r.getPreferredVersion("imagestreams"), S = r.getPreferredVersion("limitranges"), C = r.getPreferredVersion("replicationcontrollers");
+e.healthCheckURL = u.healthCheckURL(n.project, "DeploymentConfig", n.deploymentconfig, e.deploymentConfigsVersion.group);
+var w = t("mostRecent"), P = t("orderObjectsByDate"), j = [];
+p.get(n.project).then(_.spread(function(r, a) {
+function u() {
+g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
+type: "warning",
+details: "The active filters are hiding all deployments."
+>>>>>>> Add Browse Catalog to Project context view.
 };
 return (a = n.open({
 animation: !0,
@@ -9855,6 +10291,7 @@ g(e, t), f(e);
 });
 }
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f) {
 =======
 } ]), angular.module("openshiftConsole").controller("LandingPageController", [ "$scope", "$rootScope", "AuthService", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "RecentlyViewedServiceItems", "GuidedTourService", "HTMLService", "$timeout", "$q", "$routeParams", "$location", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f) {
@@ -9895,6 +10332,16 @@ n.services = e.select(n.unfilteredServices), r();
 }), n.$on("$destroy", function() {
 a.unwatchAll(l);
 });
+=======
+o.get(e.deploymentConfigsVersion, n.deploymentconfig, a, {
+errorNotification: !1
+}).then(function(r) {
+e.loaded = !0, e.deploymentConfig = r, e.strategyParams = t("deploymentStrategyParams")(r), p(), j.push(o.watchObject(e.deploymentConfigsVersion, n.deploymentconfig, a, function(t, n) {
+"DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This deployment configuration has been deleted."
+}), e.deploymentConfig = t, e.updatingPausedState = !1, p(), c.fetchReferencedImageStreamImages([ t.spec.template ], e.imagesByDockerReference, h, a);
+>>>>>>> Add Browse Catalog to Project context view.
 }));
 } ]), angular.module("openshiftConsole").controller("ServiceController", [ "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", "$filter", function(e, t, n, r, a, o) {
 e.projectName = t.project, e.service = null, e.services = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
@@ -9905,6 +10352,7 @@ title: t.service
 } ], e.podFailureReasons = {
 Pending: "This pod will not receive traffic until all of its containers have been created."
 };
+<<<<<<< HEAD
 var i = n.getPreferredVersion("pods"), s = n.getPreferredVersion("endpoints");
 e.eventsVersion = n.getPreferredVersion("events"), e.routesVersion = n.getPreferredVersion("routes"), e.servicesVersion = n.getPreferredVersion("services");
 var c = {}, l = [], u = function() {
@@ -9918,6 +10366,21 @@ r.spec.port && r.spec.port.targetPort !== t.name && r.spec.port.targetPort !== t
 if (e.podsForService = {}, e.service) {
 var t = new LabelSelector(e.service.spec.selector);
 e.podsForService = t.select(c);
+=======
+}), j.push(o.watch(C, a, function(r, a, o) {
+var s = n.deploymentconfig;
+if (e.emptyMessage = "No deployments to show", a) {
+if (i.deploymentBelongsToConfig(o, n.deploymentconfig)) {
+var c = o.metadata.name;
+switch (a) {
+case "ADDED":
+case "MODIFIED":
+e.unfilteredDeployments[c] = o, t("deploymentIsInProgress")(o) ? (e.deploymentConfigDeploymentsInProgress[s] = e.deploymentConfigDeploymentsInProgress[s] || {}, e.deploymentConfigDeploymentsInProgress[s][c] = o) : e.deploymentConfigDeploymentsInProgress[s] && delete e.deploymentConfigDeploymentsInProgress[s][c], o.causes = t("deploymentCauses")(o);
+break;
+
+case "DELETED":
+delete e.unfilteredDeployments[c], e.deploymentConfigDeploymentsInProgress[s] && delete e.deploymentConfigDeploymentsInProgress[s][c];
+>>>>>>> Add Browse Catalog to Project context view.
 }
 }, m = function(t, n) {
 e.loaded = !0, e.service = t, d(), u(), "DELETED" === n && (e.alerts.deleted = {
@@ -9945,6 +10408,7 @@ externalName: t.serviceExternalName
 }
 }) : null;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 function v() {
@@ -10008,6 +10472,28 @@ errorNotification: !1
 m(n), l.push(r.watchObject(e.servicesVersion, t.service, a, m));
 }, function(t) {
 e.loaded = !0, e.alerts.load = {
+=======
+})), o.list(S, a).then(function(e) {
+d = e.by("metadata.name"), p();
+}), j.push(o.watch(b, a, function(t) {
+var n = t.by("metadata.name");
+c.buildDockerRefMapForImageStreams(n, h), e.deploymentConfig && c.fetchReferencedImageStreamImages([ e.deploymentConfig.spec.template ], e.imagesByDockerReference, h, a), m.log("imagestreams (subscribe)", e.imageStreams);
+})), j.push(o.watch(y, a, function(t) {
+e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
+})), j.push(o.watch(e.horizontalPodAutoscalersVersion, a, function(t) {
+e.autoscalers = s.filterHPA(t.by("metadata.name"), "DeploymentConfig", n.deploymentconfig), p();
+})), g.onActiveFiltersChanged(function(t) {
+e.$apply(function() {
+e.deployments = t.select(e.unfilteredDeployments), e.orderedDeployments = P(e.deployments, !0), u();
+});
+}), e.canDeploy = function() {
+return !!e.deploymentConfig && (!e.deploymentConfig.metadata.deletionTimestamp && (!e.deploymentInProgress && !e.deploymentConfig.spec.paused));
+}, e.startLatestDeployment = function() {
+e.canDeploy() && i.startLatestDeployment(e.deploymentConfig, a);
+}, e.scale = function(n) {
+i.scale(e.deploymentConfig, n).then(_.noop, function(n) {
+e.alerts["scale-error"] = {
+>>>>>>> Add Browse Catalog to Project context view.
 type: "error",
 message: "The service details could not be loaded.",
 details: o("getErrorDetails")(t)
@@ -10062,12 +10548,37 @@ e.routesForService = {}, angular.forEach(n.by("metadata.name"), function(n) {
 r.unwatchAll(l);
 >>>>>>> Update service, services controllers to use getPreferredVersion
 });
+<<<<<<< HEAD
 }));
 t.all([ d, m ]).then(function() {
 e.catalogItems = o.sortCatalogItems(_.concat(r, l)), n.filter && (e.keywordFilter = n.filter);
 });
 } else s.toProjectOverview(u);
 });
+=======
+};
+var k = function() {
+if (_.get(e, "deploymentConfig.spec.paused")) return !1;
+var t = _.get(e, "deploymentConfig.spec.triggers", []);
+return _.some(t, {
+type: "ConfigChange"
+});
+};
+e.removeVolume = function(t) {
+var n;
+n = k() ? "This will remove the volume from the deployment config and trigger a new deployment." : "This will remove the volume from the deployment config.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
+l.confirm({
+message: "Remove volume " + t.name + "?",
+details: n,
+okButtonText: "Remove",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+}).then(function() {
+f.removeVolume(e.deploymentConfig, t, a);
+});
+}, e.$on("$destroy", function() {
+o.unwatchAll(j);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
 var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
@@ -10087,6 +10598,7 @@ _.set(t, [ n, "cleared" ], !0), e.saveJSON("session", "events", t);
 isCleared: function(e) {
 return _.get(t, [ e, "cleared" ]);
 }
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10209,6 +10721,56 @@ var a = "openshift/viewedHomePage/" + t.user.metadata.name;
 >>>>>>> Add search catalog in project context
 e.startGuidedTour() && localStorage.setItem(a, "true");
 }, 500);
+=======
+var j = {};
+e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
+var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
+var $ = [];
+p.isAvailable().then(function(t) {
+e.metricsAvailable = t;
+});
+var B = t("deploymentStatus"), L = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
+}, U = t("isIE")();
+y.get(n.project).then(_.spread(function(r, u) {
+e.project = r, e.projectContext = u;
+var p = {}, y = function() {
+if (e.hpaForRS = c.filterHPA(p, d, n.replicaSet), e.deploymentConfigName && e.isActive) {
+var t = c.filterHPA(p, "DeploymentConfig", e.deploymentConfigName);
+e.autoscalers = e.hpaForRS.concat(t);
+} else if (e.deployment && e.isActive) {
+var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
+e.autoscalers = e.hpaForRS.concat(r);
+} else e.autoscalers = e.hpaForRS;
+}, O = function() {
+$.push(i.watch(e.resource, u, function(t) {
+var n, r = [];
+angular.forEach(t.by("metadata.name"), function(t) {
+(C(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
+}), n = s.getActiveDeployment(r), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
+}));
+}, V = function() {
+c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t) {
+e.hpaWarnings = t;
+});
+}, F = function(r) {
+var a = C(r, "deploymentConfig");
+if (a) {
+S = !0, e.deploymentConfigName = a;
+var o = C(r, "deploymentVersion");
+o && (e.logOptions.version = o), e.healthCheckURL = g.healthCheckURL(n.project, "DeploymentConfig", a), i.get(e.deploymentConfigsVersion, a, u, {
+errorNotification: !1
+}).then(function(t) {
+e.deploymentConfig = t;
+}, function(n) {
+404 !== n.status ? e.alerts.load = {
+type: "error",
+message: "The deployment configuration details could not be loaded.",
+details: t("getErrorDetails")(n)
+} : e.deploymentConfigMissing = !0;
+});
+>>>>>>> Add Browse Catalog to Project context view.
 }
 }
 <<<<<<< HEAD
@@ -10274,6 +10836,7 @@ b();
 }), y && e.$on("$locationChangeStart", function(t) {
 f.search().startTour && (e.startGuidedTour(), t.preventDefault());
 });
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
 var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
 return {
@@ -10292,6 +10855,12 @@ _.set(t, [ n.metadata.uid, "cleared" ], !0), e.saveJSON("session", "events", t);
 },
 isCleared: function(e) {
 return _.get(t, [ e.metadata.uid, "cleared" ]);
+=======
+}, H = function() {
+if (!_.isEmpty(j)) {
+var t = _.get(e, "replicaSet.spec.template");
+t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, j, u);
+>>>>>>> Add Browse Catalog to Project context view.
 }
 };
 } ]), angular.module("openshiftConsole").controller("ProjectsController", [ "$scope", "$filter", "$location", "$route", "$timeout", "AuthService", "DataService", "KeywordService", "Navigate", "Logger", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u) {
@@ -10322,6 +10891,7 @@ break;
 default:
 m = _.orderBy(d, [ t ], [ r ]);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 g = t;
@@ -10363,6 +10933,42 @@ id: 'metadata.annotations["openshift.io/display-name"]',
 <<<<<<< HEAD
 title: l.getString(u("Display Name")),
 sortType: "alpha"
+=======
+V(), e.breadcrumbs = o.getBreadcrumbs({
+object: t
+}), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
+"DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This " + w + " has been deleted."
+}), e.replicaSet = t, L(t), V(), H(), e.deployment && x();
+})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
+var n = t.by("metadata.name");
+e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
+}));
+}, function(r) {
+e.loaded = !0, e.alerts.load = {
+type: "error",
+message: "The " + w + " details could not be loaded.",
+details: t("getErrorDetails")(r)
+}, e.breadcrumbs = o.getBreadcrumbs({
+name: n.replicaSet,
+kind: d,
+namespace: n.project
+});
+}), $.push(i.watch(e.resource, u, function(n, r, a) {
+e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
+var o, i;
+a && (o = C(a, "deploymentConfig"), i = a.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, r ? "ADDED" === r || "MODIFIED" === r && t("deploymentIsInProgress")(a) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][i] = a) : "MODIFIED" === r && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][i] : e.deploymentConfigDeploymentsInProgress = s.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), a ? "DELETED" !== r && (a.causes = t("deploymentCauses")(a)) : angular.forEach(e.replicaSets, function(e) {
+e.causes = t("deploymentCauses")(e);
+});
+})), $.push(i.watch(I, u, function(e) {
+var t = e.by("metadata.name");
+l.buildDockerRefMapForImageStreams(t, j), H(), m.log("imagestreams (subscribe)", t);
+})), $.push(i.watch(k, u, function(t) {
+e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
+})), $.push(i.watch(R, u, function(e) {
+p = e.by("metadata.name"), y(), V();
+>>>>>>> Add Browse Catalog to Project context view.
 }, {
 id: "metadata.name",
 title: l.getString(u("Name")),
@@ -10773,6 +11379,7 @@ return "ReplicationController" === a.kind || "ReplicaSet" === a.kind || "Build" 
 });
 }
 }, C = function() {
+<<<<<<< HEAD
 var e = $("<span>").css({
 position: "absolute",
 top: "-100px"
@@ -10803,6 +11410,37 @@ setTimeout(P, 150);
 }));
 }, k = function() {
 $(window).off("resize.terminalsize"), y && (y(), y = null);
+=======
+if (e.plan && e.serviceClass && e.serviceInstance) {
+var t = _.get(e.plan, "spec.instanceUpdateParameterSchema"), n = _.size(_.get(t, "properties")) > 0 || _.get(e.serviceClass, "spec.planUpdatable") && _.size(e.servicePlans) > 1;
+e.editAvailable = n && !y(e.serviceInstance) && !_.get(e.serviceInstance, "status.asyncOpInProgress") && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
+}
+}, w = function() {
+e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), S();
+}, P = function() {
+var t = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
+e.plan = _.find(e.servicePlans, {
+metadata: {
+name: t
+}
+}), w(), C();
+}, j = function() {
+e.serviceClass && !f && (e.servicePlans ? P() : f = i.getServicePlansForServiceClass(e.serviceClass).then(function(t) {
+var n = _.get(e.serviceInstance, "spec.clusterServicePlanRef.name");
+e.servicePlans = _.reject(t.by("metadata.name"), function(e) {
+return _.get(e, "status.removedFromBrokerCatalog") && e.metadata.name !== n;
+}), P(), f = null;
+}));
+}, k = function() {
+e.serviceInstance && !p && (e.serviceClass ? j() : p = d.fetchServiceClassForInstance(e.serviceInstance).then(function(t) {
+e.serviceClass = t, e.displayName = h(e.serviceInstance, e.serviceClass), b(), p = null, j();
+}));
+}, I = function(t, n) {
+e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This provisioned service has been deleted."
+}), k(), S(), C();
+>>>>>>> Add Browse Catalog to Project context view.
 };
 r.$watch("selectedTab.terminal", function(e) {
 e ? (C.height && C.width ? j() : u.warn("Unable to calculate the bounding box for a character.  Terminal will not be able to resize."), a(P, 0)) : k();
@@ -11381,6 +12019,7 @@ kind: "ReplicationControllers"
 }, {
 kind: "Builds"
 }, {
+<<<<<<< HEAD
 kind: "StatefulSets"
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 } ], n.kindSelector = {
@@ -11424,6 +12063,76 @@ text: ""
 var b, S, C, w;
 l.isAvailable().then(function(e) {
 n.metricsAvailable = e;
+=======
+id: "scriptArgs",
+label: "Shell script with arguments"
+} ], e.buildHookSelection = {
+type: {}
+}, e.getArgumentsDescription = function() {
+switch (_.get(e, "buildHookSelection.type.id", "")) {
+case "args":
+return "Enter the arguments that will be appended to the default image entry point.";
+
+case "commandArgs":
+return "Enter the arguments that will be appended to the command.";
+
+case "scriptArgs":
+return "Enter the arguments that will be appended to the script.";
+}
+return null;
+};
+var g = function() {
+var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), r = !!_.get(e, "buildConfig.spec.postCommit.script");
+e.view.hasHooks = t || n || r;
+var a;
+a = t && n ? "commandArgs" : t && r ? "scriptArgs" : t ? "args" : r ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
+id: a
+});
+}, v = function() {
+if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
+case "script":
+delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args;
+break;
+
+case "command":
+delete e.updatedBuildConfig.spec.postCommit.script, delete e.updatedBuildConfig.spec.postCommit.args;
+break;
+
+case "args":
+delete e.updatedBuildConfig.spec.postCommit.script, delete e.updatedBuildConfig.spec.postCommit.command;
+break;
+
+case "scriptArgs":
+delete e.updatedBuildConfig.spec.postCommit.command;
+break;
+
+case "commandArgs":
+delete e.updatedBuildConfig.spec.postCommit.script;
+} else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
+};
+e.secrets = {};
+var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = t("orderByDisplayName"), w = t("getErrorDetails"), P = [], j = [];
+e.valueFromObjects = [];
+var k = function() {
+var t;
+e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : a.history.back();
+};
+e.cancel = k;
+var I = function() {
+u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
+};
+e.$on("$destroy", I), d.get(r.project).then(_.spread(function(n, a) {
+e.project = n, e.context = a, s.canI("buildconfigs", "update", r.project) ? (c.get(h, r.buildconfig, a, {
+errorNotification: !1
+}).then(function(t) {
+e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = R(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, a).then(function(t) {
+var n = p.groupSecretsByType(t), r = _.mapValues(n, function(e) {
+return _.map(e, "metadata.name");
+});
+e.secrets.secretsByType = _.each(r, function(e) {
+e.unshift("");
+}), D(), j = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 <<<<<<< HEAD
 var P = r("orderObjectsByDate"), j = [ "metadata.name" ], k = [], I = function() {
@@ -11509,9 +12218,22 @@ n.filters = {
 hideOlderResources: v(e.hideOlderResources) || "true" === e.hideOlderResources,
 text: ""
 };
+<<<<<<< HEAD
 var h, y, b, S;
 l.isAvailable().then(function(e) {
 n.metricsAvailable = e;
+=======
+}), c.list("configmaps", a, null, {
+errorNotification: !1
+}).then(function(t) {
+P = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
+}, function(e) {
+403 !== e.code && u.addNotification({
+id: "edit-build-config-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: w(e)
+>>>>>>> Add Browse Catalog to Project context view.
 });
 var C = a("orderObjectsByDate"), w = [ "metadata.name" ], P = [], k = function() {
 n.filteredPods = s.filterForKeywords(S, w, P), n.filteredReplicationControllers = s.filterForKeywords(y, w, P), n.filteredReplicaSets = s.filterForKeywords(b, w, P), n.filteredBuilds = s.filterForKeywords(h, w, P), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
@@ -11979,6 +12701,7 @@ error: _.template('The role "<%= roleName %>" could not be granted to "<%= subje
 exists: _.template('The role "<%= roleName %>" has already been granted to "<%= subjectName %>".')
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 },
 errorReason: _.template('Reason: "<%= httpErr %>"')
@@ -11987,6 +12710,20 @@ d.addNotification({
 type: e,
 message: t,
 details: n
+=======
+e.updatedBuildConfig.spec.triggers = N(), I(), c.update(h, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+u.addNotification({
+type: "success",
+message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
+}), k();
+}, function(n) {
+e.disableInputs = !1, u.addNotification({
+id: "edit-build-config-error",
+type: "error",
+message: "An error occurred updating build config " + e.updatedBuildConfig.metadata.name + ".",
+details: t("getErrorDetails")(n)
+});
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }, w = function() {
 r.disableAddForm = !1, r.newBinding.name = "", r.newBinding.namespace = g, r.newBinding.newRole = null;
@@ -12059,6 +12796,7 @@ T(), k("success", j.update.subject.success({
 roleName: t.roleRef.name,
 subjectName: n.name
 }));
+<<<<<<< HEAD
 }, function(r) {
 I(), T(), k("error", j.update.subject.error({
 roleName: t.roleRef.name,
@@ -12101,6 +12839,43 @@ subjectKinds: A,
 }, k = function(e) {
 >>>>>>> Update pod controller to use getPreferredVersion
 c.list("rolebindings", f, null, {
+=======
+} ]), angular.module("openshiftConsole").controller("EditDeploymentConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$uibModal", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "EnvironmentService", "Navigate", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g) {
+e.projectName = r.project, e.deploymentConfig = null, e.alerts = {}, e.view = {
+advancedStrategyOptions: !1,
+advancedImageOptions: !1
+}, e.triggers = {}, e.breadcrumbs = c.getBreadcrumbs({
+name: r.name,
+kind: r.kind,
+namespace: r.project,
+subpage: "Edit Deployment Config"
+}), e.deploymentConfigStrategyTypes = [ "Recreate", "Rolling", "Custom" ];
+var v = t("orderByDisplayName"), h = t("getErrorDetails"), y = function(t, n) {
+e.alerts["from-value-objects"] = {
+type: "error",
+message: t,
+details: n
+};
+}, b = i.getPreferredVersion("deploymentconfigs"), S = i.getPreferredVersion("configmaps"), C = i.getPreferredVersion("secrets"), w = [], P = [], j = [];
+e.valueFromObjects = [];
+var k = function(e) {
+switch (e) {
+case "Recreate":
+return "recreateParams";
+
+case "Rolling":
+return "rollingParams";
+
+case "Custom":
+return "customParams";
+
+default:
+return void Logger.error("Unknown deployment strategy type: " + e);
+}
+};
+p.get(r.project).then(_.spread(function(n, a) {
+e.project = n, e.context = a, s.canI("deploymentconfigs", "update", r.project) ? l.get(b, r.deploymentconfig, a, {
+>>>>>>> Add Browse Catalog to Project context view.
 errorNotification: !1
 }).then(function(e) {
 angular.extend(r, {
@@ -12247,6 +13022,7 @@ okButtonText: v.getString(f("Remove")),
 okButtonClass: "btn-danger",
 cancelButtonText: v.getString(f("Cancel"))
 };
+<<<<<<< HEAD
 return _.isEqual(e, a) && (o.detailsMarkup = j.remove.areYouSure.html.self({
 roleName: n,
 subjectName: e
@@ -12262,6 +13038,31 @@ return e ? r + (h(e, "description") || "") : "";
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }
 }
+=======
+_.set(r, [ t.name, "triggerData" ], o);
+}), r;
+}(e.updatedDeploymentConfig.spec.template.spec.containers, e.updatedDeploymentConfig.spec.triggers), e.secrets = {
+pullSecrets: angular.copy(e.deploymentConfig.spec.template.spec.imagePullSecrets) || [ {
+name: ""
+} ]
+}, e.volumeNames = _.map(e.deploymentConfig.spec.template.spec.volumes, "name"), e.strategyData = angular.copy(e.deploymentConfig.spec.strategy), e.originalStrategy = e.strategyData.type, e.strategyParamsPropertyName = k(e.strategyData.type), e.triggers.hasConfigTrigger = _.some(e.updatedDeploymentConfig.spec.triggers, {
+type: "ConfigChange"
+}), "Custom" !== e.strategyData.type || _.has(e.strategyData, "customParams.environment") || (e.strategyData.customParams.environment = []), l.list(S, a, null, {
+errorNotification: !1
+}).then(function(t) {
+P = v(t.by("metadata.name")), e.availableConfigMaps = P, e.valueFromObjects = P.concat(j);
+}, function(e) {
+403 !== e.status && y("Could not load config maps", h(e));
+}), l.list(C, a, null, {
+errorNotification: !1
+}).then(function(t) {
+j = v(t.by("metadata.name")), e.availableSecrets = j, e.valueFromObjects = P.concat(j);
+var n = f.groupSecretsByType(t), r = _.mapValues(n, function(e) {
+return _.map(e, "metadata.name");
+});
+e.secretsByType = _.each(r, function(e) {
+e.unshift("");
+>>>>>>> Add Browse Catalog to Project context view.
 });
 var T = function(e, t, n, a) {
 var o = {
@@ -12409,6 +13210,7 @@ return u;
 }
 }).result.then(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 p.removeSubject(n, i, s, r.roleBindings, h).then(function(e) {
 l ? t.url("catalog") : (c.getProjectRules(y, !0).then(function() {
 T(e[0]);
@@ -12417,8 +13219,36 @@ angular.extend(r, {
 canUpdateRolebindings: t,
 mode: {
 edit: !!r.mode.edit && t
+=======
+e.strategyData[t] = angular.copy(e.strategyData[k(e.originalStrategy)]);
+}, function() {
+e.strategyData[t] = {};
+});
+};
+e.strategyChanged = function() {
+var t = k(e.strategyData.type);
+I() ? R(t) : _.has(e.strategyData, t) || ("Custom" !== e.strategyData.type ? e.strategyData[t] = {} : e.strategyData[t] = {
+image: "",
+command: [],
+environment: []
+}), e.strategyParamsPropertyName = t;
+};
+var E = function(e, t, n, r) {
+var a = {
+kind: "ImageStreamTag",
+namespace: t.namespace,
+name: t.imageStream + ":" + t.tagObject.tag
+};
+return n ? (n.imageChangeParams.from = a, n.imageChangeParams.automatic = r) : n = {
+type: "ImageChange",
+imageChangeParams: {
+automatic: r,
+containerNames: [ e ],
+from: a
+>>>>>>> Add Browse Catalog to Project context view.
 }
 });
+<<<<<<< HEAD
 }), k("success", j.remove.success({
 =======
 return l;
@@ -12450,6 +13280,28 @@ angular.extend(r, {
 canUpdateRolebindings: t,
 mode: {
 edit: !!r.mode.edit && t
+=======
+return _.each(e.containerConfigByName, function(n, r) {
+n.hasDeploymentTrigger ? t.push(E(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+name: r
+}).image = n.image;
+}), e.triggers.hasConfigTrigger && t.push({
+type: "ConfigChange"
+}), t;
+}, N = function() {
+m.hideNotification("edit-deployment-config-error");
+};
+e.save = function() {
+if (e.disableInputs = !0, _.each(e.containerConfigByName, function(t, n) {
+_.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+name: n
+}).env = g.compactEntries(t.env);
+}), I() && delete e.strategyData[k(e.originalStrategy)], "Rolling" === e.strategyData.type) {
+var r = e.strategyData[e.strategyParamsPropertyName].maxSurge, a = Number(r);
+"" === r ? e.strategyData[e.strategyParamsPropertyName].maxSurge = null : _.isFinite(a) && (e.strategyData[e.strategyParamsPropertyName].maxSurge = a);
+var o = e.strategyData[e.strategyParamsPropertyName].maxUnavailable, i = Number(o);
+"" === o ? e.strategyData[e.strategyParamsPropertyName].maxUnavailable = null : _.isFinite(i) && (e.strategyData[e.strategyParamsPropertyName].maxUnavailable = i);
+>>>>>>> Add Browse Catalog to Project context view.
 }
 });
 <<<<<<< HEAD
@@ -13142,6 +13994,7 @@ namespace: c.namespace || e.projectName
 }, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 e.BCEnvVarsFromImage = o.getEnvironment(t);
 }, function() {
 e.BCEnvVarsFromImage = [];
@@ -13168,6 +14021,25 @@ return e.clearEnvVarUpdates(), !0;
 }
 } ]
 }, e.paused = o.isPaused(e.buildConfig);
+=======
+e.projectTemplates = t.by("metadata.name");
+}));
+}))) : l.toErrorPage("Catalog category " + a.category + "/" + a.subcategory + " not found.");
+} else l.toErrorPage("Catalog category " + a.category + " not found.");
+} ]), angular.module("openshiftConsole").controller("CreateFromImageController", [ "$scope", "$filter", "$parse", "$q", "$routeParams", "$uibModal", "APIService", "ApplicationGenerator", "DataService", "HPAService", "ImagesService", "LimitRangesService", "Logger", "MetricsService", "Navigate", "NotificationsService", "ProjectsService", "QuotaService", "SOURCE_URL_PATTERN", "SecretsService", "TaskList", "failureObjectNameFilter", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w) {
+var P = t("displayName"), j = t("humanize");
+e.projectName = a.project, e.sourceURLPattern = y;
+var k = a.imageStream;
+if (k) if (a.imageTag) {
+e.displayName = a.displayName, e.advancedOptions = "true" === a.advanced;
+var I = {
+name: "app",
+value: ""
+}, R = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
+});
+>>>>>>> Add Browse Catalog to Project context view.
 };
 d.get(n.project).then(_.spread(function(r, i) {
 function d() {
@@ -13191,7 +14063,57 @@ message: 404 === n.status ? "This build configuration can not be found, it may h
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), s.list("configmaps", i, null, {
+=======
+c.list(U, n).then(function(e) {
+v = e.by("metadata.name"), m.log("quotas", v);
+}), c.list(O, n).then(function(e) {
+y = e.by("metadata.name"), m.log("cluster quotas", y);
+}), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
+I.value && I.value !== t || (I.value = e);
+}), function(r) {
+r.name = a.name, r.imageName = k, r.imageTag = a.imageTag, r.namespace = a.namespace, r.buildConfig = {
+buildOnSourceChange: !0,
+buildOnImageChange: !0,
+buildOnConfigChange: !0,
+secrets: {
+gitSecret: [ {
+name: ""
+} ]
+},
+sourceUrl: a.sourceURI,
+gitRef: a.sourceRef,
+contextDir: a.contextDir
+}, r.buildConfigEnvVars = [], r.deploymentConfig = {
+deployOnNewImage: !0,
+deployOnConfigChange: !0
+}, r.DCEnvVarsFromImage, r.DCEnvVarsFromUser = [], r.routing = {
+include: !0,
+portOptions: []
+}, r.labelArray = [ I ], r.annotations = {}, r.scaling = {
+replicas: 1,
+autoscale: !1,
+autoscaleOptions: [ {
+label: "Manual",
+value: !1
+}, {
+label: "Automatic",
+value: !0
+} ]
+}, r.container = {
+resources: {}
+}, r.cpuRequestCalculated = d.isRequestCalculated("cpu", t), r.cpuLimitCalculated = d.isLimitCalculated("cpu", t), r.memoryRequestCalculated = d.isRequestCalculated("memory", t), r.fillSampleRepo = function() {
+var e;
+(r.image || r.image.metadata || r.image.metadata.annotations) && (e = r.image.metadata.annotations, r.buildConfig.sourceUrl = e.sampleRepo || "", r.buildConfig.gitRef = e.sampleRef || "", r.buildConfig.contextDir = e.sampleContextDir || "", (e.sampleRef || e.sampleContextDir) && (r.advancedSourceOptions = !0));
+}, r.usingSampleRepo = function() {
+return r.buildConfig.sourceUrl === _.get(r, "image.metadata.annotations.sampleRepo");
+}, p.isAvailable().then(function(t) {
+e.metricsWarning = !t;
+});
+var o = [], i = [];
+e.valueFromObjects = [], c.list(D, n, null, {
+>>>>>>> Add Browse Catalog to Project context view.
 errorNotification: !1
 }).then(function(t) {
 b = v(t.by("metadata.name")), e.valueFromObjects = b.concat(S);
@@ -13238,11 +14160,67 @@ return a.clearEnvVarUpdates(), !0;
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 k.get(c.project).then(_.spread(function(d, f) {
 function j() {
 h.getLabelSelector().isEmpty() || !$.isEmptyObject(a.builds) || $.isEmptyObject(a.unfilteredBuilds) ? delete a.alerts.builds :a.alerts.builds = {
 type:"warning",
 details:"The active filters are hiding all builds."
+=======
+}), r.routing.targetPort = r.routing.portOptions[0].port);
+}, function() {
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+});
+}, function() {
+f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
+});
+}(e);
+var V, F = function() {
+var t = {
+started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
+success: "Created application " + e.name + " in project " + e.projectDisplayName(),
+failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
+}, o = {};
+S.clear(), S.add(t, o, a.project, function() {
+var t = r.defer();
+return c.batch(V, n).then(function(n) {
+var r = [], a = !1;
+_.isEmpty(n.failure) ? r.push({
+type: "success",
+message: "All resources for application " + e.name + " were created successfully."
+}) : (a = !0, n.failure.forEach(function(e) {
+r.push({
+type: "error",
+message: "Cannot create " + j(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+details: e.data.message
+});
+}), n.success.forEach(function(e) {
+r.push({
+type: "success",
+message: "Created " + j(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+});
+})), t.resolve({
+alerts: r,
+hasErrors: a
+});
+}), t.promise;
+}), f.toNextSteps(e.name, e.projectName, {
+usingSampleRepo: e.usingSampleRepo()
+});
+}, x = function(e) {
+o.open({
+animation: !0,
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return {
+alerts: e,
+message: "Problems were detected while checking your application configuration.",
+okButtonText: "Create Anyway",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+>>>>>>> Add Browse Catalog to Project context view.
 };
 }
 a.project = d, m = f, g.get("buildconfigs", c.buildconfig, f, {
@@ -13362,6 +14340,7 @@ delete e.unfilteredBuilds[i];
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } else e.unfilteredBuilds = o.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
 e.builds = c.getLabelSelector().select(e.unfilteredBuilds), d(), c.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), c.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
 }, {
@@ -13389,8 +14368,21 @@ labelSelector: t("labelName")("buildConfig") + "=" + _.truncate(e.buildConfigNam
 length: 63,
 omission: ""
 })
+=======
+function p() {
+var e = v();
+a.templateImages = _.map(j, function(t) {
+return _.isEmpty(t.usesParameters) ? t : {
+name: _.template(t.name, {
+interpolate: P
+})(e),
+usesParameters: t.usesParameters
+};
+});
+>>>>>>> Add Browse Catalog to Project context view.
 }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 })), c.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
@@ -13435,6 +14427,76 @@ i.unwatchAll(f);
 i.unwatchAll(h);
 >>>>>>> Enable valueFrom values for build config env vars
 });
+=======
+function g(e) {
+j = [];
+var t = [], n = {};
+angular.forEach(e.objects, function(e) {
+if ("BuildConfig" === e.kind) {
+var r = w(S(e), y);
+r && j.push({
+name: r,
+usesParameters: m(r)
+});
+var a = w(C(e), y);
+a && (n[a] = !0);
+}
+"DeploymentConfig" === e.kind && (t = t.concat(f(e)));
+}), t.forEach(function(e) {
+n[e] || j.push({
+name: e,
+usesParameters: m(e)
+});
+}), j = _.uniqBy(j, "name");
+}
+function v() {
+var e = {};
+return _.each(a.template.parameters, function(t) {
+e[t.name] = t.value;
+}), e;
+}
+var h = r.template, y = r.namespace || "", b = n("spec.template.spec.containers"), S = n("spec.strategy.sourceStrategy.from || spec.strategy.dockerStrategy.from || spec.strategy.customStrategy.from"), C = n("spec.output.to"), w = e("imageObjectRef");
+if (h) {
+r.templateParamsMap && (a.prefillParameters = function() {
+try {
+return JSON.parse(r.templateParamsMap);
+} catch (e) {
+l.addNotification({
+id: "template-params-invalid-json",
+type: "error",
+message: "Could not prefill parameter values.",
+details: "The `templateParamsMap` URL parameter is not valid JSON. " + e
+});
+}
+}());
+var P = /\${([a-zA-Z0-9\_]+)}/g, j = [];
+u.get(r.project).then(_.spread(function(e) {
+if (a.project = e, o.canI("processedtemplates", "create", r.project)) if (y) s.get("templates", h, {
+namespace: y || a.project.metadata.name
+}).then(function(e) {
+a.template = e, g(e);
+_.some(j, function(e) {
+return !_.isEmpty(e.usesParameters);
+}) ? (a.parameterDisplayNames = {}, _.each(e.parameters, function(e) {
+a.parameterDisplayNames[e.name] = e.displayName || e.name;
+}), a.$watch("template.parameters", _.debounce(function() {
+a.$apply(p);
+}, 50, {
+maxWait: 250
+}), !0)) : a.templateImages = j;
+}, function() {
+c.toErrorPage("Cannot create from template: the specified template could not be retrieved.");
+}); else {
+if (a.template = i.getTemplate(), _.isEmpty(a.template)) {
+var n = URI("error").query({
+error: "not_found",
+error_description: "Template wasn't found in cache."
+}).toString();
+t.url(n);
+}
+i.clearTemplate();
+} else c.toErrorPage("You do not have authority to process templates in project " + r.project + ".", "access_denied");
+>>>>>>> Add Browse Catalog to Project context view.
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
 e.projectName = n.project, e.build = null, e.buildConfig = null, e.buildConfigName = n.buildconfig, e.builds = {}, e.alerts = {}, e.showSecret = !1, e.renderOptions = {
@@ -13975,6 +15037,7 @@ u && d && (e.replicaSetsByDeploymentUID = c.groupByControllerUID(u), e.unfiltere
 n && (e.latestReplicaSetByDeploymentUID[n] = o.getActiveReplicaSet(t, d[n]));
 >>>>>>> Support EnvFrom in the Env Editors
 }));
+<<<<<<< HEAD
 }, m = [];
 c.get(n.project).then(_.spread(function(n, s) {
 function c() {
@@ -14023,6 +15086,81 @@ if ("ADDED" === r || "MODIFIED" === r && [ "New", "Pending", "Running" ].indexOf
 var d = t("deploymentStatus")(a);
 "Complete" !== d && "Failed" !== d || delete e.deploymentConfigDeploymentsInProgress[c][l];
 >>>>>>> Replacing empty tables with empty state message
+=======
+} ]), angular.module("openshiftConsole").controller("AttachPVCController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "QuotaService", "Navigate", "NotificationsService", "ProjectsService", "StorageService", "RELATIVE_PATH_PATTERN", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
+if (t.kind && t.name) {
+var f = [ "Deployment", "DeploymentConfig", "ReplicaSet", "ReplicationController" ], g = e("humanizeKind");
+if (_.includes(f, t.kind)) {
+var v = {
+resource: a.kindToResource(t.kind),
+group: t.group
+};
+n.projectName = t.project, n.kind = t.kind, n.name = t.name, n.RELATIVE_PATH_PATTERN = p, n.outOfClaims = !1, n.attach = {
+persistentVolumeClaim: null,
+volumeName: null,
+mountPath: null,
+allContainers: !0,
+containers: {}
+}, n.breadcrumbs = i.getBreadcrumbs({
+name: t.name,
+kind: t.kind,
+namespace: t.project,
+subpage: "Add Storage"
+}), n.pvcVersion = a.getPreferredVersion("persistentvolumeclaims");
+var h = a.getPreferredVersion("resourcequotas"), y = a.getPreferredVersion("appliedclusterresourcequotas");
+d.get(t.project).then(_.spread(function(a, d) {
+if (n.project = a, o.canI(v, "update", t.project)) {
+var p = e("orderByDisplayName"), f = e("getErrorDetails"), b = e("generateName"), S = function(e, t) {
+n.disableInputs = !0, u.addNotification({
+id: "attach-pvc-error",
+type: "error",
+message: e,
+details: t
+});
+}, C = function() {
+u.hideNotification("attach-pvc-error");
+};
+n.$on("$destroy", C);
+var w = function() {
+r.history.back();
+};
+n.cancel = w;
+var P = function(e) {
+return n.attach.allContainers || n.attach.containers[e.name];
+}, j = function() {
+var e = _.get(n, "attach.resource.spec.template");
+n.existingMountPaths = m.getMountPaths(e, P);
+};
+n.$watchGroup([ "attach.resource", "attach.allContainers" ], j), n.$watch("attach.containers", j, !0);
+s.get(v, t.name, d).then(function(e) {
+n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
+object: e,
+project: a,
+subpage: "Add Storage"
+});
+var t = _.get(e, "spec.template");
+n.existingVolumeNames = m.getVolumeNames(t);
+}, function(e) {
+S(t.name + " could not be loaded.", f(e));
+}), s.list(n.pvcVersion, d).then(function(e) {
+n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
+}), s.list(h, {
+namespace: n.projectName
+}, function(e) {
+n.quotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
+}), s.list(y, {
+namespace: n.projectName
+}, function(e) {
+n.clusterQuotas = e.by("metadata.name"), n.outOfClaims = c.isAnyStorageQuotaExceeded(n.quotas, n.clusterQuotas);
+}), n.attachPVC = function() {
+if (n.disableInputs = !0, C(), n.attachPVCForm.$valid) {
+n.attach.volumeName || (n.attach.volumeName = b("volume-"));
+var e = n.attach.resource, r = _.get(e, "spec.template"), a = n.attach.persistentVolumeClaim, o = n.attach.volumeName, i = n.attach.mountPath, c = n.attach.subPath, l = n.attach.readOnly;
+i && angular.forEach(r.spec.containers, function(e) {
+if (P(e)) {
+var t = m.createVolumeMount(o, i, c, l);
+e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
+>>>>>>> Add Browse Catalog to Project context view.
 }
 <<<<<<< HEAD
 } else e.deploymentConfigDeploymentsInProgress = r.associateRunningDeploymentToDeploymentConfig(e.replicationControllersByDC);
@@ -15882,6 +17020,7 @@ message: "This " + w + " has been deleted."
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
+<<<<<<< HEAD
 }, function(r) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -16039,6 +17178,46 @@ poll: U,
 pollInterval: 6e4
 })), i.list(E, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), V();
+=======
+}
+function C() {
+var t;
+_.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(a.kindToResource(t.kind), t.metadata.name, t, {
+namespace: p.input.selectedProject.metadata.name
+}).then(function() {
+if (!p.isDialog) {
+var e = k(t.kind);
+c.addNotification({
+type: "success",
+message: _.capitalize(e) + " " + t.metadata.name + " was successfully updated."
+});
+}
+b();
+}, function(n) {
+c.addNotification({
+id: "from-file-error",
+type: "error",
+message: "Unable to update the " + k(t.kind) + " '" + t.metadata.name + "'.",
+details: e("getErrorDetails")(n)
+});
+})) : (t = _.head(p.createResources), i.create(a.kindToResource(t.kind), null, t, {
+namespace: p.input.selectedProject.metadata.name
+}).then(function() {
+if (!p.isDialog) {
+var e = k(t.kind);
+c.addNotification({
+type: "success",
+message: _.capitalize(e) + " " + t.metadata.name + " was successfully created."
+});
+}
+b();
+}, function(n) {
+c.addNotification({
+id: "from-file-error",
+type: "error",
+message: "Unable to create the " + k(t.kind) + " '" + t.metadata.name + "'.",
+details: e("getErrorDetails")(n)
+>>>>>>> Add Browse Catalog to Project context view.
 });
 $.push(i.watch(D, u, function(t) {
 >>>>>>> Update replicaSets controller to use getPreferredVersion
@@ -16112,6 +17291,7 @@ s.scale(r, n).then(_.noop, function(n) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 e.alerts = e.alerts || {}, e.alerts.scale = {
 type: "error",
+<<<<<<< HEAD
 message: "An error occurred scaling.",
 details: t("getErrorDetails")(n)
 };
@@ -16154,6 +17334,21 @@ I = H(b);
 =======
 =======
 m.removeVolume(e.deploymentConfig, t, l);
+=======
+message: "Cannot create " + k(e.object.kind) + ' "' + e.object.metadata.name + '". ',
+details: e.data.message
+});
+}), t.success.forEach(function(e) {
+n.push({
+type: "success",
+message: "Created " + k(e.kind) + ' "' + e.metadata.name + '" successfully. '
+});
+}); else {
+var a;
+a = p.isList ? "All items in list were created successfully." : k(p.resourceKind) + " " + p.resourceName + " was successfully created.", n.push({
+type: "success",
+message: a
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }, e.$on("$destroy", function() {
 <<<<<<< HEAD
@@ -16194,6 +17389,7 @@ break;
 case "ReplicationController":
 e.resource = "replicationcontrollers", e.healthCheckURL = p.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
 }
+<<<<<<< HEAD
 >>>>>>> Updates for Service Instance & Bindings
 var k = {};
 e.projectName = n.project, e.kind = y, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
@@ -16212,6 +17408,37 @@ var s = n.getPreferredVersion("pods"), c = n.getPreferredVersion("statefulsets")
 a.get(t.project).then(_.spread(function(t, n) {
 function a() {
 e.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(e.statefulSets) && !_.isEmpty(e.unfilteredStatefulSets);
+=======
+function P() {
+var e = {
+started: "Updating resources in project " + A(p.input.selectedProject),
+success: "Updated resources in project " + A(p.input.selectedProject),
+failure: "Failed to update some resources in project " + A(p.input.selectedProject)
+}, t = {};
+d.add(e, t, p.input.selectedProject.metadata.name, function() {
+var e = n.defer();
+return i.batch(p.updateResources, {
+namespace: p.input.selectedProject.metadata.name
+}, "update").then(function(t) {
+var n = [], r = !1;
+if (t.failure.length > 0) r = !0, p.errorOccurred = !0, t.failure.forEach(function(e) {
+n.push({
+type: "error",
+message: "Cannot update " + k(e.object.kind) + ' "' + e.object.metadata.name + '". ',
+details: e.data.message
+});
+}), t.success.forEach(function(e) {
+n.push({
+type: "success",
+message: "Updated " + k(e.kind) + ' "' + e.metadata.name + '" successfully. '
+});
+}); else {
+var a;
+a = p.isList ? "All items in list were updated successfully." : k(p.resourceKind) + " " + p.resourceName + " was successfully updated.", n.push({
+type: "success",
+message: a
+});
+>>>>>>> Add Browse Catalog to Project context view.
 }
 e.project = t, l.push(r.watch(c, n, function(t) {
 angular.extend(e, {
@@ -16347,10 +17574,38 @@ o.unwatchAll(p);
 });
 <<<<<<< HEAD
 }
+<<<<<<< HEAD
 =======
 } ]), angular.module("openshiftConsole").controller("ServicesController", [ "$routeParams", "$scope", "DataService", "ProjectsService", "$filter", "LabelFilter", "Logger", function(e, t, n, r, a, o, i) {
 t.projectName = e.project, t.services = {}, t.unfilteredServices = {}, t.routesByService = {}, t.routes = {}, t.labelSuggestions = {}, t.clearFilter = function() {
 o.clear();
+=======
+var j;
+p.noProjectsCantCreate = !1;
+var k = e("humanizeKind"), I = e("getErrorDetails");
+d.clear(), p.$on("no-projects-cannot-create", function() {
+p.noProjectsCantCreate = !0;
+}), p.input = {
+selectedProject: p.project
+}, p.$watch("input.selectedProject.metadata.name", function() {
+p.projectNameTaken = !1;
+}), p.aceLoaded = function(e) {
+(j = e.getSession()).setOption("tabSize", 2), j.setOption("useSoftTabs", !0), e.setDragDelay = 0, e.$blockScrolling = 1 / 0;
+};
+var R = function(e) {
+r.open({
+animation: !0,
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return {
+alerts: e,
+message: "We checked your application for potential problems. Please confirm you still want to create this application.",
+okButtonText: "Create Anyway",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+>>>>>>> Add Browse Catalog to Project context view.
 };
 var s = [];
 r.get(e.project).then(_.spread(function(e, r) {
@@ -17458,6 +18713,7 @@ e.serviceInstances = s.getLabelSelector().select(e.unfilteredServiceInstances);
 }, g = function() {
 e.unfilteredServiceInstances = a.sortServiceInstances(e.unfilteredServiceInstances, e.serviceClasses);
 };
+<<<<<<< HEAD
 e.getServiceClass = function(t) {
 var n = _.get(t, "spec.clusterServiceClassRef.name");
 return _.get(e, [ "serviceClasses", n ]);
@@ -17475,6 +18731,26 @@ e.serviceClasses = t.by("metadata.name"), g(), p();
 }), s.onActiveFiltersChanged(function(t) {
 e.$evalAsync(function() {
 e.serviceInstances = t.select(e.unfilteredServiceInstances), r();
+=======
+l.navURL = function(e) {
+return e ? t("isAbsoluteURL")(e) ? e : "project/" + l.projectName + e : "";
+}, l.show = function(e) {
+return !(e.isValid && !e.isValid()) && (!e.canI || (e.canI.addToProject ? l.canIAddToProject : o.canI({
+resource: e.canI.resource,
+group: e.canI.group
+}, e.canI.verb, l.projectName)));
+}, l.itemClicked = function(e) {
+if (m(), e.href) return l.nav.showMobileNav = !1, void (l.sidebar.secondaryOpen = !1);
+e.isHover = !0, e.mobileSecondary = l.isMobile, l.sidebar.showMobileSecondary = l.isMobile, l.sidebar.secondaryOpen = !0;
+}, l.onMouseEnter = function(e) {
+e.mouseLeaveTimeout && (n.cancel(e.mouseLeaveTimeout), e.mouseLeaveTimeout = null), e.mouseEnterTimeout = n(function() {
+e.isHover = !0, e.mouseEnterTimeout = null, l.sidebar.secondaryOpen = !_.isEmpty(e.secondaryNavSections);
+}, 200);
+}, l.onMouseLeave = function(e) {
+e.mouseEnterTimeout && (n.cancel(e.mouseEnterTimeout), e.mouseEnterTimeout = null), e.mouseLeaveTimeout = n(function() {
+e.isHover = !1, e.mouseLeaveTimeout = null, l.sidebar.secondaryOpen = _.some(l.navItems, function(e) {
+return e.isHover && !_.isEmpty(e.secondaryNavSections);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }), e.$on("$destroy", function() {
 i.unwatchAll(m);
@@ -17504,6 +18780,7 @@ return a.permanentlyHideAlert("storage-quota-limit-reached", n.projectName), !0;
 }
 } ]
 };
+<<<<<<< HEAD
 } else delete n.alerts.quotaExceeded;
 }, d = r.getPreferredVersion("resourcequotas"), m = r.getPreferredVersion("appliedclusterresourcequotas");
 n.persistentVolumeClaimsVersion = r.getPreferredVersion("persistentvolumeclaims");
@@ -17564,6 +18841,126 @@ resource: l.kindToResource(e.kind)
 n.unfilteredResources = t.by("metadata.name"), n.labelSuggestions = {}, s.addLabelSuggestionsFromResources(n.unfilteredResources, n.labelSuggestions), s.setLabelSuggestions(n.labelSuggestions), n.resources = s.getLabelSelector().select(n.unfilteredResources), n.resourceName = l.kindToResource(e.kind, !0), u();
 });
 }
+=======
+l.isMobile = p();
+var f = _.throttle(function() {
+var e = p();
+e !== l.isMobile && l.$evalAsync(function() {
+l.isMobile = e, e || (_.set(r, "nav.showMobileNav", !1), _.each(l.navItems, function(e) {
+e.mobileSecondary = !1;
+}));
+});
+}, 50);
+$(window).on("resize.verticalnav", f), l.$on("$destroy", function() {
+$(window).off(".verticalnav");
+});
+} ]
+};
+} ]).directive("oscHeader", [ "$filter", "$location", "$q", "$rootScope", "$routeParams", "$timeout", "APIService", "AuthorizationService", "Catalog", "CatalogService", "Constants", "DataService", "Navigate", "NotificationsService", "ProjectsService", "projectOverviewURLFilter", "RecentlyViewedServiceItems", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v) {
+var h = {}, y = [], b = e("displayName"), S = e("uniqueDisplayName"), C = i.getPreferredVersion("templates");
+return {
+restrict: "EA",
+templateUrl: "views/directives/header/header.html",
+link: function(o, i) {
+o.currentProject = h[a.project];
+var p = function(e, t) {
+var n;
+_.set(r, "nav.collapsed", e), t && (n = e ? "true" : "false", localStorage.setItem("openshift/vertical-nav-collapsed", n));
+};
+!function() {
+var e = "true" === localStorage.getItem("openshift/vertical-nav-collapsed");
+p(e);
+}();
+var w = function() {
+return _.get(r, "nav.collapsed", !1);
+}, P = function(e) {
+_.set(r, "nav.showMobileNav", e);
+};
+o.toggleNav = function() {
+var e = w();
+p(!e, !0);
+}, o.toggleMobileNav = function() {
+var e = _.get(r, "nav.showMobileNav");
+P(!e);
+}, o.closeMobileNav = function() {
+P(!1);
+}, o.closeOrderingPanel = function() {
+o.orderingPanelVisible = !1;
+}, o.showOrderingPanel = function(e) {
+o.orderingPanelVisible = !0, o.orderKind = e;
+}, o.onSearchToggle = function(e) {
+_.set(r, "view.hasProjectSearch", e);
+}, o.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var j = i.find(".selectpicker"), k = [], I = function() {
+var t = o.currentProjectName;
+if (t) {
+var n = function(e, n) {
+var r = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
+return n ? r.text(b(e)) : r.text(S(e, y)), r;
+};
+_.size(h) <= 100 ? (y = e("orderByDisplayName")(h), k = _.map(y, function(e) {
+return n(e, !1);
+})) : k = [ n(h[t], !0) ], j.empty(), j.append(k), j.append($('<option data-divider="true"></option>')), j.append($('<option value="">View All Projects</option>')), j.selectpicker("refresh");
+}
+}, R = function() {
+return f.list().then(function(e) {
+h = e.by("metadata.name");
+});
+}, E = function() {
+var e = a.project;
+o.currentProjectName !== e && (o.currentProjectName = e, o.chromeless = "chromeless" === a.view, e && !o.chromeless ? (_.set(r, "view.hasProject", !0), o.canIAddToProject = !1, s.getProjectRules(e).then(function() {
+o.currentProjectName === e && (o.canIAddToProject = s.canIAddToProject(e), o.canIAddToProject && l.getCatalogItems().then(function(e) {
+o.catalogItems = e;
+}));
+}), R().then(function() {
+o.currentProjectName && h && (h[o.currentProjectName] || (h[o.currentProjectName] = {
+metadata: {
+name: o.currentProjectName
+}
+}), o.currentProject = h[o.currentProjectName], I());
+})) : _.set(r, "view.hasProject", !1));
+}, T = function() {
+o.orderingPanelVisible && v.addItem(_.get(o.selectedItem, "resource.metadata.uid"));
+}, N = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, D = function(e) {
+return N(e) ? d.get(C, e.metadata.name, {
+namespace: e.metadata.namespace
+}) : n.when(e);
+};
+o.$on("open-overlay-panel", function(e, t) {
+o.currentProjectName && (o.servicePlansForItem = null, o.orderKind = _.get(t, "kind"), "Template" !== o.orderKind ? "ClusterServiceClass" !== o.orderKind ? (o.selectedItem = t, o.orderingPanelVisible = !0) : c.getServicePlansForServiceClass(_.get(t, "resource.metadata.name")).then(function(e) {
+o.servicePlansForItem = _.reject(e.by("metadata.name"), {
+status: {
+removedFromBrokerCatalog: !0
+}
+}), o.selectedItem = t, o.orderingPanelVisible = !0;
+}) : D(t.resource).then(function(e) {
+o.selectedItem = e, o.orderingPanelVisible = !0, o.orderKind = "Template";
+}));
+});
+var A = r.$on("filter-catalog-items", function(e, t) {
+if (o.currentProjectName) {
+var n = {
+filter: t.searchText
+};
+m.toProjectCatalog(o.currentProjectName, n);
+}
+});
+o.closeOrderingPanel = function() {
+v.addItem(_.get(o.selectedItem, "resource.metadata.uid")), o.orderingPanelVisible = !1;
+}, E(), o.$on("$routeChangeSuccess", E), j.selectpicker({
+iconBase: "fa",
+tickIcon: "fa-check"
+}).change(function() {
+var e = $(this).val(), n = "" === e ? "projects" : g(e);
+o.$apply(function() {
+t.url(n);
+});
+}), o.$on("$destroy", function() {
+A(), T();
+});
+>>>>>>> Add Browse Catalog to Project context view.
 }
 n.projectName = e.project, n.labelSuggestions = {}, n.kindSelector = {
 disabled: !0
@@ -19154,7 +20551,11 @@ label: c.getString(l("View Quota"))
 href: "",
 label: c.getString(l("Don't Show Me Again")),
 onClick: function() {
+<<<<<<< HEAD
 return a.permanentlyHideAlert("storage-quota-limit-reached", n.projectName), !0;
+=======
+delete m.alerts[t], U = 1, k();
+>>>>>>> Add Browse Catalog to Project context view.
 }
 } ]
 };
@@ -19167,11 +20568,46 @@ function r() {
 n.filterWithZeroResults = !i.getLabelSelector().isEmpty() && $.isEmptyObject(n.pvcs) && !$.isEmptyObject(n.unfilteredPVCs);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 n.project = e, f.push(o.watch(n.persistentVolumeClaimsVersion, t, function(e) {
 n.pvcsLoaded = !0, n.unfilteredPVCs = e.by("metadata.name"), i.addLabelSuggestionsFromResources(n.unfilteredPVCs, n.labelSuggestions), i.setLabelSuggestions(n.labelSuggestions), n.pvcs = i.getLabelSelector().select(n.unfilteredPVCs), r(), s.log("pvcs (subscribe)", n.unfilteredPVCs);
 })), i.onActiveFiltersChanged(function(e) {
 n.$evalAsync(function() {
 n.pvcs = e.select(n.unfilteredPVCs), r();
+=======
+}
+function w() {
+return !(m.metricsError || U > 1) && (m.pod && _.get(m, "options.selectedContainer"));
+}
+function P(e, t, n) {
+t.total = p(t.id), t.total && (m.hasLimits = !0);
+var r = _.get(n, "usage.value");
+isNaN(r) && (r = 0), e.convert && (r = e.convert(r)), t.used = d3.round(r, e.usagePrecision), t.total && (t.available = d3.round(t.total - r, e.usagePrecision)), e.totalUsed += t.used;
+}
+function j(e, t) {
+m.noData = !1;
+var n = _.initial(t.data);
+e.data ? e.data = _.chain(e.data).takeRight(D).concat(n).value() : e.data = n;
+}
+function k() {
+if (w()) {
+var e = v(), t = [];
+angular.forEach(m.metrics, function(n) {
+var r = [];
+n.totalUsed = 0, angular.forEach(n.datasets, function(a) {
+var o = b(n, a, e);
+if (o) {
+var i = l.get(o);
+r.push(i), p(a.id) && t.push(l.getCurrentUsage(o).then(function(e) {
+P(n, a, e);
+}));
+}
+}), t = t.concat(r), a.all(r).then(function(e) {
+A || angular.forEach(e, function(e) {
+e && j(_.find(n.datasets, {
+id: e.metricID
+}), e);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 }), n.$on("$destroy", function() {
 o.unwatchAll(f);
@@ -19378,6 +20814,7 @@ m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
 });
+<<<<<<< HEAD
 var t = d.resourceURL(e.updatedDeploymentConfig);
 n.url(t);
 }, function(n) {
@@ -19386,6 +20823,10 @@ id: "edit-deployment-config-error",
 type: "error",
 message: "An error occurred updating deployment config " + e.updatedDeploymentConfig.metadata.name + ".",
 details: t("getErrorDetails")(n)
+=======
+}), delete m.metricsError, k();
+}, !0), I = t(k, c.getDefaultUpdateInterval(), !1);
+>>>>>>> Add Browse Catalog to Project context view.
 });
 });
 }, e.cancel = function() {
@@ -19396,6 +20837,59 @@ l.unwatchAll(w), N();
 });
 <<<<<<< HEAD
 }
+<<<<<<< HEAD
+=======
+};
+} ]), angular.module("openshiftConsole").directive("deploymentMetrics", [ "$interval", "$parse", "$timeout", "$q", "$rootScope", "ChartsService", "ConversionService", "MetricsCharts", "MetricsService", "ModalsService", function(e, t, n, r, a, o, i, s, c, l) {
+return {
+restrict: "E",
+scope: {
+pods: "=",
+containers: "=",
+profile: "@",
+alerts: "=?"
+},
+templateUrl: function(e, t) {
+return "compact" === t.profile ? "views/directives/metrics-compact.html" : "views/directives/deployment-metrics.html";
+},
+link: function(t) {
+function n(e) {
+return null === e.value || void 0 === e.value;
+}
+function r(e) {
+var t, r = {}, a = [ "Date" ], o = [ t = w ? e.compactDatasetLabel || e.label : "Average Usage" ], i = [ a, o ], s = function(e) {
+var t = "" + e.start;
+return r[t] || (r[t] = {
+total: 0,
+count: 0
+}), r[t];
+};
+return _.each(I[e.descriptor], function(e) {
+_.each(e, function(e) {
+var t = s(e);
+(!j || j < e.end) && (j = e.end), n(e) || (t.total += e.value, t.count = t.count + 1);
+});
+}), _.each(r, function(t, n) {
+var r;
+r = t.count ? t.total / t.count : null, a.push(Number(n)), o.push(e.convert ? e.convert(r) : r);
+}), o.length > 1 && (e.lastValue = _.last(o) || 0), i;
+}
+function o(e, a) {
+var o = [], i = {
+type: "spline"
+};
+return t.showAverage ? (_.each(e[a.descriptor], function(e, t) {
+h(a.descriptor, t, e);
+}), i.type = "area-spline", w && a.compactType && (i.type = a.compactType), i.x = "Date", i.columns = r(a), i) : (_.each(e[a.descriptor], function(e, t) {
+h(a.descriptor, t, e);
+var r = t + "-dates";
+_.set(i, [ "xs", t ], r);
+var s = [ r ], c = [ t ];
+o.push(s), o.push(c), _.each(I[a.descriptor][t], function(e) {
+if (s.push(e.start), (!j || j < e.end) && (j = e.end), n(e)) c.push(e.value); else {
+var t = a.convert ? a.convert(e.value) : e.value;
+c.push(t);
+>>>>>>> Add Browse Catalog to Project context view.
 }
 n.projectName = e.project, n.labelSuggestions = {}, n.kindSelector = {
 disabled: !0
@@ -19413,6 +20907,37 @@ resource: l.kindToResource(e.kind)
 }, n.context).then(function(t) {
 n.unfilteredResources = t.by("metadata.name"), n.labelSuggestions = {}, s.addLabelSuggestionsFromResources(n.unfilteredResources, n.labelSuggestions), s.setLabelSuggestions(n.labelSuggestions), n.resources = s.getLabelSelector().select(n.unfilteredResources), n.resourceName = l.kindToResource(e.kind, !0), u();
 });
+<<<<<<< HEAD
+=======
+}), i.columns = _.sortBy(o, function(e) {
+return e[0];
+}), i);
+}
+function u(e) {
+P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
+var r, a = o(e, n), i = n.descriptor;
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+}));
+}
+function d() {
+return w ? "-15mn" : "-" + t.options.timeRange.value + "mn";
+}
+function m() {
+return 60 * t.options.timeRange.value * 1e3;
+}
+function p() {
+return w ? "1mn" : Math.floor(m() / C) + "ms";
+}
+function f() {
+var e = _.find(t.pods, "metadata.namespace");
+if (e) {
+var n = {
+pods: t.pods,
+namespace: e.metadata.namespace,
+bucketDuration: p()
+};
+return w || (n.containerName = t.options.selectedContainer.name), n.start = j || d(), n;
+>>>>>>> Add Browse Catalog to Project context view.
 }
 }
 n.projectName = e.project, n.labelSuggestions = {}, n.kindSelector = {
@@ -19474,6 +20999,7 @@ var g = t("getErrorDetails"), v = function() {
 r.history.back();
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 };
+<<<<<<< HEAD
 var m = function(e) {
 =======
 });
@@ -19484,6 +21010,34 @@ var p = function(e) {
 =======
 }), n.clearFilter = function() {
 s.clear();
+=======
+}
+}
+function v() {
+return _.isEmpty(t.pods) ? (t.loaded = !0, !1) : !t.metricsError && N < 2;
+}
+function h(e, n, r) {
+t.noData = !1;
+var a = _.initial(r), o = _.get(I, [ e, n ]);
+if (o) {
+var i = _.takeRight(o.concat(a), C);
+_.set(I, [ e, n ], i);
+} else _.set(I, [ e, n ], a);
+}
+function y() {
+if (!R && v()) {
+k = Date.now();
+var e = f();
+c.getPodMetrics(e).then(u, g).finally(function() {
+t.loaded = !0;
+});
+}
+}
+var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
+t.uniqueID = s.uniqueID();
+var j, k, I = {}, R = w, E = function(e) {
+return e >= 1024;
+>>>>>>> Add Browse Catalog to Project context view.
 };
 <<<<<<< HEAD
 >>>>>>> Replacing empty tables with empty state message
@@ -19502,9 +21056,16 @@ kind: t,
 group: _.get(n, "kindSelector.selected.group", "")
 }).toString() : "";
 };
+<<<<<<< HEAD
 var p;
 n.isDuplicateKind = function(e) {
 return p || (p = _.countBy(n.kinds, "kind")), p[e] > 1;
+=======
+t.$watch("options", function() {
+I = {}, j = null, delete t.metricsError, y();
+}, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
+R = !e, e && (!k || Date.now() > k + s.getDefaultUpdateInterval()) && y();
+>>>>>>> Add Browse Catalog to Project context view.
 };
 var f = function(e, t) {
 return _.some(n.kinds, function(n) {
@@ -19555,6 +21116,7 @@ metadata: {
 name: e.autoscaling.name,
 labels: p.mapEntries(p.compactEntries(e.labels))
 },
+<<<<<<< HEAD
 spec: {
 scaleTargetRef: {
 kind: n.kind,
@@ -19566,6 +21128,85 @@ minReplicas: e.autoscaling.minReplicas,
 maxReplicas: e.autoscaling.maxReplicas,
 targetCPUUtilizationPercentage: e.autoscaling.targetCPU || e.autoscaling.defaultTargetCPU || null
 }
+=======
+controller: [ "$scope", function(t) {
+var l, u, p, g = document.documentElement;
+t.logViewerID = _.uniqueId("log-viewer"), t.empty = !0;
+var v, h;
+"ReplicationController" === t.object.kind ? (v = "deploymentconfigs/log", h = r("annotation")(t.object, "deploymentConfig")) : (v = i.kindToResource(t.object.kind) + "/log", h = t.object.metadata.name);
+var y, b = function() {
+t.$apply(function() {
+var e = l.getBoundingClientRect();
+t.fixedHeight ? t.showScrollLinks = e && e.height > t.fixedHeight : t.showScrollLinks = e && (e.top < 0 || e.bottom > g.clientHeight);
+});
+}, S = !1, C = function() {
+S ? S = !1 : t.$evalAsync(function() {
+t.autoScrollActive = !1;
+});
+}, w = function() {
+u ? $(u).on("scroll", C) : m.on("scroll", C);
+}, P = function() {
+t.fixedHeight || p.affix({
+target: window,
+offset: {
+top: t.followAffixTop || 0
+}
+});
+}, j = function() {
+return $("#" + t.logViewerID + " .log-view-output");
+}, k = function(e) {
+var n = j(), r = n.offset().top;
+if (!(r < 0)) {
+var a = $(".ellipsis-pulser").outerHeight(!0), o = t.fixedHeight ? t.fixedHeight : Math.floor($(window).height() - r - a);
+t.chromeless || t.fixedHeight || (o -= 40), e ? n.animate({
+"min-height": o + "px"
+}, "fast") : n.css("min-height", o + "px"), t.fixedHeight && n.css("max-height", o);
+}
+}, I = function() {
+if (!y) {
+var e = function() {
+clearInterval(y), y = null, t.$evalAsync(function() {
+t.sized = !0;
+});
+}, n = 0;
+y = setInterval(function() {
+n > 10 ? e() : (n++, j().is(":visible") && (k(), e()));
+}, 100);
+}
+}, R = _.debounce(function() {
+k(!0), b(), C();
+}, 100);
+m.on("resize", R);
+var E, T = function() {
+S = !0, d.scrollBottom(u);
+}, N = document.createDocumentFragment(), D = _.debounce(function() {
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
+}, 100, {
+maxWait: 300
+}), A = function(e) {
+var t = a.defer();
+return E ? (E.onClose(function() {
+t.resolve();
+}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}, B = function() {
+A().then(function() {
+t.$evalAsync(function() {
+if (t.run) {
+angular.extend(t, {
+loading: !0,
+autoScrollActive: !0,
+largeLog: !1,
+limitReached: !1,
+showScrollLinks: !1,
+state: ""
+});
+var e = angular.extend({
+follow: !0,
+tailLines: 5e3,
+limitBytes: 10485760
+}, t.options), n = 0, r = function(e) {
+n++, N.appendChild(f(n, e)), D();
+>>>>>>> Add Browse Catalog to Project context view.
 };
 s.create(y, null, t, r).then(function(e) {
 d.addNotification({
@@ -41908,25 +43549,35 @@ namespace: e.metadata.namespace
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
+<<<<<<< HEAD
 }, P = function(e) {
 k(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
+=======
+}, j = function(e) {
+P(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
+>>>>>>> Add Browse Catalog to Project context view.
 var t = e.quotaAlerts || [];
 w = w.concat(t), _.filter(w, {
 type: "error"
 }).length ? (v.disableInputs = !1, _.each(w, function(e) {
 e.id = _.uniqueId("process-template-alert-"), i.addNotification(e);
 })) : w.length ? (C(w), v.disableInputs = !1) : S();
-}, j = function() {
+}, k = function() {
 if (_.has(v.selectedProject, "metadata.uid")) return t.when(v.selectedProject);
 var n = v.selectedProject.metadata.name, a = v.selectedProject.metadata.annotations["new-display-name"], r = e("description")(v.selectedProject);
 return c.create(n, a, r);
 };
 v.createFromTemplate = function() {
-v.disableInputs = !0, j().then(function(e) {
+v.disableInputs = !0, k().then(function(e) {
 v.selectedProject = e, g = {
 namespace: v.selectedProject.metadata.name
+<<<<<<< HEAD
 }, v.template.labels = m.mapEntries(m.compactEntries(v.labels)), r.create("processedtemplates", null, v.template, g).then(function(e) {
 s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(P);
+=======
+}, v.template.labels = m.mapEntries(m.compactEntries(v.labels)), a.create("processedtemplates", null, v.template, g).then(function(e) {
+s.setTemplateData(e.parameters, v.template.parameters, e.message), b = e.objects, l.getLatestQuotaAlerts(b, g).then(j);
+>>>>>>> Add Browse Catalog to Project context view.
 }, function(e) {
 v.disableInputs = !1;
 var t;
@@ -43669,13 +45320,23 @@ type: "ConfigChange"
 n.valueFromNamespace = {};
 var y = function() {
 if (_.has(n.input.selectedProject, "metadata.uid")) return t.when(n.input.selectedProject);
+<<<<<<< HEAD
 var a = n.input.selectedProject.metadata.name, r = n.input.selectedProject.metadata.annotations["new-display-name"], o = e("description")(n.input.selectedProject);
 return l.create(a, r, o);
 }, b = e("stripTag"), S = e("stripSHA"), C = e("humanizeKind"), w = function(e) {
+=======
+var r = n.input.selectedProject.metadata.name, a = n.input.selectedProject.metadata.annotations["new-display-name"], o = e("description")(n.input.selectedProject);
+return u.create(r, a, o);
+}, w = e("stripTag"), P = e("stripSHA"), j = e("humanizeKind"), k = function(e) {
+>>>>>>> Add Browse Catalog to Project context view.
 return e.length > 24 ? e.substring(0, 24) : e;
 }, k = function() {
 var e = _.last(n.import.name.split("/"));
+<<<<<<< HEAD
 return e = S(e), e = b(e), e = w(e);
+=======
+return e = P(e), e = w(e), e = k(e);
+>>>>>>> Add Browse Catalog to Project context view.
 };
 n.findImage = function() {
 n.loading = !0, i.findImage(n.imageName, {
@@ -43695,6 +45356,7 @@ var a = _.find(n.labels, {
 name: "app"
 >>>>>>> Fix for adding non-builder templates to a project
 });
+<<<<<<< HEAD
 }, !0);
 }
 };
@@ -43803,6 +45465,44 @@ valueValidatorErrorTooltip: a.valueValidatorErrorTooltip || o.valueValidatorErro
 valueValidatorErrorTooltipIcon: a.valueValidatorErrorTooltipIcon || o.valueValidatorErrorTooltipIcon,
 keyPlaceholder: a.keyPlaceholder || o.keyPlaceholder,
 valuePlaceholder: a.valuePlaceholder || o.valuePlaceholder
+=======
+!r || r.value && r.value !== t || (r.value = e);
+}), n.$watch("mode", function(e, t) {
+e !== t && (delete n.import, n.istag = {}, "dockerImage" === e ? n.forms.imageSelection.imageName.$setValidity("imageLoaded", !1) : n.forms.imageSelection.imageName.$setValidity("imageLoaded", !0));
+}), n.$watch("imageName", function() {
+"dockerImage" === n.mode && n.forms.imageSelection.imageName.$setValidity("imageLoaded", !1);
+}), n.$watch("istag", function(t, r) {
+if (t !== r) if (t.namespace && t.imageStream && t.tagObject) {
+var a, c = _.get(t, "tagObject.items[0].image");
+n.app.name = k(t.imageStream), n.import = {
+name: t.imageStream,
+tag: t.tagObject.tag,
+namespace: t.namespace
+}, c && (a = t.imageStream + "@" + c, n.loading = !0, i.get(g, a, {
+namespace: t.namespace
+}).then(function(e) {
+n.loading = !1, n.import.image = e.image, n.ports = o.parsePorts(e.image), n.volumes = s.getVolumes(e.image), n.runsAsRoot = !1;
+}, function(t) {
+n.import.error = e("getErrorDetails")(t) || "An error occurred.", n.loading = !1;
+}));
+} else delete n.import;
+}, !0), n.$watch("input.selectedProject", function(e) {
+if (n.env = _.reject(n.env, "valueFrom"), _.get(e, "metadata.uid")) {
+if (!n.valueFromNamespace[e.metadata.name]) {
+var t = [], r = [];
+i.list(v, {
+namespace: n.input.selectedProject.metadata.name
+}, null, {
+errorNotification: !1
+}).then(function(a) {
+t = p(a.by("metadata.name")), n.valueFromNamespace[e.metadata.name] = t.concat(r);
+}, function(e) {
+403 !== e.status && l.addNotification({
+id: "deploy-image-list-config-maps-error",
+type: "error",
+message: "Could not load config maps.",
+details: y(e)
+>>>>>>> Add Browse Catalog to Project context view.
 });
 },
 controller: [ "$scope", function(t) {
@@ -43971,7 +45671,11 @@ var a, r = !_.isEmpty(t.failure);
 a = r ? (a = _.map(t.failure, function(e) {
 return {
 type: "error",
+<<<<<<< HEAD
 message: "Cannot create " + C(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+=======
+message: "Cannot create " + j(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
+>>>>>>> Add Browse Catalog to Project context view.
 details: e.data.message
 >>>>>>> Fix for adding non-builder templates to a project
 };
@@ -43992,8 +45696,12 @@ return r.message || n.getString(t("You have unsaved changes. Leave this page any
 if (r.dirty) return a();
 =======
 type: "success",
+<<<<<<< HEAD
 message: "Created " + C(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+message: "Created " + j(e.kind).toLowerCase() + ' "' + e.metadata.name + '" successfully. '
+>>>>>>> Add Browse Catalog to Project context view.
 };
 $(window).on("beforeunload", o);
 var i = r.$on("$routeChangeStart", function(t) {
@@ -44730,12 +46438,13 @@ e || (h.drawerHidden = !0);
 }, P = function(e, t) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 return _.get(e, "params.project") !== _.get(t, "params.project");
-}, k = function(e) {
+}, j = function(e) {
 return l.get(f, e, {}, {
 errorNotification: !1
 }).then(function(e) {
 return C[e.metadata.name] = e, e;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, w = function(t, n) {
 >>>>>>> Remember drawer expanded state across sessions
@@ -44745,6 +46454,9 @@ return C[e.metadata.name] = e, e;
 =======
 }, j = function(t, n) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
+=======
+}, k = function(t, n) {
+>>>>>>> Add Browse Catalog to Project context view.
 return {
 heading: e("displayName")(C[t]),
 project: C[t],
@@ -45044,7 +46756,7 @@ return _.assign({}, e[n], t[n]);
 return _.orderBy(e, [ "event.lastTimestamp", "event.metadata.resourceVersion" ], [ "desc", "desc" ]);
 }, L = function() {
 r.$evalAsync(function() {
-h.notificationGroups = [ j(a.project, B($(b, S))) ], R();
+h.notificationGroups = [ k(a.project, B($(b, S))) ], R();
 });
 }, U = function() {
 _.each(y, function(e) {
@@ -45201,7 +46913,7 @@ angular.extend(f, {
 }, q = _.once(function(e, t) {
 V(), d = r.$on("NotificationsService.onNotificationAdded", t);
 }), z = function() {
-k(a.project).then(function() {
+j(a.project).then(function() {
 M(a.project, F), q(a.project, x), w(a.project), L();
 });
 };
