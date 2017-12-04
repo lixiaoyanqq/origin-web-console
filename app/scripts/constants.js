@@ -474,6 +474,14 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
       //     ]
       //   }
       // ]
+    },
+    {
+      label: "Catalog",
+      iconClass: "pficon pficon-service-catalog",
+      href: "/catalog",
+      canI: {
+        addToProject: true
+      }
     }
   ],
   CATALOG_CATEGORIES: [

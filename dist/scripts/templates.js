@@ -9410,11 +9410,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if-start=\"!catalogLandingPageEnabled\" role=\"menuitem\"><a ng-href=\"project/{{currentProjectName}}/create?tab=fromCatalog\">Browse Catalog</a></li>\n" +
     "<li role=\"menuitem\"><a ng-href=\"project/{{currentProjectName}}/create?tab=deployImage\">Deploy Image</a></li>\n" +
     "<li ng-if-end role=\"menuitem\"><a ng-href=\"project/{{currentProjectName}}/create?tab=fromFile\">Import YAML / JSON</a></li>\n" +
+<<<<<<< 13ac2d832bc56edf6bc5e2fc652da9b188ddae32
 <<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
     "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"./\">Browse Catalog</a></li>\n" +
 =======
     "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"/\">Browse Catalog</a></li>\n" +
 >>>>>>> Make sure there's always a menu item for the current project
+=======
+    "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"{{currentProjectName | catalogURL}}\">Browse Catalog</a></li>\n" +
+>>>>>>> Add Browse Catalog to Project context view.
     "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\">Deploy Image</a></li>\n" +
     "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\">Import YAML / JSON</a></li>\n" +
     "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromProject')\">Select from Project</a></li>\n" +
@@ -14823,6 +14827,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Use your source or an example repository to build an application image, or add components like databases and message queues.\n" +
     "</p>\n" +
     "<p class=\"gutter-top\">\n" +
+<<<<<<< 13ac2d832bc56edf6bc5e2fc652da9b188ddae32
 <<<<<<< 0666ab16a69f060ee6faef6feade97117cedbd56
     "<a ng-if=\"overview.catalogLandingPageEnabled\" href=\"./\" class=\"btn btn-lg btn-primary\" translate>\n" +
     "Browse Catalog\n" +
@@ -14834,8 +14839,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "<a ng-if=\"!overview.catalogLandingPageEnabled\" ng-href=\"project/{{projectName}}/create\" class=\"btn btn-lg btn-primary\">\n" +
 >>>>>>> Enable new landing page experience by default
+=======
+    "<button class=\"btn btn-lg btn-primary\" ng-click=\"browseCatalog()\">\n" +
+>>>>>>> Add Browse Catalog to Project context view.
     "Add to Project\n" +
-    "</a>\n" +
+    "</button>\n" +
     "</p>\n" +
     "</div>\n" +
     "<div ng-if=\"!(project.metadata.name | canIAddToProject)\">\n" +
@@ -16500,6 +16508,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 =======
 >>>>>>> Patternfly vertical navigation and project bar
+    "</div>"
+  );
+
+
+  $templateCache.put('views/project-browse-catalog.html',
+    "<div class=\"middle project-browse-catalog\">\n" +
+    "<div class=\"middle-content\">\n" +
+    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" section-title=\"Select an item to add to the current project\" keyword-filter=\"keywordFilter\">\n" +
+    "</services-view>\n" +
+    "</div>\n" +
     "</div>"
   );
 
