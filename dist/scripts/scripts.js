@@ -31466,6 +31466,7 @@ autoScrollActive: !1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), B.start();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
@@ -31531,6 +31532,113 @@ podname: b,
 containername: t.options.container,
 backlink: URI.encode(n.location.href)
 }, r("annotation")(t.context.project, "loggingDataPrefix")))
+=======
+} ]
+};
+} ]).directive("oscHeader", [ "$filter", "$location", "$q", "$rootScope", "$routeParams", "$timeout", "APIService", "AuthorizationService", "Catalog", "CatalogService", "Constants", "DataService", "NotificationsService", "ProjectsService", "projectOverviewURLFilter", "RecentlyViewedServiceItems", function(e, t, n, a, r, o, i, s, c, l, u, d, m, p, f, g) {
+var v = {}, h = [], y = e("displayName"), b = e("uniqueDisplayName"), S = i.getPreferredVersion("templates");
+return {
+restrict: "EA",
+templateUrl: "views/directives/header/header.html",
+link: function(o, i) {
+o.currentProject = v[r.project];
+var m = function(e, t) {
+var n;
+_.set(a, "nav.collapsed", e), t && (n = e ? "true" : "false", localStorage.setItem("openshift/vertical-nav-collapsed", n));
+};
+!function() {
+var e = "true" === localStorage.getItem("openshift/vertical-nav-collapsed");
+m(e);
+}();
+var C = function() {
+return _.get(a, "nav.collapsed", !1);
+}, w = function(e) {
+_.set(a, "nav.showMobileNav", e);
+};
+o.toggleNav = function() {
+var e = C();
+m(!e, !0);
+}, o.toggleMobileNav = function() {
+var e = _.get(a, "nav.showMobileNav");
+w(!e);
+}, o.closeMobileNav = function() {
+w(!1);
+}, o.closeOrderingPanel = function() {
+o.orderingPanelVisible = !1;
+}, o.showOrderingPanel = function(e) {
+o.orderingPanelVisible = !0, o.orderKind = e;
+}, o.onSearchToggle = function(e) {
+_.set(a, "view.hasProjectSearch", e);
+}, o.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var P = i.find(".selectpicker"), k = [], j = function() {
+var t = o.currentProjectName;
+if (t) {
+var n = function(e, n) {
+var a = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
+return n ? a.text(y(e)) : a.text(b(e, h)), a;
+};
+_.size(v) <= 100 ? (h = e("orderByDisplayName")(v), k = _.map(h, function(e) {
+return n(e, !1);
+})) : k = [ n(v[t], !0) ], P.empty(), P.append(k), P.append($('<option data-divider="true"></option>')), P.append($('<option value="">View All Projects</option>')), P.selectpicker("refresh");
+}
+}, I = function() {
+return p.list().then(function(e) {
+v = e.by("metadata.name");
+});
+}, R = function() {
+var e = r.project;
+o.currentProjectName !== e && (o.currentProjectName = e, o.chromeless = "chromeless" === r.view, e && !o.chromeless ? (_.set(a, "view.hasProject", !0), o.canIAddToProject = !1, s.getProjectRules(e).then(function() {
+o.currentProjectName === e && (o.canIAddToProject = s.canIAddToProject(e), o.canIAddToProject && l.getCatalogItems().then(function(e) {
+o.catalogItems = e;
+}));
+}), I().then(function() {
+o.currentProjectName && v && (v[o.currentProjectName] || (v[o.currentProjectName] = {
+metadata: {
+name: o.currentProjectName
+}
+}), o.currentProject = v[o.currentProjectName], j());
+})) : _.set(a, "view.hasProject", !1));
+}, E = function() {
+o.orderingPanelVisible && g.addItem(_.get(o.selectedItem, "resource.metadata.uid"));
+}, T = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, N = function(e) {
+return T(e) ? d.get(S, e.metadata.name, {
+namespace: e.metadata.namespace
+}) : n.when(e);
+};
+o.$on("open-overlay-panel", function(e, t) {
+o.currentProjectName && (o.servicePlansForItem = null, o.orderKind = _.get(t, "kind"), "Template" !== o.orderKind ? "ClusterServiceClass" !== o.orderKind ? (o.selectedItem = t, o.orderingPanelVisible = !0) : c.getServicePlansForServiceClass(_.get(t, "resource.metadata.name")).then(function(e) {
+o.servicePlansForItem = _.reject(e.by("metadata.name"), {
+status: {
+removedFromBrokerCatalog: !0
+}
+}), o.selectedItem = t, o.orderingPanelVisible = !0;
+}) : N(t.resource).then(function(e) {
+o.selectedItem = e, o.orderingPanelVisible = !0, o.orderKind = "Template";
+}));
+});
+var D = a.$on("filter-catalog-items", function(e, n) {
+if (o.currentProjectName) {
+var a = {
+filter: n.searchText
+};
+t.path("project/" + encodeURIComponent(o.currentProjectName) + "/project-browse-catalog").search(a);
+}
+});
+o.closeOrderingPanel = function() {
+g.addItem(_.get(o.selectedItem, "resource.metadata.uid")), o.orderingPanelVisible = !1;
+}, R(), o.$on("$routeChangeSuccess", R), P.selectpicker({
+iconBase: "fa",
+tickIcon: "fa-check"
+}).change(function() {
+var e = $(this).val(), n = "" === e ? "projects" : f(e);
+o.$apply(function() {
+t.url(n);
+});
+}), o.$on("$destroy", function() {
+D(), E();
+>>>>>>> Update directives/nav oscHeader to use getPreferredVersion
 });
 }));
 }), this.cacheScrollableNode = function(e) {
