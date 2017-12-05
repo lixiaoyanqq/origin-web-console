@@ -15,6 +15,7 @@
         '$routeParams',
         '$scope',
         '$timeout',
+        'APIService',
         'Constants',
         'DataService',
         'NotificationsService',
@@ -32,10 +33,14 @@
       $routeParams,
       $scope,
       $timeout,
+      APIService,
       Constants,
       DataService,
       NotificationsService,
       EventsService) {
+
+      var eventsVersion = APIService.getPreferredVersion('events');
+      var projectsVersion = APIService.getPreferredVersion('projects');
 
       // kill switch if watching events is too expensive
       var DISABLE_GLOBAL_EVENT_WATCH = _.get(Constants, 'DISABLE_GLOBAL_EVENT_WATCH');
@@ -69,7 +74,7 @@
 
       var getProject = function(projectName) {
         return DataService
-                .get('projects', projectName, {}, {errorNotification: false})
+                .get(projectsVersion, projectName, {}, {errorNotification: false})
                 .then(function(project) {
                   projects[project.metadata.name] = project;
                   return project;
@@ -255,7 +260,7 @@
       var watchEvents = function(projectName, cb) {
         deregisterAPIEventsWatch();
         if(projectName) {
-          apiEventsWatcher = DataService.watch('events', {namespace: projectName}, _.debounce(cb, 400), { skipDigest: true });
+          apiEventsWatcher = DataService.watch(eventsVersion, {namespace: projectName}, _.debounce(cb, 400), { skipDigest: true });
         }
       };
 
