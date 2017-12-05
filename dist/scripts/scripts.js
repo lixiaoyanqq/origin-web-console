@@ -38520,6 +38520,7 @@ c.disableInputs = !1;
 });
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("buildTrendsChart", [ "$filter", "$location", "$rootScope", "$timeout", "BuildsService", function(e, t, n, a, r) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 return {
@@ -38588,6 +38589,21 @@ return a[t] || (a[t] = {
 total: 0,
 count: 0
 }), a[t];
+=======
+} ]), angular.module("openshiftConsole").component("alerts", {
+bindings: {
+alerts: "=",
+filter: "<?",
+hideCloseButton: "<?"
+},
+templateUrl: "components/alerts/alerts.html",
+controller: function() {
+var e = this;
+e.close = function(e) {
+e.hidden = !0, _.isFunction(e.onClose) && e.onClose();
+}, e.onClick = function(t, n) {
+_.isFunction(n.onClick) && n.onClick() && e.close(t);
+>>>>>>> Convert alerts directive to component and add spec test.
 };
 return _.each(R[e.descriptor], function(e) {
 _.each(e, function(e) {
@@ -38599,6 +38615,7 @@ var a;
 a = t.count ? t.total / t.count : null, r.push(Number(n)), o.push(e.convert ? e.convert(a) : a);
 }), o.length > 1 && (e.lastValue = _.last(o) || 0), i;
 }
+<<<<<<< HEAD
 function o(e, r) {
 var o = [], i = {
 type: "spline"
@@ -38618,6 +38635,9 @@ c.push(t);
 }
 =======
 }), angular.module("openshiftConsole").directive("catalog", [ "CatalogService", "Constants", "KeywordService", "Logger", function(e, t, n, r) {
+=======
+}), angular.module("openshiftConsole").directive("parseError", function() {
+>>>>>>> Convert alerts directive to component and add spec test.
 return {
 restrict: "E",
 scope: {
