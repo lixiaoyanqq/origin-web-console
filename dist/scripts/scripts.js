@@ -25062,16 +25062,13 @@ e.history.back();
 });
 }
 };
-} ]), angular.module("openshiftConsole").directive("alerts", function() {
-return {
-restrict: "E",
-scope: {
+} ]), angular.module("openshiftConsole").component("alerts", {
+bindings: {
 alerts: "=",
-filter: "=?",
-animateSlide: "=?",
-hideCloseButton: "=?",
-toast: "=?"
+filter: "<?",
+hideCloseButton: "<?"
 },
+<<<<<<< 81d3a6f792ee69e29140010534221ebcbab63c04
 templateUrl: "views/_alerts.html",
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 link: function(a) {
@@ -25089,9 +25086,17 @@ e.hidden = !0, _.isFunction(e.onClose) && e.onClose();
 }, e.onClick = function(e, t) {
 _.isFunction(t.onClick) && t.onClick() && (e.hidden = !0);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+templateUrl: "components/alerts/alerts.html",
+controller: function() {
+var e = this;
+e.close = function(e) {
+e.hidden = !0, _.isFunction(e.onClose) && e.onClose();
+}, e.onClick = function(t, n) {
+_.isFunction(n.onClick) && n.onClick() && e.close(t);
+>>>>>>> Convert alerts directive to component and add spec test.
 };
 }
-};
 }), angular.module("openshiftConsole").directive("parseError", function() {
 return {
 restrict: "E",

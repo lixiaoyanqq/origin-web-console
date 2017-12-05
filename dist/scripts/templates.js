@@ -1,6 +1,7 @@
 angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function($templateCache) {
   'use strict';
 
+<<<<<<< 81d3a6f792ee69e29140010534221ebcbab63c04
   $templateCache.put('views/_alerts.html',
     "<div ng-attr-row=\"{{toast}}\" ng-attr-wrap=\"{{toast}}\">\n" +
     "<div ng-repeat=\"(alertID, alert) in (alerts | filterCollection : filter) track by (alertID + (alert.message || alert.details))\" ng-if=\"!alert.hidden\" class=\"alert-wrapper animate-repeat\" ng-class=\"{'animate-slide': animateSlide}\">\n" +
@@ -35,6 +36,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Convert alerts directive to component and add spec test.
   $templateCache.put('views/_build-trends-chart.html',
     " <div class=\"build-trends-responsive\" aria-hidden=\"true\" ng-show=\"completeBuilds.length >= minBuilds()\">\n" +
     "<div class=\"build-trends-container\">\n" +
@@ -17704,6 +17707,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancelLogin();\">Cancel</button>\n" +
     "</div>\n" +
 >>>>>>> Patternfly vertical navigation and project bar
+    "</div>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('components/alerts/alerts.html',
+    "<div ng-attr-row=\"{{$ctrl.toast}}\" ng-attr-wrap=\"{{$ctrl.toast}}\">\n" +
+    "<div ng-repeat=\"(alertID, alert) in ($ctrl.alerts | filterCollection : $ctrl.filter) track by (alertID + (alert.message || alert.details))\" ng-if=\"!alert.hidden\" class=\"alert-wrapper animate-repeat\" ng-class=\"{'animate-slide': $ctrl.animateSlide}\">\n" +
+    "<div class=\"alert word-break\" ng-class=\"{ 'alert-danger': alert.type === 'error', 'alert-warning': alert.type === 'warning', 'alert-success': alert.type === 'success', 'alert-info': !alert.type || alert.type === 'info', 'toast-pf': $ctrl.toast, 'mar-left-sm': $ctrl.toast}\">\n" +
+    "<button ng-if=\"!$ctrl.hideCloseButton\" ng-click=\"$ctrl.close(alert)\" type=\"button\" class=\"close\">\n" +
+    "<span class=\"pficon pficon-close\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Close</span>\n" +
+    "</button>\n" +
+    "<span class=\"pficon\" aria-hidden=\"true\" ng-class=\"{'pficon-error-circle-o': alert.type === 'error', 'pficon-warning-triangle-o': alert.type === 'warning', 'pficon-ok': alert.type === 'success','pficon-info': !alert.type || alert.type === 'info'}\"></span>\n" +
+    "<span class=\"sr-only\">{{alert.type}}</span>\n" +
+    "<span ng-if=\"alert.message\" style=\"margin-right: 5px\" ng-class=\"{'strong': !$ctrl.toast}\">{{alert.message}}</span><span ng-if=\"alert.details\">{{alert.details}}</span>\n" +
+    "<span ng-repeat=\"link in alert.links\">\n" +
+    "<a ng-if=\"!link.href\" href=\"\" ng-click=\"$ctrl.onClick(alert, link)\" role=\"button\" ng-attr-target=\"{{link.target}}\">{{link.label}}</a>\n" +
+    "<a ng-if=\"link.href\" href=\"{{link.href}}\" ng-click=\"$ctrl.onClick(alert, link)\" ng-attr-target=\"{{link.target}}\">{{link.label}}</a>\n" +
+    "<span ng-if=\"!$last\" class=\"action-divider\">|</span>\n" +
+    "</span>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</div>"
   );
