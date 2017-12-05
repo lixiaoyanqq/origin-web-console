@@ -192,6 +192,7 @@ angular.module('openshiftConsole')
       $rootScope,
       $routeParams,
       $timeout,
+      APIService,
       AuthorizationService,
       Catalog,
       CatalogService,
@@ -208,6 +209,8 @@ angular.module('openshiftConsole')
 
     var displayName = $filter('displayName');
     var uniqueDisplayName = $filter('uniqueDisplayName');
+
+    var templatesVersion = APIService.getPreferredVersion('templates');
 
     return {
       restrict: 'EA',
@@ -387,7 +390,7 @@ angular.module('openshiftConsole')
 
         var loadCompleteTemplate = function(template) {
           if (isPartialObject(template)) {
-            return DataService.get("templates", template.metadata.name, { namespace: template.metadata.namespace });
+            return DataService.get(templatesVersion, template.metadata.name, { namespace: template.metadata.namespace });
           }
 
           return $q.when(template);
