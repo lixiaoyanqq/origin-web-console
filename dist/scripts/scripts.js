@@ -31803,7 +31803,8 @@ istag: "=model",
 selectDisabled: "=",
 selectRequired: "=",
 includeSharedNamespace: "=",
-allowCustomTag: "="
+allowCustomTag: "=",
+appendToBody: "="
 },
 templateUrl: "views/directives/istag-select.html",
 <<<<<<< de23bb9edb519863fdc1189600627bce78923bce
