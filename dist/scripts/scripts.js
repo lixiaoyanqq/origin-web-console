@@ -44569,6 +44569,7 @@ templateUrl: "views/directives/notifications/notification-drawer-wrapper.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 controller: [ "$filter", "$interval", "$location", "$timeout", "$routeParams", "$rootScope", "Constants", "DataService", "NotificationsService", "EventsService", function(e, t, n, a, r, o, i, s, c, l) {
 var u, d, p = _.get(i, "DISABLE_GLOBAL_EVENT_WATCH"), m = e("isIE")() || e("isEdge")(), f = this, g = [], h = {}, v = [], y = {}, b = function(e) {
 =======
@@ -44634,25 +44635,36 @@ controller: [ "$filter", "$interval", "$location", "$rootScope", "$routeParams",
 var u, d, m = _.get(s, "DISABLE_GLOBAL_EVENT_WATCH"), p = e("isIE")(), f = this, g = [], v = {}, h = {}, y = {}, b = function(e) {
 e || (f.drawerHidden = !0);
 }, S = function(e, t) {
+=======
+controller: [ "$filter", "$interval", "$location", "$rootScope", "$routeParams", "$scope", "$timeout", "APIService", "Constants", "DataService", "EventsService", "NotificationsService", function(e, t, n, r, a, o, i, s, c, l, u) {
+var d, m, p = s.getPreferredVersion("events"), f = s.getPreferredVersion("projects"), g = _.get(c, "DISABLE_GLOBAL_EVENT_WATCH"), v = e("isIE")(), h = this, y = [], b = {}, S = {}, C = {}, w = function(e) {
+e || (h.drawerHidden = !0);
+}, P = function(e, t) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 return _.get(e, "params.project") !== _.get(t, "params.project");
-}, C = function(e) {
-return c.get("projects", e, {}, {
+}, k = function(e) {
+return l.get(f, e, {}, {
 errorNotification: !1
 }).then(function(e) {
-return y[e.metadata.name] = e, e;
+return C[e.metadata.name] = e, e;
 });
+<<<<<<< HEAD
 }, w = function(t, n) {
 >>>>>>> Remember drawer expanded state across sessions
 =======
 }, C = function(t, n) {
 >>>>>>> Adding label filter to ste secrets page
+=======
+}, j = function(t, n) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 return {
-heading: e("displayName")(y[t]),
-project: y[t],
+heading: e("displayName")(C[t]),
+project: C[t],
 notifications: n
 };
-}, P = function(e) {
+}, I = function(e) {
 return _.filter(e, "unread");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }, k = function() {
@@ -44754,6 +44766,14 @@ e.totalUnread = P(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emi
 }, j = function(e) {
 _.each(f.notificationGroups, function(t) {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, R = function() {
+_.each(h.notificationGroups, function(e) {
+e.totalUnread = I(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
+});
+}, E = function(e) {
+_.each(h.notificationGroups, function(t) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 _.remove(t.notifications, {
 uid: e.uid,
 namespace: e.namespace
@@ -44804,6 +44824,7 @@ g[r.project] = {}, v[r.project] = {};
 }, R = function(e) {
 =======
 });
+<<<<<<< HEAD
 }, I = function(e) {
 <<<<<<< HEAD
 >>>>>>> Add search catalog in project context
@@ -44815,6 +44836,13 @@ h[a.project] && delete h[a.project][e.uid], v[a.project] && delete v[a.project][
 v[a.project] = {}, h[a.project] = {};
 }, E = function(e) {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, T = function(e) {
+S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], E(e);
+}, N = function() {
+b[a.project] = {}, S[a.project] = {};
+}, D = function(e) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 return _.reduce(e, function(e, t) {
 return e[t.metadata.uid] = {
 >>>>>>> Handle displaying parameters when secrets are not available.
@@ -44833,18 +44861,23 @@ event: e
 =======
 uid: t.metadata.uid,
 trackByID: t.metadata.uid,
-unread: !l.isRead(t.metadata.uid),
+unread: !u.isRead(t.metadata.uid),
 type: t.type,
 lastTimestamp: t.lastTimestamp,
 firstTimestamp: t.firstTimestamp,
 event: t
 }, e;
 }, {});
+<<<<<<< HEAD
 }, T = function(e) {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, A = function(e) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 return _.reduce(e, function(e, t) {
-return l.isImportantAPIEvent(t) && !l.isCleared(t.metadata.uid) && (e[t.metadata.uid] = t), e;
+return u.isImportantAPIEvent(t) && !u.isCleared(t.metadata.uid) && (e[t.metadata.uid] = t), e;
 }, {});
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -44914,17 +44947,21 @@ t.showInDrawer && !c.isCleared(a) && (v[n] = v[n] || {}, v[n][a] = {
 >>>>>>> Add SVG icons
 =======
 }, N = function(e, t) {
+=======
+}, $ = function(e, t) {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 var n = a.project;
 return _.assign({}, e[n], t[n]);
-}, D = function(e) {
+}, B = function(e) {
 return _.orderBy(e, [ "event.lastTimestamp", "event.metadata.resourceVersion" ], [ "desc", "desc" ]);
-}, A = function() {
+}, L = function() {
 r.$evalAsync(function() {
-f.notificationGroups = [ w(a.project, D(N(v, h))) ], k();
+h.notificationGroups = [ j(a.project, B($(b, S))) ], R();
 });
-}, $ = function() {
-_.each(g, function(e) {
+}, U = function() {
+_.each(y, function(e) {
 e();
+<<<<<<< HEAD
 }), g = [];
 }, B = function() {
 d && (c.unwatch(d), d = null);
@@ -44941,8 +44978,20 @@ t.showInDrawer && !l.isCleared(a) && (h[n] = h[n] || {}, h[n][a] = {
 var n = t.namespace || a.project, r = t.id ? n + "/" + t.id : _.uniqueId("notification_") + Date.now();
 t.showInDrawer && !l.isCleared(r) && (h[n] = h[n] || {}, h[n][r] = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}), y = [];
+}, O = function() {
+m && (l.unwatch(m), m = null);
+}, V = function() {
+d && d(), d = null;
+}, F = function(e) {
+b[a.project] = D(A(e.by("metadata.name"))), L();
+}, x = function(e, t) {
+var n = t.namespace || a.project, r = t.id ? n + "/" + t.id : _.uniqueId("notification_") + Date.now();
+t.showInDrawer && !u.isCleared(r) && (S[n] = S[n] || {}, S[n][r] = {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 actions: t.actions,
-unread: !l.isRead(r),
+unread: !u.isRead(r),
 trackByID: t.trackByID,
 uid: r,
 type: t.type,
@@ -44953,6 +45002,7 @@ details: t.details,
 namespace: n,
 links: t.links
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T();
 }
 }, L = function(e, t) {
@@ -44962,10 +45012,16 @@ D(), e && (u = s.watch("events", {
 }, V = function(e, t) {
 B(), e && (d = c.watch("events", {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, L());
+}, M = function(e, t) {
+O(), e && (m = l.watch(p, {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
 }));
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -45053,6 +45109,16 @@ V(a.project, U), F(a.project, O), b(a.project), A();
 };
 angular.extend(f, {
 >>>>>>> Remember drawer expanded state across sessions
+=======
+}, q = _.once(function(e, t) {
+V(), d = r.$on("NotificationsService.onNotificationAdded", t);
+}), z = function() {
+k(a.project).then(function() {
+M(a.project, F), q(a.project, x), w(a.project), L();
+});
+};
+angular.extend(h, {
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 drawerHidden: !0,
 allowExpand: !0,
 drawerExpanded: "true" === localStorage.getItem("openshift/notification-drawer-expanded"),
@@ -45061,6 +45127,7 @@ hasUnread: !1,
 showClearAll: !0,
 showMarkAllRead: !0,
 onClose: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 f.drawerHidden = !0;
@@ -45099,16 +45166,19 @@ e.unread = !1, c.markRead(e.uid), c.markCleared(e.uid);
 notificationGroups: v,
 =======
 f.drawerHidden = !0;
+=======
+h.drawerHidden = !0;
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 },
 onMarkAllRead: function(e) {
 _.each(e.notifications, function(e) {
-e.unread = !1, l.markRead(e.uid);
-}), A(), r.$emit("NotificationDrawerWrapper.onMarkAllRead");
+e.unread = !1, u.markRead(e.uid);
+}), L(), r.$emit("NotificationDrawerWrapper.onMarkAllRead");
 },
 onClearAll: function(e) {
 _.each(e.notifications, function(e) {
-e.unread = !1, l.markRead(e.uid), l.markCleared(e.uid);
-}), R(), A(), r.$emit("NotificationDrawerWrapper.onMarkAllRead");
+e.unread = !1, u.markRead(e.uid), u.markCleared(e.uid);
+}), N(), L(), r.$emit("NotificationDrawerWrapper.onMarkAllRead");
 },
 notificationGroups: [],
 >>>>>>> Remember drawer expanded state across sessions
@@ -45116,6 +45186,7 @@ headingInclude: "views/directives/notifications/header.html",
 notificationBodyInclude: "views/directives/notifications/notification-body.html",
 customScope: {
 clear: function(e, t, n) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -45143,12 +45214,19 @@ l.markRead(e.uid), l.markCleared(e.uid), n.notifications.splice(t, 1), I(e), A()
 markRead: function(e) {
 e.unread = !1, l.markRead(e.uid), A();
 >>>>>>> Remember drawer expanded state across sessions
+=======
+u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L();
+},
+markRead: function(e) {
+e.unread = !1, u.markRead(e.uid), L();
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 },
 <<<<<<< HEAD
 getNotficationStatusIconClass: function(e) {
 return B[e.type] || B.info;
 =======
 close: function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 p.drawerHidden = !0;
 >>>>>>> Support EnvFrom in the Env Editors
@@ -45159,6 +45237,9 @@ f.drawerHidden = !0;
 <<<<<<< HEAD
 getStatusForCount: function(e) {
 return B[e] || B.info;
+=======
+h.drawerHidden = !0;
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 },
 close: function() {
 f.drawerHidden = !0;
@@ -45184,6 +45265,7 @@ p || m || O();
 k(), S(), N();
 =======
 onLinkClick: function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 e.onClick(), p.drawerHidden = !0;
 },
@@ -45215,28 +45297,38 @@ A(), D(), N();
 >>>>>>> Support EnvFrom in the Env Editors
 =======
 e.onClick(), f.drawerHidden = !0;
+=======
+e.onClick(), h.drawerHidden = !0;
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 },
-countUnreadNotifications: k
+countUnreadNotifications: R
 }
 }), o.$watch("$ctrl.drawerExpanded", function(e) {
 localStorage.setItem("openshift/notification-drawer-expanded", e ? "true" : "false");
 });
-var M = function() {
-a.project && x(), g.push(r.$on("$routeChangeSuccess", function(e, t, n) {
-S(t, n) && (f.customScope.projectName = a.project, x());
-})), g.push(r.$on("NotificationDrawerWrapper.toggle", function() {
-f.drawerHidden = !f.drawerHidden;
-})), g.push(r.$on("NotificationDrawerWrapper.hide", function() {
-f.drawerHidden = !0;
-})), g.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-l.markCleared(t.uid), I(t), f.countUnreadNotifications();
+var H = function() {
+a.project && z(), y.push(r.$on("$routeChangeSuccess", function(e, t, n) {
+P(t, n) && (h.customScope.projectName = a.project, z());
+})), y.push(r.$on("NotificationDrawerWrapper.toggle", function() {
+h.drawerHidden = !h.drawerHidden;
+})), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
+h.drawerHidden = !0;
+})), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
+u.markCleared(t.uid), T(t), h.countUnreadNotifications();
 }));
 };
+<<<<<<< HEAD
 f.$onInit = function() {
 m || p || M();
 }, f.$onDestroy = function() {
 L(), B(), $();
 >>>>>>> Remember drawer expanded state across sessions
+=======
+h.$onInit = function() {
+g || v || H();
+}, h.$onDestroy = function() {
+V(), O(), U();
+>>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 };
 } ]
 });
