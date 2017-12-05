@@ -43383,6 +43383,55 @@ type: "error",
 message: "An error occurred creating project.",
 details: S(e)
 });
+<<<<<<< HEAD
+=======
+}(), angular.module("openshiftConsole").component("overviewNetworking", {
+controllerAs: "networking",
+bindings: {
+rowServices: "<",
+allServices: "<",
+routesByService: "<"
+},
+templateUrl: "views/overview/_networking.html"
+}), angular.module("openshiftConsole").component("overviewPipelines", {
+controllerAs: "overviewPipelines",
+bindings: {
+recentPipelines: "<"
+},
+templateUrl: "views/overview/_pipelines.html"
+}), angular.module("openshiftConsole").component("overviewServiceBindings", {
+controllerAs: "$ctrl",
+bindings: {
+sectionTitle: "@",
+namespace: "<",
+refApiObject: "<",
+bindings: "<",
+bindableServiceInstances: "<",
+serviceClasses: "<",
+serviceInstances: "<",
+createBinding: "&"
+},
+templateUrl: "views/overview/_service-bindings.html"
+}), angular.module("openshiftConsole").directive("istagSelect", [ "APIService", "DataService", "ProjectsService", function(e, t, n) {
+var r = e.getPreferredVersion("imagestreams");
+return {
+require: "^form",
+restrict: "E",
+scope: {
+istag: "=model",
+selectDisabled: "=",
+selectRequired: "=",
+includeSharedNamespace: "=",
+allowCustomTag: "=",
+appendToBody: "="
+},
+templateUrl: "views/directives/istag-select.html",
+controller: [ "$scope", function(e) {
+e.isByNamespace = {}, e.isNamesByNamespace = {};
+var a = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), o = function(e) {
+_.each(e, function(e) {
+_.get(e, "status.tags") || _.set(e, "status.tags", []);
+>>>>>>> Set append-to-body for ui-select so select menu isn't clipped on iphone5
 });
 }, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", w);
 =======
