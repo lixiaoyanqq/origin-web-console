@@ -6461,10 +6461,70 @@ if (!e) return e;
 var r = e / (n / 100);
 return Math.round(r);
 },
+<<<<<<< HEAD
 hasCPURequest: m,
 filterHPA: function(e, t, n) {
 return _.filter(e, function(e) {
 return e.spec.scaleTargetRef.kind === t && e.spec.scaleTargetRef.name === n;
+=======
+millicoresToCores: function(e) {
+return e ? e / 1e3 : e;
+}
+};
+}), angular.module("openshiftConsole").service("BreadcrumbsService", [ "$filter", "APIService", "Navigate", function(e, t, n) {
+var r = e("annotation"), a = e("displayName"), o = function(e) {
+switch (e) {
+case "DeploymentConfig":
+return "Deployments";
+
+default:
+return _.startCase(t.kindToResource(e, !0));
+}
+}, i = function(e, r, i, s) {
+var c, l = [], u = s.humanizedKind || o(r);
+return s.includeProject && (c = s.project ? a(s.project) : i, l.push({
+title: c,
+link: n.projectOverviewURL(i)
+})), l.push({
+title: u,
+link: n.resourceListURL(t.kindToResource(r), i)
+}), s.parent && l.push(s.parent), s.subpage ? (l.push({
+title: s.displayName || e,
+link: n.resourceURL(e, r, i)
+}), l.push({
+title: s.subpage
+})) : l.push({
+title: s.displayName || e
+}), l;
+}, s = function(t, a) {
+a = a || {};
+var o, s = r(t, "deploymentConfig");
+return s && (a.humanizedKind = "Deployments", a.parent = {
+title: s,
+link: n.configURLForResource(t)
+}, (o = e("annotation")(t, "deploymentVersion")) && (a.displayName = "#" + o)), i(t.metadata.name, t.kind, t.metadata.namespace, a);
+}, c = function(e, t) {
+switch (e.kind) {
+case "ReplicationController":
+return s(e, t);
+
+default:
+return i(e.metadata.name, e.kind, e.metadata.namespace, t);
+}
+};
+return {
+getBreadcrumbs: function(e) {
+return (e = e || {}).object ? c(e.object, e) : e.kind && e.name && e.namespace ? i(e.name, e.kind, e.namespace, e) : [];
+}
+};
+} ]), angular.module("openshiftConsole").factory("QuotaService", [ "$filter", "$location", "$rootScope", "$routeParams", "$q", "APIService", "Constants", "DataService", "EventsService", "Logger", "NotificationsService", function(e, t, n, r, a, o, i, s, c, l, u) {
+var d = o.getPreferredVersion("resourcequotas"), m = o.getPreferredVersion("appliedclusterresourcequotas"), p = e("isNil"), f = e("usageValue"), g = e("usageWithUnits"), v = e("percent"), h = function(e) {
+return _.every(e.spec.containers, function(e) {
+var t = _.some(_.get(e, "resources.requests"), function(e) {
+return !p(e) && 0 !== f(e);
+}), n = _.some(_.get(e, "resources.limits"), function(e) {
+return !p(e) && 0 !== f(e);
+>>>>>>> Update quota service to use getPreferredVersion
 });
 },
 getHPAWarnings: function(e, a, o, i) {
@@ -6474,6 +6534,7 @@ t || r.push({
 message: "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling.",
 reason: "MetricsNotAvailable"
 });
+<<<<<<< HEAD
 var s, c, l = _.get(e, "spec.template.spec.containers", []);
 return m(l, o, i) || (s = p(e.kind), n.isRequestCalculated("cpu", i) ? (c = "This " + s + " does not have any containers with a CPU limit set. Autoscaling will not work without a CPU limit.", n.isLimitCalculated("cpu", i) && (c += " The CPU limit will be automatically calculated from the container memory limit.")) : c = "This " + s + " does not have any containers with a CPU request set. Autoscaling will not work without a CPU request.", r.push({
 message: c,
@@ -6484,6 +6545,29 @@ reason: "MultipleHPA"
 }), "ReplicationController" === e.kind && f(e) && _.some(a, function() {
 return _.some(a, function(e) {
 return "ReplicationController" === _.get(e, "spec.scaleTargetRef.kind");
+=======
+}, y = function(e) {
+return _.has(e, "spec.activeDeadlineSeconds");
+}, b = function(e, t) {
+var n = h(e), r = y(e);
+return _.filter(t, function(e) {
+var t = e.spec.quota ? e.spec.quota.scopes : e.spec.scopes;
+return _.every(t, function(e) {
+switch (e) {
+case "Terminating":
+return r;
+
+case "NotTerminating":
+return !r;
+
+case "BestEffort":
+return n;
+
+case "NotBestEffort":
+return !n;
+}
+return !0;
+>>>>>>> Update quota service to use getPreferredVersion
 });
 }) && r.push({
 message: "This deployment is scaled by both a deployment configuration and an autoscaler. This is not recommended because they might compete with each other.",
@@ -6495,6 +6579,7 @@ reason: "DeploymentHasHPA"
 }), r;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 });
+<<<<<<< HEAD
 },
 groupHPAs: function(e) {
 var t = {};
@@ -6512,10 +6597,105 @@ var n = e.spec.scaleTargetRef.name, r = e.spec.scaleTargetRef.kind;
 n && r && (_.has(t, [ r, n ]) || _.set(t, [ r, n ], []), t[r][n].push(e));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }), t;
+=======
+}, S = function(e, t) {
+return e ? "Pod" === e.kind ? b(e, t) : _.has(e, "spec.template") ? b(e.spec.template, t) : t : t;
+}, C = e("humanizeQuotaResource"), w = e("humanizeKind"), P = function(e, t, n) {
+var r = e.status.total || e.status;
+if (f(r.hard[n]) <= f(r.used[n])) {
+var a, o;
+return a = "Pod" === t.kind ? "You will not be able to create the " + w(t.kind) + " '" + t.metadata.name + "'." : "You can still create " + w(t.kind) + " '" + t.metadata.name + "' but no pods will be created until resources are freed.", o = "pods" === n ? "You are at your quota for pods." : "You are at your quota for " + C(n) + " on pods.", {
+type: "Pod" === t.kind ? "error" : "warning",
+message: o,
+details: a,
+links: [ {
+href: "project/" + e.metadata.namespace + "/quota",
+label: "View Quota",
+target: "_blank"
+} ]
+};
+}
+return null;
+}, k = {
+cpu: "resources.requests.cpu",
+"requests.cpu": "resources.requests.cpu",
+"limits.cpu": "resources.limits.cpu",
+memory: "resources.requests.memory",
+"requests.memory": "resources.requests.memory",
+"limits.memory": "resources.limits.memory",
+persistentvolumeclaims: "resources.limits.persistentvolumeclaims",
+"requests.storage": "resources.request.storage"
+}, j = function(e, t, n, r) {
+var a = e.status.total || e.status, o = k[r], i = 0;
+if (_.each(n.spec.containers, function(e) {
+var t = _.get(e, o);
+t && (i += f(t));
+}), f(a.hard[r]) < f(a.used[r]) + i) {
+var s;
+return s = "Pod" === t.kind ? "You may not be able to create the " + w(t.kind) + " '" + t.metadata.name + "'." : "You can still create " + w(t.kind) + " '" + t.metadata.name + "' but you may not have pods created until resources are freed.", {
+type: "warning",
+message: "You are close to your quota for " + C(r) + " on pods.",
+details: s,
+links: [ {
+href: "project/" + e.metadata.namespace + "/quota",
+label: "View Quota",
+target: "_blank"
+} ]
+};
+}
+}, I = function(e, t) {
+var n = [], r = "Pod" === e.kind ? e : _.get(e, "spec.template");
+return r ? (_.each([ "cpu", "memory", "requests.cpu", "requests.memory", "limits.cpu", "limits.memory", "pods" ], function(a) {
+var o = t.status.total || t.status;
+if (("Pod" !== e.kind || "pods" !== a) && _.has(o, [ "hard", a ]) && _.has(o, [ "used", a ])) {
+var i = P(t, e, a);
+if (i) n.push(i); else if ("pods" !== a) {
+var s = j(t, e, r, a);
+s && n.push(s);
+}
+}
+}), n) : n;
+}, R = function(e, t, n) {
+var r = [];
+return e && t ? (_.each(e, function(e) {
+var a = S(e, t), i = S(e, n), s = o.objectToResourceGroupVersion(e);
+if (s) {
+var c = o.kindToResource(e.kind, !0), l = w(e.kind), u = "";
+s.group && (u = s.group + "/"), u += s.resource;
+var d = function(t) {
+var n = t.status.total || t.status;
+!p(n.hard[u]) && f(n.hard[u]) <= f(n.used[u]) && r.push({
+type: "error",
+message: "You are at your quota of " + n.hard[u] + " " + ("1" === n.hard[u] ? l : c) + " in this project.",
+details: "You will not be able to create the " + l + " '" + e.metadata.name + "'.",
+links: [ {
+href: "project/" + t.metadata.namespace + "/quota",
+label: "View Quota",
+target: "_blank"
+} ]
+}), r = r.concat(I(e, t));
+};
+_.each(a, d), _.each(i, d);
+}
+}), r) : r;
+}, E = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], T = function(e, t, n, r, a) {
+var o, s = "Your project is " + (r < t ? "over" : "at") + " quota. ";
+return o = _.includes(E, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
+}, N = function(e, t, n) {
+var r = function(e) {
+var t = e.status.total || e.status;
+return _.some(t.hard, function(e, r) {
+if ("resourcequotas" === r) return !1;
+if (!n || _.includes(n, r)) {
+if (!(e = f(e))) return !1;
+var a = f(_.get(t, [ "used", r ]));
+return !!a && e <= a;
+>>>>>>> Update quota service to use getPreferredVersion
 }
 };
 } ]), angular.module("openshiftConsole").factory("PodsService", [ "OwnerReferencesService", function(e) {
 return {
+<<<<<<< HEAD
 getImageIDs: function(e, t) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -6530,6 +6710,23 @@ r.test(s) && (a = s.replace(r, ""), n[a] = !0);
 generateDebugPod: function(e, t) {
 var n = angular.copy(e), r = _.find(n.spec.containers, {
 name: t
+=======
+filterQuotasForResource: S,
+isBestEffortPod: h,
+isTerminatingPod: y,
+getResourceLimitAlerts: I,
+getQuotaAlerts: R,
+getLatestQuotaAlerts: function(e, t) {
+var n, r, o = [];
+return o.push(s.list(d, t).then(function(e) {
+n = e.by("metadata.name"), l.log("quotas", n);
+})), o.push(s.list(m, t).then(function(e) {
+r = e.by("metadata.name"), l.log("cluster quotas", r);
+})), a.all(o).then(function() {
+return {
+quotaAlerts: R(e, n, r)
+};
+>>>>>>> Update quota service to use getPreferredVersion
 });
 return r ? (n.metadata = {
 =======
@@ -6544,6 +6741,7 @@ name: t
 r.test(s) && (a = s.replace(r, ""), n[a] = !0);
 }), _.keys(n);
 },
+<<<<<<< HEAD
 generateDebugPod: function(e, t) {
 var n = angular.copy(e), r = _.find(n.spec.containers, {
 name: t
@@ -6576,6 +6774,20 @@ return e.groupByControllerUID(t);
 filterForOwner: function(t, n) {
 return e.filterForController(t, n);
 }
+=======
+isAnyQuotaExceeded: N,
+isAnyStorageQuotaExceeded: function(e, t) {
+return N(e, t, [ "requests.storage", "persistentvolumeclaims" ]);
+},
+willRequestExceedQuota: function(e, t, n, r) {
+var a = function(e) {
+var t = e.status.total || e.status, a = f(r);
+if (!n) return !1;
+var o = _.get(t.hard, n);
+if (!(o = f(o))) return !1;
+var i = f(_.get(t, [ "used", n ]));
+return i ? o < i + a : o < a;
+>>>>>>> Update quota service to use getPreferredVersion
 };
 } ]), angular.module("openshiftConsole").service("CachedTemplateService", function() {
 var e = null;
@@ -6583,13 +6795,47 @@ return {
 setTemplate: function(t) {
 e = t;
 },
+<<<<<<< HEAD
 getTemplate: function() {
 return e;
 },
 clearTemplate: function() {
 e = null;
+=======
+getQuotaNotifications: function(e, a, o) {
+var i = [], s = function(e) {
+var a = e.status.total || e.status;
+_.each(a.hard, function(e, s) {
+var c = f(e), l = _.get(a, [ "used", s ]), d = f(l);
+"resourcequotas" !== s && c && d && c <= d && i.push({
+id: o + "/quota-limit-reached-" + s,
+namespace: o,
+type: c < d ? "warning" : "info",
+message: T(0, d, e, c, s),
+isHTML: !0,
+skipToast: !0,
+showInDrawer: !0,
+actions: [ {
+name: "View Quotas",
+title: "View project quotas",
+onClick: function() {
+t.url("/project/" + r.project + "/quota"), n.$emit("NotificationDrawerWrapper.hide");
+}
+}, {
+name: "Don't Show Me Again",
+title: "Permenantly hide this notificaiton until quota limit changes",
+onClick: function(e) {
+u.permanentlyHideNotification(e.uid, e.namespace), n.$emit("NotificationDrawerWrapper.clear", e);
+}
+}, {
+name: "Clear",
+title: "Clear this notificaiton",
+onClick: function(e) {
+n.$emit("NotificationDrawerWrapper.clear", e);
+>>>>>>> Update quota service to use getPreferredVersion
 }
 };
+<<<<<<< HEAD
 }).service("ProcessedTemplateService", function() {
 var e = {
 params: {
@@ -6597,6 +6843,10 @@ all: [],
 generated: []
 },
 message: null
+=======
+return _.each(e, s), _.each(a, s), i;
+}
+>>>>>>> Update quota service to use getPreferredVersion
 };
 return {
 <<<<<<< HEAD
