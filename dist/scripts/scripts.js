@@ -6317,9 +6317,69 @@ angular.forEach(e.spec.limits, function(e) {
 if (e.type === n) {
 e.min && i(e.min[t], s.min) && (s.min = e.min[t]), e.max && o(e.max[t], s.max) && (s.max = e.max[t]), e.default && (s.defaultLimit = e.default[t] || s.defaultLimit), e.defaultRequest && (s.defaultRequest = e.defaultRequest[t] || s.defaultRequest);
 var r;
+<<<<<<< HEAD
 e.maxLimitRequestRatio && (r = e.maxLimitRequestRatio[t]) && (!s.maxLimitRequestRatio || r < s.maxLimitRequestRatio) && (s.maxLimitRequestRatio = r);
 }
 });
+=======
+return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (r = window.atob(e), /[\x00-\x09\x0E-\x1F]/.test(r) ? (t[n] = !0, e) : r);
+});
+return n.$$nonprintable = t, n;
+}
+};
+} ]), angular.module("openshiftConsole").factory("ServicesService", [ "$filter", "$q", "APIService", "DataService", function(e, t, n, r) {
+var a = n.getPreferredVersion("services"), o = "service.alpha.openshift.io/dependencies", i = e("annotation"), s = function(e) {
+var t = i(e, o);
+if (!t) return null;
+try {
+return JSON.parse(t);
+} catch (e) {
+return Logger.warn('Could not parse "service.alpha.openshift.io/dependencies" annotation', e), null;
+}
+}, c = function(e, t) {
+t.length ? _.set(e, [ "metadata", "annotations", o ], JSON.stringify(t)) : _.has(e, [ "metadata", "annotations", o ]) && delete e.metadata.annotations[o];
+};
+return {
+getDependentServices: function(e) {
+var t, n = s(e);
+if (!n) return [];
+t = _.get(e, "metadata.namespace");
+return _.chain(n).filter(function(e) {
+return !(!e.name || e.kind && "Service" !== e.kind || e.namespace && e.namespace !== t);
+}).map(function(e) {
+return e.name;
+}).value();
+},
+linkService: function(e, t) {
+var n = angular.copy(e), o = s(n) || [];
+return o.push({
+name: t.metadata.name,
+namespace: e.metadata.namespace === t.metadata.namespace ? "" : t.metadata.namespace,
+kind: t.kind
+}), c(n, o), r.update(a, n.metadata.name, n, {
+namespace: n.metadata.namespace
+});
+},
+removeServiceLink: function(e, n) {
+var o = angular.copy(e), i = s(o) || [], l = _.reject(i, function(t) {
+return t.kind === n.kind && (t.namespace || e.metadata.namespace) === n.metadata.namespace && t.name === n.metadata.name;
+});
+return l.length === i.length ? t.when(!0) : (c(o, l), r.update(a, o.metadata.name, o, {
+namespace: o.metadata.namespace
+}));
+},
+isInfrastructure: function(e) {
+return "true" === i(e, "service.openshift.io/infrastructure");
+}
+};
+} ]), angular.module("openshiftConsole").factory("ImagesService", [ "$filter", "ApplicationGenerator", "DataService", function(e, t, n) {
+var r = function(e) {
+return _.isArray(e) ? e : _.map(e, function(e, t) {
+return {
+name: t,
+value: e
+};
+>>>>>>> Update services service to use getPreferredVersion
 });
 var l, u, d, m;
 return s.min && (l = c(t, r)) && (u = a(s.min), d = Math.ceil(u[0] / (l / 100)), m = u[1] || "", s.min = "" + d + m), s;
