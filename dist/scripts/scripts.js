@@ -41456,6 +41456,7 @@ isDialog: "<"
 templateUrl: "views/directives/process-template.html"
 });
 }(), function() {
+<<<<<<< HEAD
 angular.module("openshiftConsole").component("processTemplateDialog", {
 controller: [ "$scope", "$filter", "$routeParams", "Catalog", "DataService", "KeywordService", "NotificationsService", "ProjectsService", "RecentlyViewedProjectsService", function(e, t, n, r, a, o, i, s, c) {
 function l() {
@@ -41530,6 +41531,60 @@ b.configStep.valid = e && !b.noProjectsCantCreate && b.selectedProject, b.result
 });
 }
 }, b.resultsStep = {
+=======
+angular.module("openshiftConsole").component("bindService", {
+controller: [ "$scope", "$filter", "APIService", "ApplicationsService", "BindingService", "Catalog", "DataService", "ServiceInstancesService", function(e, t, n, r, a, o, i, s) {
+var c, l, u, d, m, p, f = this, g = t("statusCondition"), v = t("enableTechPreviewFeature"), h = n.getPreferredVersion("serviceinstances"), y = n.getPreferredVersion("clusterserviceclasses"), b = n.getPreferredVersion("clusterserviceplans"), S = function() {
+var e, t;
+_.each(f.serviceInstances, function(n) {
+var r = "True" === _.get(g(n, "Ready"), "status");
+r && (!e || n.metadata.creationTimestamp > e.metadata.creationTimestamp) && (e = n), r || t && !(n.metadata.creationTimestamp > t.metadata.creationTimestamp) || (t = n);
+}), f.serviceToBind = e || t;
+}, C = function() {
+f.serviceClasses && f.serviceInstances && f.servicePlans && (f.serviceInstances = a.filterBindableServiceInstances(f.serviceInstances, f.serviceClasses, f.servicePlans), f.orderedServiceInstances = a.sortServiceInstances(f.serviceInstances, f.serviceClasses), f.serviceToBind || S());
+}, w = function() {
+var e = {
+namespace: _.get(f.target, "metadata.namespace")
+};
+r.getApplications(e).then(function(e) {
+f.applications = e, f.bindType = f.applications.length ? "application" : "secret-only";
+});
+}, P = function() {
+var e = {
+namespace: _.get(f.target, "metadata.namespace")
+};
+i.list(h, e).then(function(e) {
+f.serviceInstances = e.by("metadata.name"), C();
+}), i.list(y, {}).then(function(e) {
+f.serviceClasses = e.by("metadata.name"), C();
+}), i.list(b, {}).then(function(e) {
+f.servicePlans = e.by("metadata.name"), C();
+});
+};
+c = {
+id: "bindForm",
+label: "Binding",
+view: "views/directives/bind-service/bind-service-form.html",
+valid: !1,
+allowClickNav: !0,
+onShow: function() {
+f.nextTitle = l.hidden ? "Bind" : "Next >", f.podPresets && !d && (d = e.$watch("ctrl.selectionForm.$valid", function(e) {
+c.valid = e;
+}));
+}
+}, l = {
+id: "bindParameters",
+label: "Parameters",
+view: "views/directives/bind-service/bind-parameters.html",
+hidden: !0,
+allowClickNav: !0,
+onShow: function() {
+f.nextTitle = "Bind", m || (m = e.$watch("ctrl.parametersForm.$valid", function(e) {
+l.valid = e;
+}));
+}
+}, u = {
+>>>>>>> Bug 1520828 - Do not enable Bind button until data fetched
 id: "results",
 label: "Results",
 view: "views/directives/process-template-dialog/process-template-results.html",
@@ -41538,6 +41593,7 @@ allowed: !1,
 prevEnabled: !1,
 allowClickNav: !1,
 onShow: function() {
+<<<<<<< HEAD
 b.infoStep.selected = !1, b.selectStep.selected = !1, b.configStep.selected = !1, b.resultsStep.selected = !0, b.nextTitle = "Close", m(), b.wizardDone = !0;
 }
 }, b.$onInit = function() {
@@ -41595,6 +41651,38 @@ return c.isRecentlyViewed(e.metadata.uid) ? "Recently Viewed" : "Other Projects"
 var w = function() {
 var e = _.reject(b.unfilteredProjects, "metadata.deletionTimestamp"), n = _.sortBy(e, t("displayName"));
 b.searchEnabled = !_.isEmpty(e), b.templateProjects = c.orderByMostRecentlyViewed(n), b.numTemplateProjects = _.size(b.templateProjects), 1 === b.numTemplateProjects && (b.templateProject = _.head(b.templateProjects), b.templateProjectChange());
+=======
+d && (d(), d = void 0), m && (m(), m = void 0), f.nextTitle = "Close", f.wizardComplete = !0, f.bindService();
+}
+};
+e.$watch("ctrl.serviceToBind", function() {
+f.serviceToBind && s.fetchServiceClassForInstance(f.serviceToBind).then(function(e) {
+f.serviceClass = e;
+var t = s.getServicePlanNameForInstance(f.serviceToBind);
+i.get(b, t, {}).then(function(e) {
+f.plan = e, f.parameterSchema = _.get(f.plan, "spec.serviceBindingCreateParameterSchema"), f.parameterFormDefinition = _.get(f.plan, "spec.externalMetadata.schemas.service_binding.create.openshift_form_definition"), l.hidden = !_.has(f.parameterSchema, "properties"), f.nextTitle = l.hidden ? "Bind" : "Next >", f.hideBack = l.hidden, c.valid = !0;
+});
+});
+}), f.$onInit = function() {
+f.serviceSelection = {}, f.projectDisplayName = t("displayName")(f.project), f.podPresets = v("pod_presets"), f.parameterData = {}, f.steps = [ c, l, u ], f.hideBack = l.hidden, "ServiceInstance" === f.target.kind ? (f.bindType = "secret-only", f.appToBind = null, f.serviceToBind = f.target, f.podPresets && w()) : (f.bindType = "application", f.appToBind = f.target, P());
+}, f.$onChanges = function(e) {
+e.project && !e.project.isFirstChange() && (f.projectDisplayName = t("displayName")(f.project));
+}, f.$onDestroy = function() {
+d && (d(), d = void 0), m && (m(), m = void 0), p && i.unwatch(p);
+}, f.bindService = function() {
+var e = "ServiceInstance" === f.target.kind ? f.target : f.serviceToBind, t = "application" === f.bindType ? f.appToBind : void 0, n = {
+namespace: _.get(e, "metadata.namespace")
+}, r = a.getServiceClassForInstance(e, f.serviceClasses);
+a.bindService(e, t, r, f.parameterData).then(function(e) {
+f.binding = e, f.error = null, p = i.watchObject(a.bindingResource, _.get(f.binding, "metadata.name"), n, function(e) {
+f.binding = e;
+});
+}, function(e) {
+f.error = e;
+});
+}, f.closeWizard = function() {
+_.isFunction(f.onClose) && f.onClose();
+>>>>>>> Bug 1520828 - Do not enable Bind button until data fetched
 };
 } ],
 controllerAs: "$ctrl",
