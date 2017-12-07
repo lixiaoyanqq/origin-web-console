@@ -6639,8 +6639,8 @@ isInfrastructure: function(e) {
 return "true" === i(e, "service.openshift.io/infrastructure");
 }
 };
-} ]), angular.module("openshiftConsole").factory("ImagesService", [ "$filter", "ApplicationGenerator", "DataService", function(e, t, n) {
-var r = function(e) {
+} ]), angular.module("openshiftConsole").factory("ImagesService", [ "$filter", "APIService", "ApplicationGenerator", "DataService", function(e, t, n, r) {
+var a = t.getPreferredVersion("imagestreamimports"), o = function(e) {
 return _.isArray(e) ? e : _.map(e, function(e, t) {
 return {
 name: t,
@@ -6652,6 +6652,7 @@ var l, u, d, m;
 return s.min && (l = c(t, r)) && (u = a(s.min), d = Math.ceil(u[0] / (l / 100)), m = u[1] || "", s.min = "" + d + m), s;
 };
 return {
+<<<<<<< HEAD
 getEffectiveLimitRange: d,
 getRequestToLimitPercent: c,
 isRequestCalculated: l,
@@ -6665,8 +6666,25 @@ r && (m += n(r));
 var o = t.limits && t.limits[a] || c.defaultLimit;
 o && (p += n(o));
 }), l(a, i) || (f && m < f && v.push(h + " request total for all containers is less than pod minimum (" + r(s.min, a) + ")."), g && m > g && v.push(h + " request total for all containers is greater than pod maximum (" + r(s.max, a) + ").")), u(a, i) || (f && p < f && v.push(h + " limit total for all containers is less than pod minimum (" + r(s.min, a) + ")."), g && p > g && v.push(h + " limit total for all containers is greater than pod maximum (" + r(s.max, a) + ").")), v;
+=======
+findImage: function(e, t) {
+var n = {
+kind: "ImageStreamImport",
+apiVersion: "v1",
+metadata: {
+name: "newapp",
+namespace: t.namespace
+},
+spec: {
+import: !1,
+images: [ {
+from: {
+kind: "DockerImage",
+name: e
+>>>>>>> Update images service to use getPreferredVersion
 }
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("RoutesService", [ "$filter", function(e) {
 var t = function(e) {
 return angular.isString(e);
@@ -6714,6 +6732,14 @@ return _.isEmpty(n) || (t += 5), c(e) && (t += 3), e.spec.tls && (t += 1), t;
 }, u = function(e) {
 var t = {}, n = function(e, n) {
 t[n] = t[n] || [], t[n].push(e);
+=======
+return r.create(a, null, n, t).then(function(e) {
+return {
+name: _.get(e, "spec.images[0].from.name"),
+image: _.get(e, "status.images[0].image"),
+tag: _.get(e, "status.images[0].tag"),
+result: _.get(e, "status.images[0].status")
+>>>>>>> Update images service to use getPreferredVersion
 };
 return _.each(e, function(e) {
 n(e, e.spec.to.name);
@@ -6735,17 +6761,52 @@ getPreferredDisplayRoute: function(e, t) {
 var n = l(e);
 return l(t) > n ? t : e;
 },
+<<<<<<< HEAD
 groupByService: function(e, t) {
 return t ? u(e) : _.groupBy(e, "spec.to.name");
 },
 getSubdomain: function(e) {
 return _.get(e, "spec.host", "").replace(/^[a-z0-9]([-a-z0-9]*[a-z0-9])\./, "");
+=======
+getResources: function(e) {
+var t = [], r = {
+"openshift.io/generated-by": "OpenShiftWebConsole"
+}, a = o(e.env), i = [], s = [], c = 0;
+if (_.forEach(e.volumes, function(t, n) {
+c++;
+var r = e.name + "-" + c;
+i.push({
+name: r,
+emptyDir: {}
+}), s.push({
+name: r,
+mountPath: n
+});
+}), !e.namespace) {
+var l = {
+kind: "ImageStream",
+apiVersion: "v1",
+metadata: {
+name: e.name,
+labels: e.labels
+},
+spec: {
+tags: [ {
+name: e.tag,
+annotations: _.assign({
+"openshift.io/imported-from": e.image
+}, r),
+from: {
+kind: "DockerImage",
+name: e.image
+>>>>>>> Update images service to use getPreferredVersion
 },
 isCustomHost: c,
 sortRoutesByScore: function(e) {
 return _.sortByOrder(e, [ l ], [ "desc" ]);
 }
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("ChartsService", [ "Logger", function(e) {
 return {
 updateDonutCenterText: function(t, n, r) {
@@ -6787,6 +6848,98 @@ if (!n) return a.warn("convertLimitPercentToRequest called, but no request/limit
 if (!e) return e;
 var r = e / (n / 100);
 return Math.round(r);
+=======
+t.push(l);
+}
+var u = _.assign({
+deploymentconfig: e.name
+}, e.labels), d = {
+kind: "DeploymentConfig",
+apiVersion: "v1",
+metadata: {
+name: e.name,
+labels: e.labels,
+annotations: r
+},
+spec: {
+strategy: {
+resources: {}
+},
+triggers: [ {
+type: "ConfigChange"
+}, {
+type: "ImageChange",
+imageChangeParams: {
+automatic: !0,
+containerNames: [ e.name ],
+from: {
+kind: "ImageStreamTag",
+name: (e.namespace ? e.image : e.name) + ":" + e.tag,
+namespace: e.namespace
+}
+}
+} ],
+replicas: 1,
+test: !1,
+selector: u,
+template: {
+metadata: {
+labels: u,
+annotations: r
+},
+spec: {
+volumes: i,
+containers: [ {
+name: e.name,
+image: e.image,
+ports: e.ports,
+env: a,
+volumeMounts: s
+} ],
+resources: {}
+}
+}
+},
+status: {}
+};
+t.push(d);
+var m;
+return _.isEmpty(e.ports) || (m = {
+kind: "Service",
+apiVersion: "v1",
+metadata: {
+name: e.name,
+labels: e.labels,
+annotations: r
+},
+spec: {
+selector: {
+deploymentconfig: e.name
+},
+ports: _.map(e.ports, function(e) {
+return n.getServicePort(e);
+})
+}
+}, t.push(m)), t;
+},
+getEnvironment: function(e) {
+return _.map(_.get(e, "image.dockerImageMetadata.Config.Env"), function(e) {
+var t = e.indexOf("="), n = "", r = "";
+return t > 0 ? (n = e.substring(0, t), t + 1 < _.size(e) && (r = e.substring(t + 1))) : n = e, {
+name: n,
+value: r
+};
+});
+}
+};
+} ]), angular.module("openshiftConsole").factory("ConversionService", function() {
+return {
+bytesToMiB: function(e) {
+return e ? e / 1048576 : e;
+},
+bytesToKiB: function(e) {
+return e ? e / 1024 : e;
+>>>>>>> Update images service to use getPreferredVersion
 },
 <<<<<<< HEAD
 hasCPURequest: m,
