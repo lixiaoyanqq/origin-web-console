@@ -15236,8 +15236,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"Pod\">\n" +
+<<<<<<< 65d2d940013095fad2a337df807f37c1bcca327c
     "<div uib-dropdown>\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
+=======
+    "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+    "</button>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\" ng-if=\"'pods' | canI : 'update'\">\n" +
     "<a ng-href=\"{{row.apiObject | editYamlURL}}\" translate>Edit YAML</a>\n" +
@@ -15249,8 +15256,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-switch-default>\n" +
+<<<<<<< 65d2d940013095fad2a337df807f37c1bcca327c
     "<div uib-dropdown>\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
+=======
+    "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+    "</button>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\" ng-if=\"row.rgv | canI : 'update'\">\n" +
     "<a ng-href=\"{{row.apiObject | editYamlURL}}\" translate>Edit YAML</a>\n" +
@@ -16024,12 +16038,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"list-pf-actions\">\n" +
+<<<<<<< 65d2d940013095fad2a337df807f37c1bcca327c
     "<div uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
 <<<<<<< 72f2428654a3a28b0425e786505ad4ce7b45f7f6
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
 =======
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\">Actions</span></a>\n" +
 >>>>>>> Show provision status of service instances on the overview page.
+=======
+    "<div class=\"dropdown-kebab-pf\" uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+    "</button>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
 <<<<<<< c1147318f73829c1cb8cbc26a6e386eac5cdc733
 <<<<<<< 5985737c08b962a908ac7e4cb2134962ae561acf
