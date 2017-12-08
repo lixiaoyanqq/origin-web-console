@@ -5165,6 +5165,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-search .dropdown-menu .catalog-search-show-none{background-color:#ededed;border-color:#d1d1d1;border-width:0 0 1px;padding:5px 0;text-align:center}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .landing-search-area .catalog-search{z-index:1029}
 .landing-search-area .catalog-search .search-pf .has-clear .clear{height:28px}
 .landing-search-area .catalog-search .search-pf-input-group .form-control{font-size:14px;height:30px}
@@ -5177,6 +5178,11 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-search .search-pf-input-group .form-control{font-size:14px;height:2.2em}
 .catalog-search .search-pf-input-group .pficon-close{font-size:16px;margin-top:-.3em}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.catalog-search .search-pf .has-clear .clear{height:29px}
+.catalog-search .search-pf-input-group .form-control{font-size:14px;height:2.2em}
+.catalog-search .search-pf-input-group .pficon-close{font-size:16px}
+>>>>>>> Bump origin-web-common and origin-web-catalog
 @media only screen and (max-device-width:736px) and (-webkit-min-device-pixel-ratio:0){.catalog-search .catalog-search-icon{top:9px}
 .catalog-search .landing-search-form .search-pf-input-group .form-control{font-size:16px}
 }
