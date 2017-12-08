@@ -15350,7 +15350,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-switch-when=\"Pod\">\n" +
     "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
     "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+<<<<<<< HEAD
     "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span>\n" +
+=======
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "</button>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\" ng-if=\"'pods' | canI : 'update'\">\n" +
@@ -15365,7 +15369,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-switch-default>\n" +
     "<div uib-dropdown class=\"dropdown-kebab-pf\">\n" +
     "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+<<<<<<< HEAD
     "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span>\n" +
+=======
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "</button>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\" ng-if=\"row.rgv | canI : 'update'\">\n" +
@@ -16113,6 +16121,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-pf-actions\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"dropdown-kebab-pf\" uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
     "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
     "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span>\n" +
@@ -16121,6 +16130,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
     "<a href=\"\" uib-dropdown-toggle class=\"actions-dropdown-kebab\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\">Actions</span></a>\n" +
 >>>>>>> Show provision status of service instances on the overview page.
+=======
+    "<div class=\"dropdown-kebab-pf\" uib-dropdown ng-if=\"row.actionsDropdownVisible()\">\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\">\n" +
+    "<i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span>\n" +
+    "</button>\n" +
+>>>>>>> Switch kebabs to buttons so they are sized correctly
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
