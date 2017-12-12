@@ -7331,6 +7331,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .add-config-to-application .form-group .control-label label.required:before{left:30px}
 .add-config-to-application .form-group .control-input{flex:1 0 0%}
 .add-config-to-application .updating{background-color:#fff;bottom:55px;left:0;padding-top:60px;position:absolute;right:0;top:55px;z-index:1000}
+<<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 8cadcc21048d8859b23e157e6bb9565b9e14728a
 .add-config-to-application .volume-options{margin-left:20px}
 .service-instance-details .instance-status-message{white-space:pre-line}
@@ -7359,3 +7360,9 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 =======
 .service-instance-details .instance-status-message{white-space:pre-line}
 >>>>>>> Allow setting environment variable prefix when adding secret to application
+=======
+.service-instance-details .instance-status-message{white-space:pre-line}
+.set-home-page .modal-body-indent{padding-left:48px}
+.set-home-page .modal-body-indent .title{font-weight:600}
+.set-home-page .select-project-container{padding-left:20px;max-width:360px}
+>>>>>>> Set Home Page Preference

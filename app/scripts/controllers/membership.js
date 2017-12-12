@@ -305,7 +305,7 @@ angular
                   .removeSubject(subjectName, roleName, namespace, $scope.roleBindings, requestContext)
                   .then(function(updateRolebinding) {
                     if(redirectToProjectList) {
-                      $location.url("./");
+                      $location.url("catalog");
                     } else {
                       AuthorizationService
                         .getProjectRules(projectName, true)

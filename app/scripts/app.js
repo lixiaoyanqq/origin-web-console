@@ -38,7 +38,7 @@ angular
     'webCatalog',
     'gettext'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, HomePagePreferenceServiceProvider) {
     var landingPageRoute;
     var projectsPageRoute = {
       templateUrl: 'views/projects.html',
@@ -59,7 +59,12 @@ angular
     }
 
     $routeProvider
-      .when('/', landingPageRoute)
+      .when('/', {
+        redirectTo: function() {
+          return HomePagePreferenceServiceProvider.$get().getHomePagePath();
+        }
+      })
+      .when('/catalog', landingPageRoute)
       .when('/create-project', {
         templateUrl: 'views/create-project.html',
         controller: 'CreateProjectController'
