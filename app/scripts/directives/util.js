@@ -121,22 +121,20 @@ angular.module('openshiftConsole')
           });
 
           var tokenWarningAlertID = 'openshift/token-warning';
-          if (!AlertMessageService.isAlertPermanentlyHidden(tokenWarningAlertID)) {
-            NotificationsService.addNotification({
-              id: tokenWarningAlertID,
-              type: 'warning',
-              message: 'A token is a form of a password. Do not share your API token.',
-              links: [{
-                href: "",
-                label: "Don't Show Me Again",
-                onClick: function() {
-                  AlertMessageService.permanentlyHideAlert(tokenWarningAlertID);
-                  // Return true close the existing alert.
-                  return true;
-                }
-              }]
-            });
-          }
+          NotificationsService.addNotification({
+            id: tokenWarningAlertID,
+            type: 'warning',
+            message: 'A token is a form of a password. Do not share your API token.',
+            links: [{
+              href: "",
+              label: "Don't Show Me Again",
+              onClick: function() {
+                NotificationsService.permanentlyHideNotification(tokenWarningAlertID);
+                // Return true close the existing notification.
+                return true;
+              }
+            }]
+          });
         });
         clipboard.on('error', function () {
           NotificationsService.addNotification({

@@ -12,10 +12,10 @@ angular.module('openshiftConsole')
           });
         }
 
-        // items.push({
-        //   type: 'dom',
-        //   node: '<li><set-home-page></set-home-page></li>'
-        // });
+        items.push({
+          type: 'dom',
+          node: '<li><set-home-page></set-home-page></li>'
+        });
 
         var msg = gettextCatalog.getString(gettext('Log Out'));
         if ($rootScope.user.fullName && $rootScope.user.fullName !== $rootScope.user.metadata.name) {

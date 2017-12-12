@@ -31,7 +31,6 @@ angular
     'angular-inview',
     'angularMoment',
     'ab-base64',
-    'gettext',
     'i18n',
     'openshiftCommonServices',
     'openshiftCommonUI',
