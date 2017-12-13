@@ -705,10 +705,14 @@ pre code{padding:0;font-size:inherit;color:inherit;white-space:pre-wrap;border-r
 .col-lg-offset-0{margin-left:0%}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 caption{padding-top:10px;padding-bottom:10px;color:#757575}
 =======
 caption{padding-top:10px;padding-bottom:10px;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+caption{padding-top:10px;padding-bottom:10px;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .table{width:100%;max-width:100%;margin-bottom:20px}
 .table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{line-height:1.66666667;vertical-align:top;border-top:1px solid #d1d1d1}
 .table>thead>tr>th{vertical-align:bottom;border-bottom:2px solid #d1d1d1}
@@ -2857,7 +2861,6 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .c3-area{stroke-width:0;opacity:.2}
 .c3-chart-arcs-title{dominant-baseline:middle;font-size:1.3em}
 .c3-chart-arcs .c3-chart-arcs-background{fill:#e0e0e0;stroke:none}
-.c3 path,.c3-axis-x .tick line{stroke:#d1d1d1}
 .c3-chart-arcs .c3-chart-arcs-gauge-unit{fill:#000;font-size:16px}
 .c3-chart-arcs .c3-chart-arcs-gauge-max,.c3-chart-arcs .c3-chart-arcs-gauge-min{fill:#777}
 .c3-chart-arc .c3-gauge-value{fill:#000}
@@ -3255,7 +3258,9 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .card-pf-view.card-pf-view-single-select{cursor:pointer}
 .card-pf-view.card-pf-view-xs .card-pf-title{font-size:16px;font-weight:400;margin-bottom:10px}
 .card-pf-view.card-pf-view-xs .card-pf-title .fa,.card-pf-view.card-pf-view-xs .card-pf-title .pficon{font-size:14px;margin-right:5px}
+.c3 path{stroke:#d1d1d1}
 .c3 svg{font-family:"Open Sans",Helvetica,Arial,sans-serif}
+.c3-axis-x .tick line{stroke:#d1d1d1}
 .c3-axis-y .tick line{display:none}
 .c3-chart-arc path{stroke:#fff}
 .c3-grid line{stroke:#d1d1d1}
@@ -5333,6 +5338,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-details .order-service-tags{color:#757575;margin-top:5px}
 =======
 .order-service-details .order-service-documentation-url a{margin-right:10px}
@@ -5343,6 +5349,9 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 .order-service-details .order-service-tags{color:#9c9c9c;margin-top:5px}
 >>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
+=======
+.order-service-details .order-service-tags{color:#757575;margin-top:5px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .order-service-details .order-service-tags .tag{margin-right:5px;text-transform:uppercase}
 .order-service-config .config-top .adv-ops{height:30%}
 .order-service-config .config-top .adv-ops-href{cursor:pointer;font-size:14px}
@@ -6012,11 +6021,15 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 =======
 .card-pf,.tile{box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09)}
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
 .collapsing,.wizard-pf-footer.wizard-pf-position-override{position:relative}
 >>>>>>> Improve YAML editor validation and feedback
 =======
 >>>>>>> Changing overlay layout to a single column
+=======
+.collapsing,pod-donut[mini]{position:relative}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .copy-to-clipboard-multiline pre{background-color:#fff;word-break:normal;word-wrap:normal}
 .input-group-addon.wildcard-prefix{padding-left:10px}
 .editor-examples{padding:19px;margin-bottom:20px;border:1px solid #d1d1d1}
@@ -6094,7 +6107,7 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 >>>>>>> Patternfly vertical navigation and project bar
 .collapse{display:none}
 .collapse.in{display:block}
-.collapsing{height:0;overflow:hidden;position:relative;-webkit-transition:height 150ms ease;-o-transition:height 150ms ease;transition:height 150ms ease}
+.collapsing{height:0;overflow:hidden;-webkit-transition:height 150ms ease;-o-transition:height 150ms ease;transition:height 150ms ease}
 .fade-inline.ng-hide{opacity:0}
 .fade-inline.ng-show{opacity:1}
 .fade-inline.ng-hide-add,.fade-inline.ng-hide-remove{display:inline-block!important;-webkit-transition:opacity .2s ease .5s;-o-transition:opacity .2s ease .5s;transition:opacity .2s ease .5s}
@@ -6132,22 +6145,33 @@ h3 .component-label{padding-bottom:4px}
 .pod-template-block .pod-template .icon-row{border-left:3px solid #f1f1f1;padding:2px 0 0 2px}
 .pod-template-block .pod-template .fa,.pod-template-block .pod-template .pficon,.pod-template-block .pod-template span[data-icon]{color:#888}
 .pod-template-block .pod-template .pod-template-build{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+.pod-donut.mini,pod-donut[mini]{display:inline-block;min-height:45px;min-width:45px}
 .pod-template-container{margin:0 0 20px}
 .pod-template-container h3{margin-top:0;padding-bottom:0}
 code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .hash{font-size:12px}
 .clickable{cursor:pointer}
+<<<<<<< HEAD
 .pods{display:block;height:30px;width:30px}
 .pod-donut.mini,pod-donut[mini]{display:inline-block;height:30px;width:30px}
 @media (min-width:768px){.pods{margin-right:32px}
 }
 .pod-donut.mini{position:absolute!important;transform:translate(-8px,-5px)}
+=======
+.pods{display:inline-block;margin-right:25px}
+.pod-donut.mini{position:absolute!important;top:2px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .pod-donut .c3-defocused{opacity:.5!important}
 .pod-donut .c3-tooltip-container{top:-27px!important;left:50%!important;transform:translateX(-50%);white-space:nowrap}
 .pod-donut path.c3-arc-Empty{stroke:#d1d1d1;cursor:inherit!important}
 .pod-donut .c3-tooltip-name--Empty .name{display:none}
+<<<<<<< HEAD
 .donut-mini-text{left:51%;line-height:1;position:absolute;top:50%;transform:translate(-51%,-50%)}
 .donut-mini-text-name{align-items:center;display:flex;flex-direction:column;line-height:1;position:absolute;transform:translate(40px,9px)}
+=======
+.donut-mini-text{left:51%;position:absolute;top:49%;transform:translate(-49%,-51%)}
+.donut-mini-text-name{position:absolute;transform:translate(45px,-51%);top:49%;line-height:1;display:flex;flex-direction:column;align-items:center}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .deployment-donut{justify-content:center}
 .browse-deployment-donut .deployment-donut{align-items:center}
 .deployment-donut .scaling-controls{justify-content:center;font-size:24px}
@@ -6156,10 +6180,14 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .deployment-donut .scaling-controls a.disabled{opacity:.4;cursor:not-allowed}
 .deployment-donut .scaling-controls a.disabled:hover{color:#bbb}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .deployment-donut .scaling-details{font-size:91%;color:#757575;text-align:center;align-items:center;margin-top:-5px;margin-bottom:7px}
 =======
 .deployment-donut .scaling-details{font-size:91%;color:#9c9c9c;text-align:center;align-items:center;margin-top:-5px;margin-bottom:7px}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.deployment-donut .scaling-details{font-size:91%;color:#757575;text-align:center;align-items:center;margin-top:-5px;margin-bottom:7px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .deployment-donut .scaling-details .check-events{white-space:nowrap}
 .deployment-donut .scaling-details .hpa-warning{cursor:help;margin-left:1px;vertical-align:-1px}
 .popover{font-size:13px;line-height:1.66667;min-width:300px;word-wrap:break-word}
@@ -6168,8 +6196,6 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .service-binding h3{line-height:1.4;margin-top:0}
 .service-binding h3 small{display:block;margin-top:5px}
 .service-binding h3 small:first-of-type{margin-top:0}
-.service-binding .component-label{font-size:11px;font-weight:500;padding:0 0 4px;color:#9c9c9c;text-transform:uppercase}
-.service-binding .component-label .sublabel{font-size:10px;margin-left:2px;text-transform:none}
 .resource-details .service-binding h3{border-bottom:0;margin:0;padding-bottom:5px}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -6374,10 +6400,14 @@ registry-image-body dt:after,registry-image-config dt:after,registry-image-meta 
 }
 .quota-chart{margin:0 20px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#757575;display:inline-block;vertical-align:middle}
 =======
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#9c9c9c;display:inline-block;vertical-align:middle}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#757575;display:inline-block;vertical-align:middle}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .route-service-bar-chart .service-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:125px}
 .route-service-bar-chart .service-weight{margin-left:5px}
 .route-service-bar-chart .progress{background:0 0;box-shadow:none;display:inline-block;margin:0;width:125px;-webkit-box-shadow:none}
@@ -6494,11 +6524,10 @@ select:invalid{box-shadow:none}
 .spinner.spinner-xs{height:12px;width:12px}
 .spinner.spinner-inverse{border-color:rgba(0,153,211,.25);border-top-color:rgba(0,153,211,.75)}
 .attention-message{border:1px solid #228bc0;position:absolute;left:50%;margin-top:100px;transform:translateX(-50%);padding:1em 1em 2em;min-width:85%}
-.modal-resource-action,.short-id{background-color:#f1f1f1}
 .attention-message h1,.attention-message p{text-align:center}
 .attention-message p{max-width:70em;margin:auto}
 .actions-dropdown-btn,.alert .close{margin-left:5px}
-.short-id{color:#666}
+.short-id{background-color:#f1f1f1;color:#666}
 .input-number{width:60px}
 .alert{margin-bottom:14px;margin-top:7px}
 .alert.toast-pf{margin-top:0}
@@ -6526,6 +6555,7 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 <<<<<<< HEAD
 <<<<<<< HEAD
 .header-actions{font-size:91%;margin-left:5px}
+<<<<<<< HEAD
 .modal-body.contains-form{padding-left:20px}
 .modal-body .buttons{display:flex;flex-direction:row-reverse;margin-top:9px}
 .modal-body .buttons.gutter-bottom,.modal-body .buttons.gutter-top-bottom{padding-bottom:0}
@@ -6544,6 +6574,9 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .modal-resource-action{background-color:#f1f1f1}
 =======
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+.modal-resource-action{background-color:#f1f1f1}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .modal-resource-action h1{font-size:21px;font-weight:500;margin-bottom:20px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .modal-resource-action p{font-size:14px}
 .modal-resource-action .help-block{margin-top:0px;margin-bottom:10px}
@@ -6715,6 +6748,7 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .list-pf .list-pf-item>.list-pf-container{cursor:pointer}
 .list-pf .list-pf-item>.list-pf-container .toggle-expand-link{color:inherit}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .list-pf-actions .dropdown-kebab-pf .dropdown-toggle{font-size:18px}
 .list-pf-container.list-pf-container-thin{padding-bottom:10px;padding-top:10px}
 .list-pf-content .alert:first-child{margin-top:0}
@@ -6760,6 +6794,9 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 >>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 .list-pf-actions .dropdown-kebab-pf .dropdown-toggle{font-size:18px;margin-right:-5px}
 .list-pf-actions .dropdown-kebab-pf .dropdown-menu.dropdown-menu-right{right:-10px}
+=======
+.list-pf-actions .dropdown-kebab-pf .dropdown-toggle{font-size:18px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .list-pf-container.list-pf-container-thin{padding-bottom:10px;padding-top:10px}
 .list-pf-content .alert:first-child{margin-top:0}
 >>>>>>> Fix project list view styles per UXD feedback
@@ -6805,10 +6842,14 @@ h2+.list-view-pf{margin-top:20px}
 .list-view-pf .list-group-item-expandable.expanded .list-view-pf-checkbox{border-right-color:#d1d1d1}
 .list-view-pf .list-group-item-heading{font-size:12px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#757575}
 =======
 .list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.list-view-pf .list-group-item-heading small{overflow:hidden;text-overflow:ellipsis;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .list-view-pf .list-group-item-text{margin-bottom:5px}
 .list-view-pf-additional-info-item{display:inline-block;text-align:left;width:100%}
 <<<<<<< HEAD
@@ -6855,14 +6896,19 @@ h2+.list-view-pf{margin-top:20px}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .monitoring-page .list-pf-main-content .list-pf-title{width:100%}
 .monitoring-page .list-pf-main-content .list-pf-title h3{font-size:12px;font-weight:700;line-height:inherit;margin-bottom:0;margin-top:0}
+<<<<<<< HEAD
 .monitoring-page .list-pf-main-content .list-pf-title small{display:block;font-size:11px;font-weight:400;line-height:normal;overflow:hidden;text-overflow:ellipsis;color:#9c9c9c}
 >>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
+=======
+.monitoring-page .list-pf-main-content .list-pf-title small{display:block;font-size:11px;font-weight:400;line-height:normal;overflow:hidden;text-overflow:ellipsis;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .monitoring-page .list-pf-additional-content small{white-space:nowrap}
 .monitoring-page .list-pf-additional-content .list-pf-additional-content-item{align-self:center;width:100%}
 @media (min-width:992px){.monitoring-page .list-pf-additional-content{flex-basis:70%}
 .monitoring-page .list-pf-additional-content .list-pf-additional-content-item{width:40%}
 .monitoring-page .list-pf-additional-content .list-pf-additional-content-item+.list-pf-additional-content-item{width:50%}
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 @media (max-width:991px){.monitoring-page .pods{margin:5px 0}
 }
@@ -6905,6 +6951,9 @@ h2+.list-view-pf{margin-top:20px}
 =======
 }
 =======
+=======
+.monitoring-page pod-donut{margin-left:-8px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .monitoring-page .text-prepended-icon .fa,.monitoring-page .text-prepended-icon .pficon{margin-right:7px}
 >>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 #header-logo{background-image:url(../images/logo-origin-thin.svg);background-position:left center;background-repeat:no-repeat;height:40px;width:196px}
@@ -6946,6 +6995,7 @@ h2+.list-view-pf{margin-top:20px}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .tech-preview-banner{background:#ec7a08;color:#fff;font-size:12px;text-align:center;text-transform:uppercase;width:100%;z-index:1030}
 =======
 .order-service-config-single-column,.overview .data-toolbar-filter .name-filter form,.overview .data-toolbar-filter .name-filter input{width:100%}
@@ -6966,6 +7016,8 @@ h2+.list-view-pf{margin-top:20px}
 >>>>>>> Changing overlay layout to a single column
 =======
 .build-count .icon-count,.builds-label{margin-right:5px;display:inline-block}
+=======
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .navbar-toggle:focus{color:#fff;outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .wizard-pf-main .ace_editor.editor{height:265px}
 .landing-page .wizard-pf-main .ace_editor.editor{height:175px}
@@ -6975,6 +7027,7 @@ h2+.list-view-pf{margin-top:20px}
 }
 >>>>>>> Adjust display of empty state message and Ace editor
 .build-count .builds,.build-count .pipelines{display:block}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .build-count .icon-count,.builds-label{display:inline-block}
@@ -6987,6 +7040,11 @@ h2+.list-view-pf{margin-top:20px}
 =======
 .build-count .running-stage{font-size:91%;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.build-count .icon-count,.builds-label{display:inline-block}
+.build-count .running-stage{font-size:91%;color:#757575}
+.builds-label{margin-right:5px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 @media (max-width:991px){.builds-label{margin-top:5px}
 }
 .instance-status-message .truncated-content,.instance-status-notification .tooltip{white-space:pre-line}
@@ -7040,22 +7098,29 @@ h2+.list-view-pf{margin-top:20px}
 >>>>>>> Updates to service instance page, show failed bindings
 .overview .expanded-section h3{line-height:1.4;margin-bottom:5px;margin-top:0;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .overview .expanded-section .section-title{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-top:10px;margin-bottom:10px;font-size:15px;border-bottom:1px solid #dcdcdc;padding-bottom:10px}
 .overview .provisioned-service .list-pf-details .component-label,.overview h2>.component-label{padding-bottom:0}
 .overview .expanded-section .section-title .small,.overview .expanded-section .section-title small{font-weight:400;line-height:1;color:#9c9c9c;font-size:75%}
 .overview .expanded-section .section-title.no-border{border-bottom:0;padding-bottom:0}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .overview .filter-status{margin-bottom:5px}
 .overview h1,.overview h2{line-height:normal;min-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .overview h2{margin-top:0}
 .overview h2>.component-label{font-weight:500;padding-bottom:0}
 .overview .list-pf{border-bottom-color:#dcdcdc;margin-bottom:50px}
+<<<<<<< HEAD
 .overview .list-pf-actions{justify-content:flex-end}
 @media (min-width:768px) and (max-width:991px){.overview .list-pf-actions{margin-left:25px}
 }
 @media (min-width:992px) and (max-width:1199px){.overview .list-pf-actions{margin-left:35px}
 }
+=======
+.overview .list-pf-actions{justify-content:flex-end;min-width:35px}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .overview .list-pf-details.ng-enter,.overview .list-pf-details.ng-hide-remove{animation:.3s appear cubic-bezier(.55,.055,.675,.19)}
 @media (min-width:768px){.overview .list-pf-details{justify-content:flex-end}
 }
@@ -7112,10 +7177,13 @@ h2+.list-view-pf{margin-top:20px}
 .overview .overview-routes+.overview-routes{margin-top:10px}
 .overview .overview-row-inline-actions{margin-left:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .overview pod-donut[mini]{align-items:center;display:flex}
 .overview .provisioned-service .expanded-section{margin-top:0}
 >>>>>>> Overview instance row improvements
+=======
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .overview .provisioned-service .list-pf-details .bindings{margin-bottom:0;margin-top:-4px}
 .overview .provisioned-service .list-pf-details .component-label{padding-bottom:0}
 .overview .provisioned-service .list-pf-details .small{color:#9c9c9c;font-size:10px}
@@ -7150,10 +7218,14 @@ h2+.list-view-pf{margin-top:20px}
 .overview .triggers{margin-bottom:20px}
 .overview .usage-value{font-size:18px;font-weight:300;line-height:1}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .overview .usage-label{font-size:91%;color:#757575}
 =======
 .overview .usage-label{font-size:91%;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.overview .usage-label{font-size:91%;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .overview .view-by-options{align-items:baseline;display:flex}
 @media (max-width:767px){.overview .view-by-options{margin-top:10px}
 }
@@ -7246,10 +7318,14 @@ to{background-color:transparent}
 .pipeline-actions,.pipeline-stage-name,.pipeline-time{font-size:12px;text-align:center}
 .pipeline-stage-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:13px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .pipeline-actions,.pipeline-time{margin-top:12px;color:#757575}
 =======
 .pipeline-actions,.pipeline-time{margin-top:12px;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.pipeline-actions,.pipeline-time{margin-top:12px;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .pipeline-actions.IN_PROGRESS,.pipeline-time.IN_PROGRESS{color:#555}
 [class^=build-pipeline] .status-icon.Complete{color:#3f9c35}
 [class^=build-pipeline] .status-icon.Failed{color:#c00}
@@ -7750,10 +7826,14 @@ dl.secret-data pre{margin-bottom:0}
 .events-sidebar .right-content .event .event-details .detail-group{display:flex;flex-direction:column;justify-content:space-between}
 .events-sidebar .right-content .event .event-details .event-message{font-size:91%}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .events-sidebar .right-content .event .event-details .event-timestamp{font-size:91%;color:#757575}
 =======
 .events-sidebar .right-content .event .event-details .event-timestamp{font-size:91%;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+.events-sidebar .right-content .event .event-details .event-timestamp{font-size:91%;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 @media (min-width:1200px){.events-sidebar .right-content .event .event-details .detail-group{flex-direction:row}
 .events-sidebar .right-content .event .event-details .event-object{order:1}
 .events-sidebar .right-content .event .event-details .event-reason{order:2}
@@ -8729,12 +8809,17 @@ notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notificatio
 notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close{color:#252525}
 notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:active,notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:focus,notification-drawer-wrapper .drawer-pf-notification-inner .drawer-pf-notification-close .pficon-close:hover{text-decoration:none}
 <<<<<<< HEAD
+<<<<<<< HEAD
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-info{color:#757575}
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message-expanded{padding:10px 10px 10px 42px;color:#757575}
 =======
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-info{color:#9c9c9c}
 notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message-expanded{padding:10px 10px 10px 42px;color:#9c9c9c}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
+=======
+notification-drawer-wrapper .expanded-notification .drawer-pf-notification-info{color:#757575}
+notification-drawer-wrapper .expanded-notification .drawer-pf-notification-message-expanded{padding:10px 10px 10px 42px;color:#757575}
+>>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notification-info{color:inherit}
 notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notification-message-expanded{color:inherit;font-weight:400;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .panel-heading .panel-title{color:#4d5258;font-weight:700;line-height:normal;overflow:hidden}
