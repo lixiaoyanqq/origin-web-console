@@ -38293,6 +38293,7 @@ _.has(e.istagHook, [ "tagObject", "tag" ]) && (_.set(e.hookParams, "tagImages[0]
 };
 } ]), angular.module("openshiftConsole").directive("quotaUsageChart", [ "$filter", "ChartsService", function(e, t) {
 return {
+<<<<<<< HEAD
 restrict: "E",
 scope: {
 used: "=",
@@ -38376,10 +38377,101 @@ name: t
 data: {
 type: "donut",
 order: null
+=======
+restrict: "EA",
+templateUrl: "views/directives/header/header.html",
+link: function(i, p) {
+i.currentProject = h[a.project];
+var w = function(e, t) {
+var n;
+_.set(r, "nav.collapsed", e), t && (n = e ? "true" : "false", localStorage.setItem("openshift/vertical-nav-collapsed", n));
+};
+!function() {
+var e = "true" === localStorage.getItem("openshift/vertical-nav-collapsed");
+w(e);
+}();
+var P = function() {
+return _.get(r, "nav.collapsed", !1);
+}, j = function(e) {
+_.set(r, "nav.showMobileNav", e);
+};
+i.toggleNav = function() {
+var e = P();
+w(!e, !0);
+}, i.toggleMobileNav = function() {
+var e = _.get(r, "nav.showMobileNav");
+j(!e);
+}, i.closeMobileNav = function() {
+j(!1);
+}, i.closeOrderingPanel = function() {
+i.orderingPanelVisible = !1;
+}, i.showOrderingPanel = function(e) {
+i.orderingPanelVisible = !0, i.orderKind = e;
+}, i.onSearchToggle = function(e) {
+_.set(r, "view.hasProjectSearch", e);
+}, i.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var k = p.find(".selectpicker"), I = [], R = function() {
+var t = i.currentProjectName;
+if (t) {
+var n = function(e, n) {
+var r = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
+return n ? r.text(b(e)) : r.text(S(e, y)), r;
+};
+_.size(h) <= 100 ? (y = e("orderByDisplayName")(h), I = _.map(y, function(e) {
+return n(e, !1);
+})) : I = [ n(h[t], !0) ], k.empty(), k.append(I), k.append($('<option data-divider="true"></option>')), k.append($('<option value="">View All Projects</option>')), k.selectpicker("refresh");
+}
+}, E = function() {
+return f.list().then(function(e) {
+h = e.by("metadata.name");
+});
+}, T = function() {
+var e = a.project;
+i.currentProjectName !== e && (i.currentProjectName = e, i.chromeless = "chromeless" === a.view, e && !i.chromeless ? (_.set(r, "view.hasProject", !0), i.canIAddToProject = !1, s.getProjectRules(e).then(function() {
+i.currentProjectName === e && (i.canIAddToProject = s.canIAddToProject(e), i.canIAddToProject && l.getCatalogItems().then(function(e) {
+i.catalogItems = e;
+}));
+}), E().then(function() {
+i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
+metadata: {
+name: i.currentProjectName
+}
+}), i.currentProject = h[i.currentProjectName], R());
+})) : _.set(r, "view.hasProject", !1));
+}, N = function() {
+i.orderingPanelVisible && v.addItem(_.get(i.selectedItem, "resource.metadata.uid"));
+}, D = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, A = function(e) {
+return D(e) ? d.get(C, e.metadata.name, {
+namespace: e.metadata.namespace
+}) : n.when(e);
+};
+i.$on("open-overlay-panel", function(e, t) {
+i.currentProjectName && (i.servicePlansForItem = null, i.orderKind = _.get(t, "kind"), "Template" !== i.orderKind ? "ClusterServiceClass" !== i.orderKind ? o(function() {
+i.selectedItem = t, i.orderingPanelVisible = !0;
+}) : c.getServicePlansForServiceClass(_.get(t, "resource.metadata.name")).then(function(e) {
+i.servicePlansForItem = _.reject(e.by("metadata.name"), {
+status: {
+removedFromBrokerCatalog: !0
+}
+}), i.selectedItem = t, i.orderingPanelVisible = !0;
+}) : A(t.resource).then(function(e) {
+i.selectedItem = e, i.orderingPanelVisible = !0, i.orderKind = "Template";
+}));
+});
+var B = r.$on("filter-catalog-items", function(e, t) {
+if (i.currentProjectName) {
+var n = {
+filter: t.searchText
+};
+m.toProjectCatalog(i.currentProjectName, n);
+>>>>>>> Fix flicker showing builder dialog
 }
 <<<<<<< HEAD
 =======
 });
+<<<<<<< HEAD
 };
 c.checkApplicationContainersRefs = function(e) {
 var t = _.get(e, "spec.template.spec.containers");
@@ -38398,6 +38490,20 @@ c.addType = "env", c.disableInputs = !1, d(), c.canAddRefToApplication = !0;
 var e = new RegExp("^[A-Za-z_][A-Za-z0-9_]*$");
 c.hasInvalidEnvVars = _.some(c.apiObject.data, function(t, n) {
 return !e.test(n);
+=======
+i.closeOrderingPanel = function() {
+v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
+}, T(), i.$on("$routeChangeSuccess", T), k.selectpicker({
+iconBase: "fa",
+tickIcon: "fa-check"
+}).change(function() {
+var e = $(this).val(), n = "" === e ? "projects" : g(e);
+i.$apply(function() {
+t.url(n);
+});
+}), i.$on("$destroy", function() {
+B(), N();
+>>>>>>> Fix flicker showing builder dialog
 });
 };
 var m = function(e) {
