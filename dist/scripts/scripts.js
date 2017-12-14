@@ -231,10 +231,14 @@ function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h
 var T = this, N = t("isIE")();
 e.projectName = a.project, T.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 var D, A, B = t("annotation"), L = t("canI"), U = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), V = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = {}, Q = {}, J = {}, Y = T.state = {
 >>>>>>> Add Browse Catalog to Project context view.
 =======
 var D = t("annotation"), A = t("canI"), B = t("buildConfigForBuild"), L = t("deploymentIsInProgress"), U = t("imageObjectRef"), O = t("isJenkinsPipelineStrategy"), V = t("isNewerResource"), F = t("label"), x = t("podTemplate"), M = i.getPreferredVersion("deployments"), q = i.getPreferredVersion("horizontalpodautoscalers"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = i.getPreferredVersion("statefulsets"), Q = i.getPreferredVersion("replicasets");
+=======
+var D = t("annotation"), A = t("canI"), B = t("buildConfigForBuild"), L = t("deploymentIsInProgress"), U = t("imageObjectRef"), V = t("isJenkinsPipelineStrategy"), O = t("isNewerResource"), F = t("label"), x = t("podTemplate"), M = i.getPreferredVersion("deployments"), q = i.getPreferredVersion("horizontalpodautoscalers"), z = i.getPreferredVersion("servicebindings"), H = i.getPreferredVersion("clusterserviceclasses"), G = i.getPreferredVersion("serviceinstances"), K = i.getPreferredVersion("clusterserviceplans"), W = i.getPreferredVersion("statefulsets"), Q = i.getPreferredVersion("replicasets");
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 T.buildConfigsInstantiateVersion = i.getPreferredVersion("buildconfigs/instantiate");
 var J, Y, Z = {}, X = {}, ee = {}, te = T.state = {
 >>>>>>> Additional getPreferredVersion updates to overview
@@ -988,10 +992,10 @@ $e(), Te(), Ae();
 _.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, Z), "pipeline" !== T.viewBy && y.setLabelSuggestions(Z));
 }, Ue = function(e) {
 _.isEmpty(e) || (y.addLabelSuggestionsFromResources(e, X), "pipeline" === T.viewBy && y.setLabelSuggestions(X));
-}, Oe = function(e) {
+}, Ve = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!F(e, "openshift.io/deployer-pod-for.name") && (!D(e, "openshift.io/build.name") && "slave" !== F(e, "jenkins")));
-}, Ve = function() {
-te.podsByOwnerUID = P.groupByOwnerUID(T.pods), T.monopods = _.filter(te.podsByOwnerUID[""], Oe);
+}, Oe = function() {
+te.podsByOwnerUID = P.groupByOwnerUID(T.pods), T.monopods = _.filter(te.podsByOwnerUID[""], Ve);
 }, Fe = function(e) {
 return !!_.get(e, "status.replicas") || (!D(e, "deploymentConfig") || L(e));
 }, xe = function(e) {
@@ -1005,9 +1009,9 @@ _.each(T.replicationControllers, function(r) {
 var a = xe(r) || "";
 (!a || !T.deploymentConfigs[a] && _.get(r, "status.replicas")) && e.push(r);
 var o = ee[a];
-o && !V(r, o) || (ee[a] = r);
+o && !O(r, o) || (ee[a] = r);
 var i;
-"Complete" === D(r, "deploymentStatus") && ((i = t[a]) && !V(r, i) || (t[a] = r)), Fe(r) && _.set(n, [ a, r.metadata.name ], r);
+"Complete" === D(r, "deploymentStatus") && ((i = t[a]) && !O(r, i) || (t[a] = r)), Fe(r) && _.set(n, [ a, r.metadata.name ], r);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
@@ -1076,7 +1080,7 @@ n && _.set(te, [ "buildConfigsByObjectUID", n ], e);
 }, nt = function() {
 var e = [];
 T.deploymentConfigsByPipeline = {}, te.pipelinesByDeploymentConfig = {}, _.each(T.buildConfigs, function(t) {
-if (O(t)) {
+if (V(t)) {
 e.push(t);
 var n = l.usesDeploymentConfigs(t), r = re(t);
 _.set(T, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
@@ -1105,7 +1109,7 @@ T.recentPipelinesByBuildConfig = {}, te.recentBuildsByBuildConfig = {}, te.recen
 var e = {};
 _.each(l.interestingBuilds(te.builds), function(t) {
 var n = B(t);
-O(t) ? Je(t) : (e[n] = e[n] || [], e[n].push(t));
+V(t) ? Je(t) : (e[n] = e[n] || [], e[n].push(t));
 }), T.recentPipelinesByBuildConfig = _.mapValues(T.recentPipelinesByBuildConfig, function(e) {
 return l.sortBuilds(e, !0);
 }), te.recentPipelinesByDeploymentConfig = _.mapValues(te.recentPipelinesByDeploymentConfig, function(e) {
@@ -1426,7 +1430,7 @@ T.statefulSets = e.by("metadata.name"), Me(T.statefulSets), Me(T.monopods), _e(T
 T.pods && v.fetchReferencedImageStreamImages(T.pods, te.imagesByDockerReference, te.imageStreamImageRefByDockerReference, r);
 };
 ut.push(m.watch("pods", r, function(e) {
-T.pods = e.by("metadata.name"), Ve(), a(), Be(), Ge(T.monopods), ke(T.monopods), Le(T.monopods), be(), b.log("pods (subscribe)", T.pods);
+T.pods = e.by("metadata.name"), Oe(), a(), Be(), Ge(T.monopods), ke(T.monopods), Le(T.monopods), be(), b.log("pods (subscribe)", T.pods);
 })), ut.push(m.watch("replicationcontrollers", r, function(e) {
 T.replicationControllers = e.by("metadata.name"), Me(), Ge(T.vanillaReplicationControllers), Ge(T.monopods), ke(T.vanillaReplicationControllers), Le(T.vanillaReplicationControllers), ct(), be(), b.log("replicationcontrollers (subscribe)", T.replicationControllers);
 })), ut.push(m.watch("deploymentconfigs", r, function(e) {
@@ -4389,6 +4393,7 @@ return Logger.error("Could not parse Jenkins status as JSON", t), null;
 return {
 startBuild: function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 var l = g(e) ? "pipeline" : "build", u = {
 kind: "BuildRequest",
 apiVersion: n.toAPIVersion(c),
@@ -4416,20 +4421,32 @@ message: i.getString(o("An error occurred while starting the")) + " " + l + ".",
 details: m(e)
 =======
 var o = l(e) ? "pipeline" : "build", i = {
+=======
+var i = p(e) ? "pipeline" : "build", c = {
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 kind: "BuildRequest",
-apiVersion: "v1",
+apiVersion: n.toAPIVersion(s),
 metadata: {
 name: e.metadata.name
 }
-}, c = {
+}, l = {
 namespace: e.metadata.namespace
 };
+<<<<<<< HEAD
 return n.create("buildconfigs/instantiate", e.metadata.name, i, c).then(function(t) {
 var n, i, s = m(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
 "Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(o) + " " + s + " successfully queued.", i = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(o) + " " + s + " successfully created.", a.addNotification({
 type: "success",
 message: n,
 details: i,
+=======
+return r.create(s, e.metadata.name, c, l).then(function(t) {
+var n, r, s = v(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
+"Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(i) + " " + s + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(i) + " " + s + " successfully created.", o.addNotification({
+type: "success",
+message: n,
+details: r,
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 links: [ {
 href: r.resourceURL(t),
 label: "View Build"
@@ -4438,9 +4455,14 @@ label: "View Build"
 }, function(e) {
 return a.addNotification({
 type: "error",
+<<<<<<< HEAD
 message: "An error occurred while starting the " + o + ".",
 details: s(e)
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+message: "An error occurred while starting the " + i + ".",
+details: d(e)
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 }), t.reject(e);
 });
 },
@@ -4777,15 +4799,15 @@ return _.last(n);
 } ]), angular.module("openshiftConsole").factory("DeploymentsService", [ "$filter", "$q", "APIService", "DataService", "LabelFilter", "NotificationsService", function(e, t, n, r, a, o) {
 function i() {}
 var s = n.getPreferredVersion("deploymentconfigs/instantiate"), c = n.getPreferredVersion("deploymentconfigs/rollback"), l = n.getPreferredVersion("pods"), u = n.getPreferredVersion("replicationcontrollers"), d = e("annotation");
-i.prototype.startLatestDeployment = function(t, n) {
-var a = {
+i.prototype.startLatestDeployment = function(t, a) {
+var i = {
 kind: "DeploymentRequest",
-apiVersion: "v1",
+apiVersion: n.toAPIVersion(s),
 name: t.metadata.name,
 latest: !0,
 force: !0
 };
-r.create(s, t.metadata.name, a, n).then(function(e) {
+r.create(s, t.metadata.name, i, a).then(function(e) {
 o.addNotification({
 type: "success",
 message: "Deployment #" + e.status.latestVersion + " of " + t.metadata.name + " has started."
@@ -4797,16 +4819,16 @@ message: "An error occurred while starting the deployment.",
 details: e("getErrorDetails")(t)
 });
 });
-}, i.prototype.retryFailedDeployment = function(t, n, a) {
-var i = angular.copy(t), s = t.metadata.name, c = d(t, "deploymentConfig");
-r.list(l, n, function(t) {
+}, i.prototype.retryFailedDeployment = function(t, a, i) {
+var s = angular.copy(t), c = n.objectToResourceGroupVersion(t), u = t.metadata.name, m = d(t, "deploymentConfig");
+r.list(l, a, function(t) {
 var n = t.by("metadata.name");
 angular.forEach(n, function(t) {
 var n = e("annotationName")("deployerPodFor");
-t.metadata.labels[n] === s && r.delete(l, t.metadata.name, a).then(function() {
+t.metadata.labels[n] === u && r.delete(l, t.metadata.name, i).then(function() {
 Logger.info("Deployer pod " + t.metadata.name + " deleted");
 }, function(t) {
-a.alerts = a.alerts || {}, a.alerts.retrydeployer = {
+i.alerts = i.alerts || {}, i.alerts.retrydeployer = {
 type: "error",
 message: "An error occurred while deleting the deployer pod.",
 <<<<<<< HEAD
@@ -4826,6 +4848,7 @@ details: e("getErrorDetails")(t)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var f = e("annotationName")("deploymentStatus"), v = e("annotationName")("deploymentStatusReason"), h = e("annotationName")("deploymentCancelled");
 l.metadata.annotations[f] = "New", delete l.metadata.annotations[v], delete l.metadata.annotations[h], r.update(u, m, l, a).then(function() {
 s.addNotification({
@@ -4842,9 +4865,13 @@ s.addNotification({
 =======
 var m = e("annotationName")("deploymentStatus"), p = e("annotationName")("deploymentStatusReason"), f = e("annotationName")("deploymentCancelled");
 i.metadata.annotations[m] = "New", delete i.metadata.annotations[p], delete i.metadata.annotations[f], r.update(u, s, i, n).then(function() {
+=======
+var p = e("annotationName")("deploymentStatus"), f = e("annotationName")("deploymentStatusReason"), g = e("annotationName")("deploymentCancelled");
+s.metadata.annotations[p] = "New", delete s.metadata.annotations[f], delete s.metadata.annotations[g], r.update(c, u, s, a).then(function() {
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 o.addNotification({
 type: "success",
-message: "Retrying deployment " + s + " of " + c + "."
+message: "Retrying deployment " + u + " of " + m + "."
 });
 }, function(t) {
 o.addNotification({
@@ -4865,6 +4892,7 @@ details: e("getErrorDetails")(t)
 });
 }, i.prototype.rollbackToDeployment = function(t, a, i, s, l) {
 var u = t.metadata.name, m = d(t, "deploymentConfig"), p = {
+<<<<<<< HEAD
 apiVersion: "apps.openshift.io/v1",
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 kind: "DeploymentConfigRollback",
@@ -4986,6 +5014,9 @@ details: a("getErrorDetails")(e)
 }, i.prototype.rollbackToDeployment = function(r, o, i, c, l) {
 var u = r.metadata.name, d = s(r, "deploymentConfig"), m = {
 apiVersion: "apps.openshift.io/v1",
+=======
+apiVersion: n.toAPIVersion(c),
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 kind: "DeploymentConfigRollback",
 name: m,
 spec: {
@@ -9134,11 +9165,11 @@ if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
 }), n.filteredBuilds = s.filterForKeywords(h, w, P);
-}, L = r("deploymentStatus"), U = r("deploymentIsInProgress"), O = function() {
+}, L = r("deploymentStatus"), U = r("deploymentIsInProgress"), V = function() {
 y = _.filter(n.replicationControllers, function(e) {
 return !n.filters.hideOlderResources || (U(e) || "Active" === L(e));
 }), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
-}, V = function() {
+}, O = function() {
 b = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
 }), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
@@ -9247,21 +9278,21 @@ n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("s
 poll: f,
 pollInterval: 6e4
 })), g.push(o.watch("replicationcontrollers", r, function(e) {
-n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), O(), c.log("replicationcontrollers", n.replicationControllers);
+n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), V(), c.log("replicationcontrollers", n.replicationControllers);
 })), g.push(o.watch("builds", r, function(e) {
 n.builds = C(e.by("metadata.name"), !0), n.latestBuildByConfig = a.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, R), B(), c.log("builds", n.builds);
 })), g.push(o.watch({
 group: "extensions",
 resource: "replicasets"
 }, r, function(e) {
-n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, V(), c.log("replicasets", n.replicaSets);
+n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, O(), c.log("replicasets", n.replicaSets);
 }, {
 poll: f,
 pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-T(), B(), O(), V(), E();
+T(), B(), V(), O(), E();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -10804,14 +10835,14 @@ e.autoscalers = e.hpaForRS.concat(t);
 var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 } else e.autoscalers = e.hpaForRS;
-}, O = function() {
+}, V = function() {
 $.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
 }), n = s.getActiveDeployment(r), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
 }));
-}, V = function() {
+}, O = function() {
 c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t) {
 e.hpaWarnings = t;
 });
@@ -10955,6 +10986,7 @@ m = _.orderBy(d, [ t ], [ r ]);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 g = t;
 }, b = function() {
 y(), h();
@@ -10996,13 +11028,16 @@ title: l.getString(u("Display Name")),
 sortType: "alpha"
 =======
 V(), e.breadcrumbs = o.getBreadcrumbs({
+=======
+O(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This " + w + " has been deleted."
-}), e.replicaSet = t, L(t), V(), H(), e.deployment && x();
-})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
+}), e.replicaSet = t, L(t), O(), H(), e.deployment && x();
+})), e.deploymentConfigName && V(), $.push(i.watch(T, u, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -11028,6 +11063,7 @@ l.buildDockerRefMapForImageStreams(t, j), H(), m.log("imagestreams (subscribe)",
 })), $.push(i.watch(k, u, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
 })), $.push(i.watch(R, u, function(e) {
+<<<<<<< HEAD
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Add Browse Catalog to Project context view.
 }, {
@@ -11108,6 +11144,14 @@ m.list().then(function(t) {
 e.isProjectListIncomplete = m.isProjectListIncomplete(), j(t), !e.isProjectListIncomplete && _.size(p) <= 250 && (f.push(m.watch(e, j)), h = !0);
 }, function() {
 e.isProjectListIncomplete = !0, e.loading = !1, p = [], P();
+=======
+p = e.by("metadata.name"), y(), O();
+}, {
+poll: U,
+pollInterval: 6e4
+})), i.list(E, u).then(function(t) {
+e.limitRanges = t.by("metadata.name"), O();
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 });
 <<<<<<< HEAD
 }), m.canCreate().then(function() {
@@ -33424,6 +33468,7 @@ $(n).focus();
 }, 300);
 }
 };
+<<<<<<< HEAD
 } ]).directive("selectOnFocus", function() {
 return {
 restrict: "A",
@@ -33433,6 +33478,14 @@ $(this).select();
 });
 }
 <<<<<<< HEAD
+=======
+e.$on("$destroy", N);
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), U = i.getPreferredVersion("resourcequotas"), V = i.getPreferredVersion("appliedclusterresourcequotas");
+v.get(a.project).then(_.spread(function(t, n) {
+e.project = t, a.sourceURI && (e.sourceURIinParams = !0);
+var i = function() {
+e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 };
 }).directive("focusWhen", [ "$timeout", function(e) {
 return {
@@ -33467,12 +33520,30 @@ details: e.data.message
 });
 }
 };
+<<<<<<< HEAD
 } ]).directive("clickToReveal", function() {
 return {
 restrict: "A",
 transclude: !0,
 scope: {
 linkText: "@"
+=======
+c.list(U, n).then(function(e) {
+v = e.by("metadata.name"), m.log("quotas", v);
+}), c.list(V, n).then(function(e) {
+y = e.by("metadata.name"), m.log("cluster quotas", y);
+}), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
+I.value && I.value !== t || (I.value = e);
+}), function(r) {
+r.name = a.name, r.imageName = k, r.imageTag = a.imageTag, r.namespace = a.namespace, r.buildConfig = {
+buildOnSourceChange: !0,
+buildOnImageChange: !0,
+buildOnConfigChange: !0,
+secrets: {
+gitSecret: [ {
+name: ""
+} ]
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 },
 templateUrl: "views/directives/_click-to-reveal.html",
 link: function(e, t) {
@@ -33585,6 +33656,7 @@ $(e.trigger).attr("title", t).tooltip("fixTitle").tooltip("show").attr("title", 
 r.destroy();
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
+<<<<<<< HEAD
 }
 };
 <<<<<<< HEAD
@@ -33606,6 +33678,20 @@ var r = new Clipboard(a.get(0));
 r.on("success", function() {
 t.addNotification({
 id: "copy-login-command-success",
+=======
+}(e);
+var O, F = function() {
+var t = {
+started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
+success: "Created application " + e.name + " in project " + e.projectDisplayName(),
+failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
+}, o = {};
+S.clear(), S.add(t, o, a.project, function() {
+var t = r.defer();
+return c.batch(O, n).then(function(n) {
+var r = [], a = !1;
+_.isEmpty(n.failure) ? r.push({
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 type: "success",
 message: "Login command copied."
 });
@@ -33681,6 +33767,7 @@ $(window).off("resize", n);
 });
 }
 };
+<<<<<<< HEAD
 }).directive("onEnter", function() {
 return function(e, t, n) {
 t.bind("keydown keypress", function(t) {
@@ -33688,6 +33775,23 @@ t.bind("keydown keypress", function(t) {
 e.$eval(n.onEnter);
 }), t.preventDefault());
 });
+=======
+e.projectDisplayName = function() {
+return P(this.project) || this.projectName;
+}, e.createApp = function() {
+e.disableInputs = !0, N(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
+var t = s.generate(e);
+O = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), O.push(e));
+});
+var r = s.ifResourcesDontExist(O, e.projectName), a = h.getLatestQuotaAlerts(O, n), o = function(t) {
+return e.nameTaken = t.nameTaken, a;
+};
+r.then(o, o).then(M, M);
+};
+})), e.cancel = function() {
+f.toProjectOverview(e.projectName);
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35058,6 +35162,7 @@ if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.select
 var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
 return m.create(t, r, a);
 };
+<<<<<<< HEAD
 p.create = function() {
 if (delete p.error, f(p.resource) && (p.resourceKind = p.resource.kind, p.resourceKind.endsWith("List") ? p.isList = !0 : p.isList = !1, g(p.resource))) {
 p.isList ? (p.resourceList = p.resource.items, p.resourceName = "") : (p.resourceList = [ p.resource ], p.resourceName = p.resource.metadata.name, "Template" === p.resourceKind && (p.templateOptions = {
@@ -35128,6 +35233,30 @@ id: "memory/usage",
 <<<<<<< HEAD
 label: m("Memory"),
 data: []
+=======
+} ]), angular.module("openshiftConsole").directive("createSecret", [ "$filter", "AuthorizationService", "APIService", "DataService", "NotificationsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, r, a, o) {
+var i = n.getPreferredVersion("serviceaccounts"), s = n.getPreferredVersion("secrets");
+return {
+restrict: "E",
+scope: {
+type: "=",
+serviceAccountToLink: "=?",
+namespace: "=",
+onCreate: "&",
+onCancel: "&"
+},
+templateUrl: "views/directives/create-secret.html",
+link: function(c) {
+c.nameValidation = o, c.secretAuthTypeMap = {
+image: {
+label: "Image Secret",
+authTypes: [ {
+id: "kubernetes.io/dockercfg",
+label: "Image Registry Credentials"
+}, {
+id: "kubernetes.io/dockerconfigjson",
+label: "Configuration File"
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 } ]
 }), _.includes(p.includedMetrics, "cpu") && p.metrics.push({
 =======
@@ -35179,6 +35308,7 @@ id: "network/rx_rate",
 label: m("Received"),
 data: []
 } ]
+<<<<<<< HEAD
 }), p.loaded = !1, p.noData = !0, p.showComputeUnitsHelp = function() {
 u.showComputeUnitsHelp();
 }, l.getMetricsURL().then(function(e) {
@@ -35281,8 +35411,76 @@ label: t,
 type: e.type,
 data: []
 } ]
+=======
+}
+}, c.secretTypes = _.keys(c.secretAuthTypeMap), c.type ? c.newSecret = {
+type: c.type,
+authType: c.secretAuthTypeMap[c.type].authTypes[0].id,
+data: {},
+linkSecret: !_.isEmpty(c.serviceAccountToLink),
+pickedServiceAccountToLink: c.serviceAccountToLink || ""
+} : c.newSecret = {
+type: "source",
+authType: "kubernetes.io/basic-auth",
+data: {},
+linkSecret: !1,
+pickedServiceAccountToLink: ""
+}, c.add = {
+gitconfig: !1,
+cacert: !1
+}, t.canI("serviceaccounts", "list") && t.canI("serviceaccounts", "update") && r.list(i, c, function(e) {
+c.serviceAccounts = e.by("metadata.name"), c.serviceAccountsNames = _.keys(c.serviceAccounts);
+});
+var l = function(e, t) {
+var n = {
+apiVersion: "v1",
+kind: "Secret",
+metadata: {
+name: c.newSecret.data.secretName
+},
+type: t,
+data: {}
+};
+switch (t) {
+case "kubernetes.io/basic-auth":
+e.passwordToken ? n.data = {
+password: window.btoa(e.passwordToken)
+} : n.type = "Opaque", e.username && (n.data.username = window.btoa(e.username)), e.gitconfig && (n.data[".gitconfig"] = window.btoa(e.gitconfig)), e.cacert && (n.data["ca.crt"] = window.btoa(e.cacert));
+break;
+
+case "kubernetes.io/ssh-auth":
+n.data = {
+"ssh-privatekey": window.btoa(e.privateKey)
+}, e.gitconfig && (n.data[".gitconfig"] = window.btoa(e.gitconfig));
+break;
+
+case "kubernetes.io/dockerconfigjson":
+var r = window.btoa(e.dockerConfig);
+JSON.parse(e.dockerConfig).auths ? n.data[".dockerconfigjson"] = r : (n.type = "kubernetes.io/dockercfg", n.data[".dockercfg"] = r);
+break;
+
+case "kubernetes.io/dockercfg":
+var a = window.btoa(e.dockerUsername + ":" + e.dockerPassword), o = {};
+o[e.dockerServer] = {
+username: e.dockerUsername,
+password: e.dockerPassword,
+email: e.dockerMail,
+auth: a
+}, n.data[".dockercfg"] = window.btoa(JSON.stringify(o));
+}
+return n;
+}, u = function() {
+a.hideNotification("create-secret-error");
+}, d = function(t) {
+var o = angular.copy(c.serviceAccounts[c.newSecret.pickedServiceAccountToLink]), i = n.objectToResourceGroupVersion(o);
+switch (c.newSecret.type) {
+case "source":
+o.secrets.push({
+name: t.metadata.name
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 });
 });
+<<<<<<< HEAD
 })).finally(function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35299,6 +35497,27 @@ m.$watch("options", function() {
 _.each(m.metrics, function(e) {
 _.each(e.datasets, function(e) {
 delete e.data;
+=======
+}
+r.update(i, c.newSecret.pickedServiceAccountToLink, o, c).then(function(e) {
+a.addNotification({
+type: "success",
+message: "Secret " + t.metadata.name + " was created and linked with service account " + e.metadata.name + "."
+}), c.onCreate({
+newSecret: t
+});
+}, function(n) {
+a.addNotification({
+type: "success",
+message: "Secret " + t.metadata.name + " was created."
+}), c.serviceAccountToLink || a.addNotification({
+id: "secret-sa-link-error",
+type: "error",
+message: "An error occurred while linking the secret with service account " + c.newSecret.pickedServiceAccountToLink + ".",
+details: e("getErrorDetails")(n)
+}), c.onCreate({
+newSecret: t
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35313,6 +35532,7 @@ _.each(p.metrics, function(e) {
 _.each(e.datasets, function(e) {
 delete e.data;
 });
+<<<<<<< HEAD
 }), delete p.metricsError, P();
 >>>>>>> Updates for Service Instance & Bindings
 =======
@@ -35426,8 +35646,16 @@ s || e.removeClass("highlight-drag-and-drop-zone");
 if (!t.disabled) {
 var n = _.get(e, "originalEvent.dataTransfer.files", []);
 return n.length > 0 && (t.file = _.head(n), r(t.file)), a(), $(".drag-and-drop-zone").trigger("putDropZoneFront", !1), $(".drag-and-drop-zone").trigger("reset"), !1;
+=======
+}, m = _.debounce(function() {
+try {
+JSON.parse(c.newSecret.data.dockerConfig), c.invalidConfigFormat = !1;
+} catch (e) {
+c.invalidConfigFormat = !0;
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 }
 });
+<<<<<<< HEAD
 var o = function(e, t) {
 var n = t.offset(), r = t.outerWidth(), a = t.outerHeight();
 e.css({
@@ -35438,6 +35666,30 @@ left: n.left,
 position: "fixed",
 "z-index": 100
 });
+=======
+c.aceChanged = m, c.nameChanged = function() {
+c.nameTaken = !1;
+}, c.create = function() {
+u();
+var n = l(c.newSecret.data, c.newSecret.authType);
+r.create(s, null, n, c).then(function(e) {
+c.newSecret.linkSecret && c.serviceAccountsNames.contains(c.newSecret.pickedServiceAccountToLink) && t.canI("serviceaccounts", "update") ? d(e) : (a.addNotification({
+type: "success",
+message: "Secret " + n.metadata.name + " was created."
+}), c.onCreate({
+newSecret: e
+}));
+}, function(t) {
+"AlreadyExists" !== (t.data || {}).reason ? a.addNotification({
+id: "create-secret-error",
+type: "error",
+message: "An error occurred while creating the secret.",
+details: e("getErrorDetails")(t)
+}) : c.nameTaken = !0;
+});
+}, c.cancel = function() {
+u(), c.onCancel();
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 };
 e.on("putDropZoneFront", function(e, r) {
 if (!t.disabled) {
@@ -40926,6 +41178,7 @@ type: "error",
 message: "An error occurred processing the template.",
 details: t
 });
+<<<<<<< HEAD
 });
 }, function(e) {
 <<<<<<< HEAD
@@ -40949,6 +41202,17 @@ id: "process-template-error",
 type: "error",
 message: "An error occurred creating the project.",
 details: t
+=======
+var V = o.$on("metrics.charts.resize", function() {
+c.redraw(R), c.redraw(E);
+});
+m.$on("$destroy", function() {
+I && (t.cancel(I), I = null), V && (V(), V = null), angular.forEach(R, function(e) {
+e.destroy();
+}), R = null, angular.forEach(E, function(e) {
+e.destroy();
+}), E = null, A = !0;
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 });
 <<<<<<< HEAD
 }
@@ -47010,9 +47274,9 @@ t.showInDrawer && !l.isCleared(r) && (h[n] = h[n] || {}, h[n][r] = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 }), y = [];
-}, O = function() {
-m && (l.unwatch(m), m = null);
 }, V = function() {
+m && (l.unwatch(m), m = null);
+}, O = function() {
 d && d(), d = null;
 }, F = function(e) {
 b[a.project] = D(A(e.by("metadata.name"))), L();
@@ -47045,8 +47309,12 @@ B(), e && (d = c.watch("events", {
 =======
 }, L());
 }, M = function(e, t) {
+<<<<<<< HEAD
 O(), e && (m = l.watch(p, {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
+=======
+V(), e && (m = l.watch(p, {
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -47141,7 +47409,7 @@ angular.extend(f, {
 >>>>>>> Remember drawer expanded state across sessions
 =======
 }, q = _.once(function(e, t) {
-V(), d = r.$on("NotificationsService.onNotificationAdded", t);
+O(), d = r.$on("NotificationsService.onNotificationAdded", t);
 }), z = function() {
 j(a.project).then(function() {
 M(a.project, F), q(a.project, x), w(a.project), L();
@@ -47357,8 +47625,12 @@ L(), B(), $();
 h.$onInit = function() {
 g || v || H();
 }, h.$onDestroy = function() {
+<<<<<<< HEAD
 V(), O(), U();
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
+=======
+O(), V(), U();
+>>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 };
 } ]
 });
