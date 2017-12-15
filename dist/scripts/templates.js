@@ -12126,11 +12126,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/ui-ace-yaml.html',
     "<ng-form name=\"$ctrl.form\">\n" +
     "<div class=\"form-group\" id=\"yaml-file\">\n" +
+<<<<<<< 7c399b18a06396e2c66b77172f775a350cb378dd
 <<<<<<< 9854a04a93530a5cbed260dddc4991d2b65730e5
     "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"{{'Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}\" ng-disabled=\"false\" hide-clear=\"true\"></osc-file-input>\n" +
 =======
     "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-disabled=\"false\" hide-clear=\"true\"></osc-file-input>\n" +
 >>>>>>> Improve YAML editor validation and feedback
+=======
+    "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-disabled=\"false\" hide-clear=\"true\" on-file-added=\"$ctrl.onFileAdded\"></osc-file-input>\n" +
+>>>>>>> Bug 1526538 - Allow users to clear edits by uploading same file
     "<div class=\"edit-yaml-errors\">\n" +
     "\n" +
     "<div ng-if=\"firstError = $ctrl.annotations.error[0]\">\n" +

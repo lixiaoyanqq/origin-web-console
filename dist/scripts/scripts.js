@@ -23231,6 +23231,7 @@ return {
 restrict: "E",
 scope: {
 model: "=",
+<<<<<<< 7c399b18a06396e2c66b77172f775a350cb378dd
 required: "=",
 disabled: "=ngDisabled",
 <<<<<<< 32ce7dc9188e66a92552db029fc5fde74d2e4f63
@@ -23248,8 +23249,16 @@ showTextArea: "=",
 =======
 hideClear: "=?",
 >>>>>>> Improve YAML editor validation and feedback
+=======
+required: "<",
+disabled: "<ngDisabled",
+readonly: "<ngReadonly",
+showTextArea: "<",
+hideClear: "<?",
+>>>>>>> Bug 1526538 - Allow users to clear edits by uploading same file
 helpText: "@?",
-dropZoneId: "@?"
+dropZoneId: "@?",
+onFileAdded: "<?"
 },
 templateUrl: "views/directives/osc-file-input.html",
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -23296,6 +23305,8 @@ var r = new FileReader();
 r.onloadend = function() {
 t.$apply(function() {
 t.fileName = n.name, t.model = r.result;
+var e = t.onFileAdded;
+_.isFunction(e) && e(r.result);
 });
 }, r.onerror = function(n) {
 t.supportsFileUpload = !1, t.uploadError = !0, e.error("Could not read file", n);
@@ -23360,7 +23371,7 @@ c || n.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone");
 }), t.cleanInputValues = function() {
 t.model = "", t.fileName = "", l[0].value = "";
 }, l.change(function() {
-r(l[0].files[0]);
+r(l[0].files[0]), l[0].value = "";
 }), t.$on("$destroy", function() {
 $(i).off(), $(document).off("drop." + o).off("dragenter." + o).off("dragover." + o).off("dragleave." + o);
 });
@@ -33472,11 +33483,9 @@ e.$evalAsync(function() {
 n.form.$setValidity("yamlValid", t);
 });
 };
-e.$watch(function() {
-return n.fileUpload;
-}, function(e, t) {
-e !== t && (n.model = e);
-}), n.$onInit = function() {
+n.onFileAdded = function(e) {
+n.model = e;
+}, n.$onInit = function() {
 n.resource && (n.model = jsyaml.safeDump(n.resource, {
 sortKeys: !0
 }));
