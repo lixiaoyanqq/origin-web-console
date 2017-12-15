@@ -12087,10 +12087,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-form name=\"$ctrl.form\">\n" +
     "<div class=\"form-group\" id=\"yaml-file\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"{{'Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}\" ng-disabled=\"false\" hide-clear=\"true\" on-file-added=\"$ctrl.onFileAdded\"></osc-file-input>\n" +
 =======
     "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-disabled=\"false\" hide-clear=\"true\"></osc-file-input>\n" +
 >>>>>>> Improve YAML editor validation and feedback
+=======
+    "<osc-file-input ng-if=\"$ctrl.showFileInput\" model=\"$ctrl.fileUpload\" drop-zone-id=\"yaml-file\" help-text=\"Upload a file by dragging & dropping, selecting it, or pasting from the clipboard.\" ng-disabled=\"false\" hide-clear=\"true\" on-file-added=\"$ctrl.onFileAdded\"></osc-file-input>\n" +
+>>>>>>> Bug 1526538 - Allow users to clear edits by uploading same file
     "<div class=\"edit-yaml-errors\">\n" +
     "\n" +
     "<div ng-if=\"firstError = $ctrl.annotations.error[0]\">\n" +

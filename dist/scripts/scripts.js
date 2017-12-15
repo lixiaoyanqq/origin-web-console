@@ -37227,6 +37227,7 @@ backlink: URI.encode(n.location.href)
 } ]).directive("oscHeader", [ "$filter", "$location", "$q", "$rootScope", "$routeParams", "$timeout", "APIService", "AuthorizationService", "Catalog", "CatalogService", "Constants", "DataService", "NotificationsService", "ProjectsService", "projectOverviewURLFilter", "RecentlyViewedServiceItems", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g) {
 var v = {}, h = [], y = e("displayName"), b = e("uniqueDisplayName"), S = i.getPreferredVersion("templates");
 return {
+<<<<<<< HEAD
 restrict: "EA",
 templateUrl: "views/directives/header/header.html",
 link: function(o, i) {
@@ -37269,6 +37270,33 @@ return n ? r.text(y(e)) : r.text(b(e, h)), r;
 _.size(v) <= 100 ? (h = e("orderByDisplayName")(v), k = _.map(h, function(e) {
 return n(e, !1);
 })) : k = [ n(v[t], !0) ], P.empty(), P.append(k), P.append($('<option data-divider="true"></option>')), P.append($('<option value="">View All Projects</option>')), P.selectpicker("refresh");
+=======
+restrict: "E",
+scope: {
+model: "=",
+required: "<",
+disabled: "<ngDisabled",
+readonly: "<ngReadonly",
+showTextArea: "<",
+hideClear: "<?",
+helpText: "@?",
+dropZoneId: "@?",
+onFileAdded: "<?"
+},
+templateUrl: "views/directives/osc-file-input.html",
+link: function(t, n) {
+function r(n) {
+var r = new FileReader();
+r.onloadend = function() {
+t.$apply(function() {
+t.fileName = n.name, t.model = r.result;
+var e = t.onFileAdded;
+_.isFunction(e) && e(r.result);
+});
+}, r.onerror = function(n) {
+t.supportsFileUpload = !1, t.uploadError = !0, e.error("Could not read file", n);
+}, r.readAsText(n);
+>>>>>>> Bug 1526538 - Allow users to clear edits by uploading same file
 }
 }, I = function() {
 return p.list().then(function(e) {
@@ -37315,6 +37343,7 @@ filter: n.searchText
 t.path("project/" + encodeURIComponent(o.currentProjectName) + "/project-browse-catalog").search(r);
 }
 });
+<<<<<<< HEAD
 o.closeOrderingPanel = function() {
 g.addItem(_.get(o.selectedItem, "resource.metadata.uid")), o.orderingPanelVisible = !1;
 }, R(), o.$on("$routeChangeSuccess", R), P.selectpicker({
@@ -37447,6 +37476,22 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
+=======
+}), $(document).on("drop." + o, function() {
+return a(), n.find(".drag-and-drop-zone").trigger("putDropZoneFront", !1), !1;
+}), $(document).on("dragenter." + o, function() {
+if (!t.disabled) return c = !0, n.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), n.find(".drag-and-drop-zone").trigger("putDropZoneFront", !0), !1;
+}), $(document).on("dragover." + o, function() {
+if (!t.disabled) return c = !0, n.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), !1;
+}), $(document).on("dragleave." + o, function() {
+return c = !1, _.delay(function() {
+c || n.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone");
+}, 200), !1;
+}), t.cleanInputValues = function() {
+t.model = "", t.fileName = "", l[0].value = "";
+}, l.change(function() {
+r(l[0].files[0]), l[0].value = "";
+>>>>>>> Bug 1526538 - Allow users to clear edits by uploading same file
 }), t.$on("$destroy", function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -46349,11 +46394,9 @@ e.$evalAsync(function() {
 n.form.$setValidity("yamlValid", t);
 });
 };
-e.$watch(function() {
-return n.fileUpload;
-}, function(e, t) {
-e !== t && (n.model = e);
-}), n.$onInit = function() {
+n.onFileAdded = function(e) {
+n.model = e;
+}, n.$onInit = function() {
 n.resource && (n.model = jsyaml.safeDump(n.resource, {
 sortKeys: !0
 }));
