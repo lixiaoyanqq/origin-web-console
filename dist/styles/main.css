@@ -5495,6 +5495,7 @@ h2+.list-view-pf{margin-top:20px}
 .landing-page .wizard-pf-main .ace_editor.editor{height:175px}
 .wizard-pf-main .deploy-image .empty-state-message{margin-bottom:0;margin-top:35px}
 @media (min-width:768px){.wizard-pf-main .deploy-image .empty-state-message{margin-top:90px}
+<<<<<<< 8f5cdad102ed878d4e54fcdeb5931241351d32b7
 .landing-page .wizard-pf-main .deploy-image .empty-state-message{margin-top:50px}
 =======
 #header-logo{background-image:url(../images/logo-origin-thin.svg);background-repeat:no-repeat;background-position:center left;background-size:initial;height:45px;width:230px}
@@ -5586,6 +5587,9 @@ h2+.list-view-pf{margin-top:20px}
 @media (min-width:768px){.navbar-pf-vertical .navbar-toggle{margin:13px 15px}
 >>>>>>> Incorporate badge-pf-bordered on notification drawer bell
 .navbar-pf-vertical .navbar-toggle .icon-bar{width:22px}
+=======
+.landing-page .wizard-pf-main .deploy-image .empty-state-message{margin-top:40px}
+>>>>>>> Fix unnecessary scrollbar bug in deploy image dialog
 }
 .build-count .icon-count,.builds-label{margin-right:5px;display:inline-block}
 .navbar-toggle:focus{color:#fff;outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
