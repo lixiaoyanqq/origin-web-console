@@ -12,8 +12,7 @@ angular.module('openshiftConsole')
     LabelFilter,
     Logger,
     APIService,
-    gettext,
-    gettextCatalog) {
+    gettext) {
     $scope.projectName = $routeParams.project;
     $scope.labelSuggestions = {};
     $scope.kindSelector = {disabled: true};

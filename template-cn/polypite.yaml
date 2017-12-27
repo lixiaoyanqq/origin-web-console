@@ -84,7 +84,7 @@ objects:
             - polypite-console
           from:
             kind: ImageStreamTag
-            name: 'origin-dm-web:${ORIGIN_DM_WEB_TAG}'
+            name: 'origin-dm-web:deploy'
             namespace: openshift
         type: ImageChange
 - apiVersion: v1

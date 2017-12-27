@@ -1,5 +1,5 @@
 <div class="middle surface-shaded">
-  <origin-modal-popup class="projects-list-create-popup" shown="newProjectPanelShown" modal-title="Create Project" on-close="closeNewProjectPanel" reference-element="popupElement">
+  <origin-modal-popup class="projects-list-create-popup" shown="newProjectPanelShown" modal-title="{{'Create Project'|translate}}" on-close="closeNewProjectPanel" reference-element="popupElement">
     <create-project is-dialog="true" redirect-action="onNewProject" on-cancel="closeNewProjectPanel"></create-project>
   </origin-modal-popup>
   <div class="middle-content">
@@ -60,8 +60,8 @@
                 <div class="alert alert-warning">
                   <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
                   <span class="sr-only" translate>Warning:</span>
-		  <translate>The complete list of your projects could not be loaded.</translate>
-		  </translate>Type a project name to go to that project.</translate>
+                  <translate>The complete list of your projects could not be loaded.</translate>
+                  <translate>Type a project name to go to that project.</translate>
                 </div>
                 <form>
                   <div class="form-group">
@@ -91,7 +91,7 @@
                 </form>
               </div>
               <div ng-if="!projects.length && !isProjectListIncomplete" class="h3">
-                The current filter is hiding all projects.
+                <translate>The current filter is hiding all projects.</translate>
                 <a href="" ng-click="search.text = ''" role="button" class="nowrap" translate>Clear Filter</a>
               </div>
               <div class="list-group list-view-pf projects-list">
@@ -103,7 +103,7 @@
                           <a class="tile-target" ng-href="project/{{project.metadata.name}}" title="{{project | displayName}}"><span ng-bind-html="project | displayName | highlightKeywords : keywords"></span></a>
                           <span ng-if="project.status.phase != 'Active'"
                             data-toggle="tooltip"
-                            title="This project has been marked for deletion."
+                            title="{{'This project has been marked for deletion.'|translate}}"
                             class="pficon pficon-warning-triangle-o"></span>
                         </h2>
                         <small>
@@ -137,7 +137,7 @@
                         </li>
                         <li role="menuitem">
                           <delete-project
-                            label="Delete Project"
+                            label="{{'Delete Project'|translate}}"
                             project="project"
                             type-name-to-confirm="true"
                             stay-on-current-page="true"
@@ -149,15 +149,14 @@
                   </div>
                   <origin-modal-popup shown="editProjectPanelShown && editingProject === project"
                                       ng-class="{'with-description': (project | description | size)}"
-                                      modal-title="Edit Project" on-close="closeEditProjectPanel">
+                                      modal-title="{{'Edit Project'|translate}}" on-close="closeEditProjectPanel">
                     <edit-project project="project" is-dialog="true" redirect-action="onEditProject" on-cancel="closeEditProjectPanel"></edit-project>
                   </origin-modal-popup>
                 </div>
               </div>
               <p ng-if="projects.length > limitListTo">
-                Only the first {{limitListTo}} projects are displayed.
-                Filter by keyword or change sort options to see other
-                projects.
+                <translate>Only the first {{limitListTo}} projects are displayed.</translate>
+                <translate>Filter by keyword or change sort options to see other projects.</translate>
               </p>
               <p class="projects-instructions" ng-if="canCreate === false" ng-include="'views/_cannot-create-project.html'"></p>
             </div>
@@ -165,9 +164,9 @@
 
           <div ng-if="showGetStarted">
             <div class="empty-state-message empty-state-full-page text-center">
-              <h1>Welcome to Dataman OS</h1>
+              <h1 translate>Welcome to OpenShift.</h1>
               <p>
-                OpenShift helps you quickly develop, host, and scale applications.<br>
+                <translate>DMOS helps you quickly develop, host, and scale applications.</translate><br>
                 <span ng-if="canCreate" translate>Create a project for your application.</span>
               </p>
               <div>
@@ -176,7 +175,7 @@
                   <span class="icon-button-text" translate>Create Project</span>
                 </button>
               </div>
-              <p>To learn more, visit the OpenShift <a target="_blank" ng-href="{{'' | helpLink}}">documentation</a>.</p>
+              <p translate>To learn more, visit the DMOS <a target="_blank" ng-href="{{'' | helpLink}}">documentation</a>.</p>
               <p class="projects-instructions" ng-if="canCreate === false" ng-include="'views/_cannot-create-project.html'"></p>
             </div>
           </div>

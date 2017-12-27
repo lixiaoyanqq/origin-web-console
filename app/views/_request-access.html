@@ -1,3 +1,4 @@
-<p class="gutter-top">
-  如果您需要在这个项目中创建资源，请联系管理员。
+<p class="gutter-top" translate>
+  If you need to create resources in this project, a project administrator can grant you additional access by running this command:
 </p>
+<code>oc policy add-role-to-user &lt;role&gt; {{user.metadata.name}} -n {{projectName}}</code>

@@ -29,11 +29,11 @@
               <span ng-if="sclass.parameters.type || sclass.parameters.zone || (sclass | description)" class="text-muted">
                 <small>&ndash;
                   <span ng-if="sclass.parameters.type">
-                    Type: {{sclass.parameters.type}}
+                    <translate>Type</translate>: {{sclass.parameters.type}}
                   </span>
                   <span ng-if="sclass.parameters.zone">
                     <span ng-if="sclass.parameters.type">|</span>
-                    Zone: {{sclass.parameters.zone}}
+                    <translate>Zone</translate>: {{sclass.parameters.zone}}
                   </span>
                   <span ng-if="sclass | description">
                     <span ng-if="sclass.parameters.type || sclass.parameters.zone">|</span>
@@ -48,6 +48,9 @@
       <div id="claim-storage-class-help" class="help-block">
         <translate>Storage classes are set by the administrator to define types of storage the users can select.</translate>
         <span ng-if="defaultStorageClass" translate> If another storage class is not chosen, the default storage class <var>{{defaultStorageClass.metadata.name}}</var> will be used.</span>
+        <div class="learn-more-block">
+          <a ng-href="{{'storage_classes' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"> </i></a>
+        </div>
       </div>
 
     </div>
@@ -96,15 +99,15 @@
       <label class="required" translate>Access Mode</label><br/>
       <label class="radio-inline">
         <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadWriteOnce" aria-describedby="access-modes-help" ng-checked="true" translate>
-        <translate>Single User</translate> (RWO)
+        Single User (RWO)
       </label>
       <label class="radio-inline">
         <input type="radio" id="accessModes" name="accessModes" ng-model="claim.accessModes" value="ReadWriteMany" aria-describedby="access-modes-help" translate>
-        <translate>Shared Access</translate> (RWX)
+        Shared Access (RWX)
       </label>
       <label class="radio-inline">
         <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadOnlyMany" aria-describedby="access-modes-help" translate>
-        <translate>Read Only</translate> (ROX)
+        Read Only (ROX)
       </label>
       <div>
         <span id="access-modes-help" class="help-block" translate>Permissions to the mounted volume.</span>
@@ -198,12 +201,12 @@
       </fieldset>
     </div>
     <div class="checkbox">
-      <label translate>
-        <input type="checkbox" ng-model="useLabels">
+      <label>
+        <input type="checkbox" ng-model="useLabels" translate>
         Use label selectors to request storage
       </label>
       <div class="help-block learn-more-block mar-bottom-xl">
-        <a ng-href="{{'selector_label' | helpLink}}" target="_blank">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+        <a ng-href="{{'selector_label' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
       </div>
     </div>
     <div ng-show="useLabels" class="form-group osc-form">
@@ -211,7 +214,7 @@
           labels="claim.selectedLabels"
           expand="true"
           can-toggle="false"
-          help-text="Enter a label and value to use for your storage.">
+          help-text="{{'Enter a label and value to use for your storage.'|translate}}">
       </label-editor>
     </div>
   </fieldset>

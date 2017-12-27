@@ -19,15 +19,15 @@
                   data-trigger="hover"
                   data-container="#{{tooltipID}}">
               <span class="pficon pficon-error-circle-o" aria-hidden="true"></span>
-              Error
+              <translate>Error</translate>
             </span>
             <span ng-switch-when="deleted" class="notification-icon-count">
               <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-              Marked for Deletion
+              <translate>Marked for Deletion</translate>
             </span>
             <span ng-switch-when="pending" class="notification-icon-count">
               <span class="spinner spinner-xs spinner-inline" aria-hidden="true"></span>
-              <span>Pending</span>
+              <span translate>Pending</span>
             </span>
           </div>
         </div>
@@ -39,7 +39,7 @@
               class="hidden-xs hidden-sm">
           <a href="" ng-click="row.showOverlayPanel('bindService', {target: row.apiObject})">
             <span class="pficon pficon-add-circle-o" aria-hidden="true"></span>
-            Create Binding
+            <translate>Create Binding</translate>
           </a>
         </span>
         <div ng-if="row.bindings.length" class="hidden-xs hidden-sm">
@@ -52,10 +52,10 @@
               {{firstBinding.metadata.name}}
             </span>
             <span ng-if="row.bindings.length > 1">
-              and
+              <translate>and</translate>
               <a
                 ng-if="row.bindings.length > 1"
-                ng-click="row.toggleExpand($event, true)">
+                ng-click="row.toggleExpand($event, true)" translate>
                 {{row.bindings.length -1}} other<span ng-if="row.bindings.length > 2">s</span></a>
             </span>
           </p>
@@ -63,8 +63,8 @@
         <div
           class="hidden-xs"
           ng-if="(!row.instanceStatus || row.instanceStatus === 'ready') && row.apiObject.status.dashboardURL">
-          <a ng-href="{{row.apiObject.status.dashboardURL}}" target="_blank" translate>
-            Dashboard <i class="fa fa-external-link small" aria-hidden="true"></i>
+          <a ng-href="{{row.apiObject.status.dashboardURL}}" target="_blank">
+            <translate>Dashboard</translate> <i class="fa fa-external-link small" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -102,8 +102,8 @@
             <div class="col-sm-12">
               <div class="alert word-break alert-warning">
                 <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-                <span class="sr-only">warning</span>
-                <span class="strong">The service was marked for deletion.</span>
+                <span class="sr-only" translate>warning</span>
+                <span class="strong" translate>The service was marked for deletion.</span>
               </div>
             </div>
           </div>
@@ -111,8 +111,8 @@
             <div class="col-sm-12">
               <div class="alert word-break alert-danger">
                 <span class="pficon pficon-error-circle-o" aria-hidden="true"></span>
-                <span class="sr-only">error</span>
-                <span class="strong">The service failed.</span>
+                <span class="sr-only" translate>error</span>
+                <span class="strong" translate>The service failed.</span>
                 <span class="instance-status-message">
                   <truncate-long-text
                     content="row.apiObject | serviceInstanceFailedMessage"
@@ -121,7 +121,7 @@
                     newline-limit="4"></truncate-long-text>
                 </span>
                 <div ng-if="row.serviceInstancesVersion | canI : 'delete'">
-                  <a href="" ng-click="row.deprovision()">Delete This Service</a>
+                  <a href="" ng-click="row.deprovision()" translate>Delete This Service</a>
                 </div>
               </div>
             </div>
@@ -130,8 +130,8 @@
             <div class="col-sm-12">
               <div class="alert word-break alert-info">
                 <span class="pficon pficon-info" aria-hidden="true"></span>
-                <span class="sr-only">info</span>
-                <span class="strong">The service is not yet ready.</span>
+                <span class="sr-only" translate>info</span>
+                <span class="strong" translate>The service is not yet ready.</span>
                 <span class="instance-status-message">
                   <truncate-long-text
                     content="row.apiObject | serviceInstanceReadyMessage"
@@ -154,8 +154,8 @@
                   linkify="true">
                 </truncate-long-text></p>
               <div ng-if="row.serviceClass.spec.externalMetadata.documentationUrl || row.serviceClass.spec.externalMetadata.supportUrl">
-                <a ng-if="row.serviceClass.spec.externalMetadata.documentationUrl" ng-href="{{row.serviceClass.spec.externalMetadata.documentationUrl}}" target="_blank" class="learn-more-link">View Documentation <i class="fa fa-external-link" aria-hidden="true"></i></a>
-                <a ng-if="row.serviceClass.spec.externalMetadata.supportUrl" ng-href="{{row.serviceClass.spec.externalMetadata.supportUrl}}" target="_blank" class="learn-more-link">Get Support <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a ng-if="row.serviceClass.spec.externalMetadata.documentationUrl" ng-href="{{row.serviceClass.spec.externalMetadata.documentationUrl}}" target="_blank" class="learn-more-link"><translate>View Documentation</translate> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a ng-if="row.serviceClass.spec.externalMetadata.supportUrl" ng-href="{{row.serviceClass.spec.externalMetadata.supportUrl}}" target="_blank" class="learn-more-link"><translate>Get Support</translate> <i class="fa fa-external-link" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>

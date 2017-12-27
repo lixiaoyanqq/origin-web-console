@@ -9,9 +9,8 @@
           <div ng-show="pvcs && !pvcs.length && attach.resource" class="empty-state-message empty-state-full-page text-center">
             <h2 translate>No persistent volume claims.</h2>
 
-            <p>
-              A <b translate>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},
-              but none are loaded on this project.
+            <p translate>
+              A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project.
             </p>
 
             <div ng-if="project && (pvcVersion | canI : 'create')">
@@ -23,7 +22,7 @@
               To claim storage from a persistent volume, refer to the documentation on <a target="_blank" ng-href="{{'persistent_volumes' | helpLink}}">using persistent volumes</a>.
             </p>
 
-            <p ng-if="attach.resource"><a ng-href="{{attach.resource | navigateResourceURL}}"><translate>Back to</translate>{{kind | humanizeKind | translate}} {{name}}</a></p>
+            <p ng-if="attach.resource"><a ng-href="{{attach.resource | navigateResourceURL}}" translate>Back to {{kind | humanizeKind}} {{name}}</a></p>
           </div>
 
           <div ng-show="pvcs && pvcs.length && attach.resource" class="mar-top-xl">
@@ -51,9 +50,9 @@
                         <td ng-if="!pvc.spec.volumeName">{{pvc.spec.resources.requests['storage'] | usageWithUnits: 'storage'}}</td>
                         <td>({{pvc.spec.accessModes | accessModes | join | translate}})</td>
                         <td>
-                          {{pvc.status.phase|translate}}
-                          <span ng-if="pvc.spec.volumeName" translate>
-                            to volume <strong>{{pvc.spec.volumeName}}</strong>
+                          {{pvc.status.phase}}
+                          <span ng-if="pvc.spec.volumeName">
+                            <translate>to volume</translate> <strong>{{pvc.spec.volumeName}}</strong>
                           </span>
                         </td>
                       </tr>
@@ -64,8 +63,8 @@
                   Select storage to use.
                 </div>
                 <div ng-if="project && (pvcVersion | canI : 'create')" class="help-block">
-                  Select storage to use<span ng-if="!outOfClaims"> or <a ng-href="project/{{project.metadata.name}}/create-pvc" >create storage</a>.</span>
-                  <span ng-if="outOfClaims">. You cannot create new storage since you are at quota.</span>
+                  <translate>Select storage to use<span ng-if="!outOfClaims"> or <a ng-href="project/{{project.metadata.name}}/create-pvc" >create storage</a>.</span></translate>
+                  <translate><span ng-if="outOfClaims">. You cannot create new storage since you are at quota.</span></translate>
                 </div>
 
                 <h3 translate>Volume</h3>
@@ -118,13 +117,11 @@
                       spellcheck="false"
                       aria-describedby="sub-path-help">
                   <div id="sub-path-help" class="help-block" translate>
-                    Optional path within the volume from which it will be mounted into the
-                    container. Defaults to the volume's root.
+                    Optional path within the volume from which it will be mounted into the container. Defaults to the volume's root.
                   </div>
                   <div class="has-error" ng-show="attachPVCForm.subPath.$error.pattern && attachPVCForm.subPath.$touched">
                     <span class="help-block" translate>
-                      Path must be a relative path. It cannot start with <code>/</code> or
-                      contain <code>..</code> path elements.
+                      Path must be a relative path. It cannot start with <code>/</code> or contain <code>..</code> path elements.
                     </span>
                   </div>
                 </div>
@@ -145,7 +142,7 @@
                       osc-unique="existingVolumeNames"
                       ng-pattern="/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/"
                       maxlength="63"
-                      placeholder="(generated if empty)"
+                      placeholder="{{'(generated if empty)'|translate}}"
                       autocorrect="off"
                       autocapitalize="none"
                       spellcheck="false"
@@ -175,7 +172,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" ng-model="attach.readOnly" aria-describedby="read-only-help">
-                      Read only
+                      <translate>Read only</translate>
                     </label>
                     <div id="read-only-help" class="help-block" translate>
                       Mount the volume as read-only.
@@ -185,19 +182,18 @@
 
                 <!-- Prompt for containers only if there is more than one. -->
                 <div ng-if="attach.resource.spec.template.spec.containers.length > 1">
-                  <div ng-if="attach.allContainers" translate>
-                    The volume will be mounted into all containers. You can
-                    <a href="" ng-click="attach.allContainers = false">select specific containers</a>
-                    instead.
+                  <div ng-if="attach.allContainers">
+                    <translate>The volume will be mounted into all containers.</translate>
+                    <translate>You can <a href="" ng-click="attach.allContainers = false">select specific containers</a> instead.</translate>
                   </div>
 
                   <div ng-if="!attach.allContainers" class="form-group">
-                    <label class="required">Containers</label>
+                    <label class="required" translate>Containers</label>
                     <select-containers
                         ng-model="attach.containers"
                         pod-template="attach.resource.spec.template"
                         ng-required="true"
-                        help-text="Add the volume to the selected containers.">
+                        help-text="{{'Add the volume to the selected containers.'|translate}}">
                     </select-containers>
                   </div>
                 </div>

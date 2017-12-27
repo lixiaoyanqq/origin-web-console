@@ -6,8 +6,8 @@
       <div>
         <h1 class="contains-actions">
           <div class="pull-right dropdown" ng-if="deployment" ng-hide="!('deployments' | canIDoAny)">
-            <button type="button" class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs" data-toggle="dropdown" translate>
-              Actions
+            <button type="button" class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs" data-toggle="dropdown">
+              <translate>Actions</translate>
               <span class="caret" aria-hidden="true"></span>
             </button>
             <a href=""
@@ -72,9 +72,8 @@
         <div class="col-md-12" ng-class="{ 'hide-tabs' : !deployment }">
           <div ng-if="deployment.spec.paused && !updatingPausedState" class="alert alert-info animate-if">
             <span class="pficon pficon-info" aria-hidden="true"></span>
-            <strong>{{deployment.metadata.name}} is paused.</strong>
-            This pauses any in-progress rollouts and stops new
-            rollouts from running until the deployment is resumed.
+            <strong translate>{{deployment.metadata.name}} is paused.</strong>
+            <translate>This pauses any in-progress rollouts and stops new rollouts from running until the deployment is resumed.</translate>
             <span ng-if="!updatingPausedState && (deploymentsVersion | canI : 'update')" class="nowrap">
               <a href="" ng-click="setPaused(false)" role="button" translate>Resume Rollouts</a>
             </span>
@@ -109,16 +108,16 @@
                 </tbody>
                 <tbody ng-if="(replicaSetsForDeployment | size) > 0">
                   <tr ng-repeat="replicaSet in replicaSetsForDeployment">
-                    <td data-title="Version">
+                    <td data-title="{{'Version'|translate}}">
                       #{{replicaSet | annotation : 'deployment.kubernetes.io/revision'}}
                     </td>
-                    <td data-title="Name">
+                    <td data-title="{{'Name'|translate}}">
                       <a ng-href="{{replicaSet | navigateResourceURL}}">{{replicaSet.metadata.name}}</a>
                     </td>
-                    <td data-title="Replicas">
-                      <span ng-if="replicaSet.status.replicas !== replicaSet.spec.replicas">{{replicaSet.status.replicas}}/</span>{{replicaSet.spec.replicas}} replica<span ng-if="replicaSet.spec.replicas != 1">s</span>
+                    <td data-title="{{'Replicas'|translate}}">
+                      <span ng-if="replicaSet.status.replicas !== replicaSet.spec.replicas">{{replicaSet.status.replicas}}/</span>{{replicaSet.spec.replicas}} <translate>replica<span ng-if="replicaSet.spec.replicas != 1">s</span></translate>
                     </td>
-                    <td data-title="Created">
+                    <td data-title="{{'Created'|translate}}">
                       <span am-time-ago="replicaSet.metadata.creationTimestamp"></span>
                     </td>
                   </tr>
@@ -126,7 +125,7 @@
               </table>
             </uib-tab>
             <uib-tab active="selectedTab.configuration">
-              <uib-tab-heading>Configuration</uib-tab-heading>
+              <uib-tab-heading translate>Configuration</uib-tab-heading>
               <div class="resource-details" ng-if="deployment">
                 <div class="row">
                   <div class="col-lg-6">
@@ -136,31 +135,31 @@
                     -->
                     <h3 class="hidden visible-lg visible-xl" translate>Details</h3>
                     <dl class="dl-horizontal left">
-                      <dt>Selectors:</dt>
+                      <dt translate>Selectors:</dt>
                       <dd>
                         <selector selector="deployment.spec.selector"></selector>
                       </dd>
-                      <dt>Replicas:</dt>
+                      <dt translate>Replicas:</dt>
                       <dd>
                         <replicas spec="deployment.spec.replicas"
                                   disable-scaling="inProgressDeployment || autoscalers.length"
                                   scale-fn="scale(replicas)"
                                   deployment="deployment"></replicas>
-                        <span ng-if="autoscalers.length">(autoscaled)</span>
-                        <div ng-if="deployment.status.updatedReplicas">
+                        <span ng-if="autoscalers.length" translate>(autoscaled)</span>
+                        <div ng-if="deployment.status.updatedReplicas" translate>
                           {{deployment.status.updatedReplicas}} up to date
                         </div>
                         <div ng-if="deployment.status.availableReplicas || deployment.status.unavailableReplicas">
-                          <span ng-if="deployment.status.availableReplicas">{{deployment.status.availableReplicas}} available<span ng-if="deployment.status.unavailableReplicas">,</span></span>
-                          <span ng-if="deployment.status.unavailableReplicas">{{deployment.status.unavailableReplicas}} unavailable</span>
+                          <span ng-if="deployment.status.availableReplicas">{{deployment.status.availableReplicas}} <translate>available</translate><span ng-if="deployment.status.unavailableReplicas">,</span></span>
+                          <span ng-if="deployment.status.unavailableReplicas">{{deployment.status.unavailableReplicas}} <translate>unavailable</translate></span>
                         </div>
                       </dd>
-                      <dt>Strategy:</dt>
+                      <dt translate>Strategy:</dt>
                       <dd>{{deployment.spec.strategy.type | sentenceCase}}</dd>
                       <dt ng-if-start="deployment.spec.strategy.rollingUpdate">
-                        Max Unavailable:
+                        <translate>Max Unavailable:</translate>
                         <span data-toggle="tooltip"
-                          title="The maximum number of pods that can be unavailable during the update process."
+                          title="{{'The maximum number of pods that can be unavailable during the update process.'|translate}}"
                           class="pficon pficon-help text-muted small"></span>
                       </dt>
                       <dd>
@@ -170,9 +169,9 @@
                         </span>
                       </dd>
                       <dt>
-                        Max Surge:
+                        <translate>Max Surge:</translate>
                         <span data-toggle="tooltip"
-                          title="The maximum number of pods that can be created above the desired number of pods."
+                          title="{{'The maximum number of pods that can be created above the desired number of pods.'|translate}}"
                           class="pficon pficon-help text-muted small"></span>
                       </dt>
                       <dd ng-if-end>
@@ -182,31 +181,31 @@
                         </span>
                       </dd>
                       <dt>
-                        Min Ready:
+                        <translate>Min Ready:</translate>
                         <span data-toggle="tooltip"
-                          title="The minimum number of seconds a new pod must be ready before it is considered available."
+                          title="{{'The minimum number of seconds a new pod must be ready before it is considered available.'|translate}}"
                           class="pficon pficon-help text-muted small"></span>
                       </dt>
                       <dd>
-                        {{deployment.spec.minReadySeconds || 0}} sec
+                        {{deployment.spec.minReadySeconds || 0}} <translate>sec</translate>
                       </dd>
                       <dt>
-                        Revision History Limit:
+                        <translate>Revision History Limit:</translate>
                         <span data-toggle="tooltip"
-                          title="The number of old replica sets to keep."
+                          title="{{'The number of old replica sets to keep.'|translate}}"
                           class="pficon pficon-help text-muted small"></span>
                       </dt>
                       <dd>
                         {{deployment.spec.revisionHistoryLimit || 2}}
                       </dd>
                       <dt>
-                        Progress Deadline:
+                        <translate>Progress Deadline:</translate>
                         <span data-toggle="tooltip"
-                          title="The amount of time to wait for a deployment to make progress before it's considered failed."
+                          title="{{'The amount of time to wait for a deployment to make progress before it\'s considered failed.'|translate}}"
                           class="pficon pficon-help text-muted small"></span>
                       </dt>
                       <dd>
-                        {{deployment.spec.progressDeadlineSeconds || 600}} sec
+                        {{deployment.spec.progressDeadlineSeconds || 600}} <translate>sec</translate>
                       </dd>
                     </dl>
 
@@ -222,7 +221,7 @@
                   </div>
                   <div class="col-lg-6">
                     <h3 translate>Volumes</h3>
-                    <p ng-if="!deployment.spec.template.spec.volumes.length && !(deploymentsVersion | canI : 'update')">
+                    <p ng-if="!deployment.spec.template.spec.volumes.length && !(deploymentsVersion | canI : 'update')" translate>
                       none
                     </p>
                     <volumes
@@ -248,15 +247,14 @@
                       <!-- If the CPU request is missing, add an action to set one. -->
                       <a ng-href="project/{{projectName}}/set-limits?kind=Deployment&name={{deployment.metadata.name}}&group=apps"
                          ng-if="warning.reason === 'NoCPURequest' && (deploymentsVersion | canI : 'update')"
-                         role="button" translate>Edit Resource
-                        <span ng-if="!('cpu' | isRequestCalculated : project)">Requests and</span> Limits</a>
+                         role="button" translate>Edit Resource <span ng-if="!('cpu' | isRequestCalculated : project)">Requests and</span> Limits</a>
                     </div>
 
                     <!-- Create autoscaler -->
                     <div ng-if="!autoscalers.length">
                       <a ng-if="horizontalPodAutoscalersVersion | canI : 'create'" ng-href="project/{{projectName}}/edit/autoscaler?kind=Deployment&name={{deployment.metadata.name}}&group=apps"
-                         role="button">Add Autoscaler</a>
-                      <span ng-if="!(horizontalPodAutoscalersVersion | canI : 'create')">none</span>
+                         role="button" translate>Add Autoscaler</a>
+                      <span ng-if="!(horizontalPodAutoscalersVersion | canI : 'create')" translate>none</span>
                     </div>
 
                     <!-- HPA details -->
@@ -279,7 +277,7 @@
                 </div>
               </div>
             </uib-tab>
-            <uib-tab heading="Environment" active="selectedTab.environment" ng-if="deployment">
+            <uib-tab heading="{{'Environment'|translate}}" active="selectedTab.environment" ng-if="deployment">
               <uib-tab-heading translate>Environment</uib-tab-heading>
               <edit-environment-variables api-object="deployment"></edit-environment-variables>
             </uib-tab>

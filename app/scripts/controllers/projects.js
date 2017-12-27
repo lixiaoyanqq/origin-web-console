@@ -18,7 +18,9 @@ angular.module('openshiftConsole')
                                               KeywordService,
                                               Navigate,
                                               Logger,
-                                              ProjectsService) {
+                                              ProjectsService,
+                                              gettext,
+                                              gettextCatalog) {
     var MAX_PROJETS_TO_WATCH = 250;
     var projects, sortedProjects;
     var watches = [];

@@ -31,7 +31,7 @@
             <span ng-switch-when="Failed" translate>failed</span>
             <span ng-switch-when="Error" translate>encountered an error</span>
             <span ng-switch-when="Cancelled" translate>was cancelled</span>
-            <span ng-switch-default><translate>is</translate> {{build.status.phase | lowercase | translate}}</span>
+            <span ng-switch-default><translate>is</translate> {{build.status.phase | lowercase}}</span>
           </span>
           <ellipsis-pulser ng-if="build | isIncompleteBuild" color="dark" size="sm" display="inline" msg=""></ellipsis-pulser>
           <small class="text-muted mar-left-md"><translate>created</translate> <span am-time-ago="build.metadata.creationTimestamp"></span></small>

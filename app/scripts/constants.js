@@ -485,21 +485,21 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
           categoryAliases: ["octopus"],
           label: "Octopus",
           iconClass: "font-icon icon-octopus-m",
-          description: gettext("")
+          description: ""
         },
         {
           id: "squid",
           categoryAliases: ["squid"],
           label: "Squid",
           iconClass: "font-icon icon-squid-m",
-          description: gettext("")
+          description: ""
         },
         {
           id: "hawk",
           categoryAliases: ["hawk"],
           label: "Hawk",
           iconClass: "font-icon icon-hawk-m",
-          description: gettext("")
+          description: ""
         }
       ]
     },
@@ -512,7 +512,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
           categoryAliases: ["monitor"],
           label: "Monitor",
           iconClass: "font-icon icon-monitor-m",
-          description: gettext("")
+          description: ""
         }
       ]
     },

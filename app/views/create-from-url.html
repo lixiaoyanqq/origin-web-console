@@ -7,7 +7,7 @@
           <div ng-if="loaded">
             <alerts alerts="alerts" hide-close-button="true"></alerts>
             <osc-image-summary resource="resource"></osc-image-summary>
-            <p ng-if="validationPassed && createDetails.sourceURI">Source code from <a href="{{createDetails.sourceURI}}">{{createDetails.sourceURI}}</a> will be built and deployed unless otherwise specified in the next step.</p>
+            <p ng-if="validationPassed && createDetails.sourceURI" translate>Source code from <a href="{{createDetails.sourceURI}}">{{createDetails.sourceURI}}</a> will be built and deployed unless otherwise specified in the next step.</p>
             <div ng-if="validationPassed">
               <div ng-if="noProjects && canCreateProject">
                 <h2 translate>Create a New Project</h2>

@@ -10,11 +10,11 @@
   <p ng-if="$ctrl.bindable">
     <a href="" ng-click="$ctrl.createBinding()" role="button">
       <span class="pficon pficon-add-circle-o" aria-hidden="true"></span>
-      Create Binding
+      <translate>Create Binding</translate>
     </a>
   </p>
   <p ng-if="!$ctrl.bindable && !($ctrl.bindings | size)">
-    <span>There are no service bindings.</span>
+    <span translate>There are no service bindings.</span>
   </p>
 </div>
 <overlay-panel show-panel="$ctrl.overlayPanelVisible" handle-close="$ctrl.closeOverlayPanel">

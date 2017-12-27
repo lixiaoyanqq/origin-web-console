@@ -4,7 +4,7 @@
       <h3>
         <translate>Status</translate>
         <small ng-if="pod | isDebugPod">
-          debugging
+          <translate>debugging</translate>
           <a ng-href="{{pod | debugPodSourceName | navigateResourceURL : 'Pod' : pod.metadata.namespace}}">{{pod | debugPodSourceName}}</a>
         </small>
       </h3>
@@ -12,8 +12,8 @@
         <dt translate>Status:</dt>
         <dd>
           <status-icon status="pod | podStatus"></status-icon>
-          {{pod | podStatus | humanizePodStatus | translate}}<span ng-if="pod | podCompletionTime">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>
-          <span ng-if="pod.metadata.deletionTimestamp" translate>(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>
+          {{pod | podStatus | humanizePodStatus}}<span ng-if="pod | podCompletionTime">, ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}</span>
+          <span ng-if="pod.metadata.deletionTimestamp">(<translate>expires</translate> {{pod.metadata.deletionTimestamp | date : 'medium'}})</span>
         </dd>
         <dt ng-if-start="pod.status.message" translate>Message:</dt>
         <dd ng-if-end>{{pod.status.message}}</dd>
@@ -57,7 +57,7 @@
             {{pod.spec.activeDeadlineSeconds | humanizeDurationValue : 'seconds'}}
           </span>
           <span ng-if="pod.status.phase === 'Running' && pod.status.startTime" class="text-muted">
-            (<duration-until-now timestamp="pod.status.startTime"></duration-until-now> elapsed)
+            (<duration-until-now timestamp="pod.status.startTime"></duration-until-now> <translate>elapsed</translate>)
           </span>
         </dd>
       </dl>

@@ -150,8 +150,8 @@
       <div class="form-group">
         <div class="checkbox">
           <label>
-            <input type="checkbox" ng-model="options.alternateServices" aria-describedby="secure-route-help">
-            <translate>Split traffic across multiple services</translate>
+            <input type="checkbox" ng-model="options.alternateServices" aria-describedby="secure-route-help" translate>
+            Split traffic across multiple services
           </label>
           <div class="help-block" translate>
             Routes can direct traffic to multiple services for A/B testing. Each service has a weight controlling how much traffic it gets.
@@ -239,6 +239,9 @@
             {{option | humanizeTLSTermination | translate}}
           </ui-select-choices>
         </ui-select>
+        <div class="learn-more-block help-block">
+          <a href="{{'route-types' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+        </div>
       </div>
 
       <!-- Insecure Edge Termination Policy -->
@@ -294,7 +297,11 @@
               model="route.tls.certificate"
               drop-zone-id="certificate-file"
               show-text-area="true"
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 	      help-text="{{'The PEM format certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipbard.'|translate}}"
+=======
+              help-text="{{'The PEM format certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipbard.'|translate}}"
+>>>>>>> Init translation.
               ng-readonly="areCertificateInputsReadOnly()"
               ng-disabled="areCertificateInputsDisabled()">
             </osc-file-input>
@@ -305,7 +312,7 @@
               model="route.tls.key"
               drop-zone-id="private-key-file"
               show-text-area="true"
-	      help-text="{{'The PEM format key. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}"
+              help-text="{{'The PEM format key. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}"
               ng-readonly="areCertificateInputsReadOnly()"
               ng-disabled="areCertificateInputsDisabled()">
           </osc-file-input>
@@ -316,7 +323,7 @@
               model="route.tls.caCertificate"
               drop-zone-id="ca-certificate-file"
               show-text-area="true"
-       help-text="{{'The PEM format CA certificate chain. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.|translate}}"
+              help-text="{{'The PEM format CA certificate chain. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}"
               ng-readonly="areCertificateInputsReadOnly()"
               ng-disabled="areCertificateInputsDisabled()">
             </osc-file-input>
@@ -327,7 +334,7 @@
                 model="route.tls.destinationCACertificate"
                 show-text-area="true"
                 drop-zone-id="dest-ca-certificate-file"
-  help-text="{{'The PEM format CA certificate chain to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}"
+                help-text="{{'The PEM format CA certificate chain to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, selecting it, or pasting from the clipboard.'|translate}}"
                 ng-readonly="areCertificateInputsReadOnly()"
                 ng-disabled="isDestinationCACertInputDisabled()">
             </osc-file-input>

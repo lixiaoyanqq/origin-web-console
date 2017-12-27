@@ -124,6 +124,9 @@
       <translate>that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.</translate>
       <span ng-if="defaultTargetCPUDisplayValue">Defaults to {{defaultTargetCPUDisplayValue}}%.</span>
     </div>
+    <div class="learn-more-block">
+      <a href="{{'compute_resources' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+    </div>
     <!-- Add extra top margin for the learn more block -->
     <div class="has-error" style="margin-top: 10px;" ng-show="form.targetCPU.$touched && form.targetCPU.$invalid">
       <span ng-if="form.targetCPU.$error.number" class="help-block" translate>

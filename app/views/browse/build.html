@@ -17,8 +17,8 @@
                     ng-disabled="!canBuild" translate>Rebuild</button>
 
             <!-- Secondary Actions -->
-            <button type="button" class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs" data-toggle="dropdown" translate>
-              Actions
+            <button type="button" class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs" data-toggle="dropdown">
+              <translate>Actions</translate>
               <span class="caret" aria-hidden="true"></span>
             </button>
             <a href=""
@@ -72,7 +72,7 @@
                 data-toggle="tooltip"
                 data-original-title="{{buildConfigDeleted ? 'The build configuration for this build no longer exists.' : 'Building from build configuration ' + buildConfig.metadata.name + ' has been paused.'}}">
           </span>
-          <small class="meta" translate>created <span am-time-ago="build.metadata.creationTimestamp"></span></small>
+          <small class="meta"><translate>created</translate> <span am-time-ago="build.metadata.creationTimestamp"></span></small>
         </h1>
         <labels ng-if="buildConfigName" labels="build.metadata.labels" clickable="true" kind="builds" title-kind="builds for build config {{buildConfigName}}" project-name="{{build.metadata.namespace}}" limit="3" navigate-url="project/{{build.metadata.namespace}}/browse/builds/{{buildConfigName}}"></labels>
         <labels ng-if="!buildConfigName" labels="build.metadata.labels" limit="3"></labels>
@@ -90,12 +90,12 @@
                 <ng-include src=" 'views/browse/_build-details.html' "></ng-include>
               </uib-tab>
 
-              <uib-tab heading="Environment" active="selectedTab.environment" ng-if="!(build | isJenkinsPipelineStrategy)">
+              <uib-tab heading="{{'Environment'|translate}}" active="selectedTab.environment" ng-if="!(build | isJenkinsPipelineStrategy)">
                 <uib-tab-heading translate>Environment</uib-tab-heading>
                 <h3 translate>Environment Variables</h3>
                 <p ng-if="buildConfigsVersion | canI : 'update'">
                   <span class="pficon pficon-info" aria-hidden="true"></span>
-                  Environment variables can be edited on the <a ng-href="{{build | configURLForResource}}?tab=environment">build configuration</a>.
+                  <translate>Environment variables can be edited on the <a ng-href="{{build | configURLForResource}}?tab=environment">build configuration</a>.</translate>
                 </p>
                 <key-value-editor
                   ng-if="(build | buildStrategy).env | size"
@@ -108,7 +108,7 @@
                   is-readonly
                   show-header
                   class="mar-bottom-xl block"></key-value-editor>
-                <p ng-if="!(build | buildStrategy).env"><em>The build strategy had no environment variables defined.</em></p>
+                <p ng-if="!(build | buildStrategy).env"><em translate>The build strategy had no environment variables defined.</em></p>
               </uib-tab>
 
               <uib-tab active="selectedTab.logs" ng-if="!(build | isJenkinsPipelineStrategy) && ('builds/log' | canI : 'get')">
@@ -122,21 +122,21 @@
                   empty="logEmpty"
                   run="logCanRun">
 
-                  <label>Status:</label>
+                  <label translate>Status:</label>
                   <status-icon status="build.status.phase"></status-icon>
                   <span class="space-after">{{build.status.phase}}</span>
 
                   <div ng-if="build.status.startTimestamp && !logEmpty" class="log-timestamps">
-                    Log from {{build.status.startTimestamp  | date : 'medium'}}
+                    <translate>Log from</translate> {{build.status.startTimestamp  | date : 'medium'}}
                     <span ng-if="build.status.completionTimestamp">
-                      to {{build.status.completionTimestamp  | date : 'medium'}}
+                      <translate>to</translate> {{build.status.completionTimestamp  | date : 'medium'}}
                     </span>
                   </div>
 
                 </log-viewer>
               </uib-tab>
               <uib-tab active="selectedTab.events" ng-if="('events' | canI : 'watch')">
-                <uib-tab-heading>Events</uib-tab-heading>
+                <uib-tab-heading translate>Events</uib-tab-heading>
                 <events api-objects="eventObjects" project-context="projectContext" ng-if="selectedTab.events"></events>
               </uib-tab>
             </uib-tabset>

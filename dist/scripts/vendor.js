@@ -42837,6 +42837,7 @@ e.each(t, function(e, a) {
 (n = e.match(/^([^A-Z]+?)([A-Z])/)) && -1 !== "a aa ai ao as b fn i m o s ".indexOf(n[1] + " ") && (i = e.replace(n[0], n[2].toLowerCase()), o[i] = e, "o" === n[1] && r(t[e]));
 }), t._hungarianMap = o;
 }
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 function l(b, d) {
 var e = Wa.defaults.column, f = b.aoColumns.length, g = a.extend({}, Wa.models.oColumn, e, {
@@ -42893,13 +42894,75 @@ return a.each(b.aoColumns, function(b, d) {
 d.bVisible && "none" !== a(d.nTh).css("display") && c++;
 }), c;
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Init translation.
 function o(t, n, a) {
 t._hungarianMap || r(t);
 var s;
 e.each(n, function(r, l) {
 (s = t._hungarianMap[r]) === i || !a && n[s] !== i || ("o" === s.charAt(0) ? (n[s] || (n[s] = {}), e.extend(!0, n[s], n[r]), o(t[s], n[s], a)) : n[s] = n[r]);
 });
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+=======
+function l(b, d) {
+var e = Wa.defaults.column, f = b.aoColumns.length, g = a.extend({}, Wa.models.oColumn, e, {
+nTh:d ? d :c.createElement("th"),
+sTitle:e.sTitle ? e.sTitle :d ? d.innerHTML :"",
+aDataSort:e.aDataSort ? e.aDataSort :[ f ],
+mData:e.mData ? e.mData :f,
+idx:f
+});
+b.aoColumns.push(g);
+var h = b.aoPreSearchCols;
+h[f] = a.extend({}, Wa.models.oSearch, h[f]), m(b, f, a(d).data());
+}
+function m(b, c, e) {
+var g = b.aoColumns[c], h = b.oClasses, j = a(g.nTh);
+if (!g.sWidthOrig) {
+g.sWidthOrig = j.attr("width") || null;
+var k = (j.attr("style") || "").match(/width:\s*(\d+[pxem%]+)/);
+k && (g.sWidthOrig = k[1]);
+}
+e !== d && null !== e && (i(e), f(Wa.defaults.column, e), e.mDataProp === d || e.mData || (e.mData = e.mDataProp), e.sType && (g._sManualType = e.sType), e.className && !e.sClass && (e.sClass = e.className), e.sClass && j.addClass(e.sClass), a.extend(g, e), Ha(g, e, "sWidth", "sWidthOrig"), e.iDataSort !== d && (g.aDataSort = [ e.iDataSort ]), Ha(g, e, "aDataSort"));
+var l = g.mData, m = B(l), n = g.mRender ? B(g.mRender) :null, o = function(a) {
+return "string" == typeof a && a.indexOf("@") !== -1;
+};
+g._bAttrSrc = a.isPlainObject(l) && (o(l.sort) || o(l.type) || o(l.filter)), g._setter = null, g.fnGetData = function(a, b, c) {
+var e = m(a, b, d, c);
+return n && b ? n(e, b, a, c) :e;
+}, g.fnSetData = function(a, b, c) {
+return C(l)(a, b, c);
+}, "number" != typeof l && (b._rowReadObject = !0), b.oFeatures.bSort || (g.bSortable = !1, j.addClass(h.sSortableNone));
+var p = a.inArray("asc", g.asSorting) !== -1, q = a.inArray("desc", g.asSorting) !== -1;
+g.bSortable && (p || q) ? p && !q ? (g.sSortingClass = h.sSortableAsc, g.sSortingClassJUI = h.sSortJUIAscAllowed) :!p && q ? (g.sSortingClass = h.sSortableDesc, g.sSortingClassJUI = h.sSortJUIDescAllowed) :(g.sSortingClass = h.sSortable, g.sSortingClassJUI = h.sSortJUI) :(g.sSortingClass = h.sSortableNone, g.sSortingClassJUI = "");
+}
+function n(a) {
+if (a.oFeatures.bAutoWidth !== !1) {
+var b = a.aoColumns;
+ra(a);
+for (var c = 0, d = b.length; c < d; c++) b[c].nTh.style.width = b[c].sWidth;
+}
+var e = a.oScroll;
+"" === e.sY && "" === e.sX || pa(a), La(a, null, "column-sizing", [ a ]);
+}
+function o(a, b) {
+var c = r(a, "bVisible");
+return "number" == typeof c[b] ? c[b] :null;
+}
+function p(b, c) {
+var d = r(b, "bVisible"), e = a.inArray(c, d);
+return e !== -1 ? e :null;
+}
+function q(b) {
+var c = 0;
+return a.each(b.aoColumns, function(b, d) {
+d.bVisible && "none" !== a(d.nTh).css("display") && c++;
+}), c;
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.
 }
 function a(e) {
 var t = qe.defaults.oLanguage, n = e.sZeroRecords;
@@ -43549,6 +43612,7 @@ e.iInitDisplayStart = r, R(e), de(e, !1), oe(e, n);
 } else setTimeout(function() {
 re(e);
 }, 200);
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 for (O(a), K(a), L(a, a.aoHeader), L(a, a.aoFooter), na(a, !0), g.bAutoWidth && ra(a), b = 0, c = f.length; b < c; b++) d = f[b], d.sWidth && (d.nTh.style.width = va(d.sWidth));
 La(a, null, "preInit", [ a ]), N(a);
@@ -43622,6 +43686,9 @@ var o = a(m, {
 }).append(a(m, {
 "class":g.sScrollHead
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Init translation.
 }
 function oe(e, t) {
 e._bInitComplete = !0, (t || e.oInit.aaData) && f(e), Le(e, null, "plugin-init", [ e, t ]), Le(e, "aoInitComplete", "init", [ e, t ]);
@@ -43685,7 +43752,83 @@ var p = e(h, {
 class: a.sScrollWrapper
 }).append(e(h, {
 class: a.sScrollHead
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+=======
+for (O(a), K(a), L(a, a.aoHeader), L(a, a.aoFooter), na(a, !0), g.bAutoWidth && ra(a), b = 0, c = f.length; b < c; b++) d = f[b], d.sWidth && (d.nTh.style.width = va(d.sWidth));
+La(a, null, "preInit", [ a ]), N(a);
+var i = Oa(a);
+("ssp" != i || h) && ("ajax" == i ? R(a, [], function(c) {
+var d = V(a, c);
+for (b = 0; b < d.length; b++) u(a, d[b]);
+a.iInitDisplayStart = e, N(a), na(a, !1), ha(a, c);
+}, a) :(na(a, !1), ha(a)));
+}
+function ha(a, b) {
+a._bInitComplete = !0, (b || a.oInit.aaData) && n(a), La(a, null, "plugin-init", [ a, b ]), La(a, "aoInitComplete", "init", [ a, b ]);
+}
+function ia(a, b) {
+var c = parseInt(b, 10);
+a._iDisplayLength = c, Ma(a), La(a, null, "length", [ a, c ]);
+}
+function ja(b) {
+for (var c = b.oClasses, d = b.sTableId, e = b.aLengthMenu, f = a.isArray(e[0]), g = f ? e[0] :e, h = f ? e[1] :e, i = a("<select/>", {
+name:d + "_length",
+"aria-controls":d,
+"class":c.sLengthSelect
+}), j = 0, k = g.length; j < k; j++) i[0][j] = new Option("number" == typeof h[j] ? b.fnFormatNumber(h[j]) :h[j], g[j]);
+var l = a("<div><label/></div>").addClass(c.sLength);
+return b.aanFeatures.l || (l[0].id = d + "_length"), l.children().append(b.oLanguage.sLengthMenu.replace("_MENU_", i[0].outerHTML)), a("select", l).val(b._iDisplayLength).on("change.DT", function(c) {
+ia(b, a(this).val()), M(b);
+}), a(b.nTable).on("length.dt.DT", function(c, d, e) {
+b === d && a("select", l).val(e);
+}), l[0];
+}
+function ka(b) {
+var c = b.sPaginationType, d = Wa.ext.pager[c], e = "function" == typeof d, f = function(a) {
+M(a);
+}, g = a("<div/>").addClass(b.oClasses.sPaging + c)[0], h = b.aanFeatures;
+return e || d.fnInit(b, g, f), h.p || (g.id = b.sTableId + "_paginate", b.aoDrawCallback.push({
+fn:function(a) {
+if (e) {
+var b, c, g = a._iDisplayStart, i = a._iDisplayLength, j = a.fnRecordsDisplay(), k = i === -1, l = k ? 0 :Math.ceil(g / i), m = k ? 1 :Math.ceil(j / i), n = d(l, m);
+for (b = 0, c = h.p.length; b < c; b++) Na(a, "pageButton")(a, h.p[b], b, n, l, m);
+} else d.fnUpdate(a, f);
+},
+sName:"pagination"
+})), g;
+}
+function la(a, b, c) {
+var d = a._iDisplayStart, e = a._iDisplayLength, f = a.fnRecordsDisplay();
+0 === f || e === -1 ? d = 0 :"number" == typeof b ? (d = b * e, d > f && (d = 0)) :"first" == b ? d = 0 :"previous" == b ? (d = e >= 0 ? d - e :0, d < 0 && (d = 0)) :"next" == b ? d + e < f && (d += e) :"last" == b ? d = Math.floor((f - 1) / e) * e :Ga(a, 0, "Unknown paging action: " + b, 5);
+var g = a._iDisplayStart !== d;
+return a._iDisplayStart = d, g && (La(a, null, "page", [ a ]), c && M(a)), g;
+}
+function ma(b) {
+return a("<div/>", {
+id:b.aanFeatures.r ? null :b.sTableId + "_processing",
+"class":b.oClasses.sProcessing
+}).html(b.oLanguage.sProcessing).insertBefore(b.nTable)[0];
+}
+function na(b, c) {
+b.oFeatures.bProcessing && a(b.aanFeatures.r).css("display", c ? "block" :"none"), La(b, null, "processing", [ b, c ]);
+}
+function oa(b) {
+var c = a(b.nTable);
+c.attr("role", "grid");
+var d = b.oScroll;
+if ("" === d.sX && "" === d.sY) return b.nTable;
+var e = d.sX, f = d.sY, g = b.oClasses, h = c.children("caption"), i = h.length ? h[0]._captionSide :null, j = a(c[0].cloneNode(!1)), k = a(c[0].cloneNode(!1)), l = c.children("tfoot"), m = "<div/>", n = function(a) {
+return a ? va(a) :null;
+};
+l.length || (l = null);
+var o = a(m, {
+"class":g.sScrollWrapper
+}).append(a(m, {
+"class":g.sScrollHead
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.
 }).css({
 overflow: "hidden",
 position: "relative",
@@ -44205,10 +44348,17 @@ sDestroyWidth: C[0].style.width,
 sInstance: v,
 sTableId: v
 });
+<<<<<<< HEAD
 D.nTable = this, D.oApi = n.internal, D.oInit = g, S.push(D), D.oInstance = 1 === n.length ? n : C.dataTable(), s(g), g.oLanguage && a(g.oLanguage), g.aLengthMenu && !g.iDisplayLength && (g.iDisplayLength = e.isArray(g.aLengthMenu[0]) ? g.aLengthMenu[0][0] : g.aLengthMenu[0]), g = Ie(e.extend(!0, {}, _), g), Fe(D.oFeatures, g, [ "bPaginate", "bLengthChange", "bFilter", "bSort", "bSortMulti", "bInfo", "bProcessing", "bAutoWidth", "bSortClasses", "bServerSide", "bDeferRender" ]), Fe(D, g, [ "asStripeClasses", "ajax", "fnServerData", "fnFormatNumber", "sServerMethod", "aaSorting", "aaSortingFixed", "aLengthMenu", "sPaginationType", "sAjaxSource", "sAjaxDataProp", "iStateDuration", "sDom", "bSortCellsTop", "iTabIndex", "fnStateLoadCallback", "fnStateSaveCallback", "renderer", "searchDelay", "rowId", [ "iCookieDuration", "iStateDuration" ], [ "oSearch", "oPreviousSearch" ], [ "aoSearchCols", "aoPreSearchCols" ], [ "iDisplayLength", "_iDisplayLength" ] ]), Fe(D.oScroll, g, [ [ "sScrollX", "sX" ], [ "sScrollXInner", "sXInner" ], [ "sScrollY", "sY" ], [ "bScrollCollapse", "bCollapse" ] ]), 
 Fe(D.oLanguage, g, "fnInfoCallback"), Pe(D, "aoDrawCallback", g.fnDrawCallback, "user"), Pe(D, "aoServerParams", g.fnServerParams, "user"), Pe(D, "aoStateSaveParams", g.fnStateSaveParams, "user"), Pe(D, "aoStateLoadParams", g.fnStateLoadParams, "user"), Pe(D, "aoStateLoaded", g.fnStateLoaded, "user"), Pe(D, "aoRowCallback", g.fnRowCallback, "user"), Pe(D, "aoRowCreatedCallback", g.fnCreatedRow, "user"), Pe(D, "aoHeaderCallback", g.fnHeaderCallback, "user"), Pe(D, "aoFooterCallback", g.fnFooterCallback, "user"), Pe(D, "aoInitComplete", g.fnInitComplete, "user"), Pe(D, "aoPreDrawCallback", g.fnPreDrawCallback, "user"), D.rowIdFn = $(g.rowId), c(D);
 var E = D.oClasses;
 if (e.extend(E, qe.ext.classes, g.oClasses), C.addClass(E.sTable), D.iInitDisplayStart === i && (D.iInitDisplayStart = g.iDisplayStart, D._iDisplayStart = g.iDisplayStart), null !== g.iDeferLoading) {
+=======
+D.nTable = this, D.oApi = c.internal, D.oInit = p, y.push(D), D.oInstance = 1 === c.length ? c :x.dataTable(), h(p), p.oLanguage && g(p.oLanguage), p.aLengthMenu && !p.iDisplayLength && (p.iDisplayLength = a.isArray(p.aLengthMenu[0]) ? p.aLengthMenu[0][0] :p.aLengthMenu[0]), p = Ia(a.extend(!0, {}, w), p), Ha(D.oFeatures, p, [ "bPaginate", "bLengthChange", "bFilter", "bSort", "bSortMulti", "bInfo", "bProcessing", "bAutoWidth", "bSortClasses", "bServerSide", "bDeferRender" ]), Ha(D, p, [ "asStripeClasses", "ajax", "fnServerData", "fnFormatNumber", "sServerMethod", "aaSorting", "aaSortingFixed", "aLengthMenu", "sPaginationType", "sAjaxSource", "sAjaxDataProp", "iStateDuration", "sDom", "bSortCellsTop", "iTabIndex", "fnStateLoadCallback", "fnStateSaveCallback", "renderer", "searchDelay", "rowId", [ "iCookieDuration", "iStateDuration" ], [ "oSearch", "oPreviousSearch" ], [ "aoSearchCols", "aoPreSearchCols" ], [ "iDisplayLength", "_iDisplayLength" ] ]), Ha(D.oScroll, p, [ [ "sScrollX", "sX" ], [ "sScrollXInner", "sXInner" ], [ "sScrollY", "sY" ], [ "bScrollCollapse", "bCollapse" ] ]), 
+Ha(D.oLanguage, p, "fnInfoCallback"), Ka(D, "aoDrawCallback", p.fnDrawCallback, "user"), Ka(D, "aoServerParams", p.fnServerParams, "user"), Ka(D, "aoStateSaveParams", p.fnStateSaveParams, "user"), Ka(D, "aoStateLoadParams", p.fnStateLoadParams, "user"), Ka(D, "aoStateLoaded", p.fnStateLoaded, "user"), Ka(D, "aoRowCallback", p.fnRowCallback, "user"), Ka(D, "aoRowCreatedCallback", p.fnCreatedRow, "user"), Ka(D, "aoHeaderCallback", p.fnHeaderCallback, "user"), Ka(D, "aoFooterCallback", p.fnFooterCallback, "user"), Ka(D, "aoInitComplete", p.fnInitComplete, "user"), Ka(D, "aoPreDrawCallback", p.fnPreDrawCallback, "user"), D.rowIdFn = B(p.rowId), j(D);
+var E = D.oClasses;
+if (a.extend(E, Wa.ext.classes, p.oClasses), x.addClass(E.sTable), D.iInitDisplayStart === d && (D.iInitDisplayStart = p.iDisplayStart, D._iDisplayStart = p.iDisplayStart), null !== p.iDeferLoading) {
+>>>>>>> a7d6e5ea... DM update.
 D.bDeferLoading = !0;
 var F = e.isArray(g.iDeferLoading);
 D._iRecordsDisplay = F ? g.iDeferLoading[0] : g.iDeferLoading, D._iRecordsTotal = F ? g.iDeferLoading[1] : g.iDeferLoading;
@@ -44688,6 +44838,7 @@ for (var t = [], n = this.context, i = 0, r = n.length; i < r; i++) for (var o =
 var s = n[i].rowIdFn(n[i].aoData[this[i][o]]._aData);
 t.push((!0 === e ? "#" : "") + s);
 }
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< 40b2bc086cd38a92c74dce3260702a8786bb6cfb
 <<<<<<< 35a618c8495d5934be5d2baed31fa9d96077ba2d
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
@@ -44708,6 +44859,9 @@ return new He(n, t);
 return new Ve(n, t);
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Init translation.
 return new Ue(n, t);
 >>>>>>> Bump dependency versions
 }), We("rows().remove()", "row().remove()", function() {
@@ -44720,7 +44874,23 @@ var f = t.rowIdFn(h._aData);
 f !== i && delete t.aIds[f];
 }), this.iterator("table", function(e) {
 for (var t = 0, n = e.aoData.length; t < n; t++) e.aoData[t].idx = t;
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+=======
+return new Ta(c, b);
+}), Va("rows().remove()", "row().remove()", function() {
+var a = this;
+return this.iterator("row", function(b, c, e) {
+var f, g, h, i, j, k, l = b.aoData, m = l[c];
+for (l.splice(c, 1), f = 0, g = l.length; f < g; f++) if (j = l[f], k = j.anCells, null !== j.nTr && (j.nTr._DT_RowIndex = f), null !== k) for (h = 0, i = k.length; h < i; h++) k[h]._DT_CellIndex.row = f;
+F(b.aiDisplayMaster, c), F(b.aiDisplay, c), F(a[e], c, !1), b._iRecordsDisplay > 0 && b._iRecordsDisplay--, Ma(b);
+var n = b.rowIdFn(m._aData);
+n !== d && delete b.aIds[n];
+}), this.iterator("table", function(a) {
+for (var b = 0, c = a.aoData.length; b < c; b++) a.aoData[b].idx = b;
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.
 }), this;
 }), ze("rows.add()", function(t) {
 var n = this.iterator("table", function(e) {
@@ -45075,6 +45245,7 @@ return e.length ? e[0].oInit : null;
 return this.iterator("table", function(e) {
 return ot(e.aoData, "_aData");
 }).flatten();
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 }), Ua("destroy()", function(c) {
 return c = c || !1, this.iterator("table", function(d) {
@@ -45182,6 +45353,9 @@ fnServerData:null,
 fnServerParams:null,
 fnStateLoadCallback:function(a) {
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Init translation.
 }), ze("destroy()", function(n) {
 return n = n || !1, this.iterator("table", function(i) {
 var r, o = i.nTableWrapper.parentNode, a = i.oClasses, s = i.nTable, l = i.nTBody, c = i.nTHead, u = i.nTFoot, d = e(s), h = e(l), f = e(i.nTableWrapper), p = e.map(i.aoData, function(e) {
@@ -45287,7 +45461,117 @@ fnRowCallback: null,
 fnServerData: null,
 fnServerParams: null,
 fnStateLoadCallback: function(e) {
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+=======
+}), Ua("destroy()", function(c) {
+return c = c || !1, this.iterator("table", function(d) {
+var e, f = d.nTableWrapper.parentNode, g = d.oClasses, h = d.nTable, i = d.nTBody, j = d.nTHead, k = d.nTFoot, l = a(h), m = a(i), n = a(d.nTableWrapper), o = a.map(d.aoData, function(a) {
+return a.nTr;
+});
+d.bDestroying = !0, La(d, "aoDestroyCallback", "destroy", [ d ]), c || new Ta(d).columns().visible(!0), n.off(".DT").find(":not(tbody *)").off(".DT"), a(b).off(".DT-" + d.sInstance), h != j.parentNode && (l.children("thead").detach(), l.append(j)), k && h != k.parentNode && (l.children("tfoot").detach(), l.append(k)), d.aaSorting = [], d.aaSortingFixed = [], Ba(d), a(o).removeClass(d.asStripeClasses.join(" ")), a("th, td", j).removeClass(g.sSortable + " " + g.sSortableAsc + " " + g.sSortableDesc + " " + g.sSortableNone), m.children().detach(), m.append(o);
+var p = c ? "remove" :"detach";
+l[p](), n[p](), !c && f && (f.insertBefore(h, d.nTableReinsertBefore), l.css("width", d.sDestroyWidth).removeClass(g.sTable), e = d.asDestroyStripes.length, e && m.children().each(function(b) {
+a(this).addClass(d.asDestroyStripes[b % e]);
+}));
+var q = a.inArray(d, Wa.settings);
+q !== -1 && Wa.settings.splice(q, 1);
+});
+}), a.each([ "column", "row", "cell" ], function(a, b) {
+Ua(b + "s().every()", function(a) {
+var c = this.selector.opts, e = this;
+return this.iterator(b, function(f, g, h, i, j) {
+a.call(e[b](g, "cell" === b ? h :c, "cell" === b ? c :d), g, h, i, j);
+});
+});
+}), Ua("i18n()", function(b, c, e) {
+var f = this.context[0], g = B(b)(f.oLanguage);
+return g === d && (g = c), e !== d && a.isPlainObject(g) && (g = g[e] !== d ? g[e] :g._), g.replace("%d", e);
+}), Wa.version = "1.10.16", Wa.settings = [], Wa.models = {}, Wa.models.oSearch = {
+bCaseInsensitive:!0,
+sSearch:"",
+bRegex:!1,
+bSmart:!0
+}, Wa.models.oRow = {
+nTr:null,
+anCells:null,
+_aData:[],
+_aSortData:null,
+_aFilterData:null,
+_sFilterRow:null,
+_sRowStripe:"",
+src:null,
+idx:-1
+}, Wa.models.oColumn = {
+idx:null,
+aDataSort:null,
+asSorting:null,
+bSearchable:null,
+bSortable:null,
+bVisible:null,
+_sManualType:null,
+_bAttrSrc:!1,
+fnCreatedCell:null,
+fnGetData:null,
+fnSetData:null,
+mData:null,
+mRender:null,
+nTh:null,
+nTf:null,
+sClass:null,
+sContentPadding:null,
+sDefaultContent:null,
+sName:null,
+sSortDataType:"std",
+sSortingClass:null,
+sSortingClassJUI:null,
+sTitle:null,
+sType:null,
+sWidth:null,
+sWidthOrig:null
+}, Wa.defaults = {
+aaData:null,
+aaSorting:[ [ 0, "asc" ] ],
+aaSortingFixed:[],
+ajax:null,
+aLengthMenu:[ 10, 25, 50, 100 ],
+aoColumns:null,
+aoColumnDefs:null,
+aoSearchCols:[],
+asStripeClasses:null,
+bAutoWidth:!0,
+bDeferRender:!1,
+bDestroy:!1,
+bFilter:!0,
+bInfo:!0,
+bLengthChange:!0,
+bPaginate:!0,
+bProcessing:!1,
+bRetrieve:!1,
+bScrollCollapse:!1,
+bServerSide:!1,
+bSort:!0,
+bSortMulti:!0,
+bSortCellsTop:!1,
+bSortClasses:!0,
+bStateSave:!1,
+fnCreatedRow:null,
+fnDrawCallback:null,
+fnFooterCallback:null,
+fnFormatNumber:function(a) {
+return a.toString().replace(/\B(?=(\d{3})+(?!\d))/g, this.oLanguage.sThousands);
+},
+fnHeaderCallback:null,
+fnInfoCallback:null,
+fnInitComplete:null,
+fnPreDrawCallback:null,
+fnRowCallback:null,
+fnServerData:null,
+fnServerParams:null,
+fnStateLoadCallback:function(a) {
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.
 try {
 return JSON.parse((-1 === e.iStateDuration ? sessionStorage : localStorage).getItem("DataTables_" + e.sInstance + "_" + location.pathname));
 } catch (e) {}
@@ -45296,6 +45580,7 @@ fnStateLoadParams: null,
 fnStateLoaded: null,
 fnStateSaveCallback: function(e, t) {
 try {
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< a8a6721a66ecf6e0309b8cb7e496a9db1b4eccf6
 (a.iStateDuration === -1 ? sessionStorage :localStorage).setItem("DataTables_" + a.sInstance + "_" + location.pathname, JSON.stringify(b));
 } catch (c) {}
@@ -45569,6 +45854,9 @@ var Sb = Wa.ext.pager;
 a.extend(Sb, {
 simple:function(a, b) {
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> Init translation.
 (-1 === e.iStateDuration ? sessionStorage : localStorage).setItem("DataTables_" + e.sInstance + "_" + location.pathname, JSON.stringify(t));
 } catch (e) {}
 },
@@ -45840,7 +46128,283 @@ sJUIFooter: ""
 var Bt = qe.ext.pager;
 e.extend(Bt, {
 simple: function(e, t) {
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+=======
+(a.iStateDuration === -1 ? sessionStorage :localStorage).setItem("DataTables_" + a.sInstance + "_" + location.pathname, JSON.stringify(b));
+} catch (c) {}
+},
+fnStateSaveParams:null,
+iStateDuration:7200,
+iDeferLoading:null,
+iDisplayLength:10,
+iDisplayStart:0,
+iTabIndex:0,
+oClasses:{},
+oLanguage:{
+oAria:{
+sSortAscending:": activate to sort column ascending",
+sSortDescending:": activate to sort column descending"
+},
+oPaginate:{
+sFirst:"First",
+sLast:"Last",
+sNext:"Next",
+sPrevious:"Previous"
+},
+sEmptyTable:"No data available in table",
+sInfo:"Showing _START_ to _END_ of _TOTAL_ entries",
+sInfoEmpty:"Showing 0 to 0 of 0 entries",
+sInfoFiltered:"(filtered from _MAX_ total entries)",
+sInfoPostFix:"",
+sDecimal:"",
+sThousands:",",
+sLengthMenu:"Show _MENU_ entries",
+sLoadingRecords:"Loading...",
+sProcessing:"Processing...",
+sSearch:"Search:",
+sSearchPlaceholder:"",
+sUrl:"",
+sZeroRecords:"No matching records found"
+},
+oSearch:a.extend({}, Wa.models.oSearch),
+sAjaxDataProp:"data",
+sAjaxSource:null,
+sDom:"lfrtip",
+searchDelay:null,
+sPaginationType:"simple_numbers",
+sScrollX:"",
+sScrollXInner:"",
+sScrollY:"",
+sServerMethod:"GET",
+renderer:null,
+rowId:"DT_RowId"
+}, e(Wa.defaults), Wa.defaults.column = {
+aDataSort:null,
+iDataSort:-1,
+asSorting:[ "asc", "desc" ],
+bSearchable:!0,
+bSortable:!0,
+bVisible:!0,
+fnCreatedCell:null,
+mData:null,
+mRender:null,
+sCellType:"td",
+sClass:"",
+sContentPadding:"",
+sDefaultContent:null,
+sName:"",
+sSortDataType:"std",
+sTitle:null,
+sType:null,
+sWidth:null
+}, e(Wa.defaults.column), Wa.models.oSettings = {
+oFeatures:{
+bAutoWidth:null,
+bDeferRender:null,
+bFilter:null,
+bInfo:null,
+bLengthChange:null,
+bPaginate:null,
+bProcessing:null,
+bServerSide:null,
+bSort:null,
+bSortMulti:null,
+bSortClasses:null,
+bStateSave:null
+},
+oScroll:{
+bCollapse:null,
+iBarWidth:0,
+sX:null,
+sXInner:null,
+sY:null
+},
+oLanguage:{
+fnInfoCallback:null
+},
+oBrowser:{
+bScrollOversize:!1,
+bScrollbarLeft:!1,
+bBounding:!1,
+barWidth:0
+},
+ajax:null,
+aanFeatures:[],
+aoData:[],
+aiDisplay:[],
+aiDisplayMaster:[],
+aIds:{},
+aoColumns:[],
+aoHeader:[],
+aoFooter:[],
+oPreviousSearch:{},
+aoPreSearchCols:[],
+aaSorting:null,
+aaSortingFixed:[],
+asStripeClasses:null,
+asDestroyStripes:[],
+sDestroyWidth:0,
+aoRowCallback:[],
+aoHeaderCallback:[],
+aoFooterCallback:[],
+aoDrawCallback:[],
+aoRowCreatedCallback:[],
+aoPreDrawCallback:[],
+aoInitComplete:[],
+aoStateSaveParams:[],
+aoStateLoadParams:[],
+aoStateLoaded:[],
+sTableId:"",
+nTable:null,
+nTHead:null,
+nTFoot:null,
+nTBody:null,
+nTableWrapper:null,
+bDeferLoading:!1,
+bInitialised:!1,
+aoOpenRows:[],
+sDom:null,
+searchDelay:null,
+sPaginationType:"two_button",
+iStateDuration:0,
+aoStateSave:[],
+aoStateLoad:[],
+oSavedState:null,
+oLoadedState:null,
+sAjaxSource:null,
+sAjaxDataProp:null,
+bAjaxDataGet:!0,
+jqXHR:null,
+json:d,
+oAjaxData:d,
+fnServerData:null,
+aoServerParams:[],
+sServerMethod:null,
+fnFormatNumber:null,
+aLengthMenu:null,
+iDraw:0,
+bDrawing:!1,
+iDrawError:-1,
+_iDisplayLength:10,
+_iDisplayStart:0,
+_iRecordsTotal:0,
+_iRecordsDisplay:0,
+oClasses:{},
+bFiltered:!1,
+bSorted:!1,
+bSortCellsTop:null,
+oInit:null,
+aoDestroyCallback:[],
+fnRecordsTotal:function() {
+return "ssp" == Oa(this) ? 1 * this._iRecordsTotal :this.aiDisplayMaster.length;
+},
+fnRecordsDisplay:function() {
+return "ssp" == Oa(this) ? 1 * this._iRecordsDisplay :this.aiDisplay.length;
+},
+fnDisplayEnd:function() {
+var a = this._iDisplayLength, b = this._iDisplayStart, c = b + a, d = this.aiDisplay.length, e = this.oFeatures, f = e.bPaginate;
+return e.bServerSide ? f === !1 || a === -1 ? b + d :Math.min(b + a, this._iRecordsDisplay) :!f || c > d || a === -1 ? d :c;
+},
+oInstance:null,
+sInstance:null,
+iTabIndex:0,
+nScrollHead:null,
+nScrollFoot:null,
+aLastSort:[],
+oPlugins:{},
+rowIdFn:null,
+rowId:null
+}, Wa.ext = Sa = {
+buttons:{},
+classes:{},
+builder:"-source-",
+errMode:"alert",
+feature:[],
+search:[],
+selector:{
+cell:[],
+column:[],
+row:[]
+},
+internal:{},
+legacy:{
+ajax:null
+},
+pager:{},
+renderer:{
+pageButton:{},
+header:{}
+},
+order:{},
+type:{
+detect:[],
+search:{},
+order:{}
+},
+_unique:0,
+fnVersionCheck:Wa.fnVersionCheck,
+iApiIndex:0,
+oJUIClasses:{},
+sVersion:Wa.version
+}, a.extend(Sa, {
+afnFiltering:Sa.search,
+aTypes:Sa.type.detect,
+ofnSearch:Sa.type.search,
+oSort:Sa.type.order,
+afnSortData:Sa.order,
+aoFeatures:Sa.feature,
+oApi:Sa.internal,
+oStdClasses:Sa.classes,
+oPagination:Sa.pager
+}), a.extend(Wa.ext.classes, {
+sTable:"dataTable",
+sNoFooter:"no-footer",
+sPageButton:"paginate_button",
+sPageButtonActive:"current",
+sPageButtonDisabled:"disabled",
+sStripeOdd:"odd",
+sStripeEven:"even",
+sRowEmpty:"dataTables_empty",
+sWrapper:"dataTables_wrapper",
+sFilter:"dataTables_filter",
+sInfo:"dataTables_info",
+sPaging:"dataTables_paginate paging_",
+sLength:"dataTables_length",
+sProcessing:"dataTables_processing",
+sSortAsc:"sorting_asc",
+sSortDesc:"sorting_desc",
+sSortable:"sorting",
+sSortableAsc:"sorting_asc_disabled",
+sSortableDesc:"sorting_desc_disabled",
+sSortableNone:"sorting_disabled",
+sSortColumn:"sorting_",
+sFilterInput:"",
+sLengthSelect:"",
+sScrollWrapper:"dataTables_scroll",
+sScrollHead:"dataTables_scrollHead",
+sScrollHeadInner:"dataTables_scrollHeadInner",
+sScrollBody:"dataTables_scrollBody",
+sScrollFoot:"dataTables_scrollFoot",
+sScrollFootInner:"dataTables_scrollFootInner",
+sHeaderTH:"",
+sFooterTH:"",
+sSortJUIAsc:"",
+sSortJUIDesc:"",
+sSortJUI:"",
+sSortJUIAscAllowed:"",
+sSortJUIDescAllowed:"",
+sSortJUIWrapper:"",
+sSortIcon:"",
+sJUIHeader:"",
+sJUIFooter:""
+});
+var Sb = Wa.ext.pager;
+a.extend(Sb, {
+simple:function(a, b) {
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.
 return [ "previous", "next" ];
 },
 full: function(e, t) {
@@ -80666,12 +81230,18 @@ t.webCatalog = "webCatalog", i.module(t.webCatalog, [ "patternfly", "ngAnimate",
 e.put("catalog-search/catalog-search-result.html", n(4)), e.put("create-from-builder/create-from-builder-info.html", n(7)), e.put("create-from-builder/create-from-builder-configure.html", n(6)), e.put("create-from-builder/create-from-builder-bind.html", n(5)), e.put("create-from-builder/create-from-builder-results.html", n(8)), e.put("order-service/order-service-info.html", n(12)), e.put("order-service/order-service-plans.html", n(13)), e.put("order-service/order-service-configure.html", n(11)), e.put("order-service/order-service-bind.html", n(10)), e.put("order-service/order-service-bind-parameters.html", n(9)), e.put("order-service/order-service-results.html", n(14)), e.put("update-service/update-service-plans.html", n(16)), e.put("update-service/update-service-configure.html", n(15)), e.put("update-service/update-service-results.html", n(17)), e.put("decorators/bootstrap/array.html", n(18)), e.put("decorators/bootstrap/checkbox.html", n(19)), e.put("decorators/bootstrap/checkboxes.html", n(20)), 
 e.put("decorators/bootstrap/default.html", n(21)), e.put("decorators/bootstrap/select.html", n(22));
 } ]);
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 <<<<<<< 64b2023e0c97809e5a1f6ee1fb80807c589f8e95
 <<<<<<< fb7e045b3c36f3f05491e7175a009e332598475a
 <<<<<<< d92b8ebef57cc5573e8c796911f48574a6a11a38
 <<<<<<< 035c66049b8a08c6226b42dd90b3cfa6674c110f
 <<<<<<< 720e314edffb1cb580a6c8b0325ad046958dfe5e
 <<<<<<< d053770e48bf8921bc9ccda8b214b53719d2042f
+=======
+<<<<<<< HEAD
+} ], [ 70 ]);
+=======
+>>>>>>> Init translation.
 } ], [ 53 ]), function(a, b) {
 "object" == typeof exports && "undefined" != typeof module && "function" == typeof require ? b(require("../moment")) :"function" == typeof define && define.amd ? define([ "../moment" ], b) :b(a.moment);
 }(this, function(a) {
@@ -80763,6 +81333,7 @@ doy:4
 });
 return b;
 });
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 =======
 } ], [ 56 ]);
 >>>>>>> Bump common and catalog depedencies
@@ -80781,3 +81352,6 @@ return b;
 =======
 } ], [ 70 ]);
 >>>>>>> Bump origin-web-catalog to 0.0.59
+=======
+>>>>>>> a7d6e5ea... DM update.
+>>>>>>> Init translation.

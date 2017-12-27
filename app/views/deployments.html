@@ -2,11 +2,11 @@
   <div class="middle-header header-toolbar">
     <div class="container-fluid">
       <div class="page-header page-header-bleed-right page-header-bleed-left">
-        <h1 translate>
-          Deployments
+        <h1>
+          <translate>Deployments</translate>
           <span class="page-header-link">
-            <a ng-href="{{'deployments' | helpLink}}" target="_blank" translate>
-              Learn More <i class="fa fa-external-link" aria-hidden="true"></i>
+            <a ng-href="{{'deployments' | helpLink}}" target="_blank">
+              <translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i>
             </a>
           </span>
         </h1>
@@ -22,17 +22,17 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-           <p ng-if="!deploymentConfigsLoaded" translate>
+          <p ng-if="!deploymentConfigsLoaded" translate>
             Loading...
           </p>
           <div ng-if="(showEmptyState || filterWithZeroResults) && deploymentConfigsLoaded">
             <div class="empty-state-message text-center">
               <div ng-if="showEmptyState">
                 <h2 translate>No deployments.</h2>
-                <p>No deployments have been added to project {{projectName}}.</p>
+                <p translate>No deployments have been added to project {{projectName}}.</p>
               </div>
               <div ng-if="filterWithZeroResults">
-                <h2>The filter is hiding all deployments. <a href="" ng-click="clearFilter()" role="button" class="nowrap" translate>Clear Filter</a></h2>
+                <h2 translate>The filter is hiding all deployments. <a href="" ng-click="clearFilter()" role="button" class="nowrap">Clear Filter</a></h2>
               </div>
             </div>
           </div>
@@ -59,23 +59,23 @@
                 <tr ng-repeat-start="(dcName, replicationControllersForDC) in replicationControllersByDC" ng-if="dcName && (deploymentConfigs[dcName] || !unfilteredDeploymentConfigs[dcName])" style="display: none;"></tr>
                 <!-- Deployment config with no replication controllers -->
                 <tr ng-if="(replicationControllersForDC | hashSize) == 0 && dcName">
-                  <td data-title="Name">
+                  <td data-title="{{'Name'|translate}}">
                     <a ng-if="deploymentConfigs[dcName]" href="{{dcName | navigateResourceURL : 'DeploymentConfig' : projectName}}">{{dcName}}</a>
                     <span ng-if="deploymentConfigs[dcName].status.details.message" class="pficon pficon-warning-triangle-o" style="cursor: help;" data-toggle="popover" data-trigger="hover" dynamic-content="{{deploymentConfigs[dcName].status.details.message}}"></span>
                   </td>
-                  <td data-title="Last Version"><em>No deployments</em></td>
+                  <td data-title="{{'Last Version'|translate}}"><em translate>No deployments</em></td>
                   <td class="hidden-xs">&nbsp;</td>
                   <td class="hidden-xs">&nbsp;</td>
                   <td class="hidden-xs">&nbsp;</td>
                 </tr>
                 <!-- Deployment config with replication controllers, or replication controllers from a deployment config which has since been deleted -->
                 <tr ng-repeat="replicationController in replicationControllersForDC | orderObjectsByDate : true | limitTo : 1" ng-if="dcName">
-                  <td data-title="Name">
+                  <td data-title="{{'Name'|translate}}">
                     <a ng-href="{{replicationController | configURLForResource}}">{{dcName}}</a>
                     <!-- <span ng-if="deploymentConfigs[dcName].status.details.message" class="pficon pficon-warning-triangle-o" style="cursor: help;" data-toggle="popover" data-trigger="hover" dynamic-content="{{deploymentConfigs[dcName].status.details.message}}"></span> -->
                     <span ng-if="deploymentConfigs && !deploymentConfigs[dcName]" class="pficon pficon-warning-triangle-o" data-toggle="tooltip" title="This deployment config no longer exists" style="cursor: help;"></span>
                   </td>
-                  <td data-title="Last Version">
+                  <td data-title="{{'Last Version'|translate}}">
                     <!-- Deployment number and link -->
                     <span ng-if="replicationController | annotation : 'deploymentVersion'">
                       <a ng-href="{{replicationController | navigateResourceURL}}">#{{replicationController | annotation : 'deploymentVersion'}}</a>
@@ -84,30 +84,30 @@
                       <a ng-href="{{replicationController | navigateResourceURL}}">{{replicationController.metadata.name}}</a>
                     </span>
                   </td>
-                  <td data-title="Status">
+                  <td data-title="{{'Status'|translate}}">
                     <div row class="status">
                       <status-icon status="replicationController | deploymentStatus" disable-animation></status-icon>
                       <span flex>
                         {{replicationController | deploymentStatus}}<span ng-if="(replicationController | deploymentStatus) == 'Active' || (replicationController | deploymentStatus) == 'Running'">,
-                        <span ng-if="replicationController.spec.replicas !== replicationController.status.replicas">{{replicationController.status.replicas}}/</span>{{replicationController.spec.replicas}} replica<span ng-if="replicationController.spec.replicas != 1">s</span></span>
+                        <span ng-if="replicationController.spec.replicas !== replicationController.status.replicas">{{replicationController.status.replicas}}/</span>{{replicationController.spec.replicas}} <translate>replica<span ng-if="replicationController.spec.replicas != 1">s</span></translate></span>
                       </span>
                     </div>
                     <!-- TODO would be nice to have the deploymentStatusReason in a popup, when there is one -->
                   </td>
-                  <td data-title="Created">
+                  <td data-title="{{'Created'|translate}}">
                     <span am-time-ago="replicationController.metadata.creationTimestamp"></span>
                   </td>
-                  <td data-title="Trigger">
-                    <span ng-if="!replicationController.causes.length">Unknown</span>
+                  <td data-title="{{'Trigger'|translate}}">
+                    <span ng-if="!replicationController.causes.length" translate>Unknown</span>
                     <span ng-if="replicationController.causes.length">
                       <span ng-repeat="cause in replicationController.causes">
                         <span ng-switch="cause.type">
                           <span ng-switch-when="ImageChange">
-                            <span ng-if="cause.imageTrigger.from">
+                            <span ng-if="cause.imageTrigger.from" translate>
                               <abbr title="{{cause.imageTrigger.from | imageObjectRef : null : true}}">Image</abbr> change
                             </span>
                           </span>
-                          <span ng-switch-when="ConfigChange">Config change</span>
+                          <span ng-switch-when="ConfigChange" translate>Config change</span>
                           <span ng-switch-default>{{cause.type}}</span>
                         </span>
                       </span>
@@ -118,7 +118,7 @@
               </tbody>
             </table>
             <div ng-if="(deployments | size)">
-              <h3>Deployments</h3>
+              <h3 translate>Deployments</h3>
               <table class="table table-bordered table-mobile table-layout-fixed">
                 <colgroup>
                   <col class="col-sm-4">
@@ -129,19 +129,19 @@
                 </colgroup>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Last Version</th>
-                    <th>Replicas</th>
-                    <th>Created</th>
-                    <th>Strategy</th>
+                    <th translate>Name</th>
+                    <th translate>Last Version</th>
+                    <th translate>Replicas</th>
+                    <th translate>Created</th>
+                    <th translate>Strategy</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="deployment in deployments | orderObjectsByDate : true">
-                    <td data-title="Name">
+                    <td data-title="{{'Name'|translate}}">
                       <a ng-href="{{deployment | navigateResourceURL}}">{{deployment.metadata.name}}</a>
                     </td>
-                    <td data-title="Last Version">
+                    <td data-title="{{'Last Version'|translate}}">
                       <span ng-if="latestReplicaSetByDeploymentUID[deployment.metadata.uid]">
                         <a ng-href="{{latestReplicaSetByDeploymentUID[deployment.metadata.uid] | navigateResourceURL}}">{{deployment | lastDeploymentRevision}}</a>
                       </span>
@@ -149,13 +149,13 @@
                         {{deployment | lastDeploymentRevision}}
                       </span>
                     </td>
-                    <td data-title="Replicas">
-                      <span ng-if="!(deployment.status.replicas | isNil) && deployment.status.replicas !== deployment.spec.replicas">{{deployment.status.replicas}}/</span>{{deployment.spec.replicas}} replica<span ng-if="deployment.spec.replicas != 1">s</span>
+                    <td data-title="{{'Replicas'|translate}}">
+                      <span ng-if="!(deployment.status.replicas | isNil) && deployment.status.replicas !== deployment.spec.replicas">{{deployment.status.replicas}}/</span>{{deployment.spec.replicas}} <translate>replica<span ng-if="deployment.spec.replicas != 1">s</span></translate>
                     </td>
-                    <td data-title="Created">
+                    <td data-title="{{'Created'|translate}}">
                       <span am-time-ago="deployment.metadata.creationTimestamp"></span>
                     </td>
-                    <td data-title="Strategy">
+                    <td data-title="{{'Strategy'|translate}}">
                       {{deployment.spec.strategy.type | sentenceCase}}
                     </td>
                   </tr>
@@ -163,27 +163,27 @@
               </table>
             </div>
             <div ng-if="(replicaSets | size)" id="replica-sets">
-              <h3>Replica Sets</h3>
+              <h3 translate>Replica Sets</h3>
               <table class="table table-bordered table-mobile table-layout-fixed">
                 <colgroup>
                   <col class="col-sm-4">
                 </colgroup>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Replicas</th>
-                    <th>Created</th>
+                    <th translate>Name</th>
+                    <th translate>Replicas</th>
+                    <th translate>Created</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="replicaSet in replicaSets | orderObjectsByDate : true">
-                    <td data-title="Name">
+                    <td data-title="{{'Name'|translate}}">
                       <a ng-href="{{replicaSet | navigateResourceURL}}">{{replicaSet.metadata.name}}</a>
                     </td>
-                    <td data-title="Replicas">
-                      <span ng-if="replicaSet.status.replicas !== replicaSet.spec.replicas">{{replicaSet.status.replicas}}/</span>{{replicaSet.spec.replicas}} replica<span ng-if="replicaSet.spec.replicas != 1">s</span>
+                    <td data-title="{{'Replicas'|translate}}">
+                      <span ng-if="replicaSet.status.replicas !== replicaSet.spec.replicas">{{replicaSet.status.replicas}}/</span>{{replicaSet.spec.replicas}} <translate>replica<span ng-if="replicaSet.spec.replicas != 1">s</span></translate>
                     </td>
-                    <td data-title="Created">
+                    <td data-title="{{'Created'|translate}}">
                       <span am-time-ago="replicaSet.metadata.creationTimestamp"></span>
                     </td>
                   </tr>
@@ -191,27 +191,27 @@
               </table>
             </div>
             <div ng-if="(replicationControllersByDC[''] | size)" id="replica-controllers">
-              <h3>Other Replication Controllers</h3>
+              <h3 translate>Other Replication Controllers</h3>
               <table class="table table-bordered table-mobile table-layout-fixed">
                 <colgroup>
                   <col class="col-sm-5">
                 </colgroup>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Replicas</th>
-                    <th>Created</th>
+                    <th translate>Name</th>
+                    <th translate>Replicas</th>
+                    <th translate>Created</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="deployment in replicationControllersByDC[''] | orderObjectsByDate : true">
-                    <td data-title="Name">
+                    <td data-title="{{'Name'|translate}}">
                       <a ng-href="{{deployment | navigateResourceURL}}">{{deployment.metadata.name}}</a>
                     </td>
-                    <td data-title="Replicas">
-                      <span ng-if="deployment.status.replicas !== deployment.spec.replicas">{{deployment.status.replicas}}/</span>{{deployment.spec.replicas}} replica<span ng-if="deployment.spec.replicas != 1">s</span>
+                    <td data-title="{{'Replicas'|translate}}">
+                      <span ng-if="deployment.status.replicas !== deployment.spec.replicas">{{deployment.status.replicas}}/</span>{{deployment.spec.replicas}} <translate>replica<span ng-if="deployment.spec.replicas != 1">s</span></translate>
                     </td>
-                    <td data-title="Created">
+                    <td data-title="{{'Created'|translate}}">
                       <span am-time-ago="deployment.metadata.creationTimestamp"></span>
                     </td>
                   </tr>

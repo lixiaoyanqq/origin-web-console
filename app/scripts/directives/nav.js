@@ -186,7 +186,9 @@ angular.module('openshiftConsole')
       AuthorizationService,
       Constants,
       ProjectsService,
-      projectOverviewURLFilter) {
+      projectOverviewURLFilter,
+      gettext,
+      gettextCatalog) {
 
     // cache these to eliminate flicker
     var projects = {};
@@ -289,7 +291,7 @@ angular.module('openshiftConsole')
           select.empty();
           select.append(options);
           select.append($('<option data-divider="true"></option>'));
-          select.append($('<option value="">View All Projects</option>'));
+          select.append($('<option value="">' + gettextCatalog.getString(gettext('View All Projects')) + '</option>'));
           select.selectpicker('refresh');
         };
 

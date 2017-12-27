@@ -36,7 +36,7 @@
           <div ng-if="env.valueFrom.configMapKeyRef || env.valueFrom.secretKeyRef">
             {{env.name}} set to key
             <span ng-if="env.valueFrom.configMapKeyRef">
-              {{env.valueFrom.configMapKeyRef.key}} in config map
+              <translate>{{env.valueFrom.configMapKeyRef.key}} in config map</translate>
               <span
                 ng-if="!('configmaps' | canI : 'get')">
                 {{env.valueFrom.configMapKeyRef.name}}
@@ -48,7 +48,7 @@
               </a>
             </span>
             <span ng-if="env.valueFrom.secretKeyRef">
-              {{env.valueFrom.secretKeyRef.key}} in secret
+              <translate>{{env.valueFrom.secretKeyRef.key}} in secret</translate>
               <span
                 ng-if="!('secrets' | canI : 'get')">
                 {{env.valueFrom.secretKeyRef.name}}
@@ -75,7 +75,7 @@
   </div>
   <div ng-if="strategyParams[type].tagImages">
     <div ng-repeat="tagImage in strategyParams[type].tagImages">
-    <h5 class="container-name">Container {{tagImage.containerName}}</h5>
+    <h5 class="container-name" translate>Container {{tagImage.containerName}}</h5>
       <dl class="dl-horizontal left">
         <div><translate>Tag image as</translate> <a ng-if="!tagImage.to.namespace || tagImage.to.namespace === deploymentConfig.metadata.namespace" ng-href="{{tagImage.to.name | navigateResourceURL : 'ImageStreamTag' : deploymentConfig.metadata.namespace}}">{{tagImage.to | imageObjectRef : deploymentConfig.metadata.namespace}}</a>
           <span ng-if="tagImage.to.namespace && tagImage.to.namespace !== deploymentConfig.metadata.namespace">{{tagImage.to | imageObjectRef : deploymentConfig.metadata.namespace}}</span></div>

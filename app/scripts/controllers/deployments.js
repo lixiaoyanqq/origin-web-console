@@ -25,7 +25,7 @@ angular.module('openshiftConsole')
     $scope.unfilteredDeployments = {};
     $scope.replicationControllersByDC = {};
     $scope.labelSuggestions = {};
-    $scope.emptyMessage = "Loading...";
+    $scope.emptyMessage = gettext("Loading...");
     $scope.expandedDeploymentConfigRow = {};
     $scope.unfilteredReplicaSets = {};
     $scope.unfilteredReplicationControllers = {};

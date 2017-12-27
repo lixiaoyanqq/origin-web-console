@@ -2,7 +2,7 @@
 
 angular
   .module('openshiftConsole')
-  .factory('MembershipService', function($filter, Constants) {
+  .factory('MembershipService', function($filter, Constants, gettext, gettextCatalog) {
 
     var annotation = $filter('annotation');
 

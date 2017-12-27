@@ -20,12 +20,12 @@
       <span ng-if="!row.expanded && !row.hidePipelines && (row.recentPipelines | hashSize)" class="pipelines">
         <build-counts
           builds="row.recentPipelines"
-          label="Pipelines"
+          label="{{'Pipelines'|translate}}"
           show-running-stage="true">
         </build-counts>
       </span>
       <span ng-if="!row.expanded && (row.recentBuilds | hashSize)" class="builds">
-        <build-counts builds="row.recentBuilds" label="Builds"></build-counts>
+        <build-counts builds="row.recentBuilds" label="{{'Builds'|translate}}"></build-counts>
       </span>
     </span>
   </div>

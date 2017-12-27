@@ -23,7 +23,7 @@ objects:
       name: ${APP_NAME}-pipeline
     name: ${APP_NAME}-pipeline
   spec:
-    nodeSelector: 
+    nodeSelector:
       "jenkins": "true"
     strategy:
       jenkinsPipelineStrategy:
@@ -43,28 +43,28 @@ objects:
                 node {
 
                     stage('Initialize') {
-                      withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-                              credentialsId: '${CERDENTIALS_ID}', 
-                              usernameVariable: 'GIT_USERNAME', 
-                              passwordVariable: 'GIT_PASSWORD']]) {    
-        
+                      withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                              credentialsId: '${CERDENTIALS_ID}',
+                              usernameVariable: 'GIT_USERNAME',
+                              passwordVariable: 'GIT_PASSWORD']]) {
+
                       sh "[ -d ${REPO_NAME} ] || git clone https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/Dataman-Cloud/${REPO_NAME}.git"
                       sh "cd ${REPO_NAME} && git checkout ${REPO_BRANCH} && git pull --rebase"
                       sh "cd ${REPO_NAME} && git rev-parse --short HEAD > /tmp/${REPO_NAME}.commit.txt"
-            
+
                       TAG = readFile("/tmp/${REPO_NAME}.commit.txt").trim()
                       }
                       echo "------------"
                       echo "commit: $TAG"
                       echo "------------"
-                      sh "oc login -u ${CICD_OPENSHIFT_USER_NAME} -p ${CICD_OPENSHIFT_PASSWD} ${CICD_OPENSHIFT_LOGIN_URL} --insecure-skip-tls-verify"  
+                      sh "oc login -u ${CICD_OPENSHIFT_USER_NAME} -p ${CICD_OPENSHIFT_PASSWD} ${CICD_OPENSHIFT_LOGIN_URL} --insecure-skip-tls-verify"
                       sh "oc patch buildconfig ${APP_NAME} -p '{\"spec\": {\"output\": {\"to\": {\"name\": \"${OUT_PUT_IMAGE}:${TAG}\"}}}}' \
                       -n ${env.PROJECT_NAME} || echo 'ignore error' "
                     }
                     stage('${APP_NAME}') {
                       openshiftBuild(buildConfig: '${APP_NAME}', showBuildLogs: 'true')
                     }
-                    
+
                     stage('DEV_DEPLOY') {
                       sh "oc delete buildconfig imagestream-change-${IS_NAME} -n default || echo "
                       sh "oc new-app imagestream-change -p APP_NAME=imagestream-change-${IS_NAME} -p IMAGE_TAG=${TAG} -p OUT_PUT_IMAGE=${OUT_PUT_IMAGE} \
@@ -88,7 +88,7 @@ objects:
       app: ${APP_NAME}
       name: ${APP_NAME}
   spec:
-    nodeSelector: 
+    nodeSelector:
       "jenkins": "true"
     output:
       pushSecret:
@@ -103,7 +103,7 @@ objects:
       dockerfile: |-
         FROM devharbor.dataman-inc.com:1443/library/nginx:1.13.6-alpine
 
-        # ENV VERSION ${VERSION}
+        ENV VERSION ${VERSION}
 
         RUN apk add --update bash \
           && touch /root/.bashrc

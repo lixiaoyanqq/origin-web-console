@@ -1,11 +1,11 @@
 <div>
   <div class="dialog-title">
-    <h3>Add to Application</h3>
+    <h3 translate>Add to Application</h3>
   </div>
   <div class="dialog-body">
     <form name="addToApplicationForm" novalidate>
       <fieldset ng-disabled="disableInputs">
-        <legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>
+        <legend translate>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>
         <div class="form-group"  ng-class="{'has-error' : ctrl.addType === 'env' && ctrl.application && !ctrl.canAddRefToApplication}">
           <div class="application-select">
             <ui-select id="application" ng-model="ctrl.application" on-select="ctrl.checkApplicationContainersRefs($item)" required="true" ng-disabled="ctrl.disableInputs">
@@ -24,26 +24,26 @@
           </div>
         </div>
         <div class="has-error" ng-if="ctrl.addType === 'env' && ctrl.application && !ctrl.canAddRefToApplication">
-          <span class="help-block">
+          <span class="help-block" translate>
             The {{ctrl.apiObject.kind | humanizeKind}} has already been added to this application.
           </span>
         </div>
-        <legend>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
+        <legend translate>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
         <div class="form-group">
           <div class="radio">
             <div class="add-choice">
               <label>
                 <input type="radio" ng-model="ctrl.addType" value="env" ng-disabled="ctrl.disableInputs">
-                Environment variables
+                <translate>Environment variables</translate>
               </label>
               <div class="has-warning" ng-if="ctrl.hasInvalidEnvVars">
-                <span class="help-block">Some of the keys for {{ctrl.apiObject.kind | humanizeKind}} <strong>{{ctrl.apiObject.metadata.name}}</strong> are not valid environment variable names and will not be added.</span>
+                <span class="help-block" translate>Some of the keys for {{ctrl.apiObject.kind | humanizeKind}} <strong>{{ctrl.apiObject.metadata.name}}</strong> are not valid environment variable names and will not be added.</span>
               </div>
             </div>
             <div>
               <label class="add-choice" for="volume">
                 <input id="volume" type="radio" ng-model="ctrl.addType" value="volume" ng-disabled="ctrl.disableInputs">
-                Volume
+                <translate>Volume</translate>
               </label>
             </div>
             <div class="volume-options">
@@ -51,7 +51,7 @@
                 <input class="form-control"
                        name="mountVolume"
                        id="mountVolume"
-                       placeholder="Enter a mount path"
+                       placeholder="{{'Enter a mount path'|translate}}"
                        type="text"
                        ng-pattern="/^\/.*$/"
                        osc-unique="ctrl.existingMountPaths"
@@ -64,17 +64,17 @@
                        spellcheck="false">
               </div>
               <div class="help-block bind-description">
-                Mount Path for the volume. A file will be created in this
-                directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.
-                The file contents will be the value of the key.
+                <translate>Mount Path for the volume.</translate>
+                <translate>A file will be created in this directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.</translate>
+                <translate>The file contents will be the value of the key.</translate>
               </div>
               <div class="has-error" ng-show="addToApplicationForm.mountVolume.$error.oscUnique">
-                <span class="help-block">
+                <span class="help-block" translate>
                   The mount path is already used. Please choose another mount path.
                 </span>
               </div>
               <div class="has-error" ng-show="addToApplicationForm.mountVolume.$error.pattern && addToApplicationForm.mountVolume.$touched">
-                <span class="help-block">
+                <span class="help-block" translate>
                   Mount path must be a valid path to a directory starting with <code>/</code>.
                 </span>
               </div>
@@ -82,15 +82,14 @@
           </div>
         </div>
         <div ng-if="ctrl.canAddRefToApplication">
-          <legend ng-if-start="ctrl.application.spec.template.spec.containers.length > 1">Containers:</legend>
+          <legend ng-if-start="ctrl.application.spec.template.spec.containers.length > 1" translate>Containers:</legend>
           <div ng-if-end class="form-group container-options">
             <div ng-if="ctrl.attachAllContainers">
-              The {{ctrl.apiObject.kind | humanizeKind}} will be added to all containers. You can
-              <a href="" ng-click="ctrl.attachAllContainers = false">select specific containers</a>
-              instead.
+              <translate>The {{ctrl.apiObject.kind | humanizeKind}} will be added to all containers.</translate>
+              <translate>You can <a href="" ng-click="ctrl.attachAllContainers = false">select specific containers</a> instead.</translate>
             </div>
             <div ng-if="!ctrl.attachAllContainers" class="form-group">
-              <label class="sr-only required">Containers</label>
+              <label class="sr-only required" translate>Containers</label>
               <select-containers
                 ng-model="ctrl.attachContainers"
                 pod-template="ctrl.application.spec.template"
@@ -104,7 +103,7 @@
           <button
             class="btn btn-default"
             ng-class="{'dialog-btn': isDialog}"
-            ng-click="ctrl.onCancel()">
+            ng-click="ctrl.onCancel()" translate>
             Cancel
           </button>
           <button type="submit"
@@ -112,7 +111,7 @@
                   ng-class="{'dialog-btn': isDialog}"
                   ng-click="ctrl.addToApplication()"
                   ng-disabled="addToApplicationForm.$invalid || (ctrl.addType === 'env' && !ctrl.canAddRefToApplication)"
-                  value="">
+                  value="" translate>
             Save
           </button>
         </div>
@@ -121,7 +120,7 @@
     <div class="updating" ng-if="ctrl.updating">
       <div class="spinner spinner-lg" aria-hidden="true"></div>
       <h3>
-        <span class="sr-only">Updating</span>
+        <span class="sr-only" translate>Updating</span>
       </h3>
     </div>
   </div>

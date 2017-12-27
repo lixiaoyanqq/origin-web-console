@@ -25,8 +25,7 @@ angular.module('openshiftConsole')
                         StorageService,
                         LabelFilter,
                         labelNameFilter,
-                        gettext,
-                        gettextCatalog) {
+                        gettext) {
     var imageStreamImageRefByDockerReference = {}; // lets us determine if a particular container's docker image reference belongs to an imageStream
 
     $scope.projectName = $routeParams.project;
@@ -44,7 +43,7 @@ angular.module('openshiftConsole')
       kind: 'DeploymentConfig',
       namespace: $routeParams.project
     });
-    $scope.emptyMessage = "Loading...";
+    $scope.emptyMessage = gettext("Loading...");
     $scope.deploymentConfigsInstantiateVersion = APIService.getPreferredVersion('deploymentconfigs/instantiate');
     $scope.deploymentConfigsVersion = APIService.getPreferredVersion('deploymentconfigs');
     $scope.eventsVersion = APIService.getPreferredVersion('events');

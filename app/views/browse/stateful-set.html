@@ -14,8 +14,8 @@
             <button
               type="button"
               class="dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs"
-              data-toggle="dropdown" translate>
-              Actions
+              data-toggle="dropdown">
+              <translate>Actions</translate>
               <span class="caret" aria-hidden="true"></span>
             </button>
             <a
@@ -78,7 +78,7 @@
 
                 <div class="col-sm-8 col-sm-pull-4">
                   <dl class="dl-horizontal left">
-                    <dt>Status:</dt>
+                    <dt translate>Status:</dt>
                     <dd>
                       <status-icon status="statefulSet | deploymentStatus"></status-icon>
                       {{statefulSet | deploymentStatus}}
@@ -94,7 +94,7 @@
                         deployment="statefulSet">
                       </replicas>
                       -->
-                      <span ng-if="(podsForStatefulSet | hashSize) !== statefulSet.spec.replicas">{{podsForStatefulSet | hashSize}}/</span>{{statefulSet.spec.replicas}} replica<span ng-if="statefulSet.spec.replicas != 1">s</span>
+                      <span ng-if="(podsForStatefulSet | hashSize) !== statefulSet.spec.replicas">{{podsForStatefulSet | hashSize}}/</span>{{statefulSet.spec.replicas}} <translate>replica<span ng-if="statefulSet.spec.replicas != 1">s</span></translate>
                       <!-- TODO: HPA as a follow-on PR
                         <span ng-if="autoscalers.length">(autoscaled)</span>
                       -->
@@ -118,7 +118,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <h3 translate>Volumes</h3>
-                  <p ng-if="!statefulSet.spec.template.spec.volumes.length">
+                  <p ng-if="!statefulSet.spec.template.spec.volumes.length" translate>
                     none
                   </p>
                   <volumes
@@ -126,7 +126,7 @@
                       namespace="project.metadata.name">
                   </volumes>
 
-                  <h3>Pods</h3>
+                  <h3 translate>Pods</h3>
                   <pods-table
                     pods="podsForStatefulSet"></pods-table>
 

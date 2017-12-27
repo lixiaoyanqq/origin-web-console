@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tag=$(date "+%Y%m%d%H%M%S")
+tag=$VERSION
 
 # workdir deploy
 echo "Start Copying Files"

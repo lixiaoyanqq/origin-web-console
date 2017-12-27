@@ -2,7 +2,7 @@
 <table class="table table-bordered table-mobile">
   <thead>
     <tr>
-      <th>{{(customNameHeader || 'Route') | translate}}<span ng-if="showNodePorts" translate> / Node Port</span></th>
+      <th>{{customNameHeader || 'Route'}}<span ng-if="showNodePorts" translate> / Node Port</span></th>
       <th role="presentation"></th>
       <th translate>Service Port</th>
       <th role="presentation"></th>
@@ -28,7 +28,7 @@
         </span>
       </td>
       <td role="presentation" class="text-muted arrow"></td>
-      <td data-title="Service Port">
+      <td data-title="{{'Service Port'|translate}}">
         {{port.port}}/{{port.protocol}}
         <span ng-if="port.name">({{port.name}})</span>
       </td>
@@ -36,7 +36,7 @@
       <td data-title="Target Port">
         {{port.targetPort}}
       </td>
-      <td data-title="Hostname">
+      <td data-title="{{'Hostname'|translate}}">
         <span ng-if="(routes[routeName] | isWebRoute)" class="word-break">
           <a href="{{routes[routeName] | routeWebURL}}" target="_blank">
             {{routes[routeName] | routeLabel}}
@@ -52,7 +52,7 @@
         </span>
       </td>
       <!-- Use shorter Termination title for table-mobile to avoid overlapping text. -->
-      <td data-title="Termination">
+      <td data-title="{{'Termination'|translate}}">
         {{routes[routeName].spec.tls.termination | humanizeTLSTermination}}
         <span ng-if="!routes[routeName].spec.tls.termination">&nbsp;</span>
       </td>
@@ -64,15 +64,15 @@
         <span ng-if="port.nodePort">{{port.nodePort}}</span>
       </td>
       <td role="presentation" class="text-muted arrow"></td>
-      <td data-title="Service Port">
+      <td data-title="{{'Service Port'|translate}}">
         {{port.port}}/{{port.protocol}}
         <span ng-if="port.name">({{port.name}})</span>
       </td>
       <td role="presentation" class="text-muted arrow"></td>
-      <td data-title="Target Port">
+      <td data-title="{{'Target Port'|translate}}">
         {{port.targetPort}}
       </td>
-      <td data-title="Hostname"><span class="text-muted" translate>none</span></td>
+      <td data-title="{{'Hostname'|translate}}"><span class="text-muted" translate>none</span></td>
       <td data-title="Termination">
         <span class="text-muted" translate>none</span>
       </td>

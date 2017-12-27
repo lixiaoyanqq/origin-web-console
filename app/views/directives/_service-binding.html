@@ -17,14 +17,14 @@
          ng-class="{'col-sm-7 col-md-6': $ctrl.isOverview,
                     'col-sm-4 col-md-3': !$ctrl.isOverview}">
       <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-      Marked for Deletion
+      <translate>Marked for Deletion</translate>
     </div>
     <div ng-if="!$ctrl.binding.metadata.deletionTimestamp && ($ctrl.binding | isBindingFailed)"
          ng-class="{'col-sm-7 col-md-6': $ctrl.isOverview,
                     'col-sm-4 col-md-6 col-lg-4': !$ctrl.isOverview}">
       <span dynamic-content="{{$ctrl.binding | bindingFailedMessage}}" data-toggle="tooltip" data-trigger="hover">
         <span class="pficon pficon-error-circle-o" aria-hidden="true"></span>
-        <span>Error</span>
+        <span translate>Error</span>
       </span>
     </div>
     <div ng-if="!$ctrl.binding.metadata.deletionTimestamp && !($ctrl.binding | isBindingFailed) && !($ctrl.binding | isBindingReady)"
@@ -49,7 +49,7 @@
     </a>
   </div>
   <div class="service-binding-parameters" ng-if="!$ctrl.isOverview && $ctrl.bindParameterSchema.properties">
-    <span class="component-label">Parameters</span>
+    <span class="component-label" translate>Parameters</span>
     <a ng-if="$ctrl.allowParametersReveal" href="" class="hide-show-link" ng-click="$ctrl.toggleShowParameterValues()" role="button">
       {{$ctrl.showParameterValues ? 'Hide Values' : 'Reveal Values'}}
     </a>

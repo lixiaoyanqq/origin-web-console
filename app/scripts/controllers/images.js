@@ -16,7 +16,8 @@ angular.module('openshiftConsole')
     DataService,
     LabelFilter,
     Logger,
-    ProjectsService) {
+    ProjectsService,
+    gettext) {
     $scope.projectName = $routeParams.project;
     $scope.imageStreams = {};
     $scope.unfilteredImageStreams = {};

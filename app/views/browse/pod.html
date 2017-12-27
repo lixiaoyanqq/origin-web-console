@@ -7,8 +7,8 @@
       <div ng-if="pod">
         <h1 class="contains-actions">
           <div class="pull-right dropdown" ng-hide="!('pods' | canIDoAny)">
-            <button type="button" class="dropdown-toggle actions-dropdown-btn btn btn-default hidden-xs" data-toggle="dropdown" translate>
-              Actions
+            <button type="button" class="dropdown-toggle actions-dropdown-btn btn btn-default hidden-xs" data-toggle="dropdown">
+              <translate>Actions</translate>
               <span class="caret"></span>
             </button>
             <a href=""
@@ -36,7 +36,7 @@
           <span ng-if="pod | isTroubledPod">
             <pod-warnings pod="pod"></pod-warnings>
           </span>
-          <small class="meta" translate>created <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
+          <small class="meta"><translate>created</translate> <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
         </h1>
         <labels labels="pod.metadata.labels" clickable="true" kind="pods" project-name="{{pod.metadata.namespace}}" limit="3"></labels>
       </div>
@@ -47,15 +47,15 @@
       <div class="row" ng-if="pod">
         <div class="col-md-12">
           <uib-tabset>
-            <uib-tab heading="Details" active="selectedTab.details">
+            <uib-tab heading="{{'Details'|translate}}" active="selectedTab.details">
               <uib-tab-heading translate>Details</uib-tab-heading>
               <ng-include src=" 'views/browse/_pod-details.html' "></ng-include>
             </uib-tab>
-            <uib-tab heading="Environment" active="selectedTab.environment">
+            <uib-tab heading="{{'Environment'|translate}}" active="selectedTab.environment">
               <uib-tab-heading translate>Environment</uib-tab-heading>
               <edit-environment-variables api-object="pod" ng-readonly="true"></edit-environment-variables>
             </uib-tab>
-            <uib-tab ng-if="metricsAvailable" heading="Metrics" active="selectedTab.metrics">
+            <uib-tab ng-if="metricsAvailable" heading="{{'Metrics'|translate}}" active="selectedTab.metrics">
               <!-- Use ng-if to remove the metrics directive when the tab is not active so
                    we don't update in the background. -->
               <pod-metrics
@@ -78,7 +78,7 @@
                 ng-class="{'log-viewer-select': pod.spec.containers.length > 1}">
 
                 <span class="container-details">
-                  <label for="selectLogContainer">Container:</label>
+                  <label for="selectLogContainer" translate>Container:</label>
 
                   <span ng-if="pod.spec.containers.length === 1">
                     {{pod.spec.containers[0].name}}
@@ -98,7 +98,7 @@
                   </span>
 
                   <span ng-if="containerStartTime && !logEmpty">
-                    <span class="log-timestamps">Log from {{containerStartTime  | date : 'medium'}} <span ng-if="containerEndTime">to {{containerEndTime  | date : 'medium'}}</span></span>
+                    <span class="log-timestamps"><translate>Log from</translate> {{containerStartTime  | date : 'medium'}} <span ng-if="containerEndTime"><translate>to</translate> {{containerEndTime  | date : 'medium'}}</span></span>
                   </span>
                 </span>
 
@@ -109,7 +109,7 @@
               active="selectedTab.terminal"
               select="terminalTabWasSelected = true"
               ng-init="containers = pod.status.containerStatuses">
-                <uib-tab-heading>Terminal</uib-tab-heading>
+                <uib-tab-heading translate>Terminal</uib-tab-heading>
 
                 <div ng-if="noContainersYet" class="empty-state-message text-center">
                   <h2 translate>
@@ -120,14 +120,14 @@
                   <div class="mar-bottom-md">
                     <span class="pficon pficon-info" aria-hidden="true"></span>
                     <span ng-class="{ 'mar-right-md': hasFullscreen }">
-                      When you navigate away from this pod, any open terminal connections will be closed.
-                      This will kill any foreground processes you started from the&nbsp;terminal.
+                      <translate>When you navigate away from this pod, any open terminal connections will be closed.</translate>
+                      <translate>This will kill any foreground processes you started from the&nbsp;terminal.</translate>
                     </span>
                     <a href=""
                        ng-if="hasFullscreen"
                        ng-click="fullscreenTerminal()"
                        class="nowrap"
-                       aria-hidden="true">Open Fullscreen Terminal</a>
+                       aria-hidden="true" translate>Open Fullscreen Terminal</a>
                   </div>
 
                   <alerts ng-if="selectedTerminalContainer.status === 'disconnected'" alerts="terminalDisconnectAlert"></alerts>
@@ -136,7 +136,7 @@
                     <div class="row">
                       <div class="pad-left-none pad-bottom-md col-sm-6 col-lg-4">
                         <span ng-if="pod.spec.containers.length === 1">
-                          <label for="selectLogContainer">Container:</label>
+                          <label for="selectLogContainer" translate>Container:</label>
                           {{pod.spec.containers[0].name}}
                          </span>
 
@@ -147,7 +147,7 @@
                           class="mar-left-none pad-left-none pad-right-none">
                          <ui-select-match
                             class="truncate"
-                            placeholder="Container Name">
+                            placeholder="{{'Container Name'|translate}}">
                               <span class="pad-left-md">
                                 {{selectedTerminalContainer.containerName}}
                               </span>

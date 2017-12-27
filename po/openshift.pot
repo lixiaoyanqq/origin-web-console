@@ -4,6 +4,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/routes.js:55
 msgid "\" does not expose that port."
 msgstr ""
@@ -17,6 +18,8 @@ msgstr ""
 msgid "\", but service \""
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/edit/build-config.html:17
 msgid "&mdash; {{strategyType | startCase}} Build Strategy"
 msgstr ""
@@ -39,11 +42,27 @@ msgstr ""
 msgid "(bare host directory volume)"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:119
 msgid "(cannot be changed)"
 msgstr ""
 
 #: app/views/browse/deployment-config.html:310
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:120
+msgid "(cannot be changed)"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:315
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:123
+msgid "(cannot be changed)"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:321
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "(disabled)"
 msgstr ""
 
@@ -51,19 +70,25 @@ msgstr ""
 msgid "(expires {{pod.metadata.deletionTimestamp | date : 'medium'}})"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/filters/resources.js:231
 #: app/views/attach-pvc.html:154
 msgid "(generated if empty)"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/deployment-config.html:151
 msgid "(latest)"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:95
 msgid "(populated by a config map)"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:18
 msgid "(populated by a secret when the pod is created)"
 msgstr ""
@@ -84,11 +109,19 @@ msgstr ""
 msgid "(temporary directory destroyed with the pod)"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:99
 msgid "(you)"
 msgstr ""
 
 #: app/views/images.html:55
+=======
+#: app/views/membership.html:106
+msgid "(you)"
+msgstr ""
+
+#: app/views/images.html:60
+>>>>>>> Init translation.
 msgid ", and {{imageStream.status.tags.length - 4}} others"
 msgstr ""
 
@@ -96,7 +129,11 @@ msgstr ""
 msgid ", ran for {{(pod | podStartTime) | duration : (pod | podCompletionTime)}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:127
+=======
+#: app/views/_pod-template-container.html:122
+>>>>>>> Init translation.
 msgid ", subpath {{mount.subPath}}"
 msgstr ""
 
@@ -104,7 +141,15 @@ msgstr ""
 msgid ". You cannot create new storage since you are at quota."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:473
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:471
+=======
+#: app/scripts/constants.js:375
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid ".NET"
 msgstr ""
 
@@ -132,16 +177,24 @@ msgstr ""
 msgid "<a target=\"_blank\" href=\"https://openshift.com\">OpenShift</a> is Red Hat's Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:11
 msgid "<span ng-bind-template=\"{{labelPrefix||'Container'}}:\"></span>"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/modals/delete-resource.html:28
 msgid "<strong>It cannot be undone.</strong> Make sure this is something you really want to do!"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/attach-pvc.html:22
 msgid "A <b>persistent volume claim</b> is required to attach to this"
+=======
+#: app/views/attach-pvc.html:21
+msgid "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project."
+>>>>>>> Init translation.
 msgstr ""
 
 #: app/views/create/fromimage.html:104
@@ -161,7 +214,15 @@ msgstr ""
 msgid "A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:540
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:538
+=======
+#: app/scripts/constants.js:442
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "A centralized authentication server for users to log in, log out, register, and manage user accounts for applications and RESTful web services."
 msgstr ""
 
@@ -177,6 +238,7 @@ msgstr ""
 msgid "A container will default to request this amount of a compute resource if no request is specified. The system will guarantee the requested amount of compute resource when scheduling a container for execution. If a quota is enabled for this compute resource, the quota usage is incremented by the requested value."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:89
 msgid "A file will be created in this directory for each key from the config map or secret. The file contents will be the value of the key."
 msgstr ""
@@ -186,6 +248,13 @@ msgid "A generic webhook can be triggered by any system capable of making a web 
 msgstr ""
 
 #: app/views/edit/health-checks.html:42
+=======
+#: app/views/edit/build-config.html:464
+msgid "A generic webhook can be triggered by any system capable of making a web request."
+msgstr ""
+
+#: app/views/edit/health-checks.html:45
+>>>>>>> Init translation.
 msgid "A liveness probe checks if the container is still running. If the liveness probe fails, the container is killed."
 msgstr ""
 
@@ -202,6 +271,7 @@ msgstr ""
 msgid "A project is required in order to complete the installation."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/health-checks.html:25
 msgid "A readiness probe checks if the container is ready to handle requests. A failed readiness probe means that a container should not receive any traffic from a proxy, even if it's running."
 msgstr ""
@@ -210,6 +280,12 @@ msgstr ""
 msgid "A short description."
 msgstr ""
 
+=======
+#: app/views/edit/health-checks.html:28
+msgid "A readiness probe checks if the container is ready to handle requests. A failed readiness probe means that a container should not receive any traffic from a proxy, even if it's running."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/command-line.html:48
 msgid "A token is a form of a password."
 msgstr ""
@@ -230,7 +306,15 @@ msgstr ""
 msgid "A unique name for the route within the project."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:76
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:77
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:80
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "A unique name for the storage claim within the project."
 msgstr ""
 
@@ -238,8 +322,14 @@ msgstr ""
 msgid "A valid Source Path is an absolute path beginning with '/'"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:470
 #: app/views/browse/deployment-config.html:353
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/build-config.html:475
+#: app/views/browse/deployment-config.html:358
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:284
 #: app/views/browse/replica-set.html:93
 #: app/views/create/fromimage.html:234
@@ -252,7 +342,26 @@ msgstr ""
 msgid "A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:216
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:217
+=======
+#: app/views/browse/deployment-config.html:364
+#: app/views/browse/deployment.html:284
+#: app/views/create/fromimage.html:234
+#: app/views/create/fromimage.html:291
+#: app/views/directives/deploy-image.html:167
+#: app/views/directives/edit-lifecycle-hook.html:59
+#: app/views/edit/build-config.html:438
+#: app/views/edit/deployment-config.html:366
+#: app/views/edit/deployment-config.html:80
+msgid "A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:223
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "A valid label name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores and dashes."
 msgstr ""
 
@@ -272,10 +381,13 @@ msgstr ""
 msgid "A value for replicas is required."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:62
 msgid "Abort"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/lifecycle-hook.html:17
 msgid "Abort deployment on failure"
 msgstr ""
@@ -293,7 +405,15 @@ msgstr ""
 msgid "About {{aboutTitle}}"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:96
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:97
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:100
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Access Mode"
 msgstr ""
 
@@ -346,6 +466,7 @@ msgstr ""
 #: app/views/overview/_list-row-actions.html:61
 #: app/views/overview/_list-row-actions.html:9
 #: app/views/overview/_service-instance-row.html:55
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:91
 msgid "Actions"
 msgstr ""
@@ -354,11 +475,22 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+=======
+#: app/views/projects.html:96
+msgid "Actions"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/_pod-details.html:50
 msgid "Active Deadline:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/directives/nav.js:169
+=======
+#: app/scripts/directives/nav.js:160
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+>>>>>>> Init translation.
 #: app/views/add-config-volume.html:199
 #: app/views/attach-pvc.html:215
 #: app/views/directives/_edit-command.html:56
@@ -376,6 +508,23 @@ msgid "Add Another Role"
 msgstr ""
 
 #: app/views/directives/osc-secrets.html:43
+=======
+#: app/views/add-config-volume.html:200
+#: app/views/attach-pvc.html:215
+#: app/views/directives/_edit-command.html:56
+#: app/views/directives/_edit-command.html:77
+#: app/views/edit/build-config.html:507
+#: app/views/edit/build-config.html:508
+#: app/views/edit/build-config.html:512
+msgid "Add"
+msgstr ""
+
+#: app/views/membership.html:75
+msgid "Add Another Role"
+msgstr ""
+
+#: app/views/directives/osc-secrets.html:46
+>>>>>>> Init translation.
 #: app/views/directives/osc-source-secrets.html:100
 msgid "Add Another Secret"
 msgstr ""
@@ -416,8 +565,14 @@ msgstr ""
 msgid "Add Config Files to {{deploymentConfigName}}"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:471
 #: app/views/browse/deployment-config.html:354
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/build-config.html:476
+#: app/views/browse/deployment-config.html:359
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:285
 #: app/views/browse/replica-set.html:94
 #: app/views/directives/deploy-image.html:170
@@ -433,6 +588,17 @@ msgstr ""
 #: app/views/directives/deploy-image.html:171
 #: app/views/directives/edit-lifecycle-hook.html:60
 #: app/views/edit/deployment-config.html:365
+=======
+#: app/views/browse/deployment-config.html:365
+#: app/views/browse/deployment.html:285
+#: app/views/directives/deploy-image.html:170
+msgid "Add Environment Variable"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:366
+#: app/views/browse/deployment.html:286
+#: app/views/directives/deploy-image.html:171
+>>>>>>> Init translation.
 msgid "Add Environment Variable Using a Config Map or Secret"
 msgstr ""
 
@@ -440,14 +606,23 @@ msgstr ""
 msgid "Add Health Checks"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:175
+=======
+#: app/views/add-config-volume.html:176
+>>>>>>> Init translation.
 #: app/views/directives/edit-config-map.html:115
 #: app/views/directives/edit-config-map.html:46
 msgid "Add Item"
 msgstr ""
 
 #: app/views/directives/label-editor.html:36
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:217
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:218
+>>>>>>> Init translation.
 msgid "Add Label"
 msgstr ""
 
@@ -456,6 +631,17 @@ msgid "Add Liveness Probe"
 msgstr ""
 
 #: app/views/edit/health-checks.html:29
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:224
+msgid "Add Label"
+msgstr ""
+
+#: app/views/edit/health-checks.html:49
+msgid "Add Liveness Probe"
+msgstr ""
+
+#: app/views/edit/health-checks.html:32
+>>>>>>> Init translation.
 msgid "Add Readiness Probe"
 msgstr ""
 
@@ -483,7 +669,11 @@ msgstr ""
 msgid "Add Storage to {{deploymentConfigName}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:488
+=======
+#: app/views/edit/build-config.html:489
+>>>>>>> Init translation.
 msgid "Add Webhook"
 msgstr ""
 
@@ -495,22 +685,37 @@ msgstr ""
 msgid "Add argument"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/edit/build-config.html:217
 msgid "Add image source path"
 msgstr ""
 
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+>>>>>>> Init translation.
 #: app/views/add-config-volume.html:117
 msgid "Add only certain keys or use paths that are different than the key names."
 msgstr ""
 
 #: app/views/add-config-volume.html:193
+=======
+#: app/views/add-config-volume.html:118
+msgid "Add only certain keys or use paths that are different than the key names."
+msgstr ""
+
+#: app/views/add-config-volume.html:194
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:204
 msgid "Add the volume to the selected containers."
 msgstr ""
 
 #: app/scripts/controllers/create.js:36
 #: app/scripts/controllers/create/browseCategory.js:69
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/create/createFromImage.js:55
+=======
+#: app/scripts/controllers/create/createFromImage.js:54
+>>>>>>> Init translation.
 #: app/scripts/controllers/create/nextSteps.js:44
 #: app/scripts/controllers/newfromtemplate.js:44
 #: app/views/directives/header/project-header.html:30
@@ -519,6 +724,7 @@ msgstr ""
 msgid "Add to Project"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:646
 msgid "Add to command"
 msgstr ""
@@ -528,6 +734,17 @@ msgid "Add values from a config map or secret as volume. This will make the data
 msgstr ""
 
 #: app/views/directives/edit-lifecycle-hook.html:131
+=======
+#: app/views/edit/build-config.html:649
+msgid "Add to command"
+msgstr ""
+
+#: app/views/add-config-volume.html:36
+msgid "Add values from a config map or secret as volume. This will make the data available as files for {{kind | humanizeKind}} {{name}}."
+msgstr ""
+
+#: app/views/directives/edit-lifecycle-hook.html:132
+>>>>>>> Init translation.
 msgid "Add {{type | upperFirst}} Lifecycle Hook"
 msgstr ""
 
@@ -535,6 +752,7 @@ msgstr ""
 msgid "Admission status unknown for router '{{ingress.routerName}}'"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/filters/resources.js:1165
 msgid "Affects pods that do not have an active deadline. These pods usually include your applications."
 msgstr ""
@@ -551,6 +769,8 @@ msgstr ""
 msgid "Affects pods that have at least one resource limit set. These pods do not have a best effort quality of service."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/command-line.html:52
 msgid "After you login to your account you will get a list of projects that you can switch between:"
 msgstr ""
@@ -561,10 +781,13 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/monitoring.js:38
 msgid "All"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/catalog/catalog.html:48
 #: app/views/catalog/category-content.html:46
 msgid "All content is hidden by the current filter."
@@ -575,18 +798,25 @@ msgstr ""
 msgid "All events hidden by filter."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/processTemplate.js:131
 msgid "All items in template {{templateDisplayName}} were created successfully."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/overview.html:274
 msgid "All pipelines are filtered."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/directives/deployImage.js:276
 msgid "All resources for image {{name}} were created successfully."
 msgstr ""
 
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+>>>>>>> Init translation.
 #: app/scripts/directives/oscRouting.js:64
 msgid "Allow"
 msgstr ""
@@ -595,6 +825,8 @@ msgstr ""
 msgid "Alternate Services"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/osc-routing-service.html:16
 msgid "Alternate service for route traffic."
 msgstr ""
@@ -607,6 +839,7 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/util/error.js:33
 msgid "An error has occurred"
 msgstr ""
@@ -615,14 +848,19 @@ msgstr ""
 msgid "An error occurred"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/bind-service/delete-binding-result.html:28
 msgid "An error occurred deleting the binding."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/overview.js:399
 msgid "An error occurred getting metrics."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/deployment-metrics.html:44
 #: app/views/directives/pod-metrics.html:44
 msgid "An error occurred getting metrics<span ng-if=\"options.selectedContainer.name\"> for container {{options.selectedContainer.name}}</span><span ng-if=\"metricsURL\"> from <a ng-href=\"{{metricsURL}}\">{{metricsURL}}</a></span>."
@@ -636,6 +874,7 @@ msgstr ""
 msgid "An error occurred starting the debug pod."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/edit/project.js:71
 msgid "An error occurred while updating the project"
 msgstr ""
@@ -645,6 +884,13 @@ msgid "An image that can carry out the deployment."
 msgstr ""
 
 #: app/scripts/controllers/overview.js:155
+=======
+#: app/views/edit/deployment-config.html:68
+msgid "An image that can carry out the deployment."
+msgstr ""
+
+#: app/scripts/controllers/overview.js:153
+>>>>>>> Init translation.
 #: app/views/overview.html:120
 msgid "Application"
 msgstr ""
@@ -653,7 +899,15 @@ msgstr ""
 msgid "Application created."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:213
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:211
+=======
+#: app/scripts/constants.js:155
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Applications"
 msgstr ""
 
@@ -669,6 +923,7 @@ msgstr ""
 msgid "Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/membership.js:43
 msgid "Are you sure you want to remove <strong><%- roleName %></strong> from <strong><%- subjectName %></strong> (you)?"
 msgstr ""
@@ -677,11 +932,17 @@ msgstr ""
 msgid "Are you sure you want to remove <strong><%- roleName %></strong> from the <%- kindName %> <strong><%- subjectName %></strong>?"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/modals/confirmScale.html:4
 msgid "Are you sure you want to scale <strong>{{resource | displayName}}</strong> to 0 replicas? This will stop all pods for the {{type}}."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:653
+=======
+#: app/views/edit/build-config.html:656
+>>>>>>> Init translation.
 msgid "Arguments"
 msgstr ""
 
@@ -693,16 +954,29 @@ msgstr ""
 msgid "Autodeploy when"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:518
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:516
+=======
+#: app/scripts/constants.js:420
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Automate the build, test, and deployment of your application with each new code revision."
 msgstr ""
 
 #: app/views/create/fromimage.html:209
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:531
+=======
+#: app/views/edit/build-config.html:532
+>>>>>>> Init translation.
 msgid "Automatically build a new image when the builder image changes"
 msgstr ""
 
 #: app/views/create/fromimage.html:211
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:535
 msgid "Automatically building a new image when the builder image changes allows your code to always run on the latest updates."
 msgstr ""
@@ -712,6 +986,17 @@ msgid "Automatically start a new deployment when the deployment configuration ch
 msgstr ""
 
 #: app/views/edit/deployment-config.html:302
+=======
+#: app/views/edit/build-config.html:536
+msgid "Automatically building a new image when the builder image changes allows your code to always run on the latest updates."
+msgstr ""
+
+#: app/views/edit/deployment-config.html:327
+msgid "Automatically start a new deployment when the deployment configuration changes"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:305
+>>>>>>> Init translation.
 msgid "Automatically start a new deployment when the image changes"
 msgstr ""
 
@@ -741,6 +1026,7 @@ msgstr ""
 msgid "Autoscaling is not enabled. There are no autoscalers for this deployment config."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:352
 msgid "Autoscaling will not work without a CPU"
 msgstr ""
@@ -759,6 +1045,14 @@ msgstr ""
 
 #: app/views/pipelines.html:101
 #: app/views/pipelines.html:107
+=======
+#: app/views/create/fromimage.html:355
+msgid "Autoscaling will not work without a CPU"
+msgstr ""
+
+#: app/views/pipelines.html:102
+#: app/views/pipelines.html:108
+>>>>>>> Init translation.
 msgid "Average Duration:"
 msgstr ""
 
@@ -779,10 +1073,13 @@ msgstr ""
 msgid "Average: {{averageDurationText}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/attach-pvc.html:34
 msgid "Back to"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/catalog/category-content.html:15
 msgid "Back to catalog"
 msgstr ""
@@ -792,6 +1089,7 @@ msgid "Back to overview"
 msgstr ""
 
 #: app/views/add-config-volume.html:31
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 msgid "Back to {{kind | humanizeKind}} {{name}}"
 msgstr ""
 
@@ -799,12 +1097,21 @@ msgstr ""
 msgid "Basic Authentication"
 msgstr ""
 
+=======
+#: app/views/attach-pvc.html:34
+msgid "Back to {{kind | humanizeKind}} {{name}}"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:268
 msgid "Binary Input as File:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/editRequestLimit.js:84
 #: app/scripts/directives/oscPersistentVolumeClaim.js:46
+=======
+>>>>>>> Init translation.
 #: app/views/modals/about-compute-units-modal.html:31
 msgid "Binary Units"
 msgstr ""
@@ -822,6 +1129,7 @@ msgstr ""
 msgid "Bitbucket Webhook URL:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:52
 msgid "Bound"
 msgstr ""
@@ -829,6 +1137,11 @@ msgstr ""
 #: app/views/create.html:18
 #: app/views/directives/header/project-header.html:34
 #: app/views/directives/header/project-header.html:38
+=======
+#: app/views/create.html:18
+#: app/views/directives/header/project-header.html:34
+#: app/views/directives/header/project-header.html:40
+>>>>>>> Init translation.
 #: app/views/overview.html:20
 msgid "Browse Catalog"
 msgstr ""
@@ -856,7 +1169,11 @@ msgstr ""
 msgid "Build Secret"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:551
+=======
+#: app/views/edit/build-config.html:552
+>>>>>>> Init translation.
 msgid "Build Secrets"
 msgstr ""
 
@@ -865,7 +1182,11 @@ msgstr ""
 msgid "Build Strategy:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:82
+=======
+#: app/views/pipelines.html:83
+>>>>>>> Init translation.
 msgid "Build config <strong>{{buildConfigName}}</strong> no longer exists."
 msgstr ""
 
@@ -873,11 +1194,19 @@ msgstr ""
 msgid "Build config {{buildConfig.metadata.name}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:607
 msgid "Build hooks allow you to run commands at the end of the build to verify the image."
 msgstr ""
 
 #: app/views/_pod-template-container.html:39
+=======
+#: app/views/edit/build-config.html:610
+msgid "Build hooks allow you to run commands at the end of the build to verify the image."
+msgstr ""
+
+#: app/views/_pod-template-container.html:36
+>>>>>>> Init translation.
 msgid "Build:"
 msgstr ""
 
@@ -886,8 +1215,18 @@ msgstr ""
 msgid "Builder Image:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:261
 #: app/scripts/constants.js:267
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:259
+#: app/scripts/constants.js:265
+=======
+#: app/scripts/constants.js:203
+#: app/scripts/constants.js:209
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/builds.html:11
 #: app/views/monitoring.html:335
 #: app/views/overview/_builds.html:2
@@ -899,6 +1238,7 @@ msgstr ""
 msgid "Builds source code"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:586
 msgid "Builds triggered from this Build Configuration will run all at the same time. The order in which they will finish is not guaranteed."
 msgstr ""
@@ -912,6 +1252,21 @@ msgid "Builds triggered from this Build Configuration will run one at the time. 
 msgstr ""
 
 #: app/views/edit/build-config.html:588
+=======
+#: app/views/edit/build-config.html:588
+msgid "Builds triggered from this Build Configuration will run all at the same time. The order in which they will finish is not guaranteed."
+msgstr ""
+
+#: app/views/edit/build-config.html:587
+msgid "Builds triggered from this Build Configuration will run one at the time, in the order they have been triggered."
+msgstr ""
+
+#: app/views/edit/build-config.html:589
+msgid "Builds triggered from this Build Configuration will run one at the time. When a currently running build completes, the next build that will run is the latest build created. Other queued builds will be cancelled."
+msgstr ""
+
+#: app/views/edit/build-config.html:590
+>>>>>>> Init translation.
 msgid "Builds triggered from this Build Configuration will run using the {{updatedBuildConfig.spec.runPolicy | sentenceCase}} policy."
 msgstr ""
 
@@ -919,11 +1274,23 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:511
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:509
+>>>>>>> Init translation.
 msgid "Business Process Services"
 msgstr ""
 
 #: app/views/directives/osc-routing.html:312
+=======
+#: app/scripts/constants.js:413
+msgid "Business Process Services"
+msgstr ""
+
+#: app/views/directives/osc-routing.html:315
+>>>>>>> Init translation.
 msgid "CA Certificate"
 msgstr ""
 
@@ -935,11 +1302,15 @@ msgstr ""
 msgid "CA Certificate:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/podMetrics.js:71
+=======
+>>>>>>> Init translation.
 #: app/views/modals/about-compute-units-modal.html:13
 msgid "CPU"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:28
 msgid "CPU (Limit)"
 msgstr ""
@@ -948,6 +1319,8 @@ msgstr ""
 msgid "CPU (Request)"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/quota.html:148
 #: app/views/quota.html:56
 msgid "CPU <small>Limit</small>"
@@ -961,6 +1334,7 @@ msgid "CPU <small>Request</small>"
 msgstr ""
 
 #: app/views/modals/about-compute-units-modal.html:15
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 msgid "CPU is often measured in units called <var>millicores</var>. Each millicore is equivalent to <sup>1</sup>⁄<sub>1000</sub> of a CPU&nbsp;core."
 msgstr ""
 
@@ -969,6 +1343,16 @@ msgid "CPU metrics might not be available. In order to use horizontal pod autosc
 msgstr ""
 
 #: app/views/_pod-template-container.html:139
+=======
+msgid "CPU is often measured in units called <var>millicores</var>. Each millicore is equivalent to <sup>1</sup>&frasl;<sub>1000</sub> of a CPU&nbsp;core."
+msgstr ""
+
+#: app/views/create/fromimage.html:322
+msgid "CPU metrics might not be available. In order to use horizontal pod autoscalers, your cluster administrator must have properly configured cluster metrics."
+msgstr ""
+
+#: app/views/_pod-template-container.html:133
+>>>>>>> Init translation.
 msgid "CPU:"
 msgstr ""
 
@@ -976,7 +1360,15 @@ msgstr ""
 msgid "Can't be greater than {{limitRangeMax | usageWithUnits : type}}."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:183
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:184
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:187
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Can't be greater than {{limits.max | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -984,7 +1376,15 @@ msgstr ""
 msgid "Can't be less than {{limitRangeMin | usageWithUnits : type}}."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:178
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:179
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:182
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Can't be less than {{limits.min | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -995,7 +1395,15 @@ msgstr ""
 #: app/views/directives/create-secret.html:42
 #: app/views/directives/edit-config-map.html:38
 #: app/views/directives/osc-autoscaling.html:35
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:89
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:90
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:93
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/directives/osc-routing.html:33
 msgid "Can't be longer than {{nameValidation.maxlength}} characters."
 msgstr ""
@@ -1004,16 +1412,21 @@ msgstr ""
 msgid "Can't be negative."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:318
 #: app/scripts/controllers/deploymentConfig.js:411
 #: app/scripts/controllers/membership.js:219
 #: app/scripts/directives/fromFile.js:74
 #: app/scripts/directives/processTemplate.js:163
 #: app/views/add-config-volume.html:203
+=======
+#: app/views/add-config-volume.html:204
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:219
 #: app/views/browse/_replica-set-details.html:46
 #: app/views/create-config-map.html:29
 #: app/views/create-from-url.html:62
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create-persistent-volume-claim.html:29
 #: app/views/create-route.html:42
 #: app/views/create/fromimage.html:414
@@ -1027,6 +1440,22 @@ msgstr ""
 #: app/views/edit/config-map.html:43
 #: app/views/edit/deployment-config.html:378
 #: app/views/edit/health-checks.html:70
+=======
+#: app/views/create-persistent-volume-claim.html:30
+#: app/views/create-route.html:42
+#: app/views/create/fromimage.html:417
+#: app/views/directives/create-secret.html:321
+#: app/views/directives/deploy-image.html:189
+#: app/views/directives/from-file.html:35
+#: app/views/directives/open-shift.html:99
+#: app/views/directives/process-template.html:15
+#: app/views/directives/replicas.html:37
+#: app/views/directives/squid-form.html:86
+#: app/views/edit/autoscaler.html:68
+#: app/views/edit/build-config.html:679
+#: app/views/edit/deployment-config.html:381
+#: app/views/edit/health-checks.html:73
+>>>>>>> Init translation.
 #: app/views/edit/project.html:43
 #: app/views/edit/route.html:33
 #: app/views/edit/yaml.html:49
@@ -1037,17 +1466,25 @@ msgstr ""
 #: app/views/modals/delete-resource.html:89
 #: app/views/modals/process-or-save-template.html:23
 #: app/views/overview/_list-row-content.html:52
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/set-limits.html:60
+=======
+#: app/views/set-limits.html:63
+>>>>>>> Init translation.
 #: app/views/util/oauth.html:14
 #: app/views/util/oauth.html:22
 msgid "Cancel"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/build.html:16
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build.html:46
 msgid "Cancel Build"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/overview/listRow.js:303
 msgid "Cancel deployment {{rcName}}?"
 msgstr ""
@@ -1056,10 +1493,15 @@ msgstr ""
 msgid "Cancelled"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/directives/deployImage.js:259
 msgid "Cannot create {{kind}} \"{{name}}\"."
 msgstr ""
 
+=======
+=======
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/storage.html:50
 msgid "Capacity"
 msgstr ""
@@ -1069,12 +1511,20 @@ msgid "Capacity:"
 msgstr ""
 
 #: app/scripts/controllers/create/browseCategory.js:73
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/create/createFromImage.js:59
+=======
+#: app/scripts/controllers/create/createFromImage.js:58
+>>>>>>> Init translation.
 #: app/scripts/controllers/newfromtemplate.js:48
 msgid "Catalog"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:292
+=======
+#: app/views/directives/osc-routing.html:295
+>>>>>>> Init translation.
 msgid "Certificate"
 msgstr ""
 
@@ -1082,6 +1532,7 @@ msgstr ""
 msgid "Certificate:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:274
 msgid "Certificates"
 msgstr ""
@@ -1098,6 +1549,20 @@ msgstr ""
 msgid "Check Server Connection"
 msgstr ""
 
+=======
+#: app/views/directives/osc-routing.html:277
+msgid "Certificates"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:325
+msgid "Change Of:"
+msgstr ""
+
+#: app/views/set-limits.html:26
+msgid "Changes will only apply to new pods."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/directives/deployment-donut.html:75
 #: app/views/directives/deployment-donut.html:76
 msgid "Check events"
@@ -1125,7 +1590,11 @@ msgstr ""
 msgid "Choose a resource to list..."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:616
+=======
+#: app/views/edit/build-config.html:619
+>>>>>>> Init translation.
 msgid "Choose a type of build hook"
 msgstr ""
 
@@ -1137,8 +1606,17 @@ msgstr ""
 msgid "Claim name:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:477
 #: app/views/browse/deployment-config.html:363
+=======
+#: app/views/browse/build-config.html:482
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/deployment-config.html:368
+=======
+#: app/views/browse/deployment-config.html:374
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:294
 msgid "Clear Changes"
 msgstr ""
@@ -1149,7 +1627,11 @@ msgstr ""
 #: app/views/directives/events.html:65
 #: app/views/overview.html:113
 #: app/views/overview.html:275
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:60
+=======
+#: app/views/projects.html:65
+>>>>>>> Init translation.
 msgid "Clear Filter"
 msgstr ""
 
@@ -1197,9 +1679,15 @@ msgid "Collapse to a single line input This may strip any new lines you have ent
 msgstr ""
 
 #: app/views/directives/_edit-probe.html:48
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:49
 #: app/views/edit/build-config.html:643
 #: app/views/edit/deployment-config.html:69
+=======
+#: app/views/directives/edit-lifecycle-hook.html:50
+#: app/views/edit/build-config.html:646
+#: app/views/edit/deployment-config.html:72
+>>>>>>> Init translation.
 msgid "Command"
 msgstr ""
 
@@ -1212,11 +1700,15 @@ msgstr ""
 msgid "Command line tools"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:84
+=======
+>>>>>>> Init translation.
 #: app/views/directives/lifecycle-hook.html:25
 msgid "Command:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:55
 msgid "Complete"
 msgstr ""
@@ -1225,6 +1717,8 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/next-steps.html:5
 msgid "Completed, with errors"
 msgstr ""
@@ -1233,7 +1727,15 @@ msgstr ""
 msgid "Compute Resources"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/deployment-config.html:315
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/deployment-config.html:320
+=======
+#: app/views/browse/deployment-config.html:326
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Config"
 msgstr ""
 
@@ -1241,6 +1743,7 @@ msgstr ""
 msgid "Config Change For:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:21
 msgid "Config Map"
 msgstr ""
@@ -1249,7 +1752,14 @@ msgstr ""
 msgid "Config Map:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:312
+=======
+#: app/scripts/constants.js:310
+=======
+#: app/scripts/constants.js:254
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/config-maps.html:14
 msgid "Config Maps"
 msgstr ""
@@ -1285,7 +1795,10 @@ msgstr ""
 msgid "Config maps hold key-value pairs that can be used in pods to read application configuration."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_build-details.html:59
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:230
 #: app/views/browse/deployment-config.html:188
 #: app/views/browse/deployment.html:130
@@ -1293,7 +1806,10 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/createSecret.js:36
+=======
+>>>>>>> Init translation.
 #: app/views/directives/create-secret.html:266
 msgid "Configuration File"
 msgstr ""
@@ -1314,7 +1830,12 @@ msgstr ""
 msgid "Confirm User Change"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:534
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:532
+>>>>>>> Init translation.
 msgid "Connect with other applications and data to enhance functionality without duplication."
 msgstr ""
 
@@ -1325,6 +1846,15 @@ msgstr ""
 #: app/views/browse/pod.html:166
 #: app/views/directives/edit-lifecycle-hook.html:39
 #: app/views/directives/edit-lifecycle-hook.html:85
+=======
+#: app/scripts/constants.js:436
+msgid "Connect with other applications and data to enhance functionality without duplication."
+msgstr ""
+
+#: app/views/browse/pod.html:166
+#: app/views/directives/edit-lifecycle-hook.html:40
+#: app/views/directives/edit-lifecycle-hook.html:86
+>>>>>>> Init translation.
 msgid "Container Name"
 msgstr ""
 
@@ -1336,6 +1866,7 @@ msgstr ""
 msgid "Container health is periodically checked using readiness and liveness probes."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/health-checks.html:23
 #: app/views/set-limits.html:28
 msgid "Container {{container.name}}"
@@ -1350,6 +1881,21 @@ msgstr ""
 
 #: app/views/edit/deployment-config.html:287
 #: app/views/edit/deployment-config.html:356
+=======
+#: app/views/edit/health-checks.html:26
+#: app/views/set-limits.html:31
+msgid "Container {{container.name}}"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:345
+#: app/views/browse/deployment.html:265
+#: app/views/browse/pod.html:62
+msgid "Container {{container.name}} Environment Variables"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:290
+#: app/views/edit/deployment-config.html:359
+>>>>>>> Init translation.
 msgid "Container {{containerName}}"
 msgstr ""
 
@@ -1368,14 +1914,22 @@ msgstr ""
 #: app/views/browse/pod.html:155
 #: app/views/browse/pod.html:96
 #: app/views/directives/deployment-metrics.html:7
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/pod-metrics.html:8
+=======
+>>>>>>> Init translation.
 #: app/views/monitoring.html:123
 msgid "Container:"
 msgstr ""
 
 #: app/views/_pod-template.html:37
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:182
 #: app/views/add-config-volume.html:188
+=======
+#: app/views/add-config-volume.html:183
+#: app/views/add-config-volume.html:189
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:199
 #: app/views/overview/_list-row-expanded.html:115
 msgid "Containers"
@@ -1403,7 +1957,15 @@ msgstr ""
 msgid "Continue with deployment on failure"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:517
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:515
+=======
+#: app/scripts/constants.js:419
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Continuous Integration & Deployment"
 msgstr ""
 
@@ -1418,10 +1980,13 @@ msgstr ""
 msgid "Copy to Clipboard"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:60
 msgid "Cores"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:207
 msgid "Could not find any images for {{import.name | stripTag}}:{{import.tag}}."
 msgstr ""
@@ -1439,6 +2004,7 @@ msgid "Count"
 msgstr ""
 
 #: app/views/create-config-map.html:24
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create-persistent-volume-claim.html:24
 #: app/views/create-route.html:37
 #: app/views/create/fromimage.html:410
@@ -1454,6 +2020,18 @@ msgstr ""
 msgid "Create Anyway"
 msgstr ""
 
+=======
+#: app/views/create/fromimage.html:413
+#: app/views/directives/create-secret.html:317
+#: app/views/directives/deploy-image.html:184
+#: app/views/directives/from-file.html:28
+#: app/views/directives/open-shift.html:94
+#: app/views/directives/process-template.html:14
+#: app/views/directives/squid-form.html:81
+msgid "Create"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-actions.html:29
 #: app/views/overview/_list-row-actions.html:69
 #: app/views/overview/_service-bindings.html:11
@@ -1464,28 +2042,47 @@ msgstr ""
 
 #: app/views/add-config-volume.html:58
 #: app/views/browse/config-maps.html:11
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create-config-map.html:16
 msgid "Create Config Map"
 msgstr ""
 
 #: app/views/directives/osc-secrets.html:48
+=======
+msgid "Create Config Map"
+msgstr ""
+
+#: app/views/directives/osc-secrets.html:51
+>>>>>>> Init translation.
 #: app/views/directives/osc-source-secrets.html:105
 msgid "Create New Secret"
 msgstr ""
 
 #: app/views/create-project.html:13
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/projects.html:136
+#: app/views/projects.html:28
+>>>>>>> Init translation.
 msgid "Create Project"
 msgstr ""
 
 #: app/views/browse/routes.html:11
 #: app/views/browse/service.html:24
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create-route.html:16
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_networking.html:50
 msgid "Create Route"
 msgstr ""
 
 #: app/views/overview.html:263
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:41
+=======
+#: app/views/pipelines.html:42
+>>>>>>> Init translation.
 msgid "Create Sample Pipeline"
 msgstr ""
 
@@ -1509,6 +2106,13 @@ msgstr ""
 msgid "Create a New Project"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/projects.html:134
+msgid "Create a project for your application."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/create-persistent-volume-claim.html:18
 msgid "Create a request for an administrator-defined storage asset by specifying size and permissions for a best fit."
 msgstr ""
@@ -1533,7 +2137,10 @@ msgstr ""
 msgid "Create {{type | capitalize}} Secret"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/processTemplate.js:93
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:187
 #: app/views/browse/config-maps.html:43
 #: app/views/browse/deployment-config.html:138
@@ -1550,6 +2157,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/create/createFromImage.js:294
 msgid "Created application"
 msgstr ""
@@ -1571,6 +2179,8 @@ msgstr ""
 msgid "Creating resources in project"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/next-steps.html:4
 msgid "Creating..."
 msgstr ""
@@ -1587,6 +2197,7 @@ msgstr ""
 msgid "Current Usage:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:61
 msgid "Custom"
 msgstr ""
@@ -1595,16 +2206,39 @@ msgstr ""
 msgid "Custom certificates cannot be used with passthrough termination."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:523
+=======
+#: app/scripts/constants.js:521
+=======
+#: app/views/directives/osc-routing.html:287
+msgid "Custom certificates cannot be used with passthrough termination."
+msgstr ""
+
+#: app/scripts/constants.js:425
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Data Stores"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:54
 #: app/views/overview.html:260
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 msgid "DataMan OS Pipeline Plugin"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/projects.html:111
+=======
+#: app/views/projects.html:128
+=======
+#: app/views/pipelines.html:39
+msgid "DataMan OS Pipeline Plugin"
+msgstr ""
+
+#: app/views/projects.html:133
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "DataMan OS helps you quickly develop, host, and scale applications."
 msgstr ""
 
@@ -1620,8 +2254,11 @@ msgstr ""
 msgid "Debugging pod {{pod | debugPodSourceName}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/editRequestLimit.js:87
 #: app/scripts/directives/oscPersistentVolumeClaim.js:50
+=======
+>>>>>>> Init translation.
 #: app/views/modals/about-compute-units-modal.html:40
 msgid "Decimal Units"
 msgstr ""
@@ -1663,6 +2300,14 @@ msgstr ""
 #: app/views/modals/delete-resource.html:88
 #: app/views/other-resources.html:68
 #: app/views/overview/_service-instance-row.html:64
+<<<<<<< HEAD
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/projects.html:104
+=======
+#: app/views/projects.html:109
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Delete"
 msgstr ""
 
@@ -1672,6 +2317,17 @@ msgstr ""
 msgid "Delete Binding"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/projects.html:106
+=======
+#: app/views/projects.html:111
+>>>>>>> Init translation.
+msgid "Delete Project"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/modals/delete-resource.html:53
 msgid "Delete pod immediately without waiting for the processes to terminate gracefully"
 msgstr ""
@@ -1696,7 +2352,11 @@ msgstr ""
 
 #: app/views/create.html:30
 #: app/views/directives/header/project-header.html:35
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/header/project-header.html:39
+=======
+#: app/views/directives/header/project-header.html:41
+>>>>>>> Init translation.
 msgid "Deploy Image"
 msgstr ""
 
@@ -1704,6 +2364,7 @@ msgstr ""
 msgid "Deploy an existing image from an image stream tag or docker pull spec."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:292
 msgid "Deploy images from an image stream tag"
 msgstr ""
@@ -1718,16 +2379,25 @@ msgstr ""
 
 #: app/scripts/services/resourceAlerts.js:153
 #: app/scripts/services/resourceAlerts.js:166
+=======
+#: app/views/edit/deployment-config.html:295
+msgid "Deploy images from an image stream tag"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/deployment-config.html:114
 #: app/views/browse/deployment-config.html:136
 #: app/views/overview/_list-row-content.html:4
 msgid "Deployment"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:19
 msgid "Deployment Config"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-details.html:49
 msgid "Deployment Config:"
 msgstr ""
@@ -1761,8 +2431,17 @@ msgstr ""
 msgid "Deployment:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:219
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:217
+>>>>>>> Init translation.
 #: app/scripts/controllers/deployment.js:36
+=======
+#: app/scripts/constants.js:161
+#: app/scripts/controllers/deployment.js:35
+>>>>>>> Init translation.
 #: app/views/deployments.html:11
 #: app/views/deployments.html:117
 #: app/views/monitoring.html:147
@@ -1775,7 +2454,15 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:158
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:159
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:162
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Desired storage capacity."
 msgstr ""
 
@@ -1783,11 +2470,19 @@ msgstr ""
 msgid "Destination CA Cert:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:322
 msgid "Destination CA Certificate"
 msgstr ""
 
 #: app/views/directives/osc-routing.html:335
+=======
+#: app/views/directives/osc-routing.html:325
+msgid "Destination CA Certificate"
+msgstr ""
+
+#: app/views/directives/osc-routing.html:338
+>>>>>>> Init translation.
 msgid "Destination CA certificates are only used for re-encrypt termination."
 msgstr ""
 
@@ -1846,7 +2541,11 @@ msgstr ""
 msgid "Docker Image Repository"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/images.html:36
+=======
+#: app/views/images.html:41
+>>>>>>> Init translation.
 msgid "Docker Repo"
 msgstr ""
 
@@ -1858,10 +2557,13 @@ msgstr ""
 msgid "Dockerfile Path"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/overview.js:406
 #: app/scripts/controllers/storage.js:36
 #: app/scripts/services/resourceAlerts.js:57
 #: app/scripts/services/resourceAlerts.js:91
+=======
+>>>>>>> Init translation.
 #: app/views/browse/route.html:90
 msgid "Don't Show Me Again"
 msgstr ""
@@ -1896,7 +2598,11 @@ msgstr ""
 msgid "Each container running on a node uses compute resources like CPU and memory. You can specify how much CPU and memory a container needs to improve scheduling and performance."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:399
+=======
+#: app/views/create/fromimage.html:402
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:179
 #: app/views/directives/process-template.html:11
 msgid "Each label is applied to each created resource."
@@ -1906,7 +2612,10 @@ msgstr ""
 #: app/views/browse/config-map.html:27
 #: app/views/browse/deployment-config.html:40
 #: app/views/browse/route.html:24
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/hpa.html:5
+=======
+>>>>>>> Init translation.
 #: app/views/directives/replicas.html:10
 #: app/views/edit/yaml.html:16
 #: app/views/overview/_list-row-actions.html:24
@@ -1922,11 +2631,14 @@ msgstr ""
 msgid "Edit Build Config {{buildConfig.metadata.name}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/edit/configMap.js:32
 #: app/scripts/controllers/edit/configMap.js:60
 msgid "Edit Config Map"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/edit/config-map.html:16
 msgid "Edit Config Map {{configMap.metadata.name}}"
 msgstr ""
@@ -1955,10 +2667,25 @@ msgid "Edit Parameters"
 msgstr ""
 
 #: app/views/browse/build.html:38
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:119
 msgid "Edit Pipeline"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: app/views/projects.html:99
+=======
+#: app/views/pipelines.html:120
+msgid "Edit Pipeline"
+msgstr ""
+
+#: app/views/projects.html:104
+>>>>>>> Init translation.
+msgid "Edit Project"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/edit/project.html:13
 msgid "Edit Project {{project.metadata.name}}"
 msgstr ""
@@ -1980,10 +2707,13 @@ msgstr ""
 msgid "Edit Resource Limits"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/route.html:15
 msgid "Edit Route"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-actions.html:38
 #: app/views/browse/_replication-controller-actions.html:40
 #: app/views/browse/build-config.html:48
@@ -2024,7 +2754,15 @@ msgstr ""
 msgid "End of log"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:209
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:210
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:213
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Enter a label and value to use for your storage."
 msgstr ""
 
@@ -2036,9 +2774,19 @@ msgstr ""
 msgid "Enter the command to run inside the container. The command is considered successful if its exit code is 0. Drag and drop to reorder arguments."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:444
 #: app/views/browse/build.html:100
 #: app/views/browse/deployment-config.html:326
+=======
+#: app/views/browse/build-config.html:449
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/build.html:100
+#: app/views/browse/deployment-config.html:331
+=======
+#: app/views/browse/deployment-config.html:337
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:257
 #: app/views/browse/pod.html:60
 #: app/views/browse/replica-set.html:51
@@ -2052,10 +2800,17 @@ msgstr ""
 #: app/views/create/fromimage.html:261
 #: app/views/directives/deploy-image.html:157
 #: app/views/directives/deploy-image.html:158
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:54
 #: app/views/edit/build-config.html:428
 #: app/views/edit/deployment-config.html:352
 #: app/views/edit/deployment-config.html:73
+=======
+#: app/views/directives/edit-lifecycle-hook.html:55
+#: app/views/edit/build-config.html:428
+#: app/views/edit/deployment-config.html:355
+#: app/views/edit/deployment-config.html:76
+>>>>>>> Init translation.
 msgid "Environment Variables"
 msgstr ""
 
@@ -2080,6 +2835,7 @@ msgstr ""
 msgid "Environment variables can be edited on the <a ng-href=\"{{build | configURLForResource}}?tab=environment\">build configuration</a>."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/replica-set.html:61
 msgid "Environment variables can be edited on the <a ng-href=\"{{deployment | navigateResourceURL}}?tab=environment\">deployment</a>."
 msgstr ""
@@ -2095,23 +2851,41 @@ msgstr ""
 #: app/scripts/directives/podDonut.js:127
 #: app/scripts/directives/podDonut.js:184
 #: app/views/overview/_notification-icon.html:10
+=======
+#: app/views/directives/edit-lifecycle-hook.html:63
+msgid "Environment variables to supply to the hook pod's container."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/util/error.html:9
 msgid "Error"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/overview/_notification-icon.html:13
 msgid "Errors"
 msgstr ""
 
 #: app/views/browse/build.html:144
+<<<<<<< HEAD
 #: app/views/browse/deployment-config.html:372
+=======
+#: app/views/browse/deployment-config.html:377
+=======
+#: app/views/browse/build.html:144
+#: app/views/browse/deployment-config.html:383
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:303
 #: app/views/browse/persistent-volume-claim.html:85
 #: app/views/browse/pod.html:222
 #: app/views/browse/replica-set.html:152
 #: app/views/browse/service.html:109
 #: app/views/browse/stateful-set.html:187
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/events-badge.html:2
+=======
+>>>>>>> Init translation.
 #: app/views/directives/events-sidebar.html:6
 #: app/views/events.html:10
 msgid "Events"
@@ -2162,7 +2936,12 @@ msgstr ""
 msgid "External Traffic"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:529
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:527
+>>>>>>> Init translation.
 msgid "Facilitate communication between applications and distributed processes with a messaging server."
 msgstr ""
 
@@ -2187,10 +2966,21 @@ msgstr ""
 msgid "Failed to deploy image {{name}} to project {{project}}"
 msgstr ""
 
+=======
+#: app/scripts/constants.js:431
+msgid "Facilitate communication between applications and distributed processes with a messaging server."
+msgstr ""
+
+#: app/views/directives/edit-lifecycle-hook.html:124
+msgid "Fail the deployment if the hook fails."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/_parse-error.html:6
 msgid "Failed to process the resource."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/fromFile.js:459
 msgid "Failed to update some resources in project"
 msgstr ""
@@ -2199,6 +2989,8 @@ msgstr ""
 msgid "Failure Policy"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/lifecycle-hook.html:12
 msgid "Failure Policy:"
 msgstr ""
@@ -2212,8 +3004,13 @@ msgid "Filter"
 msgstr ""
 
 #: app/views/directives/events.html:11
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:31
 #: app/views/projects.html:35
+=======
+#: app/views/projects.html:36
+#: app/views/projects.html:40
+>>>>>>> Init translation.
 msgid "Filter by keyword"
 msgstr ""
 
@@ -2289,7 +3086,15 @@ msgstr ""
 msgid "GitLab Webhook URL:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:499
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:497
+=======
+#: app/scripts/constants.js:401
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Go"
 msgstr ""
 
@@ -2297,10 +3102,13 @@ msgstr ""
 msgid "Go to End"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/logs/_log-viewer.html:97
 msgid "Go to Top"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/next-steps.html:45
 msgid "Go to the <a href=\"\" ng-click=\"$ctrl.goToOverview()\">overview page</a> to see more details about this project. Make sure you don't already have <a href=\"project/{{$ctrl.projectName}}/browse/services\">services</a>, <a href=\"project/{{$ctrl.projectName}}/browse/builds\">build configs</a>, <a href=\"project/{{$ctrl.projectName}}/browse/deployments\">deployment configs</a>, or other resources with the same names you are trying to create. Refer to the <a target=\"_blank\" href=\"{{'new_app' | helpLink}}\">documentation for creating new applications</a> for more information."
 msgstr ""
@@ -2309,15 +3117,19 @@ msgstr ""
 msgid "Grace Period:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:41
 msgid "Group"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/edit/health-checks.html:17
 msgid "Health Checks: {{name}}"
 msgstr ""
 
 #: app/views/_container-statuses.html:20
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:404
 msgid "Hide"
 msgstr ""
@@ -2327,6 +3139,17 @@ msgid "Hide Advanced Image Options"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:275
+=======
+#: app/views/create/fromimage.html:407
+msgid "Hide"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:348
+msgid "Hide Advanced Image Options"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:278
+>>>>>>> Init translation.
 msgid "Hide Advanced Strategy Options"
 msgstr ""
 
@@ -2361,7 +3184,11 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:613
+=======
+#: app/views/edit/build-config.html:616
+>>>>>>> Init translation.
 msgid "Hook Types"
 msgstr ""
 
@@ -2392,7 +3219,11 @@ msgstr ""
 msgid "How long to wait after the container starts before checking its health."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:100
+=======
+#: app/views/edit/deployment-config.html:103
+>>>>>>> Init translation.
 msgid "How long to wait for a pod to scale up before giving up."
 msgstr ""
 
@@ -2461,6 +3292,7 @@ msgstr ""
 msgid "If you do not have any existing projects, you can create one:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:51
 msgid "If your Git repository is private, view the <a href=\"\" ng-click=\"view.advancedOptions = true\">advanced options</a> to set up authentication."
 msgstr ""
@@ -2474,6 +3306,20 @@ msgid "Ignore hook failures and continue the deployment."
 msgstr ""
 
 #: app/views/_pod-template-container.html:18
+=======
+#: app/views/_request-access.html:1
+msgid "If you need to create resources in this project, a project administrator can grant you additional access by running this command:"
+msgstr ""
+
+#: app/views/edit/build-config.html:51
+msgid "If your Git repository is private, view the <a href=\"\" ng-click=\"view.advancedOptions = true\">advanced options</a> to set up authentication."
+msgstr ""
+
+#: app/views/directives/edit-lifecycle-hook.html:125
+msgid "Ignore hook failures and continue the deployment."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/deployment-config.html:174
 #: app/views/deployments.html:103
 msgid "Image"
@@ -2487,6 +3333,7 @@ msgstr ""
 msgid "Image Configuration"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/deploy-image.html:27
 #: app/views/edit/deployment-config.html:308
 #: app/views/edit/deployment-config.html:52
@@ -2497,14 +3344,24 @@ msgstr ""
 msgid "Image Registry Credentials"
 msgstr ""
 
+=======
+#: app/views/edit/deployment-config.html:311
+#: app/views/edit/deployment-config.html:55
+msgid "Image Name"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/directives/create-secret.html:182
 msgid "Image Registry Server Address"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/createSecret.js:28
 msgid "Image Secret"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/edit/build-config.html:159
 #: app/views/edit/build-config.html:223
 msgid "Image Source From"
@@ -2529,7 +3386,11 @@ msgid "Image Stream Image"
 msgstr ""
 
 #: app/views/directives/deploy-image.html:10
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:296
+=======
+#: app/views/edit/deployment-config.html:299
+>>>>>>> Init translation.
 msgid "Image Stream Tag"
 msgstr ""
 
@@ -2537,7 +3398,11 @@ msgstr ""
 msgid "Image Streams"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:527
+=======
+#: app/views/edit/build-config.html:528
+>>>>>>> Init translation.
 msgid "Image change"
 msgstr ""
 
@@ -2554,15 +3419,28 @@ msgstr ""
 msgid "Image value set"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:282
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:280
+>>>>>>> Init translation.
 #: app/views/edit/deployment-config.html:282
+=======
+#: app/scripts/constants.js:224
+#: app/views/edit/deployment-config.html:285
+>>>>>>> Init translation.
 #: app/views/newfromtemplate.html:25
 msgid "Images"
 msgstr ""
 
 #: app/views/create.html:37
 #: app/views/directives/header/project-header.html:36
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/header/project-header.html:40
+=======
+#: app/views/directives/header/project-header.html:42
+>>>>>>> Init translation.
 msgid "Import YAML / JSON"
 msgstr ""
 
@@ -2586,7 +3464,11 @@ msgstr ""
 msgid "Input Required"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:246
+=======
+#: app/views/directives/osc-routing.html:249
+>>>>>>> Init translation.
 msgid "Insecure Traffic"
 msgstr ""
 
@@ -2594,7 +3476,15 @@ msgstr ""
 msgid "Insecure Traffic:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:533
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:531
+=======
+#: app/scripts/constants.js:435
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Integration"
 msgstr ""
 
@@ -2602,11 +3492,19 @@ msgstr ""
 msgid "Internal Traffic"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:152
 msgid "Interval"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:174
+=======
+#: app/views/edit/deployment-config.html:155
+msgid "Interval"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:177
+>>>>>>> Init translation.
 msgid "Interval can't be negative."
 msgstr ""
 
@@ -2622,6 +3520,7 @@ msgstr ""
 msgid "It is recommended you delete the autoscalers with the resource they scale."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:310
 #: app/scripts/controllers/deploymentConfig.js:403
 msgid "It will not delete the config map."
@@ -2641,7 +3540,18 @@ msgstr ""
 msgid "Java"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:468
+=======
+#: app/scripts/constants.js:466
+=======
+#: app/scripts/constants.js:323
+msgid "Java"
+msgstr ""
+
+#: app/scripts/constants.js:370
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "JavaScript"
 msgstr ""
 
@@ -2687,15 +3597,22 @@ msgstr ""
 msgid "Key is required."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:100
 msgid "Key to File:"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/route.html:175
 msgid "Key:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:124
+=======
+#: app/views/add-config-volume.html:125
+>>>>>>> Init translation.
 msgid "Keys and Paths"
 msgstr ""
 
@@ -2712,13 +3629,21 @@ msgstr ""
 msgid "Kubernetes Master:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:207
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:208
+>>>>>>> Init translation.
 msgid "Label Selector"
 msgstr ""
 
 #: app/views/browse/config-maps.html:44
 #: app/views/directives/label-editor.html:2
 #: app/views/directives/label-editor.html:3
+=======
+#: app/views/browse/config-maps.html:44
+>>>>>>> Init translation.
 #: app/views/directives/label-editor.html:42
 #: app/views/other-resources.html:43
 msgid "Labels"
@@ -2732,7 +3657,12 @@ msgstr ""
 msgid "Labels for this route."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:416
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:414
+>>>>>>> Init translation.
 msgid "Languages"
 msgstr ""
 
@@ -2748,6 +3678,12 @@ msgstr ""
 msgid "Last 4 hours"
 msgstr ""
 
+=======
+#: app/scripts/constants.js:318
+msgid "Languages"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/builds.html:44
 msgid "Last Build"
 msgstr ""
@@ -2766,6 +3702,7 @@ msgstr ""
 msgid "Last Version"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/metricsCharts.js:51
 msgid "Last day"
 msgstr ""
@@ -2778,6 +3715,8 @@ msgstr ""
 msgid "Last week"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/create/fromimage.html:220
 msgid "Launch the first build when the build configuration is created"
 msgstr ""
@@ -2786,12 +3725,64 @@ msgstr ""
 msgid "Layers"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/modals/about-compute-units-modal.html:6
 msgid "Learn More"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:51
 #: app/views/overview.html:257
+=======
+#: app/views/browse/config-maps.html:17
+#: app/views/browse/deployment-config.html:308
+#: app/views/browse/routes.html:17
+#: app/views/create/fromimage.html:319
+#: app/views/directives/create-secret.html:298
+#: app/views/directives/edit-lifecycle-hook.html:34
+#: app/views/directives/osc-autoscaling.html:125
+#: app/views/directives/osc-persistent-volume-claim.html:215
+#: app/views/directives/osc-persistent-volume-claim.html:52
+#: app/views/directives/osc-routing.html:243
+#: app/views/directives/osc-secrets.html:30
+#: app/views/directives/osc-secrets.html:34
+#: app/views/directives/osc-secrets.html:38
+#: app/views/edit/autoscaler.html:26
+#: app/views/edit/build-config.html:446
+#: app/views/edit/build-config.html:553
+#: app/views/edit/build-config.html:600
+#: app/views/edit/deployment-config.html:39
+#: app/views/edit/deployment-config.html:43
+#: app/views/edit/deployment-config.html:47
+#: app/views/edit/health-checks.html:21
+#: app/views/membership.html:21
+#: app/views/membership.html:56
+#: app/views/modals/about-compute-units-modal.html:6
+#: app/views/modals/create-secret.html:6
+#: app/views/modals/create-secret.html:7
+#: app/views/modals/create-secret.html:8
+#: app/views/pipelines.html:14
+#: app/views/pods.html:14
+#: app/views/quota.html:16
+#: app/views/secrets.html:17
+#: app/views/services.html:14
+#: app/views/set-limits.html:21
+#: app/views/storage.html:14
+msgid "Learn More"
+msgstr ""
+
+#: app/views/builds.html:13
+#: app/views/deployments.html:13
+msgid "Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>"
+msgstr ""
+
+#: app/views/create-persistent-volume-claim.html:19
+msgid "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>"
+msgstr ""
+
+#: app/views/edit/jenkinsfile-examples.html:51
+#: app/views/overview.html:257
+#: app/views/pipelines.html:36
+>>>>>>> Init translation.
 msgid "Learn more about"
 msgstr ""
 
@@ -2809,7 +3800,11 @@ msgstr ""
 
 #: app/views/_compute-resource.html:53
 #: app/views/directives/hpa.html:31
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-autoscaling.html:101
+=======
+#: app/views/directives/osc-autoscaling.html:103
+>>>>>>> Init translation.
 #: app/views/quota.html:239
 msgid "Limit"
 msgstr ""
@@ -2846,6 +3841,7 @@ msgstr ""
 msgid "List by"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:75
 msgid "List of named volumes to copy to the hook pod."
 msgstr ""
@@ -2855,6 +3851,17 @@ msgid "Liveness Probe"
 msgstr ""
 
 #: app/views/_pod-template-container.html:186
+=======
+#: app/views/directives/edit-lifecycle-hook.html:76
+msgid "List of named volumes to copy to the hook pod."
+msgstr ""
+
+#: app/views/edit/health-checks.html:44
+msgid "Liveness Probe"
+msgstr ""
+
+#: app/views/_pod-template-container.html:179
+>>>>>>> Init translation.
 msgid "Liveness Probe:"
 msgstr ""
 
@@ -2862,6 +3869,7 @@ msgstr ""
 msgid "Loading image metadata for <span class=\"word-break\">{{imageName | stripSHA}}</span>..."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/logs/_log-viewer.html:44
 #: app/views/directives/logs/_log-viewer.html:45
 msgid "Loading log"
@@ -2876,6 +3884,12 @@ msgstr ""
 #: app/scripts/controllers/buildConfig.js:47
 #: app/scripts/controllers/builds.js:18
 #: app/scripts/controllers/deploymentConfig.js:47
+=======
+#: app/index.html:56
+#: app/scripts/controllers/buildConfig.js:47
+#: app/scripts/controllers/builds.js:18
+#: app/scripts/controllers/deploymentConfig.js:46
+>>>>>>> Init translation.
 #: app/scripts/controllers/deployments.js:28
 #: app/scripts/controllers/images.js:19
 #: app/scripts/controllers/imagestream.js:27
@@ -2925,11 +3939,17 @@ msgstr ""
 #: app/views/projects.html:20
 #: app/views/quota.html:22
 #: app/views/secrets.html:27
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/set-limits.html:15
 msgid "Loading..."
 msgstr ""
 
 #: app/views/browse/build.html:135
+=======
+msgid "Loading..."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/monitoring.html:410
 msgid "Log from"
 msgstr ""
@@ -2947,7 +3967,10 @@ msgstr ""
 msgid "Logging in&hellip;"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/util/logout.js:16
+=======
+>>>>>>> Init translation.
 #: app/scripts/controllers/util/logout.js:35
 msgid "Logging out..."
 msgstr ""
@@ -2978,10 +4001,23 @@ msgstr ""
 msgid "Manage your app"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:15
 msgid "Manual"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: app/views/browse/build-config.html:437
+#: app/views/browse/deployment-config.html:303
+=======
+#: app/views/browse/build-config.html:437
+#: app/views/browse/deployment-config.html:306
+>>>>>>> Init translation.
+msgid "Manual (CLI):"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/_build-details.html:43
 msgid "Manual build"
 msgstr ""
@@ -3014,7 +4050,11 @@ msgstr ""
 msgid "Max Unavailable:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-autoscaling.html:93
+=======
+#: app/views/directives/osc-autoscaling.html:95
+>>>>>>> Init translation.
 msgid "Max pods is a required field."
 msgstr ""
 
@@ -3023,10 +4063,24 @@ msgid "Max pods must be a number."
 msgstr ""
 
 #: app/views/directives/osc-autoscaling.html:90
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 msgid "Max pods must be greater than or equal to <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:133
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:134
+=======
+msgid ""
+"Max pods must be greater than or equal to\n"
+"        <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span>\n"
+"        {{autoscaling.minReplicas || 1}."
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:137
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Max:"
 msgstr ""
 
@@ -3034,11 +4088,19 @@ msgstr ""
 msgid "Max: {{limits.max | usageWithUnits : type}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:208
 msgid "Maximum Number of Surge Pods"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:185
+=======
+#: app/views/edit/deployment-config.html:211
+msgid "Maximum Number of Surge Pods"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:188
+>>>>>>> Init translation.
 msgid "Maximum Number of Unavailable Pods"
 msgstr ""
 
@@ -3046,11 +4108,20 @@ msgstr ""
 msgid "Medium:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:303
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:301
+=======
+#: app/scripts/constants.js:245
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/membership.html:18
 msgid "Membership"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/podMetrics.js:53
 #: app/scripts/filters/util.js:185
 #: app/scripts/services/metricsCharts.js:25
@@ -3065,6 +4136,8 @@ msgstr ""
 msgid "Memory (Request)"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/quota.html:152
 #: app/views/quota.html:60
 msgid "Memory <small>Limit</small>"
@@ -3085,7 +4158,11 @@ msgstr ""
 msgid "Memory and storage are measured in binary units like <var>KiB</var>, <var>MiB</var>, <var>GiB</var>, and <var>TiB</var> or decimal units like <var>kB</var>, <var>MB</var>, <var>GB</var>, and&nbsp;<var>TB</var>."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:158
+=======
+#: app/views/_pod-template-container.html:151
+>>>>>>> Init translation.
 msgid "Memory:"
 msgstr ""
 
@@ -3103,12 +4180,23 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:528
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:526
+>>>>>>> Init translation.
 msgid "Messaging"
 msgstr ""
 
 #: app/views/browse/pod.html:73
 #: app/views/browse/replica-set.html:124
+=======
+#: app/scripts/constants.js:430
+msgid "Messaging"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/stateful-set.html:175
 #: app/views/overview/_list-row-expanded.html:124
 msgid "Metrics"
@@ -3119,6 +4207,7 @@ msgstr ""
 msgid "Metrics are not available."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/autoscaler.html:30
 msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
 msgstr ""
@@ -3128,6 +4217,13 @@ msgid "Mid"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:248
+=======
+#: app/views/edit/autoscaler.html:33
+msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
+msgstr ""
+
+#: app/views/edit/deployment-config.html:251
+>>>>>>> Init translation.
 msgid "Mid Lifecycle Hook"
 msgstr ""
 
@@ -3139,10 +4235,13 @@ msgstr ""
 msgid "Min"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-autoscaling.html:42
 msgid "Min Pods"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/hpa.html:25
 msgid "Min Pods:"
 msgstr ""
@@ -3164,7 +4263,15 @@ msgstr ""
 msgid "Min pods must be greater than or equal to 1."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:130
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:131
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:134
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Min:"
 msgstr ""
 
@@ -3181,11 +4288,27 @@ msgstr ""
 msgid "Mode:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:512
 msgid "Model, automate, and orchestrate business processes across applications, services, and data."
 msgstr ""
 
 #: app/scripts/constants.js:346
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:510
+msgid "Model, automate, and orchestrate business processes across applications, services, and data."
+msgstr ""
+
+#: app/scripts/constants.js:344
+=======
+#: app/scripts/constants.js:414
+msgid "Model, automate, and orchestrate business processes across applications, services, and data."
+msgstr ""
+
+#: app/scripts/constants.js:288
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/monitoring.html:12
 msgid "Monitoring"
 msgstr ""
@@ -3194,11 +4317,15 @@ msgstr ""
 msgid "More labels..."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/hpa.js:170
 msgid "More than one autoscaler is scaling this resource."
 msgstr ""
 
 #: app/views/directives/edit-lifecycle-hook.html:105
+=======
+#: app/views/directives/edit-lifecycle-hook.html:106
+>>>>>>> Init translation.
 msgid "More than one image tag is defined. To change image tags, use the YAML editor."
 msgstr ""
 
@@ -3215,11 +4342,24 @@ msgstr ""
 msgid "Mount path for the volume inside the container. If not specified, the volume will not be mounted automatically."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:88
 msgid "Mount path for the volume."
 msgstr ""
 
 #: app/views/add-config-volume.html:95
+=======
+#: app/views/add-config-volume.html:87
+msgid ""
+"Mount path for the volume.\n"
+"                              <span ng-if=\"!attach.pickKeys\">\n"
+"                                A file will be created in this directory for each key from the config\n"
+"                                map or secret. The file contents will be the value of the key.\n"
+"                              </span>"
+msgstr ""
+
+#: app/views/add-config-volume.html:96
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:103
 msgid "Mount path must be a valid path to a directory starting with <code>/</code>."
 msgstr ""
@@ -3228,19 +4368,33 @@ msgstr ""
 msgid "Mount the volume as read-only."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:125
 msgid "Mount:"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:201
 #: app/views/edit/deployment-config.html:224
+=======
+#: app/views/_pod-template-container.html:120
+msgid "Mount:"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:204
+#: app/views/edit/deployment-config.html:227
+>>>>>>> Init translation.
 msgid "Must be a non-negative whole number or percentage."
 msgstr ""
 
 #: app/views/_compute-resource.html:30
 #: app/views/directives/_edit-probe.html:115
 #: app/views/directives/_edit-probe.html:83
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:168
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:169
+>>>>>>> Init translation.
 #: app/views/directives/osc-routing-service.html:54
 #: app/views/edit/deployment-config.html:104
 #: app/views/edit/deployment-config.html:139
@@ -3248,7 +4402,22 @@ msgstr ""
 msgid "Must be a number."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:173
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:174
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:172
+#: app/views/directives/osc-routing-service.html:54
+#: app/views/edit/deployment-config.html:107
+#: app/views/edit/deployment-config.html:142
+#: app/views/edit/deployment-config.html:174
+msgid "Must be a number."
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:177
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Must be a positive number."
 msgstr ""
 
@@ -3258,6 +4427,7 @@ msgstr ""
 
 #: app/views/directives/_edit-probe.html:121
 #: app/views/directives/_edit-probe.html:89
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:110
 #: app/views/edit/deployment-config.html:145
 #: app/views/edit/deployment-config.html:177
@@ -3268,6 +4438,14 @@ msgstr ""
 msgid "My Project"
 msgstr ""
 
+=======
+#: app/views/edit/deployment-config.html:113
+#: app/views/edit/deployment-config.html:148
+#: app/views/edit/deployment-config.html:180
+msgid "Must be a whole number."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/projects.html:25
 msgid "My Projects"
 msgstr ""
@@ -3279,15 +4457,28 @@ msgstr ""
 #: app/views/browse/build-config.html:487
 #: app/views/browse/build.html:108
 #: app/views/browse/config-maps.html:42
+<<<<<<< HEAD
 #: app/views/browse/deployment-config.html:338
 #: app/views/browse/deployment-config.html:348
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/deployment-config.html:343
+#: app/views/browse/deployment-config.html:353
+=======
+#: app/views/browse/deployment-config.html:349
+#: app/views/browse/deployment-config.html:359
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:105
 #: app/views/browse/deployment.html:115
 #: app/views/browse/deployment.html:269
 #: app/views/browse/deployment.html:279
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/replica-set.html:112
 #: app/views/browse/replica-set.html:72
 #: app/views/browse/replica-set.html:88
+=======
+>>>>>>> Init translation.
 #: app/views/browse/stateful-sets.html:44
 #: app/views/builds.html:43
 #: app/views/create/fromimage.html:31
@@ -3295,17 +4486,27 @@ msgstr ""
 #: app/views/deployments.html:169
 #: app/views/deployments.html:197
 #: app/views/deployments.html:42
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/deploy-image.html:111
+=======
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:165
 #: app/views/directives/edit-config-map.html:5
 #: app/views/directives/events.html:42
 #: app/views/directives/label-editor.html:28
 #: app/views/directives/next-steps.html:108
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-persistent-volume-claim.html:57
 #: app/views/directives/osc-routing.html:6
 #: app/views/images.html:35
 #: app/views/membership.html:175
 #: app/views/membership.html:62
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:60
+#: app/views/directives/osc-routing.html:6
+#: app/views/images.html:40
+#: app/views/membership.html:69
+>>>>>>> Init translation.
 #: app/views/other-resources.html:41
 #: app/views/secrets.html:37
 #: app/views/services.html:37
@@ -3320,7 +4521,15 @@ msgstr ""
 #: app/views/directives/create-secret.html:39
 #: app/views/directives/edit-config-map.html:33
 #: app/views/directives/osc-autoscaling.html:28
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:79
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:80
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:83
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Name is required."
 msgstr ""
 
@@ -3346,17 +4555,28 @@ msgstr ""
 msgid "Namespace: {{ resource.metadata.namespace }}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/podMetrics.js:79
 msgid "Network"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-expanded.html:107
 #: app/views/overview/_networking.html:2
 msgid "Networking"
 msgstr ""
 
 #: app/views/browse/build-config.html:414
+<<<<<<< HEAD
 #: app/views/browse/deployment-config.html:307
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/deployment-config.html:312
+=======
+#: app/views/browse/deployment-config.html:318
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "New Image For:"
 msgstr ""
 
@@ -3368,7 +4588,11 @@ msgstr ""
 msgid "Next Steps"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/otherResources.js:162
+=======
+#: app/scripts/controllers/otherResources.js:161
+>>>>>>> Init translation.
 #: app/views/directives/pods-table.html:49
 msgid "No"
 msgstr ""
@@ -3415,7 +4639,11 @@ msgstr ""
 msgid "No deployments for <a ng-href=\"{{row.apiObject | navigateResourceURL}}\">{{row.apiObject.metadata.name}}</a>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deploymentConfig.js:200
+=======
+#: app/scripts/controllers/deploymentConfig.js:199
+>>>>>>> Init translation.
 msgid "No deployments to show"
 msgstr ""
 
@@ -3471,7 +4699,11 @@ msgid "No persistent volume claims."
 msgstr ""
 
 #: app/views/browse/build-config.html:108
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:87
+=======
+#: app/views/pipelines.html:88
+>>>>>>> Init translation.
 msgid "No pipeline builds have run for {{buildConfigName}}."
 msgstr ""
 
@@ -3480,6 +4712,10 @@ msgid "No pipeline runs."
 msgstr ""
 
 #: app/views/overview.html:255
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/pipelines.html:34
+>>>>>>> Init translation.
 msgid "No pipelines have been added to project {{projectName}}."
 msgstr ""
 
@@ -3537,6 +4773,7 @@ msgstr ""
 msgid "No tags to show"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/_edit-command.html:2
 msgid "No {{type || 'command'}} set."
 msgstr ""
@@ -3545,11 +4782,16 @@ msgstr ""
 msgid "No, don't cancel"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_pod-details.html:46
 msgid "Node:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/oscRouting.js:63
+=======
+>>>>>>> Init translation.
 #: app/views/browse/service.html:90
 #: app/views/builds.html:70
 msgid "None"
@@ -3586,10 +4828,13 @@ msgstr ""
 msgid "Open Fullscreen Terminal"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/overview.js:402
 msgid "Open Metrics URL"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/_probe.html:16
 msgid "Open socket on port {{probe.tcpSocket.port}}"
 msgstr ""
@@ -3628,7 +4873,15 @@ msgstr ""
 msgid "Other Replication Controllers"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:330
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:328
+=======
+#: app/scripts/constants.js:272
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/other-resources.html:10
 #: app/views/overview.html:133
 msgid "Other Resources"
@@ -3650,11 +4903,27 @@ msgstr ""
 msgid "Output To:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:208
 msgid "Overview"
 msgstr ""
 
 #: app/scripts/constants.js:483
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:206
+msgid "Overview"
+msgstr ""
+
+#: app/scripts/constants.js:481
+=======
+#: app/scripts/constants.js:150
+msgid "Overview"
+msgstr ""
+
+#: app/scripts/constants.js:385
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "PHP"
 msgstr ""
 
@@ -3670,7 +4939,11 @@ msgstr ""
 msgid "Parameters <span ng-repeat=\"paramName in $ctrl.parameters.generated\">{{paramName}}<span ng-if=\"!$last\">, </span></span> were generated automatically."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:267
+=======
+#: app/views/directives/osc-routing.html:270
+>>>>>>> Init translation.
 msgid "Passthrough routes can't use the insecure traffic policy <var>Allow</var>."
 msgstr ""
 
@@ -3694,9 +4967,13 @@ msgstr ""
 msgid "Password or token is required."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:144
 #: app/views/directives/_edit-probe.html:23
 #: app/views/directives/osc-routing.html:87
+=======
+#: app/views/add-config-volume.html:145
+>>>>>>> Init translation.
 msgid "Path"
 msgstr ""
 
@@ -3704,7 +4981,11 @@ msgstr ""
 msgid "Path at which to mount the secret."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:160
+=======
+#: app/views/add-config-volume.html:161
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:132
 msgid "Path must be a relative path. It cannot start with <code>/</code> or contain <code>..</code> path elements."
 msgstr ""
@@ -3722,7 +5003,10 @@ msgid "Path value will not be used. Paths cannot be set for passthrough TLS."
 msgstr ""
 
 #: app/views/_volumes.html:54
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/route.html:99
+=======
+>>>>>>> Init translation.
 msgid "Path:"
 msgstr ""
 
@@ -3730,7 +5014,11 @@ msgstr ""
 msgid "Paths is a list of source and destination paths to copy from the image. At least one pair has to be specified."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:165
+=======
+#: app/views/add-config-volume.html:166
+>>>>>>> Init translation.
 msgid "Paths must be unique."
 msgstr ""
 
@@ -3743,10 +5031,13 @@ msgstr ""
 msgid "Pause Rollouts"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/pause-rollouts-checkbox.html:9
 msgid "Pause rollouts for this {{deployment.kind | humanizeKind}}"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/pause-rollouts-checkbox.html:12
 msgid "Pausing lets you make changes without triggering a rollout. You can resume rollouts at any time."
 msgstr ""
@@ -3762,11 +5053,27 @@ msgstr ""
 msgid "Percentage of traffic sent to each service. Drag the slider to adjust the values or <a href=\"\" ng-click=\"controls.hideSlider = true\">edit weights as integers</a>."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:478
 msgid "Perl"
 msgstr ""
 
 #: app/views/directives/osc-persistent-volume-claim.html:110
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:476
+msgid "Perl"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:111
+=======
+#: app/scripts/constants.js:380
+msgid "Perl"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:114
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Permissions to the mounted volume."
 msgstr ""
 
@@ -3774,7 +5081,11 @@ msgstr ""
 msgid "Persistent Volume Claims"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:135
+=======
+#: app/views/add-config-volume.html:136
+>>>>>>> Init translation.
 msgid "Pick a key"
 msgstr ""
 
@@ -3782,18 +5093,34 @@ msgstr ""
 msgid "Pick the config source. Its data will be mounted as a volume in the container."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/overview.js:161
 #: app/views/directives/_build-pipeline-collapsed.html:4
+=======
+#: app/scripts/controllers/overview.js:159
+>>>>>>> Init translation.
 #: app/views/overview.html:288
 msgid "Pipeline"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:52
 #: app/views/overview.html:258
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 msgid "Pipeline Builds"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:275
+=======
+#: app/scripts/constants.js:273
+=======
+#: app/views/pipelines.html:37
+msgid "Pipeline Builds"
+msgstr ""
+
+#: app/scripts/constants.js:217
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-expanded.html:151
 #: app/views/overview/_pipelines.html:2
 #: app/views/pipelines.html:11
@@ -3804,10 +5131,20 @@ msgstr ""
 msgid "Please enable JavaScript to continue. If you do not wish to enable JavaScript or are unable to do so,"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:469
 #: app/views/browse/deployment-config.html:352
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/build-config.html:474
+#: app/views/browse/deployment-config.html:357
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:283
 #: app/views/browse/replica-set.html:92
+=======
+#: app/views/browse/deployment-config.html:363
+#: app/views/browse/deployment.html:283
+>>>>>>> Init translation.
 msgid "Please enter a valid key"
 msgstr ""
 
@@ -3819,23 +5156,38 @@ msgstr ""
 msgid "Please wait while you are logged in&hellip;"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/pod-donut.html:18
 msgid "Pod status:"
 msgstr ""
 
 #: app/scripts/constants.js:236
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:234
+=======
+#: app/scripts/constants.js:178
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/service.html:101
 #: app/views/browse/stateful-set.html:138
 #: app/views/pods.html:11
 msgid "Pods"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:262
 msgid "Policy for traffic on insecure schemes like HTTP."
 msgstr ""
 
 #: app/views/directives/_edit-probe.html:37
 #: app/views/directives/_edit-probe.html:53
+=======
+#: app/views/directives/osc-routing.html:265
+msgid "Policy for traffic on insecure schemes like HTTP."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:90
 msgid "Port"
 msgstr ""
@@ -3845,11 +5197,19 @@ msgstr ""
 msgid "Ports"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:106
 msgid "Ports:"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:260
+=======
+#: app/views/_pod-template-container.html:103
+msgid "Ports:"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:263
+>>>>>>> Init translation.
 msgid "Post Lifecycle Hook"
 msgstr ""
 
@@ -3859,6 +5219,7 @@ msgstr ""
 
 #: app/views/browse/_build-details.html:135
 #: app/views/browse/build-config.html:376
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:596
 msgid "Post-Commit Hooks"
 msgstr ""
@@ -3868,6 +5229,13 @@ msgid "Pre"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:236
+=======
+#: app/views/edit/build-config.html:598
+msgid "Post-Commit Hooks"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:239
+>>>>>>> Init translation.
 msgid "Pre Lifecycle Hook"
 msgstr ""
 
@@ -3875,7 +5243,11 @@ msgstr ""
 msgid "Pre hooks execute before the deployment begins."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:302
+=======
+#: app/views/directives/osc-routing.html:305
+>>>>>>> Init translation.
 msgid "Private Key"
 msgstr ""
 
@@ -3925,15 +5297,32 @@ msgstr ""
 msgid "Push To"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:488
 msgid "Python"
 msgstr ""
 
 #: app/scripts/constants.js:299
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:486
+msgid "Python"
+msgstr ""
+
+#: app/scripts/constants.js:297
+=======
+#: app/scripts/constants.js:390
+msgid "Python"
+msgstr ""
+
+#: app/scripts/constants.js:241
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/quota.html:13
 msgid "Quota"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:85
 msgid "Quota limit has been reached."
 msgstr ""
@@ -3972,6 +5361,17 @@ msgid "Readiness Probe"
 msgstr ""
 
 #: app/views/_pod-template-container.html:176
+=======
+#: app/views/quota.html:246
+msgid "Ratio"
+msgstr ""
+
+#: app/views/edit/health-checks.html:27
+msgid "Readiness Probe"
+msgstr ""
+
+#: app/views/_pod-template-container.html:169
+>>>>>>> Init translation.
 msgid "Readiness Probe:"
 msgstr ""
 
@@ -3989,24 +5389,31 @@ msgstr ""
 msgid "Reason and"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/filters/util.js:329
 msgid "Reason:"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build.html:19
 #: app/views/browse/build.html:53
 msgid "Rebuild"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/podMetrics.js:92
 #: app/scripts/services/metricsCharts.js:28
 msgid "Received"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/pods-table.html:13
 msgid "Receiving Traffic"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:105
 msgid "Recent Runs"
 msgstr ""
@@ -4015,11 +5422,22 @@ msgstr ""
 msgid "Recreate"
 msgstr ""
 
+=======
+#: app/views/pipelines.html:106
+msgid "Recent Runs"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/about.html:20
 msgid "Red Hat DataMan OS <span class=\"about-reg\">&reg;</span>"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:428
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:426
+>>>>>>> Init translation.
 msgid "Red Hat JBoss A-MQ"
 msgstr ""
 
@@ -4055,6 +5473,40 @@ msgstr ""
 msgid "Redirect"
 msgstr ""
 
+=======
+#: app/scripts/constants.js:330
+msgid "Red Hat JBoss A-MQ"
+msgstr ""
+
+#: app/scripts/constants.js:334
+msgid "Red Hat JBoss BPM Suite"
+msgstr ""
+
+#: app/scripts/constants.js:338
+msgid "Red Hat JBoss BRMS"
+msgstr ""
+
+#: app/scripts/constants.js:342
+msgid "Red Hat JBoss Data Grid"
+msgstr ""
+
+#: app/scripts/constants.js:346
+msgid "Red Hat JBoss EAP"
+msgstr ""
+
+#: app/scripts/constants.js:350
+msgid "Red Hat JBoss Fuse"
+msgstr ""
+
+#: app/scripts/constants.js:354
+msgid "Red Hat JBoss Web Server (Tomcat)"
+msgstr ""
+
+#: app/scripts/constants.js:358
+msgid "Red Hat Single Sign-On"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/command-line.html:21
 msgid "Refer to the <a target=\"_blank\" href=\"{{'get_started_cli' | helpLink}}\">Get Started with the CLI</a> documentation for instructions about downloading and installing the <code>oc</code> client tool."
 msgstr ""
@@ -4067,6 +5519,7 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:73
 msgid "Reload Environment Variables"
 msgstr ""
@@ -4074,6 +5527,8 @@ msgstr ""
 #: app/scripts/controllers/deployment.js:316
 #: app/scripts/controllers/deploymentConfig.js:409
 #: app/scripts/controllers/membership.js:217
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:10
 #: app/views/directives/edit-webhook-triggers.html:17
 #: app/views/directives/edit-webhook-triggers.html:18
@@ -4081,18 +5536,30 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:172
+=======
+#: app/views/add-config-volume.html:173
+>>>>>>> Init translation.
 #: app/views/directives/_edit-command.html:28
 #: app/views/directives/_edit-command.html:29
 #: app/views/directives/edit-config-map.html:112
 msgid "Remove Item"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/health-checks.html:54
 msgid "Remove Liveness Probe"
 msgstr ""
 
 #: app/views/edit/health-checks.html:38
+=======
+#: app/views/edit/health-checks.html:57
+msgid "Remove Liveness Probe"
+msgstr ""
+
+#: app/views/edit/health-checks.html:41
+>>>>>>> Init translation.
 msgid "Remove Readiness Probe"
 msgstr ""
 
@@ -4106,6 +5573,7 @@ msgstr ""
 msgid "Remove build secret"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:314
 #: app/scripts/controllers/deploymentConfig.js:407
 msgid "Remove volume"
@@ -4123,6 +5591,12 @@ msgstr ""
 msgid "Removing the role \"<%= roleName %>\" may completely remove your ability to see this project."
 msgstr ""
 
+=======
+#: app/views/directives/edit-lifecycle-hook.html:133
+msgid "Remove {{type | upperFirst}} Lifecycle Hook"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/modals/confirm-replace.html:20
 msgid "Replace"
 msgstr ""
@@ -4134,7 +5608,11 @@ msgstr ""
 #: app/views/browse/deployment.html:106
 #: app/views/browse/deployment.html:118
 #: app/views/browse/stateful-sets.html:45
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:325
+=======
+#: app/views/create/fromimage.html:328
+>>>>>>> Init translation.
 #: app/views/deployments.html:130
 #: app/views/deployments.html:170
 #: app/views/deployments.html:198
@@ -4149,7 +5627,11 @@ msgstr ""
 msgid "Replicas must be a whole number."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:339
+=======
+#: app/views/create/fromimage.html:342
+>>>>>>> Init translation.
 msgid "Replicas must be an integer value greater than or equal to 0."
 msgstr ""
 
@@ -4168,9 +5650,14 @@ msgid "Repository:"
 msgstr ""
 
 #: app/views/_compute-resource.html:51
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_edit-request-limit.html:18
 #: app/views/directives/hpa.html:32
 #: app/views/directives/osc-autoscaling.html:102
+=======
+#: app/views/directives/hpa.html:32
+#: app/views/directives/osc-autoscaling.html:104
+>>>>>>> Init translation.
 #: app/views/quota.html:232
 msgid "Request"
 msgstr ""
@@ -4179,7 +5666,11 @@ msgstr ""
 msgid "Requested Capacity:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:367
+=======
+#: app/views/create/fromimage.html:370
+>>>>>>> Init translation.
 msgid "Resource Limits"
 msgstr ""
 
@@ -4187,14 +5678,22 @@ msgstr ""
 msgid "Resource Limits: {{name}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/overview.js:158
+=======
+#: app/scripts/controllers/overview.js:156
+>>>>>>> Init translation.
 #: app/views/quota.html:161
 #: app/views/quota.html:216
 #: app/views/quota.html:69
 msgid "Resource Type"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:368
+=======
+#: app/views/create/fromimage.html:371
+>>>>>>> Init translation.
 msgid "Resource limits control compute resource usage by a container on a node."
 msgstr ""
 
@@ -4202,7 +5701,15 @@ msgstr ""
 msgid "Resource limits control how much <span ng-if=\"!hideCPU\">CPU and</span> memory a container will consume on a node."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:293
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:291
+=======
+#: app/scripts/constants.js:235
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Resources"
 msgstr ""
 
@@ -4222,15 +5729,22 @@ msgstr ""
 msgid "Resume Rollouts"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:63
 msgid "Retry"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/lifecycle-hook.html:18
 msgid "Retry the hook until it succeeds"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:122
+=======
+#: app/views/directives/edit-lifecycle-hook.html:123
+>>>>>>> Init translation.
 msgid "Retry the hook until it succeeds."
 msgstr ""
 
@@ -4242,7 +5756,11 @@ msgstr ""
 msgid "Revision:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:65
+=======
+#: app/views/membership.html:72
+>>>>>>> Init translation.
 msgid "Roles"
 msgstr ""
 
@@ -4250,6 +5768,7 @@ msgstr ""
 msgid "Roll Back"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:16
 msgid "Rolling"
 msgstr ""
@@ -4258,16 +5777,26 @@ msgstr ""
 msgid "Route"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_networking.html:41
 msgid "Route <a ng-href=\"{{route | navigateResourceURL}}\">{{route.metadata.name}}</a><span ng-if=\"route.spec.port.targetPort\">, target port {{route.spec.port.targetPort}}</span>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/routes.js:49
 #: app/scripts/services/routes.js:53
 msgid "Route target port is set to \""
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:250
+=======
+#: app/scripts/constants.js:248
+=======
+#: app/scripts/constants.js:192
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/routes.html:14
 #: app/views/overview/_networking.html:28
 msgid "Routes"
@@ -4298,11 +5827,23 @@ msgstr ""
 msgid "Routing is a way to make your application publicly visible. Otherwise you may only be able to access your application by its IP address, if allowed by the system administrator."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:493
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:491
+>>>>>>> Init translation.
 msgid "Ruby"
 msgstr ""
 
 #: app/views/edit/build-config.html:567
+=======
+#: app/scripts/constants.js:395
+msgid "Ruby"
+msgstr ""
+
+#: app/views/edit/build-config.html:569
+>>>>>>> Init translation.
 msgid "Run Policy"
 msgstr ""
 
@@ -4310,14 +5851,18 @@ msgstr ""
 msgid "Run Policy:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:20
 msgid "Run a specific command in a new pod"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/edit/jenkinsfile-examples.html:6
 msgid "Run an DataMan OS build and deployment:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:604
 msgid "Run build hooks after image is built"
 msgstr ""
@@ -4331,14 +5876,23 @@ msgstr ""
 msgid "Running"
 msgstr ""
 
+=======
+#: app/views/edit/build-config.html:607
+msgid "Run build hooks after image is built"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/directives/edit-lifecycle-hook.html:32
 msgid "Runs a command in a new pod using the container from the deployment template. You can add additional environment variables and volumes."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/createSecret.js:49
 msgid "SSH Key"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/create-secret.html:132
 msgid "SSH Private Key"
 msgstr ""
@@ -4347,8 +5901,14 @@ msgstr ""
 msgid "Sample repository for"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/browse/build-config.html:473
 #: app/views/browse/deployment-config.html:358
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/build-config.html:478
+#: app/views/browse/deployment-config.html:363
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:289
 #: app/views/directives/logs/_log-viewer.html:23
 #: app/views/edit/autoscaler.html:59
@@ -4356,11 +5916,25 @@ msgstr ""
 #: app/views/edit/config-map.html:38
 #: app/views/edit/deployment-config.html:375
 #: app/views/edit/health-checks.html:65
+=======
+#: app/views/browse/deployment-config.html:369
+#: app/views/browse/deployment.html:289
+#: app/views/directives/logs/_log-viewer.html:23
+#: app/views/edit/autoscaler.html:62
+#: app/views/edit/build-config.html:673
+#: app/views/edit/config-map.html:38
+#: app/views/edit/deployment-config.html:378
+#: app/views/edit/health-checks.html:68
+>>>>>>> Init translation.
 #: app/views/edit/project.html:38
 #: app/views/edit/route.html:28
 #: app/views/edit/yaml.html:45
 #: app/views/modals/confirm-save-log.html:14
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/set-limits.html:55
+=======
+#: app/views/set-limits.html:58
+>>>>>>> Init translation.
 msgid "Save"
 msgstr ""
 
@@ -4409,13 +5983,20 @@ msgstr ""
 msgid "Scopes:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:626
+=======
+#: app/views/edit/build-config.html:629
+>>>>>>> Init translation.
 msgid "Script"
 msgstr ""
 
 #: app/views/directives/bind-service/delete-binding-result.html:13
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/create-secret.html:7
 #: app/views/directives/osc-secrets.html:6
+=======
+>>>>>>> Init translation.
 msgid "Secret"
 msgstr ""
 
@@ -4427,11 +6008,19 @@ msgstr ""
 msgid "Secret Type"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-secrets.html:32
 msgid "Secret for authentication when pulling images from a secured registry."
 msgstr ""
 
 #: app/views/directives/osc-secrets.html:35
+=======
+#: app/views/directives/osc-secrets.html:33
+msgid "Secret for authentication when pulling images from a secured registry."
+msgstr ""
+
+#: app/views/directives/osc-secrets.html:37
+>>>>>>> Init translation.
 msgid "Secret for authentication when pushing images to a secured registry."
 msgstr ""
 
@@ -4445,12 +6034,16 @@ msgstr ""
 msgid "Secret with credentials for pulling your source code."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:20
 msgid "Secret:"
 msgstr ""
 
 #: app/scripts/constants.js:319
 #: app/views/secrets.html:14
+=======
+#: app/scripts/constants.js:261
+>>>>>>> Init translation.
 msgid "Secrets"
 msgstr ""
 
@@ -4475,8 +6068,13 @@ msgstr ""
 msgid "Select a binding to delete from <strong>{{ctrl.displayName}}</strong>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:190
 #: app/views/membership.html:193
+=======
+#: app/views/membership.html:197
+#: app/views/membership.html:200
+>>>>>>> Init translation.
 msgid "Select a project"
 msgstr ""
 
@@ -4484,6 +6082,7 @@ msgstr ""
 msgid "Select a resource"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/otherResources.js:20
 msgid "Select a resource from the list above ..."
 msgstr ""
@@ -4494,6 +6093,18 @@ msgid "Select a role"
 msgstr ""
 
 #: app/views/membership.html:217
+=======
+#: app/scripts/controllers/otherResources.js:19
+msgid "Select a resource from the list above ..."
+msgstr ""
+
+#: app/views/membership.html:140
+#: app/views/membership.html:254
+msgid "Select a role"
+msgstr ""
+
+#: app/views/membership.html:224
+>>>>>>> Init translation.
 msgid "Select a service account"
 msgstr ""
 
@@ -4502,11 +6113,19 @@ msgstr ""
 msgid "Select a storage class"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:496
 msgid "Select a webhook type"
 msgstr ""
 
 #: app/views/edit/build-config.html:493
+=======
+#: app/views/edit/build-config.html:497
+msgid "Select a webhook type"
+msgstr ""
+
+#: app/views/edit/build-config.html:494
+>>>>>>> Init translation.
 msgid "Select a webhooke type"
 msgstr ""
 
@@ -4522,10 +6141,13 @@ msgstr ""
 msgid "Select key"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:115
 msgid "Select specific keys and paths"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:71
 msgid "Select storage to use."
 msgstr ""
@@ -4534,7 +6156,11 @@ msgstr ""
 msgid "Select storage to use<span ng-if=\"!outOfClaims\"> or <a ng-href=\"project/{{project.metadata.name}}/create-pvc\">create storage</a>.</span>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:126
+=======
+#: app/views/add-config-volume.html:127
+>>>>>>> Init translation.
 msgid "Select the keys to use and the file paths where each key will be exposed."
 msgstr ""
 
@@ -4548,11 +6174,14 @@ msgstr ""
 msgid "Selectors:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/podMetrics.js:87
 #: app/scripts/services/metricsCharts.js:27
 msgid "Sent"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/route.html:133
 #: app/views/directives/osc-routing-service.html:4
 #: app/views/overview/_networking.html:6
@@ -4560,8 +6189,12 @@ msgstr ""
 msgid "Service"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:43
 #: app/views/directives/create-secret.html:304
+=======
+#: app/views/directives/create-secret.html:305
+>>>>>>> Init translation.
 msgid "Service Account"
 msgstr ""
 
@@ -4573,11 +6206,15 @@ msgstr ""
 msgid "Service Port"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:184
 msgid "Service Weights"
 msgstr ""
 
 #: app/views/membership.html:220
+=======
+#: app/views/membership.html:227
+>>>>>>> Init translation.
 msgid "Service account"
 msgstr ""
 
@@ -4609,7 +6246,15 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:243
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:241
+=======
+#: app/scripts/constants.js:185
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/services.html:11
 msgid "Services"
 msgstr ""
@@ -4631,16 +6276,27 @@ msgstr ""
 msgid "Severity"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:103
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:104
+>>>>>>> Init translation.
 msgid "Shared Access"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_container-statuses.html:19
 #: app/views/browse/route.html:168
 #: app/views/browse/route.html:178
 #: app/views/browse/route.html:188
 #: app/views/browse/route.html:198
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:403
+=======
+#: app/views/create/fromimage.html:406
+>>>>>>> Init translation.
 msgid "Show"
 msgstr ""
 
@@ -4660,10 +6316,13 @@ msgstr ""
 msgid "Show Obfuscated Secret"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:282
 msgid "Show hidden roles"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/next-steps.html:103
 msgid "Show parameter values"
 msgstr ""
@@ -4676,7 +6335,12 @@ msgstr ""
 msgid "Showing <strong>{{overview.filteredSize}}</strong> of <strong>{{overview.size}}</strong> items"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:539
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:537
+>>>>>>> Init translation.
 msgid "Single Sign-On"
 msgstr ""
 
@@ -4688,7 +6352,22 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:163
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:164
+=======
+#: app/scripts/constants.js:441
+msgid "Single Sign-On"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:129
+msgid "Size"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:167
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Size is required."
 msgstr ""
 
@@ -4697,7 +6376,11 @@ msgid "Some items already exist:"
 msgstr ""
 
 #: app/views/directives/events.html:31
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:50
+=======
+#: app/views/projects.html:55
+>>>>>>> Init translation.
 msgid "Sort by"
 msgstr ""
 
@@ -4728,11 +6411,15 @@ msgstr ""
 msgid "Source Ref:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_build-details.html:67
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:246
 msgid "Source Repo:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:68
 msgid "Source Repository:"
 msgstr ""
@@ -4741,6 +6428,12 @@ msgstr ""
 msgid "Source Secret"
 msgstr ""
 
+=======
+#: app/views/pipelines.html:69
+msgid "Source Repository:"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/_build-details.html:65
 msgid "Source Type:"
 msgstr ""
@@ -4761,9 +6454,14 @@ msgstr ""
 msgid "Source secret to mount into the builder pod at build time."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:54
 #: app/views/browse/build-config.html:271
 #: app/views/monitoring.html:389
+=======
+#: app/views/_pod-template-container.html:51
+#: app/views/browse/build-config.html:271
+>>>>>>> Init translation.
 msgid "Source:"
 msgstr ""
 
@@ -4771,10 +6469,13 @@ msgstr ""
 msgid "Specify details about how volumes are going to be mounted inside containers."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:154
 msgid "Split traffic across multiple services"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:126
 #: app/views/browse/build-config.html:17
 #: app/views/browse/build-config.html:36
@@ -4792,7 +6493,11 @@ msgstr ""
 #: app/views/overview.html:280
 #: app/views/overview/_list-row-actions.html:12
 #: app/views/overview/_list-row-empty-state.html:25
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:56
+=======
+#: app/views/pipelines.html:57
+>>>>>>> Init translation.
 msgid "Start Pipeline"
 msgstr ""
 
@@ -4804,22 +6509,36 @@ msgstr ""
 msgid "Start {{(deploymentConfig || rc) | unidleTargetReplicas : hpa}} pod{{ ((deploymentConfig || rc) | unidleTargetReplicas : hpa) > 1 ? 's' : ''}}"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_build-details.html:16
 msgid "Started:"
 msgstr ""
 
 #: app/views/_container-statuses.html:32
+=======
+>>>>>>> Init translation.
 #: app/views/_container-statuses.html:52
 msgid "State:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:229
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:227
+=======
+#: app/scripts/constants.js:171
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/stateful-sets.html:14
 #: app/views/monitoring.html:270
 msgid "Stateful Sets"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_build-details.html:4
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_pod-details.html:5
 #: app/views/browse/build-config.html:185
 #: app/views/browse/deployment-config.html:137
@@ -4839,11 +6558,16 @@ msgstr ""
 msgid "Status has not been reported on this quota usage record.  Any resources limited by this quota record can not be allocated."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/filters/util.js:334
 #: app/views/browse/_build-details.html:6
 #: app/views/browse/_pod-details.html:12
 #: app/views/browse/_replica-set-details.html:18
 #: app/views/browse/build.html:130
+=======
+#: app/views/browse/_pod-details.html:12
+#: app/views/browse/_replica-set-details.html:18
+>>>>>>> Init translation.
 #: app/views/browse/persistent-volume-claim.html:59
 #: app/views/browse/replica-set.html:145
 #: app/views/browse/stateful-set.html:89
@@ -4854,16 +6578,27 @@ msgstr ""
 msgid "Stop Following"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:338
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:336
+=======
+#: app/scripts/constants.js:280
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:45
 #: app/views/storage.html:11
 msgid "Storage"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:30
 msgid "Storage (Request)"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/osc-persistent-volume-claim.html:12
 msgid "Storage Class"
 msgstr ""
@@ -4872,16 +6607,35 @@ msgstr ""
 msgid "Storage classes are set by the administrator to define types of storage the users can select."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/storage.js:30
+=======
+>>>>>>> Init translation.
 #: app/views/directives/osc-persistent-volume-claim.html:6
 msgid "Storage quota limit has been reached. You will not be able to create any new storage."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:189
 msgid "Storage quota will be exceeded."
 msgstr ""
 
 #: app/scripts/constants.js:524
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:190
+msgid "Storage quota will be exceeded."
+msgstr ""
+
+#: app/scripts/constants.js:522
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:193
+msgid "Storage quota will be exceeded."
+msgstr ""
+
+#: app/scripts/constants.js:426
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Store and manage collections of data."
 msgstr ""
 
@@ -4914,6 +6668,7 @@ msgstr ""
 msgid "Switch to {{multiline ? 'Single-line' : 'Multiline'}} Editor"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:47
 msgid "System Group"
 msgstr ""
@@ -4922,11 +6677,17 @@ msgstr ""
 msgid "System User"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/scripts/services/membership/membership.js:77
 msgid "System groups are virtual groups automatically provisioned by the system."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:286
+=======
+#: app/views/membership.html:293
+>>>>>>> Init translation.
 msgid "System roles are hidden by default and do not typically need to be managed."
 msgstr ""
 
@@ -4939,12 +6700,19 @@ msgid "TLS Settings"
 msgstr ""
 
 #: app/views/browse/routes.html:48
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:235
+=======
+>>>>>>> Init translation.
 #: app/views/directives/traffic-table.html:11
 msgid "TLS Termination"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:275
+=======
+#: app/views/directives/osc-routing.html:278
+>>>>>>> Init translation.
 msgid "TLS certificates for edge and re-encrypt termination. If not specified, the router's default certificate is used."
 msgstr ""
 
@@ -4957,7 +6725,11 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:97
+=======
+#: app/views/directives/edit-lifecycle-hook.html:98
+>>>>>>> Init translation.
 msgid "Tag As"
 msgstr ""
 
@@ -4965,11 +6737,15 @@ msgstr ""
 msgid "Tag image as"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:29
 msgid "Tag image if the deployment succeeds"
 msgstr ""
 
 #: app/views/images.html:37
+=======
+#: app/views/images.html:42
+>>>>>>> Init translation.
 msgid "Tags"
 msgstr ""
 
@@ -4978,6 +6754,7 @@ msgid "Tags the current image as an image stream tag if the deployment succeeds.
 msgstr ""
 
 #: app/views/directives/hpa.html:33
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-autoscaling.html:103
 msgid "Target"
 msgstr ""
@@ -4991,6 +6768,21 @@ msgid "Target CPU percentage must be a whole number."
 msgstr ""
 
 #: app/views/directives/osc-autoscaling.html:130
+=======
+#: app/views/directives/osc-autoscaling.html:105
+msgid "Target"
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:129
+msgid "Target CPU percentage must be a number."
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:132
+msgid "Target CPU percentage must be a whole number."
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:135
+>>>>>>> Init translation.
 msgid "Target CPU percentage must be greater than 1."
 msgstr ""
 
@@ -5009,7 +6801,15 @@ msgstr ""
 msgid "Target port for traffic."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:506
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:504
+=======
+#: app/scripts/constants.js:408
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Technologies"
 msgstr ""
 
@@ -5023,7 +6823,10 @@ msgid "Technology preview is enabled"
 msgstr ""
 
 #: app/views/browse/_pod-details.html:73
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_replica-set-details.html:90
+=======
+>>>>>>> Init translation.
 #: app/views/browse/deployment-config.html:228
 msgid "Template"
 msgstr ""
@@ -5036,12 +6839,15 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:58
 #: app/scripts/directives/podDonut.js:131
 #: app/scripts/directives/podDonut.js:179
 msgid "Terminating"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/routes.html:92
 msgid "Termination"
 msgstr ""
@@ -5058,12 +6864,20 @@ msgstr ""
 msgid "The <a target=\"_blank\" ng-href=\"{{'welcome' | helpLink}}\">documentation</a> helps you learn about OpenShift and start exploring its features. From getting started with creating your first application to trying out more advanced build and deployment techniques, it provides guidance on setting up and managing your OpenShift environment as an application developer."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:481
 msgid "The Bitbucket source repository must be configured to use the webhook to trigger a build when source is committed."
 msgstr ""
 
 #: app/scripts/services/hpa.js:153
 #: app/views/create/fromimage.html:355
+=======
+#: app/views/edit/build-config.html:482
+msgid "The Bitbucket source repository must be configured to use the webhook to trigger a build when source is committed."
+msgstr ""
+
+#: app/views/create/fromimage.html:358
+>>>>>>> Init translation.
 msgid "The CPU limit will be automatically calculated from the container memory limit."
 msgstr ""
 
@@ -5075,6 +6889,7 @@ msgstr ""
 msgid "The DataMan OS web console requires JavaScript to provide a rich interactive experience."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:454
 msgid "The GitHub source repository must be configured to use the webhook to trigger a build when source is committed."
 msgstr ""
@@ -5104,6 +6919,33 @@ msgid "The active filters are hiding all persistent volume claims."
 msgstr ""
 
 #: app/views/edit/build-config.html:570
+=======
+#: app/views/edit/build-config.html:455
+msgid "The GitHub source repository must be configured to use the webhook to trigger a build when source is committed."
+msgstr ""
+
+#: app/views/edit/build-config.html:473
+msgid "The GitLab source repository must be configured to use the webhook to trigger a build when source is committed."
+msgstr ""
+
+#: app/views/directives/osc-routing.html:330
+msgid "The PEM format CA certificate to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, selecting it, or pasting from the clipboard."
+msgstr ""
+
+#: app/views/directives/osc-routing.html:320
+msgid "The PEM format CA certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipboard."
+msgstr ""
+
+#: app/views/directives/osc-routing.html:300
+msgid "The PEM format certificate. Upload file by dragging & dropping, selecting it, or pasting from the clipbard."
+msgstr ""
+
+#: app/views/directives/osc-routing.html:310
+msgid "The PEM format key. Upload file by dragging & dropping, selecting it, or pasting from the clipboard."
+msgstr ""
+
+#: app/views/edit/build-config.html:572
+>>>>>>> Init translation.
 msgid "The build run policy describes the order in which the builds created from the build configuration should run."
 msgstr ""
 
@@ -5115,7 +6957,11 @@ msgstr ""
 msgid "The builder image has additional environment variables defined.  Variables defined below will overwrite any from the image with the same name."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:280
+=======
+#: app/views/directives/osc-routing.html:283
+>>>>>>> Init translation.
 msgid "The certificate or key you've set will not be used."
 msgstr ""
 
@@ -5129,6 +6975,7 @@ msgid "The config map has no items."
 msgstr ""
 
 #: app/views/browse/pod.html:70
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/replica-set.html:119
 #: app/views/browse/replica-set.html:79
 msgid "The container specification has no environment variables set."
@@ -5155,6 +7002,16 @@ msgid "The contents of each file will be the value of the key."
 msgstr ""
 
 #: app/views/projects.html:59
+=======
+msgid "The container specification has no environment variables set."
+msgstr ""
+
+#: app/views/add-config-volume.html:129
+msgid "The contents of each file will be the value of the key."
+msgstr ""
+
+#: app/views/projects.html:64
+>>>>>>> Init translation.
 msgid "The current filter is hiding all projects."
 msgstr ""
 
@@ -5178,7 +7035,11 @@ msgstr ""
 msgid "The current value is \"{{parameter.value}}\", which is not empty."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:44
+=======
+#: app/views/edit/deployment-config.html:46
+>>>>>>> Init translation.
 msgid "The custom strategy allows you to specify container image that will provide your own deployment behavior."
 msgstr ""
 
@@ -5186,6 +7047,7 @@ msgstr ""
 msgid "The default limit defines the maximum amount of compute resource the container may have access to during execution if no limit is specified. If no request is made for the compute resource on the container or via a Default Request value, the container will default to request the limit."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:334
 msgid "The destination CA certificate will be removed from the route."
 msgstr ""
@@ -5195,6 +7057,17 @@ msgid "The environment variables for the deployment have been updated in the bac
 msgstr ""
 
 #: app/views/add-config-volume.html:127
+=======
+#: app/views/directives/osc-routing.html:337
+msgid "The destination CA certificate will be removed from the route."
+msgstr ""
+
+#: app/scripts/controllers/deployment.js:69
+msgid "The environment variables for the deployment have been updated in the background. Saving your changes may create a conflict or cause loss of data."
+msgstr ""
+
+#: app/views/add-config-volume.html:128
+>>>>>>> Init translation.
 msgid "The file paths are relative to the mount path."
 msgstr ""
 
@@ -5202,10 +7075,13 @@ msgstr ""
 msgid "The filter is hiding all resources."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/label-editor.html:9
 msgid "The following labels are being added automatically. If you want to override them, you can do so below."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/osc-routing.html:69
 msgid "The hostname can't be changed after the route is created."
 msgstr ""
@@ -5223,20 +7099,31 @@ msgstr ""
 msgid "The lower limit for the number of pods that can be set by the autoscaler."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:37
 #: app/views/_edit-request-limit.html:32
 msgid "The maximum amount of"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/quota.html:226
 msgid "The maximum amount of this compute resource that can be requested.  The limit must also be below the maximum value."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:220
 msgid "The maximum number of pods that can be scheduled above the original number of pods while the rolling deployment is in progress. This can be either a percentage (10%) or a whole number (1)."
 msgstr ""
 
 #: app/views/edit/deployment-config.html:197
+=======
+#: app/views/edit/deployment-config.html:223
+msgid "The maximum number of pods that can be scheduled above the original number of pods while the rolling deployment is in progress. This can be either a percentage (10%) or a whole number (1)."
+msgstr ""
+
+#: app/views/edit/deployment-config.html:200
+>>>>>>> Init translation.
 msgid "The maximum number of pods that can be unavailable during the rolling deployment. This can be either a percentage (10%) or a whole number (1)."
 msgstr ""
 
@@ -5248,11 +7135,14 @@ msgstr ""
 msgid "The maximum web console log size has been reached. Use the command-line interface or <a href=\"\" ng-click=\"restartLogs()\">reload</a> the log to see new messages."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:35
 #: app/views/_edit-request-limit.html:19
 msgid "The minimum amount of"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/quota.html:220
 msgid "The minimum amount of this compute resource that can be requested."
 msgstr ""
@@ -5261,7 +7151,11 @@ msgstr ""
 msgid "The minimum number of seconds a new pod must be ready before it is considered available."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:100
+=======
+#: app/views/add-config-volume.html:101
+>>>>>>> Init translation.
 msgid "The mount path is already used. Please choose another mount path."
 msgstr ""
 
@@ -5269,11 +7163,19 @@ msgstr ""
 msgid "The name must have at least 2 characters."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:336
 msgid "The number of instances of your image."
 msgstr ""
 
 #: app/views/directives/osc-autoscaling.html:116
+=======
+#: app/views/create/fromimage.html:339
+msgid "The number of instances of your image."
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:118
+>>>>>>> Init translation.
 msgid "The percentage of the CPU"
 msgstr ""
 
@@ -5285,7 +7187,11 @@ msgstr ""
 msgid "The recreate strategy has basic rollout behavior and supports lifecycle hooks for injecting code into the deployment process."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:41
+=======
+#: app/views/edit/deployment-config.html:42
+>>>>>>> Init translation.
 msgid "The rolling strategy will wait for pods to pass their readiness check, scale down old components and then scale up."
 msgstr ""
 
@@ -5295,7 +7201,11 @@ msgstr ""
 msgid "The route is not accepting traffic yet because it has not been admitted by a router."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/osc-routing.html:281
+=======
+#: app/views/directives/osc-routing.html:284
+>>>>>>> Init translation.
 msgid "The route is unsecured."
 msgstr ""
 
@@ -5311,7 +7221,11 @@ msgstr ""
 msgid "The upper limit for the number of pods that can be set by the autoscaler."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:183
+=======
+#: app/views/add-config-volume.html:184
+>>>>>>> Init translation.
 #: app/views/attach-pvc.html:194
 msgid "The volume will be mounted into all containers. You can <a href=\"\" ng-click=\"attach.allContainers = false\">select specific containers</a> instead."
 msgstr ""
@@ -5364,7 +7278,11 @@ msgstr ""
 msgid "There are no stateful sets in this project."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:76
+=======
+#: app/views/membership.html:83
+>>>>>>> Init translation.
 msgid "There are no {{ subjectKind.name | humanizeKind }}s with access to this project."
 msgstr ""
 
@@ -5388,16 +7306,22 @@ msgstr ""
 msgid "Things you can do"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/hpa.js:148
 #: app/scripts/services/hpa.js:156
 #: app/views/edit/autoscaler.html:37
 msgid "This"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/edit/build-config.html:225
 msgid "This Build Config contains more then one Image Source. To edit them use the YAML editor."
 msgstr ""
 
+=======
+=======
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/browse/service.html:68
 msgid "This address is only resolvable from within the cluster."
 msgstr ""
@@ -5410,10 +7334,13 @@ msgstr ""
 msgid "This deployment config is part of the pipeline"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/hpa.js:190
 msgid "This deployment is scaled by both a deployment configuration and an autoscaler."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:101
 msgid "This image declares volumes and will default to use non-persistent, host-local storage."
 msgstr ""
@@ -5422,11 +7349,14 @@ msgstr ""
 msgid "This image will be deployed in Deployment Config <strong>{{app.name || \"&lt;name&gt;\"}}</strong>."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/hpa.js:171
 #: app/scripts/services/hpa.js:191
 msgid "This is not recommended because they might compete with each other."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/create/fromimage.html:107
 #: app/views/edit/build-config.html:57
 msgid "This might not be a valid Git URL. Check that it is the correct URL to a remote Git repository."
@@ -5449,7 +7379,11 @@ msgstr ""
 msgid "This pipeline is not associated with any deployments."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:71
+=======
+#: app/views/projects.html:76
+>>>>>>> Init translation.
 msgid "This project has been marked for deletion."
 msgstr ""
 
@@ -5485,6 +7419,7 @@ msgstr ""
 msgid "This will <strong>delete all resources</strong> associated with the project {{project | displayName}} and <strong>cannot be undone</strong>.  Make sure this is something you really want to do!"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/overview/listRow.js:293
 msgid "This will attempt to stop the in-progress deployment and rollback to the last successful deployment. It may take some time to complete."
 msgstr ""
@@ -5493,6 +7428,8 @@ msgstr ""
 msgid "This will attempt to stop the in-progress deployment. It may take some time to complete."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/modals/delete-resource.html:16
 msgid "This will delete the build config and all build history."
 msgstr ""
@@ -5517,6 +7454,7 @@ msgstr ""
 msgid "This will prevent a value from being generated."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:302
 msgid "This will remove the volume from the deployment and start a new rollout."
 msgstr ""
@@ -5533,10 +7471,19 @@ msgstr ""
 msgid "This will remove the volume from the deployment."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/deployment-config.html:101
 msgid "This will stop any new rollouts or triggers from running until resumed."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/edit/autoscaler.html:40
+msgid "This {{targetKind | humanizeKind}} does not have any containers with a CPU"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/scripts/directives/events.js:119
 #: app/views/directives/events.html:38
 msgid "Time"
@@ -5547,6 +7494,7 @@ msgstr ""
 msgid "Time Range:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:167
 msgid "Time to wait between polling deployment status after running a pod."
 msgstr ""
@@ -5561,6 +7509,17 @@ msgid "Timeout"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:107
+=======
+#: app/views/edit/deployment-config.html:170
+msgid "Time to wait between polling deployment status after running a pod."
+msgstr ""
+
+#: app/views/edit/deployment-config.html:138
+msgid "Time to wait between retrying to run individual pod."
+msgstr ""
+
+#: app/views/edit/deployment-config.html:110
+>>>>>>> Init translation.
 msgid "Timeout can't be negative."
 msgstr ""
 
@@ -5593,11 +7552,19 @@ msgstr ""
 msgid "To see application logs, view the logs for one of the stateful sets's <a href=\"\" ng-click=\"viewPodsForReplicaSet(set)\">pods</a>."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:274
 msgid "To set additional parameters or edit lifecycle hooks, view <a href=\"\" ng-click=\"view.advancedStrategyOptions = true\">advanced strategy options.</a>"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:344
+=======
+#: app/views/edit/deployment-config.html:277
+msgid "To set additional parameters or edit lifecycle hooks, view <a href=\"\" ng-click=\"view.advancedStrategyOptions = true\">advanced strategy options.</a>"
+msgstr ""
+
+#: app/views/edit/deployment-config.html:347
+>>>>>>> Init translation.
 msgid "To set secrets for pulling your images from private image registries, view <a href=\"\" ng-click=\"view.advancedImageOptions = true\">advanced image options.</a>"
 msgstr ""
 
@@ -5635,8 +7602,12 @@ msgid "Triggered By:"
 msgstr ""
 
 #: app/views/browse/build-config.html:381
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/deployment-config.html:301
 #: app/views/edit/build-config.html:445
+=======
+#: app/views/browse/deployment-config.html:304
+>>>>>>> Init translation.
 msgid "Triggers"
 msgstr ""
 
@@ -5645,7 +7616,10 @@ msgid "Try It"
 msgstr ""
 
 #: app/views/builds.html:48
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/_edit-probe.html:3
+=======
+>>>>>>> Init translation.
 #: app/views/secrets.html:38
 msgid "Type"
 msgstr ""
@@ -5654,18 +7628,32 @@ msgstr ""
 msgid "Type the name of the {{typeDisplayName || (kind | humanizeKind)}} to confirm."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:15
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:35
 #: app/views/_volumes.html:49
 #: app/views/_volumes.html:58
 #: app/views/_volumes.html:70
 #: app/views/_volumes.html:81
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:92
+=======
+>>>>>>> Init translation.
 #: app/views/browse/service.html:61
 msgid "Type:"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:544
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:542
+=======
+#: app/scripts/constants.js:446
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Uncategorized"
 msgstr ""
 
@@ -5694,7 +7682,11 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:120
+=======
+#: app/views/edit/deployment-config.html:123
+>>>>>>> Init translation.
 msgid "Update Period"
 msgstr ""
 
@@ -5702,7 +7694,11 @@ msgstr ""
 msgid "Update Period:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:142
+=======
+#: app/views/edit/deployment-config.html:145
+>>>>>>> Init translation.
 msgid "Update period can't be negative."
 msgstr ""
 
@@ -5710,6 +7706,7 @@ msgstr ""
 msgid "Update the display name and description of your project. The project's unique name cannot be modified."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/images.html:38
 msgid "Updated"
 msgstr ""
@@ -5726,12 +7723,26 @@ msgstr ""
 msgid "Upload file by dragging & dropping, selecting it, or pasting from the clipboard."
 msgstr ""
 
+=======
+#: app/views/images.html:43
+msgid "Updated"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-expanded.html:135
 #: app/views/overview/_list-row-expanded.html:36
 msgid "Usage <small>Last 15 Minutes</small>"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:200
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:201
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:204
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Use"
 msgstr ""
 
@@ -5743,6 +7754,7 @@ msgstr ""
 msgid "Use a Jenkinsfile from the source repository or specify the Jenkinsfile content directly in the build configuration."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/create-secret.html:156
 msgid "Use a custom .gitconfig file"
 msgstr ""
@@ -5751,11 +7763,17 @@ msgstr ""
 msgid "Use a custom ca.crt file"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-details.html:25
 msgid "Use the following settings from {{replicaSet.metadata.name}} when rolling back:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/edit-lifecycle-hook.html:92
+=======
+#: app/views/directives/edit-lifecycle-hook.html:93
+>>>>>>> Init translation.
 msgid "Use the image for this container as the source of the tag."
 msgstr ""
 
@@ -5763,7 +7781,10 @@ msgstr ""
 msgid "Use your source or an example repository to build an application image, or add components like databases and message queues."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/quotaUsageChart.js:146
+=======
+>>>>>>> Init translation.
 #: app/views/quota.html:162
 msgid "Used"
 msgstr ""
@@ -5776,6 +7797,7 @@ msgstr ""
 msgid "Used (This Project)"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/quotaUsageChart.js:147
 msgid "Used - Other Projects"
 msgstr ""
@@ -5788,6 +7810,8 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/create-secret.html:202
 #: app/views/directives/create-secret.html:62
 msgid "Username"
@@ -5801,13 +7825,25 @@ msgstr ""
 #: app/views/browse/build-config.html:467
 #: app/views/browse/build-config.html:488
 #: app/views/browse/build.html:109
+<<<<<<< HEAD
 #: app/views/browse/deployment-config.html:339
 #: app/views/browse/deployment-config.html:349
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/browse/deployment-config.html:344
+#: app/views/browse/deployment-config.html:354
+>>>>>>> Init translation.
 #: app/views/browse/deployment.html:270
 #: app/views/browse/deployment.html:280
 #: app/views/browse/replica-set.html:113
 #: app/views/browse/replica-set.html:73
 #: app/views/browse/replica-set.html:89
+=======
+#: app/views/browse/deployment-config.html:350
+#: app/views/browse/deployment-config.html:360
+#: app/views/browse/deployment.html:270
+#: app/views/browse/deployment.html:280
+>>>>>>> Init translation.
 #: app/views/directives/deploy-image.html:168
 #: app/views/directives/edit-config-map.html:99
 #: app/views/directives/label-editor.html:31
@@ -5831,15 +7867,21 @@ msgstr ""
 msgid "View Archive"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:158
 msgid "View Deployment"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/events-sidebar.html:18
 msgid "View Details"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:175
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-content.html:49
 msgid "View Events"
 msgstr ""
@@ -5848,8 +7890,11 @@ msgstr ""
 msgid "View Full Log"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:171
 #: app/scripts/services/resourceAlerts.js:45
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_build-details.html:13
 #: app/views/browse/build-config.html:158
 #: app/views/browse/build-config.html:162
@@ -5864,6 +7909,7 @@ msgstr ""
 msgid "View Logs"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/projects.html:94
 msgid "View Membership"
 msgstr ""
@@ -5877,7 +7923,22 @@ msgstr ""
 msgid "View Quota"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:189
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:190
+=======
+#: app/views/projects.html:99
+msgid "View Membership"
+msgstr ""
+
+#: app/views/pipelines.html:117
+msgid "View Pipeline Runs"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:193
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 #: app/views/directives/osc-persistent-volume-claim.html:7
 msgid "View Quota&nbsp;"
 msgstr ""
@@ -5891,12 +7952,20 @@ msgid "View all projects"
 msgstr ""
 
 #: app/views/browse/build-config.html:110
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:88
+=======
+#: app/views/pipelines.html:89
+>>>>>>> Init translation.
 msgid "View the <a ng-href=\"{{(buildConfig | navigateResourceURL) + '?tab=configuration'}}\">Jenkinsfile</a> to see what stages will run."
 msgstr ""
 
 #: app/views/browse/build-config.html:114
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:92
+=======
+#: app/views/pipelines.html:93
+>>>>>>> Init translation.
 msgid "View the file <code>{{buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath}}</code> in the"
 msgstr ""
 
@@ -5929,11 +7998,17 @@ msgid "Volume names may only contain lower-case letters, numbers, and dashes."
 msgstr ""
 
 #: app/views/browse/_pod-details.html:81
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/_replica-set-details.html:98
 #: app/views/browse/deployment-config.html:236
 #: app/views/browse/deployment.html:207
 #: app/views/browse/stateful-set.html:129
 #: app/views/directives/edit-lifecycle-hook.html:68
+=======
+#: app/views/browse/deployment-config.html:236
+#: app/views/browse/deployment.html:207
+#: app/views/browse/stateful-set.html:129
+>>>>>>> Init translation.
 msgid "Volumes"
 msgstr ""
 
@@ -5954,13 +8029,22 @@ msgstr ""
 #: app/views/browse/_replica-set-details.html:166
 #: app/views/browse/deployment-config.html:260
 #: app/views/browse/deployment.html:228
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/autoscaler.html:29
 #: app/views/edit/autoscaler.html:36
+=======
+#: app/views/edit/autoscaler.html:32
+#: app/views/edit/autoscaler.html:39
+>>>>>>> Init translation.
 #: app/views/edit/config-map.html:26
 #: app/views/edit/config-map.html:32
 #: app/views/edit/yaml.html:21
 #: app/views/edit/yaml.html:28
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:81
+=======
+#: app/views/pipelines.html:82
+>>>>>>> Init translation.
 msgid "Warning:"
 msgstr ""
 
@@ -5972,6 +8056,7 @@ msgstr ""
 msgid "Warnings"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/fromFile.js:71
 #: app/scripts/directives/processTemplate.js:160
 msgid "We checked your application for potential problems. Please confirm you still want to create this application."
@@ -5979,6 +8064,9 @@ msgstr ""
 
 #: app/views/browse/route.html:134
 #: app/views/directives/osc-routing-service.html:38
+=======
+#: app/views/browse/route.html:134
+>>>>>>> Init translation.
 msgid "Weight"
 msgstr ""
 
@@ -5986,7 +8074,15 @@ msgstr ""
 msgid "Weight is a number between 0 and 256 that specifies the relative weight against other route services."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/projects.html:109
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/projects.html:126
+=======
+#: app/views/projects.html:131
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "Welcome to DataMan OS."
 msgstr ""
 
@@ -5998,7 +8094,15 @@ msgstr ""
 msgid "What are <span ng-if=\"type === 'cpu'\">millicores</span><span ng-if=\"type === 'memory'\">MiB</span>?"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:194
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:195
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:198
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "What are GiB?"
 msgstr ""
 
@@ -6017,7 +8121,15 @@ msgstr ""
 msgid "When you navigate away from this pod, any open terminal connections will be closed."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/constants.js:460
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/constants.js:458
+=======
+#: app/scripts/constants.js:362
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "WildFly"
 msgstr ""
 
@@ -6045,10 +8157,13 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/overview/listRow.js:305
 msgid "Yes, cancel"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/util/oauth.html:19
 msgid "You are about to change users from <code>{{overriddenUser.metadata.name}}</code> to <code>{{confirmUser.metadata.name}}</code>."
 msgstr ""
@@ -6098,10 +8213,13 @@ msgstr ""
 msgid "You do not have permission to view roles in this project."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/confirmOnExit.js:20
 msgid "You have unsaved changes. Leave this page anyway?"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/directives/next-steps.html:47
 msgid "You may want to use the <code>oc</code> command line tool to help with troubleshooting. After <a target=\"_blank\" href=\"command-line\">downloading and installing</a> it, you can log in, switch to this particular project, and try some commands :"
 msgstr ""
@@ -6110,7 +8228,11 @@ msgstr ""
 msgid "You must select at least one container."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:351
+=======
+#: app/views/create/fromimage.html:354
+>>>>>>> Init translation.
 msgid "You should configure resource limits below for autoscaling."
 msgstr ""
 
@@ -6130,6 +8252,7 @@ msgstr ""
 msgid "Your source does not appear to be a URL to a GitHub repository.  If you have a GitHub repository that you want to trigger this build from then use the following payload URL and specifying a <i>Content type</i> of <code>application/json</code>:"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/create/fromimage.html:405
 msgid "advanced options"
 msgstr ""
@@ -6138,6 +8261,12 @@ msgstr ""
 msgid "after"
 msgstr ""
 
+=======
+#: app/views/create/fromimage.html:408
+msgid "advanced options"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/persistent-volume-claim.html:70
 msgid "allocated unknown size"
 msgstr ""
@@ -6160,6 +8289,10 @@ msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:53
 #: app/views/overview.html:259
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/pipelines.html:38
+>>>>>>> Init translation.
 msgid "and the"
 msgstr ""
 
@@ -6167,15 +8300,22 @@ msgstr ""
 msgid "and {{podTemplate.spec.containers.length - 1}} other image<span ng-if=\"podTemplate.spec.containers.length > 2\">s</span>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/route.html:113
 msgid "any"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/monitoring.html:382
 msgid "authored by"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:63
+=======
+#: app/views/_pod-template-container.html:60
+>>>>>>> Init translation.
 #: app/views/browse/_build-details.html:83
 msgid "authored by {{build.spec.revision.git.author.name}}"
 msgstr ""
@@ -6184,11 +8324,15 @@ msgstr ""
 msgid "build configuration {{buildConfig.metadata.name}}."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/attach-pvc.html:22
 msgid "but none are loaded on this project."
 msgstr ""
 
 #: app/views/projects.html:77
+=======
+#: app/views/projects.html:82
+>>>>>>> Init translation.
 msgid "by"
 msgstr ""
 
@@ -6201,34 +8345,47 @@ msgstr ""
 msgid "clear the value"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:33
 msgid "complete"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_container-statuses.html:15
 msgid "completed successfully"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_volumes.html:94
 msgid "config map"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/create/fromimage.html:99
 msgid "context dir"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/editRequestLimit.js:65
 msgid "cores"
 msgstr ""
 
 #: app/views/browse/build-config.html:168
 #: app/views/browse/build.html:80
+=======
+#: app/views/browse/build-config.html:168
+>>>>>>> Init translation.
 #: app/views/browse/config-map.html:43
 #: app/views/browse/deployment-config.html:127
 #: app/views/browse/deployment-config.html:87
 #: app/views/browse/deployment.html:72
 #: app/views/browse/imagestream.html:37
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/persistent-volume-claim.html:44
+=======
+>>>>>>> Init translation.
 #: app/views/browse/replica-set.html:32
 #: app/views/browse/route.html:44
 #: app/views/browse/secret.html:40
@@ -6239,8 +8396,13 @@ msgstr ""
 #: app/views/monitoring.html:365
 #: app/views/monitoring.html:94
 #: app/views/overview/_builds.html:37
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:65
 #: app/views/projects.html:76
+=======
+#: app/views/pipelines.html:66
+#: app/views/projects.html:81
+>>>>>>> Init translation.
 msgid "created"
 msgstr ""
 
@@ -6256,10 +8418,13 @@ msgstr ""
 msgid "days"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:18
 msgid "deployment config"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-details.html:203
 msgid "deployment config or deployment."
 msgstr ""
@@ -6272,6 +8437,7 @@ msgstr ""
 msgid "deployment trigger"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/autoscaler.html:37
 msgid "does not have any containers with a CPU"
 msgstr ""
@@ -6284,6 +8450,8 @@ msgstr ""
 msgid "does not have any containers with a CPU request set."
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:83
 msgid "downward API"
 msgstr ""
@@ -6304,6 +8472,7 @@ msgstr ""
 msgid "encountered an error."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/add-config-volume.html:81
 #: app/views/attach-pvc.html:94
 msgid "example: /data"
@@ -6328,20 +8497,29 @@ msgstr ""
 msgid "example: openshift/ruby-20-centos7@603bfa418"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_builds.html:31
 msgid "failed"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:167
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:149
 msgid "failed."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/build-status.html:8
 msgid "for"
 msgstr ""
 
 #: app/views/create/fromimage.html:406
+=======
+#: app/views/create/fromimage.html:409
+>>>>>>> Init translation.
 msgid "for source, routes, builds, and deployments."
 msgstr ""
 
@@ -6357,6 +8535,7 @@ msgstr ""
 msgid "git repo"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:42
 msgid "group"
 msgstr ""
@@ -6365,6 +8544,8 @@ msgstr ""
 msgid "horizontal pod autoscaler"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:51
 msgid "host path"
 msgstr ""
@@ -6377,6 +8558,7 @@ msgstr ""
 msgid "hours"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/create/createFromImage.js:292
 #: app/scripts/controllers/create/createFromImage.js:296
 #: app/scripts/controllers/create/createFromImage.js:300
@@ -6386,13 +8568,20 @@ msgstr ""
 msgid "in project"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:152
 #: app/views/browse/deployment-config.html:120
 #: app/views/overview/_builds.html:34
 msgid "is"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:213
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:214
+>>>>>>> Init translation.
 msgid "label"
 msgstr ""
 
@@ -6422,6 +8611,26 @@ msgstr ""
 msgid "millicores"
 msgstr ""
 
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:220
+msgid "label"
+msgstr ""
+
+#: app/views/directives/osc-persistent-volume-claim.html:205
+msgid "label selectors"
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:119
+#: app/views/edit/autoscaler.html:41
+msgid "limit"
+msgstr ""
+
+#: app/views/create/fromimage.html:356
+#: app/views/edit/autoscaler.html:44
+msgid "limit."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/scripts/filters/date.js:50
 msgid "minute"
 msgstr ""
@@ -6454,12 +8663,19 @@ msgstr ""
 #: app/views/browse/_replica-set-details.html:135
 #: app/views/browse/_replica-set-details.html:151
 #: app/views/browse/build-config.html:273
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/browse/config-maps.html:59
 #: app/views/browse/deployment-config.html:237
 #: app/views/browse/deployment-config.html:295
 #: app/views/browse/deployment.html:208
 #: app/views/browse/persistent-volume-claim.html:77
 #: app/views/browse/route.html:102
+=======
+#: app/views/browse/deployment-config.html:237
+#: app/views/browse/deployment-config.html:298
+#: app/views/browse/deployment.html:208
+#: app/views/browse/persistent-volume-claim.html:77
+>>>>>>> Init translation.
 #: app/views/browse/route.html:170
 #: app/views/browse/route.html:180
 #: app/views/browse/route.html:190
@@ -6467,10 +8683,16 @@ msgstr ""
 #: app/views/browse/service.html:58
 #: app/views/browse/stateful-set.html:130
 #: app/views/directives/selector.html:1
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/traffic-table.html:60
 #: app/views/directives/traffic-table.html:72
 #: app/views/directives/traffic-table.html:74
 #: app/views/images.html:52
+=======
+#: app/views/directives/traffic-table.html:72
+#: app/views/directives/traffic-table.html:74
+#: app/views/images.html:57
+>>>>>>> Init translation.
 #: app/views/other-resources.html:55
 #: app/views/services.html:53
 #: app/views/services.html:60
@@ -6483,24 +8705,35 @@ msgstr ""
 msgid "not started"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/directives/quotaUsageChart.js:111
 msgid "of"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/overview/_list-row-empty-state.html:9
 msgid "one of the images referenced by this deployment config changes."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:25
 msgid "openshift.io/imagestreams"
 msgstr ""
 
 #: app/views/_pod-template-container.html:115
+=======
+#: app/views/_pod-template-container.html:110
+>>>>>>> Init translation.
 #: app/views/overview/_networking.html:22
 msgid "other"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/_pod-template-container.html:114
+=======
+#: app/views/_pod-template-container.html:109
+>>>>>>> Init translation.
 #: app/views/overview/_networking.html:21
 #: app/views/services.html:57
 #: app/views/services.html:64
@@ -6511,14 +8744,18 @@ msgstr ""
 msgid "password"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/controllers/deployment.js:290
 msgid "pausing"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:37
 msgid "persistent volume claim"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:22
 msgid "pull"
 msgstr ""
@@ -6534,11 +8771,16 @@ msgid "ran for"
 msgstr ""
 
 #: app/scripts/filters/resources.js:1299
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:44
 msgid "read-only"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/filters/resources.js:1299
+=======
+>>>>>>> Init translation.
 #: app/views/_volumes.html:45
 msgid "read-write"
 msgstr ""
@@ -6551,6 +8793,7 @@ msgstr ""
 msgid "replica count and selector"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/monitoring.html:238
 msgid "replica<span ng-if=\"replicaSet.status.replicas !== 1\">s</span>"
 msgstr ""
@@ -6589,6 +8832,18 @@ msgstr ""
 msgid "running for"
 msgstr ""
 
+=======
+#: app/views/directives/osc-autoscaling.html:120
+#: app/views/edit/autoscaler.html:42
+msgid "request"
+msgstr ""
+
+#: app/views/create/fromimage.html:357
+#: app/views/edit/autoscaler.html:45
+msgid "request."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-details.html:64
 msgid "running for <duration-until-now timestamp=\"replicaSet.metadata.creationTimestamp\"></duration-until-now>"
 msgstr ""
@@ -6605,10 +8860,17 @@ msgstr ""
 msgid "runs before the deployment begins"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/scripts/directives/podDonut.js:58
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/scripts/directives/podDonut.js:48
+>>>>>>> Init translation.
 msgid "scaling to"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/scripts/filters/date.js:51
 msgid "second"
 msgstr ""
@@ -6616,6 +8878,7 @@ msgstr ""
 #: app/scripts/filters/date.js:51
 #: app/views/directives/_edit-probe.html:109
 #: app/views/directives/_edit-probe.html:77
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/deployment-config.html:133
 #: app/views/edit/deployment-config.html:165
 #: app/views/edit/deployment-config.html:98
@@ -6631,14 +8894,27 @@ msgid "service account"
 msgstr ""
 
 #: app/views/edit/autoscaler.html:40
+=======
+#: app/views/edit/deployment-config.html:136
+#: app/views/edit/deployment-config.html:168
+msgid "seconds"
+msgstr ""
+
+#: app/views/edit/autoscaler.html:43
+>>>>>>> Init translation.
 msgid "set. Autoscaling will not work without a CPU"
 msgstr ""
 
 #: app/views/browse/build-config.html:115
 #: app/views/browse/build-config.html:116
 #: app/views/browse/build-config.html:97
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:93
 #: app/views/pipelines.html:94
+=======
+#: app/views/pipelines.html:94
+#: app/views/pipelines.html:95
+>>>>>>> Init translation.
 msgid "source repository"
 msgstr ""
 
@@ -6646,6 +8922,7 @@ msgstr ""
 msgid "started"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:48
 msgid "system group"
 msgstr ""
@@ -6673,6 +8950,12 @@ msgid "the deployment."
 msgstr ""
 
 #: app/views/browse/build.html:137
+=======
+#: app/views/directives/osc-autoscaling.html:121
+msgid "that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value."
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/monitoring.html:412
 msgid "to"
 msgstr ""
@@ -6681,16 +8964,32 @@ msgstr ""
 msgid "to ensure your application is running correctly."
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:202
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:203
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:206
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "to request storage."
 msgstr ""
 
 #: app/views/browse/build-config.html:117
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/pipelines.html:95
 msgid "to see what stages will run."
 msgstr ""
 
 #: app/scripts/controllers/otherResources.js:164
+=======
+#: app/views/pipelines.html:96
+msgid "to see what stages will run."
+msgstr ""
+
+#: app/scripts/controllers/otherResources.js:161
+>>>>>>> Init translation.
 msgid "to show"
 msgstr ""
 
@@ -6699,16 +8998,23 @@ msgstr ""
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/images.html:48
+=======
+#: app/views/images.html:53
+>>>>>>> Init translation.
 #: app/views/storage.html:70
 msgid "unknown"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/constants.js:31
 #: app/scripts/constants.js:40
 msgid "user"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/_config-file-params.html:3
 msgid "username"
 msgstr ""
@@ -6719,7 +9025,12 @@ msgstr ""
 
 #: app/views/create/fromimage.html:232
 #: app/views/create/fromimage.html:288
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:214
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:215
+>>>>>>> Init translation.
 msgid "value"
 msgstr ""
 
@@ -6728,6 +9039,12 @@ msgstr ""
 msgid "waiting for"
 msgstr ""
 
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:221
+msgid "value"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/browse/_replica-set-details.html:65
 msgid "waiting for <duration-until-now timestamp=\"replicaSet.metadata.creationTimestamp\"></duration-until-now>"
 msgstr ""
@@ -6752,7 +9069,10 @@ msgstr ""
 msgid "was cancelled"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/scripts/services/resourceAlerts.js:154
+=======
+>>>>>>> Init translation.
 #: app/views/browse/build-config.html:151
 msgid "was cancelled."
 msgstr ""
@@ -6773,6 +9093,7 @@ msgstr ""
 msgid "you may use the command-line tools to manage your projects and applications instead."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/directives/create-secret.html:5
 msgid "{{$select.selected | upperFirst}} Secret"
 msgstr ""
@@ -6798,6 +9119,29 @@ msgid "{{container.resources.requests.memory | usageWithUnits: 'memory'}} reques
 msgstr ""
 
 #: app/views/_pod-template-container.html:159
+=======
+#: app/views/_pod-template-container.html:137
+msgid "{{container.resources.limits.cpu | usageWithUnits: 'cpu'}} limit"
+msgstr ""
+
+#: app/views/_pod-template-container.html:155
+msgid "{{container.resources.limits.memory | usageWithUnits: 'memory'}} limit"
+msgstr ""
+
+#: app/views/_pod-template-container.html:140
+msgid "{{container.resources.requests.cpu | usageWithUnits: 'cpu'}} requested"
+msgstr ""
+
+#: app/views/_pod-template-container.html:134
+msgid "{{container.resources.requests.cpu | usageWithUnits: 'cpu'}} to {{container.resources.limits.cpu | usageWithUnits: 'cpu'}}"
+msgstr ""
+
+#: app/views/_pod-template-container.html:158
+msgid "{{container.resources.requests.memory | usageWithUnits: 'memory'}} requested"
+msgstr ""
+
+#: app/views/_pod-template-container.html:152
+>>>>>>> Init translation.
 msgid "{{container.resources.requests.memory | usageWithUnits: 'memory'}} to {{container.resources.limits.memory | usageWithUnits: 'memory'}}"
 msgstr ""
 
@@ -6827,6 +9171,13 @@ msgstr ""
 msgid "{{deploymentConfig.metadata.name}} is paused."
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/directives/osc-secrets.html:5
+msgid "{{displayType | startCase}} Secret"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/directives/events-sidebar.html:53
 #: app/views/directives/events.html:108
 msgid "{{event.count}} times in the last"
@@ -6840,7 +9191,15 @@ msgstr ""
 msgid "{{import.image.dockerImageLayers.length}} layers"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/directives/osc-persistent-volume-claim.html:126
+=======
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+#: app/views/directives/osc-persistent-volume-claim.html:127
+=======
+#: app/views/directives/osc-persistent-volume-claim.html:130
+>>>>>>> Init translation.
+>>>>>>> Init translation.
 msgid "{{limits.min | usageWithUnits : 'storage'}} min to {{limits.max | usageWithUnits : 'storage'}} max"
 msgstr ""
 
@@ -6913,10 +9272,13 @@ msgstr ""
 msgid "{{strategyParams.updatePeriodSeconds}} sec"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/membership.html:46
 msgid "{{subjectKind.name | startCase}}s"
 msgstr ""
 
+=======
+>>>>>>> Init translation.
 #: app/views/browse/_build-details.html:50
 msgid "{{trigger.message}} for {{trigger.imageChangeBuild.fromRef.name}}"
 msgstr ""
@@ -6925,6 +9287,13 @@ msgstr ""
 msgid "{{type | upperFirst}} Hook"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
+=======
+#: app/views/directives/create-secret.html:6
+msgid "{{type | upperFirst}} Secret"
+msgstr ""
+
+>>>>>>> Init translation.
 #: app/views/modals/delete-resource.html:34
 msgid "{{typeDisplayName || (kind | humanizeKind)}} to delete"
 msgstr ""
@@ -6937,7 +9306,11 @@ msgstr ""
 msgid "{{updateTemplate ? \"Update\" : \"Save\"}} template"
 msgstr ""
 
+<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
 #: app/views/edit/build-config.html:667
+=======
+#: app/views/edit/build-config.html:670
+>>>>>>> Init translation.
 msgid "{{view.advancedOptions ? 'Hide' : 'Show'}} advanced options"
 msgstr ""
 

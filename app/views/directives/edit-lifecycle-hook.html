@@ -16,8 +16,8 @@
             name="{{type}}-action-newpod"
             ng-model="action.type"
             value="execNewPod"
-            aria-describedby="action-help">
-          <translate>Run a specific command in a new pod</translate>
+            aria-describedby="action-help" translate>
+          Run a specific command in a new pod
         </label>
         <label class="radio-inline">
           <input
@@ -25,12 +25,13 @@
             name="{{type}}-action-images"
             ng-model="action.type"
             value="tagImages"
-            aria-describedby="action-help">
-          <translate>Tag image if the deployment succeeds</translate>
+            aria-describedby="action-help" translate>
+          Tag image if the deployment succeeds
         </label>
         <div  id="action-help" class="help-block">
           <span ng-if="action.type === 'execNewPod'" translate>Runs a command in a new pod using the container from the deployment template. You can add additional environment variables and volumes.</span>
           <span ng-if="action.type === 'tagImages'" translate>Tags the current image as an image stream tag if the deployment succeeds.</span>
+          <a href="{{'new_pod_exec' | helpLink}}" aria-hidden="true" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link"></i></span></a>
         </div>
       </div>
 
@@ -55,10 +56,10 @@
           <key-value-editor
             entries="hookParams.execNewPod.env"
             key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
-            key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.' | translate}}"
+            key-validator-error-tooltip="{{'A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.'|translate}}"
             value-from-selector-options="valueFromObjects"
-            add-row-with-selectors-link="Add Value from Config Map or Secret"
-            add-row-link="Add Value"></key-value-editor>
+            add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"
+            add-row-link="{{'Add Value'|translate}}"></key-value-editor>
           <div class="help-block" translate>
             Environment variables to supply to the hook pod's container.
           </div>
