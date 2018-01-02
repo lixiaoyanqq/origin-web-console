@@ -2601,7 +2601,8 @@ isPipeline: [ "$route", function(e) {
 e.current.params.isPipeline = !0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 } ]
-}
+},
+reloadOnSearch: !1
 }).when("/project/:project/edit/yaml", {
 templateUrl: "views/edit/yaml.html",
 controller: "EditYAMLController"
