@@ -14921,6 +14921,7 @@ message: "Build configuration " + e.buildConfigName + " has been deleted."
 o.get(e.buildsVersion, n.build, s, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< HEAD
 g(t), d.push(o.watchObject(e.buildsVersion, n.build, s, g)), d.push(o.watchObject(e.buildConfigsVersion, n.buildconfig, s, f));
 =======
 }, e.buildConfigDeleted = !0), e.buildConfig = t, e.buildConfigPaused = a.isPaused(e.buildConfig), m();
@@ -14953,10 +14954,38 @@ f(t), d.push(o.watchObject(e.buildsVersion, n.build, s, f)), d.push(o.watchObjec
 >>>>>>> Update build controller to use getPreferredVersion
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
+=======
+e.projectTemplates = t.by("metadata.name");
+}));
+}));
+} ]), angular.module("openshiftConsole").controller("CreateFromURLController", [ "$scope", "$routeParams", "$location", "$filter", "AuthService", "AuthorizationService", "DataService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
+a.withUser(), e.alerts = {}, e.selected = {};
+var l = function(t) {
+e.alerts.invalidImageStream = {
+type: "error",
+message: 'The requested image stream "' + t + '" could not be loaded.'
+};
+}, u = function(t) {
+e.alerts.invalidImageTag = {
+type: "error",
+message: 'The requested image stream tag "' + t + '" could not be loaded.'
+};
+}, d = function(t) {
+e.alerts.invalidTemplate = {
+type: "error",
+message: 'The requested template "' + t + '" could not be loaded.'
+};
+}, m = function() {
+try {
+return t.templateParamsMap && JSON.parse(t.templateParamsMap) || {};
+} catch (t) {
+e.alerts.invalidTemplateParams = {
+>>>>>>> Check if user can add to existing project during create from url
 type: "error",
 message: "The build details could not be loaded.",
 details: t("getErrorDetails")(n)
 };
+<<<<<<< HEAD
 }), e.toggleSecret = function() {
 e.showSecret = !0;
 }, e.cancelBuild = function() {
@@ -15009,9 +15038,24 @@ i ? (delete t.alerts.load, m(i, a)) : t.alerts.load = {
 >>>>>>> Support EnvFrom in the Env Editors
 =======
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}
+}, p = window.OPENSHIFT_CONSTANTS.CREATE_FROM_URL_WHITELIST, f = [ "namespace", "name", "imageStream", "imageTag", "sourceURI", "sourceRef", "contextDir", "template", "templateParamsMap" ], g = _.pickBy(t, function(e, t) {
+return _.includes(f, t) && _.isString(e);
+});
+g.namespace = g.namespace || "openshift";
+_.includes(p, g.namespace) ? g.imageStream && g.template ? e.alerts.invalidResource = {
+type: "error",
+message: "Image streams and templates cannot be combined."
+} : g.imageStream || g.template ? g.name && !function(e) {
+return _.size(e) < 25 && /^[a-z]([-a-z0-9]*[a-z0-9])?$/.test(e);
+}(g.name) ? function(t) {
+e.alerts.invalidImageStream = {
+>>>>>>> Check if user can add to existing project during create from url
 type: "error",
 message: "The image tag was not found in the stream."
 };
+<<<<<<< HEAD
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15030,10 +15074,42 @@ a.get(l, s, o).then(function(e) {
 t.loaded = !0, t.image = e.image, t.layers = i(t.image);
 }, function(n) {
 t.loaded = !0, t.alerts.load = {
+=======
+}(g.name) : (g.imageStream && i.get("imagestreams", g.imageStream, {
+namespace: g.namespace
+}, {
+errorNotification: !1
+}).then(function(t) {
+e.imageStream = t, i.get("imagestreamtags", t.metadata.name + ":" + g.imageTag, {
+namespace: g.namespace
+}, {
+errorNotification: !1
+}).then(function(t) {
+e.imageStreamTag = t, e.validationPassed = !0, e.resource = t, g.displayName = r("displayName")(t);
+}, function() {
+u(g.imageTag);
+});
+}, function() {
+l(g.imageStream);
+}), g.template && i.get("templates", g.template, {
+namespace: g.namespace
+}, {
+errorNotification: !1
+}).then(function(t) {
+e.template = t, m() && (e.validationPassed = !0, e.resource = t);
+}, function() {
+d(g.template);
+})) : e.alerts.resourceRequired = {
+type: "error",
+message: "An image stream or template is required."
+} : function(t) {
+e.alerts.invalidNamespace = {
+>>>>>>> Check if user can add to existing project during create from url
 type: "error",
 message: "The image details could not be loaded.",
 details: e("getErrorDetails")(n)
 };
+<<<<<<< HEAD
 });
 }, 200), p = function(e, n, r) {
 c(e, n), "DELETED" === r && (t.alerts.deleted = {
@@ -15056,6 +15132,62 @@ a.get(l, s, o).then(function(e) {
 t.loaded = !0, t.image = e.image, t.layers = i(t.image);
 }, function(n) {
 t.loaded = !0, t.alerts.load = {
+=======
+}(g.namespace), angular.extend(e, {
+createDetails: g,
+createWithProject: function(r) {
+r = r || e.selected.project.metadata.name;
+var a = t.imageStream ? s.createFromImageURL(e.imageStream, g.imageTag, r, g) : s.createFromTemplateURL(e.template, r, g);
+n.url(a);
+}
+}), e.projects = {}, e.canCreateProject = void 0, c.list().then(function(t) {
+e.loaded = !0, e.projects = r("orderByDisplayName")(t.by("metadata.name")), e.noProjects = _.isEmpty(e.projects);
+}), c.canCreate().then(function() {
+e.canCreateProject = !0;
+}, function() {
+e.canCreateProject = !1;
+}), e.forms = {}, e.canIAddToProject = !0, e.canIAddToSelectedProject = function(t) {
+var n = _.get(t, "metadata.name");
+o.getProjectRules(n).then(function() {
+e.canIAddToProject = o.canIAddToProject(n), e.forms && e.forms.selectProjectForm.selectProject.$setValidity("cannotAddToProject", e.canIAddToProject);
+});
+};
+} ]), angular.module("openshiftConsole").controller("CreateProjectController", [ "$scope", "$location", "$window", "AuthService", "Constants", function(e, t, n, r, a) {
+var o = !a.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+e.onProjectCreated = function(e) {
+o ? n.history.back() : t.path("project/" + e + "/create");
+}, r.withUser();
+} ]), angular.module("openshiftConsole").controller("EditProjectController", [ "$scope", "$routeParams", "$filter", "$location", "DataService", "ProjectsService", "Navigate", function(e, t, n, r, a, o, i) {
+e.alerts = {};
+var s = n("annotation"), c = n("annotationName");
+o.get(t.project).then(_.spread(function(a) {
+var l = function(e) {
+return {
+description: s(e, "description"),
+displayName: s(e, "displayName")
+};
+}, u = function(e, t) {
+var n = angular.copy(e);
+return n.metadata.annotations[c("description")] = t.description, n.metadata.annotations[c("displayName")] = t.displayName, n;
+};
+angular.extend(e, {
+project: a,
+editableFields: l(a),
+show: {
+editing: !1
+},
+actions: {
+canSubmit: !1
+},
+canSubmit: function(t) {
+e.actions.canSubmit = t;
+},
+update: function() {
+e.disableInputs = !0, o.update(t.project, u(a, e.editableFields)).then(function() {
+t.then ? r.path(t.then) : i.toProjectOverview(a.metadata.name);
+}, function(t) {
+e.disableInputs = !1, e.editableFields = l(a), e.alerts.update = {
+>>>>>>> Check if user can add to existing project during create from url
 type: "error",
 message: "The image details could not be loaded.",
 details: e("getErrorDetails")(n)
