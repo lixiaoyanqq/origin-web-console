@@ -11428,6 +11428,7 @@ a.unwatchAll(l);
 }));
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").controller("PodController", [ "$scope", "$filter", "$routeParams", "$timeout", "$uibModal", "Logger", "DataService", "FullscreenService", "ImageStreamResolver", "MetricsService", "OwnerReferencesService", "PodsService", "ProjectsService", function(e, t, n, a, r, o, i, s, c, l, u, d, m) {
 e.projectName = n.project, e.pod = null, e.imageStreams = {}, e.imagesByDockerReference = {}, e.imageStreamImageRefByDockerReference = {}, e.builds = {}, e.alerts = {}, e.terminalDisconnectAlert = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.logOptions = {}, e.terminalTabWasSelected = !1, e.breadcrumbs = [ {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -11520,6 +11521,66 @@ containerEndTime: _.get(o, [ i, "finishedAt" ])
 }) : angular.extend(n, {
 containerStartTime: _.get(t, [ r, "startedAt" ]),
 containerEndTime: _.get(t, [ r, "finishedAt" ])
+=======
+} ]), angular.module("openshiftConsole").controller("ServiceController", [ "$scope", "$routeParams", "APIService", "DataService", "Logger", "ProjectsService", "$filter", function(e, t, n, r, a, o, i) {
+e.projectName = t.project, e.service = null, e.services = null, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.breadcrumbs = [ {
+title: "Services",
+link: "project/" + t.project + "/browse/services"
+}, {
+title: t.service
+} ], e.podFailureReasons = {
+Pending: "This pod will not receive traffic until all of its containers have been created."
+};
+var s = n.getPreferredVersion("pods"), c = n.getPreferredVersion("endpoints");
+e.eventsVersion = n.getPreferredVersion("events"), e.routesVersion = n.getPreferredVersion("routes"), e.servicesVersion = n.getPreferredVersion("services");
+var l = {}, u = [], d = function() {
+e.service && (e.portsByRoute = {}, _.each(e.service.spec.ports, function(t) {
+var n = !1;
+t.nodePort && (e.showNodePorts = !0), _.each(e.routesForService, function(r) {
+r.spec.port && r.spec.port.targetPort !== t.name && r.spec.port.targetPort !== t.targetPort || (e.portsByRoute[r.metadata.name] = e.portsByRoute[r.metadata.name] || [], e.portsByRoute[r.metadata.name].push(t), n = !0);
+}), n || (e.portsByRoute[""] = e.portsByRoute[""] || [], e.portsByRoute[""].push(t));
+}));
+}, m = function() {
+if (e.podsForService = {}, e.service) {
+var t = new LabelSelector(e.service.spec.selector);
+e.podsForService = t.select(l);
+}
+}, p = function(t, n) {
+e.loaded = !0, e.service = t, m(), d(), "DELETED" === n && (e.alerts.deleted = {
+type: "warning",
+message: "This service has been deleted."
+});
+};
+o.get(t.project).then(_.spread(function(n, o) {
+e.project = n, e.projectContext = o, r.get(e.servicesVersion, t.service, o, {
+errorNotification: !1
+}).then(function(n) {
+p(n), u.push(r.watchObject(e.servicesVersion, t.service, o, p));
+}, function(t) {
+e.loaded = !0, e.alerts.load = {
+type: "error",
+message: "The service details could not be loaded.",
+details: i("getErrorDetails")(t)
+};
+}), u.push(r.watch(e.servicesVersion, o, function(t) {
+e.services = t.by("metadata.name");
+})), u.push(r.watch(s, o, function(e) {
+l = e.by("metadata.name"), m();
+})), u.push(r.watch(c, o, function(n) {
+e.podsWithEndpoints = {};
+var r = n.by("metadata.name")[t.service];
+r && _.each(r.subsets, function(t) {
+_.each(t.addresses, function(t) {
+"Pod" === _.get(t, "targetRef.kind") && (e.podsWithEndpoints[t.targetRef.name] = !0);
+});
+});
+})), u.push(r.watch(e.routesVersion, o, function(n) {
+e.routesForService = {}, angular.forEach(n.by("metadata.name"), function(n) {
+"Service" === n.spec.to.kind && n.spec.to.name === t.service && (e.routesForService[n.metadata.name] = n);
+}), d(), a.log("routes (subscribe)", e.routesForService);
+})), e.$on("$destroy", function() {
+r.unwatchAll(u);
+>>>>>>> Fix service page logging
 });
 }
 }, b = function() {
