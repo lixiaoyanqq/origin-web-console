@@ -5768,8 +5768,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<create-project alerts=\"alerts\" redirect-action=\"createWithProject\"></create-project>\n" +
     "</div>\n" +
     "<div ng-if=\"!noProjects && !canCreateProject\">\n" +
+<<<<<<< 6962f30477a80d3b126d8fdafa9f7bbb505eecfc
     "<h2 translate>Choose a Project</h2>\n" +
     "<ui-select ng-model=\"selected.project\">\n" +
+=======
+    "<h2>Choose a Project</h2>\n" +
+    "<form name=\"forms.selectProjectForm\">\n" +
+    "<div class=\"form-group\" ng-class=\"{'has-error': forms.selectProjectForm.selectProject.$error.cannotAddToProject}\">\n" +
+    "<ui-select ng-model=\"selected.project\" name=\"selectProject\" on-select=\"canIAddToSelectedProject($item)\">\n" +
+>>>>>>> Check if user can add to existing project during create from url
     "<ui-select-match placeholder=\"Project name\">\n" +
     "{{$select.selected | displayName}}\n" +
     "</ui-select-match>\n" +
@@ -5781,12 +5788,30 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
+    "<div ng-if=\"forms.selectProjectForm.selectProject.$error.cannotAddToProject\">\n" +
+    "<span class=\"help-block\">\n" +
+    "You are not authorized to add to this project.\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "<div class=\"button-group mar-bottom-lg mar-top-lg\">\n" +
+    "<button type=\"submit\" class=\"btn btn-primary\" ng-click=\"createWithProject()\" ng-disabled=\"!(selected.project) || !canIAddToProject\" value=\"\">Next</button>\n" +
+    "<a class=\"btn btn-default\" href=\"#\" back>Cancel</a>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</form>\n" +
     "</div>\n" +
     "<div ng-if=\"!noProjects && canCreateProject\">\n" +
     "<uib-tabset>\n" +
     "<uib-tab>\n" +
+<<<<<<< 6962f30477a80d3b126d8fdafa9f7bbb505eecfc
     "<uib-tab-heading translate>Choose Existing Project</uib-tab-heading>\n" +
     "<ui-select ng-model=\"selected.project\">\n" +
+=======
+    "<uib-tab-heading>Choose Existing Project</uib-tab-heading>\n" +
+    "<form name=\"forms.selectProjectForm\">\n" +
+    "<div class=\"form-group\" ng-class=\"{'has-error': forms.selectProjectForm.selectProject.$error.cannotAddToProject}\">\n" +
+    "<ui-select ng-model=\"selected.project\" name=\"selectProject\" on-select=\"canIAddToSelectedProject($item)\">\n" +
+>>>>>>> Check if user can add to existing project during create from url
     "<ui-select-match placeholder=\"Project name\">\n" +
     "{{$select.selected | displayName}}\n" +
     "</ui-select-match>\n" +
@@ -5798,10 +5823,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
+    "<div ng-if=\"forms.selectProjectForm.selectProject.$error.cannotAddToProject\">\n" +
+    "<span class=\"help-block\">\n" +
+    "You are not authorized to add to this project.\n" +
+    "</span>\n" +
+    "</div>\n" +
     "<div class=\"button-group mar-bottom-lg mar-top-lg\">\n" +
+<<<<<<< 6962f30477a80d3b126d8fdafa9f7bbb505eecfc
     "<button type=\"submit\" class=\"btn btn-primary btn-lg\" ng-click=\"createWithProject()\" ng-disabled=\"!(selected.project)\" value=\"\" translate>Next</button>\n" +
     "<a class=\"btn btn-default btn-lg\" href=\"#\" back translate>Cancel</a>\n" +
+=======
+    "<button type=\"submit\" class=\"btn btn-primary\" ng-click=\"createWithProject()\" ng-disabled=\"!(selected.project) || !canIAddToProject\" value=\"\">Next</button>\n" +
+    "<a class=\"btn btn-default\" href=\"#\" back>Cancel</a>\n" +
     "</div>\n" +
+>>>>>>> Check if user can add to existing project during create from url
+    "</div>\n" +
+    "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab>\n" +
     "<uib-tab-heading translate>Create a New Project</uib-tab-heading>\n" +
