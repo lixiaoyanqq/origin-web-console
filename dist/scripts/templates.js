@@ -13618,12 +13618,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"role as role in filteredRoles | filter: excludeExistingRoles(subject.roles) | filter: { metadata: { name: $select.search } } track by (role | uid)\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
 =======
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\">\n" +
 >>>>>>> Improve role select when editing membership
+=======
+    "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
+    "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
+>>>>>>> Add titles to roles in dropdown list on membership page
     "<small>{{role | annotation : 'description'}}</small>\n" +
     "</div>\n" +
     "</ui-select-choices>\n" +
@@ -13684,12 +13689,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"role as role in filteredRoles | filter: { metadata: { name: $select.search } } track by (role | uid)\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
 =======
     "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\"></div>\n" +
     "<div ng-if=\"role | annotation : 'description'\">\n" +
 >>>>>>> Improve role select when editing membership
+=======
+    "<div ng-bind-html=\"role.metadata.name | highlight: $select.search\" title=\"{{role.metadata.name}}\"></div>\n" +
+    "<div ng-if=\"role | annotation : 'description'\" title=\"{{role.metadata.name}}\">\n" +
+>>>>>>> Add titles to roles in dropdown list on membership page
     "<small>{{role | annotation : 'description'}}</small>\n" +
     "</div>\n" +
     "</ui-select-choices>\n" +
