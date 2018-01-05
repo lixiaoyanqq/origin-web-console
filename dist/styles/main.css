@@ -4614,8 +4614,12 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;-webkit-font-smoothing:antialiased;pointer-events:none;opacity:0}
 =======
 .collapsed .nav-pf-tertiary-nav{left:calc(295px)}
+<<<<<<< HEAD
 .secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;opacity:0;pointer-events:none;-webkit-font-smoothing:antialiased}
 >>>>>>> Patternfly vertical navigation and project bar
+=======
+.secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;pointer-events:none;-webkit-font-smoothing:antialiased;opacity:0}
+>>>>>>> Bump catalog to v3.9.0-alpha.4
 .collapsed.collapsed-secondary-nav-pf,.collapsed.collapsed-tertiary-nav-pf{width:220px}
 .collapsed.collapsed-secondary-nav-pf .secondary-nav-item-pf:hover>a,.collapsed.collapsed-tertiary-nav-pf .secondary-nav-item-pf:hover>a{z-index:1030}
 .collapsed.collapsed-secondary-nav-pf .nav-pf-secondary-nav,.collapsed.collapsed-tertiary-nav-pf .nav-pf-secondary-nav{left:0}
@@ -5119,9 +5123,12 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .ui-select-bootstrap .ui-select-placeholder{display:block;overflow:hidden;text-overflow:ellipsis;width:100%}
 .ui-select-bootstrap .ui-select-toggle>.caret{font-style:normal;right:6px;top:10px;pointer-events:none}
 .ui-select-bootstrap .ui-select-search{width:100%!important}
+<<<<<<< HEAD
 @keyframes flash{0%{opacity:0}
 100%{opacity:1}
 }
+=======
+>>>>>>> Bump catalog to v3.9.0-alpha.4
 @keyframes modalBackdropIn{0%{opacity:0}
 100%{opacity:.5}
 }
@@ -5636,6 +5643,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .services-view .flash-filter-tag{animation:flash linear 1s 1}
 .services-view .pf-empty-state{margin:0 20px;width:100%}
 .services-view .services-item{color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
+<<<<<<< HEAD
 =======
 .services-view .vendor-info-icon,services-view .vendor-info-icon{font-size:10px;vertical-align:middle;padding-left:2px}
 =======
@@ -5643,6 +5651,8 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 >>>>>>> Adopt service catalog API changes
 .services-view .services-item{animation:catalogItemFade .2s ease-out;color:#363636;min-height:140px;overflow:hidden;padding:0 10px 20px;position:relative;text-align:center;width:50%;word-break:break-word;z-index:99}
 >>>>>>> Bump common and catalog depedencies
+=======
+>>>>>>> Bump catalog to v3.9.0-alpha.4
 @media (min-width:480px){.services-view .services-item{width:33.3333%}
 }
 @media (min-width:768px){.services-view .services-item{width:50%}
@@ -5775,6 +5785,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .landing .services-view .services-view-container .services-categories li.active>a:before{background:#39a5dc;bottom:0;display:block}
 .services-view .services-view-container .services-no-sub-categories.ng-enter,.services-view .services-view-container .services-no-sub-categories.ng-enter-prepare,.services-view .services-view-container .services-sub-categories.ng-enter,.services-view .services-view-container .services-sub-categories.ng-enter-prepare{bottom:0;display:block!important;left:0;position:absolute;right:0;top:0}
 .landing .services-view .services-view-container .services-no-sub-categories.ng-enter,.landing .services-view .services-view-container .services-no-sub-categories.ng-enter-prepare,.landing .services-view .services-view-container .services-sub-categories.ng-enter,.landing .services-view .services-view-container .services-sub-categories.ng-enter-prepare{top:80px}
+<<<<<<< HEAD
 .services-view .services-view-container .services-sub-categories{list-style:none}
 .services-view .services-view-container .services-sub-categories>li>a.services-back-link{display:none}
 @media (max-width:479px){.services-view .services-view-container.mobile-categories-view .services-categories .active .services-back-link{display:none!important}
@@ -5840,6 +5851,8 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 =======
 =======
 >>>>>>> Update catalog version
+=======
+>>>>>>> Bump catalog to v3.9.0-alpha.4
 .services-view .services-view-container .services-sub-categories{list-style:none}
 .services-view .services-view-container .services-sub-categories>li>a.services-back-link{display:none}
 @media (max-width:479px){.services-view .services-view-container.mobile-categories-view .services-categories .active .services-back-link{display:none!important}
