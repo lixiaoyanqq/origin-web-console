@@ -23300,6 +23300,7 @@ a.open({
 r.open({
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 animation: !0,
+backdrop: "static",
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
@@ -30345,6 +30346,7 @@ template: v.template
 }, C = function(e) {
 r.open({
 animation: !0,
+backdrop: "static",
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
