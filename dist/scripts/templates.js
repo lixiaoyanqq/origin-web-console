@@ -14938,6 +14938,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"project.metadata.name | canIAddToProject\">\n" +
+<<<<<<< a4f6b5fe8faca5ba25c0bf3cb5585553f35cb2ec
     "<h2 translate>Get started with your project.</h2>\n" +
     "<p class=\"gutter-top\" translate>\n" +
     "Use your source or an example repository to build an application image, or add components like databases and message queues.\n" +
@@ -14959,8 +14960,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-lg btn-primary\" ng-click=\"browseCatalog()\">\n" +
 >>>>>>> Add Browse Catalog to Project context view.
     "Add to Project\n" +
-    "</button>\n" +
+=======
+    "<h2>Get started with your project.</h2>\n" +
+    "<p>\n" +
+    "Add content to your project from the catalog of web frameworks, databases, and other components. You may also deploy an existing image, create or replace resources from their YAML or JSON definitions, or select an item shared from another project.\n" +
     "</p>\n" +
+    "<div class=\"empty-state-message-main-action\">\n" +
+    "<button class=\"btn btn-primary btn-lg\" ng-click=\"browseCatalog()\">\n" +
+    "Browse Catalog\n" +
+>>>>>>> Add additional add to project options to overview empty state
+    "</button>\n" +
+    "</div>\n" +
+    "<div class=\"empty-state-message-secondary-action\">\n" +
+    "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('deployImage')\">\n" +
+    "Deploy Image\n" +
+    "</button>\n" +
+    "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromFile')\">\n" +
+    "Import YAML / JSON\n" +
+    "</button>\n" +
+    "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromProject')\">\n" +
+    "Select from Project\n" +
+    "</button>\n" +
+    "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!(project.metadata.name | canIAddToProject)\">\n" +
     "<h2 translate>Welcome to project {{projectName}}.</h2>\n" +
