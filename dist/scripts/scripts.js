@@ -38821,6 +38821,7 @@ var a = {
 columns: [],
 names: {}
 };
+<<<<<<< HEAD
 e.route && (a.columns.push(o(e.route.spec.to)), a.names[e.route.spec.to.name] = _.truncate(e.route.spec.to.name, {
 length: 30
 }), e.totalWeight = e.route.spec.to.weight, _.each(e.route.spec.alternateBackends, function(t) {
@@ -38834,6 +38835,16 @@ t && (t = t.destroy());
 });
 =======
 }).directive("persistTabState", [ "$routeParams", "$location", function(e, t) {
+=======
+var R = function(e) {
+r.open({
+animation: !0,
+backdrop: "static",
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+>>>>>>> Prohibit close of warning dialog by clicking on backdrop
 return {
 restrict: "A",
 scope: !1,
@@ -44564,7 +44575,23 @@ actionLabel: "<?"
 },
 templateUrl: "views/directives/next-steps.html"
 });
+<<<<<<< HEAD
 }(), angular.module("openshiftConsole").directive("imageNames", [ "$filter", "PodsService", function(e, t) {
+=======
+}), e.promise;
+}), v.isDialog ? n.$emit("templateInstantiated", {
+project: v.selectedProject,
+template: v.template
+}) : o.toNextSteps(v.templateDisplayName, v.selectedProject.metadata.name);
+}, C = function(e) {
+r.open({
+animation: !0,
+backdrop: "static",
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+>>>>>>> Prohibit close of warning dialog by clicking on backdrop
 return {
 restrict: "E",
 scope: {
