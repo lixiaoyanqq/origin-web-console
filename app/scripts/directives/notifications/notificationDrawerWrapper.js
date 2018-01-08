@@ -366,8 +366,8 @@
         // event to signal the drawer to clear a notification
         rootScopeWatches.push($rootScope.$on('NotificationDrawerWrapper.clear', function(event, notification) {
           EventsService.markCleared(notification.uid);
-          removeNotificationFromGroup(notification);
-          drawer.countUnreadNotifications();
+          remove(notification);
+          countUnreadNotifications();
         }));
       };
 

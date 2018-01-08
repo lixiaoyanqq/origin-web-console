@@ -34646,7 +34646,7 @@ h.drawerHidden = !h.drawerHidden;
 })), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
 h.drawerHidden = !0;
 })), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-u.markCleared(t.uid), T(t), h.countUnreadNotifications();
+u.markCleared(t.uid), T(t), R();
 }));
 };
 <<<<<<< b751e7cdd36536609ccfbc9bb12d212dfb7a136b
