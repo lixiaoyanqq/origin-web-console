@@ -6780,7 +6780,17 @@ e.auth ? o.auths[t] = a(e) : o.auths[t] = e;
 }), n.credsStore && (o.credsStore = n.credsStore)) : _.each(n, function(e, t) {
 o.auths[t] = a(e);
 }), o;
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}, i = function(e) {
+var t = {}, n = _.mapValues(e, function(e, n) {
+if (!e) return "";
+var r;
+return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (r = window.atob(e), /[\x00-\x09\x0E-\x1F]/.test(r) ? (t[n] = !0, e) : r);
+});
+return n.$$nonprintable = t, n;
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 };
 return {
 groupSecretsByType: function(e) {
@@ -6788,6 +6798,7 @@ var t = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 source: [],
 image: [],
+webhook: [],
 other: []
 };
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -6800,7 +6811,7 @@ switch (e.type) {
 case "kubernetes.io/basic-auth":
 case "kubernetes.io/ssh-auth":
 case "Opaque":
-t.source.push(e);
+e.data.WebHookSecretKey ? t.webhook.push(e) : t.source.push(e);
 break;
 
 case "kubernetes.io/dockercfg":
@@ -6833,6 +6844,7 @@ t.other.push(e);
 }
 }), t;
 },
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 3feadb96e1f26e5236eb7acb15135e7d262bce59
 decodeSecretData: function(n) {
 var a = {}, r = _.mapValues(n, function(n, r) {
@@ -6950,6 +6962,19 @@ return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (r = window.a
 });
 return n.$$nonprintable = t, n;
 >>>>>>> Check 'auth' field when displaying .dockercfg config
+=======
+decodeSecretData: i,
+getWebhookSecretValue: function(e, t) {
+if (_.get(e, "secretReference.name") && t) {
+var n = _.find(t, {
+metadata: {
+name: e.secretReference.name
+}
+});
+return i(n.data).WebHookSecretKey;
+}
+return _.get(e, "secret");
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 }
 };
 } ]), angular.module("openshiftConsole").factory("ServicesService", [ "$filter", "$q", "APIService", "DataService", function(e, t, n, r) {
@@ -12136,6 +12161,7 @@ h();
 i.unwatchAll(m);
 });
 }));
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -12228,6 +12254,9 @@ message: "This build configuration has been deleted."
 =======
 } ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 e.projectName = n.project, e.buildConfigName = n.buildconfig, e.buildConfig = null, e.labelSuggestions = {}, e.alerts = {}, e.breadcrumbs = [], e.forms = {}, e.expand = {
 imageEnv: !1
 }, n.isPipeline ? e.breadcrumbs.push({
@@ -12238,25 +12267,25 @@ title: "Builds",
 link: "project/" + n.project + "/browse/builds"
 }), e.breadcrumbs.push({
 title: n.buildconfig
-}), e.buildConfigsVersion = r.getPreferredVersion("buildconfigs"), e.buildsVersion = r.getPreferredVersion("builds"), e.buildConfigsInstantiateVersion = r.getPreferredVersion("buildconfigs/instantiate"), e.emptyMessage = "Loading...", e.aceLoaded = function(e) {
+}), e.buildConfigsVersion = r.getPreferredVersion("buildconfigs"), e.buildsVersion = r.getPreferredVersion("builds"), e.buildConfigsInstantiateVersion = r.getPreferredVersion("buildconfigs/instantiate"), e.secretsVersion = r.getPreferredVersion("secrets"), e.emptyMessage = "Loading...", e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var p = t("buildConfigForBuild"), f = t("buildStrategy"), g = t("orderByDisplayName"), v = t("getErrorDetails"), h = [], y = [], b = [];
+var f = t("buildConfigForBuild"), g = t("buildStrategy"), v = t("orderByDisplayName"), h = t("getErrorDetails"), y = [], b = [], S = [];
 e.valueFromObjects = [];
-var S = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
+var C = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = g(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-l.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = m.compactEntries(angular.copy(e.envVars)), i.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
-l.addNotification({
+u.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), g(e.updatedBuildConfig).env = p.compactEntries(angular.copy(e.envVars)), s.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
+u.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
 }), e.forms.bcEnvVars.$setPristine();
 }, function(n) {
-l.addNotification({
+u.addNotification({
 id: "save-bc-env-error",
 type: "error",
 message: "An error occurred updating environment variables for build config " + e.buildConfigName + ".",
@@ -12264,24 +12293,25 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.clearEnvVarUpdates = function() {
-S(e.buildConfig), e.forms.bcEnvVars.$setPristine();
+C(e.buildConfig), e.forms.bcEnvVars.$setPristine();
 };
-var C, w = function(n, s) {
-e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = a.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
+var w, P = function(n, a) {
+e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = o.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 }));
-var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
-C !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (C = l, i.get(r.kindToResource(c.kind), c.name, {
+var c = _.get(g(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+w !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (w = l, s.get(r.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
 }, {
 errorNotification: !1
 }).then(function(t) {
-e.BCEnvVarsFromImage = o.getEnvironment(t);
+e.BCEnvVarsFromImage = i.getEnvironment(t);
 }, function() {
 e.BCEnvVarsFromImage = [];
-})) : e.BCEnvVarsFromImage = []), S(n), "DELETED" === s && (e.alerts.deleted = {
+})) : e.BCEnvVarsFromImage = []), C(n), "DELETED" === a && (e.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 82ecd105133e58ecd5737b3b3c3909bdc4572ffb
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? h(n) : e.alerts.background_update = {
@@ -12292,6 +12322,9 @@ message: "This build configuration has been deleted."
 =======
 }, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? S(n) : e.alerts.background_update = {
 >>>>>>> Enable valueFrom values for build config env vars
+=======
+}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? C(n) : e.alerts.background_update = {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "warning",
 message: "This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links: [ {
@@ -12315,8 +12348,9 @@ return e.clearEnvVarUpdates(), !0;
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
 } ]
-}, e.paused = a.isPaused(e.buildConfig);
+}, e.paused = o.isPaused(e.buildConfig);
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 k.get(c.project).then(_.spread(function(d, f) {
@@ -12330,10 +12364,16 @@ u.get(n.project).then(_.spread(function(r, o) {
 function u() {
 s.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+d.get(n.project).then(_.spread(function(r, i) {
+function d() {
+c.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "warning",
 details: "The active filters are hiding all builds."
 };
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< 82ecd105133e58ecd5737b3b3c3909bdc4572ffb
 <<<<<<< c08b1c047b91ff0d77854fc21f656928bf517a64
@@ -12381,56 +12421,65 @@ e.project = a, e.projectContext = o, i.get(e.buildConfigsVersion, n.buildconfig,
 =======
 e.project = r, e.projectContext = o, i.get(e.buildConfigsVersion, n.buildconfig, o, {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+e.project = r, e.projectContext = i, s.get(e.buildConfigsVersion, n.buildconfig, i, {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 errorNotification: !1
 }).then(function(t) {
-w(t), h.push(i.watchObject(e.buildConfigsVersion, n.buildconfig, o, w));
+P(t), y.push(s.watchObject(e.buildConfigsVersion, n.buildconfig, i, P));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
 message: 404 === n.status ? "This build configuration can not be found, it may have been deleted." : "The build configuration details could not be loaded.",
 details: 404 === n.status ? "Any remaining build history for this build will be shown." : t("getErrorDetails")(n)
 };
-}), i.list("configmaps", o, null, {
+}), s.list("configmaps", i, null, {
 errorNotification: !1
 }).then(function(t) {
-y = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+b = v(t.by("metadata.name")), e.valueFromObjects = b.concat(S);
 }, function(e) {
-403 !== e.code && l.addNotification({
+403 !== e.code && u.addNotification({
 id: "build-config-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: v(e)
+details: h(e)
 });
-}), i.list("secrets", o, null, {
+}), a.canI(e.secretsVersion, "list", n.project) && s.list("secrets", i, null, {
 errorNotification: !1
 }).then(function(t) {
-b = g(t.by("metadata.name")), e.valueFromObjects = y.concat(b);
+S = v(t.by("metadata.name")), e.webhookSecrets = m.groupSecretsByType(t).webhook, e.valueFromObjects = b.concat(S);
 }, function(e) {
-403 !== e.code && l.addNotification({
+403 !== e.code && u.addNotification({
 id: "build-config-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: v(e)
+details: h(e)
 });
-}), h.push(i.watch(e.buildsVersion, o, function(t, r, o) {
+}), y.push(s.watch(e.buildsVersion, i, function(t, r, a) {
 if (e.emptyMessage = "No builds to show", r) {
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 if (p(o) === n.buildconfig) {
 var i = o.metadata.name;
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 switch (a) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
+=======
+if (f(a) === n.buildconfig) {
+var i = a.metadata.name;
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 switch (r) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 case "ADDED":
 case "MODIFIED":
-e.unfilteredBuilds[i] = o;
+e.unfilteredBuilds[i] = a;
 break;
 
 case "DELETED":
 delete e.unfilteredBuilds[i];
 }
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } else a.unfilteredBuilds = e.validatedBuildsForBuildConfig(c.buildconfig, b.by("metadata.name"));
@@ -12446,6 +12495,10 @@ e.builds = s.getLabelSelector().select(e.unfilteredBuilds), u(), s.addLabelSugge
 } else e.unfilteredBuilds = a.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
 e.builds = s.getLabelSelector().select(e.unfilteredBuilds), u(), s.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), s.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = a.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+} else e.unfilteredBuilds = o.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
+e.builds = c.getLabelSelector().select(e.unfilteredBuilds), d(), c.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), c.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 }, {
 http: {
 params: {
@@ -12460,6 +12513,7 @@ omission: ""
 })
 }
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 })), h.onActiveFiltersChanged(function(b) {
 a.$apply(function() {
@@ -12481,13 +12535,18 @@ e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = r.sortBuilds(e.builds
 =======
 e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = a.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), u();
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+})), c.onActiveFiltersChanged(function(t) {
+e.$apply(function() {
+e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), d();
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 });
 }), e.startBuild = function() {
-a.startBuild(e.buildConfig);
+o.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
-c.showJenkinsfileExamples();
+l.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
-i.unwatchAll(h);
+s.unwatchAll(y);
 });
 }));
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
@@ -16610,8 +16669,8 @@ DockerImage: "Docker Image Repository"
 } else u.toErrorPage("Health checks are not supported for kind " + r.kind + ".");
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 } else u.toErrorPage("Kind or name parameter missing.");
-} ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "APIService", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f) {
-e.projectName = r.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = m, e.options = {}, e.jenkinsfileOptions = {
+} ]), angular.module("openshiftConsole").controller("EditBuildConfigController", [ "$scope", "$filter", "$location", "$routeParams", "$window", "APIService", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "SOURCE_URL_PATTERN", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
+e.projectName = r.project, e.buildConfig = null, e.alerts = {}, e.sourceURLPattern = d, e.options = {}, e.jenkinsfileOptions = {
 type: "path"
 }, e.selectTypes = {
 ImageStreamTag: "Image Stream Tag",
@@ -16681,6 +16740,7 @@ none: !0
 }, a.triggers = {
 =======
 }, e.triggers = {
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 githubWebhooks: [],
 gitlabWebhooks: [],
@@ -16711,6 +16771,12 @@ label: "Generic"
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }, a.runPolicyTypes = [ "Serial", "Parallel", "SerialLatestOnly" ], a.buildHookTypes = [ {
 =======
+=======
+webhookTriggers: [],
+imageChangeTriggers: [],
+builderImageChangeTrigger: {},
+configChangeTrigger: {}
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 }, e.runPolicyTypes = [ "Serial", "Parallel", "SerialLatestOnly" ], e.buildHookTypes = [ {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 id: "command",
@@ -16750,6 +16816,7 @@ return "Enter the arguments that will be appended to the script.";
 }
 return null;
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -16777,6 +16844,9 @@ var r;
 r = t && n ? "commandArgs" : t && a ? "scriptArgs" : t ? "args" : a ? "script" : "command", e.buildHookSelection.type = _.find(e.buildHookTypes, {
 id: r
 =======
+=======
+var f = function() {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 var t = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.args")), n = !_.isEmpty(_.get(e, "buildConfig.spec.postCommit.command")), r = !!_.get(e, "buildConfig.spec.postCommit.script");
 e.view.hasHooks = t || n || r;
 var a;
@@ -16784,7 +16854,7 @@ a = t && n ? "commandArgs" : t && r ? "scriptArgs" : t ? "args" : r ? "script" :
 id: a
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 });
-}, v = function() {
+}, g = function() {
 if (e.view.hasHooks) switch (e.buildHookSelection.type.id) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case "script":
@@ -16842,27 +16912,27 @@ delete e.updatedBuildConfig.spec.postCommit.script;
 } else delete e.updatedBuildConfig.spec.postCommit.command, delete e.updatedBuildConfig.spec.postCommit.args, delete e.updatedBuildConfig.spec.postCommit.script;
 };
 e.secrets = {};
-var h = o.getPreferredVersion("buildconfigs"), y = o.getPreferredVersion("secrets"), b = [], S = t("buildStrategy"), C = t("orderByDisplayName"), w = t("getErrorDetails"), P = [], j = [];
+var v = o.getPreferredVersion("buildconfigs"), h = o.getPreferredVersion("secrets"), y = [], b = t("buildStrategy"), S = t("orderByDisplayName"), C = t("getErrorDetails"), w = [], P = [];
 e.valueFromObjects = [];
-var k = function() {
+var j = function() {
 var t;
-e.buildConfig ? (t = l.resourceURL(e.buildConfig), n.path(t)) : a.history.back();
+e.buildConfig ? (t = c.resourceURL(e.buildConfig), n.path(t)) : a.history.back();
 };
-e.cancel = k;
-var I = function() {
-u.hideNotification("edit-build-config-error"), u.hideNotification("edit-build-config-conflict"), u.hideNotification("edit-build-config-deleted");
+e.cancel = j;
+var k = function() {
+l.hideNotification("edit-build-config-error"), l.hideNotification("edit-build-config-conflict"), l.hideNotification("edit-build-config-deleted");
 };
-e.$on("$destroy", I), d.get(r.project).then(_.spread(function(n, a) {
-e.project = n, e.context = a, s.canI("buildconfigs", "update", r.project) ? (c.get(h, r.buildconfig, a, {
+e.$on("$destroy", k), u.get(r.project).then(_.spread(function(n, a) {
+e.project = n, e.context = a, i.canI("buildconfigs", "update", r.project) ? (s.get(v, r.buildconfig, a, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, g(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = S(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = R(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), c.list(y, a).then(function(t) {
-var n = p.groupSecretsByType(t), r = _.mapValues(n, function(e) {
+e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = b(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = $(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), i.canI(h, "list", r.project) && s.list(h, a).then(function(t) {
+var n = m.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
-e.secrets.secretsByType = _.each(r, function(e) {
+e.webhookSecrets = m.groupSecretsByType(t).webhook, e.secrets.secretsByType = _.each(r, function(e) {
 e.unshift("");
-}), D(), j = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
+}), N(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
 });
 var n = function(e, n) {
 e.type = n && n.kind ? n.kind : "None";
@@ -16922,12 +16992,12 @@ value: e.destinationDir
 };
 })) : (e.imageSourceFromObjects = [], e.sourceImages.forEach(function(t) {
 e.imageSourceFromObjects.push(t.from);
-}))), e.options.forcePull = !!e.buildStrategy.forcePull, "Docker" === e.strategyType && (e.options.noCache = !!e.buildConfig.spec.strategy.dockerStrategy.noCache, e.buildFromTypes.push("None")), b.push(c.watchObject(h, r.buildconfig, a, function(t, n) {
-"MODIFIED" === n && u.addNotification({
+}))), e.options.forcePull = !!e.buildStrategy.forcePull, "Docker" === e.strategyType && (e.options.noCache = !!e.buildConfig.spec.strategy.dockerStrategy.noCache, e.buildFromTypes.push("None")), y.push(s.watchObject(v, r.buildconfig, a, function(t, n) {
+"MODIFIED" === n && l.addNotification({
 id: "edit-build-config-conflict",
 type: "warning",
 message: "This build configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
-}), "DELETED" === n && (u.addNotification({
+}), "DELETED" === n && (l.addNotification({
 id: "edit-build-config-deleted",
 type: "warning",
 message: "This build configuration has been deleted."
@@ -16939,6 +17009,7 @@ type: "error",
 message: "The build configuration details could not be loaded.",
 details: "Reason: " + t("getErrorDetails")(n)
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
@@ -16952,31 +17023,39 @@ details: "Reason: " + t("getErrorDetails")(n)
 =======
 }), c.list("configmaps", a, null, {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}), s.list("configmaps", a, null, {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 errorNotification: !1
 }).then(function(t) {
-P = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
+w = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
 }, function(e) {
-403 !== e.code && u.addNotification({
+403 !== e.code && l.addNotification({
 id: "edit-build-config-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: w(e)
+details: C(e)
 });
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 })) : l.toErrorPage("You do not have authority to update build config " + a.buildconfig + ".", "access_denied");
 >>>>>>> Enable valueFrom values for build config env vars
 =======
 })) : l.toErrorPage("You do not have authority to update build config " + r.buildconfig + ".", "access_denied");
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+})) : c.toErrorPage("You do not have authority to update build config " + r.buildconfig + ".", "access_denied");
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 }));
-var R = function(n, r) {
+var I = function(n, r) {
 function a(n, r) {
 return t("imageObjectRef")(n, e.projectName) === t("imageObjectRef")(r, e.projectName);
 }
-var o = S(e.buildConfig).from;
+var o = b(e.buildConfig).from;
 return r.forEach(function(e) {
 switch (e.type) {
 case "Generic":
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 c.genericWebhooks.push({
 disabled: !1,
@@ -17023,6 +17102,13 @@ data: a
 =======
 n.bitbucketWebhooks.push({
 disabled: !1,
+=======
+case "GitHub":
+case "GitLab":
+case "Bitbucket":
+n.webhookTriggers.push({
+lastTriggerType: e.type,
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 data: e
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
@@ -17084,8 +17170,8 @@ e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var T = function(e) {
-return _.map(f.compactEntries(e), function(e) {
+var R = function(e) {
+return _.map(p.compactEntries(e), function(e) {
 return {
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 sourcePath: a.name,
@@ -17096,7 +17182,7 @@ destinationDir: e.value
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 });
-}, E = function(t) {
+}, T = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -17161,17 +17247,17 @@ name: _.last(r)
 }).namespace = 1 !== _.size(r) ? _.head(r) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, N = function() {
-var t = [].concat(e.triggers.githubWebhooks, e.triggers.gitlabWebhooks, e.triggers.bitbucketWebhooks, e.triggers.genericWebhooks, e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
+}, E = function() {
+var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
-}), t = _.map(t, "data");
-}, D = function() {
+}), t = t.concat(e.triggers.webhookTriggers), t = _.map(t, "data");
+}, N = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
 } ],
-pullSecret: S(e.buildConfig).pullSecret ? [ S(e.buildConfig).pullSecret ] : [ {
+pullSecret: b(e.buildConfig).pullSecret ? [ b(e.buildConfig).pullSecret ] : [ {
 name: ""
 } ],
 pushSecret: e.buildConfig.spec.output.pushSecret ? [ e.buildConfig.spec.output.pushSecret ] : [ {
@@ -17194,6 +17280,7 @@ destinationDir: ""
 break;
 
 case "Custom":
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -17207,12 +17294,16 @@ e.secrets.picked.sourceSecrets = h(e.buildConfig).secrets || [ {
 =======
 e.secrets.picked.sourceSecrets = S(e.buildConfig).secrets || [ {
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+e.secrets.picked.sourceSecrets = b(e.buildConfig).secrets || [ {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 secretSource: {
 name: ""
 },
 mountPath: ""
 } ];
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
 <<<<<<< 1f5fb674ad14c7e78d2e82e837750bd2747349ab
@@ -17273,17 +17364,21 @@ secret: f._generateSecret()
 =======
 }, A = function(e, t, n) {
 >>>>>>> Enable valueFrom values for build config env vars
+=======
+}, D = function(e, t, n) {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 t.name ? e[n] = t : delete e[n];
-}, $ = function(t, n) {
+}, A = function(t, n) {
 var r = "Custom" === e.strategyType ? "secretSource" : "secret", a = _.filter(n, function(e) {
 return e[r].name;
 });
 _.isEmpty(a) ? delete t.secrets : t.secrets = a;
-}, B = function(e, t) {
+}, $ = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 e.addWebhookTrigger = function(t) {
 if (t) {
 var n = {
@@ -17305,8 +17400,12 @@ secret: i._generateSecret()
 }
 }, e.save = function() {
 switch (e.disableInputs = !0, v(), S(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
+=======
+e.save = function() {
+switch (e.disableInputs = !0, g(), b(e.updatedBuildConfig).forcePull = e.options.forcePull, e.strategyType) {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 case "Docker":
-S(e.updatedBuildConfig).noCache = e.options.noCache;
+b(e.updatedBuildConfig).noCache = e.options.noCache;
 break;
 
 case "JenkinsPipeline":
@@ -17317,6 +17416,7 @@ switch (a.sources.images && !_.isEmpty(a.sourceImages) && (a.updatedBuildConfig.
 =======
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 5c09bc4d158769cdc6f544531790994a3e776f20
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
@@ -17375,14 +17475,18 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = T(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete S(e.updatedBuildConfig).from : S(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), S(e.updatedBuildConfig).env = f.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(S(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Configurable inactivity timeout in console
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 case "Source":
 case "Docker":
-$(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+A(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-$(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+A(b(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< b4ddc9b550515059b9681d76233c34b7f7b3431c
 <<<<<<< f4c2d5331eeb2822c057c0ccb12690cba9a8dbde
 <<<<<<< 418e6421bf3361cc4fbf12f2ee2f9d6a98bcff12
@@ -17495,11 +17599,15 @@ e.updatedBuildConfig.spec.triggers = N(), I(), c.update(h, e.updatedBuildConfig.
 >>>>>>> Add search catalog in project context
 u.addNotification({
 >>>>>>> Update edit buildConfigs controller to use getPreferredVersion
+=======
+e.updatedBuildConfig.spec.triggers = E(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+l.addNotification({
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
-}), k();
+}), j();
 }, function(n) {
-e.disableInputs = !1, u.addNotification({
+e.disableInputs = !1, l.addNotification({
 id: "edit-build-config-error",
 type: "error",
 message: "An error occurred updating build config " + e.updatedBuildConfig.metadata.name + ".",
@@ -17507,7 +17615,7 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.$on("$destroy", function() {
-c.unwatchAll(b);
+s.unwatchAll(y);
 });
 } ]), angular.module("openshiftConsole").controller("EditConfigMapController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "DataService", "BreadcrumbsService", "Navigate", "NotificationsService", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l) {
 var u = [];
@@ -21586,6 +21694,7 @@ e.hideBuild = n(t);
 },
 templateUrl: "views/directives/_build-close.html"
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -21600,6 +21709,10 @@ templateUrl: "views/directives/_build-close.html"
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 var i = n.getPreferredVersion("serviceaccounts"), s = n.getPreferredVersion("secrets");
 >>>>>>> Update directives/createSecret to use getPreferredVersion
+=======
+} ]), angular.module("openshiftConsole").directive("createSecret", [ "$filter", "AuthorizationService", "APIService", "DataService", "NotificationsService", "ApplicationGenerator", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, r, a, o, i) {
+var s = n.getPreferredVersion("serviceaccounts"), c = n.getPreferredVersion("secrets");
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 return {
 restrict: "E",
 scope: {
@@ -21610,6 +21723,7 @@ onCreate: "&",
 onCancel: "&"
 },
 templateUrl: "views/directives/create-secret.html",
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -21653,6 +21767,10 @@ n.nameValidation = o, n.secretAuthTypeMap = {
 link: function(c) {
 c.nameValidation = o, c.secretAuthTypeMap = {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+link: function(l) {
+l.nameValidation = i, l.secretAuthTypeMap = {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 image: {
 label: "Image Secret",
 authTypes: [ {
@@ -21672,11 +21790,19 @@ label: "Basic Authentication"
 id: "kubernetes.io/ssh-auth",
 label: "SSH Key"
 } ]
+},
+webhook: {
+label: "Webhook Secret",
+authTypes: [ {
+id: "Opaque",
+label: "Webhook Secret"
+} ]
 }
-}, c.secretTypes = _.keys(c.secretAuthTypeMap), c.type ? c.newSecret = {
-type: c.type,
-authType: c.secretAuthTypeMap[c.type].authTypes[0].id,
+}, l.secretTypes = _.keys(l.secretAuthTypeMap), l.type ? l.newSecret = {
+type: l.type,
+authType: l.secretAuthTypeMap[l.type].authTypes[0].id,
 data: {},
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 linkSecret: !_.isEmpty(o.serviceAccountToLink),
@@ -21693,11 +21819,17 @@ linkSecret: !_.isEmpty(c.serviceAccountToLink),
 pickedServiceAccountToLink: c.serviceAccountToLink || ""
 } : c.newSecret = {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+linkSecret: !_.isEmpty(l.serviceAccountToLink),
+pickedServiceAccountToLink: l.serviceAccountToLink || ""
+} : l.newSecret = {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "source",
 authType: "kubernetes.io/basic-auth",
 data: {},
 linkSecret: !1,
 pickedServiceAccountToLink: ""
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -21713,6 +21845,20 @@ apiVersion: "v1",
 kind: "Secret",
 metadata: {
 name: h.newSecret.data.secretName
+=======
+}, l.add = {
+gitconfig: !1,
+cacert: !1
+}, t.canI("serviceaccounts", "list") && t.canI("serviceaccounts", "update") && r.list(s, l, function(e) {
+l.serviceAccounts = e.by("metadata.name"), l.serviceAccountsNames = _.keys(l.serviceAccounts);
+});
+var u = function(e, t) {
+var n = {
+apiVersion: "v1",
+kind: "Secret",
+metadata: {
+name: l.newSecret.data.secretName
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 },
 type: b,
 data: {}
@@ -21802,13 +21948,17 @@ password: e.dockerPassword,
 email: e.dockerMail,
 auth: a
 }, n.data[".dockercfg"] = window.btoa(JSON.stringify(o));
+break;
+
+case "Opaque":
+e.webhookSecretKey && _.set(n, "stringData.WebHookSecretKey", e.webhookSecretKey);
 }
 return n;
-}, u = function() {
+}, d = function() {
 a.hideNotification("create-secret-error");
-}, d = function(t) {
-var o = angular.copy(c.serviceAccounts[c.newSecret.pickedServiceAccountToLink]), i = n.objectToResourceGroupVersion(o);
-switch (c.newSecret.type) {
+}, m = function(t) {
+var o = angular.copy(l.serviceAccounts[l.newSecret.pickedServiceAccountToLink]), i = n.objectToResourceGroupVersion(o);
+switch (l.newSecret.type) {
 case "source":
 o.secrets.push({
 name: t.metadata.name
@@ -21849,29 +21999,30 @@ o.imagePullSecrets.push({
 name: t.metadata.name
 });
 }
-r.update(i, c.newSecret.pickedServiceAccountToLink, o, c).then(function(e) {
+r.update(i, l.newSecret.pickedServiceAccountToLink, o, l).then(function(e) {
 a.addNotification({
 type: "success",
 message: "Secret " + t.metadata.name + " was created and linked with service account " + e.metadata.name + "."
-}), c.onCreate({
+}), l.onCreate({
 newSecret: t
 });
 }, function(n) {
 a.addNotification({
 type: "success",
 message: "Secret " + t.metadata.name + " was created."
-}), c.serviceAccountToLink || a.addNotification({
+}), l.serviceAccountToLink || a.addNotification({
 id: "secret-sa-link-error",
 type: "error",
-message: "An error occurred while linking the secret with service account " + c.newSecret.pickedServiceAccountToLink + ".",
+message: "An error occurred while linking the secret with service account " + l.newSecret.pickedServiceAccountToLink + ".",
 details: e("getErrorDetails")(n)
-}), c.onCreate({
+}), l.onCreate({
 newSecret: t
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 });
-}, m = _.debounce(function() {
+}, p = _.debounce(function() {
 try {
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -21893,10 +22044,16 @@ JSON.parse(c.newSecret.data.dockerConfig), c.invalidConfigFormat = !1;
 } catch (e) {
 c.invalidConfigFormat = !0;
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+JSON.parse(l.newSecret.data.dockerConfig), l.invalidConfigFormat = !1;
+} catch (e) {
+l.invalidConfigFormat = !0;
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 }
 }, 300, {
 leading: !0
 });
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -21954,9 +22111,20 @@ var n = l(c.newSecret.data, c.newSecret.authType);
 r.create(s, null, n, c).then(function(e) {
 c.newSecret.linkSecret && c.serviceAccountsNames.contains(c.newSecret.pickedServiceAccountToLink) && t.canI("serviceaccounts", "update") ? d(e) : (a.addNotification({
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+l.aceChanged = p, l.nameChanged = function() {
+l.nameTaken = !1;
+}, l.generateWebhookSecretKey = function() {
+l.newSecret.data.webhookSecretKey = o._generateSecret();
+}, l.create = function() {
+d();
+var n = u(l.newSecret.data, l.newSecret.authType);
+r.create(c, null, n, l).then(function(e) {
+l.newSecret.linkSecret && l.serviceAccountsNames.contains(l.newSecret.pickedServiceAccountToLink) && t.canI("serviceaccounts", "update") ? m(e) : (a.addNotification({
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "success",
 message: "Secret " + n.metadata.name + " was created."
-}), c.onCreate({
+}), l.onCreate({
 newSecret: e
 }));
 }, function(t) {
@@ -21965,8 +22133,9 @@ id: "create-secret-error",
 type: "error",
 message: "An error occurred while creating the secret.",
 details: e("getErrorDetails")(t)
-}) : c.nameTaken = !0;
+}) : l.nameTaken = !0;
 });
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 <<<<<<< 1662285d137195d1bed7822ef13b73b8f6812d23
 }, o.cancel = function() {
@@ -21980,6 +22149,10 @@ l(), n.onCancel();
 }, c.cancel = function() {
 u(), c.onCancel();
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+}, l.cancel = function() {
+d(), l.onCancel();
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 };
 }
 };
@@ -22237,6 +22410,7 @@ details: n("getErrorDetails")(e)
 };
 }
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 } ]), angular.module("openshiftConsole").directive("editWebhookTriggers", function() {
 return {
 restrict: "E",
@@ -22255,6 +22429,9 @@ templateUrl: "views/directives/edit-webhook-triggers.html"
 =======
 }), angular.module("openshiftConsole").directive("editConfigMap", [ "DNS1123_SUBDOMAIN_VALIDATION", function(e) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").directive("editConfigMap", [ "DNS1123_SUBDOMAIN_VALIDATION", function(e) {
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 return {
 require: "^form",
 restrict: "E",
@@ -25651,6 +25828,100 @@ e.hidden = !0, _.isFunction(e.onClose) && e.onClose();
 }, e.onClick = function(t, n) {
 _.isFunction(n.onClick) && n.onClick() && e.close(t);
 >>>>>>> Convert alerts directive to component and add spec test.
+};
+}
+}), angular.module("openshiftConsole").component("oscWebhookTriggers", {
+bindings: {
+webhookSecrets: "=",
+namespace: "=",
+type: "@",
+webhookTriggers: "=",
+form: "="
+},
+templateUrl: "components/osc-webhook-triggers/osc-webhook-triggers.html",
+controller: function(e, t, n, r) {
+var a = this;
+a.$onInit = function() {
+e.namespace = a.namespace, e.type = a.type, a.secretsVersion = r.getPreferredVersion("secrets"), a.webhookTypesOptions = [ {
+type: "github",
+label: "GitHub"
+}, {
+type: "gitlab",
+label: "GitLab"
+}, {
+type: "bitbucket",
+label: "Bitbucket"
+}, {
+type: "generic",
+label: "Generic"
+} ];
+}, a.isDeprecated = function(e) {
+var t = n("getWebhookSecretData")(e);
+return _.has(t, "secret") && !_.has(t, "secretReference.name");
+}, a.toggleSecretInputType = function(e) {
+e.secretInputType = "password" === e.secretInputType ? "text" : "password";
+};
+var o = function(e) {
+var t = _.filter(a.webhookTriggers, function(t) {
+return _.isEqual(t.data, e.data);
+});
+_.each(t, function(e, t) {
+var n = 0 === t;
+e.isDuplicate = !n;
+});
+};
+a.removeWebhookTrigger = function(e, t) {
+var n = _.clone(e);
+if (1 === a.webhookTriggers.length) {
+var r = _.first(a.webhookTriggers);
+r.lastTriggerType = "", r.data = {
+type: ""
+};
+} else a.webhookTriggers.splice(t, 1);
+a.form.$setDirty(), o(n);
+}, a.triggerTypeChange = function(e) {
+var t = _.toLower(e.lastTriggerType), n = _.toLower(e.data.type);
+e.data[n] = e.data[t], delete e.data[t], e.lastTriggerType = e.data.type, o(e);
+}, a.triggerSecretChange = function(e) {
+o(e);
+};
+var i = function() {
+a.webhookTriggers.push({
+lastTriggerType: "",
+data: {
+type: ""
+}
+});
+};
+a.checkLastAndAddNew = function() {
+var e = _.last(a.webhookTriggers), t = n("getWebhookSecretData")(e);
+e.data.type && (_.has(t, "secret") || _.has(t, "secretReference.name")) && i();
+}, _.isEmpty(a.webhookTriggers) ? i() : _.each(a.webhookTriggers, function(e) {
+a.isDeprecated(e) && (e.secretInputType = "password"), e.isDuplicate || o(e);
+}), a.openCreateWebhookSecretModal = function() {
+t.open({
+animation: !0,
+templateUrl: "views/modals/create-secret.html",
+controller: "CreateSecretModalController",
+scope: e
+}).result.then(function(e) {
+a.webhookSecrets.push(e);
+});
+};
+}
+}), angular.module("openshiftConsole").component("copyWebhookUrl", {
+bindings: {
+buildConfigName: "=",
+triggerType: "=",
+projectName: "=",
+secret: "=",
+webhookSecrets: "="
+},
+templateUrl: "components/copy-webhook-url/copy-webhook-url.html",
+controller: function() {
+var e = this;
+e.showSecretsWarning = function() {
+return _.get(e.secret, "secretReference.name") && !e.webhookSecrets;
 };
 }
 }), angular.module("openshiftConsole").directive("parseError", function() {
@@ -35273,6 +35544,7 @@ if ("OPENSHIFT_BUILD_NAME" === a[0]) return t[a[1]];
 }
 return null;
 };
+<<<<<<< 863be36847ec2555353c8a4a7907f21c330629af
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }).filter("webhookURL", [ "DataService", function(a) {
 return function(b, c, d, e) {
@@ -35293,6 +35565,19 @@ namespace: r
 namespace: a
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 });
+=======
+}).filter("webhookURL", [ "DataService", "SecretsService", function(e, t) {
+return function(n, r, a, o, i) {
+return (a = t.getWebhookSecretValue(a, i)) ? e.url({
+resource: "buildconfigs/webhooks/" + encodeURIComponent(a) + "/" + encodeURIComponent(r.toLowerCase()),
+name: n,
+namespace: o
+}) : e.url({
+resource: "buildconfigs/webhooks/",
+name: n,
+namespace: o
+}) + "<secret>/" + r.toLowerCase();
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 };
 } ]).filter("isWebRoute", [ "routeHostFilter", function(e) {
 return function(t) {
@@ -36886,7 +37171,12 @@ return e ? e.replace(/^sha256:/, "") : e;
 return function(t, n) {
 return isNaN(n) ? t : e(t, n);
 };
-} ]).filter("getErrorDetails", function() {
+} ]).filter("getWebhookSecretData", function() {
+return function(e) {
+var t = _.get(e, "data.type");
+return t ? _.get(e, [ "data", _.toLower(t) ]) : null;
+};
+}).filter("getErrorDetails", function() {
 return function(e) {
 var t = e.data || {};
 if (t.message) return "Reason: " + t.message;
