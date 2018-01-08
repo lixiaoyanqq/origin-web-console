@@ -2220,28 +2220,44 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt translate>Bitbucket Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
+<<<<<<< HEAD
     "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.bitbucket : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
+=======
+    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.bitbucket\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"GitHub\">\n" +
     "<dt>GitHub Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
+<<<<<<< HEAD
     "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.github : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
+=======
+    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.github\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"GitLab\">\n" +
     "<dt>GitLab Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
+<<<<<<< HEAD
     "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.gitlab : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
+=======
+    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.gitlab\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"Generic\">\n" +
     "<dt>Generic Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
+<<<<<<< HEAD
     "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.generic : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
+=======
+    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.generic\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"ImageChange\">\n" +
@@ -7714,7 +7730,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/create-secret.html',
     "<ng-form name=\"secretForm\" class=\"create-secret-form\">\n" +
     "<div ng-if=\"!type\" class=\"form-group mar-top-lg\">\n" +
+<<<<<<< HEAD
     "<label for=\"secret-type\" translate>Secret Type</label>\n" +
+=======
+    "<label for=\"secret-type\">Secret Type</label>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "<ui-select input-id=\"secret-type\" required ng-model=\"newSecret.type\" search-enabled=\"false\" ng-change=\"newSecret.authType = secretAuthTypeMap[newSecret.type].authTypes[0].id\">\n" +
     "<ui-select-match>{{$select.selected | upperFirst}} Secret</ui-select-match>\n" +
     "<ui-select-choices repeat=\"type in secretTypes\">\n" +
@@ -7725,6 +7745,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"newSecret.type\">\n" +
     "<div class=\"form-group\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<label for=\"secret-name\" class=\"required\" translate>Secret Name</label>\n" +
     "<span ng-class=\"{'has-error': nameTaken || (secretForm.name.$invalid && secretForm.name.$touched)}\">\n" +
     "<input class=\"form-control\" id=\"secret-name\" name=\"name\" ng-model=\"newSecret.data.secretName\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"secret-name-help\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" ng-change=\"nameChanged()\" required>\n" +
@@ -7733,6 +7754,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-class=\"{'has-error': nameTaken || (secretForm.secretName.$invalid && secretForm.secretName.$touched)}\">\n" +
     "<input class=\"form-control\" id=\"secretName\" name=\"secretName\" ng-model=\"newSecret.data.secretName\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"secret-name-help\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" ng-change=\"nameChanged()\" required>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label for=\"secret-name\" class=\"required\">Secret Name</label>\n" +
+    "<span ng-class=\"{'has-error': nameTaken || (secretForm.secretName.$invalid && secretForm.secretName.$touched)}\">\n" +
+    "<input class=\"form-control\" id=\"secret-name\" name=\"secret-name\" ng-model=\"newSecret.data.secretName\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"secret-name-help\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" ng-change=\"nameChanged()\" required>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</span>\n" +
     "<div class=\"has-error\" ng-show=\"nameTaken\">\n" +
     "<span class=\"help-block\" translate>\n" +
@@ -7755,6 +7781,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"newSecret.type == 'webhook'\">\n" +
+<<<<<<< HEAD
     "<div class=\"form-group\">\n" +
     "<label for=\"webhook-secret-key\" class=\"required\" translate>Webhook Secret Key</label>\n" +
     "<div class=\"input-group\" ng-class=\"{ 'has-error': secretForm.webhookSecretKey.$invalid && secretForm.webhookSecretKey.$touched}\">\n" +
@@ -7782,6 +7809,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"newSecret.type != 'webhook'\">\n" +
     "<div class=\"form-group\">\n" +
     "<label for=\"authentification-type\" translate>Authentication Type</label>\n" +
+=======
+    "<div class=\"form-group\">\n" +
+    "<label for=\"webhook-secret-key\" class=\"required\">Webhook Secret Key</label>\n" +
+    "<div class=\"input-group\">\n" +
+    "<input class=\"form-control\" id=\"webhook-secret-key\" name=\"webhook-secret-key\" ng-model=\"newSecret.data.webhookSecretKey\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"webhook-secret-key-help\" required=\"true\">\n" +
+    "<span class=\"input-group-btn\">\n" +
+    "<button type=\"button\" class=\"btn btn-default\" ng-click=\"generateWebhookSecretKey()\">Generate</button>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "<div class=\"help-block\" id=\"secret-name-help\">\n" +
+    "Value of the secret will be supplied when invoking the webhook.\n" +
+    "<a ng-href=\"{{'webhooks' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-if=\"newSecret.type != 'webhook'\">\n" +
+    "<div class=\"form-group\">\n" +
+    "<label for=\"authentification-type\">Authentication Type</label>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "<ui-select required input-id=\"authentification-type\" ng-model=\"newSecret.authType\" search-enabled=\"false\">\n" +
     "<ui-select-match>{{$select.selected.label}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"type.id as type in secretAuthTypeMap[newSecret.type].authTypes\">\n" +
@@ -7797,9 +7843,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"help-block\" id=\"username-help\" translate>\n" +
 =======
     "<label for=\"username\">Username</label>\n" +
-    "<div>\n" +
     "<input class=\"form-control\" id=\"username\" name=\"username\" ng-model=\"newSecret.data.username\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"username-help\">\n" +
-    "</div>\n" +
     "<div class=\"help-block\" id=\"username-help\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
     "Optional username for Git authentication.\n" +
@@ -7807,12 +7851,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.passwordToken.$invalid && secretForm.passwordToken.$touched }\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"password-token\" translate>Password or Token</label>\n" +
     "<input class=\"form-control\" id=\"password-token\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
 =======
     "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"passwordToken\">Password or Token</label>\n" +
     "<input class=\"form-control\" id=\"passwordToken\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"password-token\">Password or Token</label>\n" +
+    "<input class=\"form-control\" id=\"password-token\" name=\"password-token\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.passwordToken.$error.required && secretForm.passwordToken.$touched\">\n" +
     "<div class=\"help-block\" translate>\n" +
@@ -7854,7 +7903,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "              showPrintMargin: false\n" +
     "            }\n" +
     "          }\" ng-model=\"newSecret.data.privateKey\" class=\"create-secret-editor ace-bordered\" id=\"private-key-editor\" required></div>\n" +
+<<<<<<< HEAD
     "<div class=\"help-block\" translate>\n" +
+=======
+    "<div class=\"help-block\">\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "Private SSH key file for Git authentication.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7883,6 +7936,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"newSecret.authType === 'kubernetes.io/dockercfg'\">\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.dockerServer.$invalid && secretForm.dockerServer.$touched }\">\n" +
+<<<<<<< HEAD
     "<label for=\"docker-server\" class=\"required\" translate>Image Registry Server Address</label>\n" +
     "<div>\n" +
 <<<<<<< HEAD
@@ -7890,6 +7944,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<input class=\"form-control\" id=\"dockerServer\" name=\"dockerServer\" ng-model=\"newSecret.data.dockerServer\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label for=\"docker-server\" class=\"required\">Image Registry Server Address</label>\n" +
+    "<div>\n" +
+    "<input class=\"form-control\" id=\"docker-server\" name=\"docker-server\" ng-model=\"newSecret.data.dockerServer\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerServer.$error.required && secretForm.dockerServer.$touched\" class=\"has-error\">\n" +
@@ -7898,6 +7957,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.dockerUsername.$invalid && secretForm.dockerUsername.$touched }\">\n" +
+<<<<<<< HEAD
     "<label for=\"docker-username\" class=\"required\" translate>Username</label>\n" +
     "<div>\n" +
 <<<<<<< HEAD
@@ -7905,6 +7965,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<input class=\"form-control\" id=\"dockerUsername\" name=\"dockerUsername\" ng-model=\"newSecret.data.dockerUsername\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label for=\"docker-username\" class=\"required\">Username</label>\n" +
+    "<div>\n" +
+    "<input class=\"form-control\" id=\"docker-username\" name=\"docker-username\" ng-model=\"newSecret.data.dockerUsername\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerUsername.$error.required && secretForm.dockerUsername.$touched\" class=\"has-error\">\n" +
@@ -7913,6 +7978,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.dockerPassword.$invalid && secretForm.dockerPassword.$touched }\">\n" +
+<<<<<<< HEAD
     "<label for=\"docker-password\" class=\"required\" translate>Password</label>\n" +
     "<div>\n" +
 <<<<<<< HEAD
@@ -7920,6 +7986,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<input class=\"form-control\" id=\"dockerPassword\" name=\"dockerPassword\" ng-model=\"newSecret.data.dockerPassword\" type=\"password\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label for=\"docker-password\" class=\"required\">Password</label>\n" +
+    "<div>\n" +
+    "<input class=\"form-control\" id=\"docker-password\" name=\"docker-password\" ng-model=\"newSecret.data.dockerPassword\" type=\"password\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerPassword.$error.required && secretForm.dockerPassword.$touched\" class=\"has-error\">\n" +
@@ -7928,6 +7999,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.dockerEmail.$invalid && secretForm.dockerEmail.$touched }\">\n" +
+<<<<<<< HEAD
     "<label for=\"docker-email\" class=\"required\" translate>Email</label>\n" +
     "<div>\n" +
 <<<<<<< HEAD
@@ -7935,6 +8007,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<input class=\"form-control\" type=\"email\" id=\"dockerEmail\" name=\"dockerEmail\" ng-model=\"newSecret.data.dockerMail\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<label for=\"docker-email\" class=\"required\">Email</label>\n" +
+    "<div>\n" +
+    "<input class=\"form-control\" type=\"email\" id=\"docker-email\" name=\"docker-email\" ng-model=\"newSecret.data.dockerMail\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.dockerEmail.$invalid\">\n" +
@@ -7959,7 +8036,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "              showPrintMargin: false\n" +
     "            }\n" +
     "          }\" ng-model=\"newSecret.data.dockerConfig\" class=\"create-secret-editor ace-bordered\" id=\"dockerconfig-editor\" required></div>\n" +
+<<<<<<< HEAD
     "<div class=\"help-block\" translate>\n" +
+=======
+    "<div class=\"help-block\">\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "File with credentials and other configuration for connecting to a secured image registry.\n" +
     "</div>\n" +
     "<div class=\"has-warning\" ng-show=\"invalidConfigFormat\">\n" +
@@ -8891,6 +8972,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/directives/edit-webhook-triggers.html',
     "<div class=\"display-webhooks\">\n" +
     "<h5>{{type}} Webhooks\n" +
@@ -8926,6 +9008,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
   $templateCache.put('views/directives/events-badge.html',
 <<<<<<< HEAD
     "<a ng-href=\"project/{{projectContext.projectName}}/browse/events\" class=\"events-badge visible-xs\"><span class=\"event-label\" translate>Events</span><span ng-if=\"warningCount\" class=\"mar-left-md\"><span class=\"pficon pficon-warning-triangle-o mar-right-sm\" aria-hidden=\"true\"></span><span class=\"sr-only\" translate>Warning</span><span class=\"event-count\">{{warningCount}}</span></span><span ng-if=\"normalCount\" class=\"mar-left-md\"><span class=\"pficon pficon-info mar-right-sm\" aria-hidden=\"true\"></span><span class=\"sr-only\" translate>Normal</span><span class=\"event-count\">{{normalCount}}</span></span></a>\n" +
@@ -10181,6 +10265,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</p>\n" +
     "<copy-to-clipboard clipboard-text=\"$ctrl.createdBuildConfig.metadata.name | webhookURL : trigger.type : trigger.github : $ctrl.projectName\"></copy-to-clipboard>\n" +
+<<<<<<< HEAD
+=======
+    "</div>\n" +
+>>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
     "</div>\n" +
     "<div ng-if=\"$ctrl.parameters.all.length\">\n" +
 <<<<<<< HEAD
@@ -18022,6 +18110,67 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>"
 >>>>>>> Convert alerts directive to component and add spec test.
+  );
+
+
+  $templateCache.put('components/copy-webhook-url/copy-webhook-url.html',
+    "<div class=\"copy-webhook-url\">\n" +
+    "<copy-to-clipboard clipboard-text=\"$ctrl.buildConfigName | webhookURL : $ctrl.triggerType : $ctrl.secret : $ctrl.projectName : $ctrl.webhookSecrets\"></copy-to-clipboard>\n" +
+    "<span ng-if=\"$ctrl.showSecretsWarning()\" class=\"pficon pficon-warning-triangle-o webhook-secrets-warning\" data-toggle=\"tooltip\" data-trigger=\"hover\" title=\"The URL for this webhook contains secret information that you do not have access to.\" aria-hidden=\"true\">\n" +
+    "</span>\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('components/osc-webhook-triggers/osc-webhook-triggers.html',
+    "<ng-form name=\"secretsForm\" class=\"add-webhook\">\n" +
+    "<div ng-repeat=\"trigger in $ctrl.webhookTriggers\">\n" +
+    "{{trigger}}\n" +
+    "<div class=\"add-webhook-row\">\n" +
+    "<ui-select ng-model=\"trigger.data.type\" ng-disabled=\"isDeprecated(trigger)\" on-select=\"$ctrl.triggerTypeChange(trigger)\" search-enabled=\"false\" title=\"Select a webhook type\" class=\"select-webhook-type\" flex>\n" +
+    "<ui-select-match placeholder=\"Webhook type\">\n" +
+    "{{ $select.selected.label }}\n" +
+    "</ui-select-match>\n" +
+    "<ui-select-choices repeat=\"option.label as option in $ctrl.webhookTypesOptions\">\n" +
+    "{{ option.label }}\n" +
+    "</ui-select-choices>\n" +
+    "</ui-select>\n" +
+    "<ui-select ng-if=\"!$ctrl.isDeprecated(trigger)\" ng-model=\"trigger.data[trigger.data.type.toLowerCase()].secretReference.name\" ng-disabled=\"!trigger.data.type\" ng-required=\"trigger.data.type\" on-select=\"$ctrl.triggerSecretChange(trigger)\" title=\"Select a webhook secret reference\" class=\"select-secret-ref\" flex>\n" +
+    "<ui-select-match placeholder=\"Webhook secret reference\">\n" +
+    "{{ $select.selected.metadata.name }}\n" +
+    "</ui-select-match>\n" +
+    "<ui-select-choices repeat=\"webhookSecret.metadata.name as webhookSecret in ($ctrl.webhookSecrets | filter : $select.search) track by (webhookSecret | uid)\">\n" +
+    "<div ng-bind-html=\"webhookSecret.metadata.name | highlight : $select.search\"></div>\n" +
+    "</ui-select-choices>\n" +
+    "</ui-select>\n" +
+    "<div class=\"select-secret-ref deprecated-secret input-group\" ng-if=\"$ctrl.isDeprecated(trigger)\">\n" +
+    "<input ng-model=\"trigger.data[trigger.data.type.toLowerCase()].secret\" class=\"form-control\" type=\"{{trigger.secretInputType}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" select-on-focus disabled=\"disabled\">\n" +
+    "<div class=\"input-group-btn\">\n" +
+    "<button type=\"button\" class=\"btn btn-default toggle\" title=\"Toggle Token Visibility\" aria-label=\"Toggle Token Visibility\" ng-click=\"$ctrl.toggleSecretInputType(trigger)\">\n" +
+    "<span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Toggle Token Visibility</span>\n" +
+    "</button>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"remove-webhook-trigger-action\">\n" +
+    "<button ng-click=\"$ctrl.removeWebhookTrigger(trigger, $index)\" type=\"button\" class=\"btn-remove close\" aria-hidden=\"true\">\n" +
+    "<span class=\"pficon pficon-close\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Remove Webhook trigger</span>\n" +
+    "</button>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"has-warning\" ng-if=\"trigger.isDuplicate\">\n" +
+    "<span class=\"help-block\">A {{trigger.data.type}} webhook trigger referencing the secret {{(trigger | getWebhookSecretData).secretReference.name}} already exists.</span>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"add-webhook-action-btns\">\n" +
+    "<button class=\"btn btn-link\" type=\"button\" ng-click=\"$ctrl.checkLastAndAddNew()\">Add Webhook</button>\n" +
+    "<span ng-if=\"$ctrl.secretsVersion | canI : 'create'\">\n" +
+    "<span class=\"action-divider\" aria-hidden=\"true\"> | </span>\n" +
+    "<button class=\"btn btn-link\" href=\"\" type=\"button\" ng-click=\"$ctrl.openCreateWebhookSecretModal()\">Create New Webhook Secret</button>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "</ng-form>"
   );
 
 }]);

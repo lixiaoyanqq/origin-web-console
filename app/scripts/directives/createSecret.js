@@ -69,6 +69,15 @@ angular.module("openshiftConsole")
                 label: "Webhook Secret"
               }
             ]
+          },
+          webhook: {
+            label: "Webhook Secret",
+            authTypes: [
+              {
+                id: "Opaque",
+                label: "Webhook Secret"
+              }
+            ]
           }
         };
 
@@ -171,6 +180,11 @@ angular.module("openshiftConsole")
             case "Opaque":
               if (data.webhookSecretKey) {
                 secret.stringData.WebHookSecretKey = data.webhookSecretKey;
+              }
+              break;
+            case "Opaque":
+              if (data.webhookSecretKey) {
+                _.set(secret, 'stringData.WebHookSecretKey', data.webhookSecretKey);
               }
               break;
           }
