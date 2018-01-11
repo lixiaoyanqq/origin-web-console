@@ -4589,6 +4589,7 @@ auth: {}
 return e.find("base").attr("href") || "/";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("BuildsService", [ "$filter", "$q", "APIService", "DataService", "Navigate", "gettext", "gettextCatalog", "NotificationsService", function(e, t, n, r, a, o, i, s) {
 var c = n.getPreferredVersion("buildconfigs/instantiate"), l = n.getPreferredVersion("builds/clone"), u = e("annotation"), d = e("buildConfigForBuild"), m = e("getErrorDetails"), p = e("isIncompleteBuild"), g = e("isJenkinsPipelineStrategy"), f = e("isNewerResource"), v = function(e) {
 var t = u(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
@@ -4624,6 +4625,23 @@ return _.round(e / 1e3 / 1e3);
 }, v = e("imageObjectRef"), h = function(e) {
 var t = o(e, "jenkinsStatus");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]), angular.module("openshiftConsole").factory("BuildsService", [ "$filter", "$q", "APIService", "DataService", "Navigate", "NotificationsService", function(e, t, n, r, a, o) {
+var i = n.getPreferredVersion("buildconfigs/instantiate"), s = n.getPreferredVersion("builds/clone"), c = e("annotation"), l = e("buildConfigForBuild"), u = e("getErrorDetails"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), f = function(e) {
+var t = c(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
+return isNaN(t) ? null : t;
+}, g = function(e, t) {
+var n = f(e);
+return t && n ? t + " #" + n : e.metadata.name;
+}, v = function(e) {
+return "true" === c(e, "openshift.io/build-config.paused");
+}, h = function(e) {
+return e.status.startTimestamp || e.metadata.creationTimestamp;
+}, y = function(e) {
+return _.round(e / 1e3 / 1e3);
+}, b = e("imageObjectRef"), S = function(e) {
+var t = c(e, "jenkinsStatus");
+>>>>>>> Fix potential API mismatch in BuildsService
 if (!t) return null;
 try {
 return JSON.parse(t);
@@ -4633,6 +4651,7 @@ return Logger.error("Could not parse Jenkins status as JSON", t), null;
 };
 return {
 startBuild: function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 var l = g(e) ? "pipeline" : "build", u = {
@@ -4665,14 +4684,18 @@ var o = l(e) ? "pipeline" : "build", i = {
 =======
 var i = p(e) ? "pipeline" : "build", c = {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+var s = m(e) ? "pipeline" : "build", c = {
+>>>>>>> Fix potential API mismatch in BuildsService
 kind: "BuildRequest",
-apiVersion: n.toAPIVersion(s),
+apiVersion: n.toAPIVersion(i),
 metadata: {
 name: e.metadata.name
 }
 }, l = {
 namespace: e.metadata.namespace
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 return n.create("buildconfigs/instantiate", e.metadata.name, i, c).then(function(t) {
 var n, i, s = m(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
@@ -4684,6 +4707,11 @@ details: i,
 return r.create(s, e.metadata.name, c, l).then(function(t) {
 var n, r, s = v(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
 "Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(i) + " " + s + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(i) + " " + s + " successfully created.", o.addNotification({
+=======
+return r.create(i, e.metadata.name, c, l).then(function(t) {
+var n, r, i = g(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
+"Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(s) + " " + i + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(s) + " " + i + " successfully created.", o.addNotification({
+>>>>>>> Fix potential API mismatch in BuildsService
 type: "success",
 message: n,
 details: r,
@@ -4696,6 +4724,7 @@ label: "View Build"
 }, function(e) {
 return a.addNotification({
 type: "error",
+<<<<<<< HEAD
 <<<<<<< HEAD
 message: "An error occurred while starting the " + o + ".",
 details: s(e)
@@ -4719,10 +4748,26 @@ return d.status.cancelled = !0, r.update(p, d.metadata.name, d, u).then(function
 s.addNotification({
 type: "success",
 message: i.getString(o(_.capitalize(c))) + " " + l + " " + i.getString(o("successfully cancelled."))
+=======
+message: "An error occurred while starting the " + s + ".",
+details: u(e)
+}), t.reject(e);
+});
+},
+cancelBuild: function(e, a) {
+var i = m(e) ? "pipeline" : "build", s = g(e, a), c = {
+namespace: e.metadata.namespace
+}, l = angular.copy(e), d = n.objectToResourceGroupVersion(l);
+return l.status.cancelled = !0, r.update(d, l.metadata.name, l, c).then(function() {
+o.addNotification({
+type: "success",
+message: _.capitalize(i) + " " + s + " successfully cancelled."
+>>>>>>> Fix potential API mismatch in BuildsService
 });
 }), function(e) {
 return s.addNotification({
 type: "error",
+<<<<<<< HEAD
 message: i.getString(o("An error occurred cancelling")) + " " + c + " " + l + ".",
 details: m(e)
 }), t.reject(e);
@@ -4743,6 +4788,28 @@ var t = h(e, c);
 s.addNotification({
 type: "success",
 message: i.getString(o(_.capitalize(u))) + " " + d + " " + i.getString(o("is being rebuilt as")) + " " + t + ".",
+=======
+message: "An error occurred cancelling " + i + " " + s + ".",
+details: u(e)
+}), t.reject(e);
+};
+},
+cloneBuild: function(e, i) {
+var c = m(e) ? "pipeline" : "build", l = g(e, i), d = {
+kind: "BuildRequest",
+apiVersion: n.toAPIVersion(s),
+metadata: {
+name: e.metadata.name
+}
+}, p = {
+namespace: e.metadata.namespace
+};
+return r.create(s, e.metadata.name, d, p).then(function(e) {
+var t = g(e, i);
+o.addNotification({
+type: "success",
+message: _.capitalize(c) + " " + l + " is being rebuilt as " + t + ".",
+>>>>>>> Fix potential API mismatch in BuildsService
 links: [ {
 href: a.resourceURL(e),
 label: i.getString(o("View Build"))
@@ -4812,6 +4879,7 @@ label: "View Build"
 }, function(e) {
 return a.addNotification({
 type: "error",
+<<<<<<< HEAD
 message: "An error occurred while rerunning " + i + " " + c + ".",
 details: s(e)
 }), t.reject();
@@ -4824,6 +4892,19 @@ return !!e && !e.metadata.deletionTimestamp && !p(e);
 usesDeploymentConfigs: function(e) {
 var t = o(e, "pipeline.alpha.openshift.io/uses");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+message: "An error occurred while rerunning " + c + " " + l + ".",
+details: u(e)
+}), t.reject();
+});
+},
+isPaused: v,
+canBuild: function(e) {
+return !!e && !e.metadata.deletionTimestamp && !v(e);
+},
+usesDeploymentConfigs: function(e) {
+var t = c(e, "pipeline.alpha.openshift.io/uses");
+>>>>>>> Fix potential API mismatch in BuildsService
 if (!t) return [];
 try {
 t = JSON.parse(t);
@@ -4844,15 +4925,20 @@ var n = u(t, "buildConfig");
 return _.pick(t, function(t) {
 =======
 return _.pickBy(t, function(t) {
+<<<<<<< HEAD
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 var n = o(t, "buildConfig");
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+var n = c(t, "buildConfig");
+>>>>>>> Fix potential API mismatch in BuildsService
 return !n || n === e;
 });
 },
 latestBuildByConfig: function(e, t) {
 var n = {};
 return _.each(e, function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 var r = d(e) || "";
@@ -4866,10 +4952,24 @@ getDuration: function(e) {
 var t = _.get(e, "status.duration");
 if (t) return S(t);
 var n = b(e), r = e.status.completionTimestamp;
+=======
+var r = l(e) || "";
+t && !t(e) || p(e, n[r]) && (n[r] = e);
+}), n;
+},
+getBuildNumber: f,
+getBuildDisplayName: g,
+getStartTimestsamp: h,
+getDuration: function(e) {
+var t = _.get(e, "status.duration");
+if (t) return y(t);
+var n = h(e), r = e.status.completionTimestamp;
+>>>>>>> Fix potential API mismatch in BuildsService
 return n && r ? moment(r).diff(moment(n)) : 0;
 },
 incompleteBuilds: function(e) {
 return _.map(e, function(e) {
+<<<<<<< HEAD
 return p(e);
 =======
 var a = i(e) || "";
@@ -4893,19 +4993,27 @@ incompleteBuilds: function(e) {
 return _.map(e, function(e) {
 return c(e);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+return d(e);
+>>>>>>> Fix potential API mismatch in BuildsService
 });
 },
 completeBuilds: function(e) {
 return _.map(e, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 return !p(e);
 =======
 return !c(e);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+return !d(e);
+>>>>>>> Fix potential API mismatch in BuildsService
 });
 },
 lastCompleteByBuildConfig: function(t) {
 return _.reduce(t, function(t, n) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 if (p(n)) return t;
 var r = e("annotation")(n, "buildConfig");
@@ -4920,11 +5028,17 @@ return u(n, t[a]) && (t[a] = n), t;
 var r = e("annotation")(n, "buildConfig");
 return u(n, t[r]) && (t[r] = n), t;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+if (d(n)) return t;
+var r = e("annotation")(n, "buildConfig");
+return p(n, t[r]) && (t[r] = n), t;
+>>>>>>> Fix potential API mismatch in BuildsService
 }, {});
 },
 interestingBuilds: function(t) {
 var n = {};
 return _.filter(t, function(t) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 if (p(t)) return !0;
 var r = e("annotation")(t, "buildConfig");
@@ -4939,6 +5053,11 @@ u(t, n[a]) && (n[a] = t);
 var r = e("annotation")(t, "buildConfig");
 u(t, n[r]) && (n[r] = t);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+if (d(t)) return !0;
+var r = e("annotation")(t, "buildConfig");
+p(t, n[r]) && (n[r] = t);
+>>>>>>> Fix potential API mismatch in BuildsService
 }).concat(_.map(n, function(e) {
 return e;
 }));
@@ -4946,6 +5065,7 @@ return e;
 groupBuildConfigsByOutputImage: function(e) {
 var t = {};
 return _.each(e, function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -4960,6 +5080,9 @@ a && (t[a] = t[a] || [], t[a].push(e));
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 var n = _.get(e, "spec.output.to"), r = v(n, e.metadata.namespace);
+=======
+var n = _.get(e, "spec.output.to"), r = b(n, e.metadata.namespace);
+>>>>>>> Fix potential API mismatch in BuildsService
 r && (t[r] = t[r] || [], t[r].push(e));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }), t;
@@ -4968,7 +5091,11 @@ sortBuilds: function(e, t) {
 var n = function(e, n) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var r, a, o = v(e), i = v(n);
+=======
+var r, a, o = f(e), i = f(n);
+>>>>>>> Fix potential API mismatch in BuildsService
 return o || i ? o ? i ? t ? i - o : o - i : t ? -1 : 1 : t ? 1 : -1 : (r = _.get(e, "metadata.name", ""), a = _.get(n, "metadata.name", ""), t ? a.localeCompare(r) : r.localeCompare(a));
 };
 return _.toArray(e).sort(function(e, r) {
@@ -4976,9 +5103,15 @@ var a = _.get(e, "metadata.creationTimestamp", ""), o = _.get(r, "metadata.creat
 return a === o ? n(e, r) : t ? o.localeCompare(a) : a.localeCompare(o);
 });
 },
+<<<<<<< HEAD
 getJenkinsStatus: w,
 getCurrentStage: function(e) {
 var t = w(e), n = _.get(t, "stages", []);
+=======
+getJenkinsStatus: S,
+getCurrentStage: function(e) {
+var t = S(e), n = _.get(t, "stages", []);
+>>>>>>> Fix potential API mismatch in BuildsService
 return _.last(n);
 }
 };
@@ -11649,6 +11782,7 @@ p = e.by("metadata.name"), y(), V();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 id: "metadata.name",
 title: l.getString(u("Name")),
 sortType: "alpha"
@@ -11660,6 +11794,9 @@ poll: U,
 =======
 poll: V,
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+poll: V,
+>>>>>>> Fix potential API mismatch in BuildsService
 pollInterval: 6e4
 })), i.list(T, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), O();
@@ -14936,11 +15073,15 @@ e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ]
 c.list(V, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), c.list(V, n).then(function(e) {
 >>>>>>> Set Home Page Preference
 =======
 }), c.list(U, n).then(function(e) {
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+}), c.list(U, n).then(function(e) {
+>>>>>>> Fix potential API mismatch in BuildsService
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 }), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
 I.value && I.value !== t || (I.value = e);
@@ -42269,6 +42410,7 @@ delete m.alerts[t], V = 1, k();
 }
 function w() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 return !(m.metricsError || U > 1) && (m.pod && _.get(m, "options.selectedContainer"));
 >>>>>>> Set Home Page Preference
 =======
@@ -42316,6 +42458,9 @@ value: e
 name: "app",
 value: b.template.metadata.name
 });
+=======
+return !(m.metricsError || V > 1) && (m.pod && _.get(m, "options.selectedContainer"));
+>>>>>>> Fix potential API mismatch in BuildsService
 }
 var y, b = this, S = e("displayName"), C = e("humanize");
 b.noProjectsCantCreate = !1, b.$onInit = function() {
@@ -42818,6 +42963,7 @@ w.unfilteredProjects = [];
 k();
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 var C, w = this, P = t("imageForIconClass"), j = t("annotation");
 w.selectStep = {
@@ -42838,6 +42984,8 @@ _.each(e.columns, function(e) {
 var n = i(e);
 t[n] = !0;
 =======
+=======
+>>>>>>> Fix potential API mismatch in BuildsService
 var U = o.$on("metrics.charts.resize", function() {
 c.redraw(R), c.redraw(T);
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
@@ -49082,6 +49230,7 @@ B(), e && (d = c.watch("events", {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 O(), e && (m = l.watch(p, {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
@@ -49096,6 +49245,9 @@ V(), e && (m = l.watch(p, {
 =======
 U(), e && (m = l.watch(p, {
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+U(), e && (m = l.watch(p, {
+>>>>>>> Fix potential API mismatch in BuildsService
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -49414,6 +49566,7 @@ g || v || H();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 V(), O(), U();
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
@@ -49428,6 +49581,9 @@ O(), V(), U();
 =======
 O(), U(), V();
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+O(), U(), V();
+>>>>>>> Fix potential API mismatch in BuildsService
 };
 } ]
 });
