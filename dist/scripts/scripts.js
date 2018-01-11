@@ -4158,20 +4158,20 @@ auth: {}
 } ]), angular.module("openshiftConsole").factory("BaseHref", [ "$document", function(e) {
 return e.find("base").attr("href") || "/";
 } ]), angular.module("openshiftConsole").factory("BuildsService", [ "$filter", "$q", "APIService", "DataService", "Navigate", "NotificationsService", function(e, t, n, r, a, o) {
-var i = n.getPreferredVersion("builds"), s = n.getPreferredVersion("buildconfigs/instantiate"), c = n.getPreferredVersion("builds/clone"), l = e("annotation"), u = e("buildConfigForBuild"), d = e("getErrorDetails"), m = e("isIncompleteBuild"), p = e("isJenkinsPipelineStrategy"), f = e("isNewerResource"), g = function(e) {
-var t = l(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
+var i = n.getPreferredVersion("buildconfigs/instantiate"), s = n.getPreferredVersion("builds/clone"), c = e("annotation"), l = e("buildConfigForBuild"), u = e("getErrorDetails"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), f = function(e) {
+var t = c(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
 return isNaN(t) ? null : t;
-}, v = function(e, t) {
-var n = g(e);
+}, g = function(e, t) {
+var n = f(e);
 return t && n ? t + " #" + n : e.metadata.name;
+}, v = function(e) {
+return "true" === c(e, "openshift.io/build-config.paused");
 }, h = function(e) {
-return "true" === l(e, "openshift.io/build-config.paused");
-}, y = function(e) {
 return e.status.startTimestamp || e.metadata.creationTimestamp;
-}, b = function(e) {
+}, y = function(e) {
 return _.round(e / 1e3 / 1e3);
-}, S = e("imageObjectRef"), C = function(e) {
-var t = l(e, "jenkinsStatus");
+}, b = e("imageObjectRef"), S = function(e) {
+var t = c(e, "jenkinsStatus");
 if (!t) return null;
 try {
 return JSON.parse(t);
@@ -4181,9 +4181,9 @@ return Logger.error("Could not parse Jenkins status as JSON", t), null;
 };
 return {
 startBuild: function(e) {
-var i = p(e) ? "pipeline" : "build", c = {
+var s = m(e) ? "pipeline" : "build", c = {
 kind: "BuildRequest",
-apiVersion: n.toAPIVersion(s),
+apiVersion: n.toAPIVersion(i),
 metadata: {
 name: e.metadata.name
 }
@@ -4211,6 +4211,7 @@ protocols: d,
 auth: {}
 });
 };
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
 } ]), angular.module("openshiftConsole").factory("BaseHref", [ "$document", function(a) {
 return a.find("base").attr("href") || "/";
@@ -4608,6 +4609,11 @@ return r.create(s, e.metadata.name, c, l).then(function(t) {
 var n, r, s = v(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
 "Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(i) + " " + s + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(i) + " " + s + " successfully created.", o.addNotification({
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+return r.create(i, e.metadata.name, c, l).then(function(t) {
+var n, r, i = g(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
+"Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(s) + " " + i + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(s) + " " + i + " successfully created.", o.addNotification({
+>>>>>>> Fix potential API mismatch in BuildsService
 type: "success",
 message: n,
 details: r,
@@ -4619,43 +4625,43 @@ label: "View Build"
 }, function(e) {
 return o.addNotification({
 type: "error",
-message: "An error occurred while starting the " + i + ".",
-details: d(e)
+message: "An error occurred while starting the " + s + ".",
+details: u(e)
 }), t.reject(e);
 });
 },
-cancelBuild: function(e, n) {
-var a = p(e) ? "pipeline" : "build", s = v(e, n), c = {
+cancelBuild: function(e, a) {
+var i = m(e) ? "pipeline" : "build", s = g(e, a), c = {
 namespace: e.metadata.namespace
-}, l = angular.copy(e);
-return l.status.cancelled = !0, r.update(i, l.metadata.name, l, c).then(function() {
+}, l = angular.copy(e), d = n.objectToResourceGroupVersion(l);
+return l.status.cancelled = !0, r.update(d, l.metadata.name, l, c).then(function() {
 o.addNotification({
 type: "success",
-message: _.capitalize(a) + " " + s + " successfully cancelled."
+message: _.capitalize(i) + " " + s + " successfully cancelled."
 });
 }), function(e) {
 return o.addNotification({
 type: "error",
-message: "An error occurred cancelling " + a + " " + s + ".",
-details: d(e)
+message: "An error occurred cancelling " + i + " " + s + ".",
+details: u(e)
 }), t.reject(e);
 };
 },
-cloneBuild: function(e, n) {
-var i = p(e) ? "pipeline" : "build", s = v(e, n), l = {
+cloneBuild: function(e, i) {
+var c = m(e) ? "pipeline" : "build", l = g(e, i), d = {
 kind: "BuildRequest",
-apiVersion: "v1",
+apiVersion: n.toAPIVersion(s),
 metadata: {
 name: e.metadata.name
 }
-}, u = {
+}, p = {
 namespace: e.metadata.namespace
 };
-return r.create(c, e.metadata.name, l, u).then(function(e) {
-var t = v(e, n);
+return r.create(s, e.metadata.name, d, p).then(function(e) {
+var t = g(e, i);
 o.addNotification({
 type: "success",
-message: _.capitalize(i) + " " + s + " is being rebuilt as " + t + ".",
+message: _.capitalize(c) + " " + l + " is being rebuilt as " + t + ".",
 links: [ {
 href: a.resourceURL(e),
 label: "View Build"
@@ -4664,17 +4670,17 @@ label: "View Build"
 }, function(e) {
 return o.addNotification({
 type: "error",
-message: "An error occurred while rerunning " + i + " " + s + ".",
-details: d(e)
+message: "An error occurred while rerunning " + c + " " + l + ".",
+details: u(e)
 }), t.reject();
 });
 },
-isPaused: h,
+isPaused: v,
 canBuild: function(e) {
-return !!e && !e.metadata.deletionTimestamp && !h(e);
+return !!e && !e.metadata.deletionTimestamp && !v(e);
 },
 usesDeploymentConfigs: function(e) {
-var t = l(e, "pipeline.alpha.openshift.io/uses");
+var t = c(e, "pipeline.alpha.openshift.io/uses");
 if (!t) return [];
 try {
 t = JSON.parse(t);
@@ -4688,49 +4694,49 @@ t.name && (t.namespace && t.namespace !== _.get(e, "metadata.namespace") || "Dep
 },
 validatedBuildsForBuildConfig: function(e, t) {
 return _.pickBy(t, function(t) {
-var n = l(t, "buildConfig");
+var n = c(t, "buildConfig");
 return !n || n === e;
 });
 },
 latestBuildByConfig: function(e, t) {
 var n = {};
 return _.each(e, function(e) {
-var r = u(e) || "";
-t && !t(e) || f(e, n[r]) && (n[r] = e);
+var r = l(e) || "";
+t && !t(e) || p(e, n[r]) && (n[r] = e);
 }), n;
 },
-getBuildNumber: g,
-getBuildDisplayName: v,
-getStartTimestsamp: y,
+getBuildNumber: f,
+getBuildDisplayName: g,
+getStartTimestsamp: h,
 getDuration: function(e) {
 var t = _.get(e, "status.duration");
-if (t) return b(t);
-var n = y(e), r = e.status.completionTimestamp;
+if (t) return y(t);
+var n = h(e), r = e.status.completionTimestamp;
 return n && r ? moment(r).diff(moment(n)) : 0;
 },
 incompleteBuilds: function(e) {
 return _.map(e, function(e) {
-return m(e);
+return d(e);
 });
 },
 completeBuilds: function(e) {
 return _.map(e, function(e) {
-return !m(e);
+return !d(e);
 });
 },
 lastCompleteByBuildConfig: function(t) {
 return _.reduce(t, function(t, n) {
-if (m(n)) return t;
+if (d(n)) return t;
 var r = e("annotation")(n, "buildConfig");
-return f(n, t[r]) && (t[r] = n), t;
+return p(n, t[r]) && (t[r] = n), t;
 }, {});
 },
 interestingBuilds: function(t) {
 var n = {};
 return _.filter(t, function(t) {
-if (m(t)) return !0;
+if (d(t)) return !0;
 var r = e("annotation")(t, "buildConfig");
-f(t, n[r]) && (n[r] = t);
+p(t, n[r]) && (n[r] = t);
 }).concat(_.map(n, function(e) {
 return e;
 }));
@@ -4738,13 +4744,13 @@ return e;
 groupBuildConfigsByOutputImage: function(e) {
 var t = {};
 return _.each(e, function(e) {
-var n = _.get(e, "spec.output.to"), r = S(n, e.metadata.namespace);
+var n = _.get(e, "spec.output.to"), r = b(n, e.metadata.namespace);
 r && (t[r] = t[r] || [], t[r].push(e));
 }), t;
 },
 sortBuilds: function(e, t) {
 var n = function(e, n) {
-var r, a, o = g(e), i = g(n);
+var r, a, o = f(e), i = f(n);
 return o || i ? o ? i ? t ? i - o : o - i : t ? -1 : 1 : t ? 1 : -1 : (r = _.get(e, "metadata.name", ""), a = _.get(n, "metadata.name", ""), t ? a.localeCompare(r) : r.localeCompare(a));
 };
 return _.toArray(e).sort(function(e, r) {
@@ -4752,9 +4758,9 @@ var a = _.get(e, "metadata.creationTimestamp", ""), o = _.get(r, "metadata.creat
 return a === o ? n(e, r) : t ? o.localeCompare(a) : a.localeCompare(o);
 });
 },
-getJenkinsStatus: C,
+getJenkinsStatus: S,
 getCurrentStage: function(e) {
-var t = C(e), n = _.get(t, "stages", []);
+var t = S(e), n = _.get(t, "stages", []);
 return _.last(n);
 }
 };
@@ -13854,6 +13860,7 @@ var $ = [];
 p.isAvailable().then(function(t) {
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 e.metricsAvailable = t;
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 >>>>>>> Bug 1505281 - Improve import YAML results message
 });
 <<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
@@ -14034,6 +14041,12 @@ var B = t("deploymentStatus"), L = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
 }, V = t("isIE")();
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+});
+var B = t("deploymentStatus"), L = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
+}, V = t("isIE")();
+>>>>>>> Fix potential API mismatch in BuildsService
 y.get(n.project).then(_.spread(function(r, u) {
 e.project = r, e.projectContext = u;
 var p = {}, y = function() {
@@ -14563,6 +14576,7 @@ message: "This " + w + " has been deleted."
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 =======
 }), e.replicaSet = t, L(t), O(), H(), e.deployment && x();
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 <<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 5c09bc4d158769cdc6f544531790994a3e776f20
@@ -14581,6 +14595,9 @@ message: "This " + w + " has been deleted."
 =======
 })), e.deploymentConfigName && U(), $.push(i.watch(E, u, function(t) {
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+})), e.deploymentConfigName && U(), $.push(i.watch(E, u, function(t) {
+>>>>>>> Fix potential API mismatch in BuildsService
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -27201,6 +27218,7 @@ links: [ {
 href: "",
 label: "Retry",
 onClick: function() {
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 <<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
@@ -27254,6 +27272,9 @@ delete m.alerts[t], U = 1, k();
 =======
 delete m.alerts[t], V = 1, k();
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+delete m.alerts[t], V = 1, k();
+>>>>>>> Fix potential API mismatch in BuildsService
 }
 } ]
 };
@@ -34701,6 +34722,7 @@ B(), e && (d = c.watch("events", {
 =======
 }, L());
 }, M = function(e, t) {
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 <<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
@@ -34719,6 +34741,9 @@ V(), e && (m = l.watch(p, {
 =======
 U(), e && (m = l.watch(p, {
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+U(), e && (m = l.watch(p, {
+>>>>>>> Fix potential API mismatch in BuildsService
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -35032,6 +35057,7 @@ L(), B(), $();
 h.$onInit = function() {
 g || v || H();
 }, h.$onDestroy = function() {
+<<<<<<< 4922501db930a022a8df9405679d9d7af61ae03a
 <<<<<<< f06c9b0f71270fb978621e60aef7b140c10d4746
 <<<<<<< 723388a175ab53d2ea1e120ef5cd5a4cd7f68c55
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
@@ -35050,6 +35076,9 @@ O(), V(), U();
 =======
 O(), U(), V();
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+O(), U(), V();
+>>>>>>> Fix potential API mismatch in BuildsService
 };
 } ]
 });
