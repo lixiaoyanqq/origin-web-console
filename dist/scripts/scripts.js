@@ -5734,6 +5734,7 @@ t[e.tag] = t[e.tag] || {}, t[e.tag].name = e.tag, t[e.tag].status = angular.copy
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "Constants", "gettext", "gettextCatalog", function(e, t, n, r) {
 e("annotation");
 var a = function() {
@@ -5758,6 +5759,15 @@ return t ? _.isEqual(n, 0) ? t : e + "-" + t : e;
 =======
 }, r = function() {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}), angular.module("openshiftConsole").factory("MembershipService", [ "$filter", "APIService", "Constants", function(e, t, n) {
+e("annotation");
+var r = function() {
+return _.reduce(_.slice(arguments), function(e, t, n) {
+return t ? _.isEqual(n, 0) ? t : e + "-" + t : e;
+}, "");
+}, a = function() {
+>>>>>>> Fix membershipService.mapRolebindingsForUI to properly list custom Roles in the output
 return {
 User: {
 kind: "User",
@@ -5843,9 +5853,10 @@ name: "SystemGroup",
 subjects: {}
 }
 };
-}, a = function(e) {
-return _.reduce(e, function(e, t) {
-return e[n(t.kind, t.metadata.name)] = t, e;
+}, o = function(e) {
+return _.reduce(e, function(e, n) {
+var a = t.parseGroupVersion(n.apiVersion).group;
+return e[r(a, n.kind, n.metadata.name)] = n, e;
 }, {});
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
@@ -5909,11 +5920,15 @@ return _.sortBy(e, "metadata.name");
 },
 filterRoles: function(e) {
 return _.filter(e, function(e) {
+<<<<<<< HEAD
 return _.includes(t.MEMBERSHIP_WHITELIST, e.metadata.name);
+=======
+return "Role" === e.kind || _.includes(n.MEMBERSHIP_WHITELIST, e.metadata.name);
+>>>>>>> Fix membershipService.mapRolebindingsForUI to properly list custom Roles in the output
 });
 },
 mapRolesForUI: function(e, t) {
-return _.merge(a(e), a(t));
+return _.merge(o(e), o(t));
 },
 isLastRole: function(e, t) {
 return 1 === _.filter(t, function(t) {
@@ -5922,16 +5937,16 @@ name: e
 });
 }).length;
 },
-getSubjectKinds: r,
+getSubjectKinds: a,
 mapRolebindingsForUI: function(e, t) {
-var r = _.reduce(e, function(e, r) {
-var a = n(r.roleRef.namespace ? "Role" : "ClusterRole", r.roleRef.name);
-return _.each(r.subjects, function(r) {
-var o = n(r.namespace, r.name);
-e[r.kind].subjects[o] || (e[r.kind].subjects[o] = {
-name: r.name,
+var n = _.reduce(e, function(e, n) {
+var a = r(n.roleRef.apiGroup, n.roleRef.kind, n.roleRef.name);
+return _.each(n.subjects, function(n) {
+var o = r(n.namespace, n.name);
+e[n.kind].subjects[o] || (e[n.kind].subjects[o] = {
+name: n.name,
 roles: {}
-}, r.namespace && (e[r.kind].subjects[o].namespace = r.namespace)), _.includes(e[r.kind].subjects[o].roles, a) || t[a] && (e[r.kind].subjects[o].roles[a] = t[a]);
+}, n.namespace && (e[n.kind].subjects[o].namespace = n.namespace)), _.includes(e[n.kind].subjects[o].roles, a) || t[a] && (e[n.kind].subjects[o].roles[a] = t[a]);
 }), e;
 }, {
 User: {
@@ -5971,7 +5986,7 @@ name: "SystemGroup",
 subjects: {}
 }
 });
-return _.sortBy(r, "sortOrder");
+return _.sortBy(n, "sortOrder");
 }
 };
 } ]), angular.module("openshiftConsole").factory("RolesService", [ "$q", "APIService", "DataService", function(e, t, n) {
