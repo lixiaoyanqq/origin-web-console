@@ -158,19 +158,27 @@
           </div>
         </div>
       </div>
-
+      
       <div ng-repeat="alternate in route.alternateServices" class="form-group">
-        <osc-routing-service model="alternate"
-                             service-options="alternateServiceOptions"
-                             all-services="servicesByName"
-                             is-alternate="true"
-                             show-weight="route.alternateServices.length > 1 || controls.hideSlider">
+        <osc-routing-service 
+          model="alternate"
+          service-options="alternateServiceOptions"
+          all-services="servicesByName"
+          is-alternate="true"
+          show-weight="route.alternateServices.length > 1 || controls.hideSlider">
         </osc-routing-service>
-        <a href="" ng-click="route.alternateServices.splice($index, 1)" translate>Remove Service</a>
-        <span ng-if="$last && route.alternateServices.length < alternateServiceOptions.length">
-          <span class="action-divider">|</span>
-          <a href="" ng-click="addAlternateService()" translate>Add Another Service</a>
-        </span>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-link" ng-click="route.alternateServices.splice($index, 1)" translate>Remove Service</button>
+            <span ng-if="$last && route.alternateServices.length < alternateServiceOptions.length">
+              <span class="action-divider">|</span>
+              <button type="button" class="btn btn-link" ng-click="addAlternateService()" translate>Add Another Service</button>
+            </span>
+          </div>
+          <div ng-if="route.alternateServices.length === 1 && controls.hideSlider" class="col-sm-6">
+            <button type="button" class="btn btn-link" ng-click="controls.hideSlider = false" translate>Edit Weights Using Percentage Slider</button>
+          </div>
+        </div>
       </div>
       <div ng-repeat="duplicate in duplicateServices" class="has-error mar-bottom-lg">
         <span class="help-block" translate>
@@ -212,8 +220,9 @@
           <option>75</option>
           <option>100</option>
         </datalist>
-        <div class="help-block" id="weight-slider-help" translate>
-          Percentage of traffic sent to each service. Drag the slider to adjust the values or <a href="" ng-click="controls.hideSlider = true">edit weights as integers</a>.
+        <div class="help-block" id="weight-slider-help">
+		<translate>Percentage of traffic sent to each service. Drag the slider to adjust the values or</translate>
+          <button type="button" class="btn btn-link" ng-click="controls.hideSlider = true">edit weights as integers</button>.
         </div>
       </div>
     </div>

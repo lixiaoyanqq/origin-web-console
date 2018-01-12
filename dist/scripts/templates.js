@@ -11241,11 +11241,25 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"alternate in route.alternateServices\" class=\"form-group\">\n" +
     "<osc-routing-service model=\"alternate\" service-options=\"alternateServiceOptions\" all-services=\"servicesByName\" is-alternate=\"true\" show-weight=\"route.alternateServices.length > 1 || controls.hideSlider\">\n" +
     "</osc-routing-service>\n" +
+<<<<<<< 19eb7841b9cafd073e70f5b25435d78688c6a0d6
     "<a href=\"\" ng-click=\"route.alternateServices.splice($index, 1)\" translate>Remove Service</a>\n" +
     "<span ng-if=\"$last && route.alternateServices.length < alternateServiceOptions.length\">\n" +
     "<span class=\"action-divider\">|</span>\n" +
     "<a href=\"\" ng-click=\"addAlternateService()\" translate>Add Another Service</a>\n" +
+=======
+    "<div class=\"row\">\n" +
+    "<div class=\"col-sm-6\">\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"route.alternateServices.splice($index, 1)\">Remove Service</button>\n" +
+    "<span ng-if=\"$last && route.alternateServices.length < alternateServiceOptions.length\">\n" +
+    "<span class=\"action-divider\">|</span>\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"addAlternateService()\">Add Another Service</button>\n" +
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
     "</span>\n" +
+    "</div>\n" +
+    "<div ng-if=\"route.alternateServices.length === 1 && controls.hideSlider\" class=\"col-sm-6\">\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"controls.hideSlider = false\">Edit Weights Using Percentage Slider</button>\n" +
+    "</div>\n" +
+    "</div>\n" +
     "</div>\n" +
     "<div ng-repeat=\"duplicate in duplicateServices\" class=\"has-error mar-bottom-lg\">\n" +
     "<span class=\"help-block\" translate>\n" +
@@ -11277,8 +11291,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<option>75</option>\n" +
     "<option>100</option>\n" +
     "</datalist>\n" +
+<<<<<<< 19eb7841b9cafd073e70f5b25435d78688c6a0d6
     "<div class=\"help-block\" id=\"weight-slider-help\" translate>\n" +
     "Percentage of traffic sent to each service. Drag the slider to adjust the values or <a href=\"\" ng-click=\"controls.hideSlider = true\">edit weights as integers</a>.\n" +
+=======
+    "<div class=\"help-block\" id=\"weight-slider-help\">\n" +
+    "Percentage of traffic sent to each service. Drag the slider to adjust the values or\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"controls.hideSlider = true\">edit weights as integers</button>.\n" +
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +

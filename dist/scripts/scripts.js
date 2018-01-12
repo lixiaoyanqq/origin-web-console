@@ -24604,6 +24604,7 @@ if (0 === e && _.has(r, "route.to.weight") && delete r.route.to.weight, 1 === e)
 if (0 === r.route.to.weight && 0 === r.route.alternateServices[0].weight) return void (r.controls.hideSlider = !0);
 m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight);
 }
+<<<<<<< 19eb7841b9cafd073e70f5b25435d78688c6a0d6
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< 32ce7dc9188e66a92552db029fc5fde74d2e4f63
 }), n.$watch("controls.rangeSlider", function(e, t) {
@@ -24622,6 +24623,10 @@ p ? p = !1 : e !== t && (e = parseInt(e, 10), _.set(a, "route.to.weight", e), _.
 m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(a, "route.to.weight", e), _.set(a, "route.alternateServices[0].weight", 100 - e));
 >>>>>>> Support EnvFrom in the Env Editors
 =======
+=======
+}), r.$watch("controls.hideSlider", function(e) {
+e || 1 !== r.route.alternateServices.length || (m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight));
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
 }), r.$watch("controls.rangeSlider", function(e, t) {
 m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(r, "route.to.weight", e), _.set(r, "route.alternateServices[0].weight", 100 - e));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
