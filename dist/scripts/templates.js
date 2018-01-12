@@ -11189,6 +11189,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"alternate in route.alternateServices\" class=\"form-group\">\n" +
     "<osc-routing-service model=\"alternate\" service-options=\"alternateServiceOptions\" all-services=\"servicesByName\" is-alternate=\"true\" show-weight=\"route.alternateServices.length > 1 || controls.hideSlider\">\n" +
     "</osc-routing-service>\n" +
+<<<<<<< HEAD
     "<div class=\"row form-group-actions\">\n" +
     "<div class=\"col-sm-6\">\n" +
     "<button type=\"button\" class=\"btn btn-link\" ng-click=\"route.alternateServices.splice($index, 1)\" translate>Remove Service</button>\n" +
@@ -11199,6 +11200,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"route.alternateServices.length === 1 && controls.hideSlider\" class=\"col-sm-6\">\n" +
     "<button type=\"button\" class=\"btn btn-link\" ng-click=\"controls.hideSlider = false\" translate>Edit Weights Using Percentage Slider</button>\n" +
+=======
+    "<div class=\"row\">\n" +
+    "<div class=\"col-sm-6\">\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"route.alternateServices.splice($index, 1)\">Remove Service</button>\n" +
+    "<span ng-if=\"$last && route.alternateServices.length < alternateServiceOptions.length\">\n" +
+    "<span class=\"action-divider\">|</span>\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"addAlternateService()\">Add Another Service</button>\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "<div ng-if=\"route.alternateServices.length === 1 && controls.hideSlider\" class=\"col-sm-6\">\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"controls.hideSlider = false\">Edit Weights Using Percentage Slider</button>\n" +
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11233,7 +11246,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<option>100</option>\n" +
     "</datalist>\n" +
     "<div class=\"help-block\" id=\"weight-slider-help\">\n" +
+<<<<<<< HEAD
     "<translate>Percentage of traffic sent to each service. Drag the slider to adjust the values or</translate>\n" +
+=======
+    "Percentage of traffic sent to each service. Drag the slider to adjust the values or\n" +
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
     "<button type=\"button\" class=\"btn btn-link\" ng-click=\"controls.hideSlider = true\">edit weights as integers</button>.\n" +
     "</div>\n" +
     "</div>\n" +

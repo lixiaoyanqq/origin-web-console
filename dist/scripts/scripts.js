@@ -38455,6 +38455,7 @@ if (0 === e && _.has(r, "route.to.weight") && delete r.route.to.weight, 1 === e)
 if (0 === r.route.to.weight && 0 === r.route.alternateServices[0].weight) return void (r.controls.hideSlider = !0);
 m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight);
 }
+<<<<<<< HEAD
 }), r.$watch("controls.rangeSlider", function(e, t) {
 m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(r, "route.to.weight", e), _.set(r, "route.alternateServices[0].weight", 100 - e));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
@@ -41579,6 +41580,12 @@ readOnly: !0
 };
 _.each(r.spec.containers, function(e) {
 m(e) && (e.volumeMounts = e.volumeMounts || [], e.volumeMounts.push(d));
+=======
+}), r.$watch("controls.hideSlider", function(e) {
+e || 1 !== r.route.alternateServices.length || (m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight));
+}), r.$watch("controls.rangeSlider", function(e, t) {
+m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(r, "route.to.weight", e), _.set(r, "route.alternateServices[0].weight", 100 - e));
+>>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
 });
 var p = {
 name: l
