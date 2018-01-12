@@ -117,6 +117,9 @@ accordion>.panel-group .panel-open .panel-title>a:before{content:"\f107"}
 .trend-card-small-pf .trend-title-big-pf{font-size:17px;font-weight:400;margin-left:10px}
 .trend-card-small-pf .trend-title-small-pf{font-size:10px;font-weight:400}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Bump angular-patternfly version to 4.12.2
 .card-pf-info-status{display:flex}
 .card-pf-info-status .card-pf-info-image{display:flex;align-items:center;justify-content:center;flex-direction:column;margin-right:15px}
 .card-pf-info-status .card-pf-info-image .info-icon{font-size:50px}
@@ -124,8 +127,11 @@ accordion>.panel-group .panel-open .panel-title>a:before{content:"\f107"}
 .card-pf-info-status .card-pf-info-content{margin:10px 0}
 .card-pf-info-status .card-pf-info-content .card-pf-title{margin-top:10px;margin-bottom:15px}
 .card-pf-info-status .show-spinner{width:100%}
+<<<<<<< HEAD
 =======
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
+=======
+>>>>>>> Bump angular-patternfly version to 4.12.2
 pf-c3-chart{display:block}
 .empty-chart-content{text-align:center}
 .empty-chart-content .pficon{font-size:24px}
@@ -210,12 +216,16 @@ pf-topology{display:block;user-select:none}
 .card-view-pf .card.active .pficon,.card-view-pf .card.active:focus .pficon,.card-view-pf .card.active:hover .pficon{color:#fff}
 .card-view-pf .card.disabled,.card.disabled:focus,.card.disabled:hover{-moz-box-shadow:none;-webkit-box-shadow:none;border:1px solid #ededed;box-shadow:none;color:#8b8d8f;cursor:not-allowed}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .toast-pf .dropdown-menu>li>a,.toast-pf-action>a,.toolbar-pf-actions .dropdown-menu a,.toolbar-pf-actions .toolbar-pf-view-selector a{cursor:pointer}
 .blank-slate-pf{height:100%;margin-bottom:0px}
 .blank-slate-pf button{margin-right:4px}
 .blank-slate-pf .blank-state-pf-helpbutton{padding-left:0;padding-right:0;vertical-align:baseline}
 =======
 .filter-pf a,.toast-pf .dropdown-menu>li>a,.toast-pf-action>a,.toolbar-pf-actions .dropdown-menu a,.toolbar-pf-actions .toolbar-pf-view-selector a{cursor:pointer}
+=======
+.toast-pf .dropdown-menu>li>a,.toast-pf-action>a,.toolbar-pf-actions .dropdown-menu a,.toolbar-pf-actions .toolbar-pf-view-selector a{cursor:pointer}
+>>>>>>> Bump angular-patternfly version to 4.12.2
 .blank-slate-pf{height:100%;margin-bottom:0px}
 .blank-slate-pf button{margin-right:4px}
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
@@ -226,6 +236,7 @@ pf-topology{display:block;user-select:none}
 .toolbar-pf-include-actions{display:inline-block;margin:0 5px}
 .dropdown-kebab-pf.invisible{opacity:0;pointer-events:none}
 .toolbar-pf-actions.no-filter{margin-left:-30px;margin-bottom:10px}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .filter-pf .category-select{display:flex}
@@ -264,9 +275,11 @@ pf-filter-panel .filter-panel-container .category .category-option-label{font-si
 =======
 =======
 .filter-pf .input-group .input-group-btn .dropdown-menu>.selected>a{background-color:#0088ce!important;border-color:#0076b7!important;color:#fff!important}
+=======
+>>>>>>> Bump angular-patternfly version to 4.12.2
 .filter-pf .category-select{display:flex}
 .filter-pf .category-select-value{border-left-width:0!important}
-.filter-pf.filter-fields .form-group{padding-left:0;width:275px}
+.filter-pf.filter-fields .form-group{width:275px}
 .filter-select .btn-default{background-color:#fff;background-image:none;color:#8b8d8f;font-size:12px;font-style:italic;font-weight:400}
 .canvas-in-connection-mode,.read-only,table.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc{background-image:none!important}
 >>>>>>> Bump dependency versions
@@ -275,11 +288,13 @@ pf-filter-panel input:-moz-placeholder{font-style:italic;padding-left:10px}
 pf-filter-panel input::-moz-placeholder{font-style:italic;padding-left:10px}
 pf-filter-panel input:-ms-input-placeholder{font-style:italic;padding-left:10px}
 pf-filter-panel input::-webkit-input-placeholder{font-style:italic;padding-left:10px}
+pf-filter-panel .inline-filter-pf>.dropdown{margin-right:10px}
 pf-filter-panel .filter-panel-container{padding:10px}
 pf-filter-panel .filter-panel-container .keyword-filter{margin-bottom:10px}
 pf-filter-panel .filter-panel-container ul{list-style-type:none;padding-left:16px}
 pf-filter-panel .filter-panel-container .category{font-size:15px;font-weight:400}
 pf-filter-panel .filter-panel-container .category .category-option-label{font-size:12px;vertical-align:text-bottom}
+<<<<<<< HEAD
 pf-filter-panel .list-inline>li{padding-right:0}
 pf-filter-panel .toolbar-pf-results{border-top:none;margin-left:10px;vertical-align:middle}
 pf-filter-panel .toolbar-pf-results .single-label{padding:6px}
@@ -301,6 +316,18 @@ pf-filter-panel .toolbar-pf-results p{padding-right:10px;padding-left:10px}
 .filter-pf.inline-filter-pf .toolbar-pf-results .list-inline>li{margin-bottom:5px}
 .filter-pf .toolbar-pf-results .list-inline{margin-left:0}
 >>>>>>> Add track by to notification drawer
+=======
+.filter-pf-active-label{margin-right:5px}
+.filter-pf-category-item{margin-bottom:5px}
+.pf-filter-category-label{font-weight:700;padding:5px 0 6px 5px;margin-right:5px}
+.pf-filter-category-label.multiples{background-color:#39a5dc;padding-right:5px}
+.filter-pf-category-values.list-inline{margin-left:0}
+.filter-pf-category-values.list-inline>li{margin-left:5px;padding:0}
+.filter-pf.inline-filter-pf pf-filter-fields,.filter-pf.inline-filter-pf pf-filter-panel-results,.filter-pf.inline-filter-pf pf-filter-results{display:inline-block}
+.filter-pf.inline-filter-pf pf-filter-fields{vertical-align:middle}
+.filter-pf.inline-filter-pf .filter-fields>.form-group{margin-bottom:3px;margin-right:15px}
+.filter-pf.inline-filter-pf .toolbar-pf-results{border-top:none;margin-top:0}
+>>>>>>> Bump angular-patternfly version to 4.12.2
 .sort-pf .btn-link{color:#252525;font-size:16px;line-height:1;margin-left:10px;padding:4px 0}
 .sort-pf .btn-link:hover{color:#0088ce}
 .list-group-item-header.list-group-item-not-selectable{cursor:inherit}
