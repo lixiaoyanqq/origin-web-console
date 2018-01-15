@@ -7141,6 +7141,7 @@ return s.min && (l = c(t, r)) && (u = a(s.min), d = Math.ceil(u[0] / (l / 100)),
 };
 return {
 <<<<<<< HEAD
+<<<<<<< HEAD
 getEffectiveLimitRange: d,
 getRequestToLimitPercent: c,
 isRequestCalculated: l,
@@ -7157,11 +7158,15 @@ o && (p += n(o));
 =======
 findImage: function(e, t) {
 var n = {
+=======
+findImage: function(e, n) {
+var o = {
+>>>>>>> Fix deploy image
 kind: "ImageStreamImport",
-apiVersion: "v1",
+apiVersion: t.toAPIVersion(a),
 metadata: {
 name: "newapp",
-namespace: t.namespace
+namespace: n.namespace
 },
 spec: {
 import: !1,
@@ -7172,6 +7177,7 @@ name: e
 >>>>>>> Update images service to use getPreferredVersion
 }
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("RoutesService", [ "$filter", function(e) {
 var t = function(e) {
@@ -7222,6 +7228,9 @@ var t = {}, n = function(e, n) {
 t[n] = t[n] || [], t[n].push(e);
 =======
 return r.create(a, null, n, t).then(function(e) {
+=======
+return r.create(a, null, o, n).then(function(e) {
+>>>>>>> Fix deploy image
 return {
 name: _.get(e, "spec.images[0].from.name"),
 image: _.get(e, "status.images[0].image"),
@@ -48603,7 +48612,9 @@ var t = n.import.image;
 t && (n.app.name = k(), n.runsAsRoot = i.runsAsRoot(t), n.ports = r.parsePorts(t), n.volumes = i.getVolumes(t), n.createImageStream = !0);
 } else n.import.error = _.get(e, "result.message", "An error occurred finding the image.");
 }, function(t) {
-n.import.error = e("getErrorDetails")(t) || "An error occurred finding the image.", n.loading = !1;
+n.import = {
+error: e("getErrorDetails")(t) || "An error occurred finding the image."
+}, n.loading = !1;
 });
 }, n.$watch("app.name", function(e, t) {
 n.nameTaken = !1;
