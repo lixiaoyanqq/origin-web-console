@@ -17941,6 +17941,7 @@ metadata: {
 name: l.newSecret.data.secretName
 },
 type: t,
+<<<<<<< HEAD
 data: {}
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 };
@@ -18087,6 +18088,22 @@ e.resource = {
 group: "extensions",
 resource: "replicasets"
 }, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+=======
+stringData: {}
+};
+switch (t) {
+case "kubernetes.io/basic-auth":
+e.passwordToken ? n.stringData.password = e.passwordToken : n.type = "Opaque", e.username && (n.stringData.username = e.username), e.gitconfig && (n.stringData[".gitconfig"] = e.gitconfig), e.cacert && (n.stringData["ca.crt"] = e.cacert);
+break;
+
+case "kubernetes.io/ssh-auth":
+n.stringData["ssh-privatekey"] = e.privateKey, e.gitconfig && (n.stringData[".gitconfig"] = e.gitconfig);
+break;
+
+case "kubernetes.io/dockerconfigjson":
+var r = ".dockerconfigjson";
+JSON.parse(e.dockerConfig).auths || (n.type = "kubernetes.io/dockercfg", r = ".dockercfg"), n.stringData[r] = e.dockerConfig;
+>>>>>>> Secret creation should be using stringData
 break;
 
 <<<<<<< HEAD
@@ -18111,11 +18128,11 @@ username: e.dockerUsername,
 password: e.dockerPassword,
 email: e.dockerMail,
 auth: a
-}, n.data[".dockercfg"] = window.btoa(JSON.stringify(o));
+}, n.stringData[".dockercfg"] = JSON.stringify(o);
 break;
 
 case "Opaque":
-e.webhookSecretKey && _.set(n, "stringData.WebHookSecretKey", e.webhookSecretKey);
+e.webhookSecretKey && (n.stringData.WebHookSecretKey = e.webhookSecretKey);
 }
 return n;
 }, d = function() {

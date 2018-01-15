@@ -184,7 +184,7 @@ angular.module("openshiftConsole")
               break;
             case "Opaque":
               if (data.webhookSecretKey) {
-                _.set(secret, 'stringData.WebHookSecretKey', data.webhookSecretKey);
+                secret.stringData.WebHookSecretKey = data.webhookSecretKey;
               }
               break;
           }
