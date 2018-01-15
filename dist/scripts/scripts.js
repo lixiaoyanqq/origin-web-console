@@ -7033,6 +7033,7 @@ value: e
 });
 };
 return {
+<<<<<<< 2f5d506b78d6bcd3bcf60eed9adca143534661f6
 findImage: function(e, t) {
 <<<<<<< e46791bc1f68bb9e4bfaa876f6d237b8fa0aebd8
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
@@ -7044,10 +7045,15 @@ var r = {
 =======
 var n = {
 >>>>>>> Update images service to use getPreferredVersion
+=======
+findImage: function(e, n) {
+var o = {
+>>>>>>> Fix deploy image
 kind: "ImageStreamImport",
-apiVersion: "v1",
+apiVersion: t.toAPIVersion(a),
 metadata: {
 name: "newapp",
+<<<<<<< 2f5d506b78d6bcd3bcf60eed9adca143534661f6
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 namespace: b.namespace
 },
@@ -7059,6 +7065,9 @@ kind: "DockerImage",
 name: a
 =======
 namespace: t.namespace
+=======
+namespace: n.namespace
+>>>>>>> Fix deploy image
 },
 spec: {
 import: !1,
@@ -7072,6 +7081,7 @@ name: e
 },
 status: {}
 };
+<<<<<<< 2f5d506b78d6bcd3bcf60eed9adca143534661f6
 <<<<<<< e46791bc1f68bb9e4bfaa876f6d237b8fa0aebd8
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -7127,6 +7137,9 @@ return n.create("imagestreamimports", null, r, t).then(function(e) {
 =======
 return r.create(a, null, n, t).then(function(e) {
 >>>>>>> Update images service to use getPreferredVersion
+=======
+return r.create(a, null, o, n).then(function(e) {
+>>>>>>> Fix deploy image
 return {
 name: _.get(e, "spec.images[0].from.name"),
 image: _.get(e, "status.images[0].image"),
@@ -33277,7 +33290,9 @@ var t = n.import.image;
 t && (n.app.name = I(), n.runsAsRoot = s.runsAsRoot(t), n.ports = o.parsePorts(t), n.volumes = s.getVolumes(t), n.createImageStream = !0);
 } else n.import.error = _.get(e, "result.message", "An error occurred finding the image.");
 }, function(t) {
-n.import.error = e("getErrorDetails")(t) || "An error occurred finding the image.", n.loading = !1;
+n.import = {
+error: e("getErrorDetails")(t) || "An error occurred finding the image."
+}, n.loading = !1;
 });
 }, n.$watch("app.name", function(e, t) {
 n.nameTaken = !1;
