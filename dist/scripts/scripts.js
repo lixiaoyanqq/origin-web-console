@@ -23197,6 +23197,7 @@ function v() {
 r.open({
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 animation: !0,
+backdrop: "static",
 templateUrl: "views/modals/process-or-save-template.html",
 controller: "ProcessOrSaveTemplateModalController",
 scope: p
