@@ -19053,6 +19053,140 @@ c.addNotification({
 type: "success",
 message: _.capitalize(e) + " " + t.metadata.name + " was successfully updated."
 });
+<<<<<<< HEAD
+=======
+})), i.push(e.$on("event.resource.clear-highlight", function(e, n) {
+var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
+r && a && _.each(t.events, function(e) {
+e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !1);
+});
+})), t.$on("$destroy", function() {
+n.unwatchAll(o), _.each(i, function(e) {
+e();
+}), i = null;
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, r) {
+var a = t.getPreferredVersion("events");
+return {
+restrict: "E",
+scope: {
+projectContext: "=",
+sidebarCollapsed: "="
+},
+templateUrl: "views/directives/events-badge.html",
+controller: [ "$scope", function(t) {
+var o = [], i = e("orderObjectsByDate");
+o.push(n.watch(a, t.projectContext, function(e) {
+var n = e.by("metadata.name");
+t.events = i(n, !0), t.warningCount = _.size(_.filter(n, {
+type: "Warning"
+})), t.normalCount = _.size(_.filter(n, {
+type: "Normal"
+})), r.log("events (subscribe)", t.events);
+})), t.expandSidebar = function() {
+t.sidebarCollapsed = !1;
+}, t.$on("$destroy", function() {
+n.unwatchAll(o);
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("fromFile", [ "$filter", "$location", "$q", "$uibModal", "APIService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "QuotaService", "SecurityCheckService", "TaskList", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u, d, m) {
+return {
+restrict: "E",
+scope: {
+project: "=",
+isDialog: "="
+},
+templateUrl: "views/directives/from-file.html",
+controller: [ "$scope", function(p) {
+function f(e) {
+return !!e.kind || (p.error = {
+message: "Resource is missing kind field."
+}, !1);
+}
+function g(e) {
+return !!p.isList || (e.metadata ? e.metadata.name ? !e.metadata.namespace || e.metadata.namespace === p.input.selectedProject.metadata.name || (p.error = {
+message: e.kind + " " + e.metadata.name + " can't be created in project " + e.metadata.namespace + ". Can't create resource in different projects."
+}, !1) : (p.error = {
+message: "Resource name is missing in metadata field."
+}, !1) : (p.error = {
+message: "Resource is missing metadata field."
+}, !1));
+}
+function v() {
+r.open({
+animation: !0,
+backdrop: "static",
+templateUrl: "views/modals/process-or-save-template.html",
+controller: "ProcessOrSaveTemplateModalController",
+scope: p
+}).result.then(function() {
+p.templateOptions.add ? y() : (o.setTemplate(p.resourceList[0]), b());
+});
+}
+function h() {
+r.open({
+animation: !0,
+templateUrl: "views/modals/confirm-replace.html",
+controller: "ConfirmReplaceModalController",
+scope: p
+}).result.then(function() {
+l.getLatestQuotaAlerts(p.createResources, {
+namespace: p.input.selectedProject.metadata.name
+}).then(N);
+});
+}
+function y() {
+var e = p.createResources.length, t = p.updateResources.length;
+if (p.resourceKind.endsWith("List")) {
+var r = [];
+t > 0 && r.push(P()), e > 0 && r.push(w()), n.all(r).then(b);
+} else C();
+}
+function b() {
+var e, n;
+E(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+project: p.input.selectedProject,
+template: p.resource
+}) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
+namespace: n
+}), t.url(e)) : p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+project: p.input.selectedProject,
+resource: p.resource,
+isList: p.isList
+}) : (e = s.projectOverviewURL(p.input.selectedProject.metadata.name), t.url(e));
+}
+function S(e) {
+var t = a.objectToResourceGroupVersion(e);
+return t ? a.apiInfo(t) ? i.get(t, e.metadata.name, {
+namespace: p.input.selectedProject.metadata.name
+}, {
+errorNotification: !1
+}).then(function(t) {
+var n = angular.copy(e), r = angular.copy(t.metadata);
+r.annotations = e.metadata.annotations, r.labels = e.metadata.labels, n.metadata = r, p.updateResources.push(n);
+}, function() {
+p.createResources.push(e);
+}) : (p.errorOccurred = !0, void (p.error = {
+message: a.unsupportedObjectKindOrVersion(e)
+})) : (p.errorOccurred = !0, void (p.error = {
+message: a.invalidObjectKindOrVersion(e)
+}));
+}
+function C() {
+var t;
+_.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(a.kindToResource(t.kind), t.metadata.name, t, {
+namespace: p.input.selectedProject.metadata.name
+}).then(function() {
+if (!p.isDialog) {
+var e = k(t.kind);
+c.addNotification({
+type: "success",
+message: _.capitalize(e) + " " + t.metadata.name + " was successfully updated."
+});
+>>>>>>> Disable close by clicking background of process template modal
 }
 b();
 }, function(n) {
