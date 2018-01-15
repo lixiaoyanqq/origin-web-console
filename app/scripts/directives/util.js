@@ -160,6 +160,7 @@ angular.module('openshiftConsole')
         element.bind('click', function() {
           $uibModal.open({
             animation: true,
+            backdrop: 'static',
             templateUrl: 'views/modals/set-home-page-modal.html',
             controller: 'SetHomePageModalController'
           });
