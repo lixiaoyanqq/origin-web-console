@@ -101,35 +101,30 @@
   </div>
   <div class="form-group">
     <label>
-      CPU
-      <span ng-if="isRequestCalculated" translate>Limit</span>
-      <span ng-if="!isRequestCalculated" translate>Request</span>
-      <translate>Target</translate>
+      CPU Request Target
     </label>
     <div class="input-group" ng-class="{ 'has-error': form.targetCPU.$invalid && form.targetCPU.$touched }">
       <input type="number"
              class="form-control"
              min="1"
              name="targetCPU"
-             ng-model="targetCPUInput.percent"
+             ng-model="autoscaling.targetCPU"
              pattern="\d*"
              select-on-focus
              aria-describedby="target-cpu-help">
       <span class="input-group-addon">%</span>
     </div>
-    <div id="target-cpu-help" class="help-block">
-      <translate>The percentage of the CPU</translate>
-      <span ng-if="isRequestCalculated" translate>limit</span>
-      <span ng-if="!isRequestCalculated" translate>request</span>
-      <translate>that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.</translate>
-      <span ng-if="defaultTargetCPUDisplayValue">Defaults to {{defaultTargetCPUDisplayValue}}%.</span>
+    <div id="target-cpu-help" class="help-block" translate>
+      The percentage of the CPU request that each pod should ideally be using.
+      Pods will be added or removed periodically when CPU usage exceeds or
+      drops below this target value.
     </div>
     <div class="learn-more-block">
-      <a href="{{'compute_resources' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+      <a ng-href="{{'compute_resources' | helpLink}}" target="_blank">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
     </div>
     <!-- Add extra top margin for the learn more block -->
-    <div class="has-error" style="margin-top: 10px;" ng-show="form.targetCPU.$touched && form.targetCPU.$invalid">
-      <span ng-if="form.targetCPU.$error.number" class="help-block" translate>
+    <div class="has-error mar-top-md" ng-show="form.targetCPU.$touched && form.targetCPU.$invalid">
+      <span ng-if="form.targetCPU.$error.number" class="help-block">
         Target CPU percentage must be a number.
       </span>
       <span ng-if="form.targetCPU.$error.pattern" class="help-block" translate>

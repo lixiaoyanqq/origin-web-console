@@ -6309,10 +6309,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\" translate>Replicas must be an integer value greater than or equal to 0.</span>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<osc-autoscaling ng-if=\"scaling.autoscale\" model=\"scaling\" project=\"project\">\n" +
-    "</osc-autoscaling>\n" +
+    "<osc-autoscaling ng-if=\"scaling.autoscale\" model=\"scaling\"></osc-autoscaling>\n" +
     "<div class=\"has-warning\" ng-if=\"showCPURequestWarning\">\n" +
     "<span class=\"help-block\">\n" +
+<<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
     "<translate>You should configure resource limits below for autoscaling.</translate>\n" +
     "<translate>Autoscaling will not work without a CPU</translate>\n" +
     "<span ng-if=\"'cpu' | isRequestCalculated : project\" translate>limit.</span>\n" +
@@ -6320,6 +6320,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"'cpu' | isLimitCalculated : project\" translate>\n" +
     "The CPU limit will be automatically calculated from the container memory limit.\n" +
     "</span>\n" +
+=======
+    "You should configure resource limits below for autoscaling. Autoscaling will not work without a CPU request.\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "</span>\n" +
     "</div>\n" +
     "</osc-form-section>\n" +
@@ -9684,7 +9687,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</delete-link>\n" +
     "</span>\n" +
     "</h4>\n" +
-    "<dl class=\"dl-horizontal left\" style=\"margin-bottom: 10px\">\n" +
+    "<dl class=\"dl-horizontal left mar-top-md\">\n" +
     "<dt ng-if-start=\"showScaleTarget && hpa.spec.scaleTargetRef.kind && hpa.spec.scaleTargetRef.name\">{{hpa.spec.scaleTargetRef.kind | humanizeKind : true}}:</dt>\n" +
     "<dd ng-if-end>\n" +
     "<a ng-href=\"{{hpa.spec.scaleTargetRef.name | navigateResourceURL : hpa.spec.scaleTargetRef.kind : hpa.metadata.namespace}}\">{{hpa.spec.scaleTargetRef.name}}</a>\n" +
@@ -9694,6 +9697,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt translate>Max Pods:</dt>\n" +
     "<dd>{{hpa.spec.maxReplicas}}</dd>\n" +
     "<dt ng-if-start=\"hpa.spec.targetCPUUtilizationPercentage\">\n" +
+<<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
     "CPU\n" +
     "<span ng-if=\"'cpu' | isRequestCalculated : project\" translate>Limit</span>\n" +
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\" translate>Request</span>\n" +
@@ -9701,13 +9705,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</dt>\n" +
     "<dd ng-if-end>{{hpa.spec.targetCPUUtilizationPercentage | hpaCPUPercent : project}}%</dd>\n" +
     "<dt translate>\n" +
+=======
+    "CPU Request\n" +
+    "</dt>\n" +
+    "<dd ng-if-end>{{hpa.spec.targetCPUUtilizationPercentage}}%</dd>\n" +
+    "<dt>\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "Current Usage:\n" +
     "</dt>\n" +
     "<dd ng-if=\"hpa.status.currentCPUUtilizationPercentage | isNil\">\n" +
     "<em translate>Not available</em>\n" +
     "</dd>\n" +
     "<dd ng-if=\"!(hpa.status.currentCPUUtilizationPercentage | isNil)\">\n" +
-    "{{hpa.status.currentCPUUtilizationPercentage | hpaCPUPercent : project}}%\n" +
+    "{{hpa.status.currentCPUUtilizationPercentage}}%\n" +
     "</dd>\n" +
     "<dt ng-if-start=\"hpa.status.lastScaleTime\" translate>Last Scaled:</dt>\n" +
     "<dd ng-if-end><span am-time-ago=\"hpa.status.lastScaleTime\"></span></dd>\n" +
@@ -10617,16 +10627,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"form-group\">\n" +
     "<label>\n" +
+<<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
     "CPU\n" +
     "<span ng-if=\"isRequestCalculated\" translate>Limit</span>\n" +
     "<span ng-if=\"!isRequestCalculated\" translate>Request</span>\n" +
     "<translate>Target</translate>\n" +
+=======
+    "CPU Request Target\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "</label>\n" +
     "<div class=\"input-group\" ng-class=\"{ 'has-error': form.targetCPU.$invalid && form.targetCPU.$touched }\">\n" +
-    "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"targetCPUInput.percent\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
+    "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"autoscaling.targetCPU\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
     "<span class=\"input-group-addon\">%</span>\n" +
     "</div>\n" +
     "<div id=\"target-cpu-help\" class=\"help-block\">\n" +
+<<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
     "<translate>The percentage of the CPU</translate>\n" +
     "<span ng-if=\"isRequestCalculated\" translate>limit</span>\n" +
     "<span ng-if=\"!isRequestCalculated\" translate>request</span>\n" +
@@ -10639,6 +10654,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div class=\"has-error\" style=\"margin-top: 10px\" ng-show=\"form.targetCPU.$touched && form.targetCPU.$invalid\">\n" +
     "<span ng-if=\"form.targetCPU.$error.number\" class=\"help-block\" translate>\n" +
+=======
+    "The percentage of the CPU request that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.\n" +
+    "</div>\n" +
+    "<div class=\"learn-more-block\">\n" +
+    "<a ng-href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"has-error mar-top-md\" ng-show=\"form.targetCPU.$touched && form.targetCPU.$invalid\">\n" +
+    "<span ng-if=\"form.targetCPU.$error.number\" class=\"help-block\">\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "Target CPU percentage must be a number.\n" +
     "</span>\n" +
     "<span ng-if=\"form.targetCPU.$error.pattern\" class=\"help-block\" translate>\n" +
@@ -12396,7 +12421,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!('cpu' | isRequestCalculated : project)\" translate>request.</span>\n" +
     "</div>\n" +
     "<fieldset ng-disabled=\"disableInputs\" class=\"gutter-top\">\n" +
-    "<osc-autoscaling model=\"autoscaling\" project=\"project\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\">\n" +
+    "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\">\n" +
     "</osc-autoscaling>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\"></label-editor>\n" +
     "<div class=\"buttons gutter-top gutter-bottom\">\n" +

@@ -340,21 +340,12 @@
                             </div>
                           </div>
 
-                          <osc-autoscaling
-                              ng-if="scaling.autoscale"
-                              model="scaling"
-                              project="project">
-                          </osc-autoscaling>
+                          <osc-autoscaling ng-if="scaling.autoscale" model="scaling"></osc-autoscaling>
 
                           <div class="has-warning" ng-if="showCPURequestWarning">
-                            <span class="help-block">
-                              <translate>You should configure resource limits below for autoscaling.</translate>
-                              <translate>Autoscaling will not work without a CPU</translate>
-                              <span ng-if="'cpu' | isRequestCalculated : project" translate>limit.</span>
-                              <span ng-if="!('cpu' | isRequestCalculated : project)" translate>request.</span>
-                              <span ng-if="'cpu' | isLimitCalculated : project" translate>
-                                The CPU limit will be automatically calculated from the container memory limit.
-                              </span>
+                            <span class="help-block" translate>
+                              You should configure resource limits below for autoscaling.
+                              Autoscaling will not work without a CPU request.
                             </span>
                           </div>
 
