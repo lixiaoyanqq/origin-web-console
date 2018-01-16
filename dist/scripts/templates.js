@@ -15382,6 +15382,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/overview/_build-counts.html',
     "<span ng-if=\"buildCounts.show\" class=\"animate-if\">\n" +
+    "<span ng-if=\"buildCounts.label\" class=\"builds-label\">\n" +
+    "{{buildCounts.label}}\n" +
+    "</span>\n" +
     "<span ng-repeat=\"phase in buildCounts.interestingPhases\" ng-if=\"buildCounts.countByPhase[phase]\" class=\"icon-count\">\n" +
     "<span dynamic-content=\"{{buildCounts.countByPhase[phase]}} {{phase}}\" data-toggle=\"tooltip\" data-trigger=\"hover\" aria-hidden=\"true\">\n" +
     "<span ng-switch=\"phase\" class=\"hide-ng-leave\">\n" +
@@ -15396,6 +15399,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\">{{phase}}</span>\n" +
     "</span>\n" +
     "</span>\n" +
+<<<<<<< d821ec10e6dd669fb7214631e3f214b37e6b5f88
 <<<<<<< da064e4f189873cf4e4c850eba80603199ed9712
     "<span ng-if=\"buildCounts.currentStage\" class=\"running-stage\" translate>\n" +
 =======
@@ -15403,10 +15407,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"buildCounts.label\" class=\"builds-label\">\n" +
     "{{buildCounts.label}}\n" +
     "</span>\n" +
+=======
+>>>>>>> Switch <build-counts> back to previous presentation structure "Builds <icon> #"
     "<span ng-if=\"buildCounts.currentStage\" class=\"running-stage\">\n" +
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
     "Stage {{buildCounts.currentStage.name}}\n" +
-    "</span>\n" +
     "</span>\n" +
     "</span>"
   );
