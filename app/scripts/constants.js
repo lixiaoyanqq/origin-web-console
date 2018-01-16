@@ -199,7 +199,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
 
 
   // Set to number of minutes after which a modal with countdown should appear.
-  // When set to anything else then positive integer the inactivity timeout won't be enable. 
+  // When set to anything else then positive integer the inactivity timeout won't be enable.
   INACTIVITY_TIMEOUT_PERIOD: 0,
 
   // only resources from the namespaces listed below can be utilized with create from url (/create)

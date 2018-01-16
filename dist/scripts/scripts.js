@@ -22,6 +22,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -258,11 +259,14 @@ var J, Y, Z = {}, X = {}, ee = {}, te = E.state = {
 >>>>>>> Configurable inactivity timeout in console
 =======
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, T, E) {
+=======
+function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E, T) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 var N = this, D = t("isIE")();
 e.projectName = a.project;
 var A = a.isHomePage;
 N.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
-var B = t("annotation"), L = t("canI"), V = t("buildConfigForBuild"), U = t("deploymentIsInProgress"), O = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("deployments"), H = i.getPreferredVersion("horizontalpodautoscalers"), G = i.getPreferredVersion("servicebindings"), K = i.getPreferredVersion("clusterserviceclasses"), W = i.getPreferredVersion("serviceinstances"), Q = i.getPreferredVersion("clusterserviceplans"), J = i.getPreferredVersion("statefulsets"), Y = i.getPreferredVersion("replicasets");
+var B = t("annotation"), L = t("canI"), V = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), U = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("deployments"), H = i.getPreferredVersion("horizontalpodautoscalers"), G = i.getPreferredVersion("servicebindings"), K = i.getPreferredVersion("clusterserviceclasses"), W = i.getPreferredVersion("serviceinstances"), Q = i.getPreferredVersion("clusterserviceplans"), J = i.getPreferredVersion("statefulsets"), Y = i.getPreferredVersion("replicasets");
 N.buildConfigsInstantiateVersion = i.getPreferredVersion("buildconfigs/instantiate");
 var Z, X, ee = {}, te = {}, ne = {}, re = N.state = {
 >>>>>>> Set Home Page Preference
@@ -482,7 +486,7 @@ return s.groupByApp(e, "metadata.name");
 }, de = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? T.getPreferredDisplayRoute(t, e) : e;
+t = t ? E.getPreferredDisplayRoute(t, e) : e;
 }), t;
 }, me = _.debounce(function() {
 e.$evalAsync(function() {
@@ -1033,21 +1037,21 @@ je(e, n);
 }
 }, Re = function(e) {
 _.each(e, Ie);
-}, Te = function(e) {
+}, Ee = function(e) {
 var t = oe(e);
 return t ? ne[t] : null;
-}, Ee = function(e) {
+}, Te = function(e) {
 var t = oe(e);
 return t ? _.get(N, [ "replicationControllersByDeploymentConfig", t ]) : [];
 };
 N.getPreviousReplicationController = function(e) {
-var t = Ee(e);
+var t = Te(e);
 return _.size(t) < 2 ? null : t[1];
 };
 var Ne = function(e) {
-var t = {}, n = Te(e);
+var t = {}, n = Ee(e);
 _.assign(t, R.getDeploymentStatusAlerts(e, n), R.getPausedDeploymentAlerts(e));
-var r = Ee(e);
+var r = Te(e);
 _.each(r, function(e) {
 var n = ke(e);
 _.assign(t, n);
@@ -1071,16 +1075,16 @@ Re(N.replicationControllers), Re(N.replicaSets), Re(N.statefulSets), Re(N.monopo
 e.$evalAsync(function() {
 Le(), De(), Be();
 });
-}, 500), Ue = function(e) {
+}, 500), Oe = function(e) {
 _.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, ee), "pipeline" !== N.viewBy && b.setLabelSuggestions(ee));
-}, Oe = function(e) {
+}, Ue = function(e) {
 _.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, te), "pipeline" === N.viewBy && b.setLabelSuggestions(te));
 }, Fe = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!M(e, "openshift.io/deployer-pod-for.name") && (!B(e, "openshift.io/build.name") && "slave" !== M(e, "jenkins")));
 }, xe = function() {
 re.podsByOwnerUID = j.groupByOwnerUID(N.pods), N.monopods = _.filter(re.podsByOwnerUID[""], Fe);
 }, Me = function(e) {
-return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || U(e));
+return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || O(e));
 }, qe = function(e) {
 return B(e, "deploymentConfig");
 }, ze = function() {
@@ -1131,8 +1135,8 @@ var e = [ N.deploymentConfigs, N.vanillaReplicationControllers, N.deployments, N
 _.each(e, We), me();
 }
 }, Je = function() {
-var e = T.groupByService(N.routes, !0);
-re.routesByService = _.mapValues(e, T.sortRoutesByScore), me();
+var e = E.groupByService(N.routes, !0);
+re.routesByService = _.mapValues(e, E.sortRoutesByScore), me();
 }, Ye = function() {
 re.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
 }, Ze = function(e) {
@@ -1170,14 +1174,14 @@ _.set(N, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
 re.pipelinesByDeploymentConfig[e] = re.pipelinesByDeploymentConfig[e] || [], re.pipelinesByDeploymentConfig[e].push(t);
 });
 }
-}), N.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), fe(), Oe(N.pipelineBuildConfigs), ge();
+}), N.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), fe(), Ue(N.pipelineBuildConfigs), ge();
 }, ot = function() {
 re.buildConfigsByObjectUID = {}, _.each(N.deploymentConfigs, function(e) {
 var t = [], n = _.get(e, "spec.triggers");
 _.each(n, function(n) {
 var r = _.get(n, "imageChangeParams.from");
 if (r) {
-var a = O(r, e.metadata.namespace), o = Xe[a];
+var a = U(r, e.metadata.namespace), o = Xe[a];
 _.isEmpty(o) || (t = t.concat(o));
 }
 }), t = _.sortBy(t, "metadata.name"), rt(t, e), nt(e);
@@ -1554,19 +1558,19 @@ var a = function() {
 N.pods && h.fetchReferencedImageStreamImages(N.pods, re.imagesByDockerReference, re.imageStreamImageRefByDockerReference, r);
 };
 mt.push(m.watch("pods", r, function(e) {
-N.pods = e.by("metadata.name"), xe(), a(), Ve(), We(N.monopods), Re(N.monopods), Ue(N.monopods), Ce(), S.log("pods (subscribe)", N.pods);
+N.pods = e.by("metadata.name"), xe(), a(), Ve(), We(N.monopods), Re(N.monopods), Oe(N.monopods), Ce(), S.log("pods (subscribe)", N.pods);
 })), mt.push(m.watch("replicationcontrollers", r, function(e) {
-N.replicationControllers = e.by("metadata.name"), ze(), We(N.vanillaReplicationControllers), We(N.monopods), Re(N.vanillaReplicationControllers), Ue(N.vanillaReplicationControllers), ut(), Ce(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
+N.replicationControllers = e.by("metadata.name"), ze(), We(N.vanillaReplicationControllers), We(N.monopods), Re(N.vanillaReplicationControllers), Oe(N.vanillaReplicationControllers), ut(), Ce(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
 })), mt.push(m.watch("deploymentconfigs", r, function(e) {
-N.deploymentConfigs = e.by("metadata.name"), ze(), We(N.deploymentConfigs), We(N.vanillaReplicationControllers), Ue(N.deploymentConfigs), Be(), it(), st(), ut(), Ce(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
+N.deploymentConfigs = e.by("metadata.name"), ze(), We(N.deploymentConfigs), We(N.vanillaReplicationControllers), Oe(N.deploymentConfigs), Be(), it(), st(), ut(), Ce(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
 })), mt.push(m.watch(Y, r, function(e) {
-N.replicaSets = e.by("metadata.name"), Ge(), We(N.vanillaReplicaSets), We(N.monopods), Re(N.vanillaReplicaSets), Ue(N.vanillaReplicaSets), ut(), Ce(), S.log("replicasets (subscribe)", N.replicaSets);
+N.replicaSets = e.by("metadata.name"), Ge(), We(N.vanillaReplicaSets), We(N.monopods), Re(N.vanillaReplicaSets), Oe(N.vanillaReplicaSets), ut(), Ce(), S.log("replicasets (subscribe)", N.replicaSets);
 })), mt.push(m.watch(z, r, function(e) {
-Z = e.by("metadata.uid"), N.deployments = _.sortBy(Z, "metadata.name"), Ge(), We(N.deployments), We(N.vanillaReplicaSets), Ue(N.deployments), ut(), Ce(), S.log("deployments (subscribe)", N.deploymentsByUID);
+Z = e.by("metadata.uid"), N.deployments = _.sortBy(Z, "metadata.name"), Ge(), We(N.deployments), We(N.vanillaReplicaSets), Oe(N.deployments), ut(), Ce(), S.log("deployments (subscribe)", N.deploymentsByUID);
 })), mt.push(m.watch("builds", r, function(e) {
 re.builds = e.by("metadata.name"), ct(), S.log("builds (subscribe)", re.builds);
 })), mt.push(m.watch(J, r, function(e) {
-N.statefulSets = e.by("metadata.name"), We(N.statefulSets), We(N.monopods), Re(N.statefulSets), Ue(N.statefulSets), ut(), Ce(), S.log("statefulsets (subscribe)", N.statefulSets);
+N.statefulSets = e.by("metadata.name"), We(N.statefulSets), We(N.monopods), Re(N.statefulSets), Oe(N.statefulSets), ut(), Ce(), S.log("statefulsets (subscribe)", N.statefulSets);
 }, {
 poll: D,
 >>>>>>> Set Home Page Preference
@@ -1692,7 +1696,7 @@ return r ? n.when(r) : (s[t] || (s[t] = m.get(ie, t, {}).then(function(e) {
 return he.serviceClasses[t] = e, e;
 =======
 u.SERVICE_CATALOG_ENABLED && L(W, "watch") && (o = function(e) {
-var t = E.getServiceClassNameForInstance(e);
+var t = T.getServiceClassNameForInstance(e);
 if (!t) return n.when();
 var r = _.get(re, [ "serviceClasses", t ]);
 return r ? n.when(r) : (s[t] || (s[t] = m.get(K, t, {}).then(function(e) {
@@ -1702,7 +1706,7 @@ return re.serviceClasses[t] = e, e;
 delete c[t];
 })), s[t]);
 }, i = function(e) {
-var t = E.getServicePlanNameForInstance(e);
+var t = T.getServicePlanNameForInstance(e);
 if (!t) return n.when();
 <<<<<<< HEAD
 var r = _.get(he, [ "servicePlans", t ]);
@@ -1750,7 +1754,7 @@ var n = R.getServiceInstanceAlerts(e);
 je(e, n), t.push(o(e)), t.push(i(e));
 }), I.waitForAll(t).finally(function() {
 dt(), Ce();
-}), Ue(re.serviceInstances);
+}), Oe(re.serviceInstances);
 }, {
 poll: D,
 pollInterval: 6e4
@@ -1841,6 +1845,7 @@ i();
 };
 }
 
+<<<<<<< HEAD
 var gettext = function(e) {
 return e;
 };
@@ -2054,6 +2059,9 @@ i();
 
 angular.isUndefined(window.OPENSHIFT_CONSTANTS) && (window.OPENSHIFT_CONSTANTS = {}), angular.extend(window.OPENSHIFT_CONSTANTS, {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+angular.isUndefined(window.OPENSHIFT_CONSTANTS) && (window.OPENSHIFT_CONSTANTS = {}), angular.extend(window.OPENSHIFT_CONSTANTS, {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 HELP_BASE_URL: "https://docs.openshift.org/latest/",
 HELP: {
 cli: "cli_reference/index.html",
@@ -2066,6 +2074,7 @@ new_app: "dev_guide/application_lifecycle/new_app.html",
 "deployment-operations": "cli_reference/basic_cli_operations.html#build-and-deployment-cli-operations",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "route-types": "architecture/networking/routes.html#route-types",
 =======
 "route-types": "architecture/core_concepts/routes.html#route-types",
@@ -2073,14 +2082,20 @@ new_app: "dev_guide/application_lifecycle/new_app.html",
 =======
 "route-types": "architecture/networking/routes.html#route-types",
 >>>>>>> Fix broken route links
+=======
+"route-types": "architecture/networking/routes.html#route-types",
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 persistent_volumes: "dev_guide/persistent_volumes.html",
 compute_resources: "dev_guide/compute_resources.html",
 pod_autoscaling: "dev_guide/pod_autoscaling.html",
 application_health: "dev_guide/application_health.html",
 <<<<<<< HEAD
+<<<<<<< HEAD
 webhook_secrets: "dev_guide/builds/triggering_builds.html#webhook-triggers",
 =======
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 source_secrets: "dev_guide/builds/build_inputs.html#using-secrets-during-build",
 git_secret: "dev_guide/builds/build_inputs.html#source-clone-secrets",
 pull_secret: "dev_guide/managing_images.html#using-image-pull-secrets",
@@ -2107,6 +2122,7 @@ pods: "architecture/core_concepts/pods_and_services.html#pods",
 services: "architecture/core_concepts/pods_and_services.html#services",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 routes: "architecture/networking/routes.html",
 =======
 routes: "architecture/core_concepts/routes.html",
@@ -2114,6 +2130,9 @@ routes: "architecture/core_concepts/routes.html",
 =======
 routes: "architecture/networking/routes.html",
 >>>>>>> Fix broken route links
+=======
+routes: "architecture/networking/routes.html",
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 builds: "architecture/core_concepts/builds_and_image_streams.html#builds",
 "image-streams": "architecture/core_concepts/builds_and_image_streams.html#image-streams",
 storage: "architecture/additional_concepts/storage.html",
@@ -2124,10 +2143,14 @@ CLI: {
 "Latest Release": "https://github.com/openshift/origin/releases/latest"
 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 DEFAULT_HPA_CPU_TARGET_PERCENT: null,
 =======
 DEFAULT_HPA_CPU_TARGET_PERCENT: 80,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+DEFAULT_HPA_CPU_TARGET_PERCENT: null,
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 DISABLE_OVERVIEW_METRICS: !1,
 DISABLE_CUSTOM_METRICS: !1,
 DISABLE_WILDCARD_ROUTES: !0,
@@ -2900,6 +2923,7 @@ LOGOS: {
 "icon-wordpress": "wordpress.svg",
 "icon-zend": "zend.svg"
 <<<<<<< HEAD
+<<<<<<< HEAD
 },
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_NAMES: [ "openshift", "kubernetes", "kube" ],
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_PREFIXES: [ "openshift-", "kubernetes-", "kube-" ]
@@ -2933,6 +2957,11 @@ return n.$get().getHomePagePath();
 }).when("/catalog", r).when("/create-project", {
 =======
 }
+=======
+},
+CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_NAMES: [ "openshift", "kubernetes", "kube" ],
+CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_PREFIXES: [ "openshift-", "kubernetes-", "kube-" ]
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "openshiftCommonServices", "openshiftCommonUI", "webCatalog" ]).config([ "$routeProvider", "HomePagePreferenceServiceProvider", function(e, t) {
 var n, r = {
 templateUrl: "views/projects.html",
@@ -3386,8 +3415,12 @@ backdrop: "static"
 } ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
 =======
 });
+<<<<<<< HEAD
 } ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("LIMIT_REQUEST_OVERRIDES", _.get(window.OPENSHIFT_CONFIG, "limitRequestOverrides")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+} ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 titleFormat: "LLL"
 }).config([ "kubernetesContainerSocketProvider", function(e) {
 e.WebSocketFactory = "ContainerWebSocket";
@@ -6645,9 +6678,15 @@ return c(t) || l(t) || u(e);
 return !!_.get(t, "OPENSHIFT_CONFIG.clusterResourceOverridesEnabled") && !d(e);
 }, p = function(e, t) {
 return m(t);
+<<<<<<< HEAD
 }, g = function(e, t) {
 return "cpu" === e && m(t);
 }, f = function(e, t, n) {
+=======
+}, f = function(e, t) {
+return "cpu" === e && m(t);
+}, g = function(e, t, n) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 var r = {};
 return angular.forEach(e, function(e) {
 angular.forEach(e.spec.limits, function(e) {
@@ -6660,6 +6699,7 @@ e.maxLimitRequestRatio && (a = e.maxLimitRequestRatio[t]) && (!r.maxLimitRequest
 }), r;
 };
 return {
+<<<<<<< HEAD
 getEffectiveLimitRange: f,
 hasClusterResourceOverrides: m,
 isRequestCalculated: p,
@@ -6667,12 +6707,25 @@ isLimitCalculated: g,
 validatePodLimits: function(t, n, r, i) {
 if (!r || !r.length) return [];
 var s = f(t, n, "Pod"), c = f(t, n, "Container"), l = 0, u = 0, d = s.min && a(s.min), m = s.max && a(s.max), v = [], h = e("computeResourceLabel")(n, !0);
+=======
+getEffectiveLimitRange: g,
+hasClusterResourceOverrides: m,
+isRequestCalculated: p,
+isLimitCalculated: f,
+validatePodLimits: function(t, n, r, i) {
+if (!r || !r.length) return [];
+var s = g(t, n, "Pod"), c = g(t, n, "Container"), l = 0, u = 0, d = s.min && a(s.min), m = s.max && a(s.max), v = [], h = e("computeResourceLabel")(n, !0);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 return angular.forEach(r, function(e) {
 var t = e.resources || {}, r = t.requests && t.requests[n] || c.defaultRequest;
 r && (l += a(r));
 var o = t.limits && t.limits[n] || c.defaultLimit;
 o && (u += a(o));
+<<<<<<< HEAD
 }), p(0, i) || (d && l < d && v.push(h + " request total for all containers is less than pod minimum (" + o(s.min, n) + ")."), m && l > m && v.push(h + " request total for all containers is greater than pod maximum (" + o(s.max, n) + ").")), g(n, i) || (d && u < d && v.push(h + " limit total for all containers is less than pod minimum (" + o(s.min, n) + ")."), m && u > m && v.push(h + " limit total for all containers is greater than pod maximum (" + o(s.max, n) + ").")), v;
+=======
+}), p(0, i) || (d && l < d && v.push(h + " request total for all containers is less than pod minimum (" + o(s.min, n) + ")."), m && l > m && v.push(h + " request total for all containers is greater than pod maximum (" + o(s.max, n) + ").")), f(n, i) || (d && u < d && v.push(h + " limit total for all containers is less than pod minimum (" + o(s.min, n) + ")."), m && u > m && v.push(h + " limit total for all containers is greater than pod maximum (" + o(s.max, n) + ").")), v;
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 };
 } ]), angular.module("openshiftConsole").factory("RoutesService", [ "$filter", function(e) {
@@ -6817,16 +6870,19 @@ controller: "SetHomePageModalController"
 });
 }
 };
-} ]), angular.module("openshiftConsole").factory("HPAService", [ "$filter", "$q", "LimitRangesService", "MetricsService", "Logger", function(e, t, n, r, a) {
-var o = function(e) {
-return n.getRequestToLimitPercent("cpu", e);
-}, i = function(e, t, n) {
+} ]), angular.module("openshiftConsole").factory("HPAService", [ "$filter", "$q", "LimitRangesService", "MetricsService", function(e, t, n, r) {
+var a = function(e, t, n) {
 return _.every(n, function(n) {
 return _.get(n, [ "resources", t, e ]);
 });
-}, s = function(e, t) {
-return i(e, "requests", t);
+}, o = function(e, t) {
+return a(e, "requests", t);
+}, i = function(e, t) {
+return a(e, "limits", t);
+}, s = function(e, t, r) {
+return !!n.getEffectiveLimitRange(r, e, "Container")[t];
 }, c = function(e, t) {
+<<<<<<< HEAD
 return i(e, "limits", t);
 }, l = function(e, t, r, a) {
 return !!n.getEffectiveLimitRange(r, e, "Container", a)[t];
@@ -6922,6 +6978,37 @@ reason: "MultipleHPA"
 }, y = function(e, t) {
 if ("ReplicationController" === e.kind && p(e) && _.some(t, function() {
 return _.some(t, function(e) {
+=======
+return s(e, "defaultRequest", t);
+}, l = function(e, t) {
+return s(e, "defaultLimit", t);
+}, u = function(e, t, r) {
+return !!n.hasClusterResourceOverrides(r) || (!(!o("cpu", e) && !c("cpu", t)) || !(!i("cpu", e) && !l("cpu", t)));
+}, d = e("humanizeKind"), m = e("hasDeploymentConfig");
+return {
+hasCPURequest: u,
+filterHPA: function(e, t, n) {
+return _.filter(e, function(e) {
+return e.spec.scaleTargetRef.kind === t && e.spec.scaleTargetRef.name === n;
+});
+},
+getHPAWarnings: function(e, n, a, o) {
+return !e || _.isEmpty(n) ? t.when([]) : r.isAvailable().then(function(t) {
+var r = [];
+t || r.push({
+message: "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling.",
+reason: "MetricsNotAvailable"
+});
+var i, s = _.get(e, "spec.template.spec.containers", []);
+return u(s, a, o) || (i = d(e.kind), r.push({
+message: "This " + i + " does not have any containers with a CPU request set. Autoscaling will not work without a CPU request.",
+reason: "NoCPURequest"
+})), _.size(n) > 1 && r.push({
+message: "More than one autoscaler is scaling this resource. This is not recommended because they might compete with each other. Consider removing all but one autoscaler.",
+reason: "MultipleHPA"
+}), "ReplicationController" === e.kind && m(e) && _.some(n, function() {
+return _.some(n, function(e) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 return "ReplicationController" === _.get(e, "spec.scaleTargetRef.kind");
 });
 })) return {
@@ -7655,9 +7742,9 @@ target: "_blank"
 _.each(a, d), _.each(i, d);
 }
 }), r) : r;
-}, T = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], E = function(e, t, n, r, a) {
+}, E = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], T = function(e, t, n, r, a) {
 var o, s = "Your project is " + (r < t ? "over" : "at") + " quota. ";
-return o = _.includes(T, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
+return o = _.includes(E, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
 }, N = function(e, t, n) {
 var r = function(e) {
 var t = e.status.total || e.status;
@@ -7788,7 +7875,7 @@ var c = f(e), l = _.get(a, [ "used", s ]), d = f(l);
 id: o + "/quota-limit-reached-" + s,
 namespace: o,
 type: c < d ? "warning" : "info",
-message: E(0, d, e, c, s),
+message: T(0, d, e, c, s),
 isHTML: !0,
 skipToast: !0,
 showInDrawer: !0,
@@ -9825,9 +9912,9 @@ var t = r("annotation")(e, "deploymentVersion");
 t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
 }, R = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
-}, T = function() {
-n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, E = function() {
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+}, T = function() {
 S = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(S, w, P);
@@ -9839,11 +9926,11 @@ if (N(e)) return !0;
 var t = D(e);
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : A(e);
 }), n.filteredBuilds = s.filterForKeywords(h, w, P);
-}, L = r("deploymentStatus"), V = r("deploymentIsInProgress"), U = function() {
+}, L = r("deploymentStatus"), V = r("deploymentIsInProgress"), O = function() {
 y = _.filter(n.replicationControllers, function(e) {
 return !n.filters.hideOlderResources || (V(e) || "Active" === L(e));
 }), n.filteredReplicationControllers = s.filterForKeywords(y, w, P);
-}, O = function() {
+}, U = function() {
 b = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
 }), n.filteredReplicaSets = s.filterForKeywords(b, w, P);
@@ -9941,32 +10028,32 @@ var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
 _.isEmpty(t) || u.toPodsForDeployment(e, t);
 }, m.get(e.project).then(_.spread(function(e, r) {
 n.project = e, n.projectContext = r, g.push(o.watch("pods", r, function(e) {
-n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), E(), c.log("pods", n.pods);
+n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), T(), c.log("pods", n.pods);
 })), g.push(o.watch({
 resource: "statefulsets",
 group: "apps",
 version: "v1beta1"
 }, r, function(e) {
-n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, T(), c.log("statefulSets", n.statefulSets);
+n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("statefulSets", n.statefulSets);
 }, {
 poll: f,
 pollInterval: 6e4
 })), g.push(o.watch("replicationcontrollers", r, function(e) {
-n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), U(), c.log("replicationcontrollers", n.replicationControllers);
+n.replicationControllers = C(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, I), O(), c.log("replicationcontrollers", n.replicationControllers);
 })), g.push(o.watch("builds", r, function(e) {
 n.builds = C(e.by("metadata.name"), !0), n.latestBuildByConfig = a.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, R), B(), c.log("builds", n.builds);
 })), g.push(o.watch({
 group: "extensions",
 resource: "replicasets"
 }, r, function(e) {
-n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, O(), c.log("replicasets", n.replicaSets);
+n.replicaSets = C(e.by("metadata.name"), !0), n.replicaSetsLoaded = !0, U(), c.log("replicasets", n.replicaSets);
 }, {
 poll: f,
 pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-E(), B(), U(), O(), T();
+T(), B(), O(), U(), E();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -10107,7 +10194,7 @@ subjectName: n.name
 httpErr: e("getErrorDetails")(r)
 }));
 });
-}, T = function(t, n, a) {
+}, E = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
 I(), P("success", w.update.subject.success({
 roleName: t.roleRef.name,
@@ -10121,11 +10208,11 @@ subjectName: n.name
 httpErr: e("getErrorDetails")(r)
 }));
 });
-}, E = {};
-n.tab && (E[n.tab] = !0);
+}, T = {};
+n.tab && (T[n.tab] = !0);
 var N = d.getSubjectKinds();
 angular.extend(r, {
-selectedTab: E,
+selectedTab: T,
 projectName: v,
 forms: {},
 subjectKinds: N,
@@ -10365,6 +10452,7 @@ roleName: n.metadata.name,
 subjectName: e
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })) : i ? I(i, o, a) : k(n, o);
 >>>>>>> Add Browse Catalog to Project context view.
 }
@@ -10374,6 +10462,9 @@ subjectName: e
 =======
 })) : i ? T(i, o, a) : R(n, o);
 >>>>>>> Configurable inactivity timeout in console
+=======
+})) : i ? E(i, o, a) : R(n, o);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 }), f.listAllRoles(g, {
 errorNotification: !1
@@ -11790,7 +11881,7 @@ e.startGuidedTour() && localStorage.setItem(a, "true");
 =======
 var j = {};
 e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
-var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), T = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
 var $ = [];
 p.isAvailable().then(function(t) {
@@ -11809,14 +11900,14 @@ e.autoscalers = e.hpaForRS.concat(t);
 var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 } else e.autoscalers = e.hpaForRS;
-}, U = function() {
+}, O = function() {
 $.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
 }), n = s.getActiveDeployment(r), e.isActive = n && n.metadata.uid === e.replicaSet.metadata.uid, y();
 }));
-}, O = function() {
+}, U = function() {
 c.getHPAWarnings(e.replicaSet, e.autoscalers, e.limitRanges, r).then(function(t) {
 e.hpaWarnings = t;
 });
@@ -11961,6 +12052,7 @@ m = _.orderBy(d, [ t ], [ r ]);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 g = t;
 }, b = function() {
 y(), h();
@@ -12005,13 +12097,16 @@ V(), e.breadcrumbs = o.getBreadcrumbs({
 =======
 O(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
+=======
+U(), e.breadcrumbs = o.getBreadcrumbs({
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 object: t
 }), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This " + w + " has been deleted."
-}), e.replicaSet = t, L(t), O(), H(), e.deployment && x();
-})), e.deploymentConfigName && U(), $.push(i.watch(E, u, function(t) {
+}), e.replicaSet = t, L(t), U(), H(), e.deployment && x();
+})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -12038,8 +12133,12 @@ l.buildDockerRefMapForImageStreams(t, j), H(), m.log("imagestreams (subscribe)",
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
 })), $.push(i.watch(R, u, function(e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Add Browse Catalog to Project context view.
+=======
+p = e.by("metadata.name"), y(), U();
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }, {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12060,8 +12159,8 @@ poll: V,
 poll: V,
 >>>>>>> Fix potential API mismatch in BuildsService
 pollInterval: 6e4
-})), i.list(T, u).then(function(t) {
-e.limitRanges = t.by("metadata.name"), O();
+})), i.list(E, u).then(function(t) {
+e.limitRanges = t.by("metadata.name"), U();
 });
 $.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
@@ -13125,6 +13224,7 @@ if (!r) return !1;
 var a = d(_.get(n, [ "used", t ]));
 return !!a && a >= r;
 };
+<<<<<<< HEAD
 var m = e("humanizeQuotaResource"), p = function(e, t) {
 return "cpu" === e || "requests.cpu" === e ? "cpu" === t || "requests.cpu" === t ? 0 : -1 : "cpu" === t || "requests.cpu" === t ? 1 : "memory" === e || "requests.memory" === e ? "memory" === t || "requests.memory" === t ? 0 : -1 : "memory" === t || "requests.memory" === t ? 1 : "limits.cpu" === e ? "limits.cpu" === t ? 0 : -1 : "limits.cpu" === t ? 1 : "limits.memory" === e ? "limits.memory" === t ? 0 : -1 : "limits.memory" === t ? 1 : (e = m(e), t = m(t), e.localeCompare(t));
 }, f = function(e) {
@@ -13133,6 +13233,15 @@ return _.each(e, function(e) {
 var n = _.get(e, "spec.quota.hard") || _.get(e, "spec.hard"), r = _.keys(n).sort(p);
 t[e.metadata.name] = r;
 }), t;
+=======
+a.cancel = y, a.$on("$destroy", b);
+var S = o.getPreferredVersion("limitranges");
+m.get(r.project).then(_.spread(function(e, t) {
+a.hideCPU = l.hasClusterResourceOverrides(e);
+var n = {
+resource: o.kindToResource(r.kind),
+group: r.group
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 i.get(t.project).then(_.spread(function(e, r) {
 n.project = e, a.list(c, r).then(function(e) {
@@ -13672,7 +13781,7 @@ sourcePath: e.name,
 destinationDir: e.value
 };
 });
-}, T = function(t) {
+}, E = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -13712,7 +13821,7 @@ name: _.last(r)
 }).namespace = 1 !== _.size(r) ? _.head(r) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, E = function() {
+}, T = function() {
 var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
@@ -14089,6 +14198,7 @@ $(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 },
 errorReason: _.template('Reason: "<%= httpErr %>"')
@@ -14102,6 +14212,9 @@ e.updatedBuildConfig.spec.triggers = N(), I(), c.update(h, e.updatedBuildConfig.
 u.addNotification({
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 case "Source":
 case "Docker":
 A(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -14110,7 +14223,7 @@ break;
 case "Custom":
 A(b(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
-e.updatedBuildConfig.spec.triggers = E(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+e.updatedBuildConfig.spec.triggers = T(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "success",
@@ -14638,7 +14751,7 @@ command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
-var T = function(e, t, n, r) {
+var E = function(e, t, n, r) {
 var a = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -14655,7 +14768,7 @@ from: a
 <<<<<<< HEAD
 =======
 }, n;
-}, E = function() {
+}, T = function() {
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 >>>>>>> Configurable inactivity timeout in console
@@ -14694,7 +14807,7 @@ mode: {
 edit: !!r.mode.edit && t
 =======
 return _.each(e.containerConfigByName, function(n, r) {
-n.hasDeploymentTrigger ? t.push(T(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(E(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: r
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
@@ -14752,7 +14865,7 @@ subjectName: n
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
 _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = g.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
-}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = E(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = T(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
@@ -14871,7 +14984,23 @@ var t = u.sortRoles(b), n = u.filterRoles(b), a = function(e, t) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 return _.some(t, {
 metadata: {
+<<<<<<< HEAD
 name: e
+=======
+name: e.autoscaling.name,
+labels: p.mapEntries(p.compactEntries(e.labels))
+},
+spec: {
+scaleTargetRef: {
+kind: n.kind,
+name: n.name,
+apiVersion: "extensions/v1beta1",
+subresource: "scale"
+},
+minReplicas: e.autoscaling.minReplicas,
+maxReplicas: e.autoscaling.maxReplicas,
+targetCPUUtilizationPercentage: e.autoscaling.targetCPU
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 });
 };
@@ -14938,6 +15067,7 @@ r.toggle.roles = !r.toggle.roles, r.toggle.roles ? r.filteredRoles = t : (r.filt
 }
 });
 });
+<<<<<<< HEAD
 }));
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -14963,6 +15093,20 @@ return !!t.isEmpty() || t.matches(e);
 function g() {
 r.latestByConfig = o.latestBuildByConfig(r.builds, a), r.buildsNoConfig = _.pickBy(r.builds, l), angular.forEach(r.buildConfigs, function(e, t) {
 r.latestByConfig[t] = r.latestByConfig[t] || null;
+=======
+}, f = function(t) {
+e.disableInputs = !0, (t = angular.copy(t)).metadata.labels = p.mapEntries(p.compactEntries(e.labels)), t.spec.minReplicas = e.autoscaling.minReplicas, t.spec.maxReplicas = e.autoscaling.maxReplicas, t.spec.targetCPUUtilizationPercentage = e.autoscaling.targetCPU, s.update(y, t.metadata.name, t, r).then(function(e) {
+d.addNotification({
+type: "success",
+message: "Horizontal pod autoscaler " + e.metadata.name + " successfully updated."
+}), v();
+}, function(t) {
+e.disableInputs = !1, d.addNotification({
+id: "edit-hpa-error",
+type: "error",
+message: "An error occurred creating the horizontal pod autoscaler.",
+details: g(t)
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 }
 function f() {
@@ -15466,8 +15610,8 @@ e.displayName = a.displayName, e.advancedOptions = "true" === a.advanced;
 var I = {
 name: "app",
 value: ""
-}, R = t("orderByDisplayName"), T = t("getErrorDetails"), E = {}, N = function() {
-g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(E, function(e) {
+}, R = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 >>>>>>> Add Browse Catalog to Project context view.
@@ -15480,12 +15624,16 @@ type: "warning",
 details: "The active filters are hiding all builds."
 =======
 e.$on("$destroy", N);
-var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), V = i.getPreferredVersion("resourcequotas"), U = i.getPreferredVersion("appliedclusterresourcequotas");
+var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), L = i.getPreferredVersion("secrets"), V = i.getPreferredVersion("resourcequotas"), O = i.getPreferredVersion("appliedclusterresourcequotas");
 v.get(a.project).then(_.spread(function(t, n) {
-e.project = t, a.sourceURI && (e.sourceURIinParams = !0);
+e.project = t, a.sourceURI && (e.sourceURIinParams = !0), e.hasClusterResourceOverrides = d.hasClusterResourceOverrides(t);
 var i = function() {
+<<<<<<< HEAD
 e.hideCPU || (e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t)), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
 >>>>>>> Update membership to use new rbac endpoints
+=======
+e.cpuProblems = d.validatePodLimits(e.limitRanges, "cpu", [ e.container ], t), e.memoryProblems = d.validatePodLimits(e.limitRanges, "memory", [ e.container ], t);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 <<<<<<< HEAD
 }
@@ -15521,10 +15669,11 @@ c.list(A, n).then(function(t) {
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 });
 var v, y, C = function() {
-e.scaling.autoscale ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
+e.scaling.autoscale && !e.hasClusterResourceOverrides ? e.showCPURequestWarning = !l.hasCPURequest([ e.container ], e.limitRanges, t) : e.showCPURequestWarning = !1;
 };
 c.list(V, n).then(function(e) {
 v = e.by("metadata.name"), m.log("quotas", v);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), c.list(V, n).then(function(e) {
@@ -15535,6 +15684,9 @@ v = e.by("metadata.name"), m.log("quotas", v);
 =======
 }), c.list(U, n).then(function(e) {
 >>>>>>> Fix potential API mismatch in BuildsService
+=======
+}), c.list(O, n).then(function(e) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 y = e.by("metadata.name"), m.log("cluster quotas", y);
 }), e.$watch("scaling.autoscale", C), e.$watch("container", C, !0), e.$watch("name", function(e, t) {
 I.value && I.value !== t || (I.value = e);
@@ -15589,10 +15741,14 @@ id: "build-config-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
 >>>>>>> Configurable inactivity timeout in console
+=======
+details: E(e)
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 }), a.canI(e.secretsVersion, "list", n.project) && s.list("secrets", i, null, {
 errorNotification: !1
@@ -15604,10 +15760,14 @@ id: "build-config-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
 >>>>>>> Configurable inactivity timeout in console
+=======
+details: E(e)
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 }), y.push(s.watch(e.buildsVersion, i, function(t, r, a) {
 if (e.emptyMessage = "No builds to show", r) {
@@ -15649,7 +15809,11 @@ f.toErrorPage("Cannot create from source: the specified image could not be retri
 f.toErrorPage("Cannot create from source: the specified image could not be retrieved.");
 });
 }(e);
+<<<<<<< HEAD
 var V, F = function() {
+=======
+var U, F = function() {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 var t = {
 started: "Creating application " + e.name + " in project " + e.projectDisplayName(),
 success: "Created application " + e.name + " in project " + e.projectDisplayName(),
@@ -15657,7 +15821,11 @@ failure: "Failed to create " + e.name + " in project " + e.projectDisplayName()
 }, o = {};
 S.clear(), S.add(t, o, a.project, function() {
 var t = r.defer();
+<<<<<<< HEAD
 return c.batch(V, n).then(function(n) {
+=======
+return c.batch(U, n).then(function(n) {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 var r = [], a = !1;
 _.isEmpty(n.failure) ? r.push({
 type: "success",
@@ -15731,21 +15899,21 @@ details: "The active filters are hiding all builds."
 }
 }).result.then(F);
 }, M = function(t) {
-N(), E = t.quotaAlerts || [], e.nameTaken || _.some(E, {
+N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 type: "error"
-}) ? (e.disableInputs = !1, _.each(E, function(e) {
+}) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(E) ? F() : (x(E), e.disableInputs = !1);
+})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return P(this.project) || this.projectName;
 }, e.createApp = function() {
 e.disableInputs = !0, N(), e.buildConfig.envVars = w.compactEntries(e.buildConfigEnvVars), e.deploymentConfig.envVars = w.compactEntries(e.DCEnvVarsFromUser), e.labels = w.mapEntries(w.compactEntries(e.labelArray));
 var t = s.generate(e);
-O = [], angular.forEach(t, function(e) {
-null !== e && (m.debug("Generated resource definition:", e), O.push(e));
+U = [], angular.forEach(t, function(e) {
+null !== e && (m.debug("Generated resource definition:", e), U.push(e));
 });
-var r = s.ifResourcesDontExist(O, e.projectName), a = h.getLatestQuotaAlerts(O, n), o = function(t) {
+var r = s.ifResourcesDontExist(U, e.projectName), a = h.getLatestQuotaAlerts(U, n), o = function(t) {
 return e.nameTaken = t.nameTaken, a;
 };
 r.then(o, o).then(M, M);
@@ -19173,7 +19341,7 @@ t > 0 && r.push(P()), e > 0 && r.push(w()), n.all(r).then(b);
 }
 function b() {
 var e, n;
-E(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+T(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
 project: p.input.selectedProject,
 template: p.resource
 }) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
@@ -19634,12 +19802,49 @@ r.get(e.project).then(_.spread(function(e, r) {
 function a() {
 t.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(t.services) && !_.isEmpty(t.unfilteredServices);
 }
+<<<<<<< HEAD
 t.project = e, s.push(n.watch("services", r, function(e) {
 t.servicesLoaded = !0, t.unfilteredServices = e.by("metadata.name"), o.addLabelSuggestionsFromResources(t.unfilteredServices, t.labelSuggestions), o.setLabelSuggestions(t.labelSuggestions), t.services = o.getLabelSelector().select(t.unfilteredServices), a(), i.log("services (subscribe)", t.unfilteredServices);
 })), o.onActiveFiltersChanged(function(e) {
 t.$evalAsync(function() {
 t.services = e.select(t.unfilteredServices), a();
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}
+}).result.then(y);
+}, E = {}, T = function() {
+c.hideNotification("from-file-error"), _.each(E, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
+});
+}, N = function(e) {
+T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+var t = e.quotaAlerts || [];
+E = E.concat(t), _.filter(E, {
+type: "error"
+}).length ? (_.each(E, function(e) {
+e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
+}), p.disableInputs = !1) : E.length ? (R(E), p.disableInputs = !1) : y();
+}, D = function() {
+if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
+var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
+return m.create(t, r, a);
+};
+p.create = function() {
+if (delete p.error, f(p.resource) && (p.resourceKind = p.resource.kind, p.resourceKind.endsWith("List") ? p.isList = !0 : p.isList = !1, g(p.resource))) {
+p.isList ? (p.resourceList = p.resource.items, p.resourceName = "") : (p.resourceList = [ p.resource ], p.resourceName = p.resource.metadata.name, "Template" === p.resourceKind && (p.templateOptions = {
+process: !0,
+add: !1
+})), p.updateResources = [], p.createResources = [];
+var e = [];
+p.errorOccurred = !1, _.forEach(p.resourceList, function(t) {
+if (!g(t)) return p.errorOccurred = !0, !1;
+e.push(S(t));
+}), D().then(function(t) {
+p.input.selectedProject = t, n.all(e).then(function() {
+p.errorOccurred || (1 === p.createResources.length && "Template" === p.resourceList[0].kind ? v() : _.isEmpty(p.updateResources) ? l.getLatestQuotaAlerts(p.createResources, {
+namespace: p.input.selectedProject.metadata.name
+}).then(N) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 }, B = !1, L = function() {
 var t = m.getControllerReferences(e.replicaSet), a = _.find(t, {
@@ -19702,6 +19907,15 @@ if (!_.isEmpty(k)) {
 var t = _.get(e, "replicaSet.spec.template");
 t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, f);
 }
+<<<<<<< HEAD
+=======
+}, p.cancel = function() {
+T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+};
+var A = e("displayName");
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
+} ]
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 o.get(e.resource, n.replicaSet, f, {
 =======
@@ -41106,6 +41320,7 @@ c.disableInputs = !1;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("buildTrendsChart", [ "$filter", "$location", "$rootScope", "$timeout", "BuildsService", function(e, t, n, a, r) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 return {
@@ -41166,6 +41381,21 @@ format: c
 link: function(t) {
 function n(e) {
 return null === e.value || void 0 === e.value;
+=======
+} ]), angular.module("openshiftConsole").directive("oscAutoscaling", [ "Constants", "HPAService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n) {
+return {
+restrict: "E",
+scope: {
+autoscaling: "=model",
+showNameInput: "=?",
+nameReadOnly: "=?"
+},
+templateUrl: "views/directives/osc-autoscaling.html",
+link: function(t) {
+t.nameValidation = n;
+var r = e.DEFAULT_HPA_CPU_TARGET_PERCENT, a = _.get(t, "autoscaling.targetCPU");
+_.isNil(a) && r && _.set(t, "autoscaling.targetCPU", r);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 function a(e) {
 var t, a = {}, r = [ "Date" ], o = [ t = w ? e.compactDatasetLabel || e.label : "Average Usage" ], i = [ r, o ], s = function(e) {
@@ -41880,6 +42110,7 @@ R[t.id] ? R[t.id].load(a) : ((n = B(e)).data = a, r(function() {
 A || (R[t.id] = c3.generate(n));
 }));
 }
+<<<<<<< HEAD
 }
 function g(e) {
 if (!_.some(e.datasets, function(e) {
@@ -41895,6 +42126,22 @@ pattern: e.chartDataColors
 }), r(function() {
 A || (E[o] = c3.generate(n));
 }));
+=======
+}, E = function() {
+return f.list().then(function(e) {
+h = e.by("metadata.name");
+});
+}, T = function() {
+var e = a.project;
+i.currentProjectName !== e && (i.currentProjectName = e, i.chromeless = "chromeless" === a.view, e && !i.chromeless ? (_.set(r, "view.hasProject", !0), i.canIAddToProject = !1, s.getProjectRules(e).then(function() {
+i.currentProjectName === e && (i.canIAddToProject = s.canIAddToProject(e), i.canIAddToProject && l.getCatalogItems().then(function(e) {
+i.catalogItems = e;
+}));
+}), E().then(function() {
+i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
+metadata: {
+name: i.currentProjectName
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 }
 function v() {
@@ -41923,6 +42170,7 @@ A || (U = 0, _.each(m.metrics, function(e) {
 g(e), f(e);
 }));
 }
+<<<<<<< HEAD
 function C(e) {
 if (!A) if (U++, m.noData) m.metricsError = {
 status: _.get(e, "status", 0),
@@ -41938,6 +42186,22 @@ label: "Retry",
 onClick: function() {
 delete m.alerts[t], U = 1, j();
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+});
+i.closeOrderingPanel = function() {
+v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
+}, T(), i.$on("$routeChangeSuccess", T), k.selectpicker({
+iconBase: "fa",
+tickIcon: "fa-check"
+}).change(function() {
+var e = $(this).val(), n = "" === e ? "projects" : g(e);
+i.$apply(function() {
+t.url(n);
+});
+}), i.$on("$destroy", function() {
+B(), N();
+});
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }
 };
 }
@@ -43138,7 +43402,7 @@ if (!m.pod) return null;
 var t = m.options.selectedContainer;
 switch (e) {
 case "memory/usage":
-var n = E(t);
+var n = T(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
@@ -43214,10 +43478,10 @@ var o, i = a.match(t);
 i ? ((o = r[i[1]] || {}).title = e.annotations[a], r[i[1]] = o) : (i = a.match(n)) && ((o = r[i[1]] || {}).url = e.annotations[a], r[i[1]] = o);
 =======
 var n, a = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
-T[o] ? T[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
+E[o] ? E[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), r(function() {
-A || (T[o] = c3.generate(n));
+A || (E[o] = c3.generate(n));
 }));
 }
 >>>>>>> Configurable inactivity timeout in console
@@ -43498,7 +43762,7 @@ cancelButtonText: f.getString(g("Cancel"))
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var I, R = {}, T = {}, E = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
+var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -43857,6 +44121,7 @@ k();
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 var C, w = this, P = t("imageForIconClass"), j = t("annotation");
 w.selectStep = {
@@ -43882,6 +44147,10 @@ t[n] = !0;
 var U = o.$on("metrics.charts.resize", function() {
 c.redraw(R), c.redraw(T);
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
+=======
+var O = o.$on("metrics.charts.resize", function() {
+c.redraw(R), c.redraw(E);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 <<<<<<< HEAD
 var n = _.get(a, "columns", []);
@@ -43906,12 +44175,16 @@ length: 30
 t && (t = t.destroy());
 =======
 m.$on("$destroy", function() {
-I && (t.cancel(I), I = null), U && (U(), U = null), angular.forEach(R, function(e) {
+I && (t.cancel(I), I = null), O && (O(), O = null), angular.forEach(R, function(e) {
 e.destroy();
-}), R = null, angular.forEach(T, function(e) {
+}), R = null, angular.forEach(E, function(e) {
 e.destroy();
+<<<<<<< HEAD
 }), T = null, A = !0;
 >>>>>>> Set Home Page Preference
+=======
+}), E = null, A = !0;
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 });
 }
 };
@@ -43993,7 +44266,7 @@ return S(e);
 function u(e) {
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
 }));
 >>>>>>> Configurable inactivity timeout in console
 }
@@ -44134,7 +44407,7 @@ show: !1
 =======
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
-var j, k, I = {}, R = w, T = function(e) {
+var j, k, I = {}, R = w, E = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -44142,11 +44415,15 @@ label: "Memory",
 units: "MiB",
 convert: i.bytesToMiB,
 formatUsage: function(e) {
-return T(e) && (e /= 1024), s.formatUsage(e);
+return E(e) && (e /= 1024), s.formatUsage(e);
 },
 usageUnits: function(e) {
+<<<<<<< HEAD
 return T(e) ? "GiB" : "MiB";
 >>>>>>> Configurable inactivity timeout in console
+=======
+return E(e) ? "GiB" : "MiB";
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 },
 width: 10
 },
@@ -44180,7 +44457,7 @@ compactDatasetLabel: "Received",
 compactType: "spline",
 chartID: "network-rx-" + t.uniqueID
 } ];
-var E = _.keyBy(t.metrics, "descriptor");
+var T = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
 };
@@ -44558,17 +44835,17 @@ y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected =
 k(!0), b(), C();
 }, 100);
 m.on("resize", R);
-var T, E = function() {
+var E, T = function() {
 S = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && E(), t.showScrollLinks || b();
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = a.defer();
-return T ? (T.onClose(function() {
+return E ? (E.onClose(function() {
 t.resolve();
-}), T.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
 A().then(function() {
 t.$evalAsync(function() {
@@ -44588,7 +44865,7 @@ limitBytes: 10485760
 }, t.options), n = 0, r = function(e) {
 n++, N.appendChild(f(n, e)), D();
 };
-(T = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
+(E = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", I());
 }), a && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
@@ -44596,17 +44873,18 @@ t.limitReached = !0, t.loading = !1;
 }), A(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), T.onClose(function() {
-T = null, t.$evalAsync(function() {
+}), E.onClose(function() {
+E = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), T.onError(function() {
-T = null, t.$evalAsync(function() {
+}), E.onError(function() {
+E = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< HEAD
 }), T.start();
 >>>>>>> Configurable inactivity timeout in console
 }
@@ -44638,6 +44916,57 @@ id: "keyword",
 title: "Keyword",
 placeholder: "Filter by Keyword",
 filterType: "text"
+=======
+}), E.start();
+}
+});
+});
+};
+if (s.getLoggingURL(t.context.project).then(function(r) {
+var a = _.get(t.context, "project.metadata.name"), i = _.get(t.options, "container");
+a && i && h && r && (angular.extend(t, {
+kibanaAuthUrl: e.trustAsResourceUrl(URI(r).segment("auth").segment("token").normalizePathname().toString()),
+access_token: o.UserStore().getToken()
+}), t.$watchGroup([ "context.project.metadata.name", "options.container", "name" ], function() {
+angular.extend(t, {
+kibanaArchiveUrl: e.trustAsResourceUrl(d.archiveUri({
+namespace: t.context.project.metadata.name,
+namespaceUid: t.context.project.metadata.uid,
+podname: h,
+containername: t.options.container,
+backlink: URI.encode(n.location.href)
+}))
+});
+}));
+}), this.cacheScrollableNode = function(e) {
+u = e;
+}, this.cacheLogNode = function(e) {
+l = e;
+}, this.cacheAffixable = function(e) {
+p = $(e);
+}, this.start = function() {
+w(), P();
+}, angular.extend(t, {
+ready: !0,
+loading: !0,
+autoScrollActive: !0,
+state: !1,
+onScrollBottom: function() {
+d.scrollBottom(u);
+},
+onScrollTop: function() {
+t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
+},
+toggleAutoScroll: function() {
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
+},
+goChromeless: d.chromelessLink,
+restartLogs: B
+}), t.$on("$destroy", function() {
+A(), m.off("resize", R), m.off("scroll", C), u && $(u).off("scroll", C);
+}), "deploymentconfigs/logs" === v && !h) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
+t.$watchGroup([ "name", "options.container", "run" ], B);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 } ],
 inlineResults: !0,
 showTotalCountResults: !0,
@@ -46661,7 +46990,7 @@ return {
 name: t,
 value: e
 };
-}), T() && h.labels.push({
+}), E() && h.labels.push({
 name: "app",
 value: h.template.metadata.name
 });
@@ -46888,7 +47217,7 @@ return !_.get(v.template, "labels.app") && !_.some(v.template.objects, "metadata
 }, h.cancel = function() {
 j(), i.toProjectOverview(h.project.metadata.name);
 }, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", j);
-var T = function() {
+var E = function() {
 return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
 };
@@ -48935,6 +49264,7 @@ a.findReferenceValueForEntries(t.entries, t.valueFromSelectorOptions);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]
 =======
 var k, j = e("displayName"), R = function() {
@@ -48952,6 +49282,13 @@ started: "Deploying image " + n.app.name + " to project " + T(n.input.selectedPr
 success: "Deployed image " + n.app.name + " to project " + T(n.input.selectedProject),
 failure: "Failed to deploy image " + n.app.name + " to project " + T(n.input.selectedProject)
 >>>>>>> Configurable inactivity timeout in console
+=======
+var R, E = e("displayName"), T = function() {
+var e = {
+started: "Deploying image " + n.app.name + " to project " + E(n.input.selectedProject),
+success: "Deployed image " + n.app.name + " to project " + E(n.input.selectedProject),
+failure: "Failed to deploy image " + n.app.name + " to project " + E(n.input.selectedProject)
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
@@ -49007,8 +49344,12 @@ $(window).off("beforeunload", o), i && i();
 }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }).result.then(E);
+=======
+}).result.then(T);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }, D = function(e) {
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
@@ -49016,8 +49357,12 @@ type: "error"
 });
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(b, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
+<<<<<<< HEAD
 })) : b.length ? (N(b), n.disableInputs = !1) : E();
 >>>>>>> Configurable inactivity timeout in console
+=======
+})) : b.length ? (N(b), n.disableInputs = !1) : T();
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 <<<<<<< HEAD
 } ]), function() {
@@ -49872,7 +50217,7 @@ _.each(f.notificationGroups, function(t) {
 _.each(h.notificationGroups, function(e) {
 e.totalUnread = I(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 });
-}, T = function(e) {
+}, E = function(e) {
 _.each(h.notificationGroups, function(t) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 _.remove(t.notifications, {
@@ -49927,6 +50272,7 @@ g[r.project] = {}, v[r.project] = {};
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, I = function(e) {
 <<<<<<< HEAD
 >>>>>>> Add search catalog in project context
@@ -49945,6 +50291,10 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 }, E = function(e) {
 S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], T(e);
 >>>>>>> Configurable inactivity timeout in console
+=======
+}, T = function(e) {
+S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], E(e);
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
 }, D = function(e) {
@@ -50086,9 +50436,9 @@ t.showInDrawer && !l.isCleared(r) && (h[n] = h[n] || {}, h[n][r] = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 }), y = [];
-}, U = function() {
-m && (l.unwatch(m), m = null);
 }, O = function() {
+m && (l.unwatch(m), m = null);
+}, U = function() {
 d && d(), d = null;
 }, F = function(e) {
 b[a.project] = D(A(e.by("metadata.name"))), L();
@@ -50126,6 +50476,7 @@ B(), e && (d = c.watch("events", {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 O(), e && (m = l.watch(p, {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
@@ -50143,6 +50494,9 @@ U(), e && (m = l.watch(p, {
 =======
 U(), e && (m = l.watch(p, {
 >>>>>>> Fix potential API mismatch in BuildsService
+=======
+O(), e && (m = l.watch(p, {
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 namespace: e
 }, _.debounce(t, 400), {
 skipDigest: !0
@@ -50237,7 +50591,7 @@ angular.extend(f, {
 >>>>>>> Remember drawer expanded state across sessions
 =======
 }, q = _.once(function(e, t) {
-O(), d = r.$on("NotificationsService.onNotificationAdded", t);
+U(), d = r.$on("NotificationsService.onNotificationAdded", t);
 }), z = function() {
 j(a.project).then(function() {
 M(a.project, F), q(a.project, x), w(a.project), L();
@@ -50319,6 +50673,7 @@ clear: function(e, t, n) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 l.markCleared(e.event), n.notifications.splice(t, 1), R();
 =======
 c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D();
@@ -50346,6 +50701,9 @@ u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L()
 =======
 u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), E(e), L();
 >>>>>>> Configurable inactivity timeout in console
+=======
+u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L();
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 },
 markRead: function(e) {
 e.unread = !1, u.markRead(e.uid), L();
@@ -50444,7 +50802,7 @@ h.drawerHidden = !h.drawerHidden;
 })), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
 h.drawerHidden = !0;
 })), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-u.markCleared(t.uid), E(t), R();
+u.markCleared(t.uid), T(t), R();
 }));
 };
 <<<<<<< HEAD
@@ -50457,6 +50815,7 @@ L(), B(), $();
 h.$onInit = function() {
 g || v || H();
 }, h.$onDestroy = function() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -50479,6 +50838,9 @@ O(), U(), V();
 =======
 O(), U(), V();
 >>>>>>> Fix potential API mismatch in BuildsService
+=======
+U(), O(), V();
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 };
 } ]
 });
@@ -51586,6 +51948,7 @@ return e.isLimitCalculated(t, n);
 <<<<<<< HEAD
 =======
 };
+<<<<<<< HEAD
 } ]).filter("hpaCPUPercent", [ "HPAService", "LimitRangesService", function(e, t) {
 <<<<<<< HEAD
 return function(n, a) {
@@ -51596,6 +51959,8 @@ return function(n, r) {
 return n && t.isRequestCalculated("cpu", r) ? e.convertRequestPercentToLimit(n, r) : n;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 };
+=======
+>>>>>>> Use new clusterResourceOverridesEnabled flag
 } ]).filter("podTemplate", function() {
 return function(e) {
 return e ? "Pod" === e.kind ? e : _.get(e, "spec.template") : null;

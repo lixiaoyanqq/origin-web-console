@@ -6303,7 +6303,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<osc-autoscaling ng-if=\"scaling.autoscale\" model=\"scaling\"></osc-autoscaling>\n" +
     "<div class=\"has-warning\" ng-if=\"showCPURequestWarning\">\n" +
+<<<<<<< HEAD
     "<span class=\"help-block\" translate>\n" +
+=======
+    "<span class=\"help-block\">\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "You should configure resource limits below for autoscaling. Autoscaling will not work without a CPU request.\n" +
     "</span>\n" +
     "</div>\n" +
@@ -10599,6 +10603,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "<div class=\"input-group\" ng-class=\"{ 'has-error': form.targetCPU.$invalid && form.targetCPU.$touched }\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"autoscaling.targetCPU\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
 =======
     "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"targetCPUInput.percent\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
@@ -10606,6 +10611,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"input-group-addon\">%</span>\n" +
     "</div>\n" +
     "<div id=\"target-cpu-help\" class=\"help-block\" translate>\n" +
+=======
+    "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"autoscaling.targetCPU\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
+    "<span class=\"input-group-addon\">%</span>\n" +
+    "</div>\n" +
+    "<div id=\"target-cpu-help\" class=\"help-block\">\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "The percentage of the CPU request that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.\n" +
     "</div>\n" +
     "<div class=\"learn-more-block\">\n" +
@@ -12355,7 +12366,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"command-line\" target=\"_blank\">command line tools</a>.\n" +
     "</div>\n" +
     "<fieldset ng-disabled=\"disableInputs\" class=\"gutter-top\">\n" +
+<<<<<<< HEAD
     "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\" show-request-input=\"autoscaling.targetCPU && !(usesV2Metrics)\">\n" +
+=======
+    "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\">\n" +
+>>>>>>> Use new clusterResourceOverridesEnabled flag
     "</osc-autoscaling>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\"></label-editor>\n" +
     "<div class=\"buttons gutter-top gutter-bottom\">\n" +
