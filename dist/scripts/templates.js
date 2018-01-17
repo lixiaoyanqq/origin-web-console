@@ -6457,6 +6457,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
+<<<<<<< 2efcc235c35c39757dd6b2ea1cba639bfcb4d3c2
 <<<<<<< 5ee4e8975cd809cf7a654cbc903e7d305ed5ecb9
     "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\" translate>Deployment Configurations</h3>\n" +
     "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
@@ -6466,6 +6467,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Removing table-hover from tables to address inconsistency in hover color
 =======
     "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\">Deployment Configurations</h3>\n" +
+=======
+    "<h3 ng-if=\"showDeploymentConfigTable() && ((deployments | size) || (replicaSets | size) || (replicationControllersByDC[''] | size))\">Deployment Configs</h3>\n" +
+>>>>>>> Do not change DC label to "Deployments"
     "<table ng-if=\"showDeploymentConfigTable() && !showEmptyState\" class=\"table table-bordered table-mobile table-layout-fixed\">\n" +
 >>>>>>> Replacing empty tables with empty state message
     "<colgroup>\n" +
@@ -15646,12 +15650,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"list-pf-name\">\n" +
     "<h3>\n" +
     "<div class=\"component-label\">\n" +
+<<<<<<< 2efcc235c35c39757dd6b2ea1cba639bfcb4d3c2
     "<span ng-if=\"row.apiObject.kind === 'DeploymentConfig'\" translate>\n" +
     "Deployment\n" +
     "</span>\n" +
     "<span ng-if=\"row.apiObject.kind !== 'DeploymentConfig'\">\n" +
+=======
+>>>>>>> Do not change DC label to "Deployments"
     "{{row.apiObject.kind | humanizeKind}}\n" +
-    "</span>\n" +
     "</div>\n" +
     "<a ng-href=\"{{row.apiObject | navigateResourceURL}}\"><span ng-bind-html=\"row.apiObject.metadata.name | highlightKeywords : row.state.filterKeywords\"></span></a><span ng-if=\"row.apiObject.kind === 'DeploymentConfig' && row.current\">,\n" +
     "<a ng-href=\"{{row.current | navigateResourceURL}}\">#{{row.current | annotation : 'deploymentVersion'}}</a>\n" +
