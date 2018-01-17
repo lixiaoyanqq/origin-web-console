@@ -2189,7 +2189,6 @@ SAMPLE_PIPELINE_TEMPLATE: {
 name: "jenkins-pipeline-example",
 namespace: "openshift"
 },
-INACTIVITY_TIMEOUT_PERIOD: 0,
 CREATE_FROM_URL_WHITELIST: [ "openshift" ],
 SECURITY_CHECK_WHITELIST: [ {
 resource: "buildconfigs",
@@ -3439,6 +3438,7 @@ t.readPersistedState();
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]).run([ "$location", "$uibModal", "AuthService", function(e, t, n) {
 function r() {
 if (c) return !1;
@@ -3449,6 +3449,10 @@ backdrop: !0
 =======
 } ]).run([ "$location", "$uibModal", "AuthService", "Constants", function(e, t, n, r) {
 function a() {
+=======
+} ]).run([ "$location", "$uibModal", "AuthService", function(e, t, n) {
+function r() {
+>>>>>>> Switch inactivity timeout to use new config value
 if (c) return !1;
 c = !0, (i = t.open({
 animation: !0,
@@ -3462,20 +3466,29 @@ d(), c = !1;
 });
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 var a = window.OPENSHIFT_CONFIG.inactivityTimeoutMinutes;
 if (a) {
 =======
 if (!(r.INACTIVITY_TIMEOUT_PERIOD <= 0)) {
 >>>>>>> Configurable inactivity timeout in console
+=======
+var a = window.OPENSHIFT_CONFIG.inactivityTimeoutMinutes;
+if (a) {
+>>>>>>> Switch inactivity timeout to use new config value
 var o, i, s = "origin-web-console-last-interaction-timestamp", c = !1, l = function() {
 o = setInterval(function() {
 if (n.isLoggedIn()) {
 var e = Date.parse(localStorage.getItem(s));
 <<<<<<< HEAD
+<<<<<<< HEAD
 isNaN(e) && (Logger.warn("Last interaction timestamp has been corrupted. The logout timeout will be restarted."), e = new Date()), new Date() - e > 6e4 * a && r();
 =======
 isNaN(e) && (Logger.warn("Last interaction timestamp has been corrupted. The logout timeout will be restarted."), e = new Date()), new Date() - e > 6e4 * r.INACTIVITY_TIMEOUT_PERIOD && a();
 >>>>>>> Configurable inactivity timeout in console
+=======
+isNaN(e) && (Logger.warn("Last interaction timestamp has been corrupted. The logout timeout will be restarted."), e = new Date()), new Date() - e > 6e4 * a && r();
+>>>>>>> Switch inactivity timeout to use new config value
 }
 }, 6e4);
 }, u = function() {
