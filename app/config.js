@@ -33,7 +33,8 @@
     },
     loggingURL: "",
     metricsURL: "",
-    templateServiceBrokerEnabled: false
+    templateServiceBrokerEnabled: false,
+    inactivityTimeoutMinutes: 0
   };
 
   // Additional support only for Chinese now: zh-CN
