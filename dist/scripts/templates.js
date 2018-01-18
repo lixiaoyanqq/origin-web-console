@@ -7790,9 +7790,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
 =======
     "<label for=\"secret-name\" class=\"required\">Secret Name</label>\n" +
+<<<<<<< HEAD
     "<span ng-class=\"{'has-error': nameTaken || (secretForm.secretName.$invalid && secretForm.secretName.$touched)}\">\n" +
     "<input class=\"form-control\" id=\"secret-name\" name=\"secret-name\" ng-model=\"newSecret.data.secretName\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"secret-name-help\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" ng-change=\"nameChanged()\" required>\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<span ng-class=\"{'has-error': nameTaken || (secretForm.name.$invalid && secretForm.name.$touched)}\">\n" +
+    "<input class=\"form-control\" id=\"secret-name\" name=\"name\" ng-model=\"newSecret.data.secretName\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"secret-name-help\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" ng-change=\"nameChanged()\" required>\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</span>\n" +
     "<div class=\"has-error\" ng-show=\"nameTaken\">\n" +
     "<span class=\"help-block\" translate>\n" +
@@ -7803,10 +7808,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-show=\"secretForm.name.$error.pattern && secretForm.name.$touched\" class=\"help-block\">\n" +
     "{{nameValidation.description}}\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div ng-show=\"secretForm.name.$error.required && secretForm.name.$touched\" class=\"help-block\" translate>\n" +
     "Name is required.\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.name.$error.maxlength && secretForm.name.$touched\" class=\"help-block\" translate>\n" +
+=======
+    "<div ng-show=\"secretForm.name.$error.required && secretForm.name.$touched\" class=\"help-block\">\n" +
+    "Name is required.\n" +
+    "</div>\n" +
+    "<div ng-show=\"secretForm.name.$error.maxlength && secretForm.name.$touched\" class=\"help-block\">\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "Can't be longer than {{nameValidation.maxlength}} characters.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7846,8 +7858,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<div class=\"form-group\">\n" +
     "<label for=\"webhook-secret-key\" class=\"required\">Webhook Secret Key</label>\n" +
-    "<div class=\"input-group\">\n" +
-    "<input class=\"form-control\" id=\"webhook-secret-key\" name=\"webhook-secret-key\" ng-model=\"newSecret.data.webhookSecretKey\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"webhook-secret-key-help\" required=\"true\">\n" +
+    "<div class=\"input-group\" ng-class=\"{ 'has-error': secretForm.webhookSecretKey.$invalid && secretForm.webhookSecretKey.$touched}\">\n" +
+    "<input class=\"form-control\" id=\"webhook-secret-key\" name=\"webhookSecretKey\" ng-model=\"newSecret.data.webhookSecretKey\" ng-pattern=\"secretReferenceValidation.pattern\" ng-minlength=\"secretReferenceValidation.minLength\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"webhook-secret-key-help\" required=\"true\">\n" +
     "<span class=\"input-group-btn\">\n" +
     "<button type=\"button\" class=\"btn btn-default\" ng-click=\"generateWebhookSecretKey()\">Generate</button>\n" +
     "</span>\n" +
@@ -7855,6 +7867,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"help-block\" id=\"secret-name-help\">\n" +
     "Value of the secret will be supplied when invoking the webhook.\n" +
     "<a ng-href=\"{{'webhooks' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
+    "</div>\n" +
+    "<div class=\"has-error\" ng-show=\"secretForm.webhookSecretKey.$error.pattern && secretForm.webhookSecretKey.$touched\">\n" +
+    "<span class=\"help-block\">\n" +
+    "{{secretReferenceValidation.description}}\n" +
+    "</span>\n" +
+    "</div>\n" +
+    "<div class=\"has-error\" ng-show=\"secretForm.webhookSecretKey.$error.minlength && secretForm.webhookSecretKey.$touched\">\n" +
+    "<span class=\"help-block\">\n" +
+    "The key must have at least {{secretReferenceValidation.minLength}} characters.\n" +
+    "</span>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7894,8 +7916,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
 =======
     "<label ng-class=\"{ required: !add.cacert && !add.gitconfig }\" for=\"password-token\">Password or Token</label>\n" +
+<<<<<<< HEAD
     "<input class=\"form-control\" id=\"password-token\" name=\"password-token\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<input class=\"form-control\" id=\"password-token\" name=\"passwordToken\" ng-model=\"newSecret.data.passwordToken\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"password-token-help\" type=\"password\" ng-required=\"!add.cacert && !add.gitconfig\">\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.passwordToken.$error.required && secretForm.passwordToken.$touched\">\n" +
     "<div class=\"help-block\" translate>\n" +
@@ -7981,8 +8007,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<label for=\"docker-server\" class=\"required\">Image Registry Server Address</label>\n" +
     "<div>\n" +
+<<<<<<< HEAD
     "<input class=\"form-control\" id=\"docker-server\" name=\"docker-server\" ng-model=\"newSecret.data.dockerServer\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<input class=\"form-control\" id=\"docker-server\" name=\"dockerServer\" ng-model=\"newSecret.data.dockerServer\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerServer.$error.required && secretForm.dockerServer.$touched\" class=\"has-error\">\n" +
@@ -8002,8 +8032,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<label for=\"docker-username\" class=\"required\">Username</label>\n" +
     "<div>\n" +
+<<<<<<< HEAD
     "<input class=\"form-control\" id=\"docker-username\" name=\"docker-username\" ng-model=\"newSecret.data.dockerUsername\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<input class=\"form-control\" id=\"docker-username\" name=\"dockerUsername\" ng-model=\"newSecret.data.dockerUsername\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerUsername.$error.required && secretForm.dockerUsername.$touched\" class=\"has-error\">\n" +
@@ -8023,8 +8057,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<label for=\"docker-password\" class=\"required\">Password</label>\n" +
     "<div>\n" +
+<<<<<<< HEAD
     "<input class=\"form-control\" id=\"docker-password\" name=\"docker-password\" ng-model=\"newSecret.data.dockerPassword\" type=\"password\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<input class=\"form-control\" id=\"docker-password\" name=\"dockerPassword\" ng-model=\"newSecret.data.dockerPassword\" type=\"password\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</div>\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.dockerPassword.$error.required && secretForm.dockerPassword.$touched\" class=\"has-error\">\n" +
@@ -8044,8 +8082,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<label for=\"docker-email\" class=\"required\">Email</label>\n" +
     "<div>\n" +
+<<<<<<< HEAD
     "<input class=\"form-control\" type=\"email\" id=\"docker-email\" name=\"docker-email\" ng-model=\"newSecret.data.dockerMail\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+    "<input class=\"form-control\" type=\"email\" id=\"docker-email\" name=\"dockerEmail\" ng-model=\"newSecret.data.dockerMail\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
     "</div>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.dockerEmail.$invalid\">\n" +
