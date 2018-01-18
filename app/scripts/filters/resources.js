@@ -537,7 +537,7 @@ angular.module('openshiftConsole')
   })
   .filter('isIncompleteBuild', function(ageLessThanFilter) {
     return function(build) {
-      if (!build || !build.status || !build.status.phase) {
+      if (!build || !build.status || !build.status.phase){
         return false;
       }
 
@@ -547,6 +547,9 @@ angular.module('openshiftConsole')
         case 'Running':
           return true;
         default:
+          if (!build.status.completionTimestamp) {
+            return true;
+          }
           return false;
       }
     };
