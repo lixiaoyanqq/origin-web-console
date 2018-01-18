@@ -21992,8 +21992,16 @@ c.nameValidation = o, c.secretAuthTypeMap = {
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 =======
 link: function(l) {
+<<<<<<< 08973ef1c28ed2d76ff5d577fdcea05d89fb6f66
 l.nameValidation = i, l.secretAuthTypeMap = {
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+l.nameValidation = i, l.secretReferenceValidation = {
+pattern: /^[a-zA-Z0-9\-_]+$/,
+minLength: 8,
+description: "Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore."
+}, l.secretAuthTypeMap = {
+>>>>>>> Bug 1535976 - Add validation to secret reference key and fix nform names in the create-secret form
 image: {
 label: "Image Secret",
 authTypes: [ {
