@@ -32,7 +32,8 @@
       logout_uri: ""
     },
     loggingURL: "",
-    metricsURL: ""
+    metricsURL: "",
+    templateServiceBrokerEnabled: false
   };
 
   // Additional support only for Chinese now: zh-CN
