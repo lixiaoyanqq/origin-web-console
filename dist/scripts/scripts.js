@@ -24,6 +24,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -266,6 +267,9 @@ function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, T, E) {
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E, T) {
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 var N = this, D = t("isIE")();
 e.projectName = a.project;
 var A = a.isHomePage;
@@ -490,7 +494,7 @@ return s.groupByApp(e, "metadata.name");
 }, de = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? T.getPreferredDisplayRoute(t, e) : e;
+t = t ? E.getPreferredDisplayRoute(t, e) : e;
 }), t;
 }, me = _.debounce(function() {
 e.$evalAsync(function() {
@@ -1041,21 +1045,21 @@ je(e, n);
 }
 }, Re = function(e) {
 _.each(e, Ie);
-}, Te = function(e) {
+}, Ee = function(e) {
 var t = oe(e);
 return t ? ne[t] : null;
-}, Ee = function(e) {
+}, Te = function(e) {
 var t = oe(e);
 return t ? _.get(N, [ "replicationControllersByDeploymentConfig", t ]) : [];
 };
 N.getPreviousReplicationController = function(e) {
-var t = Ee(e);
+var t = Te(e);
 return _.size(t) < 2 ? null : t[1];
 };
 var Ne = function(e) {
-var t = {}, n = Te(e);
+var t = {}, n = Ee(e);
 _.assign(t, R.getDeploymentStatusAlerts(e, n), R.getPausedDeploymentAlerts(e));
-var r = Ee(e);
+var r = Te(e);
 _.each(r, function(e) {
 var n = ke(e);
 _.assign(t, n);
@@ -1139,8 +1143,8 @@ var e = [ N.deploymentConfigs, N.vanillaReplicationControllers, N.deployments, N
 _.each(e, We), me();
 }
 }, Je = function() {
-var e = T.groupByService(N.routes, !0);
-re.routesByService = _.mapValues(e, T.sortRoutesByScore), me();
+var e = E.groupByService(N.routes, !0);
+re.routesByService = _.mapValues(e, E.sortRoutesByScore), me();
 }, Ye = function() {
 re.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
 }, Ze = function(e) {
@@ -1700,7 +1704,7 @@ return r ? n.when(r) : (s[t] || (s[t] = m.get(ie, t, {}).then(function(e) {
 return he.serviceClasses[t] = e, e;
 =======
 u.SERVICE_CATALOG_ENABLED && L(W, "watch") && (o = function(e) {
-var t = E.getServiceClassNameForInstance(e);
+var t = T.getServiceClassNameForInstance(e);
 if (!t) return n.when();
 var r = _.get(re, [ "serviceClasses", t ]);
 return r ? n.when(r) : (s[t] || (s[t] = m.get(K, t, {}).then(function(e) {
@@ -1710,7 +1714,7 @@ return re.serviceClasses[t] = e, e;
 delete c[t];
 })), s[t]);
 }, i = function(e) {
-var t = E.getServicePlanNameForInstance(e);
+var t = T.getServicePlanNameForInstance(e);
 if (!t) return n.when();
 <<<<<<< HEAD
 var r = _.get(he, [ "servicePlans", t ]);
@@ -7745,9 +7749,9 @@ target: "_blank"
 _.each(a, d), _.each(i, d);
 }
 }), r) : r;
-}, T = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], E = function(e, t, n, r, a) {
+}, E = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], T = function(e, t, n, r, a) {
 var o, s = "Your project is " + (r < t ? "over" : "at") + " quota. ";
-return o = _.includes(T, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
+return o = _.includes(E, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
 }, N = function(e, t, n) {
 var r = function(e) {
 var t = e.status.total || e.status;
@@ -7878,7 +7882,7 @@ var c = f(e), l = _.get(a, [ "used", s ]), d = f(l);
 id: o + "/quota-limit-reached-" + s,
 namespace: o,
 type: c < d ? "warning" : "info",
-message: E(0, d, e, c, s),
+message: T(0, d, e, c, s),
 isHTML: !0,
 skipToast: !0,
 showInDrawer: !0,
@@ -9916,6 +9920,7 @@ if (C(e)) return i[e.name] = e.from.name, s[e.from.name] = s[e.from.name] || [],
 o.push(e);
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 var c = _.keyBy(o, "name");
 _.each(t, function(e) {
 e.test(r) || a && e.test(a) || _.each(o, function(t) {
@@ -10020,6 +10025,8 @@ break;
 case "DeploymentConfig":
 r = "oc logs dc/" + e.metadata.name;
 =======
+=======
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 var C = r("orderObjectsByDate"), w = [ "metadata.name" ], P = [], j = function() {
 n.filteredPods = s.filterForKeywords(S, w, P), n.filteredReplicationControllers = s.filterForKeywords(y, w, P), n.filteredReplicaSets = s.filterForKeywords(b, w, P), n.filteredBuilds = s.filterForKeywords(h, w, P), n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, k = function(e) {
@@ -10032,9 +10039,15 @@ var t = r("annotation")(e, "deploymentVersion");
 t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
 }, R = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
+<<<<<<< HEAD
 }, T = function() {
 n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, E = function() {
+=======
+}, E = function() {
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+}, T = function() {
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 S = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(S, w, P);
@@ -10148,13 +10161,13 @@ var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
 _.isEmpty(t) || u.toPodsForDeployment(e, t);
 }, m.get(e.project).then(_.spread(function(e, r) {
 n.project = e, n.projectContext = r, g.push(o.watch("pods", r, function(e) {
-n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), E(), c.log("pods", n.pods);
+n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), T(), c.log("pods", n.pods);
 })), g.push(o.watch({
 resource: "statefulsets",
 group: "apps",
 version: "v1beta1"
 }, r, function(e) {
-n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, T(), c.log("statefulSets", n.statefulSets);
+n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("statefulSets", n.statefulSets);
 }, {
 poll: f,
 pollInterval: 6e4
@@ -10173,7 +10186,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-E(), B(), O(), U(), T();
+T(), B(), O(), U(), E();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -10314,7 +10327,7 @@ subjectName: n.name
 httpErr: e("getErrorDetails")(r)
 }));
 });
-}, T = function(t, n, a) {
+}, E = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
 I(), P("success", w.update.subject.success({
 roleName: t.roleRef.name,
@@ -10328,11 +10341,11 @@ subjectName: n.name
 httpErr: e("getErrorDetails")(r)
 }));
 });
-}, E = {};
-n.tab && (E[n.tab] = !0);
+}, T = {};
+n.tab && (T[n.tab] = !0);
 var N = d.getSubjectKinds();
 angular.extend(r, {
-selectedTab: E,
+selectedTab: T,
 projectName: v,
 forms: {},
 subjectKinds: N,
@@ -10574,6 +10587,7 @@ subjectName: e
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })) : i ? I(i, o, a) : k(n, o);
 >>>>>>> Add Browse Catalog to Project context view.
 }
@@ -10589,6 +10603,9 @@ subjectName: e
 =======
 })) : i ? T(i, o, a) : R(n, o);
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+})) : i ? E(i, o, a) : R(n, o);
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 }
 }), f.listAllRoles(g, {
 errorNotification: !1
@@ -12005,7 +12022,7 @@ e.startGuidedTour() && localStorage.setItem(a, "true");
 =======
 var j = {};
 e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {};
-var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), T = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
 var $ = [];
 p.isAvailable().then(function(t) {
@@ -12230,7 +12247,7 @@ object: t
 type: "warning",
 message: "This " + w + " has been deleted."
 }), e.replicaSet = t, L(t), U(), H(), e.deployment && x();
-})), e.deploymentConfigName && O(), $.push(i.watch(E, u, function(t) {
+})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -12283,7 +12300,7 @@ poll: V,
 poll: V,
 >>>>>>> Fix potential API mismatch in BuildsService
 pollInterval: 6e4
-})), i.list(T, u).then(function(t) {
+})), i.list(E, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), U();
 });
 $.push(i.watch(D, u, function(t) {
@@ -13574,18 +13591,22 @@ e.$on("$destroy", k), u.get(r.project).then(_.spread(function(n, a) {
 e.project = n, e.context = a, i.canI("buildconfigs", "update", r.project) ? (s.get(v, r.buildconfig, a, {
 errorNotification: !1
 }).then(function(t) {
-e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = b(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = $(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), i.canI(h, "list", r.project) && s.list(h, a).then(function(t) {
+e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.buildStrategy = b(e.updatedBuildConfig), e.strategyType = e.buildConfig.spec.strategy.type, e.envVars = e.buildStrategy.env || [], e.triggers = I(e.triggers, e.buildConfig.spec.triggers), e.sources = B(e.sources, e.buildConfig.spec.source), _.has(t, "spec.strategy.jenkinsPipelineStrategy.jenkinsfile") && (e.jenkinsfileOptions.type = "inline"), i.canI(h, "list", r.project) && s.list(h, a).then(function(t) {
 var n = m.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
 e.webhookSecrets = m.groupSecretsByType(t).webhook, e.secrets.secretsByType = _.each(r, function(e) {
 e.unshift("");
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), D(), j = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
 >>>>>>> Add Browse Catalog to Project context view.
 =======
 }), N(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+}), D(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 });
 <<<<<<< HEAD
 var P = r("orderObjectsByDate"), j = [ "metadata.name" ], k = [], I = function() {
@@ -13905,7 +13926,7 @@ sourcePath: e.name,
 destinationDir: e.value
 };
 });
-}, T = function(t) {
+}, E = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -13945,12 +13966,16 @@ name: _.last(r)
 }).namespace = 1 !== _.size(r) ? _.head(r) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, E = function() {
+}, T = function(e) {
+return _.filter(e, function(e) {
+return !_.isEmpty(e.data.type) && !_.isEmpty(e.data[_.toLower(e.data.type)]);
+});
+}, N = function() {
 var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
-}), t = t.concat(e.triggers.webhookTriggers), t = _.map(t, "data");
-}, N = function() {
+}), t = t.concat(T(e.triggers.webhookTriggers)), t = _.map(t, "data");
+}, D = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -13980,14 +14005,14 @@ name: ""
 mountPath: ""
 } ];
 }
-}, D = function(e, t, n) {
+}, A = function(e, t, n) {
 t.name ? e[n] = t : delete e[n];
-}, A = function(t, n) {
+}, $ = function(t, n) {
 var r = "Custom" === e.strategyType ? "secretSource" : "secret", a = _.filter(n, function(e) {
 return e[r].name;
 });
 _.isEmpty(a) ? delete t.secrets : t.secrets = a;
-}, $ = function(e, t) {
+}, B = function(e, t) {
 return "None" === t.type ? e : (e.none = !1, angular.forEach(t, function(t, n) {
 e[n] = !0;
 }), e);
@@ -14324,6 +14349,7 @@ $(S(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 },
 errorReason: _.template('Reason: "<%= httpErr %>"')
@@ -14343,15 +14369,18 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 case "Source":
 case "Docker":
-A(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
+$(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
 break;
 
 case "Custom":
-A(b(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
+$(b(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
-e.updatedBuildConfig.spec.triggers = E(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
+e.updatedBuildConfig.spec.triggers = N(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 type: "success",
@@ -14879,7 +14908,7 @@ command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
-var T = function(e, t, n, r) {
+var E = function(e, t, n, r) {
 var a = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -14896,7 +14925,7 @@ from: a
 <<<<<<< HEAD
 =======
 }, n;
-}, E = function() {
+}, T = function() {
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 >>>>>>> Configurable inactivity timeout in console
@@ -14935,7 +14964,7 @@ mode: {
 edit: !!r.mode.edit && t
 =======
 return _.each(e.containerConfigByName, function(n, r) {
-n.hasDeploymentTrigger ? t.push(T(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(E(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: r
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
@@ -14993,7 +15022,7 @@ subjectName: n
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
 _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = g.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
-}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = E(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = T(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
@@ -15738,8 +15767,8 @@ e.displayName = a.displayName, e.advancedOptions = "true" === a.advanced;
 var I = {
 name: "app",
 value: ""
-}, R = t("orderByDisplayName"), T = t("getErrorDetails"), E = {}, N = function() {
-g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(E, function(e) {
+}, R = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 >>>>>>> Add Browse Catalog to Project context view.
@@ -15871,6 +15900,7 @@ message: "Could not load config maps.",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
@@ -15881,6 +15911,9 @@ details: E(e)
 =======
 details: T(e)
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+details: E(e)
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 });
 }), a.canI(e.secretsVersion, "list", n.project) && s.list("secrets", i, null, {
 errorNotification: !1
@@ -15894,6 +15927,7 @@ message: "Could not load secrets.",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
@@ -15904,6 +15938,9 @@ details: E(e)
 =======
 details: T(e)
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+details: E(e)
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 });
 }), y.push(s.watch(e.buildsVersion, i, function(t, r, a) {
 if (e.emptyMessage = "No builds to show", r) {
@@ -16035,11 +16072,11 @@ details: "The active filters are hiding all builds."
 }
 }).result.then(F);
 }, M = function(t) {
-N(), E = t.quotaAlerts || [], e.nameTaken || _.some(E, {
+N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 type: "error"
-}) ? (e.disableInputs = !1, _.each(E, function(e) {
+}) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(E) ? F() : (x(E), e.disableInputs = !1);
+})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return P(this.project) || this.projectName;
@@ -41889,6 +41926,7 @@ class: "build-trends-avg-line"
 o.toggleAvgLine = function() {
 g = !g, f();
 };
+<<<<<<< HEAD
 o.$watch(function() {
 return p(), o.completeBuilds.length;
 }, function() {
@@ -41898,16 +41936,23 @@ keys: {
 x: "buildNumber"
 =======
 }, T = function() {
+=======
+_.size(h) <= 100 ? (y = e("orderByDisplayName")(h), I = _.map(y, function(e) {
+return n(e, !1);
+})) : I = [ n(h[t], !0) ], k.empty(), k.append(I), k.append($('<option data-divider="true"></option>')), k.append($('<option value="">View All Projects</option>')), k.selectpicker("refresh");
+}
+}, E = function() {
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
-}, E = function() {
+}, T = function() {
 var e = a.project;
 i.currentProjectName !== e && (i.currentProjectName = e, i.chromeless = "chromeless" === a.view, e && !i.chromeless ? (_.set(r, "view.hasProject", !0), i.canIAddToProject = !1, s.getProjectRules(e).then(function() {
 i.currentProjectName === e && (i.canIAddToProject = s.canIAddToProject(e), i.canIAddToProject && l.getCatalogItems().then(function(e) {
 i.catalogItems = e;
 }));
-}), T().then(function() {
+}), E().then(function() {
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 metadata: {
 name: i.currentProjectName
@@ -42046,7 +42091,7 @@ return s(e.tag) && !a[e.tag];
 =======
 i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
-}, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
+}, T(), i.$on("$routeChangeSuccess", T), k.selectpicker({
 iconBase: "fa",
 tickIcon: "fa-check"
 }).change(function() {
@@ -42080,12 +42125,40 @@ switch (t.$watch("defaultValue", function(e) {
 var n = _.spread(function(e, n) {
 t.placeholder = e, c(n), t.input.amount || (t.input.unit = n);
 });
+<<<<<<< HEAD
 e && n(i(e, t.type));
 }), t.type) {
 case "cpu":
 t.input.unit = "m", t.units = [ {
 value: "m",
 label: "millicores"
+=======
+}
+};
+} ]), angular.module("openshiftConsole").component("alerts", {
+bindings: {
+alerts: "=",
+filter: "<?",
+hideCloseButton: "<?"
+},
+templateUrl: "components/alerts/alerts.html",
+controller: function() {
+var e = this;
+e.close = function(e) {
+e.hidden = !0, _.isFunction(e.onClose) && e.onClose();
+}, e.onClick = function(t, n) {
+_.isFunction(n.onClick) && n.onClick() && e.close(t);
+};
+}
+}), function() {
+angular.module("openshiftConsole").component("oscWebhookTriggers", {
+controller: [ "$scope", "$uibModal", "$filter", "APIService", function(e, t, n, r) {
+var a = this;
+a.$onInit = function() {
+e.namespace = a.namespace, e.type = a.type, a.secretsVersion = r.getPreferredVersion("secrets"), a.webhookTypesOptions = [ {
+type: "github",
+label: "GitHub"
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 }, {
 value: "",
 label: "cores"
@@ -42168,6 +42241,7 @@ R = {}, P = null, delete t.metricsError, y();
 }, !0), b = e(y, s.getDefaultUpdateInterval(), !1), t.updateInView = function(e) {
 I = !e, e && (!j || Date.now() > j + s.getDefaultUpdateInterval()) && y();
 };
+<<<<<<< HEAD
 var A = r.$on("metrics.charts.resize", function() {
 s.redraw(C);
 });
@@ -42180,6 +42254,38 @@ e.destroy();
 }
 };
 } ]).directive("editRequestLimit", [ "$filter", "LimitRangesService", "ModalsService", function(e, t, n) {
+=======
+} ],
+controllerAs: "$ctrl",
+bindings: {
+webhookSecrets: "<",
+namespace: "<",
+type: "@",
+webhookTriggers: "=",
+form: "="
+},
+templateUrl: "components/osc-webhook-triggers/osc-webhook-triggers.html"
+});
+}(), function() {
+angular.module("openshiftConsole").component("copyWebhookUrl", {
+controller: function() {
+var e = this;
+e.showSecretsWarning = function() {
+return _.get(e.secret, "secretReference.name") && !e.webhookSecrets;
+};
+},
+controllerAs: "$ctrl",
+bindings: {
+buildConfigName: "<",
+triggerType: "<",
+projectName: "<",
+secret: "<",
+webhookSecrets: "<"
+},
+templateUrl: "components/copy-webhook-url/copy-webhook-url.html"
+});
+}(), angular.module("openshiftConsole").directive("parseError", function() {
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 return {
 restrict: "E",
 scope: {
@@ -43602,7 +43708,7 @@ if (!m.pod) return null;
 var t = m.options.selectedContainer;
 switch (e) {
 case "memory/usage":
-var n = E(t);
+var n = T(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
@@ -43678,10 +43784,10 @@ var o, i = a.match(t);
 i ? ((o = r[i[1]] || {}).title = e.annotations[a], r[i[1]] = o) : (i = a.match(n)) && ((o = r[i[1]] || {}).url = e.annotations[a], r[i[1]] = o);
 =======
 var n, a = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
-T[o] ? T[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
+E[o] ? E[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), r(function() {
-A || (T[o] = c3.generate(n));
+A || (E[o] = c3.generate(n));
 }));
 }
 >>>>>>> Configurable inactivity timeout in console
@@ -43962,7 +44068,7 @@ cancelButtonText: f.getString(g("Cancel"))
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var I, R = {}, T = {}, E = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
+var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -44350,11 +44456,15 @@ c.redraw(R), c.redraw(T);
 =======
 var O = o.$on("metrics.charts.resize", function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 c.redraw(R), c.redraw(E);
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 =======
 c.redraw(R), c.redraw(T);
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+c.redraw(R), c.redraw(E);
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 });
 <<<<<<< HEAD
 var n = _.get(a, "columns", []);
@@ -44381,8 +44491,9 @@ t && (t = t.destroy());
 m.$on("$destroy", function() {
 I && (t.cancel(I), I = null), O && (O(), O = null), angular.forEach(R, function(e) {
 e.destroy();
-}), R = null, angular.forEach(T, function(e) {
+}), R = null, angular.forEach(E, function(e) {
 e.destroy();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), T = null, A = !0;
@@ -44393,6 +44504,9 @@ e.destroy();
 =======
 }), T = null, A = !0;
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+}), E = null, A = !0;
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 });
 }
 };
@@ -44474,7 +44588,7 @@ return S(e);
 function u(e) {
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
 }));
 >>>>>>> Configurable inactivity timeout in console
 }
@@ -44615,7 +44729,7 @@ show: !1
 =======
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
-var j, k, I = {}, R = w, T = function(e) {
+var j, k, I = {}, R = w, E = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -44623,9 +44737,10 @@ label: "Memory",
 units: "MiB",
 convert: i.bytesToMiB,
 formatUsage: function(e) {
-return T(e) && (e /= 1024), s.formatUsage(e);
+return E(e) && (e /= 1024), s.formatUsage(e);
 },
 usageUnits: function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 return T(e) ? "GiB" : "MiB";
@@ -44636,6 +44751,9 @@ return E(e) ? "GiB" : "MiB";
 =======
 return T(e) ? "GiB" : "MiB";
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+return E(e) ? "GiB" : "MiB";
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 },
 width: 10
 },
@@ -44669,7 +44787,7 @@ compactDatasetLabel: "Received",
 compactType: "spline",
 chartID: "network-rx-" + t.uniqueID
 } ];
-var E = _.keyBy(t.metrics, "descriptor");
+var T = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
 };
@@ -45047,17 +45165,17 @@ y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected =
 k(!0), b(), C();
 }, 100);
 m.on("resize", R);
-var T, E = function() {
+var E, T = function() {
 S = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && E(), t.showScrollLinks || b();
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = a.defer();
-return T ? (T.onClose(function() {
+return E ? (E.onClose(function() {
 t.resolve();
-}), T.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
 A().then(function() {
 t.$evalAsync(function() {
@@ -45077,7 +45195,7 @@ limitBytes: 10485760
 }, t.options), n = 0, r = function(e) {
 n++, N.appendChild(f(n, e)), D();
 };
-(T = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
+(E = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", I());
 }), a && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
@@ -45085,17 +45203,18 @@ t.limitReached = !0, t.loading = !1;
 }), A(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), T.onClose(function() {
-T = null, t.$evalAsync(function() {
+}), E.onClose(function() {
+E = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), T.onError(function() {
-T = null, t.$evalAsync(function() {
+}), E.onError(function() {
+E = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }), T.start();
@@ -45134,6 +45253,9 @@ filterType: "text"
 =======
 }), T.start();
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+}), E.start();
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 }
 });
 });
@@ -45174,7 +45296,7 @@ onScrollTop: function() {
 t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
 },
 toggleAutoScroll: function() {
-t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && E();
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
@@ -47206,7 +47328,7 @@ return {
 name: t,
 value: e
 };
-}), T() && h.labels.push({
+}), E() && h.labels.push({
 name: "app",
 value: h.template.metadata.name
 });
@@ -47433,7 +47555,7 @@ return !_.get(v.template, "labels.app") && !_.some(v.template.objects, "metadata
 }, h.cancel = function() {
 j(), i.toProjectOverview(h.project.metadata.name);
 }, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", j);
-var T = function() {
+var E = function() {
 return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
 };
@@ -49482,6 +49604,7 @@ a.findReferenceValueForEntries(t.entries, t.valueFromSelectorOptions);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]
 =======
 var k, j = e("displayName"), R = function() {
@@ -49513,6 +49636,13 @@ started: "Deploying image " + n.app.name + " to project " + T(n.input.selectedPr
 success: "Deployed image " + n.app.name + " to project " + T(n.input.selectedProject),
 failure: "Failed to deploy image " + n.app.name + " to project " + T(n.input.selectedProject)
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+var R, E = e("displayName"), T = function() {
+var e = {
+started: "Deploying image " + n.app.name + " to project " + E(n.input.selectedProject),
+success: "Deployed image " + n.app.name + " to project " + E(n.input.selectedProject),
+failure: "Failed to deploy image " + n.app.name + " to project " + E(n.input.selectedProject)
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
@@ -49570,6 +49700,7 @@ $(window).off("beforeunload", o), i && i();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }).result.then(E);
 =======
@@ -49578,6 +49709,9 @@ $(window).off("beforeunload", o), i && i();
 =======
 }).result.then(E);
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+}).result.then(T);
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 }, D = function(e) {
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
@@ -49585,6 +49719,7 @@ type: "error"
 });
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(b, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 })) : b.length ? (N(b), n.disableInputs = !1) : E();
@@ -49595,6 +49730,9 @@ e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
 =======
 })) : b.length ? (N(b), n.disableInputs = !1) : E();
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+})) : b.length ? (N(b), n.disableInputs = !1) : T();
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 };
 <<<<<<< HEAD
 } ]), function() {
@@ -50449,7 +50587,7 @@ _.each(f.notificationGroups, function(t) {
 _.each(h.notificationGroups, function(e) {
 e.totalUnread = I(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 });
-}, T = function(e) {
+}, E = function(e) {
 _.each(h.notificationGroups, function(t) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 _.remove(t.notifications, {
@@ -50506,6 +50644,7 @@ g[r.project] = {}, v[r.project] = {};
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, I = function(e) {
 <<<<<<< HEAD
 >>>>>>> Add search catalog in project context
@@ -50532,6 +50671,10 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 }, E = function(e) {
 S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], T(e);
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+}, T = function(e) {
+S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], E(e);
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
 }, D = function(e) {
@@ -50912,6 +51055,7 @@ clear: function(e, t, n) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 l.markCleared(e.event), n.notifications.splice(t, 1), R();
 =======
 c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D();
@@ -50945,6 +51089,9 @@ u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L()
 =======
 u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), E(e), L();
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L();
+>>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 },
 markRead: function(e) {
 e.unread = !1, u.markRead(e.uid), L();
@@ -51043,7 +51190,7 @@ h.drawerHidden = !h.drawerHidden;
 })), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
 h.drawerHidden = !0;
 })), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-u.markCleared(t.uid), E(t), R();
+u.markCleared(t.uid), T(t), R();
 }));
 };
 <<<<<<< HEAD
