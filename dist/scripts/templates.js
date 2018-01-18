@@ -8241,7 +8241,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
 =======
     "Image Name\n" +
+<<<<<<< HEAD
 >>>>>>> Adding Deploy Image and Import YAML / JSON functionality to catalog
+=======
+    "<span ng-if=\"!input.selectedProject.metadata.uid\" class=\"text-warning\">\n" +
+    "&ndash; Image search is only available for existing projects.\n" +
+    "</span>\n" +
+>>>>>>> Bug 1535917 - help message not obvious in deploy image with create new project
     "</label>\n" +
     "</div>\n" +
     "<fieldset ng-disabled=\"!input.selectedProject.metadata.uid\">\n" +
@@ -8259,9 +8265,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"sr-only\" translate>Find</span>\n" +
     "</button>\n" +
     "</span>\n" +
-    "</div>\n" +
-    "<div ng-if=\"!input.selectedProject.metadata.uid\" class=\"help-block\">\n" +
-    "Image search is only available for existing projects.\n" +
     "</div>\n" +
     "</div>\n" +
     "</fieldset>\n" +
