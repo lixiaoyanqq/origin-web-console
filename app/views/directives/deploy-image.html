@@ -29,6 +29,9 @@
           <label>
             <input type="radio" ng-model="mode" value="dockerImage" ng-disabled="!input.selectedProject.metadata.uid">
 	    <translate>Image Name</translate>
+            <span ng-if="!input.selectedProject.metadata.uid" class="text-warning">
+              &ndash; Image search is only available for existing projects.
+            </span>
           </label>
         </div>
         <fieldset ng-disabled="!input.selectedProject.metadata.uid">
@@ -56,9 +59,6 @@
                   <span class="sr-only" translate>Find</span>
                 </button>
               </span>
-            </div>
-            <div ng-if="!input.selectedProject.metadata.uid" class="help-block" translate>
-              Image search is only available for existing projects.
             </div>
           </div>
         </fieldset>
