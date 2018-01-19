@@ -45260,10 +45260,10 @@ filterType: "text"
 });
 });
 };
-if (s.getLoggingURL(t.context.project).then(function(r) {
-var a = _.get(t.context, "project.metadata.name"), i = _.get(t.options, "container");
-a && i && h && r && (angular.extend(t, {
-kibanaAuthUrl: e.trustAsResourceUrl(URI(r).segment("auth").segment("token").normalizePathname().toString()),
+if (s.getLoggingURL(t.context.project).then(function(a) {
+var i = _.get(t.context, "project.metadata.name"), s = _.get(t.options, "container");
+i && s && h && a && (angular.extend(t, {
+kibanaAuthUrl: e.trustAsResourceUrl(URI(a).segment("auth").segment("token").normalizePathname().toString()),
 access_token: o.UserStore().getToken()
 }), t.$watchGroup([ "context.project.metadata.name", "options.container", "name" ], function() {
 angular.extend(t, {
@@ -45273,7 +45273,7 @@ namespaceUid: t.context.project.metadata.uid,
 podname: h,
 containername: t.options.container,
 backlink: URI.encode(n.location.href)
-}))
+}, r("annotation")(t.context.project, "loggingDataPrefix")))
 });
 }));
 }), this.cacheScrollableNode = function(e) {
@@ -53473,8 +53473,12 @@ templateUrl: "views/directives/edit-environment-variables.html"
 var r = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'project.<%= namespace %>.<%= namespaceUid %>.*',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 =======
 } ]), angular.module("openshiftConsole").factory("logLinks", [ "$anchorScroll", "$document", "$location", "$window", function(e, t, n, r) {
+<<<<<<< HEAD
 var a = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'project.<%= namespace %>.<%= namespaceUid %>.*',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+var a = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'<%= index %>',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
+>>>>>>> bug 1523047. fix log archive link for operation namespaces
 return {
 scrollTop: function(e) {
 e ? e.scrollTop = 0 : window.scrollTo(null, 0);
@@ -53494,8 +53498,8 @@ a.addSearch(e);
 }), r.open(a.toString(), "_blank");
 }
 },
-archiveUri: function(e) {
-return a(e);
+archiveUri: function(e, t) {
+return t = t || "project." + e.namespace + "." + e.namespaceUid, e.index = t + ".*", a(e);
 }
 };
 <<<<<<< HEAD
