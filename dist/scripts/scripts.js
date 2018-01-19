@@ -13900,7 +13900,7 @@ e.buildConfig = t, f(), e.updatedBuildConfig = angular.copy(e.buildConfig), e.bu
 var n = m.groupSecretsByType(t), r = _.mapValues(n, function(e) {
 return _.map(e, "metadata.name");
 });
-e.webhookSecrets = m.groupSecretsByType(t).webhook, e.secrets.secretsByType = _.each(r, function(e) {
+e.webhookSecrets = m.groupSecretsByType(t).webhook, e.webhookSecrets.unshift(""), e.secrets.secretsByType = _.each(r, function(e) {
 e.unshift("");
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21898,6 +21898,7 @@ if (e.plan && e.serviceClass && e.serviceInstance) {
 var t = _.get(e.plan, "spec.instanceUpdateParameterSchema"), n = _.size(_.get(t, "properties")) > 0 || _.get(e.serviceClass, "spec.planUpdatable") && _.size(e.servicePlans) > 1;
 e.editAvailable = n && b(e.serviceInstance) && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
 }
+<<<<<<< HEAD
 }, P = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), C();
 }, j = function() {
@@ -21951,6 +21952,80 @@ message: "The provisioned service details could not be loaded.",
 details: t("getErrorDetails")(n)
 };
 <<<<<<< HEAD
+=======
+}), function() {
+angular.module("openshiftConsole").component("oscWebhookTriggers", {
+controller: [ "$filter", "$scope", "$timeout", "$uibModal", "APIService", function(e, t, n, r, a) {
+var o = this;
+o.isDeprecated = function(t) {
+var n = e("getWebhookSecretData")(t);
+return _.has(n, "secret") && !_.has(n, "secretReference.name");
+}, o.addEmptyWebhookTrigger = function() {
+o.webhookTriggers.push({
+lastTriggerType: "",
+data: {
+type: ""
+}
+});
+var e = o.webhookTriggers.length - 1;
+n(function() {
+t.$broadcast("focus-index-" + e);
+});
+};
+var i = function(e) {
+var t = _.get(e, "data.type");
+if (t && !_.isNil(e.data[t.toLowerCase()])) {
+var n = _.filter(o.webhookTriggers, function(t) {
+return _.isEqual(t.data, e.data);
+});
+_.each(n, function(e, t) {
+var n = 0 === t;
+e.isDuplicate = !n;
+});
+}
+}, s = function() {
+_.isEmpty(o.webhookTriggers) ? o.addEmptyWebhookTrigger() : _.each(o.webhookTriggers, function(e) {
+o.isDeprecated(e) && (e.secretInputType = "password"), e.isDuplicate || i(e);
+});
+};
+o.$onInit = function() {
+t.namespace = o.namespace, t.type = o.type, o.secretsVersion = a.getPreferredVersion("secrets"), o.webhookTypesOptions = [ {
+type: "github",
+label: "GitHub"
+}, {
+type: "gitlab",
+label: "GitLab"
+}, {
+type: "bitbucket",
+label: "Bitbucket"
+}, {
+type: "generic",
+label: "Generic"
+} ], s();
+}, o.toggleSecretInputType = function(e) {
+e.secretInputType = "password" === e.secretInputType ? "text" : "password";
+}, o.removeWebhookTrigger = function(e, t) {
+var n = _.clone(e);
+if (1 === o.webhookTriggers.length) {
+var r = _.first(o.webhookTriggers);
+r.lastTriggerType = "", r.data = {
+type: ""
+};
+} else o.webhookTriggers.splice(t, 1);
+o.form.$setDirty(), i(n);
+}, o.triggerTypeChange = function(e) {
+var t = _.toLower(e.lastTriggerType), n = _.toLower(e.data.type);
+e.data[n] = e.data[t], delete e.data[t], e.lastTriggerType = e.data.type, i(e);
+}, o.triggerSecretChange = function(e) {
+i(e);
+}, o.openCreateWebhookSecretModal = function() {
+r.open({
+templateUrl: "views/modals/create-secret.html",
+controller: "CreateSecretModalController",
+scope: t
+}).result.then(function(e) {
+o.webhookSecrets.push(e);
+>>>>>>> Webhook trigger editor should be more consistant with envVar editor
 });
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
