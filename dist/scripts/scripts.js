@@ -29896,6 +29896,7 @@ t.path(o);
 selection: {
 enabled: !0
 },
+order: null,
 type: "bar"
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 }
