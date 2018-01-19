@@ -21703,7 +21703,8 @@ t.withUser(), e.version = {
 master: {
 openshift: n.VERSION.openshift,
 kubernetes: n.VERSION.kubernetes
-}
+},
+console: n.VERSION.console
 };
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 } ]), angular.module("openshiftConsole").controller("CommandLineController", [ "$scope", "DataService", "AuthService", "Constants", function(e, t, n, a) {
