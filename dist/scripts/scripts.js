@@ -46321,7 +46321,18 @@ bindings: {
 route: "<",
 highlightService: "<"
 },
+<<<<<<< HEAD
 templateUrl: "views/directives/route-service-bar-chart.html"
+=======
+order: null,
+type: "bar"
+}
+}, p = function() {
+o.completeBuilds = [];
+var t = e("isIncompleteBuild");
+angular.forEach(o.builds, function(e) {
+t(e) || o.completeBuilds.push(e);
+>>>>>>> Add order: null option to build chart config to prevent legend from reordering on update
 });
 }(), function() {
 angular.module("openshiftConsole").component("bindService", {
