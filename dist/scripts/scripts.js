@@ -17913,6 +17913,7 @@ t.withUser(), e.version = {
 master: {
 openshift: n.VERSION.openshift,
 kubernetes: n.VERSION.kubernetes
+<<<<<<< HEAD
 >>>>>>> Set Home Page Preference
 }
 e.project = r, e.projectContext = a;
@@ -17920,6 +17921,10 @@ var d = {}, p = function() {
 s.getHPAWarnings(e.deploymentConfig, e.autoscalers, d, r).then(function(t) {
 e.hpaWarnings = t;
 });
+=======
+},
+console: n.VERSION.console
+>>>>>>> Add console version to about page
 };
 o.get(e.deploymentConfigsVersion, n.deploymentconfig, a, {
 errorNotification: !1

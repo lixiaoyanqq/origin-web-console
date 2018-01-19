@@ -889,6 +889,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "{{version.master.openshift}}\n" +
     "</dd>\n" +
     "<dt>Kubernetes Master:</dt>\n" +
+<<<<<<< HEAD
     "<dd>\n" +
     "{{version.master.kubernetes}}\n" +
     "</dd>\n" +
@@ -896,6 +897,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dd>\n" +
     "{{version.console}}\n" +
     "</dd>\n" +
+=======
+    "<dd>{{version.master.kubernetes || 'unknown'}}</dd>\n" +
+    "<dt>OpenShift Web Console:</dt>\n" +
+    "<dd>{{version.console || 'unknown'}}</dd>\n" +
+>>>>>>> Add console version to about page
     "</dl>\n" +
     "<p translate>\n" +
     "The <a target=\"_blank\" ng-href=\"{{'welcome' | helpLink}}\">documentation</a> helps you learn about OpenShift and start exploring its features. From getting started with creating your first application to trying out more advanced build and deployment techniques, it provides guidance on setting up and managing your OpenShift environment as an application developer.\n" +
