@@ -5848,22 +5848,6 @@ description: "Service accounts provide a flexible way to control API access with
 helpLinkKey: "service_accounts",
 name: "ServiceAccount",
 subjects: {}
-},
-SystemUser: {
-kind: "SystemUser",
-sortOrder: 4,
-description: "System users are virtual users automatically provisioned by the system.",
-helpLinkKey: "users_and_groups",
-name: "SystemUser",
-subjects: {}
-},
-SystemGroup: {
-kind: "SystemGroup",
-sortOrder: 5,
-description: "System groups are virtual groups automatically provisioned by the system.",
-helpLinkKey: "users_and_groups",
-name: "SystemGroup",
-subjects: {}
 }
 };
 }, o = function(e) {
@@ -5981,22 +5965,6 @@ description: "Service accounts provide a flexible way to control API access with
 helpLinkKey: "service_accounts",
 name: "ServiceAccount",
 subjects: {}
-},
-SystemUser: {
-kind: "SystemUser",
-sortOrder: 4,
-description: "System users are virtual users automatically provisioned by the system.",
-helpLinkKey: "users_and_groups",
-name: "SystemUser",
-subjects: {}
-},
-SystemGroup: {
-kind: "SystemGroup",
-sortOrder: 5,
-description: "System groups are virtual groups automatically provisioned by the system.",
-helpLinkKey: "users_and_groups",
-name: "SystemGroup",
-subjects: {}
 }
 });
 return _.sortBy(n, "sortOrder");
@@ -6029,9 +5997,7 @@ namespace: _.get(e, "metadata.namespace")
 subjects: []
 };
 }, s = function(e, t) {
-return _.isEqual(e.kind, "ServiceAccount") ? e.namespace = e.namespace || t : (_.isEqual(e.kind, "SystemUser") || _.isEqual(e.kind, "SystemGroup")) && (_.startsWith(e.name, "system:") || (e.name = "system:" + e.name)), e;
-}, c = function(e) {
-e.userNames = null, e.groupNames = null;
+return _.isEqual(e.kind, "ServiceAccount") && (e.namespace = e.namespace || t), e;
 };
 return {
 list: function(e, t, o) {
@@ -6044,6 +6010,7 @@ var c = i(e, a), l = t.objectToResourceGroupVersion(c);
 return r = s(r, a), c.subjects.push(angular.copy(r)), n.create(l, null, c, o);
 },
 addSubject: function(e, r, a, o) {
+<<<<<<< HEAD
 var l = i(), u = _.extend(l, e), d = t.objectToResourceGroupVersion(u);
 if (!r) return u;
 if (r = s(r, a), _.isArray(u.subjects)) {
@@ -6064,10 +6031,23 @@ var l = _.filter(s, {
 removeSubject: function(t, a, o, s, l) {
 var u = _.filter(s, {
 >>>>>>> Update membership to use new rbac endpoints
+=======
+var c = i(), l = _.extend(c, e), u = t.objectToResourceGroupVersion(l);
+if (!r) return l;
+if (r = s(r, a), _.isArray(l.subjects)) {
+if (_.includes(l.subjects, r)) return;
+l.subjects.push(r);
+} else l.subjects = [ r ];
+return n.update(u, l.metadata.name, l, o);
+},
+removeSubject: function(t, a, o, s, c) {
+var l = _.filter(s, {
+>>>>>>> Remove System User, System Group from Membership page
 roleRef: {
 name: a
 }
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 return e.all(_.map(c, function(e) {
@@ -6083,13 +6063,20 @@ name: n
 }), e.subjects.length ? t.update("rolebindings", e.metadata.name, e, s) : t.delete("rolebindings", e.metadata.name, s).then(function() {
 =======
 return e.all(_.map(u, function(e) {
+=======
+return e.all(_.map(l, function(e) {
+>>>>>>> Remove System User, System Group from Membership page
 var a = i();
-e = _.extend(a, e), c(e);
+e = _.extend(a, e);
 var s = {
 name: t
 };
+<<<<<<< HEAD
 return o && (s.namespace = o), e.subjects = _.reject(e.subjects, s), e.subjects.length ? n.update(r, e.metadata.name, e, l) : n.delete(r, e.metadata.name, l).then(function() {
 >>>>>>> Update membership to use new rbac endpoints
+=======
+return o && (s.namespace = o), e.subjects = _.reject(e.subjects, s), e.subjects.length ? n.update(r, e.metadata.name, e, c) : n.delete(r, e.metadata.name, c).then(function() {
+>>>>>>> Remove System User, System Group from Membership page
 return e;
 });
 }));
