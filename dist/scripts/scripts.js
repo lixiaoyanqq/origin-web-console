@@ -10276,6 +10276,7 @@ var t = angular.copy(e);
 return this.normalize(t), t;
 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 isEnvironmentEqual: function(e, t) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10307,6 +10308,9 @@ if (i = r[o].env || [], s = a[o].env || [], c = r[o].envFrom || [], l = a[o].env
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 errorReason: _.template('Reason: "<%= httpErr %>"')
+=======
+errorReason: _.template('"<%= httpErr %>"')
+>>>>>>> Remove extra 'reason' in membership prompt
 }, P = function(e, t, n) {
 m.addNotification({
 type: e,
