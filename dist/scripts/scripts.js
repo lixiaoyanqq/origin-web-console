@@ -5998,16 +5998,12 @@ return e.all([ n.list(r, t, null), n.list(a, {}, null) ]);
 }
 };
 } ]), angular.module("openshiftConsole").factory("RoleBindingsService", [ "$q", "APIService", "DataService", function(e, t, n) {
-var r = t.getPreferredVersion("rolebindings"), a = {}, o = function(e, t) {
-var n = t ? e + t : e;
-return _.some(a, _.matchesProperty("metadata.name", n)) ? o(e, _.uniqueId()) : n;
-}, i = function(e, t) {
-var n = _.get(e, "metadata.name");
+var r = t.getPreferredVersion("rolebindings"), a = function(e, t) {
 return {
 kind: "RoleBinding",
 apiVersion: "v1",
 metadata: {
-name: n ? o(n) : null,
+generateName: _.get(e, "metadata.name") + "-",
 namespace: t
 },
 roleRef: {
@@ -6016,19 +6012,15 @@ namespace: _.get(e, "metadata.namespace")
 },
 subjects: []
 };
-}, s = function(e, t) {
+}, o = function(e, t) {
 return _.isEqual(e.kind, "ServiceAccount") && (e.namespace = e.namespace || t), e;
 };
 return {
-list: function(e, t, o) {
-return n.list(r, e, function(e) {
-a = e.by("metadata.name"), t(e);
-}, o);
+create: function(e, r, i, s) {
+var c = a(e, i), l = t.objectToResourceGroupVersion(c);
+return r = o(r, i), c.subjects.push(angular.copy(r)), n.create(l, null, c, s);
 },
-create: function(e, r, a, o) {
-var c = i(e, a), l = t.objectToResourceGroupVersion(c);
-return r = s(r, a), c.subjects.push(angular.copy(r)), n.create(l, null, c, o);
-},
+<<<<<<< HEAD
 addSubject: function(e, r, a, o) {
 <<<<<<< HEAD
 var l = i(), u = _.extend(l, e), d = t.objectToResourceGroupVersion(u);
@@ -6053,18 +6045,22 @@ var u = _.filter(s, {
 >>>>>>> Update membership to use new rbac endpoints
 =======
 var c = i(), l = _.extend(c, e), u = t.objectToResourceGroupVersion(l);
+=======
+addSubject: function(e, r, i, s) {
+var c = a(), l = _.extend(c, e), u = t.objectToResourceGroupVersion(l);
+>>>>>>> Remove rolBindingsService.list
 if (!r) return l;
-if (r = s(r, a), _.isArray(l.subjects)) {
+if (r = o(r, i), _.isArray(l.subjects)) {
 if (_.includes(l.subjects, r)) return;
 l.subjects.push(r);
 } else l.subjects = [ r ];
-return n.update(u, l.metadata.name, l, o);
+return n.update(u, l.metadata.name, l, s);
 },
-removeSubject: function(t, a, o, s, c) {
+removeSubject: function(t, o, i, s, c) {
 var l = _.filter(s, {
 >>>>>>> Remove System User, System Group from Membership page
 roleRef: {
-name: a
+name: o
 }
 });
 <<<<<<< HEAD
@@ -6085,6 +6081,7 @@ name: n
 return e.all(_.map(u, function(e) {
 =======
 return e.all(_.map(l, function(e) {
+<<<<<<< HEAD
 >>>>>>> Remove System User, System Group from Membership page
 var a = i();
 e = _.extend(a, e);
@@ -6097,6 +6094,14 @@ return o && (s.namespace = o), e.subjects = _.reject(e.subjects, s), e.subjects.
 =======
 return o && (s.namespace = o), e.subjects = _.reject(e.subjects, s), e.subjects.length ? n.update(r, e.metadata.name, e, c) : n.delete(r, e.metadata.name, c).then(function() {
 >>>>>>> Remove System User, System Group from Membership page
+=======
+var o = a();
+e = _.extend(o, e);
+var s = {
+name: t
+};
+return i && (s.namespace = i), e.subjects = _.reject(e.subjects, s), e.subjects.length ? n.update(r, e.metadata.name, e, c) : n.delete(r, e.metadata.name, c).then(function() {
+>>>>>>> Remove rolBindingsService.list
 return e;
 });
 }));
