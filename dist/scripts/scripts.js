@@ -10258,6 +10258,7 @@ e.env = t.compactEntries(e.env);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 },
+<<<<<<< HEAD
 copyAndNormalize: function(e) {
 var t = angular.copy(e);
 return this.normalize(t), t;
@@ -10298,6 +10299,15 @@ errorReason: _.template('Reason: "<%= httpErr %>"')
 =======
 errorReason: _.template('"<%= httpErr %>"')
 >>>>>>> Remove extra 'reason' in membership prompt
+=======
+update: {
+subject: {
+success: _.template('The role "<%= roleName %>" was granted to "<%= subjectName %>".'),
+error: _.template('The role "<%= roleName %>" could not be granted to "<%= subjectName %>".'),
+exists: _.template('The role "<%= roleName %>" has already been granted to "<%= subjectName %>".')
+}
+}
+>>>>>>> Remove the http error template from the membership controller as it is no longer useful
 }, P = function(e, t, n) {
 m.addNotification({
 type: e,
@@ -10342,9 +10352,7 @@ subjectName: n.name
 j(), I(), P("error", w.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
-}), w.errorReason({
-httpErr: e("getErrorDetails")(r)
-}));
+}), e("getErrorDetails")(r));
 });
 }, E = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
@@ -10356,9 +10364,7 @@ subjectName: n.name
 j(), I(), P("error", w.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
-}), w.errorReason({
-httpErr: e("getErrorDetails")(r)
-}));
+}), e("getErrorDetails")(r));
 });
 }, T = {};
 n.tab && (T[n.tab] = !0);
@@ -10569,9 +10575,7 @@ subjectName: n
 P("error", w.remove.error({
 roleName: i,
 subjectName: n
-}), w.errorReason({
-httpErr: e("getErrorDetails")(t)
-}));
+}), e("getErrorDetails")(t));
 });
 >>>>>>> Add Browse Catalog to Project context view.
 });
