@@ -11382,6 +11382,7 @@ success: _.template('The role "<%= roleName %>" was granted to "<%= subjectName 
 error: _.template('The role "<%= roleName %>" could not be granted to "<%= subjectName %>".'),
 exists: _.template('The role "<%= roleName %>" has already been granted to "<%= subjectName %>".')
 }
+<<<<<<< 4ddd6cb244f967a57b9868dbbbfb5ef1888fd27d
 },
 <<<<<<< b9847049e35b1709d13954ca1cfec55a04d9b45a
 errorReason: _.template('Reason: "<%= httpErr %>"')
@@ -11474,6 +11475,9 @@ d.addNotification({
 =======
 errorReason: _.template('"<%= httpErr %>"')
 >>>>>>> Remove extra 'reason' in membership prompt
+=======
+}
+>>>>>>> Remove the http error template from the membership controller as it is no longer useful
 }, P = function(e, t, n) {
 m.addNotification({
 >>>>>>> Update membership to use new rbac endpoints
@@ -11515,9 +11519,7 @@ subjectName: n.name
 j(), I(), P("error", w.update.subject.error({
 roleName: t.metadata.name,
 subjectName: n.name
-}), w.errorReason({
-httpErr: e("getErrorDetails")(r)
-}));
+}), e("getErrorDetails")(r));
 });
 }, E = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
@@ -11529,9 +11531,7 @@ subjectName: n.name
 j(), I(), P("error", w.update.subject.error({
 roleName: t.roleRef.name,
 subjectName: n.name
-}), w.errorReason({
-httpErr: e("getErrorDetails")(r)
-}));
+}), e("getErrorDetails")(r));
 });
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
@@ -11926,10 +11926,14 @@ subjectName: n
 P("error", w.remove.error({
 roleName: i,
 subjectName: n
+<<<<<<< 4ddd6cb244f967a57b9868dbbbfb5ef1888fd27d
 }), w.errorReason({
 httpErr: e("getErrorDetails")(t)
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }));
+=======
+}), e("getErrorDetails")(t));
+>>>>>>> Remove the http error template from the membership controller as it is no longer useful
 });
 });
 },
