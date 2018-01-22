@@ -11377,6 +11377,7 @@ error: _.template('The role "<%= roleName %>" could not be granted to "<%= subje
 exists: _.template('The role "<%= roleName %>" has already been granted to "<%= subjectName %>".')
 }
 },
+<<<<<<< b9847049e35b1709d13954ca1cfec55a04d9b45a
 errorReason: _.template('Reason: "<%= httpErr %>"')
 <<<<<<< 03048c83a11138780b80c1ac333639429e2925cd
 <<<<<<< 75fc56b9e42e29e1492befd08624dd0e5dade866
@@ -11464,6 +11465,9 @@ projectName: r,
 >>>>>>> Adding label filter to ste secrets page
 d.addNotification({
 =======
+=======
+errorReason: _.template('"<%= httpErr %>"')
+>>>>>>> Remove extra 'reason' in membership prompt
 }, P = function(e, t, n) {
 m.addNotification({
 >>>>>>> Update membership to use new rbac endpoints
