@@ -78,6 +78,7 @@ angular.module('openshiftConsole')
     var horizontalPodAutoscalerVersion = APIService.getPreferredVersion('horizontalpodautoscalers');
     var limitRangesVersion = APIService.getPreferredVersion('limitranges');
 
+
     ProjectsService
       .get($routeParams.project)
       .then(_.spread(function(project, context) {

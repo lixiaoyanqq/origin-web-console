@@ -12542,12 +12542,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "This autoscaler uses a newer API, consider editing it with the\n" +
     "<a href=\"command-line\" target=\"_blank\">command line tools</a>.\n" +
     "</div>\n" +
+    "\n" +
+    "<div ng-if=\"usesV2Metrics\" class=\"alert alert-warning\">\n" +
+    "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"sr-only\">Warning:</span>\n" +
+    "This autoscaler uses a newer API, consider editing it with the\n" +
+    "<a href=\"command-line\" target=\"_blank\">command line tools</a>.\n" +
+    "</div>\n" +
     "<fieldset ng-disabled=\"disableInputs\" class=\"gutter-top\">\n" +
+<<<<<<< HEAD
 <<<<<<< HEAD
     "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\" show-request-input=\"autoscaling.targetCPU && !(usesV2Metrics)\">\n" +
 =======
     "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\">\n" +
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+    "<osc-autoscaling model=\"autoscaling\" show-name-input=\"true\" name-read-only=\"kind === 'HorizontalPodAutoscaler'\" show-request-input=\"autoscaling.targetCPU\">\n" +
+>>>>>>> Add v2beta1 api warning to Deployment pages & edit Autoscaler page
     "</osc-autoscaling>\n" +
     "<label-editor labels=\"labels\" expand=\"true\" can-toggle=\"false\"></label-editor>\n" +
     "<div class=\"buttons gutter-top gutter-bottom\">\n" +

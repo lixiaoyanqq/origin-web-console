@@ -34,7 +34,6 @@ angular.module("openshiftConsole")
         if( !('showRequestInput' in attrs) ) {
           scope.showRequestInput = true;
         }
-
       }
     };
   });

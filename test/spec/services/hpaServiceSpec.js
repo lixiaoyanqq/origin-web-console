@@ -80,6 +80,7 @@ describe('HPAService', function() {
 
   describe('#addCPURequestWarning', function() {
 
+
     describe('When there are no HPA resources', function() {
       it('should return an empty set of messages (no errors)', function() {
         var noHPA = [];
