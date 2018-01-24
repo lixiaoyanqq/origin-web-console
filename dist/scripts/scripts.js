@@ -24242,14 +24242,18 @@ r.onloadend = function() {
 t.$apply(function() {
 t.fileName = n.name, t.model = r.result;
 var e = t.onFileAdded;
-_.isFunction(e) && e(r.result);
+_.isFunction(e) && e(r.result), r.error || (t.uploadError = !1);
 });
 }, r.onerror = function(n) {
+<<<<<<< 1717cff0d1fcea9ef8f4beddb2873981860155a9
 t.supportsFileUpload = !1, t.uploadError = !0, e.error("Could not read file", n);
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 }, a.readAsText(n);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
+=======
+t.uploadError = !0, e.error("Could not read file", n);
+>>>>>>> Bug 1537438: Import YAML/JSON lost Browse button when file folder does not have executive right in sandbox
 }, r.readAsText(n);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }
