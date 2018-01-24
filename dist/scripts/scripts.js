@@ -20166,6 +20166,7 @@ p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
 } ]
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 };
+<<<<<<< HEAD
 o.get(e.resource, n.replicaSet, f, {
 =======
 o.get(e.resource, n.replicaSet, g, {
@@ -20201,6 +20202,38 @@ if (e.podsForService = {}, e.service) {
 var t = new LabelSelector(e.service.spec.selector);
 e.podsForService = t.select(o);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+} ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
+return {
+restrict: "E",
+scope: {
+model: "=",
+required: "<",
+disabled: "<ngDisabled",
+readonly: "<ngReadonly",
+showTextArea: "<",
+hideClear: "<?",
+helpText: "@?",
+dropZoneId: "@?",
+onFileAdded: "<?"
+},
+templateUrl: "views/directives/osc-file-input.html",
+link: function(t, n) {
+function r(n) {
+var r = new FileReader();
+r.onloadend = function() {
+t.$apply(function() {
+t.fileName = n.name, t.model = r.result;
+var e = t.onFileAdded;
+_.isFunction(e) && e(r.result), r.error || (t.uploadError = !1);
+});
+}, r.onerror = function(n) {
+t.uploadError = !0, e.error("Could not read file", n);
+}, r.readAsText(n);
+}
+function a() {
+n.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone highlight-drag-and-drop-zone");
+>>>>>>> Bug 1537438: Import YAML/JSON lost Browse button when file folder does not have executive right in sandbox
 }
 N(), e.breadcrumbs = r.getBreadcrumbs({
 object: t
