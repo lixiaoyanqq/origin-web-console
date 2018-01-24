@@ -4896,8 +4896,6 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
 >>>>>>> Add bindings list to resource pages
 .clear-env-changes-link{vertical-align:-2px}
-.copy-webhook-url{display:inline-flex}
-.copy-webhook-url .webhook-secrets-warning{cursor:help;font-size:15px;padding:5px}
 copy-to-clipboard .input-group.limit-width{max-width:300px}
 .copy-to-clipboard input.form-control[readonly]{background-color:#fff;color:#363636}
 .copy-to-clipboard-multiline{display:block;overflow-x:auto}

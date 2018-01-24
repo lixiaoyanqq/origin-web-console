@@ -2178,7 +2178,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"col-lg-6\">\n" +
+<<<<<<< 92d03835d8d38e5d28702271db0786c4a1cfda85
     "<h3><translate>Triggers</translate> <a href=\"{{'build-triggers' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></h3>\n" +
+=======
+    "<h3>Triggers <span class=\"pficon pficon-warning-triangle-o\" ng-if=\"!(secretsVersion | canI : 'list')\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"You do not have access to secrets in this project. Webhook URLs require access to secret information to be used.\"></span><a href=\"{{'build-triggers' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></h3>\n" +
+>>>>>>> Bug 1504819: Obfuscate webhook trigger URL if user cant list secrets
     "<dl class=\"dl-horizontal left build-triggers\">\n" +
     "<div ng-repeat=\"trigger in buildConfig.spec.triggers | orderBy : 'type' : false : compareTriggers\">\n" +
     "<div ng-switch=\"trigger.type\">\n" +
@@ -2186,28 +2190,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt translate>Bitbucket Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
-    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.bitbucket\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+    "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.bitbucket : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"GitHub\">\n" +
     "<dt translate>GitHub Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
-    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.github\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+    "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.github : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"GitLab\">\n" +
     "<dt translate>GitLab Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
-    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.gitlab\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+    "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.gitlab : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"Generic\">\n" +
     "<dt translate>Generic Webhook URL:\n" +
     "</dt>\n" +
     "<dd>\n" +
-    "<copy-webhook-url build-config-name=\"buildConfig.metadata.name\" trigger-type=\"trigger.type\" project-name=\"project.metadata.name\" secret=\"trigger.generic\" webhook-secrets=\"webhookSecrets\"></copy-webhook-url>\n" +
+    "<copy-to-clipboard clipboard-text=\"buildConfig.metadata.name | webhookURL : trigger.type : trigger.generic : project.metadata.name : webhookSecrets\"></copy-to-clipboard>\n" +
     "</dd>\n" +
     "</div>\n" +
     "<div ng-switch-when=\"ImageChange\">\n" +
@@ -18152,15 +18156,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('components/copy-webhook-url/copy-webhook-url.html',
-    "<div class=\"copy-webhook-url\">\n" +
-    "<copy-to-clipboard clipboard-text=\"$ctrl.buildConfigName | webhookURL : $ctrl.triggerType : $ctrl.secret : $ctrl.projectName : $ctrl.webhookSecrets\"></copy-to-clipboard>\n" +
-    "<span ng-if=\"$ctrl.showSecretsWarning()\" class=\"pficon pficon-warning-triangle-o webhook-secrets-warning\" data-toggle=\"tooltip\" data-trigger=\"hover\" title=\"The URL for this webhook contains secret information that you do not have access to.\" aria-hidden=\"true\">\n" +
-    "</span>\n" +
     "</div>"
   );
 
