@@ -1854,6 +1854,7 @@ i();
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var gettext = function(e) {
 return e;
 };
@@ -2070,6 +2071,9 @@ angular.isUndefined(window.OPENSHIFT_CONSTANTS) && (window.OPENSHIFT_CONSTANTS =
 =======
 angular.isUndefined(window.OPENSHIFT_CONSTANTS) && (window.OPENSHIFT_CONSTANTS = {}), angular.extend(window.OPENSHIFT_CONSTANTS, {
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+angular.isUndefined(window.OPENSHIFT_CONSTANTS) && (window.OPENSHIFT_CONSTANTS = {}), angular.extend(window.OPENSHIFT_CONSTANTS, {
+>>>>>>> Bug 1537873: Doc link on the top of 'Create New Webhook Secret' modal is unrelated
 HELP_BASE_URL: "https://docs.openshift.org/latest/",
 HELP: {
 cli: "cli_reference/index.html",
@@ -2083,6 +2087,7 @@ new_app: "dev_guide/application_lifecycle/new_app.html",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "route-types": "architecture/networking/routes.html#route-types",
 =======
 "route-types": "architecture/core_concepts/routes.html#route-types",
@@ -2093,10 +2098,14 @@ new_app: "dev_guide/application_lifecycle/new_app.html",
 =======
 "route-types": "architecture/networking/routes.html#route-types",
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+"route-types": "architecture/networking/routes.html#route-types",
+>>>>>>> Bug 1537873: Doc link on the top of 'Create New Webhook Secret' modal is unrelated
 persistent_volumes: "dev_guide/persistent_volumes.html",
 compute_resources: "dev_guide/compute_resources.html",
 pod_autoscaling: "dev_guide/pod_autoscaling.html",
 application_health: "dev_guide/application_health.html",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 webhook_secrets: "dev_guide/builds/triggering_builds.html#webhook-triggers",
@@ -2104,6 +2113,9 @@ webhook_secrets: "dev_guide/builds/triggering_builds.html#webhook-triggers",
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+webhook_secrets: "dev_guide/builds/triggering_builds.html#webhook-triggers",
+>>>>>>> Bug 1537873: Doc link on the top of 'Create New Webhook Secret' modal is unrelated
 source_secrets: "dev_guide/builds/build_inputs.html#using-secrets-during-build",
 git_secret: "dev_guide/builds/build_inputs.html#source-clone-secrets",
 pull_secret: "dev_guide/managing_images.html#using-image-pull-secrets",
@@ -2131,6 +2143,7 @@ services: "architecture/core_concepts/pods_and_services.html#services",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 routes: "architecture/networking/routes.html",
 =======
 routes: "architecture/core_concepts/routes.html",
@@ -2141,6 +2154,9 @@ routes: "architecture/networking/routes.html",
 =======
 routes: "architecture/networking/routes.html",
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+routes: "architecture/networking/routes.html",
+>>>>>>> Bug 1537873: Doc link on the top of 'Create New Webhook Secret' modal is unrelated
 builds: "architecture/core_concepts/builds_and_image_streams.html#builds",
 "image-streams": "architecture/core_concepts/builds_and_image_streams.html#image-streams",
 storage: "architecture/additional_concepts/storage.html",
@@ -2152,6 +2168,7 @@ CLI: {
 },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 DEFAULT_HPA_CPU_TARGET_PERCENT: null,
 =======
 DEFAULT_HPA_CPU_TARGET_PERCENT: 80,
@@ -2159,6 +2176,9 @@ DEFAULT_HPA_CPU_TARGET_PERCENT: 80,
 =======
 DEFAULT_HPA_CPU_TARGET_PERCENT: null,
 >>>>>>> Use new clusterResourceOverridesEnabled flag
+=======
+DEFAULT_HPA_CPU_TARGET_PERCENT: null,
+>>>>>>> Bug 1537873: Doc link on the top of 'Create New Webhook Secret' modal is unrelated
 DISABLE_OVERVIEW_METRICS: !1,
 DISABLE_CUSTOM_METRICS: !1,
 DISABLE_WILDCARD_ROUTES: !0,
