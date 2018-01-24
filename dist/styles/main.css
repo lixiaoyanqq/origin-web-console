@@ -6172,6 +6172,7 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
 .clear-env-changes-link{vertical-align:-2px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .form-group-actions .btn-link{padding:0}
 =======
 .breadcrumb strong,.pod-template-block .pod-template .pod-template-key,.weight-slider-values .service-name{font-weight:600}
@@ -6184,6 +6185,8 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .copy-webhook-url{display:inline-flex}
 .copy-webhook-url .webhook-secrets-warning{cursor:help;font-size:15px;padding:5px}
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+>>>>>>> Bug 1504819: Obfuscate webhook trigger URL if user cant list secrets
 copy-to-clipboard .input-group.limit-width{max-width:300px}
 .copy-to-clipboard input.form-control[readonly]{background-color:#fff;color:#363636}
 .jenkinsfile-examples .copy-to-clipboard{margin-top:3px}
