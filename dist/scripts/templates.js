@@ -11674,10 +11674,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 <<<<<<< HEAD
 =======
     "</span>\n" +
+<<<<<<< HEAD
     "<span ng-if=\"idled\">\n" +
     "Idle\n" +
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
     "</span>\n" +
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
     "</div>\n" +
     "<span ng-if=\"mini && total === 1 && !idled\" class=\"donut-mini-text-name\">pod</span>\n" +
     "<span ng-if=\"mini && total !== 1 && !idled\" class=\"donut-mini-text-name\">\n" +
@@ -11686,9 +11689,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span> pods\n" +
     "</span>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<span ng-if=\"mini && idled\" class=\"donut-mini-text-name\">Idle</span>\n" +
 =======
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
+=======
+    "<span ng-if=\"mini && idled\" class=\"donut-mini-text-name\">Idle</span>\n" +
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
     "\n" +
     "<div class=\"sr-only\">\n" +
     "<div ng-if=\"(pods | hashSize) === 0\" translate>No pods.</div>\n" +

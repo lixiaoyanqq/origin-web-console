@@ -6172,12 +6172,16 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 .btn-file input[type=file]{position:absolute;top:0;right:0;min-width:100%;min-height:100%;font-size:100px;text-align:right;filter:alpha(opacity=0);opacity:0;cursor:inherit;display:block}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .donut-mini-text,.osc-form .icon,.service-table,.service-table thead tr th,.show-drag-and-drop-zone{text-align:center}
 =======
 .osc-form .icon,.service-table,.service-table thead tr th,.show-drag-and-drop-zone{text-align:center}
 >>>>>>> Adopt service catalog API changes
 =======
 >>>>>>> Service instance details configuration and edit
+=======
+.donut-mini-text,.osc-form .icon,.service-table,.service-table thead tr th,.show-drag-and-drop-zone{text-align:center}
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .btn-flat-default{border:1px solid transparent}
 .btn-flat-default:focus,.btn-flat-default:hover{background-color:#f7f7f7;border-color:#e7e7e7}
 .btn-remove{color:#333;display:inline-block;font-size:15px;line-height:1;opacity:.65;padding:5px 7px;vertical-align:middle}
@@ -6361,26 +6365,32 @@ h3 .component-label{padding-bottom:4px}
 .pod-template-block .pod-template .icon-row{border-left:3px solid #f1f1f1;padding:2px 0 0 2px}
 .pod-template-block .pod-template .fa,.pod-template-block .pod-template .pficon,.pod-template-block .pod-template span[data-icon]{color:#888}
 .pod-template-block .pod-template .pod-template-build{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
-.pod-donut.mini,pod-donut[mini]{display:inline-block;min-height:45px;min-width:45px}
 .pod-template-container{margin:0 0 20px}
 .pod-template-container h3{margin-top:0;padding-bottom:0}
 code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .hash{font-size:12px}
 .clickable{cursor:pointer}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .pods{display:block;height:30px;width:30px}
 .pod-donut.mini,pod-donut[mini]{display:inline-block;height:30px;width:30px}
 @media (min-width:768px){.pods{margin-right:32px}
 }
 .pod-donut.mini{position:absolute!important;transform:translate(-8px,-5px)}
+<<<<<<< HEAD
 =======
 .pods{display:inline-block;margin-right:25px}
 .pod-donut.mini{position:absolute!important;top:2px}
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .pod-donut .c3-defocused{opacity:.5!important}
 .pod-donut .c3-tooltip-container{top:-27px!important;left:50%!important;transform:translateX(-50%);white-space:nowrap}
 .pod-donut path.c3-arc-Empty{stroke:#d1d1d1;cursor:inherit!important}
 .pod-donut .c3-tooltip-name--Empty .name{display:none}
+<<<<<<< HEAD
 <<<<<<< HEAD
 .donut-mini-text{left:51%;line-height:1;position:absolute;top:50%;transform:translate(-51%,-50%)}
 .donut-mini-text-name{align-items:center;display:flex;flex-direction:column;line-height:1;position:absolute;transform:translate(40px,9px)}
@@ -6388,6 +6398,10 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .donut-mini-text{left:51%;position:absolute;top:49%;transform:translate(-49%,-51%)}
 .donut-mini-text-name{position:absolute;transform:translate(45px,-51%);top:49%;line-height:1;display:flex;flex-direction:column;align-items:center}
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
+=======
+.donut-mini-text{left:51%;line-height:1;position:absolute;top:50%;transform:translate(-51%,-50%)}
+.donut-mini-text-name{align-items:center;display:flex;flex-direction:column;line-height:1;position:absolute;transform:translate(40px,9px)}
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .deployment-donut{justify-content:center}
 .browse-deployment-donut .deployment-donut{align-items:center}
 .deployment-donut .scaling-controls{justify-content:center;font-size:24px}
@@ -7092,11 +7106,15 @@ h2+.list-view-pf{margin-top:20px}
 @media (max-width:991px){.list-view-pf-main-info .list-view-pf-body{display:block}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 @media (min-width:992px){.list-view-pf .list-group-item-heading,.list-view-pf .list-group-item-text{flex:1 0 auto;margin:0;padding:0 20px 0 0;width:50%}
 =======
 @media (min-width:992px){.data-toolbar .data-toolbar-filter{max-width:787px}
 .list-view-pf .list-group-item-heading,.list-view-pf .list-group-item-text{flex:1 0 auto;margin:0;padding:0 20px 0 0;width:50%}
 >>>>>>> Refactor markup and wrap icon and text with text-prepended-icon, then set word-break-all on string names.
+=======
+@media (min-width:992px){.list-view-pf .list-group-item-heading,.list-view-pf .list-group-item-text{flex:1 0 auto;margin:0;padding:0 20px 0 0;width:50%}
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .list-view-pf-additional-info{width:40%}
 .list-view-pf-description{width:60%}
 <<<<<<< HEAD
@@ -7134,6 +7152,7 @@ h2+.list-view-pf{margin-top:20px}
 .monitoring-page .list-pf-additional-content .list-pf-additional-content-item{width:40%}
 .monitoring-page .list-pf-additional-content .list-pf-additional-content-item+.list-pf-additional-content-item{width:50%}
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 @media (max-width:991px){.monitoring-page .pods{margin:5px 0}
@@ -7180,6 +7199,10 @@ h2+.list-view-pf{margin-top:20px}
 =======
 .monitoring-page pod-donut{margin-left:-8px}
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
+=======
+@media (max-width:991px){.monitoring-page .pods{margin:5px 0}
+}
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .monitoring-page .text-prepended-icon .fa,.monitoring-page .text-prepended-icon .pficon{margin-right:7px}
 >>>>>>> Rework monitoring page - replace list-view-pf with list-pf markup structure and css
 #header-logo{background-image:url(../images/logo-origin-thin.svg);background-position:left center;background-repeat:no-repeat;height:40px;width:196px}
@@ -7318,10 +7341,13 @@ h2+.list-view-pf{margin-top:20px}
 .overview .expanded-section.no-margin{margin:0}
 .overview .expanded-section .row>[class^=col-]{margin-bottom:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @media (min-width:1200px){.overview .expanded-section .row>[class^=col-].overview-builds-msg,.overview .expanded-section .row>[class^=col-].overview-routes{padding-left:0}
 }
 >>>>>>> Updates to service instance page, show failed bindings
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .overview .expanded-section h3{line-height:1.4;margin-bottom:5px;margin-top:0;width:100%;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7339,14 +7365,20 @@ h2+.list-view-pf{margin-top:20px}
 .overview h2>.component-label{font-weight:500;padding-bottom:0}
 .overview .list-pf{border-bottom-color:#dcdcdc;margin-bottom:50px}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .overview .list-pf-actions{justify-content:flex-end}
 @media (min-width:768px) and (max-width:991px){.overview .list-pf-actions{margin-left:25px}
 }
 @media (min-width:992px) and (max-width:1199px){.overview .list-pf-actions{margin-left:35px}
 }
+<<<<<<< HEAD
 =======
 .overview .list-pf-actions{justify-content:flex-end;min-width:35px}
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .overview .list-pf-details.ng-enter,.overview .list-pf-details.ng-hide-remove{animation:.3s appear cubic-bezier(.55,.055,.675,.19)}
 @media (min-width:768px){.overview .list-pf-details{justify-content:flex-end}
 }
