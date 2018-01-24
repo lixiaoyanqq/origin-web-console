@@ -11705,9 +11705,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!idled && total <= 99\">\n" +
     "{{total}}\n" +
     "</span>\n" +
+<<<<<<< 8ebbecd4047ce129eed4050635fc3ea1ec46e7f8
     "<span ng-if=\"idled\" translate>\n" +
     "Idle\n" +
     "</span>\n" +
+=======
+>>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
     "</div>\n" +
     "<span ng-if=\"mini && total === 1 && !idled\" class=\"donut-mini-text-name\">pod</span>\n" +
     "<span ng-if=\"mini && total !== 1 && !idled\" class=\"donut-mini-text-name\">\n" +
@@ -11715,6 +11718,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "{{total}}\n" +
     "</span> pods\n" +
     "</span>\n" +
+    "<span ng-if=\"mini && idled\" class=\"donut-mini-text-name\">Idle</span>\n" +
     "\n" +
     "<div class=\"sr-only\">\n" +
     "<div ng-if=\"(pods | hashSize) === 0\" translate>No pods.</div>\n" +
