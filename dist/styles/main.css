@@ -7596,7 +7596,11 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 >>>>>>> Allow setting environment variable prefix when adding secret to application
 =======
 .service-instance-details .instance-status-message{white-space:pre-line}
+<<<<<<< e227f2247b4479a918471a29ff576c67721c6c37
 .set-home-page .modal-body-indent{padding-left:48px}
 .set-home-page .modal-body-indent .title{font-weight:600}
 .set-home-page .select-project-container{padding-left:20px;max-width:360px}
 >>>>>>> Set Home Page Preference
+=======
+.set-home-page .select-project-container{max-width:360px;padding-left:20px}
+>>>>>>> Align set home page modal appearance with PatternFly standard
