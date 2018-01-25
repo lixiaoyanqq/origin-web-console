@@ -2987,24 +2987,33 @@ return n.$get().getHomePagePath();
 },
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_NAMES: [ "openshift", "kubernetes", "kube" ],
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_PREFIXES: [ "openshift-", "kubernetes-", "kube-" ]
+<<<<<<< HEAD
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 }), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "openshiftCommonServices", "openshiftCommonUI", "webCatalog" ]).config([ "$routeProvider", "HomePagePreferenceServiceProvider", function(e, t) {
 var n, r = {
+=======
+}), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "openshiftCommonServices", "openshiftCommonUI", "webCatalog" ]).config([ "$routeProvider", "$uibModalProvider", "HomePagePreferenceServiceProvider", function(e, t, n) {
+var r, a = {
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/projects.html",
 controller: "ProjectsController"
 };
-_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE") ? (n = r, e.when("/projects", {
+_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE") ? (r = a, e.when("/projects", {
 redirectTo: "/"
-})) : (n = {
+})) : (r = {
 templateUrl: "views/landing-page.html",
 controller: "LandingPageController",
 reloadOnSearch: !1
-}, e.when("/projects", r)), e.when("/", {
+}, e.when("/projects", a)), e.when("/", {
 redirectTo: function() {
-return t.$get().getHomePagePath();
+return n.$get().getHomePagePath();
 }
+<<<<<<< HEAD
 }).when("/catalog", n).when("/create-project", {
 >>>>>>> Set Home Page Preference
+=======
+}).when("/catalog", r).when("/create-project", {
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/create-project.html",
 controller: "CreateProjectController"
 }).when("/project/:project/catalog", {
@@ -3434,10 +3443,14 @@ redirectTo: "/project/:project/browse/rc/:rc"
 }).otherwise({
 redirectTo: "/"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update modals to align with PatternFly standard
 }), t.options = {
 animation: !0,
 backdrop: "static"
 };
+<<<<<<< HEAD
 } ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
 =======
 });
@@ -3445,6 +3458,8 @@ backdrop: "static"
 } ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("LIMIT_REQUEST_OVERRIDES", _.get(window.OPENSHIFT_CONFIG, "limitRequestOverrides")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
+=======
+>>>>>>> Update modals to align with PatternFly standard
 } ]).constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL")).constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL")).constant("SOURCE_URL_PATTERN", /^[a-z][a-z0-9+.-@]*:(\/\/)?[0-9a-z_-]+/i).constant("RELATIVE_PATH_PATTERN", /^(?!\/)(?!\.\.(\/|$))(?!.*\/\.\.(\/|$)).*$/).constant("IS_SAFARI", /Version\/[\d\.]+.*Safari/.test(navigator.userAgent)).constant("amTimeAgoConfig", {
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 titleFormat: "LLL"
@@ -3475,10 +3490,14 @@ function r() {
 >>>>>>> Switch inactivity timeout to use new config value
 if (c) return !1;
 c = !0, (i = t.open({
-animation: !0,
 templateUrl: "views/modals/logout.html",
+<<<<<<< HEAD
 controller: "LogoutModalController"
 >>>>>>> Configurable inactivity timeout in console
+=======
+controller: "LogoutModalController",
+backdrop: !0
+>>>>>>> Update modals to align with PatternFly standard
 })).result.then(function(e) {
 "logout" === e ? (m(!0), p()) : "cancel" === e && (d(), c = !1);
 }, function() {
@@ -6908,7 +6927,10 @@ href: "",
 label: "Set Home Page",
 onClick: function() {
 return r.open({
+<<<<<<< HEAD
 animation: !0,
+=======
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/modals/set-home-page-modal.html",
 controller: "SetHomePageModalController"
 }), !0;
@@ -8397,9 +8419,41 @@ return s.filterForKeywords(e, j, t);
 var a = t.getPreferredVersion("imagestreamimports"), o = function(e) {
 return _.isArray(e) ? e : _.map(e, function(e, t) {
 return {
+<<<<<<< HEAD
 name: t,
 value: e
 };
+=======
+confirm: function(t) {
+return e.open({
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: t
+}
+}).result;
+},
+confirmSaveLog: function(t) {
+return e.open({
+templateUrl: "views/modals/confirm-save-log.html",
+controller: "ConfirmSaveLogController",
+resolve: {
+object: t
+}
+}).result;
+},
+showJenkinsfileExamples: function() {
+e.open({
+templateUrl: "views/modals/jenkinsfile-examples-modal.html",
+controller: "JenkinsfileExamplesModalController",
+size: "lg"
+});
+},
+showComputeUnitsHelp: function() {
+e.open({
+templateUrl: "views/modals/about-compute-units-modal.html",
+controller: "AboutComputeUnitsModalController"
+>>>>>>> Update modals to align with PatternFly standard
 });
 };
 return {
@@ -9178,6 +9232,7 @@ return i ? o < i + a : o < a;
 };
 return _.some(e, a) || _.some(t, a);
 },
+<<<<<<< HEAD
 getQuotaNotifications: function(e, a, o) {
 var i = [], s = function(e) {
 var a = e.status.total || e.status;
@@ -9196,6 +9251,26 @@ name: "View Quotas",
 title: "View project quotas",
 onClick: function() {
 t.url("/project/" + r.project + "/quota"), n.$emit("NotificationDrawerWrapper.hide");
+=======
+deprovision: function(e, t) {
+var r, a = {
+kind: e.kind,
+displayName: e.metadata.name,
+okButtonText: "Delete",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel",
+delete: function() {
+r.close("delete");
+}
+};
+return (r = n.open({
+templateUrl: "views/modals/delete-resource.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return a;
+}
+>>>>>>> Update modals to align with PatternFly standard
 }
 }, {
 name: "Don't Show Me Again",
@@ -9739,6 +9814,7 @@ var n = {
 type: "error",
 message: t
 };
+<<<<<<< HEAD
 l.addNotification(n);
 }
 return u = e, e;
@@ -9779,6 +9855,42 @@ var n = !h();
 return a.getCatalogItems(n).then(_.spread(function(e, t) {
 if (t) {
 var n = {
+=======
+n.hasFullscreen = s.hasFullscreen(!0), n.fullscreenTerminal = function() {
+s.requestFullscreen("#container-terminal-wrapper"), setTimeout(p);
+}, n.exitFullscreen = function() {
+s.exitFullscreen();
+}, n.debugTerminal = function(t) {
+var r = m.generateDebugPod(n.pod, t);
+r ? i.create(n.podsVersion, null, r, o).then(function(e) {
+var s = _.find(n.pod.spec.containers, {
+name: t
+});
+n.debugPod = e, $(window).on("beforeunload.debugPod", function() {
+return "Are you sure you want to leave with the debug terminal open? The debug pod will not be deleted unless you close the dialog.";
+}), u = i.watchObject(n.podsVersion, r.metadata.name, o, function(e) {
+n.debugPod = e;
+}), a.open({
+templateUrl: "views/modals/debug-terminal.html",
+controller: "DebugTerminalModalController",
+scope: n,
+resolve: {
+container: function() {
+return s;
+},
+image: function() {
+return _.get(n, [ "imagesByDockerReference", s.image ]);
+}
+}
+}).result.then(d);
+}, function(r) {
+n.alerts["debug-container-error"] = {
+type: "error",
+message: "Could not debug container " + t,
+details: e("getErrorDetails")(r)
+};
+}) : n.alerts["debug-container-error"] = {
+>>>>>>> Update modals to align with PatternFly standard
 type: "error",
 message: t
 };
@@ -10524,6 +10636,7 @@ return e ? r + (y(e, "description") || "") : "";
 });
 var D = function(e, t, n, a) {
 var o = {
+title: "Confirm Removal",
 alerts: {},
 detailsMarkup: w.remove.areYouSure.html.subject({
 roleName: n,
@@ -10597,7 +10710,6 @@ canUpdateRolebindings: b("rolebindings", "update", v),
 confirmRemove: function(n, a, i, s) {
 var l = null, u = D(n, a, i, r.user.metadata.name);
 _.isEqual(n, r.user.metadata.name) && d.isLastRole(r.user.metadata.name, r.roleBindings) && (l = !0), o.open({
-animation: !0,
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
@@ -11468,6 +11580,7 @@ message: "Binding " + t.metadata.name + "' could not be deleted.",
 details: e("getErrorDetails")(n)
 }), s.error("Binding " + t.metadata.name + "' could not be deleted.", n);
 });
+<<<<<<< HEAD
 =======
 var a = !1;
 _.each(e(t), function(e) {
@@ -11508,6 +11621,15 @@ var r, a = {
 kind: e.kind,
 displayName: e.metadata.name,
 okButtonText: "Delete",
+=======
+}, e.removeVolume = function(t) {
+var n;
+n = _.get(e, "deployment.spec.paused") ? "This will remove the volume from the deployment." : "This will remove the volume from the deployment and start a new rollout.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
+u.confirm({
+title: "Remove volume " + t.name + "?",
+details: n,
+okButtonText: "Remove",
+>>>>>>> Update modals to align with PatternFly standard
 okButtonClass: "btn-danger",
 cancelButtonText: "cel",
 delete: function() {
@@ -11938,7 +12060,7 @@ e.removeVolume = function(t) {
 var n;
 n = k() ? "This will remove the volume from the deployment config and trigger a new deployment." : "This will remove the volume from the deployment config.", t.persistentVolumeClaim ? n += " It will not delete the persistent volume claim." : t.secret ? n += " It will not delete the secret." : t.configMap && (n += " It will not delete the config map.");
 l.confirm({
-message: "Remove volume " + t.name + "?",
+title: "Remove volume " + t.name + "?",
 details: n,
 okButtonText: "Remove",
 okButtonClass: "btn-danger",
@@ -12517,7 +12639,7 @@ return !!_.isEmpty(e.autoscalers) && (!K(e.replicaSet) && !P(e.replicaSet) || (!
 var r = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
 n.persistentVolumeClaim ? r += " It will not delete the persistent volume claim." : n.secret ? r += " It will not delete the secret." : n.configMap && (r += " It will not delete the config map.");
 f.confirm({
-message: "Remove volume " + n.name + "?",
+title: "Remove volume " + n.name + "?",
 details: r,
 okButtonText: "Remove",
 okButtonClass: "btn-danger",
@@ -14969,6 +15091,7 @@ type: "error",
 message: j.warning.serviceAccount()
 }), o;
 };
+<<<<<<< HEAD
 s.withUser().then(function(e) {
 r.user = e;
 }), u.list().then(function(e) {
@@ -15058,12 +15181,31 @@ _.isEqual(n, r.user.metadata.name) && u.isLastRole(r.user.metadata.name, r.roleB
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}) : d.toErrorPage("You do not have authority to update deployment config " + r.deploymentconfig + ".", "access_denied");
+}));
+var I = function() {
+return "Custom" !== e.strategyData.type && "Custom" !== e.originalStrategy && e.strategyData.type !== e.originalStrategy;
+}, R = function(t) {
+_.has(e.strategyData, t) || a.open({
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 return u;
+=======
+return {
+alerts: e.alerts,
+title: "Keep some existing " + e.originalStrategy.toLowerCase() + " strategy parameters?",
+details: "The timeout parameter and any pre or post lifecycle hooks will be copied from " + e.originalStrategy.toLowerCase() + " strategy to " + e.strategyData.type.toLowerCase() + " strategy. After saving the changes, " + e.originalStrategy.toLowerCase() + " strategy parameters will be removed.",
+okButtonText: "Yes",
+okButtonClass: "btn-primary",
+cancelButtonText: "No"
+};
+>>>>>>> Update modals to align with PatternFly standard
 }
 }
 }).result.then(function() {
@@ -16207,14 +16349,14 @@ usingSampleRepo: e.usingSampleRepo()
 });
 }, x = function(e) {
 o.open({
-animation: !0,
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 return {
 alerts: e,
-message: "Problems were detected while checking your application configuration.",
+title: "Confirm Creation",
+details: "Problems were detected while checking your application configuration.",
 okButtonText: "Create Anyway",
 okButtonClass: "btn-danger",
 cancelButtonText: "Cancel"
@@ -17997,6 +18139,7 @@ e.cancel(i), a.close("cancel");
 e.cancel(i);
 });
 } ]), angular.module("openshiftConsole").controller("JenkinsfileExamplesModalController", [ "$scope", "$uibModalInstance", function(e, t) {
+<<<<<<< HEAD
 e.ok = function() {
 t.close("ok");
 >>>>>>> Configurable inactivity timeout in console
@@ -18041,6 +18184,14 @@ function u() {
 g.getLabelSelector().isEmpty() || !$.isEmptyObject(e.deployments) || $.isEmptyObject(e.unfilteredDeployments) ? delete e.alerts.deployments : e.alerts.deployments = {
 type: "warning",
 details: "The active filters are hiding all deployments."
+=======
+e.close = function() {
+t.close("close");
+};
+} ]), angular.module("openshiftConsole").controller("AboutComputeUnitsModalController", [ "$scope", "$uibModalInstance", function(e, t) {
+e.close = function() {
+t.close("close");
+>>>>>>> Update modals to align with PatternFly standard
 };
 <<<<<<< HEAD
 =======
@@ -19308,6 +19459,7 @@ var t = _.get(e, "replicaSet.spec.template");
 t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, u);
 }
 };
+<<<<<<< HEAD
 i.get(e.resource, n.replicaSet, u, {
 errorNotification: !1
 }).then(function(t) {
@@ -19339,6 +19491,32 @@ break;
 
 case "ReplicaSet":
 z();
+=======
+r.openDeleteModal = function() {
+r.disableDelete || e.open({
+templateUrl: "views/modals/delete-resource.html",
+controller: "DeleteModalController",
+scope: r
+}).result.then(function() {
+var e = r.kind, t = r.resourceName, a = r.typeDisplayName || n("humanizeKind")(e), s = _.capitalize(a) + " '" + (r.displayName ? r.displayName : t) + "'", u = "Project" === r.kind ? {} : {
+namespace: r.projectName
+}, d = {};
+r.options.deleteImmediately && (d.gracePeriodSeconds = 0, d.propagationPolicy = null), "servicecatalog.k8s.io" === r.group && (d.propagationPolicy = null), i.delete({
+resource: o.kindToResource(e),
+group: r.group
+}, t, u, d).then(function() {
+c.addNotification({
+type: "success",
+message: s + " was marked for deletion."
+}), r.success && r.success(), r.options.deleteHPAs && _.each(r.hpaList, p), f();
+}).catch(function(e) {
+m({
+name: t,
+data: {
+type: "error",
+message: _.capitalize(s) + "' could not be deleted.",
+details: n("getErrorDetails")(e)
+>>>>>>> Update modals to align with PatternFly standard
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19676,8 +19854,6 @@ message: "Resource is missing metadata field."
 }
 function v() {
 r.open({
-animation: !0,
-backdrop: "static",
 templateUrl: "views/modals/process-or-save-template.html",
 controller: "ProcessOrSaveTemplateModalController",
 scope: p
@@ -19687,7 +19863,6 @@ p.templateOptions.add ? y() : (o.setTemplate(p.resourceList[0]), b());
 }
 function h() {
 r.open({
-animation: !0,
 templateUrl: "views/modals/confirm-replace.html",
 controller: "ConfirmReplaceModalController",
 scope: p
@@ -20149,14 +20324,18 @@ p.projectNameTaken = !1;
 };
 var R = function(e) {
 r.open({
+<<<<<<< HEAD
 animation: !0,
+=======
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 return {
 alerts: e,
-message: "We checked your application for potential problems. Please confirm you still want to create this application.",
+title: "Confirm Creation",
+details: "We checked your application for potential problems. Please confirm you still want to create this application.",
 okButtonText: "Create Anyway",
 okButtonClass: "btn-danger",
 cancelButtonText: "Cancel"
@@ -41619,6 +41798,7 @@ namespace: c.project.metadata.name
 r.getApplications(e).then(function(e) {
 c.applications = e, c.updating = !1;
 });
+<<<<<<< HEAD
 };
 c.$onInit = function() {
 c.addType = "env", c.disableInputs = !1, d(), c.canAddRefToApplication = !0;
@@ -41635,6 +41815,23 @@ tickIcon: "fa-check"
 var e = $(this).val(), n = "" === e ? "projects" : g(e);
 i.$apply(function() {
 t.url(n);
+=======
+}, t.removeSecret = function(e) {
+1 === t.pickedSecrets.length ? t.pickedSecrets = [ {
+name: ""
+} ] : t.pickedSecrets.splice(e, 1), t.secretsForm.$setDirty();
+}, t.openCreateSecretModal = function() {
+t.newSecret = {}, e.open({
+templateUrl: "views/modals/create-secret.html",
+controller: "CreateSecretModalController",
+scope: t
+}).result.then(function(e) {
+r.list(t.secretsVersion, {
+namespace: t.namespace
+}, function(n) {
+var r = a.groupSecretsByType(n), o = _.mapValues(r, function(e) {
+return _.map(e, "metadata.name");
+>>>>>>> Update modals to align with PatternFly standard
 });
 }), i.$on("$destroy", function() {
 B(), N();
@@ -41733,6 +41930,7 @@ used: o ? "#0088ce" : "#ec7a08",
 other: o ? "#7dc3e8" : "#f7bd7f",
 available: "#d1d1d1"
 },
+<<<<<<< HEAD
 names: {
 used: e ? "Used - This Project" : "Used",
 other: "Used - Other Projects",
@@ -41756,6 +41954,20 @@ href: o.resourceURL(t),
 label: "View " + f(t.kind, !0)
 } ]
 }), angular.isFunction(c.onComplete) && c.onComplete();
+=======
+destinationDir: ""
+} ];
+} else t.pickedSecrets.splice(e, 1);
+t.secretsForm.$setDirty();
+}, t.openCreateSecretModal = function() {
+e.open({
+templateUrl: "views/modals/create-secret.html",
+controller: "CreateSecretModalController",
+scope: t
+}).result.then(function(e) {
+r.list(t.secretsVersion, {
+namespace: t.namespace
+>>>>>>> Update modals to align with PatternFly standard
 }, function(n) {
 var r = e("getErrorDetails");
 i.addNotification({
@@ -42914,12 +43126,249 @@ e.data.type && (_.has(t, "secret") || _.has(t, "secretReference.name")) && i();
 a.isDeprecated(e) && (e.secretInputType = "password"), e.isDuplicate || o(e);
 }), a.openCreateWebhookSecretModal = function() {
 t.open({
+<<<<<<< HEAD
 animation: !0,
+=======
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/modals/create-secret.html",
 controller: "CreateSecretModalController",
 scope: e
 }).result.then(function(e) {
 a.webhookSecrets.push(e);
+<<<<<<< HEAD
+=======
+});
+};
+} ],
+controllerAs: "$ctrl",
+bindings: {
+webhookSecrets: "<",
+namespace: "<",
+type: "@",
+webhookTriggers: "=",
+form: "="
+},
+templateUrl: "components/osc-webhook-triggers/osc-webhook-triggers.html"
+});
+}(), angular.module("openshiftConsole").directive("parseError", function() {
+return {
+restrict: "E",
+scope: {
+error: "="
+},
+templateUrl: "views/_parse-error.html",
+link: function(e) {
+e.$watch("error", function() {
+e.hidden = !1;
+});
+}
+};
+}), angular.module("openshiftConsole").directive("podWarnings", [ "podWarningsFilter", function(e) {
+return {
+restrict: "E",
+scope: {
+pod: "="
+},
+link: function(t) {
+var n, r = "", a = e(t.pod);
+for (n = 0; n < _.size(a); n++) r && (r += "<br>"), "error" === a[n].severity && (t.hasError = !0), r += a[n].message;
+t.content = r;
+},
+templateUrl: "views/directives/_warnings-popover.html"
+};
+} ]).directive("routeWarnings", [ "RoutesService", function(e) {
+return {
+restrict: "E",
+scope: {
+route: "=",
+services: "="
+},
+link: function(t) {
+t.$watchGroup([ "route", "services" ], function() {
+var n = e.getRouteWarnings(t.route, t.services);
+t.content = _.map(n, _.escape).join("<br>");
+});
+},
+templateUrl: "views/directives/_warnings-popover.html"
+};
+} ]), angular.module("openshiftConsole").directive("takeFocus", [ "$timeout", function(e) {
+return {
+restrict: "A",
+link: function(t, n) {
+e(function() {
+$(n).focus();
+}, 300);
+}
+};
+} ]).directive("selectOnFocus", function() {
+return {
+restrict: "A",
+link: function(e, t) {
+$(t).focus(function() {
+$(this).select();
+});
+}
+};
+}).directive("focusWhen", [ "$timeout", function(e) {
+return {
+restrict: "A",
+scope: {
+trigger: "@focusWhen"
+},
+link: function(t, n) {
+t.$watch("trigger", function(t) {
+t && e(function() {
+$(n).focus();
+});
+});
+}
+};
+} ]).directive("clickToReveal", function() {
+return {
+restrict: "A",
+transclude: !0,
+scope: {
+linkText: "@"
+},
+templateUrl: "views/directives/_click-to-reveal.html",
+link: function(e, t) {
+$(".reveal-contents-link", t).click(function() {
+$(this).hide(), $(".reveal-contents", t).show();
+});
+}
+};
+}).directive("copyToClipboard", function() {
+return {
+restrict: "E",
+scope: {
+clipboardText: "=",
+isDisabled: "=?",
+displayWide: "=?",
+inputText: "=?",
+multiline: "=?"
+},
+templateUrl: "views/directives/_copy-to-clipboard.html",
+controller: [ "$scope", function(e) {
+e.id = _.uniqueId("clipboardJs");
+} ],
+link: function(e, t) {
+var n = $("a", t), r = n.get(0);
+e.inputText && (r = n.get(1));
+var a = new Clipboard(r);
+a.on("success", function(e) {
+$(e.trigger).attr("title", "Copied!").tooltip("fixTitle").tooltip("show").attr("title", "Copy to Clipboard").tooltip("fixTitle"), e.clearSelection();
+}), a.on("error", function(e) {
+var t = /Mac/i.test(navigator.userAgent) ? "Press ⌘C to copy" : "Press Ctrl-C to copy";
+$(e.trigger).attr("title", t).tooltip("fixTitle").tooltip("show").attr("title", "Copy to Clipboard").tooltip("fixTitle");
+}), t.on("$destroy", function() {
+a.destroy();
+});
+}
+};
+}).directive("copyLoginToClipboard", [ "NotificationsService", function(e) {
+return {
+restrict: "E",
+replace: !0,
+scope: {
+clipboardText: "@"
+},
+template: '<a href="" data-clipboard-text="">Copy Login Command</a>',
+link: function(t, n) {
+var r = new Clipboard(n.get(0));
+r.on("success", function() {
+e.addNotification({
+id: "copy-login-command-success",
+type: "success",
+message: "Login command copied."
+});
+e.addNotification({
+id: "openshift/token-warning",
+type: "warning",
+message: "A token is a form of a password. Do not share your API token.",
+links: [ {
+href: "",
+label: "Don't Show Me Again",
+onClick: function() {
+return e.permanentlyHideNotification("openshift/token-warning"), !0;
+}
+} ]
+});
+}), r.on("error", function() {
+e.addNotification({
+id: "copy-login-command-error",
+type: "error",
+message: "Unable to copy the login command."
+});
+}), n.on("$destroy", function() {
+r.destroy();
+});
+}
+};
+} ]).directive("setHomePage", [ "$uibModal", function(e) {
+return {
+restrict: "E",
+replace: !0,
+template: '<a href="">Set Home Page</a>',
+link: function(t, n) {
+n.bind("click", function() {
+e.open({
+templateUrl: "views/modals/set-home-page-modal.html",
+controller: "SetHomePageModalController"
+});
+});
+}
+};
+} ]).directive("shortId", function() {
+return {
+restrict: "E",
+scope: {
+id: "@"
+},
+template: '<code class="short-id" title="{{id}}">{{id.substring(0, 6)}}</code>'
+};
+}).directive("customIcon", [ "$filter", function(e) {
+return {
+restrict: "E",
+scope: {
+resource: "=",
+kind: "@",
+tag: "=?"
+},
+controller: [ "$scope", function(t) {
+t.$watchGroup([ "resource", "tag" ], function() {
+t.tag ? t.icon = e("imageStreamTagAnnotation")(t.resource, "icon", t.tag) : t.icon = e("annotation")(t.resource, "icon"), t.icon && 0 === t.icon.indexOf("data:") ? t.image = t.icon : (t.tag ? t.icon = e("imageStreamTagIconClass")(t.resource, t.tag) : t.icon = e("iconClass")(t.resource, t.kind), t.image = e("imageForIconClass")(t.icon));
+});
+} ],
+templateUrl: "views/directives/_custom-icon.html"
+};
+} ]).directive("bottomOfWindow", function() {
+return {
+restrict: "A",
+link: function(e, t) {
+function n() {
+var e = $(window).height() - t[0].getBoundingClientRect().top;
+t.css("height", e - 10 + "px");
+}
+$(window).on("resize", n), n(), t.on("$destroy", function() {
+$(window).off("resize", n);
+});
+}
+};
+}).directive("onEnter", function() {
+return function(e, t, n) {
+t.bind("keydown keypress", function(t) {
+13 === t.which && (e.$apply(function() {
+e.$eval(n.onEnter);
+}), t.preventDefault());
+});
+};
+}).directive("onEsc", function() {
+return function(e, t, n) {
+t.bind("keydown keypress", function(t) {
+27 === t.which && (e.$apply(function() {
+e.$eval(n.onEsc);
+}), t.preventDefault());
+>>>>>>> Update modals to align with PatternFly standard
 });
 };
 }
@@ -45941,6 +46390,7 @@ return _.isFunction(e) && e(), s.wizardDone = !1, !0;
 return "file" === e.stepId ? (s.importFile(), !1) : "template" === e.stepId ? (s.instantiateTemplate(), !1) : "results" !== e.stepId || (s.close(), !1);
 >>>>>>> Adding vendor to info screens, adding docUrl and supportUrl to info screens that lacked it
 };
+<<<<<<< HEAD
 } ],
 controllerAs: "$ctrl",
 bindings: {
@@ -45954,6 +46404,44 @@ visible: "<",
 project: "<",
 context: "<",
 onDialogClosed: "&"
+=======
+e.$watchGroup([ "limitRanges", "hpa", "project" ], m), e.$watch("rc.spec.template.spec.containers", m, !0);
+e.$watchGroup([ "rc.spec.replicas", "rc.status.replicas", "quotas", "clusterQuotas" ], function() {
+if (_.get(e.rc, "spec.replicas", 1) > _.get(e.rc, "status.replicas", 0)) {
+var t = i.filterQuotasForResource(e.rc, e.quotas), n = i.filterQuotasForResource(e.rc, e.clusterQuotas), r = function(t) {
+return !_.isEmpty(i.getResourceLimitAlerts(e.rc, t));
+};
+e.showQuotaWarning = _.some(t, r) || _.some(n, r);
+} else e.showQuotaWarning = !1;
+});
+var p = function() {
+return e.deploymentConfig || e.deployment || e.rc;
+}, f = function() {
+if (s = !1, angular.isNumber(e.desiredReplicas)) {
+var r = p();
+return a.scale(r, e.desiredReplicas).then(_.noop, function(e) {
+var a = u(r.kind);
+return l.addNotification({
+id: "deployment-scale-error",
+type: "error",
+message: "An error occurred scaling " + a + " " + r.metadata.name + ".",
+details: t("getErrorDetails")(e)
+}), n.reject(e);
+});
+}
+}, g = _.debounce(f, 650);
+e.viewPodsForDeployment = function(t) {
+_.isEmpty(e.pods) || c.toPodsForDeployment(t, e.pods);
+}, e.scaleUp = function() {
+e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), e.desiredReplicas++, g(), s = !0);
+}, e.scaleDown = function() {
+e.scalable && (e.desiredReplicas = e.getDesiredReplicas(), 0 !== e.desiredReplicas && (1 !== e.desiredReplicas ? (e.desiredReplicas--, g()) : r.open({
+templateUrl: "views/modals/confirmScale.html",
+controller: "ConfirmScaleController",
+resolve: {
+resource: function() {
+return e.rc;
+>>>>>>> Update modals to align with PatternFly standard
 },
 templateUrl: "views/directives/from-file-dialog.html"
 });
@@ -47605,14 +48093,13 @@ template: h.template
 }) : i.toNextSteps(h.templateDisplayName, h.selectedProject.metadata.name);
 }, w = function(e) {
 r.open({
-animation: !0,
-backdrop: "static",
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 >>>>>>> Prohibit close of warning dialog by clicking on backdrop
 return {
+<<<<<<< HEAD
 restrict: "E",
 scope: {
 podTemplate: "=",
@@ -47628,6 +48115,15 @@ var a = r(e.image);
 n.imageIDs = a ? [ a ] : t.getImageIDs(n.pods, e.name);
 }
 });
+=======
+alerts: e,
+title: "Confirm Creation",
+details: "We checked your application for potential problems. Please confirm you still want to create this application.",
+okButtonText: "Create Anyway",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+};
+>>>>>>> Update modals to align with PatternFly standard
 }
 };
 } ]), function() {
@@ -49245,6 +49741,7 @@ message: "All resources for image " + n.app.name + " were created successfully."
 alerts: r,
 hasErrors: a
 });
+<<<<<<< HEAD
 }), e.promise;
 }), n.isDialog ? n.$emit("deployImageNewAppCreated", {
 project: n.input.selectedProject,
@@ -49254,16 +49751,29 @@ appName: n.app.name
 r.open({
 animation: !0,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
+=======
+}, l.cancelDeployment = function() {
+var e = l.current;
+if (e) {
+var n, r = e.metadata.name, a = _.get(l, "apiObject.status.latestVersion");
+n = 1 === a ? "This will attempt to stop the in-progress deployment. It may take some time to complete." : "This will attempt to stop the in-progress deployment and rollback to the last successful deployment. It may take some time to complete.", t.open({
+>>>>>>> Update modals to align with PatternFly standard
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
 resolve: {
 modalConfig: function() {
 return {
+<<<<<<< HEAD
 alerts: e,
 <<<<<<< HEAD
 title: "Confirm Creation",
 details: "Problems were detected while checking your application configuration.",
 okButtonText: "Create Anyway",
+=======
+title: "Cancel deployment " + r + "?",
+details: n,
+okButtonText: "Yes, cancel",
+>>>>>>> Update modals to align with PatternFly standard
 okButtonClass: "btn-danger",
 cancelButtonText: "取消"
 };
@@ -49920,6 +50430,28 @@ confirm(a()) || (new Date().getTime() - n < 50 ? (_.set(window, "OPENSHIFT_CONST
 r.$on("$destroy", function() {
 $(window).off("beforeunload", o), i && i();
 });
+<<<<<<< HEAD
+=======
+}), e.promise;
+}), n.isDialog ? n.$emit("deployImageNewAppCreated", {
+project: n.input.selectedProject,
+appName: n.app.name
+}) : c.toNextSteps(n.app.name, n.input.selectedProject.metadata.name);
+}, N = function(e) {
+r.open({
+templateUrl: "views/modals/confirm.html",
+controller: "ConfirmModalController",
+resolve: {
+modalConfig: function() {
+return {
+alerts: e,
+title: "Confirm Creation",
+details: "Problems were detected while checking your application configuration.",
+okButtonText: "Create Anyway",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+};
+>>>>>>> Update modals to align with PatternFly standard
 }
 }
 <<<<<<< HEAD

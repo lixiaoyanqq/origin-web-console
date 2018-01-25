@@ -2589,10 +2589,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<overlay-panel class=\"overlay-panel-as-modal add-config-to-application\" show-panel=\"addToApplicationVisible\" handle-close=\"closeAddToApplication\">\n" +
 =======
     "<overlay-panel class=\"add-config-to-application\" show-panel=\"addToApplicationVisible\" show-close=\"true\" handle-close=\"closeAddToApplication\">\n" +
 >>>>>>> "Add to Application" for config maps
+=======
+    "<overlay-panel class=\"overlay-panel-as-modal add-config-to-application\" show-panel=\"addToApplicationVisible\" handle-close=\"closeAddToApplication\">\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<add-config-to-application project=\"project\" api-object=\"configMap\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-config-to-application>\n" +
     "</overlay-panel>\n" +
     "</div>\n" +
@@ -4545,6 +4549,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<overlay-panel class=\"overlay-panel-as-modal add-config-to-application\" show-panel=\"addToApplicationVisible\" handle-close=\"closeAddToApplication\">\n" +
     "<add-config-to-application project=\"project\" api-object=\"secret\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-config-to-application>\n" +
 =======
@@ -4553,6 +4558,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Add the ability to add a secret to an application
 =======
     "<overlay-panel class=\"add-config-to-application\" show-panel=\"addToApplicationVisible\" show-close=\"true\" handle-close=\"closeAddToApplication\">\n" +
+=======
+    "<overlay-panel class=\"overlay-panel-as-modal add-config-to-application\" show-panel=\"addToApplicationVisible\" handle-close=\"closeAddToApplication\">\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<add-config-to-application project=\"project\" api-object=\"secret\" on-cancel=\"closeAddToApplication\" on-complete=\"closeAddToApplication\"></add-config-to-application>\n" +
 >>>>>>> "Add to Application" for config maps
     "</overlay-panel>\n" +
@@ -7265,14 +7273,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/directives/add-secret-to-application.html',
 =======
   $templateCache.put('views/directives/add-config-to-application.html',
+<<<<<<< HEAD
 >>>>>>> "Add to Application" for config maps
     "<div>\n" +
     "<div class=\"dialog-title\">\n" +
     "<h3>Add to Application</h3>\n" +
+=======
+    "<div class=\"modal-add-config-to-application\">\n" +
+    "<div class=\"modal-header\">\n" +
+    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"ctrl.onCancel()\">\n" +
+    "<span class=\"pficon pficon-close\"></span>\n" +
+    "</button>\n" +
+    "<h1 class=\"modal-title\">Add to Application</h1>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
-    "<div class=\"dialog-body\">\n" +
     "<form name=\"addToApplicationForm\" novalidate>\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
+    "<div class=\"modal-body\">\n" +
     "<legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>\n" +
     "<div class=\"form-group\">\n" +
     "<div class=\"application-select\">\n" +
@@ -7396,7 +7413,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</select-containers>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< HEAD
     "<div class=\"button-group pull-right\">\n" +
+=======
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"modal-footer\">\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<button class=\"btn btn-default\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.onCancel()\">\n" +
     "Cancel\n" +
     "</button>\n" +
@@ -7411,7 +7434,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3>\n" +
     "<span class=\"sr-only\">Updating</span>\n" +
     "</h3>\n" +
-    "</div>\n" +
     "</div>\n" +
     "</div>"
   );
@@ -8171,8 +8193,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"buttons gutter-top-bottom\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"secretForm.$invalid || secretForm.$pristine || invalidConfigFormat\" ng-click=\"create()\" translate>Create</button>\n" +
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
+=======
+    "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"secretForm.$invalid || secretForm.$pristine || invalidConfigFormat\" ng-click=\"create()\">Create</button>\n" +
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</ng-form>"
   );
@@ -8840,11 +8867,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
     "<h1 class=\"modal-title\">{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h1>\n" +
+<<<<<<< HEAD
 =======
     "<overlay-panel class=\"add-config-to-application\" show-panel=\"$ctrl.overlayPanelVisible\" show-close=\"true\" handle-close=\"$ctrl.closeOverlayPanel\">\n" +
     "<div class=\"dialog-title\">\n" +
     "<h3>{{$ctrl.overlayPaneEntryDetails.kind | humanizeKind : true}} Details</h3>\n" +
 >>>>>>> Reveal and hide secrets
+=======
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<h4>{{$ctrl.overlayPaneEntryDetails.metadata.name}}\n" +
@@ -8900,7 +8930,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button ng-click=\"$ctrl.closeOverlayPanel()\" type=\"button\" class=\"btn btn-default\" translate>Close</button>\n" +
+=======
+    "<button ng-click=\"$ctrl.closeOverlayPanel()\" type=\"button\" class=\"btn btn-default\">Close</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</overlay-panel>\n" +
     "</ng-form>"
@@ -14029,12 +14063,24 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"close()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>\n" +
     "Compute Resources\n" +
     "</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<div translate>\n" +
+=======
+    "<h1 class=\"modal-title\">\n" +
+    "Compute Resources\n" +
+    "<span class=\"page-header-link\">\n" +
+    "<a href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\">Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
+    "</span>\n" +
+    "</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<div>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "Each container running on a node uses compute resources like CPU and memory. You can specify how much CPU and memory a container needs to improve scheduling and performance.\n" +
     "</div>\n" +
     "<h3 translate>CPU</h3>\n" +
@@ -14070,7 +14116,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\" translate>Close</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\">Close</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14082,12 +14132,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Confirm Replace</h1>\n" +
+=======
+    "<h1 class=\"modal-title\">Confirm Replace</h1>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<div ng-if=\"!isList\">\n" +
     "<p>{{resourceKind}} '<strong>{{resourceName}}</strong>' already exists.</p>\n" +
+<<<<<<< HEAD
     "<p translate>Do you want to replace with the new content?</p>\n" +
+=======
+    "<p>Do you want to replace with the new content?</p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "<div ng-if=\"isList\">\n" +
     "<h1 translate>Some items already exist:</h1>\n" +
@@ -14099,8 +14157,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"replace();\" translate>Replace</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\">Cancel</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"replace();\">Replace</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14112,10 +14175,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Confirm Save</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<p translate>Save partial log for <strong>{{object.metadata.name}}</strong>?</p>\n" +
+=======
+    "<h1 class=\"modal-title\">Confirm Save</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<p>Save partial log for <strong>{{object.metadata.name}}</strong>?</p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<div class=\"mar-bottom-xl\">\n" +
     "<translate>The log might not be complete. Continuing will save only the content currently displayed.</translate>\n" +
     "<span ng-if=\"command\" translate>To get the complete log, run the command</span>\n" +
@@ -14126,8 +14196,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"save()\" translate>Save</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"save()\">Save</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14160,17 +14235,30 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Confirm Scale Down</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<p>Scale down {{type}} <strong>{{resource | displayName}}</strong>?</p>\n" +
     "<p translate>\n" +
+=======
+    "<h1 class=\"modal-title\">Confirm Scale Down</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<p>Scale down {{type}} <strong>{{resource | displayName}}</strong>?</p>\n" +
+    "<p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "Are you sure you want to scale <strong>{{resource | displayName}}</strong> to 0 replicas? This will stop all pods for the {{type}}.\n" +
     "</p>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-danger\" type=\"button\" ng-click=\"confirmScale()\" translate>Scale Down</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "<button class=\"btn btn-danger\" type=\"button\" ng-click=\"confirmScale()\">Scale Down</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14212,7 +14300,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"close()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Debug Container {{container.name}}</h1>\n" +
+=======
+    "<h1 class=\"modal-title\">Debug Container {{container.name}}</h1>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<small class=\"text-muted\">\n" +
     "{{debugPod.metadata.name}} &mdash;\n" +
     "<status-icon status=\"debugPod | podStatus\"></status-icon>\n" +
@@ -14245,7 +14337,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div ng-if=\"containerState.running\">\n" +
     "<div class=\"text-muted\">\n" +
+<<<<<<< HEAD
     "<p translate>This temporary pod has a modified entrypoint command to debug a failing container. The pod will be available for one hour and will be deleted when the terminal window is closed.</p>\n" +
+=======
+    "<p>This temporary pod has a modified entrypoint command to debug a failing container. The pod will be available for one hour and will be deleted when the terminal window is closed.</p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "<div ng-if=\"container | entrypoint : image\" class=\"original-cmd-msg\">\n" +
     "<label translate>Original Command:</label>\n" +
@@ -14261,7 +14357,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\" translate>Close</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\">Close</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14273,6 +14373,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Confirm Delete</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
@@ -14282,6 +14383,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"modal-footer\">\n" +
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-danger\" type=\"button\" ng-click=\"delete();\" translate>Delete this project</button>\n" +
+=======
+    "<h1 class=\"modal-title\">Confirm Delete</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<p>Are you sure you want to delete the project '<strong>{{project | displayName}}</strong>'?</p>\n" +
+    "<p>This will <strong>delete all resources</strong> associated with the project {{project | displayName}} and <strong>cannot be undone</strong>. Make sure this is something you really want to do!</p>\n" +
+    "</div>\n" +
+    "<div class=\"modal-footer\">\n" +
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\">Cancel</button>\n" +
+    "<button class=\"btn btn-danger\" type=\"button\" ng-click=\"delete();\">Delete this project</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14295,10 +14407,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
+<<<<<<< HEAD
     "<h1 class=\"modal-title\" translate>Confirm Delete</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<p translate>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>\n" +
+=======
+    "<h1 class=\"modal-title\">Confirm Delete</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<p>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<p>\n" +
     "<span ng-if=\"kind === 'DeploymentConfig'\" translate>\n" +
     "This will delete the deployment config, all rollout history, and any running pods.\n" +
@@ -14366,8 +14485,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\" translate>Cancel</button>\n" +
     "<button ng-disabled=\"typeNameToConfirm && confirmName !== resourceName && confirmName !== displayName\" class=\"btn btn-danger\" type=\"submit\" ng-click=\"delete();\" translate>Delete</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\">Cancel</button>\n" +
+    "<button ng-disabled=\"typeNameToConfirm && confirmName !== resourceName && confirmName !== displayName\" class=\"btn btn-danger\" type=\"submit\" ng-click=\"delete();\">Delete</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</form>\n" +
     "</div>"
@@ -14386,6 +14510,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ng-include src=\"'views/edit/jenkinsfile-examples.html'\"></ng-include>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\" translate>Close</button>\n" +
     "</div>\n" +
     "</div>"
@@ -14450,6 +14575,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"modal-footer\">\n" +
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"continue();\" ng-disabled=\"!templateOptions.process && !templateOptions.add\" translate>Continue</button>\n" +
+=======
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"close()\">Close</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14467,14 +14595,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
   $templateCache.put('views/modals/logout.html',
     "<div class=\"modal-resource-action inactivity-modal\">\n" +
+    "<div class=\"modal-header\">\n" +
+    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
+    "<span class=\"pficon pficon-close\"></span>\n" +
+    "</button>\n" +
+    "<h1 class=\"modal-title\">Session Timeout Warning</h1>\n" +
+    "</div>\n" +
     "<form>\n" +
     "<div class=\"modal-body\">\n" +
-    "<h1>Your session is about to expire due to inactivity.</h1>\n" +
-    "<h2>You will be logged out in <strong><time-remaining-from-now end-timestamp=\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> seconds.</h2>\n" +
+    "<p>Your session is about to expire due to inactivity.</p>\n" +
+    "<p>You will be logged out in <strong><time-remaining-from-now end-timestamp=\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> seconds.</p>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
-    "<button class=\"btn btn-lg btn-default\" type=\"submit\" ng-click=\"logout();\">Log Out</button>\n" +
-    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-click=\"cancel();\">Continue Session</button>\n" +
+    "<button class=\"btn btn-default\" type=\"submit\" ng-click=\"logout();\">Log Out</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"cancel();\">Continue Session</button>\n" +
     "</div>\n" +
     "</form>\n" +
     "</div>"
@@ -14483,6 +14617,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/modals/process-or-save-template.html',
     "<div class=\"modal-resource-action\">\n" +
+<<<<<<< HEAD
 >>>>>>> Configurable inactivity timeout in console
     "<div class=\"modal-body\">\n" +
     "<p translate>\n" +
@@ -14491,12 +14626,29 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<form name=\"homePageForm\">\n" +
     "<fieldset ng-disabled=\"loading\">\n" +
     "<div class=\"radio\">\n" +
+=======
+    "<div class=\"modal-header\">\n" +
+    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
+    "<span class=\"pficon pficon-close\"></span>\n" +
+    "</button>\n" +
+    "<h1 class=\"modal-title\">{{updateTemplate ? \"Update\" : \"Add\"}} Template</h1>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "<p>What would you like to do?</p>\n" +
+    "<p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<label>\n" +
     "<input type=\"radio\" ng-model=\"homePagePreference\" value=\"catalog-home\">\n" +
     "<translate>Catalog Home (Default)</translate>\n" +
     "</label>\n" +
+<<<<<<< HEAD
     "</div>\n" +
     "<div class=\"radio\">\n" +
+=======
+    "<span id=\"helpBlock\" class=\"help-block\">Create the objects defined in the template. You will have an opportunity to fill in template parameters.</span>\n" +
+    "</p>\n" +
+    "<p>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "<label>\n" +
     "<input type=\"radio\" ng-model=\"homePagePreference\" value=\"project-list\">\n" +
     "<translate>My Projects List</translate>\n" +
@@ -14507,6 +14659,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<input type=\"radio\" ng-model=\"homePagePreference\" value=\"project-overview\">\n" +
     "Overview Page for{{availableProjects.length === 1 ? ' ' + (selectedProject | displayName) : ':'}}\n" +
     "</label>\n" +
+<<<<<<< HEAD
     "<div class=\"select-project-container\" ng-if=\"availableProjects.length > 1\">\n" +
     "<select-project is-required=\"homePagePreference === 'project-overview'\" skip-can-add-validation=\"true\" on-project-selected=\"onProjectSelected\" on-open=\"onOpen\" available-projects=\"availableProjects\" selected-project=\"selectedProject\" hide-create-project=\"true\" hide-label=\"true\">\n" +
     "</select-project>\n" +
@@ -14518,6 +14671,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"modal-footer\">\n" +
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
     "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"homePageForm.$invalid || homePageForm.$pristine\" ng-click=\"setHomePage()\" translate>Save</button>\n" +
+=======
+    "<span id=\"helpBlock\" class=\"help-block\">{{updateTemplate ? \"This will overwrite the current version of the template.\" : \"Save the template to the project. This will make the template available to anyone who can view the project.\"}}</span>\n" +
+    "</p>\n" +
+    "</div>\n" +
+    "<div class=\"modal-footer\">\n" +
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\">Cancel</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"continue();\" ng-disabled=\"!templateOptions.process && !templateOptions.add\">Continue</button>\n" +
+>>>>>>> Update modals to align with PatternFly standard
     "</div>\n" +
     "</div>"
   );
@@ -14563,8 +14724,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
-    "<button class=\"btn btn-lg btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
-    "<button class=\"btn btn-lg btn-primary\" type=\"button\" ng-disabled=\"homePageForm.$invalid || homePageForm.$pristine\" ng-click=\"setHomePage()\">Save</button>\n" +
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"homePageForm.$invalid || homePageForm.$pristine\" ng-click=\"setHomePage()\">Save</button>\n" +
     "</div>\n" +
     "</div>"
   );
