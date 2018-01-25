@@ -300,13 +300,12 @@
       }
 
       var modalInstance = $uibModal.open({
-        animation: true,
         templateUrl: 'views/modals/confirm.html',
         controller: 'ConfirmModalController',
         resolve: {
           modalConfig: function() {
             return {
-              message: gettextCatalog.getString(gettext("Cancel deployment {{rcName}}?"), {rcName: rcName}),
+              title: gettextCatalog.getString(gettext("Cancel deployment {{rcName}}?"), {rcName: rcName}),
               details: details,
               okButtonText: gettextCatalog.getString(gettext("Yes, cancel")),
               okButtonClass: "btn-danger",

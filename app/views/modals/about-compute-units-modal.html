@@ -1,13 +1,19 @@
-<div>
-  <div class="modal-body">
-    <h2>
-      <translate>Compute Resources</translate>
+<div class="about-compute-units-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="close()">
+      <span class="pficon pficon-close"></span>
+    </button>
+    <h1 class="modal-title" translate>
+      Compute Resources
       <span class="page-header-link">
         <a href="{{'compute_resources' | helpLink}}" target="_blank"><translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i></a>
       </span>
-    </h2>
+    </h1>
+  </div>
+  <div class="modal-body">
     <div translate>
-      Each container running on a node uses compute resources like CPU and memory. You can specify how much CPU and memory a container needs to improve scheduling and performance.
+      Each container running on a node uses compute resources like CPU and memory. You can specify
+      how much CPU and memory a container needs to improve scheduling and performance.
     </div>
 
     <h3 translate>CPU</h3>
@@ -49,6 +55,6 @@
 
   </div>
   <div class="modal-footer">
-    <button class="btn btn-lg btn-default" type="button" ng-click="ok()" translate>OK</button>
+    <button class="btn btn-default" type="button" ng-click="close()" translate>Close</button>
   </div>
 </div>

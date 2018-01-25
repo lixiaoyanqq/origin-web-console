@@ -1,7 +1,13 @@
 <div class="modal-resource-action">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="cancel()">
+      <span class="pficon pficon-close"></span>
+    </button>
+    <h1 class="modal-title">Confirm Replace</h1>
+  </div>
   <div class="modal-body">
     <div ng-if="!isList">
-      <h1 translate>{{resourceKind}} '<strong>{{resourceName}}</strong>' already exists</h1>
+      <p>{{resourceKind}} '<strong>{{resourceName}}</strong>' already exists.</p>
       <p translate>Do you want to replace with the new content?</p>
     </div>
 
@@ -17,7 +23,7 @@
 
   </div>
   <div class="modal-footer">
-      <button class="btn btn-lg btn-primary" type="button" ng-click="replace();" translate>Replace</button>
-      <button class="btn btn-lg btn-default" type="button" ng-click="cancel();" translate>Cancel</button>
+    <button class="btn btn-default" type="button" ng-click="cancel();" translate>Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="replace();" translate>Replace</button>
   </div>
 </div>

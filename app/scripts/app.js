@@ -38,7 +38,7 @@ angular
     'webCatalog',
     'gettext'
   ])
-  .config(function ($routeProvider, HomePagePreferenceServiceProvider) {
+  .config(function ($routeProvider, $uibModalProvider, HomePagePreferenceServiceProvider) {
     var landingPageRoute;
     var projectsPageRoute = {
       templateUrl: 'views/projects.html',
@@ -456,6 +456,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+    $uibModalProvider.options = {
+      animation: true,
+      backdrop: 'static' // do not allow close of modal by clicking backdrop
+    };
   })
   .constant("LOGGING_URL", _.get(window.OPENSHIFT_CONFIG, "loggingURL"))
   .constant("METRICS_URL", _.get(window.OPENSHIFT_CONFIG, "metricsURL"))
@@ -564,9 +569,9 @@ angular
       }
       isLocalLogoutModalShown = true;
       modalInstance = $uibModal.open({
-        animation: true,
         templateUrl: 'views/modals/logout.html',
         controller: 'LogoutModalController',
+        backdrop: true
       });
       modalInstance.result.then(function(event) {
         if (event === 'logout') {

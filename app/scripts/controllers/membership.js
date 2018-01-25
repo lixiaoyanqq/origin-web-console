@@ -211,6 +211,7 @@ angular
 
       var createModalScope = function(subjectName, kind, roleName, currentUserName) {
         var modalScope = {
+          title: 'Confirm Removal',
           alerts: {},
           detailsMarkup: messages.remove.areYouSure.html.subject({
             roleName: roleName,
@@ -290,7 +291,6 @@ angular
                 }
               }
               $uibModal.open({
-                animation: true,
                 templateUrl: 'views/modals/confirm.html',
                 controller: 'ConfirmModalController',
                 resolve: {
