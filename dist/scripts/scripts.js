@@ -11950,6 +11950,7 @@ f.removeVolume(e.deploymentConfig, t, a);
 o.unwatchAll(j);
 >>>>>>> Add Browse Catalog to Project context view.
 });
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
 var t = e.loadJSON("session", "events") || {}, n = _.get(window, "OPENSHIFT_CONSTANTS.EVENTS_TO_SHOW");
 return {
@@ -12097,12 +12098,28 @@ e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig =
 var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams"), R = r.getPreferredVersion("horizontalpodautoscalers"), E = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), N = r.getPreferredVersion("replicasets"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
 var $ = [];
+=======
+}));
+} ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+switch (d) {
+case "ReplicaSet":
+e.resource = T, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+break;
+
+case "ReplicationController":
+e.resource = N, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
+}
+var $ = {};
+e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {}, e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
+var B = [];
+>>>>>>> Use correct preferred version on replica set page
 p.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 });
-var B = t("deploymentStatus"), L = function(t) {
-e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
-}, V = t("isIE")();
+var L = t("deploymentStatus"), V = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], L(t));
+}, O = t("isIE")();
 y.get(n.project).then(_.spread(function(r, u) {
 e.project = r, e.projectContext = u;
 var p = {}, y = function() {
@@ -12113,8 +12130,8 @@ e.autoscalers = e.hpaForRS.concat(t);
 var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 } else e.autoscalers = e.hpaForRS;
-}, O = function() {
-$.push(i.watch(e.resource, u, function(t) {
+}, N = function() {
+B.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
@@ -12201,10 +12218,32 @@ _.set(e, "ordering.panelName", "fromProject");
 a.getCatalogItems().then(function(t) {
 e.catalogItems = t, v();
 });
+<<<<<<< HEAD
 }), e.$on("$destroy", function() {
 b();
 }), y && e.$on("$locationChangeStart", function(t) {
 f.search().startTour && (e.startGuidedTour(), t.preventDefault());
+=======
+r && i.get(e.deploymentsVersion, r.name, u).then(function(t) {
+e.deployment = t, e.healthCheckURL = g.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), B.push(i.watchObject(e.deploymentsVersion, t.metadata.name, u, function(t, r) {
+if ("DELETED" === r) return e.alerts["deployment-deleted"] = {
+type: "warning",
+message: "The deployment controlling this replica set has been deleted."
+}, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions"), e.deploymentMissing = !0, void delete e.deployment;
+e.deployment = t, e.breadcrumbs = o.getBreadcrumbs({
+object: e.replicaSet,
+displayName: "#" + s.getRevision(e.replicaSet),
+parent: {
+title: e.deployment.metadata.name,
+link: g.resourceURL(e.deployment)
+},
+humanizedKind: "Deployments"
+}), x(), y();
+})), B.push(i.watch(T, u, function(e) {
+var t = e.by("metadata.name");
+q = M(t);
+}));
+>>>>>>> Use correct preferred version on replica set page
 });
 <<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("EventsService", [ "BrowserStore", function(e) {
@@ -12227,8 +12266,9 @@ isCleared: function(e) {
 return _.get(t, [ e.metadata.uid, "cleared" ]);
 =======
 }, H = function() {
-if (!_.isEmpty(j)) {
+if (!_.isEmpty($)) {
 var t = _.get(e, "replicaSet.spec.template");
+<<<<<<< HEAD
 t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, j, u);
 >>>>>>> Add Browse Catalog to Project context view.
 }
@@ -12252,6 +12292,17 @@ return b(e).toLowerCase();
 switch (t) {
 case 'metadata.annotations["openshift.io/display-name"]':
 m = _.orderBy(d, [ n, "metadata.name" ], [ r ]);
+=======
+t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, $, u);
+}
+};
+i.get(e.resource, n.replicaSet, u, {
+errorNotification: !1
+}).then(function(t) {
+switch (e.loaded = !0, e.replicaSet = t, V(t), d) {
+case "ReplicationController":
+F(t);
+>>>>>>> Use correct preferred version on replica set page
 break;
 
 case 'metadata.annotations["openshift.io/requester"]':
@@ -12314,12 +12365,12 @@ O(), e.breadcrumbs = o.getBreadcrumbs({
 U(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 object: t
-}), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
+}), B.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This " + w + " has been deleted."
-}), e.replicaSet = t, L(t), U(), H(), e.deployment && x();
-})), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
+}), e.replicaSet = t, V(t), U(), H(), e.deployment && x();
+})), e.deploymentConfigName && N(), B.push(i.watch(E, u, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -12333,26 +12384,31 @@ name: n.replicaSet,
 kind: d,
 namespace: n.project
 });
-}), $.push(i.watch(e.resource, u, function(n, r, a) {
+}), B.push(i.watch(e.resource, u, function(n, r, a) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, i;
 a && (o = C(a, "deploymentConfig"), i = a.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, r ? "ADDED" === r || "MODIFIED" === r && t("deploymentIsInProgress")(a) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][i] = a) : "MODIFIED" === r && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][i] : e.deploymentConfigDeploymentsInProgress = s.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), a ? "DELETED" !== r && (a.causes = t("deploymentCauses")(a)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
 });
-})), $.push(i.watch(I, u, function(e) {
+})), B.push(i.watch(k, u, function(e) {
 var t = e.by("metadata.name");
-l.buildDockerRefMapForImageStreams(t, j), H(), m.log("imagestreams (subscribe)", t);
-})), $.push(i.watch(k, u, function(t) {
+l.buildDockerRefMapForImageStreams(t, $), H(), m.log("imagestreams (subscribe)", t);
+})), B.push(i.watch(j, u, function(t) {
 e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
+<<<<<<< HEAD
 })), $.push(i.watch(R, u, function(e) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 p = e.by("metadata.name"), y(), V();
 >>>>>>> Add Browse Catalog to Project context view.
 =======
+=======
+})), B.push(i.watch(I, u, function(e) {
+>>>>>>> Use correct preferred version on replica set page
 p = e.by("metadata.name"), y(), U();
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 }, {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12371,14 +12427,18 @@ poll: V,
 =======
 poll: V,
 >>>>>>> Fix potential API mismatch in BuildsService
+=======
+poll: O,
+>>>>>>> Use correct preferred version on replica set page
 pollInterval: 6e4
-})), i.list(E, u).then(function(t) {
+})), i.list(R, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), U();
 });
-$.push(i.watch(D, u, function(t) {
+B.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
 >>>>>>> Configurable inactivity timeout in console
 }, {
+<<<<<<< HEAD
 id: 'metadata.annotations["openshift.io/requester"]',
 title: l.getString(u("Creator")),
 sortType: "alpha"
@@ -12399,6 +12459,32 @@ var j = function(t) {
 p = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(p) && !e.isProjectListIncomplete, P();
 }, k = function() {
 h || m.list().then(j);
+=======
+poll: !0,
+pollInterval: 6e4
+})), B.push(i.watch(A, u, function(t) {
+e.clusterQuotas = t.by("metadata.name");
+}, {
+poll: !0,
+pollInterval: 6e4
+}));
+var G = t("deploymentIsLatest");
+e.showRollbackAction = function() {
+return "Complete" === L(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
+}, e.retryFailedDeployment = function(t) {
+s.retryFailedDeployment(t, u, e);
+}, e.rollbackToDeployment = function(t, n, r, a) {
+s.rollbackToDeployment(t, n, r, a, u, e);
+}, e.cancelRunningDeployment = function(e) {
+s.cancelRunningDeployment(e, u);
+}, e.scale = function(n) {
+var r = e.deployment || e.deploymentConfig || e.replicaSet;
+s.scale(r, n).then(_.noop, function(n) {
+e.alerts = e.alerts || {}, e.alerts.scale = {
+type: "error",
+message: "An error occurred scaling.",
+details: t("getErrorDetails")(n)
+>>>>>>> Use correct preferred version on replica set page
 };
 e.newProjectPanelShown = !1, e.createProject = function(t) {
 for (var n = _.get(t, "target"); n && !angular.element(n).hasClass("btn"); ) n = n.parentElement;
@@ -12418,10 +12504,35 @@ onSortChange: C
 onSortChange: C
 >>>>>>> Adding label filter to ste secrets page
 };
+<<<<<<< HEAD
 var w = function(t) {
 d = _.toArray(t.by("metadata.name")), e.loading = !1, e.showGetStarted = _.isEmpty(d) && !e.isProjectListIncomplete, C();
 }, P = function() {
 g || u.list().then(w);
+=======
+var K = t("hasDeploymentConfig");
+e.isScalable = function() {
+return !!_.isEmpty(e.autoscalers) && (!K(e.replicaSet) && !P(e.replicaSet) || (!(!e.deploymentConfigMissing && !e.deploymentMissing) || !(!e.deploymentConfig && !e.deployment) && (e.isActive && !q)));
+}, e.removeVolume = function(n) {
+var r = "This will remove the volume from the " + t("humanizeKind")(e.replicaSet.kind) + ".";
+n.persistentVolumeClaim ? r += " It will not delete the persistent volume claim." : n.secret ? r += " It will not delete the secret." : n.configMap && (r += " It will not delete the config map.");
+f.confirm({
+message: "Remove volume " + n.name + "?",
+details: r,
+okButtonText: "Remove",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+}).then(function() {
+b.removeVolume(e.replicaSet, n, u);
+});
+}, e.$on("$destroy", function() {
+i.unwatchAll(B);
+});
+}));
+} ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, r, a, o, i) {
+e.projectName = t.project, e.labelSuggestions = {}, e.clearFilter = function() {
+o.clear();
+>>>>>>> Use correct preferred version on replica set page
 };
 <<<<<<< HEAD
 e.newProjectPanelShown = !1, e.createProject = function() {
