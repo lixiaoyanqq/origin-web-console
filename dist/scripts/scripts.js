@@ -13960,9 +13960,10 @@ o.unwatchAll(j);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
-var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment");
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
 case "ReplicaSet":
+<<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 a.resource = {
 <<<<<<< f56378c1e748449074be8738ae159f02ed953303
@@ -14043,6 +14044,17 @@ var k = r.getPreferredVersion("builds"), I = r.getPreferredVersion("imagestreams
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
 var $ = [];
+=======
+e.resource = T, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+break;
+
+case "ReplicationController":
+e.resource = N, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicationController", n.replicaSet);
+}
+var $ = {};
+e.projectName = n.project, e.kind = d, e.replicaSet = null, e.deploymentConfig = null, e.deploymentConfigMissing = !1, e.imagesByDockerReference = {}, e.builds = {}, e.alerts = {}, e.renderOptions = e.renderOptions || {}, e.renderOptions.hideFilterWidget = !0, e.forms = {}, e.logOptions = {}, e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigsVersion = r.getPreferredVersion("deploymentconfigs"), e.eventsVersion = r.getPreferredVersion("events"), e.deploymentConfigsLogVersion = "deploymentconfigs/log";
+var B = [];
+>>>>>>> Use correct preferred version on replica set page
 p.isAvailable().then(function(t) {
 >>>>>>> Update replicaSets controller to use getPreferredVersion
 e.metricsAvailable = t;
@@ -14187,6 +14199,7 @@ var k = [];
 u.isAvailable().then(function(t) {
 e.metricsAvailable = t;
 });
+<<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 var j = t("deploymentStatus"), R = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], j(t));
 }, I = t("isIE")();
@@ -14233,6 +14246,11 @@ var B = t("deploymentStatus"), L = function(t) {
 e.logCanRun = !_.includes([ "New", "Pending" ], B(t));
 }, V = t("isIE")();
 >>>>>>> Fix potential API mismatch in BuildsService
+=======
+var L = t("deploymentStatus"), V = function(t) {
+e.logCanRun = !_.includes([ "New", "Pending" ], L(t));
+}, O = t("isIE")();
+>>>>>>> Use correct preferred version on replica set page
 y.get(n.project).then(_.spread(function(r, u) {
 e.project = r, e.projectContext = u;
 var p = {}, y = function() {
@@ -14244,8 +14262,8 @@ var r = c.filterHPA(p, "Deployment", e.deployment.metadata.name);
 e.autoscalers = e.hpaForRS.concat(r);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 } else e.autoscalers = e.hpaForRS;
-}, O = function() {
-$.push(i.watch(e.resource, u, function(t) {
+}, N = function() {
+B.push(i.watch(e.resource, u, function(t) {
 var n, r = [];
 angular.forEach(t.by("metadata.name"), function(t) {
 (C(t, "deploymentConfig") || "") === e.deploymentConfigName && r.push(t);
@@ -14288,7 +14306,7 @@ var t = v.getControllerReferences(e.replicaSet), r = _.find(t, {
 kind: "Deployment"
 });
 r && i.get(e.deploymentsVersion, r.name, u).then(function(t) {
-e.deployment = t, e.healthCheckURL = g.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), $.push(i.watchObject(e.deploymentsVersion, t.metadata.name, u, function(t, r) {
+e.deployment = t, e.healthCheckURL = g.healthCheckURL(n.project, "Deployment", t.metadata.name, "apps"), B.push(i.watchObject(e.deploymentsVersion, t.metadata.name, u, function(t, r) {
 if ("DELETED" === r) return e.alerts["deployment-deleted"] = {
 type: "warning",
 message: "The deployment controlling this replica set has been deleted."
@@ -14302,7 +14320,7 @@ link: g.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), x(), y();
-})), $.push(i.watch(N, u, function(e) {
+})), B.push(i.watch(T, u, function(e) {
 var t = e.by("metadata.name");
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 <<<<<<< f8cb892c3d9e864c3b7b3ba810c290ed7ce351f0
@@ -14326,9 +14344,9 @@ q = M(t);
 }));
 });
 }, H = function() {
-if (!_.isEmpty(j)) {
+if (!_.isEmpty($)) {
 var t = _.get(e, "replicaSet.spec.template");
-t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, j, u);
+t && l.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, $, u);
 }
 };
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
@@ -14359,8 +14377,12 @@ switch (e.loaded = !0, e.replicaSet = t, R(t), y) {
 i.get(e.resource, n.replicaSet, u, {
 errorNotification: !1
 }).then(function(t) {
+<<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 switch (e.loaded = !0, e.replicaSet = t, L(t), d) {
 >>>>>>> Update replicaSets controller to use getPreferredVersion
+=======
+switch (e.loaded = !0, e.replicaSet = t, V(t), d) {
+>>>>>>> Use correct preferred version on replica set page
 case "ReplicationController":
 F(t);
 break;
@@ -14685,7 +14707,7 @@ O(), e.breadcrumbs = o.getBreadcrumbs({
 U(), e.breadcrumbs = o.getBreadcrumbs({
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 object: t
-}), $.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
+}), B.push(i.watchObject(e.resource, n.replicaSet, u, function(t, n) {
 "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
@@ -14760,6 +14782,7 @@ message: "This " + C + " has been deleted."
 >>>>>>> Update pod controller to use getPreferredVersion
 =======
 message: "This " + w + " has been deleted."
+<<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
 <<<<<<< 54fd2fbbc13bc9ca6203880fcea399383443bb5d
 }), e.replicaSet = t, L(t), V(), H(), e.deployment && x();
@@ -14801,6 +14824,10 @@ message: "This " + w + " has been deleted."
 =======
 })), e.deploymentConfigName && O(), $.push(i.watch(T, u, function(t) {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}), e.replicaSet = t, V(t), U(), H(), e.deployment && x();
+})), e.deploymentConfigName && N(), B.push(i.watch(E, u, function(t) {
+>>>>>>> Use correct preferred version on replica set page
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -14814,14 +14841,15 @@ name: n.replicaSet,
 kind: d,
 namespace: n.project
 });
-}), $.push(i.watch(e.resource, u, function(n, r, a) {
+}), B.push(i.watch(e.resource, u, function(n, r, a) {
 e.replicaSets = n.by("metadata.name"), "ReplicationController" === d && (e.deploymentsByDeploymentConfig = s.associateDeploymentsToDeploymentConfig(e.replicaSets));
 var o, i;
 a && (o = C(a, "deploymentConfig"), i = a.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, r ? "ADDED" === r || "MODIFIED" === r && t("deploymentIsInProgress")(a) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][i] = a) : "MODIFIED" === r && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][i] : e.deploymentConfigDeploymentsInProgress = s.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), a ? "DELETED" !== r && (a.causes = t("deploymentCauses")(a)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
 });
-})), $.push(i.watch(I, u, function(e) {
+})), B.push(i.watch(k, u, function(e) {
 var t = e.by("metadata.name");
+<<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 <<<<<<< 13ac2d832bc56edf6bc5e2fc652da9b188ddae32
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 c.buildDockerRefMapForImageStreams(t, P), U(), l.log("imagestreams (subscribe)", t);
@@ -14932,20 +14960,26 @@ e.limitRanges = t.by("metadata.name"), V();
 e.limitRanges = t.by("metadata.name"), O();
 >>>>>>> Fix start build & deploy via correct instantiateVersions, add $filter to build group/resource string
 =======
+=======
+l.buildDockerRefMapForImageStreams(t, $), H(), m.log("imagestreams (subscribe)", t);
+})), B.push(i.watch(j, u, function(t) {
+e.builds = t.by("metadata.name"), m.log("builds (subscribe)", e.builds);
+})), B.push(i.watch(I, u, function(e) {
+>>>>>>> Use correct preferred version on replica set page
 p = e.by("metadata.name"), y(), U();
 }, {
-poll: V,
+poll: O,
 pollInterval: 6e4
-})), i.list(E, u).then(function(t) {
+})), i.list(R, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), U();
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 });
-$.push(i.watch(D, u, function(t) {
+B.push(i.watch(D, u, function(t) {
 e.quotas = t.by("metadata.name");
 }, {
 poll: !0,
 pollInterval: 6e4
-})), $.push(i.watch(A, u, function(t) {
+})), B.push(i.watch(A, u, function(t) {
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -14953,7 +14987,7 @@ pollInterval: 6e4
 }));
 var G = t("deploymentIsLatest");
 e.showRollbackAction = function() {
-return "Complete" === B(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
+return "Complete" === L(e.replicaSet) && !G(e.replicaSet, e.deploymentConfig) && !e.replicaSet.metadata.deletionTimestamp && a.canI("deploymentconfigrollbacks", "create");
 }, e.retryFailedDeployment = function(t) {
 s.retryFailedDeployment(t, u, e);
 }, e.rollbackToDeployment = function(t, n, r, a) {
@@ -14986,7 +15020,7 @@ cancelButtonText: "Cancel"
 b.removeVolume(e.replicaSet, n, u);
 });
 }, e.$on("$destroy", function() {
-i.unwatchAll($);
+i.unwatchAll(B);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("StatefulSetsController", [ "$scope", "$routeParams", "APIService", "DataService", "ProjectsService", "LabelFilter", "PodsService", function(e, t, n, r, a, o, i) {
