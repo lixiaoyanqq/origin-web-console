@@ -21791,6 +21791,7 @@ type: e.homePagePreference
 }, e.cancel = function() {
 t.dismiss("cancel");
 };
+<<<<<<< bb669e56ab169e5862bd05a7fa5a7cd2e9bd56f2
 } ]), angular.module("openshiftConsole").controller("AboutController", [ "$scope", "AuthService", "Constants", function(e, t, n) {
 t.withUser(), e.version = {
 master: {
@@ -21804,6 +21805,21 @@ console: n.VERSION.console
 n.withUser(), e.cliDownloadURL = a.CLI, e.cliDownloadURLPresent = e.cliDownloadURL && !_.isEmpty(e.cliDownloadURL), e.loginBaseURL = t.openshiftAPIBaseUrl(), a.DISABLE_COPY_LOGIN_COMMAND || (e.sessionToken = n.UserStore().getToken());
 } ]), angular.module("openshiftConsole").controller("CreatePersistentVolumeClaimController", [ "$filter", "$routeParams", "$scope", "$window", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, a, r, o, i, s, c, l, u) {
 =======
+=======
+} ]), angular.module("openshiftConsole").controller("AboutController", [ "$scope", "$q", "AuthService", "Constants", "DataService", function(e, t, n, r, a) {
+n.withUser(), e.version = {
+master: {},
+console: r.VERSION.console || "unknown"
+};
+var o = e.version.master, i = [];
+i.push(a.getKubernetesMasterVersion().then(function(e) {
+o.kubernetes = e.data.gitVersion;
+})), i.push(a.getOpenShiftMasterVersion().then(function(e) {
+o.openshift = e.data.gitVersion;
+})), t.all(i).finally(function() {
+o.kubernetes = o.kubernetes || r.VERSION.kubernetes || "unknown", o.openshift = o.openshift || r.VERSION.openshift || "unknown";
+});
+>>>>>>> Bug 1539566 - Request server version on about page load
 } ]), angular.module("openshiftConsole").controller("CommandLineController", [ "$scope", "DataService", "AuthService", "Constants", function(e, t, n, r) {
 n.withUser(), e.cliDownloadURL = r.CLI, e.cliDownloadURLPresent = e.cliDownloadURL && !_.isEmpty(e.cliDownloadURL), e.loginBaseURL = t.openshiftAPIBaseUrl(), r.DISABLE_COPY_LOGIN_COMMAND || (e.sessionToken = n.UserStore().getToken());
 } ]), angular.module("openshiftConsole").controller("CreatePersistentVolumeClaimController", [ "$filter", "$routeParams", "$scope", "$window", "APIService", "ApplicationGenerator", "AuthorizationService", "DataService", "Navigate", "NotificationsService", "ProjectsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d) {

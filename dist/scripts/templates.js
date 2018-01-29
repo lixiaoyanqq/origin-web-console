@@ -848,6 +848,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<img src=\"images/openshift-logo.svg\"/>\n" +
     "</div>\n" +
     "<div class=\"col-md-9\">\n" +
+<<<<<<< bb669e56ab169e5862bd05a7fa5a7cd2e9bd56f2
     "<h1>DMOS <span class=\"about-reg\">&reg;</span></h1>\n" +
     "<h2 translate>About</h2>\n" +
     "<p translate>DMOS is Shurenyun's Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment.</p>\n" +
@@ -857,14 +858,47 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dd>{{version.master.openshift || 'unknown'}}</dd>\n" +
     "<dt translate>Kubernetes Master:</dt>\n" +
     "<dd>{{version.master.kubernetes || 'unknown'}}</dd>\n" +
+=======
+    "<h1>Red Hat OpenShift <span class=\"about-reg\">&reg;</span></h1>\n" +
+    "<h2>About</h2>\n" +
+    "<p>\n" +
+    "<a target=\"_blank\" href=\"https://openshift.com\">OpenShift</a> is Red Hat's Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment.\n" +
+    "</p>\n" +
+    "<h2 id=\"version\">Version</h2>\n" +
+    "<dl class=\"dl-horizontal left\">\n" +
+    "<dt>OpenShift Master:</dt>\n" +
+    "<dd>\n" +
+    "{{version.master.openshift}}\n" +
+    "</dd>\n" +
+    "<dt>Kubernetes Master:</dt>\n" +
+    "<dd>\n" +
+    "{{version.master.kubernetes}}\n" +
+    "</dd>\n" +
+>>>>>>> Bug 1539566 - Request server version on about page load
     "<dt>OpenShift Web Console:</dt>\n" +
-    "<dd>{{version.console || 'unknown'}}</dd>\n" +
+    "<dd>\n" +
+    "{{version.console}}\n" +
+    "</dd>\n" +
     "</dl>\n" +
+<<<<<<< bb669e56ab169e5862bd05a7fa5a7cd2e9bd56f2
     "<p translate>The <a target=\"_blank\" ng-href=\"{{'welcome' | helpLink}}\">documentation</a> helps you learn about OpenShift and start exploring its features. From getting started with creating your first application to trying out more advanced build and deployment techniques, it provides guidance on setting up and managing your OpenShift environment as an application developer.</p>\n" +
     "<p translate>With the DMOS command line interface (CLI), you can create applications and manage OpenShift projects from a terminal. To get started using the CLI, visit <a href=\"command-line\">Command Line Tools</a>.\n" +
     "</p>\n" +
     "<h2 translate>Account</h2>\n" +
     "<p translate>You are currently logged in under the user account <strong>{{user.metadata.name}}</strong>.</p>\n" +
+=======
+    "<p>\n" +
+    "The <a target=\"_blank\" ng-href=\"{{'welcome' | helpLink}}\">documentation</a> helps you learn about OpenShift and start exploring its features. From getting started with creating your first application to trying out more advanced build and deployment techniques, it provides guidance on setting up and managing your OpenShift environment as an application developer.\n" +
+    "</p>\n" +
+    "<p>\n" +
+    "With the OpenShift command line interface (CLI), you can create applications and manage OpenShift projects from a terminal. To get started using the CLI, visit\n" +
+    "<a href=\"command-line\">Command Line Tools</a>.\n" +
+    "</p>\n" +
+    "<h2>Account</h2>\n" +
+    "<p>\n" +
+    "You are currently logged in under the user account <strong>{{user.metadata.name}}</strong>.\n" +
+    "</p>\n" +
+>>>>>>> Bug 1539566 - Request server version on about page load
     "</div>\n" +
     "</div>\n" +
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
