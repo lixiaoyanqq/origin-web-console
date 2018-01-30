@@ -13104,9 +13104,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"strategyData.type === 'Custom'\">\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<label for=\"imageName\" class=\"required\" translate>Image Name</label>\n" +
+=======
+    "<label for=\"image-name\">Image Name</label>\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<div>\n" +
-    "<input class=\"form-control\" id=\"imageName\" name=\"imageName\" ng-model=\"strategyData.customParams.image\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"image-name-help\" required>\n" +
+    "<input class=\"form-control\" id=\"image-name\" name=\"imageName\" ng-model=\"strategyData.customParams.image\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"image-name-help\">\n" +
     "</div>\n" +
     "<div class=\"help-block\" id=\"image-name-help\" translate>An image that can carry out the deployment.</div>\n" +
     "</div>\n" +
@@ -13126,16 +13130,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"strategyData.type !== 'Custom'\">\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<label for=\"strategyTimeout\" translate>Timeout</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }\">\n" +
     "<input id=\"strategyTimeout\" type=\"number\" name=\"strategyTimeout\" ng-model=\"strategyData[strategyParamsPropertyName].timeoutSeconds\" placeholder=\"600\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"strategyTimeout\">\n" +
 <<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
 =======
+=======
+    "<label for=\"strategy-timeout\">Timeout</label>\n" +
+    "<span class=\"input-group\" ng-class=\"{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }\">\n" +
+    "<input id=\"strategy-timeout\" type=\"number\" name=\"strategyTimeout\" ng-model=\"strategyData[strategyParamsPropertyName].timeoutSeconds\" placeholder=\"600\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"strategy-timeout-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<span class=\"input-group-addon\">seconds</span>\n" +
 >>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<div class=\"help-block\" ng-attr-id=\"strategyTimeout\" translate>\n" +
+=======
+    "<div class=\"help-block\" id=\"strategy-timeout-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "How long to wait for a pod to scale up before giving up.\n" +
     "</div>\n" +
     "<div ng-if=\"form.strategyTimeout.$invalid && form.strategyTimeout.$touched\" class=\"has-error\">\n" +
@@ -13154,16 +13168,26 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div ng-show=\"view.advancedStrategyOptions\">\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<label for=\"updatePeriod\" translate>Update Period</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }\">\n" +
     "<input id=\"updatePeriod\" type=\"number\" placeholder=\"1\" name=\"updatePeriod\" ng-model=\"strategyData[strategyParamsPropertyName].updatePeriodSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"updatePeriod\">\n" +
 <<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
 =======
+=======
+    "<label for=\"update-period\">Update Period</label>\n" +
+    "<span class=\"input-group\" ng-class=\"{ 'has-error': form.updatePeriod.$invalid && form.updatePeriod.$touched }\">\n" +
+    "<input id=\"update-period\" type=\"number\" placeholder=\"1\" name=\"updatePeriod\" ng-model=\"strategyData[strategyParamsPropertyName].updatePeriodSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"update-period-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<span class=\"input-group-addon\">seconds</span>\n" +
 >>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<div class=\"help-block\" id=\"updatePeriod\" translate>\n" +
+=======
+    "<div class=\"help-block\" id=\"update-period-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "Time to wait between retrying to run individual pod.\n" +
     "</div>\n" +
     "<div ng-if=\"form.updatePeriod.$invalid && form.updatePeriod.$touched\" class=\"has-error\">\n" +
@@ -13181,14 +13205,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"interval\" translate>Interval</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.interval.$invalid && form.interval.$touched }\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<input id=\"interval\" type=\"number\" placeholder=\"1\" name=\"interval\" ng-model=\"strategyData[strategyParamsPropertyName].intervalSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"interval\">\n" +
 <<<<<<< aa224922d1f56fb87815e96ea19303c205a91afd
     "<span class=\"input-group-addon\" translate>seconds</span>\n" +
 =======
+=======
+    "<input id=\"interval\" type=\"number\" placeholder=\"1\" name=\"interval\" ng-model=\"strategyData[strategyParamsPropertyName].intervalSeconds\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"interval-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<span class=\"input-group-addon\">seconds</span>\n" +
 >>>>>>> Bug 1470976 - Support number input on iOS
     "</span>\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<div class=\"help-block\" ng-attr-id=\"interval\" translate>\n" +
+=======
+    "<div class=\"help-block\" id=\"interval-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "Time to wait between polling deployment status after running a pod.\n" +
     "</div>\n" +
     "<div ng-if=\"form.interval.$invalid && form.interval.$touched\" class=\"has-error\">\n" +
@@ -13205,11 +13237,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<label for=\"maxUnavailable\" translate>Maximum Number of Unavailable Pods</label>\n" +
+=======
+    "<label for=\"max-unavailable\">Maximum Number of Unavailable Pods</label>\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<div ng-class=\"{ 'has-error': form.maxUnavailable.$invalid && form.maxUnavailable.$touched }\">\n" +
-    "<input id=\"maxUnavailable\" type=\"text\" placeholder=\"25%\" name=\"maxUnavailable\" ng-model=\"strategyData[strategyParamsPropertyName].maxUnavailable\" ng-pattern=\"/^\\d+%?$/\" select-on-focus class=\"form-control\" aria-describedby=\"max-unavailable-help\">\n" +
+    "<input id=\"max-unavailable\" type=\"text\" placeholder=\"25%\" name=\"maxUnavailable\" ng-model=\"strategyData[strategyParamsPropertyName].maxUnavailable\" ng-pattern=\"/^\\d+%?$/\" select-on-focus class=\"form-control\" aria-describedby=\"max-unavailable-help\">\n" +
     "</div>\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<div class=\"help-block\" translate>\n" +
+=======
+    "<div class=\"help-block\" id=\"max-unavailable-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "The maximum number of pods that can be unavailable during the rolling deployment. This can be either a percentage (10%) or a whole number (1).\n" +
     "</div>\n" +
     "<div ng-if=\"form.maxUnavailable.$invalid && form.maxUnavailable.$touched && form.maxUnavailable.$error.pattern\" class=\"has-error\">\n" +
@@ -13219,11 +13259,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<label for=\"maxSurge\" translate>Maximum Number of Surge Pods</label>\n" +
+=======
+    "<label for=\"max-surge\">Maximum Number of Surge Pods</label>\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "<div ng-class=\"{ 'has-error': form.maxSurge.$invalid && form.maxSurge.$touched }\">\n" +
-    "<input id=\"maxSurge\" type=\"text\" placeholder=\"25%\" name=\"maxSurge\" ng-model=\"strategyData[strategyParamsPropertyName].maxSurge\" ng-pattern=\"/^\\d+%?$/\" select-on-focus class=\"form-control\" aria-describedby=\"maxSurge\">\n" +
+    "<input id=\"max-surge\" type=\"text\" placeholder=\"25%\" name=\"maxSurge\" ng-model=\"strategyData[strategyParamsPropertyName].maxSurge\" ng-pattern=\"/^\\d+%?$/\" select-on-focus class=\"form-control\" aria-describedby=\"max-surge-help\">\n" +
     "</div>\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
     "<div class=\"help-block\" translate>\n" +
+=======
+    "<div class=\"help-block\" id=\"max-surge-help\">\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "The maximum number of pods that can be scheduled above the original number of pods while the rolling deployment is in progress. This can be either a percentage (10%) or a whole number (1).\n" +
     "</div>\n" +
     "<div ng-if=\"form.maxSurge.$invalid && form.maxSurge.$touched && form.maxSurge.$error.pattern\" class=\"has-error\">\n" +
@@ -13296,12 +13344,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!containerConfig.hasDeploymentTrigger\" class=\"form-group\">\n" +
+<<<<<<< 63b75e8fc68f4fa11cd9ed7d1e1b003b0ae41727
 <<<<<<< 0f32647bf49d71f71afe3f1a3508a1caca8bf0c7
     "<label for=\"imageName\" class=\"required\" translate>Image Name</label>\n" +
 =======
     "<label for=\"imageName\" class=\"required\">Image Name</label>\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
     "<input class=\"form-control\" id=\"imageName\" name=\"imageName\" ng-model=\"containerConfig.image\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+=======
+    "<label for=\"container-{{$index}}-image-name\" class=\"required\">Image Name</label>\n" +
+    "<input class=\"form-control\" id=\"container-{{$index}}-image-name\" name=\"container{{$index}}ImageName\" ng-model=\"containerConfig.image\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+>>>>>>> Bug 1538943: Image carry out the deployment should be optional for Custom deployment strategy and should have unique ID
     "</div>\n" +
     "</div>\n" +
     "<div class=\"checkbox form-group\">\n" +
