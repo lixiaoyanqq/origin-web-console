@@ -5150,6 +5150,7 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 @media (min-width:768px){.results-status .fa,.results-status .pficon{font-size:32px}
 }
 .results-status .fa-clock-o{font-size:30px}
+<<<<<<< HEAD
 =======
 .bind-status{display:flex;font-size:16px;margin-top:0}
 .bind-status.show-progress,.table-responsive .truncation-expand-link{display:block}
@@ -5193,6 +5194,8 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 .delete-resource-modal p{font-size:15px}
 .delete-resource-modal .help-block{margin-top:0px;margin-bottom:10px}
 >>>>>>> Support binding parameters
+=======
+>>>>>>> Align delete project modal with PatternFly standard
 .dialog-btn{float:right!important;margin-right:10px}
 .dialog-btn:first-of-type{margin-right:0}
 .pretty-json{font-family:Menlo,Monaco,Consolas,monospace;white-space:pre-wrap}
@@ -5211,11 +5214,16 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 >>>>>>> Making next steps/results messaging consistent
 label.required:before{content:'*';position:absolute;left:10px}
 <<<<<<< HEAD
+<<<<<<< HEAD
 @media (min-width:768px){.results-status .fa-clock-o{font-size:36px}
 .form-horizontal label.required:before{position:relative;left:-3px}
 =======
 @media (min-width:768px){.form-horizontal label.required:before{position:relative;left:-3px}
 >>>>>>> Improving display of results status messages and removing orphaned tasks directive
+=======
+@media (min-width:768px){.results-status .fa-clock-o{font-size:36px}
+.form-horizontal label.required:before{position:relative;left:-3px}
+>>>>>>> Align delete project modal with PatternFly standard
 }
 .guided-tour-backdrop{z-index:1052}
 div.hopscotch-bubble{border-color:#bbb;border-width:1px;box-shadow:1px 1px 3px rgba(0,0,0,.3)}

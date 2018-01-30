@@ -14398,6 +14398,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/modals/delete-project.html',
     "<div class=\"modal-project-delete\">\n" +
     "<div class=\"modal-header\">\n" +
@@ -14430,6 +14431,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Align delete project modal with PatternFly standard
   $templateCache.put('views/modals/delete-resource.html',
     "<div class=\"modal-resource-action\">\n" +
     "\n" +
