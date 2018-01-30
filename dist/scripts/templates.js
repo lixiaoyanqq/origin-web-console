@@ -14717,6 +14717,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div>\n" +
 =======
     "<p>What would you like to do?</p>\n" +
+<<<<<<< 9f23761f450f83c8f949e09f9aacb5ddf7fa8a19
     "<p>\n" +
 >>>>>>> Update modals to align with PatternFly standard
     "<label>\n" +
@@ -14746,6 +14747,30 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<span id=\"helpBlock\" class=\"help-block\">{{updateTemplate ? \"This will overwrite the current version of the template.\" : \"Save the template to the project. This will make the template available to anyone who can view the project.\"}}</span>\n" +
     "</p>\n" +
+=======
+    "<div class=\"form-group\">\n" +
+    "<div class=\"checkbox\">\n" +
+    "<label>\n" +
+    "<input type=\"checkbox\" ng-model=\"templateOptions.process\" aria-descirbedby=\"process-template-help\">\n" +
+    "<strong>Process the template</strong>\n" +
+    "</label>\n" +
+    "<div id=\"process-template-help\" class=\"help-block\">\n" +
+    "Create the objects defined in the template. You will have an opportunity to fill in template parameters.\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div class=\"form-group\">\n" +
+    "<div class=\"checkbox\">\n" +
+    "<label>\n" +
+    "<input type=\"checkbox\" ng-model=\"templateOptions.add\" aria-descirbedby=\"save-template-help\">\n" +
+    "<strong>{{updateTemplate ? \"Update\" : \"Save\"}} template</strong>\n" +
+    "</label>\n" +
+    "<div id=\"save-template-help\" class=\"help-block\">\n" +
+    "{{updateTemplate ? \"This will overwrite the current version of the template.\" : \"Save the template to the project. This will make the template available to anyone who can view the project.\"}}\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</div>\n" +
+>>>>>>> Improve form markup in process or save template dialog
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
     "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel();\">Cancel</button>\n" +
