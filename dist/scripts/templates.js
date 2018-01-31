@@ -4974,11 +4974,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle\">\n" +
     "<div class=\"middle-header\">\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< cc92c4347cada0f30d161df7e0031d227460353c
 <<<<<<< 9a604499f1b86c5e73978ed09701b5b57e31d906
     "<span class=\"label label-warning label-tech-preview\" translate>Technology Preview</span>\n" +
 =======
     "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
 >>>>>>> Improving display of tech-preview label
+=======
+>>>>>>> Remove tech preview from stateful sets pages
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div>\n" +
@@ -5114,11 +5117,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
+<<<<<<< cc92c4347cada0f30d161df7e0031d227460353c
 <<<<<<< 9a604499f1b86c5e73978ed09701b5b57e31d906
     "<span class=\"label label-warning label-tech-preview\" translate>Technology Preview</span>\n" +
 =======
     "<span class=\"label label-warning label-tech-preview\">Technology Preview</span>\n" +
 >>>>>>> Improving display of tech-preview label
+=======
+>>>>>>> Remove tech preview from stateful sets pages
     "<h1>\n" +
     "<translate>Stateful Sets</translate>\n" +
     "\n" +
