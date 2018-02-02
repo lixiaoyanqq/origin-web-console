@@ -15836,6 +15836,7 @@ i.get(d, t, {
 namespace: r
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }, {
+<<<<<<< HEAD
 errorNotification: !1
 }).then(function(e) {
 n.createSampleURL = c.createFromTemplateURL(e, n.projectName);
@@ -15869,17 +15870,77 @@ title: n.buildconfig
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
+=======
+title: "Edit"
+} ];
+var d = function() {
+c.hideNotification("edit-route-error");
+};
+r.$on("$destroy", d);
+var m = function() {
+t.path(r.routeURL);
+};
+r.cancel = m;
+var p, f = a.getPreferredVersion("routes"), g = a.getPreferredVersion("services");
+l.get(n.project).then(_.spread(function(t, a) {
+if (r.project = t, o.canI("routes", "update", n.project)) {
+var l, v = e("orderByDisplayName"), h = function() {
+s.toErrorPage('Editing routes with non-service targets is unsupported. You can edit the route with the "Edit YAML" action instead.');
+};
+i.get(f, r.routeName, a).then(function(e) {
+"Service" === e.spec.to.kind ? (l = angular.copy(e), p = _.get(l, "spec.host"), "Subdomain" === _.get(l, "spec.wildcardPolicy") && (p = "*." + u.getSubdomain(l)), r.routing = {
+host: p,
+wildcardPolicy: _.get(l, "spec.wildcardPolicy"),
+path: _.get(l, "spec.path"),
+targetPort: _.get(l, "spec.port.targetPort"),
+tls: angular.copy(_.get(l, "spec.tls"))
+}, i.list(g, a).then(function(e) {
+r.loading = !1;
+var t = e.by("metadata.name");
+r.routing.to = l.spec.to, r.routing.alternateServices = [], _.each(_.get(l, "spec.alternateBackends"), function(e) {
+if ("Service" !== e.kind) return h(), !1;
+r.routing.alternateServices.push(e);
+}), r.services = v(t);
+})) : h();
+}, function() {
+s.toErrorPage("Could not load route " + r.routeName + ".");
+});
+var y = function() {
+var e = angular.copy(l), t = _.get(r, "routing.to.name");
+_.set(e, "spec.to.name", t);
+var n = _.get(r, "routing.to.weight");
+isNaN(n) || _.set(e, "spec.to.weight", n);
+var a = r.routing.host;
+p !== a && (a.startsWith("*.") && (a = "wildcard" + a.substring(1)), e.spec.host = a), e.spec.path = r.routing.path;
+var o = r.routing.targetPort;
+o ? _.set(e, "spec.port.targetPort", o) : delete e.spec.port, _.get(r, "routing.tls.termination") ? (e.spec.tls = r.routing.tls, "passthrough" === e.spec.tls.termination && (delete e.spec.path, delete e.spec.tls.certificate, delete e.spec.tls.key, delete e.spec.tls.caCertificate), "reencrypt" !== e.spec.tls.termination && delete e.spec.tls.destinationCACertificate) : delete e.spec.tls;
+var i = _.get(r, "routing.alternateServices", []);
+return _.isEmpty(i) ? delete e.spec.alternateBackends : e.spec.alternateBackends = _.map(i, function(e) {
+return {
+kind: "Service",
+name: e.name,
+weight: e.weight
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 };
 var g = t("buildConfigForBuild"), f = t("buildStrategy"), v = t("orderByDisplayName"), h = t("getErrorDetails"), y = [], b = [], S = [];
 e.valueFromObjects = [];
 var C = function(t) {
 e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
 };
+<<<<<<< HEAD
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
 u.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = p.compactEntries(angular.copy(e.envVars)), s.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
 u.addNotification({
+=======
+r.updateRoute = function() {
+if (r.form.$valid) {
+d(), r.disableInputs = !0;
+var t = y();
+i.update(f, r.routeName, t, a).then(function() {
+c.addNotification({
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
 }), e.forms.bcEnvVars.$setPristine();
@@ -20698,8 +20759,61 @@ pollInterval: 6e4
 })), o.list("limitranges", g).then(function(t) {
 e.limitRanges = t.by("metadata.name"), T();
 });
+<<<<<<< HEAD
 j.push(o.watch("resourcequotas", g, function(t) {
 e.quotas = t.by("metadata.name");
+=======
+},
+template: '<a ng-if="isLink" ng-href="{{gitLink}}" ng-transclude target="_blank"></a><span ng-if="!isLink" ng-transclude></span>'
+};
+} ]), angular.module("openshiftConsole").directive("oscImageSummary", function() {
+return {
+restrict: "E",
+scope: {
+resource: "=",
+name: "=",
+tag: "="
+},
+templateUrl: "views/directives/osc-image-summary.html"
+};
+}), angular.module("openshiftConsole").directive("oscRouting", [ "$filter", "Constants", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n) {
+return {
+require: "^form",
+restrict: "E",
+scope: {
+route: "=model",
+services: "=",
+showNameInput: "=",
+routingDisabled: "=",
+existingRoute: "="
+},
+templateUrl: "views/directives/osc-routing.html",
+link: function(r, a, o, i) {
+r.form = i, r.controls = {}, r.options = {
+secureRoute: !1,
+alternateServices: !1
+};
+var s = {
+group: "route.openshift.io",
+resource: "routes/custom-host"
+};
+r.canICreateCustomHosts = e("canI")(s, "create"), r.canIUpdateCustomHosts = e("canI")(s, "update");
+var c = function() {
+return r.existingRoute ? r.canIUpdateCustomHosts : r.canICreateCustomHosts;
+};
+r.isHostnameReadOnly = function() {
+return !c();
+}, r.disableWildcards = t.DISABLE_WILDCARD_ROUTES || r.existingRoute && "Subdomain" !== r.route.wildcardPolicy, r.areCertificateInputsReadOnly = function() {
+return !r.canICreateCustomHosts;
+}, r.areCertificateInputsDisabled = function() {
+var e = _.get(r, "route.tls.termination");
+return !e || "passthrough" === e;
+}, r.isDestinationCACertInputDisabled = function() {
+return "reencrypt" !== _.get(r, "route.tls.termination");
+}, r.insecureTrafficOptions = [ {
+value: "",
+label: "None"
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 }, {
 poll: !0,
 pollInterval: 6e4
