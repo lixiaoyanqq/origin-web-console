@@ -18933,12 +18933,13 @@ var m = function() {
 t.path(r.routeURL);
 };
 r.cancel = m;
-var p = a.getPreferredVersion("routes"), f = a.getPreferredVersion("services");
+var p, f = a.getPreferredVersion("routes"), g = a.getPreferredVersion("services");
 l.get(n.project).then(_.spread(function(t, a) {
 if (r.project = t, o.canI("routes", "update", n.project)) {
-var l, g = e("orderByDisplayName"), v = function() {
+var l, v = e("orderByDisplayName"), h = function() {
 s.toErrorPage('Editing routes with non-service targets is unsupported. You can edit the route with the "Edit YAML" action instead.');
 };
+<<<<<<< 3b1ac0c6f206dd8b5857dcf3bb395edf45c18e05
 i.get(p, r.routeName, a).then(function(e) {
 if ("Service" === e.spec.to.kind) {
 l = angular.copy(e);
@@ -18975,22 +18976,32 @@ tls: angular.copy(_.get(p, "spec.tls"))
 >>>>>>> Support EnvFrom in the Env Editors
 }, o.list("services", c).then(function(e) {
 =======
+=======
+i.get(f, r.routeName, a).then(function(e) {
+"Service" === e.spec.to.kind ? (l = angular.copy(e), p = _.get(l, "spec.host"), "Subdomain" === _.get(l, "spec.wildcardPolicy") && (p = "*." + u.getSubdomain(l)), r.routing = {
+host: p,
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 wildcardPolicy: _.get(l, "spec.wildcardPolicy"),
 path: _.get(l, "spec.path"),
 targetPort: _.get(l, "spec.port.targetPort"),
 tls: angular.copy(_.get(l, "spec.tls"))
+<<<<<<< 3b1ac0c6f206dd8b5857dcf3bb395edf45c18e05
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 }, i.list(f, r).then(function(e) {
 >>>>>>> Update edit/route controller to use getPreferredVersion
 a.loading = !1;
 =======
 }, i.list(f, a).then(function(e) {
+=======
+}, i.list(g, a).then(function(e) {
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 r.loading = !1;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 var t = e.by("metadata.name");
 r.routing.to = l.spec.to, r.routing.alternateServices = [], _.each(_.get(l, "spec.alternateBackends"), function(e) {
-if ("Service" !== e.kind) return v(), !1;
+if ("Service" !== e.kind) return h(), !1;
 r.routing.alternateServices.push(e);
+<<<<<<< 3b1ac0c6f206dd8b5857dcf3bb395edf45c18e05
 }), r.services = g(t);
 });
 <<<<<<< 4c1726fedacee1e9102d86a53473c262eb06e303
@@ -19042,15 +19053,25 @@ var h = function() {
 var e = angular.copy(l), t = _.get(a, "routing.to.name");
 >>>>>>> Update edit/route controller to use getPreferredVersion
 =======
+=======
+}), r.services = v(t);
+})) : h();
+}, function() {
+s.toErrorPage("Could not load route " + r.routeName + ".");
+});
+var y = function() {
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 var e = angular.copy(l), t = _.get(r, "routing.to.name");
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 _.set(e, "spec.to.name", t);
 var n = _.get(r, "routing.to.weight");
-isNaN(n) || _.set(e, "spec.to.weight", n), e.spec.path = r.routing.path;
-var a = r.routing.targetPort;
-a ? _.set(e, "spec.port.targetPort", a) : delete e.spec.port, _.get(r, "routing.tls.termination") ? (e.spec.tls = r.routing.tls, "passthrough" === e.spec.tls.termination && (delete e.spec.path, delete e.spec.tls.certificate, delete e.spec.tls.key, delete e.spec.tls.caCertificate), "reencrypt" !== e.spec.tls.termination && delete e.spec.tls.destinationCACertificate) : delete e.spec.tls;
-var o = _.get(r, "routing.alternateServices", []);
-return _.isEmpty(o) ? delete e.spec.alternateBackends : e.spec.alternateBackends = _.map(o, function(e) {
+isNaN(n) || _.set(e, "spec.to.weight", n);
+var a = r.routing.host;
+p !== a && (a.startsWith("*.") && (a = "wildcard" + a.substring(1)), e.spec.host = a), e.spec.path = r.routing.path;
+var o = r.routing.targetPort;
+o ? _.set(e, "spec.port.targetPort", o) : delete e.spec.port, _.get(r, "routing.tls.termination") ? (e.spec.tls = r.routing.tls, "passthrough" === e.spec.tls.termination && (delete e.spec.path, delete e.spec.tls.certificate, delete e.spec.tls.key, delete e.spec.tls.caCertificate), "reencrypt" !== e.spec.tls.termination && delete e.spec.tls.destinationCACertificate) : delete e.spec.tls;
+var i = _.get(r, "routing.alternateServices", []);
+return _.isEmpty(i) ? delete e.spec.alternateBackends : e.spec.alternateBackends = _.map(i, function(e) {
 return {
 kind: "Service",
 name: e.name,
@@ -19084,9 +19105,14 @@ d(), a.disableInputs = !0;
 r.updateRoute = function() {
 if (r.form.$valid) {
 d(), r.disableInputs = !0;
+<<<<<<< 3b1ac0c6f206dd8b5857dcf3bb395edf45c18e05
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 var t = h();
 i.update(p, r.routeName, t, a).then(function() {
+=======
+var t = y();
+i.update(f, r.routeName, t, a).then(function() {
+>>>>>>> Bug 1540783 - Keep hostname updates in route editor
 c.addNotification({
 type: "success",
 message: "Route " + r.routeName + " was successfully updated."
@@ -24620,7 +24646,7 @@ return r.existingRoute ? r.canIUpdateCustomHosts : r.canICreateCustomHosts;
 };
 r.isHostnameReadOnly = function() {
 return !c();
-}, r.disableWildcards = t.DISABLE_WILDCARD_ROUTES, r.areCertificateInputsReadOnly = function() {
+}, r.disableWildcards = t.DISABLE_WILDCARD_ROUTES || r.existingRoute && "Subdomain" !== r.route.wildcardPolicy, r.areCertificateInputsReadOnly = function() {
 return !r.canICreateCustomHosts;
 }, r.areCertificateInputsDisabled = function() {
 var e = _.get(r, "route.tls.termination");
