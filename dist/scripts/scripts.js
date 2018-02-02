@@ -42501,6 +42501,7 @@ name: i.currentProjectName
 }
 <<<<<<< HEAD
 };
+<<<<<<< HEAD
 var e = 0, t = 0;
 angular.forEach(o.completeBuilds, function(n) {
 var a = r.getBuildNumber(n);
@@ -42512,6 +42513,41 @@ buildNumber: a,
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 phase: n.status.phase,
 build: n
+=======
+} ]).directive("podTemplate", function() {
+return {
+restrict: "E",
+scope: {
+podTemplate: "=",
+imagesByDockerReference: "=",
+builds: "=",
+detailed: "=?",
+addHealthCheckUrl: "@?"
+},
+templateUrl: "views/_pod-template.html"
+};
+}).directive("podTemplateContainer", function() {
+return {
+restrict: "E",
+scope: {
+container: "=podTemplateContainer",
+imagesByDockerReference: "=",
+builds: "=",
+detailed: "=?"
+},
+templateUrl: "views/_pod-template-container.html"
+};
+}).directive("annotations", function() {
+return {
+restrict: "E",
+scope: {
+annotations: "="
+},
+templateUrl: "views/directives/annotations.html",
+link: function(e) {
+e.expandAnnotations = !1, e.toggleAnnotations = function() {
+e.expandAnnotations = !e.expandAnnotations;
+>>>>>>> Remove redundant "Container" heading at mobile on overview
 };
 s[n.status.phase] = o, i.json.push(s);
 }
