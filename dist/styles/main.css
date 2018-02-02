@@ -5305,11 +5305,17 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .ui-select-bootstrap .ui-select-toggle>.caret{font-style:normal;right:6px;top:10px;pointer-events:none}
 .ui-select-bootstrap .ui-select-search{width:100%!important}
 <<<<<<< HEAD
+<<<<<<< HEAD
 @keyframes flash{0%{opacity:0}
 100%{opacity:1}
 }
 =======
 >>>>>>> Bump catalog to v3.9.0-alpha.4
+=======
+@keyframes flash{0%{opacity:0}
+100%{opacity:1}
+}
+>>>>>>> origin-web-catalog version bump to fix 'set home page: view only proj' and 'catalog filter dups' issues
 @keyframes modalBackdropIn{0%{opacity:0}
 100%{opacity:.5}
 }
