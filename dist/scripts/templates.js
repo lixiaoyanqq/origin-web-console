@@ -172,7 +172,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</h4>\n" +
     "<div class=\"animate-if\" ng-if=\"expandInitContainers\" ng-repeat=\"containerStatus in pod.status.initContainerStatuses track by containerStatus.name\">\n" +
+<<<<<<< 1ee7eb6b2d152471830f614d4ba391ed2d9f6aff
     "<h4 class=\"component-label\" translate>Init container {{containerStatus.name}}</h4>\n" +
+=======
+    "<h4>Init container {{containerStatus.name}}</h4>\n" +
+>>>>>>> Remove redundant "Container" heading at mobile on overview
     "<dl class=\"dl-horizontal left\">\n" +
     "<dt translate>State:</dt>\n" +
     "<dd>\n" +
@@ -275,10 +279,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/_pod-template-container.html',
     " <div class=\"pod-template\">\n" +
+<<<<<<< 1ee7eb6b2d152471830f614d4ba391ed2d9f6aff
 <<<<<<< da064e4f189873cf4e4c850eba80603199ed9712
     "<div class=\"component-label\"><translate><span ng-bind-template=\"{{labelPrefix||'Container'}}:\"></span></translate> {{container.name}}</div>\n" +
 =======
     "<div class=\"component-label section-label\" ng-if=\"!detailed\" ng-bind-template=\"{{labelPrefix||'Container'}}\"></div>\n" +
+=======
+>>>>>>> Remove redundant "Container" heading at mobile on overview
     "<div class=\"pod-container-name\">{{container.name}}</div>\n" +
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
     "<div row ng-if=\"container.image\" class=\"pod-template-image icon-row\">\n" +
@@ -451,7 +458,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h4 translate>Init Containers</h4>\n" +
     "<div class=\"pod-template-container\">\n" +
     "<div class=\"pod-template-block\" ng-repeat=\"container in podTemplate.spec.initContainers\">\n" +
-    "<pod-template-container pod-template-container=\"container\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"detailed\" label-prefix=\"Init Container\"></pod-template-container>\n" +
+    "<pod-template-container pod-template-container=\"container\" images-by-docker-reference=\"imagesByDockerReference\" builds=\"builds\" detailed=\"detailed\"></pod-template-container>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -16181,7 +16188,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "          'ng-enter': row.previous,\n" +
     "          'hidden-sm hidden-md': row.previous\n" +
     "        }\">\n" +
-    "\n" +
+    "<h4 class=\"component-label section-label\">Containers</h4>\n" +
     "<pod-template pod-template=\"row.current | podTemplate\" images-by-docker-reference=\"row.state.imagesByDockerReference\" builds=\"row.state.builds\" class=\"hide-ng-leave\">\n" +
     "</pod-template>\n" +
     "<init-containers-summary api-object=\"row.apiObject\"></init-containers-summary>\n" +
@@ -16244,8 +16251,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</overview-networking>\n" +
     "</uib-tab>\n" +
     "<uib-tab ng-if=\"row.current\" active=\"row.selectedTab.containers\">\n" +
+<<<<<<< 1ee7eb6b2d152471830f614d4ba391ed2d9f6aff
     "<uib-tab-heading translate>Containers</uib-tab-heading>\n" +
     "\n" +
+=======
+    "<uib-tab-heading>Containers</uib-tab-heading>\n" +
+>>>>>>> Remove redundant "Container" heading at mobile on overview
     "<pod-template pod-template=\"row.current | podTemplate\" images-by-docker-reference=\"row.state.imagesByDockerReference\" builds=\"row.state.builds\"></pod-template>\n" +
     "<init-containers-summary api-object=\"row.apiObject\"></init-containers-summary>\n" +
     "</uib-tab>\n" +
