@@ -9595,16 +9595,51 @@ var o = _.get(t, "roleRef.name");
 var d = _.uniq(_.map(i, function(e) {
 return "API version " + _.get(e, "apiVersion", "<none>") + " for kind " + r(e.kind);
 }));
+<<<<<<< HEAD
 o.push({
 type: "warning",
 message: "Some resources will not be created.",
 details: "The following resource versions are not supported by the server: " + d.join(", ")
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
+=======
+} ]), angular.module("openshiftConsole").controller("PodController", [ "$filter", "$rootScope", "$routeParams", "$scope", "$timeout", "$uibModal", "APIService", "DataService", "FullscreenService", "ImageStreamResolver", "Logger", "MetricsService", "OwnerReferencesService", "PodsService", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f) {
+r.projectName = n.project, r.pod = null, r.imageStreams = {}, r.imagesByDockerReference = {}, r.imageStreamImageRefByDockerReference = {}, r.builds = {}, r.alerts = {}, r.terminalDisconnectAlert = {}, r.renderOptions = r.renderOptions || {}, r.renderOptions.hideFilterWidget = !0, r.logOptions = {}, r.terminalTabWasSelected = !1, r.breadcrumbs = [ {
+title: "Pods",
+link: "project/" + n.project + "/browse/pods"
+}, {
+title: n.pod
+} ], r.terminalDisconnectAlert.disconnect = {
+type: "warning",
+message: "This terminal has been disconnected. If you reconnect, your terminal history will be lost."
+}, r.noContainersYet = !0, r.selectedTab = {};
+var g = i.getPreferredVersion("imagestreams"), v = i.getPreferredVersion("builds");
+r.podsVersion = i.getPreferredVersion("pods"), r.podsLogVersion = i.getPreferredVersion("pods/log"), r.eventsVersion = i.getPreferredVersion("events"), r.deploymentConfigsVersion = i.getPreferredVersion("deploymentconfigs");
+var h = [], y = null, b = null;
+d.isAvailable().then(function(e) {
+r.metricsAvailable = e;
+});
+var S = function() {
+if (r.pod) {
+var e = _.find(r.pod.status.containerStatuses, {
+name: r.logOptions.container
+}), t = _.get(e, "state"), n = _.head(_.keys(t)), a = _.includes([ "running", "waiting", "terminated" ], n) ? n : "", o = _.get(e, "lastState"), i = _.head(_.keys(o)), s = _.get(e, "state.waiting");
+angular.extend(r, {
+containerStatusKey: a,
+containerStateReason: _.get(t, [ n, "reason" ])
+}), s ? angular.extend(r, {
+lasStatusKey: i,
+containerStartTime: _.get(o, [ i, "startedAt" ]),
+containerEndTime: _.get(o, [ i, "finishedAt" ])
+}) : angular.extend(r, {
+containerStartTime: _.get(t, [ n, "startedAt" ]),
+containerEndTime: _.get(t, [ n, "finishedAt" ])
+>>>>>>> Resize terminal when nav is collapsed or expanded
 });
 };
 return _.each(e, s), _.each(a, s), i;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 } ]), angular.module("openshiftConsole").factory("SecurityCheckService", [ "APIService", "$filter", "Constants", function(e, t, n) {
@@ -9735,6 +9770,60 @@ if (!r.include || r.include(t)) {
 var i = _.filter(n, function(n) {
 var a = o[n.metadata.uid];
 return r.matchTemplate ? a.matches(e(t)) : r.matchSelector ? a.covers(new LabelSelector(t.spec.selector)) : a.matches(t);
+=======
+}, C = function() {
+var e = $("<span>").css({
+position: "absolute",
+top: "-100px"
+}).addClass("terminal-font").text(_.repeat("x", 10)).appendTo("body"), t = {
+width: e.width() / 10,
+height: e.height()
+};
+return e.remove(), t;
+}(), w = $(window), P = function(e) {
+e || (e = 0), C.height && C.width && r.selectedTab.terminal && !(e > 10) && r.$evalAsync(function() {
+var t = $(".container-terminal-wrapper").get(0);
+if (t) {
+var n = t.getBoundingClientRect();
+if (0 !== n.left || 0 !== n.top || 0 !== n.width || 0 !== n.height) {
+var o = w.width(), i = w.height(), s = o - n.left - 54, c = i - n.top - 36;
+r.terminalCols = Math.max(_.floor(s / C.width), 80), r.terminalRows = Math.max(_.floor(c / C.height), 24);
+} else a(function() {
+P(e + 1);
+}, 50);
+} else a(function() {
+P(e + 1);
+}, 50);
+});
+}, j = function() {
+$(window).on("resize.terminalsize", _.debounce(P, 100)), y || (y = t.$on("oscHeader.toggleNav", function() {
+setTimeout(P, 150);
+}));
+}, k = function() {
+$(window).off("resize.terminalsize"), y && (y(), y = null);
+};
+r.$watch("selectedTab.terminal", function(e) {
+e ? (C.height && C.width ? j() : u.warn("Unable to calculate the bounding box for a character.  Terminal will not be able to resize."), a(P, 0)) : k();
+}), r.onTerminalSelectChange = function(e) {
+_.each(r.containerTerminals, function(e) {
+e.isVisible = !1;
+}), e.isVisible = !0, e.isUsed = !0, r.selectedTerminalContainer = e;
+};
+var I = function(e) {
+var t = _.get(e, "state", {});
+return _.head(_.keys(t));
+}, R = function() {
+var e = [];
+_.each(r.pod.spec.containers, function(t) {
+var n = _.find(r.pod.status.containerStatuses, {
+name: t.name
+}), a = I(n);
+e.push({
+containerName: t.name,
+isVisible: !1,
+isUsed: !1,
+containerState: a
+>>>>>>> Resize terminal when nav is collapsed or expanded
 });
 i.length || _.set(a, [ "", t.metadata.name ], t), _.each(i, function(e) {
 var n = _.get(e, r.key || "metadata.name", "");
@@ -9775,13 +9864,14 @@ var a = o[n.metadata.uid];
 return r.matchTemplate ? a.matches(e(t)) : r.matchSelector ? a.covers(new LabelSelector(t.spec.selector)) : a.matches(t);
 =======
 var t = _.head(e);
-return t.isVisible = !0, t.isUsed = !0, n.selectedTerminalContainer = t, e;
-}, j = function(e) {
-n.noContainersYet && (n.noContainersYet = 0 === n.containersRunning(e.status.containerStatuses));
-}, k = function(e) {
+return t.isVisible = !0, t.isUsed = !0, r.selectedTerminalContainer = t, e;
+}, T = function(e) {
+r.noContainersYet && (r.noContainersYet = 0 === r.containersRunning(e.status.containerStatuses));
+}, E = function(e) {
 _.each(e, function(e) {
-var t = _.find(n.pod.status.containerStatuses, {
+var t = _.find(r.pod.status.containerStatuses, {
 name: e.containerName
+<<<<<<< HEAD
 }), r = w(t);
 e.containerState = r;
 >>>>>>> Add Browse Catalog to Project context view.
@@ -9801,20 +9891,40 @@ s.debug("ProjectsService: clearing catalog items cache"), l = null;
 =======
 p.get(t.project).then(_.spread(function(r, o) {
 h = o, n.project = r, n.projectContext = o, i.get(n.podsVersion, t.pod, o, {
+=======
+}), n = I(t);
+e.containerState = n;
+});
+}, N = e("annotation"), D = function(e, t) {
+if (r.loaded = !0, r.pod = e, r.dcName = N(e, "deploymentConfig"), r.rcName = N(e, "deployment"), r.deploymentVersion = N(e, "deploymentVersion"), r.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase), S(), delete r.controllerRef, !r.dcName) {
+var n = m.getControllerReferences(e);
+r.controllerRef = _.find(n, function(e) {
+return "ReplicationController" === e.kind || "ReplicaSet" === e.kind || "Build" === e.kind;
+});
+}
+"DELETED" === t && (r.alerts.deleted = {
+type: "warning",
+message: "This pod has been deleted."
+});
+};
+f.get(n.project).then(_.spread(function(t, a) {
+b = a, r.project = t, r.projectContext = a, s.get(r.podsVersion, n.pod, a, {
+>>>>>>> Resize terminal when nav is collapsed or expanded
 errorNotification: !1
 }).then(function(e) {
-R(e);
-var r = {};
-r[e.metadata.name] = e, n.logOptions.container = t.container || e.spec.containers[0].name, n.containerTerminals = P(), j(e), c.fetchReferencedImageStreamImages(r, n.imagesByDockerReference, n.imageStreamImageRefByDockerReference, h), v.push(i.watchObject(n.podsVersion, t.pod, o, function(e, t) {
-R(e, t), k(n.containerTerminals), j(e);
+D(e);
+var t = {};
+t[e.metadata.name] = e, r.logOptions.container = n.container || e.spec.containers[0].name, r.containerTerminals = R(), T(e), l.fetchReferencedImageStreamImages(t, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, b), h.push(s.watchObject(r.podsVersion, n.pod, a, function(e, t) {
+D(e, t), E(r.containerTerminals), T(e);
 }));
 }, function(t) {
-n.loaded = !0, n.alerts.load = {
+r.loaded = !0, r.alerts.load = {
 type: "error",
 message: "The pod details could not be loaded.",
 details: e("getErrorDetails")(t)
 >>>>>>> Add Browse Catalog to Project context view.
 };
+<<<<<<< HEAD
 r.onUserChanged(v), r.onLogout(v);
 var h = function() {
 return !!o.TEMPLATE_SERVICE_BROKER_ENABLED;
@@ -9935,39 +10045,83 @@ s.exitFullscreen();
 var r = m.generateDebugPod(n.pod, t);
 r ? i.create(n.podsVersion, null, r, o).then(function(e) {
 var s = _.find(n.pod.spec.containers, {
+=======
+}), r.$watch("logOptions.container", S), h.push(s.watch(g, a, function(e) {
+r.imageStreams = e.by("metadata.name"), l.buildDockerRefMapForImageStreams(r.imageStreams, r.imageStreamImageRefByDockerReference), l.fetchReferencedImageStreamImages(r.pods, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, a), u.log("imagestreams (subscribe)", r.imageStreams);
+})), h.push(s.watch(v, a, function(e) {
+r.builds = e.by("metadata.name"), u.log("builds (subscribe)", r.builds);
+}));
+var i, d = function() {
+var t = r.debugPod;
+i && (s.unwatch(i), i = null), $(window).off("beforeunload.debugPod"), t && (s.delete(r.podsVersion, t.metadata.name, a, {
+gracePeriodSeconds: 0
+}).then(_.noop, function(n) {
+r.alerts["debug-container-error"] = {
+type: "error",
+message: "Could not delete pod " + t.metadata.name,
+details: e("getErrorDetails")(n)
+};
+}), r.debugPod = null);
+}, m = function() {
+$(".terminal:visible").focus();
+};
+r.hasFullscreen = c.hasFullscreen(!0), r.fullscreenTerminal = function() {
+c.requestFullscreen("#container-terminal-wrapper"), setTimeout(m);
+}, r.exitFullscreen = function() {
+c.exitFullscreen();
+}, r.debugTerminal = function(t) {
+var n = p.generateDebugPod(r.pod, t);
+n ? s.create(r.podsVersion, null, n, a).then(function(e) {
+var c = _.find(r.pod.spec.containers, {
+>>>>>>> Resize terminal when nav is collapsed or expanded
 name: t
 });
-n.debugPod = e, $(window).on("beforeunload.debugPod", function() {
+r.debugPod = e, $(window).on("beforeunload.debugPod", function() {
 return "Are you sure you want to leave with the debug terminal open? The debug pod will not be deleted unless you close the dialog.";
-}), u = i.watchObject(n.podsVersion, r.metadata.name, o, function(e) {
-n.debugPod = e;
-}), a.open({
+}), i = s.watchObject(r.podsVersion, n.metadata.name, a, function(e) {
+r.debugPod = e;
+}), o.open({
 templateUrl: "views/modals/debug-terminal.html",
 controller: "DebugTerminalModalController",
-scope: n,
+scope: r,
 resolve: {
 container: function() {
-return s;
+return c;
 },
 image: function() {
-return _.get(n, [ "imagesByDockerReference", s.image ]);
+return _.get(r, [ "imagesByDockerReference", c.image ]);
 }
 }
 }).result.then(d);
-}, function(r) {
-n.alerts["debug-container-error"] = {
+}, function(n) {
+r.alerts["debug-container-error"] = {
 type: "error",
 message: "Could not debug container " + t,
-details: e("getErrorDetails")(r)
+details: e("getErrorDetails")(n)
 };
+<<<<<<< HEAD
 }) : n.alerts["debug-container-error"] = {
 >>>>>>> Update modals to align with PatternFly standard
+=======
+}) : r.alerts["debug-container-error"] = {
+>>>>>>> Resize terminal when nav is collapsed or expanded
 type: "error",
 message: t
 };
+<<<<<<< HEAD
 c.addNotification(n);
 }
 return l = e, e;
+=======
+}, r.containersRunning = function(e) {
+var t = 0;
+return e && e.forEach(function(e) {
+e.state && e.state.running && t++;
+}), t;
+}, r.$on("$destroy", function() {
+s.unwatchAll(h), d(), k();
+});
+>>>>>>> Resize terminal when nav is collapsed or expanded
 }));
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22075,10 +22229,17 @@ return _.get(r, "nav.collapsed", !1);
 }, P = function(e) {
 _.set(r, "nav.showMobileNav", e);
 };
+<<<<<<< HEAD
 o.toggleNav = function() {
 var e = w();
 p(!e, !0);
 }, o.toggleMobileNav = function() {
+=======
+i.toggleNav = function() {
+var e = P();
+w(!e, !0), r.$emit("oscHeader.toggleNav");
+}, i.toggleMobileNav = function() {
+>>>>>>> Resize terminal when nav is collapsed or expanded
 var e = _.get(r, "nav.showMobileNav");
 P(!e);
 }, o.closeMobileNav = function() {
