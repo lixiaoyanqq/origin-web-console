@@ -15399,6 +15399,7 @@ kind: t
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "ServiceAccount" === t && (o.namespace = a);
 var i = _.find(r.roleBindings, {
 =======
@@ -15577,6 +15578,18 @@ r.latestByConfig = o.latestBuildByConfig(r.builds, a), r.buildsNoConfig = _.pick
 r.latestByConfig[t] = r.latestByConfig[t] || null;
 =======
 }, f = function(t) {
+=======
+e.$on("$destroy", h);
+var y = a.getPreferredVersion("horizontalpodautoscalers"), b = a.getPreferredVersion("limitranges");
+m.get(n.project).then(_.spread(function(t, r) {
+e.project = t;
+var l = "HorizontalPodAutoscaler" === n.kind ? "update" : "create";
+if (o.canI({
+resource: "horizontalpodautoscalers",
+group: "autoscaling"
+}, l, n.project)) {
+var m = function(t) {
+>>>>>>> Bug 1540916: Set correct group in HPA scale target
 e.disableInputs = !0, (t = angular.copy(t)).metadata.labels = p.mapEntries(p.compactEntries(e.labels)), t.spec.minReplicas = e.autoscaling.minReplicas, t.spec.maxReplicas = e.autoscaling.maxReplicas, t.spec.targetCPUUtilizationPercentage = e.autoscaling.targetCPU, s.update(y, t.metadata.name, t, r).then(function(e) {
 d.addNotification({
 type: "success",
@@ -15605,6 +15618,7 @@ r.unfilteredBuildConfigs = _.omitBy(e.by("metadata.name"), v), s.addLabelSuggest
 r.$evalAsync(function() {
 r.buildConfigs = e.select(r.unfilteredBuildConfigs), g(), f();
 });
+<<<<<<< HEAD
 }), r.$on("$destroy", function() {
 i.unwatchAll(p);
 =======
@@ -15631,6 +15645,76 @@ a.projectName = n.project, a.builds = {}, a.unfilteredBuildConfigs = {}, a.build
 r.projectName = n.project, r.builds = {}, r.unfilteredBuildConfigs = {}, r.buildConfigs = void 0, r.labelSuggestions = {}, r.latestByConfig = {}, r.clearFilter = function() {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 s.clear();
+=======
+}, f = {};
+f = "HorizontalPodAutoscaler" === n.kind ? {
+resource: "horizontalpodautoscalers",
+group: "autoscaling",
+version: "v1"
+} : {
+resource: a.kindToResource(n.kind),
+group: n.group
+}, s.get(f, n.name, r).then(function(a) {
+if (e.labels = _.map(_.get(a, "metadata.labels", {}), function(e, t) {
+return {
+name: t,
+value: e
+};
+}), "HorizontalPodAutoscaler" === n.kind) e.targetKind = _.get(a, "spec.scaleTargetRef.kind"), e.targetName = _.get(a, "spec.scaleTargetRef.name"), _.assign(e.autoscaling, {
+minReplicas: _.get(a, "spec.minReplicas"),
+maxReplicas: _.get(a, "spec.maxReplicas"),
+targetCPU: _.get(a, "spec.targetCPUUtilizationPercentage")
+}), e.disableInputs = !1, e.save = function() {
+m(a);
+}, e.breadcrumbs = i.getBreadcrumbs({
+name: e.targetName,
+kind: e.targetKind,
+namespace: n.project,
+project: t,
+subpage: "Autoscale"
+}); else {
+e.breadcrumbs = i.getBreadcrumbs({
+object: a,
+project: t,
+subpage: "Autoscale"
+}), e.save = function() {
+e.disableInputs = !0, h();
+var t = {
+apiVersion: "autoscaling/v1",
+kind: "HorizontalPodAutoscaler",
+metadata: {
+name: e.autoscaling.name,
+labels: p.mapEntries(p.compactEntries(e.labels))
+},
+spec: {
+scaleTargetRef: {
+kind: a.kind,
+name: a.metadata.name,
+apiVersion: a.apiVersion
+},
+minReplicas: e.autoscaling.minReplicas,
+maxReplicas: e.autoscaling.maxReplicas,
+targetCPUUtilizationPercentage: e.autoscaling.targetCPU
+}
+};
+s.create(y, null, t, r).then(function(e) {
+d.addNotification({
+type: "success",
+message: "Horizontal pod autoscaler " + e.metadata.name + " successfully created."
+}), v();
+}, function(t) {
+e.disableInputs = !1, d.addNotification({
+id: "edit-hpa-error",
+type: "error",
+message: "An error occurred creating the horizontal pod autoscaler.",
+details: g(t)
+});
+});
+};
+var o = {}, l = function() {
+var n = _.get(a, "spec.template.spec.containers", []);
+e.showCPURequestWarning = !c.hasCPURequest(n, o, t);
+>>>>>>> Bug 1540916: Set correct group in HPA scale target
 };
 var u = e("buildConfigForBuild"), d = a.getPreferredVersion("builds"), m = a.getPreferredVersion("buildconfigs"), p = [];
 l.get(n.project).then(_.spread(function(t, n) {
