@@ -8,7 +8,7 @@
  * Controller of the openshiftConsole
  */
 angular.module('openshiftConsole')
-  .controller('StorageController', function ($routeParams, $scope, AlertMessageService, DataService, ProjectsService, QuotaService, $filter, LabelFilter, Logger, gettext) {
+  .controller('StorageController', function ($routeParams, $scope, AlertMessageService, DataService, ProjectsService, QuotaService, $filter, LabelFilter, Logger, gettext, gettextCatalog) {
     $scope.projectName = $routeParams.project;
     $scope.pvcs = {};
     $scope.unfilteredPVCs = {};

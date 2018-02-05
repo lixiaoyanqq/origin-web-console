@@ -8,7 +8,7 @@
  * Controller of the openshiftConsole
  */
 angular.module('openshiftConsole')
-  .controller('PodsController', function ($routeParams, $scope, DataService, ProjectsService, $filter, LabelFilter, Logger, gettext) {
+  .controller('PodsController', function ($routeParams, $scope, DataService, ProjectsService, $filter, LabelFilter, Logger) {
     $scope.projectName = $routeParams.project;
     $scope.pods = {};
     $scope.unfilteredPods = {};

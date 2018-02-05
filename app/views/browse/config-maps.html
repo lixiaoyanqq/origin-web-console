@@ -32,7 +32,7 @@
             <div ng-if="loaded" class="empty-state-message text-center">
               <div ng-if="!filterWithZeroResults">
                 <h2 translate>No config maps.</h2>
-                <p translate>No config maps have been added to project {{projectName}}.</ptranslate>
+                <p translate>No config maps have been added to project {{projectName}}.</p>
                 <p ng-if="project && (configMapsVersion | canI : 'create')">
                   <a ng-href="project/{{project.metadata.name}}/create-config-map" class="btn btn-primary btn-lg" translate>Create Config Map</a>
                 </p>

@@ -13,7 +13,9 @@ angular.module("openshiftConsole")
                                   QuotaService,
                                   SecurityCheckService,
                                   TaskList,
-                                  ProjectsService) {
+                                  ProjectsService,
+	  			  gettext,
+                                  gettextCatalog) {
     return {
       restrict: "E",
       scope: {

@@ -61,7 +61,8 @@ function OverviewController($scope,
                             ResourceAlertsService,
                             RoutesService,
                             ServiceInstancesService,
-                            gettext) {
+                            gettext,
+                            gettextCatalog) {
   var overview = this;
   var limitWatches = $filter('isIE')();
   var DEFAULT_POLL_INTERVAL = 60 * 1000; // milliseconds

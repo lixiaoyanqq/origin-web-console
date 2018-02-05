@@ -2161,11 +2161,7 @@ angular.module('openshiftCommonServices')
       }
       // Otherwise go to the error page, the server might be down.  Can't use Navigate.toErrorPage or it will create a circular dependency
       $window.location.href = URI('error').query({
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-        error_description: gettextCatalog.getString(gettext("Unable to load details about the server. If the problem continues, please contact your system administrator.")),
-=======
         error_description: "Unable to load details about the server. If the problem continues, please contact your system administrator.",
->>>>>>> Init translation.
         error: "API_DISCOVERY"
       }).toString();
       return;
@@ -4566,11 +4562,7 @@ angular.module('openshiftCommonServices')
 
 angular.module('openshiftCommonServices')
   .factory('ProjectsService',
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-    ["$location", "$q", "AuthService", "DataService", "annotationNameFilter", "AuthorizationService", "gettext", "gettextCatalog", function($location, $q, AuthService, DataService, annotationNameFilter, AuthorizationService, gettext, gettextCatalog) {
-=======
     ["$location", "$q", "AuthService", "DataService", "annotationNameFilter", "AuthorizationService", function($location, $q, AuthService, DataService, annotationNameFilter, AuthorizationService) {
->>>>>>> Init translation.
 
 
       var cleanEditableAnnotations = function(resource) {

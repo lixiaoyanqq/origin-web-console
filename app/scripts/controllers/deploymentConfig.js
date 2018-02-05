@@ -25,7 +25,8 @@ angular.module('openshiftConsole')
                         StorageService,
                         LabelFilter,
                         labelNameFilter,
-                        gettext) {
+                        gettext,
+	      	        gettextCatalog) {
     var imageStreamImageRefByDockerReference = {}; // lets us determine if a particular container's docker image reference belongs to an imageStream
 
     $scope.projectName = $routeParams.project;

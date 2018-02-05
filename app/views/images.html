@@ -58,7 +58,7 @@
                   <span ng-if="!imageStream.status.dockerImageRepository && !imageStream.spec.dockerImageRepository"><em translate>unknown</em></span>
                   <span ng-if="imageStream.status.dockerImageRepository || imageStream.spec.dockerImageRepository">{{imageStream.status.dockerImageRepository || imageStream.spec.dockerImageRepository}}</span>
                 </td>
-                <   data-title="{{'Tags'|translate}}">
+                <td data-title="{{'Tags'|translate}}">
                   <span ng-if="!imageStream.status.tags.length"><em translate>none</em></span>
                   <span ng-repeat="tag in imageStream.status.tags | limitTo: 4">{{tag.tag}}<span ng-if="!$last">,
                   </span></span><span ng-if="imageStream.status.tags.length === 5">,

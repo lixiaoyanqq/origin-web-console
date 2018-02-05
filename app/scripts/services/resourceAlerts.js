@@ -7,7 +7,9 @@ angular.module("openshiftConsole")
                     DeploymentsService,
                     Navigate,
                     NotificationsService,
-                    QuotaService) {
+                    QuotaService,
+		    gettextCatalog,
+		    gettext ) {
     var annotation = $filter('annotation');
     var humanizeKind = $filter('humanizeKind');
     var deploymentStatus = $filter('deploymentStatus');

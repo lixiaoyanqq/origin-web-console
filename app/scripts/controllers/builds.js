@@ -18,8 +18,7 @@ angular.module('openshiftConsole')
     DataService,
     LabelFilter,
     Logger,
-    ProjectsService,
-    gettext) {
+    ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.builds = {};
     $scope.unfilteredBuildConfigs = {};

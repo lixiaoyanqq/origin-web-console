@@ -10,11 +10,7 @@
       {{appForBinding.metadata.name}} <small class="text-muted">&ndash; {{ appForBinding.kind | humanizeKind : true}}</small>
     </div>
     <div ng-if="!(ctrl.unboundApps | size)">
-<<<<<<< HEAD
-      {{ctrl.selectedBinding.metadata.name}}
-=======
       {{ctrl.selectedBinding.spec.secretName}} <small class="text-muted">&ndash; <translate>Secret</translate></small>
->>>>>>> a7d6e5ea... DM update.
     </div>
 
     <!-- Only show the redeploy pods message if previously bound to an app. -->
