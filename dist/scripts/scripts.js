@@ -10967,10 +10967,11 @@ C = _.filter(n.pods, function(e) {
 >>>>>>> Update monitoring controller to use getPreferredVersion
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = c.filterForKeywords(C, P, j);
-}, D = r("isIncompleteBuild"), A = r("buildConfigForBuild"), B = r("isRecentBuild"), V = function() {
+}, A = r("isIncompleteBuild"), D = r("buildConfigForBuild"), B = r("isRecentBuild"), V = function() {
 moment().subtract(5, "m");
 y = _.filter(n.builds, function(e) {
 if (!n.filters.hideOlderResources) return !0;
+<<<<<<< HEAD
 if (D(e)) return !0;
 var t = A(e);
 =======
@@ -10987,6 +10988,10 @@ if (!n.filters.hideOlderResources) return !0;
 if (A(e)) return !0;
 var t = D(e);
 >>>>>>> Virtual Machine uptime added
+=======
+if (A(e)) return !0;
+var t = D(e);
+>>>>>>> Remove istagSelect directive in favour of component
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : B(e);
 }), n.filteredBuilds = c.filterForKeywords(y, P, j);
 }, L = r("deploymentStatus"), O = r("deploymentIsInProgress"), U = function() {
@@ -14737,6 +14742,7 @@ e.unshift("");
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), D(), j = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
 >>>>>>> Add Browse Catalog to Project context view.
 =======
@@ -14799,6 +14805,26 @@ return !n.filters.hideOlderResources || (O(e) || "Active" === V(e));
 C = _.filter(n.replicaSets, function(e) {
 return !n.filters.hideOlderResources || _.get(e, "status.replicas");
 }), n.filteredReplicaSets = s.filterForKeywords(C, j, k);
+=======
+}), A(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
+});
+var n = function(e, n) {
+e.type = n && n.kind ? n.kind : "None";
+var r = {}, a = "", o = "";
+r = "ImageStreamTag" === e.type ? {
+namespace: n.namespace || t.metadata.namespace,
+imageStream: n.name.split(":")[0],
+tagObject: {
+tag: n.name.split(":")[1]
+}
+} : {
+namespace: "",
+imageStream: "",
+tagObject: {
+tag: ""
+}
+}, a = "ImageStreamImage" === e.type ? (n.namespace || t.metadata.namespace) + "/" + n.name : "", o = "DockerImage" === e.type ? n.name : "", e.imageStreamTag = r, e.imageStreamImage = a, e.dockerImage = o;
+>>>>>>> Remove istagSelect directive in favour of component
 };
 <<<<<<< HEAD
 n.toggleItem = function(e, t, a, o) {
@@ -15527,7 +15553,10 @@ case "JenkinsPipeline":
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+<<<<<<< HEAD
 >>>>>>> Virtual Machine uptime added
+=======
+>>>>>>> Remove istagSelect directive in favour of component
 case "Source":
 case "Docker":
 $(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -17136,6 +17165,7 @@ details: 404 === n.status ? "Any remaining build history for this build will be 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), s.list("configmaps", i, null, {
 =======
 c.list(U, n).then(function(e) {
@@ -17151,6 +17181,9 @@ c.list(A, n).then(function(t) {
 =======
 c.list(D, n).then(function(t) {
 >>>>>>> Virtual Machine uptime added
+=======
+c.list(D, n).then(function(t) {
+>>>>>>> Remove istagSelect directive in favour of component
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 });
 var v, y, C = function() {
@@ -17216,11 +17249,15 @@ e.metricsWarning = !t;
 });
 var o = [], i = [];
 <<<<<<< HEAD
+<<<<<<< HEAD
 e.valueFromObjects = [], c.list(D, n, null, {
 >>>>>>> Add Browse Catalog to Project context view.
 =======
 e.valueFromObjects = [], c.list(A, n, null, {
 >>>>>>> Virtual Machine uptime added
+=======
+e.valueFromObjects = [], c.list(A, n, null, {
+>>>>>>> Remove istagSelect directive in favour of component
 errorNotification: !1
 }).then(function(t) {
 b = v(t.by("metadata.name")), e.valueFromObjects = b.concat(S);
@@ -21465,6 +21502,7 @@ message: "Created " + k(e.kind) + ' "' + e.metadata.name + '" successfully. '
 }); else {
 var a;
 a = p.isList ? "All items in list were created successfully." : k(p.resourceKind) + " " + p.resourceName + " was successfully created.", n.push({
+<<<<<<< HEAD
 =======
 e.$watch("apiObjects", function(n) {
 i = {}, _.each(n, function(e) {
@@ -21503,6 +21541,61 @@ sortType: "alpha"
 id: "involvedObject.kind",
 title: "Kind",
 sortType: "alpha"
+=======
+type: "success",
+message: a
+});
+}
+e.resolve({
+alerts: n,
+hasErrors: r
+});
+}), e.promise;
+});
+}
+function P() {
+var e = {
+started: "Updating resources in project " + D(p.input.selectedProject),
+success: "Updated resources in project " + D(p.input.selectedProject),
+failure: "Failed to update some resources in project " + D(p.input.selectedProject)
+}, t = {};
+d.add(e, t, p.input.selectedProject.metadata.name, function() {
+var e = n.defer();
+return i.batch(p.updateResources, {
+namespace: p.input.selectedProject.metadata.name
+}, "update").then(function(t) {
+var n = [], r = !1;
+if (t.failure.length > 0) r = !0, p.errorOccurred = !0, t.failure.forEach(function(e) {
+n.push({
+type: "error",
+message: "Cannot update " + k(e.object.kind) + ' "' + e.object.metadata.name + '". ',
+details: e.data.message
+});
+}), t.success.forEach(function(e) {
+n.push({
+type: "success",
+message: "Updated " + k(e.kind) + ' "' + e.metadata.name + '" successfully. '
+});
+}); else {
+var a;
+a = p.isList ? "All items in list were updated successfully." : k(p.resourceKind) + " " + p.resourceName + " was successfully updated.", n.push({
+type: "success",
+message: a
+});
+}
+e.resolve({
+alerts: n,
+hasErrors: r
+});
+}, function(t) {
+var n = [];
+n.push({
+type: "error",
+message: "An error occurred updating the resources.",
+details: "Status: " + t.status + ". " + t.data
+}), e.resolve({
+alerts: n
+>>>>>>> Remove istagSelect directive in favour of component
 });
 }), s.push(r.watch(c, e.projectContext, function(n) {
 t = n.by("metadata.name"), b(), o.log("events (subscribe)", e.filteredEvents);
@@ -21516,6 +21609,7 @@ r.unwatchAll(s);
 } ]), angular.module("openshiftConsole").directive("eventsSidebar", [ "$rootScope", "APIService", "DataService", "Logger", function(e, t, n, r) {
 var a = t.getPreferredVersion("events");
 return {
+<<<<<<< HEAD
 restrict: "E",
 scope: {
 projectContext: "=",
@@ -21537,6 +21631,50 @@ i.push(e.$on("event.resource.highlight", function(e, n) {
 var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
 r && a && _.each(t.events, function(e) {
 e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !0);
+=======
+alerts: e,
+title: "Confirm Creation",
+details: "We checked your application for potential problems. Please confirm you still want to create this application.",
+okButtonText: "Create Anyway",
+okButtonClass: "btn-danger",
+cancelButtonText: "Cancel"
+};
+}
+}
+}).result.then(y);
+}, E = {}, T = function() {
+c.hideNotification("from-file-error"), _.each(E, function(e) {
+!e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
+});
+}, N = function(e) {
+T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+var t = e.quotaAlerts || [];
+E = E.concat(t), _.filter(E, {
+type: "error"
+}).length ? (_.each(E, function(e) {
+e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
+}), p.disableInputs = !1) : E.length ? (R(E), p.disableInputs = !1) : y();
+}, A = function() {
+if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
+var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
+return m.create(t, r, a);
+};
+p.create = function() {
+if (delete p.error, f(p.resource) && (p.resourceKind = p.resource.kind, p.resourceKind.endsWith("List") ? p.isList = !0 : p.isList = !1, g(p.resource))) {
+p.isList ? (p.resourceList = p.resource.items, p.resourceName = "") : (p.resourceList = [ p.resource ], p.resourceName = p.resource.metadata.name, "Template" === p.resourceKind && (p.templateOptions = {
+process: !0,
+add: !1
+})), p.updateResources = [], p.createResources = [];
+var e = [];
+p.errorOccurred = !1, _.forEach(p.resourceList, function(t) {
+if (!g(t)) return p.errorOccurred = !0, !1;
+e.push(S(t));
+}), A().then(function(t) {
+p.input.selectedProject = t, n.all(e).then(function() {
+p.errorOccurred || (1 === p.createResources.length && "Template" === p.resourceList[0].kind ? v() : _.isEmpty(p.updateResources) ? l.getLatestQuotaAlerts(p.createResources, {
+namespace: p.input.selectedProject.metadata.name
+}).then(N) : (p.updateTemplate = 1 === p.updateResources.length && "Template" === p.updateResources[0].kind, p.updateTemplate ? v() : h()));
+>>>>>>> Remove istagSelect directive in favour of component
 });
 })), i.push(e.$on("event.resource.clear-highlight", function(e, n) {
 var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
@@ -21548,6 +21686,15 @@ n.unwatchAll(o), _.each(i, function(e) {
 e();
 }), i = null;
 });
+<<<<<<< HEAD
+=======
+}
+}, p.cancel = function() {
+T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+};
+var D = e("displayName");
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
+>>>>>>> Remove istagSelect directive in favour of component
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, r) {
@@ -45056,6 +45203,7 @@ A || (R[t.id] = c3.generate(n));
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 function g(e) {
 if (!_.some(e.datasets, function(e) {
@@ -45080,12 +45228,28 @@ return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
 }, E = function() {
+=======
+}, A = function() {
+return f.list().then(function(e) {
+h = e.by("metadata.name");
+});
+}, D = function() {
+k(R);
+>>>>>>> Remove istagSelect directive in favour of component
 var e = a.project;
 i.currentProjectName !== e && (i.currentProjectName = e, i.chromeless = "chromeless" === a.view, e && !i.chromeless ? (_.set(r, "view.hasProject", !0), i.canIAddToProject = !1, s.getProjectRules(e).then(function() {
 i.currentProjectName === e && (i.canIAddToProject = s.canIAddToProject(e), i.canIAddToProject && l.getCatalogItems().then(function(e) {
 i.catalogItems = e;
 }));
+<<<<<<< HEAD
 }), T().then(function() {
+=======
+n.all([ r, a ]).then(function() {
+i.catalogItems = c.sortCatalogItems(_.concat(t, o));
+});
+}
+}), A().then(function() {
+>>>>>>> Remove istagSelect directive in favour of component
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 metadata: {
 name: i.currentProjectName
@@ -45193,6 +45357,7 @@ e.data ? e.data = _.chain(e.data).takeRight(D).concat(n).value() : e.data = n;
 });
 i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
+<<<<<<< HEAD
 }, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
 iconBase: "fa",
 tickIcon: "fa-check"
@@ -45201,6 +45366,11 @@ var e = $(this).val(), n = "" === e ? "projects" : g(e);
 i.$apply(function() {
 t.url(n);
 });
+=======
+}, D(), i.$on("$routeChangeSuccess", D), E.change(function() {
+var e = $(this).val(), t = "" === e ? "projects" : g(e);
+I(t);
+>>>>>>> Remove istagSelect directive in favour of component
 }), i.$on("$destroy", function() {
 B(), N();
 });
@@ -47063,7 +47233,10 @@ function j(e, t) {
 m.noData = !1;
 var n = _.initial(t.data);
 e.data ? e.data = _.chain(e.data).takeRight(A).concat(n).value() : e.data = n;
+<<<<<<< HEAD
 >>>>>>> Virtual Machine uptime added
+=======
+>>>>>>> Remove istagSelect directive in favour of component
 }
 function l(e) {
 if (n(e)) return "Terminating";
@@ -47613,6 +47786,7 @@ e.destroy();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), T = null, A = !0;
 >>>>>>> Set Home Page Preference
 =======
@@ -47633,6 +47807,9 @@ e.destroy();
 =======
 }), E = null, D = !0;
 >>>>>>> Virtual Machine uptime added
+=======
+}), E = null, D = !0;
+>>>>>>> Remove istagSelect directive in favour of component
 });
 }
 };
@@ -47975,6 +48152,7 @@ v && (v(), v = void 0);
 =======
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 n.$watchGroup([ "used", "total", "crossProjectUsed" ], _.debounce(function() {
 var e = void 0 !== n.crossProjectUsed, t = a(n.used) || 0, r = Math.max((a(n.crossProjectUsed) || 0) - t, 0), o = Math.max(a(n.total) - (r + t), 0), i = {
 columns: [ [ "used", t ], [ "available", o ] ],
@@ -47988,6 +48166,8 @@ used: e ? "Used - This Project" : "Used",
 other: "Used - Other Projects",
 available: "Available"
 =======
+=======
+>>>>>>> Remove istagSelect directive in favour of component
 var D = a.$on("metrics.charts.resize", function() {
 s.redraw(S);
 });
@@ -53360,6 +53540,7 @@ cancelButtonText: "Cancel"
 >>>>>>> Check for new templateServiceBrokerEnabled flag
 =======
 }).result.then(T);
+<<<<<<< HEAD
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 =======
 }).result.then(E);
@@ -53372,6 +53553,9 @@ cancelButtonText: "Cancel"
 =======
 }, A = function(e) {
 >>>>>>> Virtual Machine uptime added
+=======
+}, A = function(e) {
+>>>>>>> Remove istagSelect directive in favour of component
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
 type: "error"
@@ -53432,9 +53616,12 @@ return n.nameTaken = e.nameTaken, a;
 >>>>>>> Fix for adding non-builder templates to a project
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 o.setAnnotations([ u ]), e.$evalAsync(function() {
 n.annotations = {}, n.annotations[a] = [ u ];
 =======
+=======
+>>>>>>> Remove istagSelect directive in favour of component
 t.then(i, i).then(A, A);
 }, function(e) {
 n.disableInputs = !1, "AlreadyExists" === e.data.reason ? n.projectNameTaken = !0 : l.addNotification({
@@ -54506,11 +54693,15 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, D = function(e) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 =======
 }, A = function(e) {
 >>>>>>> Virtual Machine uptime added
+=======
+}, A = function(e) {
+>>>>>>> Remove istagSelect directive in favour of component
 return _.reduce(e, function(e, t) {
 return e[t.metadata.uid] = {
 >>>>>>> Handle displaying parameters when secrets are not available.
@@ -54538,6 +54729,7 @@ event: t
 }, {});
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T = function(e) {
 >>>>>>> Remember drawer expanded state across sessions
 =======
@@ -54546,6 +54738,9 @@ event: t
 =======
 }, D = function(e) {
 >>>>>>> Virtual Machine uptime added
+=======
+}, D = function(e) {
+>>>>>>> Remove istagSelect directive in favour of component
 return _.reduce(e, function(e, t) {
 return u.isImportantAPIEvent(t) && !u.isCleared(t.metadata.uid) && (e[t.metadata.uid] = t), e;
 }, {});

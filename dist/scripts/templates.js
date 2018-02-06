@@ -10181,6 +10181,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/directives/istag-select.html',
     "<ng-form name=\"istagForm\">\n" +
     "<fieldset ng-disabled=\"selectDisabled\">\n" +
@@ -10238,6 +10239,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Remove istagSelect directive in favour of component
   $templateCache.put('views/directives/key-value-editor.html',
 <<<<<<< HEAD
     "<ng-form name=\"forms.keyValueEditor\" novalidate ng-if=\"entries\">\n" +
