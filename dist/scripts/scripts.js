@@ -21167,8 +21167,15 @@ _.extend(e.parameterData, r);
 } catch (e) {
 c.warn("Unable to load parameters from secret " + _.get(t, "secretKeyRef.name"), e);
 }
+<<<<<<< HEAD
 }));
 >>>>>>> Add ProvisionedSuccessfully even to notification drawer
+=======
+}), r.$watch("controls.hideSlider", function(e) {
+e || 1 !== _.size(r.route.alternateServices) || (m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight));
+}), r.$watch("controls.rangeSlider", function(e, t) {
+m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(r, "route.to.weight", e), _.set(r, "route.alternateServices[0].weight", 100 - e));
+>>>>>>> fix(routes): Fix undefined reference in oscRouting directive
 });
 <<<<<<< HEAD
 =======
