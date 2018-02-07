@@ -9993,6 +9993,21 @@ return "cpu" === e || "requests.cpu" === e ? "cpu" === t || "requests.cpu" === t
 >>>>>>> Add Browse Catalog to Project context view.
 var t = {};
 return _.each(e, function(e) {
+<<<<<<< HEAD
+=======
+var n = _.get(e, "spec.quota.hard") || _.get(e, "spec.hard"), r = _.keys(n).sort(p);
+t[e.metadata.name] = r;
+}), t;
+};
+i.get(t.project).then(_.spread(function(e, r) {
+n.project = e, u.push(a.watch(c, r, function(e) {
+n.quotas = _.sortBy(e.by("metadata.name"), "metadata.name"), n.orderedTypesByQuota = f(n.quotas), o.log("quotas", n.quotas);
+}, {
+poll: !0,
+pollInterval: 6e4
+})), u.push(a.watch(s, r, function(e) {
+n.clusterQuotas = _.sortBy(e.by("metadata.name"), "metadata.name"), n.orderedTypesByClusterQuota = f(n.clusterQuotas), n.namespaceUsageByClusterQuota = {}, _.each(n.clusterQuotas, function(e) {
+>>>>>>> Poll quota on the Quota page
 if (e.status) {
 var n = {};
 e.spec && e.spec.tags && _.each(e.spec.tags, function(e) {
@@ -10001,12 +10016,36 @@ t && (n[e.name] = t.split(/\s*,\s*/));
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var r = !1;
 _.each(y, function(a) {
 (function(e) {
 return _.some(e.status.tags, function(e) {
 var t = n[e.tag] || [];
 return S(a, t) && b("builder", t) && !b("hidden", t);
+=======
+n.namespaceUsageByClusterQuota[e.metadata.name] = r.status;
+}
+}), o.log("cluster quotas", n.clusterQuotas);
+}, {
+poll: !0,
+pollInterval: 6e4
+})), u.push(a.watch(l, r, function(e) {
+n.limitRanges = _.sortBy(e.by("metadata.name"), "metadata.name"), n.emptyMessageLimitRanges = "There are no limit ranges set on this project.", angular.forEach(n.limitRanges, function(e) {
+var t = e.metadata.name;
+n.limitsByType[t] = {}, angular.forEach(e.spec.limits, function(e) {
+var r = n.limitsByType[t][e.type] = {};
+angular.forEach(e.max, function(e, t) {
+r[t] = r[t] || {}, r[t].max = e;
+}), angular.forEach(e.min, function(e, t) {
+r[t] = r[t] || {}, r[t].min = e;
+}), angular.forEach(e.default, function(e, t) {
+r[t] = r[t] || {}, r[t].default = e;
+}), angular.forEach(e.defaultRequest, function(e, t) {
+r[t] = r[t] || {}, r[t].defaultRequest = e;
+}), angular.forEach(e.maxLimitRequestRatio, function(e, t) {
+r[t] = r[t] || {}, r[t].maxLimitRequestRatio = e;
+>>>>>>> Poll quota on the Quota page
 });
 })(e) && (t[a.id] = t[a.id] || [], t[a.id].push(e), r = !0);
 }), r || _.some(e.status.tags, function(e) {
@@ -10024,6 +10063,7 @@ return _.some(e.status.tags, function(e) {
 var t = n[e.tag] || [];
 return S(a, t) && b("builder", t) && !b("hidden", t);
 });
+<<<<<<< HEAD
 })(e) && (t[a.id] = t[a.id] || [], t[a.id].push(e), r = !0);
 }), r || _.some(e.status.tags, function(e) {
 var t = n[e.tag] || [];
@@ -10109,6 +10149,14 @@ var r = _.get(e, "metadata.name", ""), a = w(e, !0), o = [], i = {}, s = {};
 _.each(e.spec.tags, function(e) {
 if (C(e)) return i[e.name] = e.from.name, s[e.from.name] = s[e.from.name] || [], void s[e.from.name].push(e.name);
 o.push(e);
+=======
+}), o.log("limitRanges", n.limitRanges);
+}, {
+poll: !0,
+pollInterval: 6e4
+})), n.$on("$destroy", function() {
+a.unwatchAll(u);
+>>>>>>> Poll quota on the Quota page
 });
 var c = _.keyBy(o, "name");
 _.each(t, function(e) {
