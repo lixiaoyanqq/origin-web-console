@@ -24800,8 +24800,12 @@ m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(a, "route.to.weight", e), _.
 =======
 =======
 }), r.$watch("controls.hideSlider", function(e) {
+<<<<<<< 4f4c17a0117ef3aeca71e7b17ea920f73e9e317a
 e || 1 !== r.route.alternateServices.length || (m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight));
 >>>>>>> Add link to re-enable percentage slider when editing service weights on the create route page
+=======
+e || 1 !== _.size(r.route.alternateServices) || (m = !0, r.controls.rangeSlider = r.weightAsPercentage(r.route.to.weight));
+>>>>>>> fix(routes): Fix undefined reference in oscRouting directive
 }), r.$watch("controls.rangeSlider", function(e, t) {
 m ? m = !1 : e !== t && (e = parseInt(e, 10), _.set(r, "route.to.weight", e), _.set(r, "route.alternateServices[0].weight", 100 - e));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
