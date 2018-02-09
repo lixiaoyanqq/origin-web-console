@@ -21498,6 +21498,7 @@ e.editAvailable = n && h(e.serviceInstance) && !_.get(e.serviceInstance, "metada
 e.editAvailable = n && !y(e.serviceInstance) && !_.get(e.serviceInstance, "status.asyncOpInProgress") && !_.get(e.serviceInstance, "metadata.deletionTimestamp");
 >>>>>>> Update serviceInstance, serviceInstances controllers to use getPreferredVersion
 }
+<<<<<<< HEAD
 }, w = function() {
 e.parameterFormDefinition = angular.copy(_.get(e.plan, "spec.externalMetadata.schemas.service_instance.update.openshift_form_definition")), e.parameterSchema = _.get(e.plan, "spec.instanceCreateParameterSchema"), S();
 }, P = function() {
@@ -21523,6 +21524,67 @@ e.loaded = !0, e.serviceInstance = t, "DELETED" === n && (e.alerts.deleted = {
 type: "warning",
 message: "This provisioned service has been deleted."
 }), j(), S(), C();
+=======
+};
+}), angular.module("openshiftConsole").directive("oscPersistentVolumeClaim", [ "$filter", "APIService", "DataService", "LimitRangesService", "QuotaService", "ModalsService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, r, a, o, i) {
+var s = t.getPreferredVersion("storageclasses"), c = t.getPreferredVersion("limitranges"), l = t.getPreferredVersion("resourcequotas"), u = t.getPreferredVersion("appliedclusterresourcequotas");
+return {
+restrict: "E",
+scope: {
+claim: "=model",
+projectName: "="
+},
+templateUrl: "views/directives/osc-persistent-volume-claim.html",
+link: function(t) {
+var d = e("amountAndUnit"), m = e("storageClassAccessMode"), p = e("usageValue");
+t.nameValidation = i, t.storageClasses = [], t.defaultStorageClass = "", t.claim.accessModes = "ReadWriteOnce", t.claim.unit = "Gi", t.units = [ {
+value: "Mi",
+label: "MiB"
+}, {
+value: "Gi",
+label: "GiB"
+}, {
+value: "Ti",
+label: "TiB"
+}, {
+value: "M",
+label: "MB"
+}, {
+value: "G",
+label: "GB"
+}, {
+value: "T",
+label: "TB"
+} ], t.claim.selectedLabels = [];
+var f = [];
+t.$watch("useLabels", function(e, n) {
+e !== n && (e ? t.claim.selectedLabels = f : (f = t.claim.selectedLabels, t.claim.selectedLabels = []));
+}), t.groupUnits = function(e) {
+switch (e.value) {
+case "Mi":
+case "Gi":
+case "Ti":
+return "Binary Units";
+
+case "M":
+case "G":
+case "T":
+return "Decimal Units";
+}
+return "";
+}, t.showComputeUnitsHelp = function() {
+o.showComputeUnitsHelp();
+}, t.onStorageClassSelected = function(e) {
+var n = m(e);
+n && (t.claim.accessModes = n);
+};
+var g = function() {
+var e = t.claim.amount && p(t.claim.amount + t.claim.unit), n = _.has(t, "limits.min") && p(t.limits.min), r = _.has(t, "limits.max") && p(t.limits.max), a = !0, o = !0;
+e && n && (a = e >= n), e && r && (o = e <= r), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMin", a), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMax", o);
+}, v = function() {
+var e = a.isAnyStorageQuotaExceeded(t.quotas, t.clusterQuotas), n = a.willRequestExceedQuota(t.quotas, t.clusterQuotas, "requests.storage", t.claim.amount + t.claim.unit);
+t.persistentVolumeClaimForm.capacity.$setValidity("willExceedStorage", !n), t.persistentVolumeClaimForm.capacity.$setValidity("outOfClaims", !e);
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 };
 l.get(n.project).then(_.spread(function(r, o) {
 e.project = r, e.projectContext = o, s.get(e.serviceInstancesVersion, n.instance, o, {
@@ -21665,8 +21727,26 @@ n.addToApplicationVisible = !1;
 }, o.get(e.project).then(_.spread(function(e, r) {
 n.project = e, n.context = r, a.get(n.secretsVersion, n.secretName, r, {
 errorNotification: !1
+<<<<<<< HEAD
 }).then(function(e) {
 n.loaded = !0, c(e), s.push(a.watchObject(n.secretsVersion, n.secretName, r, c));
+=======
+}), n.list(c, {
+namespace: t.projectName
+}, function(e) {
+var n = e.by("metadata.name");
+if (!_.isEmpty(n)) {
+t.limits = r.getEffectiveLimitRange(n, "storage", "PersistentVolumeClaim");
+var a;
+t.limits.min && t.limits.max && p(t.limits.min) === p(t.limits.max) && (a = d(t.limits.max), t.claim.amount = Number(a[0]), t.claim.unit = a[1], t.capacityReadOnly = !0), t.$watchGroup([ "claim.amount", "claim.unit" ], g);
+}
+}), n.list(l, {
+namespace: t.projectName
+}, function(e) {
+t.quotas = e.by("metadata.name"), t.$watchGroup([ "claim.amount", "claim.unit" ], v);
+}), n.list(u, {
+namespace: t.projectName
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 }, function(e) {
 n.loaded = !0, n.alerts.load = {
 type: "error",
@@ -53395,6 +53475,9 @@ return function(t) {
 return e(t, "volume.beta.kubernetes.io/storage-class");
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 } ]).filter("storageClassAccessMode", [ "annotationFilter", function(e) {
 return function(t) {
 return e(t, "storage.alpha.openshift.io/access-mode");
