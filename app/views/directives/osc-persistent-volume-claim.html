@@ -8,11 +8,11 @@
       </div>
     </div>
     <div ng-if="storageClasses.length" class="form-group">
-      <!--storage class-->
       <label translate>Storage Class</label>
       <div>
         <ui-select
           ng-model="claim.storageClass"
+          on-select="onStorageClassSelected($item)"
           theme="bootstrap"
           search-enabled="true"
           title="{{'Select a storage class'|translate}}"
@@ -26,8 +26,8 @@
             repeat="sclass as sclass in storageClasses | toArray | filter : { metadata: { name: $select.search } } ">
             <div>
               <span ng-bind-html="sclass.metadata.name  | highlight : $select.search"></span>
-              <span ng-if="sclass.parameters.type || sclass.parameters.zone || (sclass | description)" class="text-muted">
-                <small>&ndash;
+              <div ng-if="sclass.parameters.type || sclass.parameters.zone || (sclass | description) || (sclass | storageClassAccessMode)" class="text-muted">
+                <small>
                   <span ng-if="sclass.parameters.type">
                     <translate>Type</translate>: {{sclass.parameters.type}}
                   </span>
@@ -35,12 +35,16 @@
                     <span ng-if="sclass.parameters.type">|</span>
                     <translate>Zone</translate>: {{sclass.parameters.zone}}
                   </span>
-                  <span ng-if="sclass | description">
+                  <span ng-if="(sclass | storageClassAccessMode)">
                     <span ng-if="sclass.parameters.type || sclass.parameters.zone">|</span>
+                    Access: {{sclass | storageClassAccessMode}}
+                  </span>
+                  <span ng-if="sclass | description">
+                    <span ng-if="sclass.parameters.type || sclass.parameters.zone || (sclass | storageClassAccessMode)">|</span>
                     {{sclass | description}}
                   </span>
                 </small>
-              </span>
+              </div>
             </div>
           </ui-select-choices>
         </ui-select>
@@ -95,20 +99,31 @@
       </div>
     </div>
 
-    <div class="form-group" >
-      <label class="required" translate>Access Mode</label><br/>
-      <label class="radio-inline">
-        <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadWriteOnce" aria-describedby="access-modes-help" ng-checked="true" translate>
-        Single User (RWO)
-      </label>
-      <label class="radio-inline">
-        <input type="radio" id="accessModes" name="accessModes" ng-model="claim.accessModes" value="ReadWriteMany" aria-describedby="access-modes-help" translate>
-        Shared Access (RWX)
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadOnlyMany" aria-describedby="access-modes-help" translate>
-        Read Only (ROX)
-      </label>
+    <div class="form-group mar-bottom-xl" >
+      <label class="required" translate>Access Mode</label>
+      <span ng-if="claim.storageClass && (claim.storageClass | storageClassAccessMode)" class="static-form-value-large">
+        <small translate>(cannot be changed)</small>
+      </span>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadWriteOnce"
+                 aria-describedby="access-modes-help" ng-true-value="’1’" ng-false-value="’0’"
+                 ng-disabled="(claim.storageClass | storageClassAccessMode)">
+	  <translate>Single User</translate> (RWO)
+        </label>
+        <label class="radio-inline">
+          <input type="radio" id="accessModes" name="accessModes" ng-model="claim.accessModes" value="ReadWriteMany"
+                 aria-describedby="access-modes-help" ng-true-value="’1’" ng-false-value="’0’"
+                 ng-disabled="(claim.storageClass | storageClassAccessMode)">
+	  <translate>Shared Access</translate> (RWX)
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="accessModes" ng-model="claim.accessModes" value="ReadOnlyMany"
+                 aria-describedby="access-modes-help" ng-true-value="’1’" ng-false-value="’0’"
+                 ng-disabled="(claim.storageClass | storageClassAccessMode)">
+	  <translate>Read Only</translate> (ROX)
+        </label>
+      </div>
       <div>
         <span id="access-modes-help" class="help-block" translate>Permissions to the mounted volume.</span>
       </div>

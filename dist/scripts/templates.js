@@ -10928,11 +10928,18 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"storageClasses.length\" class=\"form-group\">\n" +
+<<<<<<< 0d88b6067ff1b5e9d7a9cbce62803a598f1d9382
     "\n" +
     "<label translate>Storage Class</label>\n" +
     "<div>\n" +
     "<ui-select ng-model=\"claim.storageClass\" theme=\"bootstrap\" search-enabled=\"true\" title=\"{{'Select a storage class'|translate}}\" class=\"select-role\">\n" +
     "<ui-select-match placeholder=\"{{'Select a storage class'|translate}}\">\n" +
+=======
+    "<label>Storage Class</label>\n" +
+    "<div>\n" +
+    "<ui-select ng-model=\"claim.storageClass\" on-select=\"onStorageClassSelected($item)\" theme=\"bootstrap\" search-enabled=\"true\" title=\"Select a storage class\" class=\"select-role\">\n" +
+    "<ui-select-match placeholder=\"Select a storage class\">\n" +
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
     "<span>\n" +
     "{{$select.selected.metadata.name}}\n" +
     "</span>\n" +
@@ -10940,8 +10947,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<ui-select-choices repeat=\"sclass as sclass in storageClasses | toArray | filter : { metadata: { name: $select.search } } \">\n" +
     "<div>\n" +
     "<span ng-bind-html=\"sclass.metadata.name  | highlight : $select.search\"></span>\n" +
-    "<span ng-if=\"sclass.parameters.type || sclass.parameters.zone || (sclass | description)\" class=\"text-muted\">\n" +
-    "<small>&ndash;\n" +
+    "<div ng-if=\"sclass.parameters.type || sclass.parameters.zone || (sclass | description) || (sclass | storageClassAccessMode)\" class=\"text-muted\">\n" +
+    "<small>\n" +
     "<span ng-if=\"sclass.parameters.type\">\n" +
     "<translate>Type</translate>: {{sclass.parameters.type}}\n" +
     "</span>\n" +
@@ -10949,12 +10956,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"sclass.parameters.type\">|</span>\n" +
     "<translate>Zone</translate>: {{sclass.parameters.zone}}\n" +
     "</span>\n" +
-    "<span ng-if=\"sclass | description\">\n" +
+    "<span ng-if=\"(sclass | storageClassAccessMode)\">\n" +
     "<span ng-if=\"sclass.parameters.type || sclass.parameters.zone\">|</span>\n" +
+    "Access: {{sclass | storageClassAccessMode}}\n" +
+    "</span>\n" +
+    "<span ng-if=\"sclass | description\">\n" +
+    "<span ng-if=\"sclass.parameters.type || sclass.parameters.zone || (sclass | storageClassAccessMode)\">|</span>\n" +
     "{{sclass | description}}\n" +
     "</span>\n" +
     "</small>\n" +
-    "</span>\n" +
+    "</div>\n" +
     "</div>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
@@ -11032,6 +11043,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
+<<<<<<< 0d88b6067ff1b5e9d7a9cbce62803a598f1d9382
     "<div class=\"form-group\">\n" +
     "<label class=\"required\" translate>Access Mode</label><br/>\n" +
     "<label class=\"radio-inline\">\n" +
@@ -11044,8 +11056,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "<label class=\"radio-inline\">\n" +
     "<input type=\"radio\" name=\"accessModes\" ng-model=\"claim.accessModes\" value=\"ReadOnlyMany\" aria-describedby=\"access-modes-help\" translate>\n" +
+=======
+    "<div class=\"form-group mar-bottom-xl\">\n" +
+    "<label class=\"required\">Access Mode</label>\n" +
+    "<span ng-if=\"claim.storageClass && (claim.storageClass | storageClassAccessMode)\" class=\"static-form-value-large\">\n" +
+    "<small>(cannot be changed)</small>\n" +
+    "</span>\n" +
+    "<div>\n" +
+    "<label class=\"radio-inline\">\n" +
+    "<input type=\"radio\" name=\"accessModes\" ng-model=\"claim.accessModes\" value=\"ReadWriteOnce\" aria-describedby=\"access-modes-help\" ng-true-value=\"’1’\" ng-false-value=\"’0’\" ng-disabled=\"(claim.storageClass | storageClassAccessMode)\">\n" +
+    "Single User (RWO)\n" +
+    "</label>\n" +
+    "<label class=\"radio-inline\">\n" +
+    "<input type=\"radio\" id=\"accessModes\" name=\"accessModes\" ng-model=\"claim.accessModes\" value=\"ReadWriteMany\" aria-describedby=\"access-modes-help\" ng-true-value=\"’1’\" ng-false-value=\"’0’\" ng-disabled=\"(claim.storageClass | storageClassAccessMode)\">\n" +
+    "Shared Access (RWX)\n" +
+    "</label>\n" +
+    "<label class=\"radio-inline\">\n" +
+    "<input type=\"radio\" name=\"accessModes\" ng-model=\"claim.accessModes\" value=\"ReadOnlyMany\" aria-describedby=\"access-modes-help\" ng-true-value=\"’1’\" ng-false-value=\"’0’\" ng-disabled=\"(claim.storageClass | storageClassAccessMode)\">\n" +
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
     "Read Only (ROX)\n" +
     "</label>\n" +
+    "</div>\n" +
     "<div>\n" +
     "<span id=\"access-modes-help\" class=\"help-block\" translate>Permissions to the mounted volume.</span>\n" +
     "</div>\n" +

@@ -24947,9 +24947,14 @@ i.nameValidation = o, i.storageClasses = [], i.defaultStorageClass = "", i.claim
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 =======
 link: function(t) {
+<<<<<<< 0d88b6067ff1b5e9d7a9cbce62803a598f1d9382
 var d = e("amountAndUnit"), m = e("usageValue");
 t.nameValidation = i, t.storageClasses = [], t.defaultStorageClass = "", t.claim.unit = "Gi", t.units = [ {
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+var d = e("amountAndUnit"), m = e("storageClassAccessMode"), p = e("usageValue");
+t.nameValidation = i, t.storageClasses = [], t.defaultStorageClass = "", t.claim.accessModes = "ReadWriteOnce", t.claim.unit = "Gi", t.units = [ {
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 value: "Mi",
 label: "MiB"
 }, {
@@ -24976,9 +24981,9 @@ label: "GB"
 value: "T",
 label: "TB"
 } ], t.claim.selectedLabels = [];
-var p = [];
+var f = [];
 t.$watch("useLabels", function(e, n) {
-e !== n && (e ? t.claim.selectedLabels = p : (p = t.claim.selectedLabels, t.claim.selectedLabels = []));
+e !== n && (e ? t.claim.selectedLabels = f : (f = t.claim.selectedLabels, t.claim.selectedLabels = []));
 }), t.groupUnits = function(e) {
 switch (e.value) {
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -25031,12 +25036,18 @@ r.showComputeUnitsHelp();
 =======
 }, t.showComputeUnitsHelp = function() {
 o.showComputeUnitsHelp();
+<<<<<<< 0d88b6067ff1b5e9d7a9cbce62803a598f1d9382
 >>>>>>> Update directives/oscPersistentVolumeClaim to use getPreferredVersion
+=======
+}, t.onStorageClassSelected = function(e) {
+var n = m(e);
+n && (t.claim.accessModes = n);
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 };
-var f = function() {
-var e = t.claim.amount && m(t.claim.amount + t.claim.unit), n = _.has(t, "limits.min") && m(t.limits.min), r = _.has(t, "limits.max") && m(t.limits.max), a = !0, o = !0;
+var g = function() {
+var e = t.claim.amount && p(t.claim.amount + t.claim.unit), n = _.has(t, "limits.min") && p(t.limits.min), r = _.has(t, "limits.max") && p(t.limits.max), a = !0, o = !0;
 e && n && (a = e >= n), e && r && (o = e <= r), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMin", a), t.persistentVolumeClaimForm.capacity.$setValidity("limitRangeMax", o);
-}, g = function() {
+}, v = function() {
 var e = a.isAnyStorageQuotaExceeded(t.quotas, t.clusterQuotas), n = a.willRequestExceedQuota(t.quotas, t.clusterQuotas, "requests.storage", t.claim.amount + t.claim.unit);
 t.persistentVolumeClaimForm.capacity.$setValidity("willExceedStorage", !n), t.persistentVolumeClaimForm.capacity.$setValidity("outOfClaims", !e);
 };
@@ -25106,12 +25117,12 @@ var n = e.by("metadata.name");
 if (!_.isEmpty(n)) {
 t.limits = r.getEffectiveLimitRange(n, "storage", "PersistentVolumeClaim");
 var a;
-t.limits.min && t.limits.max && m(t.limits.min) === m(t.limits.max) && (a = d(t.limits.max), t.claim.amount = Number(a[0]), t.claim.unit = a[1], t.capacityReadOnly = !0), t.$watchGroup([ "claim.amount", "claim.unit" ], f);
+t.limits.min && t.limits.max && p(t.limits.min) === p(t.limits.max) && (a = d(t.limits.max), t.claim.amount = Number(a[0]), t.claim.unit = a[1], t.capacityReadOnly = !0), t.$watchGroup([ "claim.amount", "claim.unit" ], g);
 }
 }), n.list(l, {
 namespace: t.projectName
 }, function(e) {
-t.quotas = e.by("metadata.name"), t.$watchGroup([ "claim.amount", "claim.unit" ], g);
+t.quotas = e.by("metadata.name"), t.$watchGroup([ "claim.amount", "claim.unit" ], v);
 }), n.list(u, {
 namespace: t.projectName
 }, function(e) {
@@ -36067,6 +36078,7 @@ return (r < 0 || a < 0 || o < 0) && (r = a = o = 0), r && t.push(r + "h"), a && 
 return function(t) {
 return e(t, "volume.beta.kubernetes.io/storage-class");
 };
+<<<<<<< 0d88b6067ff1b5e9d7a9cbce62803a598f1d9382
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 } ]).filter("tags", [ "annotationFilter", function(a) {
 return function(b, c) {
@@ -36082,6 +36094,12 @@ if (!_.isEmpty(a.items)) {
 var d = moment(_.head(a.items).created);
 d.isAfter(c) && (c = d, b = _.head(a.items).created);
 =======
+=======
+} ]).filter("storageClassAccessMode", [ "annotationFilter", function(e) {
+return function(t) {
+return e(t, "storage.alpha.openshift.io/access-mode");
+};
+>>>>>>> Create ability to read annotation accessMode from StorageClasses
 } ]).filter("tags", [ "annotationFilter", function(e) {
 return function(t, n) {
 var r = e(t, n = n || "tags");
