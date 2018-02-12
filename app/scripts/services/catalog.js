@@ -57,27 +57,6 @@ angular.module("openshiftConsole")
       }));
     };
 
-    var getCatalogItems = function(forceRefresh) {
-      if (cachedCatalogItems && !forceRefresh) {
-        Logger.debug('CatalogService: returning cached catalog items');
-        return $q.when(cachedCatalogItems);
-      }
-
-      Logger.debug('CatalogService: getCatalogItems, force refresh', forceRefresh);
-      var includeTemplates = !isTemplateServiceBrokerEnabled();
-      return Catalog.getCatalogItems(includeTemplates).then(_.spread(function(items, errorMessage) {
-        if (errorMessage) {
-          var alertData = {
-            type: 'error',
-            message: errorMessage
-          };
-          NotificationsService.addNotification(alertData);
-        }
-        cachedCatalogItems = items;
-        return items;
-      }));
-    };
-
     var categoryItemByID = {};
     _.each(Constants.CATALOG_CATEGORIES, function(category) {
       _.each(category.items, function(categoryItem) {
