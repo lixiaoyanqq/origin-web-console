@@ -1,5 +1,6 @@
 "use strict";
 
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -260,6 +261,9 @@ function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E, T) {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, T, E) {
+>>>>>>> Check service classes to see if template service broker is enabled
 var N = this, D = t("isIE")();
 e.projectName = a.project;
 var A = a.isHomePage;
@@ -549,7 +553,7 @@ return s.groupByApp(e, "metadata.name");
 }, we = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? E.getPreferredDisplayRoute(t, e) : e;
+t = t ? T.getPreferredDisplayRoute(t, e) : e;
 }), t;
 }, Pe = _.debounce(function() {
 e.$evalAsync(function() {
@@ -784,8 +788,8 @@ N.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), N.pipelineViewHasO
 N.disableFilter = "pipeline" === N.viewBy && _.isEmpty(N.pipelineBuildConfigs);
 }, Re = function(e) {
 return b.getLabelSelector().select(e);
-}, Ee = [ "metadata.name", "spec.clusterServiceClassExternalName" ], Te = function(e) {
-return y.filterForKeywords(e, Ee, ge.filterKeywords);
+}, Te = [ "metadata.name", "spec.clusterServiceClassExternalName" ], Ee = function(e) {
+return y.filterForKeywords(e, Te, ge.filterKeywords);
 }, Ne = function(e) {
 switch (N.filterBy) {
 >>>>>>> Set Home Page Preference
@@ -793,7 +797,7 @@ case "label":
 return Re(e);
 
 case "name":
-return Te(e);
+return Ee(e);
 }
 return e;
 }, De = function() {
@@ -810,7 +814,7 @@ N.filteredDeploymentConfigs = Ne(N.deploymentConfigs), N.filteredReplicationCont
 N.viewBy = localStorage.getItem($e) || "app", e.$watch(function() {
 return N.viewBy;
 }, function(e) {
-localStorage.setItem($e, e), Ie(), Ee = "app" === N.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], Ae(), "pipeline" === N.viewBy ? b.setLabelSuggestions(pe) : b.setLabelSuggestions(me);
+localStorage.setItem($e, e), Ie(), Te = "app" === N.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], Ae(), "pipeline" === N.viewBy ? b.setLabelSuggestions(pe) : b.setLabelSuggestions(me);
 }), d.DISABLE_OVERVIEW_METRICS || (C.isAvailable(!0).then(function(e) {
 ge.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
@@ -1343,8 +1347,8 @@ var e = [ N.deploymentConfigs, N.vanillaReplicationControllers, N.deployments, N
 _.each(e, it), Pe();
 }
 }, ct = function() {
-var e = E.groupByService(N.routes, !0);
-ge.routesByService = _.mapValues(e, E.sortRoutesByScore), Pe();
+var e = T.groupByService(N.routes, !0);
+ge.routesByService = _.mapValues(e, T.sortRoutesByScore), Pe();
 }, lt = function() {
 ge.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
 }, ut = function(e) {
@@ -1520,7 +1524,7 @@ pollInterval: 6e4
 }));
 var o, i, s = {}, c = {};
 u.SERVICE_CATALOG_ENABLED && L(oe, "watch") && (o = function(e) {
-var t = T.getServiceClassNameForInstance(e);
+var t = E.getServiceClassNameForInstance(e);
 if (!t) return n.when();
 var r = _.get(ge, [ "serviceClasses", t ]);
 return r ? n.when(r) : (s[t] || (s[t] = m.get(ae, t, {}).then(function(e) {
@@ -1529,7 +1533,7 @@ return ge.serviceClasses[t] = e, e;
 delete c[t];
 })), s[t]);
 }, i = function(e) {
-var t = T.getServicePlanNameForInstance(e);
+var t = E.getServicePlanNameForInstance(e);
 if (!t) return n.when();
 var r = _.get(ge, [ "servicePlans", t ]);
 return r ? n.when(r) : (c[t] || (c[t] = m.get(ie, t, {}).then(function(e) {
@@ -8084,9 +8088,9 @@ target: "_blank"
 _.each(a, d), _.each(i, d);
 }
 }), r) : r;
-}, E = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], T = function(e, t, n, r, a) {
+}, T = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], E = function(e, t, n, r, a) {
 var o, s = "Your project is " + (r < t ? "over" : "at") + " quota. ";
-return o = _.includes(E, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
+return o = _.includes(T, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
 }, N = function(e, t, n) {
 var r = function(e) {
 var t = e.status.total || e.status;
@@ -8143,7 +8147,7 @@ var c = f(e), l = _.get(a, [ "used", s ]), d = f(l);
 id: "quota-limit-reached-" + s,
 namespace: o,
 type: c < d ? "warning" : "info",
-message: T(0, d, e, c, s),
+message: E(0, d, e, c, s),
 isHTML: !0,
 skipToast: !0,
 showInDrawer: !0,
@@ -8396,16 +8400,15 @@ var u, d = e("tags"), m = r.getPreferredVersion("servicebindings"), p = r.getPre
 c.debug("ProjectsService: clearing catalog items cache"), u = null;
 };
 a.onUserChanged(h), a.onLogout(h);
-var y = function() {
-return !!n.OPENSHIFT_CONFIG.templateServiceBrokerEnabled;
-}, b = {};
+var y = {};
 _.each(i.CATALOG_CATEGORIES, function(e) {
 >>>>>>> Check for new templateServiceBrokerEnabled flag
 _.each(e.items, function(e) {
-b[e.id] = e;
+y[e.id] = e;
 var t = _.get(e, "subcategories", []);
 _.each(t, function(e) {
 _.each(e.items, function(e) {
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< b4ddc9b550515059b9681d76233c34b7f7b3431c
 <<<<<<< 0ba73cbc37b88f92a6380ccc93fc8e3d978020aa
@@ -8426,6 +8429,9 @@ y[e.id] = e;
 =======
 b[e.id] = e;
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+y[e.id] = e;
+>>>>>>> Check service classes to see if template service broker is enabled
 });
 });
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -8506,6 +8512,7 @@ e && a.test(e) || delete i[b.name];
 }
 });
 });
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< b4ddc9b550515059b9681d76233c34b7f7b3431c
 var j;
@@ -8540,26 +8547,25 @@ var b = function(e, t) {
 =======
 var S = function(e, t) {
 >>>>>>> Check for new templateServiceBrokerEnabled flag
+=======
+var b = function(e, t) {
+>>>>>>> Check service classes to see if template service broker is enabled
 e = e.toLowerCase();
 var n;
 for (n = 0; n < t.length; n++) if (e === t[n].toLowerCase()) return !0;
 return !1;
-}, C = function(e, t) {
+}, S = function(e, t) {
 var n = _.get(e, "categoryAliases", []), r = [ e.id ].concat(n);
 return _.some(r, function(e) {
-return S(e, t);
+return b(e, t);
 });
-}, w = function(e) {
+}, C = function(e) {
 return e.from && "ImageStreamTag" === e.from.kind && -1 === e.from.name.indexOf(":") && !e.from.namespace;
-}, P = e("displayName"), j = [ "metadata.name", 'metadata.annotations["openshift.io/display-name"]', "metadata.annotations.description" ];
+}, w = e("displayName"), P = [ "metadata.name", 'metadata.annotations["openshift.io/display-name"]', "metadata.annotations.description" ];
 return {
 SERVICE_CATALOG_ENABLED: v,
-isTemplateServiceBrokerEnabled: y,
 getCatalogItems: function(e) {
-if (u && !e) return c.debug("CatalogService: returning cached catalog items"), t.when(u);
-c.debug("CatalogService: getCatalogItems, force refresh", e);
-var n = !y();
-return o.getCatalogItems(n).then(_.spread(function(e, t) {
+return u && !e ? (c.debug("CatalogService: returning cached catalog items"), t.when(u)) : (c.debug("CatalogService: getCatalogItems, force refresh", e), o.getCatalogItems(!0).then(_.spread(function(e, t) {
 if (t) {
 var n = {
 type: "error",
@@ -8568,10 +8574,10 @@ message: t
 l.addNotification(n);
 }
 return u = e, e;
-}));
+})));
 },
 getCategoryItem: function(e) {
-return b[e];
+return y[e];
 },
 categorizeImageStreams: function(e) {
 var t = {};
@@ -8583,16 +8589,16 @@ var t = _.get(e, "annotations.tags");
 t && (n[e.name] = t.split(/\s*,\s*/));
 });
 var r = !1;
-_.each(b, function(a) {
+_.each(y, function(a) {
 (function(e) {
 return _.some(e.status.tags, function(e) {
 var t = n[e.tag] || [];
-return C(a, t) && S("builder", t) && !S("hidden", t);
+return S(a, t) && b("builder", t) && !b("hidden", t);
 });
 })(e) && (t[a.id] = t[a.id] || [], t[a.id].push(e), r = !0);
 }), r || _.some(e.status.tags, function(e) {
 var t = n[e.tag] || [];
-return S("builder", t) && !S("hidden", t);
+return b("builder", t) && !b("hidden", t);
 }) && (t[""] = t[""] || [], t[""].push(e));
 }
 }), t;
@@ -8601,19 +8607,19 @@ categorizeTemplates: function(e) {
 var t = {};
 return _.each(e, function(e) {
 var n = d(e), r = !1;
-_.each(b, function(a) {
-C(a, n) && (t[a.id] = t[a.id] || [], t[a.id].push(e), r = !0);
+_.each(y, function(a) {
+S(a, n) && (t[a.id] = t[a.id] || [], t[a.id].push(e), r = !0);
 }), r || (t[""] = t[""] || [], t[""].push(e));
 }), t;
 },
-referencesSameImageStream: w,
+referencesSameImageStream: C,
 filterImageStreams: function(e, t) {
 if (!t.length) return e;
 var n = [];
 return _.each(e, function(e) {
-var r = _.get(e, "metadata.name", ""), a = P(e, !0), o = [], i = {}, s = {};
+var r = _.get(e, "metadata.name", ""), a = w(e, !0), o = [], i = {}, s = {};
 _.each(e.spec.tags, function(e) {
-if (w(e)) return i[e.name] = e.from.name, s[e.from.name] = s[e.from.name] || [], void s[e.from.name].push(e.name);
+if (C(e)) return i[e.name] = e.from.name, s[e.from.name] = s[e.from.name] || [], void s[e.from.name].push(e.name);
 o.push(e);
 });
 var c = _.keyBy(o, "name");
@@ -8638,7 +8644,7 @@ return t ? c[t] : c[e.tag];
 }), n;
 },
 filterTemplates: function(e, t) {
-return s.filterForKeywords(e, j, t);
+return s.filterForKeywords(e, P, t);
 }
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
@@ -11215,9 +11221,9 @@ var t = r("annotation")(e, "deploymentVersion");
 t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
 }, R = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
-}, E = function() {
-n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 }, T = function() {
+n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
+}, E = function() {
 S = _.filter(n.pods, function(e) {
 return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
 }), n.filteredPods = s.filterForKeywords(S, w, P);
@@ -11386,13 +11392,13 @@ var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
 _.isEmpty(t) || u.toPodsForDeployment(e, t);
 }, m.get(e.project).then(_.spread(function(e, r) {
 n.project = e, n.projectContext = r, g.push(o.watch("pods", r, function(e) {
-n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), T(), c.log("pods", n.pods);
+n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwnerUID = d.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, k), E(), c.log("pods", n.pods);
 })), g.push(o.watch({
 resource: "statefulsets",
 group: "apps",
 version: "v1beta1"
 }, r, function(e) {
-n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), c.log("statefulSets", n.statefulSets);
+n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, T(), c.log("statefulSets", n.statefulSets);
 }, {
 poll: f,
 pollInterval: 6e4
@@ -11411,7 +11417,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 o.unwatchAll(g);
 }), n.$watch("filters.hideOlderResources", function() {
-T(), B(), O(), U(), E();
+E(), B(), O(), U(), T();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -11596,7 +11602,7 @@ roleName: t.metadata.name,
 subjectName: n.name
 }), e("getErrorDetails")(r));
 });
-}, E = function(t, n, a) {
+}, T = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
 I(), P("success", w.update.subject.success({
 roleName: t.roleRef.name,
@@ -11608,6 +11614,7 @@ roleName: t.roleRef.name,
 subjectName: n.name
 }), e("getErrorDetails")(r));
 });
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -11659,9 +11666,13 @@ n.tab && (E[n.tab] = !0);
 }, T = {};
 n.tab && (T[n.tab] = !0);
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}, E = {};
+n.tab && (E[n.tab] = !0);
+>>>>>>> Check service classes to see if template service broker is enabled
 var N = d.getSubjectKinds();
 angular.extend(r, {
-selectedTab: T,
+selectedTab: E,
 projectName: v,
 >>>>>>> Update membership to use new rbac endpoints
 forms: {},
@@ -12073,7 +12084,7 @@ name: n.metadata.name
 i && _.some(i.subjects, o) ? P("error", w.update.subject.exists({
 roleName: n.metadata.name,
 subjectName: e
-})) : i ? E(i, o, a) : R(n, o);
+})) : i ? T(i, o, a) : R(n, o);
 }
 }), f.listAllRoles(g, {
 errorNotification: !1
@@ -14030,9 +14041,10 @@ o.unwatchAll(j);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
-var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), E = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
 case "ReplicaSet":
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< e4ca5098ec3f3e19aca2602a9ad961b476fa5181
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
 a.resource = {
@@ -14116,6 +14128,9 @@ e.deploymentsVersion = r.getPreferredVersion("deployments"), e.deploymentConfigs
 var $ = [];
 =======
 e.resource = T, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+=======
+e.resource = E, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+>>>>>>> Check service classes to see if template service broker is enabled
 break;
 
 case "ReplicationController":
@@ -14390,7 +14405,7 @@ link: g.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), x(), y();
-})), B.push(i.watch(T, u, function(e) {
+})), B.push(i.watch(E, u, function(e) {
 var t = e.by("metadata.name");
 <<<<<<< 44f396286c95279739890891eea2b89e4abdde15
 <<<<<<< f8cb892c3d9e864c3b7b3ba810c290ed7ce351f0
@@ -14896,8 +14911,12 @@ message: "This " + w + " has been deleted."
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
 =======
 }), e.replicaSet = t, V(t), U(), H(), e.deployment && x();
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 })), e.deploymentConfigName && N(), B.push(i.watch(E, u, function(t) {
 >>>>>>> Use correct preferred version on replica set page
+=======
+})), e.deploymentConfigName && N(), B.push(i.watch(T, u, function(t) {
+>>>>>>> Check service classes to see if template service broker is enabled
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -17440,7 +17459,7 @@ destinationDir: e.value
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 });
-}, E = function(t) {
+}, T = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -17505,7 +17524,7 @@ name: _.last(r)
 }).namespace = 1 !== _.size(r) ? _.head(r) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, T = function(e) {
+}, E = function(e) {
 return _.filter(e, function(e) {
 return !_.isEmpty(e.data.type) && !_.isEmpty(e.data[_.toLower(e.data.type)]);
 });
@@ -17513,7 +17532,7 @@ return !_.isEmpty(e.data.type) && !_.isEmpty(e.data[_.toLower(e.data.type)]);
 var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
-}), t = t.concat(T(e.triggers.webhookTriggers)), t = _.map(t, "data");
+}), t = t.concat(E(e.triggers.webhookTriggers)), t = _.map(t, "data");
 }, D = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
@@ -17682,6 +17701,7 @@ switch (a.sources.images && !_.isEmpty(a.sourceImages) && (a.updatedBuildConfig.
 =======
 "path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
 }
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -17756,6 +17776,9 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Check service classes to see if template service broker is enabled
 case "Source":
 case "Docker":
 $(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -18504,6 +18527,7 @@ command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -18537,6 +18561,9 @@ var T = function(e, t, n, r) {
 =======
 var E = function(e, t, n, r) {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+var T = function(e, t, n, r) {
+>>>>>>> Check service classes to see if template service broker is enabled
 var a = {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 kind: "ImageStreamTag",
@@ -18551,6 +18578,7 @@ containerNames: [ e ],
 from: a
 }
 }, n;
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -18596,6 +18624,9 @@ n.hasDeploymentTrigger ? t.push(j(a, n.triggerData.istag, n.triggerData.data, n.
 =======
 }, T = function() {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}, E = function() {
+>>>>>>> Check service classes to see if template service broker is enabled
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 });
@@ -18618,7 +18649,7 @@ n.hasDeploymentTrigger ? t.push(E(a, n.triggerData.istag, n.triggerData.data, n.
 name: a
 =======
 return _.each(e.containerConfigByName, function(n, r) {
-n.hasDeploymentTrigger ? t.push(E(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(T(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: r
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }).image = n.image;
@@ -18641,7 +18672,7 @@ var o = e.strategyData[e.strategyParamsPropertyName].maxUnavailable, i = Number(
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
 _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = g.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
-}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = T(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = E(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
@@ -19449,8 +19480,8 @@ e.displayName = a.displayName, e.advancedOptions = "true" === a.advanced;
 var I = {
 name: "app",
 value: ""
-}, R = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
-g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
+}, R = t("orderByDisplayName"), T = t("getErrorDetails"), E = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(E, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 };
@@ -19711,7 +19742,7 @@ o = R(t.by("metadata.name")), e.valueFromObjects = o.concat(i);
 id: "create-builder-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: E(e)
+details: T(e)
 });
 }), c.list(L, n, null, {
 errorNotification: !1
@@ -19728,7 +19759,7 @@ e.unshift("");
 id: "create-builder-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: E(e)
+details: T(e)
 });
 }), c.get($, r.imageName, {
 namespace: r.namespace || a.project
@@ -19971,6 +20002,7 @@ D(), N = t.quotaAlerts || [], e.nameTaken || _.some(N, {
 =======
 }).result.then(F);
 }, M = function(t) {
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -19990,10 +20022,13 @@ N(), E = t.quotaAlerts || [], e.nameTaken || _.some(E, {
 =======
 N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+N(), E = t.quotaAlerts || [], e.nameTaken || _.some(E, {
+>>>>>>> Check service classes to see if template service broker is enabled
 type: "error"
-}) ? (e.disableInputs = !1, _.each(T, function(e) {
+}) ? (e.disableInputs = !1, _.each(E, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
+})) : _.isEmpty(E) ? F() : (x(E), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return P(this.project) || this.projectName;
@@ -21895,7 +21930,7 @@ o.kubernetes = e.data.gitVersion;
 })), i.push(a.getOpenShiftMasterVersion().then(function(e) {
 o.openshift = e.data.gitVersion;
 })), t.all(i).finally(function() {
-o.kubernetes = o.kubernetes || r.VERSION.kubernetes || "unknown", o.openshift = o.openshift || r.VERSION.openshift || "unknown";
+o.kubernetes = o.kubernetes || "unknown", o.openshift = o.openshift || "unknown";
 });
 >>>>>>> Bug 1539566 - Request server version on about page load
 } ]), angular.module("openshiftConsole").controller("CommandLineController", [ "$scope", "DataService", "AuthService", "Constants", function(e, t, n, r) {
@@ -23861,7 +23896,7 @@ t > 0 && a.push(k()), e > 0 && a.push(w()), n.all(a).then(b);
 }
 function b() {
 var e, n;
-T(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+E(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
 project: p.input.selectedProject,
 template: p.resource
 }) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
@@ -24290,18 +24325,18 @@ cancelButtonText: "Cancel"
 }
 }
 }).result.then(y);
-}, E = {}, T = function() {
-c.hideNotification("from-file-error"), _.each(E, function(e) {
+}, T = {}, E = function() {
+c.hideNotification("from-file-error"), _.each(T, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
 });
 }, N = function(e) {
-T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+E(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
-E = E.concat(t), _.filter(E, {
+T = T.concat(t), _.filter(T, {
 type: "error"
-}).length ? (_.each(E, function(e) {
+}).length ? (_.each(T, function(e) {
 e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
-}), p.disableInputs = !1) : E.length ? (R(E), p.disableInputs = !1) : y();
+}), p.disableInputs = !1) : T.length ? (R(T), p.disableInputs = !1) : y();
 }, D = function() {
 if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
 var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
@@ -24333,10 +24368,10 @@ details: I(e)
 });
 }
 }, p.cancel = function() {
-T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+E(), s.toProjectOverview(p.input.selectedProject.metadata.name);
 };
 var A = e("displayName");
-p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", E);
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
@@ -26049,11 +26084,11 @@ return n(e, !1);
 })) : I = [ n(h[t], !0) ], k.empty(), k.append(I), k.append($('<option data-divider="true"></option>')), k.append($('<option value="">View All Projects</option>')), k.selectpicker("refresh");
 >>>>>>> Fix flicker showing builder dialog
 }
-}, E = function() {
+}, T = function() {
 return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
-}, T = function() {
+}, E = function() {
 var e = a.project;
 if (i.currentProjectName !== e) {
 i.currentProjectName = e, i.chromeless = "chromeless" === a.view;
@@ -26069,7 +26104,7 @@ n.all([ r, a ]).then(function() {
 i.catalogItems = c.sortCatalogItems(_.concat(t, o));
 });
 }
-}), E().then(function() {
+}), T().then(function() {
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 metadata: {
 name: i.currentProjectName
@@ -26109,7 +26144,7 @@ m.toProjectCatalog(i.currentProjectName, n);
 });
 i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
-}, T(), i.$on("$routeChangeSuccess", T), k.selectpicker({
+}, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
 iconBase: "fa",
 tickIcon: "fa-check"
 }).change(function() {
@@ -27849,7 +27884,7 @@ var t = p.options.selectedContainer;
 >>>>>>> Support EnvFrom in the Env Editors
 switch (e) {
 case "memory/usage":
-var n = T(t);
+var n = E(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
@@ -27884,10 +27919,10 @@ _.each(e.datasets, function(e) {
 t[e.id] = e.data;
 });
 var n, a = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
-E[o] ? E[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
+T[o] ? T[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), r(function() {
-A || (E[o] = c3.generate(n));
+A || (T[o] = c3.generate(n));
 }));
 }
 }
@@ -28143,7 +28178,7 @@ m.loaded = !0;
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
+var I, R = {}, T = {}, E = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -28319,14 +28354,14 @@ delete e.data;
 }, !0), I = t(k, c.getDefaultUpdateInterval(), !1);
 });
 var O = o.$on("metrics.charts.resize", function() {
-c.redraw(R), c.redraw(E);
+c.redraw(R), c.redraw(T);
 });
 m.$on("$destroy", function() {
 I && (t.cancel(I), I = null), O && (O(), O = null), angular.forEach(R, function(e) {
 e.destroy();
-}), R = null, angular.forEach(E, function(e) {
+}), R = null, angular.forEach(T, function(e) {
 e.destroy();
-}), E = null, A = !0;
+}), T = null, A = !0;
 });
 }
 };
@@ -28451,7 +28486,7 @@ return e[0];
 function u(e) {
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
 }));
 }
 function d() {
@@ -28670,7 +28705,7 @@ t.loaded = !0;
 }
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
-var j, k, I = {}, R = w, E = function(e) {
+var j, k, I = {}, R = w, T = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -28678,10 +28713,10 @@ label: "Memory",
 units: "MiB",
 convert: i.bytesToMiB,
 formatUsage: function(e) {
-return E(e) && (e /= 1024), s.formatUsage(e);
+return T(e) && (e /= 1024), s.formatUsage(e);
 },
 usageUnits: function(e) {
-return E(e) ? "GiB" : "MiB";
+return T(e) ? "GiB" : "MiB";
 },
 descriptor: "memory/usage",
 type: "pod_container",
@@ -28784,7 +28819,7 @@ return c.lastChild.innerHTML = f, c;
 =======
 chartID: "network-rx-" + t.uniqueID
 } ];
-var T = _.keyBy(t.metrics, "descriptor");
+var E = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
 };
@@ -28956,17 +28991,17 @@ n > 10 ? e() : (n++, j().is(":visible") && (k(), e()));
 k(!0), b(), C();
 }, 100);
 m.on("resize", R);
-var E, T = function() {
+var T, E = function() {
 S = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && E(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = a.defer();
-return E ? (E.onClose(function() {
+return T ? (T.onClose(function() {
 t.resolve();
-}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), T.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
 A().then(function() {
 t.$evalAsync(function() {
@@ -29018,7 +29053,7 @@ limitBytes: 10485760
 }, t.options), n = 0, r = function(e) {
 n++, N.appendChild(f(n, e)), D();
 };
-(E = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
+(T = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", I());
 }), a && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
@@ -29026,17 +29061,18 @@ t.limitReached = !0, t.loading = !1;
 }), A(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), E.onClose(function() {
-E = null, t.$evalAsync(function() {
+}), T.onClose(function() {
+T = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), E.onError(function() {
-E = null, t.$evalAsync(function() {
+}), T.onError(function() {
+T = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -29106,6 +29142,9 @@ backlink: URI.encode(c.location.href)
 =======
 }), E.start();
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}), T.start();
+>>>>>>> Check service classes to see if template service broker is enabled
 }
 });
 >>>>>>> Patternfly vertical navigation and project bar
@@ -29201,7 +29240,7 @@ onScrollTop: function() {
 t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
 },
 toggleAutoScroll: function() {
-t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && E();
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
@@ -31405,7 +31444,7 @@ return {
 name: t,
 value: e
 };
-}), E() && h.labels.push({
+}), T() && h.labels.push({
 name: "app",
 value: h.template.metadata.name
 });
@@ -31520,7 +31559,7 @@ details: t
 }, h.cancel = function() {
 j(), i.toProjectOverview(h.project.metadata.name);
 }, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", j);
-var E = function() {
+var T = function() {
 return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
 };
 } ],
@@ -33830,11 +33869,11 @@ details: y(e)
 }
 } else n.mode = "istag";
 });
-var R, E = e("displayName"), T = function() {
+var R, T = e("displayName"), E = function() {
 var e = {
-started: "Deploying image " + n.app.name + " to project " + E(n.input.selectedProject),
-success: "Deployed image " + n.app.name + " to project " + E(n.input.selectedProject),
-failure: "Failed to deploy image " + n.app.name + " to project " + E(n.input.selectedProject)
+started: "Deploying image " + n.app.name + " to project " + T(n.input.selectedProject),
+success: "Deployed image " + n.app.name + " to project " + T(n.input.selectedProject),
+failure: "Failed to deploy image " + n.app.name + " to project " + T(n.input.selectedProject)
 };
 m.clear(), m.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
@@ -33898,7 +33937,7 @@ cancelButtonText: "Cancel"
 };
 }
 }
-}).result.then(T);
+}).result.then(E);
 }, D = function(e) {
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
@@ -33945,6 +33984,7 @@ e.id = _.uniqueId("deploy-image-alert-"), c.addNotification(e);
 =======
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(b, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -33963,6 +34003,9 @@ e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
 =======
 })) : b.length ? (N(b), n.disableInputs = !1) : T();
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+})) : b.length ? (N(b), n.disableInputs = !1) : E();
+>>>>>>> Check service classes to see if template service broker is enabled
 };
 n.create = function() {
 n.disableInputs = !0, S(), C().then(function(e) {
@@ -35241,7 +35284,7 @@ _.each(f.notificationGroups, function(t) {
 _.each(h.notificationGroups, function(e) {
 e.totalUnread = I(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 });
-}, E = function(e) {
+}, T = function(e) {
 _.each(h.notificationGroups, function(t) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 _.remove(t.notifications, {
@@ -35294,6 +35337,7 @@ g[r.project] = {}, v[r.project] = {};
 }, R = function(e) {
 =======
 });
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -35329,6 +35373,10 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 }, T = function(e) {
 S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], E(e);
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}, E = function(e) {
+S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], T(e);
+>>>>>>> Check service classes to see if template service broker is enabled
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
 }, D = function(e) {
@@ -35699,6 +35747,7 @@ headingInclude: "views/directives/notifications/header.html",
 notificationBodyInclude: "views/directives/notifications/notification-body.html",
 customScope: {
 clear: function(e, t, n) {
+<<<<<<< 9f51bba3d8461b7deeba3a25e8ec508c2b6bb364
 <<<<<<< 7f528a6245ccd61196e4d44c223a2314b75d1fe3
 <<<<<<< 98d35b7be80762a8a3d8e315c2e12cc1d0380344
 <<<<<<< 740c0bf427b8755b1fd0c15e2c36438482e0204e
@@ -35749,6 +35798,9 @@ u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), E(e), L()
 =======
 u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L();
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), E(e), L();
+>>>>>>> Check service classes to see if template service broker is enabled
 },
 markRead: function(e) {
 e.unread = !1, u.markRead(e.uid), L();
@@ -35843,7 +35895,7 @@ h.drawerHidden = !h.drawerHidden;
 })), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
 h.drawerHidden = !0;
 })), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-u.markCleared(t.uid), T(t), R();
+u.markCleared(t.uid), E(t), R();
 }));
 };
 <<<<<<< b751e7cdd36536609ccfbc9bb12d212dfb7a136b
