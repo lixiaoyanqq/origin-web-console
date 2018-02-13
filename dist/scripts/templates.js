@@ -18082,7 +18082,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td data-title=\"Bindings\">\n" +
 >>>>>>> Updates for Service Instance & Bindings
     "<div ng-if=\"bindingsByInstanceRef[serviceInstance.metadata.name].length\">\n" +
-    "<p ng-if=\"firstBinding = bindingsByInstanceRef[serviceInstance.metadata.name][0]\">\n" +
+    "<div ng-if=\"firstBinding = bindingsByInstanceRef[serviceInstance.metadata.name][0]\">\n" +
     "<span ng-if=\"application = applicationsByBinding[firstBinding.metadata.name][0]\">\n" +
     "{{application.metadata.name}}\n" +
     "</span>\n" +
@@ -18095,7 +18095,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "<ng-pluralize count=\"bindingsByInstanceRef[serviceInstance.metadata.name].length\" when=\"{'0':'', '1':'', '2':'and {} other', 'other':'and {} others'}\" offset=\"1\">\n" +
     "</ng-pluralize>\n" +
-    "</p>\n" +
+    "</div>\n" +
     "</div>\n" +
 <<<<<<< 602d786018a3879a89789b1214b36a15c51b928b
     "<div ng-if=\"!bindingsByInstanceRef[serviceInstance.metadata.name].length\" translate>\n" +
