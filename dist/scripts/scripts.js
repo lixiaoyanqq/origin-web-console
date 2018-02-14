@@ -25098,7 +25098,7 @@ scope: {
 autoscaling: "=model",
 showNameInput: "=?",
 nameReadOnly: "=?",
-showRequestInput: "=?"
+showRequestInput: "&"
 },
 templateUrl: "views/directives/osc-autoscaling.html",
 <<<<<<< 6a2231e3f384b69aa3c6acdab5d544fe6caf59e5
