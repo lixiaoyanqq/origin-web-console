@@ -21423,7 +21423,7 @@ scope: {
 autoscaling: "=model",
 showNameInput: "=?",
 nameReadOnly: "=?",
-showRequestInput: "=?"
+showRequestInput: "&"
 },
 templateUrl: "views/directives/osc-autoscaling.html",
 link: function(t, r, a) {
