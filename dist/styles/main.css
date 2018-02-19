@@ -4459,12 +4459,16 @@ body>.ui-select-bootstrap.open{z-index:1050}
 =======
 .landing-side-bar{background-color:#292e34;color:#fff;z-index:1029}
 @media (min-width:768px){.landing-search-form{max-width:600px;width:80%}
+<<<<<<< 502ae16cd67232f92324d480d6f7ef7e29700acc
 <<<<<<< 52ca8d037987f7046de998d3ee5239ba96867d3c
 .landing-side-bar{bottom:0;overflow-y:auto;position:fixed;right:0;top:72px;width:325px}
 >>>>>>> Add search catalog in project context
 =======
 .landing-side-bar{bottom:0;overflow-y:auto;position:fixed;right:0;top:61px;width:325px}
 >>>>>>> Fix bug where landing search obscures primary nav at mobile
+=======
+.landing-side-bar{bottom:0;overflow-y:auto;position:fixed;right:0;top:61px;width:325px;-webkit-transform:translate3d(0,0,0)}
+>>>>>>> Bump catalog version to v3.9.0-alpha.15
 }
 @media (min-width:1200px){.landing-side-bar{width:425px}
 }
