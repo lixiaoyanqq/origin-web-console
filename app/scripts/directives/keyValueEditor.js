@@ -195,8 +195,13 @@
               var readOnlySome = [];
               var cannotDeleteSome = [];
               var unique = counter++;
-              var canIGetSecrets = canI('secrets', 'get');
-              var canIGetConfigMaps = canI('configmaps', 'get');
+
+              $scope.configMapVersion = APIService.getPreferredVersion('configmaps');
+              $scope.secretsVersion = APIService.getPreferredVersion('secrets');
+
+              var canIGetSecrets = canI($scope.secretsVersion, 'get');
+              var canIGetConfigMaps = canI($scope.configMapVersion, 'get');
+
 
               angular.extend($scope, {
                 namespace: $routeParams.project,

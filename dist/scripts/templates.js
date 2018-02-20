@@ -9957,20 +9957,30 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"faux-form-control readonly\">\n" +
     "<span ng-switch=\"entry.refType\">\n" +
     "<span ng-switch-when=\"configMapKeyRef\">\n" +
+<<<<<<< HEAD
     "<translate>Set to the key {{entry.valueFrom.configMapKeyRef.key}} in config map</translate>\n" +
     "<span ng-if=\"!('configmaps' | canI : 'get')\">\n" +
+=======
+    "Set to the key {{entry.valueFrom.configMapKeyRef.key}} in config map\n" +
+    "<span ng-if=\"!(configMapVersion | canI : 'get')\">\n" +
+>>>>>>> Update kve to use getPreferredVersion
     "{{entry.valueFrom.configMapKeyRef.name}}\n" +
     "</span>\n" +
-    "<a ng-if=\"'configmaps' | canI : 'get'\" ng-href=\"{{entry.apiObj | navigateResourceURL}}\">\n" +
+    "<a ng-if=\"configMapVersion | canI : 'get'\" ng-href=\"{{entry.apiObj | navigateResourceURL}}\">\n" +
     "{{entry.valueFrom.configMapKeyRef.name}}\n" +
     "</a>\n" +
     "</span>\n" +
     "<span ng-switch-when=\"secretKeyRef\">\n" +
+<<<<<<< HEAD
     "<translate>Set to the key {{entry.valueFrom.secretKeyRef.key}} in secret</translate>\n" +
     "<span ng-if=\"!('secrets' | canI : 'get')\">\n" +
+=======
+    "Set to the key {{entry.valueFrom.secretKeyRef.key}} in secret\n" +
+    "<span ng-if=\"!(secretsVersion | canI : 'get')\">\n" +
+>>>>>>> Update kve to use getPreferredVersion
     "{{entry.valueFrom.secretKeyRef.name}}\n" +
     "</span>\n" +
-    "<a ng-if=\"'secrets' | canI : 'get'\" ng-href=\"{{entry.apiObj | navigateResourceURL}}\">\n" +
+    "<a ng-if=\"secretsVersion | canI : 'get'\" ng-href=\"{{entry.apiObj | navigateResourceURL}}\">\n" +
     "{{entry.valueFrom.secretKeyRef.name}}\n" +
     "</a>\n" +
     "</span>\n" +

@@ -51563,6 +51563,7 @@ o || i ? a.hide = !0 : v();
 }, a.$onDestroy = function() {
 u(), d();
 };
+<<<<<<< HEAD
 } ]
 });
 }(), function() {
@@ -51590,6 +51591,82 @@ return _.filter(e, "unread");
 }, E = function() {
 _.each(b.notificationGroups, function(e) {
 e.totalUnread = T(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
+=======
+} ]), angular.module("openshiftConsole").directive("keyValueEditor", [ "$routeParams", "$timeout", "$filter", "APIService", "keyValueEditorConfig", "keyValueEditorUtils", function(e, t, n, r, a, o) {
+var i = n("humanizeKind"), s = n("canI"), c = 1e3;
+return {
+restrict: "AE",
+scope: {
+keyMinlength: "@",
+keyMaxlength: "@",
+valueMinlength: "@",
+valueMaxlength: "@",
+entries: "=",
+keyPlaceholder: "@",
+valuePlaceholder: "@",
+keyValidator: "@",
+keyValidatorRegex: "=",
+valueValidator: "@",
+valueValidatorRegex: "=",
+keyValidatorError: "@",
+keyValidatorErrorTooltip: "@",
+keyValidatorErrorTooltipIcon: "@",
+valueValidatorError: "@",
+valueValidatorErrorTooltip: "@",
+valueValidatorErrorTooltipIcon: "@",
+valueIconTooltip: "@",
+valueFromSelectorOptions: "=",
+cannotAdd: "=?",
+cannotSort: "=?",
+cannotDelete: "=?",
+isReadonly: "=?",
+isReadonlyValue: "=?",
+isReadonlyKeys: "=?",
+addRowLink: "@",
+addRowWithSelectorsLink: "@",
+showHeader: "=?",
+allowEmptyKeys: "=?",
+keyRequiredError: "@"
+},
+templateUrl: "views/directives/key-value-editor.html",
+link: function(e, n, r) {
+var o;
+e.validation = {
+key: e.keyValidator,
+val: e.valueValidator
+}, r.keyValidatorRegex && (e.validation.key = e.keyValidatorRegex), r.valueValidatorRegex && (e.validation.val = e.valueValidatorRegex), "grabFocus" in r && (e.grabFocus = !0, t(function() {
+e.grabFocus = void 0;
+})), "cannotAdd" in r && (e.cannotAdd = !0), "cannotDelete" in r && (e.cannotDeleteAny = !0), "isReadonly" in r && (e.isReadonlyAny = !0), "isReadonlyKeys" in r && (o = e.$watch("entries", function(t) {
+t && (_.each(e.entries, function(e) {
+e.isReadonlyKey = !0;
+}), o());
+})), "cannotSort" in r && (e.cannotSort = !0), "showHeader" in r && (e.showHeader = !0), "allowEmptyKeys" in r && (e.allowEmptyKeys = !0), e.groupByKind = function(e) {
+return i(e.kind);
+}, e.valueFromObjectSelected = function(e, t) {
+"ConfigMap" === t.kind ? (e.valueFrom.configMapKeyRef = {
+name: t.metadata.name
+}, delete e.valueFrom.secretKeyRef) : "Secret" === t.kind && (e.valueFrom.secretKeyRef = {
+name: t.metadata.name
+}, delete e.valueFrom.configMapKeyRef), delete e.valueFrom.key;
+}, e.valueFromKeySelected = function(e, t) {
+e.valueFrom.configMapKeyRef ? e.valueFrom.configMapKeyRef.key = t : e.valueFrom.secretKeyRef && (e.valueFrom.secretKeyRef.key = t);
+}, angular.extend(e, {
+keyMinlength: a.keyMinlength || r.keyMinlength,
+keyMaxlength: a.keyMaxlength || r.keyMaxlength,
+valueMinlength: a.valueMinlength || r.valueMinlength,
+valueMaxlength: a.valueMaxlength || r.valueMaxlength,
+keyValidator: a.keyValidator || r.keyValidator,
+valueValidator: a.valueValidator || r.valueValidator,
+keyValidatorError: a.keyValidatorError || r.keyValidatorError,
+valueValidatorError: a.valueValidatorError || r.valueValidatorError,
+keyRequiredError: a.keyRequiredError || r.keyRequiredError,
+keyValidatorErrorTooltip: a.keyValidatorErrorTooltip || r.keyValidatorErrorTooltip,
+keyValidatorErrorTooltipIcon: a.keyValidatorErrorTooltipIcon || r.keyValidatorErrorTooltipIcon,
+valueValidatorErrorTooltip: a.valueValidatorErrorTooltip || r.valueValidatorErrorTooltip,
+valueValidatorErrorTooltipIcon: a.valueValidatorErrorTooltipIcon || r.valueValidatorErrorTooltipIcon,
+keyPlaceholder: a.keyPlaceholder || r.keyPlaceholder,
+valuePlaceholder: a.valuePlaceholder || r.valuePlaceholder
+>>>>>>> Update kve to use getPreferredVersion
 });
 }, N = function(e) {
 _.each(b.notificationGroups, function(t) {
@@ -51677,6 +51754,7 @@ showMarkAllRead: !0,
 onClose: function() {
 b.drawerHidden = !0;
 },
+<<<<<<< HEAD
 onMarkAllRead: function(e) {
 _.each(e.notifications, function(e) {
 e.unread = !1, m.markRead(e.uid);
@@ -51686,6 +51764,31 @@ onClearAll: function(e) {
 _.each(e.notifications, function(e) {
 e.unread = !1, m.markRead(e.uid), m.markCleared(e.uid);
 }), A(), V(), r.$emit("NotificationDrawerWrapper.onMarkAllRead");
+=======
+controller: [ "$scope", function(t) {
+var n = [], a = [], i = c++;
+t.configMapVersion = r.getPreferredVersion("configmaps"), t.secretsVersion = r.getPreferredVersion("secrets");
+var l = s(t.secretsVersion, "get"), u = s(t.configMapVersion, "get");
+angular.extend(t, {
+namespace: e.project,
+unique: i,
+forms: {},
+placeholder: o.newEntry(),
+setFocusKeyClass: "key-value-editor-set-focus-key-" + i,
+setFocusValClass: "key-value-editor-set-focus-value-" + i,
+uniqueForKey: o.uniqueForKey,
+uniqueForValue: o.uniqueForValue,
+dragControlListeners: {
+accept: function(e, t) {
+return e.itemScope.sortableScope.$id === t.$id;
+},
+orderChanged: function() {
+t.forms.keyValueEditor.$setDirty();
+}
+},
+deleteEntry: function(e, n) {
+t.entries.splice(e, n), !t.entries.length && t.addRowLink && o.addEntry(t.entries), t.forms.keyValueEditor.$setDirty();
+>>>>>>> Update kve to use getPreferredVersion
 },
 notificationGroups: [],
 headingInclude: "views/directives/notifications/header.html",
@@ -51694,6 +51797,7 @@ customScope: {
 clear: function(e, t, n) {
 m.markRead(e.uid), m.markCleared(e.uid), n.notifications.splice(t, 1), D(e), V();
 },
+<<<<<<< HEAD
 markRead: function(e) {
 e.unread = !1, m.markRead(e.uid), V();
 },
@@ -51702,11 +51806,36 @@ b.drawerHidden = !0;
 },
 onLinkClick: function(e) {
 e.onClick(), b.drawerHidden = !0;
+=======
+cannotDeleteSome: function(e) {
+return _.includes(a, e);
+},
+onAddRow: function() {
+o.addEntry(t.entries), o.setFocusOn("." + t.setFocusKeyClass);
+},
+onAddRowWithSelectors: function() {
+o.addEntryWithSelectors(t.entries), o.setFocusOn("." + t.setFocusKeyClass);
+>>>>>>> Update kve to use getPreferredVersion
 },
 countUnreadNotifications: E
 }
+<<<<<<< HEAD
 }), o.$watch("$ctrl.drawerExpanded", function(e) {
 localStorage.setItem("openshift/notification-drawer-expanded", e ? "true" : "false");
+=======
+}), t.$watch("cannotDelete", function(e) {
+angular.isArray(e) && (t.cannotDeleteAny = !1, a = e);
+}), t.$watch("isReadonly", function(e) {
+angular.isArray(e) && (t.isReadonlyAny = !1, n = e);
+}), t.$watch("addRowLink", function(e) {
+t.addRowLink = e || "Add row", t.entries && !t.entries.length && o.addEntry(t.entries);
+}), t.$watch("entries", function(e) {
+e && !e.length && o.addEntry(t.entries), _.each(t.entries, function(e) {
+o.altTextForValueFrom(e, t.namespace), o.setEntryPerms(e, l, u);
+}), o.findReferenceValueForEntries(e, t.valueFromSelectorOptions);
+}), t.$watch("valueFromSelectorOptions", function() {
+o.findReferenceValueForEntries(t.entries, t.valueFromSelectorOptions);
+>>>>>>> Update kve to use getPreferredVersion
 });
 var K = function() {
 a.project && G(), S.push(r.$on("$routeChangeSuccess", function(e, t, n) {

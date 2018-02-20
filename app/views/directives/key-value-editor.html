@@ -118,11 +118,11 @@
                 <span ng-switch-when="configMapKeyRef">
                   <translate>Set to the key {{entry.valueFrom.configMapKeyRef.key}} in config map</translate>
                   <span
-                    ng-if="!('configmaps' | canI : 'get')">
+                    ng-if="!(configMapVersion | canI : 'get')">
                     {{entry.valueFrom.configMapKeyRef.name}}
                   </span>
                   <a
-                    ng-if="'configmaps' | canI : 'get'"
+                    ng-if="configMapVersion | canI : 'get'"
                     ng-href="{{entry.apiObj | navigateResourceURL}}">
                     {{entry.valueFrom.configMapKeyRef.name}}
                   </a>
@@ -130,11 +130,11 @@
                 <span ng-switch-when="secretKeyRef">
                   <translate>Set to the key {{entry.valueFrom.secretKeyRef.key}} in secret</translate>
                   <span
-                    ng-if="!('secrets' | canI : 'get')">
+                    ng-if="!(secretsVersion | canI : 'get')">
                     {{entry.valueFrom.secretKeyRef.name}}
                   </span>
                   <a
-                    ng-if="'secrets' | canI : 'get'"
+                    ng-if="secretsVersion | canI : 'get'"
                     ng-href="{{entry.apiObj | navigateResourceURL}}">
                     {{entry.valueFrom.secretKeyRef.name}}
                   </a>
