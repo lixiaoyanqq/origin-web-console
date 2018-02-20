@@ -2420,8 +2420,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !(buildsCloneVersion | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\" translate>Rebuild</button>\n" +
 =======
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\">Cancel Build</button>\n" +
+<<<<<<< HEAD
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
 >>>>>>> Update build controller to use getPreferredVersion
+=======
+    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !(buildsCloneVersion | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
+>>>>>>> Update canI checks in build template
     "\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
     "<translate>Actions</translate>\n" +
@@ -2503,7 +2507,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Ensure kve does not render on browser builds if no envs to show
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.logs\" ng-if=\"!(build | isJenkinsPipelineStrategy) && (buildsLogVersion | canI : 'get')\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Logs</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Logs</uib-tab-heading>\n" +
+>>>>>>> Update canI checks in build template
     "<log-viewer ng-if=\"selectedTab.logs\" follow-affix-top=\"390\" object=\"build\" context=\"projectContext\" options=\"logOptions\" empty=\"logEmpty\" run=\"logCanRun\">\n" +
     "<label translate>Status:</label>\n" +
     "<status-icon status=\"build.status.phase\"></status-icon>\n" +
@@ -2517,7 +2525,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</log-viewer>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"(eventsVersion | canI : 'watch')\">\n" +
+<<<<<<< HEAD
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update canI checks in build template
     "<events api-objects=\"eventObjects\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
