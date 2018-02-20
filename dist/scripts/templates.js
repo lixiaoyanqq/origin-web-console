@@ -2342,8 +2342,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\" translate>Rebuild</button>\n" +
 =======
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cancelBuild()\" ng-if=\"!build.metadata.deletionTimestamp && (build | isIncompleteBuild) && (buildsVersion | canI : 'update')\">Cancel Build</button>\n" +
+<<<<<<< 444b72e612af6321739a5f58df021b78b61cda6a
     "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
 >>>>>>> Update build controller to use getPreferredVersion
+=======
+    "<button class=\"btn btn-default hidden-xs\" ng-click=\"cloneBuild()\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !(buildsCloneVersion | canI : 'create') || (build | isBinaryBuild)\" ng-disabled=\"!canBuild\">Rebuild</button>\n" +
+>>>>>>> Update canI checks in build template
     "\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
     "<translate>Actions</translate>\n" +
@@ -2369,8 +2373,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" role=\"button\" ng-click=\"cancelBuild()\">Cancel Build</a>\n" +
 >>>>>>> Update build controller to use getPreferredVersion
     "</li>\n" +
+<<<<<<< 444b72e612af6321739a5f58df021b78b61cda6a
     "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canBuild }\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !('builds/clone' | canI : 'create') || (build | isBinaryBuild)\">\n" +
     "<a href=\"\" role=\"button\" ng-click=\"cloneBuild()\" ng-attr-aria-disabled=\"{{canBuild ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canBuild }\" translate>Rebuild</a>\n" +
+=======
+    "<li class=\"visible-xs-inline\" ng-class=\"{ disabled: !canBuild }\" ng-hide=\"build.metadata.deletionTimestamp || (build | isIncompleteBuild) || !(buildsCloneVersion | canI : 'create') || (build | isBinaryBuild)\">\n" +
+    "<a href=\"\" role=\"button\" ng-click=\"cloneBuild()\" ng-attr-aria-disabled=\"{{canBuild ? undefined : 'true'}}\" ng-class=\"{ 'disabled-link': !canBuild }\">Rebuild</a>\n" +
+>>>>>>> Update canI checks in build template
     "</li>\n" +
     "<li ng-if=\"(buildsVersion | canI : 'update')\">\n" +
 <<<<<<< 4f61521d7db379799711c39e9cebe284a6d3753e
@@ -2425,7 +2434,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p ng-if=\"!(build | buildStrategy).env\"><em>The build strategy had no environment variables defined.</em></p>\n" +
 >>>>>>> Ensure kve does not render on browser builds if no envs to show
     "</uib-tab>\n" +
-    "<uib-tab active=\"selectedTab.logs\" ng-if=\"!(build | isJenkinsPipelineStrategy) && ('builds/log' | canI : 'get')\">\n" +
+    "<uib-tab active=\"selectedTab.logs\" ng-if=\"!(build | isJenkinsPipelineStrategy) && (buildsLogVersion | canI : 'get')\">\n" +
     "<uib-tab-heading>Logs</uib-tab-heading>\n" +
     "<log-viewer ng-if=\"selectedTab.logs\" follow-affix-top=\"390\" object=\"build\" context=\"projectContext\" options=\"logOptions\" empty=\"logEmpty\" run=\"logCanRun\">\n" +
     "<label translate>Status:</label>\n" +
@@ -2439,8 +2448,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</log-viewer>\n" +
     "</uib-tab>\n" +
+<<<<<<< 444b72e612af6321739a5f58df021b78b61cda6a
     "<uib-tab active=\"selectedTab.events\" ng-if=\"('events' | canI : 'watch')\">\n" +
     "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
+=======
+    "<uib-tab active=\"selectedTab.events\" ng-if=\"(eventsVersion | canI : 'watch')\">\n" +
+    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+>>>>>>> Update canI checks in build template
     "<events api-objects=\"eventObjects\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
