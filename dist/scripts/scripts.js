@@ -20364,7 +20364,7 @@ e.limitRanges = t.by("metadata.name"), V();
 }
 function C() {
 var t;
-_.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(a.kindToResource(t.kind), t.metadata.name, t, {
+_.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(a.objectToResourceGroupVersion(t), t.metadata.name, t, {
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
 if (!p.isDialog) {
@@ -20514,7 +20514,7 @@ type: "error",
 message: "Unable to update the " + k(t.kind) + " '" + t.metadata.name + "'.",
 details: e("getErrorDetails")(n)
 });
-})) : (t = _.head(p.createResources), i.create(a.kindToResource(t.kind), null, t, {
+})) : (t = _.head(p.createResources), i.create(a.objectToResourceGroupVersion(t), null, t, {
 namespace: p.input.selectedProject.metadata.name
 }).then(function() {
 if (!p.isDialog) {
