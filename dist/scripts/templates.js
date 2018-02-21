@@ -6852,7 +6852,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/_build-pipeline-links.html',
+<<<<<<< HEAD
     "<div ng-if=\"(build | buildLogURL) && ('builds/log' | canI : 'get')\" class=\"pipeline-link\"><a ng-href=\"{{build | buildLogURL}}\" target=\"_blank\" translate>View Log</a></div>"
+=======
+    "<div ng-if=\"(build | buildLogURL) && (buildLogsVersion | canI : 'get')\" class=\"pipeline-link\"><a ng-href=\"{{build | buildLogURL}}\" target=\"_blank\">View Log</a></div>"
+>>>>>>> Update buildPipeline directive to use getPreferredVersion
   );
 
 

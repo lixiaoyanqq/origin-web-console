@@ -48447,12 +48447,38 @@ okButtonClass: "btn-danger",
 cancelButtonText: "Cancel"
 };
 }
+<<<<<<< HEAD
+=======
+};
+} ]), angular.module("openshiftConsole").directive("buildPipeline", [ "$filter", "APIService", "Logger", function(e, t, n) {
+return {
+restrict: "E",
+scope: {
+build: "=",
+expandOnlyRunning: "=?",
+collapsePending: "=?",
+buildConfigNameOnExpanded: "=?"
+},
+replace: !0,
+templateUrl: "views/directives/build-pipeline.html",
+link: function(r) {
+r.buildLogsVersion = t.getPreferredVersion("builds/log");
+var a = e("annotation");
+r.$watch(function() {
+return a(r.build, "jenkinsStatus");
+}, function(e) {
+if (e) try {
+r.jenkinsStatus = JSON.parse(e);
+} catch (t) {
+n.error("Could not parse Jenkins status as JSON", e);
+>>>>>>> Update buildPipeline directive to use getPreferredVersion
 }
 }).result.then(S);
 }, w = {}, P = function() {
 i.hideNotification("process-template-error"), _.each(w, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || i.hideNotification(e.id);
 });
+<<<<<<< HEAD
 }, k = function(e) {
 P(), w = u.getSecurityAlerts(b, v.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
@@ -48480,6 +48506,13 @@ id: "process-template-error",
 type: "error",
 message: "An error occurred processing the template.",
 details: t
+=======
+var o = e("buildConfigForBuild");
+r.$watch(function() {
+return o(r.build);
+}, function(e) {
+r.buildConfigName = e;
+>>>>>>> Update buildPipeline directive to use getPreferredVersion
 });
 });
 }, function(e) {
