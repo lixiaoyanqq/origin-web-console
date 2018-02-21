@@ -498,9 +498,9 @@ return _.get(e, "metadata.name");
 }, be = function(e) {
 return _.get(e, "metadata.uid");
 }, Se = function() {
-return _.size(N.deploymentConfigs) + _.size(N.vanillaReplicationControllers) + _.size(N.deployments) + _.size(N.vanillaReplicaSets) + _.size(N.statefulSets) + _.size(N.daemonSets) + _.size(N.monopods) + _.size(N.state.serviceInstances);
+return _.size(N.deploymentConfigs) + _.size(N.vanillaReplicationControllers) + _.size(N.deployments) + _.size(N.vanillaReplicaSets) + _.size(N.statefulSets) + _.size(N.daemonSets) + _.size(N.monopods) + _.size(N.state.serviceInstances) + _.size(N.mobileClients);
 }, Ce = function() {
-return _.size(N.filteredDeploymentConfigs) + _.size(N.filteredReplicationControllers) + _.size(N.filteredDeployments) + _.size(N.filteredReplicaSets) + _.size(N.filteredStatefulSets) + _.size(N.filteredDaemonSets) + _.size(N.filteredMonopods) + _.size(N.filteredServiceInstances);
+return _.size(N.filteredDeploymentConfigs) + _.size(N.filteredReplicationControllers) + _.size(N.filteredDeployments) + _.size(N.filteredReplicaSets) + _.size(N.filteredStatefulSets) + _.size(N.filteredDaemonSets) + _.size(N.filteredMonopods) + _.size(N.filteredServiceInstances) + _.size(N.filteredMobileClients);
 }, _e = function() {
 N.size = Se(), N.filteredSize = Ce();
 var e = 0 === N.size, t = N.deploymentConfigs && N.replicationControllers && N.deployments && N.replicaSets && N.statefulSets && N.daemonSets && N.pods && N.state.serviceInstances;
@@ -775,7 +775,7 @@ case "name":
 return !_.isEmpty(ve.filterKeywords);
 }
 }, $e = function() {
-N.filteredDeploymentConfigs = De(N.deploymentConfigs), N.filteredReplicationControllers = De(N.vanillaReplicationControllers), N.filteredDeployments = De(N.deployments), N.filteredReplicaSets = De(N.vanillaReplicaSets), N.filteredStatefulSets = De(N.statefulSets), N.filteredDaemonSets = De(N.daemonSets), N.filteredMonopods = De(N.monopods), N.filteredPipelineBuildConfigs = De(N.pipelineBuildConfigs), N.filteredServiceInstances = De(ve.orderedServiceInstances), N.filterActive = Ae(), ke(), _e();
+N.filteredDeploymentConfigs = De(N.deploymentConfigs), N.filteredReplicationControllers = De(N.vanillaReplicationControllers), N.filteredDeployments = De(N.deployments), N.filteredReplicaSets = De(N.vanillaReplicaSets), N.filteredStatefulSets = De(N.statefulSets), N.filteredDaemonSets = De(N.daemonSets), N.filteredMonopods = De(N.monopods), N.filteredPipelineBuildConfigs = De(N.pipelineBuildConfigs), N.filteredServiceInstances = De(ve.orderedServiceInstances), N.filteredMobileClients = De(N.mobileClients), N.filterActive = Ae(), ke(), _e();
 }, Be = a.project + "/overview/view-by";
 N.viewBy = localStorage.getItem(Be) || "app", e.$watch(function() {
 return N.viewBy;
@@ -1775,6 +1775,15 @@ ve.clusterQuotas = e.by("metadata.name"), _t();
 >>>>>>> Overview support for daemon sets
 }, {
 poll: !0,
+pollInterval: 6e4
+})), e.AEROGEAR_MOBILE_ENABLED && jt.push(m.watch({
+group: "mobile.k8s.io",
+version: "v1alpha1",
+resource: "mobileclients"
+}, r, function(e) {
+N.mobileClients = e.by("metadata.name"), $e(), S.log("mobileclients (subscribe)", e);
+}, {
+poll: D,
 pollInterval: 6e4
 }));
 <<<<<<< HEAD
@@ -3727,6 +3736,7 @@ return n(r);
 e && $("body").addClass("ios");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Enable new landing page experience by default
 } ]), hawtioPluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
@@ -3751,6 +3761,27 @@ return o && (a = "https://" + o), n.when(a);
 =======
 } ]).run([ "$rootScope", function(e) {
 _.get(window, "OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page") && (e.globalTechPreviewIndicator = !0, $("body").addClass("tech-preview"));
+=======
+} ]).run([ "$rootScope", "APIService", function(e, t) {
+e.AEROGEAR_MOBILE_ENABLED = !!t.apiInfo({
+resource: "mobileclients",
+group: "mobile.k8s.io"
+}), e.AEROGEAR_MOBILE_ENABLED && window.OPENSHIFT_CONSTANTS.SERVICE_CATALOG_CATEGORIES.push({
+id: "mobile",
+label: "Mobile",
+subCategories: [ {
+id: "apps",
+label: "Apps",
+tags: [ "mobile" ],
+icon: "fa fa-mobile"
+}, {
+id: "services",
+label: "Services",
+tags: [ "mobile-service" ],
+icon: "fa fa-database"
+} ]
+}), Logger.info("AEROGEAR_MOBILE_ENABLED: " + e.AEROGEAR_MOBILE_ENABLED);
+>>>>>>> Allow viewing mobile clients in the overview screen
 } ]), hawtioPluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
 var e = {
 local: window.localStorage,
@@ -51004,6 +51035,7 @@ serviceClasses: "<",
 serviceInstances: "<",
 createBinding: "&"
 },
+<<<<<<< HEAD
 templateUrl: "views/overview/_service-bindings.html"
 }), angular.module("openshiftConsole").directive("istagSelect", [ "APIService", "DataService", "ProjectsService", function(e, t, n) {
 var r = e.getPreferredVersion("imagestreams");
@@ -51016,6 +51048,68 @@ selectDisabled: "=",
 selectRequired: "=",
 includeSharedNamespace: "=",
 allowCustomTag: "="
+=======
+templateUrl: "views/directives/_service-binding.html"
+});
+}(), function() {
+angular.module("openshiftConsole").component("mobileClientRow", {
+controller: [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "DataService", "ListRowUtils", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
+var l = this;
+l.installType = "", _.extend(l, i.ui), l.$onChanges = function(e) {
+if (e.apiObject) switch (l.bundleDisplay = l.apiObject.spec.appIdentifier, l.clientType = l.apiObject.spec.clientType.toUpperCase(), l.apiObject.spec.clientType) {
+case "android":
+l.installType = "gradle";
+break;
+
+case "iOS":
+l.installType = "cocoapods";
+break;
+
+case "cordova":
+l.installType = "npm";
+}
+}, l.mobileclientVersion = {
+group: "mobile.k8s.io",
+version: "v1alpha1",
+resource: "mobileclients"
+}, l.actionsDropdownVisible = function() {
+return !_.get(l.apiObject, "metadata.deletionTimestamp") && a.canI(l.mobileclientVersion, "delete");
+}, l.projectName = n.project, l.browseCatalog = function() {
+s.toProjectCatalog(l.projectName);
+};
+} ],
+controllerAs: "row",
+bindings: {
+apiObject: "<",
+state: "<"
+},
+templateUrl: "views/overview/_mobile-client-row.html"
+});
+}(), function() {
+angular.module("openshiftConsole").component("buildCounts", {
+controller: [ "$scope", "BuildsService", function(e, t) {
+var n = this;
+n.interestingPhases = [ "Pending", "Running", "Failed", "Error" ];
+var r = function(e) {
+var t = _.get(e, "status.phase");
+return _.includes(n.interestingPhases, t);
+};
+n.$onChanges = _.debounce(function() {
+e.$apply(function() {
+var e = _.groupBy(n.builds, "status.phase");
+if (n.countByPhase = _.mapValues(e, _.size), n.show = _.some(n.builds, r), n.showRunningStage && 1 === n.countByPhase.Running) {
+var a = _.head(e.Running);
+n.currentStage = t.getCurrentStage(a);
+} else n.currentStage = null;
+});
+}, 200);
+} ],
+controllerAs: "buildCounts",
+bindings: {
+builds: "<",
+showRunningStage: "<",
+label: "@"
+>>>>>>> Allow viewing mobile clients in the overview screen
 },
 templateUrl: "views/directives/istag-select.html",
 controller: [ "$scope", function(e) {
