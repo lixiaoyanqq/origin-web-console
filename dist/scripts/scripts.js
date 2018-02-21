@@ -22099,6 +22099,7 @@ details: c("getErrorDetails")(t)
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), m.push(r.watch(e.servicesVersion, s, function(t) {
 e.services = t.by("metadata.name");
 })), m.push(r.watch(l, s, function(e) {
@@ -22147,6 +22148,29 @@ e.loaded = !0, e.alerts.load = {
 type: "error",
 message: "The service details could not be loaded.",
 details: r("getErrorDetails")(t)
+=======
+}).directive("volumes", [ "APIService", function(e) {
+return {
+restrict: "E",
+scope: {
+volumes: "=",
+namespace: "=",
+canRemove: "=?",
+removeFn: "&?"
+},
+templateUrl: "views/_volumes.html",
+link: function(t) {
+t.secretsVersion = e.getPreferredVersion("secrets");
+}
+};
+} ]).directive("volumeClaimTemplates", function() {
+return {
+restrict: "E",
+scope: {
+templates: "="
+},
+templateUrl: "views/_volume-claim-templates.html"
+>>>>>>> Update volumes directive to use getPreferredVersion
 };
 }), i.push(n.watch("services", u, function(t) {
 e.services = t.by("metadata.name");
