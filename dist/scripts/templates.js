@@ -1585,9 +1585,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</pod-template>\n" +
     "<h4 translate>Volumes</h4>\n" +
     "<volumes ng-if=\"pod.spec.volumes.length\" volumes=\"pod.spec.volumes\" namespace=\"project.metadata.name\"></volumes>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"!pod.spec.volumes.length\" translate>none</div>\n" +
     "<p ng-if=\"dcName && (deploymentConfigsVersion | canI : 'update')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{dcName}}\" translate>Add Storage to {{dcName}}</a>\n" +
+=======
+    "<div ng-if=\"!pod.spec.volumes.length\">none</div>\n" +
+    "<p ng-if=\"dcName && (deploymentConfigsVersion | canI : 'update')\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/attach-pvc?kind=DeploymentConfig&name={{dcName}}\">Add Storage to {{dcName}}</a>\n" +
+>>>>>>> Update pod details include to use getPreferredVersion
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{dcName}}\" translate>Add Config Files to {{dcName}}</a>\n" +
     "</p>\n" +
