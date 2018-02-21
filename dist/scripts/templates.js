@@ -16070,6 +16070,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"row.showStartBuildAction()\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-click=\"row.startBuild(row.buildConfigs[0])\" translate>Start Build</a>\n" +
     "</li>\n" +
+<<<<<<< HEAD
     "<li ng-if=\"'deploymentconfigs/instantiate' | canI : 'create'\" role=\"menuitem\">\n" +
     "<a href=\"\" ng-if=\"row.canDeploy()\" ng-click=\"row.startDeployment()\" translate>Deploy</a>\n" +
     "<a href=\"\" ng-if=\"!(row.canDeploy())\" class=\"disabled-link\" aria-disabled=\"true\" translate>\n" +
@@ -16078,6 +16079,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</li>\n" +
     "<li ng-if=\"'deploymentconfigs' | canI : 'update'\" role=\"menuitem\">\n" +
     "<a ng-href=\"{{row.apiObject | editResourceURL}}\" translate>Edit</a>\n" +
+=======
+    "<li ng-if=\"row.deploymentConfigsInstantiateVersion | canI : 'create'\" role=\"menuitem\">\n" +
+    "<a href=\"\" ng-if=\"row.canDeploy()\" ng-click=\"row.startDeployment()\">Deploy</a>\n" +
+    "<a href=\"\" ng-if=\"!(row.canDeploy())\" class=\"disabled-link\" aria-disabled=\"true\">\n" +
+    "Deploy <span ng-if=\"row.isPaused()\">(Paused)</span>\n" +
+    "</a>\n" +
+    "</li>\n" +
+    "<li ng-if=\"row.deploymentConfigsVersion | canI : 'update'\" role=\"menuitem\">\n" +
+    "<a ng-href=\"{{row.apiObject | editResourceURL}}\">Edit</a>\n" +
+>>>>>>> Update list-row-actions include to use getPreferredVersion for canI checks
     "</li>\n" +
     "<li ng-if=\"('pod_presets' | enableTechPreviewFeature)\n" +
     "                      && row.state.bindableServiceInstances.length\n" +
@@ -16103,8 +16114,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
 >>>>>>> Adopt new service catalog resource names
     "</li>\n" +
+<<<<<<< HEAD
     "<li ng-if=\"row.current && ('deploymentconfigs/log' | canI : 'get')\" role=\"menuitem\">\n" +
     "<a ng-href=\"{{row.current | navigateResourceURL}}?tab=logs\" translate>View Logs</a>\n" +
+=======
+    "<li ng-if=\"row.current && (row.deploymentConfigsLogVersion | canI : 'get')\" role=\"menuitem\">\n" +
+    "<a ng-href=\"{{row.current | navigateResourceURL}}?tab=logs\">View Logs</a>\n" +
+>>>>>>> Update list-row-actions include to use getPreferredVersion for canI checks
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
@@ -16119,11 +16135,19 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Switch kebabs to buttons so they are sized correctly
     "</button>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
+<<<<<<< HEAD
     "<li role=\"menuitem\" ng-if=\"'pods' | canI : 'update'\">\n" +
     "<a ng-href=\"{{row.apiObject | editYamlURL}}\" translate>Edit YAML</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\" ng-if=\"('pods/log' | canI : 'get')\">\n" +
     "<a ng-href=\"{{row.apiObject | navigateResourceURL}}?tab=logs\" translate>View Logs</a>\n" +
+=======
+    "<li role=\"menuitem\" ng-if=\"row.podsVersion | canI : 'update'\">\n" +
+    "<a ng-href=\"{{row.apiObject | editYamlURL}}\">Edit YAML</a>\n" +
+    "</li>\n" +
+    "<li role=\"menuitem\" ng-if=\"(row.podsLogVersion | canI : 'get')\">\n" +
+    "<a ng-href=\"{{row.apiObject | navigateResourceURL}}?tab=logs\">View Logs</a>\n" +
+>>>>>>> Update list-row-actions include to use getPreferredVersion for canI checks
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +
@@ -16165,8 +16189,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
 >>>>>>> Adopt new service catalog resource names
     "</li>\n" +
+<<<<<<< HEAD
     "<li ng-if=\"(pod = row.firstPod(row.current)) && ('pods/log' | canI : 'get')\" role=\"menuitem\">\n" +
     "<a ng-href=\"{{pod | navigateResourceURL}}?tab=logs\" translate>View Logs</a>\n" +
+=======
+    "<li ng-if=\"(pod = row.firstPod(row.current)) && (row.podsLogVersion | canI : 'get')\" role=\"menuitem\">\n" +
+    "<a ng-href=\"{{pod | navigateResourceURL}}?tab=logs\">View Logs</a>\n" +
+>>>>>>> Update list-row-actions include to use getPreferredVersion for canI checks
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +

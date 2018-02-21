@@ -50767,11 +50767,30 @@ details: y(e)
 }
 } else n.mode = "istag";
 });
+<<<<<<< HEAD
 var R, E = e("displayName"), T = function() {
 var e = {
 started: "Deploying image " + n.app.name + " to project " + E(n.input.selectedProject),
 success: "Deployed image " + n.app.name + " to project " + E(n.input.selectedProject),
 failure: "Failed to deploy image " + n.app.name + " to project " + E(n.input.selectedProject)
+=======
+}(), function() {
+angular.module("openshiftConsole").component("overviewListRow", {
+controller: [ "$filter", "$uibModal", "APIService", "BuildsService", "CatalogService", "DeploymentsService", "ListRowUtils", "Navigate", "NotificationsService", function(e, t, n, r, a, o, i, s, c) {
+var l = this;
+_.extend(l, i.ui);
+var u = e("canI"), d = e("deploymentIsInProgress"), m = e("isBinaryBuild"), p = e("enableTechPreviewFeature");
+l.serviceBindingsVersion = n.getPreferredVersion("servicebindings"), l.deploymentConfigsVersion = n.getPreferredVersion("deploymentconfigs"), l.deploymentConfigsInstantiateVersion = n.getPreferredVersion("deploymentconfigs/instantiate"), l.deploymentConfigsLogVersion = n.getPreferredVersion("deploymentconfigs/log"), l.podsVersion = n.getPreferredVersion("pods"), l.podsLogVersion = n.getPreferredVersion("pods/log");
+var f = function(e) {
+var t = _.get(e, "spec.triggers");
+_.isEmpty(t) || (l.imageChangeTriggers = _.filter(t, function(e) {
+return "ImageChange" === e.type && _.get(e, "imageChangeParams.automatic");
+}));
+}, g = function(e) {
+e && !l.current && "DeploymentConfig" !== e.kind && "Deployment" !== e.kind && (l.current = e);
+}, v = function(e) {
+l.rgv = n.objectToResourceGroupVersion(e), g(e), f(e);
+>>>>>>> Update list-row-actions include to use getPreferredVersion for canI checks
 };
 m.clear(), m.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
