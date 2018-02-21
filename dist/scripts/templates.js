@@ -16796,6 +16796,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+<<<<<<< HEAD
   $templateCache.put('views/overview/_service-header.html',
     "<div row class=\"service-title\" ng-if=\"service\">\n" +
     "<div class=\"service-name truncate\">\n" +
@@ -16818,6 +16819,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   );
 
 
+=======
+>>>>>>> Remove unused include views/overview/_service-header.html
   $templateCache.put('views/overview/_service-instance-row.html',
     "<div class=\"list-pf-item provisioned-service\" ng-class=\"{ active: row.expanded }\">\n" +
     "<div class=\"list-pf-container\" ng-click=\"row.toggleExpand($event)\">\n" +
