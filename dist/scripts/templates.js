@@ -10132,11 +10132,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>{{env.valueFrom.configMapKeyRef.key}} in config map</translate>\n" +
 =======
     "{{env.valueFrom.configMapKeyRef.key}} in config map\n" +
+<<<<<<< HEAD
 >>>>>>> Fix problems with env valueFrom for DC hooks
     "<span ng-if=\"!('configmaps' | canI : 'get')\">\n" +
+=======
+    "<span ng-if=\"!(configMapsVersion | canI : 'get')\">\n" +
+>>>>>>> Update lifecycle-hook directives to use getPreferredVersion
     "{{env.valueFrom.configMapKeyRef.name}}\n" +
     "</span>\n" +
-    "<a ng-if=\"'configmaps' | canI : 'get'\" ng-href=\"{{env.valueFrom.configMapKeyRef.name | navigateResourceURL : 'ConfigMap' : deploymentConfig.metadata.namespace}}\">\n" +
+    "<a ng-if=\"configMapsVersion | canI : 'get'\" ng-href=\"{{env.valueFrom.configMapKeyRef.name | navigateResourceURL : 'ConfigMap' : deploymentConfig.metadata.namespace}}\">\n" +
     "{{env.valueFrom.configMapKeyRef.name}}\n" +
     "</a>\n" +
     "</span>\n" +
@@ -10145,11 +10149,15 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>{{env.valueFrom.secretKeyRef.key}} in secret</translate>\n" +
 =======
     "{{env.valueFrom.secretKeyRef.key}} in secret\n" +
+<<<<<<< HEAD
 >>>>>>> Fix problems with env valueFrom for DC hooks
     "<span ng-if=\"!('secrets' | canI : 'get')\">\n" +
+=======
+    "<span ng-if=\"!(secretsVersion | canI : 'get')\">\n" +
+>>>>>>> Update lifecycle-hook directives to use getPreferredVersion
     "{{env.valueFrom.secretKeyRef.name}}\n" +
     "</span>\n" +
-    "<a ng-if=\"'secrets' | canI : 'get'\" ng-href=\"{{env.valueFrom.secretKeyRef.name | navigateResourceURL : 'Secret' : deploymentConfig.metadata.namespace}}\">\n" +
+    "<a ng-if=\"secretsVersion | canI : 'get'\" ng-href=\"{{env.valueFrom.secretKeyRef.name | navigateResourceURL : 'Secret' : deploymentConfig.metadata.namespace}}\">\n" +
     "{{env.valueFrom.secretKeyRef.name}}\n" +
     "</a>\n" +
     "</span>\n" +
