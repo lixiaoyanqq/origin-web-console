@@ -232,8 +232,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dd>{{containerStatus.ready}}</dd>\n" +
     "<dt translate>Restart Count:</dt>\n" +
     "<dd>{{containerStatus.restartCount}}</dd>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"hasDebugTerminal && showDebugAction(containerStatus) && ('pods' | canI : 'create')\" class=\"debug-pod-action\">\n" +
     "<a href=\"\" ng-click=\"debugTerminal(containerStatus.name)\" role=\"button\" translate>Debug in Terminal</a>\n" +
+=======
+    "<div ng-if=\"hasDebugTerminal && showDebugAction(containerStatus) && (podsVersion | canI : 'create')\" class=\"debug-pod-action\">\n" +
+    "<a href=\"\" ng-click=\"debugTerminal(containerStatus.name)\" role=\"button\">Debug in Terminal</a>\n" +
+>>>>>>> Update _container-statuses.html include to use getPreferredVersion for canI check
     "</div>\n" +
     "</dl>\n" +
     "</div>"

@@ -21991,12 +21991,42 @@ n.unwatchAll(s);
 n.projectName = t.project, n.unfilteredRoutes = {}, n.routes = {}, n.labelSuggestions = {}, n.clearFilter = function() {
 o.clear();
 };
+<<<<<<< HEAD
 var s = r.getPreferredVersion("services");
 n.routesVersion = r.getPreferredVersion("routes");
 var c = [];
 i.get(t.project).then(_.spread(function(e, t) {
 function r() {
 n.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(n.routes) && !_.isEmpty(n.unfilteredRoutes);
+=======
+}), angular.module("openshiftConsole").directive("containerStatuses", [ "$filter", "APIService", function(e, t) {
+return {
+restrict: "E",
+scope: {
+pod: "=",
+onDebugTerminal: "=?",
+detailed: "=?"
+},
+templateUrl: "views/_container-statuses.html",
+link: function(n) {
+n.hasDebugTerminal = angular.isFunction(n.onDebugTerminal), n.podsVersion = t.getPreferredVersion("pods");
+var r = e("isContainerTerminatedSuccessfully"), a = function(e) {
+return _.every(e, r);
+};
+n.$watch("pod", function(e) {
+n.initContainersTerminated = a(e.status.initContainerStatuses), !1 !== n.expandInitContainers && (n.expandInitContainers = !n.initContainersTerminated);
+}), n.toggleInitContainer = function() {
+n.expandInitContainers = !n.expandInitContainers;
+}, n.showDebugAction = function(t) {
+if ("Completed" === _.get(n.pod, "status.phase")) return !1;
+if (e("annotation")(n.pod, "openshift.io/build.name")) return !1;
+if (e("isDebugPod")(n.pod)) return !1;
+var r = _.get(t, "state.waiting.reason");
+return "ImagePullBackOff" !== r && "ErrImagePull" !== r && (!_.get(t, "state.running") || !t.ready);
+}, n.debugTerminal = function(e) {
+if (n.hasDebugTerminal) return n.onDebugTerminal.call(this, e);
+};
+>>>>>>> Update _container-statuses.html include to use getPreferredVersion for canI check
 }
 n.project = e, c.push(a.watch(n.routesVersion, t, function(e) {
 n.routesLoaded = !0, n.unfilteredRoutes = e.by("metadata.name"), o.addLabelSuggestionsFromResources(n.unfilteredRoutes, n.labelSuggestions), o.setLabelSuggestions(n.labelSuggestions), n.routes = o.getLabelSelector().select(n.unfilteredRoutes), r();
