@@ -17453,6 +17453,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Bug 1481127 - More robust handling of large project lists
 =======
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
+<<<<<<< 0362002935730410efef5737cd42f337ba1fb3bb
 >>>>>>> Don't wrap "Clear Filter" text
     "</div>\n" +
 <<<<<<< 148d93b663771cede3ec9e3fa9aef0e29f9b4f35
@@ -17466,6 +17467,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"project.status.phase != 'Active'\" data-toggle=\"tooltip\" title=\"{{'This project has been marked for deletion.'|translate}}\" class=\"pficon pficon-warning-triangle-o\"></span>\n" +
 =======
     "<div class=\"list-pf list-group projects-list\">\n" +
+=======
+    "</div>\n" +
+    "<div ng-if=\"projects.length\" class=\"list-pf list-group projects-list\">\n" +
+>>>>>>> Hide the .project-list when filtered results are 0
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-pf-item list-group-item project-info tile-click\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<div class=\"list-pf-content list-pf-content-flex\">\n" +
