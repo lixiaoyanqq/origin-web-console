@@ -10072,7 +10072,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"key-value-editor-entry form-group\" ng-if=\"(!cannotAdd)\">\n" +
     "<a href=\"\" class=\"add-row-link\" role=\"button\" ng-click=\"onAddRow()\">{{ addRowLink }}</a>\n" +
     "<span ng-if=\"valueFromSelectorOptions.length\">\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\"> | </span>\n" +
+    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<a href=\"\" class=\"add-row-link\" role=\"button\" ng-click=\"onAddRowWithSelectors()\">{{ addRowWithSelectorsLink }}</a>\n" +
     "</span>\n" +
     "</div>\n" +
@@ -11354,6 +11354,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"alternate in route.alternateServices\" class=\"form-group\">\n" +
     "<osc-routing-service model=\"alternate\" service-options=\"alternateServiceOptions\" all-services=\"servicesByName\" is-alternate=\"true\" show-weight=\"route.alternateServices.length > 1 || controls.hideSlider\">\n" +
     "</osc-routing-service>\n" +
+<<<<<<< af619492c61663bb6128e791a10c90222d31a64e
 <<<<<<< 19eb7841b9cafd073e70f5b25435d78688c6a0d6
     "<a href=\"\" ng-click=\"route.alternateServices.splice($index, 1)\" translate>Remove Service</a>\n" +
     "<span ng-if=\"$last && route.alternateServices.length < alternateServiceOptions.length\">\n" +
@@ -11361,6 +11362,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"addAlternateService()\" translate>Add Another Service</a>\n" +
 =======
     "<div class=\"row\">\n" +
+=======
+    "<div class=\"row form-group-actions\">\n" +
+>>>>>>> Remove padding from form-group-action buttons so they will have spacing consistency with links that are separated with .action-divider
     "<div class=\"col-sm-6\">\n" +
     "<button type=\"button\" class=\"btn btn-link\" ng-click=\"route.alternateServices.splice($index, 1)\">Remove Service</button>\n" +
     "<span ng-if=\"$last && route.alternateServices.length < alternateServiceOptions.length\">\n" +
@@ -18593,10 +18597,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"help-block\">A {{trigger.data.type}} webhook trigger referencing the secret {{(trigger | getWebhookSecretData).secretReference.name}} already exists.</span>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"add-webhook-action-btns\">\n" +
+    "<div class=\"form-group-actions\">\n" +
     "<button class=\"btn btn-link pad-left-none\" type=\"button\" ng-click=\"$ctrl.addEmptyWebhookTrigger()\">Add Webhook</button>\n" +
     "<span ng-if=\"$ctrl.secretsVersion | canI : 'create'\">\n" +
-    "<span class=\"action-divider\" aria-hidden=\"true\"> | </span>\n" +
+    "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
     "<button class=\"btn btn-link\" href=\"\" type=\"button\" ng-click=\"$ctrl.openCreateWebhookSecretModal()\">Create New Webhook Secret</button>\n" +
     "</span>\n" +
     "</div>\n" +
