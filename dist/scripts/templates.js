@@ -17570,6 +17570,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"search.text = ''\" role=\"button\" class=\"nowrap\">Clear Filter</a>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"list-group list-view-pf projects-list\">\n" +
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-group-item project-info tile-click\">\n" +
     "<div class=\"list-view-pf-main-info\">\n" +
@@ -17580,6 +17581,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Bug 1481127 - More robust handling of large project lists
 =======
     "<div class=\"list-pf list-group projects-list\">\n" +
+=======
+    "<div ng-if=\"projects.length\" class=\"list-pf list-group projects-list\">\n" +
+>>>>>>> Hide the .project-list when filtered results are 0
     "<div ng-repeat=\"project in projects | limitTo: limitListTo track by (project | uid)\" class=\"list-pf-item list-group-item project-info tile-click\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<div class=\"list-pf-content list-pf-content-flex\">\n" +
