@@ -2511,8 +2511,12 @@ LOGOS: {
 "icon-cassandra": "cassandra.svg",
 "icon-clojure": "clojure.svg",
 "icon-codeigniter": "codeigniter.svg",
+<<<<<<< ce612c786dc822cc4281da95a0bd2a56f1de5a16
 <<<<<<< 77ce3ebb70d0568ad8fbbb649b8a01f54552ad2c
 <<<<<<< 3087d5859f05def6301fced3a013ac9165fd8c7a
+=======
+"icon-cordova": "cordova.png",
+>>>>>>> Add Cordova color image
 "icon-datagrid": "datagrid.svg",
 "icon-datavirt": "datavirt.svg",
 "icon-decisionserver": "decisionserver.svg",
