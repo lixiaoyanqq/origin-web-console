@@ -2945,9 +2945,13 @@ LOGOS: {
 "icon-clojure": "clojure.svg",
 "icon-codeigniter": "codeigniter.svg",
 <<<<<<< HEAD
+<<<<<<< HEAD
 "icon-cordova": "cordova.png",
 =======
 >>>>>>> Add product icons for service catalog
+=======
+"icon-cordova": "cordova.png",
+>>>>>>> Add Cordova color image
 "icon-datagrid": "datagrid.svg",
 "icon-datavirt": "datavirt.svg",
 "icon-decisionserver": "decisionserver.svg",
