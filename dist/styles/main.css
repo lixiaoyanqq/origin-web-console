@@ -4240,11 +4240,15 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 <<<<<<< ced08c246184b897beed7092c0565098bebb9629
 <<<<<<< d958ae91b84f09b15e345008e222d1c83552b398
 .icon-openshift:before{content:"\e90a"}
+<<<<<<< 2f6497f92105da601d77de4a4b2ab3dfbad1abfe
 =======
 >>>>>>> Bump openshift-logos-icon to v1.2.0 to add Red Hat product icons
 =======
 .icon-openshift:before{content:"\e90a"}
 >>>>>>> Add icon-openshift
+=======
+.icon-cordova:before{content:"\e90b"}
+>>>>>>> Bump openshift-logos-icon to v1.4.0
 @keyframes toastSlideIn{0%{opacity:0;transform:translateX(150px)}
 100%{opacity:1;transform:translateX(0)}
 }
