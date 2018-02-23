@@ -5110,11 +5110,14 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.left,div.hopscotch-bubble
 <<<<<<< HEAD
 .icon-openshift:before{content:"\e90a"}
 .icon-cordova:before{content:"\e90b"}
+<<<<<<< HEAD
 =======
 >>>>>>> Bump openshift-logos-icon to v1.2.0 to add Red Hat product icons
 =======
 .icon-openshift:before{content:"\e90a"}
 >>>>>>> Add icon-openshift
+=======
+>>>>>>> Bump openshift-logos-icon to v1.4.0
 @keyframes toastSlideIn{0%{opacity:0;transform:translateX(150px)}
 100%{opacity:1;transform:translateX(0)}
 }
