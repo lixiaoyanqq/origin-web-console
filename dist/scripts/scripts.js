@@ -9640,6 +9640,40 @@ containerStartTime: _.get(t, [ n, "startedAt" ]),
 containerEndTime: _.get(t, [ n, "finishedAt" ])
 >>>>>>> Resize terminal when nav is collapsed or expanded
 });
+<<<<<<< HEAD
+=======
+}
+}, C = function() {
+var e = $("<span>").css({
+position: "absolute",
+top: "-100px"
+}).addClass("terminal-font").text(_.repeat("x", 10)).appendTo("body"), t = {
+width: e.width() / 10,
+height: e.height()
+};
+return e.remove(), t;
+}(), w = $(window), P = function(e) {
+e || (e = 0), C.height && C.width && r.selectedTab.terminal && !(e > 10) && r.$evalAsync(function() {
+var t = $(".container-terminal-wrapper").get(0);
+if (t) {
+var n = t.getBoundingClientRect();
+if (0 !== n.left || 0 !== n.top || 0 !== n.width || 0 !== n.height) {
+var o = w.height(), i = n.width - 17, s = o - n.top - 36;
+r.terminalCols = Math.max(_.floor(i / C.width), 80), r.terminalRows = Math.max(_.floor(s / C.height), 24);
+} else a(function() {
+P(e + 1);
+}, 50);
+} else a(function() {
+P(e + 1);
+}, 50);
+});
+}, j = function() {
+$(window).on("resize.terminalsize", _.debounce(P, 100)), y || (y = t.$on("oscHeader.toggleNav", function() {
+setTimeout(P, 150);
+}));
+}, k = function() {
+$(window).off("resize.terminalsize"), y && (y(), y = null);
+>>>>>>> Bump kubernetes-container-terminal to v3.0.0
 };
 return _.each(e, s), _.each(a, s), i;
 }
