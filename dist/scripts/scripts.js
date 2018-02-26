@@ -25747,6 +25747,7 @@ serviceClass: "<",
 servicePlan: "<"
 },
 templateUrl: "views/directives/service-instance-bindings.html"
+<<<<<<< f03ca00c075b8956bcb3e1de44c719f0df3f9d87
 <<<<<<< 2aa1fff2409c56d6a4dce433f2d20d43487ff288
 <<<<<<< ed7141d71afeea314ad6d1183c760dedc6ee73fe
 }), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "AuthorizationService", "Constants", "HTMLService", function(a, b, c, d, e, f, g, h) {
@@ -25771,6 +25772,10 @@ var s = function(e, t) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 var c = function(e, t) {
 >>>>>>> Make sure there's always a menu item for the current project
+=======
+}), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "APIService", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, r, a, o, i, s, c) {
+var l = function(e, t) {
+>>>>>>> Bug 1549097 - Update nav canI check
 return e.href === t || _.some(e.prefixes, function(e) {
 return _.startsWith(t, e);
 >>>>>>> Bump grunt-contrib-uglify to 3.0.1
@@ -25779,6 +25784,7 @@ return _.startsWith(t, e);
 return {
 restrict: "E",
 templateUrl: "views/_sidebar.html",
+<<<<<<< f03ca00c075b8956bcb3e1de44c719f0df3f9d87
 <<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
 <<<<<<< 33eb37eab8df0c17bc226501a924a2dc2b9b2f41
 <<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
@@ -25849,19 +25855,28 @@ var d = function() {
 l.projectName = a.project, _.set(l, "sidebar.secondaryOpen", !1), _.set(r, "nav.showMobileNav", !1), l.activeSecondary = null, l.activePrimary = _.find(l.navItems, function(t) {
 return u = e.path().replace("/project/" + l.projectName, ""), c(t, u) ? (l.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
 >>>>>>> Make sure there's always a menu item for the current project
+=======
+controller: [ "$scope", function(u) {
+var d;
+u.navItems = s.PROJECT_NAVIGATION, u.sidebar = {};
+var m = function() {
+u.projectName = a.project, _.set(u, "sidebar.secondaryOpen", !1), _.set(r, "nav.showMobileNav", !1), u.activeSecondary = null, u.activePrimary = _.find(u.navItems, function(t) {
+return d = e.path().replace("/project/" + u.projectName, ""), l(t, d) ? (u.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
+>>>>>>> Bug 1549097 - Update nav canI check
 var t = _.find(e.items, function(e) {
-return c(e, u);
+return l(e, d);
 });
-return !!t && (l.activeSecondary = t, !0);
+return !!t && (u.activeSecondary = t, !0);
 });
 });
 };
-d(), l.$on("$routeChangeSuccess", d);
-var m = function() {
-_.each(l.navItems, function(e) {
+m(), u.$on("$routeChangeSuccess", m);
+var p = function() {
+_.each(u.navItems, function(e) {
 e.isHover = !1;
 });
 };
+<<<<<<< f03ca00c075b8956bcb3e1de44c719f0df3f9d87
 l.navURL = function(e) {
 return e ? t("isAbsoluteURL")(e) ? e : "project/" + l.projectName + e : "";
 }, l.show = function(e) {
@@ -25903,26 +25918,56 @@ $(window).on("resize.verticalnav", q), j.$on("$destroy", function() {
 }, l.closeNav = function() {
 m(), l.nav.showMobileNav = !1, l.sidebar.secondaryOpen = !1;
 }, l.collapseMobileSecondary = function(e, t) {
+=======
+u.navURL = function(e) {
+return e ? t("isAbsoluteURL")(e) ? e : "project/" + u.projectName + e : "";
+}, u.show = function(e) {
+if (!(!e.isValid || e.isValid())) return !1;
+if (!e.canI) return !0;
+if (e.canI.addToProject) return u.canIAddToProject;
+var t = _.pick(e.canI, [ "resource", "group", "version" ]);
+return o.apiInfo(t) && i.canI(t, e.canI.verb, u.projectName);
+}, u.itemClicked = function(e) {
+if (p(), e.href) return u.nav.showMobileNav = !1, void (u.sidebar.secondaryOpen = !1);
+e.isHover = !0, e.mobileSecondary = u.isMobile, u.sidebar.showMobileSecondary = u.isMobile, u.sidebar.secondaryOpen = !0;
+}, u.onMouseEnter = function(e) {
+e.mouseLeaveTimeout && (n.cancel(e.mouseLeaveTimeout), e.mouseLeaveTimeout = null), e.mouseEnterTimeout = n(function() {
+e.isHover = !0, e.mouseEnterTimeout = null, u.sidebar.secondaryOpen = !_.isEmpty(e.secondaryNavSections);
+}, 200);
+}, u.onMouseLeave = function(e) {
+e.mouseEnterTimeout && (n.cancel(e.mouseEnterTimeout), e.mouseEnterTimeout = null), e.mouseLeaveTimeout = n(function() {
+e.isHover = !1, e.mouseLeaveTimeout = null, u.sidebar.secondaryOpen = _.some(u.navItems, function(e) {
+return e.isHover && !_.isEmpty(e.secondaryNavSections);
+});
+}, 300);
+}, u.closeNav = function() {
+p(), u.nav.showMobileNav = !1, u.sidebar.secondaryOpen = !1;
+}, u.collapseMobileSecondary = function(e, t) {
+>>>>>>> Bug 1549097 - Update nav canI check
 e.mobileSecondary = !1, t.stopPropagation();
 };
-var p = function() {
-return s.isWindowBelowBreakpoint(s.WINDOW_SIZE_SM);
+var f = function() {
+return c.isWindowBelowBreakpoint(c.WINDOW_SIZE_SM);
 };
-l.isMobile = p();
-var f = _.throttle(function() {
-var e = p();
-e !== l.isMobile && l.$evalAsync(function() {
-l.isMobile = e, e || (_.set(r, "nav.showMobileNav", !1), _.each(l.navItems, function(e) {
+u.isMobile = f();
+var g = _.throttle(function() {
+var e = f();
+e !== u.isMobile && u.$evalAsync(function() {
+u.isMobile = e, e || (_.set(r, "nav.showMobileNav", !1), _.each(u.navItems, function(e) {
 e.mobileSecondary = !1;
 }));
 });
 }, 50);
+<<<<<<< f03ca00c075b8956bcb3e1de44c719f0df3f9d87
 <<<<<<< 24676ebc00eb5b230c956cee1909dd4c3e3fad1a
 $(window).on("resize.verticalnav", p), c.$on("$destroy", function() {
 >>>>>>> Patternfly vertical navigation and project bar
 =======
 $(window).on("resize.verticalnav", f), l.$on("$destroy", function() {
 >>>>>>> Make sure there's always a menu item for the current project
+=======
+$(window).on("resize.verticalnav", g), u.$on("$destroy", function() {
+>>>>>>> Bug 1549097 - Update nav canI check
 $(window).off(".verticalnav");
 });
 } ]
