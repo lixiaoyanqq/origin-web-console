@@ -80,7 +80,7 @@
                     </span>
                   </td>
                   <td data-title="Status">
-                    <div row class="status">
+                    <div class="status">
                       <status-icon status="replicationController | deploymentStatus" disable-animation></status-icon>
                       <span flex>
                         {{replicationController | deploymentStatus | translate}}<span ng-if="(replicationController | deploymentStatus) == 'Active' || (replicationController | deploymentStatus) == 'Running'">,

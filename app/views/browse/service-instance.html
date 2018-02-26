@@ -69,7 +69,7 @@
                           <dt translate>Status:</dt>
                           <dd>
                             <status-icon status="serviceInstance | serviceInstanceStatus" disable-animation></status-icon>
-                            <span flex>{{serviceInstance | serviceInstanceStatus | sentenceCase}}</span>
+                            <span>{{serviceInstance | serviceInstanceStatus | sentenceCase}}</span>
                           </dd>
                           <dt ng-if-start="serviceInstance | serviceInstanceConditionMessage" translate>Status Reason:</dt>
                           <dd ng-if-end>

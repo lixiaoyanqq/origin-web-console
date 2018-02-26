@@ -479,7 +479,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10px 20px;margin:0 0 20px;font-size:15px;border-left:5px solid #f1f1f1}
@@ -977,7 +977,7 @@ tbody.collapse.in{display:table-row-group}
 .btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle,.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){border-bottom-right-radius:0;border-top-right-radius:0}
 .btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child,.btn-group>.btn:last-child:not(:first-child),.btn-group>.dropdown-toggle:not(:first-child){border-bottom-left-radius:0;border-top-left-radius:0}
 .btn-group-vertical>.btn:not(:first-child):not(:last-child),.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn,.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){border-radius:0}
-.dropdown-menu>li>a{display:block;font-weight:400;color:#363636}
+.dropdown-menu>li>a{display:block;clear:both;font-weight:400;color:#363636}
 .dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{text-decoration:none;color:#4d5258;background-color:#def3ff}
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{color:#fff;text-decoration:none;outline:0}
 .dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#9c9c9c}
@@ -6320,6 +6320,10 @@ copy-to-clipboard .input-group.limit-width{max-width:300px}
 .row-cards-pf-flex .card-pf-title{line-height:1.3;margin:0;overflow:hidden;text-overflow:ellipsis}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.filter-catalog{width:100%}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .landing .nav-tabs,.landing h1{margin-bottom:0!important;margin-top:0!important}
 <<<<<<< HEAD
 .landing-page{background:#292e34;min-height:100%}
@@ -6386,10 +6390,10 @@ h3 .component-label{padding-bottom:4px}
 .component-label.section-label.sans-border{border-bottom:0;margin-bottom:0}
 .pod-template-block .pod-container-name{font-size:14px;margin-bottom:4px}
 .pod-template-block+.pod-template-block{margin-top:15px}
-.pod-template-block .pod-template [flex]{min-width:0}
-.pod-template-block .pod-template .icon-row{border-left:3px solid #f1f1f1;padding:2px 0 0 2px}
+.pod-template-block .pod-template .icon-row{border-left:3px solid #f1f1f1;display:flex;padding:2px 0 0 2px}
 .pod-template-block .pod-template .fa,.pod-template-block .pod-template .pficon,.pod-template-block .pod-template span[data-icon]{color:#888}
 .pod-template-block .pod-template .pod-template-build{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
+.pod-template-block .pod-template .pod-template-detail{flex:1 1 0%;min-width:0}
 .pod-template-container{margin:0 0 20px}
 .pod-template-container h3{margin-top:0;padding-bottom:0}
 code.command{display:inline-block;line-height:1.3;margin-right:2px}
@@ -6419,6 +6423,7 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 <<<<<<< HEAD
 .donut-mini-text{left:51%;line-height:1;position:absolute;top:50%;transform:translate(-51%,-50%)}
 .donut-mini-text-name{align-items:center;display:flex;flex-direction:column;line-height:1;position:absolute;transform:translate(40px,9px)}
+<<<<<<< HEAD
 =======
 .donut-mini-text{left:51%;position:absolute;top:49%;transform:translate(-49%,-51%)}
 .donut-mini-text-name{position:absolute;transform:translate(45px,-51%);top:49%;line-height:1;display:flex;flex-direction:column;align-items:center}
@@ -6428,7 +6433,12 @@ code.command{display:inline-block;line-height:1.3;margin-right:2px}
 .donut-mini-text-name{align-items:center;display:flex;flex-direction:column;line-height:1;position:absolute;transform:translate(40px,9px)}
 >>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .deployment-donut{justify-content:center}
+=======
+.deployment-donut{display:flex;flex-direction:column;justify-content:center}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .browse-deployment-donut .deployment-donut{align-items:center}
+.deployment-donut .deployment-donut-column{display:flex;flex-direction:column}
+.deployment-donut .deployment-donut-row{display:flex}
 .deployment-donut .scaling-controls{justify-content:center;font-size:24px}
 .deployment-donut .scaling-controls a{color:#bbb}
 .deployment-donut .scaling-controls a:active,.deployment-donut .scaling-controls a:hover{color:#72767b;text-decoration:none}
@@ -6662,11 +6672,15 @@ registry-image-body dt:after,registry-image-config dt:after,registry-image-meta 
 .quota-chart{margin:0 20px}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#757575;display:inline-block;vertical-align:middle}
 =======
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#9c9c9c;display:inline-block;vertical-align:middle}
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 =======
+=======
+.quota-charts{display:flex;flex-wrap:wrap;justify-content:center}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .route-service-bar-chart .service-name,.route-service-bar-chart .service-weight{font-size:91%;color:#757575;display:inline-block;vertical-align:middle}
 >>>>>>> Second set of updates based on recommendations from ux doc https://docs.google.com/a/redhat.com/document/d/1eYqc-EpWU_tJveOw2V-We1cMdf6W3tBIZCAy4sKrv4E/edit?usp=sharing
 .route-service-bar-chart .service-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:125px}
@@ -6890,8 +6904,9 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 @media (max-width:768px){.edit-form .trigger-url{max-width:90%}
 .edit-form .labels .form-group{width:100%}
 }
-.status{min-width:130px}
-[row]>build-counts,[row]>notification-icon,[row]>status-icon{margin-right:3px}
+.status{display:flex;min-width:130px}
+.status status-icon{margin-right:3px}
+.status-detail{flex:1 1 0%}
 build-counts .fa,build-counts .pficon,notification-icon .fa,notification-icon .pficon,status-icon .fa,status-icon .pficon{text-align:center;width:1.230769em}
 .last-status build-counts .fa,.last-status build-counts .pficon,.last-status notification-icon .fa,.last-status notification-icon .pficon,.last-status status-icon .fa,.last-status status-icon .pficon{width:20px}
 build-counts .fa-spin,notification-icon .fa-spin,status-icon .fa-spin{line-height:normal}
@@ -6899,9 +6914,9 @@ build-counts .spinner.spinner-inline,notification-icon .spinner.spinner-inline,s
 .last-status build-counts .spinner.spinner-inline,.last-status notification-icon .spinner.spinner-inline,.last-status status-icon .spinner.spinner-inline{margin-left:4px;margin-right:4px}
 pre.clipped{display:inline-block;margin-top:10px;max-width:100%}
 pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
-.k8s-label{margin-right:5px;margin-top:3px;max-width:100%}
+.k8s-label{display:flex;margin-right:5px;margin-top:3px;max-width:100%}
 .k8s-label:before{content:' '}
-.k8s-label .label-pair{margin-bottom:2px;max-width:100%}
+.k8s-label .label-pair{display:flex;margin-bottom:2px;max-width:100%}
 .k8s-label .label-pair .label{min-width:50px}
 .k8s-label .label-pair .label:first-child{border-radius:2px 0 0 2px}
 .k8s-label .label-pair .label:last-child{border-radius:0 2px 2px 0}
@@ -6914,11 +6929,15 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .action-divider{color:#9c9c9c;padding:0 6px}
 =======
 .action-divider{color:#9c9c9c}
 >>>>>>> Improve YAML editor validation and feedback
 =======
+=======
+.k8s-labels{display:flex;flex-wrap:wrap}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .action-divider{color:#9c9c9c;padding:0 6px}
 >>>>>>> Remove padding from form-group-action buttons so they will have spacing consistency with links that are separated with .action-divider
 .surface-shaded .table{background-color:transparent}
@@ -6956,6 +6975,9 @@ pre.clipped.scroll{max-height:150px;overflow:auto;width:100%}
 .order-service-config .services-item.show-selection:focus .services-item-icon:after{border:none}
 .order-service-config .services-item.show-selection.active,.order-service-config .services-item.show-selection.active .services-item-name{color:#00659c}
 .order-service-config .services-item.show-selection.active .services-item-icon:after{border:2px solid #0088ce}
+.init-container-status-detail{flex:1 1 0%}
+.init-container-status,.ui-select-choices-flex{display:flex}
+.ui-select-choices-flex{justify-content:space-between}
 .data-toolbar{padding:5px 0}
 .data-toolbar.other-resources-toolbar .data-toolbar-dropdown{min-width:210px}
 .data-toolbar .checkbox{margin-bottom:0;margin-top:10px}
@@ -7427,7 +7449,6 @@ h2+.list-view-pf{margin-top:20px}
 @media (max-width:767px){.overview .list-pf-details{width:100%!important}
 .overview .list-pf-details.deployment-in-progress-msg{margin-top:5px}
 }
-.overview .list-pf-expansion.in .deployment-donut>div[row]{justify-content:center}
 .overview .list-pf-expansion.in .empty-state-message{margin-bottom:30px;margin-top:20px;max-width:none;padding:0;text-align:center}
 .overview .list-pf-expansion.in .empty-state-message p{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .overview .list-pf-expansion.in .list-pf-content{max-width:100%}
@@ -7640,7 +7661,7 @@ to{background-color:transparent}
 .pipeline .pipeline-stage:before{bottom:auto;content:'\2192';left:auto;right:10px;top:37%}
 }
 @media (min-width:600px){.build-links,.build-timestamp{padding-top:0}
-.build-pipeline{display:flex;flex-direction:row}
+.build-pipeline{display:flex;flex:1 1 0%;flex-direction:row}
 .build-pipeline .build-name{white-space:nowrap}
 .build-summary{border-bottom-width:0;border-right:1px solid #d1d1d1;flex:0 0 125px;flex-direction:column;justify-content:center}
 }
@@ -7681,6 +7702,7 @@ to{background-color:transparent}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 =======
@@ -7691,6 +7713,9 @@ to{background-color:transparent}
 =======
 .config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 >>>>>>> Allow setting environment variable prefix when adding secret to application
+=======
+.config-map-table .key,.config-map-table .truncated-content,.edit-yaml .ace_editor.editor,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 >>>>>>> Add search catalog in project context
 .pipeline-circle .clip1{position:absolute;clip:rect(0,18px,18px,9px);z-index:-9}
@@ -8435,6 +8460,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .chromeless .log-loading-msg .empty-state-message-main-action .btn,.chromeless .log-loading-msg .empty-state-message-secondary-action .btn{flex:0 1 auto;margin-top:0;min-width:33.333333%}
 .chromeless .log-loading-msg .h2,.chromeless .log-loading-msg h2{line-height:1.4}
 <<<<<<< HEAD
+<<<<<<< HEAD
 .chromeless .log-loading-msg .hero-icon{display:none}
 @media (min-height:600px){.chromeless .log-loading-msg .hero-icon{display:inline-block;font-size:90px}
 }
@@ -8458,6 +8484,9 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .chromeless .log-loading-msg .h2,.chromeless .log-loading-msg h2{line-height:1.4}
 =======
 >>>>>>> Remove hero-icon and make empty-state-message more consistent
+=======
+.chromeless log-viewer{flex:1 1 0%}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .log-title{margin-top:0}
 .log-header{margin-bottom:3px}
 .log-header label{margin-bottom:0}
@@ -8519,7 +8548,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-view.log-fixed-height .log-end-msg{margin:20px 0 -35px 10px;position:static}
 .log-view.log-fixed-height .log-scroll-top.affix{position:absolute;right:25px;top:10px}
 .log-view.log-fixed-height .log-view-output{overflow:auto;padding-bottom:0;padding-top:0}
-.log-line-text,.text-prepended-icon{word-break:break-word;overflow-wrap:break-word;min-width:0;word-wrap:break-word}
+.log-line-text,.text-prepended-icon{word-break:break-word;overflow-wrap:break-word;word-wrap:break-word;min-width:0}
 .log-view.log-fixed-height .log-view-output table{margin-bottom:40px;margin-top:30px}
 .log-pending-ellipsis{display:inline-block;padding-top:20px;width:100%}
 .chromeless .log-pending-ellipsis{padding-left:30px}
@@ -8968,17 +8997,14 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 @media (max-width:479px){.environment-from-editor-header.config-map-header,.environment-from-editor-header.prefix-header{display:none;width:100%}
 }
 .environment-from-editor-header.config-map-header.config-map-header-mobile,.environment-from-editor-header.config-map-header.prefix-header-mobile,.environment-from-editor-header.prefix-header.config-map-header-mobile,.environment-from-editor-header.prefix-header.prefix-header-mobile{display:block;margin-bottom:0;margin-top:5px}
-@media (min-width:480px){.environment-from-editor-header.config-map-header.config-map-header-mobile,.environment-from-editor-header.config-map-header.prefix-header-mobile,.environment-from-editor-header.prefix-header.config-map-header-mobile,.environment-from-editor-header.prefix-header.prefix-header-mobile{display:none}
-}
 .environment-from-editor-header,.key-value-editor .key-value-editor-input,.key-value-editor-header{float:left;margin-bottom:0;padding-right:5px;width:50%}
-.membership .content-pane,.membership .content-pane .col-add-role{width:100%}
 .environment-from-editor-entry-header,.key-value-editor-entry-header{padding-right:50px}
 <<<<<<< HEAD
 .environment-from-editor-header,.key-value-editor-header{margin-bottom:5px}
-.membership .action-set{display:flex;flex-direction:column;justify-content:space-between;width:100%}
-@media (min-width:768px){.membership .action-set{flex-wrap:nowrap}
-}
-@media (min-width:992px){.membership .action-set{flex-direction:row}
+.membership .action-set{flex:1 1 auto}
+@media (min-width:480px){.environment-from-editor-header.config-map-header.config-map-header-mobile,.environment-from-editor-header.config-map-header.prefix-header-mobile,.environment-from-editor-header.prefix-header.config-map-header-mobile,.environment-from-editor-header.prefix-header.prefix-header-mobile{display:none}
+.membership .action-set{max-width:65%}
+.container-pf-nav-pf-vertical.collapsed-nav .membership .action-set{max-width:60%}
 }
 =======
 .key-value-editor.as-sortable-dragging .as-sortable-item-delete,.key-value-editor.as-sortable-dragging .input-group-addon,.key-value-editor.as-sortable-dragging input{opacity:.65}
@@ -9037,32 +9063,24 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 }
 >>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
 .membership .content-pane .add-role-to{margin-left:-1px}
+.membership .content-pane .col-add-role-inputs{display:flex}
 .membership .content-pane .col-heading{border-bottom:1px solid #ededed;display:none}
-@media (min-width:480px){.membership .content-pane .col-add-role{min-width:245px;width:auto}
-.membership .content-pane .col-heading{display:flex;margin:0}
-}
-.membership .content-pane .col-name{word-break:break-all;word-break:break-word;overflow-wrap:break-word;padding:0 0px 10px 0;width:100%}
-@media (min-width:480px){.membership .content-pane .col-name{max-width:30%;padding:0 5px 0 0}
+.membership .content-pane .col-name{align-items:center;display:flex;flex:1 1 auto;padding:0 0 10px;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
+@media (min-width:480px){.membership .content-pane .col-heading{display:flex}
+.membership .content-pane .col-name{max-width:35%;padding:0 5px 0 0;width:100%}
 .container-pf-nav-pf-vertical.collapsed-nav .membership .content-pane .col-name{max-width:40%}
 .membership .content-pane .col-name input{max-width:225px}
+}
+.membership .content-pane .col-roles{display:flex;flex-wrap:wrap;padding-bottom:5px}
+.membership .content-pane .item-row{border-bottom:1px solid #ededed;display:flex;flex-direction:column;padding:10px 0}
+@media (min-width:480px){.membership .content-pane .item-row{flex-direction:row}
 .membership .content-pane .item-row.highlight-hover:hover{background-color:#fafafa}
 }
-.membership .content-pane .col-name.half-width{max-width:50%}
-.membership .content-pane .col-name .new-project{margin-top:2px}
-.membership .content-pane .col-roles{display:flex;flex-wrap:wrap;padding-bottom:5px}
-.membership .content-pane .content-serviceaccount .form-new-role .col-roles{display:block}
-.membership .content-pane .form-new-role .col-roles{display:none}
-@media (min-width:992px){.membership .content-pane .col-roles{padding:0}
-.membership .content-pane .form-new-role .action-set{flex-direction:column}
-.membership .content-pane .form-new-role .action-set .col-add-role{align-self:flex-end}
-}
-.membership .content-pane .input-name{margin-bottom:5px}
-.membership .content-pane .item-row{border-bottom:1px solid #ededed;padding:10px 10px 10px 5px}
 .membership .content-pane .membership-empty{margin-top:20px}
-.membership .content-pane .show-hidden-roles .action-set{display:flex;flex-direction:row;justify-content:flex-end}
-.membership .content-pane .select-project{width:150px}
-.membership .content-pane .select-role small{color:#999;display:inline-block;line-height:1.4;white-space:pre-line}
+.membership .content-pane .show-hidden-roles{text-align:right}
+.membership .content-pane .select-role{flex:1 1 auto}
 .membership .content-pane .select-role .active small{color:#c0e0f0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 @media (max-width:991px){.membership .content-pane .service-account{flex-direction:column}
@@ -9084,6 +9102,11 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 @media (min-width:992px){.membership .content-pane .service-account .select-role{width:150px}
 }
 .membership .content-pane .col-add-role,.membership .content-pane .col-heading,.membership .content-pane .col-name,.membership .content-pane .item-row,.membership .content-pane [flex-collapse-fix],.membership .content-pane [flex]{flex-shrink:0;flex-basis:auto}
+=======
+.membership .content-pane .select-role small{color:#999;display:inline-block;line-height:1.4;white-space:pre-line}
+.membership .content-pane .service-account{flex-wrap:wrap;margin-bottom:-5px}
+.membership .content-pane .service-account .select-project,.membership .content-pane .service-account .select-service-account{margin-bottom:5px}
+>>>>>>> Removing layout.attrs to reduce dependencies
 .membership .ui-select-bootstrap>.ui-select-choices{max-height:300px}
 notification-drawer-wrapper .blank-state-pf-title{font-size:15px}
 =======
@@ -9221,7 +9244,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .ace-inline{height:300px}
 .ace-inline-small{height:200px}
 .ace_editor.dockerfile-mode .ace_constant.ace_numeric,.editor.yaml-mode .ace_constant.ace_numeric{color:inherit}
-.edit-yaml .ace_editor.editor{font-family:Menlo,Monaco,Consolas,monospace;line-height:1.5;width:100%;min-height:140px;height:50vh}
+.edit-yaml .ace_editor.editor{line-height:1.5;width:100%;min-height:140px;height:50vh}
 @media (min-height:700px){.edit-yaml .ace_editor.editor{height:60vh}
 }
 .edit-yaml .ace_editor.editor .ace_gutter{color:#8b8d8f}

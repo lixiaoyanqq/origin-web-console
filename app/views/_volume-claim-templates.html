@@ -2,9 +2,9 @@
   <div
     ng-repeat="template in templates"
     class="pod-template">
-    <div class="component-label">Storage claim: {{template.metadata.name}}</div>
+    <div class="pod-container-name">Storage claim: {{template.metadata.name}}</div>
 
-    <div row class="pod-template-image icon-row">
+    <div class="pod-template-image icon-row">
       <div class="icon-wrap">
         <span class="fa fa-lock" aria-hidden="true"></span>
       </div>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div row class="pod-template-image icon-row">
+    <div class="pod-template-image icon-row">
       <div class="icon-wrap">
         <span class="fa fa-database" aria-hidden="true"></span>
       </div>
@@ -29,7 +29,7 @@
     </div>
 
     <div
-      row class="pod-template-image icon-row"
+      class="pod-template-image icon-row"
       ng-if="template.spec.selector.matchLabels">
       <div class="icon-wrap">
         <span class="fa fa-tag" aria-hidden="true"></span>

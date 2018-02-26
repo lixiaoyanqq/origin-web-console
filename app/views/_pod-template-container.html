@@ -8,7 +8,7 @@
 
 <div class="pod-template">
   <div class="pod-container-name">{{container.name}}</div>
-  <div row ng-if="container.image" class="pod-template-image icon-row">
+  <div ng-if="container.image" class="pod-template-image icon-row">
     <div class="icon-wrap">
       <span class="pficon pficon-image" aria-hidden="true"></span>
     </div>
@@ -44,7 +44,7 @@
         </a>
       </div>
     </div>
-    <div row class="icon-row" ng-if="build.spec.source">
+    <div class="icon-row" ng-if="build.spec.source">
       <div class="icon-wrap">
         <span class="fa fa-code" aria-hidden="true"></span>
       </div>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <div row ng-if="detailed && (container.command.length || container.args.length)" class="icon-row">
+  <div ng-if="detailed && (container.command.length || container.args.length)" class="icon-row">
     <div class="icon-wrap">
       <span aria-hidden="true" class="fa fa-terminal"></span>
     </div>
@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div row ng-if="container.ports.length > 0" class="pod-template-ports icon-row">
+  <div ng-if="container.ports.length > 0" class="pod-template-ports icon-row">
     <div class="icon-wrap">
       <span aria-hidden="true" class="pficon pficon-port"></span>
     </div>
@@ -115,7 +115,7 @@
     </div>
   </div>
 
-  <div row ng-if="detailed" ng-repeat="mount in container.volumeMounts" class="icon-row">
+  <div ng-if="detailed" ng-repeat="mount in container.volumeMounts" class="icon-row">
     <div class="icon-wrap">
       <span aria-hidden="true" class="fa fa-database"></span>
     </div>
@@ -128,7 +128,7 @@
     </div>
   </div>
 
-  <div row ng-if="detailed && (container.resources.requests.cpu || container.resources.limits.cpu)" class="icon-row">
+  <div ng-if="detailed && (container.resources.requests.cpu || container.resources.limits.cpu)" class="icon-row">
     <div class="icon-wrap">
       <i class="fa fa-area-chart" aria-hidden="true"></i>
     </div>
@@ -165,7 +165,7 @@
     </div>
   </div>
 
-  <div row ng-if="detailed && container.readinessProbe" class="icon-row">
+  <div ng-if="detailed && container.readinessProbe" class="icon-row">
     <div class="icon-wrap">
       <i class="fa fa-medkit" aria-hidden="true"></i>
     </div>
@@ -175,7 +175,7 @@
     </div>
   </div>
 
-  <div row ng-if="detailed && container.livenessProbe" class="icon-row">
+  <div ng-if="detailed && container.livenessProbe" class="icon-row">
     <div class="icon-wrap">
       <i class="fa fa-medkit" aria-hidden="true"></i>
     </div>
