@@ -43602,6 +43602,7 @@ probe: "=",
 exposedPorts: "="
 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 templateUrl: "views/directives/_edit-probe.html",
 link: function(e) {
 e.id = _.uniqueId("edit-probe-"), e.probe = e.probe || {}, e.types = [ {
@@ -43615,6 +43616,77 @@ id: "tcpSocket",
 label: "TCP Socket"
 } ], e.previousProbes = {}, e.tcpPorts = _.filter(e.exposedPorts, {
 protocol: "TCP"
+=======
+templateUrl: "views/directives/service-instance-bindings.html"
+}), angular.module("openshiftConsole").directive("sidebar", [ "$location", "$filter", "$timeout", "$rootScope", "$routeParams", "APIService", "AuthorizationService", "Constants", "HTMLService", function(e, t, n, r, a, o, i, s, c) {
+var l = function(e, t) {
+return e.href === t || _.some(e.prefixes, function(e) {
+return _.startsWith(t, e);
+});
+};
+return {
+restrict: "E",
+templateUrl: "views/_sidebar.html",
+controller: [ "$scope", function(u) {
+var d;
+u.navItems = s.PROJECT_NAVIGATION, u.sidebar = {};
+var m = function() {
+u.projectName = a.project, _.set(u, "sidebar.secondaryOpen", !1), _.set(r, "nav.showMobileNav", !1), u.activeSecondary = null, u.activePrimary = _.find(u.navItems, function(t) {
+return d = e.path().replace("/project/" + u.projectName, ""), l(t, d) ? (u.activeSecondary = null, !0) : _.some(t.secondaryNavSections, function(e) {
+var t = _.find(e.items, function(e) {
+return l(e, d);
+});
+return !!t && (u.activeSecondary = t, !0);
+});
+});
+};
+m(), u.$on("$routeChangeSuccess", m);
+var p = function() {
+_.each(u.navItems, function(e) {
+e.isHover = !1;
+});
+};
+u.navURL = function(e) {
+return e ? t("isAbsoluteURL")(e) ? e : "project/" + u.projectName + e : "";
+}, u.show = function(e) {
+if (!(!e.isValid || e.isValid())) return !1;
+if (!e.canI) return !0;
+if (e.canI.addToProject) return u.canIAddToProject;
+var t = _.pick(e.canI, [ "resource", "group", "version" ]);
+return o.apiInfo(t) && i.canI(t, e.canI.verb, u.projectName);
+}, u.itemClicked = function(e) {
+if (p(), e.href) return u.nav.showMobileNav = !1, void (u.sidebar.secondaryOpen = !1);
+e.isHover = !0, e.mobileSecondary = u.isMobile, u.sidebar.showMobileSecondary = u.isMobile, u.sidebar.secondaryOpen = !0;
+}, u.onMouseEnter = function(e) {
+e.mouseLeaveTimeout && (n.cancel(e.mouseLeaveTimeout), e.mouseLeaveTimeout = null), e.mouseEnterTimeout = n(function() {
+e.isHover = !0, e.mouseEnterTimeout = null, u.sidebar.secondaryOpen = !_.isEmpty(e.secondaryNavSections);
+}, 200);
+}, u.onMouseLeave = function(e) {
+e.mouseEnterTimeout && (n.cancel(e.mouseEnterTimeout), e.mouseEnterTimeout = null), e.mouseLeaveTimeout = n(function() {
+e.isHover = !1, e.mouseLeaveTimeout = null, u.sidebar.secondaryOpen = _.some(u.navItems, function(e) {
+return e.isHover && !_.isEmpty(e.secondaryNavSections);
+});
+}, 300);
+}, u.closeNav = function() {
+p(), u.nav.showMobileNav = !1, u.sidebar.secondaryOpen = !1;
+}, u.collapseMobileSecondary = function(e, t) {
+e.mobileSecondary = !1, t.stopPropagation();
+};
+var f = function() {
+return c.isWindowBelowBreakpoint(c.WINDOW_SIZE_SM);
+};
+u.isMobile = f();
+var g = _.throttle(function() {
+var e = f();
+e !== u.isMobile && u.$evalAsync(function() {
+u.isMobile = e, e || (_.set(r, "nav.showMobileNav", !1), _.each(u.navItems, function(e) {
+e.mobileSecondary = !1;
+}));
+});
+}, 50);
+$(window).on("resize.verticalnav", g), u.$on("$destroy", function() {
+$(window).off(".verticalnav");
+>>>>>>> Bug 1549097 - Update nav canI check
 });
 <<<<<<< HEAD
 var t = _.get(e, "probe.httpGet.port") || _.get(e, "probe.exec.port");
