@@ -18024,6 +18024,18 @@ var e = _.get(n, "attach.resource.spec.template");
 n.existingMountPaths = m.getMountPaths(e, P);
 };
 n.$watchGroup([ "attach.resource", "attach.allContainers" ], j), n.$watch("attach.containers", j, !0);
+var k = function() {
+var e = _.get(n, "attach.persistentVolumeClaim");
+if (e) {
+var t = _.get(n, "attach.resource.spec.template.spec.volumes"), r = _.find(t, {
+persistentVolumeClaim: {
+claimName: e.metadata.name
+}
+});
+r ? (n.attach.volumeName = r.name, n.volumeAlreadyMounted = !0) : n.volumeAlreadyMounted && (n.attach.volumeName = "", n.volumeAlreadyMounted = !1);
+}
+};
+n.onPVCSelected = k;
 s.get(v, t.name, d).then(function(e) {
 n.attach.resource = e, n.breadcrumbs = i.getBreadcrumbs({
 object: e,
@@ -18031,11 +18043,11 @@ project: a,
 subpage: "Add Storage"
 });
 var t = _.get(e, "spec.template");
-n.existingVolumeNames = m.getVolumeNames(t);
+n.existingVolumeNames = m.getVolumeNames(t), k();
 }, function(e) {
 S(t.name + " could not be loaded.", f(e));
 }), s.list(n.pvcVersion, d).then(function(e) {
-n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs));
+n.pvcs = p(e.by("metadata.name")), _.isEmpty(n.pvcs) || n.attach.persistentVolumeClaim || (n.attach.persistentVolumeClaim = _.head(n.pvcs), k());
 }), s.list(h, {
 namespace: n.projectName
 }, function(e) {
@@ -18054,6 +18066,7 @@ var t = m.createVolumeMount(o, i, c, l);
 e.volumeMounts || (e.volumeMounts = []), e.volumeMounts.push(t);
 >>>>>>> Add Browse Catalog to Project context view.
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 } else e.deploymentConfigDeploymentsInProgress = r.associateRunningDeploymentToDeploymentConfig(e.replicationControllersByDC);
 s ? "DELETED" !== a && (s.causes = t("deploymentCauses")(s)) : angular.forEach(e.replicationControllers, function(e) {
@@ -18120,6 +18133,17 @@ r.unwatchAll(b);
 =======
 a.unwatchAll(b);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}), n.volumeAlreadyMounted || (r.spec.volumes = r.spec.volumes || [], r.spec.volumes.push(m.createVolume(o, a))), s.update(v, e.metadata.name, n.attach.resource, d).then(function() {
+var e;
+i || (e = "No mount path was provided. The volume reference was added to the configuration, but it will not be mounted into running pods."), u.addNotification({
+type: "success",
+message: "Persistent volume claim " + a.metadata.name + " added to " + g(t.kind) + " " + t.name + ".",
+details: e
+}), w();
+}, function(e) {
+S("An error occurred attaching the persistent volume claim to the " + g(t.kind) + ".", f(e)), n.disableInputs = !1;
+>>>>>>> Bug 1527689 - Let users add the same PVC multiple times
 });
 <<<<<<< HEAD
 <<<<<<< HEAD

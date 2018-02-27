@@ -1303,6 +1303,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" ng-readonly=\"volumeAlreadyMounted\" osc-unique=\"existingVolumeNames\" osc-unique-disabled=\"volumeAlreadyMounted\" maxlength=\"63\" placeholder=\"{{'(generated if empty)'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
 =======
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
@@ -1313,6 +1314,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 =======
     "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" osc-unique=\"existingVolumeNames\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
 >>>>>>> Revert "add "overwrite" option to attachPVC view"
+=======
+    "<input id=\"volume-path\" class=\"form-control\" type=\"text\" name=\"volumeName\" ng-model=\"attach.volumeName\" ng-pattern=\"/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/\" ng-readonly=\"volumeAlreadyMounted\" osc-unique=\"existingVolumeNames\" osc-unique-disabled=\"volumeAlreadyMounted\" maxlength=\"63\" placeholder=\"(generated if empty)\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"volume-name-help\">\n" +
+>>>>>>> Bug 1527689 - Let users add the same PVC multiple times
     "<div>\n" +
     "<span id=\"volume-name-help\" class=\"help-block\" translate>Unique name used to identify this volume. If not specified, a volume name is generated.</span>\n" +
     "</div>\n" +
