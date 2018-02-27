@@ -11624,7 +11624,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label class=\"input-label\" translate>\n" +
     "Build Secret\n" +
     "</label>\n" +
+<<<<<<< HEAD
     "<label class=\"input-label destination-dir-padding\" translate>\n" +
+=======
+    "<label class=\"input-label destination-dir-padding\">\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "Destination Directory\n" +
     "</label>\n" +
     "</div>\n" +
@@ -11639,10 +11643,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"destination-dir destination-dir-padding\">\n" +
 =======
     "<div class=\"destination-dir\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<div class=\"destination-dir destination-dir-padding\">\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "<input class=\"form-control\" id=\"destinationDir\" name=\"destinationDir\" ng-model=\"pickedSecret.destinationDir\" type=\"text\" placeholder=\"/\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "</div>\n" +
     "<div class=\"remove-secret\">\n" +
@@ -11654,8 +11662,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"help-blocks\">\n" +
+<<<<<<< HEAD
     "<div class=\"help-block\" translate>Source secret to copy into the builder pod at build time.</div>\n" +
     "<div class=\"help-block destination-dir-padding\" translate>Directory where the files will be available at build time.</div>\n" +
+=======
+    "<div class=\"help-block\">Source secret to copy into the builder pod at build time.</div>\n" +
+    "<div class=\"help-block destination-dir-padding\">Directory where the files will be available at build time.</div>\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11667,7 +11680,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label class=\"input-label\" translate>\n" +
     "Build Secret\n" +
     "</label>\n" +
+<<<<<<< HEAD
     "<label class=\"input-label destination-dir-padding\" translate>\n" +
+=======
+    "<label class=\"input-label destination-dir-padding\">\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "Mount path\n" +
     "</label>\n" +
     "</div>\n" +
@@ -11682,10 +11699,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<div class=\"destination-dir destination-dir-padding\">\n" +
 =======
     "<div class=\"destination-dir\">\n" +
 >>>>>>> autocapitalize="off" -> autocapitalize="none"
+=======
+    "<div class=\"destination-dir destination-dir-padding\">\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "<input class=\"form-control\" id=\"mountPath\" name=\"mountPath\" ng-model=\"pickedSecret.mountPath\" type=\"text\" placeholder=\"/\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "</div>\n" +
     "<div class=\"remove-secret\">\n" +
@@ -11697,8 +11718,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"help-blocks\">\n" +
+<<<<<<< HEAD
     "<div class=\"help-block\" translate>Source secret to mount into the builder pod at build time.</div>\n" +
     "<div class=\"help-block destination-dir-padding\" translate>Path at which to mount the secret.</div>\n" +
+=======
+    "<div class=\"help-block\">Source secret to mount into the builder pod at build time.</div>\n" +
+    "<div class=\"help-block destination-dir-padding\">Path at which to mount the secret.</div>\n" +
+>>>>>>> BC's build secret destination dir label and help-text are not align properly
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
