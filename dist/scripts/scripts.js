@@ -53872,13 +53872,7 @@ return r === a && (r = _.get(t, "metadata.name", ""), a = _.get(n, "metadata.nam
 }), r;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 };
-} ]).filter("isPodStuck", function() {
-return function(e) {
-if ("Pending" !== e.status.phase) return !1;
-var t = moment().subtract(5, "m");
-return moment(e.metadata.creationTimestamp).isBefore(t);
-};
-}).filter("isContainerLooping", function() {
+} ]).filter("isContainerLooping", function() {
 return function(e) {
 return e.state.waiting && "CrashLoopBackOff" === e.state.waiting.reason;
 };
@@ -53896,6 +53890,7 @@ if (!e.state.running || !1 !== e.ready || !e.state.running.startedAt) return !1;
 var t = moment().subtract(5, "m");
 return moment(e.state.running.startedAt).isBefore(t);
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -53933,11 +53928,25 @@ if (a(i)) return !0;
 =======
 if (r(i)) return !0;
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}).filter("isTroubledPod", [ "isContainerLoopingFilter", "isContainerFailedFilter", "isContainerUnpreparedFilter", function(e, t, n) {
+return function(r) {
+if ("Unknown" === r.status.phase) return !0;
+if ("Running" === r.status.phase && r.status.containerStatuses) {
+var a;
+for (a = 0; a < _.size(r.status.containerStatuses); ++a) {
+var o = r.status.containerStatuses[a];
+if (o.state) {
+if (t(o)) return !0;
+if (e(o)) return !0;
+if (n(o)) return !0;
+>>>>>>> Bug 1550138 - Remove 5 minute warning for pods
 }
 }
 }
 return !1;
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 } ]).filter("podWarnings", [ "isPodStuckFilter", "isContainerLoopingFilter", "isContainerFailedFilter", "isContainerUnpreparedFilter", "isTerminatingFilter", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i) {
@@ -54001,41 +54010,43 @@ var r = n || {};
 return function(o) {
 var i = [];
 return "Unknown" === o.status.phase && i.push({
+=======
+} ]).filter("podWarnings", [ "isContainerLoopingFilter", "isContainerFailedFilter", "isContainerUnpreparedFilter", "isTerminatingFilter", function(e, t, n, r) {
+return function(a) {
+var o = [];
+return "Unknown" === a.status.phase && o.push({
+>>>>>>> Bug 1550138 - Remove 5 minute warning for pods
 reason: "Unknown",
-pod: o.metadata.name,
+pod: a.metadata.name,
 message: "The state of the pod could not be obtained. This is typically due to an error communicating with the host of the pod."
-}), e(o) && i.push({
-reason: "Stuck",
-pod: o.metadata.name,
-message: "The pod has been stuck in the pending state for more than five minutes."
-}), "Running" === o.status.phase && o.status.containerStatuses && _.each(o.status.containerStatuses, function(e) {
-if (!e.state) return !1;
-n(e) && (a(o) ? i.push({
+}), "Running" === a.status.phase && a.status.containerStatuses && _.each(a.status.containerStatuses, function(i) {
+if (!i.state) return !1;
+t(i) && (r(a) ? o.push({
 severity: "error",
 reason: "NonZeroExitTerminatingPod",
-pod: o.metadata.name,
-container: e.name,
-message: "The container " + e.name + " did not stop cleanly when terminated (exit code " + e.state.terminated.exitCode + ")."
-}) : i.push({
+pod: a.metadata.name,
+container: i.name,
+message: "The container " + i.name + " did not stop cleanly when terminated (exit code " + i.state.terminated.exitCode + ")."
+}) : o.push({
 severity: "warning",
 reason: "NonZeroExit",
-pod: o.metadata.name,
-container: e.name,
-message: "The container " + e.name + " failed (exit code " + e.state.terminated.exitCode + ")."
-})), t(e) && i.push({
+pod: a.metadata.name,
+container: i.name,
+message: "The container " + i.name + " failed (exit code " + i.state.terminated.exitCode + ")."
+})), e(i) && o.push({
 severity: "error",
 reason: "Looping",
-pod: o.metadata.name,
-container: e.name,
-message: "The container " + e.name + " is crashing frequently. It must wait before it will be restarted again."
-}), r(e) && i.push({
+pod: a.metadata.name,
+container: i.name,
+message: "The container " + i.name + " is crashing frequently. It must wait before it will be restarted again."
+}), n(i) && o.push({
 severity: "warning",
 reason: "Unprepared",
-pod: o.metadata.name,
-container: e.name,
-message: "The container " + e.name + " has been running for more than five minutes and has not passed its readiness check."
+pod: a.metadata.name,
+container: i.name,
+message: "The container " + i.name + " has been running for more than five minutes and has not passed its readiness check."
 });
-}), i.length > 0 ? i : null;
+}), o.length > 0 ? o : null;
 };
 } ]).filter("groupedPodWarnings", [ "podWarningsFilter", function(e) {
 return function(t, n) {
