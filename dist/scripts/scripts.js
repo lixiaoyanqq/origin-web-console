@@ -11793,6 +11793,7 @@ type: "error",
 message: "An error occurred resuming the " + l(t.kind) + ".",
 details: e("getErrorDetails")(n)
 };
+<<<<<<< HEAD
 }), !0;
 }
 } ]
@@ -11805,6 +11806,24 @@ return n.setPaused(t, !1, {
 namespace: t.metadata.namespace
 }).then(_.noop, function(n) {
 r[t.metadata.uid + "-pause-error"] = {
+=======
+});
+}, 200), p = function(e, n, r) {
+c(e, n), "DELETED" === r && (t.alerts.deleted = {
+type: "warning",
+message: "This image stream has been deleted."
+});
+};
+s.get(n.project).then(_.spread(function(r, o) {
+t.project = r, a.get(u, n.imagestream, o, {
+errorNotification: !1
+}).then(function(e) {
+t.loaded = !0, p(e, o), d.push(a.watchObject(u, n.imagestream, o, function(e, t) {
+p(e, o, t);
+}));
+}, function(n) {
+t.loaded = !0, t.alerts.load = {
+>>>>>>> Bug 1550797 - Should remove 'loading..' when browser non-existent image
 type: "error",
 message: "An error occurred resuming the " + s(t.kind) + ".",
 details: e("getErrorDetails")(n)

@@ -3688,7 +3688,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"!imageStream\" class=\"mar-top-xl\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+>>>>>>> Bug 1550797 - Should remove 'loading..' when browser non-existent image
     "<div ng-if=\"imageStream\">\n" +
     "<h1>\n" +
     "{{imageStream.metadata.name}}:{{tagName}}\n" +
@@ -3698,7 +3702,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"middle-content\" persist-tab-state>\n" +
     "<div class=\"container-fluid\">\n" +
+<<<<<<< HEAD
     "<div ng-if=\"imageStream && !image\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!loaded\">Loading...</div>\n" +
+>>>>>>> Bug 1550797 - Should remove 'loading..' when browser non-existent image
     "<div class=\"row\" ng-if=\"image\">\n" +
     "<div class=\"col-md-12\">\n" +
     "<registry-image-pull settings=\"settings\" names=\"[ imageStream.metadata.name + ':' + tagName ]\">\n" +
@@ -3737,7 +3745,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
+<<<<<<< HEAD
     "<div ng-if=\"!imageStream\" class=\"mar-top-xl\" translate>Loading...</div>\n" +
+=======
+    "<div ng-if=\"!loaded\" class=\"mar-top-xl\">Loading...</div>\n" +
+>>>>>>> Bug 1550797 - Should remove 'loading..' when browser non-existent image
     "<div ng-if=\"imageStream\">\n" +
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-hide=\"!('imageStreams' | canIDoAny)\">\n" +
