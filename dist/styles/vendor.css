@@ -1139,6 +1139,9 @@ kubernetes-container-terminal .terminal .xterm-viewport{overflow-y:auto}
 .xterm .xterm-char-measure-element{display:inline-block;visibility:hidden;position:absolute;left:-9999em}
 .xterm.enable-mouse-events{cursor:default}
 .xterm:not(.enable-mouse-events){cursor:text}
+.xterm .xterm-accessibility,.xterm .xterm-message{position:absolute;left:0;top:0;bottom:0;right:0;z-index:100;color:transparent}
+.xterm .xterm-accessibility-tree:focus [id^=xterm-active-item-]{outline:#F80 solid 1px}
+.xterm .live-region{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 kubernetes-container-terminal,kubernetes-container-terminal .terminal-wrapper{display:inline-block;position:relative}
 kubernetes-container-terminal .terminal{display:inline-block;outline:0;padding:2px 0 2px 2px}
 >>>>>>> Bump kubernetes-container-terminal to v3.0.0
