@@ -26,6 +26,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
 gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items"), gettext("To push an image to this image stream"), 
@@ -274,18 +275,25 @@ function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h
 =======
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, T, E) {
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E, T) {
+>>>>>>> Overview support for daemon sets
 var N = this, D = t("isIE")();
 e.projectName = a.project;
 var A = a.isHomePage;
 N.catalogLandingPageEnabled = !d.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
-var B = t("annotation"), L = t("canI"), V = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), U = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("buildconfigs"), H = i.getPreferredVersion("builds"), G = i.getPreferredVersion("appliedclusterresourcequotas"), K = i.getPreferredVersion("deploymentconfigs"), W = i.getPreferredVersion("deployments"), Q = i.getPreferredVersion("horizontalpodautoscalers"), J = i.getPreferredVersion("imagestreams"), Y = i.getPreferredVersion("limitranges"), Z = i.getPreferredVersion("pods"), X = i.getPreferredVersion("replicasets"), ee = i.getPreferredVersion("replicationcontrollers"), te = i.getPreferredVersion("resourcequotas"), ne = i.getPreferredVersion("routes"), re = i.getPreferredVersion("servicebindings"), ae = i.getPreferredVersion("clusterserviceclasses"), oe = i.getPreferredVersion("serviceinstances"), ie = i.getPreferredVersion("clusterserviceplans"), se = i.getPreferredVersion("services"), ce = i.getPreferredVersion("statefulsets"), le = i.getPreferredVersion("templates");
+var B = t("annotation"), L = t("canI"), V = t("buildConfigForBuild"), O = t("deploymentIsInProgress"), U = t("imageObjectRef"), F = t("isJenkinsPipelineStrategy"), x = t("isNewerResource"), M = t("label"), q = t("podTemplate"), z = i.getPreferredVersion("buildconfigs"), H = i.getPreferredVersion("builds"), G = i.getPreferredVersion("appliedclusterresourcequotas"), K = i.getPreferredVersion("daemonsets"), W = i.getPreferredVersion("deploymentconfigs"), Q = i.getPreferredVersion("deployments"), J = i.getPreferredVersion("horizontalpodautoscalers"), Y = i.getPreferredVersion("imagestreams"), Z = i.getPreferredVersion("limitranges"), X = i.getPreferredVersion("pods"), ee = i.getPreferredVersion("replicasets"), te = i.getPreferredVersion("replicationcontrollers"), ne = i.getPreferredVersion("resourcequotas"), re = i.getPreferredVersion("routes"), ae = i.getPreferredVersion("servicebindings"), oe = i.getPreferredVersion("clusterserviceclasses"), ie = i.getPreferredVersion("serviceinstances"), se = i.getPreferredVersion("clusterserviceplans"), ce = i.getPreferredVersion("services"), le = i.getPreferredVersion("statefulsets"), ue = i.getPreferredVersion("templates");
 N.buildConfigsInstantiateVersion = i.getPreferredVersion("buildconfigs/instantiate");
+<<<<<<< HEAD
 <<<<<<< HEAD
 var Z, X, ee = {}, te = {}, ne = {}, re = N.state = {
 >>>>>>> Set Home Page Preference
 =======
 var ue, de, me = {}, pe = {}, fe = {}, ge = N.state = {
 >>>>>>> Use preferred API versions in overview.js
+=======
+var de, me, pe = {}, fe = {}, ge = {}, ve = N.state = {
+>>>>>>> Overview support for daemon sets
 alerts: {},
 builds: {},
 clusterQuotas: {},
@@ -462,14 +470,14 @@ E.state.breakpoint = t;
 >>>>>>> Configurable inactivity timeout in console
 =======
 N.state.breakpoint = v.getBreakpoint();
-var ve = _.throttle(function() {
+var he = _.throttle(function() {
 var t = v.getBreakpoint();
 N.state.breakpoint !== t && e.$evalAsync(function() {
 N.state.breakpoint = t;
 >>>>>>> Set Home Page Preference
 });
 }, 50);
-$(window).on("resize.overview", ve), N.showGetStarted = !1, N.showLoading = !0, N.filterByOptions = [ {
+$(window).on("resize.overview", he), N.showGetStarted = !1, N.showLoading = !0, N.filterByOptions = [ {
 id: "name",
 label: "Name"
 }, {
@@ -485,40 +493,41 @@ label: "Resource Type"
 id: "pipeline",
 label: "Pipeline"
 } ];
-var he = function(e) {
+var ye = function(e) {
 return _.get(e, "metadata.name");
-}, ye = function(e) {
+}, be = function(e) {
 return _.get(e, "metadata.uid");
-}, be = function() {
-return _.size(N.deploymentConfigs) + _.size(N.vanillaReplicationControllers) + _.size(N.deployments) + _.size(N.vanillaReplicaSets) + _.size(N.statefulSets) + _.size(N.monopods) + _.size(N.state.serviceInstances);
 }, Se = function() {
-return _.size(N.filteredDeploymentConfigs) + _.size(N.filteredReplicationControllers) + _.size(N.filteredDeployments) + _.size(N.filteredReplicaSets) + _.size(N.filteredStatefulSets) + _.size(N.filteredMonopods) + _.size(N.filteredServiceInstances);
+return _.size(N.deploymentConfigs) + _.size(N.vanillaReplicationControllers) + _.size(N.deployments) + _.size(N.vanillaReplicaSets) + _.size(N.statefulSets) + _.size(N.daemonSets) + _.size(N.monopods) + _.size(N.state.serviceInstances);
 }, Ce = function() {
-N.size = be(), N.filteredSize = Se();
-var e = 0 === N.size, t = N.deploymentConfigs && N.replicationControllers && N.deployments && N.replicaSets && N.statefulSets && N.pods && N.state.serviceInstances;
-ge.expandAll = t && 1 === N.size, N.showGetStarted = t && e, N.showLoading = !t && e, N.everythingFiltered = !e && !N.filteredSize, N.hidePipelineOtherResources = "pipeline" === N.viewBy && (N.filterActive || _.isEmpty(N.pipelineBuildConfigs));
-}, _e = function(e) {
-return s.groupByApp(e, "metadata.name");
+return _.size(N.filteredDeploymentConfigs) + _.size(N.filteredReplicationControllers) + _.size(N.filteredDeployments) + _.size(N.filteredReplicaSets) + _.size(N.filteredStatefulSets) + _.size(N.filteredDaemonSets) + _.size(N.filteredMonopods) + _.size(N.filteredServiceInstances);
+}, _e = function() {
+N.size = Se(), N.filteredSize = Ce();
+var e = 0 === N.size, t = N.deploymentConfigs && N.replicationControllers && N.deployments && N.replicaSets && N.statefulSets && N.daemonSets && N.pods && N.state.serviceInstances;
+ve.expandAll = t && 1 === N.size, N.showGetStarted = t && e, N.showLoading = !t && e, N.everythingFiltered = !e && !N.filteredSize, N.hidePipelineOtherResources = "pipeline" === N.viewBy && (N.filterActive || _.isEmpty(N.pipelineBuildConfigs));
 }, we = function(e) {
+return s.groupByApp(e, "metadata.name");
+}, Pe = function(e) {
 var t = null;
 return _.each(e, function(e) {
-t = t ? T.getPreferredDisplayRoute(t, e) : e;
+t = t ? E.getPreferredDisplayRoute(t, e) : e;
 }), t;
-}, Pe = _.debounce(function() {
+}, je = _.debounce(function() {
 e.$evalAsync(function() {
 if (N.bestRouteByApp = {}, N.routes) {
-var e = [ N.filteredDeploymentConfigsByApp, N.filteredReplicationControllersByApp, N.filteredDeploymentsByApp, N.filteredReplicaSetsByApp, N.filteredStatefulSetsByApp, N.filteredMonopodsByApp ];
+var e = [ N.filteredDeploymentConfigsByApp, N.filteredReplicationControllersByApp, N.filteredDeploymentsByApp, N.filteredReplicaSetsByApp, N.filteredStatefulSetsByApp, N.filteredDaemonSetsByApp, N.filteredMonopodsByApp ];
 _.each(N.apps, function(t) {
 var n = {};
 _.each(e, function(e) {
 var r = _.get(e, t, []);
 _.each(r, function(e) {
-var t = ye(e), r = _.get(ge, [ "servicesByObjectUID", t ], []);
+var t = be(e), r = _.get(ve, [ "servicesByObjectUID", t ], []);
 _.each(r, function(e) {
-var t = _.get(ge, [ "routesByService", e.metadata.name ], []);
+var t = _.get(ve, [ "routesByService", e.metadata.name ], []);
 _.assign(n, _.keyBy(t, "metadata.name"));
 });
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -561,11 +570,15 @@ _.assign(n, _.keyBy(t, "metadata.name"));
 =======
 }), N.bestRouteByApp[t] = we(n);
 >>>>>>> Use preferred API versions in overview.js
+=======
+}), N.bestRouteByApp[t] = Pe(n);
+>>>>>>> Overview support for daemon sets
 });
 }
 });
 }, 300, {
 maxWait: 1500
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -727,46 +740,51 @@ N.filteredDeploymentConfigsByApp = ue(N.filteredDeploymentConfigs), N.filteredRe
 N.filteredDeploymentConfigsByApp = _e(N.filteredDeploymentConfigs), N.filteredReplicationControllersByApp = _e(N.filteredReplicationControllers), N.filteredDeploymentsByApp = _e(N.filteredDeployments), N.filteredReplicaSetsByApp = _e(N.filteredReplicaSets), N.filteredStatefulSetsByApp = _e(N.filteredStatefulSets), N.filteredMonopodsByApp = _e(N.filteredMonopods), N.apps = _.union(_.keys(N.filteredDeploymentConfigsByApp), _.keys(N.filteredReplicationControllersByApp), _.keys(N.filteredDeploymentsByApp), _.keys(N.filteredReplicaSetsByApp), _.keys(N.filteredStatefulSetsByApp), _.keys(N.filteredMonopodsByApp)), s.sortAppNames(N.apps), Pe();
 }, ke = function() {
 >>>>>>> Use preferred API versions in overview.js
+=======
+}), ke = function() {
+N.filteredDeploymentConfigsByApp = we(N.filteredDeploymentConfigs), N.filteredReplicationControllersByApp = we(N.filteredReplicationControllers), N.filteredDeploymentsByApp = we(N.filteredDeployments), N.filteredReplicaSetsByApp = we(N.filteredReplicaSets), N.filteredStatefulSetsByApp = we(N.filteredStatefulSets), N.filteredDaemonSetsByApp = we(N.filteredDaemonSets), N.filteredMonopodsByApp = we(N.filteredMonopods), N.apps = _.union(_.keys(N.filteredDeploymentConfigsByApp), _.keys(N.filteredReplicationControllersByApp), _.keys(N.filteredDeploymentsByApp), _.keys(N.filteredReplicaSetsByApp), _.keys(N.filteredStatefulSetsByApp), _.keys(N.filteredDaemonSetsByApp), _.keys(N.filteredMonopodsByApp)), s.sortAppNames(N.apps), je();
+}, Ie = function() {
+>>>>>>> Overview support for daemon sets
 var e = _.filter(N.deploymentConfigs, function(e) {
-var t = he(e);
-return _.isEmpty(ge.pipelinesByDeploymentConfig[t]);
+var t = ye(e);
+return _.isEmpty(ve.pipelinesByDeploymentConfig[t]);
 });
 N.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), N.pipelineViewHasOtherResources = !(_.isEmpty(N.deploymentConfigsNoPipeline) && _.isEmpty(N.vanillaReplicationControllers) && _.isEmpty(N.deployments) && _.isEmpty(N.vanillaReplicaSets) && _.isEmpty(N.statefulSets) && _.isEmpty(N.monopods));
-}, Ie = function() {
+}, Re = function() {
 N.disableFilter = "pipeline" === N.viewBy && _.isEmpty(N.pipelineBuildConfigs);
-}, Re = function(e) {
+}, Ee = function(e) {
 return b.getLabelSelector().select(e);
-}, Te = [ "metadata.name", "spec.clusterServiceClassExternalName" ], Ee = function(e) {
-return y.filterForKeywords(e, Te, ge.filterKeywords);
-}, Ne = function(e) {
+}, Te = [ "metadata.name", "spec.clusterServiceClassExternalName" ], Ne = function(e) {
+return y.filterForKeywords(e, Te, ve.filterKeywords);
+}, De = function(e) {
 switch (N.filterBy) {
 >>>>>>> Set Home Page Preference
 case "label":
-return Re(e);
+return Ee(e);
 
 case "name":
-return Ee(e);
+return Ne(e);
 }
 return e;
-}, De = function() {
+}, Ae = function() {
 switch (N.filterBy) {
 case "label":
 return !b.getLabelSelector().isEmpty();
 
 case "name":
-return !_.isEmpty(ge.filterKeywords);
+return !_.isEmpty(ve.filterKeywords);
 }
-}, Ae = function() {
-N.filteredDeploymentConfigs = Ne(N.deploymentConfigs), N.filteredReplicationControllers = Ne(N.vanillaReplicationControllers), N.filteredDeployments = Ne(N.deployments), N.filteredReplicaSets = Ne(N.vanillaReplicaSets), N.filteredStatefulSets = Ne(N.statefulSets), N.filteredMonopods = Ne(N.monopods), N.filteredPipelineBuildConfigs = Ne(N.pipelineBuildConfigs), N.filteredServiceInstances = Ne(ge.orderedServiceInstances), N.filterActive = De(), je(), Ce();
-}, $e = a.project + "/overview/view-by";
-N.viewBy = localStorage.getItem($e) || "app", e.$watch(function() {
+}, $e = function() {
+N.filteredDeploymentConfigs = De(N.deploymentConfigs), N.filteredReplicationControllers = De(N.vanillaReplicationControllers), N.filteredDeployments = De(N.deployments), N.filteredReplicaSets = De(N.vanillaReplicaSets), N.filteredStatefulSets = De(N.statefulSets), N.filteredDaemonSets = De(N.daemonSets), N.filteredMonopods = De(N.monopods), N.filteredPipelineBuildConfigs = De(N.pipelineBuildConfigs), N.filteredServiceInstances = De(ve.orderedServiceInstances), N.filterActive = Ae(), ke(), _e();
+}, Be = a.project + "/overview/view-by";
+N.viewBy = localStorage.getItem(Be) || "app", e.$watch(function() {
 return N.viewBy;
 }, function(e) {
-localStorage.setItem($e, e), Ie(), Te = "app" === N.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], Ae(), "pipeline" === N.viewBy ? b.setLabelSuggestions(pe) : b.setLabelSuggestions(me);
+localStorage.setItem(Be, e), Re(), Te = "app" === N.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], $e(), "pipeline" === N.viewBy ? b.setLabelSuggestions(fe) : b.setLabelSuggestions(pe);
 }), d.DISABLE_OVERVIEW_METRICS || (C.isAvailable(!0).then(function(e) {
-ge.showMetrics = e;
+ve.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
-o.isAlertPermanentlyHidden("metrics-connection-failed") || ge.alerts["metrics-connection-failed"] || (ge.alerts["metrics-connection-failed"] = {
+o.isAlertPermanentlyHidden("metrics-connection-failed") || ve.alerts["metrics-connection-failed"] || (ve.alerts["metrics-connection-failed"] = {
 type: "warning",
 message: "An error occurred getting metrics.",
 links: [ {
@@ -795,6 +813,7 @@ return o.permanentlyHideAlert("metrics-connection-failed"), !0;
 } ]
 });
 }));
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1050,227 +1069,231 @@ var we = function(e) {
 =======
 var Be = function(e) {
 >>>>>>> Use preferred API versions in overview.js
+=======
+var Le = function(e) {
+>>>>>>> Overview support for daemon sets
 return e && "Pod" === e.kind;
-}, Le = function(e) {
-var t = ye(e);
-return t ? Be(e) ? [ e ] : _.get(N, [ "state", "podsByOwnerUID", t ], []) : [];
-}, Ve = function(e, t) {
-var n = ye(e);
-ge.notificationsByObjectUID[n] = t || {};
-}, Oe = function(e) {
-var t = ye(e);
-return t ? _.get(ge, [ "notificationsByObjectUID", t ], {}) : {};
+}, Ve = function(e) {
+var t = be(e);
+return t ? Le(e) ? [ e ] : _.get(N, [ "state", "podsByOwnerUID", t ], []) : [];
+}, Oe = function(e, t) {
+var n = be(e);
+ve.notificationsByObjectUID[n] = t || {};
 }, Ue = function(e) {
-if (ye(e)) {
-var t = Le(e), n = R.getPodAlerts(t, a.project);
-Ve(e, n);
-}
+var t = be(e);
+return t ? _.get(ve, [ "notificationsByObjectUID", t ], {}) : {};
 }, Fe = function(e) {
-_.each(e, Ue);
+if (be(e)) {
+var t = Ve(e), n = R.getPodAlerts(t, a.project);
+Oe(e, n);
+}
 }, xe = function(e) {
-var t = he(e);
-return t ? fe[t] : null;
+_.each(e, Fe);
 }, Me = function(e) {
-var t = he(e);
+var t = ye(e);
+return t ? ge[t] : null;
+}, qe = function(e) {
+var t = ye(e);
 return t ? _.get(N, [ "replicationControllersByDeploymentConfig", t ]) : [];
 };
 N.getPreviousReplicationController = function(e) {
-var t = Me(e);
+var t = qe(e);
 return _.size(t) < 2 ? null : t[1];
 };
-var qe = function(e) {
-var t = {}, n = xe(e);
+var ze = function(e) {
+var t = {}, n = Me(e);
 _.assign(t, R.getDeploymentStatusAlerts(e, n), R.getPausedDeploymentAlerts(e));
-var r = Me(e);
+var r = qe(e);
 _.each(r, function(e) {
-var n = Oe(e);
+var n = Ue(e);
 _.assign(t, n);
-}), Ve(e, t);
-}, ze = function() {
-_.each(N.deploymentConfigs, qe);
-}, He = function(e) {
-var t = ye(e);
-return t ? _.get(N, [ "replicaSetsByDeploymentUID", t ]) : {};
+}), Oe(e, t);
+}, He = function() {
+_.each(N.deploymentConfigs, ze);
 }, Ge = function(e) {
-var t = R.getPausedDeploymentAlerts(e), n = He(e);
+var t = be(e);
+return t ? _.get(N, [ "replicaSetsByDeploymentUID", t ]) : {};
+}, Ke = function(e) {
+var t = R.getPausedDeploymentAlerts(e), n = Ge(e);
 _.each(n, function(e) {
-var n = Oe(e);
+var n = Ue(e);
 _.assign(t, n);
-}), Ve(e, t);
-}, Ke = function() {
-_.each(N.deployments, Ge);
+}), Oe(e, t);
 }, We = function() {
-Fe(N.replicationControllers), Fe(N.replicaSets), Fe(N.statefulSets), Fe(N.monopods);
-}, Qe = _.debounce(function() {
+_.each(N.deployments, Ke);
+}, Qe = function() {
+xe(N.replicationControllers), xe(N.replicaSets), xe(N.statefulSets), xe(N.daemonSets), xe(N.monopods);
+}, Je = _.debounce(function() {
 e.$evalAsync(function() {
-We(), ze(), Ke();
+Qe(), He(), We();
 });
-}, 500), Je = function(e) {
-_.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, me), "pipeline" !== N.viewBy && b.setLabelSuggestions(me));
-}, Ye = function(e) {
-_.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, pe), "pipeline" === N.viewBy && b.setLabelSuggestions(pe));
+}, 500), Ye = function(e) {
+_.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, pe), "pipeline" !== N.viewBy && b.setLabelSuggestions(pe));
 }, Ze = function(e) {
+_.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, fe), "pipeline" === N.viewBy && b.setLabelSuggestions(fe));
+}, Xe = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!M(e, "openshift.io/deployer-pod-for.name") && (!B(e, "openshift.io/build.name") && "slave" !== M(e, "jenkins")));
-}, Xe = function() {
-ge.podsByOwnerUID = j.groupByOwnerUID(N.pods), N.monopods = _.filter(ge.podsByOwnerUID[""], Ze);
-}, et = function(e) {
-return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || O(e));
+}, et = function() {
+ve.podsByOwnerUID = j.groupByOwnerUID(N.pods), N.monopods = _.filter(ve.podsByOwnerUID[""], Xe);
 }, tt = function(e) {
+return !!_.get(e, "status.replicas") || (!B(e, "deploymentConfig") || O(e));
+}, nt = function(e) {
 return B(e, "deploymentConfig");
-}, nt = function() {
+}, rt = function() {
 if (N.deploymentConfigs && N.replicationControllers) {
 var e = [];
-N.replicationControllersByDeploymentConfig = {}, N.currentByDeploymentConfig = {}, fe = {};
+N.replicationControllersByDeploymentConfig = {}, N.currentByDeploymentConfig = {}, ge = {};
 var t = {}, n = {};
 _.each(N.replicationControllers, function(r) {
-var a = tt(r) || "";
+var a = nt(r) || "";
 (!a || !N.deploymentConfigs[a] && _.get(r, "status.replicas")) && e.push(r);
-var o = fe[a];
-o && !x(r, o) || (fe[a] = r);
+var o = ge[a];
+o && !x(r, o) || (ge[a] = r);
 var i;
-"Complete" === B(r, "deploymentStatus") && ((i = t[a]) && !x(r, i) || (t[a] = r)), et(r) && _.set(n, [ a, r.metadata.name ], r);
+"Complete" === B(r, "deploymentStatus") && ((i = t[a]) && !x(r, i) || (t[a] = r)), tt(r) && _.set(n, [ a, r.metadata.name ], r);
 }), _.each(t, function(e, t) {
 _.set(n, [ t, e.metadata.name ], e);
 }), _.each(n, function(e, t) {
 var n = p.sortByDeploymentVersion(e, !0);
 N.replicationControllersByDeploymentConfig[t] = n, N.currentByDeploymentConfig[t] = _.head(n);
-}), N.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), ze();
+}), N.vanillaReplicationControllers = _.sortBy(e, "metadata.name"), He();
 }
-}, rt = function(e, t) {
+}, at = function(e, t) {
 if (_.get(e, "status.replicas")) return !0;
 var n = p.getRevision(e);
 return !n || !!t && p.getRevision(t) === n;
-}, at = function() {
-N.replicaSets && ue && (N.replicaSetsByDeploymentUID = P.groupByControllerUID(N.replicaSets), N.currentByDeploymentUID = {}, _.each(N.replicaSetsByDeploymentUID, function(e, t) {
+}, ot = function() {
+N.replicaSets && de && (N.replicaSetsByDeploymentUID = P.groupByControllerUID(N.replicaSets), N.currentByDeploymentUID = {}, _.each(N.replicaSetsByDeploymentUID, function(e, t) {
 if (t) {
-var n = ue[t], r = _.filter(e, function(e) {
-return rt(e, n);
+var n = de[t], r = _.filter(e, function(e) {
+return at(e, n);
 }), a = p.sortByRevision(r);
 N.replicaSetsByDeploymentUID[t] = a, N.currentByDeploymentUID[t] = _.head(a);
 }
-}), N.vanillaReplicaSets = _.sortBy(N.replicaSetsByDeploymentUID[""], "metadata.name"), Ke());
-}, ot = {}, it = function(e) {
-e && ge.allServices && _.each(e, function(e) {
-var t = [], n = ye(e), r = q(e);
-_.each(ot, function(e, n) {
-e.matches(r) && t.push(ge.allServices[n]);
-}), ge.servicesByObjectUID[n] = _.sortBy(t, "metadata.name");
+}), N.vanillaReplicaSets = _.sortBy(N.replicaSetsByDeploymentUID[""], "metadata.name"), We());
+}, it = {}, st = function(e) {
+e && ve.allServices && _.each(e, function(e) {
+var t = [], n = be(e), r = q(e);
+_.each(it, function(e, n) {
+e.matches(r) && t.push(ve.allServices[n]);
+}), ve.servicesByObjectUID[n] = _.sortBy(t, "metadata.name");
 });
-}, st = function() {
-if (ge.allServices) {
-ot = _.mapValues(ge.allServices, function(e) {
+}, ct = function() {
+if (ve.allServices) {
+it = _.mapValues(ve.allServices, function(e) {
 return new LabelSelector(e.spec.selector);
 });
-var e = [ N.deploymentConfigs, N.vanillaReplicationControllers, N.deployments, N.vanillaReplicaSets, N.statefulSets, N.monopods ];
-_.each(e, it), Pe();
+var e = [ N.deploymentConfigs, N.vanillaReplicationControllers, N.deployments, N.vanillaReplicaSets, N.statefulSets, N.daemonSets, N.monopods ];
+_.each(e, st), je();
 }
-}, ct = function() {
-var e = T.groupByService(N.routes, !0);
-ge.routesByService = _.mapValues(e, T.sortRoutesByScore), Pe();
 }, lt = function() {
-ge.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
-}, ut = function(e) {
+var e = E.groupByService(N.routes, !0);
+ve.routesByService = _.mapValues(e, E.sortRoutesByScore), je();
+}, ut = function() {
+ve.hpaByResource = g.groupHPAs(N.horizontalPodAutoscalers);
+}, dt = function(e) {
 var t = V(e), n = N.buildConfigs[t];
 if (n) {
 N.recentPipelinesByBuildConfig[t] = N.recentPipelinesByBuildConfig[t] || [], N.recentPipelinesByBuildConfig[t].push(e);
 var r = l.usesDeploymentConfigs(n);
 _.each(r, function(t) {
-ge.recentPipelinesByDeploymentConfig[t] = ge.recentPipelinesByDeploymentConfig[t] || [], ge.recentPipelinesByDeploymentConfig[t].push(e);
-}), ke();
+ve.recentPipelinesByDeploymentConfig[t] = ve.recentPipelinesByDeploymentConfig[t] || [], ve.recentPipelinesByDeploymentConfig[t].push(e);
+}), Ie();
 }
-}, dt = {}, mt = function() {
-dt = l.groupBuildConfigsByOutputImage(N.buildConfigs);
-}, pt = function(e) {
-var t = ye(e);
-if (t) return _.get(ge, [ "buildConfigsByObjectUID", t ], []);
+}, mt = {}, pt = function() {
+mt = l.groupBuildConfigsByOutputImage(N.buildConfigs);
 }, ft = function(e) {
-var t = [], n = pt(e);
+var t = be(e);
+if (t) return _.get(ve, [ "buildConfigsByObjectUID", t ], []);
+}, gt = function(e) {
+var t = [], n = ft(e);
 _.each(n, function(e) {
-var n = _.get(ge, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
+var n = _.get(ve, [ "recentBuildsByBuildConfig", e.metadata.name ], []);
 t = t.concat(n);
 });
-var r = he(e);
-_.set(ge, [ "recentBuildsByDeploymentConfig", r ], t);
-}, gt = function(e, t) {
-var n = ye(t);
-n && _.set(ge, [ "buildConfigsByObjectUID", n ], e);
-}, vt = function() {
+var r = ye(e);
+_.set(ve, [ "recentBuildsByDeploymentConfig", r ], t);
+}, vt = function(e, t) {
+var n = be(t);
+n && _.set(ve, [ "buildConfigsByObjectUID", n ], e);
+}, ht = function() {
 var e = [];
-N.deploymentConfigsByPipeline = {}, ge.pipelinesByDeploymentConfig = {}, _.each(N.buildConfigs, function(t) {
+N.deploymentConfigsByPipeline = {}, ve.pipelinesByDeploymentConfig = {}, _.each(N.buildConfigs, function(t) {
 if (F(t)) {
 e.push(t);
-var n = l.usesDeploymentConfigs(t), r = he(t);
+var n = l.usesDeploymentConfigs(t), r = ye(t);
 _.set(N, [ "deploymentConfigsByPipeline", r ], n), _.each(n, function(e) {
-ge.pipelinesByDeploymentConfig[e] = ge.pipelinesByDeploymentConfig[e] || [], ge.pipelinesByDeploymentConfig[e].push(t);
+ve.pipelinesByDeploymentConfig[e] = ve.pipelinesByDeploymentConfig[e] || [], ve.pipelinesByDeploymentConfig[e].push(t);
 });
 }
-}), N.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), ke(), Ye(N.pipelineBuildConfigs), Ie();
-}, ht = function() {
-ge.buildConfigsByObjectUID = {}, _.each(N.deploymentConfigs, function(e) {
+}), N.pipelineBuildConfigs = _.sortBy(e, "metadata.name"), Ie(), Ze(N.pipelineBuildConfigs), Re();
+}, yt = function() {
+ve.buildConfigsByObjectUID = {}, _.each(N.deploymentConfigs, function(e) {
 var t = [], n = _.get(e, "spec.triggers");
 _.each(n, function(n) {
 var r = _.get(n, "imageChangeParams.from");
 if (r) {
-var a = U(r, e.metadata.namespace), o = dt[a];
+var a = U(r, e.metadata.namespace), o = mt[a];
 _.isEmpty(o) || (t = t.concat(o));
 }
-}), t = _.sortBy(t, "metadata.name"), gt(t, e), ft(e);
+}), t = _.sortBy(t, "metadata.name"), vt(t, e), gt(e);
 });
-}, yt = function() {
-vt(), ht();
 }, bt = function() {
-_.each(N.deploymentConfigs, ft);
+ht(), yt();
 }, St = function() {
-if (ge.builds && N.buildConfigs) {
-N.recentPipelinesByBuildConfig = {}, ge.recentBuildsByBuildConfig = {}, ge.recentPipelinesByDeploymentConfig = {};
+_.each(N.deploymentConfigs, gt);
+}, Ct = function() {
+if (ve.builds && N.buildConfigs) {
+N.recentPipelinesByBuildConfig = {}, ve.recentBuildsByBuildConfig = {}, ve.recentPipelinesByDeploymentConfig = {};
 var e = {};
-_.each(l.interestingBuilds(ge.builds), function(t) {
+_.each(l.interestingBuilds(ve.builds), function(t) {
 var n = V(t);
-F(t) ? ut(t) : (e[n] = e[n] || [], e[n].push(t));
+F(t) ? dt(t) : (e[n] = e[n] || [], e[n].push(t));
 }), N.recentPipelinesByBuildConfig = _.mapValues(N.recentPipelinesByBuildConfig, function(e) {
 return l.sortBuilds(e, !0);
-}), ge.recentPipelinesByDeploymentConfig = _.mapValues(ge.recentPipelinesByDeploymentConfig, function(e) {
+}), ve.recentPipelinesByDeploymentConfig = _.mapValues(ve.recentPipelinesByDeploymentConfig, function(e) {
 return l.sortBuilds(e, !0);
-}), ge.recentBuildsByBuildConfig = _.mapValues(e, function(e) {
+}), ve.recentBuildsByBuildConfig = _.mapValues(e, function(e) {
 return l.sortBuilds(e, !0);
-}), bt();
+}), St();
 }
-}, Ct = function() {
-R.setQuotaNotifications(ge.quotas, ge.clusterQuotas, a.project);
+}, _t = function() {
+R.setQuotaNotifications(ve.quotas, ve.clusterQuotas, a.project);
 };
 N.clearFilter = function() {
 b.clear(), N.filterText = "";
 }, e.$watch(function() {
 return N.filterText;
 }, _.debounce(function(t, n) {
-t !== n && (ge.filterKeywords = y.generateKeywords(t), e.$evalAsync(Ae));
+t !== n && (ve.filterKeywords = y.generateKeywords(t), e.$evalAsync($e));
 }, 50, {
 maxWait: 250
 })), e.$watch(function() {
 return N.filterBy;
 }, function(e, t) {
-e !== t && (N.clearFilter(), Ae());
+e !== t && (N.clearFilter(), $e());
 }), e.browseCatalog = function() {
 w.toProjectCatalog(e.projectName);
 }, b.onActiveFiltersChanged(function() {
-e.$evalAsync(Ae);
+e.$evalAsync($e);
 }), N.startBuild = l.startBuild;
-var _t = function() {
-if (ge.bindingsByApplicationUID = {}, ge.applicationsByBinding = {}, ge.deleteableBindingsByApplicationUID = {}, !_.isEmpty(ge.bindings)) {
-var e = [ N.deployments, N.deploymentConfigs, N.vanillaReplicationControllers, N.vanillaReplicaSets, N.statefulSets ];
+var wt = function() {
+if (ve.bindingsByApplicationUID = {}, ve.applicationsByBinding = {}, ve.deleteableBindingsByApplicationUID = {}, !_.isEmpty(ve.bindings)) {
+var e = [ N.deployments, N.deploymentConfigs, N.vanillaReplicationControllers, N.vanillaReplicaSets, N.statefulSets, N.daemonSets ];
 if (!_.some(e, function(e) {
 return !e;
 })) {
-var t = c.getPodPresetSelectorsForBindings(ge.bindings);
+var t = c.getPodPresetSelectorsForBindings(ve.bindings);
 _.each(e, function(e) {
 _.each(e, function(e) {
-var n = ye(e), r = new LabelSelector(_.get(e, "spec.selector"));
-ge.bindingsByApplicationUID[n] = [], ge.deleteableBindingsByApplicationUID[n] = [], _.each(t, function(t, a) {
-t.covers(r) && (ge.bindingsByApplicationUID[n].push(ge.bindings[a]), _.get(ge.bindings[a], "metadata.deletionTimestamp") || ge.deleteableBindingsByApplicationUID[n].push(ge.bindings[a]), ge.applicationsByBinding[a] = ge.applicationsByBinding[a] || [], ge.applicationsByBinding[a].push(e));
+var n = be(e), r = new LabelSelector(_.get(e, "spec.selector"));
+ve.bindingsByApplicationUID[n] = [], ve.deleteableBindingsByApplicationUID[n] = [], _.each(t, function(t, a) {
+t.covers(r) && (ve.bindingsByApplicationUID[n].push(ve.bindings[a]), _.get(ve.bindings[a], "metadata.deletionTimestamp") || ve.deleteableBindingsByApplicationUID[n].push(ve.bindings[a]), ve.applicationsByBinding[a] = ve.applicationsByBinding[a] || [], ve.applicationsByBinding[a].push(e));
 });
 });
 }), N.bindingsByInstanceRef = _.reduce(N.bindingsByInstanceRef, function(e, t, n) {
 return e[n] = _.sortBy(t, function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1312,12 +1335,16 @@ var t = _.get(re.applicationsByBinding, [ e.metadata.name ]);
 =======
 var t = _.get(ge.applicationsByBinding, [ e.metadata.name ]);
 >>>>>>> Use preferred API versions in overview.js
+=======
+var t = _.get(ve.applicationsByBinding, [ e.metadata.name ]);
+>>>>>>> Overview support for daemon sets
 return _.get(_.head(t), [ "metadata", "name" ]) || e.metadata.name;
 >>>>>>> Upgrade to angular-patternfly v4.1.1 and patternfly v3.25.1
 }), e;
 }, {});
 }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1590,61 +1617,84 @@ re.bindableServiceInstances = c.filterBindableServiceInstances(re.serviceInstanc
 ge.bindableServiceInstances = c.filterBindableServiceInstances(ge.serviceInstances, ge.serviceClasses, ge.servicePlans), ge.orderedServiceInstances = c.sortServiceInstances(ge.serviceInstances, ge.serviceClasses);
 }, Pt = [], jt = A ? {
 >>>>>>> Use preferred API versions in overview.js
+=======
+}, Pt = function() {
+ve.bindableServiceInstances = c.filterBindableServiceInstances(ve.serviceInstances, ve.serviceClasses, ve.servicePlans), ve.orderedServiceInstances = c.sortServiceInstances(ve.serviceInstances, ve.serviceClasses);
+}, jt = [], kt = A ? {
+>>>>>>> Overview support for daemon sets
 skipErrorNotFound: !0
 } : {};
-k.get(a.project, jt).then(_.spread(function(t, r) {
-ge.project = e.project = t, ge.context = r;
+k.get(a.project, kt).then(_.spread(function(t, r) {
+ve.project = e.project = t, ve.context = r;
 var a = function() {
-N.pods && h.fetchReferencedImageStreamImages(N.pods, ge.imagesByDockerReference, ge.imageStreamImageRefByDockerReference, r);
+N.pods && h.fetchReferencedImageStreamImages(N.pods, ve.imagesByDockerReference, ve.imageStreamImageRefByDockerReference, r);
+}, o = function(e) {
+N.daemonSets = e.by("metadata.name"), st(N.daemonSetData), st(N.monopods), xe(N.daemonSets), Ye(N.daemonSets), wt(), $e(), S.log("daemonsets", N.daemonSets);
+}, i = !1, s = function() {
+i || (jt.push(m.watch(K, r, o, {
+poll: D,
+pollInterval: 6e4
+})), i = !0);
+}, c = function(e) {
+var t = P.getOwnerReferences(e);
+return _.some(t, {
+controller: !0,
+kind: "DaemonSet"
+});
+}, l = function() {
+i || _.some(N.pods, c) && s();
 };
-Pt.push(m.watch(Z, r, function(e) {
-N.pods = e.by("metadata.name"), Xe(), a(), Qe(), it(N.monopods), Fe(N.monopods), Je(N.monopods), Ae(), S.log("pods (subscribe)", N.pods);
-})), Pt.push(m.watch(ee, r, function(e) {
-N.replicationControllers = e.by("metadata.name"), nt(), it(N.vanillaReplicationControllers), it(N.monopods), Fe(N.vanillaReplicationControllers), Je(N.vanillaReplicationControllers), _t(), Ae(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
-})), Pt.push(m.watch(K, r, function(e) {
-N.deploymentConfigs = e.by("metadata.name"), nt(), it(N.deploymentConfigs), it(N.vanillaReplicationControllers), Je(N.deploymentConfigs), Ke(), yt(), bt(), _t(), Ae(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
-})), Pt.push(m.watch(X, r, function(e) {
-N.replicaSets = e.by("metadata.name"), at(), it(N.vanillaReplicaSets), it(N.monopods), Fe(N.vanillaReplicaSets), Je(N.vanillaReplicaSets), _t(), Ae(), S.log("replicasets (subscribe)", N.replicaSets);
-})), Pt.push(m.watch(W, r, function(e) {
-ue = e.by("metadata.uid"), N.deployments = _.sortBy(ue, "metadata.name"), at(), it(N.deployments), it(N.vanillaReplicaSets), Je(N.deployments), _t(), Ae(), S.log("deployments (subscribe)", N.deploymentsByUID);
-})), Pt.push(m.watch(H, r, function(e) {
-ge.builds = e.by("metadata.name"), St(), S.log("builds (subscribe)", ge.builds);
-})), Pt.push(m.watch(ce, r, function(e) {
-N.statefulSets = e.by("metadata.name"), it(N.statefulSets), it(N.monopods), Fe(N.statefulSets), Je(N.statefulSets), _t(), Ae(), S.log("statefulsets (subscribe)", N.statefulSets);
+jt.push(m.watch(X, r, function(e, t) {
+N.pods = e.by("metadata.name"), et(), a(), Je(), st(N.monopods), xe(N.monopods), Ye(N.monopods), $e(), t && "ADDED" !== t || l(), S.log("pods (subscribe)", N.pods);
+})), jt.push(m.watch(te, r, function(e) {
+N.replicationControllers = e.by("metadata.name"), rt(), st(N.vanillaReplicationControllers), st(N.monopods), xe(N.vanillaReplicationControllers), Ye(N.vanillaReplicationControllers), wt(), $e(), S.log("replicationcontrollers (subscribe)", N.replicationControllers);
+})), jt.push(m.watch(W, r, function(e) {
+N.deploymentConfigs = e.by("metadata.name"), rt(), st(N.deploymentConfigs), st(N.vanillaReplicationControllers), Ye(N.deploymentConfigs), We(), bt(), St(), wt(), $e(), S.log("deploymentconfigs (subscribe)", N.deploymentConfigs);
+})), jt.push(m.watch(ee, r, function(e) {
+N.replicaSets = e.by("metadata.name"), ot(), st(N.vanillaReplicaSets), st(N.monopods), xe(N.vanillaReplicaSets), Ye(N.vanillaReplicaSets), wt(), $e(), S.log("replicasets (subscribe)", N.replicaSets);
+})), jt.push(m.watch(Q, r, function(e) {
+de = e.by("metadata.uid"), N.deployments = _.sortBy(de, "metadata.name"), ot(), st(N.deployments), st(N.vanillaReplicaSets), Ye(N.deployments), wt(), $e(), S.log("deployments (subscribe)", N.deploymentsByUID);
+})), jt.push(m.watch(H, r, function(e) {
+ve.builds = e.by("metadata.name"), Ct(), S.log("builds (subscribe)", ve.builds);
+})), jt.push(m.watch(le, r, function(e) {
+N.statefulSets = e.by("metadata.name"), st(N.statefulSets), st(N.monopods), xe(N.statefulSets), Ye(N.statefulSets), wt(), $e(), S.log("statefulsets (subscribe)", N.statefulSets);
 }, {
 poll: D,
 >>>>>>> Set Home Page Preference
 pollInterval: 6e4
-})), Pt.push(m.watch(se, r, function(e) {
-ge.allServices = e.by("metadata.name"), st(), S.log("services (subscribe)", ge.allServices);
+})), m.list(K, r, function(e) {
+o(e), _.isEmpty(N.daemonSets) || s();
+}), jt.push(m.watch(ce, r, function(e) {
+ve.allServices = e.by("metadata.name"), ct(), S.log("services (subscribe)", ve.allServices);
 }, {
 poll: D,
 pollInterval: 6e4
-})), Pt.push(m.watch(ne, r, function(e) {
-N.routes = e.by("metadata.name"), ct(), S.log("routes (subscribe)", N.routes);
+})), jt.push(m.watch(re, r, function(e) {
+N.routes = e.by("metadata.name"), lt(), S.log("routes (subscribe)", N.routes);
 }, {
 poll: D,
 pollInterval: 6e4
-})), Pt.push(m.watch(z, r, function(e) {
-N.buildConfigs = e.by("metadata.name"), mt(), yt(), St(), Ae(), S.log("buildconfigs (subscribe)", N.buildConfigs);
+})), jt.push(m.watch(z, r, function(e) {
+N.buildConfigs = e.by("metadata.name"), pt(), bt(), Ct(), $e(), S.log("buildconfigs (subscribe)", N.buildConfigs);
 }, {
 poll: D,
 pollInterval: 6e4
-})), Pt.push(m.watch(Q, r, function(e) {
-N.horizontalPodAutoscalers = e.by("metadata.name"), lt(), S.log("autoscalers (subscribe)", N.horizontalPodAutoscalers);
+})), jt.push(m.watch(J, r, function(e) {
+N.horizontalPodAutoscalers = e.by("metadata.name"), ut(), S.log("autoscalers (subscribe)", N.horizontalPodAutoscalers);
 }, {
 poll: D,
 pollInterval: 6e4
-})), Pt.push(m.watch(J, r, function(e) {
-de = e.by("metadata.name"), h.buildDockerRefMapForImageStreams(de, ge.imageStreamImageRefByDockerReference), a(), S.log("imagestreams (subscribe)", de);
+})), jt.push(m.watch(Y, r, function(e) {
+me = e.by("metadata.name"), h.buildDockerRefMapForImageStreams(me, ve.imageStreamImageRefByDockerReference), a(), S.log("imagestreams (subscribe)", me);
 }, {
 poll: D,
 pollInterval: 6e4
-})), Pt.push(m.watch(te, r, function(e) {
-ge.quotas = e.by("metadata.name"), Ct();
+})), jt.push(m.watch(ne, r, function(e) {
+ve.quotas = e.by("metadata.name"), _t();
 }, {
 poll: !0,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1719,10 +1769,15 @@ re.clusterQuotas = e.by("metadata.name"), lt();
 })), Pt.push(m.watch(G, r, function(e) {
 ge.clusterQuotas = e.by("metadata.name"), Ct();
 >>>>>>> Use preferred API versions in overview.js
+=======
+})), jt.push(m.watch(G, r, function(e) {
+ve.clusterQuotas = e.by("metadata.name"), _t();
+>>>>>>> Overview support for daemon sets
 }, {
 poll: !0,
 pollInterval: 6e4
 }));
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1756,12 +1811,22 @@ var r = _.get(ge, [ "serviceClasses", t ]);
 return r ? n.when(r) : (s[t] || (s[t] = m.get(ae, t, {}).then(function(e) {
 return ge.serviceClasses[t] = e, e;
 >>>>>>> Use preferred API versions in overview.js
-}).finally(function() {
-delete c[t];
-})), s[t]);
-}, i = function(e) {
-var t = E.getServicePlanNameForInstance(e);
+=======
+var p, f, g = {}, v = {};
+u.SERVICE_CATALOG_ENABLED && L(ie, "watch") && (p = function(e) {
+var t = T.getServiceClassNameForInstance(e);
 if (!t) return n.when();
+var r = _.get(ve, [ "serviceClasses", t ]);
+return r ? n.when(r) : (g[t] || (g[t] = m.get(oe, t, {}).then(function(e) {
+return ve.serviceClasses[t] = e, e;
+>>>>>>> Overview support for daemon sets
+}).finally(function() {
+delete v[t];
+})), g[t]);
+}, f = function(e) {
+var t = T.getServicePlanNameForInstance(e);
+if (!t) return n.when();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 var r = _.get(he, [ "servicePlans", t ]);
@@ -1803,26 +1868,32 @@ var r = _.get(ge, [ "servicePlans", t ]);
 return r ? n.when(r) : (c[t] || (c[t] = m.get(ie, t, {}).then(function(e) {
 return ge.servicePlans[t] = e, e;
 >>>>>>> Use preferred API versions in overview.js
+=======
+var r = _.get(ve, [ "servicePlans", t ]);
+return r ? n.when(r) : (v[t] || (v[t] = m.get(se, t, {}).then(function(e) {
+return ve.servicePlans[t] = e, e;
+>>>>>>> Overview support for daemon sets
 }).finally(function() {
-delete c[t];
-})), c[t]);
-}, Pt.push(m.watch(oe, r, function(e) {
-ge.serviceInstances = e.by("metadata.name");
+delete v[t];
+})), v[t]);
+}, jt.push(m.watch(ie, r, function(e) {
+ve.serviceInstances = e.by("metadata.name");
 var t = [];
-_.each(ge.serviceInstances, function(e) {
+_.each(ve.serviceInstances, function(e) {
 var n = R.getServiceInstanceAlerts(e);
-Ve(e, n), t.push(o(e)), t.push(i(e));
+Oe(e, n), t.push(p(e)), t.push(f(e));
 }), I.waitForAll(t).finally(function() {
-wt(), Ae();
-}), Je(ge.serviceInstances);
+Pt(), $e();
+}), Ye(ve.serviceInstances);
 }, {
 poll: D,
 pollInterval: 6e4
-}))), u.SERVICE_CATALOG_ENABLED && L(re, "watch") && Pt.push(m.watch(re, r, function(e) {
-ge.bindings = e.by("metadata.name"), N.bindingsByInstanceRef = _.groupBy(ge.bindings, "spec.instanceRef.name"), _t();
+}))), u.SERVICE_CATALOG_ENABLED && L(ae, "watch") && jt.push(m.watch(ae, r, function(e) {
+ve.bindings = e.by("metadata.name"), N.bindingsByInstanceRef = _.groupBy(ve.bindings, "spec.instanceRef.name"), wt();
 }, {
 poll: D,
 pollInterval: 6e4
+<<<<<<< HEAD
 <<<<<<< HEAD
 })), m.list("limitranges", r, function(e) {
 re.limitRanges = e.by("metadata.name");
@@ -1838,6 +1909,14 @@ var l = d.SAMPLE_PIPELINE_TEMPLATE;
 l && m.get(le, l.name, {
 >>>>>>> Use preferred API versions in overview.js
 namespace: l.namespace
+=======
+})), m.list(Z, r, function(e) {
+ve.limitRanges = e.by("metadata.name");
+});
+var y = d.SAMPLE_PIPELINE_TEMPLATE;
+y && m.get(ue, y.name, {
+namespace: y.namespace
+>>>>>>> Overview support for daemon sets
 }, {
 errorNotification: !1
 }).then(function(t) {
@@ -1855,7 +1934,7 @@ L && _.get(t, "notFound") && (g.notifyInvalidProjectHomePage(e.projectName), w.t
 =======
 N.samplePipelineURL = w.createFromTemplateURL(t, e.projectName);
 }), e.$on("$destroy", function() {
-m.unwatchAll(Pt), $(window).off(".overview");
+m.unwatchAll(jt), $(window).off(".overview");
 });
 }), function(t) {
 A && _.get(t, "notFound") && (f.notifyInvalidProjectHomePage(e.projectName), w.toProjectList());
@@ -7912,9 +7991,9 @@ target: "_blank"
 _.each(a, d), _.each(i, d);
 }
 }), r) : r;
-}, T = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], E = function(e, t, n, r, a) {
+}, E = [ "cpu", "requests.cpu", "memory", "requests.memory", "limits.cpu", "limits.memory" ], T = function(e, t, n, r, a) {
 var o, s = "Your project is " + (r < t ? "over" : "at") + " quota. ";
-return o = _.includes(T, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
+return o = _.includes(E, a) ? s + "It is using " + v(t / r, 0) + " of " + g(n, a) + " " + C(a) + "." : s + "It is using " + t + " of " + r + " " + C(a) + ".", o = _.escape(o), i.QUOTA_NOTIFICATION_MESSAGE && i.QUOTA_NOTIFICATION_MESSAGE[a] && (o += " " + i.QUOTA_NOTIFICATION_MESSAGE[a]), o;
 }, N = function(e, t, n) {
 var r = function(e) {
 var t = e.status.total || e.status;
@@ -8045,7 +8124,7 @@ var c = f(e), l = _.get(a, [ "used", s ]), d = f(l);
 id: o + "/quota-limit-reached-" + s,
 namespace: o,
 type: c < d ? "warning" : "info",
-message: E(0, d, e, c, s),
+message: T(0, d, e, c, s),
 isHTML: !0,
 skipToast: !0,
 showInDrawer: !0,
@@ -9680,6 +9759,7 @@ return _.each(e, s), _.each(a, s), i;
 <<<<<<< HEAD
 <<<<<<< HEAD
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("SecurityCheckService", [ "APIService", "$filter", "Constants", function(e, t, n) {
 var r = t("humanizeKind");
 return {
@@ -9847,6 +9927,8 @@ _.each(r.containerTerminals, function(e) {
 e.isVisible = !1;
 }), e.isVisible = !0, e.isUsed = !0, r.selectedTerminalContainer = e;
 };
+=======
+>>>>>>> Overview support for daemon sets
 var I = function(e) {
 var t = _.get(e, "state", {});
 return _.head(_.keys(t));
@@ -9861,6 +9943,7 @@ containerName: t.name,
 isVisible: !1,
 isUsed: !1,
 containerState: a
+<<<<<<< HEAD
 >>>>>>> Resize terminal when nav is collapsed or expanded
 });
 i.length || _.set(a, [ "", t.metadata.name ], t), _.each(i, function(e) {
@@ -9930,6 +10013,18 @@ s.debug("ProjectsService: clearing catalog items cache"), l = null;
 p.get(t.project).then(_.spread(function(r, o) {
 h = o, n.project = r, n.projectContext = o, i.get(n.podsVersion, t.pod, o, {
 =======
+=======
+});
+});
+var t = _.head(e);
+return t.isVisible = !0, t.isUsed = !0, r.selectedTerminalContainer = t, e;
+}, E = function(e) {
+r.noContainersYet && (r.noContainersYet = 0 === r.containersRunning(e.status.containerStatuses));
+}, T = function(e) {
+_.each(e, function(e) {
+var t = _.find(r.pod.status.containerStatuses, {
+name: e.containerName
+>>>>>>> Overview support for daemon sets
 }), n = I(t);
 e.containerState = n;
 });
@@ -9952,8 +10047,8 @@ errorNotification: !1
 }).then(function(e) {
 D(e);
 var t = {};
-t[e.metadata.name] = e, r.logOptions.container = n.container || e.spec.containers[0].name, r.containerTerminals = R(), T(e), l.fetchReferencedImageStreamImages(t, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, b), h.push(s.watchObject(r.podsVersion, n.pod, a, function(e, t) {
-D(e, t), E(r.containerTerminals), T(e);
+t[e.metadata.name] = e, r.logOptions.container = n.container || e.spec.containers[0].name, r.containerTerminals = R(), E(e), l.fetchReferencedImageStreamImages(t, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, b), h.push(s.watchObject(r.podsVersion, n.pod, a, function(e, t) {
+D(e, t), T(r.containerTerminals), E(e);
 }));
 }, function(t) {
 r.loaded = !0, r.alerts.load = {
@@ -10593,8 +10688,9 @@ container: e.spec.containers[0].name
 n.logOptions.replicationControllers[e.metadata.name] = {};
 var t = r("annotation")(e, "deploymentVersion");
 t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
-}, T = function(e) {
+}, E = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10614,6 +10710,9 @@ n.filteredStatefulSets = s.filterForKeywords(_.values(n.statefulSets), w, P);
 S = _.filter(n.pods, function(e) {
 =======
 }, E = function() {
+=======
+}, T = function() {
+>>>>>>> Overview support for daemon sets
 n.filteredStatefulSets = c.filterForKeywords(_.values(n.statefulSets), P, j);
 }, N = function() {
 C = _.filter(n.pods, function(e) {
@@ -10777,14 +10876,14 @@ resource: "statefulsets",
 group: "apps",
 version: "v1beta1"
 }, r, function(e) {
-n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, E(), l.log("statefulSets", n.statefulSets);
+n.statefulSets = e.by("metadata.name"), n.statefulSetsLoaded = !0, T(), l.log("statefulSets", n.statefulSets);
 }, {
 poll: g,
 pollInterval: 6e4
 })), v.push(i.watch("replicationcontrollers", r, function(e) {
 n.replicationControllers = w(e.by("metadata.name"), !0), n.replicationControllersLoaded = !0, _.each(n.replicationControllers, R), U(), l.log("replicationcontrollers", n.replicationControllers);
 })), v.push(i.watch("builds", r, function(e) {
-n.builds = w(e.by("metadata.name"), !0), n.latestBuildByConfig = o.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, T), L(), l.log("builds", n.builds);
+n.builds = w(e.by("metadata.name"), !0), n.latestBuildByConfig = o.latestBuildByConfig(n.builds), n.buildsLoaded = !0, _.each(n.builds, E), L(), l.log("builds", n.builds);
 })), v.push(i.watch({
 group: "extensions",
 resource: "replicasets"
@@ -10796,7 +10895,7 @@ pollInterval: 6e4
 })), n.$on("$destroy", function() {
 i.unwatchAll(v);
 }), n.$watch("filters.hideOlderResources", function() {
-N(), L(), U(), F(), E();
+N(), L(), U(), F(), T();
 var e = t.search();
 e.hideOlderResources = n.filters.hideOlderResources ? "true" : "false", t.replace().search(e);
 }), n.$watch("kindSelector.selected.kind", function() {
@@ -10953,7 +11052,7 @@ roleName: t.metadata.name,
 subjectName: n.name
 }), e("getErrorDetails")(r));
 });
-}, T = function(t, n, a) {
+}, E = function(t, n, a) {
 r.disableAddForm = !0, p.addSubject(t, n, a, g).then(function() {
 I(), P("success", w.update.subject.success({
 roleName: t.roleRef.name,
@@ -10965,11 +11064,11 @@ roleName: t.roleRef.name,
 subjectName: n.name
 }), e("getErrorDetails")(r));
 });
-}, E = {};
-n.tab && (E[n.tab] = !0);
+}, T = {};
+n.tab && (T[n.tab] = !0);
 var N = d.getSubjectKinds();
 angular.extend(r, {
-selectedTab: E,
+selectedTab: T,
 projectName: v,
 forms: {},
 subjectKinds: N,
@@ -11211,6 +11310,7 @@ subjectName: e
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 })) : i ? I(i, o, a) : k(n, o);
 >>>>>>> Add Browse Catalog to Project context view.
 }
@@ -11232,6 +11332,9 @@ subjectName: e
 =======
 })) : i ? T(i, o, a) : R(n, o);
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+})) : i ? E(i, o, a) : R(n, o);
+>>>>>>> Overview support for daemon sets
 }
 }), f.listAllRoles(g, {
 errorNotification: !1
@@ -12684,10 +12787,10 @@ var $ = [];
 =======
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
-var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), T = r.getPreferredVersion("pods"), E = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
 case "ReplicaSet":
-e.resource = E, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
+e.resource = T, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
 break;
 
 case "ReplicationController":
@@ -12822,7 +12925,7 @@ link: g.resourceURL(e.deployment)
 },
 humanizedKind: "Deployments"
 }), x(), y();
-})), B.push(i.watch(E, u, function(e) {
+})), B.push(i.watch(T, u, function(e) {
 var t = e.by("metadata.name");
 q = M(t);
 }));
@@ -12953,7 +13056,7 @@ object: t
 type: "warning",
 message: "This " + w + " has been deleted."
 }), e.replicaSet = t, V(t), U(), H(), e.deployment && x();
-})), e.deploymentConfigName && N(), B.push(i.watch(T, u, function(t) {
+})), e.deploymentConfigName && N(), B.push(i.watch(E, u, function(t) {
 var n = t.by("metadata.name");
 e.podsForDeployment = h.filterForOwner(n, e.replicaSet);
 }));
@@ -14692,7 +14795,7 @@ sourcePath: e.name,
 destinationDir: e.value
 };
 });
-}, T = function(t) {
+}, E = function(t) {
 var n = {};
 switch (t.type) {
 case "ImageStreamTag":
@@ -14732,7 +14835,7 @@ name: _.last(r)
 }).namespace = 1 !== _.size(r) ? _.head(r) : e.buildConfig.metadata.namespace;
 }
 return n;
-}, E = function(e) {
+}, T = function(e) {
 return _.filter(e, function(e) {
 return !_.isEmpty(e.data.type) && !_.isEmpty(e.data[_.toLower(e.data.type)]);
 });
@@ -14740,7 +14843,7 @@ return !_.isEmpty(e.data.type) && !_.isEmpty(e.data[_.toLower(e.data.type)]);
 var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeTrigger, e.triggers.configChangeTrigger);
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
-}), t = t.concat(E(e.triggers.webhookTriggers)), t = _.map(t, "data");
+}), t = t.concat(T(e.triggers.webhookTriggers)), t = _.map(t, "data");
 }, D = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
@@ -15092,6 +15195,7 @@ self: _.template("Are you sure you want to remove <strong><%- roleName %></stron
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 },
 success: _.template('The role "<%= roleName %>" was removed from "<%= subjectName %>".'),
 error: _.template('The role "<%= roleName %>" was not removed from "<%= subjectName %>".')
@@ -15142,6 +15246,9 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = T(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = T(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = T(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Overview support for daemon sets
 case "Source":
 case "Docker":
 $(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -15698,7 +15805,7 @@ command: [],
 environment: []
 }), e.strategyParamsPropertyName = t;
 };
-var T = function(e, t, n, r) {
+var E = function(e, t, n, r) {
 var a = {
 kind: "ImageStreamTag",
 namespace: t.namespace,
@@ -15715,7 +15822,7 @@ from: a
 <<<<<<< HEAD
 =======
 }, n;
-}, E = function() {
+}, T = function() {
 var t = _.reject(e.updatedDeploymentConfig.spec.triggers, function(e) {
 return "ImageChange" === e.type || "ConfigChange" === e.type;
 >>>>>>> Configurable inactivity timeout in console
@@ -15754,7 +15861,7 @@ mode: {
 edit: !!r.mode.edit && t
 =======
 return _.each(e.containerConfigByName, function(n, r) {
-n.hasDeploymentTrigger ? t.push(T(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
+n.hasDeploymentTrigger ? t.push(E(r, n.triggerData.istag, n.triggerData.data, n.triggerData.automatic)) : _.find(e.updatedDeploymentConfig.spec.template.spec.containers, {
 name: r
 }).image = n.image;
 }), e.triggers.hasConfigTrigger && t.push({
@@ -15812,7 +15919,7 @@ subjectName: n
 }
 "Custom" !== e.strategyData.type && _.each([ "pre", "mid", "post" ], function(t) {
 _.has(e.strategyData, [ e.strategyParamsPropertyName, t, "execNewPod", "env" ]) && (e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env = g.compactEntries(e.strategyData[e.strategyParamsPropertyName][t].execNewPod.env));
-}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = E(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
+}), _.has(e, "strategyData.customParams.environment") && (e.strategyData.customParams.environment = g.compactEntries(e.strategyData.customParams.environment)), e.updatedDeploymentConfig.spec.template.spec.imagePullSecrets = _.filter(e.secrets.pullSecrets, "name"), e.updatedDeploymentConfig.spec.strategy = e.strategyData, e.updatedDeploymentConfig.spec.triggers = T(), N(), l.update(b, e.updatedDeploymentConfig.metadata.name, e.updatedDeploymentConfig, e.context).then(function() {
 m.addNotification({
 type: "success",
 message: "Deployment config " + e.updatedDeploymentConfig.metadata.name + " was successfully updated."
@@ -16702,8 +16809,8 @@ e.displayName = a.displayName, e.advancedOptions = "true" === a.advanced;
 var I = {
 name: "app",
 value: ""
-}, R = t("orderByDisplayName"), T = t("getErrorDetails"), E = {}, N = function() {
-g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(E, function(e) {
+}, R = t("orderByDisplayName"), E = t("getErrorDetails"), T = {}, N = function() {
+g.hideNotification("create-builder-list-config-maps-error"), g.hideNotification("create-builder-list-secrets-error"), _.each(T, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || g.hideNotification(e.id);
 });
 >>>>>>> Add Browse Catalog to Project context view.
@@ -16837,6 +16944,7 @@ message: "Could not load config maps.",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
@@ -16853,6 +16961,9 @@ details: E(e)
 =======
 details: T(e)
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+details: E(e)
+>>>>>>> Overview support for daemon sets
 });
 }), a.canI(e.secretsVersion, "list", n.project) && s.list("secrets", i, null, {
 errorNotification: !1
@@ -16868,6 +16979,7 @@ message: "Could not load secrets.",
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 details: h(e)
 =======
 details: T(e)
@@ -16884,6 +16996,9 @@ details: E(e)
 =======
 details: T(e)
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+details: E(e)
+>>>>>>> Overview support for daemon sets
 });
 }), y.push(s.watch(e.buildsVersion, i, function(t, r, a) {
 if (e.emptyMessage = "No builds to show", r) {
@@ -17015,11 +17130,11 @@ details: "The active filters are hiding all builds."
 }
 }).result.then(F);
 }, M = function(t) {
-N(), E = t.quotaAlerts || [], e.nameTaken || _.some(E, {
+N(), T = t.quotaAlerts || [], e.nameTaken || _.some(T, {
 type: "error"
-}) ? (e.disableInputs = !1, _.each(E, function(e) {
+}) ? (e.disableInputs = !1, _.each(T, function(e) {
 e.id = _.uniqueId("create-builder-alert-"), g.addNotification(e);
-})) : _.isEmpty(E) ? F() : (x(E), e.disableInputs = !1);
+})) : _.isEmpty(T) ? F() : (x(T), e.disableInputs = !1);
 };
 e.projectDisplayName = function() {
 return P(this.project) || this.projectName;
@@ -20743,9 +20858,210 @@ n.push({
 type: "success",
 message: "Created " + k(e.kind) + ' "' + e.metadata.name + '" successfully. '
 });
+<<<<<<< HEAD
 }); else {
 var a;
 a = p.isList ? "All items in list were created successfully." : k(p.resourceKind) + " " + p.resourceName + " was successfully created.", n.push({
+=======
+e.$watch("apiObjects", function(n) {
+i = {}, _.each(n, function(e) {
+_.get(e, "metadata.uid") && (i[e.metadata.uid] = !0);
+}), e.showKindAndName = 1 !== _.size(i), t && b();
+}), e.$watch("showKindAndName", function(t) {
+e.sortConfig = {
+fields: [ {
+id: "lastTimestamp",
+title: "Time",
+sortType: "alpha"
+}, {
+id: "type",
+title: "Severity",
+sortType: "alpha"
+}, {
+id: "reason",
+title: "Reason",
+sortType: "alpha"
+}, {
+id: "message",
+title: "Message",
+sortType: "alpha"
+}, {
+id: "count",
+title: "Count",
+sortType: "numeric"
+} ],
+isAscending: !0,
+onSortChange: y
+}, t && e.sortConfig.fields.splice(1, 0, {
+id: "involvedObject.name",
+title: "Name",
+sortType: "alpha"
+}, {
+id: "involvedObject.kind",
+title: "Kind",
+sortType: "alpha"
+});
+}), s.push(r.watch(c, e.projectContext, function(n) {
+t = n.by("metadata.name"), b(), o.log("events (subscribe)", e.filteredEvents);
+}, {
+skipDigest: !0
+})), e.$on("$destroy", function() {
+r.unwatchAll(s);
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("eventsSidebar", [ "$rootScope", "APIService", "DataService", "Logger", function(e, t, n, r) {
+var a = t.getPreferredVersion("events");
+return {
+restrict: "E",
+scope: {
+projectContext: "=",
+collapsed: "="
+},
+templateUrl: "views/directives/events-sidebar.html",
+controller: [ "$scope", function(t) {
+var o = [];
+o.push(n.watch(a, t.projectContext, function(e) {
+var n = e.by("metadata.name");
+t.events = _.orderBy(n, [ "lastTimestamp" ], [ "desc" ]), t.warningCount = _.size(_.filter(n, {
+type: "Warning"
+})), r.log("events (subscribe)", t.events);
+})), t.highlightedEvents = {}, t.collapseSidebar = function() {
+t.collapsed = !0;
+};
+var i = [];
+i.push(e.$on("event.resource.highlight", function(e, n) {
+var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
+r && a && _.each(t.events, function(e) {
+e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !0);
+});
+})), i.push(e.$on("event.resource.clear-highlight", function(e, n) {
+var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
+r && a && _.each(t.events, function(e) {
+e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !1);
+});
+})), t.$on("$destroy", function() {
+n.unwatchAll(o), _.each(i, function(e) {
+e();
+}), i = null;
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, r) {
+var a = t.getPreferredVersion("events");
+return {
+restrict: "E",
+scope: {
+projectContext: "=",
+sidebarCollapsed: "="
+},
+templateUrl: "views/directives/events-badge.html",
+controller: [ "$scope", function(t) {
+var o = [], i = e("orderObjectsByDate");
+o.push(n.watch(a, t.projectContext, function(e) {
+var n = e.by("metadata.name");
+t.events = i(n, !0), t.warningCount = _.size(_.filter(n, {
+type: "Warning"
+})), t.normalCount = _.size(_.filter(n, {
+type: "Normal"
+})), r.log("events (subscribe)", t.events);
+})), t.expandSidebar = function() {
+t.sidebarCollapsed = !1;
+}, t.$on("$destroy", function() {
+n.unwatchAll(o);
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("fromFile", [ "$filter", "$location", "$q", "$uibModal", "APIService", "CachedTemplateService", "DataService", "Navigate", "NotificationsService", "QuotaService", "SecurityCheckService", "TaskList", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u, d, m) {
+return {
+restrict: "E",
+scope: {
+project: "=",
+isDialog: "="
+},
+templateUrl: "views/directives/from-file.html",
+controller: [ "$scope", function(p) {
+function f(e) {
+return !!e.kind || (p.error = {
+message: "Resource is missing kind field."
+}, !1);
+}
+function g(e) {
+return !!p.isList || (e.metadata ? e.metadata.name ? !e.metadata.namespace || e.metadata.namespace === p.input.selectedProject.metadata.name || (p.error = {
+message: e.kind + " " + e.metadata.name + " can't be created in project " + e.metadata.namespace + ". Can't create resource in different projects."
+}, !1) : (p.error = {
+message: "Resource name is missing in metadata field."
+}, !1) : (p.error = {
+message: "Resource is missing metadata field."
+}, !1));
+}
+function v() {
+r.open({
+templateUrl: "views/modals/process-or-save-template.html",
+controller: "ProcessOrSaveTemplateModalController",
+scope: p
+}).result.then(function() {
+p.templateOptions.add ? y() : (o.setTemplate(p.resourceList[0]), b());
+});
+}
+function h() {
+r.open({
+templateUrl: "views/modals/confirm-replace.html",
+controller: "ConfirmReplaceModalController",
+scope: p
+}).result.then(function() {
+l.getLatestQuotaAlerts(p.createResources, {
+namespace: p.input.selectedProject.metadata.name
+}).then(N);
+});
+}
+function y() {
+var e = p.createResources.length, t = p.updateResources.length;
+if (p.resourceKind.endsWith("List")) {
+var r = [];
+t > 0 && r.push(P()), e > 0 && r.push(w()), n.all(r).then(b);
+} else C();
+}
+function b() {
+var e, n;
+T(), "Template" === p.resourceKind && p.templateOptions.process && !p.errorOccurred ? p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+project: p.input.selectedProject,
+template: p.resource
+}) : (n = p.templateOptions.add || p.updateResources.length > 0 ? p.input.selectedProject.metadata.name : "", e = s.createFromTemplateURL(p.resource, p.input.selectedProject.metadata.name, {
+namespace: n
+}), t.url(e)) : p.isDialog ? p.$emit("fileImportedFromYAMLOrJSON", {
+project: p.input.selectedProject,
+resource: p.resource,
+isList: p.isList
+}) : (e = s.projectOverviewURL(p.input.selectedProject.metadata.name), t.url(e));
+}
+function S(e) {
+var t = a.objectToResourceGroupVersion(e);
+return t ? a.apiInfo(t) ? i.get(t, e.metadata.name, {
+namespace: p.input.selectedProject.metadata.name
+}, {
+errorNotification: !1
+}).then(function(t) {
+var n = angular.copy(e), r = angular.copy(t.metadata);
+r.annotations = e.metadata.annotations, r.labels = e.metadata.labels, n.metadata = r, p.updateResources.push(n);
+}, function() {
+var t = angular.copy(e);
+_.unset(t, "metadata.resourceVersion"), p.createResources.push(t);
+}) : (p.errorOccurred = !0, void (p.error = {
+message: a.unsupportedObjectKindOrVersion(e)
+})) : (p.errorOccurred = !0, void (p.error = {
+message: a.invalidObjectKindOrVersion(e)
+}));
+}
+function C() {
+var t;
+_.isEmpty(p.createResources) ? (t = _.head(p.updateResources), i.update(a.objectToResourceGroupVersion(t), t.metadata.name, t, {
+namespace: p.input.selectedProject.metadata.name
+}).then(function() {
+if (!p.isDialog) {
+var e = k(t.kind);
+c.addNotification({
+>>>>>>> Overview support for daemon sets
 type: "success",
 message: a
 >>>>>>> Add Browse Catalog to Project context view.
@@ -21026,18 +21342,18 @@ t.services = e.select(t.unfilteredServices), a();
 =======
 }
 }).result.then(y);
-}, T = {}, E = function() {
-c.hideNotification("from-file-error"), _.each(T, function(e) {
+}, E = {}, T = function() {
+c.hideNotification("from-file-error"), _.each(E, function(e) {
 !e.id || "error" !== e.type && "warning" !== e.type || c.hideNotification(e.id);
 });
 }, N = function(e) {
-E(), T = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
+T(), E = u.getSecurityAlerts(p.createResources, p.input.selectedProject.metadata.name);
 var t = e.quotaAlerts || [];
-T = T.concat(t), _.filter(T, {
+E = E.concat(t), _.filter(E, {
 type: "error"
-}).length ? (_.each(T, function(e) {
+}).length ? (_.each(E, function(e) {
 e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
-}), p.disableInputs = !1) : T.length ? (R(T), p.disableInputs = !1) : y();
+}), p.disableInputs = !1) : E.length ? (R(E), p.disableInputs = !1) : y();
 }, D = function() {
 if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
 var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
@@ -21124,10 +21440,10 @@ t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, f);
 <<<<<<< HEAD
 =======
 }, p.cancel = function() {
-E(), s.toProjectOverview(p.input.selectedProject.metadata.name);
+T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
 };
 var A = e("displayName");
-p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", E);
+p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
 } ]
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 };
@@ -22604,14 +22920,18 @@ return n(e, !1);
 })) : k = [ n(h[t], !0) ], j.empty(), j.append(k), j.append($('<option data-divider="true"></option>')), j.append($('<option value="">View All Projects</option>')), j.selectpicker("refresh");
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, R = function() {
 =======
 }, T = function() {
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+}, E = function() {
+>>>>>>> Overview support for daemon sets
 return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
-}, E = function() {
+}, T = function() {
 var e = a.project;
 o.currentProjectName !== e && (o.currentProjectName = e, o.chromeless = "chromeless" === a.view, e && !o.chromeless ? (_.set(r, "view.hasProject", !0), o.canIAddToProject = !1, s.getProjectRules(e).then(function() {
 o.currentProjectName === e && (o.canIAddToProject = s.canIAddToProject(e), o.canIAddToProject && l.getCatalogItems().then(function(e) {
@@ -22625,7 +22945,7 @@ n.all([ r, a ]).then(function() {
 i.catalogItems = c.sortCatalogItems(_.concat(t, o));
 });
 }
-}), T().then(function() {
+}), E().then(function() {
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 >>>>>>> Check service classes to see if template service broker is enabled
 metadata: {
@@ -22668,8 +22988,12 @@ v.addItem(_.get(o.selectedItem, "resource.metadata.uid")), o.orderingPanelVisibl
 =======
 i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
+<<<<<<< HEAD
 }, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+}, T(), i.$on("$routeChangeSuccess", T), k.selectpicker({
+>>>>>>> Overview support for daemon sets
 iconBase: "fa",
 tickIcon: "fa-check"
 }).change(function() {
@@ -45526,7 +45850,7 @@ if (!m.pod) return null;
 var t = m.options.selectedContainer;
 switch (e) {
 case "memory/usage":
-var n = E(t);
+var n = T(t);
 if (n) return s.bytesToMiB(d(n));
 break;
 
@@ -45602,10 +45926,10 @@ var o, i = a.match(t);
 i ? ((o = r[i[1]] || {}).title = e.annotations[a], r[i[1]] = o) : (i = a.match(n)) && ((o = r[i[1]] || {}).url = e.annotations[a], r[i[1]] = o);
 =======
 var n, a = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
-T[o] ? T[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
+E[o] ? E[o].load(a) : ((n = L(e)).data = a, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), r(function() {
-A || (T[o] = c3.generate(n));
+A || (E[o] = c3.generate(n));
 }));
 }
 >>>>>>> Configurable inactivity timeout in console
@@ -45886,7 +46210,7 @@ cancelButtonText: f.getString(g("Cancel"))
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var I, R = {}, T = {}, E = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
+var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -46276,6 +46600,7 @@ var O = o.$on("metrics.charts.resize", function() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 c.redraw(R), c.redraw(E);
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 =======
@@ -46287,6 +46612,9 @@ c.redraw(R), c.redraw(E);
 =======
 c.redraw(R), c.redraw(T);
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+c.redraw(R), c.redraw(E);
+>>>>>>> Overview support for daemon sets
 });
 <<<<<<< HEAD
 var n = _.get(a, "columns", []);
@@ -46313,8 +46641,9 @@ t && (t = t.destroy());
 m.$on("$destroy", function() {
 I && (t.cancel(I), I = null), O && (O(), O = null), angular.forEach(R, function(e) {
 e.destroy();
-}), R = null, angular.forEach(T, function(e) {
+}), R = null, angular.forEach(E, function(e) {
 e.destroy();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -46333,6 +46662,9 @@ e.destroy();
 =======
 }), T = null, A = !0;
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+}), E = null, A = !0;
+>>>>>>> Overview support for daemon sets
 });
 }
 };
@@ -46414,7 +46746,7 @@ return S(e);
 function u(e) {
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (E[i].lastValue = (E[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
 }));
 >>>>>>> Configurable inactivity timeout in console
 }
@@ -46555,7 +46887,7 @@ show: !1
 =======
 var b, S = {}, C = 30, w = "compact" === t.profile, P = !1;
 t.uniqueID = s.uniqueID();
-var j, k, I = {}, R = w, T = function(e) {
+var j, k, I = {}, R = w, E = function(e) {
 return e >= 1024;
 };
 t.metrics = [ {
@@ -46563,9 +46895,10 @@ label: "Memory",
 units: "MiB",
 convert: i.bytesToMiB,
 formatUsage: function(e) {
-return T(e) && (e /= 1024), s.formatUsage(e);
+return E(e) && (e /= 1024), s.formatUsage(e);
 },
 usageUnits: function(e) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -46584,6 +46917,9 @@ return E(e) ? "GiB" : "MiB";
 =======
 return T(e) ? "GiB" : "MiB";
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+return E(e) ? "GiB" : "MiB";
+>>>>>>> Overview support for daemon sets
 },
 width: 10
 },
@@ -46617,7 +46953,7 @@ compactDatasetLabel: "Received",
 compactType: "spline",
 chartID: "network-rx-" + t.uniqueID
 } ];
-var E = _.keyBy(t.metrics, "descriptor");
+var T = _.keyBy(t.metrics, "descriptor");
 t.loaded = !1, t.noData = !0, t.showComputeUnitsHelp = function() {
 l.showComputeUnitsHelp();
 };
@@ -46995,17 +47331,17 @@ y.selectStep.selected = !1, y.configStep.selected = !1, y.resultsStep.selected =
 k(!0), b(), C();
 }, 100);
 m.on("resize", R);
-var T, E = function() {
+var E, T = function() {
 S = !0, d.scrollBottom(u);
 }, N = document.createDocumentFragment(), D = _.debounce(function() {
-l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && E(), t.showScrollLinks || b();
+l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
 }), A = function(e) {
 var t = a.defer();
-return T ? (T.onClose(function() {
+return E ? (E.onClose(function() {
 t.resolve();
-}), T.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
 A().then(function() {
 t.$evalAsync(function() {
@@ -47025,7 +47361,7 @@ limitBytes: 10485760
 }, t.options), n = 0, r = function(e) {
 n++, N.appendChild(f(n, e)), D();
 };
-(T = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
+(E = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", I());
 }), a && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
@@ -47033,17 +47369,18 @@ t.limitReached = !0, t.loading = !1;
 }), A(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
-}), T.onClose(function() {
-T = null, t.$evalAsync(function() {
+}), E.onClose(function() {
+E = null, t.$evalAsync(function() {
 t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.");
 });
-}), T.onError(function() {
-T = null, t.$evalAsync(function() {
+}), E.onError(function() {
+E = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
 }), 0 === n ? (t.state = "empty", t.emptyStateMessage = "The logs are no longer available or could not be loaded.") : t.errorWhileRunning = !0;
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -47090,6 +47427,9 @@ filterType: "text"
 =======
 }), T.start();
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+}), E.start();
+>>>>>>> Overview support for daemon sets
 }
 });
 });
@@ -47131,10 +47471,14 @@ t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow
 },
 toggleAutoScroll: function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
 =======
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && E();
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
+>>>>>>> Overview support for daemon sets
 },
 goChromeless: d.chromelessLink,
 restartLogs: B
@@ -47142,6 +47486,7 @@ restartLogs: B
 A(), m.off("resize", R), m.off("scroll", C), u && $(u).off("scroll", C);
 }), "deploymentconfigs/logs" === v && !h) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 t.$watchGroup([ "name", "options.container", "run" ], B);
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Use new clusterResourceOverridesEnabled flag
 } ],
@@ -47322,6 +47667,8 @@ toggleAutoScroll: function() {
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && E();
 >>>>>>> Configurable inactivity timeout in console
 =======
+=======
+>>>>>>> Overview support for daemon sets
 } ],
 require: "logViewer",
 link: function(e, n, r, a) {
@@ -49370,7 +49717,7 @@ return {
 name: t,
 value: e
 };
-}), T() && h.labels.push({
+}), E() && h.labels.push({
 name: "app",
 value: h.template.metadata.name
 });
@@ -49605,7 +49952,7 @@ return !_.get(v.template, "labels.app") && !_.some(v.template.objects, "metadata
 }, h.cancel = function() {
 j(), i.toProjectOverview(h.project.metadata.name);
 }, n.$on("instantiateTemplate", h.createFromTemplate), n.$on("$destroy", j);
-var T = function() {
+var E = function() {
 return !_.get(h.template, "labels.app") && !_.some(h.template.objects, "metadata.labels.app");
 >>>>>>> Update directives/processTemplate to use getPreferredVersion
 };
@@ -51645,6 +51992,7 @@ o.altTextForValueFrom(e, t.namespace), o.setEntryPerms(e, i, l);
 }), t.$watch("valueFromSelectorOptions", function() {
 o.findReferenceValueForEntries(t.entries, t.valueFromSelectorOptions);
 });
+<<<<<<< HEAD
 } ]
 };
 } ]), angular.module("openshiftConsole").directive("confirmOnExit", [ "Logger", "gettext", "gettextCatalog", function(e, t, n) {
@@ -51734,6 +52082,13 @@ started: "Deploying image " + n.app.name + " to project " + T(n.input.selectedPr
 success: "Deployed image " + n.app.name + " to project " + T(n.input.selectedProject),
 failure: "Failed to deploy image " + n.app.name + " to project " + T(n.input.selectedProject)
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+var R, E = e("displayName"), T = function() {
+var e = {
+started: "Deploying image " + n.app.name + " to project " + E(n.input.selectedProject),
+success: "Deployed image " + n.app.name + " to project " + E(n.input.selectedProject),
+failure: "Failed to deploy image " + n.app.name + " to project " + E(n.input.selectedProject)
+>>>>>>> Overview support for daemon sets
 };
 d.clear(), d.add(e, {}, n.input.selectedProject.metadata.name, function() {
 var e = t.defer();
@@ -51815,6 +52170,7 @@ cancelButtonText: "Cancel"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }).result.then(E);
 =======
@@ -51829,6 +52185,9 @@ cancelButtonText: "Cancel"
 =======
 }).result.then(E);
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+}).result.then(T);
+>>>>>>> Overview support for daemon sets
 }, D = function(e) {
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
@@ -51836,6 +52195,7 @@ type: "error"
 });
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(b, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -51854,6 +52214,9 @@ e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
 =======
 })) : b.length ? (N(b), n.disableInputs = !1) : E();
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+})) : b.length ? (N(b), n.disableInputs = !1) : T();
+>>>>>>> Overview support for daemon sets
 };
 <<<<<<< HEAD
 } ]), function() {
@@ -52837,13 +53200,14 @@ _.each(f.notificationGroups, function(t) {
 _.each(h.notificationGroups, function(e) {
 e.totalUnread = I(e.notifications).length, e.hasUnread = !!e.totalUnread, r.$emit("NotificationDrawerWrapper.onUnreadNotifications", e.totalUnread);
 });
-}, T = function(e) {
+}, E = function(e) {
 _.each(h.notificationGroups, function(t) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
 _.remove(t.notifications, {
 uid: e.uid,
 namespace: e.namespace
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 });
@@ -52930,6 +53294,11 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 }, E = function(e) {
 S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], T(e);
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+});
+}, T = function(e) {
+S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][e.uid], E(e);
+>>>>>>> Overview support for daemon sets
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
 }, D = function(e) {
@@ -53312,6 +53681,7 @@ clear: function(e, t, n) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 l.markCleared(e.event), n.notifications.splice(t, 1), R();
 =======
 c.markRead(e.uid), c.markCleared(e.uid), n.notifications.splice(t, 1), j(e), D();
@@ -53351,6 +53721,9 @@ u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L()
 =======
 u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), E(e), L();
 >>>>>>> Check service classes to see if template service broker is enabled
+=======
+u.markRead(e.uid), u.markCleared(e.uid), n.notifications.splice(t, 1), T(e), L();
+>>>>>>> Overview support for daemon sets
 },
 markRead: function(e) {
 e.unread = !1, u.markRead(e.uid), L();
@@ -53449,7 +53822,7 @@ h.drawerHidden = !h.drawerHidden;
 })), y.push(r.$on("NotificationDrawerWrapper.hide", function() {
 h.drawerHidden = !0;
 })), y.push(r.$on("NotificationDrawerWrapper.clear", function(e, t) {
-u.markCleared(t.uid), E(t), R();
+u.markCleared(t.uid), T(t), R();
 }));
 };
 <<<<<<< HEAD

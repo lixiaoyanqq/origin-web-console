@@ -91,6 +91,7 @@ function OverviewController($scope,
   var buildConfigsVersion = APIService.getPreferredVersion('buildconfigs');
   var buildsVersion = APIService.getPreferredVersion('builds');
   var clusterResourceQuotasVersion = APIService.getPreferredVersion('appliedclusterresourcequotas');
+  var daemonSetsVersion = APIService.getPreferredVersion('daemonsets');
   var deploymentConfigsVersion = APIService.getPreferredVersion('deploymentconfigs');
   var deploymentsVersion = APIService.getPreferredVersion('deployments');
   var horizontalPodAutoscalersVersion = APIService.getPreferredVersion('horizontalpodautoscalers');
@@ -206,6 +207,7 @@ function OverviewController($scope,
            _.size(overview.deployments) +
            _.size(overview.vanillaReplicaSets) +
            _.size(overview.statefulSets) +
+           _.size(overview.daemonSets) +
            _.size(overview.monopods) +
            _.size(overview.state.serviceInstances);
   };
@@ -217,6 +219,7 @@ function OverviewController($scope,
            _.size(overview.filteredDeployments) +
            _.size(overview.filteredReplicaSets) +
            _.size(overview.filteredStatefulSets) +
+           _.size(overview.filteredDaemonSets) +
            _.size(overview.filteredMonopods) +
            _.size(overview.filteredServiceInstances);
   };
@@ -235,6 +238,7 @@ function OverviewController($scope,
                  overview.deployments &&
                  overview.replicaSets &&
                  overview.statefulSets &&
+                 overview.daemonSets &&
                  overview.pods &&
                  overview.state.serviceInstances;
 
@@ -286,6 +290,7 @@ function OverviewController($scope,
         overview.filteredDeploymentsByApp,
         overview.filteredReplicaSetsByApp,
         overview.filteredStatefulSetsByApp,
+        overview.filteredDaemonSetsByApp,
         overview.filteredMonopodsByApp
       ];
 
@@ -318,12 +323,14 @@ function OverviewController($scope,
     overview.filteredDeploymentsByApp = groupByApp(overview.filteredDeployments);
     overview.filteredReplicaSetsByApp = groupByApp(overview.filteredReplicaSets);
     overview.filteredStatefulSetsByApp = groupByApp(overview.filteredStatefulSets);
+    overview.filteredDaemonSetsByApp = groupByApp(overview.filteredDaemonSets);
     overview.filteredMonopodsByApp = groupByApp(overview.filteredMonopods);
     overview.apps = _.union(_.keys(overview.filteredDeploymentConfigsByApp),
                             _.keys(overview.filteredReplicationControllersByApp),
                             _.keys(overview.filteredDeploymentsByApp),
                             _.keys(overview.filteredReplicaSetsByApp),
                             _.keys(overview.filteredStatefulSetsByApp),
+                            _.keys(overview.filteredDaemonSetsByApp),
                             _.keys(overview.filteredMonopodsByApp));
 
     AppsService.sortAppNames(overview.apps);
@@ -386,6 +393,7 @@ function OverviewController($scope,
     overview.filteredDeployments = filterItems(overview.deployments);
     overview.filteredReplicaSets = filterItems(overview.vanillaReplicaSets);
     overview.filteredStatefulSets = filterItems(overview.statefulSets);
+    overview.filteredDaemonSets = filterItems(overview.daemonSets);
     overview.filteredMonopods = filterItems(overview.monopods);
     overview.filteredPipelineBuildConfigs = filterItems(overview.pipelineBuildConfigs);
     overview.filteredServiceInstances = filterItems(state.orderedServiceInstances);
@@ -606,6 +614,7 @@ function OverviewController($scope,
     updatePodWarnings(overview.replicationControllers);
     updatePodWarnings(overview.replicaSets);
     updatePodWarnings(overview.statefulSets);
+    updatePodWarnings(overview.daemonSets);
     updatePodWarnings(overview.monopods);
   };
 
@@ -871,6 +880,7 @@ function OverviewController($scope,
       overview.deployments,
       overview.vanillaReplicaSets,
       overview.statefulSets,
+      overview.daemonSets,
       overview.monopods
     ];
     _.each(toUpdate, updateServicesForObjects);
@@ -1145,7 +1155,8 @@ function OverviewController($scope,
       overview.deploymentConfigs,
       overview.vanillaReplicationControllers,
       overview.vanillaReplicaSets,
-      overview.statefulSets
+      overview.statefulSets,
+      overview.daemonSets
     ];
 
     // Make sure all the binding targets have loaded first.
@@ -1221,7 +1232,52 @@ function OverviewController($scope,
                                                            context);
     };
 
-    watches.push(DataService.watch(podsVersion, context, function(podsData) {
+    var daemonSetsResolved = function(daemonSetData) {
+      overview.daemonSets = daemonSetData.by('metadata.name');
+      updateServicesForObjects(overview.daemonSetData);
+      updateServicesForObjects(overview.monopods);
+      updatePodWarnings(overview.daemonSets);
+      updateLabelSuggestions(overview.daemonSets);
+      groupBindings();
+      updateFilter();
+      Logger.log("daemonsets", overview.daemonSets);
+    };
+
+    // Flag that tracks whether we're watching daemon sets. Most projects won't
+    // have a daemon set, so try to save a watch unless we know there are some.
+    var isWatchingDaemonSets = false;
+
+    var watchDaemonSets = function() {
+      if (isWatchingDaemonSets) {
+        return;
+      }
+
+      watches.push(DataService.watch(daemonSetsVersion, context, daemonSetsResolved, {
+        poll: limitWatches,
+        pollInterval: DEFAULT_POLL_INTERVAL
+      }));
+      isWatchingDaemonSets = true;
+    };
+
+    var hasDaemonSetControllerRef = function(pod) {
+      var ownerReferences = OwnerReferencesService.getOwnerReferences(pod);
+      return _.some(ownerReferences, {
+        controller: true,
+        kind: 'DaemonSet'
+      });
+    };
+
+    var checkPodsForDaemonSets = function() {
+      if (isWatchingDaemonSets) {
+        return;
+      }
+
+      if (_.some(overview.pods, hasDaemonSetControllerRef)) {
+        watchDaemonSets();
+      }
+    };
+
+    watches.push(DataService.watch(podsVersion, context, function(podsData, action) {
       overview.pods = podsData.by("metadata.name");
       groupPods();
       updateReferencedImageStreams();
@@ -1230,6 +1286,13 @@ function OverviewController($scope,
       updatePodWarnings(overview.monopods);
       updateLabelSuggestions(overview.monopods);
       updateFilter();
+
+      // If there are new pods, check if they are for a daemon set. When a pod
+      // is added for a daemon set, start watching daemon sets if not already.
+      if (!action || action === 'ADDED') {
+        checkPodsForDaemonSets();
+      }
+
       Logger.log("pods (subscribe)", overview.pods);
     }));
 
@@ -1302,6 +1365,17 @@ function OverviewController($scope,
       updateFilter();
       Logger.log("statefulsets (subscribe)", overview.statefulSets);
     }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
+
+    DataService.list(daemonSetsVersion, context, function(daemonSetData) {
+      daemonSetsResolved(daemonSetData);
+      // Only watch daemon sets if the initial list was not empty. This saves a
+      // watch for projects that don't have daemon sets, which are relatively
+      // uncommon. We can also start watching daemon sets if there's a pod with
+      // the owner ref to a daemon set.
+      if (!_.isEmpty(overview.daemonSets)) {
+        watchDaemonSets();
+      }
+    });
 
     watches.push(DataService.watch(servicesVersion, context, function(serviceData) {
       state.allServices = serviceData.by("metadata.name");

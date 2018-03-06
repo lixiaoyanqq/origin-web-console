@@ -170,9 +170,9 @@
                      state="overview.state">
                 </overview-list-row>
                 <overview-list-row
-                  ng-repeat="daemonSet in overview.filteredDaemonSetsByApp[app] track by (daemonSet | uid)"
-                  api-object="daemonSet"
-                  state="overview.state">
+                     ng-repeat="daemonSet in overview.filteredDaemonSetsByApp[app] track by (daemonSet | uid)"
+                     api-object="daemonSet"
+                     state="overview.state">
                 </overview-list-row>
                 <overview-list-row
                      ng-repeat="pod in overview.filteredMonopodsByApp[app] track by (pod | uid)"
@@ -248,9 +248,9 @@
                 <h2>Daemon Sets</h2>
                 <div class="list-pf">
                   <overview-list-row
-                    ng-repeat="daemonSet in overview.filteredDaemonSets track by (daemonSet | uid)"
-                    api-object="daemonSet"
-                    state="overview.state">
+                       ng-repeat="daemonSet in overview.filteredDaemonSets track by (daemonSet | uid)"
+                       api-object="daemonSet"
+                       state="overview.state">
                   </overview-list-row>
                 </div>
               </div>
@@ -372,6 +372,11 @@
                   ng-repeat="daemonSet in overview.daemonSets track by (daemonSet | uid)"
                   api-object="daemonSet"
                   state="overview.state">
+                </overview-list-row>
+                <overview-list-row
+                     ng-repeat="daemonSet in overview.daemonSets track by (daemonSet | uid)"
+                     api-object="daemonSet"
+                     state="overview.state">
                 </overview-list-row>
                 <overview-list-row
                      ng-repeat="pod in overview.monopods track by (pod | uid)"

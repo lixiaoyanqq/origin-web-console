@@ -16053,6 +16053,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</overview-list-row>\n" +
     "<overview-list-row ng-repeat=\"statefulSet in overview.filteredStatefulSetsByApp[app] track by (statefulSet | uid)\" api-object=\"statefulSet\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
+    "<overview-list-row ng-repeat=\"daemonSet in overview.filteredDaemonSetsByApp[app] track by (daemonSet | uid)\" api-object=\"daemonSet\" state=\"overview.state\">\n" +
+    "</overview-list-row>\n" +
     "<overview-list-row ng-repeat=\"pod in overview.filteredMonopodsByApp[app] track by (pod | uid)\" api-object=\"pod\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
     "</div>\n" +
@@ -16097,6 +16099,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 translate>Stateful Sets</h2>\n" +
     "<div class=\"list-pf\">\n" +
     "<overview-list-row ng-repeat=\"statefulSet in overview.filteredStatefulSets track by (statefulSet | uid)\" api-object=\"statefulSet\" state=\"overview.state\">\n" +
+    "</overview-list-row>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "<div ng-if=\"overview.filteredDaemonSets | hashSize\">\n" +
+    "<h2>Daemon Sets</h2>\n" +
+    "<div class=\"list-pf\">\n" +
+    "<overview-list-row ng-repeat=\"daemonSet in overview.filteredDaemonSets track by (daemonSet | uid)\" api-object=\"daemonSet\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -16185,6 +16194,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<overview-list-row ng-repeat=\"replicaSet in overview.vanillaReplicaSets track by (replicaSet | uid)\" api-object=\"replicaSet\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
     "<overview-list-row ng-repeat=\"statefulSet in overview.statefulSets track by (statefulSet | uid)\" api-object=\"statefulSet\" state=\"overview.state\">\n" +
+    "</overview-list-row>\n" +
+    "<overview-list-row ng-repeat=\"daemonSet in overview.daemonSets track by (daemonSet | uid)\" api-object=\"daemonSet\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
     "<overview-list-row ng-repeat=\"pod in overview.monopods track by (pod | uid)\" api-object=\"pod\" state=\"overview.state\">\n" +
     "</overview-list-row>\n" +
