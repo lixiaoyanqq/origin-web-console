@@ -16510,8 +16510,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"'replicationcontrollers' | canI : 'update'\">\n" +
 =======
     "<a ng-href=\"project/{{row.apiObject.metadata.namespace}}/browse/events\">View Events</a>\n" +
+<<<<<<< HEAD
     "<span ng-if=\"replicationControllersVersion | canI : 'update'\">\n" +
 >>>>>>> Update _list-row-empty-state.html include to use getPreferredVersion for canI check
+=======
+    "<span ng-if=\"row.replicationControllersVersion | canI : 'update'\">\n" +
+>>>>>>> f
     "<span class=\"action-divider\">|</span>\n" +
     "<a href=\"\" ng-click=\"row.cancelDeployment()\" role=\"button\" translate>Cancel</a>\n" +
     "</span>\n" +
@@ -16589,10 +16593,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"!row.pipelines.length\">\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<button ng-if=\"'deploymentconfigs/instantiate' | canI : 'create'\" class=\"btn btn-primary\" ng-click=\"row.startDeployment()\" translate>\n" +
 =======
     "<button ng-if=\"deploymentConfigsInstantiateVersion | canI : 'create'\" class=\"btn btn-primary\" ng-click=\"row.startDeployment()\">\n" +
 >>>>>>> Update _list-row-empty-state.html include to use getPreferredVersion for canI check
+=======
+    "<button ng-if=\"row.deploymentConfigsInstantiateVersion | canI : 'create'\" class=\"btn btn-primary\" ng-click=\"row.startDeployment()\">\n" +
+>>>>>>> f
     "Start Deployment\n" +
     "</button>\n" +
     "</div>\n" +
