@@ -331,7 +331,7 @@ angular.module('openshiftConsole')
       return _.get(webhookTrigger, ['data', _.toLower(type)]);
     };
   })
-  .filter("getErrorDetails", function() {
+  .filter("getErrorDetails", function(gettext, gettextCatalog) {
     return function(result) {
       var error = result.data || {};
       if (error.message) {

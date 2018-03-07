@@ -9,7 +9,7 @@ angular.module("openshiftConsole")
                       DataService,
                       NotificationsService,
                       gettext,
-                      gettextCatalog) {
+                      gettextCatalog,
                       ApplicationGenerator,
                       DNS1123_SUBDOMAIN_VALIDATION) {
 

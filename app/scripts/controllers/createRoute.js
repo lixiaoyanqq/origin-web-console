@@ -44,7 +44,6 @@ angular.module('openshiftConsole')
     ];
 
     var routesVersion = APIService.getPreferredVersion('routes');
-    var servicesVersion = APIService.getPreferredVersion('services');
 
     var hideErrorNotifications = function() {
       NotificationsService.hideNotification("create-route-error");

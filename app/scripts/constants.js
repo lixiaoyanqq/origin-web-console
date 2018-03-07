@@ -480,7 +480,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
       // ]
     },
     {
-      label: "Catalog",
+      label: gettext("Catalog"),
       iconClass: "pficon pficon-catalog",
       href: "/catalog",
       canI: {

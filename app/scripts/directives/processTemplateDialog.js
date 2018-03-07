@@ -32,6 +32,7 @@
                                  KeywordService,
                                  NotificationsService,
                                  ProjectsService,
+	  			 annotation,
                                  RecentlyViewedProjectsService) {
     var ctrl = this;
     var validityWatcher;

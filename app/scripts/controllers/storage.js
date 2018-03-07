@@ -17,6 +17,8 @@ angular.module('openshiftConsole')
     DataService,
     LabelFilter,
     Logger,
+    gettextCatalog,
+    gettext, 
     ProjectsService,
     QuotaService) {
     $scope.projectName = $routeParams.project;

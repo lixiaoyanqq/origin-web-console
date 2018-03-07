@@ -1,21 +1,3 @@
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-!function(a, b) {
-"function" == typeof define && define.amd ? define(b) : "object" == typeof exports ? module.exports = b() : a.returnExports = b();
-}(this, function() {
-function a() {}
-function b(a) {
-return a = +a, a !== a ? a = 0 : 0 !== a && a !== 1 / 0 && a !== -(1 / 0) && (a = (a > 0 || -1) * Math.floor(Math.abs(a))), a;
-}
-function c(a) {
-var b = typeof a;
-return null === a || "undefined" === b || "boolean" === b || "number" === b || "string" === b;
-}
-function d(a) {
-var b, d, e;
-if (c(a)) return a;
-if (d = a.valueOf, l(d) && (b = d.call(a), c(b))) return b;
-if (e = a.toString, l(e) && (b = e.call(a), c(b))) return b;
-=======
 !function(t, r) {
 "function" == typeof define && define.amd ? define(r) : "object" == typeof exports ? module.exports = r() : t.returnExports = r();
 }(this, function() {
@@ -32,7 +14,6 @@ var r, n, o;
 if (e(t)) return t;
 if (n = t.valueOf, s(n) && (r = n.call(t), e(r))) return r;
 if (o = t.toString, s(o) && (r = o.call(t), e(r))) return r;
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 throw new TypeError();
 }
 var o = Function.prototype.call, i = Array.prototype, a = Object.prototype, l = i.slice, c = Array.prototype.splice, u = Array.prototype.push, f = Array.prototype.unshift, s = function(t) {
@@ -40,20 +21,6 @@ return "[object Function]" === a.toString.call(t);
 }, p = function(t) {
 return "[object RegExp]" === a.toString.call(t);
 };
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-Function.prototype.bind || (Function.prototype.bind = function(b) {
-var c = this;
-if (!l(c)) throw new TypeError("Function.prototype.bind called on incompatible " + c);
-for (var d = h.call(arguments, 1), e = function() {
-if (this instanceof j) {
-var a = c.apply(this, d.concat(h.call(arguments)));
-return Object(a) === a ? a : this;
-}
-return c.apply(b, d.concat(h.call(arguments)));
-}, f = Math.max(0, c.length - d.length), g = [], i = 0; i < f; i++) g.push("$" + i);
-var j = Function("binder", "return function(" + g.join(",") + "){return binder.apply(this,arguments)}")(e);
-return c.prototype && (a.prototype = c.prototype, j.prototype = new a(), a.prototype = null), j;
-=======
 Function.prototype.bind || (Function.prototype.bind = function(r) {
 var e = this;
 if (!s(e)) throw new TypeError("Function.prototype.bind called on incompatible " + e);
@@ -64,7 +31,6 @@ var t = e.apply(this, n.concat(l.call(arguments)));
 return Object(t) === t ? t : this;
 }
 return e.apply(r, n.concat(l.call(arguments)));
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 return e.prototype && (t.prototype = e.prototype, c.prototype = new t(), t.prototype = null), c;
 });
@@ -86,15 +52,9 @@ if (0 === t) return f.apply(this, n), [];
 }
 return e = l.call(this, t, t + r), n.push.apply(n, l.call(this, t + r, this.length)), n.unshift.apply(n, l.call(this, 0, t)), n.unshift(0, this.length), c.apply(this, n), e;
 }
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-return i.call(this, a, b);
-} : Array.prototype.splice = function(a, b) {
-return arguments.length ? i.apply(this, [ void 0 === a ? 0 : a, void 0 === b ? this.length - a : b ].concat(h.call(arguments, 2))) : [];
-=======
 return c.call(this, t, r);
 } : Array.prototype.splice = function(t, r) {
 return arguments.length ? c.apply(this, [ void 0 === t ? 0 : t, void 0 === r ? this.length - t : r ].concat(l.call(arguments, 2))) : [];
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }), 1 !== [].unshift(0) && (Array.prototype.unshift = function() {
 return f.apply(this, arguments), this.length;
 }), Array.isArray || (Array.isArray = function(t) {
@@ -106,83 +66,6 @@ return t && t.call("foo", function(t, e, n) {
 "object" != typeof n && (r = !1);
 }), !!t && r;
 };
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-Array.prototype.forEach && w(Array.prototype.forEach) || (Array.prototype.forEach = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = arguments[1], e = -1, f = c.length >>> 0;
-if (!l(a)) throw new TypeError();
-for (;++e < f; ) e in c && a.call(d, c[e], e, b);
-}), Array.prototype.map && w(Array.prototype.map) || (Array.prototype.map = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = c.length >>> 0, e = Array(d), f = arguments[1];
-if (!l(a)) throw new TypeError(a + " is not a function");
-for (var g = 0; g < d; g++) g in c && (e[g] = a.call(f, c[g], g, b));
-return e;
-}), Array.prototype.filter && w(Array.prototype.filter) || (Array.prototype.filter = function(a) {
-var b, c = S(this), d = v && "[object String]" === t(this) ? this.split("") : c, e = d.length >>> 0, f = [], g = arguments[1];
-if (!l(a)) throw new TypeError(a + " is not a function");
-for (var h = 0; h < e; h++) h in d && (b = d[h], a.call(g, b, h, c) && f.push(b));
-return f;
-}), Array.prototype.every && w(Array.prototype.every) || (Array.prototype.every = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = c.length >>> 0, e = arguments[1];
-if (!l(a)) throw new TypeError(a + " is not a function");
-for (var f = 0; f < d; f++) if (f in c && !a.call(e, c[f], f, b)) return !1;
-return !0;
-}), Array.prototype.some && w(Array.prototype.some) || (Array.prototype.some = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = c.length >>> 0, e = arguments[1];
-if (!l(a)) throw new TypeError(a + " is not a function");
-for (var f = 0; f < d; f++) if (f in c && a.call(e, c[f], f, b)) return !0;
-return !1;
-});
-var x = !1;
-if (Array.prototype.reduce && (x = "object" == typeof Array.prototype.reduce.call("a", function(a, b, c, d) {
-return d;
-})), Array.prototype.reduce && x || (Array.prototype.reduce = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = c.length >>> 0;
-if (!l(a)) throw new TypeError(a + " is not a function");
-if (!d && 1 === arguments.length) throw new TypeError("reduce of empty array with no initial value");
-var e, f = 0;
-if (arguments.length >= 2) e = arguments[1]; else for (;;) {
-if (f in c) {
-e = c[f++];
-break;
-}
-if (++f >= d) throw new TypeError("reduce of empty array with no initial value");
-}
-for (;f < d; f++) f in c && (e = a.call(void 0, e, c[f], f, b));
-return e;
-}), Array.prototype.reduceRight || (Array.prototype.reduceRight = function(a) {
-var b = S(this), c = v && "[object String]" === t(this) ? this.split("") : b, d = c.length >>> 0;
-if (!l(a)) throw new TypeError(a + " is not a function");
-if (!d && 1 === arguments.length) throw new TypeError("reduceRight of empty array with no initial value");
-var e, f = d - 1;
-if (arguments.length >= 2) e = arguments[1]; else for (;;) {
-if (f in c) {
-e = c[f--];
-break;
-}
-if (--f < 0) throw new TypeError("reduceRight of empty array with no initial value");
-}
-if (f < 0) return e;
-do f in this && (e = a.call(void 0, e, c[f], f, b)); while (f--);
-return e;
-}), Array.prototype.indexOf && [ 0, 1 ].indexOf(1, 2) === -1 || (Array.prototype.indexOf = function(a) {
-var c = v && "[object String]" === t(this) ? this.split("") : S(this), d = c.length >>> 0;
-if (!d) return -1;
-var e = 0;
-for (arguments.length > 1 && (e = b(arguments[1])), e = e >= 0 ? e : Math.max(0, d + e); e < d; e++) if (e in c && c[e] === a) return e;
-return -1;
-}), Array.prototype.lastIndexOf && [ 0, 1 ].lastIndexOf(0, -3) === -1 || (Array.prototype.lastIndexOf = function(a) {
-var c = v && "[object String]" === t(this) ? this.split("") : S(this), d = c.length >>> 0;
-if (!d) return -1;
-var e = d - 1;
-for (arguments.length > 1 && (e = Math.min(e, b(arguments[1]))), e = e >= 0 ? e : d - Math.abs(e); e >= 0; e--) if (e in c && a === c[e]) return e;
-return -1;
-}), !Object.keys) {
-var y = !{
-toString: null
-}.propertyIsEnumerable("toString"), z = function() {}.propertyIsEnumerable("prototype"), A = [ "toString", "toLocaleString", "valueOf", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "constructor" ], B = A.length, C = function(a) {
-var b = t(a), c = "[object Arguments]" === b;
-return c || (c = !Array.isArray(b) && null !== a && "object" == typeof a && "number" == typeof a.length && a.length >= 0 && l(a.callee)), c;
-=======
 Array.prototype.forEach && v(Array.prototype.forEach) || (Array.prototype.forEach = function(t) {
 var r = F(this), e = b && "[object String]" === y(this) ? this.split("") : r, n = arguments[1], o = -1, i = e.length >>> 0;
 if (!s(t)) throw new TypeError();
@@ -260,7 +143,6 @@ toString: null
 }.propertyIsEnumerable("toString"), S = function() {}.propertyIsEnumerable("prototype"), j = [ "toString", "toLocaleString", "valueOf", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "constructor" ], A = j.length, m = function(t) {
 var r = y(t), e = "[object Arguments]" === r;
 return e || (e = !Array.isArray(r) && null !== t && "object" == typeof t && "number" == typeof t.length && t.length >= 0 && s(t.callee)), e;
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 Object.keys = function(t) {
 var r = s(t), e = m(t), n = null !== t && "object" == typeof t, o = n && "[object String]" === y(t);
@@ -277,21 +159,12 @@ return i;
 Date.prototype.toISOString && -1 !== new Date(-621987552e5).toISOString().indexOf("-000001") || (Date.prototype.toISOString = function() {
 var t, r, e, n, o;
 if (!isFinite(this)) throw new RangeError("Date.prototype.toISOString called on non-finite value.");
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-for (d = this.getUTCFullYear(), e = this.getUTCMonth(), d += Math.floor(e / 12), e = (e % 12 + 12) % 12, a = [ e + 1, this.getUTCDate(), this.getUTCHours(), this.getUTCMinutes(), this.getUTCSeconds() ], d = (d < 0 ? "-" : d > 9999 ? "+" : "") + ("00000" + Math.abs(d)).slice(0 <= d && d <= 9999 ? -4 : -6), b = a.length; b--; ) c = a[b], c < 10 && (a[b] = "0" + c);
-return d + "-" + a.slice(0, 2).join("-") + "T" + a.slice(2).join(":") + "." + ("000" + this.getUTCMilliseconds()).slice(-3) + "Z";
-=======
 for (n = this.getUTCFullYear(), o = this.getUTCMonth(), n += Math.floor(o / 12), t = [ (o = (o % 12 + 12) % 12) + 1, this.getUTCDate(), this.getUTCHours(), this.getUTCMinutes(), this.getUTCSeconds() ], n = (n < 0 ? "-" : n > 9999 ? "+" : "") + ("00000" + Math.abs(n)).slice(0 <= n && n <= 9999 ? -4 : -6), r = t.length; r--; ) (e = t[r]) < 10 && (t[r] = "0" + e);
 return n + "-" + t.slice(0, 2).join("-") + "T" + t.slice(2).join(":") + "." + ("000" + this.getUTCMilliseconds()).slice(-3) + "Z";
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 var O = !1;
 try {
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-F = Date.prototype.toJSON && null === new Date(NaN).toJSON() && new Date(D).toJSON().indexOf(E) !== -1 && Date.prototype.toJSON.call({
-=======
 O = Date.prototype.toJSON && null === new Date(NaN).toJSON() && -1 !== new Date(-621987552e5).toJSON().indexOf("-000001") && Date.prototype.toJSON.call({
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 toISOString: function() {
 return !0;
 }
@@ -303,88 +176,6 @@ if ("number" == typeof o && !isFinite(o)) return null;
 if ("function" != typeof (r = e.toISOString)) throw new TypeError("toISOString property is not callable");
 return r.call(e);
 });
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-var H = 1e15 === Date.parse("+033658-09-27T01:46:40.000Z"), I = !isNaN(Date.parse("2012-04-04T24:00:00.500Z")) || !isNaN(Date.parse("2012-11-31T23:59:59.000Z")), J = isNaN(Date.parse("2000-01-01T00:00:00.000Z"));
-Date.parse && !J && !I && H || (Date = function(a) {
-function b(c, d, e, f, g, h, i) {
-var j = arguments.length;
-if (this instanceof a) {
-var k = 1 === j && String(c) === c ? new a(b.parse(c)) : j >= 7 ? new a(c, d, e, f, g, h, i) : j >= 6 ? new a(c, d, e, f, g, h) : j >= 5 ? new a(c, d, e, f, g) : j >= 4 ? new a(c, d, e, f) : j >= 3 ? new a(c, d, e) : j >= 2 ? new a(c, d) : j >= 1 ? new a(c) : new a();
-return k.constructor = b, k;
-}
-return a.apply(this, arguments);
-}
-function c(a, b) {
-var c = b > 1 ? 1 : 0;
-return f[b] + Math.floor((a - 1969 + c) / 4) - Math.floor((a - 1901 + c) / 100) + Math.floor((a - 1601 + c) / 400) + 365 * (a - 1970);
-}
-function d(b) {
-return Number(new a(1970, 0, 1, 0, 0, 0, b));
-}
-var e = new RegExp("^(\\d{4}|[+-]\\d{6})(?:-(\\d{2})(?:-(\\d{2})(?:T(\\d{2}):(\\d{2})(?::(\\d{2})(?:(\\.\\d{1,}))?)?(Z|(?:([-+])(\\d{2}):(\\d{2})))?)?)?)?$"), f = [ 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 ];
-for (var g in a) b[g] = a[g];
-return b.now = a.now, b.UTC = a.UTC, b.prototype = a.prototype, b.prototype.constructor = b, b.parse = function(b) {
-var f = e.exec(b);
-if (f) {
-var g, h = Number(f[1]), i = Number(f[2] || 1) - 1, j = Number(f[3] || 1) - 1, k = Number(f[4] || 0), l = Number(f[5] || 0), m = Number(f[6] || 0), n = Math.floor(1e3 * Number(f[7] || 0)), o = Boolean(f[4] && !f[8]), p = "-" === f[9] ? 1 : -1, q = Number(f[10] || 0), r = Number(f[11] || 0);
-return k < (l > 0 || m > 0 || n > 0 ? 24 : 25) && l < 60 && m < 60 && n < 1e3 && i > -1 && i < 12 && q < 24 && r < 60 && j > -1 && j < c(h, i + 1) - c(h, i) && (g = 60 * (24 * (c(h, i) + j) + k + q * p), g = 1e3 * (60 * (g + l + r * p) + m) + n, o && (g = d(g)), -864e13 <= g && g <= 864e13) ? g : NaN;
-}
-return a.parse.apply(this, arguments);
-}, b;
-}(Date)), Date.now || (Date.now = function() {
-return new Date().getTime();
-}), Number.prototype.toFixed && "0.000" === 8e-5.toFixed(3) && "0" !== .9.toFixed(0) && "1.25" === 1.255.toFixed(2) && "1000000000000000128" === (0xde0b6b3a7640080).toFixed(0) || !function() {
-function a(a, b) {
-for (var c = -1; ++c < g; ) b += a * h[c], h[c] = b % f, b = Math.floor(b / f);
-}
-function b(a) {
-for (var b = g, c = 0; --b >= 0; ) c += h[b], h[b] = Math.floor(c / a), c = c % a * f;
-}
-function c() {
-for (var a = g, b = ""; --a >= 0; ) if ("" !== b || 0 === a || 0 !== h[a]) {
-var c = String(h[a]);
-"" === b ? b = c : b += "0000000".slice(0, 7 - c.length) + c;
-}
-return b;
-}
-function d(a, b, c) {
-return 0 === b ? c : b % 2 === 1 ? d(a, b - 1, c * a) : d(a * a, b / 2, c);
-}
-function e(a) {
-for (var b = 0; a >= 4096; ) b += 12, a /= 4096;
-for (;a >= 2; ) b += 1, a /= 2;
-return b;
-}
-var f, g, h;
-f = 1e7, g = 6, h = [ 0, 0, 0, 0, 0, 0 ], Number.prototype.toFixed = function(f) {
-var g, h, i, j, k, l, m, n;
-if (g = Number(f), g = g !== g ? 0 : Math.floor(g), g < 0 || g > 20) throw new RangeError("Number.toFixed called with invalid number of decimals");
-if (h = Number(this), h !== h) return "NaN";
-if (h <= -1e21 || h >= 1e21) return String(h);
-if (i = "", h < 0 && (i = "-", h = -h), j = "0", h > 1e-21) if (k = e(h * d(2, 69, 1)) - 69, l = k < 0 ? h * d(2, -k, 1) : h / d(2, k, 1), l *= 4503599627370496, k = 52 - k, k > 0) {
-for (a(0, l), m = g; m >= 7; ) a(1e7, 0), m -= 7;
-for (a(d(10, m, 1), 0), m = k - 1; m >= 23; ) b(1 << 23), m -= 23;
-b(1 << m), a(1, 1), b(2), j = c();
-} else a(0, l), a(1 << -k, 0), j = c() + "0.00000000000000000000".slice(2, 2 + g);
-return g > 0 ? (n = j.length, j = n <= g ? i + "0.0000000000000000000".slice(0, g - n + 2) + j : i + j.slice(0, n - g) + "." + j.slice(n - g)) : j = i + j, j;
-};
-}();
-var K = String.prototype.split;
-2 !== "ab".split(/(?:ab)*/).length || 4 !== ".".split(/(.?)(.?)/).length || "t" === "tesst".split(/(s)*/)[1] || "".split(/.?/).length || ".".split(/()()/).length > 1 ? !function() {
-var a = void 0 === /()??/.exec("")[1];
-String.prototype.split = function(b, c) {
-var d = this;
-if (void 0 === b && 0 === c) return [];
-if ("[object RegExp]" !== Object.prototype.toString.call(b)) return K.apply(this, arguments);
-var e, f, g, h, i = [], j = (b.ignoreCase ? "i" : "") + (b.multiline ? "m" : "") + (b.extended ? "x" : "") + (b.sticky ? "y" : ""), k = 0;
-for (b = new RegExp(b.source, j + "g"), d += "", a || (e = new RegExp("^" + b.source + "$(?!\\s)", j)), c = void 0 === c ? -1 >>> 0 : c >>> 0; (f = b.exec(d)) && (g = f.index + f[0].length, !(g > k && (i.push(d.slice(k, f.index)), !a && f.length > 1 && f[0].replace(e, function() {
-for (var a = 1; a < arguments.length - 2; a++) void 0 === arguments[a] && (f[a] = void 0);
-}), f.length > 1 && f.index < d.length && Array.prototype.push.apply(i, f.slice(1)), h = f[0].length, k = g, i.length >= c))); ) b.lastIndex === f.index && b.lastIndex++;
-return k === d.length ? !h && b.test("") || i.push("") : i.push(d.slice(k)), i.length > c ? i.slice(0, c) : i;
-};
-}() : "0".split(void 0, 0).length && (String.prototype.split = function(a, b) {
-return void 0 === a && 0 === b ? [] : K.apply(this, arguments);
-=======
 var x = 1e15 === Date.parse("+033658-09-27T01:46:40.000Z"), T = !isNaN(Date.parse("2012-04-04T24:00:00.500Z")) || !isNaN(Date.parse("2012-11-31T23:59:59.000Z")), N = isNaN(Date.parse("2000-01-01T00:00:00.000Z"));
 Date.parse && !N && !T && x || (Date = function(t) {
 function r(e, n, o, i, a, l, c) {
@@ -480,20 +271,13 @@ var n = arguments.length, o = t.lastIndex;
 t.lastIndex = 0;
 var i = t.exec(e);
 return t.lastIndex = o, i.push(arguments[n - 2], arguments[n - 1]), r.apply(this, i);
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 }
 return _.apply(this, arguments);
 }), "".substr && "b" !== "0b".substr(-1)) {
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-var N = String.prototype.substr;
-String.prototype.substr = function(a, b) {
-return N.call(this, a < 0 && (a = this.length + a) < 0 ? 0 : a, b);
-=======
 var E = String.prototype.substr;
 String.prototype.substr = function(t, r) {
 return E.call(this, t < 0 && (t = this.length + t) < 0 ? 0 : t, r);
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 }
 var M = "\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff";
@@ -505,17 +289,10 @@ if (void 0 === this || null === this) throw new TypeError("can't convert " + thi
 return String(this).replace(D, "").replace(I, "");
 };
 }
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-8 === parseInt(O + "08") && 22 === parseInt(O + "0x16") || (parseInt = function(a) {
-var b = /^0[xX]/;
-return function(c, d) {
-return c = String(c).trim(), Number(d) || (d = b.test(c) ? 16 : 10), a(c, d);
-=======
 8 === parseInt(M + "08") && 22 === parseInt(M + "0x16") || (parseInt = function(t) {
 var r = /^0[xX]/;
 return function(e, n) {
 return e = String(e).trim(), Number(n) || (n = r.test(e) ? 16 : 10), t(e, n);
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 }(parseInt));
 var F = function(t) {
@@ -536,24 +313,6 @@ if (f) {
 return 1;
 }).toJSON = e;
 try {
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-k = "0" === i(0) && "0" === i(new g()) && '""' == i(new h()) && i(s) === q && i(q) === q && i() === q && "1" === i(c) && "[1]" == i([ c ]) && "[null]" == i([ q ]) && "null" == i(null) && "[null,null,null]" == i([ q, s, null ]) && i({
-a: [ c, !0, !1, null, "\0\b\n\f\r\t" ]
-}) == e && "1" === i(null, c) && "[\n 1,\n 2\n]" == i([ 1, 2 ], null, 1) && '"-271821-04-20T00:00:00.000Z"' == i(new j((-864e13))) && '"+275760-09-13T00:00:00.000Z"' == i(new j(864e13)) && '"-000001-01-01T00:00:00.000Z"' == i(new j((-621987552e5))) && '"1969-12-31T23:59:59.999Z"' == i(new j((-1)));
-} catch (l) {
-k = !1;
-}
-}
-b = k;
-}
-if ("json-parse" == a) {
-var m = d.parse;
-if ("function" == typeof m) try {
-if (0 === m("0") && !m(!1)) {
-c = m(e);
-var n = 5 == c.a.length && 1 === c.a[0];
-if (n) {
-=======
 f = "0" === c(0) && "0" === c(new a()) && '""' == c(new l()) && c(d) === b && c(b) === b && c() === b && "1" === c(e) && "[1]" == c([ e ]) && "[null]" == c([ b ]) && "null" == c(null) && "[null,null,null]" == c([ b, d, null ]) && c({
 a: [ e, !0, !1, null, "\0\b\n\f\r\t" ]
 }) == o && "1" === c(null, e) && "[\n 1,\n 2\n]" == c([ 1, 2 ], null, 1) && '"-271821-04-20T00:00:00.000Z"' == c(new u(-864e13)) && '"+275760-09-13T00:00:00.000Z"' == c(new u(864e13)) && '"-000001-01-01T00:00:00.000Z"' == c(new u(-621987552e5)) && '"1969-12-31T23:59:59.999Z"' == c(new u(-1));
@@ -569,7 +328,6 @@ if ("function" == typeof s) try {
 if (0 === s("0") && !s(!1)) {
 var p = 5 == (e = s(o)).a.length && 1 === e.a[0];
 if (p) {
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 try {
 p = !s('"\t"');
 } catch (t) {}
@@ -601,39 +359,6 @@ var S = i("bug-string-char-index");
 if (!w) var j = p.floor, A = [ 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 ], m = function(t, r) {
 return A[r] + 365 * (t - 1970) + j((t - 1969 + (r = +(r > 1))) / 4) - j((t - 1901 + r) / 100) + j((t - 1601 + r) / 400);
 };
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-if ((o = r.hasOwnProperty) || (o = function(a) {
-var b, c = {};
-return (c.__proto__ = null, c.__proto__ = {
-toString: 1
-}, c).toString != s ? o = function(a) {
-var b = this.__proto__, c = a in (this.__proto__ = null, this);
-return this.__proto__ = b, c;
-} : (b = c.constructor, o = function(a) {
-var c = (this.constructor || b).prototype;
-return a in this && !(a in c && this[a] === c[a]);
-}), c = null, o.call(this, a);
-}), p = function(a, b) {
-var d, e, f, g = 0;
-(d = function() {
-this.valueOf = 0;
-}).prototype.valueOf = 0, e = new d();
-for (f in e) o.call(e, f) && g++;
-return d = e = null, g ? p = 2 == g ? function(a, b) {
-var c, d = {}, e = s.call(a) == v;
-for (c in a) e && "prototype" == c || o.call(d, c) || !(d[c] = 1) || !o.call(a, c) || b(c);
-} : function(a, b) {
-var c, d, e = s.call(a) == v;
-for (c in a) e && "prototype" == c || !o.call(a, c) || (d = "constructor" === c) || b(c);
-(d || o.call(a, c = "constructor")) && b(c);
-} : (e = [ "valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor" ], p = function(a, b) {
-var d, f, g = s.call(a) == v, h = !g && "function" != typeof a.constructor && c[typeof a.hasOwnProperty] && a.hasOwnProperty || o;
-for (d in a) g && "prototype" == d || !h.call(a, d) || b(d);
-for (f = e.length; d = e[--f]; h.call(a, d) && b(d)) ;
-}), p(a, b);
-}, !f("json-stringify")) {
-var F = {
-=======
 if ((y = v.hasOwnProperty) || (y = function(t) {
 var r, e = {};
 return (e.__proto__ = null, e.__proto__ = {
@@ -665,7 +390,6 @@ for (i = o.length; n = o[--i]; l.call(t, n) && r(n)) ;
 }), g(t, r);
 }, !i("json-stringify")) {
 var O = {
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 92: "\\\\",
 34: '\\"',
 8: "\\b",
@@ -673,21 +397,12 @@ var O = {
 10: "\\n",
 13: "\\r",
 9: "\\t"
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-}, G = "000000", H = function(a, b) {
-return (G + (b || 0)).slice(-a);
-}, I = "\\u00", J = function(a) {
-for (var b = '"', c = 0, d = a.length, e = !B || d > 10, f = e && (B ? a.split("") : a); c < d; c++) {
-var g = a.charCodeAt(c);
-switch (g) {
-=======
 }, x = function(t, r) {
 return ("000000" + (r || 0)).slice(-t);
 }, T = function(t) {
 for (var r = '"', e = 0, n = t.length, o = !S || n > 10, i = o && (S ? t.split("") : t); e < n; e++) {
 var a = t.charCodeAt(e);
 switch (a) {
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case 8:
 case 9:
 case 10:
@@ -703,59 +418,13 @@ if (a < 32) {
 r += "\\u00" + x(2, a.toString(16));
 break;
 }
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-b += e ? f[c] : a.charAt(c);
-=======
 r += o ? i[e] : t.charAt(e);
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 }
 }
 return r + '"';
 }, N = function(t, r, e, n, o, i, a) {
 var l, c, u, f, p, h, v, w, S, A, O, C, _, E, M, D;
 try {
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-h = b[a];
-} catch (M) {}
-if ("object" == typeof h && h) if (i = s.call(h), i != w || o.call(h, "toJSON")) "function" == typeof h.toJSON && (i != x && i != y && i != z || o.call(h, "toJSON")) && (h = h.toJSON(a)); else if (h > -1 / 0 && h < 1 / 0) {
-if (E) {
-for (m = C(h / 864e5), j = C(m / 365.2425) + 1970 - 1; E(j + 1, 0) <= m; j++) ;
-for (k = C((m - E(j, 0)) / 30.42); E(j, k + 1) <= m; k++) ;
-m = 1 + m - E(j, k), n = (h % 864e5 + 864e5) % 864e5, r = C(n / 36e5) % 24, t = C(n / 6e4) % 60, u = C(n / 1e3) % 60, v = n % 1e3;
-} else j = h.getUTCFullYear(), k = h.getUTCMonth(), m = h.getUTCDate(), r = h.getUTCHours(), t = h.getUTCMinutes(), u = h.getUTCSeconds(), v = h.getUTCMilliseconds();
-h = (j <= 0 || j >= 1e4 ? (j < 0 ? "-" : "+") + H(6, j < 0 ? -j : j) : H(4, j)) + "-" + H(2, k + 1) + "-" + H(2, m) + "T" + H(2, r) + ":" + H(2, t) + ":" + H(2, u) + "." + H(3, v) + "Z";
-} else h = null;
-if (c && (h = c.call(b, a, h)), null === h) return "null";
-if (i = s.call(h), i == A) return "" + h;
-if (i == x) return h > -1 / 0 && h < 1 / 0 ? "" + h : "null";
-if (i == y) return J("" + h);
-if ("object" == typeof h) {
-for (G = g.length; G--; ) if (g[G] === h) throw l();
-if (g.push(h), B = [], I = f, f += e, i == z) {
-for (F = 0, G = h.length; F < G; F++) D = K(F, h, c, d, e, f, g), B.push(D === q ? "null" : D);
-L = B.length ? e ? "[\n" + f + B.join(",\n" + f) + "\n" + I + "]" : "[" + B.join(",") + "]" : "[]";
-} else p(d || h, function(a) {
-var b = K(a, h, c, d, e, f, g);
-b !== q && B.push(J(a) + ":" + (e ? " " : "") + b);
-}), L = B.length ? e ? "{\n" + f + B.join(",\n" + f) + "\n" + I + "}" : "{" + B.join(",") + "}" : "{}";
-return g.pop(), L;
-}
-};
-d.stringify = function(a, b, d) {
-var e, f, g, h;
-if (c[typeof b] && b) if ((h = s.call(b)) == v) f = b; else if (h == z) {
-g = {};
-for (var i, j = 0, k = b.length; j < k; i = b[j++], h = s.call(i), (h == y || h == x) && (g[i] = 1)) ;
-}
-if (d) if ((h = s.call(d)) == x) {
-if ((d -= d % 1) > 0) for (e = "", d > 10 && (d = 10); e.length < d; e += " ") ;
-} else h == y && (e = d.length <= 10 ? d : d.slice(0, 10));
-return K("", (i = {}, i[""] = a, i), f, g, e, "", []);
-};
-}
-if (!f("json-parse")) {
-var L, M, N = h.fromCharCode, O = {
-=======
 l = r[t];
 } catch (t) {}
 if ("object" == typeof l && l) if ("[object Date]" != (c = d.call(l)) || y.call(l, "toJSON")) "function" == typeof l.toJSON && ("[object Number]" != c && "[object String]" != c && "[object Array]" != c || y.call(l, "toJSON")) && (l = l.toJSON(t)); else if (l > -1 / 0 && l < 1 / 0) {
@@ -796,7 +465,6 @@ return N("", (c = {}, c[""] = t, c), i, a, o, "", []);
 }
 if (!i("json-parse")) {
 var C, _, E = l.fromCharCode, M = {
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 92: "\\",
 34: '"',
 47: "/",
@@ -805,17 +473,10 @@ var C, _, E = l.fromCharCode, M = {
 110: "\n",
 102: "\f",
 114: "\r"
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-}, P = function() {
-throw L = M = null, k();
-}, Q = function() {
-for (var a, b, c, d, e, f = M, g = f.length; L < g; ) switch (e = f.charCodeAt(L)) {
-=======
 }, D = function() {
 throw C = _ = null, f();
 }, I = function() {
 for (var t, r, e, n, o, i = _, a = i.length; C < a; ) switch (o = i.charCodeAt(C)) {
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 case 9:
 case 10:
 case 13:
@@ -829,11 +490,7 @@ case 91:
 case 93:
 case 58:
 case 44:
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-return a = B ? f.charAt(L) : f[L], L++, a;
-=======
 return t = S ? i.charAt(C) : i[C], C++, t;
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 
 case 34:
 for (t = "@", C++; C < a; ) if ((o = i.charCodeAt(C)) < 32) D(); else if (92 == o) switch (o = i.charCodeAt(++C)) {
@@ -882,30 +539,6 @@ if ("null" == i.slice(C, C + 4)) return C += 4, null;
 D();
 }
 return "$";
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-}, R = function(a) {
-var b, c;
-if ("$" == a && P(), "string" == typeof a) {
-if ("@" == (B ? a.charAt(0) : a[0])) return a.slice(1);
-if ("[" == a) {
-for (b = []; a = Q(), "]" != a; c || (c = !0)) c && ("," == a ? (a = Q(), "]" == a && P()) : P()), "," == a && P(), b.push(R(a));
-return b;
-}
-if ("{" == a) {
-for (b = {}; a = Q(), "}" != a; c || (c = !0)) c && ("," == a ? (a = Q(), "}" == a && P()) : P()), "," != a && "string" == typeof a && "@" == (B ? a.charAt(0) : a[0]) && ":" == Q() || P(), b[a.slice(1)] = R(Q());
-return b;
-}
-P();
-}
-return a;
-}, S = function(a, b, c) {
-var d = T(a, b, c);
-d === q ? delete a[b] : a[b] = d;
-}, T = function(a, b, c) {
-var d, e = a[b];
-if ("object" == typeof e && e) if (s.call(e) == z) for (d = e.length; d--; ) S(e, d, c); else p(e, function(a) {
-S(e, a, c);
-=======
 }, F = function(t) {
 var r, e;
 if ("$" == t && D(), "string" == typeof t) {
@@ -928,39 +561,17 @@ n === b ? delete t[r] : t[r] = n;
 var n, o = t[r];
 if ("object" == typeof o && o) if ("[object Array]" == d.call(o)) for (n = o.length; n--; ) U(o, n, e); else g(o, function(t) {
 U(o, t, e);
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 });
 return e.call(t, r, o);
 };
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-d.parse = function(a, b) {
-var c, d;
-return L = 0, M = "" + a, c = R(Q()), "$" != Q() && P(), L = M = null, b && s.call(b) == v ? T((d = {}, d[""] = c, d), "", b) : c;
-=======
 n.parse = function(t, r) {
 var e, n;
 return C = 0, _ = "" + t, e = F(I()), "$" != I() && D(), C = _ = null, r && "[object Function]" == d.call(r) ? J((n = {}, n[""] = e, n), "", r) : e;
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 }
 }
 return n.runInContext = t, n;
 }
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-var b = "function" == typeof define && define.amd, c = {
-"function": !0,
-object: !0
-}, d = c[typeof exports] && exports && !exports.nodeType && exports, e = c[typeof window] && window || this, f = d && c[typeof module] && module && !module.nodeType && "object" == typeof global && global;
-if (!f || f.global !== f && f.window !== f && f.self !== f || (e = f), d && !b) a(e, d); else {
-var g = e.JSON, h = e.JSON3, i = !1, j = a(e, e.JSON3 = {
-noConflict: function() {
-return i || (i = !0, e.JSON = g, e.JSON3 = h, g = h = null), j;
-}
-});
-e.JSON = {
-parse: j.parse,
-stringify: j.stringify
-=======
 var r = "function" == typeof define && define.amd, e = {
 function: !0,
 object: !0
@@ -974,7 +585,6 @@ return c || (c = !0, o.JSON = a, o.JSON3 = l, a = l = null), u;
 o.JSON = {
 parse: u.parse,
 stringify: u.stringify
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
 };
 }
 r && define(function() {

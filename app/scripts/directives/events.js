@@ -6,6 +6,8 @@ angular.module('openshiftConsole')
     $filter,
     APIService,
     DataService,
+    gettextCatalog,
+    gettext,
     KeywordService,
     Logger) {
     return {

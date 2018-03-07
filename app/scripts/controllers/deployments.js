@@ -37,7 +37,6 @@ angular.module('openshiftConsole')
     var replicaSets, deploymentsByUID;
     var annotation = $filter('annotation');
 
-    var deploymentsVersion = APIService.getPreferredVersion('deployments');
     var deploymentConfigsVersion = APIService.getPreferredVersion('deploymentconfigs');
     var replicationControllersVersion = APIService.getPreferredVersion('replicationcontrollers');
     var replicaSetsVersion = APIService.getPreferredVersion('replicasets');

@@ -30,7 +30,8 @@ angular.module('openshiftConsole').controller('OverviewController', [
   'PromiseUtils',
   'ResourceAlertsService',
   'RoutesService',
-  'ServiceInstancesService',
+  'ServiceInstancesService', 
+  'gettext',
   OverviewController
 ]);
 
@@ -63,7 +64,9 @@ function OverviewController($scope,
                             PromiseUtils,
                             ResourceAlertsService,
                             RoutesService,
-                            ServiceInstancesService) {
+                            ServiceInstancesService,
+			    gettext,
+			    gettextCatalog) {
   var overview = this;
   var limitWatches = $filter('isIE')();
   var DEFAULT_POLL_INTERVAL = 60 * 1000; // milliseconds

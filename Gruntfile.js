@@ -116,7 +116,7 @@ module.exports = function (grunt) {
               modRewrite([
                 '^/$ /' + contextRoot + '/ [R=302]',
                 '^/' + contextRoot + '(.*)$ $1',
-                '!^/(config.js|(java|bower_components|scripts|images|styles|views|components|extensions)(/.*)?)$ /index.html [L]'
+                '!^/(config.js|(java|bower_components|scripts|images|styles|views|components|extensions|languages)(/.*)?)$ /index.html [L]'
               ]),
               serveStatic('.tmp'),
               connect().use(
@@ -130,6 +130,10 @@ module.exports = function (grunt) {
               connect().use(
                 '/extensions',
                 serveStatic('./extensions')
+              ),
+              connect().use(
+                '/languages',
+                serveStatic('./languages')
               ),
               serveStatic(appConfig.app)
             ];

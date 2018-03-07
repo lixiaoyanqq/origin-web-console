@@ -15,6 +15,7 @@ angular.module('openshiftConsole')
     DataService,
     ImageStreamsService,
     Navigate,
+    gettext,
     ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.imageStream = null;

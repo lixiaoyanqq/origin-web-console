@@ -15,6 +15,8 @@ angular.module('openshiftConsole')
                                            APIService,
                                            DataService,
                                            Logger,
+	                                   gettextCatalog,
+	        			   gettext,
                                            ProjectsService) {
     $scope.projectName = $routeParams.project;
     $scope.limitRanges = {};
