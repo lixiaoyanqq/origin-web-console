@@ -245,6 +245,23 @@ angular.module('openshiftConsole')
           _.set($rootScope, 'nav.showMobileNav', visible);
         };
 
+        var catalogPath = "/catalog";
+        var projectsPath = "/projects";
+
+        var setContextPickerSelectedOption = function(selector) {
+          if ($location.path() === catalogPath) {
+            selector.selectpicker("val", "catalog");
+          } else {
+            selector.selectpicker("val", "application-console");
+          }
+        };
+
+        var goToURL = function(url) {
+          $scope.$evalAsync(function() {
+            $location.url(url);
+          });
+        };
+
         $scope.toggleNav = function() {
           var collapsed = isCollapsed();
           setCollapsed(!collapsed, true);
@@ -276,10 +293,32 @@ angular.module('openshiftConsole')
         };
 
         $scope.catalogLandingPageEnabled = !Constants.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
-        var select = $elem.find('.selectpicker');
-        var options = [];
 
-        var updateOptions = function() {
+        var contextSelector = $elem.find('.contextselector');
+        $scope.clusterConsoleURL = window.OPENSHIFT_CONSTANTS.TECTONIC_URL || window.OPENSHIFT_CONFIG.tectonicURL;
+        contextSelector
+          .on('loaded.bs.select', function () {
+            setContextPickerSelectedOption(contextSelector);
+          })
+          .change(function() {
+            var val = $(this).val();
+            switch (val) {
+              case "catalog":
+                goToURL(catalogPath);
+                break;
+              case "application-console":
+                goToURL(projectsPath);
+                break;
+              case "cluster-console":
+                window.location.assign($scope.clusterConsoleURL);
+                break;
+            }
+          });
+
+        var projectPicker = $elem.find('.project-picker');
+        var projectPickerOptions = [];
+
+        var updateProjectPickerOptions = function() {
           var name = $scope.currentProjectName;
           if (!name) {
             return;
@@ -302,19 +341,19 @@ angular.module('openshiftConsole')
           // Otherwise it's not usable and might impact performance.
           if (_.size(projects) <= MAX_PROJETS_TO_DISPLAY) {
             sortedProjects = $filter('orderByDisplayName')(projects);
-            options = _.map(sortedProjects, function(project) {
+            projectPickerOptions = _.map(sortedProjects, function(project) {
               return makeOption(project, false);
             });
           } else {
             // Show the current project and a "View All Projects" link.
-            options = [ makeOption(projects[name], true) ];
+            projectPickerOptions = [ makeOption(projects[name], true) ];
           }
 
-          select.empty();
-          select.append(options);
-          select.append($('<option data-divider="true"></option>'));
-          select.append($('<option value="">' + gettextCatalog.getString(gettext("View All Projects")) + '</option>'));
-          select.selectpicker('refresh');
+          projectPicker.empty();
+          projectPicker.append(projectPickerOptions);
+          projectPicker.append($('<option data-divider="true"></option>'));
+          projectPicker.append($('<option value="">View All Projects</option>'));
+          projectPicker.selectpicker('refresh');
         };
 
         var updateProjects = function() {
@@ -324,6 +363,7 @@ angular.module('openshiftConsole')
         };
 
         var onRouteChange = function() {
+          setContextPickerSelectedOption(contextSelector);
           var currentProjectName = $routeParams.project;
           if ($scope.currentProjectName === currentProjectName) {
             // The project hasn't changed.
@@ -379,7 +419,7 @@ angular.module('openshiftConsole')
               }
 
               $scope.currentProject = projects[$scope.currentProjectName];
-              updateOptions();
+              updateProjectPickerOptions();
             });
           } else {
             _.set($rootScope, 'view.hasProject', false);
@@ -468,17 +508,11 @@ angular.module('openshiftConsole')
         onRouteChange();
         $scope.$on('$routeChangeSuccess', onRouteChange);
 
-        select
-          .selectpicker({
-            iconBase: 'fa',
-            tickIcon: 'fa-check'
-          })
+        projectPicker
           .change(function() {
             var val = $(this).val();
             var newURL = (val === "") ? "projects" : projectOverviewURLFilter(val);
-            $scope.$apply(function() {
-              $location.url(newURL);
-            });
+            goToURL(newURL);
           });
 
         $scope.$on('$destroy', function() {

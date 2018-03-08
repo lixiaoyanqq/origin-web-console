@@ -23488,6 +23488,12 @@ var w = function() {
 return _.get(r, "nav.collapsed", !1);
 }, P = function(e) {
 _.set(r, "nav.showMobileNav", e);
+}, k = function(e) {
+"/catalog" === t.path() ? e.selectpicker("val", "catalog") : e.selectpicker("val", "application-console");
+}, I = function(e) {
+i.$evalAsync(function() {
+t.url(e);
+});
 };
 <<<<<<< HEAD
 o.toggleNav = function() {
@@ -23510,14 +23516,38 @@ o.orderingPanelVisible = !1;
 o.orderingPanelVisible = !0, o.orderKind = e;
 }, o.onSearchToggle = function(e) {
 _.set(r, "view.hasProjectSearch", e);
+<<<<<<< HEAD
 }, o.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
 var j = i.find(".selectpicker"), k = [], I = function() {
 var t = o.currentProjectName;
+=======
+}, i.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
+var R = p.find(".contextselector");
+i.clusterConsoleURL = window.OPENSHIFT_CONSTANTS.TECTONIC_URL || window.OPENSHIFT_CONFIG.tectonicURL, R.on("loaded.bs.select", function() {
+k(R);
+}).change(function() {
+switch ($(this).val()) {
+case "catalog":
+I("/catalog");
+break;
+
+case "application-console":
+I("/projects");
+break;
+
+case "cluster-console":
+window.location.assign(i.clusterConsoleURL);
+}
+});
+var E = p.find(".project-picker"), T = [], N = function() {
+var t = i.currentProjectName;
+>>>>>>> Add context-switcher
 if (t) {
 var n = function(e, n) {
 var r = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
 return n ? r.text(b(e)) : r.text(S(e, y)), r;
 };
+<<<<<<< HEAD
 _.size(h) <= 100 ? (y = e("orderByDisplayName")(h), k = _.map(y, function(e) {
 return n(e, !1);
 })) : k = [ n(h[t], !0) ], j.empty(), j.append(k), j.append($('<option data-divider="true"></option>')), j.append($('<option value="">View All Projects</option>')), j.selectpicker("refresh");
@@ -23531,10 +23561,18 @@ return n(e, !1);
 =======
 }, E = function() {
 >>>>>>> Overview support for daemon sets
+=======
+_.size(h) <= 100 ? (y = e("orderByDisplayName")(h), T = _.map(y, function(e) {
+return n(e, !1);
+})) : T = [ n(h[t], !0) ], E.empty(), E.append(T), E.append($('<option data-divider="true"></option>')), E.append($('<option value="">View All Projects</option>')), E.selectpicker("refresh");
+}
+}, D = function() {
+>>>>>>> Add context-switcher
 return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
-}, T = function() {
+}, A = function() {
+k(R);
 var e = a.project;
 o.currentProjectName !== e && (o.currentProjectName = e, o.chromeless = "chromeless" === a.view, e && !o.chromeless ? (_.set(r, "view.hasProject", !0), o.canIAddToProject = !1, s.getProjectRules(e).then(function() {
 o.currentProjectName === e && (o.canIAddToProject = s.canIAddToProject(e), o.canIAddToProject && l.getCatalogItems().then(function(e) {
@@ -23548,10 +23586,11 @@ n.all([ r, a ]).then(function() {
 i.catalogItems = c.sortCatalogItems(_.concat(t, o));
 });
 }
-}), E().then(function() {
+}), D().then(function() {
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 >>>>>>> Check service classes to see if template service broker is enabled
 metadata: {
+<<<<<<< HEAD
 name: o.currentProjectName
 }
 }), o.currentProject = h[o.currentProjectName], I());
@@ -23562,6 +23601,19 @@ o.orderingPanelVisible && v.addItem(_.get(o.selectedItem, "resource.metadata.uid
 return "PartialObjectMetadata" === e.kind;
 }, D = function(e) {
 return N(e) ? d.get(C, e.metadata.name, {
+=======
+name: i.currentProjectName
+}
+}), i.currentProject = h[i.currentProjectName], N());
+})) : _.set(r, "view.hasProject", !1);
+}
+}, B = function() {
+i.orderingPanelVisible && v.addItem(_.get(i.selectedItem, "resource.metadata.uid"));
+}, V = function(e) {
+return "PartialObjectMetadata" === e.kind;
+}, L = function(e) {
+return V(e) ? d.get(C, e.metadata.name, {
+>>>>>>> Add context-switcher
 namespace: e.metadata.namespace
 }) : n.when(e);
 };
@@ -23571,6 +23623,7 @@ o.servicePlansForItem = _.reject(e.by("metadata.name"), {
 status: {
 removedFromBrokerCatalog: !0
 }
+<<<<<<< HEAD
 }), o.selectedItem = t, o.orderingPanelVisible = !0;
 }) : D(t.resource).then(function(e) {
 o.selectedItem = e, o.orderingPanelVisible = !0, o.orderKind = "Template";
@@ -23578,6 +23631,15 @@ o.selectedItem = e, o.orderingPanelVisible = !0, o.orderKind = "Template";
 });
 var A = r.$on("filter-catalog-items", function(e, t) {
 if (o.currentProjectName) {
+=======
+}), i.selectedItem = t, i.orderingPanelVisible = !0;
+}) : L(t.resource).then(function(e) {
+i.selectedItem = e, i.orderingPanelVisible = !0, i.orderKind = "Template";
+}));
+});
+var O = r.$on("filter-catalog-items", function(e, t) {
+if (i.currentProjectName) {
+>>>>>>> Add context-switcher
 var n = {
 filter: t.searchText
 };
@@ -23591,6 +23653,7 @@ v.addItem(_.get(o.selectedItem, "resource.metadata.uid")), o.orderingPanelVisibl
 =======
 i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
 >>>>>>> Check service classes to see if template service broker is enabled
@@ -23606,6 +23669,13 @@ t.url(n);
 });
 }), o.$on("$destroy", function() {
 A(), T();
+=======
+}, A(), i.$on("$routeChangeSuccess", A), E.change(function() {
+var e = $(this).val(), t = "" === e ? "projects" : g(e);
+I(t);
+}), i.$on("$destroy", function() {
+O(), B();
+>>>>>>> Add context-switcher
 });
 >>>>>>> Add Browse Catalog to Project context view.
 }
