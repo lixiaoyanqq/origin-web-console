@@ -62,7 +62,7 @@ body,figure{margin:0}
 =======
 >>>>>>> Update modals to align with PatternFly standard
 .fa,.font-icon,.glyphicon{-moz-osx-font-smoothing:grayscale}
-.origin-modal-popup textarea,.wizard-pf-contents textarea{resize:vertical}
+.modal-body textarea,.origin-modal-popup textarea,.wizard-pf-contents textarea{resize:vertical}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:300;src:url(../styles/fonts/OpenSans-Light-webfont.eot);src:local("Open Sans Light"),local("OpenSans-Light"),url(../styles/fonts/OpenSans-Light-webfont.eot?#iefix) format("embedded-opentype"),url(../styles/fonts/OpenSans-Light-webfont.woff2) format("woff2"),url(../styles/fonts/OpenSans-Light-webfont.woff) format("woff"),url(../styles/fonts/OpenSans-Light-webfont.ttf) format("truetype"),url(../styles/fonts/OpenSans-Light-webfont.svg#OpenSans) format("svg")}
 @font-face{font-family:"Open Sans";font-style:normal;font-weight:400;src:url(../styles/fonts/OpenSans-Regular-webfont.eot);src:local("Open Sans"),local("OpenSans"),url(../styles/fonts/OpenSans-Regular-webfont.eot?#iefix) format("embedded-opentype"),url(../styles/fonts/OpenSans-Regular-webfont.woff2) format("woff2"),url(../styles/fonts/OpenSans-Regular-webfont.woff) format("woff"),url(../styles/fonts/OpenSans-Regular-webfont.ttf) format("truetype"),url(../styles/fonts/OpenSans-Regular-webfont.svg#OpenSans) format("svg")}
 @font-face{font-family:"Open Sans";font-style:italic;font-weight:300;src:url(../styles/fonts/OpenSans-LightItalic-webfont.eot);src:local("Open Sans Light Italic"),local("OpenSansLight-Italic"),url(../styles/fonts/OpenSans-LightItalic-webfont.eot?#iefix) format("embedded-opentype"),url(../styles/fonts/OpenSans-LightItalic-webfont.woff2) format("woff2"),url(../styles/fonts/OpenSans-LightItalic-webfont.woff) format("woff"),url(../styles/fonts/OpenSans-LightItalic-webfont.ttf) format("truetype"),url(../styles/fonts/OpenSans-LightItalic-webfont.svg#OpenSans) format("svg")}
@@ -479,7 +479,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.log-view,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10px 20px;margin:0 0 20px;font-size:15px;border-left:5px solid #f1f1f1}
@@ -4762,6 +4762,7 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 <<<<<<< HEAD
 <<<<<<< HEAD
 .collapsed .nav-pf-tertiary-nav{left:calc(75px + 220px)}
+<<<<<<< HEAD
 .secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;-webkit-font-smoothing:antialiased;pointer-events:none;opacity:0}
 =======
 .collapsed .nav-pf-tertiary-nav{left:calc(295px)}
@@ -4775,6 +4776,9 @@ table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
 .collapsed .nav-pf-tertiary-nav{left:calc(75px + 220px)}
 .secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;-webkit-font-smoothing:antialiased;pointer-events:none;opacity:0}
 >>>>>>> Bumped angular-patternfly to v4.14.5, moment to v2.19.3, and patternfly to v3.37.4
+=======
+.secondary-collapse-toggle-pf,.tertiary-collapse-toggle-pf{display:none;font-family:FontAwesome;font-size:inherit;opacity:0;-webkit-font-smoothing:antialiased;pointer-events:none}
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .collapsed.collapsed-secondary-nav-pf,.collapsed.collapsed-tertiary-nav-pf{width:220px}
 .collapsed.collapsed-secondary-nav-pf .secondary-nav-item-pf:hover>a,.collapsed.collapsed-tertiary-nav-pf .secondary-nav-item-pf:hover>a{z-index:1030}
 .collapsed.collapsed-secondary-nav-pf .nav-pf-secondary-nav,.collapsed.collapsed-tertiary-nav-pf .nav-pf-secondary-nav{left:0}
@@ -5358,12 +5362,15 @@ body>.ui-select-bootstrap.open{z-index:1050}
 .catalog-search .dropdown-menu>li>a.catalog-search-match{border-color:#d1d1d1;border-width:0 0 1px;display:flex;line-height:1.5;padding:3px 10px 3px 5px;white-space:normal}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .order-service-details .order-service-description-block .description,.pre-wrap{white-space:pre-wrap}
 =======
 >>>>>>> Add search catalog in project context
 =======
 .order-service-details .order-service-description-block .description,.pre-wrap{white-space:pre-wrap}
 >>>>>>> Refactor services-view styles for within a project
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .catalog-search .dropdown-menu>li>a.catalog-search-show-all{background-color:#ededed;color:#0088ce;padding:5px 0;text-align:center}
 .catalog-search .dropdown-menu .active>a{border-color:#bee1f4!important}
 .catalog-search .dropdown-menu .active>a.catalog-search-match{background-color:#def3ff!important;color:inherit!important}
@@ -5507,6 +5514,7 @@ body>.ui-select-bootstrap.open{z-index:1050}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .order-service-details .order-service-details-top .service-title-area{flex:1 1 0%}
 =======
@@ -5538,6 +5546,9 @@ body>.ui-select-bootstrap.open{z-index:1050}
 >>>>>>> Make modals fullscreen at < 768px width
 =======
 >>>>>>> Refactor services-view styles for within a project
+=======
+.order-service-details .order-service-description-block .description{white-space:pre-wrap}
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .order-service-details .order-service-description-block .learn-more-link{font-size:11px;white-space:nowrap}
 .order-service-details .order-service-description-block .order-service-dependent-image{margin-bottom:5px;word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 .order-service-details .order-service-description-block .order-service-dependent-image .pficon{margin-right:5px;vertical-align:-1px}
@@ -6177,7 +6188,11 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 }
 .services-view .spinner-container{display:flex;flex:1 1 auto;padding-top:100px;padding-bottom:100px}
 .landing .services-view .spinner-container{background:#fff}
+<<<<<<< HEAD
 >>>>>>> Refactor services-view styles for within a project
+=======
+.pre-wrap{white-space:pre-wrap}
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .visible-xlg-inline-block{display:none!important}
 @media (max-width:767px){.td-long-string{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
 }
@@ -6206,11 +6221,29 @@ body.overlay-open,body.overlay-open .landing,body.overlay-open .landing-side-bar
 >>>>>>> Make the mini <pod-donut> positioned absolute, taking it out of flow, so that it doesn't alter the height of the pf-list-container row based on if it's displayed or not.
 .btn-flat-default{border:1px solid transparent}
 .btn-flat-default:focus,.btn-flat-default:hover{background-color:#f7f7f7;border-color:#e7e7e7}
+<<<<<<< HEAD
 .btn-remove{color:#333;display:inline-block;font-size:15px;line-height:1;opacity:.65;padding:5px 7px;vertical-align:middle}
 .btn-remove:focus,.btn-remove:hover{color:inherit;opacity:1;text-decoration:none}
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .icon-button-text{padding-left:4px}
+.as-sortable-dragging{margin-left:60px}
+.as-sortable-placeholder{border-top:2px solid #0088ce;clear:left;width:100%!important}
+.form-row-has-controls{position:relative;width:calc(100% - 14px)}
+@media (min-width:768px){.form-row-has-controls{width:calc(100% - 40px)}
+}
+.as-sortable-dragging .form-row-has-controls,.has-sort .form-row-has-controls{width:calc(100% - 40px)}
+.as-sortable-dragging .form-row-has-controls .form-row-controls,.has-sort .form-row-has-controls .form-row-controls{right:-60px}
+.form-row-has-controls>[class*=col-xs-]:nth-child(1n){padding-right:0}
+.form-row-has-controls>[class*=col-xs-]:nth-child(2n){padding-left:8px;padding-right:0}
+.form-row-has-controls .form-row-controls{position:absolute;right:-34px;top:0}
+.form-row-has-controls .form-row-controls button.close,.form-row-has-controls .form-row-controls button.sort-row{background:0 0;border:0;height:26px;line-height:1;opacity:.6;width:26px;-webkit-appearance:none}
+.form-row-has-controls .form-row-controls button.close:focus,.form-row-has-controls .form-row-controls button.close:hover,.form-row-has-controls .form-row-controls button.sort-row:focus,.form-row-has-controls .form-row-controls button.sort-row:hover{opacity:.9}
+.form-row-has-controls .form-row-controls button.close .fa-bars,.form-row-has-controls .form-row-controls button.close .pficon-close,.form-row-has-controls .form-row-controls button.sort-row .fa-bars,.form-row-has-controls .form-row-controls button.sort-row .pficon-close{display:flex;justify-content:center}
+.form-row-has-controls .form-row-controls button.close{font-size:14px}
+.form-row-has-controls .form-row-controls button.sort-row{cursor:move;font-size:14px}
 .static-form-value-large{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;margin-bottom:10px;font-size:16px;margin-top:3px}
 <<<<<<< HEAD
 =======
@@ -6839,8 +6872,11 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .modal-body .buttons{display:flex;flex-direction:row-reverse;margin-top:9px}
 .modal-body .buttons.gutter-bottom,.modal-body .buttons.gutter-top-bottom{padding-bottom:0}
 .modal-body .buttons .btn+.btn{margin-right:8px}
+<<<<<<< HEAD
 .modal-body textarea{resize:vertical}
 <<<<<<< HEAD
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .debug-pod-action{margin-top:5px}
 .modal-debug-terminal .empty-state-message{margin-top:60px}
 .modal-debug-terminal kubernetes-container-terminal{text-align:center;overflow:hidden}
@@ -6880,6 +6916,7 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .edit-form .labels .form-group{width:44%}
 .edit-form .labels .form-group .form-control{width:100%}
 .edit-form .checkbox{margin:10px 0}
+<<<<<<< HEAD
 .edit-form .add-webhook{padding-bottom:10px;padding-top:5px}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -6900,6 +6937,8 @@ a.disabled-link:active,a.disabled-link:focus,a.disabled-link:hover{color:#bbb;te
 .edit-form .add-webhook .add-webhook-row .remove-webhook-trigger-action .btn-remove{padding:5px 7px}
 .edit-form .add-webhook .add-webhook-row .select-secret-ref,.edit-form .add-webhook .add-webhook-row .select-webhook-type{float:left;margin-bottom:0;padding-right:5px;width:50%}
 >>>>>>> Remove padding from form-group-action buttons so they will have spacing consistency with links that are separated with .action-divider
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .edit-form .section{padding-bottom:5px}
 @media (max-width:768px){.edit-form .trigger-url{max-width:90%}
 .edit-form .labels .form-group{width:100%}
@@ -7720,6 +7759,7 @@ to{background-color:transparent}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 =======
@@ -7733,6 +7773,9 @@ to{background-color:transparent}
 =======
 .config-map-table .key,.config-map-table .truncated-content,.edit-yaml .ace_editor.editor,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
 >>>>>>> Removing layout.attrs to reduce dependencies
+=======
+.config-map-table .key,.config-map-table .truncated-content,.log-view,dl.secret-data dd .copy-to-clipboard{font-family:Menlo,Monaco,Consolas,monospace}
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .pipeline-circle .clip1:before,.pipeline-circle .clip2:before{content:'';width:18px;height:18px;transform:rotate(360deg);border-radius:9px;position:absolute}
 >>>>>>> Add search catalog in project context
 .pipeline-circle .clip1{position:absolute;clip:rect(0,18px,18px,9px);z-index:-9}
@@ -7994,6 +8037,7 @@ td.visible-print,th.visible-print{display:table-cell!important}
 :not(.ios) .landing::-webkit-scrollbar-track{background-color:#042e43}
 :not(.ios) .landing-side-bar::-webkit-scrollbar-track{background-color:#21272e}
 :not(.ios) .project-bar ::-webkit-scrollbar-track{background-color:#050505}
+<<<<<<< HEAD
 =======
 ::-webkit-scrollbar{height:10px;overflow:visible;width:15px}
 ::-webkit-scrollbar-corner{background:0 0}
@@ -8034,6 +8078,8 @@ td.visible-print,th.visible-print{display:table-cell!important}
 .osc-secrets-form .advanced-secrets .help-blocks .help-block,.osc-secrets-form .advanced-secrets .help-blocks .input-label,.osc-secrets-form .advanced-secrets .input-labels .help-block,.osc-secrets-form .advanced-secrets .input-labels .input-label{width:50%}
 .osc-secrets-form .advanced-secrets .secret-row .destination-dir,.osc-secrets-form .advanced-secrets .secret-row .secret-name{width:50%;display:inline-block}
 .osc-secrets-form .advanced-secrets .destination-dir-padding{padding-left:5px}
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 dl.secret-data dd{margin-bottom:10px}
 dl.secret-data dt{margin-bottom:5px}
 @media (min-width:992px){dl.secret-data dd{margin-left:180px}
@@ -8058,6 +8104,7 @@ dl.secret-data pre{margin-bottom:0}
 .right-section .right-container .right-content{flex:1 1 auto;position:relative;overflow-x:hidden;overflow-y:auto;width:100%}
 .right-section .right-container .right-header{flex:0 0 auto;width:100%}
 .sidebar-right{background-color:#fff;border-left:1px solid #dadada;display:none;flex:0 0 210px;position:relative}
+.membership .action-set,.show-sidebar-right .middle{flex:1 1 auto}
 .sidebar-right .dl-horizontal{margin:0 0 20px}
 <<<<<<< HEAD
 .sidebar-right .dl-horizontal dt{text-align:left}
@@ -8090,7 +8137,6 @@ dl.secret-data pre{margin-bottom:0}
 .sidebar-right .sidebar-header{border-color:#e4e4e4;margin-bottom:0;margin-top:20px}
 .sidebar-right .sidebar-header h2{margin-left:20px}
 .sidebar-right .sidebar-help{color:#9c9c9c}
-.show-sidebar-right .middle{flex:1 1 auto}
 @media (min-width:768px){.show-sidebar-right{display:flex;min-height:100%}
 .show-sidebar-right .sidebar-right{display:block}
 }
@@ -8523,7 +8569,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .log-size-warning{margin:0}
 @media (max-width:991px){.log-size-warning{margin-top:20px}
 }
-.log-view{clear:both;margin-bottom:20px;position:relative}
+.log-view{margin-bottom:20px;position:relative}
 .log-end-msg,.log-view .log-scroll a{font-family:"Open Sans",Helvetica,Arial,sans-serif}
 .chromeless .log-view{margin-bottom:0}
 .log-view pre,.log-view pre code{background-color:transparent;border:0;margin-bottom:0;overflow:visible;padding:0 10px}
@@ -8954,6 +9000,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 =======
 =======
 .terminal-font{font-family:"Courier New",Courier,monospace;font-size:12px;line-height:14px}
+<<<<<<< HEAD
 >>>>>>> Bump kubernetes-container-terminal to v3.0.0
 .environment-from-editor.as-sortable-dragging .as-sortable-item-delete,.environment-from-editor.as-sortable-dragging .input-group-addon,.environment-from-editor.as-sortable-dragging input,.key-value-editor.as-sortable-dragging .as-sortable-item-delete,.key-value-editor.as-sortable-dragging .input-group-addon,.key-value-editor.as-sortable-dragging input{opacity:.65}
 .environment-from-editor .as-sortable-DISABLED-item-delete:hover,.environment-from-editor .as-sortable-item-delete:hover,.environment-from-editor .as-sortable-item-handle:hover,.environment-from-editor.as-sortable-dragging .as-sortable-item-handle,.key-value-editor .as-sortable-DISABLED-item-delete:hover,.key-value-editor .as-sortable-item-delete:hover,.key-value-editor .as-sortable-item-handle:hover,.key-value-editor.as-sortable-dragging .as-sortable-item-handle{opacity:1}
@@ -8969,6 +9016,8 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor .as-sortable-placeholder,.key-value-editor .as-sortable-placeholder{border-top:2px solid #0088ce;clear:left;width:100%!important}
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .environment-from-editor .faux-form-control,.key-value-editor .faux-form-control{background-color:#fff;background-image:none;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);color:#363636;display:table-cell;font-size:12px;height:26px;line-height:1.66666667;padding:2px 6px;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;width:100%;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
 .environment-from-editor .faux-form-control.readonly,.key-value-editor .faux-form-control.readonly{background-color:#f5f5f5;-webkit-box-shadow:none;box-shadow:none;color:#8b8d8f;opacity:1}
 .environment-from-editor .faux-form-control.readonly:hover,.key-value-editor .faux-form-control.readonly:hover{border-color:#bbb}
@@ -8991,6 +9040,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor .faux-input-group.faux-input-single-input,.key-value-editor .faux-input-group.faux-input-single-input{width:100%}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> [WIP] Reset base font size to 12 and heading sizes to use default PatternFly sizing
 .environment-from-editor .environment-from-editor-button,.environment-from-editor .key-value-editor-buttons,.key-value-editor .environment-from-editor-button,.key-value-editor .key-value-editor-buttons{position:absolute;right:0;top:0;width:50px}
@@ -9006,14 +9056,16 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 .environment-from-editor .environment-from-entry .environment-from-input.prefix,.key-value-editor .environment-from-entry .environment-from-input.prefix{padding-right:0;width:calc(50% + 26px)}
 @media (max-width:479px){.environment-from-editor .environment-from-entry .environment-from-input.prefix,.key-value-editor .environment-from-entry .environment-from-input.prefix{margin-top:5px;width:100%}
 }
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .environment-from-editor .environment-from-entry .environment-from-input .faux-input-group,.environment-from-editor .environment-from-entry .environment-from-input .ui-select,.key-value-editor .environment-from-entry .environment-from-input .faux-input-group,.key-value-editor .environment-from-entry .environment-from-input .ui-select{float:left;width:100%}
 .environment-from-editor .environment-from-entry .environment-from-input .has-warning,.key-value-editor .environment-from-entry .environment-from-input .has-warning{display:inline-block}
-.environment-from-editor .environment-from-entry .environment-from-view-details,.key-value-editor .environment-from-entry .environment-from-view-details{float:left;line-height:1;padding:6px 0 0}
-.environment-from-editor .key-value-editor-entry,.key-value-editor .key-value-editor-entry{display:table;margin-bottom:15px;padding-right:50px;position:relative;table-layout:fixed;width:100%}
+.environment-from-editor .environment-from-entry .environment-from-view-details,.key-value-editor .environment-from-entry .environment-from-view-details{padding:5px 0 0;text-align:right}
 .environment-from-editor .key-value-editor-input .ui-select+.ui-select,.key-value-editor .key-value-editor-input .ui-select+.ui-select{padding-top:5px}
 @media (min-width:992px){.environment-from-editor .key-value-editor-input .ui-select,.key-value-editor .key-value-editor-input .ui-select{float:left;width:50%}
 .environment-from-editor .key-value-editor-input .ui-select+.ui-select,.key-value-editor .key-value-editor-input .ui-select+.ui-select{padding-top:0;padding-left:5px}
 }
+<<<<<<< HEAD
 @media (max-width:479px){.environment-from-editor-header.config-map-header,.environment-from-editor-header.prefix-header{display:none;width:100%}
 }
 .environment-from-editor-header.config-map-header.config-map-header-mobile,.environment-from-editor-header.config-map-header.prefix-header-mobile,.environment-from-editor-header.prefix-header.config-map-header-mobile,.environment-from-editor-header.prefix-header.prefix-header-mobile{display:block;margin-bottom:0;margin-top:5px}
@@ -9082,11 +9134,15 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 @media (min-width:992px){.membership .action-set{flex-direction:row}
 }
 >>>>>>> Membership updates to correct broken layouts when multiple roles assigned.
+=======
+>>>>>>> New markup structure and styles to support single and dual input rows with one or two control buttons
 .membership .content-pane .add-role-to{margin-left:-1px}
 .membership .content-pane .col-add-role-inputs{display:flex}
 .membership .content-pane .col-heading{border-bottom:1px solid #ededed;display:none}
 .membership .content-pane .col-name{align-items:center;display:flex;flex:1 1 auto;padding:0 0 10px;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
-@media (min-width:480px){.membership .content-pane .col-heading{display:flex}
+@media (min-width:480px){.membership .action-set{max-width:65%}
+.container-pf-nav-pf-vertical.collapsed-nav .membership .action-set{max-width:60%}
+.membership .content-pane .col-heading{display:flex}
 .membership .content-pane .col-name{max-width:35%;padding:0 5px 0 0;width:100%}
 .container-pf-nav-pf-vertical.collapsed-nav .membership .content-pane .col-name{max-width:40%}
 .membership .content-pane .col-name input{max-width:225px}
@@ -9264,7 +9320,7 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 .ace-inline{height:300px}
 .ace-inline-small{height:200px}
 .ace_editor.dockerfile-mode .ace_constant.ace_numeric,.editor.yaml-mode .ace_constant.ace_numeric{color:inherit}
-.edit-yaml .ace_editor.editor{line-height:1.5;width:100%;min-height:140px;height:50vh}
+.edit-yaml .ace_editor.editor{font-family:Menlo,Monaco,Consolas,monospace;line-height:1.5;width:100%;min-height:140px;height:50vh}
 @media (min-height:700px){.edit-yaml .ace_editor.editor{height:60vh}
 }
 .edit-yaml .ace_editor.editor .ace_gutter{color:#8b8d8f}
