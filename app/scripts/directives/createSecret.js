@@ -81,6 +81,15 @@ angular.module("openshiftConsole")
                 label: "Webhook Secret"
               }
             ]
+          },
+          generic: {
+            label: "Generic Secret",
+            authTypes: [
+              {
+                id: "Opaque",
+                label: "Generic Secret"
+              }
+            ]
           }
         };
 
@@ -106,7 +115,11 @@ angular.module("openshiftConsole")
           $scope.newSecret = {
             type: "source",
             authType: "kubernetes.io/basic-auth",
-            data: {},
+            data: {
+              genericKeyValues: {
+                data: {}
+              }
+            },
             linkSecret: false,
             pickedServiceAccountToLink: "",
           };
@@ -183,6 +196,9 @@ angular.module("openshiftConsole")
             case "Opaque":
               if (data.webhookSecretKey) {
                 secret.stringData.WebHookSecretKey = data.webhookSecretKey;
+              }
+              if (data.genericKeyValues.data) {
+                secret.stringData = data.genericKeyValues.data;
               }
               break;
             case "Opaque":

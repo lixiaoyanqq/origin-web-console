@@ -19415,6 +19415,13 @@ authTypes: [ {
 id: "Opaque",
 label: "Webhook Secret"
 } ]
+},
+generic: {
+label: "Generic Secret",
+authTypes: [ {
+id: "Opaque",
+label: "Generic Secret"
+} ]
 }
 }, l.secretTypes = _.keys(l.secretAuthTypeMap), l.type ? l.newSecret = {
 type: l.type,
@@ -19425,7 +19432,11 @@ pickedServiceAccountToLink: l.serviceAccountToLink || ""
 } : l.newSecret = {
 type: "source",
 authType: "kubernetes.io/basic-auth",
-data: {},
+data: {
+genericKeyValues: {
+data: {}
+}
+},
 linkSecret: !1,
 pickedServiceAccountToLink: ""
 }, l.add = {
@@ -19638,7 +19649,7 @@ auth: o
 break;
 
 case "Opaque":
-e.webhookSecretKey && (r.stringData.WebHookSecretKey = e.webhookSecretKey);
+e.webhookSecretKey && (r.stringData.WebHookSecretKey = e.webhookSecretKey), e.genericKeyValues.data && (r.stringData = e.genericKeyValues.data);
 }
 return r;
 }, d = function() {
@@ -20626,11 +20637,278 @@ e();
 });
 } ]
 };
+<<<<<<< HEAD
+} ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, r) {
+var a = t.getPreferredVersion("events");
+=======
+} ]), angular.module("openshiftConsole").directive("editConfigMapOrSecret", [ "DNS1123_SUBDOMAIN_VALIDATION", function(e) {
+>>>>>>> Create Generic Secret from file
+return {
+restrict: "E",
+scope: {
+<<<<<<< HEAD
+=======
+map: "=model",
+showNameInput: "=",
+type: "@"
+},
+templateUrl: "views/directives/edit-config-map-or-secret.html",
+link: function(t, n, r, a) {
+t.form = a, t.nameValidation = e, t.addItem = function() {
+t.data.push({
+key: "",
+value: ""
+}), t.form.$setDirty();
+}, t.removeItem = function(e) {
+t.data.splice(e, 1), t.form.$setDirty();
+}, t.getKeys = function() {
+return _.map(t.data, "key");
+};
+var o = t.$watch("map.data", function(e) {
+e && (t.data = _.map(e, function(e, t) {
+return {
+key: t,
+value: e
+};
+}), _.sortBy(t.data, "key"), _.isEmpty(t.data) && t.addItem(), o(), t.$watch("data", function(e) {
+var n = {};
+_.each(e, function(e) {
+n[e.key] = e.value;
+}), _.set(t, "map.data", n);
+}, !0));
+});
+}
+};
+} ]), function() {
+angular.module("openshiftConsole").component("editEnvironmentFrom", {
+controller: [ "$attrs", "$filter", "$scope", "keyValueEditorUtils", "SecretsService", function(e, t, n, r, a) {
+var o = this, i = t("canI"), s = t("humanizeKind"), c = _.uniqueId(), l = /^[A-Za-z_][A-Za-z0-9_]*$/, u = !1;
+o.setFocusClass = "edit-environment-from-set-focus-" + c, o.isEnvVarInvalid = function(e) {
+return !l.test(e);
+}, o.hasInvalidEnvVar = function(e) {
+return _.some(e, function(e, t) {
+return o.isEnvVarInvalid(t);
+});
+}, o.viewOverlayPanel = function(e) {
+o.decodedData = e.data, o.overlayPaneEntryDetails = e, "Secret" === e.kind && (o.decodedData = a.decodeSecretData(e.data)), o.overlayPanelVisible = !0;
+}, o.closeOverlayPanel = function() {
+o.showSecret = !1, o.overlayPanelVisible = !1;
+};
+var d = function(e, t) {
+e && e.push(t || {});
+};
+o.onAddRow = function() {
+d(o.envFromEntries), r.setFocusOn("." + o.setFocusClass);
+}, o.deleteEntry = function(e, t) {
+o.envFromEntries && !o.envFromEntries.length || (o.envFromEntries.splice(e, t), o.envFromEntries.length || d(o.envFromEntries), o.updateEntries(o.envFromEntries), o.editEnvironmentFromForm.$setDirty());
+}, o.hasOptions = function() {
+return !_.isEmpty(o.envFromSelectorOptions);
+}, o.hasEntries = function() {
+return _.some(o.entries, function(e) {
+return _.get(e, "configMapRef.name") || _.get(e, "secretRef.name");
+});
+}, o.isEnvFromReadonly = function(e) {
+return !0 === o.isReadonly || e && !0 === e.isReadonly;
+}, o.groupByKind = function(e) {
+return s(e.kind);
+}, o.dragControlListeners = {
+accept: function(e, t) {
+return e.itemScope.sortableScope.$id === t.$id;
+},
+orderChanged: function() {
+o.editEnvironmentFromForm.$setDirty();
+}
+}, o.envFromObjectSelected = function(e, t, n) {
+var r = {};
+switch (n.kind) {
+case "Secret":
+r.secretRef = {
+name: n.metadata.name
+}, delete o.envFromEntries[e].configMapRef;
+break;
+
+case "ConfigMap":
+r.configMapRef = {
+name: n.metadata.name
+}, delete o.envFromEntries[e].secretRef;
+}
+t.prefix && (r.prefix = t.prefix), _.assign(o.envFromEntries[e], r), o.updateEntries(o.envFromEntries);
+}, o.updateEntries = function(e) {
+u = !0, o.entries = _.filter(e, function(e) {
+return e.secretRef || e.configMapRef;
+});
+};
+var m = function() {
+var e = {}, t = {};
+o.envFromEntries = o.entries || [], o.envFromEntries.length || d(o.envFromEntries), _.each(o.envFromSelectorOptions, function(n) {
+switch (n.kind) {
+case "ConfigMap":
+e[n.metadata.name] = n;
+break;
+
+case "Secret":
+t[n.metadata.name] = n;
+}
+}), _.each(o.envFromEntries, function(n) {
+var r, a;
+if (n.configMapRef && (r = "configMapRef", a = "configmaps"), n.secretRef && (r = "secretRef", a = "secrets"), r && a) {
+var o = n[r].name;
+n.configMapRef && o in e && (n.selectedEnvFrom = e[o]), n.secretRef && o in t && (n.selectedEnvFrom = t[o]), i(a, "get") || (n.isReadonly = !0);
+}
+});
+};
+o.$onInit = function() {
+m(), "cannotDelete" in e && (o.cannotDeleteAny = !0), "cannotSort" in e && (o.cannotSort = !0), "showHeader" in e && (o.showHeader = !0), o.envFromEntries && !o.envFromEntries.length && d(o.envFromEntries);
+}, n.$watch("$ctrl.entries", function() {
+u ? u = !1 : m();
+}), o.$onChanges = function(e) {
+e.envFromSelectorOptions && m();
+};
+} ],
+bindings: {
+entries: "=",
+envFromSelectorOptions: "<",
+isReadonly: "<?"
+},
+templateUrl: "views/directives/edit-environment-from.html"
+});
+}(), angular.module("openshiftConsole").directive("events", [ "$routeParams", "$filter", "APIService", "DataService", "KeywordService", "Logger", function(e, t, n, r, a, o) {
+return {
+restrict: "E",
+scope: {
+apiObjects: "=?",
+projectContext: "="
+},
+templateUrl: "views/directives/events.html",
+controller: [ "$scope", function(e) {
+var t, i = {}, s = [], c = n.getPreferredVersion("events");
+e.filter = {
+text: ""
+};
+var l = function(e) {
+return _.isEmpty(i) ? e : _.filter(e, function(e) {
+return i[e.involvedObject.uid];
+});
+}, u = [], d = _.get(e, "sortConfig.currentField.id"), m = {
+lastTimestamp: !0
+}, p = function() {
+var t = _.get(e, "sortConfig.currentField.id", "lastTimestamp");
+d !== t && (d = t, e.sortConfig.isAscending = !m[d]);
+var n = e.sortConfig.isAscending ? "asc" : "desc";
+u = _.orderBy(e.events, [ t, "metadata.resourceVersion" ], [ n, n ]);
+}, f = [], g = function() {
+e.filterExpressions = f = a.generateKeywords(_.get(e, "filter.text"));
+}, v = [ "reason", "message", "type" ];
+e.resourceKind && e.resourceName || v.splice(0, 0, "involvedObject.name", "involvedObject.kind");
+var h = function() {
+e.filteredEvents = a.filterForKeywords(u, v, f);
+};
+e.$watch("filter.text", _.debounce(function() {
+g(), e.$evalAsync(h);
+}, 50, {
+maxWait: 250
+}));
+var y = function() {
+p(), h();
+}, b = _.debounce(function() {
+t && e.$evalAsync(function() {
+e.events = l(t), y();
+});
+}, 250, {
+leading: !0,
+trailing: !0,
+maxWait: 1e3
+});
+e.$watch("apiObjects", function(n) {
+i = {}, _.each(n, function(e) {
+_.get(e, "metadata.uid") && (i[e.metadata.uid] = !0);
+}), e.showKindAndName = 1 !== _.size(i), t && b();
+}), e.$watch("showKindAndName", function(t) {
+e.sortConfig = {
+fields: [ {
+id: "lastTimestamp",
+title: "Time",
+sortType: "alpha"
+}, {
+id: "type",
+title: "Severity",
+sortType: "alpha"
+}, {
+id: "reason",
+title: "Reason",
+sortType: "alpha"
+}, {
+id: "message",
+title: "Message",
+sortType: "alpha"
+}, {
+id: "count",
+title: "Count",
+sortType: "numeric"
+} ],
+isAscending: !0,
+onSortChange: y
+}, t && e.sortConfig.fields.splice(1, 0, {
+id: "involvedObject.name",
+title: "Name",
+sortType: "alpha"
+}, {
+id: "involvedObject.kind",
+title: "Kind",
+sortType: "alpha"
+});
+}), s.push(r.watch(c, e.projectContext, function(n) {
+t = n.by("metadata.name"), b(), o.log("events (subscribe)", e.filteredEvents);
+}, {
+skipDigest: !0
+})), e.$on("$destroy", function() {
+r.unwatchAll(s);
+});
+} ]
+};
+} ]), angular.module("openshiftConsole").directive("eventsSidebar", [ "$rootScope", "APIService", "DataService", "Logger", function(e, t, n, r) {
+var a = t.getPreferredVersion("events");
+return {
+restrict: "E",
+scope: {
+projectContext: "=",
+collapsed: "="
+},
+templateUrl: "views/directives/events-sidebar.html",
+controller: [ "$scope", function(t) {
+var o = [];
+o.push(n.watch(a, t.projectContext, function(e) {
+var n = e.by("metadata.name");
+t.events = _.orderBy(n, [ "lastTimestamp" ], [ "desc" ]), t.warningCount = _.size(_.filter(n, {
+type: "Warning"
+})), r.log("events (subscribe)", t.events);
+})), t.highlightedEvents = {}, t.collapseSidebar = function() {
+t.collapsed = !0;
+};
+var i = [];
+i.push(e.$on("event.resource.highlight", function(e, n) {
+var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
+r && a && _.each(t.events, function(e) {
+e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !0);
+});
+})), i.push(e.$on("event.resource.clear-highlight", function(e, n) {
+var r = _.get(n, "kind"), a = _.get(n, "metadata.name");
+r && a && _.each(t.events, function(e) {
+e.involvedObject.kind === r && e.involvedObject.name === a && (t.highlightedEvents[r + "/" + a] = !1);
+});
+})), t.$on("$destroy", function() {
+n.unwatchAll(o), _.each(i, function(e) {
+e();
+}), i = null;
+});
+} ]
+};
 } ]), angular.module("openshiftConsole").directive("eventsBadge", [ "$filter", "APIService", "DataService", "Logger", function(e, t, n, r) {
 var a = t.getPreferredVersion("events");
 return {
 restrict: "E",
 scope: {
+>>>>>>> Create Generic Secret from file
 projectContext: "=",
 sidebarCollapsed: "="
 },
