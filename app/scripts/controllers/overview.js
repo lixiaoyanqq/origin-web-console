@@ -32,6 +32,7 @@ angular.module('openshiftConsole').controller('OverviewController', [
   'RoutesService',
   'ServiceInstancesService', 
   'gettext',
+  'gettextCatalog',
   OverviewController
 ]);
 
@@ -171,10 +172,10 @@ function OverviewController($scope,
 
   overview.filterByOptions = [{
     id: 'name',
-    label: 'Name'
+    label: gettextCatalog.getString(gettext('Name'))
   }, {
     id: 'label',
-    label: 'Label'
+    label: gettextCatalog.getString(gettext('Label'))
   }];
 
   // If there is a label filter persisted (such as in the URL), default to filtering by label.
@@ -182,13 +183,13 @@ function OverviewController($scope,
 
   overview.viewByOptions = [{
     id: 'app',
-    label: gettext('Application')
+    label: gettextCatalog.getString(gettext('Application'))
   }, {
     id: 'resource',
-    label: gettext('Resource Type')
+    label: gettextCatalog.getString(gettext('Resource Type'))
   }, {
     id: 'pipeline',
-    label: gettext('Pipeline')
+    label: gettextCatalog.getString(gettext('Pipeline'))
   }];
 
   var getName = function(apiObject) {
