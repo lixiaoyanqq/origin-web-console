@@ -17,6 +17,14 @@ msgstr ""
 msgid "\", but service \""
 msgstr ""
 
+#: app/views/create/fromimage.html:214
+msgid "(Build and Runtime)"
+msgstr ""
+
+#: app/views/create/fromimage.html:255
+msgid "(Runtime only)"
+msgstr ""
+
 #: app/views/browse/_replica-set-details.html:82
 #: app/views/browse/deployment-config.html:207
 msgid "(autoscaled)"
@@ -136,7 +144,7 @@ msgstr ""
 msgid "/ Node Port"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:25
+#: app/views/modals/about-compute-units-modal.html:21
 msgid "1000 millcores  =  1 core"
 msgstr ""
 
@@ -193,9 +201,7 @@ msgid "A container will default to request this amount of a compute resource if 
 msgstr ""
 
 #: app/views/add-config-volume.html:80
-msgid ""
-"A file will be created in this directory for each key from the config\n"
-"                        map or secret. The file contents will be the value of the key."
+msgid "A file will be created in this directory for each key from the config map or secret. The file contents will be the value of the key."
 msgstr ""
 
 #: app/views/edit/health-checks.html:39
@@ -418,25 +424,15 @@ msgstr ""
 #: app/views/browse/service-instance.html:30
 #: app/views/browse/service.html:11
 #: app/views/browse/service.html:16
+#: app/views/browse/stateful-set.html:17
 #: app/views/browse/stateful-set.html:24
 #: app/views/other-resources.html:54
+#: app/views/other-resources.html:67
 #: app/views/overview/_list-row-actions.html:45
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
 #: app/views/overview/_service-instance-row.html:74
 msgid "Actions"
-msgstr ""
-
-#: app/views/other-resources.html:66
-msgid ""
-"Actions\n"
-"                      <span class=\"caret\"></span>"
-msgstr ""
-
-#: app/views/browse/stateful-set.html:13
-msgid ""
-"Actions\n"
-"              <span class=\"caret\" aria-hidden=\"true\"></span>"
 msgstr ""
 
 #: app/views/browse/_pod-details.html:50
@@ -460,7 +456,7 @@ msgstr ""
 >>>>>>> rebase from poc 3.6
 =======
 #: app/scripts/directives/nav.js:504
-#: app/views/add-config-volume.html:194
+#: app/views/add-config-volume.html:193
 #: app/views/attach-pvc.html:215
 >>>>>>> Build & Translate
 #: app/views/directives/_edit-command.html:56
@@ -566,7 +562,7 @@ msgstr ""
 msgid "Add Health Checks"
 msgstr ""
 
-#: app/views/add-config-volume.html:168
+#: app/views/add-config-volume.html:167
 #: app/views/directives/edit-config-map.html:115
 #: app/views/directives/edit-config-map.html:46
 msgid "Add Item"
@@ -669,11 +665,11 @@ msgid "Add content to your project from the catalog of web frameworks, databases
 >>>>>>> Build & Translate
 msgstr ""
 
-#: app/views/add-config-volume.html:109
+#: app/views/add-config-volume.html:108
 msgid "Add only certain keys or use paths that are different than the key names."
 msgstr ""
 
-#: app/views/add-config-volume.html:188
+#: app/views/add-config-volume.html:187
 msgid "Add the volume to the selected containers."
 msgstr ""
 
@@ -997,7 +993,7 @@ msgstr ""
 
 #: app/scripts/directives/editRequestLimit.js:84
 #: app/scripts/directives/oscPersistentVolumeClaim.js:71
-#: app/views/modals/about-compute-units-modal.html:37
+#: app/views/modals/about-compute-units-modal.html:33
 msgid "Binary Units"
 msgstr ""
 
@@ -1167,11 +1163,11 @@ msgid "CA Certificate:"
 msgstr ""
 
 #: app/scripts/directives/podMetrics.js:71
-#: app/views/modals/about-compute-units-modal.html:19
+#: app/views/modals/about-compute-units-modal.html:15
 msgid "CPU"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:21
+#: app/views/modals/about-compute-units-modal.html:17
 msgid "CPU is often measured in units called <var>millicores</var>. Each millicore is equivalent to <sup>1</sup>&frasl;<sub>1000</sub> of a CPU&nbsp;core."
 msgstr ""
 
@@ -1267,7 +1263,7 @@ msgstr ""
 #: app/scripts/controllers/membership.js:223
 #: app/scripts/directives/fromFile.js:66
 #: app/scripts/directives/processTemplate.js:180
-#: app/views/add-config-volume.html:198
+#: app/views/add-config-volume.html:197
 #: app/views/attach-pvc.html:219
 #: app/views/browse/_replica-set-details.html:46
 #: app/views/create-config-map.html:22
@@ -1426,7 +1422,7 @@ msgid "Clear Changes"
 msgstr ""
 
 #: app/views/browse/config-maps.html:41
-#: app/views/browse/stateful-sets.html:38
+#: app/views/browse/stateful-sets.html:31
 #: app/views/catalog/catalog.html:49
 #: app/views/catalog/category-content.html:47
 #: app/views/deployments.html:35
@@ -1458,7 +1454,7 @@ msgstr ""
 
 #: app/views/_alerts.html:13
 #: app/views/directives/edit-environment-from.html:141
-#: app/views/modals/about-compute-units-modal.html:58
+#: app/views/modals/about-compute-units-modal.html:54
 #: app/views/modals/debug-terminal.html:61
 #: app/views/modals/jenkinsfile-examples-modal.html:12
 msgid "Close"
@@ -1509,11 +1505,7 @@ msgid "Command:"
 msgstr ""
 
 #: app/views/modals/about-compute-units-modal.html:6
-msgid ""
-"Compute Resources\n"
-"      <span class=\"page-header-link\">\n"
-"        <a href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\"><translate>Learn More</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n"
-"      </span>"
+msgid "Compute Resources"
 msgstr ""
 
 <<<<<<< HEAD
@@ -1726,8 +1718,8 @@ msgid "Container:"
 msgstr ""
 
 #: app/views/_pod-template.html:36
-#: app/views/add-config-volume.html:175
-#: app/views/add-config-volume.html:183
+#: app/views/add-config-volume.html:174
+#: app/views/add-config-volume.html:182
 #: app/views/attach-pvc.html:199
 #: app/views/directives/add-config-to-application.html:126
 #: app/views/overview/_list-row-expanded.html:117
@@ -1838,7 +1830,8 @@ msgid "Create New Secret"
 msgstr ""
 
 #: app/views/create-project.html:5
-#: app/views/projects.html:181
+#: app/views/projects.html:180
+#: app/views/projects.html:2
 #: app/views/projects.html:25
 msgid "Create Project"
 msgstr ""
@@ -1873,7 +1866,7 @@ msgstr ""
 msgid "Create a New Project"
 msgstr ""
 
-#: app/views/projects.html:176
+#: app/views/projects.html:175
 msgid "Create a project for your application."
 msgstr ""
 
@@ -1900,8 +1893,8 @@ msgstr ""
 #: app/views/browse/config-maps.html:52
 #: app/views/browse/deployment-config.html:137
 #: app/views/browse/deployment.html:104
-#: app/views/browse/stateful-sets.html:50
-#: app/views/browse/stateful-sets.html:64
+#: app/views/browse/stateful-sets.html:43
+#: app/views/browse/stateful-sets.html:57
 #: app/views/builds.html:55
 #: app/views/deployments.html:135
 #: app/views/deployments.html:175
@@ -2053,7 +2046,7 @@ msgstr ""
 
 #: app/scripts/directives/editRequestLimit.js:87
 #: app/scripts/directives/oscPersistentVolumeClaim.js:75
-#: app/views/modals/about-compute-units-modal.html:46
+#: app/views/modals/about-compute-units-modal.html:42
 msgid "Decimal Units"
 msgstr ""
 
@@ -2368,10 +2361,8 @@ msgstr ""
 msgid "Duration:"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:14
-msgid ""
-"Each container running on a node uses compute resources like CPU and memory. You can specify\n"
-"      how much CPU and memory a container needs to improve scheduling and performance."
+#: app/views/modals/about-compute-units-modal.html:11
+msgid "Each container running on a node uses compute resources like CPU and memory. You can specify how much CPU and memory a container needs to improve scheduling and performance."
 msgstr ""
 
 #: app/views/browse/build-config.html:41
@@ -2381,12 +2372,9 @@ msgstr ""
 #: app/views/browse/route.html:205
 #: app/views/directives/hpa.html:5
 #: app/views/directives/replicas.html:10
+#: app/views/edit/yaml.html:8
 #: app/views/overview/_list-row-actions.html:24
 msgid "Edit"
-msgstr ""
-
-#: app/views/edit/yaml.html:8
-msgid "Edit <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}"
 msgstr ""
 
 #: app/views/browse/deployment-config.html:55
@@ -2627,12 +2615,16 @@ msgid "Environment From"
 msgstr ""
 
 #: app/views/browse/build-config.html:451
+#: app/views/create/fromimage.html:214
+#: app/views/create/fromimage.html:255
 #: app/views/directives/edit-lifecycle-hook.html:55
+#: app/views/edit/build-config.html:420
 #: app/views/edit/deployment-config.html:348
 #: app/views/edit/deployment-config.html:67
 msgid "Environment Variables"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/views/create/fromimage.html:214
 <<<<<<< HEAD
 #: app/views/create/fromimage.html:252
@@ -2663,17 +2655,10 @@ msgid ""
 >>>>>>> Build & Translate
 msgstr ""
 
+=======
+>>>>>>> Add some translation.
 #: app/views/directives/lifecycle-hook.html:33
 msgid "Environment Variables:"
-msgstr ""
-
-#: app/views/edit/build-config.html:420
-msgid ""
-"Environment Variables<span class=\"help action-inline\">\n"
-"                  <a href=\"\">\n"
-"                  <i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.\"></i>\n"
-"                  </a>\n"
-"                </span>"
 msgstr ""
 
 #: app/views/directives/add-config-to-application.html:33
@@ -2843,9 +2828,7 @@ msgid "Filter by keyword"
 msgstr ""
 
 #: app/views/projects.html:164
-msgid ""
-"Filter by keyword or change sort options to see other\n"
-"projects."
+msgid "Filter by keyword or change sort options to see other projects."
 msgstr ""
 
 #: app/views/directives/_project-filter.html:3
@@ -3309,7 +3292,7 @@ msgstr ""
 msgid "Jenkinsfile:"
 msgstr ""
 
-#: app/views/add-config-volume.html:125
+#: app/views/add-config-volume.html:124
 #: app/views/directives/edit-config-map.html:51
 msgid "Key"
 msgstr ""
@@ -3326,7 +3309,7 @@ msgstr ""
 msgid "Key:"
 msgstr ""
 
-#: app/views/add-config-volume.html:116
+#: app/views/add-config-volume.html:115
 msgid "Keys and Paths"
 msgstr ""
 
@@ -3476,7 +3459,6 @@ msgstr ""
 #: app/views/edit/health-checks.html:13
 #: app/views/images.html:9
 #: app/views/membership.html:17
-#: app/views/modals/about-compute-units-modal.html:9
 #: app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
 #: app/views/modals/create-secret.html:12
@@ -3598,7 +3580,7 @@ msgstr ""
 #: app/views/browse/secret.html:6
 #: app/views/browse/service.html:6
 #: app/views/browse/stateful-set.html:55
-#: app/views/browse/stateful-sets.html:29
+#: app/views/browse/stateful-sets.html:22
 #: app/views/catalog/catalog.html:1
 #: app/views/catalog/category-content.html:1
 #: app/views/create-from-url.html:6
@@ -3612,6 +3594,7 @@ msgstr ""
 #: app/views/edit/deployment-config.html:8
 #: app/views/edit/health-checks.html:7
 #: app/views/edit/route.html:9
+#: app/views/edit/yaml.html:6
 #: app/views/newfromtemplate.html:6
 #: app/views/overview.html:36
 #: app/views/pipelines.html:22
@@ -3816,11 +3799,11 @@ msgstr ""
 msgid "Memory <small translate=\"\">Request</small>"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:29
+#: app/views/modals/about-compute-units-modal.html:25
 msgid "Memory and Storage"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:31
+#: app/views/modals/about-compute-units-modal.html:27
 msgid "Memory and storage are measured in binary units like <var>KiB</var>, <var>MiB</var>, <var>GiB</var>, and <var>TiB</var> or decimal units like <var>kB</var>, <var>MB</var>, <var>GB</var>, and&nbsp;<var>TB</var>."
 msgstr ""
 
@@ -4028,7 +4011,7 @@ msgstr ""
 msgid "Mount path for the volume."
 msgstr ""
 
-#: app/views/add-config-volume.html:87
+#: app/views/add-config-volume.html:86
 #: app/views/attach-pvc.html:96
 msgid "Mount path must be a valid path to a directory starting with <code>/</code>."
 msgstr ""
@@ -4164,7 +4147,7 @@ msgstr ""
 >>>>>>> Build & Translate
 #: app/views/browse/config-maps.html:51
 #: app/views/browse/deployment.html:102
-#: app/views/browse/stateful-sets.html:48
+#: app/views/browse/stateful-sets.html:41
 #: app/views/builds.html:51
 #: app/views/create/fromimage.html:22
 #: app/views/deployments.html:132
@@ -4460,7 +4443,7 @@ msgstr ""
 msgid "No stages have started."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:34
+#: app/views/browse/stateful-sets.html:27
 msgid "No stateful sets."
 msgstr ""
 
@@ -4536,7 +4519,7 @@ msgstr ""
 msgid "OpenShift Pipeline Plugin"
 msgstr ""
 
-#: app/views/projects.html:175
+#: app/views/projects.html:174
 msgid "OpenShift helps you quickly develop, host, and scale applications."
 msgstr ""
 
@@ -4656,7 +4639,7 @@ msgstr ""
 msgid "Password or token is required."
 msgstr ""
 
-#: app/views/add-config-volume.html:136
+#: app/views/add-config-volume.html:135
 #: app/views/directives/_edit-probe.html:23
 #: app/views/directives/osc-routing.html:87
 msgid "Path"
@@ -4688,7 +4671,7 @@ msgstr ""
 msgid "Path:"
 msgstr ""
 
-#: app/views/add-config-volume.html:158
+#: app/views/add-config-volume.html:157
 msgid "Paths must be unique."
 msgstr ""
 
@@ -4765,7 +4748,7 @@ msgstr ""
 msgid "Permissions to the mounted volume."
 msgstr ""
 
-#: app/views/add-config-volume.html:127
+#: app/views/add-config-volume.html:126
 msgid "Pick a key"
 msgstr ""
 
@@ -5214,7 +5197,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: app/views/add-config-volume.html:165
+#: app/views/add-config-volume.html:164
 #: app/views/directives/_edit-command.html:28
 #: app/views/directives/_edit-command.html:29
 #: app/views/directives/edit-config-map.html:112
@@ -5266,7 +5249,7 @@ msgid "Replica Sets"
 msgstr ""
 
 #: app/views/browse/deployment.html:103
-#: app/views/browse/stateful-sets.html:49
+#: app/views/browse/stateful-sets.html:42
 #: app/views/deployments.html:134
 #: app/views/deployments.html:174
 #: app/views/deployments.html:202
@@ -5697,11 +5680,11 @@ msgstr ""
 msgid "Select key"
 msgstr ""
 
-#: app/views/add-config-volume.html:107
+#: app/views/add-config-volume.html:106
 msgid "Select specific keys and paths"
 msgstr ""
 
-#: app/views/add-config-volume.html:117
+#: app/views/add-config-volume.html:116
 msgid ""
 "Select the keys to use and the file paths where each key will be exposed.\n"
 "                    The file paths are relative to the mount path.\n"
@@ -6039,21 +6022,10 @@ msgstr ""
 >>>>>>> rebase from poc 3.6
 =======
 #: app/scripts/constants.js:260
+#: app/views/browse/stateful-sets.html:6
 #: app/views/overview.html:233
 >>>>>>> Build & Translate
 msgid "Stateful Sets"
-msgstr ""
-
-#: app/views/browse/stateful-sets.html:6
-msgid ""
-"Stateful Sets\n"
-"          <!-- TODO: docs are in progress\n"
-"          <span class=\"page-header-link\">\n"
-"            <a ng-href=\"{{'stateful-sets' | helpLink}}\" target=\"_blank\">\n"
-"              Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n"
-"            </a>\n"
-"          </span>\n"
-"          -->"
 msgstr ""
 
 #: app/views/browse/_build-details.html:4
@@ -6466,7 +6438,7 @@ msgstr ""
 msgid "The filter is hiding all secrets."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:38
+#: app/views/browse/stateful-sets.html:31
 msgid "The filter is hiding all stateful sets."
 msgstr ""
 
@@ -6519,7 +6491,7 @@ msgstr ""
 msgid "The minimum number of seconds a new pod must be ready before it is considered available."
 msgstr ""
 
-#: app/views/add-config-volume.html:92
+#: app/views/add-config-volume.html:91
 msgid "The mount path is already used. Please choose another mount path."
 msgstr ""
 
@@ -7283,6 +7255,7 @@ msgstr ""
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: app/views/projects.html:109
 =======
 <<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
@@ -7297,6 +7270,9 @@ msgid "Welcome to DataMan OS."
 =======
 #: app/views/projects.html:173
 >>>>>>> Build & Translate
+=======
+#: app/views/projects.html:172
+>>>>>>> Add some translation.
 msgid "Welcome to OpenShift."
 >>>>>>> rebase from poc 3.6
 msgstr ""
@@ -7445,6 +7421,10 @@ msgstr ""
 msgid "You will need to redeploy your pods for this to take effect."
 msgstr ""
 
+#: app/views/edit/yaml.html:16
+msgid "You'll need to copy any changes you've made and edit the {{updated.resource.kind | humanizeKind}} again."
+msgstr ""
+
 #: app/views/directives/osc-persistent-volume-claim.html:36
 msgid "Zone"
 msgstr ""
@@ -7559,7 +7539,7 @@ msgstr ""
 msgid "deployment trigger"
 msgstr ""
 
-#: app/views/projects.html:184
+#: app/views/projects.html:183
 msgid "documentation"
 msgstr ""
 
@@ -7610,6 +7590,14 @@ msgstr ""
 
 #: app/views/_volumes.html:72
 msgid "git repo"
+msgstr ""
+
+#: app/views/edit/yaml.html:23
+msgid "has been deleted since you started editing it."
+msgstr ""
+
+#: app/views/edit/yaml.html:15
+msgid "has changed since you started editing it."
 msgstr ""
 
 #: app/views/_volumes.html:51

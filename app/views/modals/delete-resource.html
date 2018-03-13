@@ -8,8 +8,7 @@
       <h1 class="modal-title" translate>Confirm Delete</h1>
     </div>
     <div class="modal-body">
-      <p translate>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}}
-        '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>
+      <p translate>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>
 
       <p>
         <span ng-if="kind === 'DeploymentConfig'" translate>

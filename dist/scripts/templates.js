@@ -4047,8 +4047,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1>\n" +
     "{{statefulSet.metadata.name}}\n" +
     "<div class=\"pull-right dropdown\" ng-if=\"statefulSet\" ng-show=\"'statefulsets' | canIDoAny\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" translate>\n" +
-    "Actions\n" +
+    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
+    "<translate>Actions</translate>\n" +
     "<span class=\"caret\" aria-hidden=\"true\"></span>\n" +
     "</button>\n" +
     "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\">\n" +
@@ -4155,7 +4155,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
     "<h1 translate>\n" +
     "Stateful Sets\n" +
-    "\n" +
     "</h1>\n" +
     "</div>\n" +
     "<div ng-if=\"((statefulSets | hashSize) > 0) || filterWithZeroResults\" class=\"data-toolbar\">\n" +
@@ -5109,7 +5108,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>Launch the first build when the build configuration is created</translate>\n" +
     "</label>\n" +
     "</div>\n" +
-    "<h3 translate>Environment Variables <span class=\"appended-icon\">(Build and Runtime) <span class=\"help action-inline\">\n" +
+    "<h3><translate>Environment Variables</translate> <span class=\"appended-icon\"><translate>(Build and Runtime)</translate> <span class=\"help action-inline\">\n" +
     "<a href data-toggle=\"tooltip\" data-original-title=\"{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}\">\n" +
     "<i class=\"pficon pficon-help\"></i>\n" +
     "</a>\n" +
@@ -5134,7 +5133,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "</div>\n" +
     "<div>\n" +
-    "<h3 translate>Environment Variables <span class=\"appended-icon\">(Runtime only) <span class=\"help action-inline\">\n" +
+    "<h3><translate>Environment Variables</translate> <span class=\"appended-icon\"><translate>(Runtime only)</translate> <span class=\"help action-inline\">\n" +
     "<a href=\"\" data-toggle=\"tooltip\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime.\">\n" +
     "<i class=\"pficon pficon-help\"></i>\n" +
     "</a>\n" +
@@ -8266,9 +8265,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Min pods must be a whole number.\n" +
     "</span>\n" +
     "<span class=\"help-block\" ng-if=\"form.maxReplicas.$error.min\" translate>\n" +
-    "Max pods must be greater than or equal to\n" +
-    "<span ng-if=\"autoscaling.minReplicas\">min pods, which is</span>\n" +
-    "{{autoscaling.minReplicas || 1}}.\n" +
+    "Max pods must be greater than or equal to <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}}.\n" +
     "</span>\n" +
     "<span class=\"help-block\" ng-if=\"form.maxReplicas.$error.required\" translate>\n" +
     "Max pods is a required field.\n" +
@@ -10010,7 +10007,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</dl>\n" +
     "</div>\n" +
     "<div ng-if=\"!(updatedBuildConfig | isJenkinsPipelineStrategy)\" class=\"section\">\n" +
-    "<h3 class=\"with-divider\" translate>Environment Variables<span class=\"help action-inline\">\n" +
+    "<h3 class=\"with-divider\"><translate>Environment Variables</translate><span class=\"help action-inline\">\n" +
     "<a href=\"\">\n" +
     "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.\"></i>\n" +
     "</a>\n" +
@@ -10434,7 +10431,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"mar-top-lg\">\n" +
-    "<div ng-if=\"!view.advancedImageOptions\" translate>To set secrets for pulling your images from private image registries, view <a href=\"\" ng-click=\"view.advancedImageOptions = true\" translate>advanced image options.</a></div>\n" +
+    "<div ng-if=\"!view.advancedImageOptions\" translate>To set secrets for pulling your images from private image registries, view <a href=\"\" ng-click=\"view.advancedImageOptions = true\">advanced image options.</a></div>\n" +
     "<a ng-if=\"view.advancedImageOptions\" href=\"\" ng-click=\"view.advancedImageOptions = false\" translate>Hide Advanced Image Options</a>\n" +
     "</div>\n" +
     "</dl>\n" +
@@ -10652,19 +10649,22 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<breadcrumbs breadcrumbs=\"breadcrumbs\"></breadcrumbs>\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
-    "<div ng-if=\"!updated.resource\" class=\"pad-top-md\">Loading...</div>\n" +
+    "<div ng-if=\"!updated.resource\" class=\"pad-top-md\" translate>Loading...</div>\n" +
     "<div ng-if=\"updated.resource\">\n" +
-    "<h1 class=\"truncate\" translate>Edit <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}</h1>\n" +
+    "<h1 class=\"truncate\"><translate>Edit</translate> <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}</h1>\n" +
     "<parse-error error=\"error\" ng-if=\"error\"></parse-error>\n" +
     "<div ng-if=\"resourceChanged && !resourceDeleted && !updatingNow\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
-    "{{updated.resource.kind | humanizeKind | upperFirst}} <strong>{{updated.resource.metadata.name}}</strong> has changed since you started editing it. You'll need to copy any changes you've made and edit the {{updated.resource.kind | humanizeKind}} again.\n" +
+    "{{updated.resource.kind | humanizeKind | upperFirst}} <strong>{{updated.resource.metadata.name}}</strong>\n" +
+    "<translate>has changed since you started editing it.</translate>\n" +
+    "<translate>You'll need to copy any changes you've made and edit the {{updated.resource.kind | humanizeKind}} again.</translate>\n" +
     "</div>\n" +
     "<div ng-if=\"resourceDeleted\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"sr-only\" translate>Warning:</span>\n" +
-    "{{updated.resource.kind | humanizeKind | upperFirst}} <strong>{{updated.resource.metadata.name}}</strong> has been deleted since you started editing it.\n" +
+    "{{updated.resource.kind | humanizeKind | upperFirst}} <strong>{{updated.resource.metadata.name}}</strong>\n" +
+    "<translate>has been deleted since you started editing it.</translate>\n" +
     "</div>\n" +
     "<confirm-on-exit dirty=\"modified\"></confirm-on-exit>\n" +
     "<form name=\"editor.form\">\n" +
@@ -11045,9 +11045,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "<h1 class=\"modal-title\" translate>\n" +
     "Compute Resources\n" +
-    "<span class=\"page-header-link\">\n" +
-    "<a href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\"><translate>Learn More</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
-    "</span>\n" +
     "</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
@@ -12020,8 +12017,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<labels labels=\"resource.metadata.labels\" clickable=\"true\" kind=\"{{kindSelector.selected.kind | kindToResource : true }}\" project-name=\"{{resource.metadata.namespace}}\" limit=\"3\" filter-current-page=\"true\"></labels></td>\n" +
     "<td data-title=\"Actions\" class=\"text-xs-left text-right\">\n" +
     "<span uib-dropdown ng-hide=\"!(selectedResource | canI : 'update') && !(selectedResource | canI : 'delete')\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default\" data-toggle=\"dropdown\" translate>\n" +
-    "Actions\n" +
+    "<button type=\"button\" class=\"dropdown-toggle btn btn-default\" data-toggle=\"dropdown\">\n" +
+    "<translate>Actions</translate>\n" +
     "<span class=\"caret\"></span>\n" +
     "</button>\n" +
     "<ul uib-dropdown-menu class=\"dropdown-menu-right\" aria-labelledby=\"{{resource.metadata.name}}_actions\">\n" +
@@ -13342,7 +13339,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
   $templateCache.put('views/projects.html',
     "<div class=\"middle surface-shaded\">\n" +
-    "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"Create Project\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
+    "<origin-modal-popup class=\"projects-list-create-popup\" shown=\"newProjectPanelShown\" modal-title=\"{{'Create Project'|translate}}\" on-close=\"closeNewProjectPanel\" reference-element=\"popupElement\">\n" +
     "<create-project is-dialog=\"true\" redirect-action=\"onNewProject\" on-cancel=\"closeNewProjectPanel\"></create-project>\n" +
     "</origin-modal-popup>\n" +
     "<div class=\"middle-content\">\n" +
@@ -13535,27 +13532,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div>\n" +
     "<div row wrap style=\"justify-content: center\">\n" +
     "<div ng-if=\"quota.status.total.hard.cpu\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\">CPU <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\">CPU <small>Request</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used.cpu\" total=\"quota.status.total.hard.cpu\" cross-project-used=\"quota.status.total.used.cpu\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.total.hard.memory\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Request</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used.memory\" cross-project-used=\"quota.status.total.used.memory\" total=\"quota.status.total.hard.memory\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.total.hard['requests.cpu']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\">CPU <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\">CPU <small>Request</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used['requests.cpu']\" cross-project-used=\"quota.status.total.used['requests.cpu']\" total=\"quota.status.total.hard['requests.cpu']\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.total.hard['requests.memory']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Request</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used['requests.memory']\" cross-project-used=\"quota.status.total.used['requests.memory']\" total=\"quota.status.total.hard['requests.memory']\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.total.hard['limits.cpu']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\">CPU <small translate>Limit</small></h3>\n" +
+    "<h3 class=\"text-center\">CPU <small>Limit</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used['limits.cpu']\" cross-project-used=\"quota.status.total.used['limits.cpu']\" total=\"quota.status.total.hard['limits.cpu']\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.total.hard['limits.memory']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Limit</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Limit</small></h3>\n" +
     "<quota-usage-chart height=\"240\" used=\"namespaceUsageByClusterQuota[quota.metadata.name].used['limits.memory']\" cross-project-used=\"quota.status.total.used['limits.memory']\" total=\"quota.status.total.hard['limits.memory']\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13622,23 +13619,23 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<quota-usage-chart used=\"quota.status.used.cpu\" total=\"quota.status.hard.cpu\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div column ng-if=\"quota.status.hard.memory\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Request</small></h3>\n" +
     "<quota-usage-chart used=\"quota.status.used.memory\" total=\"quota.status.hard.memory\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div column ng-if=\"quota.status.hard['requests.cpu']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\">CPU <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\">CPU <small>Request</small></h3>\n" +
     "<quota-usage-chart used=\"quota.status.used['requests.cpu']\" total=\"quota.status.hard['requests.cpu']\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div column ng-if=\"quota.status.hard['requests.memory']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Request</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Request</small></h3>\n" +
     "<quota-usage-chart used=\"quota.status.used['requests.memory']\" total=\"quota.status.hard['requests.memory']\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.hard['limits.cpu']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\">CPU <small translate>Limit</small></h3>\n" +
+    "<h3 class=\"text-center\">CPU <small>Limit</small></h3>\n" +
     "<quota-usage-chart used=\"quota.status.used['limits.cpu']\" total=\"quota.status.hard['limits.cpu']\" type=\"cpu\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "<div ng-if=\"quota.status.hard['limits.memory']\" class=\"mar-lg\">\n" +
-    "<h3 class=\"text-center\" translate>Memory <small translate>Limit</small></h3>\n" +
+    "<h3 class=\"text-center\" translate>Memory <small>Limit</small></h3>\n" +
     "<quota-usage-chart used=\"quota.status.used['limits.memory']\" total=\"quota.status.hard['limits.memory']\" type=\"memory\" class=\"quota-chart\"></quota-usage-chart>\n" +
     "</div>\n" +
     "</div>\n" +

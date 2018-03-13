@@ -48,13 +48,14 @@ hawtioPluginLoader.registerPreBootstrapTask(function(next) {
   var k8sBaseURL = protocol + window.OPENSHIFT_CONFIG.api.k8s.hostPort + window.OPENSHIFT_CONFIG.api.k8s.prefix;
   var k8sDeferred = $.get(k8sBaseURL + "/v1")
     .done(function(data) {
-      api.k8s.v1 = _.indexBy(data.resources, 'name');
+      api.k8s.v1 =  _.keyBy(data.resources, 'name');
     })
     .fail(function(data, textStatus, jqXHR) {
       API_DISCOVERY_ERRORS.push({
         data: data,
         textStatus: textStatus,
-        xhr: jqXHR
+        xhr: jqXHR,
+        fatal: true
       });
     });
 
@@ -62,13 +63,14 @@ hawtioPluginLoader.registerPreBootstrapTask(function(next) {
   var osBaseURL = protocol + window.OPENSHIFT_CONFIG.api.openshift.hostPort + window.OPENSHIFT_CONFIG.api.openshift.prefix;
   var osDeferred = $.get(osBaseURL + "/v1")
     .done(function(data) {
-      api.openshift.v1 = _.indexBy(data.resources, 'name');
+      api.openshift.v1 =  _.keyBy(data.resources, 'name');
     })
     .fail(function(data, textStatus, jqXHR) {
       API_DISCOVERY_ERRORS.push({
         data: data,
         textStatus: textStatus,
-        xhr: jqXHR
+        xhr: jqXHR,
+        fatal: true
       });
     });
 
@@ -110,7 +112,7 @@ hawtioPluginLoader.registerPreBootstrapTask(function(next) {
         };
         apisDeferredVersions.push($.get(baseURL + "/" + apiVersion.groupVersion)
           .done(function(data) {
-            group.versions[versionStr].resources = _.indexBy(data.resources, 'name');
+            group.versions[versionStr].resources =  _.keyBy(data.resources, 'name');
           })
           .fail(function(data, textStatus, jqXHR) {
             API_DISCOVERY_ERRORS.push({
@@ -128,26 +130,10 @@ hawtioPluginLoader.registerPreBootstrapTask(function(next) {
       API_DISCOVERY_ERRORS.push({
         data: data,
         textStatus: textStatus,
-        xhr: jqXHR
+        xhr: jqXHR,
+        fatal: true
       });
     });
-
-  // Additional servers can be defined for debugging and prototyping against new servers not yet served by the aggregator
-  // There can not be any conflicts in the groups/resources from these API servers.
-  var additionalDeferreds = [];
-  _.each(window.OPENSHIFT_CONFIG.additionalServers, function(server) {
-   var baseURL = (server.protocol ? (server.protocol + "://") : protocol) + server.hostPort + server.prefix;
-   additionalDeferreds.push($.get(baseURL)
-    .then(_.partial(getGroups, baseURL, server), function(data, textStatus, jqXHR) {
-      if (server.required !== false) {
-        API_DISCOVERY_ERRORS.push({
-          data: data,
-          textStatus: textStatus,
-          xhr: jqXHR
-        });
-      }
-    }));
-  });
 
   // Will be called on success or failure
   var discoveryFinished = function() {
@@ -164,7 +150,6 @@ hawtioPluginLoader.registerPreBootstrapTask(function(next) {
     osDeferred,
     apisDeferred
   ];
-  allDeferreds = allDeferreds.concat(additionalDeferreds);
   $.when.apply(this, allDeferreds).always(discoveryFinished);
 });
 
@@ -226,7 +211,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "            <translate>Do not bind at this time.</translate>\n" +
     "          </label>\n" +
     "          <div class=\"bind-description\">\n" +
-    "          <span class=\"help-block service-instance-name\">\n" +
+    "          <span class=\"help-block service-instance-name\" translate>\n" +
     "            Bindings can be created later from within a project.\n" +
     "          </span>\n" +
     "          </div>\n" +
@@ -234,12 +219,12 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "        <div ng-repeat=\"serviceInstance in ctrl.bindableServiceInstances\" class=\"bind-service-selection\">\n" +
     "          <label>\n" +
     "            <input type=\"radio\" ng-model=\"ctrl.serviceToBind\" ng-value=\"serviceInstance\">\n" +
-    "            {{ctrl.serviceClasses[serviceInstance.spec.serviceClassName].externalMetadata.displayName || serviceInstance.spec.serviceClassName}}\n" +
+    "            {{ctrl.serviceClasses[serviceInstance.spec.clusterServiceClassRef.name].spec.externalMetadata.displayName || serviceInstance.spec.clusterServiceClassRef.name}}\n" +
     "          </label>\n" +
     "          <div class=\"bind-description\">\n" +
     "            <span class=\"pficon pficon-info\"\n" +
     "                  ng-if=\"!(serviceInstance | isServiceInstanceReady)\"\n" +
-    "                  data-content=\"{{'This service is not yet ready. If you bind to it, then the binding will be pending until the service is ready.'|translate}}\"\n" +
+    "                  data-content=\"This service is not yet ready. If you bind to it, then the binding will be pending until the service is ready.\"\n" +
     "                  data-toggle=\"popover\"\n" +
     "                  data-trigger=\"hover\">\n" +
     "            </span>\n" +
@@ -262,52 +247,66 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
 
 
   $templateCache.put('src/components/binding/bindResults.html',
-    "<div ng-if=\"!ctrl.error\">\n" +
-    "  <div ng-if=\"!(ctrl.binding | isBindingReady)\" class=\"bind-status\" ng-class=\"{'text-center': !ctrl.progressInline, 'show-progress': !ctrl.progressInline}\">\n" +
-    "    <div class=\"spinner\" ng-class=\"{'spinner-sm': ctrl.progressInline, 'spinner-inline': ctrl.progressInline, 'spinner-lg': !ctrl.progressInline}\" aria-hidden=\"true\"></div>\n" +
-    "    <h3 class=\"bind-message\">\n" +
-    "      <span class=\"sr-only\" translate>Pending</span>\n" +
-    "      <div class=\"bind-pending-message\" ng-class=\"{'progress-inline': ctrl.progressInline}\" translate>The binding was created but is not ready yet.</div>\n" +
-    "    </h3>\n" +
+    "<div ng-if=\"!ctrl.error && !(ctrl.binding | isBindingFailed)\">\n" +
+    "  <div ng-if=\"ctrl.binding && !(ctrl.binding | isBindingReady)\" class=\"results-status\">\n" +
+    "    <span class=\"fa fa-clock-o text-muted\" aria-hidden=\"true\"></span>\n" +
+    "    <span class=\"sr-only\">Pending</span>\n" +
+    "    <div class=\"results-message\">\n" +
+    "      <h3 translate>\n" +
+    "        The binding is being created.\n" +
+    "      </h3>\n" +
+    "      <p class=\"results-message-details\" translate>This may take several minutes.</p>\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "  <div ng-if=\"(ctrl.binding | isBindingReady)\">\n" +
-    "    <div class=\"bind-status\">\n" +
+    "    <div class=\"results-status\">\n" +
     "      <span class=\"pficon pficon-ok\" aria-hidden=\"true\"></span>\n" +
     "      <span class=\"sr-only\" translate>Success</span>\n" +
-    "      <h3 class=\"bind-message\" translate>\n" +
-    "        <strong>{{ctrl.serviceToBind}}</strong> <span>has been bound</span> <span ng-if=\"ctrl.bindType === 'application'\"> to <strong>{{ctrl.applicationToBind}}</strong> successfully</span>\n" +
-    "      </h3>\n" +
+    "      <div class=\"results-message\">\n" +
+    "        <h3>\n" +
+    "          <span ng-if=\"ctrl.bindType === 'application'\" translate>\n" +
+    "            <strong>{{ctrl.serviceToBind}}</strong> has been bound to <strong>{{ctrl.applicationToBind}}</strong> successfully.\n" +
+    "          </span>\n" +
+    "          <span ng-if=\"ctrl.bindType !== 'application'\" translate>\n" +
+    "            The binding <strong>{{ctrl.binding.metadata.name}}</strong> has been created successfully.\n" +
+    "          </span>\n" +
+    "        </h3>\n" +
+    "        <p class=\"results-message-details\">\n" +
+    "          <translate>The binding operation created the secret</translate>\n" +
+    "          <a ng-if=\"ctrl.secretHref\" ng-href=\"{{ctrl.secretHref}}\">{{ctrl.binding.spec.secretName}}</a>\n" +
+    "          <span ng-if=\"!ctrl.secretHref\">{{ctrl.binding.spec.secretName}}</span>\n" +
+    "          <translate>that you may need to reference in your application.</translate>\n" +
+    "          <span ng-if=\"ctrl.showPodPresets\" translate>Its data will be available to your application as environment variables.</span>\n" +
+    "        </p>\n" +
+    "      </div>\n" +
     "    </div>\n" +
-    "    <div class=\"sub-title\">\n" +
-    "      <translate>The binding operation created the secret</translate>\n" +
-    "      <a ng-if=\"ctrl.secretHref && 'secrets' | canI : 'list'\"\n" +
-    "         ng-href=\"{{ctrl.secretHref}}\">{{ctrl.binding.spec.secretName}}</a>\n" +
-    "      <span ng-if=\"!ctrl.secretHref || !('secrets' | canI : 'list')\">{{ctrl.binding.spec.secretName}}</span>\n" +
-    "      <translate>that you may need to reference in your application.</translate>\n" +
-    "      <span ng-if=\"ctrl.showPodPresets\" translate>Its data will be available to your application as environment variables.</span>\n" +
-    "    </div>\n" +
-    "    <div class=\"alert alert-info bind-info\">\n" +
+    "    <div class=\"alert alert-info results-info\" ng-if=\"ctrl.bindType === 'application'\">\n" +
     "      <span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
     "      <span class=\"sr-only\" translate>Info</span>\n" +
     "      <translate>The binding secret will only be available to new pods. You will need to redeploy your application.</translate>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
-    "<div ng-if=\"ctrl.error\">\n" +
-    "  <div class=\"bind-status\">\n" +
+    "<div ng-if=\"ctrl.error || (ctrl.binding | isBindingFailed)\">\n" +
+    "  <div class=\"results-status\">\n" +
     "    <span class=\"pficon pficon-error-circle-o text-danger\" aria-hidden=\"true\"></span>\n" +
     "    <span class=\"sr-only\" translate>Error</span>\n" +
-    "    <h3 class=\"bind-message\">\n" +
-    "      <span translate>Binding Failed</span>\n" +
-    "    </h3>\n" +
+    "    <div class=\"results-message\">\n" +
+    "      <h3 translate>\n" +
+    "        The binding could not be created.\n" +
+    "      </h3>\n" +
+    "    </div>\n" +
     "  </div>\n" +
-    "  <div class=\"sub-title\">\n" +
+    "  <div ng-if=\"ctrl.error\" class=\"sub-title\">\n" +
     "    <span ng-if=\"ctrl.error.data.message\">\n" +
     "      {{ctrl.error.data.message | upperFirst}}\n" +
     "    </span>\n" +
     "    <span ng-if=\"!ctrl.error.data.message\" translate>\n" +
     "      An error occurred creating the binding.\n" +
     "    </span>\n" +
+    "  </div>\n" +
+    "  <div ng-if=\"!ctrl.error\" class=\"sub-title\">\n" +
+    "    {{ctrl.binding | bindingFailedMessage}}\n" +
     "  </div>\n" +
     "</div>\n"
   );
@@ -317,21 +316,21 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "<div class=\"bind-form\">\n" +
     "  <form>\n" +
     "    <div class=\"form-group\">\n" +
-    "        <label>\n" +
-    "          <h3><translate>Create a binding for</translate> <strong>{{ctrl.serviceClass.externalMetadata.displayName || ctrl.serviceClassName}}</strong></h3>\n" +
-    "        </label>\n" +
-    "        <span class=\"help-block\" translate>Bindings create a secret containing the necessary information for an application to use this service.</span>\n" +
+    "      <label>\n" +
+    "        <h3><translate>Create a binding for</translate> <strong>{{ctrl.serviceClass.spec.externalMetadata.displayName || ctrl.serviceClass.spec.externalName}}</strong></h3>\n" +
+    "      </label>\n" +
+    "      <span class=\"help-block\" translate>Bindings create a secret containing the necessary information for an application to use this service.</span>\n" +
     "    </div>\n" +
     "  </form>\n" +
     "\n" +
-    "  <form name=\"ctrl.formName\" class=\"mar-bottom-lg\">\n" +
+    "  <form ng-if=\"ctrl.allowNoBinding || ctrl.showPodPresets\" name=\"ctrl.formName\" class=\"mar-bottom-lg\">\n" +
     "    <fieldset>\n" +
     "      <div class=\"radio\">\n" +
-    "        <label class=\"bind-choice\" ng-disabled=\"!ctrl.applications.length\">\n" +
+    "        <label ng-if=\"ctrl.showPodPresets\" class=\"bind-choice\" ng-disabled=\"!ctrl.applications.length\">\n" +
     "          <input type=\"radio\" ng-model=\"ctrl.bindType\" value=\"application\" ng-disabled=\"!ctrl.applications.length\">\n" +
     "          <translate>Create a secret and inject it into an application</translate>\n" +
     "        </label>\n" +
-    "        <div class=\"application-select\">\n" +
+    "        <div ng-if=\"ctrl.showPodPresets\" class=\"application-select\">\n" +
     "          <ui-select ng-model=\"ctrl.appToBind\"\n" +
     "                     ng-disabled=\"ctrl.bindType !== 'application'\"\n" +
     "                     ng-required=\"ctrl.bindType === 'application'\">\n" +
@@ -350,7 +349,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "        </div>\n" +
     "        <label class=\"bind-choice\">\n" +
     "          <input type=\"radio\" ng-model=\"ctrl.bindType\" value=\"secret-only\">\n" +
-    "          Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later\n" +
+    "          <translate>Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later</translate>\n" +
     "        </label>\n" +
     "        <div class=\"help-block bind-description\" translate>\n" +
     "          Secrets can be referenced later from an application.\n" +
@@ -359,8 +358,8 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "          <input type=\"radio\" ng-model=\"ctrl.bindType\" value=\"none\">\n" +
     "          <translate>Do not bind at this time</translate>\n" +
     "        </label>\n" +
-    "        <div ng-if=\"ctrl.allowNoBinding\" class=\"help-block bind-description\">\n" +
-    "          <translate>Bindings can be created later from within a project.</translate>\n" +
+    "        <div ng-if=\"ctrl.allowNoBinding\" class=\"help-block bind-description\" translate>\n" +
+    "          Bindings can be created later from within a project.\n" +
     "        </div>\n" +
     "      </div>\n" +
     "    </fieldset>\n" +
@@ -375,10 +374,10 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "    <div class=\"form-group\">\n" +
     "      <label for=\"name\" class=\"required\" translate>Name</label>\n" +
     "      <span ng-class=\"{'has-error': (createProjectForm.name.$error.pattern && createProjectForm.name.$touched) || nameTaken}\">\n" +
-    "        <input class=\"form-control input-lg\"\n" +
+    "        <input class=\"form-control\"\n" +
     "            name=\"name\"\n" +
     "            id=\"name\"\n" +
-    "            placeholder=\"{{'my-project'|translate}}\"\n" +
+    "            placeholder=\"my-project\"\n" +
     "            type=\"text\"\n" +
     "            required\n" +
     "            take-focus\n" +
@@ -420,7 +419,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"displayName\" translate>Display Name</label>\n" +
-    "      <input class=\"form-control input-lg\"\n" +
+    "      <input class=\"form-control\"\n" +
     "          name=\"displayName\"\n" +
     "          id=\"displayName\"\n" +
     "          placeholder=\"{{'My Project'|translate}}\"\n" +
@@ -430,7 +429,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"description\" translate>Description</label>\n" +
-    "      <textarea class=\"form-control input-lg\"\n" +
+    "      <textarea class=\"form-control\"\n" +
     "          name=\"description\"\n" +
     "          id=\"description\"\n" +
     "          placeholder=\"{{'A short description.'|translate}}\"\n" +
@@ -439,7 +438,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "\n" +
     "    <div class=\"button-group\">\n" +
     "      <button type=\"submit\"\n" +
-    "          class=\"btn btn-primary btn-lg\"\n" +
+    "          class=\"btn btn-primary\"\n" +
     "          ng-class=\"{'dialog-btn': isDialog}\"\n" +
     "          ng-click=\"createProject()\"\n" +
     "          ng-disabled=\"createProjectForm.$invalid || nameTaken || disableInputs\"\n" +
@@ -447,7 +446,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "        Create\n" +
     "      </button>\n" +
     "      <button\n" +
-    "          class=\"btn btn-default btn-lg\"\n" +
+    "          class=\"btn btn-default\"\n" +
     "          ng-class=\"{'dialog-btn': isDialog}\"\n" +
     "          ng-click=\"cancelCreateProject()\" translate>\n" +
     "        Cancel\n" +
@@ -468,7 +467,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "     ng-attr-aria-disabled=\"{{disableDelete ? 'true' : undefined}}\"\n" +
     "     ng-class=\"{ 'disabled-link': disableDelete }\"\n" +
     "    ><i class=\"fa fa-trash-o\" aria-hidden=\"true\"\n" +
-    "  ></i><span class=\"sr-only\"><translate>Delete Project</translate> {{projectName}}</span></a>\n" +
+    "    ></i><span class=\"sr-only\" translate>Delete Project {{projectName}}</span></a>\n" +
     "</div>\n"
   );
 
@@ -477,10 +476,15 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "<div class=\"delete-resource-modal\">\n" +
     "  <!-- Use a form so that the enter key submits when typing a project name to confirm. -->\n" +
     "  <form>\n" +
+    "    <div class=\"modal-header\">\n" +
+    "      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
+    "        <span class=\"pficon pficon-close\"></span>\n" +
+    "      </button>\n" +
+    "      <h1 class=\"modal-title\" translate>Are you sure you want to delete the project '<strong>{{project | displayName}}</strong>'?</h1>\n" +
+    "    </div>\n" +
     "    <div class=\"modal-body\">\n" +
-    "      <h1 translate>Are you sure you want to delete the project '<strong>{{displayName ? displayName : projectName}}</strong>'?</h1>\n" +
     "      <p translate>\n" +
-    "        This will <strong>delete all resources</strong> associated with the project {{displayName ? displayName : projectName}} and <strong>cannot be undone</strong>.  Make sure this is something you really want to do!\n" +
+    "        This will <strong>delete all resources</strong> associated with the project {{project | displayName}} and <strong>cannot be undone</strong>.  Make sure this is something you really want to do!\n" +
     "      </p>\n" +
     "      <div ng-show=\"typeNameToConfirm\">\n" +
     "        <p translate>Type the name of the project to confirm.</p>\n" +
@@ -499,8 +503,8 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "      </div>\n" +
     "    </div>\n" +
     "    <div class=\"modal-footer\">\n" +
-    "      <button ng-disabled=\"typeNameToConfirm && confirmName !== projectName && confirmName !== displayName\" class=\"btn btn-lg btn-danger\" type=\"submit\" ng-click=\"delete();\" translate>Delete</button>\n" +
-    "      <button class=\"btn btn-lg btn-default\" type=\"button\" ng-click=\"cancel();\" translate>Cancel</button>\n" +
+    "      <button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
+    "      <button ng-disabled=\"typeNameToConfirm && confirmName !== project.metadata.name && confirmName !== (project | displayName : false)\" class=\"btn btn-danger\" type=\"submit\" ng-click=\"delete()\" translate>Delete</button>\n" +
     "    </div>\n" +
     "  </form>\n" +
     "</div>\n"
@@ -513,6 +517,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "   role=\"button\"\n" +
     "   ng-attr-aria-disabled=\"{{disableDelete ? 'true' : undefined}}\"\n" +
     "   ng-class=\"{ 'disabled-link': disableDelete }\"\n" +
+    "   translate\n" +
     ">{{label || 'Delete'}}</a>\n"
   );
 
@@ -522,7 +527,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "  <fieldset ng-disabled=\"disableInputs\">\n" +
     "    <div class=\"form-group\">\n" +
     "      <label for=\"displayName\" translate>Display Name</label>\n" +
-    "      <input class=\"form-control input-lg\"\n" +
+    "      <input class=\"form-control\"\n" +
     "             name=\"displayName\"\n" +
     "             id=\"displayName\"\n" +
     "             placeholder=\"{{'My Project'|translate}}\"\n" +
@@ -531,8 +536,8 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "    </div>\n" +
     "\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"description\" translate>Description</label>\n" +
-    "                    <textarea class=\"form-control input-lg\"\n" +
+    "      <label for=\"description\">Description</label>\n" +
+    "                    <textarea class=\"form-control\"\n" +
     "                              name=\"description\"\n" +
     "                              id=\"description\"\n" +
     "                              placeholder=\"{{'A short description.'|translate}}\"\n" +
@@ -541,15 +546,15 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "\n" +
     "    <div class=\"button-group\">\n" +
     "      <button type=\"submit\"\n" +
-    "              class=\"btn btn-primary btn-lg\"\n" +
+    "              class=\"btn btn-primary\"\n" +
     "              ng-class=\"{'dialog-btn': isDialog}\"\n" +
     "              ng-click=\"update()\"\n" +
     "              ng-disabled=\"editProjectForm.$invalid || disableInputs\"\n" +
     "              value=\"\">{{submitButtonLabel}}</button>\n" +
     "      <button\n" +
-    "          class=\"btn btn-default btn-lg\"\n" +
+    "          class=\"btn btn-default\"\n" +
     "          ng-class=\"{'dialog-btn': isDialog}\"\n" +
-    "          ng-click=\"cancelEditProject()\">\n" +
+    "          ng-click=\"cancelEditProject()\" translate>\n" +
     "        Cancel\n" +
     "      </button>\n" +
     "    </div>\n" +
@@ -558,9 +563,25 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
   );
 
 
+  $templateCache.put('src/components/origin-modal-popup/origin-modal-popup.html',
+    "<div class=\"origin-modal-popup tile-click-prevent\" ng-if=\"$ctrl.shown\" ng-style=\"$ctrl.positionStyle\"\n" +
+    "     ng-class=\"{'position-above': $ctrl.showAbove, 'position-left': $ctrl.showLeft}\">\n" +
+    "  <h4 class=\"origin-modal-popup-title\">\n" +
+    "    {{$ctrl.modalTitle}}\n" +
+    "  </h4>\n" +
+    "  <div ng-transclude></div>\n" +
+    "  <a href=\"\" class=\"origin-modal-popup-close\" ng-click=\"$ctrl.onClose()\">\n" +
+    "    <span class=\"pficon pficon-close\"></span>\n" +
+    "  </a>\n" +
+    "</div>\n"
+  );
+
+
   $templateCache.put('src/components/toast-notifications/toast-notifications.html',
     "<div class=\"toast-notifications-list-pf\">\n" +
-    "  <div ng-repeat=\"(notificationID, notification) in notifications track by (notificationID + (notification.message || notification.details))\" ng-if=\"!notification.hidden || notification.isHover\"\n" +
+    "  <div\n" +
+    "    ng-repeat=\"(notificationID, notification) in notifications track by notification.trackByID\"\n" +
+    "    ng-if=\"!notification.hidden || notification.isHover\"\n" +
     "       ng-mouseenter=\"setHover(notification, true)\" ng-mouseleave=\"setHover(notification, false)\">\n" +
     "    <div class=\"toast-pf alert {{notification.type | alertStatus}}\" ng-class=\"{'alert-dismissable': !hideCloseButton}\">\n" +
     "      <button ng-if=\"!hideCloseButton\" type=\"button\" class=\"close\" ng-click=\"close(notification)\">\n" +
@@ -570,7 +591,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "      <span class=\"{{notification.type | alertIcon}}\" aria-hidden=\"true\"></span>\n" +
     "      <span class=\"sr-only\">{{notification.type}}</span>\n" +
     "      <span class=\"toast-notification-message\" ng-if=\"notification.message\">{{notification.message}}</span>\n" +
-    "      <span ng-if=\"notification.details\">\n" +
+    "      <div ng-if=\"notification.details\" class=\"toast-notification-details\">\n" +
     "        <truncate-long-text\n" +
     "          limit=\"200\"\n" +
     "          content=\"notification.details\"\n" +
@@ -578,7 +599,7 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "          expandable=\"true\"\n" +
     "          hide-collapse=\"true\">\n" +
     "        </truncate-long-text>\n" +
-    "      </span>\n" +
+    "      </div>\n" +
     "      <span ng-repeat=\"link in notification.links\">\n" +
     "        <a ng-if=\"!link.href\" href=\"\" ng-click=\"onClick(notification, link)\" role=\"button\">{{link.label}}</a>\n" +
     "        <a ng-if=\"link.href\" ng-href=\"{{link.href}}\" ng-attr-target=\"{{link.target}}\">{{link.label}}</a>\n" +
@@ -595,24 +616,29 @@ hawtioPluginLoader.addModule('openshiftCommonUI');
     "  Do not remove class `truncated-content` (here or below) even though it's not\n" +
     "  styled directly in origin-web-common.  `truncated-content` is used by\n" +
     "  origin-web-console in certain contexts.\n" +
+    "\n" +
+    "  highlightKeywords and linkify are mutually exclusive options\n" +
     "-->\n" +
-    "<span ng-if=\"!truncated\" ng-bind-html=\"content | highlightKeywords : keywords\" class=\"truncated-content\"></span>\n" +
+    "<span ng-if=\"!truncated\">\n" +
+    "  <span ng-if=\"!linkify || (highlightKeywords | size)\" ng-bind-html=\"content | highlightKeywords : keywords\" class=\"truncated-content\"></span>\n" +
+    "  <span ng-if=\"linkify && !(highlightKeywords | size)\" ng-bind-html=\"content | linkify : '_blank'\" class=\"truncated-content\"></span>\n" +
+    "</span>\n" +
+    "<!-- To avoid truncating in middle of a link, we only optionally apply linkify to expanded content -->\n" +
     "<span ng-if=\"truncated\">\n" +
     "  <span ng-if=\"!toggles.expanded\">\n" +
     "    <span ng-attr-title=\"{{content}}\" class=\"truncation-block\">\n" +
     "      <span ng-bind-html=\"truncatedContent | highlightKeywords : keywords\" class=\"truncated-content\"></span>&hellip;\n" +
     "    </span>\n" +
-    "    <a ng-if=\"expandable\" href=\"\" ng-click=\"toggles.expanded = true\" class=\"nowrap\" translate>See All</a>\n" +
+    "    <a ng-if=\"expandable\" href=\"\" ng-click=\"toggles.expanded = true\" class=\"truncation-expand-link\" translate>See All</a>\n" +
     "  </span>\n" +
     "  <span ng-if=\"toggles.expanded\">\n" +
-    "    <div ng-if=\"prettifyJson\" class=\"well\">\n" +
-    "      <span ng-if=\"!hideCollapse\" class=\"pull-right\" style=\"margin-top: -10px;\"><a href=\"\" ng-click=\"toggles.expanded = false\" class=\"truncation-collapse-link\" translate>Collapse</a></span>\n" +
-    "      <span ng-bind-html=\"content | prettifyJSON | highlightKeywords : keywords\" class=\"pretty-json truncated-content\"></span>\n" +
-    "    </div>\n" +
-    "    <span ng-if=\"!prettifyJson\">\n" +
-    "      <span ng-if=\"!hideCollapse\" class=\"pull-right\"><a href=\"\" ng-click=\"toggles.expanded = false\" class=\"truncation-collapse-link\" translate>Collapse</a></span>\n" +
-    "      <span ng-bind-html=\"content | highlightKeywords : keywords\" class=\"truncated-content\"></span>\n" +
-    "    </span>\n" +
+    "    <span ng-if=\"!linkify || (highlightKeywords | size)\"\n" +
+    "          ng-bind-html=\"content | highlightKeywords : keywords\"\n" +
+    "          class=\"truncated-content\"></span>\n" +
+    "    <span ng-if=\"linkify && !(highlightKeywords | size)\"\n" +
+    "          ng-bind-html=\"content | linkify : '_blank'\"\n" +
+    "          class=\"truncated-content\"></span>\n" +
+    "    <a href=\"\" ng-if=\"!hideCollapse\" ng-click=\"toggles.expanded = false\" class=\"truncation-collapse-link\" translate>Collapse</a>\n" +
     "  </span>\n" +
     "</span>\n"
   );
@@ -652,36 +678,21 @@ angular.module('openshiftCommonUI').component('bindResults', {
   bindings: {
     error: '<',
     binding: '<',
-    progressInline: '@',
     serviceToBind: '<',
     bindType: '@',
     applicationToBind: '<',
     showPodPresets: '<',
     secretHref: '<'
   },
-  templateUrl: 'src/components/binding/bindResults.html',
-  controller: function() {
-    var ctrl = this;
-    ctrl.$onInit = function () {
-      ctrl.progressInline = ctrl.progressInline === 'true';
-    };
-
-    ctrl.$onChanges = function(onChangesObj) {
-      if (onChangesObj.progressInline) {
-        ctrl.progressInline = ctrl.progressInline === 'true';
-      }
-    }
-  }
+  templateUrl: 'src/components/binding/bindResults.html'
 });
-
-
 ;'use strict';
 
 angular.module('openshiftCommonUI').component('bindServiceForm', {
   controllerAs: 'ctrl',
   bindings: {
     serviceClass: '<',
-    serviceClassName: '<',
+    showPodPresets: '<',
     applications: '<',
     formName: '=',
     allowNoBinding: '<?',
@@ -712,7 +723,7 @@ angular.module("openshiftCommonUI")
         isDialog: '@'
       },
       templateUrl: 'src/components/create-project/createProject.html',
-      controller: ["$scope", "$filter", "$location", "DataService", "NotificationsService", "displayNameFilter", function($scope, $filter, $location, DataService, NotificationsService, displayNameFilter) {
+      controller: ["$scope", "$location", "ProjectsService", "NotificationsService", "displayNameFilter", "Logger", function($scope, $location, ProjectsService, NotificationsService, displayNameFilter, Logger) {
         if(!($scope.submitButtonLabel)) {
           $scope.submitButtonLabel = 'Create';
         }
@@ -726,27 +737,20 @@ angular.module("openshiftCommonUI")
         $scope.createProject = function() {
           $scope.disableInputs = true;
           if ($scope.createProjectForm.$valid) {
-            DataService
-              .create('projectrequests', null, {
-                apiVersion: "v1",
-                kind: "ProjectRequest",
-                metadata: {
-                  name: $scope.name
-                },
-                displayName: $scope.displayName,
-                description: $scope.description
-              }, $scope)
-              .then(function(data) {
+            var displayName = $scope.displayName || $scope.name;
+
+            ProjectsService.create($scope.name, $scope.displayName, $scope.description)
+              .then(function(project) {
                 // angular is actually wrapping the redirect action
                 var cb = $scope.redirectAction();
                 if (cb) {
-                  cb(encodeURIComponent(data.metadata.name));
+                  cb(encodeURIComponent(project.metadata.name));
                 } else {
-                  $location.path("project/" + encodeURIComponent(data.metadata.name) + "/create");
+                  $location.path("project/" + encodeURIComponent(project.metadata.name) + "/create");
                 }
                 NotificationsService.addNotification({
                   type: "success",
-                  message: "Project \'"  + displayNameFilter(data) + "\' was successfully created."
+                  message: "Project \'"  + displayNameFilter(project) + "\' was successfully created."
                 });
               }, function(result) {
                 $scope.disableInputs = false;
@@ -754,12 +758,12 @@ angular.module("openshiftCommonUI")
                 if (data.reason === 'AlreadyExists') {
                   $scope.nameTaken = true;
                 } else {
-                  var msg = data.message || 'An error occurred creating the project.';
+                  var msg = data.message || "An error occurred creating project \'" + displayName + "\'.";
                   NotificationsService.addNotification({
-                    id: 'create-project-error',
                     type: 'error',
                     message: msg
                   });
+                  Logger.error("Project \'" + displayName + "\' could not be created.", result);
                 }
               });
           }
@@ -777,20 +781,18 @@ angular.module("openshiftCommonUI")
         };
 
         $scope.$on("$destroy", hideErrorNotifications);
-      }],
+      }]
     };
   }]);
 ;'use strict';
 
 angular.module("openshiftCommonUI")
-  .directive("deleteProject", ["$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "DataService", "NotificationsService", "Logger", function ($uibModal, $location, $filter, $q, hashSizeFilter, APIService, DataService, NotificationsService, Logger) {
+  .directive("deleteProject", ["$uibModal", "$location", "$filter", "$q", "hashSizeFilter", "APIService", "NotificationsService", "ProjectsService", "Logger", function($uibModal, $location, $filter, $q, hashSizeFilter, APIService, NotificationsService, ProjectsService, Logger) {
     return {
       restrict: "E",
       scope: {
-        // The name of project to delete
-        projectName: "@",
-        // Optional display name of the project to delete.
-        displayName: "@",
+        // The project to delete
+        project: "=",
         // Set to true to disable the delete button.
         disableDelete: "=?",
         // Force the user to enter the name before we'll delete the project.
@@ -816,10 +818,7 @@ angular.module("openshiftCommonUI")
       // Replace so ".dropdown-menu > li > a" styles are applied.
       replace: true,
       link: function(scope, element, attrs) {
-        var showAlert = function(alert) {
-          NotificationsService.addNotification(alert.data);
-        };
-
+        var displayName = $filter('displayName');
         var navigateToList = function() {
           if (scope.stayOnCurrentPage) {
             return;
@@ -846,7 +845,6 @@ angular.module("openshiftCommonUI")
 
           // opening the modal with settings scope as parent
           var modalInstance = $uibModal.open({
-            animation: true,
             templateUrl: 'src/components/delete-project/delete-project-modal.html',
             controller: 'DeleteProjectModalController',
             scope: scope
@@ -854,20 +852,12 @@ angular.module("openshiftCommonUI")
 
           modalInstance.result.then(function() {
             // upon clicking delete button, delete resource and send alert
-            var projectName = scope.projectName;
-            var formattedResource = "Project \'"  + scope.displayName + "\'";
-            var context = {};
+            var formattedResource = "Project \'"  + displayName(scope.project) + "\'";
 
-            DataService.delete({
-              resource: APIService.kindToResource("Project")
-            }, projectName, context)
-            .then(function() {
-              showAlert({
-                name: projectName,
-                data: {
-                  type: "success",
-                  message: formattedResource + " was marked for deletion."
-                }
+            ProjectsService.delete(scope.project).then(function() {
+              NotificationsService.addNotification({
+                type: "success",
+                message: formattedResource + " was marked for deletion."
               });
 
               if (scope.success) {
@@ -878,12 +868,11 @@ angular.module("openshiftCommonUI")
             })
             .catch(function(err) {
               // called if failure to delete
-              var alert = {
+              NotificationsService.addNotification({
                 type: "error",
                 message: formattedResource + " could not be deleted.",
                 details: $filter('getErrorDetails')(err)
-              };
-              NotificationsService.addNotification(alert);
+              });
               Logger.error(formattedResource + " could not be deleted.", err);
             });
           });
@@ -891,7 +880,6 @@ angular.module("openshiftCommonUI")
       }
     };
   }]);
-
 ;'use strict';
 /* jshint unused: false */
 
@@ -918,14 +906,20 @@ angular.module("openshiftCommonUI")
       restrict: 'E',
       scope: {
         project: '=',
-        alerts: '=',
         submitButtonLabel: '@',
         redirectAction: '&',
         onCancel: '&',
         isDialog: '@'
       },
       templateUrl: 'src/components/edit-project/editProject.html',
-      controller: ["$scope", "$filter", "$location", "DataService", "NotificationsService", "annotationNameFilter", "displayNameFilter", function($scope, $filter, $location, DataService, NotificationsService, annotationNameFilter, displayNameFilter) {
+      controller: ["$scope", "$filter", "$location", "Logger", "NotificationsService", "ProjectsService", "annotationNameFilter", "displayNameFilter", function($scope,
+                           $filter,
+                           $location,
+                           Logger,
+                           NotificationsService,
+                           ProjectsService,
+                           annotationNameFilter,
+                           displayNameFilter) {
         if(!($scope.submitButtonLabel)) {
           $scope.submitButtonLabel = 'Save';
         }
@@ -962,23 +956,15 @@ angular.module("openshiftCommonUI")
           return resource;
         };
 
-        var showAlert = function(alert) {
-          $scope.alerts["update"] = alert;
-          NotificationsService.addNotification(alert);
-        };
-
         $scope.editableFields = editableFields($scope.project);
 
         $scope.update = function() {
           $scope.disableInputs = true;
           if ($scope.editProjectForm.$valid) {
-            DataService
+            ProjectsService
               .update(
-                'projects',
                 $scope.project.metadata.name,
-                cleanEditableAnnotations(mergeEditable($scope.project, $scope.editableFields)),
-                {projectName: $scope.project.name},
-                {errorNotification: false})
+                cleanEditableAnnotations(mergeEditable($scope.project, $scope.editableFields)))
               .then(function(project) {
                 // angular is actually wrapping the redirect action :/
                 var cb = $scope.redirectAction();
@@ -986,18 +972,19 @@ angular.module("openshiftCommonUI")
                   cb(encodeURIComponent($scope.project.metadata.name));
                 }
 
-                showAlert({
-                  type: "success",
+                NotificationsService.addNotification({
+                  type: 'success',
                   message: "Project \'"  + displayNameFilter(project) + "\' was successfully updated."
                 });
               }, function(result) {
                 $scope.disableInputs = false;
                 $scope.editableFields = editableFields($scope.project);
-                showAlert({
-                  type: "error",
-                  message: "An error occurred while updating the project",
+                NotificationsService.addNotification({
+                  type: 'error',
+                  message: "An error occurred while updating project \'" + displayNameFilter($scope.project) + "\'." ,
                   details: $filter('getErrorDetails')(result)
                 });
+                Logger.error("Project \'" + displayNameFilter($scope.project) + "\' could not be updated.", result);
               });
           }
         };
@@ -1013,6 +1000,118 @@ angular.module("openshiftCommonUI")
       }],
     };
   }]);
+;"use strict";
+
+angular.module("openshiftCommonUI").component("originModalPopup", {
+  transclude: true,
+  bindings: {
+    modalTitle: '@',
+    shown: '<',
+    position: '@', // 'top-left', 'top-right', 'bottom-left', or 'bottom-right' (default is 'bottom-right')
+    referenceElement: '<?', // Optional reference element, default is parent element. Used to position popup based on screen position
+    onClose: '<'
+  },
+  templateUrl: 'src/components/origin-modal-popup/origin-modal-popup.html',
+  controller: ["$scope", "HTMLService", "$element", "$window", function($scope, HTMLService, $element, $window) {
+    var ctrl = this;
+    var debounceResize;
+
+    function updatePosition() {
+      var positionElement = ctrl.referenceElement || $element[0].parentNode;
+
+      if (positionElement && HTMLService.isWindowAboveBreakpoint(HTMLService.WINDOW_SIZE_SM)) {
+        var posAbove = ctrl.position && ctrl.position.indexOf('top') > -1;
+        var posLeft = ctrl.position && ctrl.position.indexOf('left') > -1;
+        var topPos;
+        var leftPos;
+        var elementRect = positionElement.getBoundingClientRect();
+        var windowHeight = $window.innerHeight;
+        var modalElement = $element[0].children[0];
+        var modalHeight = _.get(modalElement, 'offsetHeight', 0);
+        var modalWidth = _.get(modalElement, 'offsetWidth', 0);
+
+        // auto-adjust vertical position based on showing in the viewport
+        if (elementRect.top < modalHeight) {
+          posAbove = false;
+        } else if (elementRect.bottom + modalHeight > windowHeight) {
+          posAbove = true;
+        }
+
+        if (posAbove) {
+          topPos = (elementRect.top - modalHeight) + 'px';
+        } else {
+          topPos = elementRect.bottom + 'px';
+        }
+
+        if (posLeft) {
+          leftPos = elementRect.left + 'px';
+        } else {
+          leftPos = (elementRect.right - modalWidth) + 'px';
+        }
+
+        ctrl.showAbove = posAbove;
+        ctrl.showLeft = posLeft;
+
+        ctrl.positionStyle = {
+          left: leftPos,
+          top: topPos
+        };
+      } else {
+        ctrl.positionStyle = {};
+      }
+    }
+
+    function showModalBackdrop() {
+      var backdropElement = '<div class="origin-modal-popup-backdrop modal-backdrop fade in tile-click-prevent"></div>';
+      var parentNode = ctrl.referenceElement ? ctrl.referenceElement.parentNode : $element[0].parentNode;
+      $(parentNode).append(backdropElement);
+    }
+
+    function hideModalBackdrop() {
+      $('.origin-modal-popup-backdrop').remove();
+    }
+
+    function onWindowResize() {
+      $scope.$evalAsync(updatePosition);
+    }
+
+    function onShow() {
+      showModalBackdrop();
+      debounceResize = _.debounce(onWindowResize, 50, { maxWait: 250 });
+      angular.element($window).on('resize', debounceResize);
+    }
+
+    function onHide() {
+      hideModalBackdrop();
+      if (debounceResize) {
+        angular.element($window).off('resize', debounceResize);
+        debounceResize = null;
+      }
+    }
+
+    ctrl.$onChanges = function (changeObj) {
+      if (changeObj.shown) {
+        if (ctrl.shown) {
+          onShow();
+        } else {
+          onHide();
+        }
+      }
+
+      if (changeObj.shown || changeObj.referenceElement) {
+        if (ctrl.shown) {
+          updatePosition();
+        }
+      }
+    };
+
+    ctrl.$onDestroy = function() {
+      if (ctrl.shown) {
+        onHide();
+      }
+    }
+  }]
+});
 ;'use strict';
 // oscUnique is a validation directive
 // use:
@@ -1046,11 +1145,13 @@ angular.module('openshiftCommonUI')
     return {
       restrict: 'A',
       scope: {
-        oscUnique: '='
+        oscUnique: '=',
+        oscUniqueDisabled: '='
       },
       require: 'ngModel',
       link: function($scope, $elem, $attrs, ctrl) {
         var list = [];
+        var isUnique = true;
 
         $scope.$watchCollection('oscUnique', function(newVal) {
           list = _.isArray(newVal) ?
@@ -1058,9 +1159,15 @@ angular.module('openshiftCommonUI')
                     _.keys(newVal);
         });
 
+        var updateValidity = function() {
+          ctrl.$setValidity('oscUnique', $scope.oscUniqueDisabled || isUnique);
+        };
+
+        $scope.$watch('oscUniqueDisabled', updateValidity);
+
         ctrl.$parsers.unshift(function(value) {
-          // is valid so long as it doesn't already exist
-          ctrl.$setValidity('oscUnique', !_.includes(list, value));
+          isUnique = !_.includes(list, value);
+          updateValidity();
           return value;
         });
       }
@@ -1183,7 +1290,7 @@ angular.module('openshiftCommonUI')
           if (t && (t.closest("a", element).length || t.closest("button", element).length) || t.closest(".tile-click-prevent", element).length) {
             return;
           }
-          $('a.tile-target', element).trigger("click");
+          angular.element($('a.tile-target', element))[0].click();
         });
       }
     };
@@ -1246,16 +1353,21 @@ angular.module('openshiftCommonUI')
 
         // Listen for updates from NotificationsService to show a notification.
         var deregisterNotificationListener = $rootScope.$on('NotificationsService.onNotificationAdded', function(event, notification) {
-          $scope.notifications.push(notification);
-          if (NotificationsService.isAutoDismiss(notification)) {
-            $timeout(function () {
-              notification.hidden = true;
-            }, NotificationsService.dismissDelay);
+          if (notification.skipToast) {
+            return;
           }
+          $scope.$evalAsync(function() {
+            $scope.notifications.push(notification);
+            if (NotificationsService.isAutoDismiss(notification)) {
+              $timeout(function () {
+                notification.hidden = true;
+              }, NotificationsService.dismissDelay);
+            }
 
-          // Whenever we add a new notification, also remove any hidden toasts
-          // so that the array doesn't grow indefinitely.
-          pruneRemovedNotifications();
+            // Whenever we add a new notification, also remove any hidden toasts
+            // so that the array doesn't grow indefinitely.
+            pruneRemovedNotifications();
+          });
         });
 
         $scope.$on('$destroy', function() {
@@ -1284,7 +1396,7 @@ angular.module('openshiftCommonUI')
         // When expandable is on, optionally hide the collapse link so text can only be expanded. (Used for toast notifications.)
         hideCollapse: '=',
         keywords: '=highlightKeywords',  // optional keywords to highlight using the `highlightKeywords` filter
-        prettifyJson: '='                // prettifies JSON blobs when expanded, only used if expandable is true
+        linkify: '=?'
       },
       templateUrl: 'src/components/truncate-long-text/truncateLongText.html',
       link: function(scope) {
@@ -1304,47 +1416,107 @@ angular.module('openshiftCommonUI')
   }]);
 ;'use strict';
 
+angular.module('openshiftCommonServices')
+  .constant('API_DEDUPLICATION', {
+    // Exclude duplicate kinds we know about that map to the same storage as another
+    //  group/kind.  This is unusual, so we are special casing these.
+    groups: [{group: 'authorization.openshift.io'}],
+    kinds: [
+      {group: 'extensions', kind: 'HorizontalPodAutoscaler'},
+      {group: 'extensions', kind: 'DaemonSet'}
+    ]
+  });
+;'use strict';
+
+angular.module('openshiftCommonServices')
+  .constant('API_PREFERRED_VERSIONS', {
+      appliedclusterresourcequotas:     {group: 'quota.openshift.io',         version: 'v1',      resource: 'appliedclusterresourcequotas' },
+      builds:                           {group: 'build.openshift.io',         version: 'v1',      resource: 'builds' },
+      'builds/clone':                   {group: 'build.openshift.io',         version: 'v1',      resource: 'builds/clone' },
+      'builds/log':                     {group: 'build.openshift.io',         version: 'v1',      resource: 'builds/log' },
+      'buildconfigs/instantiate':       {group: 'build.openshift.io',         version: 'v1',      resource: 'buildconfigs/instantiate' },
+      buildconfigs:                     {group: 'build.openshift.io',         version: 'v1',      resource: 'buildconfigs' },
+      configmaps:                       {version: 'v1',                       resource: 'configmaps' },
+      clusterroles:                     {group: 'rbac.authorization.k8s.io',  version: 'v1',      resource: 'clusterroles' },
+      clusterserviceclasses:            {group: 'servicecatalog.k8s.io',      version: 'v1beta1', resource: 'clusterserviceclasses' },
+      clusterserviceplans:              {group: 'servicecatalog.k8s.io',      version: 'v1beta1', resource: 'clusterserviceplans' },
+      deployments:                      {group: 'apps',                       version: 'v1beta1', resource: 'deployments' },
+      deploymentconfigs:                {group: 'apps.openshift.io',          version: 'v1',      resource: 'deploymentconfigs' },
+      'deploymentconfigs/instantiate':  {group: 'apps.openshift.io',          version: 'v1',      resource: 'deploymentconfigs/instantiate' },
+      'deploymentconfigs/rollback':     {group: 'apps.openshift.io',          version: 'v1',      resource: 'deploymentconfigs/rollback' },
+      'deploymentconfigs/log':          {group: 'apps.openshift.io',          version: 'v1',      resource: 'deploymentconfigs/log' },
+      endpoints:                        {version: 'v1',                       resource: 'endpoints'},
+      events:                           {version: 'v1',                       resource: 'events' },
+      horizontalpodautoscalers:         {group: 'autoscaling',                version: 'v1',      resource: 'horizontalpodautoscalers' },
+      imagestreams:                     {group: 'image.openshift.io',         version: 'v1',      resource: 'imagestreams' },
+      imagestreamtags:                  {group: 'image.openshift.io',         version: 'v1',      resource: 'imagestreamtags' },
+      imagestreamimages:                {group: 'image.openshift.io',         version: 'v1',      resource: 'imagestreamimages' },
+      imagestreamimports:               {group: 'image.openshift.io',         version: 'v1',      resource: 'imagestreamimports' },
+      limitranges:                      {version: 'v1',                       resource: 'limitranges' },
+      oauthaccesstokens:                {group: 'oauth.openshift.io',         version: 'v1',      resource: 'oauthaccesstokens' },
+      pods:                             {version: 'v1',                       resource: 'pods' },
+      'pods/log':                       {version: 'v1',                       resource: 'pods/log' },
+      processedtemplates:               {group: 'template.openshift.io',      version: 'v1',      resource: 'processedtemplates' },
+      projects:                         {group: 'project.openshift.io',       version: 'v1',      resource: 'projects' },
+      projectrequests:                  {group: 'project.openshift.io',       version: 'v1',      resource: 'projectrequests' },
+      persistentvolumeclaims:           {version: 'v1',                       resource: 'persistentvolumeclaims' },
+      replicasets:                      {group: 'apps',                       version: 'v1',      resource: 'replicasets' },
+      replicationcontrollers:           {version: 'v1',                       resource: 'replicationcontrollers' },
+      resourcequotas:                   {version: 'v1',                       resource: 'resourcequotas' },
+      rolebindings:                     {group: 'rbac.authorization.k8s.io',  version: 'v1',      resource: 'rolebindings' },
+      roles:                            {group: 'rbac.authorization.k8s.io',  version: 'v1',      resource: 'roles' },
+      routes:                           {group: 'route.openshift.io',         version: 'v1',      resource: 'routes' },
+      secrets:                          {version: 'v1',                       resource: 'secrets' },
+      selfsubjectrulesreviews:          {group: 'authorization.openshift.io', version: 'v1',      resource: 'selfsubjectrulesreviews' },
+      services:                         {version: 'v1',                       resource: 'services' },
+      serviceaccounts:                  {version: 'v1',                       resource: 'serviceaccounts' },
+      servicebindings:                  {group: 'servicecatalog.k8s.io',      version: 'v1beta1', resource: 'servicebindings' },
+      serviceinstances:                 {group: 'servicecatalog.k8s.io',      version: 'v1beta1', resource: 'serviceinstances' },
+      statefulsets:                     {group: 'apps',                       version: 'v1beta1', resource: 'statefulsets' },
+      storageclasses:                   {group: 'storage.k8s.io',             version: 'v1',      resource: 'storageclasses'},
+      templates:                        {group: 'template.openshift.io',      verison: 'v1',      resource: 'templates' },
+      users:                            {group: 'user.openshift.io',          version: 'v1',      resource: 'users' }
+  });
+;'use strict';
+
 angular.module('openshiftCommonUI')
   .filter("alertStatus", function() {
-    return function (type) {
-      var status;
-
-      switch(type) {
+    return function(type) {
+      type = type || '';
+      // API events have just two types: Normal, Warning
+      // our notifications have four: info, success, error, and warning
+      switch(type.toLowerCase()) {
         case 'error':
-          status = 'alert-danger';
-          break;
+          return 'alert-danger';
         case 'warning':
-          status = 'alert-warning';
-          break;
+          return 'alert-warning';
         case 'success':
-          status = 'alert-success';
-          break;
-        default:
-          status = 'alert-info';
+          return 'alert-success';
+        case 'normal':
+          return 'alert-info';
       }
 
-      return status;
+      return 'alert-info';
     };
   })
   .filter('alertIcon', function() {
-    return function (type) {
-      var icon;
+    return function(type) {
+      type = type || '';
 
-      switch(type) {
+      // API events have just two types: Normal, Warning
+      // our notifications have four: info, success, error, and warning
+      switch(type.toLowerCase()) {
         case 'error':
-          icon = 'pficon pficon-error-circle-o';
-          break;
+          return 'pficon pficon-error-circle-o';
         case 'warning':
-          icon = 'pficon pficon-warning-triangle-o';
-          break;
+          return 'pficon pficon-warning-triangle-o';
         case 'success':
-          icon = 'pficon pficon-ok';
-          break;
-        default:
-          icon = 'pficon pficon-info';
+          return 'pficon pficon-ok';
+        case 'normal':
+          return 'pficon pficon-info';
       }
 
-      return icon;
+      return 'pficon pficon-info';
     };
   });
 ;'use strict';
@@ -1373,6 +1545,8 @@ angular.module('openshiftCommonUI')
       "jenkinsBuildURL":          ["openshift.io/jenkins-build-uri"],
       "jenkinsLogURL":            ["openshift.io/jenkins-log-url"],
       "jenkinsStatus":            ["openshift.io/jenkins-status-json"],
+      "loggingUIHostname":        ["openshift.io/logging.ui.hostname"],
+      "loggingDataPrefix":        ["openshift.io/logging.data.prefix"],
       "idledAt":                  ["idling.alpha.openshift.io/idled-at"],
       "idledPreviousScale":       ["idling.alpha.openshift.io/previous-scale"],
       "systemOnly":               ["authorization.openshift.io/system-only"]
@@ -1570,6 +1744,50 @@ angular.module('openshiftCommonUI')
 ;'use strict';
 
 angular.module('openshiftCommonUI')
+  // Returns an image URL for an icon class if available. Some icons we have
+  // color SVG images for. Depends on window.OPENSHIFT_CONSTANTS.LOGOS and
+  // window.OPENSHIFT_CONSTANTS.LOGO_BASE_URL, which is set by origin-web-console
+  // (or an extension).
+  .filter('imageForIconClass', ["$window", "isAbsoluteURLFilter", function($window, isAbsoluteURLFilter) {
+    return function(iconClass) {
+      if (!iconClass) {
+        return '';
+      }
+
+      var logoImage = _.get($window, ['OPENSHIFT_CONSTANTS', 'LOGOS', iconClass]);
+      if (!logoImage) {
+        return '';
+      }
+
+      // Make sure the logo base has a trailing slash.
+      var logoBaseUrl = _.get($window, 'OPENSHIFT_CONSTANTS.LOGO_BASE_URL');
+      if (!logoBaseUrl || isAbsoluteURLFilter(logoImage)) {
+        return logoImage;
+      }
+
+      if (!_.endsWith(logoBaseUrl, '/')) {
+        logoBaseUrl += '/';
+      }
+
+      return logoBaseUrl + logoImage;
+    };
+  }]);
+;'use strict';
+
+angular.module('openshiftCommonUI')
+  .filter('isAbsoluteURL', function() {
+    return function(url) {
+      if (!url || !_.isString(url)) {
+        return false;
+      }
+      var uri = new URI(url);
+      var protocol = uri.protocol();
+      return uri.is('absolute') && (protocol === 'http' || protocol === 'https');
+    };
+  });
+;'use strict';
+
+angular.module('openshiftCommonUI')
 // Usage: <span ng-bind-html="text | linkify : '_blank'"></span>
 //
 // Prefer this to the AngularJS `linky` filter since it only matches http and
@@ -1582,6 +1800,20 @@ angular.module('openshiftCommonUI')
     return HTMLService.linkify(text, target, alreadyEscaped);
   };
 }]);
+;'use strict';
+
+angular.module("openshiftCommonUI")
+  .filter("normalizeIconClass", function() {
+    return function(iconClass) {
+      // if iconClass starts with "icon-", append "font-icon "
+      // so the Openshift Logos Icon font is used
+      if(_.startsWith(iconClass, "icon-")) {
+        return "font-icon " + iconClass;
+      } else {
+        return iconClass;
+      }
+    };
+  });
 ;'use strict';
 
 angular.module('openshiftCommonUI')
@@ -1608,6 +1840,12 @@ angular.module('openshiftCommonUI')
       }
     };
   });
+;'use strict';
+
+angular.module('openshiftCommonUI')
+  .filter('preferredVersion', ["APIService", function(APIService) {
+    return APIService.getPreferredVersion;
+  }]);
 ;'use strict';
 
 angular.module('openshiftCommonUI')
@@ -1732,6 +1970,10 @@ angular.module('openshiftCommonUI')
         return kind;
       }
 
+      if (kind === 'ServiceInstance') {
+        return useTitleCase ? 'Provisioned Service' : 'provisioned service';
+      }
+
       var humanized = _.startCase(kind);
       if (useTitleCase) {
         return humanized;
@@ -1756,8 +1998,34 @@ angular.module('openshiftCommonUI')
       return _.get(statusConditionFilter(apiObject, 'Ready'), 'status') === 'True';
     };
   }])
+  .filter('serviceInstanceReadyMessage', ["statusConditionFilter", function(statusConditionFilter) {
+    return function(apiObject) {
+      return _.get(statusConditionFilter(apiObject, 'Ready'), 'message');
+    };
+  }])
+  .filter('isServiceInstanceFailed', ["statusConditionFilter", function(statusConditionFilter) {
+    return function(apiObject) {
+      return _.get(statusConditionFilter(apiObject, 'Failed'), 'status') === 'True';
+    };
+  }])
+  .filter('serviceInstanceFailedMessage', ["isServiceInstanceFailedFilter", "statusConditionFilter", function(isServiceInstanceFailedFilter, statusConditionFilter) {
+    return function(apiObject) {
+      if (isServiceInstanceFailedFilter(apiObject)) {
+        return _.get(statusConditionFilter(apiObject, 'Failed'), 'message');
+      }
+    };
+  }])
   .filter('isBindingReady', ["isServiceInstanceReadyFilter", function(isServiceInstanceReadyFilter) {
     return isServiceInstanceReadyFilter;
+  }])
+  .filter('isBindingFailed', ["isServiceInstanceFailedFilter", function(isServiceInstanceFailedFilter) {
+    return isServiceInstanceFailedFilter;
+  }])
+  .filter('bindingFailedMessage', ["serviceInstanceFailedMessageFilter", function(serviceInstanceFailedMessageFilter) {
+    return serviceInstanceFailedMessageFilter;
+  }])
+  .filter('bindingReadyMessage', ["serviceInstanceReadyMessageFilter", function(serviceInstanceReadyMessageFilter) {
+    return serviceInstanceReadyMessageFilter;
   }])
   .filter('hasDeployment', ["annotationFilter", function(annotationFilter) {
     return function(object) {
@@ -1769,13 +2037,52 @@ angular.module('openshiftCommonUI')
       return !!annotationFilter(deployment, 'deploymentConfig');
     };
   }])
+  .filter('serviceClassDisplayName', function() {
+    return function(serviceClass) {
+      var serviceClassDisplayName = _.get(serviceClass, 'spec.externalMetadata.displayName');
+      if (serviceClassDisplayName) {
+        return serviceClassDisplayName;
+      }
+
+      return _.get(serviceClass, 'spec.externalName');
+    };
+  })
+  .filter('serviceInstanceDisplayName', ["serviceClassDisplayNameFilter", function(serviceClassDisplayNameFilter) {
+    return function(instance, serviceClass) {
+      if (serviceClass) {
+        return serviceClassDisplayNameFilter(serviceClass);
+      }
+
+      var serviceClassExternalName = _.get(instance, 'spec.clusterServiceClassExternalName');
+      if (serviceClassExternalName) {
+        return serviceClassExternalName;
+      }
+
+      return _.get(instance, 'metadata.name');
+    };
+  }])
+  .filter('serviceInstanceStatus', ["isServiceInstanceReadyFilter", function(isServiceInstanceReadyFilter) {
+    return function(instance) {
+      var status = 'Pending';
+      var conditions = _.get(instance, 'status.conditions');
+      var instanceError = _.find(conditions, {type: 'Failed', status: 'True'});
+
+      if (instanceError) {
+        status = 'Failed';
+      } else if (isServiceInstanceReadyFilter(instance)) {
+        status = 'Ready';
+      }
+
+      return status;
+    };
+  }])
 ;
 ;'use strict';
 angular.module('openshiftCommonUI')
   .filter('camelToLower', function() {
     return function(str) {
       if (!str) {
-        return str;
+        return '';
       }
 
       // Use the special logic in _.startCase to handle camel case strings, kebab
@@ -1786,40 +2093,20 @@ angular.module('openshiftCommonUI')
   .filter('upperFirst', function() {
     // Uppercase the first letter of a string (without making any other changes).
     // Different than `capitalize` because it doesn't lowercase other letters.
-    return function(str) {
-      if (!str) {
-        return str;
-      }
-
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    };
+    return _.upperFirst;
   })
-  .filter('sentenceCase', ["camelToLowerFilter", "upperFirstFilter", function(camelToLowerFilter, upperFirstFilter) {
+  .filter('sentenceCase', ["camelToLowerFilter", function(camelToLowerFilter) {
     // Converts a camel case string to sentence case
     return function(str) {
-      if (!str) {
-        return str;
-      }
-
-      // Unfortunately, _.lowerCase() and _.upperFirst() aren't in our lodash version.
       var lower = camelToLowerFilter(str);
-      return upperFirstFilter(lower);
+      return _.upperFirst(lower);
     };
   }])
   .filter('startCase', function () {
-    return function(str) {
-      if (!str) {
-        return str;
-      }
-
-      // https://lodash.com/docs#startCase
-      return _.startCase(str);
-    };
+    return _.startCase;
   })
   .filter('capitalize', function() {
-    return function(input) {
-      return _.capitalize(input);
-    };
+    return _.capitalize;
   })
   .filter('isMultiline', function() {
     return function(str, ignoreTrailing) {
@@ -1845,7 +2132,7 @@ angular.module('openshiftCommonUI')
 angular.module('openshiftCommonUI')
   .filter('truncate', function() {
     return function(str, charLimit, useWordBoundary, newlineLimit) {
-      if (!str) {
+      if (typeof str !== 'string') {
         return str;
       }
 
@@ -1861,11 +2148,10 @@ angular.module('openshiftCommonUI')
       }
 
       if (useWordBoundary !== false) {
-        // Find the last word break, but don't look more than 10 characters back.
-        // Make sure we show at least the first 5 characters.
+
         var startIndex = Math.max(4, charLimit - 10);
-        var lastSpace = truncated.lastIndexOf(/\s/, startIndex);
-        if (lastSpace !== -1) {
+        var lastSpace = truncated.lastIndexOf(' ');
+        if (lastSpace >= startIndex && lastSpace !== -1) {
           truncated = truncated.substring(0, lastSpace);
         }
       }
@@ -1882,14 +2168,14 @@ angular.module('openshiftCommonUI')
   .filter('size', function() {
     return _.size;
   })
-  .filter('hashSize', ["$log", function($log) {
+  .filter('hashSize', function() {
     return function(hash) {
       if (!hash) {
         return 0;
       }
       return Object.keys(hash).length;
     };
-  }])
+  })
   // Wraps _.filter. Works with hashes, unlike ngFilter, which only works
   // with arrays.
   .filter('filterCollection', function() {
@@ -1914,6 +2200,10 @@ angular.module('openshiftCommonUI')
   })
   .filter("getErrorDetails", ["upperFirstFilter", function(upperFirstFilter) {
     return function(result, capitalize) {
+      if (!result) {
+        return "";
+      }
+
       var error = result.data || {};
       if (error.message) {
         return capitalize ? upperFirstFilter(error.message) : error.message;
@@ -1990,8 +2280,10 @@ ResourceGroupVersion.prototype.equals = function(resource, group, version) {
 };
 
 angular.module('openshiftCommonServices')
-.factory('APIService', ["API_CFG", "APIS_CFG", "AuthService", "Constants", "Logger", "$q", "$http", "$filter", "$window", function(API_CFG,
+.factory('APIService', ["API_CFG", "APIS_CFG", "API_PREFERRED_VERSIONS", "API_DEDUPLICATION", "AuthService", "Constants", "Logger", "$q", "$http", "$filter", "$window", function(API_CFG,
                                 APIS_CFG,
+                                API_PREFERRED_VERSIONS,
+                                API_DEDUPLICATION,
                                 AuthService,
                                 Constants,
                                 Logger,
@@ -2030,6 +2322,14 @@ angular.module('openshiftCommonServices')
       version = r.version || defaultVersion[group] || _.get(APIS_CFG, ["groups", group, "preferredVersion"]);
     }
     return new ResourceGroupVersion(resource, group, version);
+  };
+
+
+  var toAPIVersion = function(resourceGroupVersion) {
+    if (resourceGroupVersion.group) {
+      return resourceGroupVersion.group + '/' + resourceGroupVersion.version;
+    }
+    return resourceGroupVersion.version;
   };
 
   // normalizeResource lowercases the first segment of the given resource. subresources can be case-sensitive.
@@ -2159,12 +2459,26 @@ angular.module('openshiftCommonServices')
         AuthService.withUser();
         return;
       }
-      // Otherwise go to the error page, the server might be down.  Can't use Navigate.toErrorPage or it will create a circular dependency
-      $window.location.href = URI('error').query({
-        error_description: "Unable to load details about the server. If the problem continues, please contact your system administrator.",
-        error: "API_DISCOVERY"
-      }).toString();
-      return;
+      var fatal = false;
+      _.each(APIS_CFG.API_DISCOVERY_ERRORS, function(discoveryError) {
+        if (discoveryError.fatal) {
+          Logger.error('API discovery failed (fatal error)', discoveryError);
+          fatal = true;
+          return;
+        }
+
+        Logger.warn('API discovery failed', discoveryError);
+      });
+      if (fatal) {
+        // Go to the error page on fatal errors, the server might be down.
+        // Can't use Navigate.toErrorPage or it will create a circular
+        // dependency
+        $window.location.href = URI('error').query({
+          error_description: "Unable to load details about the server. If the problem continues, please contact your system administrator.",
+          error: "API_DISCOVERY"
+        }).toString();
+        return;
+      }
     }
 
     resource = toResourceGroupVersion(resource);
@@ -2217,12 +2531,21 @@ angular.module('openshiftCommonServices')
     if (apiObject && apiObject.apiVersion) { version = apiObject.apiVersion; }
     return "Invalid kind ("+kind+") or API version ("+version+")";
   };
+
   var unsupportedObjectKindOrVersion = function(apiObject) {
     var kind = "<none>";
     var version = "<none>";
     if (apiObject && apiObject.kind)       { kind    = apiObject.kind;       }
     if (apiObject && apiObject.apiVersion) { version = apiObject.apiVersion; }
     return "The API version "+version+" for kind " + kind + " is not supported by this server";
+  };
+
+
+  var excludeKindFromAPIGroupList = function(groupName, resourceKind) {
+    return !!(
+          _.find(API_DEDUPLICATION.kinds, {group: groupName, kind: resourceKind}) ||
+          _.find(API_DEDUPLICATION.groups, {group: groupName})
+      );
   };
 
   // Returns an array of available kinds, including their group
@@ -2234,15 +2557,14 @@ angular.module('openshiftCommonServices')
               kind;
     });
 
-
     // ignore the legacy openshift kinds, these have been migrated to api groups
-    _.each(_.pick(API_CFG, function(value, key) {
+    _.each(_.pickBy(API_CFG, function(value, key) {
       return key !== 'openshift';
     }), function(api) {
       _.each(api.resources.v1, function(resource) {
         if (resource.namespaced || includeClusterScoped) {
           // Exclude subresources and any rejected kinds
-          if (_.contains(resource.name, '/') || _.find(rejectedKinds, { kind: resource.kind, group: '' })) {
+          if (_.includes(resource.name, '/') || _.find(rejectedKinds, { kind: resource.kind, group: '' })) {
             return;
           }
 
@@ -2256,17 +2578,17 @@ angular.module('openshiftCommonServices')
 
    // Kinds under api groups
     _.each(APIS_CFG.groups, function(group) {
+
       // Use the console's default version first, and the server's preferred version second
       var preferredVersion = defaultVersion[group.name] || group.preferredVersion;
       _.each(group.versions[preferredVersion].resources, function(resource) {
         // Exclude subresources and any rejected kinds
-        if (_.contains(resource.name, '/') || _.find(rejectedKinds, {kind: resource.kind, group: group.name})) {
+        if (_.includes(resource.name, '/') || _.find(rejectedKinds, {kind: resource.kind, group: group.name})) {
           return;
         }
 
-        // Exclude duplicate kinds we know about that map to the same storage as another group/kind
-        // This is unusual, so we are special casing these
-        if (group.name === "extensions" && resource.kind === "HorizontalPodAutoscaler") {
+
+        if(excludeKindFromAPIGroupList(group.name, resource.kind)) {
           return;
         }
 
@@ -2279,7 +2601,7 @@ angular.module('openshiftCommonServices')
       });
     });
 
-    return _.uniq(kinds, false, function(value) {
+    return _.uniqBy(kinds, function(value) {
       return value.group + "/" + value.kind;
     });
   };
@@ -2291,7 +2613,20 @@ angular.module('openshiftCommonServices')
     return includeClusterScoped ? allKinds : namespacedKinds;
   };
 
+  // Provides us a way to ensure we consistently use the
+  // correct {resource, group} for API calls.  Version
+  // will typically fallback to the preferredVersion of the API
+  var getPreferredVersion = function(resource) {
+    var preferred = API_PREFERRED_VERSIONS[resource];
+    if(!preferred) {
+      Logger.log("No preferred version for ", resource);
+    }
+    return preferred;
+  };
+
   return {
+    toAPIVersion: toAPIVersion,
+
     toResourceGroupVersion: toResourceGroupVersion,
 
     parseGroupVersion: parseGroupVersion,
@@ -2308,7 +2643,88 @@ angular.module('openshiftCommonServices')
 
     invalidObjectKindOrVersion: invalidObjectKindOrVersion,
     unsupportedObjectKindOrVersion: unsupportedObjectKindOrVersion,
-    availableKinds: availableKinds
+    availableKinds: availableKinds,
+    getPreferredVersion: getPreferredVersion
+  };
+}]);
+;'use strict';
+
+angular.module("openshiftCommonServices").
+service("ApplicationsService", ["$q", "APIService", "DataService", function(
+  $q,
+  APIService,
+  DataService) {
+
+  var deploymentsVersion = APIService.getPreferredVersion('deployments');
+  var deploymentConfigsVersion = APIService.getPreferredVersion('deploymentconfigs');
+  var replicationControllersVersion = APIService.getPreferredVersion('replicationcontrollers');
+  var replicaSetsVersion = APIService.getPreferredVersion('replicasets');
+  var statefulSetsVersion = APIService.getPreferredVersion('statefulsets');
+
+  // List replication controllers in a namespace that are NOT managed by a
+  // deployment config. Note: This will not return replication controllers that
+  // have been orphaned by `oc delete dc/foo --cascade=false`.
+  var listStandaloneReplicationControllers = function(context) {
+    return DataService.list(replicationControllersVersion, context, null, {
+      http: {
+        params: {
+          // If the replica set has a `openshift.io/deployment-config-name`
+          // label, it's managed by a deployment config.
+          labelSelector: "!openshift.io/deployment-config.name"
+        }
+      }
+    });
+  };
+
+  // List replica sets in a namespace that are NOT managed by a deployment.
+  // Note: This will not return replica sets that have been orphaned by
+  // `oc delete deployment/foo --cascade=false`.
+  var listStandaloneReplicaSets = function(context) {
+    return DataService.list(replicaSetsVersion, context, null, {
+      http: {
+        params: {
+          // If the replica set has a `pod-template-hash` label, it's managed
+          // by a deployment.
+          labelSelector: "!pod-template-hash"
+        }
+      }
+    });
+  };
+
+  var getApplications = function(context) {
+    var deferred = $q.defer();
+    var promises = [];
+
+    // Load all the "application" types
+    promises.push(DataService.list(deploymentConfigsVersion, context));
+    promises.push(listStandaloneReplicationControllers(context));
+    promises.push(DataService.list(deploymentsVersion, context));
+    promises.push(listStandaloneReplicaSets(context));
+    promises.push(DataService.list(statefulSetsVersion, context));
+
+    $q.all(promises).then(_.spread(function(deploymentConfigData, replicationControllerData, deploymentData, replicaSetData, statefulSetData) {
+      var deploymentConfigs = _.toArray(deploymentConfigData.by('metadata.name'));
+      var replicationControllers = _.toArray(replicationControllerData.by('metadata.name'));
+      var deployments = _.toArray(deploymentData.by('metadata.name'));
+      var replicaSets = _.toArray(replicaSetData.by('metadata.name'));
+      var statefulSets = _.toArray(statefulSetData.by('metadata.name'));
+
+      var apiObjects = deploymentConfigs.concat(deployments)
+        .concat(replicationControllers)
+        .concat(replicaSets)
+        .concat(statefulSets);
+      deferred.resolve(_.sortBy(apiObjects, ['metadata.name', 'kind']));
+    }), function(e) {
+      deferred.reject(e);
+    });
+
+    return deferred.promise;
+  };
+
+  return {
+    listStandaloneReplicationControllers: listStandaloneReplicationControllers,
+    listStandaloneReplicaSets: listStandaloneReplicaSets,
+    getApplications: getApplications
   };
 }]);
 ;'use strict';
@@ -2616,7 +3032,17 @@ angular.module("openshiftCommonServices")
     // Permisive mode will cause no checks to be done for the user actions.
     var permissiveMode = false;
 
-    var REVIEW_RESOURCES = ["localresourceaccessreviews", "localsubjectaccessreviews", "resourceaccessreviews", "selfsubjectaccessreviews", "selfsubjectrulesreviews", "subjectaccessreviews"];
+    var REVIEW_RESOURCES = ["localresourceaccessreviews",
+                        "localsubjectaccessreviews",
+                        "resourceaccessreviews",
+                        "selfsubjectaccessreviews",
+                        "selfsubjectrulesreviews",
+                        "subjectaccessreviews",
+                        "subjectrulesreviews",
+                        "podsecuritypolicyreviews",
+                        "podsecuritypolicysubjectreviews",
+                        "podsecuritypolicyselfsubjectreviews",
+                        "tokenreviews"];
 
     // Transform data from:
     // rules = {resources: ["jobs"], apiGroups: ["extensions"], verbs:["create","delete","get","list","update"]}
@@ -2642,7 +3068,7 @@ angular.module("openshiftCommonServices")
     //  - subresource that contains '/', eg: 'builds/source', 'builds/logs', ...
     //  - resource is in REVIEW_RESOURCES list
     var checkResource = function(resource) {
-      if (resource === "projectrequests" || _.contains(resource, "/") || _.contains(REVIEW_RESOURCES, resource)) {
+      if (resource === "projectrequests" || _.includes(resource, "/") || _.includes(REVIEW_RESOURCES, resource)) {
         return false;
       } else {
         return true;
@@ -2658,6 +3084,10 @@ angular.module("openshiftCommonServices")
       });
     };
 
+    // Avoid loading rules twice if another request is already in flight. Key
+    // is the project name, value is the promise.
+    var inFlightRulesRequests = {};
+
     // forceRefresh is a boolean to bust the cache & request new perms
     var getProjectRules = function(projectName, forceRefresh) {
       var deferred = $q.defer();
@@ -2667,11 +3097,18 @@ angular.module("openshiftCommonServices")
       if (!projectRules || projectRules.forceRefresh || forceRefresh) {
         // Check if APIserver contains 'selfsubjectrulesreviews' resource. If not switch to permissive mode.
         if (APIService.apiInfo(rulesResource)) {
+          // If a request is already in flight, return the promise for that request.
+          if (inFlightRulesRequests[projectName]) {
+            return inFlightRulesRequests[projectName];
+          }
+
           Logger.log("AuthorizationService, loading user rules for " + projectName + " project");
-          var object = {kind: "SelfSubjectRulesReview",
-                        apiVersion: "v1"
-                      };
-          DataService.create(rulesResource, null, object, {namespace: projectName}).then(
+          inFlightRulesRequests[projectName] = deferred.promise;
+          var resourceGroupVersion = {
+            kind: "SelfSubjectRulesReview",
+            apiVersion: "v1"
+          };
+          DataService.create(rulesResource, null, resourceGroupVersion, {namespace: projectName}).then(
             function(data) {
               var normalizedData = normalizeRules(data.status.rules);
               var canUserAddToProject = canAddToProjectCheck(data.status.rules);
@@ -2684,6 +3121,8 @@ angular.module("openshiftCommonServices")
             }, function() {
               permissiveMode = true;
               deferred.resolve();
+          }).finally(function() {
+            delete inFlightRulesRequests[projectName];
           });
         } else {
           Logger.log("AuthorizationService, resource 'selfsubjectrulesreviews' is not part of APIserver. Switching into permissive mode.");
@@ -2715,13 +3154,19 @@ angular.module("openshiftCommonServices")
       if (!verbs) {
         return false;
       }
-      return _.contains(verbs, verb) || _.contains(verbs, '*');
+      return _.includes(verbs, verb) || _.includes(verbs, '*');
     };
 
     // canI checks whether any rule allows the specified verb on the specified group-resource (directly or via a wildcard rule).
     var canI = function(resource, verb, projectName) {
       if (permissiveMode) {
         return true;
+      }
+
+      // Explicitly check for falsey resources so we don't return true when the
+      // group has a wildcard. If resource is falsey, return false always.
+      if (!resource) {
+        return false;
       }
 
       // normalize to structured form
@@ -2772,46 +3217,77 @@ angular.module('openshiftCommonServices')
 
 angular.module("openshiftCommonServices")
   .service("BindingService",
-           ["$filter", "$q", "AuthService", "DataService", "DNS1123_SUBDOMAIN_VALIDATION", function($filter,
+           ["$filter", "$q", "APIService", "AuthService", "DataService", "DNS1123_SUBDOMAIN_VALIDATION", function($filter,
                     $q,
+                    APIService,
                     AuthService,
                     DataService,
                     DNS1123_SUBDOMAIN_VALIDATION) {
-    var bindingResource = {
-      group: 'servicecatalog.k8s.io',
-      resource: 'bindings'
-    };
+    // The secret key this service uses for the parameters JSON blob when binding.
+    var PARAMETERS_SECRET_KEY = 'parameters';
+
+    var serviceBindingsVersion = APIService.getPreferredVersion('servicebindings');
+    var secretsVersion = APIService.getPreferredVersion('secrets');
 
     var getServiceClassForInstance = function(serviceInstance, serviceClasses) {
-      var serviceClassName = _.get(serviceInstance, 'spec.serviceClassName');
-      return _.get(serviceClasses, [serviceClassName]);
-    };
-
-    var getPlanForInstance = function(serviceInstance, serviceClass) {
-      var planName = _.get(serviceInstance, 'spec.planName');
-      return _.find(serviceClass.plans, { name: planName });
-    };
-
-    var getBindParameters = function(serviceInstance, serviceClass) {
-      var plan = getPlanForInstance(serviceInstance, serviceClass);
-      if (_.has(plan, ['alphaBindingCreateParameterSchema', 'properties', 'template.openshift.io/requester-username'])) {
-        return AuthService.withUser().then(function(user) {
-          return {
-            'template.openshift.io/requester-username': user.metadata.name
-          };
-        });
+      if (!serviceClasses) {
+        return null;
       }
 
-      return $q.when({});
+      var serviceClassName = _.get(serviceInstance, 'spec.clusterServiceClassRef.name');
+      if (!serviceClassName) {
+        return null;
+      }
+
+      return serviceClasses[serviceClassName];
     };
 
     var generateName = $filter('generateName');
-    var makeBinding = function (serviceInstance, application, parameters) {
+    var generateSecretName = function(prefix) {
+      var generateNameLength = 5;
+      // Truncate the class name if it's too long to append the generated name suffix.
+      var secretNamePrefix = _.truncate(prefix, {
+        // `generateNameLength - 1` because we append a '-' and then a 5 char generated suffix
+        length: DNS1123_SUBDOMAIN_VALIDATION.maxlength - generateNameLength - 1,
+        omission: ''
+      });
+
+      return generateName(secretNamePrefix, generateNameLength);
+    };
+
+    var makeParametersSecret = function(secretName, parameters, owner) {
+      var secret = {
+        apiVersion: 'v1',
+        kind: 'Secret',
+        metadata: {
+          name: secretName,
+          ownerReferences: [{
+            apiVersion: owner.apiVersion,
+            kind: owner.kind,
+            name: owner.metadata.name,
+            uid: owner.metadata.uid,
+            controller: false,
+            // TODO: Change to true when garbage collection works with service
+            // catalog resources. Setting to true now results in a 403 Forbidden
+            // error creating the secret.
+            blockOwnerDeletion: false
+          }]
+        },
+        type: 'Opaque',
+        stringData: {}
+      };
+
+      secret.stringData[PARAMETERS_SECRET_KEY] = JSON.stringify(parameters);
+      return secret;
+    };
+
+    var makeBinding = function(serviceInstance, application, parametersSecretName) {
       var instanceName = serviceInstance.metadata.name;
-      var relatedObjName = generateName(_.trunc(instanceName, DNS1123_SUBDOMAIN_VALIDATION.maxlength - 6) + '-');
+
+      var credentialSecretName = generateSecretName(serviceInstance.metadata.name + '-credentials-');
       var binding = {
-        kind: 'Binding',
-        apiVersion: 'servicecatalog.k8s.io/v1alpha1',
+        kind: 'ServiceBinding',
+        apiVersion: 'servicecatalog.k8s.io/v1beta1',
         metadata: {
           generateName: instanceName + '-'
         },
@@ -2819,12 +3295,17 @@ angular.module("openshiftCommonServices")
           instanceRef: {
             name: instanceName
           },
-          secretName: relatedObjName
+          secretName: credentialSecretName
         }
       };
 
-      if (!_.isEmpty(parameters)) {
-        binding.spec.parameters = parameters;
+      if (parametersSecretName) {
+        binding.spec.parametersFrom = [{
+          secretKeyRef: {
+            name: parametersSecretName,
+            key: PARAMETERS_SECRET_KEY
+          }
+        }];
       }
 
       var appSelector = _.get(application, 'spec.selector');
@@ -2836,7 +3317,7 @@ angular.module("openshiftCommonServices")
           };
         }
         binding.spec.alphaPodPresetTemplate = {
-          name: relatedObjName,
+          name: credentialSecretName,
           selector: appSelector
         };
       }
@@ -2844,42 +3325,133 @@ angular.module("openshiftCommonServices")
       return binding;
     };
 
+    var isServiceBindable = function(serviceInstance, serviceClass, servicePlan) {
+      if (!serviceInstance || !serviceClass || !servicePlan) {
+        return false;
+      }
+
+      // If being deleted, it is not bindable
+      if (_.get(serviceInstance, 'metadata.deletionTimestamp')) {
+        return false;
+      }
+
+      // If provisioning failed, the service is not bindable
+      if ($filter('isServiceInstanceFailed')(serviceInstance, 'Failed')) {
+        return false;
+      }
+
+      var planBindable = _.get(servicePlan, 'spec.bindable');
+      if (planBindable === true) {
+        return true;
+      }
+      if (planBindable === false) {
+        return false;
+      }
+
+      // If `plan.spec.bindable` is not set, fall back to `serviceClass.spec.bindable`.
+      return serviceClass.spec.bindable;
+    };
+
+    var getPodPresetSelectorsForBindings = function(bindings) {
+      // Build a map of pod preset selectors by binding name.
+      var podPresetSelectors = {};
+      _.each(bindings, function(binding) {
+        var podPresetSelector = _.get(binding, 'spec.alphaPodPresetTemplate.selector');
+        if (podPresetSelector) {
+          podPresetSelectors[binding.metadata.name] = new LabelSelector(podPresetSelector);
+        }
+      });
+
+      return podPresetSelectors;
+    };
+
+    var getBindingsForResource = function(bindings, apiObject) {
+      if (_.get(apiObject, 'kind') === 'ServiceInstance') {
+        return _.filter(bindings, ['spec.instanceRef.name', _.get(apiObject, 'metadata.name')]);
+      }
+
+      var podPresetSelectors = getPodPresetSelectorsForBindings(bindings);
+
+      // Create a selector for the potential binding target to check if the
+      // pod preset covers the selector.
+      var applicationSelector = new LabelSelector(_.get(apiObject, 'spec.selector'));
+
+      var resourceBindings = [];
+
+      // Look at each pod preset selector to see if it covers this API object selector.
+      _.each(podPresetSelectors, function(podPresetSelector, bindingName) {
+        if (podPresetSelector.covers(applicationSelector)) {
+          // Keep a map of the target UID to the binding and the binding to
+          // the target. We want to show bindings both in the "application"
+          // object rows and the service instance rows.
+          resourceBindings.push(bindings[bindingName]);
+        }
+      });
+
+      return resourceBindings;
+    };
+
+    var filterBindableServiceInstances = function(serviceInstances, serviceClasses, servicePlans) {
+      if (!serviceInstances || !serviceClasses || !servicePlans) {
+        return null;
+      }
+
+      return _.filter(serviceInstances, function (serviceInstance) {
+        var serviceClassName = _.get(serviceInstance, 'spec.clusterServiceClassRef.name');
+        var servicePlanName = _.get(serviceInstance, 'spec.clusterServicePlanRef.name');
+        return isServiceBindable(serviceInstance, serviceClasses[serviceClassName], servicePlans[servicePlanName]);
+      });
+    };
+
+    var sortServiceInstances = function(serviceInstances, serviceClasses) {
+      var getServiceClassDisplayName = function(serviceInstance) {
+        var serviceClassName = _.get(serviceInstance, 'spec.clusterServiceClassRef.name');
+        return _.get(serviceClasses, [serviceClassName, 'spec', 'externalMetadata', 'displayName']) || serviceInstance.spec.clusterServiceClassExternalName;
+      };
+
+      return _.sortBy(serviceInstances, [ getServiceClassDisplayName, 'metadata.name' ]);
+    };
+
     return {
-      bindingResource: bindingResource,
+      bindingResource: serviceBindingsVersion,
       getServiceClassForInstance: getServiceClassForInstance,
+      makeParametersSecret: makeParametersSecret,
+      generateSecretName: generateSecretName,
 
       // Create a binding for `serviceInstance`. If an `application` API object
       // is specified, also create a pod preset for that application using its
       // `spec.selector`. `serviceClass` is required to determine if any
       // parameters need to be set when creating the binding.
-      bindService: function(serviceInstance, application, serviceClass) {
-        return getBindParameters(serviceInstance, serviceClass).then(function (parameters) {
-          var newBinding = makeBinding(serviceInstance, application, parameters);
-          var context = {
-            namespace: serviceInstance.metadata.namespace
-          };
-          return DataService.create(bindingResource, null, newBinding, context);
+      bindService: function(serviceInstance, application, serviceClass, parameters) {
+        var parametersSecretName;
+        if (!_.isEmpty(parameters)) {
+          parametersSecretName = generateSecretName(serviceInstance.metadata.name + '-bind-parameters-');
+        }
+
+        var newBinding = makeBinding(serviceInstance, application, parametersSecretName);
+        var context = {
+          namespace: serviceInstance.metadata.namespace
+        };
+
+        var promise = DataService.create(serviceBindingsVersion, null, newBinding, context);
+        if (!parametersSecretName) {
+          return promise;
+        }
+
+        // Create the secret as well if the binding has parameters.
+        return promise.then(function(binding) {
+          var parametersSecret = makeParametersSecret(parametersSecretName, parameters, binding);
+          return DataService.create(secretsVersion, null, parametersSecret, context).then(function() {
+            return binding;
+          });
         });
       },
 
-      isServiceBindable: function(serviceInstance, serviceClasses) {
-        var serviceClass = getServiceClassForInstance(serviceInstance, serviceClasses);
-        if (!serviceClass) {
-          return !!serviceInstance;
-        }
-
-        var plan = getPlanForInstance(serviceInstance, serviceClass);
-        var planBindable = _.get(plan, 'bindable');
-        if (planBindable === true) {
-          return true;
-        }
-        if (planBindable === false) {
-          return false;
-        }
-
-        // If `plan.bindable` is not set, fall back to `serviceClass.bindable`.
-        return serviceClass.bindable;
-      }
+      isServiceBindable: isServiceBindable,
+      getPodPresetSelectorsForBindings: getPodPresetSelectorsForBindings,
+      getBindingsForResource: getBindingsForResource,
+      filterBindableServiceInstances: filterBindableServiceInstances,
+      sortServiceInstances: sortServiceInstances
     };
   }]);
 ;'use strict';
@@ -2896,6 +3468,15 @@ angular.module('openshiftCommonServices')
 
 angular.module('openshiftCommonServices')
 .factory('DataService', ["$cacheFactory", "$http", "$ws", "$rootScope", "$q", "API_CFG", "APIService", "Logger", "$timeout", "base64", "base64util", function($cacheFactory, $http, $ws, $rootScope, $q, API_CFG, APIService, Logger, $timeout, base64, base64util) {
+
+  // Accept PartialObjectMetadataList. Unfortunately we can't use the Accept
+  // header to fallback to JSON due to an API server content negotiation bug.
+  // https://github.com/kubernetes/kubernetes/issues/50519
+  //
+  // This is a potential version skew issue for when the web console runs in
+  // a pod where we potentially need to support different server versions.
+  // https://trello.com/c/9oaUh8xP
+  var ACCEPT_PARTIAL_OBJECT_METADATA_LIST = 'application/json;as=PartialObjectMetadataList;v=v1alpha1;g=meta.k8s.io';
 
   function Data(array) {
     this._data = {};
@@ -2969,6 +3550,67 @@ angular.module('openshiftCommonServices')
     }
   }
 
+  // If several connection errors happen close together, display them as one
+  // notification. This prevents us spamming the user with many failed requests
+  // at once.
+  var queuedErrors = [];
+  var addQueuedNotifications = _.debounce(function() {
+    if (!queuedErrors.length) {
+      return;
+    }
+
+    // Show all queued messages together. If the details is extremely long, it
+    // will be truncated with a see more link.
+    var notification = {
+      type: 'error',
+      message: 'An error occurred connecting to the server.',
+      details: queuedErrors.join('\n'),
+      links: [{
+        label: 'Refresh',
+        onClick: function() {
+          window.location.reload();
+        }
+      }]
+    };
+
+    // Use `$rootScope.$emit` instead of NotificationsService directly
+    // so that DataService doesn't add a dependency on `openshiftCommonUI`
+    $rootScope.$emit('NotificationsService.addNotification', notification);
+
+    // Clear the queue.
+    queuedErrors = [];
+  }, 300, { maxWait: 1000 });
+
+  var showRequestError = function(message, status) {
+    if (status) {
+      message += " (status " + status + ")";
+    }
+    // Queue the message and call debounced `addQueuedNotifications`.
+    queuedErrors.push(message);
+    addQueuedNotifications();
+  };
+
+  var unknownResourceError = function(resource, opts) {
+    var message;
+    if (!resource) {
+      message = 'Internal error: API resource not specified.';
+    } else {
+      // APIService ResourceGroupVersion objects implement toString()
+      message = "Unknown resource: " + resource.toString();
+    }
+
+    if (_.get(opts, 'errorNotification', true)) {
+      // No HTTP status since no request was made.
+      showRequestError(message);
+    }
+
+    return $q.reject({
+      data: {
+        message: message
+      }
+    });
+  }
+
   function DataService() {
     this._listDeferredMap = {};
     this._watchCallbacksMap = {};
@@ -3003,11 +3645,12 @@ angular.module('openshiftCommonServices')
 //                    which includes a helper method for returning a map indexed
 //                    by attribute (e.g. data.by('metadata.name'))
 // opts:      http - options to pass to the inner $http call
+//            partialObjectMetadataList - if true, request only the metadata for each object
 //
 // returns a promise
   DataService.prototype.list = function(resource, context, callback, opts) {
     resource = APIService.toResourceGroupVersion(resource);
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, null, context, opts);
     var deferred = this._listDeferred(key);
     if (callback) {
       deferred.promise.then(callback);
@@ -3060,12 +3703,16 @@ angular.module('openshiftCommonServices')
       data.gracePeriodSeconds = opts.gracePeriodSeconds;
     }
     this._getNamespace(resource, context, opts).then(function(ns){
+      var url = self._urlForResource(resource, name, context, false, ns)
+      if (!url) {
+        return unknownResourceError(resource, opts);
+      }
       $http(angular.extend({
         method: 'DELETE',
         auth: {},
         data: data,
         headers: headers,
-        url: self._urlForResource(resource, name, context, false, ns)
+        url: url
       }, opts.http || {}))
       .success(function(data, status, headerFunc, config, statusText) {
         deferred.resolve(data);
@@ -3095,11 +3742,15 @@ angular.module('openshiftCommonServices')
     var deferred = $q.defer();
     var self = this;
     this._getNamespace(resource, context, opts).then(function(ns){
+      var url = self._urlForResource(resource, name, context, false, ns);
+      if (!url) {
+        return unknownResourceError(resource, opts);
+      }
       $http(angular.extend({
         method: 'PUT',
         auth: {},
         data: object,
-        url: self._urlForResource(resource, name, context, false, ns)
+        url: url
       }, opts.http || {}))
       .success(function(data, status, headerFunc, config, statusText) {
         deferred.resolve(data);
@@ -3164,11 +3815,15 @@ angular.module('openshiftCommonServices')
     var deferred = $q.defer();
     var self = this;
     this._getNamespace(resource, context, opts).then(function(ns){
+      var url = self._urlForResource(resource, name, context, false, ns);
+      if (!url) {
+        return unknownResourceError(resource, opts);
+      }
       $http(angular.extend({
         method: 'POST',
         auth: {},
         data: object,
-        url: self._urlForResource(resource, name, context, false, ns)
+        url: url
       }, opts.http || {}))
       .success(function(data, status, headerFunc, config, statusText) {
         deferred.resolve(data);
@@ -3269,7 +3924,7 @@ angular.module('openshiftCommonServices')
   DataService.prototype.get = function(resource, name, context, opts) {
     resource = APIService.toResourceGroupVersion(resource);
     opts = opts || {};
-    var key = this._uniqueKey(resource, name, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, name, context, opts);
     var force = !!opts.force;
     delete opts.force;
 
@@ -3287,10 +3942,14 @@ angular.module('openshiftCommonServices')
     else {
       var self = this;
       this._getNamespace(resource, context, opts).then(function(ns){
+        var url = self._urlForResource(resource, name, context, false, ns);
+        if (!url) {
+          return unknownResourceError(resource, opts);
+        }
         $http(angular.extend({
           method: 'GET',
           auth: {},
-          url: self._urlForResource(resource, name, context, false, ns)
+          url: url
         }, opts.http || {}))
         .success(function(data, status, headerFunc, config, statusText) {
           if (self._isImmutable(resource)) {
@@ -3305,16 +3964,7 @@ angular.module('openshiftCommonServices')
         })
         .error(function(data, status, headers, config) {
           if (opts.errorNotification !== false) {
-            var msg = "Failed to get " + resource + "/" + name;
-            if (status !== 0) {
-              msg += " (" + status + ")";
-            }
-            // Use `$rootScope.$emit` instead of NotificationsService directly
-            // so that DataService doesn't add a dependency on `openshiftCommonUI`
-            $rootScope.$emit('NotificationsService.addNotification', {
-              type: 'error',
-              message: msg
-            });
+            showRequestError("Failed to get " + resource + "/" + name, status);
           }
           deferred.reject({
             data: data,
@@ -3344,9 +3994,14 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
   var makeStream = function() {
      return self._getNamespace(resource, context, {})
                 .then(function(params) {
+                  var url = self._urlForResource(resource, name, context, true, _.extend(params, opts));
+                  if (!url) {
+                    return unknownResourceError(resource, opts);
+                  }
+
                   var cumulativeBytes = 0;
                   return  $ws({
-                            url: self._urlForResource(resource, name, context, true, _.extend(params, opts)),
+                            url: url,
                             auth: {},
                             onopen: function(evt) {
                               _.each(openQueue, function(fn) {
@@ -3464,6 +4119,9 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
 //            pollInterval: in milliseconds, how long to wait between polling the server
 //                    only applies if poll=true.  Default is 5000.
 //            http:   similar to .get, etc. at this point, only used to pass http.params for filtering
+//            skipDigest: will skip the $apply & avoid triggering a digest loop
+//                    if set to `true`.  Is intentionally the inverse of the invokeApply
+//                    arg passed to $timeout (due to default values).
 //            errorNotification: will popup an error notification if the API request fails (default true)
 // returns handle to the watch, needed to unwatch e.g.
 //        var handle = DataService.watch(resource,context,callback[,opts])
@@ -3471,7 +4129,8 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
   DataService.prototype.watch = function(resource, context, callback, opts) {
     resource = APIService.toResourceGroupVersion(resource);
     opts = opts || {};
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var invokeApply =  !opts.skipDigest;
+    var key = this._uniqueKey(resource, null, context, opts);
     if (callback) {
       // If we were given a callback, add it
       this._watchCallbacks(key).add(callback);
@@ -3498,7 +4157,7 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
       if (callback) {
         $timeout(function() {
           callback(self._data(key));
-        }, 0);
+        }, 0, invokeApply);
       }
     }
     else {
@@ -3510,7 +4169,7 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
             if (resourceVersion === self._resourceVersion(key)) {
               callback(self._data(key)); // but just in case, still pull from the current data map
             }
-          }, 0);
+          }, 0, invokeApply);
         }
       }
       if (!this._listInFlight(key)) {
@@ -3550,9 +4209,9 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
   DataService.prototype.watchObject = function(resource, name, context, callback, opts) {
     resource = APIService.toResourceGroupVersion(resource);
     opts = opts || {};
-    var key = this._uniqueKey(resource, name, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, name, context, opts);
     var wrapperCallback;
-    if (callback) {
+    if (key && callback) {
       // If we were given a callback, add it
       this._watchObjectCallbacks(key).add(callback);
       var self = this;
@@ -3591,10 +4250,10 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
     var callback = handle.callback;
     var objectCallback = handle.objectCallback;
     var opts = handle.opts;
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, null, context, opts);
 
     if (objectCallback && objectName) {
-      var objectKey = this._uniqueKey(resource, objectName, context, _.get(opts, 'http.params'));
+      var objectKey = this._uniqueKey(resource, objectName, context, opts);
       var objCallbacks = this._watchObjectCallbacks(objectKey);
       objCallbacks.remove(objectCallback);
     }
@@ -3812,30 +4471,60 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
   // - ensure namespace if available
   // - ensure only witelisted url params used for keys (fieldSelector, labelSelector) via paramsForKey
   //   and that these are consistently ordered
+  // - ensure that requests with different Accept request headers have different keys
   // - NOTE: Do not use the key as your url for API requests. This function does not use the 'isWebsocket'
   //         bool.  Both websocket & http operations should respond with the same data from cache if key matches
   //         so the unique key will always include http://
-  DataService.prototype._uniqueKey = function(resource, name, context, params) {
+  DataService.prototype._uniqueKey = function(resource, name, context, opts) {
+    var key;
     var ns = context && context.namespace ||
              _.get(context, 'project.metadata.name') ||
              context.projectName;
-    return this._urlForResource(resource, name, context, null, angular.extend({}, {}, {namespace: ns})).toString() + paramsForKey(params || {});
+    var params = _.get(opts, 'http.params');
+    var url = this._urlForResource(resource, name, context, null, angular.extend({}, {}, {namespace: ns}));
+    if (url) {
+      key = url.toString();
+    } else {
+      // Fall back to the ResourceGroupVersion string, "resource/group/version", for resources that weren't
+      // found during discovery.
+      key = resource || '<unknown>';
+    }
+    key = key + paramsForKey(params || {});
+    if (_.get(opts, 'partialObjectMetadataList')) {
+      // Make sure partial objects get a different cache key.
+      return key + '#' + ACCEPT_PARTIAL_OBJECT_METADATA_LIST;
+    }
+
+    return key;
   };
 
 
   DataService.prototype._startListOp = function(resource, context, opts) {
     opts = opts || {};
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var params =  _.get(opts, 'http.params') || {};
+    var key = this._uniqueKey(resource, null, context, opts);
     // mark the operation as in progress
     this._listInFlight(key, true);
 
+    var headers = {};
+    if (opts.partialObjectMetadataList) {
+      headers.Accept = ACCEPT_PARTIAL_OBJECT_METADATA_LIST;
+    }
+
+    var url;
     var self = this;
     if (context.projectPromise && !resource.equals("projects")) {
       context.projectPromise.done(function(project) {
+        url = self._urlForResource(resource, null, context, false, _.assign({}, params, {namespace: project.metadata.name}))
+        if (!url) {
+          return unknownResourceError(resource, opts);
+        }
+
         $http(angular.extend({
           method: 'GET',
           auth: {},
-          url: self._urlForResource(resource, null, context, false, {namespace: project.metadata.name})
+          headers: headers,
+          url: url
         }, opts.http || {}))
         .success(function(data, status, headerFunc, config, statusText) {
           self._listOpComplete(key, resource, context, opts, data);
@@ -3844,30 +4533,32 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
           self._listInFlight(key, false);
           var deferred = self._listDeferred(key);
           delete self._listDeferredMap[key];
-          deferred.reject(data, status, headers, config);
+          deferred.reject({
+            data: data,
+            status: status,
+            headers: headers,
+            config: config
+          });
 
           if (!_.get(opts, 'errorNotification', true)) {
             return;
           }
 
-          var msg = "Failed to list " + resource;
-          if (status !== 0) {
-            msg += " (" + status + ")";
-          }
-          // Use `$rootScope.$emit` instead of NotificationsService directly
-          // so that DataService doesn't add a dependency on `openshiftCommonUI`
-          $rootScope.$emit('NotificationsService.addNotification', {
-            type: 'error',
-            message: msg
-          });
+          showRequestError("Failed to list " + resource, status);
         });
       });
     }
     else {
+      url = this._urlForResource(resource, null, context, false, params);
+      if (!url) {
+        return unknownResourceError(resource, opts);
+      }
+
       $http({
         method: 'GET',
         auth: {},
-        url: this._urlForResource(resource, null, context),
+        headers: headers,
+        url: url
       }).success(function(data, status, headerFunc, config, statusText) {
         self._listOpComplete(key, resource, context, opts, data);
       }).error(function(data, status, headers, config) {
@@ -3875,22 +4566,18 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
         self._listInFlight(key, false);
         var deferred = self._listDeferred(key);
         delete self._listDeferredMap[key];
-        deferred.reject(data, status, headers, config);
+        deferred.reject({
+          data: data,
+          status: status,
+          headers: headers,
+          config: config
+        });
 
         if (!_.get(opts, 'errorNotification', true)) {
           return;
         }
 
-        var msg = "Failed to list " + resource;
-        if (status !== 0) {
-          msg += " (" + status + ")";
-        }
-        // Use `$rootScope.$emit` instead of NotificationsService directly
-        // so that DataService doesn't add a dependency on `openshiftCommonUI`
-        $rootScope.$emit('NotificationsService.addNotification', {
-          type: 'error',
-          message: msg
-        });
+        showRequestError("Failed to list " + resource, status);
       });
     }
   };
@@ -3920,7 +4607,9 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
     var deferred = this._listDeferred(key);
     delete this._listDeferredMap[key];
 
-    this._resourceVersion(key, data.resourceVersion || data.metadata.resourceVersion);
+    // Some responses might not have `data.metadata` (for instance, PartialObjectMetadataList).
+    var resourceVersion = _.get(data, 'resourceVersion') || _.get(data, 'metadata.resourceVersion');
+    this._resourceVersion(key, resourceVersion);
     this._data(key, items);
     deferred.resolve(this._data(key));
     this._watchCallbacks(key).fire(this._data(key));
@@ -3985,12 +4674,14 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
 
   DataService.prototype._watchOpOnOpen = function(resource, context, opts, event) {
     Logger.log('Websocket opened for resource/context', resource, context);
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, null, context, opts);
     this._addWebsocketEvent(key, 'open');
   };
 
   DataService.prototype._watchOpOnMessage = function(resource, context, opts, event) {
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, null, context, opts);
+    opts = opts || {};
+    var invokeApply = !opts.skipDigest;
     try {
       var eventData = $.parseJSON(event.data);
 
@@ -4020,7 +4711,7 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
       // without timeout this is triggering a repeated digest loop
       $timeout(function() {
         self._watchCallbacks(key).fire(self._data(key), eventData.type, eventData.object);
-      }, 0);
+      }, 0, invokeApply);
     }
     catch (e) {
       // TODO: surface in the UI?
@@ -4030,7 +4721,7 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
 
   DataService.prototype._watchOpOnClose = function(resource, context, opts, event) {
     var eventWS = event.target;
-    var key = this._uniqueKey(resource, null, context, _.get(opts, 'http.params'));
+    var key = this._uniqueKey(resource, null, context, opts);
 
     if (!eventWS) {
       Logger.log("Skipping reopen, no eventWS in event", event);
@@ -4206,6 +4897,33 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
     return new URI({protocol: protocol, hostname: hostPort}).toString();
   };
 
+  DataService.prototype._getAPIServerVersion = function(path) {
+    var protocol = window.location.protocol === "http:" ? "http" : "https";
+    var versionURL = new URI({
+      protocol: protocol,
+      hostname: API_CFG.k8s.hostPort,
+      path: path
+    }).toString();
+    return $http.get(versionURL, {
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+  };
+
+  DataService.prototype.getKubernetesMasterVersion = function() {
+    return this._getAPIServerVersion('/version');
+  };
+
+  DataService.prototype.getOpenShiftMasterVersion = function() {
+    return this._getAPIServerVersion('/version/openshift');
+  };
+
+  // Used by ProjectsService when a list fails.
+  DataService.prototype.createData = function(array) {
+    return new Data(array);
+  };
+
   // Immutables are flagged here as we should not need to fetch them more than once.
   var IMMUTABLE_RESOURCE = {
     imagestreamimages: true
@@ -4245,9 +4963,11 @@ DataService.prototype.createStream = function(resource, name, context, opts, isR
 angular.module('openshiftCommonServices')
 .provider('DeleteTokenLogoutService', function() {
 
-  this.$get = ["$q", "$injector", "Logger", function($q, $injector, Logger) {
+  this.$get = ["$q", "$injector", "Logger", function(
+    $q,
+    $injector,
+    Logger) {
     var authLogger = Logger.get("auth");
-
     return {
       logout: function(user, token) {
         authLogger.log("DeleteTokenLogoutService.logout()", user, token);
@@ -4258,13 +4978,16 @@ angular.module('openshiftCommonServices')
           return $q.when({});
         }
 
-        // Lazily get the data service. Can't explicitly depend on it or we get circular dependencies.
+        // Lazy load services to eliminate circular dependencies.
+        var APIService = $injector.get('APIService');
         var DataService = $injector.get('DataService');
+
+        var oAuthAccessTokensVersion = APIService.getPreferredVersion('oauthaccesstokens');
         // Use the token to delete the token
         // Never trigger a login when deleting our token
         var opts = {http: {auth: {token: token, triggerLogin: false}}};
         // TODO: Change this to return a promise that "succeeds" even if the token delete fails?
-        return DataService.delete("oauthaccesstokens", token, {}, opts);
+        return DataService.delete(oAuthAccessTokensVersion, token, {}, opts);
       },
     };
   }];
@@ -4562,8 +5285,31 @@ angular.module('openshiftCommonServices')
 
 angular.module('openshiftCommonServices')
   .factory('ProjectsService',
-    ["$location", "$q", "AuthService", "DataService", "annotationNameFilter", "AuthorizationService", function($location, $q, AuthService, DataService, annotationNameFilter, AuthorizationService) {
+           ["$location", "$q", "$rootScope", "APIService", "AuthService", "AuthorizationService", "DataService", "Logger", "RecentlyViewedProjectsService", "annotationNameFilter", function($location,
+                    $q,
+                    $rootScope,
+                    APIService,
+                    AuthService,
+                    AuthorizationService,
+                    DataService,
+                    Logger,
+                    RecentlyViewedProjectsService,
+                    annotationNameFilter) {
 
+      // Cache project data when we can so we don't request it on every page load.
+      var cachedProjectData;
+      var cachedProjectDataIncomplete = false;
+      var projectsVersion = APIService.getPreferredVersion('projects');
+      var projectRequestsVersion = APIService.getPreferredVersion('projectrequests');
+
+      var clearCachedProjectData = function() {
+        Logger.debug('ProjectsService: clearing project cache');
+        cachedProjectData = null;
+        cachedProjectDataIncomplete = false;
+      };
+
+      AuthService.onUserChanged(clearCachedProjectData);
+      AuthService.onLogout(clearCachedProjectData);
 
       var cleanEditableAnnotations = function(resource) {
         var paths = [
@@ -4579,7 +5325,7 @@ angular.module('openshiftCommonServices')
       };
 
       return {
-        get: function(projectName) {
+        get: function(projectName, opts) {
           return  AuthService
                     .withUser()
                     .then(function() {
@@ -4590,18 +5336,26 @@ angular.module('openshiftCommonServices')
                         project: undefined
                       };
                       return DataService
-                              .get('projects', projectName, context, {errorNotification: false})
+                              .get(projectsVersion, projectName, context, {errorNotification: false})
                               .then(function(project) {
                                 return AuthorizationService
                                         .getProjectRules(projectName)
                                         .then(function() {
                                           context.project = project;
                                           context.projectPromise.resolve(project);
+                                          RecentlyViewedProjectsService.addProjectUID(project.metadata.uid);
+                                          if (cachedProjectData) {
+                                            cachedProjectData.update(project, 'MODIFIED');
+                                          }
+
                                           // TODO: fix need to return context & projectPromise
                                           return [project, context];
                                         });
                               }, function(e) {
                                 context.projectPromise.reject(e);
+                                if ((e.status === 403 || e.status === 404) && _.get(opts, 'skipErrorNotFound')) {
+                                  return $q.reject({notFound: true});
+                                }
                                 var description = 'The project could not be loaded.';
                                 var type = 'error';
                                 if(e.status === 403) {
@@ -4623,15 +5377,217 @@ angular.module('openshiftCommonServices')
                               });
                     });
           },
-          update: function(projectName, data) {
-            return DataService
-                    .update('projects', projectName, cleanEditableAnnotations(data), {projectName: projectName}, {errorNotification: false});
+
+          // List the projects the user has access to. This method returns
+          // cached data if the projects had previously been fetched to avoid
+          // requesting them again and again, which is a problem for admins who
+          // might have hundreds or more.
+          list: function(forceRefresh) {
+            if (cachedProjectData && !forceRefresh) {
+              Logger.debug('ProjectsService: returning cached project data');
+              return $q.when(cachedProjectData);
+            }
+
+            Logger.debug('ProjectsService: listing projects, force refresh', forceRefresh);
+            return DataService.list(projectsVersion, {}).then(function(projectData) {
+              cachedProjectData = projectData;
+              return projectData;
+            }, function(error) {
+              // If the request fails, don't try to list projects again without `forceRefresh`.
+              cachedProjectData = DataService.createData([]);
+              cachedProjectDataIncomplete = true;
+              return $q.reject();
+            });
           },
+
+          isProjectListIncomplete: function() {
+            return cachedProjectDataIncomplete;
+          },
+
+          watch: function(context, callback) {
+            // Wrap `DataService.watch` so we can update the cached projects
+            // list on changes. TODO: We might want to disable watches entirely
+            // if we know the project list is large.
+            return DataService.watch(projectsVersion, context, function(projectData) {
+              cachedProjectData = projectData;
+              callback(projectData);
+            });
+          },
+
+          update: function(projectName, data) {
+            return DataService.update(projectsVersion, projectName, cleanEditableAnnotations(data), {
+              projectName: projectName
+            }, {
+              errorNotification: false
+            }).then(function(updatedProject) {
+              if (cachedProjectData) {
+                cachedProjectData.update(updatedProject, 'MODIFIED');
+              }
+
+              return updatedProject;
+            });
+          },
+
+          create: function(name, displayName, description) {
+            var projectRequest = {
+              apiVersion: APIService.toAPIVersion(projectRequestsVersion),
+              kind: "ProjectRequest",
+              metadata: {
+                name: name
+              },
+              displayName: displayName,
+              description: description
+            };
+
+            return DataService
+              .create(projectRequestsVersion, null, projectRequest, {})
+              .then(function(project) {
+                RecentlyViewedProjectsService.addProjectUID(project.metadata.uid);
+                if (cachedProjectData) {
+                  cachedProjectData.update(project, 'ADDED');
+                }
+                return project;
+              });
+          },
+
           canCreate: function() {
-            return DataService.get("projectrequests", null, {}, { errorNotification: false});
+            return DataService.get(projectRequestsVersion, null, {}, { errorNotification: false});
+          },
+
+          delete: function(project) {
+            return DataService.delete(projectsVersion, project.metadata.name, {}).then(function(deletedProject) {
+              if (cachedProjectData) {
+                cachedProjectData.update(project, 'DELETED');
+              }
+
+              return deletedProject;
+            });
           }
         };
     }]);
+;'use strict';
+
+angular.module('openshiftCommonServices')
+  .factory('PromiseUtils', ["$q", function($q) {
+    return {
+      // Returns a promise that is resolved or rejected only after all promises
+      // complete. `promises` is a collection of promises. `null` or
+      // `undefined` values are treated as "complete."
+      //
+      // Different than `$q.all` in that it will always wait for all promises.
+      // `$q.all` short circuits as soon as one fails.
+      //
+      // Also unlike `$q.all`, this method does not return any values when
+      // resolving or reasons when rejecting the promise.
+      waitForAll: function(promises) {
+        var total = _.size(promises);
+        if (!total) {
+          return $q.when();
+        }
+
+        var deferred = $q.defer();
+        var complete = 0;
+        var failed = false;
+        var checkDone = function() {
+          if (complete < total) {
+            return;
+          }
+
+          if (failed) {
+            deferred.reject();
+          } else {
+            deferred.resolve();
+          }
+        };
+
+        _.each(promises, function(promise) {
+          if (!promise) {
+            complete++;
+            checkDone();
+            return;
+          }
+
+          promise.catch(function() {
+            failed = true;
+          }).finally(function() {
+            complete++;
+            checkDone();
+          });
+        });
+
+        return deferred.promise;
+      }
+    };
+  }]);
+;'use strict';
+
+angular.module("openshiftCommonServices")
+  .service("RecentlyViewedProjectsService", ["$filter", function($filter){
+
+    var recentlyViewedProjsKey = "openshift/recently-viewed-project-uids";
+
+    var getProjectUIDs = function() {
+      var recentlyViewed = localStorage.getItem(recentlyViewedProjsKey);
+      return recentlyViewed ? JSON.parse(recentlyViewed) : [];
+    };
+
+    var addProjectUID = function(uid) {
+      var recentlyViewed = getProjectUIDs();
+
+      // add to front of list
+      recentlyViewed.unshift(uid);
+
+      // no dups
+      recentlyViewed = _.uniq(recentlyViewed);
+
+      // limit to 5 items
+      recentlyViewed = _.take(recentlyViewed, 5);
+
+      setRecentlyViewedProjects(recentlyViewed);
+    };
+
+    var clear = function() {
+      localStorage.removeItem(recentlyViewedProjsKey);
+    };
+
+    var setRecentlyViewedProjects = function(recentlyViewed) {
+      localStorage.setItem(recentlyViewedProjsKey, JSON.stringify(recentlyViewed));
+    };
+
+    var orderByMostRecentlyViewed = function(projects) {
+      var recentlyViewedProjects = [];
+      var recentlyViewedIds = getProjectUIDs();
+
+      // remove mostRecentlyViewed projects
+      _.each(recentlyViewedIds, function(uid) {
+        var proj = _.remove(projects, function(project) {
+          return project.metadata.uid === uid;
+        })[0];
+        if(proj !== undefined) {
+          recentlyViewedProjects.push(proj);
+        }
+      });
+
+      // second sort by case insensitive displayName
+      projects = _.sortBy(projects, function(project) {
+        return $filter('displayName')(project).toLowerCase();
+      });
+
+      return recentlyViewedProjects.concat(projects);
+    };
+
+    var isRecentlyViewed = function(uid) {
+      return _.includes(getProjectUIDs(), uid);
+    };
+
+    return {
+      getProjectUIDs: getProjectUIDs,
+      addProjectUID: addProjectUID,
+      orderByMostRecentlyViewed: orderByMostRecentlyViewed,
+      clear: clear,
+      isRecentlyViewed: isRecentlyViewed
+    };
+  }]);
 ;'use strict';
 
 // Login strategies
@@ -4641,6 +5597,7 @@ angular.module('openshiftCommonServices')
   var _oauth_authorize_uri = "";
   var _oauth_token_uri = "";
   var _oauth_redirect_uri = "";
+  var _oauth_scope = "";
 
   this.OAuthClientID = function(id) {
     if (id) {
@@ -4666,6 +5623,12 @@ angular.module('openshiftCommonServices')
     }
     return _oauth_redirect_uri;
   };
+  this.OAuthScope = function(scope) {
+    if (scope) {
+      _oauth_scope = scope;
+    }
+    return _oauth_scope;
+  }
 
   this.$get = ["$injector", "$location", "$q", "Logger", "base64", function($injector, $location, $q, Logger, base64) {
     var authLogger = Logger.get("auth");
@@ -4701,7 +5664,14 @@ angular.module('openshiftCommonServices')
     var makeState = function(then) {
       var nonce = String(new Date().getTime()) + "-" + getRandomInts(8).join("");
       try {
-        window.localStorage[nonceKey] = nonce;
+        if (window.localStorage[nonceKey] && window.localStorage[nonceKey].length > 10) {
+          // Reuse an existing nonce if we have one, so that when multiple tabs get kicked to a login screen,
+          // any of them can succeed, not just the last login flow that was started. The nonce gets cleared when the login flow completes.
+          nonce = window.localStorage[nonceKey];
+        } else {
+          // Otherwise store the new nonce for comparison in parseState()
+          window.localStorage[nonceKey] = nonce;
+        }
       } catch(e) {
         authLogger.log("RedirectLoginService.makeState, localStorage error: ", e);
       }
@@ -4755,6 +5725,10 @@ angular.module('openshiftCommonServices')
           state: makeState(returnUri.toString()),
           redirect_uri: _oauth_redirect_uri
         };
+
+        if (_oauth_scope) {
+          authorizeParams.scope = _oauth_scope;
+        }
 
         if (_oauth_token_uri) {
           authorizeParams.response_type = "code";
@@ -4847,6 +5821,10 @@ angular.module('openshiftCommonServices')
             "client_id="    + encodeURIComponent(_oauth_client_id)
           ].join("&");
 
+          if (_oauth_scope) {
+            tokenPostData += "&scope=" + encodeURIComponent(_oauth_scope);
+          }
+
           return http({
             method: "POST",
             url: _oauth_token_uri,
@@ -4872,6 +5850,36 @@ angular.module('openshiftCommonServices')
     };
   }];
 });
+;'use strict';
+
+angular.module("openshiftCommonServices")
+  .service("VersionsService", function(){
+    var compareInteral = function(v1, v2, newestFirst) {
+      v1 = v1 || '';
+      v2 = v2 || '';
+      try {
+        // compareVersions will sort via semver and throw an error if one of
+        // the values is not a version string.
+        var result = window.compareVersions(v1, v2);
+        return newestFirst ? result * -1 : result;
+      } catch (e) {
+        // One of the values is not a version string. Fall back to string comparison.
+        // Numbers will be sorted higher by localeCompare.
+        return v1.localeCompare(v2);
+      }
+    };
+
+    return {
+      // Order oldest version first.
+      compare: function(v1, v2) {
+        return compareInteral(v1, v2, false);
+      },
+      // Order newest version first.
+      rcompare: function(v1, v2) {
+        return compareInteral(v1, v2, true);
+      },
+    };
+  });
 ;'use strict';
 
 // Provide a websocket implementation that behaves like $http
@@ -4971,7 +5979,8 @@ angular.module('openshiftCommonUI').factory('GuidedTourService', function() {
       showPrevButton: true,
       i18n: {
         nextBtn: 'Next >',
-        prevBtn: '< Back'
+        prevBtn: '< Back',
+        closeTooltip: 'x'  // this is the button text not a tooltip, hidden but must be 1 character for focus border (cannot but empty or null)
       }
     };
     hopscotchConfig = {};
@@ -5132,19 +6141,14 @@ angular.module("openshiftCommonUI")
         switch(size) {
           case WINDOW_SIZE_XXS:
             return false; // Nothing is below xxs
-            break;
           case WINDOW_SIZE_XS:
             return window.innerWidth < BREAKPOINTS.screenXsMin;
-            break;
           case WINDOW_SIZE_SM:
             return window.innerWidth < BREAKPOINTS.screenSmMin;
-            break;
           case WINDOW_SIZE_MD:
             return window.innerWidth < BREAKPOINTS.screenMdMin;
-            break;
           case WINDOW_SIZE_LG:
             return window.innerWidth < BREAKPOINTS.screenLgMin;
-            break;
           default:
             return true;
         }
@@ -5154,16 +6158,12 @@ angular.module("openshiftCommonUI")
         switch(size) {
           case WINDOW_SIZE_XS:
             return window.innerWidth >= BREAKPOINTS.screenXsMin;
-            break;
           case WINDOW_SIZE_SM:
             return window.innerWidth >= BREAKPOINTS.screenSmMin;
-            break;
           case WINDOW_SIZE_MD:
             return window.innerWidth >= BREAKPOINTS.screenMdMin;
-            break;
           case WINDOW_SIZE_LG:
             return window.innerWidth >= BREAKPOINTS.screenLgMin;
-            break;
           default:
             return true;
         }
@@ -5192,9 +6192,9 @@ angular.module("openshiftCommonUI")
         }
 
         // Replace any URLs with links.
-        return text.replace(/https?:\/\/[A-Za-z0-9._%+-]+\S*[^\s.;,(){}<>"\u201d\u2019]/gm, function(str) {
+        return text.replace(/https?:\/\/[A-Za-z0-9._%+-]+[^\s<]*[^\s.,()\[\]{}<>"\u201d\u2019]/gm, function(str) {
           if (target) {
-            return "<a href=\"" + str + "\" target=\"" + target + "\">" + str + "</a>";
+            return "<a href=\"" + str + "\" target=\"" + target + "\">" + str + " <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>";
           }
 
           return "<a href=\"" + str + "\">" + str + "</a>";
@@ -5222,6 +6222,12 @@ angular.module('openshiftCommonUI').provider('NotificationsService', function() 
     };
 
     var addNotification = function (notification) {
+      // notifications may already have an id that is not necessarily unique,
+      // this is an explicitly unique id just for `track by` in templates
+      notification.trackByID = _.uniqueId('notification-') + Date.now();
+      notification.skipToast = notification.skipToast || false;
+      notification.showInDrawer = notification.showInDrawer || false;
+      notification.timestamp = new Date().toISOString();
       if (isNotificationPermanentlyHidden(notification) || isNotificationVisible(notification)) {
         return;
       }
@@ -5247,7 +6253,7 @@ angular.module('openshiftCommonUI').provider('NotificationsService', function() 
     };
 
     var clearNotifications = function () {
-      _.take(notifications, 0);
+      notifications.length = 0;
     };
 
     var isNotificationPermanentlyHidden = function (notification) {
