@@ -45,18 +45,14 @@ angular
     };
     if (_.get(window, 'OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE')) {
       landingPageRoute = projectsPageRoute;
-      $routeProvider.when('/projects', {
-        redirectTo: '/'
-      });
     } else {
       landingPageRoute = {
         templateUrl: 'views/landing-page.html',
         controller: 'LandingPageController',
         reloadOnSearch: false
       };
-      $routeProvider.when('/projects', projectsPageRoute);
     }
-
+    $routeProvider.when('/projects', projectsPageRoute);
     $routeProvider
       .when('/', {
         redirectTo: function() {
