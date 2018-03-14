@@ -17,14 +17,6 @@ msgstr ""
 msgid "\", but service \""
 msgstr ""
 
-#: app/views/create/fromimage.html:214
-msgid "(Build and Runtime)"
-msgstr ""
-
-#: app/views/create/fromimage.html:255
-msgid "(Runtime only)"
-msgstr ""
-
 #: app/views/browse/_replica-set-details.html:82
 #: app/views/browse/deployment-config.html:207
 msgid "(autoscaled)"
@@ -34,41 +26,6 @@ msgstr ""
 msgid "(bare host directory volume)"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:119
-msgid "(cannot be changed)"
-msgstr ""
-
-#: app/views/browse/deployment-config.html:310
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:120
-msgid "(cannot be changed)"
-msgstr ""
-
-#: app/views/browse/deployment-config.html:315
-=======
-=======
->>>>>>> rebase from poc 3.6
-#: app/views/directives/osc-persistent-volume-claim.html:123
-msgid "(cannot be changed)"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:321
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/browse/deployment-config.html:267
->>>>>>> rebase from poc 3.6
-msgid "(disabled)"
-msgstr ""
-
-#: app/scripts/filters/resources.js:231
-#: app/views/attach-pvc.html:145
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:106
 #: app/views/directives/osc-persistent-volume-claim.html:138
 msgid "(cannot be changed)"
@@ -76,7 +33,6 @@ msgstr ""
 
 #: app/scripts/filters/resources.js:251
 #: app/views/attach-pvc.html:152
->>>>>>> Build & Translate
 msgid "(generated if empty)"
 msgstr ""
 
@@ -112,31 +68,11 @@ msgstr ""
 msgid ", subpath {{mount.subPath}}"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/attach-pvc.html:76
-msgid ". You cannot create new storage since you are at quota."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/constants.js:473
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:471
-=======
-#: app/scripts/constants.js:375
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:520
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/attach-pvc.html:69
 msgid ". You cannot create new storage since you are at quota."
 msgstr ""
 
 #: app/scripts/constants.js:533
->>>>>>> Build & Translate
 msgid ".NET"
 msgstr ""
 
@@ -144,7 +80,7 @@ msgstr ""
 msgid "/ Node Port"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:21
+#: app/views/modals/about-compute-units-modal.html:25
 msgid "1000 millcores  =  1 core"
 msgstr ""
 
@@ -168,23 +104,7 @@ msgstr ""
 msgid "A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:540
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:538
-=======
-#: app/scripts/constants.js:442
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:587
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:600
->>>>>>> Build & Translate
 msgid "A centralized authentication server for users to log in, log out, register, and manage user accounts for applications and RESTful web services."
 msgstr ""
 
@@ -201,7 +121,9 @@ msgid "A container will default to request this amount of a compute resource if 
 msgstr ""
 
 #: app/views/add-config-volume.html:80
-msgid "A file will be created in this directory for each key from the config map or secret. The file contents will be the value of the key."
+msgid ""
+"A file will be created in this directory for each key from the config\n"
+"                        map or secret. The file contents will be the value of the key."
 msgstr ""
 
 #: app/views/edit/health-checks.html:39
@@ -246,88 +168,17 @@ msgstr ""
 msgid "A unique name for the route within the project."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:76
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:77
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:80
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:80
->>>>>>> rebase from poc 3.6
-msgid "A unique name for the storage claim within the project."
-msgstr ""
-
-#: app/views/edit/build-config.html:208
-msgid "A valid Source Path is an absolute path beginning with '/'"
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:470
-#: app/views/browse/deployment-config.html:353
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/build-config.html:475
-#: app/views/browse/deployment-config.html:358
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:284
-#: app/views/browse/replica-set.html:93
-#: app/views/create/fromimage.html:234
-#: app/views/create/fromimage.html:291
-#: app/views/directives/deploy-image.html:167
-#: app/views/directives/edit-lifecycle-hook.html:58
-#: app/views/edit/build-config.html:438
-#: app/views/edit/deployment-config.html:363
-#: app/views/edit/deployment-config.html:77
-msgid "A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:216
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:217
-=======
-#: app/views/browse/deployment-config.html:364
-#: app/views/browse/deployment.html:284
-#: app/views/create/fromimage.html:234
-#: app/views/create/fromimage.html:291
-#: app/views/directives/deploy-image.html:167
-=======
-#: app/views/browse/build-config.html:472
-#: app/views/create/fromimage.html:225
-#: app/views/create/fromimage.html:282
-#: app/views/directives/deploy-image.html:162
-#: app/views/directives/edit-environment-variables.html:30
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:84
 msgid "A unique name for the storage claim within the project."
 msgstr ""
 
 #: app/views/browse/build-config.html:477
 #: app/views/directives/edit-environment-variables.html:32
->>>>>>> Build & Translate
 #: app/views/directives/edit-lifecycle-hook.html:59
 msgid "A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:223
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "A valid label name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores and dashes."
-msgstr ""
-
-#: app/views/directives/label-editor.html:35
-=======
 #: app/views/directives/label-editor.html:22
->>>>>>> rebase from poc 3.6
 msgid "A valid label value is an alphanumeric (a-z, and 0-9) string, with a maximum length of 63 characters, with the '-' character allowed anywhere except the first or last character."
 msgstr ""
 
@@ -360,23 +211,7 @@ msgstr ""
 msgid "About {{aboutTitle}}"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:96
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:97
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:100
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:100
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:104
->>>>>>> Build & Translate
 msgid "Access Mode"
 msgstr ""
 
@@ -424,10 +259,8 @@ msgstr ""
 #: app/views/browse/service-instance.html:30
 #: app/views/browse/service.html:11
 #: app/views/browse/service.html:16
-#: app/views/browse/stateful-set.html:17
 #: app/views/browse/stateful-set.html:24
 #: app/views/other-resources.html:54
-#: app/views/other-resources.html:67
 #: app/views/overview/_list-row-actions.html:45
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
@@ -435,30 +268,25 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: app/views/other-resources.html:66
+msgid ""
+"Actions\n"
+"                      <span class=\"caret\"></span>"
+msgstr ""
+
+#: app/views/browse/stateful-set.html:13
+msgid ""
+"Actions\n"
+"              <span class=\"caret\" aria-hidden=\"true\"></span>"
+msgstr ""
+
 #: app/views/browse/_pod-details.html:50
 msgid "Active Deadline:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/nav.js:169
-=======
-#: app/scripts/directives/nav.js:160
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
->>>>>>> Init translation.
-#: app/views/add-config-volume.html:199
-#: app/views/attach-pvc.html:215
-=======
-#: app/scripts/directives/nav.js:379
-#: app/views/add-config-volume.html:191
-#: app/views/attach-pvc.html:207
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/directives/nav.js:504
-#: app/views/add-config-volume.html:193
+#: app/views/add-config-volume.html:194
 #: app/views/attach-pvc.html:215
->>>>>>> Build & Translate
 #: app/views/directives/_edit-command.html:56
 #: app/views/directives/_edit-command.html:77
 #: app/views/membership.html:147
@@ -507,88 +335,21 @@ msgstr ""
 msgid "Add Config Files to {{dcName}}"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/_replica-set-details.html:133
-msgid "Add Config Files to {{deploymentConfigName}}"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:471
-#: app/views/browse/deployment-config.html:354
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/build-config.html:476
-#: app/views/browse/deployment-config.html:359
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:285
-#: app/views/browse/replica-set.html:94
-#: app/views/directives/deploy-image.html:170
-#: app/views/directives/edit-lifecycle-hook.html:61
-#: app/views/edit/build-config.html:439
-#: app/views/edit/deployment-config.html:364
-msgid "Add Environment Variable"
-msgstr ""
-
-#: app/views/browse/deployment-config.html:355
-#: app/views/browse/deployment.html:286
-#: app/views/browse/replica-set.html:95
-#: app/views/directives/deploy-image.html:171
-#: app/views/directives/edit-lifecycle-hook.html:60
-#: app/views/edit/deployment-config.html:365
-=======
-#: app/views/browse/deployment-config.html:365
-#: app/views/browse/deployment.html:285
-#: app/views/directives/deploy-image.html:170
-=======
-#: app/views/add-config-volume.html:25
-msgid "Add Config Files to {{name}}"
-msgstr ""
-
-#: app/views/browse/build-config.html:473
-#: app/views/create/fromimage.html:226
-#: app/views/edit/build-config.html:429
->>>>>>> rebase from poc 3.6
-msgid "Add Environment Variable"
-msgstr ""
-
-=======
 #: app/views/add-config-volume.html:26
 msgid "Add Config Files to {{name}}"
 msgstr ""
 
->>>>>>> Build & Translate
 #: app/views/_pod-template.html:16
 msgid "Add Health Checks"
 msgstr ""
 
-#: app/views/add-config-volume.html:167
+#: app/views/add-config-volume.html:168
 #: app/views/directives/edit-config-map.html:115
 #: app/views/directives/edit-config-map.html:46
 msgid "Add Item"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/label-editor.html:36
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:217
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:218
->>>>>>> Init translation.
-msgid "Add Label"
-msgstr ""
-
-#: app/views/edit/health-checks.html:46
-msgid "Add Liveness Probe"
-msgstr ""
-
-#: app/views/edit/health-checks.html:29
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:224
-=======
 #: app/views/directives/label-editor.html:23
->>>>>>> rebase from poc 3.6
 msgid "Add Label"
 msgstr ""
 
@@ -643,33 +404,15 @@ msgstr ""
 msgid "Add argument"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/edit/build-config.html:217
-msgid "Add image source path"
-msgstr ""
-
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
->>>>>>> Init translation.
-#: app/views/add-config-volume.html:117
-msgid "Add only certain keys or use paths that are different than the key names."
-=======
-#: app/views/edit/build-config.html:209
-msgid "Add image source path"
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/overview.html:10
 msgid "Add content to your project from the catalog of web frameworks, databases, and other components. You may also deploy an existing image, create or replace resources from their YAML or JSON definitions, or select an item shared from another project."
->>>>>>> Build & Translate
 msgstr ""
 
-#: app/views/add-config-volume.html:108
+#: app/views/add-config-volume.html:109
 msgid "Add only certain keys or use paths that are different than the key names."
 msgstr ""
 
-#: app/views/add-config-volume.html:187
+#: app/views/add-config-volume.html:188
 msgid "Add the volume to the selected containers."
 msgstr ""
 
@@ -718,7 +461,7 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
-#: app/scripts/controllers/monitoring.js:39
+#: app/scripts/controllers/monitoring.js:40
 msgid "All"
 msgstr ""
 
@@ -740,23 +483,7 @@ msgstr ""
 msgid "All pipelines are filtered."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/deployImage.js:276
-msgid "All resources for image {{name}} were created successfully."
-msgstr ""
-
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
->>>>>>> Init translation.
-#: app/scripts/directives/oscRouting.js:64
-=======
-#: app/scripts/directives/oscRouting.js:93
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/directives/oscRouting.js:101
->>>>>>> Build & Translate
 msgid "Allow"
 msgstr ""
 
@@ -784,7 +511,7 @@ msgstr ""
 msgid "An error occurred deleting the binding."
 msgstr ""
 
-#: app/scripts/controllers/overview.js:429
+#: app/scripts/controllers/overview.js:430
 msgid "An error occurred getting metrics."
 msgstr ""
 
@@ -809,32 +536,12 @@ msgstr ""
 msgid "An image that can carry out the deployment."
 msgstr ""
 
-#: app/scripts/controllers/overview.js:185
+#: app/scripts/controllers/overview.js:186
 #: app/views/overview.html:122
 msgid "Application"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/next-steps.html:3
-msgid "Application created."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/constants.js:213
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:211
-=======
-#: app/scripts/constants.js:155
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:234
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:238
->>>>>>> Build & Translate
 msgid "Applications"
 msgstr ""
 
@@ -882,23 +589,7 @@ msgstr ""
 msgid "Autodeploy when"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:518
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:516
-=======
-#: app/scripts/constants.js:420
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:565
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:578
->>>>>>> Build & Translate
 msgid "Automate the build, test, and deployment of your application with each new code revision."
 msgstr ""
 
@@ -993,7 +684,7 @@ msgstr ""
 
 #: app/scripts/directives/editRequestLimit.js:84
 #: app/scripts/directives/oscPersistentVolumeClaim.js:71
-#: app/views/modals/about-compute-units-modal.html:33
+#: app/views/modals/about-compute-units-modal.html:37
 msgid "Binary Units"
 msgstr ""
 
@@ -1077,34 +768,11 @@ msgstr ""
 msgid "Builder Image:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:261
-#: app/scripts/constants.js:267
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:259
-#: app/scripts/constants.js:265
-=======
-#: app/scripts/constants.js:203
-#: app/scripts/constants.js:209
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/builds.html:11
-#: app/views/monitoring.html:335
-=======
-#: app/scripts/constants.js:302
-#: app/scripts/constants.js:308
-#: app/views/builds.html:6
-#: app/views/monitoring.html:339
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:306
 #: app/scripts/constants.js:312
+#: app/scripts/controllers/monitoring.js:50
 #: app/views/builds.html:6
 #: app/views/monitoring.html:404
->>>>>>> Build & Translate
 #: app/views/overview/_builds.html:2
 #: app/views/overview/_list-row-content.html:23
 #: app/views/overview/_list-row-expanded.html:164
@@ -1131,26 +799,7 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:511
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:509
->>>>>>> Init translation.
-msgid "Business Process Services"
-msgstr ""
-
-#: app/views/directives/osc-routing.html:312
-=======
-#: app/scripts/constants.js:413
-=======
-#: app/scripts/constants.js:558
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:571
->>>>>>> Build & Translate
 msgid "Business Process Services"
 msgstr ""
 
@@ -1163,11 +812,11 @@ msgid "CA Certificate:"
 msgstr ""
 
 #: app/scripts/directives/podMetrics.js:71
-#: app/views/modals/about-compute-units-modal.html:15
+#: app/views/modals/about-compute-units-modal.html:19
 msgid "CPU"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:17
+#: app/views/modals/about-compute-units-modal.html:21
 msgid "CPU is often measured in units called <var>millicores</var>. Each millicore is equivalent to <sup>1</sup>&frasl;<sub>1000</sub> of a CPU&nbsp;core."
 msgstr ""
 
@@ -1183,23 +832,7 @@ msgstr ""
 msgid "Can't be greater than {{limitRangeMax | usageWithUnits : type}}."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:183
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:184
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:187
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:189
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:204
->>>>>>> Build & Translate
 msgid "Can't be greater than {{limits.max | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -1207,23 +840,7 @@ msgstr ""
 msgid "Can't be less than {{limitRangeMin | usageWithUnits : type}}."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:178
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:179
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:182
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:184
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:199
->>>>>>> Build & Translate
 msgid "Can't be less than {{limits.min | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -1233,23 +850,7 @@ msgstr ""
 
 #: app/views/directives/edit-config-map.html:38
 #: app/views/directives/osc-autoscaling.html:35
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:89
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:90
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:93
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:93
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:97
->>>>>>> Build & Translate
 #: app/views/directives/osc-routing.html:33
 msgid "Can't be longer than {{nameValidation.maxlength}} characters."
 msgstr ""
@@ -1263,7 +864,7 @@ msgstr ""
 #: app/scripts/controllers/membership.js:223
 #: app/scripts/directives/fromFile.js:66
 #: app/scripts/directives/processTemplate.js:180
-#: app/views/add-config-volume.html:197
+#: app/views/add-config-volume.html:198
 #: app/views/attach-pvc.html:219
 #: app/views/browse/_replica-set-details.html:46
 #: app/views/create-config-map.html:22
@@ -1307,28 +908,7 @@ msgstr ""
 msgid "Cancel deployment {{rcName}}?"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/constants.js:53
-msgid "Cancelled"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/directives/deployImage.js:259
-msgid "Cannot create {{kind}} \"{{name}}\"."
-msgstr ""
-
-=======
-=======
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/storage.html:50
-=======
 #: app/views/storage.html:58
-<<<<<<< HEAD
-#: app/views/storage.html:73
->>>>>>> rebase from poc 3.6
-=======
->>>>>>> Build & Translate
 msgid "Capacity"
 msgstr ""
 
@@ -1352,17 +932,6 @@ msgstr ""
 msgid "Certificates"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:314
-=======
-#: app/views/browse/deployment-config.html:271
->>>>>>> rebase from poc 3.6
-msgid "Change Of:"
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/set-limits.html:18
 msgid "Changes will only apply to new pods."
 msgstr ""
@@ -1388,6 +957,10 @@ msgstr ""
 msgid "Choose a Project"
 msgstr ""
 
+#: app/views/monitoring.html:13
+msgid "Choose a resource"
+msgstr ""
+
 #: app/views/catalog/catalog.html:19
 msgid "Choose from web frameworks, databases, and other components to add content to your project."
 msgstr ""
@@ -1396,33 +969,13 @@ msgstr ""
 msgid "Claim name:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:477
-#: app/views/browse/deployment-config.html:363
-=======
-#: app/views/browse/build-config.html:482
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/deployment-config.html:368
-=======
-#: app/views/browse/deployment-config.html:374
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:294
-=======
-#: app/views/browse/build-config.html:479
-#: app/views/directives/edit-environment-variables.html:55
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:485
 #: app/views/directives/edit-environment-variables.html:58
->>>>>>> Build & Translate
 msgid "Clear Changes"
 msgstr ""
 
 #: app/views/browse/config-maps.html:41
-#: app/views/browse/stateful-sets.html:31
+#: app/views/browse/stateful-sets.html:38
 #: app/views/catalog/catalog.html:49
 #: app/views/catalog/category-content.html:47
 #: app/views/deployments.html:35
@@ -1448,13 +1001,9 @@ msgstr ""
 msgid "Clear {{ (type || 'Command') | upperFirst }}"
 msgstr ""
 
-#: app/scripts/constants.js:67
-msgid "Client state could not be verified"
-msgstr ""
-
 #: app/views/_alerts.html:13
 #: app/views/directives/edit-environment-from.html:141
-#: app/views/modals/about-compute-units-modal.html:54
+#: app/views/modals/about-compute-units-modal.html:58
 #: app/views/modals/debug-terminal.html:61
 #: app/views/modals/jenkinsfile-examples-modal.html:12
 msgid "Close"
@@ -1470,6 +1019,8 @@ msgstr ""
 
 #: app/views/_templateopt.html:9
 #: app/views/directives/osc-form-section.html:9
+#: app/views/monitoring.html:171
+#: app/views/monitoring.html:242
 #: app/views/monitoring.html:424
 #: app/views/overview/_list-row-chevron.html:4
 msgid "Collapse"
@@ -1505,26 +1056,14 @@ msgid "Command:"
 msgstr ""
 
 #: app/views/modals/about-compute-units-modal.html:6
-msgid "Compute Resources"
+msgid ""
+"Compute Resources\n"
+"      <span class=\"page-header-link\">\n"
+"        <a href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\"><translate>Learn More</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n"
+"      </span>"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:315
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/deployment-config.html:320
-=======
-#: app/views/browse/deployment-config.html:326
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/browse/deployment-config.html:272
-=======
->>>>>>> Build & Translate
 #: app/views/browse/image.html:29
->>>>>>> rebase from poc 3.6
 msgid "Config"
 msgstr ""
 
@@ -1536,24 +1075,8 @@ msgstr ""
 msgid "Config Map:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:312
-=======
-#: app/scripts/constants.js:310
-=======
-#: app/scripts/constants.js:254
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/config-maps.html:14
-=======
-#: app/scripts/constants.js:355
-=======
 #: app/scripts/constants.js:359
->>>>>>> Build & Translate
 #: app/views/browse/config-maps.html:9
->>>>>>> rebase from poc 3.6
 msgid "Config Maps"
 msgstr ""
 
@@ -1613,20 +1136,7 @@ msgstr ""
 msgid "Confirm User Change"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:534
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:532
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:581
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:594
->>>>>>> Build & Translate
 msgid "Connect with other applications and data to enhance functionality without duplication."
 msgstr ""
 
@@ -1652,44 +1162,8 @@ msgstr ""
 msgid "Container health is periodically checked using readiness and liveness probes."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/edit/health-checks.html:18
-msgid "Container {{container.name}}"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:334
-#: app/views/browse/deployment.html:265
-#: app/views/browse/pod.html:62
-#: app/views/browse/replica-set.html:68
-msgid "Container {{container.name}} Environment Variables"
-msgstr ""
-
-#: app/views/edit/deployment-config.html:287
-#: app/views/edit/deployment-config.html:356
-=======
-#: app/views/edit/health-checks.html:26
-#: app/views/set-limits.html:31
-msgid "Container {{container.name}}"
-msgstr ""
-
-#: app/views/browse/deployment-config.html:345
-#: app/views/browse/deployment.html:265
-#: app/views/browse/pod.html:62
-msgid "Container {{container.name}} Environment Variables"
-msgstr ""
-
-#: app/views/edit/deployment-config.html:290
-#: app/views/edit/deployment-config.html:359
->>>>>>> Init translation.
-=======
-#: app/views/edit/deployment-config.html:285
-#: app/views/edit/deployment-config.html:354
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/edit/deployment-config.html:284
 #: app/views/edit/deployment-config.html:352
->>>>>>> Build & Translate
 msgid "Container {{containerName}}"
 msgstr ""
 
@@ -1718,8 +1192,8 @@ msgid "Container:"
 msgstr ""
 
 #: app/views/_pod-template.html:36
-#: app/views/add-config-volume.html:174
-#: app/views/add-config-volume.html:182
+#: app/views/add-config-volume.html:175
+#: app/views/add-config-volume.html:183
 #: app/views/attach-pvc.html:199
 #: app/views/directives/add-config-to-application.html:126
 #: app/views/overview/_list-row-expanded.html:117
@@ -1748,23 +1222,7 @@ msgstr ""
 msgid "Continue with deployment on failure"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:517
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:515
-=======
-#: app/scripts/constants.js:419
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:564
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:577
->>>>>>> Build & Translate
 msgid "Continuous Integration & Deployment"
 msgstr ""
 
@@ -1830,8 +1288,7 @@ msgid "Create New Secret"
 msgstr ""
 
 #: app/views/create-project.html:5
-#: app/views/projects.html:180
-#: app/views/projects.html:2
+#: app/views/projects.html:181
 #: app/views/projects.html:25
 msgid "Create Project"
 msgstr ""
@@ -1858,6 +1315,8 @@ msgstr ""
 #: app/views/attach-pvc.html:18
 #: app/views/storage.html:41
 #: app/views/storage.html:42
+#: app/views/storage.html:6
+#: app/views/storage.html:7
 msgid "Create Storage"
 msgstr ""
 
@@ -1866,7 +1325,7 @@ msgstr ""
 msgid "Create a New Project"
 msgstr ""
 
-#: app/views/projects.html:175
+#: app/views/projects.html:176
 msgid "Create a project for your application."
 msgstr ""
 
@@ -1893,8 +1352,8 @@ msgstr ""
 #: app/views/browse/config-maps.html:52
 #: app/views/browse/deployment-config.html:137
 #: app/views/browse/deployment.html:104
-#: app/views/browse/stateful-sets.html:43
-#: app/views/browse/stateful-sets.html:57
+#: app/views/browse/stateful-sets.html:50
+#: app/views/browse/stateful-sets.html:64
 #: app/views/builds.html:55
 #: app/views/deployments.html:135
 #: app/views/deployments.html:175
@@ -1910,19 +1369,7 @@ msgstr ""
 msgid "Created application"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/deployImage.js:268
-msgid "Created {{kind}} \"{{name}}\" successfully."
-msgstr ""
-
-#: app/scripts/directives/processTemplate.js:89
-=======
-#: app/scripts/directives/processTemplate.js:104
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/directives/processTemplate.js:106
->>>>>>> Build & Translate
 msgid "Creating"
 msgstr ""
 
@@ -1930,38 +1377,11 @@ msgstr ""
 msgid "Creating application"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/fromFile.js:417
-#: app/scripts/directives/fromFile.js:418
-msgid "Creating resources in project"
-msgstr ""
-
-<<<<<<< HEAD
-=======
->>>>>>> Init translation.
-#: app/views/directives/next-steps.html:4
-msgid "Creating..."
-msgstr ""
-
-#: app/scripts/controllers/projects.js:109
-msgid "Creation Date"
-msgstr ""
-
-#: app/scripts/controllers/projects.js:105
-=======
-#: app/scripts/controllers/projects.js:113
-msgid "Creation Date"
-msgstr ""
-
-#: app/scripts/controllers/projects.js:109
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/controllers/projects.js:114
 msgid "Creation Date"
 msgstr ""
 
 #: app/scripts/controllers/projects.js:110
->>>>>>> Build & Translate
 msgid "Creator"
 msgstr ""
 
@@ -1973,63 +1393,20 @@ msgstr ""
 msgid "Custom certificates cannot be used with passthrough termination."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:523
-=======
-#: app/scripts/constants.js:521
-=======
-#: app/views/directives/osc-routing.html:287
-msgid "Custom certificates cannot be used with passthrough termination."
-msgstr ""
-
-#: app/scripts/constants.js:425
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "Data Stores"
-=======
-#: app/views/projects.html:169
-msgid "DMOS helps you quickly develop, host, and scale applications."
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/about.html:14
 msgid "DMOS is Shurenyun's Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment."
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/overview/_service-instance-row.html:66
 msgid "Dashboard"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/projects.html:111
-=======
-#: app/views/projects.html:128
-=======
-#: app/views/pipelines.html:39
-msgid "DataMan OS Pipeline Plugin"
-msgstr ""
-
-#: app/views/projects.html:133
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "DataMan OS helps you quickly develop, host, and scale applications."
-=======
-#: app/scripts/constants.js:570
-=======
 #: app/scripts/constants.js:583
->>>>>>> Build & Translate
 msgid "Data Stores"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:54
 msgid "DataMan OS Pipeline Plugin"
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/modals/debug-terminal.html:6
@@ -2046,7 +1423,7 @@ msgstr ""
 
 #: app/scripts/directives/editRequestLimit.js:87
 #: app/scripts/directives/oscPersistentVolumeClaim.js:75
-#: app/views/modals/about-compute-units-modal.html:42
+#: app/views/modals/about-compute-units-modal.html:46
 msgid "Decimal Units"
 msgstr ""
 
@@ -2068,28 +1445,9 @@ msgstr ""
 #: app/views/browse/service-instance.html:41
 #: app/views/directives/delete-button.html:10
 #: app/views/directives/hpa.html:8
-<<<<<<< HEAD
-#: app/views/modals/delete-resource.html:75
-#: app/views/modals/delete-resource.html:88
-<<<<<<< HEAD
-#: app/views/other-resources.html:68
-#: app/views/overview/_service-instance-row.html:64
-<<<<<<< HEAD
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/projects.html:104
-=======
-#: app/views/projects.html:109
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/overview/_service-instance-row.html:87
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/modals/delete-resource.html:83
 #: app/views/modals/delete-resource.html:97
 #: app/views/overview/_service-instance-row.html:86
->>>>>>> Build & Translate
 msgid "Delete"
 msgstr ""
 
@@ -2099,37 +1457,11 @@ msgstr ""
 msgid "Delete Binding"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/projects.html:106
-=======
-#: app/views/projects.html:111
->>>>>>> Init translation.
-msgid "Delete Project"
-msgstr ""
-
->>>>>>> Init translation.
-=======
-#: app/views/projects.html:140
-msgid "Delete Project"
-msgstr ""
-
-#: app/views/overview/_service-instance-row.html:124
-msgid "Delete This Service"
-msgstr ""
-
->>>>>>> rebase from poc 3.6
-#: app/views/modals/delete-resource.html:53
-=======
 #: app/views/overview/_service-instance-row.html:122
 msgid "Delete This Service"
 msgstr ""
 
 #: app/views/modals/delete-resource.html:61
->>>>>>> Build & Translate
 msgid "Delete pod immediately without waiting for the processes to terminate gracefully"
 msgstr ""
 
@@ -2196,41 +1528,14 @@ msgstr ""
 msgid "Deployment:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:219
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:217
->>>>>>> Init translation.
-#: app/scripts/controllers/deployment.js:36
-=======
-#: app/scripts/constants.js:161
-#: app/scripts/controllers/deployment.js:35
->>>>>>> Init translation.
-#: app/views/deployments.html:11
-#: app/views/deployments.html:117
-#: app/views/monitoring.html:147
-#: app/views/overview.html:181
-#: app/views/overview.html:197
-=======
-#: app/scripts/constants.js:240
-#: app/scripts/controllers/deployment.js:40
-#: app/views/deployments.html:121
-#: app/views/deployments.html:6
-#: app/views/monitoring.html:143
-#: app/views/overview.html:177
-#: app/views/overview.html:193
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:244
 #: app/scripts/controllers/deployment.js:41
+#: app/scripts/controllers/monitoring.js:46
 #: app/views/deployments.html:121
 #: app/views/deployments.html:6
+#: app/views/monitoring.html:151
 #: app/views/overview.html:185
 #: app/views/overview.html:201
->>>>>>> Build & Translate
 msgid "Deployments"
 msgstr ""
 
@@ -2238,23 +1543,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:158
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:159
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:162
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:164
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:179
->>>>>>> Build & Translate
 msgid "Desired storage capacity."
 msgstr ""
 
@@ -2299,17 +1588,8 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/controllers/projects.js:97
-#: app/views/edit/project.html:19
-=======
-#: app/scripts/controllers/projects.js:101
-=======
 #: app/scripts/controllers/projects.js:102
->>>>>>> Build & Translate
 #: app/views/edit/project.html:11
->>>>>>> rebase from poc 3.6
 msgid "Display Name"
 msgstr ""
 
@@ -2329,7 +1609,7 @@ msgstr ""
 msgid "Dockerfile Path"
 msgstr ""
 
-#: app/scripts/controllers/overview.js:436
+#: app/scripts/controllers/overview.js:437
 #: app/scripts/controllers/storage.js:50
 #: app/scripts/services/resourceAlerts.js:58
 msgid "Don't Show Me Again"
@@ -2361,8 +1641,10 @@ msgstr ""
 msgid "Duration:"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:11
-msgid "Each container running on a node uses compute resources like CPU and memory. You can specify how much CPU and memory a container needs to improve scheduling and performance."
+#: app/views/modals/about-compute-units-modal.html:14
+msgid ""
+"Each container running on a node uses compute resources like CPU and memory. You can specify\n"
+"      how much CPU and memory a container needs to improve scheduling and performance."
 msgstr ""
 
 #: app/views/browse/build-config.html:41
@@ -2372,9 +1654,12 @@ msgstr ""
 #: app/views/browse/route.html:205
 #: app/views/directives/hpa.html:5
 #: app/views/directives/replicas.html:10
-#: app/views/edit/yaml.html:8
 #: app/views/overview/_list-row-actions.html:24
 msgid "Edit"
+msgstr ""
+
+#: app/views/edit/yaml.html:8
+msgid "Edit <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}"
 msgstr ""
 
 #: app/views/browse/deployment-config.html:55
@@ -2417,43 +1702,12 @@ msgstr ""
 msgid "Edit Parameters"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/browse/build.html:38
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/pipelines.html:119
-msgid "Edit Pipeline"
-msgstr ""
-
-<<<<<<< HEAD
-=======
-#: app/views/projects.html:99
-=======
-#: app/views/pipelines.html:120
-=======
 #: app/views/browse/build.html:33
-<<<<<<< HEAD
-#: app/views/pipelines.html:112
->>>>>>> rebase from poc 3.6
-msgid "Edit Pipeline"
-msgstr ""
-
-#: app/views/projects.html:134
-#: app/views/projects.html:152
-msgid "Edit Project"
-msgstr ""
-
-<<<<<<< HEAD
->>>>>>> Init translation.
-#: app/views/edit/project.html:13
-=======
-=======
 #: app/views/pipelines.html:116
 msgid "Edit Pipeline"
 msgstr ""
 
->>>>>>> Build & Translate
 #: app/views/edit/project.html:5
->>>>>>> rebase from poc 3.6
 msgid "Edit Project {{project.metadata.name}}"
 msgstr ""
 
@@ -2505,46 +1759,11 @@ msgstr ""
 msgid "Edit YAML"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/create-secret.html:241
-msgid "Email"
-msgstr ""
-
-#: app/views/directives/create-secret.html:258
-msgid "Email is required."
-msgstr ""
-
-#: app/views/directives/create-secret.html:255
-msgid "Email must be in the form of <var>user@domain</var>."
-msgstr ""
-
-#: app/scripts/directives/podDonut.js:123
-msgid "Empty"
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/directives/logs/_log-viewer.html:88
 msgid "End of log"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:209
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:210
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:213
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:218
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:233
->>>>>>> Build & Translate
 msgid "Enter a label and value to use for your storage."
 msgstr ""
 
@@ -2556,54 +1775,9 @@ msgstr ""
 msgid "Enter the command to run inside the container. The command is considered successful if its exit code is 0. Drag and drop to reorder arguments."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:444
-#: app/views/browse/build.html:100
-#: app/views/browse/deployment-config.html:326
-=======
-#: app/views/browse/build-config.html:449
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/build.html:100
-#: app/views/browse/deployment-config.html:331
-=======
-#: app/views/browse/deployment-config.html:337
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:257
-#: app/views/browse/pod.html:60
-#: app/views/browse/replica-set.html:51
-#: app/views/browse/stateful-set.html:149
-msgid "Environment"
-msgstr ""
-
-#: app/views/browse/build-config.html:445
-#: app/views/browse/build.html:101
-#: app/views/create/fromimage.html:223
-#: app/views/create/fromimage.html:261
-#: app/views/directives/deploy-image.html:157
-#: app/views/directives/deploy-image.html:158
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/edit-lifecycle-hook.html:54
-#: app/views/edit/build-config.html:428
-#: app/views/edit/deployment-config.html:352
-#: app/views/edit/deployment-config.html:73
-=======
-=======
-#: app/views/browse/build-config.html:446
-#: app/views/browse/build.html:93
-#: app/views/browse/build.html:94
-#: app/views/browse/deployment-config.html:338
-#: app/views/browse/deployment-config.html:339
-#: app/views/browse/deployment.html:280
-#: app/views/browse/deployment.html:281
-#: app/views/browse/pod.html:54
-=======
 #: app/views/browse/build-config.html:450
 #: app/views/browse/deployment-config.html:340
 #: app/views/browse/deployment.html:283
->>>>>>> Build & Translate
 #: app/views/browse/pod.html:55
 #: app/views/browse/replica-set.html:46
 #: app/views/browse/stateful-set.html:143
@@ -2615,28 +1789,13 @@ msgid "Environment From"
 msgstr ""
 
 #: app/views/browse/build-config.html:451
-#: app/views/create/fromimage.html:214
-#: app/views/create/fromimage.html:255
 #: app/views/directives/edit-lifecycle-hook.html:55
-#: app/views/edit/build-config.html:420
 #: app/views/edit/deployment-config.html:348
 #: app/views/edit/deployment-config.html:67
 msgid "Environment Variables"
 msgstr ""
 
-<<<<<<< HEAD
 #: app/views/create/fromimage.html:214
-<<<<<<< HEAD
-#: app/views/create/fromimage.html:252
-#: app/views/directives/deploy-image.html:152
-#: app/views/directives/deploy-image.html:153
->>>>>>> rebase from poc 3.6
-#: app/views/directives/edit-lifecycle-hook.html:55
-#: app/views/edit/build-config.html:418
-#: app/views/edit/deployment-config.html:350
-#: app/views/edit/deployment-config.html:68
-msgid "Environment Variables"
-=======
 msgid ""
 "Environment Variables <span class=\"appended-icon\">(Build and Runtime) <span class=\"help action-inline\">\n"
 "                            <a href=\"\" data-toggle=\"tooltip\" data-original-title=\"{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}\">\n"
@@ -2652,13 +1811,19 @@ msgid ""
 "                                  <i class=\"pficon pficon-help\"></i>\n"
 "                                </a>\n"
 "                              </span></span>"
->>>>>>> Build & Translate
 msgstr ""
 
-=======
->>>>>>> Add some translation.
 #: app/views/directives/lifecycle-hook.html:33
 msgid "Environment Variables:"
+msgstr ""
+
+#: app/views/edit/build-config.html:420
+msgid ""
+"Environment Variables<span class=\"help action-inline\">\n"
+"                  <a href=\"\">\n"
+"                  <i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.\"></i>\n"
+"                  </a>\n"
+"                </span>"
 msgstr ""
 
 #: app/views/directives/add-config-to-application.html:33
@@ -2681,13 +1846,6 @@ msgstr ""
 msgid "Environment variables can be edited on the deployment"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:127
-#: app/scripts/directives/podDonut.js:184
-#: app/views/overview/_notification-icon.html:10
-=======
-=======
->>>>>>> rebase from poc 3.6
 #: app/views/directives/edit-lifecycle-hook.html:63
 msgid "Environment variables to supply to the hook pod's container."
 msgstr ""
@@ -2703,29 +1861,6 @@ msgstr ""
 msgid "Errors"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build.html:144
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:372
-=======
-#: app/views/browse/deployment-config.html:377
-=======
-#: app/views/browse/build.html:144
-#: app/views/browse/deployment-config.html:383
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:303
-#: app/views/browse/persistent-volume-claim.html:85
-#: app/views/browse/pod.html:222
-#: app/views/browse/replica-set.html:152
-#: app/views/browse/service.html:109
-#: app/views/browse/stateful-set.html:187
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-=======
-#: app/views/browse/build-config.html:499
-=======
->>>>>>> Build & Translate
 #: app/views/browse/build.html:139
 #: app/views/browse/deployment-config.html:344
 #: app/views/browse/deployment.html:287
@@ -2736,7 +1871,6 @@ msgstr ""
 #: app/views/browse/service.html:104
 #: app/views/browse/stateful-set.html:162
 #: app/views/directives/events-badge.html:1
->>>>>>> rebase from poc 3.6
 #: app/views/directives/events-badge.html:2
 #: app/views/directives/events-sidebar.html:6
 #: app/views/events.html:6
@@ -2752,6 +1886,8 @@ msgid "Exit code:"
 msgstr ""
 
 #: app/views/directives/logs/_log-viewer.html:31
+#: app/views/monitoring.html:175
+#: app/views/monitoring.html:246
 #: app/views/monitoring.html:428
 #: app/views/overview/_list-row-chevron.html:8
 msgid "Expand"
@@ -2777,24 +1913,7 @@ msgstr ""
 msgid "External IPs:"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/overview/_networking.html:29
-msgid "External Traffic"
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:529
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:527
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:576
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:589
->>>>>>> Build & Translate
 msgid "Facilitate communication between applications and distributed processes with a messaging server."
 msgstr ""
 
@@ -2828,7 +1947,9 @@ msgid "Filter by keyword"
 msgstr ""
 
 #: app/views/projects.html:164
-msgid "Filter by keyword or change sort options to see other projects."
+msgid ""
+"Filter by keyword or change sort options to see other\n"
+"projects."
 msgstr ""
 
 #: app/views/directives/_project-filter.html:3
@@ -2837,6 +1958,7 @@ msgstr ""
 
 #: app/views/monitoring.html:23
 #: app/views/overview.html:65
+#: app/views/overview.html:70
 msgid "Filter by name"
 msgstr ""
 
@@ -2880,35 +2002,7 @@ msgstr ""
 msgid "Git Repository URL"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/edit/build-config.html:42
-msgid "Git URL of the source code to build."
-msgstr ""
-
-#: app/views/browse/build-config.html:390
-msgid "GitHub Webhook URL:"
-msgstr ""
-
-#: app/views/browse/build-config.html:397
-msgid "GitLab Webhook URL:"
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:499
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:497
-=======
-#: app/scripts/constants.js:401
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:546
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:559
->>>>>>> Build & Translate
 msgid "Go"
 msgstr ""
 
@@ -2949,16 +2043,12 @@ msgstr ""
 msgid "Hide Details"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:449
-=======
-#: app/views/browse/build-config.html:451
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:455
->>>>>>> Build & Translate
 msgid "Hide Image Environment Variables"
+msgstr ""
+
+#: app/views/monitoring.html:46
+msgid "Hide older resources"
 msgstr ""
 
 #: app/views/browse/build-config.html:75
@@ -3079,19 +2169,7 @@ msgstr ""
 msgid "Image Secret"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Init translation.
-#: app/views/edit/build-config.html:159
-#: app/views/edit/build-config.html:223
-=======
-#: app/views/edit/build-config.html:151
-#: app/views/edit/build-config.html:215
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/edit/build-config.html:150
->>>>>>> Build & Translate
 msgid "Image Source From"
 msgstr ""
 
@@ -3129,29 +2207,9 @@ msgstr ""
 msgid "Image value set"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:282
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:280
->>>>>>> Init translation.
-#: app/views/edit/deployment-config.html:282
-=======
-#: app/scripts/constants.js:224
-#: app/views/edit/deployment-config.html:285
->>>>>>> Init translation.
-#: app/views/newfromtemplate.html:25
-=======
-#: app/scripts/constants.js:325
-#: app/views/edit/deployment-config.html:280
-=======
 #: app/scripts/constants.js:329
 #: app/views/edit/deployment-config.html:279
->>>>>>> Build & Translate
 #: app/views/newfromtemplate.html:16
->>>>>>> rebase from poc 3.6
 msgid "Images"
 msgstr ""
 
@@ -3186,27 +2244,11 @@ msgstr ""
 msgid "Insecure Traffic:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:533
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:531
-=======
-#: app/scripts/constants.js:435
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
 #: app/views/service-instances.html:46
 msgid "Instance Name"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/constants.js:580
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:593
->>>>>>> Build & Translate
 msgid "Integration"
 msgstr ""
 
@@ -3245,38 +2287,11 @@ msgstr ""
 msgid "It will not delete the secret."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:421
-msgid "Java"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/constants.js:468
-=======
-#: app/scripts/constants.js:466
-=======
-#: app/scripts/constants.js:323
-msgid "Java"
-msgstr ""
-
-#: app/scripts/constants.js:370
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:468
-msgid "Java"
-msgstr ""
-
-#: app/scripts/constants.js:515
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:481
 msgid "Java"
 msgstr ""
 
 #: app/scripts/constants.js:528
->>>>>>> Build & Translate
 msgid "JavaScript"
 msgstr ""
 
@@ -3292,7 +2307,7 @@ msgstr ""
 msgid "Jenkinsfile:"
 msgstr ""
 
-#: app/views/add-config-volume.html:124
+#: app/views/add-config-volume.html:125
 #: app/views/directives/edit-config-map.html:51
 msgid "Key"
 msgstr ""
@@ -3309,7 +2324,7 @@ msgstr ""
 msgid "Key:"
 msgstr ""
 
-#: app/views/add-config-volume.html:115
+#: app/views/add-config-volume.html:116
 msgid "Keys and Paths"
 msgstr ""
 
@@ -3323,40 +2338,13 @@ msgstr ""
 msgid "Kind and Name"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/about.html:20
-msgid "Kubernetes Master:"
+#: app/scripts/controllers/overview.js:178
+msgid "Label"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:207
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:208
->>>>>>> Init translation.
-msgid "Label Selector"
-msgstr ""
-
-#: app/views/browse/config-maps.html:44
-#: app/views/directives/label-editor.html:2
-#: app/views/directives/label-editor.html:3
-=======
-#: app/views/browse/config-maps.html:44
->>>>>>> Init translation.
-#: app/views/directives/label-editor.html:42
-#: app/views/other-resources.html:43
-=======
-=======
->>>>>>> Build & Translate
 #: app/views/browse/config-maps.html:53
 #: app/views/directives/label-editor.html:29
 #: app/views/other-resources.html:53
-<<<<<<< HEAD
-#: app/views/other-resources.html:61
->>>>>>> rebase from poc 3.6
-=======
->>>>>>> Build & Translate
 msgid "Labels"
 msgstr ""
 
@@ -3368,20 +2356,7 @@ msgstr ""
 msgid "Labels for this route."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:416
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:414
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:463
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:476
->>>>>>> Build & Translate
 msgid "Languages"
 msgstr ""
 
@@ -3459,6 +2434,7 @@ msgstr ""
 #: app/views/edit/health-checks.html:13
 #: app/views/images.html:9
 #: app/views/membership.html:17
+#: app/views/modals/about-compute-units-modal.html:9
 #: app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
 #: app/views/modals/create-secret.html:12
@@ -3482,6 +2458,7 @@ msgid "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:51
+#: app/views/pipelines.html:31
 msgid "Learn more about"
 msgstr ""
 
@@ -3580,7 +2557,7 @@ msgstr ""
 #: app/views/browse/secret.html:6
 #: app/views/browse/service.html:6
 #: app/views/browse/stateful-set.html:55
-#: app/views/browse/stateful-sets.html:22
+#: app/views/browse/stateful-sets.html:29
 #: app/views/catalog/catalog.html:1
 #: app/views/catalog/category-content.html:1
 #: app/views/create-from-url.html:6
@@ -3594,7 +2571,6 @@ msgstr ""
 #: app/views/edit/deployment-config.html:8
 #: app/views/edit/health-checks.html:7
 #: app/views/edit/route.html:9
-#: app/views/edit/yaml.html:6
 #: app/views/newfromtemplate.html:6
 #: app/views/overview.html:36
 #: app/views/pipelines.html:22
@@ -3636,37 +2612,10 @@ msgstr ""
 msgid "Making code changes"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/next-steps.html:57
-msgid "Manage your app"
-msgstr ""
-
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:15
-msgid "Manual"
-msgstr ""
-
-<<<<<<< HEAD
-=======
-#: app/views/browse/build-config.html:437
-#: app/views/browse/deployment-config.html:303
-=======
-#: app/views/browse/build-config.html:437
-#: app/views/browse/deployment-config.html:306
->>>>>>> Init translation.
-=======
-#: app/views/browse/build-config.html:434
-#: app/views/browse/deployment-config.html:252
->>>>>>> rebase from poc 3.6
-msgid "Manual (CLI):"
-=======
 #: app/views/browse/build-config.html:438
 msgid "Manual"
->>>>>>> Build & Translate
 msgstr ""
 
->>>>>>> Init translation.
 #: app/views/browse/_build-details.html:43
 msgid "Manual build"
 msgstr ""
@@ -3710,36 +2659,14 @@ msgstr ""
 msgid "Max pods must be a number."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/osc-autoscaling.html:90
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-msgid "Max pods must be greater than or equal to <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:133
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:134
-=======
-=======
 #: app/views/directives/osc-autoscaling.html:92
->>>>>>> rebase from poc 3.6
 msgid ""
 "Max pods must be greater than or equal to\n"
 "        <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span>\n"
 "        {{autoscaling.minReplicas || 1}}."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:137
-<<<<<<< HEAD
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:152
->>>>>>> Build & Translate
 msgid "Max:"
 msgstr ""
 
@@ -3759,25 +2686,8 @@ msgstr ""
 msgid "Medium:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:303
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:301
-=======
-#: app/scripts/constants.js:245
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/membership.html:18
-=======
-#: app/scripts/constants.js:346
-=======
 #: app/scripts/constants.js:350
->>>>>>> Build & Translate
 #: app/views/membership.html:14
->>>>>>> rebase from poc 3.6
 msgid "Membership"
 msgstr ""
 
@@ -3799,11 +2709,11 @@ msgstr ""
 msgid "Memory <small translate=\"\">Request</small>"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:25
+#: app/views/modals/about-compute-units-modal.html:29
 msgid "Memory and Storage"
 msgstr ""
 
-#: app/views/modals/about-compute-units-modal.html:27
+#: app/views/modals/about-compute-units-modal.html:31
 msgid "Memory and storage are measured in binary units like <var>KiB</var>, <var>MiB</var>, <var>GiB</var>, and <var>TiB</var> or decimal units like <var>kB</var>, <var>MB</var>, <var>GB</var>, and&nbsp;<var>TB</var>."
 msgstr ""
 
@@ -3826,27 +2736,7 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:528
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:526
->>>>>>> Init translation.
-msgid "Messaging"
-msgstr ""
-
-#: app/views/browse/pod.html:73
-#: app/views/browse/replica-set.html:124
-=======
-#: app/scripts/constants.js:430
-=======
-#: app/scripts/constants.js:575
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:588
->>>>>>> Build & Translate
 msgid "Messaging"
 msgstr ""
 
@@ -3864,26 +2754,7 @@ msgstr ""
 msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:66
-msgid "Mid"
-msgstr ""
-
-#: app/views/edit/deployment-config.html:248
-=======
-#: app/views/edit/autoscaler.html:33
-msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
-msgstr ""
-
-#: app/views/edit/deployment-config.html:251
->>>>>>> Init translation.
-=======
-#: app/views/edit/deployment-config.html:244
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/edit/deployment-config.html:243
->>>>>>> Build & Translate
 msgid "Mid Lifecycle Hook"
 msgstr ""
 
@@ -3920,23 +2791,7 @@ msgstr ""
 msgid "Min pods must be greater than or equal to 1."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:130
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:131
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:134
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:134
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:149
->>>>>>> Build & Translate
 msgid "Min:"
 msgstr ""
 
@@ -3948,41 +2803,12 @@ msgstr ""
 msgid "Mode:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:512
-msgid "Model, automate, and orchestrate business processes across applications, services, and data."
-msgstr ""
-
-#: app/scripts/constants.js:346
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:510
-msgid "Model, automate, and orchestrate business processes across applications, services, and data."
-msgstr ""
-
-#: app/scripts/constants.js:344
-=======
-#: app/scripts/constants.js:414
-msgid "Model, automate, and orchestrate business processes across applications, services, and data."
-msgstr ""
-
-#: app/scripts/constants.js:288
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/monitoring.html:12
-=======
-#: app/scripts/constants.js:559
-=======
 #: app/scripts/constants.js:572
->>>>>>> Build & Translate
 msgid "Model, automate, and orchestrate business processes across applications, services, and data."
 msgstr ""
 
 #: app/scripts/constants.js:398
 #: app/views/monitoring.html:7
->>>>>>> rebase from poc 3.6
 msgid "Monitoring"
 msgstr ""
 
@@ -4011,7 +2837,7 @@ msgstr ""
 msgid "Mount path for the volume."
 msgstr ""
 
-#: app/views/add-config-volume.html:86
+#: app/views/add-config-volume.html:87
 #: app/views/attach-pvc.html:96
 msgid "Mount path must be a valid path to a directory starting with <code>/</code>."
 msgstr ""
@@ -4032,30 +2858,7 @@ msgstr ""
 #: app/views/_compute-resource.html:32
 #: app/views/directives/_edit-probe.html:115
 #: app/views/directives/_edit-probe.html:83
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:168
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:169
->>>>>>> Init translation.
-#: app/views/directives/osc-routing-service.html:54
-#: app/views/edit/deployment-config.html:104
-#: app/views/edit/deployment-config.html:139
-#: app/views/edit/deployment-config.html:171
-msgid "Must be a number."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:173
-=======
-=======
->>>>>>> rebase from poc 3.6
-#: app/views/directives/osc-persistent-volume-claim.html:174
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:189
->>>>>>> Build & Translate
 #: app/views/directives/osc-routing-service.html:55
 #: app/views/edit/deployment-config.html:133
 #: app/views/edit/deployment-config.html:165
@@ -4063,17 +2866,7 @@ msgstr ""
 msgid "Must be a number."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:177
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:179
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:194
->>>>>>> Build & Translate
 msgid "Must be a positive number."
 msgstr ""
 
@@ -4093,76 +2886,20 @@ msgstr ""
 msgid "My Projects"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/controllers/projects.js:101
-#: app/scripts/directives/events.js:146
-#: app/views/browse/build-config.html:454
-#: app/views/browse/build-config.html:466
-#: app/views/browse/build-config.html:487
-#: app/views/browse/build.html:108
-#: app/views/browse/config-maps.html:42
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:338
-#: app/views/browse/deployment-config.html:348
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/deployment-config.html:343
-#: app/views/browse/deployment-config.html:353
-=======
-#: app/views/browse/deployment-config.html:349
-#: app/views/browse/deployment-config.html:359
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:105
-#: app/views/browse/deployment.html:115
-#: app/views/browse/deployment.html:269
-#: app/views/browse/deployment.html:279
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/replica-set.html:112
-#: app/views/browse/replica-set.html:72
-#: app/views/browse/replica-set.html:88
-=======
->>>>>>> Init translation.
-#: app/views/browse/stateful-sets.html:44
-#: app/views/builds.html:43
-#: app/views/create/fromimage.html:31
-#: app/views/deployments.html:128
-#: app/views/deployments.html:169
-#: app/views/deployments.html:197
-#: app/views/deployments.html:42
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/deploy-image.html:111
-=======
->>>>>>> Init translation.
-#: app/views/directives/deploy-image.html:165
-=======
-#: app/scripts/controllers/projects.js:105
-#: app/scripts/directives/events.js:150
-#: app/views/browse/build-config.html:468
-=======
+#: app/scripts/controllers/overview.js:175
 #: app/scripts/controllers/projects.js:106
 #: app/scripts/directives/events.js:154
 #: app/views/browse/build-config.html:472
->>>>>>> Build & Translate
 #: app/views/browse/config-maps.html:51
 #: app/views/browse/deployment.html:102
-#: app/views/browse/stateful-sets.html:41
+#: app/views/browse/stateful-sets.html:48
 #: app/views/builds.html:51
 #: app/views/create/fromimage.html:22
 #: app/views/deployments.html:132
 #: app/views/deployments.html:173
 #: app/views/deployments.html:201
 #: app/views/deployments.html:51
-<<<<<<< HEAD
-#: app/views/deployments.html:62
-#: app/views/deployments.html:73
-#: app/views/directives/deploy-image.html:116
-#: app/views/directives/deploy-image.html:160
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/deploy-image.html:115
->>>>>>> Build & Translate
 #: app/views/directives/edit-config-map.html:5
 #: app/views/directives/edit-environment-variables.html:15
 #: app/views/directives/edit-environment-variables.html:27
@@ -4190,23 +2927,7 @@ msgstr ""
 #: app/views/directives/create-secret.html:39
 #: app/views/directives/edit-config-map.html:33
 #: app/views/directives/osc-autoscaling.html:28
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:79
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:80
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:83
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:83
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:87
->>>>>>> Build & Translate
 msgid "Name is required."
 msgstr ""
 
@@ -4243,25 +2964,7 @@ msgstr ""
 msgid "Networking"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:414
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:307
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/deployment-config.html:312
-=======
-#: app/views/browse/deployment-config.html:318
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/browse/build-config.html:411
-#: app/views/browse/deployment-config.html:264
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:415
->>>>>>> Build & Translate
 msgid "New Image For:"
 msgstr ""
 
@@ -4386,6 +3089,10 @@ msgstr ""
 msgid "No pipeline runs."
 msgstr ""
 
+#: app/views/pipelines.html:29
+msgid "No pipelines have been added to project {{projectName}}."
+msgstr ""
+
 #: app/views/overview.html:256
 #: app/views/pipelines.html:26
 msgid "No pipelines."
@@ -4395,38 +3102,10 @@ msgstr ""
 msgid "No pods to show"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/pod-donut.html:16
-<<<<<<< HEAD
-msgid "No pods."
-msgstr ""
-
-#: app/views/deployments.html:202
-msgid "No replication controllers to show"
-=======
-#: app/views/pods.html:31
-msgid "No pods."
-msgstr ""
-
-#: app/views/service-instances.html:32
-msgid "No provisioned services have been added to project {{projectName}}."
-msgstr ""
-
-#: app/views/service-instances.html:31
-msgid "No provisioned services."
-msgstr ""
-
-#: app/views/browse/routes.html:35
-msgid "No routes have been added to project {{projectName}}."
->>>>>>> rebase from poc 3.6
-msgstr ""
-
-=======
 #: app/views/directives/pod-donut.html:18
 msgid "No pods."
 msgstr ""
 
->>>>>>> Build & Translate
 #: app/views/directives/traffic-table.html:15
 msgid "No routes or ports to show"
 msgstr ""
@@ -4443,7 +3122,11 @@ msgstr ""
 msgid "No stages have started."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:27
+#: app/views/browse/stateful-sets.html:35
+msgid "No stateful sets have been added to project {{projectName}}."
+msgstr ""
+
+#: app/views/browse/stateful-sets.html:34
 msgid "No stateful sets."
 msgstr ""
 
@@ -4471,15 +3154,9 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:125
-#: app/scripts/directives/podDonut.js:195
-msgid "Not Ready"
-=======
 #: app/views/directives/events-badge.html:1
 #: app/views/directives/events-badge.html:2
 msgid "Normal"
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/_pod-template.html:14
@@ -4506,7 +3183,7 @@ msgstr ""
 msgid "Open Fullscreen Terminal"
 msgstr ""
 
-#: app/scripts/controllers/overview.js:432
+#: app/scripts/controllers/overview.js:433
 msgid "Open Metrics URL"
 msgstr ""
 
@@ -4519,7 +3196,7 @@ msgstr ""
 msgid "OpenShift Pipeline Plugin"
 msgstr ""
 
-#: app/views/projects.html:174
+#: app/views/projects.html:175
 msgid "OpenShift helps you quickly develop, host, and scale applications."
 msgstr ""
 
@@ -4547,31 +3224,10 @@ msgstr ""
 msgid "Other Replication Controllers"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:330
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:328
-=======
-#: app/scripts/constants.js:272
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/other-resources.html:10
-#: app/views/overview.html:133
-=======
-#: app/scripts/constants.js:376
-#: app/views/other-resources.html:5
-#: app/views/overview.html:129
-#: app/views/overview.html:315
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:380
 #: app/views/other-resources.html:5
 #: app/views/overview.html:137
 #: app/views/overview.html:323
->>>>>>> Build & Translate
 msgid "Other Resources"
 msgstr ""
 
@@ -4587,38 +3243,15 @@ msgstr ""
 msgid "Output To:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:208
-msgid "Overview"
-msgstr ""
-
-#: app/scripts/constants.js:483
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:206
-msgid "Overview"
-=======
 #: app/views/directives/pod-metrics.html:80
 msgid "Over limit of"
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/scripts/constants.js:233
 msgid "Overview"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:385
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:530
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:543
->>>>>>> Build & Translate
 msgid "PHP"
 msgstr ""
 
@@ -4639,7 +3272,7 @@ msgstr ""
 msgid "Password or token is required."
 msgstr ""
 
-#: app/views/add-config-volume.html:135
+#: app/views/add-config-volume.html:136
 #: app/views/directives/_edit-probe.html:23
 #: app/views/directives/osc-routing.html:87
 msgid "Path"
@@ -4671,7 +3304,7 @@ msgstr ""
 msgid "Path:"
 msgstr ""
 
-#: app/views/add-config-volume.html:157
+#: app/views/add-config-volume.html:158
 msgid "Paths must be unique."
 msgstr ""
 
@@ -4688,20 +3321,9 @@ msgstr ""
 msgid "Pausing lets you make changes without triggering a rollout. You can resume rollouts at any time."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:129
-#: app/views/browse/routes.html:72
-#: app/views/directives/traffic-table.html:48
-=======
 #: app/views/browse/routes.html:87
 #: app/views/directives/traffic-table.html:51
-<<<<<<< HEAD
->>>>>>> rebase from poc 3.6
-#: app/views/overview/_service-binding.html:13
-#: app/views/overview/_service-instance-row.html:30
-=======
 #: app/views/overview/_service-instance-row.html:29
->>>>>>> Build & Translate
 msgid "Pending"
 msgstr ""
 
@@ -4709,46 +3331,15 @@ msgstr ""
 msgid "Percentage of traffic sent to each service. Drag the slider to adjust the values or"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:478
-msgid "Perl"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:110
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:476
-msgid "Perl"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:111
-=======
-#: app/scripts/constants.js:380
-=======
-#: app/scripts/constants.js:525
->>>>>>> rebase from poc 3.6
-msgid "Perl"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:114
-<<<<<<< HEAD
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:538
 msgid "Perl"
 msgstr ""
 
 #: app/views/directives/osc-persistent-volume-claim.html:129
->>>>>>> Build & Translate
 msgid "Permissions to the mounted volume."
 msgstr ""
 
-#: app/views/add-config-volume.html:126
+#: app/views/add-config-volume.html:127
 msgid "Pick a key"
 msgstr ""
 
@@ -4756,52 +3347,21 @@ msgstr ""
 msgid "Pick the config source. Its data will be mounted as a volume in the container."
 msgstr ""
 
-#: app/scripts/controllers/overview.js:191
+#: app/scripts/controllers/overview.js:192
 #: app/views/directives/_build-pipeline-collapsed.html:5
 #: app/views/overview.html:292
 msgid "Pipeline"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:52
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/overview.html:258
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-msgid "Pipeline Builds"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/constants.js:275
-=======
-#: app/scripts/constants.js:273
-=======
-#: app/views/pipelines.html:37
-msgid "Pipeline Builds"
-msgstr ""
-
-#: app/scripts/constants.js:217
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/overview/_list-row-expanded.html:151
-=======
-#: app/views/overview.html:254
-=======
 #: app/views/overview.html:262
->>>>>>> Build & Translate
 #: app/views/pipelines.html:32
 msgid "Pipeline Builds"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/constants.js:317
-#: app/views/overview/_list-row-content.html:23
-#: app/views/overview/_list-row-expanded.html:155
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:321
 #: app/views/overview/_list-row-content.html:18
 #: app/views/overview/_list-row-expanded.html:153
->>>>>>> Build & Translate
 #: app/views/overview/_pipelines.html:2
 #: app/views/pipelines.html:6
 msgid "Pipelines"
@@ -4811,28 +3371,7 @@ msgstr ""
 msgid "Please enable JavaScript to continue. If you do not wish to enable JavaScript or are unable to do so,"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:469
-#: app/views/browse/deployment-config.html:352
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/build-config.html:474
-#: app/views/browse/deployment-config.html:357
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:283
-#: app/views/browse/replica-set.html:92
-=======
-#: app/views/browse/deployment-config.html:363
-#: app/views/browse/deployment.html:283
->>>>>>> Init translation.
-=======
-#: app/views/browse/build-config.html:471
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:476
->>>>>>> Build & Translate
 msgid "Please enter a valid key"
 msgstr ""
 
@@ -4848,28 +3387,8 @@ msgstr ""
 msgid "Please wait while you are logged in&hellip;"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/pod-donut.html:18
-msgid "Pod status:"
-msgstr ""
-
-#: app/scripts/constants.js:236
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:234
-=======
-#: app/scripts/constants.js:178
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/service.html:101
-#: app/views/browse/stateful-set.html:138
-#: app/views/pods.html:11
-msgid "Pods"
-=======
 #: app/views/directives/pod-metrics.html:58
 msgid "Pod Metrics"
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/directives/pod-donut.html:20
@@ -4962,16 +3481,7 @@ msgstr ""
 msgid "Public hostname for the route."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:128
-#: app/scripts/directives/podDonut.js:190
-msgid "Pulling"
-msgstr ""
-
-#: app/views/browse/_build-details.html:97
-=======
 #: app/views/browse/_build-details.html:99
->>>>>>> rebase from poc 3.6
 msgid "Push Secret:"
 msgstr ""
 
@@ -4979,41 +3489,12 @@ msgstr ""
 msgid "Push To"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:488
-msgid "Python"
-msgstr ""
-
-#: app/scripts/constants.js:299
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:486
-msgid "Python"
-msgstr ""
-
-#: app/scripts/constants.js:297
-=======
-#: app/scripts/constants.js:390
-msgid "Python"
-msgstr ""
-
-#: app/scripts/constants.js:241
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/quota.html:13
-=======
-#: app/scripts/constants.js:535
-=======
 #: app/scripts/constants.js:548
->>>>>>> Build & Translate
 msgid "Python"
 msgstr ""
 
 #: app/scripts/constants.js:346
 #: app/views/quota.html:6
->>>>>>> rebase from poc 3.6
 msgid "Quota"
 msgstr ""
 
@@ -5021,23 +3502,11 @@ msgstr ""
 msgid "Ratio"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:107
-msgid "Read Only"
-msgstr ""
-
-#: app/views/attach-pvc.html:184
-=======
-#: app/views/attach-pvc.html:175
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:125
 msgid "Read Only"
 msgstr ""
 
 #: app/views/attach-pvc.html:182
->>>>>>> Build & Translate
 msgid "Read only"
 msgstr ""
 
@@ -5084,61 +3553,7 @@ msgstr ""
 msgid "Recent Runs"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:17
-msgid "Recreate"
-msgstr ""
-
-=======
-#: app/views/pipelines.html:106
-msgid "Recent Runs"
-msgstr ""
-
->>>>>>> Init translation.
-#: app/views/about.html:20
-msgid "Red Hat DataMan OS <span class=\"about-reg\">&reg;</span>"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/constants.js:428
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:426
->>>>>>> Init translation.
-msgid "Red Hat JBoss A-MQ"
-msgstr ""
-
-#: app/scripts/constants.js:432
-msgid "Red Hat JBoss BPM Suite"
-msgstr ""
-
-#: app/scripts/constants.js:436
-msgid "Red Hat JBoss BRMS"
-msgstr ""
-
-#: app/scripts/constants.js:440
-msgid "Red Hat JBoss Data Grid"
-msgstr ""
-
-#: app/scripts/constants.js:444
-msgid "Red Hat JBoss EAP"
-msgstr ""
-
-#: app/scripts/constants.js:448
-msgid "Red Hat JBoss Fuse"
-msgstr ""
-
-#: app/scripts/constants.js:452
-msgid "Red Hat JBoss Web Server (Tomcat)"
-msgstr ""
-
-#: app/scripts/constants.js:456
-=======
-#: app/scripts/constants.js:475
-=======
 #: app/scripts/constants.js:488
->>>>>>> Build & Translate
 msgid "Red Hat JBoss A-MQ"
 msgstr ""
 
@@ -5166,12 +3581,7 @@ msgstr ""
 msgid "Red Hat JBoss Web Server (Tomcat)"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/constants.js:503
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:516
->>>>>>> Build & Translate
 msgid "Red Hat Single Sign-On"
 msgstr ""
 
@@ -5197,7 +3607,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: app/views/add-config-volume.html:164
+#: app/views/add-config-volume.html:165
 #: app/views/directives/_edit-command.html:28
 #: app/views/directives/_edit-command.html:29
 #: app/views/directives/edit-config-map.html:112
@@ -5249,7 +3659,7 @@ msgid "Replica Sets"
 msgstr ""
 
 #: app/views/browse/deployment.html:103
-#: app/views/browse/stateful-sets.html:42
+#: app/views/browse/stateful-sets.html:49
 #: app/views/deployments.html:134
 #: app/views/deployments.html:174
 #: app/views/deployments.html:202
@@ -5305,37 +3715,13 @@ msgstr ""
 msgid "Requests and"
 msgstr ""
 
-#: app/scripts/controllers/overview.js:188
+#: app/scripts/controllers/overview.js:189
 #: app/views/quota.html:154
 #: app/views/quota.html:62
 msgid "Resource Type"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/create/fromimage.html:365
-msgid "Resource limits control compute resource usage by a container on a node."
-msgstr ""
-
-#: app/views/set-limits.html:11
-msgid "Resource limits control how much <span ng-if=\"!hideCPU\">CPU and</span> memory a container will consume on a node."
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:293
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:291
-=======
-#: app/scripts/constants.js:235
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:336
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:340
->>>>>>> Build & Translate
 msgid "Resources"
 msgstr ""
 
@@ -5392,26 +3778,8 @@ msgstr ""
 msgid "Route target port is set to \""
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:250
-=======
-#: app/scripts/constants.js:248
-=======
-#: app/scripts/constants.js:192
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/routes.html:14
-=======
-#: app/scripts/constants.js:277
-#: app/views/browse/routes.html:9
->>>>>>> rebase from poc 3.6
-#: app/views/overview/_networking.html:28
-=======
 #: app/scripts/constants.js:281
 #: app/views/browse/routes.html:9
->>>>>>> Build & Translate
 msgid "Routes"
 msgstr ""
 
@@ -5436,18 +3804,8 @@ msgstr ""
 msgid "Routing is a way to make your application publicly visible."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:493
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:491
->>>>>>> Init translation.
-msgid "Ruby"
-=======
 #: app/views/create/fromimage.html:159
 msgid "Routing is a way to make your application publicly visible. Otherwise you may only be able to access your application by its IP address, if allowed by the system administrator."
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/scripts/constants.js:553
@@ -5470,20 +3828,6 @@ msgstr ""
 msgid "Run policy type"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/constants.js:56
-#: app/scripts/directives/podDonut.js:124
-msgid "Running"
-msgstr ""
-
-=======
-#: app/views/edit/build-config.html:607
-msgid "Run build hooks after image is built"
-msgstr ""
-
->>>>>>> Init translation.
-=======
->>>>>>> rebase from poc 3.6
 #: app/views/directives/edit-lifecycle-hook.html:32
 msgid "Runs a command in a new pod using the container from the deployment template. You can add additional environment variables and volumes."
 msgstr ""
@@ -5492,44 +3836,9 @@ msgstr ""
 msgid "SSH Key"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/create-secret.html:132
-msgid "SSH Private Key"
-msgstr ""
-
-#: app/views/create/fromimage.html:88
-msgid "Sample repository for"
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:473
-#: app/views/browse/deployment-config.html:358
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/build-config.html:478
-#: app/views/browse/deployment-config.html:363
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:289
-#: app/views/directives/logs/_log-viewer.html:23
-#: app/views/edit/autoscaler.html:59
-#: app/views/edit/build-config.html:670
-#: app/views/edit/config-map.html:38
-#: app/views/edit/deployment-config.html:375
-#: app/views/edit/health-checks.html:65
-=======
-#: app/views/browse/deployment-config.html:369
-#: app/views/browse/deployment.html:289
-=======
-#: app/views/browse/build-config.html:475
-#: app/views/directives/add-config-to-application.html:109
-#: app/views/directives/edit-environment-variables.html:50
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:481
 #: app/views/directives/add-config-to-application.html:143
 #: app/views/directives/edit-environment-variables.html:53
->>>>>>> Build & Translate
 #: app/views/directives/logs/_log-viewer.html:23
 #: app/views/edit/autoscaler.html:63
 #: app/views/edit/build-config.html:609
@@ -5622,20 +3931,8 @@ msgstr ""
 msgid "Secret:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:319
-#: app/views/secrets.html:14
-=======
-#: app/scripts/constants.js:261
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:364
-=======
 #: app/scripts/constants.js:368
->>>>>>> Build & Translate
 #: app/views/secrets.html:9
->>>>>>> rebase from poc 3.6
 msgid "Secrets"
 msgstr ""
 
@@ -5680,11 +3977,11 @@ msgstr ""
 msgid "Select key"
 msgstr ""
 
-#: app/views/add-config-volume.html:106
+#: app/views/add-config-volume.html:107
 msgid "Select specific keys and paths"
 msgstr ""
 
-#: app/views/add-config-volume.html:116
+#: app/views/add-config-volume.html:117
 msgid ""
 "Select the keys to use and the file paths where each key will be exposed.\n"
 "                    The file paths are relative to the mount path.\n"
@@ -5749,25 +4046,8 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:243
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:241
-=======
-#: app/scripts/constants.js:185
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/services.html:11
-=======
-#: app/scripts/constants.js:270
-=======
 #: app/scripts/constants.js:274
->>>>>>> Build & Translate
 #: app/views/services.html:6
->>>>>>> rebase from poc 3.6
 msgid "Services"
 msgstr ""
 
@@ -5785,27 +4065,10 @@ msgstr ""
 msgid "Severity"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:103
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:104
->>>>>>> Init translation.
-msgid "Shared Access"
-msgstr ""
-
-=======
->>>>>>> Init translation.
-=======
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:119
 msgid "Shared Access"
 msgstr ""
 
->>>>>>> Build & Translate
 #: app/views/_container-statuses.html:19
 #: app/views/browse/route.html:164
 #: app/views/browse/route.html:174
@@ -5818,15 +4081,7 @@ msgstr ""
 msgid "Show Details"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:448
-=======
-#: app/views/browse/build-config.html:450
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:454
->>>>>>> Build & Translate
 msgid "Show Image Environment Variables"
 msgstr ""
 
@@ -5842,37 +4097,7 @@ msgstr ""
 msgid "Showing <strong>{{overview.filteredSize}}</strong> of <strong>{{overview.size}}</strong> items"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:539
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:537
->>>>>>> Init translation.
-msgid "Single Sign-On"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:99
-msgid "Single User"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:125
-msgid "Size"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:163
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:164
-=======
-#: app/scripts/constants.js:441
-=======
-#: app/scripts/constants.js:586
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:599
->>>>>>> Build & Translate
 msgid "Single Sign-On"
 msgstr ""
 
@@ -5884,17 +4109,7 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:167
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:169
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:184
->>>>>>> Build & Translate
 msgid "Size is required."
 msgstr ""
 
@@ -6001,31 +4216,15 @@ msgstr ""
 msgid "State:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:229
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:227
-=======
-#: app/scripts/constants.js:171
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/stateful-sets.html:14
-#: app/views/monitoring.html:270
-=======
-#: app/scripts/constants.js:256
-#: app/views/browse/stateful-sets.html:8
-#: app/views/monitoring.html:273
-#: app/views/overview.html:225
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:260
-#: app/views/browse/stateful-sets.html:6
+#: app/views/browse/stateful-sets.html:7
+#: app/views/monitoring.html:326
 #: app/views/overview.html:233
->>>>>>> Build & Translate
 msgid "Stateful Sets"
+msgstr ""
+
+#: app/scripts/controllers/monitoring.js:53
+msgid "StatefulSets"
 msgstr ""
 
 #: app/views/browse/_build-details.html:4
@@ -6067,28 +4266,9 @@ msgstr ""
 msgid "Stop Following"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:338
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:336
-=======
-#: app/scripts/constants.js:280
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/attach-pvc.html:45
-#: app/views/storage.html:11
-=======
-#: app/scripts/constants.js:384
-#: app/views/attach-pvc.html:36
-=======
 #: app/scripts/constants.js:388
 #: app/views/attach-pvc.html:37
->>>>>>> Build & Translate
 #: app/views/storage.html:10
->>>>>>> rebase from poc 3.6
 msgid "Storage"
 msgstr ""
 
@@ -6105,43 +4285,11 @@ msgstr ""
 msgid "Storage quota limit has been reached. You will not be able to create any new storage."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:189
-msgid "Storage quota will be exceeded."
-msgstr ""
-
-#: app/scripts/constants.js:524
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:190
-msgid "Storage quota will be exceeded."
-msgstr ""
-
-#: app/scripts/constants.js:522
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:193
-msgid "Storage quota will be exceeded."
-msgstr ""
-
-#: app/scripts/constants.js:426
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:195
-msgid "Storage quota will be exceeded."
-msgstr ""
-
-#: app/scripts/constants.js:571
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:210
 msgid "Storage quota will be exceeded."
 msgstr ""
 
 #: app/scripts/constants.js:584
->>>>>>> Build & Translate
 msgid "Store and manage collections of data."
 msgstr ""
 
@@ -6163,23 +4311,7 @@ msgstr ""
 msgid "Subpath"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:130
-msgid "Succeeded"
-msgstr ""
-
-#: app/views/util/oauth.html:21
-=======
-#: app/views/directives/next-steps.html:30
-#: app/views/directives/next-steps.html:42
-msgid "Success"
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/util/oauth.html:19
->>>>>>> rebase from poc 3.6
 msgid "Switch Users"
 msgstr ""
 
@@ -6249,23 +4381,7 @@ msgstr ""
 msgid "Target port for traffic."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:506
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:504
-=======
-#: app/scripts/constants.js:408
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:553
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:566
->>>>>>> Build & Translate
 msgid "Technologies"
 msgstr ""
 
@@ -6285,21 +4401,8 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:58
-#: app/scripts/directives/podDonut.js:131
-#: app/scripts/directives/podDonut.js:179
-msgid "Terminating"
-msgstr ""
-
-=======
->>>>>>> Init translation.
-#: app/views/browse/routes.html:92
-=======
 #: app/views/browse/routes.html:111
 #: app/views/directives/traffic-table.html:55
->>>>>>> rebase from poc 3.6
 msgid "Termination"
 msgstr ""
 
@@ -6349,15 +4452,7 @@ msgstr ""
 msgid "The build strategy had no environment variables defined."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:447
-=======
-#: app/views/browse/build-config.html:449
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:453
->>>>>>> Build & Translate
 msgid "The builder image has additional environment variables defined.  Variables defined below will overwrite any from the image with the same name."
 msgstr ""
 
@@ -6396,6 +4491,10 @@ msgstr ""
 
 #: app/views/projects.html:94
 msgid "The current filter is hiding all projects."
+msgstr ""
+
+#: app/views/monitoring.html:332
+msgid "The current filters are hiding all stateful sets."
 msgstr ""
 
 #: app/views/_templateopt.html:76
@@ -6438,7 +4537,7 @@ msgstr ""
 msgid "The filter is hiding all secrets."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:31
+#: app/views/browse/stateful-sets.html:38
 msgid "The filter is hiding all stateful sets."
 msgstr ""
 
@@ -6491,7 +4590,7 @@ msgstr ""
 msgid "The minimum number of seconds a new pod must be ready before it is considered available."
 msgstr ""
 
-#: app/views/add-config-volume.html:91
+#: app/views/add-config-volume.html:92
 msgid "The mount path is already used. Please choose another mount path."
 msgstr ""
 
@@ -6578,6 +4677,10 @@ msgstr ""
 msgid "There are no service bindings."
 msgstr ""
 
+#: app/views/monitoring.html:333
+msgid "There are no stateful sets in this project."
+msgstr ""
+
 #: app/views/directives/osc-file-input.html:25
 msgid "There was an error reading the file. Please copy the file content into the text area."
 msgstr ""
@@ -6586,43 +4689,6 @@ msgstr ""
 msgid "These variables exist on the image and will be available at runtime. You may override them below."
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/attach-pvc.html:156
-msgid "They may not start or end with a dash."
-msgstr ""
-
-#: app/scripts/services/hpa.js:148
-#: app/scripts/services/hpa.js:156
-msgid "This"
-msgstr ""
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/edit/build-config.html:225
-msgid "This Build Config contains more then one Image Source. To edit them use the YAML editor."
-msgstr ""
-
-=======
-=======
->>>>>>> Init translation.
->>>>>>> Init translation.
-#: app/views/browse/service.html:68
-=======
-#: app/views/edit/build-config.html:217
-msgid "This Build Config contains more then one Image Source. To edit them use the YAML editor."
-msgstr ""
-
-#: app/views/browse/service.html:63
->>>>>>> rebase from poc 3.6
-msgid "This address is only resolvable from within the cluster."
-msgstr ""
-
-#: app/views/builds.html:93
-msgid "This build config no longer exists"
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/overview/_list-row-empty-state.html:21
 msgid "This deployment config is part of the pipeline"
 msgstr ""
@@ -6850,23 +4916,7 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:544
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:542
-=======
-#: app/scripts/constants.js:446
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:591
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:604
->>>>>>> Build & Translate
 msgid "Uncategorized"
 msgstr ""
 
@@ -6888,15 +4938,8 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:132
-#: app/scripts/directives/podDonut.js:198
-#: app/views/browse/deployment-config.html:168
-#: app/views/deployments.html:97
-=======
 #: app/views/browse/deployment-config.html:167
 #: app/views/deployments.html:101
->>>>>>> rebase from poc 3.6
 msgid "Unknown"
 msgstr ""
 
@@ -6933,21 +4976,6 @@ msgstr ""
 msgid "Usage <small>Last 15 Minutes</small>"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:200
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:201
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:204
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "Use"
-msgstr ""
-
-=======
->>>>>>> rebase from poc 3.6
 #: app/views/directives/_edit-probe.html:18
 msgid "Use HTTPS"
 msgstr ""
@@ -6993,43 +5021,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/create-secret.html:216
-msgid "Username is required."
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/browse/build-config.html:455
-#: app/views/browse/build-config.html:467
-#: app/views/browse/build-config.html:488
-#: app/views/browse/build.html:109
-<<<<<<< HEAD
-#: app/views/browse/deployment-config.html:339
-#: app/views/browse/deployment-config.html:349
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/browse/deployment-config.html:344
-#: app/views/browse/deployment-config.html:354
->>>>>>> Init translation.
-#: app/views/browse/deployment.html:270
-#: app/views/browse/deployment.html:280
-#: app/views/browse/replica-set.html:113
-#: app/views/browse/replica-set.html:73
-#: app/views/browse/replica-set.html:89
-=======
-#: app/views/browse/deployment-config.html:350
-#: app/views/browse/deployment-config.html:360
-#: app/views/browse/deployment.html:270
-#: app/views/browse/deployment.html:280
->>>>>>> Init translation.
-#: app/views/directives/deploy-image.html:168
-=======
-#: app/views/browse/build-config.html:469
-#: app/views/directives/deploy-image.html:163
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/browse/build-config.html:473
->>>>>>> Build & Translate
 #: app/views/directives/edit-config-map.html:99
 #: app/views/directives/edit-environment-variables.html:16
 #: app/views/directives/edit-environment-variables.html:28
@@ -7102,49 +5094,13 @@ msgstr ""
 msgid "View Quota"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:189
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:190
-=======
-#: app/views/projects.html:99
-msgid "View Membership"
-msgstr ""
-
-#: app/views/pipelines.html:117
-msgid "View Pipeline Runs"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:193
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:195
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:210
->>>>>>> Build & Translate
 #: app/views/directives/osc-persistent-volume-claim.html:7
 msgid "View Quota&nbsp;"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/_service-binding.html:46
-#: app/views/overview/_service-binding.html:15
-msgid "View Secret"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/scripts/directives/nav.js:124
-msgid "View all projects"
-=======
-=======
->>>>>>> Build & Translate
 #: app/views/directives/deployment-donut.html:13
 msgid "View pods for {{rc | displayName}}"
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/attach-pvc.html:72
@@ -7194,21 +5150,9 @@ msgstr ""
 msgid "Waiting for container {{container.name}} to start..."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:126
-#: app/scripts/directives/podDonut.js:186
-=======
-#: app/views/directives/events.html:91
-#: app/views/directives/events.html:93
-#: app/views/directives/events.html:98
-#: app/views/directives/ui-ace-yaml.html:25
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/events-badge.html:1
 #: app/views/directives/events-badge.html:2
 #: app/views/directives/ui-ace-yaml.html:26
->>>>>>> Build & Translate
 #: app/views/overview/_notification-icon.html:27
 msgid "Warning"
 msgstr ""
@@ -7252,29 +5196,8 @@ msgstr ""
 msgid "Weight is a number between 0 and 256 that specifies the relative weight against other route services."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/projects.html:109
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/projects.html:126
-=======
-#: app/views/projects.html:131
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "Welcome to DataMan OS."
-=======
-#: app/views/projects.html:167
-=======
 #: app/views/projects.html:173
->>>>>>> Build & Translate
-=======
-#: app/views/projects.html:172
->>>>>>> Add some translation.
 msgid "Welcome to OpenShift."
->>>>>>> rebase from poc 3.6
 msgstr ""
 
 #: app/views/overview.html:31
@@ -7285,23 +5208,7 @@ msgstr ""
 msgid "What are <span ng-if=\"type === 'cpu'\">millicores</span><span ng-if=\"type === 'memory'\">MiB</span>?"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:194
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:195
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:198
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:200
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:215
->>>>>>> Build & Translate
 msgid "What are GiB?"
 msgstr ""
 
@@ -7318,23 +5225,7 @@ msgstr ""
 msgid "When you navigate away from this pod, any open terminal connections will be closed."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/constants.js:460
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/scripts/constants.js:458
-=======
-#: app/scripts/constants.js:362
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/scripts/constants.js:507
->>>>>>> rebase from poc 3.6
-=======
 #: app/scripts/constants.js:520
->>>>>>> Build & Translate
 msgid "WildFly"
 msgstr ""
 
@@ -7421,10 +5312,6 @@ msgstr ""
 msgid "You will need to redeploy your pods for this to take effect."
 msgstr ""
 
-#: app/views/edit/yaml.html:16
-msgid "You'll need to copy any changes you've made and edit the {{updated.resource.kind | humanizeKind}} again."
-msgstr ""
-
 #: app/views/directives/osc-persistent-volume-claim.html:36
 msgid "Zone"
 msgstr ""
@@ -7451,6 +5338,7 @@ msgid "and"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:53
+#: app/views/pipelines.html:33
 msgid "and the"
 msgstr ""
 
@@ -7539,7 +5427,7 @@ msgstr ""
 msgid "deployment trigger"
 msgstr ""
 
-#: app/views/projects.html:183
+#: app/views/projects.html:184
 msgid "documentation"
 msgstr ""
 
@@ -7592,14 +5480,6 @@ msgstr ""
 msgid "git repo"
 msgstr ""
 
-#: app/views/edit/yaml.html:23
-msgid "has been deleted since you started editing it."
-msgstr ""
-
-#: app/views/edit/yaml.html:15
-msgid "has changed since you started editing it."
-msgstr ""
-
 #: app/views/_volumes.html:51
 msgid "host path"
 msgstr ""
@@ -7625,38 +5505,12 @@ msgstr ""
 msgid "info"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:213
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:214
->>>>>>> Init translation.
-msgid "label"
-msgstr ""
-
-#: app/views/directives/osc-persistent-volume-claim.html:201
-msgid "label selectors"
-=======
-#: app/views/browse/build-config.html:145
-=======
 #: app/views/browse/build-config.html:148
->>>>>>> Build & Translate
 #: app/views/browse/deployment-config.html:115
 #: app/views/overview/_builds.html:34
 msgid "is"
 msgstr ""
 
-<<<<<<< HEAD
-#: app/views/directives/deploy-image.html:89
-msgid "layers"
->>>>>>> rebase from poc 3.6
-msgstr ""
-
-#: app/views/directives/osc-autoscaling.html:122
-=======
->>>>>>> Build & Translate
 #: app/views/edit/autoscaler.html:33
 msgid "limit"
 msgstr ""
@@ -7807,15 +5661,7 @@ msgstr ""
 msgid "runs before the deployment begins"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/scripts/directives/podDonut.js:58
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-=======
->>>>>>> rebase from poc 3.6
 #: app/scripts/directives/podDonut.js:48
->>>>>>> Init translation.
 msgid "scaling to"
 msgstr ""
 
@@ -7874,39 +5720,6 @@ msgstr ""
 msgid "to ensure your application is running correctly."
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:202
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:203
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:206
->>>>>>> Init translation.
->>>>>>> Init translation.
-msgid "to request storage."
-msgstr ""
-
-#: app/views/browse/build-config.html:117
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/pipelines.html:95
-msgid "to see what stages will run."
-msgstr ""
-
-#: app/scripts/controllers/otherResources.js:164
-=======
-#: app/views/pipelines.html:96
-msgid "to see what stages will run."
-=======
-#: app/views/attach-pvc.html:55
-#: app/views/storage.html:71
-msgid "to volume"
->>>>>>> rebase from poc 3.6
-msgstr ""
-
-=======
->>>>>>> Build & Translate
 #: app/views/browse/persistent-volume-claim.html:58
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr ""
@@ -7919,22 +5732,7 @@ msgstr ""
 msgid "using storage class {{pvc | storageClass}}"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/create/fromimage.html:232
-#: app/views/create/fromimage.html:288
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:214
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:215
->>>>>>> Init translation.
-=======
-#: app/views/create/fromimage.html:279
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/create/fromimage.html:282
->>>>>>> Build & Translate
 msgid "value"
 msgstr ""
 
@@ -8030,27 +5828,7 @@ msgstr ""
 msgid "{{hpaList.length}} associated Horizontal Pod Autoscalers"
 msgstr ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#: app/views/directives/deploy-image.html:83
-msgid "{{import.image.dockerImageLayers.length}} layers"
-msgstr ""
-
-<<<<<<< HEAD
-#: app/views/directives/osc-persistent-volume-claim.html:126
-=======
-<<<<<<< ff3f303f420f4b91730a7540d983ad838c1066d8
-#: app/views/directives/osc-persistent-volume-claim.html:127
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:130
->>>>>>> Init translation.
->>>>>>> Init translation.
-=======
-#: app/views/directives/osc-persistent-volume-claim.html:130
->>>>>>> rebase from poc 3.6
-=======
 #: app/views/directives/osc-persistent-volume-claim.html:145
->>>>>>> Build & Translate
 msgid "{{limits.min | usageWithUnits : 'storage'}} min to {{limits.max | usageWithUnits : 'storage'}} max"
 msgstr ""
 

@@ -23,6 +23,7 @@ angular.module('openshiftConsole')
                                                 PodsService,
                                                 ProjectsService,
                                                 $rootScope,
+	  				        gettextCatalog,
                                                 gettext) {
     $scope.projectName = $routeParams.project;
     $scope.alerts = $scope.alerts || {};
@@ -36,20 +37,20 @@ angular.module('openshiftConsole')
 
     $scope.kinds = [
       {
-        kind: gettext("All")
+        kind: gettextCatalog.getString(gettext("All"))
       },
       {
         kind: "Pods"
       },
       {
-        label: "Deployments",
+        label: gettextCatalog.getString(gettext("Deployments")),
         kind: "ReplicationControllers"
       },
       {
-        kind: "Builds"
+        kind: gettextCatalog.getString(gettext("Builds"))
       },
       {
-        kind: "StatefulSets"
+        kind: gettextCatalog.getString(gettext("Stateful Sets"))
       }
     ];
     $scope.kindSelector = {

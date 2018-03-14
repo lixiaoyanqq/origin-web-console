@@ -26,11 +26,11 @@
               <h2 translate>No pipelines.</h2>
               <div ng-if="project.metadata.name | canIAddToProject">
                 <p>
-                  No pipelines have been added to project {{projectName}}.
+		<translate>No pipelines have been added to project {{projectName}}.</translate>
                   <br>
-                  Learn more about
+		  <translate>Learn more about</translate>
                   <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank" translate>Pipeline Builds</a>
-                  and the
+		  <translate>and the</translate>
                   <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank" translate>OpenShift Pipeline Plugin</a>.
                 </p>
                 <p ng-if="(project.metadata.name | canIAddToProject) && createSampleURL">

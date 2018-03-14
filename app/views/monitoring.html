@@ -10,7 +10,7 @@
         </div>
         <div class="data-toolbar">
           <ui-select class="data-toolbar-dropdown" ng-model="kindSelector.selected" theme="bootstrap" search-enabled="true" ng-disabled="kindSelector.disabled" title="Choose a resource">
-            <ui-select-match placeholder="Choose a resource">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
+		  <ui-select-match placeholder="{{'Choose a resource'|translate}}">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>
             <ui-select-choices repeat="kind in kinds | filter : {kind: $select.search} : matchKind">
               <div ng-bind-html="(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search"></div>
             </ui-select-choices>
@@ -43,7 +43,7 @@
           </div>
           <div class="checkbox nowrap">
             <label>
-              <input type="checkbox" ng-model="filters.hideOlderResources" translate>Hide older resources
+		    <input type="checkbox" ng-model="filters.hideOlderResources"><translate>Hide older resources</translate>
             </label>
           </div>
         </div>
@@ -148,7 +148,7 @@
         </div>
 
         <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'ReplicationControllers'">
-          <h2>Deployments</h2>
+          <h2 translate>Deployments</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredReplicationControllers | size) && !(filteredReplicaSets | size)}">
             <div class="list-pf-item" ng-if="!(filteredReplicationControllers | size) && !(filteredReplicaSets | size)">
               <div class="list-pf-container">
@@ -168,11 +168,11 @@
                   <a href="" role="button" ng-click="toggleItem($event, this, replicationController, true)" class="toggle-expand-link">
                     <span ng-if="expanded.replicationControllers[replicationController.metadata.name]">
                       <span class="fa fa-angle-down"  aria-hidden="true"></span>
-                      <span class="sr-only">Collapse</span>
+                      <span class="sr-only" translate>Collapse</span>
                     </span>
                     <span ng-if="!expanded.replicationControllers[replicationController.metadata.name]">
                       <span class="fa fa-angle-right"  aria-hidden="true"></span>
-                      <span class="sr-only">Expand</span>
+                      <span class="sr-only" translate>Expand</span>
                     </span>
                   </a>
                 </div>
@@ -239,11 +239,11 @@
                   <a href="" ng-click="toggleItem($event, this, replicaSet, true)" role="button" class="toggle-expand-link">
                     <span ng-if="expanded.replicaSets[replicaSet.metadata.name]">
                       <span class="fa fa-angle-down"  aria-hidden="true"></span>
-                      <span class="sr-only">Collapse</span>
+                      <span class="sr-only" translate>Collapse</span>
                     </span>
                     <span ng-if="!expanded.replicaSets[replicaSet.metadata.name]">
                       <span class="fa fa-angle-right"  aria-hidden="true"></span>
-                      <span class="sr-only">Expand</span>
+                      <span class="sr-only" translate>Expand</span>
                     </span>
                   </a>
                 </div>
@@ -323,14 +323,14 @@
         </div>
 
         <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'StatefulSets'">
-          <h2>Stateful Sets</h2>
+          <h2 translate>Stateful Sets</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredStatefulSets | size)}">
             <div class="list-pf-item" ng-if="!(filteredStatefulSets | size)">
               <div class="list-pf-container">
                 <ellipsis-pulser color="dark" size="sm" msg="Loading stateful sets" ng-if="!statefulSetsLoaded"></ellipsis-pulser>
                 <em>
-                  <div ng-if="(statefulSets | size) > 0">The current filters are hiding all stateful sets.</div>
-                  <span ng-if="statefulSetsLoaded && (statefulSets | size) === 0">There are no stateful sets in this project.</span>
+			<div ng-if="(statefulSets | size) > 0"><translate>The current filters are hiding all stateful sets.</translate></div>
+			<span ng-if="statefulSetsLoaded && (statefulSets | size) === 0"><translate>There are no stateful sets in this project.</translate></span>
                 </em>
               </div>
             </div>

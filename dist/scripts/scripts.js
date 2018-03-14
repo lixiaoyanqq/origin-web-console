@@ -11137,7 +11137,7 @@ replace: !0,
 scope: {
 clipboardText: "="
 },
-template: '<a href="" data-clipboard-text="">Copy Login Command</a>',
+template: '<a href="" data-clipboard-text="" translate>Copy Login Command</a>',
 link: function(n, r) {
 var a = new Clipboard(r.get(0));
 a.on("success", function() {

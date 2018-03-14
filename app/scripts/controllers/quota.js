@@ -130,7 +130,7 @@ angular.module('openshiftConsole')
 
         watches.push(DataService.watch(limitRangesVersion, context, function(resp) {
           $scope.limitRanges = _.sortBy(resp.by("metadata.name"), "metadata.name");
-          $scope.emptyMessageLimitRanges = gettext("There are no limit ranges set on this project.");
+          $scope.emptyMessageLimitRanges = gettextCatalog.getString(gettext("There are no limit ranges set on this project."));
           // Convert to a sane format for a view to a build a table with rows per resource type
           angular.forEach($scope.limitRanges, function(limitRange){
             var name = limitRange.metadata.name;
