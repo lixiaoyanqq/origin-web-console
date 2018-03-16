@@ -1385,4 +1385,14 @@ angular.module('openshiftConsole')
   })
   .filter('humanizePodStatus', function(humanizeReasonFilter) {
     return humanizeReasonFilter;
+  })
+  .filter('donutURL', function(navigateResourceURLFilter) {
+    return function(set, pods) {
+      if (_.size(pods) === 1) {
+        return navigateResourceURLFilter(_.sample(pods));
+      }
+      if (_.size(pods) > 1) {
+        return navigateResourceURLFilter(set);
+      }
+    };
   });

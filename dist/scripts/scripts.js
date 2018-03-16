@@ -4464,10 +4464,8 @@ name: t
 };
 _.isObject(r) && _.extend(a, r), e.path("project/" + encodeURIComponent(n) + "/create/next").search(a);
 },
-toPodsForDeployment: function(t, r) {
-1 !== _.size(r) ? (e.url("/project/" + t.metadata.namespace + "/browse/pods"), n(function() {
-a.setLabelSelector(new LabelSelector(t.spec.selector, !0));
-}, 1)) : this.toResourceURL(_.sample(r));
+toPodsForDeployment: function(e, t) {
+1 !== _.size(t) ? this.toResourceURL(e) : this.toResourceURL(_.sample(t));
 },
 resourceURL: function(e, t, n, r, a) {
 if (r = r || "browse", !(e && (e.metadata || t && n))) return null;
@@ -10913,6 +10911,7 @@ return r += " -n " + e.metadata.namespace;
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("EnvironmentService", [ "$filter", "keyValueEditorUtils", function(e, t) {
@@ -10949,6 +10948,8 @@ n.podsByName = e.by("metadata.name"), n.pods = C(n.podsByName, !0), n.podsByOwne
 }, n.viewPodsForSet = function(e) {
 var t = _.get(n, [ "podsByOwnerUID", e.metadata.uid ], []);
 _.isEmpty(t) || d.toPodsForDeployment(e, t);
+=======
+>>>>>>> Fix bug "Open link in new tab" in right click menu jumps to home page
 }, p.get(e.project).then(_.spread(function(e, r) {
 n.project = e, n.projectContext = r, v.push(i.watch("pods", r, function(e) {
 n.podsByName = e.by("metadata.name"), n.pods = w(n.podsByName, !0), n.podsByOwnerUID = m.groupByOwnerUID(n.pods), n.podsLoaded = !0, _.each(n.pods, I), N(), l.log("pods", n.pods);
@@ -51962,11 +51963,44 @@ cancelButtonText: "取消"
 };
 }
 }
+<<<<<<< HEAD
 }).result.then(D);
 }, $ = function(e) {
 C = e.quotaAlerts || [];
 var t = _.filter(C, {
 type: "error"
+=======
+}).result.then(function() {
+e.metadata.uid === l.current.metadata.uid ? (e = l.current, d(e) ? o.cancelRunningDeployment(e, {
+namespace: e.metadata.namespace
+}) : c.addNotification({
+type: "error",
+message: "Deployment " + r + " is no longer in progress."
+})) : c.addNotification({
+type: "error",
+message: "Deployment #" + a + " is no longer the latest."
+});
+});
+}
+}, l.urlForImageChangeTrigger = function(t) {
+var n = e("stripTag")(_.get(t, "imageChangeParams.from.name")), r = _.get(l, "apiObject.metadata.namespace"), a = _.get(t, "imageChangeParams.from.namespace", r);
+return s.resourceURL(n, "ImageStream", a);
+}, l.closeOverlayPanel = function() {
+_.set(l, "overlay.panelVisible", !1);
+}, l.showOverlayPanel = function(e, t) {
+_.set(l, "overlay.panelVisible", !0), _.set(l, "overlay.panelName", e), _.set(l, "overlay.state", t);
+};
+} ],
+controllerAs: "row",
+bindings: {
+apiObject: "<",
+current: "<",
+previous: "<",
+state: "<",
+hidePipelines: "<"
+},
+templateUrl: "views/overview/_list-row.html"
+>>>>>>> Fix bug "Open link in new tab" in right click menu jumps to home page
 });
 n.nameTaken || t.length ? (n.disableInputs = !1, _.each(C, function(e) {
 e.id = _.uniqueId("deploy-image-alert-"), l.addNotification(e);
@@ -55752,6 +55786,10 @@ return _.startCase(e).replace("Back Off", "Back-off").replace("O Auth", "OAuth")
 };
 }).filter("humanizePodStatus", [ "humanizeReasonFilter", function(e) {
 return e;
+} ]).filter("donutURL", [ "navigateResourceURLFilter", function(e) {
+return function(t, n) {
+return 1 === _.size(n) ? e(_.sample(n)) : _.size(n) > 1 ? e(t) : void 0;
+};
 } ]), angular.module("openshiftConsole").filter("canIDoAny", [ "APIService", "canIFilter", function(e, t) {
 var n = {
 >>>>>>> Special case some humanized reasons codes
