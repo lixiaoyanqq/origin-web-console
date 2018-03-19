@@ -121,7 +121,7 @@ objects:
 
         CMD ["bash", "/deploy/start.sh"]
       git:
-        ref: poc
+        ref: poc39
         uri: https://github.com/Dataman-Cloud/origin-web-console
       type: Git
     strategy:

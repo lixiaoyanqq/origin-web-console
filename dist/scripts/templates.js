@@ -2280,8 +2280,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
-    "<h2 translate>No config maps.</h2>\n" +
-    "<p>No config maps have been added to project {{projectName}}.</p>\n" +
+    "<h2><translate>No config maps.</translate></h2>\n" +
+    "<p><translate>No config maps have been added to project {{projectName}}.</translate></p>\n" +
     "<p ng-if=\"project && (configMapsVersion | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-config-map\" class=\"btn btn-primary btn-lg\" translate>Create Config Map</a>\n" +
     "</p>\n" +
@@ -4174,8 +4174,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<div ng-if=\"loaded\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
-    "<h2 translate>No stateful sets.</h2>\n" +
-    "<p>No stateful sets have been added to project {{projectName}}.</p>\n" +
+    "<h2><translate>No stateful sets.</translate></h2>\n" +
+    "<p><translate>No stateful sets have been added to project {{projectName}}.</translate></p>\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all stateful sets.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
@@ -11393,16 +11393,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
-    "<h1 class=\"modal-title\">Session Timeout Warning</h1>\n" +
+    "<h1 class=\"modal-title\" translate>Session Timeout Warning</h1>\n" +
     "</div>\n" +
     "<form>\n" +
     "<div class=\"modal-body\">\n" +
-    "<p>Your session is about to expire due to inactivity.</p>\n" +
-    "<p>You will be logged out in <strong><time-remaining-from-now end-timestamp=\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> seconds.</p>\n" +
+    "<p translate>Your session is about to expire due to inactivity.</p>\n" +
+    "<p translate>You will be logged out in <strong><time-remaining-from-now end-timestamp=\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> seconds.</p>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
-    "<button class=\"btn btn-default\" type=\"submit\" ng-click=\"logout();\">Log Out</button>\n" +
-    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"cancel();\">Continue Session</button>\n" +
+    "<button class=\"btn btn-default\" type=\"submit\" ng-click=\"logout();\" translate>Log Out</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-click=\"cancel();\" translate>Continue Session</button>\n" +
     "</div>\n" +
     "</form>\n" +
     "</div>"
@@ -11456,10 +11456,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
-    "<h1 class=\"modal-title\">Set Home Page</h1>\n" +
+    "<h1 class=\"modal-title\" translate>Set Home Page</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
-    "<p>\n" +
+    "<p translate>\n" +
     "Note: This setting is browser-specific and will not be maintained across browsers.\n" +
     "</p>\n" +
     "<form name=\"homePageForm\">\n" +
@@ -11467,13 +11467,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"radio\">\n" +
     "<label>\n" +
     "<input type=\"radio\" ng-model=\"homePagePreference\" value=\"catalog-home\">\n" +
-    "Catalog Home (Default)\n" +
+    "<translate>Catalog Home</translate> (Default)\n" +
     "</label>\n" +
     "</div>\n" +
     "<div class=\"radio\">\n" +
     "<label>\n" +
     "<input type=\"radio\" ng-model=\"homePagePreference\" value=\"project-list\">\n" +
-    "My Projects List\n" +
+    "<translate>My Projects List</translate>\n" +
     "</label>\n" +
     "</div>\n" +
     "<div class=\"radio\" ng-show=\"availableProjects.length >= 1\">\n" +
@@ -11490,8 +11490,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
-    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n" +
-    "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"homePageForm.$invalid || homePageForm.$pristine\" ng-click=\"setHomePage()\">Save</button>\n" +
+    "<button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\" translate>Cancel</button>\n" +
+    "<button class=\"btn btn-primary\" type=\"button\" ng-disabled=\"homePageForm.$invalid || homePageForm.$pristine\" ng-click=\"setHomePage()\" translate>Save</button>\n" +
     "</div>\n" +
     "</div>"
   );
@@ -11510,7 +11510,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"data-toolbar\">\n" +
     "<ui-select class=\"data-toolbar-dropdown\" ng-model=\"kindSelector.selected\" theme=\"bootstrap\" search-enabled=\"true\" ng-disabled=\"kindSelector.disabled\" title=\"Choose a resource\">\n" +
-    "<ui-select-match placeholder=\"Choose a resource\">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Choose a resource'|translate}}\">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"kind in kinds | filter : {kind: $select.search} : matchKind\">\n" +
     "<div ng-bind-html=\"(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
@@ -11531,7 +11531,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"checkbox nowrap\">\n" +
     "<label>\n" +
-    "<input type=\"checkbox\" ng-model=\"filters.hideOlderResources\" translate>Hide older resources\n" +
+    "<input type=\"checkbox\" ng-model=\"filters.hideOlderResources\"><translate>Hide older resources</translate>\n" +
     "</label>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -11617,7 +11617,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'ReplicationControllers'\">\n" +
-    "<h2>Deployments</h2>\n" +
+    "<h2 translate>Deployments</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredReplicationControllers | size) && !(filteredReplicaSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredReplicationControllers | size) && !(filteredReplicaSets | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
@@ -11634,11 +11634,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" role=\"button\" ng-click=\"toggleItem($event, this, replicationController, true)\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.replicationControllers[replicationController.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\">Collapse</span>\n" +
+    "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.replicationControllers[replicationController.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\">Expand</span>\n" +
+    "<span class=\"sr-only\" translate>Expand</span>\n" +
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -11686,11 +11686,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"toggleItem($event, this, replicaSet, true)\" role=\"button\" class=\"toggle-expand-link\">\n" +
     "<span ng-if=\"expanded.replicaSets[replicaSet.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-down\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\">Collapse</span>\n" +
+    "<span class=\"sr-only\" translate>Collapse</span>\n" +
     "</span>\n" +
     "<span ng-if=\"!expanded.replicaSets[replicaSet.metadata.name]\">\n" +
     "<span class=\"fa fa-angle-right\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\">Expand</span>\n" +
+    "<span class=\"sr-only\" translate>Expand</span>\n" +
     "</span>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -11748,14 +11748,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'StatefulSets'\">\n" +
-    "<h2>Stateful Sets</h2>\n" +
+    "<h2 translate>Stateful Sets</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredStatefulSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredStatefulSets | size)\">\n" +
     "<div class=\"list-pf-container\">\n" +
     "<ellipsis-pulser color=\"dark\" size=\"sm\" msg=\"Loading stateful sets\" ng-if=\"!statefulSetsLoaded\"></ellipsis-pulser>\n" +
     "<em>\n" +
-    "<div ng-if=\"(statefulSets | size) > 0\">The current filters are hiding all stateful sets.</div>\n" +
-    "<span ng-if=\"statefulSetsLoaded && (statefulSets | size) === 0\">There are no stateful sets in this project.</span>\n" +
+    "<div ng-if=\"(statefulSets | size) > 0\"><translate>The current filters are hiding all stateful sets.</translate></div>\n" +
+    "<span ng-if=\"statefulSetsLoaded && (statefulSets | size) === 0\"><translate>There are no stateful sets in this project.</translate></span>\n" +
     "</em>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -12104,7 +12104,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group filter-controls has-clear\">\n" +
     "<div class=\"search-pf-input-group\">\n" +
     "<label for=\"name-filter\" class=\"sr-only\" translate>Filter by name</label>\n" +
-    "<input type=\"text\" class=\"form-control\" ng-model=\"overview.filterText\" placeholder=\"Filter by name\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-disabled=\"overview.disableFilter\">\n" +
+    "<input type=\"text\" class=\"form-control\" ng-model=\"overview.filterText\" placeholder=\"{{'Filter by name'|translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-disabled=\"overview.disableFilter\">\n" +
     "<button type=\"button\" class=\"clear\" aria-hidden=\"true\" ng-if=\"overview.filterText && !overview.disableFilter\" ng-click=\"overview.filterText = ''\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
@@ -13188,11 +13188,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h2 translate>No pipelines.</h2>\n" +
     "<div ng-if=\"project.metadata.name | canIAddToProject\">\n" +
     "<p>\n" +
-    "No pipelines have been added to project {{projectName}}.\n" +
+    "<translate>No pipelines have been added to project {{projectName}}.</translate>\n" +
     "<br>\n" +
-    "Learn more about\n" +
+    "<translate>Learn more about</translate>\n" +
     "<a ng-href=\"{{ 'pipeline-builds' | helpLink}}\" target=\"_blank\" translate>Pipeline Builds</a>\n" +
-    "and the\n" +
+    "<translate>and the</translate>\n" +
     "<a ng-href=\"{{ 'pipeline-plugin' | helpLink}}\" target=\"_blank\" translate>OpenShift Pipeline Plugin</a>.\n" +
     "</p>\n" +
     "<p ng-if=\"(project.metadata.name | canIAddToProject) && createSampleURL\">\n" +
@@ -14059,8 +14059,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
     "<div class=\"pull-right\" ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
-    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\">Create Storage</a>\n" +
-    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\">Create Storage</a>\n" +
+    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
+    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
     "</div>\n" +
     "<h1>\n" +
     "<translate>Storage</translate>\n" +

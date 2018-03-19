@@ -17,7 +17,7 @@ mv -f /usr/share/nginx/html/styles /usr/share/nginx/html/console/styles
 
 sed -i 's/<base href="\/">/<base href="\/console\/java\/">/g' /usr/share/nginx/html/console/java/index.html
 
-cp -rf /usr/share/nginx/html/extensions/extensions.js /usr/share/nginx/html/console/scripts/extensions.js
+cp -rf /usr/share/nginx/html/extensions/local-extensions.js /usr/share/nginx/html/console/scripts/extensions.js
 cp -rf /usr/share/nginx/html/extensions/extensions.css  /usr/share/nginx/html/console/styles/extensions.css
 
 cp -rf /deploy/config.js.temp /usr/share/nginx/html/console/config.js.temp
