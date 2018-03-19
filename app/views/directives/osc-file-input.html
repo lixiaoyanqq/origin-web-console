@@ -26,7 +26,7 @@
   </div>
   <textarea class="form-control"
       rows="5"
-      ng-show="showTextArea || !supportsFileUpload"
+      ng-show="(showTextArea && !isBinaryFile) || !supportsFileUpload"
       ng-model="model"
       ng-required="required"
       ng-disabled="disabled"

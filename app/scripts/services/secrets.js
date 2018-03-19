@@ -2,6 +2,7 @@
 
 angular.module("openshiftConsole")
   .factory("SecretsService", function($filter, Logger, NotificationsService){
+    var isNonPrintable = $filter('isNonPrintable');
 
     var groupSecretsByType = function(secrets) {
       var secretsByType = {
@@ -117,16 +118,17 @@ angular.module("openshiftConsole")
     var decodeSecretData = function(secretData) {
       var nonPrintable = {};
       var decodedSecret = _.mapValues(secretData, function(data, configType) {
-        var decoded, isNonPrintable;
+        if (!data) {
+          return '';
+        }
+        var decoded;
         if (configType === ".dockercfg" || configType === ".dockerconfigjson") {
           return decodeDockerConfig(data, configType);
         } else {
           decoded = window.atob(data);
           // Allow whitespace like newlines and tabs, but detect other
           // non-printable characters in the unencoded data.
-          // http://stackoverflow.com/questions/1677644/detect-non-printable-characters-in-javascript
-          isNonPrintable = /[\x00-\x09\x0E-\x1F]/.test(decoded);
-          if (isNonPrintable) {
+          if (isNonPrintable(decoded)) {
             nonPrintable[configType] = true;
             return data;
           }

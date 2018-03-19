@@ -7344,6 +7344,7 @@ var c = angular.copy(e), l = _.get(c, "spec.template.spec.volumes");
 _.remove(l, {
 name: i.name
 });
+<<<<<<< HEAD
 var u = _.get(c, "spec.template.spec.containers");
 _.each(u, function(e) {
 _.remove(e.volumeMounts, {
@@ -7383,16 +7384,61 @@ switch (e) {
 case "cpu":
 return t.cpuRequestToLimitPercent;
 =======
+=======
+}), _.each(n, function(t) {
+t.value || e.params.generated.push(t.name);
+}), r && (e.message = r);
+},
+getTemplateData: function() {
+return e;
+},
+clearTemplateData: function() {
+e = {
+params: {
+all: [],
+generated: []
+},
+message: null
+};
+}
+};
+}), angular.module("openshiftConsole").factory("SecretsService", [ "$filter", "Logger", "NotificationsService", function(e, t, n) {
+var r = e("isNonPrintable"), a = function(r, a) {
+n.addNotification({
+type: "error",
+message: "Base64-encoded " + a + " string could not be decoded.",
+details: e("getErrorDetails")(r)
+}), t.error("Base64-encoded " + a + " string could not be decoded.", r);
+}, o = function(e) {
+var t = _.pick(e, [ "email", "username", "password" ]);
+if (e.auth) try {
+_.spread(function(e, n) {
+t.username = e, t.password = n;
+})(_.split(window.atob(e.auth), ":", 2));
+} catch (e) {
+return void a(e, "username:password");
+}
+return t;
+}, i = function(e, t) {
+var n, r = {
+auths: {}
+};
+try {
+n = JSON.parse(window.atob(e));
+} catch (e) {
+a(e, t);
+}
+>>>>>>> Handle binary files when creating generic secrets
 return n.auths ? (_.each(n.auths, function(e, t) {
-e.auth ? o.auths[t] = a(e) : o.auths[t] = e;
-}), n.credsStore && (o.credsStore = n.credsStore)) : _.each(n, function(e, t) {
-o.auths[t] = a(e);
-}), o;
-}, i = function(e) {
+e.auth ? r.auths[t] = o(e) : r.auths[t] = e;
+}), n.credsStore && (r.credsStore = n.credsStore)) : _.each(n, function(e, t) {
+r.auths[t] = o(e);
+}), r;
+}, s = function(e) {
 var t = {}, n = _.mapValues(e, function(e, n) {
 if (!e) return "";
-var r;
-return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (r = window.atob(e), /[\x00-\x09\x0E-\x1F]/.test(r) ? (t[n] = !0, e) : r);
+var a;
+return ".dockercfg" === n || ".dockerconfigjson" === n ? i(e, n) : (a = window.atob(e), r(a) ? (t[n] = !0, e) : a);
 });
 return n.$$nonprintable = t, n;
 };
@@ -7440,7 +7486,7 @@ return ".dockercfg" === n || ".dockerconfigjson" === n ? o(e, n) : (r = window.a
 =======
 }), t;
 },
-decodeSecretData: i,
+decodeSecretData: s,
 getWebhookSecretValue: function(e, t) {
 if (_.get(e, "secretReference.name") && t) {
 var n = _.find(t, {
@@ -7449,7 +7495,7 @@ name: e.secretReference.name
 }
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 });
-return i(n.data).WebHookSecretKey;
+return s(n.data).WebHookSecretKey;
 }
 return _.get(e, "secret");
 }
@@ -19387,6 +19433,13 @@ pattern: /^[a-zA-Z0-9\-_]+$/,
 minLength: 8,
 description: "Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore."
 }, l.secretAuthTypeMap = {
+generic: {
+label: "Generic Secret",
+authTypes: [ {
+id: "Opaque",
+label: "Generic Secret"
+} ]
+},
 image: {
 label: "Image Secret",
 authTypes: [ {
@@ -19412,13 +19465,6 @@ label: "Webhook Secret",
 authTypes: [ {
 id: "Opaque",
 label: "Webhook Secret"
-} ]
-},
-generic: {
-label: "Generic Secret",
-authTypes: [ {
-id: "Opaque",
-label: "Generic Secret"
 } ]
 }
 }, l.secretTypes = _.keys(l.secretAuthTypeMap), l.type ? l.newSecret = {
@@ -19647,7 +19693,7 @@ auth: o
 break;
 
 case "Opaque":
-e.webhookSecretKey && (r.stringData.WebHookSecretKey = e.webhookSecretKey), e.genericKeyValues.data && (r.stringData = e.genericKeyValues.data);
+e.webhookSecretKey && (r.stringData.WebHookSecretKey = e.webhookSecretKey), e.genericKeyValues.data && (r.data = _.mapValues(e.genericKeyValues.data, window.btoa));
 }
 return r;
 }, d = function() {
@@ -20648,7 +20694,8 @@ scope: {
 =======
 map: "=model",
 showNameInput: "=",
-type: "@"
+type: "@",
+readAsBinaryString: "=?"
 },
 templateUrl: "views/directives/edit-config-map-or-secret.html",
 link: function(t, n, r, a) {
@@ -21785,6 +21832,7 @@ title: t.service
 } ], e.podFailureReasons = {
 Pending: "This pod will not receive traffic until all of its containers have been created."
 };
+<<<<<<< HEAD
 var o = {}, i = [], s = function() {
 e.service && (e.portsByRoute = {}, _.each(e.service.spec.ports, function(t) {
 var n = !1;
@@ -21799,6 +21847,9 @@ e.podsForService = t.select(o);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
 } ]), angular.module("openshiftConsole").directive("oscFileInput", [ "Logger", function(e) {
+=======
+} ]), angular.module("openshiftConsole").directive("oscFileInput", [ "$filter", "Logger", function(e, t) {
+>>>>>>> Handle binary files when creating generic secrets
 return {
 restrict: "E",
 scope: {
@@ -21810,22 +21861,25 @@ showTextArea: "<",
 hideClear: "<?",
 helpText: "@?",
 dropZoneId: "@?",
-onFileAdded: "<?"
+onFileAdded: "<?",
+readAsBinaryString: "<?",
+isBinaryFile: "=?"
 },
 templateUrl: "views/directives/osc-file-input.html",
-link: function(t, n) {
-function r(n) {
+link: function(n, r) {
+function a(e) {
 var r = new FileReader();
 r.onloadend = function() {
-t.$apply(function() {
-t.fileName = n.name, t.model = r.result;
-var e = t.onFileAdded;
-_.isFunction(e) && e(r.result), r.error || (t.uploadError = !1);
+n.$apply(function() {
+n.fileName = e.name, n.model = r.result, n.isBinaryFile = i(r.result);
+var t = n.onFileAdded;
+_.isFunction(t) && t(r.result), r.error || (n.uploadError = !1);
 });
-}, r.onerror = function(n) {
-t.uploadError = !0, e.error("Could not read file", n);
-}, r.readAsText(n);
+}, r.onerror = function(e) {
+n.uploadError = !0, t.error("Could not read file", e);
+}, n.readAsBinaryString ? r.readAsBinaryString(e) : r.readAsText(e);
 }
+<<<<<<< HEAD
 function a() {
 n.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone highlight-drag-and-drop-zone");
 >>>>>>> Bug 1537438: Import YAML/JSON lost Browse button when file folder does not have executive right in sandbox
@@ -21942,6 +21996,63 @@ e.replicaSets = n.by("metadata.name"), "ReplicationController" === y && (e.deplo
 var o, s;
 r && (o = C(r, "deploymentConfig"), s = r.metadata.name), e.deploymentConfigDeploymentsInProgress = e.deploymentConfigDeploymentsInProgress || {}, a ? "ADDED" === a || "MODIFIED" === a && t("deploymentIsInProgress")(r) ? (e.deploymentConfigDeploymentsInProgress[o] = e.deploymentConfigDeploymentsInProgress[o] || {}, e.deploymentConfigDeploymentsInProgress[o][s] = r) : "MODIFIED" === a && e.deploymentConfigDeploymentsInProgress[o] && delete e.deploymentConfigDeploymentsInProgress[o][s] : e.deploymentConfigDeploymentsInProgress = i.associateRunningDeploymentToDeploymentConfig(e.deploymentsByDeploymentConfig), r ? "DELETED" !== a && (r.causes = t("deploymentCauses")(r)) : angular.forEach(e.replicaSets, function(e) {
 e.causes = t("deploymentCauses")(e);
+=======
+function o() {
+r.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone highlight-drag-and-drop-zone");
+}
+var i = e("isNonPrintable"), s = _.uniqueId("osc-file-input-");
+n.dropMessageID = s + "-drop-message", n.helpID = s + "-help", n.supportsFileUpload = window.File && window.FileReader && window.FileList && window.Blob, n.uploadError = !1;
+var c = "#" + n.dropMessageID, l = !1, u = !1, d = r.find("input[type=file]");
+setTimeout(function() {
+var e = r.find(".drag-and-drop-zone");
+e.on("dragover", function() {
+n.disabled || (e.addClass("highlight-drag-and-drop-zone"), l = !0);
+}), r.find(".drag-and-drop-zone p").on("dragover", function() {
+n.disabled || (l = !0);
+}), e.on("dragleave", function() {
+n.disabled || (l = !1, _.delay(function() {
+l || e.removeClass("highlight-drag-and-drop-zone");
+}, 200));
+}), e.on("drop", function(e) {
+if (!n.disabled) {
+var t = _.get(e, "originalEvent.dataTransfer.files", []);
+return t.length > 0 && (n.file = _.head(t), a(n.file)), o(), $(".drag-and-drop-zone").trigger("putDropZoneFront", !1), $(".drag-and-drop-zone").trigger("reset"), !1;
+}
+});
+var t = function(e, t) {
+var n = t.find("label").outerHeight(), r = n ? t.outerHeight() - n : t.outerHeight(), a = t.outerWidth();
+e.css({
+width: a + 6,
+height: r,
+position: "absolute",
+"z-index": 100
+});
+};
+e.on("putDropZoneFront", function(e, a) {
+if (!n.disabled) {
+var o, i = r.find(".drag-and-drop-zone");
+return a ? (o = n.dropZoneId ? $("#" + n.dropZoneId) : r, t(i, o)) : i.css("z-index", "-1"), !1;
+}
+}), e.on("reset", function() {
+if (!n.disabled) return u = !1, !1;
+});
+}), $(document).on("drop." + s, function() {
+return o(), r.find(".drag-and-drop-zone").trigger("putDropZoneFront", !1), !1;
+}), $(document).on("dragenter." + s, function() {
+if (!n.disabled) return u = !0, r.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), r.find(".drag-and-drop-zone").trigger("putDropZoneFront", !0), !1;
+}), $(document).on("dragover." + s, function() {
+if (!n.disabled) return u = !0, r.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), !1;
+}), $(document).on("dragleave." + s, function() {
+return u = !1, _.delay(function() {
+u || r.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone");
+}, 200), !1;
+}), n.cleanInputValues = function() {
+n.model = "", n.fileName = "", n.isBinaryFile = !1, d[0].value = "";
+}, d.change(function() {
+a(d[0].files[0]), d[0].value = "";
+}), n.$on("$destroy", function() {
+$(c).off(), $(document).off("drop." + s).off("dragenter." + s).off("dragover." + s).off("dragleave." + s);
+>>>>>>> Handle binary files when creating generic secrets
 });
 })), j.push(o.watch("imagestreams", g, function(e) {
 var t = e.by("metadata.name");
@@ -56405,6 +56516,7 @@ return _.get(e, [ "ENABLE_TECH_PREVIEW_FEATURE", t ], !1);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").factory("logLinks", [ "$anchorScroll", "$document", "$location", "$window", function(e, t, n, r) {
 var a = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'<%= index %>',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 return {
@@ -56524,6 +56636,13 @@ var r = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:rel
 var a = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'project.<%= namespace %>.<%= namespaceUid %>.*',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 =======
+=======
+} ]).filter("isNonPrintable", function() {
+return function(e) {
+return !!e && /[\x00-\x09\x0E-\x1F]/.test(e);
+};
+}), angular.module("openshiftConsole").factory("logLinks", [ "$anchorScroll", "$document", "$location", "$window", function(e, t, n, r) {
+>>>>>>> Handle binary files when creating generic secrets
 var a = _.template([ "/#/discover?", "_g=(", "time:(", "from:now-1w,", "mode:relative,", "to:now", ")", ")", "&_a=(", "columns:!(kubernetes.container_name,message),", "index:'<%= index %>',", "query:(", "query_string:(", "analyze_wildcard:!t,", 'query:\'kubernetes.pod_name:"<%= podname %>" AND kubernetes.namespace_name:"<%= namespace %>"\'', ")", "),", "sort:!('@timestamp',desc)", ")", "#console_container_name=<%= containername %>", "&console_back_url=<%= backlink %>" ].join(""));
 >>>>>>> bug 1523047. fix log archive link for operation namespaces
 return {

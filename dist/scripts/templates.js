@@ -8397,7 +8397,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"newSecret.type === 'generic'\">\n" +
-    "<edit-config-map-or-secret model=\"newSecret.data.genericKeyValues\" type=\"secret\"></edit-config-map-or-secret>\n" +
+    "<edit-config-map-or-secret model=\"newSecret.data.genericKeyValues\" type=\"secret\" read-as-binary-string=\"true\">\n" +
+    "</edit-config-map-or-secret>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"buttons gutter-top-bottom\">\n" +
@@ -8969,14 +8970,21 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<osc-file-input model=\"item.value\" drop-zone-id=\"drop-zone-{{$id}}\" help-text=\"{{'Enter a value for the config map entry or use the contents of a file.'|translate}}\"></osc-file-input>\n" +
 =======
     "<label ng-attr-for=\"name-{{$id}}\">Value</label>\n" +
+<<<<<<< HEAD
     "<osc-file-input model=\"item.value\" drop-zone-id=\"drop-zone-{{$id}}\" help-text=\"Enter a value for the {{type}} entry or use the contents of a file.\"></osc-file-input>\n" +
 >>>>>>> Create Generic Secret from file
+=======
+    "<div ng-if=\"isBinaryFile\" class=\"h4\">\n" +
+    "This file contains binary content.\n" +
+    "</div>\n" +
+    "<osc-file-input model=\"item.value\" drop-zone-id=\"drop-zone-{{$id}}\" help-text=\"Enter a value for the {{type}} entry or use the contents of a file.\" read-as-binary-string=\"readAsBinaryString\" is-binary-file=\"isBinaryFile\"></osc-file-input>\n" +
+>>>>>>> Handle binary files when creating generic secrets
     "<div ui-ace=\"{\n" +
     "          theme: 'eclipse',\n" +
     "          rendererOptions: {\n" +
     "            showPrintMargin: false\n" +
     "          }\n" +
-    "        }\" ng-model=\"item.value\" class=\"ace-bordered ace-inline-small mar-top-sm\" ng-attr-id=\"value-{{$id}}\"></div>\n" +
+    "        }\" ng-model=\"item.value\" ng-if=\"!isBinaryFile\" class=\"ace-bordered ace-inline-small mar-top-sm\" ng-attr-id=\"value-{{$id}}\"></div>\n" +
     "</div>\n" +
     "<div class=\"mar-bottom-md\">\n" +
     "<a href=\"\" ng-click=\"removeItem($index)\" translate>Remove Item</a>\n" +
@@ -11072,6 +11080,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
 =======
     "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
@@ -11084,6 +11093,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 >>>>>>> Improve YAML editor validation and feedback
 =======
     "<textarea class=\"form-control\" rows=\"5\" ng-show=\"showTextArea || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+=======
+    "<textarea class=\"form-control\" rows=\"5\" ng-show=\"(showTextArea && !isBinaryFile) || !supportsFileUpload\" ng-model=\"model\" ng-required=\"required\" ng-disabled=\"disabled\" ng-readonly=\"readonly\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" ng-attr-aria-describedby=\"{{helpText ? helpID : undefined}}\">\n" +
+>>>>>>> Handle binary files when creating generic secrets
     "  </textarea>\n" +
     "<a href=\"\" ng-show=\"(model || fileName) && !disabled && !readonly && !hideClear\" ng-click=\"cleanInputValues()\">Clear Value</a>\n" +
 >>>>>>> Add canI checks for route custom hosts

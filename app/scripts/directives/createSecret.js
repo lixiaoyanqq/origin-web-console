@@ -38,6 +38,15 @@ angular.module("openshiftConsole")
         };
 
         $scope.secretAuthTypeMap = {
+          generic: {
+            label: "Generic Secret",
+            authTypes: [
+              {
+                id: "Opaque",
+                label: "Generic Secret"
+              }
+            ]
+          },
           image: {
             label: gettextCatalog.getString(gettext("Image Secret")),
             authTypes: [
@@ -79,15 +88,6 @@ angular.module("openshiftConsole")
               {
                 id: "Opaque",
                 label: "Webhook Secret"
-              }
-            ]
-          },
-          generic: {
-            label: "Generic Secret",
-            authTypes: [
-              {
-                id: "Opaque",
-                label: "Generic Secret"
               }
             ]
           }
@@ -198,7 +198,8 @@ angular.module("openshiftConsole")
                 secret.stringData.WebHookSecretKey = data.webhookSecretKey;
               }
               if (data.genericKeyValues.data) {
-                secret.stringData = data.genericKeyValues.data;
+                // Base64 encode the values.
+                secret.data = _.mapValues(data.genericKeyValues.data, window.btoa);
               }
               break;
             case "Opaque":
