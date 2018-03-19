@@ -52781,6 +52781,7 @@ n.annotations = {}, n.annotations[a] = [ u ];
 e.$evalAsync(function() {
 n.form.$setValidity("yamlValid", t);
 });
+<<<<<<< HEAD
 };
 n.onFileAdded = function(e) {
 n.model = e;
@@ -52817,6 +52818,16 @@ confirm(n()) || (new Date().getTime() - r < 50 ? (_.set(window, "OPENSHIFT_CONST
 var a = new Date().getTime();
 confirm(n()) || (new Date().getTime() - a < 50 ? (_.set(window, "OPENSHIFT_CONSTANTS.CONFIRM_DIALOG_BLOCKED", !0), e.warn("Confirm on exit prompt appears to have been blocked by the browser.")) : r.preventDefault());
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
+=======
+}, n.openCreateWebhookSecretModal = function() {
+var e = n.$new();
+e.type = "image", e.namespace = n.input.selectedProject.metadata.name, r.open({
+templateUrl: "views/modals/create-secret.html",
+controller: "CreateSecretModalController",
+scope: e
+});
+}, n.$on("newAppFromDeployImage", n.create), n.$on("$destroy", S);
+>>>>>>> Provide link to create pull secret to private repo image on the deploy image. Also, provide additional help text to help the user understand that a image pull secret must exist to deploy an image from a private repository.
 }
 }, n.aceLoaded = function(e) {
 t = e;
