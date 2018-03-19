@@ -3955,7 +3955,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<uib-tab-heading translate>Environment</uib-tab-heading>\n" +
 =======
     "<uib-tab-heading>Environment</uib-tab-heading>\n" +
+<<<<<<< HEAD
 >>>>>>> Create reusable edit-environment-variables component
+=======
+    "<p ng-if=\"dcName\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "Environment variables can be edited on deployment config\n" +
+    "<a ng-href=\"{{dcName | navigateResourceURL : 'DeploymentConfig' : pod.metadata.namespace}}?tab=environment\">{{dcName}}</a>.\n" +
+    "</p>\n" +
+    "<p ng-if=\"!dcName && controllerRef\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "Environment variables were set by {{controllerRef.kind | humanizeKind}}\n" +
+    "<a ng-href=\"{{controllerRef.name | navigateResourceURL : controllerRef.kind : pod.metadata.namespace}}?tab=environment\">{{controllerRef.name}}</a>.\n" +
+    "</p>\n" +
+>>>>>>> Bug 1477133 - Show link to owner on pod env tab
     "<edit-environment-variables api-object=\"pod\" ng-readonly=\"true\"></edit-environment-variables>\n" +
     "</uib-tab>\n" +
     "<uib-tab ng-if=\"metricsAvailable\" heading=\"{{'Metrics'|translate}}\" active=\"selectedTab.metrics\">\n" +
