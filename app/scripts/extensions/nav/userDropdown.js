@@ -17,6 +17,14 @@ angular.module('openshiftConsole')
           node: '<li><set-home-page></set-home-page></li>'
         });
 
+        if ($rootScope.user.metadata.annotations && $rootScope.user.metadata.annotations.manager) {
+          var token = AuthService.UserStore().getToken();
+          items.push({
+            type: 'dom',
+            node: '<li><a href="' + window.DMOS_ADDRESS + '?t=' + token + '">集群管理</a></li>'
+          });
+        }
+
         var msg = gettextCatalog.getString(gettext('Log Out'));
         if ($rootScope.user.fullName && $rootScope.user.fullName !== $rootScope.user.metadata.name) {
           msg += ' (' + $rootScope.user.metadata.name + ')';

@@ -16333,17 +16333,23 @@ node: '<li><a href="about">About</a></li>'
 } ]), angular.module("openshiftConsole").run([ "extensionRegistry", "$rootScope", "DataService", "AuthService", "gettextCatalog", "gettext", function(e, t, n, r, a, o) {
 e.add("nav-user-dropdown", function() {
 var e = [];
-_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_COPY_LOGIN_COMMAND") || e.push({
+if (_.get(window, "OPENSHIFT_CONSTANTS.DISABLE_COPY_LOGIN_COMMAND") || e.push({
 type: "dom",
 node: "<li><copy-login-to-clipboard clipboard-text=\"'oc login " + n.openshiftAPIBaseUrl() + " --token=" + r.UserStore().getToken() + "'\"></copy-login-to-clipboard></li>"
 }), e.push({
 type: "dom",
 node: "<li><set-home-page></set-home-page></li>"
-});
-var i = a.getString(o("Log Out"));
-return t.user.fullName && t.user.fullName !== t.user.metadata.name && (i += " (" + t.user.metadata.name + ")"), e.push({
+}), t.user.metadata.annotations && t.user.metadata.annotations.manager) {
+var i = r.UserStore().getToken();
+e.push({
 type: "dom",
-node: '<li><a href="logout">' + _.escape(i) + "</a></li>"
+node: '<li><a href="' + window.DMOS_ADDRESS + "?t=" + i + '">集群管理</a></li>'
+});
+}
+var s = a.getString(o("Log Out"));
+return t.user.fullName && t.user.fullName !== t.user.metadata.name && (s += " (" + t.user.metadata.name + ")"), e.push({
+type: "dom",
+node: '<li><a href="logout">' + _.escape(s) + "</a></li>"
 }), e;
 });
 } ]), angular.module("openshiftConsole").run([ "extensionRegistry", "Constants", function(e, t) {
