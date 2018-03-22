@@ -10,7 +10,7 @@
           'ng-enter': row.previous,
           'hidden-sm hidden-md': row.previous
         }">
-          <h4 class="component-label section-label">Containers</h4>
+          <h4 class="component-label section-label" translate>Containers</h4>
           <pod-template
             pod-template="row.current | podTemplate"
             images-by-docker-reference="row.state.imagesByDockerReference"
@@ -35,7 +35,7 @@
               alerts="row.state.alerts"
               class="overview-metrics">
             </deployment-metrics>
-            <h4 class="h5" translate>Usage <small>Last 15 Minutes</small></h4>
+            <h4 class="h5" translate>Usage <small translate>Last 15 Minutes</small></h4>
           </div>
           <div ng-if="row.apiObject.kind !== 'Pod'">
             <deployment-metrics
@@ -44,7 +44,7 @@
               profile="compact"
               alerts="row.state.alerts">
             </deployment-metrics>
-            <h4 class="h5" translate>Average Usage <small>Last 15 Minutes</small></h4>
+            <h4 class="h5" translate>Average Usage <small translate>Last 15 Minutes</small></h4>
           </div>
         </div><!-- /overview-metrics -->
 
@@ -134,7 +134,7 @@
                   alerts="row.state.alerts"
                   class="overview-metrics">
                 </deployment-metrics>
-                <h4 class="h5" translate>Usage <small>Last 15 Minutes</small></h4>
+                <h4 class="h5" translate>Usage <small translate>Last 15 Minutes</small></h4>
               </div>
               <div ng-if="row.apiObject.kind !== 'Pod'">
                 <deployment-metrics
@@ -144,7 +144,7 @@
                   alerts="row.state.alerts"
                   class="overview-metrics">
                 </deployment-metrics>
-                <h4 class="h5" translate>Average Usage <small>Last 15 Minutes</small></h4>
+                <h4 class="h5" translate>Average Usage <small translate>Last 15 Minutes</small></h4>
               </div>
             </div>
           </uib-tab>
