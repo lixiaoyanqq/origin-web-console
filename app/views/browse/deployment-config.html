@@ -247,11 +247,11 @@
                       <span class="action-divider" aria-hidden="true">|</span>
                       <a ng-href="project/{{project.metadata.name}}/add-config-volume?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}" translate>Add Config Files</a>
                     </p>
-                    <h3>Triggers</h3>
+                    <h3 translate>Triggers</h3>
                     <dl class="dl-horizontal left">
-                      <dt>Manual (CLI):
+		      <dt><translate>Manual</translate> (CLI):
                         <a href="{{'deployment-operations' | helpLink}}" target="_blank">
-                          <span class="learn-more-block">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
+			<span class="learn-more-block"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
                         </a>
                       </dt>
                       <dd>
@@ -261,15 +261,15 @@
                         <span ng-switch="trigger.type">
                           <span ng-switch-default>{{trigger.type}}</span>
                           <span ng-switch-when="ImageChange" ng-if="trigger.imageChangeParams.from">
-                            <dt>New Image For:</dt>
+                            <dt translate>New Image For:</dt>
                             <dd>
                               {{trigger.imageChangeParams.from | imageObjectRef : deploymentConfig.metadata.namespace}}
                               <small ng-if="!trigger.imageChangeParams.automatic" class="text-muted">(disabled)</small>
                             </dd>
                           </span>
                           <span ng-switch-when="ConfigChange">
-                            <dt>Change Of:</dt>
-                            <dd>Config</dd>
+                            <dt translate>Change Of:</dt>
+                            <dd translate>Config</dd>
                           </span>
                         </span>
                       </div>
@@ -295,7 +295,7 @@
                       <!-- If the CPU request is missing, add an action to set one. -->
                       <a ng-href="project/{{projectName}}/set-limits?kind=DeploymentConfig&name={{deploymentConfig.metadata.name}}"
                          ng-if="warning.reason === 'NoCPURequest' && (deploymentConfigsVersion | canI : 'update')"
-                         role="button">Edit Resource
+                         role="button" translate>Edit Resource
                         <span ng-if="!('cpu' | isRequestCalculated : project)" translate>Requests and</span><translate>Limits</translate></a>
                     </div>
 

@@ -6,7 +6,7 @@
           <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
           <div ng-show="!containers.length" class="mar-top-md" translate>Loading...</div>
           <form ng-show="containers.length" name="form" class="health-checks-form" novalidate>
-            <h1>Health Checks: {{name}}</h1>
+	  <h1><translate>Health Checks:<translate> {{name}}</h1>
             <div class="help-block">
 		    <translate>Container health is periodically checked using readiness and liveness probes.</translate>
               <div class="learn-more-block">
@@ -15,7 +15,7 @@
             </div>
             <fieldset ng-disabled="disableInputs">
               <div ng-repeat="container in containers">
-		      <h2 ng-if="containers.length > 1"><translate>Container</translate> {{container.name}}</h2>
+	       <h2 ng-if="containers.length > 1"><translate>Container</translate> {{container.name}}</h2>
                 <h3 translate>Readiness Probe</h3>
                 <div class="help-block mar-bottom-md" ng-if="$first" translate>
                   A readiness probe checks if the container is ready to handle requests. A failed readiness probe means that a container should not receive any traffic from a proxy, even if it's running.

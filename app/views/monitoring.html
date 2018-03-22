@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="page-header page-header-bleed-right page-header-bleed-left">
           <h1>
-		  <translate>Monitoring</translate>
+	  <translate>Monitoring</translate>
             <events-badge project-context="projectContext" ng-if="projectContext" class="pull-right" sidebar-collapsed="renderOptions.collapseEventsSidebar"></events-badge>
           </h1>
         </div>
@@ -73,11 +73,11 @@
                   <a href="" ng-click="toggleItem($event, this, pod, true)" role="button" class="toggle-expand-link">
                     <span ng-if="expanded.pods[pod.metadata.name]">
                       <span class="fa fa-angle-down"  aria-hidden="true"></span>
-                      <span class="sr-only">Collapse</span>
+                      <span class="sr-only" translate>Collapse</span>
                     </span>
                     <span ng-if="!expanded.pods[pod.metadata.name]">
                       <span class="fa fa-angle-right"  aria-hidden="true"></span>
-                      <span class="sr-only">Expand</span>
+                      <span class="sr-only" translate>Expand</span>
                     </span>
                   </a>
                 </div>
@@ -87,7 +87,7 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{pod | navigateResourceURL}}"><span ng-bind-html="pod.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small>created <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
+			  <small><translate>created</translate> <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>
@@ -435,7 +435,7 @@
                       <div class="list-pf-title">
                         <h3>
                           <a ng-href="{{build | navigateResourceURL}}"><span ng-bind-html="build.metadata.name | highlightKeywords : filterKeywords"></span></a>
-                          <small>created <span am-time-ago="build.metadata.creationTimestamp"></span></small>
+			  <small><translate>created</translate> <span am-time-ago="build.metadata.creationTimestamp"></span></small>
                         </h3>
                       </div>
                     </div>

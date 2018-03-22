@@ -45,7 +45,7 @@
         <div class="col-md-12">
           <uib-tabset>
             <uib-tab active="selectedTab.details">
-              <uib-tab-heading>Details</uib-tab-heading>
+              <uib-tab-heading translate>Details</uib-tab-heading>
               <div class="resource-details">
                 <dl class="dl-horizontal left">
                   <dt translate>Selectors:</dt>
@@ -64,11 +64,11 @@
                       <span class="pficon pficon-info" aria-hidden="true" data-toggle="tooltip" style="cursor: help;"></span>
                     </span>
                   </dd>
-                  <dt ng-if-start="service.spec.externalName">External Hostname:</dt>
+                  <dt ng-if-start="service.spec.externalName" translate>External Hostname:</dt>
                   <dd ng-if-end>{{service.spec.externalName}}</dd>
-                  <dt>Session affinity:</dt>
+                  <dt translate>Session affinity:</dt>
                   <dd>{{service.spec.sessionAffinity}}</dd>
-                  <dt ng-if-start="service.status.loadBalancer.ingress.length">Ingress Points:</dt>
+                  <dt ng-if-start="service.status.loadBalancer.ingress.length" translate>Ingress Points:</dt>
                   <dd ng-if-end>
                     <span ng-repeat="ingress in service.status.loadBalancer.ingress"
                       >{{ingress.ip}}<span ng-if="!$last">, </span></span>

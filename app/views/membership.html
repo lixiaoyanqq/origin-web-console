@@ -48,8 +48,8 @@
                 ng-if="subjectKind.helpLinkKey"
                 target="_blank"
                 ng-href="{{subjectKind.helpLinkKey | helpLink}}"
-                class="learn-more-inline" translate>
-                Learn More <i class="fa fa-external-link" aria-hidden="true"></i>
+                class="learn-more-inline">
+		<translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i>
               </a>
             </p>
           </div>
@@ -283,11 +283,15 @@
                         class="toggle-hidden"
                         ng-click="toggleRoles($event)"
                         ng-checked="toggle.roles">
-                      Show hidden roles</label>&nbsp;<a href=""
-                                                        class="action-inline"
-                                                        data-toggle="popover"
-                                                        data-trigger="hover focus"
-                                                        data-content="System roles are hidden by default and do not typically need to be managed."><i class="pficon pficon-help"></i></a>
+		      <translate>Show hidden roles</translate>
+		    </label>&nbsp;
+		    <a href=""
+                       class="action-inline"
+                       data-toggle="popover"
+                       data-trigger="hover focus"
+                       data-content="System roles are hidden by default and do not typically need to be managed.">
+			    <i class="pficon pficon-help"></i>
+		    </a>
                   </div>
                 </div>
               </div>

@@ -27,7 +27,7 @@
                 </div>
               </div>
             </p>
-            <p>
+            <p translate>
               After downloading and installing it, you can start by logging in. You are currently logged into this console as <strong>{{user.metadata.name}}</strong>. If you want to log into the CLI using the same session token:
               <copy-to-clipboard ng-if="sessionToken" display-wide="true" clipboard-text="'oc login ' + loginBaseURL + ' --token=' + sessionToken" input-text="'oc login ' + loginBaseURL + ' --token=<hidden>'"></copy-to-clipboard>
               <copy-to-clipboard ng-if="!sessionToken" display-wide="true" clipboard-text="'oc login ' + loginBaseURL"></copy-to-clipboard>
@@ -35,19 +35,21 @@
 
             <div ng-if="sessionToken" class="alert alert-warning">
               <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-              <strong>A token is a form of a password.</strong>
+              <strong translate>A token is a form of a password.</strong>
+	      <translate>
               Do not share your API token. To reveal your token, press the copy to clipboard button and then paste the clipboard contents.
+	      </translate>
             </div>
 
-            <p>After you login to your account you will get a list of projects that you can switch between:
+	    <p><translate>After you login to your account you will get a list of projects that you can switch between:</translate>
               <copy-to-clipboard display-wide="true" clipboard-text="'oc project <project-name>'"></copy-to-clipboard>
             </p>
 
-            <p>If you do not have any existing projects, you can create one:
+	    <p><translate>If you do not have any existing projects, you can create one:</translate>
               <copy-to-clipboard display-wide="true" clipboard-text="'oc new-project <project-name>'"></copy-to-clipboard>
             </p>
 
-            <p>To show a high level overview of the current project:
+	    <p><translate>To show a high level overview of the current project:</translate>
               <copy-to-clipboard display-wide="true" clipboard-text="'oc status'"></copy-to-clipboard>
             </p>
 

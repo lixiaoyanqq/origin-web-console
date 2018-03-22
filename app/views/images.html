@@ -23,16 +23,16 @@
       <div class="row">
         <div class="col-md-12">
           <div ng-if="(imageStreams | hashSize) == 0">
-            <p ng-if="!imageStreamsLoaded">
+            <p ng-if="!imageStreamsLoaded" translate>
               Loading...
             </p>
             <div ng-if="imageStreamsLoaded" class="empty-state-message text-center">
               <div ng-if="!filterWithZeroResults">
-                <h2>No image streams.</h2>
-                <p>No image streams have been added to project {{projectName}}.</p>
+                <h2 translate>No image streams.</h2>
+		<p><translate>No image streams have been added to project</translate> {{projectName}}.</p>
               </div>
               <div ng-if="filterWithZeroResults">
-                <h2>The filter is hiding all image streams. <a href="" ng-click="clearFilter()" role="button" class="nowrap">Clear Filter</a></h2>
+		      <h2><translate>The filter is hiding all image streams.</translate> <a href="" ng-click="clearFilter()" role="button" class="nowrap" translate>Clear Filter</a></h2>
               </div>
             </div>
           </div>

@@ -89,7 +89,7 @@
                                 ref: {{image.metadata.annotations.sampleRef}}</span><span ng-if="image.metadata.annotations.sampleContextDir">,
                                 context dir: {{image.metadata.annotations.sampleContextDir}}</span>
                               <a href="" ng-click="fillSampleRepo()"
-                                style="margin-left: 3px;" class="nowrap">Try It<i class="fa fa-level-up" style="margin-left: 3px; font-size: 17px;"></i></a>
+					 style="margin-left: 3px;" class="nowrap"><translate>Try It</translate><i class="fa fa-level-up" style="margin-left: 3px; font-size: 17px;"></i></a>
                             </div>
                             <div class="has-error" ng-show="form.sourceUrl.$error.required && form.sourceUrl.$dirty">
                               <span class="help-block">A Git repository URL is required.</span>
@@ -321,7 +321,7 @@
                           <div ng-if="!scaling.autoscale"
                                class="form-group"
                                ng-class="{ 'has-error': form.replicas.$dirty && form.replicas.$invalid }">
-                            <label class="number">Replicas</label>
+                            <label class="number" translate>Replicas</label>
                             <input type="number"
                                    class="form-control"
                                    min="0"
@@ -392,8 +392,8 @@
                       <div class="mar-top-md">
                         <span ng-if="!advancedOptions" translate>Show</span>
                         <span ng-if="advancedOptions" translate>Hide</span>
-                        <a href="" ng-click="advancedOptions = !advancedOptions" role="button">advanced options</a>
-                        for source, routes, builds, and deployments.
+                        <a href="" ng-click="advancedOptions = !advancedOptions" role="button" translate>advanced options</a>
+			<translate>for source, routes, builds, and deployments.</translate>
                       </div>
                       <div class="buttons gutter-bottom" ng-class="{'gutter-top': !alerts.length}">
                         <button type="submit"
