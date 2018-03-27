@@ -43125,7 +43125,11 @@ p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", E);
 >>>>>>> Check for new templateServiceBrokerEnabled flag
 } ]
 };
+<<<<<<< HEAD
 } ]), angular.module("openshiftConsole").directive("quotaUsageChart", [ "$filter", "ChartsService", "gettext", "gettextCatalog", function(e, t, n, r) {
+=======
+} ]), angular.module("openshiftConsole").directive("oscFileInput", [ "$filter", "Logger", "NotificationsService", function(e, t, n) {
+>>>>>>> Bug 1560927 - Limit file size the console will read
 return {
 restrict: "E",
 scope: {
@@ -43136,6 +43140,7 @@ type: "@",
 height: "=?",
 width: "=?"
 },
+<<<<<<< HEAD
 replace: !0,
 templateUrl: "views/_quota-usage-chart.html",
 link: function(a, o) {
@@ -43244,9 +43249,52 @@ names: {
 used: e ? "Used - This Project" : "Used",
 other: "Used - Other Projects",
 available: "Available"
+=======
+templateUrl: "views/directives/osc-file-input.html",
+link: function(r, a) {
+function o(a) {
+if (a.size > 5242880) n.addNotification({
+type: "error",
+message: "The file is too large.",
+details: "The file " + a.name + " is " + e("humanizeSize")(a.size) + ". The web console has a 5 MiB file limit."
+}); else {
+var o = new FileReader();
+o.onloadend = function() {
+r.$apply(function() {
+r.fileName = a.name, r.model = o.result, r.isBinaryFile = s(o.result);
+var e = r.onFileAdded;
+_.isFunction(e) && e(o.result), o.error || (r.uploadError = !1);
+});
+}, o.onerror = function(e) {
+r.uploadError = !0, t.error("Could not read file", e);
+}, r.readAsBinaryString ? o.readAsBinaryString(a) : o.readAsText(a);
+}
+}
+function i() {
+a.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone highlight-drag-and-drop-zone");
+}
+var s = e("isNonPrintable"), c = _.uniqueId("osc-file-input-");
+r.dropMessageID = c + "-drop-message", r.helpID = c + "-help", r.supportsFileUpload = window.File && window.FileReader && window.FileList && window.Blob, r.uploadError = !1;
+var l = "#" + r.dropMessageID, u = !1, d = !1, m = a.find("input[type=file]");
+setTimeout(function() {
+var e = a.find(".drag-and-drop-zone");
+e.on("dragover", function() {
+r.disabled || (e.addClass("highlight-drag-and-drop-zone"), u = !0);
+}), a.find(".drag-and-drop-zone p").on("dragover", function() {
+r.disabled || (u = !0);
+}), e.on("dragleave", function() {
+r.disabled || (u = !1, _.delay(function() {
+u || e.removeClass("highlight-drag-and-drop-zone");
+}, 200));
+}), e.on("drop", function(e) {
+if (!r.disabled) {
+var t = _.get(e, "originalEvent.dataTransfer.files", []);
+return t.length > 0 && (r.file = _.head(t), o(r.file)), i(), $(".drag-and-drop-zone").trigger("putDropZoneFront", !1), $(".drag-and-drop-zone").trigger("reset"), !1;
+>>>>>>> Bug 1560927 - Limit file size the console will read
 }
 >>>>>>> Support EnvFrom in the Env Editors
 };
+<<<<<<< HEAD
 e.showQuotaWarning = _.some(t, a) || _.some(n, a);
 } else e.showQuotaWarning = !1;
 =======
@@ -43297,6 +43345,32 @@ type: "error",
 message: "An error occurred scaling " + r + " " + a.metadata.name + ".",
 details: t("getErrorDetails")(e)
 }), n.reject(e);
+=======
+e.on("putDropZoneFront", function(e, n) {
+if (!r.disabled) {
+var o, i = a.find(".drag-and-drop-zone");
+return n ? (o = r.dropZoneId ? $("#" + r.dropZoneId) : a, t(i, o)) : i.css("z-index", "-1"), !1;
+}
+}), e.on("reset", function() {
+if (!r.disabled) return d = !1, !1;
+});
+}), $(document).on("drop." + c, function() {
+return i(), a.find(".drag-and-drop-zone").trigger("putDropZoneFront", !1), !1;
+}), $(document).on("dragenter." + c, function() {
+if (!r.disabled) return d = !0, a.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), a.find(".drag-and-drop-zone").trigger("putDropZoneFront", !0), !1;
+}), $(document).on("dragover." + c, function() {
+if (!r.disabled) return d = !0, a.find(".drag-and-drop-zone").addClass("show-drag-and-drop-zone"), !1;
+}), $(document).on("dragleave." + c, function() {
+return d = !1, _.delay(function() {
+d || a.find(".drag-and-drop-zone").removeClass("show-drag-and-drop-zone");
+}, 200), !1;
+}), r.cleanInputValues = function() {
+r.model = "", r.fileName = "", r.isBinaryFile = !1, m[0].value = "";
+}, m.change(function() {
+o(m[0].files[0]), m[0].value = "";
+}), r.$on("$destroy", function() {
+$(l).off(), $(document).off("drop." + c).off("dragenter." + c).off("dragover." + c).off("dragleave." + c);
+>>>>>>> Bug 1560927 - Limit file size the console will read
 });
 }
 }, g = _.debounce(f, 650);
