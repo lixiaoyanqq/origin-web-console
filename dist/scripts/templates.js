@@ -8276,7 +8276,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "          }\" ng-model=\"newSecret.data.gitconfig\" class=\"create-secret-editor ace-bordered\" id=\"gitconfig-editor\" required></div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"newSecret.authType === 'kubernetes.io/dockercfg'\">\n" +
+    "<div ng-if=\"newSecret.authType === 'kubernetes.io/dockerconfigjson'\">\n" +
     "<div class=\"form-group\" ng-class=\"{ 'has-error' : secretForm.dockerServer.$invalid && secretForm.dockerServer.$touched }\">\n" +
 <<<<<<< HEAD
     "<label for=\"docker-server\" class=\"required\" translate>Image Registry Server Address</label>\n" +
@@ -8381,7 +8381,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"newSecret.authType === 'kubernetes.io/dockerconfigjson'\">\n" +
+    "<div ng-if=\"newSecret.authType === 'kubernetes.io/dockercfg'\">\n" +
     "<div class=\"form-group\" id=\"docker-config\">\n" +
     "<label for=\"dockerConfig\" class=\"required\" translate>Configuration File</label>\n" +
     "<osc-file-input id=\"dockercfg-file-input\" model=\"newSecret.data.dockerConfig\" drop-zone-id=\"docker-config\" help-text=\"Upload a .dockercfg or .docker/config.json file\" required=\"true\"></osc-file-input>\n" +

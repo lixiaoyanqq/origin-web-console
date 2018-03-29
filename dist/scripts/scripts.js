@@ -19608,10 +19608,10 @@ label: "Generic Secret"
 image: {
 label: "Image Secret",
 authTypes: [ {
-id: "kubernetes.io/dockercfg",
+id: "kubernetes.io/dockerconfigjson",
 label: "Image Registry Credentials"
 }, {
-id: "kubernetes.io/dockerconfigjson",
+id: "kubernetes.io/dockercfg",
 label: "Configuration File"
 } ]
 },
@@ -19823,6 +19823,7 @@ break;
 
 case "kubernetes.io/dockerconfigjson":
 <<<<<<< HEAD
+<<<<<<< HEAD
 var r = ".dockerconfigjson";
 JSON.parse(e.dockerConfig).auths || (n.type = "kubernetes.io/dockercfg", r = ".dockercfg"), n.stringData[r] = e.dockerConfig;
 >>>>>>> Secret creation should be using stringData
@@ -19850,11 +19851,22 @@ e.metricsAvailable = t;
 case "kubernetes.io/dockercfg":
 var o = window.btoa(e.dockerUsername + ":" + e.dockerPassword), i = {};
 i[e.dockerServer] = {
+=======
+var a = window.btoa(e.dockerUsername + ":" + e.dockerPassword), o = {
+auths: {}
+};
+o.auths[e.dockerServer] = {
+>>>>>>> Create dockercodnfigjson as default secret
 username: e.dockerUsername,
 password: e.dockerPassword,
 email: e.dockerMail,
-auth: o
-}, r.stringData[".dockercfg"] = JSON.stringify(i);
+auth: a
+}, r.stringData[".dockerconfigjson"] = JSON.stringify(o);
+break;
+
+case "kubernetes.io/dockercfg":
+var i = ".dockerconfigjson";
+JSON.parse(e.dockerConfig).auths || (r.type = "kubernetes.io/dockercfg", i = ".dockercfg"), r.stringData[i] = e.dockerConfig;
 break;
 
 case "Opaque":
