@@ -159,7 +159,7 @@ angular.module('kubernetesUI')
       .appendTo(filterInputElement)
       .append(
         $('<span>')
-          .text(opts.addButtonText || "Add Filter")
+          .text(opts.addButtonText || gettextCatalog.getString(gettext("Add Filter")))
       );
 
     this._labelFilterActiveFiltersElement = $('<span>')

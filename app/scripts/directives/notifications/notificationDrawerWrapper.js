@@ -18,6 +18,8 @@
         'APIService',
         'Constants',
         'DataService',
+        'gettext',
+        'gettextCatalog',
         'EventsService',
         'NotificationsService',
         NotificationDrawerWrapper
@@ -35,6 +37,8 @@
       APIService,
       Constants,
       DataService,
+      gettext,
+      gettextCatalog,
       EventsService) {
 
       var eventsVersion = APIService.getPreferredVersion('events');
@@ -255,7 +259,7 @@
         drawerHidden: true,
         allowExpand: true,
         drawerExpanded: localStorage.getItem(DRAWER_EXPANDED_STORAGE_KEY) === 'true',
-        drawerTitle: 'Notifications',
+        drawerTitle: gettextCatalog.getString(gettext('Notifications')),
         hasUnread: false,
         showClearAll: true,
         showMarkAllRead: true,

@@ -15,7 +15,9 @@ angular.module("openshiftConsole")
                                      QuotaService,
                                      TaskList,
                                      SecretsService,
-                                     keyValueEditorUtils) {
+                                     keyValueEditorUtils,
+                                     gettext,
+                                     gettextCatalog) {
     var imageStreamImagesVersion = APIService.getPreferredVersion('imagestreamimages');
     var configMapsVersion = APIService.getPreferredVersion('configmaps');
     var secretsVersion = APIService.getPreferredVersion('secrets');

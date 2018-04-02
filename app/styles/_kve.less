@@ -115,7 +115,6 @@
     width: (@as-sortable-item-button-width * 2);
   }
 
-  .key-value-editor-entry,
   .environment-from-entry {
     display: table;
     margin-bottom: 15px;
@@ -126,20 +125,31 @@
     position: relative;
     table-layout: fixed;
     width: 100%;
-    @media(min-width: @screen-md-min)  {
-      .environment-from-editor-button {
+    .environment-from-editor-button {
+      top: 26px; // position to align with config-map ui-select when stacked
+      @media(min-width: @screen-xs-min)  {
         float: left;
-        padding-right: 5px;
+        padding: 0 5px;
         position: relative;
-        width: 50%;
+        top: 0; // position when not stacked
+        width: auto;
       }
     }
     .environment-from-input {
       float: left;
+      margin-bottom: 0;
       padding-right: 5px;
       width: 100%;
-      @media(min-width: @screen-md-min) {
-        width: 50%;
+      @media(min-width: @screen-xs-min) {
+        width: calc(~"50% - 26px"); // Adjust env-from width to match kve input, when env-from row doesn't have padding-right;
+      }
+      &.prefix {
+        padding-right: 0;
+        width: calc(~"50% + 26px"); // Adjust prefix width to match kve input, when env-from row doesn't have padding-right;
+        @media(max-width: @screen-xxs-max) {
+          margin-top: 5px;
+          width: 100%;
+        }
       }
       .faux-input-group,
       .ui-select {
@@ -150,8 +160,21 @@
         display: inline-block;
       }
     }
+    .environment-from-view-details {
+      float: left;
+      line-height: 1;
+      padding: 6px 0 0;
+    }
   }
 
+  .key-value-editor-entry {
+    display: table;
+    margin-bottom: 15px;
+    padding-right: (@as-sortable-item-button-width * 2);
+    position: relative;
+    table-layout: fixed;
+    width: 100%;
+  }
   .key-value-editor-input .ui-select {
     @media(min-width: @screen-md-min) {
       float: left;
@@ -167,21 +190,23 @@
   }
 }
 
-.key-value-editor .key-value-editor-input,
-.key-value-editor-header {
-  float: left;
-  padding-right: 5px;
-  width: 50%;
-}
-
-.key-value-editor-entry-header,
-.environment-from-editor-entry-header {
-  padding-right: (@as-sortable-item-button-width * 2);
-}
-
-.key-value-editor-header,
 .environment-from-editor-header {
-  margin-bottom: 5px;
+  &.config-map-header,
+  &.prefix-header {
+    @media(max-width: @screen-xxs-max) {
+      display: none;
+      width: 100%;
+    }
+    &.config-map-header-mobile,
+    &.prefix-header-mobile {
+      display: block;
+      margin-bottom: 0;
+      margin-top: 5px;
+      @media(min-width: @screen-xs-min) {
+        display: none;
+      }
+    }
+  }
 }
 
 .key-value-editor .key-value-editor-input,

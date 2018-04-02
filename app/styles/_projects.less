@@ -87,7 +87,7 @@
     display: flex;
     justify-content: flex-end;
     margin: -27px 0 0 0;
-    @media (min-width: 660px) {
+    @media (min-width: 685px) {
       display: block;
       margin-bottom: 20px;
       margin-left: 40px;
@@ -197,7 +197,9 @@
 }
 
 .projects-list-create-popup {
-  form {
-    width: 400px;
+  @media (min-width: @screen-sm-min) {
+    form {
+      width: 400px;
+    }
   }
 }

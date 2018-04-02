@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-22 15:33+0800\n"
+"PO-Revision-Date: 2018-04-02 17:52+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh-CN\n"
@@ -11,318 +11,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
-
-#: src/components/binding/bindResults.html:18
-msgid ""
-"<strong>{{ctrl.serviceToBind}}</strong> has been bound to <strong>{{ctrl."
-"applicationToBind}}</strong> successfully."
-msgstr ""
-"<strong>{{ctrl.serviceToBind}}</strong> 已成功绑定到 <strong>{{ctrl."
-"applicationToBind}}</strong> 。"
-
-#: src/components/create-project/createProject.html:64
-#: src/components/edit-project/editProject.html:18
-msgid "A short description."
-msgstr "简短描述。"
-
-#: src/components/create-project/createProject.html:25
-msgid "A unique name for the project."
-msgstr "唯一的项目名称。"
-
-#: src/components/binding/bindResults.html:55
-msgid "An error occurred creating the binding."
-msgstr "创建绑定时出错。"
-
-#: src/components/delete-project/delete-project-modal.html:8
-#: app/views/modals/delete-project.html:9
-msgid ""
-"Are you sure you want to delete the project '<strong>{{project | "
-"displayName}}</strong>'?"
-msgstr "你确定要删除项目'<strong>{{project | displayName}}</strong>'吗？"
-
-#: src/components/binding/bindApplicationForm.html:25
-#: src/components/binding/bindServiceForm.html:46
-msgid "Bindings can be created later from within a project."
-msgstr "可以在项目中稍后创建绑定。"
-
-#: src/components/binding/bindApplicationForm.html:7
-msgid ""
-"Bindings create a secret containing the necessary information for an "
-"application to use a service."
-msgstr "绑定创建一个包含应用程序使用服务的必要信息的私密凭证。"
-
-#: src/components/binding/bindServiceForm.html:7
-msgid ""
-"Bindings create a secret containing the necessary information for an "
-"application to use this service."
-msgstr "绑定创建这个包含应用程序使用服务的必要信息的私密凭证。"
-
-#: src/components/create-project/createProject.html:77
-#: src/components/delete-project/delete-project-modal.html:31
-#: src/components/edit-project/editProject.html:29
-#: app/scripts/controllers/deployment.js:227
-#: app/scripts/controllers/deploymentConfig.js:302
-#: app/scripts/controllers/membership.js:223
-#: app/scripts/directives/fromFile.js:66
-#: app/scripts/directives/processTemplate.js:180
-#: app/views/add-config-volume.html:197 app/views/attach-pvc.html:219
-#: app/views/browse/_replica-set-details.html:46
-#: app/views/create-config-map.html:21 app/views/create-from-url.html:44
-#: app/views/create-from-url.html:79
-#: app/views/create-persistent-volume-claim.html:22
-#: app/views/create-route.html:33 app/views/create/fromimage.html:403
-#: app/views/directives/add-config-to-application.html:137
-#: app/views/directives/create-secret.html:359
-#: app/views/directives/deploy-image.html:182
-#: app/views/directives/from-file.html:19
-#: app/views/directives/process-template.html:15
-#: app/views/directives/replicas.html:37 app/views/edit/autoscaler.html:69
-#: app/views/edit/build-config.html:615 app/views/edit/config-map.html:35
-#: app/views/edit/deployment-config.html:374
-#: app/views/edit/health-checks.html:65 app/views/edit/project.html:35
-#: app/views/edit/route.html:26 app/views/edit/yaml.html:36
-#: app/views/modals/confirm-replace.html:26
-#: app/views/modals/confirm-save-log.html:20
-#: app/views/modals/confirmScale.html:15
-#: app/views/modals/delete-project.html:13
-#: app/views/modals/delete-resource.html:95
-#: app/views/modals/process-or-save-template.html:34
-#: app/views/modals/set-home-page-modal.html:47
-#: app/views/overview/_list-row-content.html:47 app/views/set-limits.html:55
-#: app/views/util/oauth.html:12 app/views/util/oauth.html:20
-msgid "Cancel"
-msgstr "取消"
-
-#: src/components/toast-notifications/toast-notifications.html:9
-#: app/views/_alerts.html:13
-#: app/views/directives/edit-environment-from.html:141
-#: app/views/modals/about-compute-units-modal.html:54
-#: app/views/modals/debug-terminal.html:61
-#: app/views/modals/jenkinsfile-examples-modal.html:12
-msgid "Close"
-msgstr "关闭"
-
-#: src/components/truncate-long-text/truncateLongText.html:27
-#: app/views/_templateopt.html:9 app/views/directives/osc-form-section.html:9
-#: app/views/monitoring.html:171 app/views/monitoring.html:242
-#: app/views/monitoring.html:424 app/views/monitoring.html:76
-#: app/views/overview/_list-row-chevron.html:4
-msgid "Collapse"
-msgstr "折叠"
-
-#: src/components/create-project/createProject.html:69
-#: app/views/create-config-map.html:16
-#: app/views/create-persistent-volume-claim.html:17
-#: app/views/create-route.html:28 app/views/create/fromimage.html:399
-#: app/views/directives/create-secret.html:355
-#: app/views/directives/deploy-image.html:177
-#: app/views/directives/from-file.html:12
-#: app/views/directives/process-template.html:14
-msgid "Create"
-msgstr "创建"
-
-#: src/components/binding/bindServiceForm.html:5
-msgid "Create a binding for"
-msgstr "创建绑定"
-
-#: src/components/binding/bindApplicationForm.html:5
-msgid ""
-"Create a binding for application <strong>{{ctrl.applicationName}}</strong>"
-msgstr "为应用程序<strong>{{ctrl.applicationName}}</strong>创建一个绑定"
-
-#: src/components/binding/bindServiceForm.html:16
-msgid "Create a secret and inject it into an application"
-msgstr "创建一个私密凭证并将其注入应用程序"
-
-#: src/components/binding/bindServiceForm.html:37
-msgid ""
-"Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later"
-msgstr "在<strong>{{ctrl.projectName}}</strong>创建稍后使用的私密凭证"
-
-#: src/components/delete-project/delete-project-modal.html:32
-#: app/views/browse/_replica-set-actions.html:42
-#: app/views/browse/_replication-controller-actions.html:43
-#: app/views/browse/service-instance.html:41
-#: app/views/directives/delete-button.html:10 app/views/directives/hpa.html:8
-#: app/views/modals/delete-resource.html:82
-#: app/views/modals/delete-resource.html:96
-#: app/views/overview/_service-instance-row.html:86
-msgid "Delete"
-msgstr "删除"
-
-#: src/components/delete-project/delete-project-button.html:10
-msgid "Delete Project {{projectName}}"
-msgstr "删除项目{{projectName}}"
-
-#: src/components/create-project/createProject.html:60
-#: app/views/browse/service-instance.html:120
-#: app/views/browse/service-instance.html:80 app/views/edit/project.html:21
-msgid "Description"
-msgstr "描述"
-
-#: src/components/create-project/createProject.html:50
-#: src/components/edit-project/editProject.html:4
-#: app/scripts/controllers/projects.js:102 app/views/edit/project.html:11
-msgid "Display Name"
-msgstr "显示名称"
-
-#: src/components/binding/bindServiceForm.html:44
-msgid "Do not bind at this time"
-msgstr "此时不要绑定"
-
-#: src/components/binding/bindApplicationForm.html:22
-msgid "Do not bind at this time."
-msgstr "此时不要绑定。"
-
-#: src/components/binding/bindResults.html:44
-#: app/views/directives/ui-ace-yaml.html:20
-#: app/views/overview/_notification-icon.html:10
-#: app/views/overview/_service-instance-row.html:21 app/views/util/error.html:4
-msgid "Error"
-msgstr "错误"
-
-#: src/components/binding/bindResults.html:36
-msgid "Info"
-msgstr "信息"
-
-#: src/components/binding/bindResults.html:30
-msgid ""
-"Its data will be available to your application as environment variables."
-msgstr "其数据将作为环境变量提供给您的应用程序。"
-
-#: src/components/create-project/createProject.html:54
-#: src/components/edit-project/editProject.html:8
-msgid "My Project"
-msgstr "我的项目"
-
-#: src/components/create-project/createProject.html:4
-#: app/scripts/controllers/overview.js:175
-#: app/scripts/controllers/projects.js:106 app/scripts/directives/events.js:154
-#: app/views/browse/build-config.html:472 app/views/browse/config-maps.html:51
-#: app/views/browse/deployment.html:102 app/views/browse/stateful-sets.html:41
-#: app/views/builds.html:51 app/views/create/fromimage.html:22
-#: app/views/deployments.html:132 app/views/deployments.html:173
-#: app/views/deployments.html:201 app/views/deployments.html:51
-#: app/views/directives/deploy-image.html:115
-#: app/views/directives/edit-config-map.html:5
-#: app/views/directives/edit-environment-variables.html:15
-#: app/views/directives/edit-environment-variables.html:27
-#: app/views/directives/events.html:44 app/views/directives/events.html:75
-#: app/views/directives/label-editor.html:15
-#: app/views/directives/next-steps.html:108
-#: app/views/directives/osc-persistent-volume-claim.html:64
-#: app/views/directives/osc-routing.html:6 app/views/images.html:48
-#: app/views/membership.html:167 app/views/membership.html:65
-#: app/views/other-resources.html:51 app/views/secrets.html:53
-#: app/views/service-instances.html:45 app/views/services.html:45
-#: app/views/storage.html:56
-msgid "Name"
-msgstr "名称"
-
-#: src/components/create-project/createProject.html:28
-#: app/views/directives/create-secret.html:39
-#: app/views/directives/edit-config-map.html:33
-#: app/views/directives/osc-autoscaling.html:28
-#: app/views/directives/osc-persistent-volume-claim.html:87
-msgid "Name is required."
-msgstr "名称是必需的。"
-
-#: src/openshiftCommonUI.module.js:27
-msgid ""
-"Name must consist of lower-case letters, numbers, periods, and hyphens. It "
-"must start and end with a letter or a number."
-msgstr ""
-"主机名必须由小写字母，数字，英文句号（.）和连字符(-)组成并且开头和结尾必须是"
-"数字或者字母。"
-
-#: src/components/create-project/createProject.html:33
-msgid "Name must have at least two characters."
-msgstr "名称至少由两个字母组成。"
-
-#: src/components/create-project/createProject.html:38
-msgid ""
-"Project names may only contain lower-case letters, numbers, and dashes. They "
-"may not start or end with a dash."
-msgstr "项目名称只能包含小写字母，数字和破折号，他们不能以破折号开始或结束。"
-
-#: src/components/binding/bindServiceForm.html:39
-msgid "Secrets can be referenced later from an application."
-msgstr "私密凭证可以在以后从应用中引用。"
-
-#: src/components/truncate-long-text/truncateLongText.html:18
-msgid "See All"
-msgstr "查看全部"
-
-#: src/components/binding/bindApplicationForm.html:13
-msgid "Select a service:"
-msgstr "选择一个服务:"
-
-#: src/components/binding/bindResults.html:15
-msgid "Success"
-msgstr "成功"
-
-#: src/components/binding/bindResults.html:21
-msgid ""
-"The binding <strong>{{ctrl.binding.metadata.name}}</strong> has been created "
-"successfully."
-msgstr "绑定 <strong>{{ctrl.binding.metadata.name}}</strong> 创建成功"
-
-#: src/components/binding/bindResults.html:46
-msgid "The binding could not be created."
-msgstr "无法创建绑定"
-
-#: src/components/binding/bindResults.html:6
-msgid "The binding is being created."
-msgstr "绑定正在创建。"
-
-#: src/components/binding/bindResults.html:26
-msgid "The binding operation created the secret"
-msgstr "绑定操作创建了私密凭证"
-
-#: src/components/binding/bindResults.html:37
-msgid ""
-"The binding secret will only be available to new pods. You will need to "
-"redeploy your application."
-msgstr "绑定私密凭证仅适用于新的Pod。 您将需要重新部署应用程序。"
-
-#: src/components/binding/bindApplicationForm.html:49
-msgid "There are no bindable services in this project"
-msgstr "此项目中没有可绑定的服务"
-
-#: src/components/binding/bindResults.html:9
-msgid "This may take several minutes."
-msgstr "这可能需要几分钟."
-
-#: src/components/create-project/createProject.html:43
-#: app/views/directives/create-secret.html:31
-msgid "This name is already in use. Please choose a different name."
-msgstr "名称已近被占用，请使用其他名称"
-
-#: src/components/delete-project/delete-project-modal.html:11
-#: app/views/modals/delete-project.html:10
-msgid ""
-"This will <strong>delete all resources</strong> associated with the project "
-"{{project | displayName}} and <strong>cannot be undone</strong>.  Make sure "
-"this is something you really want to do!"
-msgstr ""
-"这将<strong>删除</strong>与项目{{project | displayName}}相关联的<strong>所有"
-"资源</strong>，<strong>无法撤消</strong>。 确保这是你真正想做的事情！"
-
-#: src/components/delete-project/delete-project-modal.html:15
-msgid "Type the name of the project to confirm."
-msgstr "输入要确认的项目的名称。"
-
-#: src/components/delete-project/delete-project-modal.html:17
-msgid "project to delete"
-msgstr "要删除的项目"
-
-#: src/components/binding/bindResults.html:29
-msgid "that you may need to reference in your application."
-msgstr "可能会在你的应用程序中引用。"
-
-#: src/components/delete-project/delete-project.html:1
-msgid "{{label || 'Delete'}}"
-msgstr "{{label || '删除'}}"
 
 #: app/scripts/services/routes.js:55
 msgid "\" does not expose that port."
@@ -353,8 +41,8 @@ msgstr "(自动扩缩)"
 msgid "(bare host directory volume)"
 msgstr "(裸机目录卷)"
 
-#: app/views/directives/osc-persistent-volume-claim.html:106
-#: app/views/directives/osc-persistent-volume-claim.html:138
+#: app/views/directives/osc-persistent-volume-claim.html:105
+#: app/views/directives/osc-persistent-volume-claim.html:137
 msgid "(cannot be changed)"
 msgstr "(不能修改)"
 
@@ -396,9 +84,9 @@ msgstr ",子路径 {{mount.subPath}}"
 
 #: app/views/attach-pvc.html:69
 msgid ". You cannot create new storage since you are at quota."
-msgstr "受配额限制, 您无法创建新的存储空间。"
+msgstr "。受配额限制, 您无法创建新的存储空间。"
 
-#: app/scripts/constants.js:533
+#: app/scripts/constants.js:592
 msgid ".NET"
 msgstr ".NET"
 
@@ -445,7 +133,7 @@ msgstr ""
 "构建配置描述了如何构建您的可部署镜像。这包括您的源代码，基础构建器镜像以及何"
 "时启动新构建。"
 
-#: app/scripts/constants.js:600
+#: app/scripts/constants.js:659
 msgid ""
 "A centralized authentication server for users to log in, log out, register, "
 "and manage user accounts for applications and RESTful web services."
@@ -467,7 +155,7 @@ msgstr ""
 msgid "A command is required."
 msgstr "一个命令是必需的。"
 
-#: app/views/quota.html:226
+#: app/views/quota.html:221
 msgid ""
 "A container will default to request this amount of a compute resource if no "
 "request is specified. The system will guarantee the requested amount of "
@@ -534,7 +222,7 @@ msgstr "项目中水平pod自动扩展器的唯一名称。"
 msgid "A unique name for the route within the project."
 msgstr "项目中路由的唯一名称。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:84
+#: app/views/directives/osc-persistent-volume-claim.html:83
 msgid "A unique name for the storage claim within the project."
 msgstr "项目中存储声明的唯一名称。"
 
@@ -584,6 +272,10 @@ msgstr ""
 msgid "A value for replicas is required."
 msgstr "副本的值是必须的"
 
+#: app/scripts/constants.js:62
+msgid "Abort"
+msgstr "取消"
+
 #: app/views/directives/lifecycle-hook.html:17
 msgid "Abort deployment on failure"
 msgstr "失败后终止部署"
@@ -601,11 +293,11 @@ msgstr "关于计算资源"
 msgid "About {{aboutTitle}}"
 msgstr "关于{{aboutTitle}}"
 
-#: app/views/directives/osc-persistent-volume-claim.html:104
+#: app/views/directives/osc-persistent-volume-claim.html:103
 msgid "Access Mode"
 msgstr "访问模式"
 
-#: app/views/storage.html:59
+#: app/views/storage.html:54
 msgid "Access Modes"
 msgstr "访问模式"
 
@@ -646,22 +338,26 @@ msgstr "操作:"
 #: app/views/overview/_list-row-actions.html:45
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
-#: app/views/overview/_service-instance-row.html:74
+#: app/views/overview/_service-instance-row.html:74 app/views/projects.html:128
 msgid "Actions"
 msgstr "操作"
+
+#: app/scripts/constants.js:54
+msgid "Active"
+msgstr "活跃"
 
 #: app/views/browse/_pod-details.html:50
 msgid "Active Deadline:"
 msgstr "活动截止日期:"
 
-#: app/scripts/directives/nav.js:504 app/views/add-config-volume.html:193
+#: app/scripts/directives/nav.js:496 app/views/add-config-volume.html:193
 #: app/views/attach-pvc.html:215 app/views/directives/_edit-command.html:56
-#: app/views/directives/_edit-command.html:77 app/views/membership.html:147
-#: app/views/membership.html:262
+#: app/views/directives/_edit-command.html:77 app/views/membership.html:142
+#: app/views/membership.html:257
 msgid "Add"
 msgstr "添加"
 
-#: app/views/membership.html:71
+#: app/views/membership.html:66
 msgid "Add Another Role"
 msgstr "添加另一个角色"
 
@@ -872,8 +568,8 @@ msgid ""
 "switch between:"
 msgstr "当你登录到你的帐户后，你会得到一个你可以切换的项目列表:"
 
-#: app/views/directives/pods-table.html:12 app/views/services.html:50
-#: app/views/storage.html:60
+#: app/views/directives/pods-table.html:12 app/views/services.html:45
+#: app/views/storage.html:55
 msgid "Age"
 msgstr "运行时间"
 
@@ -894,9 +590,13 @@ msgid ""
 "All items in template {{templateDisplayName}} were created successfully."
 msgstr "模板{{templateDisplayName}}中的所有项目都已成功创建。"
 
-#: app/views/overview.html:278
+#: app/views/overview.html:273
 msgid "All pipelines are filtered."
 msgstr "所有的管道都会被过滤。"
+
+#: app/scripts/directives/deployImage.js:319
+msgid "All resources for image {{name}} were created successfully."
+msgstr "镜像{{name}}的所有资源都已成功创建。"
 
 #: app/scripts/directives/oscRouting.js:101
 msgid "Allow"
@@ -961,13 +661,20 @@ msgstr "一个可以执行部署的镜像。"
 msgid "Application"
 msgstr "应用程序"
 
-#: app/scripts/constants.js:238
+#: app/scripts/constants.js:297
 msgid "Applications"
 msgstr "应用程序"
 
 #: app/views/directives/next-steps.html:97
 msgid "Applied Parameter Values"
 msgstr "使用参数值"
+
+#: app/views/modals/delete-project.html:9
+#: src/components/delete-project/delete-project-modal.html:8
+msgid ""
+"Are you sure you want to delete the project '<strong>{{project | "
+"displayName}}</strong>'?"
+msgstr "你确定要删除项目'<strong>{{project | displayName}}</strong>'吗？"
 
 #: app/views/modals/delete-resource.html:11
 msgid ""
@@ -1018,7 +725,7 @@ msgstr "验证类型"
 msgid "Autodeploy when"
 msgstr "自动部署在"
 
-#: app/scripts/constants.js:578
+#: app/scripts/constants.js:637
 msgid ""
 "Automate the build, test, and deployment of your application with each new "
 "code revision."
@@ -1081,7 +788,7 @@ msgstr "可用"
 msgid "Available of"
 msgstr "可用"
 
-#: app/views/pipelines.html:104 app/views/pipelines.html:98
+#: app/views/pipelines.html:88 app/views/pipelines.html:94
 msgid "Average Duration:"
 msgstr "平均持续时间:"
 
@@ -1140,6 +847,10 @@ msgstr "绑定"
 msgid "Bitbucket Webhook URL:"
 msgstr "Bitbucket Webhook URL:"
 
+#: app/scripts/constants.js:52
+msgid "Bound"
+msgstr "绑定"
+
 #: app/views/create.html:9 app/views/directives/header/header.html:39
 #: app/views/directives/header/header.html:43
 #: app/views/directives/resource-service-bindings.html:22
@@ -1183,7 +894,7 @@ msgstr "构建策略"
 msgid "Build Strategy:"
 msgstr "构建策略:"
 
-#: app/views/pipelines.html:79
+#: app/views/pipelines.html:69
 msgid "Build config <strong>{{buildConfigName}}</strong> no longer exists."
 msgstr "构建配置<strong>{{buildConfigName}}</strong>不再存在。"
 
@@ -1200,7 +911,7 @@ msgstr "构建:"
 msgid "Builder Image:"
 msgstr "构建镜像:"
 
-#: app/scripts/constants.js:306 app/scripts/constants.js:312
+#: app/scripts/constants.js:365 app/scripts/constants.js:371
 #: app/scripts/controllers/monitoring.js:50 app/views/builds.html:6
 #: app/views/monitoring.html:404 app/views/overview/_builds.html:2
 #: app/views/overview/_list-row-content.html:23
@@ -1237,7 +948,7 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr "构建一个镜像"
 
-#: app/scripts/constants.js:571
+#: app/scripts/constants.js:630
 msgid "Business Process Services"
 msgstr "业务流程服务"
 
@@ -1253,6 +964,14 @@ msgstr "CA证书:"
 #: app/views/modals/about-compute-units-modal.html:15
 msgid "CPU"
 msgstr "CPU"
+
+#: app/scripts/constants.js:28
+msgid "CPU (Limit)"
+msgstr "CPU(限制)"
+
+#: app/scripts/constants.js:26
+msgid "CPU (Request)"
+msgstr "CPU (请求)"
 
 #: app/views/modals/about-compute-units-modal.html:17
 msgid ""
@@ -1279,7 +998,7 @@ msgstr "CPU:"
 msgid "Can't be greater than {{limitRangeMax | usageWithUnits : type}}."
 msgstr "不能超过 {{limitRangeMax | usageWithUnits : type}}。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:204
+#: app/views/directives/osc-persistent-volume-claim.html:203
 msgid "Can't be greater than {{limits.max | usageWithUnits : 'storage'}}."
 msgstr "不能超过 {{limits.max | usageWithUnits : 'storage'}}。"
 
@@ -1287,7 +1006,7 @@ msgstr "不能超过 {{limits.max | usageWithUnits : 'storage'}}。"
 msgid "Can't be less than {{limitRangeMin | usageWithUnits : type}}."
 msgstr "不能少于 {{limitRangeMin | usageWithUnits : type}}。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:199
+#: app/views/directives/osc-persistent-volume-claim.html:198
 msgid "Can't be less than {{limits.min | usageWithUnits : 'storage'}}."
 msgstr "不能少于 {{limits.min | usageWithUnits : 'storage'}}。"
 
@@ -1297,7 +1016,7 @@ msgstr "不能多于 {{hostnameMaxLength}} 个字符。"
 
 #: app/views/directives/edit-config-map.html:38
 #: app/views/directives/osc-autoscaling.html:35
-#: app/views/directives/osc-persistent-volume-claim.html:97
+#: app/views/directives/osc-persistent-volume-claim.html:96
 #: app/views/directives/osc-routing.html:33
 msgid "Can't be longer than {{nameValidation.maxlength}} characters."
 msgstr "不能多于 {{nameValidation.maxlength}} 个字符。"
@@ -1305,6 +1024,42 @@ msgstr "不能多于 {{nameValidation.maxlength}} 个字符。"
 #: app/views/_compute-resource.html:35
 msgid "Can't be negative."
 msgstr "不能是负数。"
+
+#: app/scripts/controllers/deployment.js:227
+#: app/scripts/controllers/deploymentConfig.js:302
+#: app/scripts/controllers/membership.js:223
+#: app/scripts/directives/fromFile.js:66
+#: app/scripts/directives/processTemplate.js:180
+#: app/views/add-config-volume.html:197 app/views/attach-pvc.html:219
+#: app/views/browse/_replica-set-details.html:46
+#: app/views/create-config-map.html:21 app/views/create-from-url.html:44
+#: app/views/create-from-url.html:79
+#: app/views/create-persistent-volume-claim.html:21
+#: app/views/create-route.html:33 app/views/create/fromimage.html:403
+#: app/views/directives/add-config-to-application.html:137
+#: app/views/directives/create-secret.html:359
+#: app/views/directives/deploy-image.html:182
+#: app/views/directives/from-file.html:19
+#: app/views/directives/process-template.html:15
+#: app/views/directives/replicas.html:37 app/views/edit/autoscaler.html:69
+#: app/views/edit/build-config.html:615 app/views/edit/config-map.html:35
+#: app/views/edit/deployment-config.html:374
+#: app/views/edit/health-checks.html:65 app/views/edit/project.html:35
+#: app/views/edit/route.html:26 app/views/edit/yaml.html:36
+#: app/views/modals/confirm-replace.html:26
+#: app/views/modals/confirm-save-log.html:20
+#: app/views/modals/confirmScale.html:15
+#: app/views/modals/delete-project.html:13
+#: app/views/modals/delete-resource.html:95
+#: app/views/modals/process-or-save-template.html:34
+#: app/views/modals/set-home-page-modal.html:47
+#: app/views/overview/_list-row-content.html:47 app/views/set-limits.html:52
+#: app/views/util/oauth.html:12 app/views/util/oauth.html:20
+#: src/components/create-project/createProject.html:77
+#: src/components/delete-project/delete-project-modal.html:31
+#: src/components/edit-project/editProject.html:29
+msgid "Cancel"
+msgstr "取消"
 
 #: app/views/browse/build.html:41
 msgid "Cancel Build"
@@ -1314,7 +1069,15 @@ msgstr "取消构建"
 msgid "Cancel deployment {{rcName}}?"
 msgstr "取消部署{{rcName}}？"
 
-#: app/views/storage.html:58
+#: app/scripts/constants.js:53
+msgid "Cancelled"
+msgstr "已取消"
+
+#: app/scripts/directives/deployImage.js:302
+msgid "Cannot create {{kind}} \"{{name}}\"."
+msgstr "无法创建{{kind}} \"{{name}}\"."
+
+#: app/views/storage.html:53
 msgid "Capacity"
 msgstr "能力"
 
@@ -1323,13 +1086,13 @@ msgstr "能力"
 msgid "Capacity:"
 msgstr "容量:"
 
-#: app/scripts/constants.js:425
+#: app/scripts/constants.js:484
 msgid "Catalog"
 msgstr "目录"
 
 #: app/views/modals/set-home-page-modal.html:17
-msgid "Catalog Home"
-msgstr "目录"
+msgid "Catalog Home (Default)"
+msgstr "目录首页(默认)"
 
 #: app/views/directives/osc-routing.html:304
 msgid "Certificate"
@@ -1347,7 +1110,7 @@ msgstr "证书"
 msgid "Change Of:"
 msgstr "改变:"
 
-#: app/views/set-limits.html:18
+#: app/views/set-limits.html:15
 msgid "Changes will only apply to new pods."
 msgstr "改变只适用于新的Pod。"
 
@@ -1394,15 +1157,15 @@ msgid "Clear Changes"
 msgstr "清空修改"
 
 #: app/views/browse/config-maps.html:41 app/views/browse/routes.html:41
-#: app/views/browse/stateful-sets.html:31 app/views/builds.html:35
+#: app/views/browse/stateful-sets.html:38 app/views/builds.html:30
 #: app/views/catalog/catalog.html:49 app/views/catalog/category-content.html:47
-#: app/views/deployments.html:35 app/views/directives/events.html:60
-#: app/views/directives/events.html:67 app/views/images.html:35
+#: app/views/deployments.html:30 app/views/directives/events.html:60
+#: app/views/directives/events.html:67 app/views/images.html:30
 #: app/views/other-resources.html:38 app/views/overview.html:115
-#: app/views/overview.html:279 app/views/pods.html:35
-#: app/views/projects.html:95 app/views/secrets.html:41
-#: app/views/service-instances.html:35 app/views/services.html:35
-#: app/views/storage.html:46
+#: app/views/overview.html:274 app/views/pods.html:30
+#: app/views/projects.html:95 app/views/secrets.html:36
+#: app/views/service-instances.html:35 app/views/services.html:30
+#: app/views/storage.html:41
 msgid "Clear Filter"
 msgstr "清空过滤器"
 
@@ -1418,13 +1181,34 @@ msgstr "清空通知"
 msgid "Clear {{ (type || 'Command') | upperFirst }}"
 msgstr "清空{{ (type || 'Command') | upperFirst }}"
 
+#: app/scripts/constants.js:67
+msgid "Client state could not be verified"
+msgstr "客户端状态无法验证"
+
+#: app/views/_alerts.html:13
+#: app/views/directives/edit-environment-from.html:141
+#: app/views/modals/about-compute-units-modal.html:54
+#: app/views/modals/debug-terminal.html:61
+#: app/views/modals/jenkinsfile-examples-modal.html:12
+#: src/components/toast-notifications/toast-notifications.html:9
+msgid "Close"
+msgstr "关闭"
+
 #: app/views/quota.html:6
 msgid "Cluster"
 msgstr "集群"
 
-#: app/views/services.html:46
+#: app/views/services.html:41
 msgid "Cluster IP"
 msgstr "集群IP"
+
+#: app/views/_templateopt.html:9 app/views/directives/osc-form-section.html:9
+#: app/views/monitoring.html:171 app/views/monitoring.html:242
+#: app/views/monitoring.html:424 app/views/monitoring.html:76
+#: app/views/overview/_list-row-chevron.html:4
+#: src/components/truncate-long-text/truncateLongText.html:27
+msgid "Collapse"
+msgstr "折叠"
 
 #: app/views/directives/events-sidebar.html:5
 msgid "Collapse event sidebar"
@@ -1457,6 +1241,14 @@ msgstr "命令行工具"
 msgid "Command:"
 msgstr "命令:"
 
+#: app/scripts/constants.js:55
+msgid "Complete"
+msgstr "完成"
+
+#: app/scripts/constants.js:59
+msgid "Completed"
+msgstr "完成"
+
 #: app/views/modals/about-compute-units-modal.html:6
 msgid "Compute Resources"
 msgstr "计算资源"
@@ -1469,15 +1261,19 @@ msgstr "配置"
 msgid "Config Change For:"
 msgstr "配置更改："
 
+#: app/scripts/constants.js:21
+msgid "Config Map"
+msgstr "配置集"
+
 #: app/views/_volumes.html:97
 msgid "Config Map:"
 msgstr "配置集:"
 
-#: app/scripts/constants.js:359 app/views/browse/config-maps.html:9
+#: app/scripts/constants.js:418 app/views/browse/config-maps.html:9
 msgid "Config Maps"
 msgstr "配置集"
 
-#: app/views/browse/deployment-config.html:176
+#: app/views/browse/deployment-config.html:176 app/views/deployments.html:105
 msgid "Config change"
 msgstr "配置更改"
 
@@ -1549,7 +1345,7 @@ msgstr "确认缩"
 msgid "Confirm User Change"
 msgstr "确认用户改变"
 
-#: app/scripts/constants.js:594
+#: app/scripts/constants.js:653
 msgid ""
 "Connect with other applications and data to enhance functionality without "
 "duplication."
@@ -1639,7 +1435,7 @@ msgstr "继续会话"
 msgid "Continue with deployment on failure"
 msgstr "继续部署失败"
 
-#: app/scripts/constants.js:577
+#: app/scripts/constants.js:636
 msgid "Continuous Integration & Deployment"
 msgstr "持续集成与部署"
 
@@ -1649,6 +1445,10 @@ msgstr "持续集成与部署"
 #: app/views/directives/_copy-to-clipboard.html:38
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
+
+#: app/scripts/constants.js:60
+msgid "Cores"
+msgstr "核"
 
 #: app/views/directives/deploy-image.html:199
 msgid ""
@@ -1666,6 +1466,17 @@ msgstr "不能启动容器{{container.name}}。"
 #: app/scripts/directives/events.js:143
 msgid "Count"
 msgstr "计数"
+
+#: app/views/create-config-map.html:16
+#: app/views/create-persistent-volume-claim.html:16
+#: app/views/create-route.html:28 app/views/create/fromimage.html:399
+#: app/views/directives/create-secret.html:355
+#: app/views/directives/deploy-image.html:177
+#: app/views/directives/from-file.html:12
+#: app/views/directives/process-template.html:14
+#: src/components/create-project/createProject.html:69
+msgid "Create"
+msgstr "创建"
 
 #: app/scripts/directives/fromFile.js:64
 #: app/scripts/directives/processTemplate.js:178
@@ -1703,17 +1514,17 @@ msgstr "创建项目"
 msgid "Create Route"
 msgstr "创建路由"
 
-#: app/views/overview.html:267 app/views/pipelines.html:37
+#: app/views/overview.html:262 app/views/pipelines.html:27
 msgid "Create Sample Pipeline"
 msgstr "创建示例管道"
 
 #: app/views/add-config-volume.html:53 app/views/create-secret.html:11
-#: app/views/secrets.html:37 app/views/secrets.html:6
+#: app/views/secrets.html:32 app/views/secrets.html:6
 msgid "Create Secret"
 msgstr "创建私密凭证"
 
 #: app/views/attach-pvc.html:18 app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:41 app/views/storage.html:42 app/views/storage.html:6
+#: app/views/storage.html:36 app/views/storage.html:37 app/views/storage.html:6
 #: app/views/storage.html:7
 msgid "Create Storage"
 msgstr "创建存储"
@@ -1753,11 +1564,11 @@ msgstr "在模板中定义对象，这可能会在接下来的模板参数中用
 #: app/scripts/directives/processTemplate.js:110
 #: app/views/browse/build-config.html:187 app/views/browse/config-maps.html:52
 #: app/views/browse/deployment-config.html:137
-#: app/views/browse/deployment.html:104 app/views/browse/stateful-sets.html:43
-#: app/views/browse/stateful-sets.html:57 app/views/builds.html:55
-#: app/views/deployments.html:135 app/views/deployments.html:175
-#: app/views/deployments.html:203 app/views/deployments.html:54
-#: app/views/other-resources.html:52 app/views/secrets.html:55
+#: app/views/browse/deployment.html:104 app/views/browse/stateful-sets.html:50
+#: app/views/browse/stateful-sets.html:64 app/views/builds.html:50
+#: app/views/deployments.html:130 app/views/deployments.html:170
+#: app/views/deployments.html:198 app/views/deployments.html:49
+#: app/views/other-resources.html:52 app/views/secrets.html:50
 #: app/views/service-instances.html:48
 msgid "Created"
 msgstr "创建"
@@ -1765,6 +1576,10 @@ msgstr "创建"
 #: app/scripts/controllers/create/createFromImage.js:283
 msgid "Created application"
 msgstr "创建的应用"
+
+#: app/scripts/directives/deployImage.js:311
+msgid "Created {{kind}} \"{{name}}\" successfully."
+msgstr "创建{{kind}} \"{{name}}\"成功。"
 
 #: app/scripts/directives/processTemplate.js:106
 msgid "Creating"
@@ -1786,6 +1601,10 @@ msgstr "创建者"
 msgid "Credentials Store"
 msgstr "证书存储"
 
+#: app/scripts/constants.js:61
+msgid "Custom"
+msgstr "自定义"
+
 #: app/views/directives/osc-routing.html:296
 msgid "Custom certificates cannot be used with passthrough termination."
 msgstr "自定义证书不能与通过终止一起使用。"
@@ -1802,7 +1621,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: app/scripts/constants.js:583
+#: app/scripts/constants.js:642
 msgid "Data Stores"
 msgstr "数据存储"
 
@@ -1828,7 +1647,7 @@ msgstr "调试pod{{pod | debugPodSourceName}}"
 msgid "Decimal Units"
 msgstr "十进制单位"
 
-#: app/views/quota.html:223 app/views/quota.html:230
+#: app/views/quota.html:218 app/views/quota.html:225
 msgid "Default"
 msgstr "默认的"
 
@@ -1841,6 +1660,17 @@ msgstr "定义运行时资源（如内存和CPU）的最小和最大限制。"
 #: app/views/directives/_edit-probe.html:86
 msgid "Delay can't be negative."
 msgstr "延迟不能是负数。"
+
+#: app/views/browse/_replica-set-actions.html:42
+#: app/views/browse/_replication-controller-actions.html:43
+#: app/views/browse/service-instance.html:41
+#: app/views/directives/delete-button.html:10 app/views/directives/hpa.html:8
+#: app/views/modals/delete-resource.html:82
+#: app/views/modals/delete-resource.html:96
+#: app/views/overview/_service-instance-row.html:86
+#: src/components/delete-project/delete-project-modal.html:32
+msgid "Delete"
+msgstr "删除"
 
 #: app/views/overview/_list-row-actions.html:34
 #: app/views/overview/_list-row-actions.html:74
@@ -1897,11 +1727,15 @@ msgstr "用镜像流版本部署镜像"
 msgid "Deployment"
 msgstr "部署"
 
+#: app/scripts/constants.js:19
+msgid "Deployment Config"
+msgstr "部署配置"
+
 #: app/views/browse/_replica-set-details.html:49
 msgid "Deployment Config:"
 msgstr "部署配置:"
 
-#: app/views/deployments.html:40 app/views/overview.html:182
+#: app/views/deployments.html:35 app/views/overview.html:182
 msgid "Deployment Configs"
 msgstr "部署配置"
 
@@ -1918,14 +1752,20 @@ msgstr "部署配置更改"
 msgid "Deployment:"
 msgstr "部署:"
 
-#: app/scripts/constants.js:244 app/scripts/controllers/deployment.js:41
-#: app/scripts/controllers/monitoring.js:46 app/views/deployments.html:121
+#: app/scripts/constants.js:303 app/scripts/controllers/deployment.js:41
+#: app/scripts/controllers/monitoring.js:46 app/views/deployments.html:116
 #: app/views/deployments.html:6 app/views/monitoring.html:151
 #: app/views/overview.html:185 app/views/overview.html:201
 msgid "Deployments"
 msgstr "部署"
 
-#: app/views/directives/osc-persistent-volume-claim.html:179
+#: app/views/browse/service-instance.html:120
+#: app/views/browse/service-instance.html:80 app/views/edit/project.html:21
+#: src/components/create-project/createProject.html:60
+msgid "Description"
+msgstr "描述"
+
+#: app/views/directives/osc-persistent-volume-claim.html:178
 msgid "Desired storage capacity."
 msgstr "所需的存储容量。"
 
@@ -1964,6 +1804,12 @@ msgstr "构建时文件存放的目录。"
 msgid "Dismiss"
 msgstr "不再显示"
 
+#: app/scripts/controllers/projects.js:102 app/views/edit/project.html:11
+#: src/components/create-project/createProject.html:50
+#: src/components/edit-project/editProject.html:4
+msgid "Display Name"
+msgstr "显示名称"
+
 #: app/views/command-line.html:39
 msgid ""
 "Do not share your API token. To reveal your token, press the copy to "
@@ -1980,7 +1826,7 @@ msgstr "您想要替换现有的资源吗?"
 msgid "Do you want to replace with the new content?"
 msgstr "你想用新的内容来代替吗?"
 
-#: app/views/images.html:49
+#: app/views/images.html:44
 msgid "Docker Repo"
 msgstr "Docker仓库"
 
@@ -2011,7 +1857,7 @@ msgid ""
 "Duplicate key \"{{item.key}}\". Keys must be unique within the config map."
 msgstr "重复密钥\"{{item.key}}\"。密钥在配置集中必须是唯一的。"
 
-#: app/views/browse/build-config.html:186 app/views/builds.html:54
+#: app/views/browse/build-config.html:186 app/views/builds.html:49
 msgid "Duration"
 msgstr "持续时间"
 
@@ -2078,7 +1924,7 @@ msgstr "编辑成员"
 msgid "Edit Parameters"
 msgstr "编辑参数"
 
-#: app/views/browse/build.html:33 app/views/pipelines.html:116
+#: app/views/browse/build.html:33 app/views/pipelines.html:106
 msgid "Edit Pipeline"
 msgstr "编辑管道"
 
@@ -2146,11 +1992,15 @@ msgstr "使用百分比滑动条编辑权重"
 msgid "Edit YAML"
 msgstr "编辑YAML"
 
+#: app/scripts/directives/podDonut.js:123
+msgid "Empty"
+msgstr "空"
+
 #: app/views/directives/logs/_log-viewer.html:88
 msgid "End of log"
 msgstr "日志的结束"
 
-#: app/views/directives/osc-persistent-volume-claim.html:233
+#: app/views/directives/osc-persistent-volume-claim.html:232
 msgid "Enter a label and value to use for your storage."
 msgstr "输入用于存储的标签和值。"
 
@@ -2222,6 +2072,15 @@ msgstr "可以在部署中编辑环境变量"
 msgid "Environment variables to supply to the hook pod's container."
 msgstr "将环境变量提供给hook pod的容器。"
 
+#: app/scripts/directives/podDonut.js:127
+#: app/scripts/directives/podDonut.js:184
+#: app/views/directives/ui-ace-yaml.html:20
+#: app/views/overview/_notification-icon.html:10
+#: app/views/overview/_service-instance-row.html:21 app/views/util/error.html:4
+#: src/components/binding/bindResults.html:44
+msgid "Error"
+msgstr "错误"
+
 #: app/views/overview/_notification-icon.html:13
 msgid "Errors"
 msgstr "错误"
@@ -2270,7 +2129,7 @@ msgstr "扩展可以多行输入，如果您需要添加换行符，则需要这
 msgid "External Hostname:"
 msgstr "外部主机名:"
 
-#: app/views/services.html:47
+#: app/views/services.html:42
 msgid "External IP"
 msgstr "外部IP"
 
@@ -2278,7 +2137,7 @@ msgstr "外部IP"
 msgid "External IPs:"
 msgstr "外部IP:"
 
-#: app/scripts/constants.js:589
+#: app/scripts/constants.js:648
 msgid ""
 "Facilitate communication between applications and distributed processes with "
 "a messaging server."
@@ -2287,6 +2146,10 @@ msgstr "通过消息服务器促进应用程序和分布式进程之间的通信
 #: app/views/directives/edit-lifecycle-hook.html:124
 msgid "Fail the deployment if the hook fails."
 msgstr "如果hook失败，则部署会失败。"
+
+#: app/scripts/constants.js:57
+msgid "Failed"
+msgstr "失败"
 
 #: app/scripts/controllers/create/createFromImage.js:287
 #: app/scripts/directives/processTemplate.js:114
@@ -2309,7 +2172,12 @@ msgstr "失败的策略:"
 msgid "Filter"
 msgstr "过滤器"
 
-#: app/views/projects.html:32
+#: app/scripts/directives/processTemplateDialog.js:120
+msgid "Filter by Keyword"
+msgstr "根据关键字过滤"
+
+#: app/views/directives/events.html:12 app/views/projects.html:32
+#: app/views/projects.html:36
 msgid "Filter by keyword"
 msgstr "根据关键字过滤"
 
@@ -2368,7 +2236,7 @@ msgstr "Git参考"
 msgid "Git Repository URL"
 msgstr "Git仓库地址"
 
-#: app/scripts/constants.js:559
+#: app/scripts/constants.js:618
 msgid "Go"
 msgstr "Go"
 
@@ -2388,6 +2256,10 @@ msgstr "到顶部"
 msgid "Grace Period:"
 msgstr "宽限期:"
 
+#: app/scripts/constants.js:41
+msgid "Group"
+msgstr "组"
+
 #: app/views/overview/_service-linking-button.html:6
 msgid "Group service to {{service.metadata.name}}"
 msgstr "添加服务到组{{route.to.service.metadata.name}}"
@@ -2395,10 +2267,6 @@ msgstr "添加服务到组{{route.to.service.metadata.name}}"
 #: app/views/edit/health-checks.html:9
 msgid "Health Checks:"
 msgstr "健康检查:"
-
-#: app/views/directives/header/_navbar-utility.html:17
-msgid "Help"
-msgstr "帮助"
 
 #: app/views/_tasks.html:25
 msgid "Helpful Links"
@@ -2514,7 +2382,7 @@ msgstr "如果没有指定，将生成一个主机名。"
 msgid "If not specified, defaults to 1."
 msgstr "如果未指定，则默认为1。"
 
-#: app/views/quota.html:240
+#: app/views/quota.html:235
 msgid ""
 "If specified, the compute resource must have a request and limit that are "
 "both non-zero, where limit divided by request is less than or equal to the "
@@ -2550,12 +2418,16 @@ msgstr ""
 "如果您需要在这个项目中创建资源，项目管理员可以通过运行这个命令授予您额外的访"
 "问权限:"
 
+#: app/scripts/constants.js:64
+msgid "Ignore"
+msgstr "忽略"
+
 #: app/views/directives/edit-lifecycle-hook.html:125
 msgid "Ignore hook failures and continue the deployment."
 msgstr "忽略hook故障并继续部署。"
 
 #: app/views/_pod-template-container.html:16
-#: app/views/browse/deployment-config.html:173 app/views/deployments.html:107
+#: app/views/browse/deployment-config.html:173 app/views/deployments.html:102
 msgid "Image"
 msgstr "镜像"
 
@@ -2610,7 +2482,7 @@ msgstr "镜像名称或拉取标志"
 msgid "Image value set"
 msgstr "镜像集合"
 
-#: app/scripts/constants.js:329 app/views/edit/deployment-config.html:279
+#: app/scripts/constants.js:388 app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
 msgid "Images"
 msgstr "镜像"
@@ -2652,7 +2524,7 @@ msgstr "不安全的流量:"
 msgid "Instance Name"
 msgstr "实例名称"
 
-#: app/scripts/constants.js:593
+#: app/scripts/constants.js:652
 msgid "Integration"
 msgstr "集成"
 
@@ -2693,11 +2565,11 @@ msgstr "这将不会删除持久化卷声明。"
 msgid "It will not delete the secret."
 msgstr "这将不会删除私密凭证。"
 
-#: app/scripts/constants.js:481
+#: app/scripts/constants.js:540
 msgid "Java"
 msgstr "Java"
 
-#: app/scripts/constants.js:528
+#: app/scripts/constants.js:587
 msgid "JavaScript"
 msgstr "JavaScript"
 
@@ -2762,7 +2634,7 @@ msgstr "标签用于组织或给资源对象分组，例如Pods。"
 msgid "Labels for this route."
 msgstr "路由的标签。"
 
-#: app/scripts/constants.js:476
+#: app/scripts/constants.js:535
 msgid "Languages"
 msgstr "语言"
 
@@ -2785,7 +2657,7 @@ msgstr "最近3天"
 msgid "Last 4 hours"
 msgstr "最近4小时"
 
-#: app/views/builds.html:52
+#: app/views/builds.html:47
 msgid "Last Build"
 msgstr "最近构建"
 
@@ -2797,7 +2669,7 @@ msgstr "最近扩缩:"
 msgid "Last State"
 msgstr "最近状态"
 
-#: app/views/deployments.html:133 app/views/deployments.html:52
+#: app/views/deployments.html:128 app/views/deployments.html:47
 msgid "Last Version"
 msgstr "最近版本"
 
@@ -2824,11 +2696,10 @@ msgstr "层"
 #: app/views/browse/build-config.html:381 app/views/browse/config-maps.html:12
 #: app/views/browse/deployment-config.html:254
 #: app/views/browse/deployment-config.html:318 app/views/browse/routes.html:12
-#: app/views/builds.html:9 app/views/create-persistent-volume-claim.html:11
-#: app/views/create/fromimage.html:313 app/views/deployments.html:9
+#: app/views/create/fromimage.html:313
 #: app/views/directives/create-secret.html:73
 #: app/views/directives/edit-lifecycle-hook.html:34
-#: app/views/directives/osc-persistent-volume-claim.html:225
+#: app/views/directives/osc-persistent-volume-claim.html:224
 #: app/views/directives/osc-persistent-volume-claim.html:56
 #: app/views/directives/osc-routing.html:252
 #: app/views/directives/osc-secrets.html:30
@@ -2837,14 +2708,10 @@ msgstr "层"
 #: app/views/edit/deployment-config.html:31
 #: app/views/edit/deployment-config.html:35
 #: app/views/edit/deployment-config.html:39
-#: app/views/edit/health-checks.html:13 app/views/images.html:9
-#: app/views/membership.html:17 app/views/membership.html:52
+#: app/views/edit/health-checks.html:13 app/views/membership.html:47
 #: app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
 #: app/views/modals/create-secret.html:12 app/views/modals/create-secret.html:9
-#: app/views/pipelines.html:9 app/views/pods.html:9 app/views/quota.html:9
-#: app/views/secrets.html:12 app/views/services.html:9
-#: app/views/set-limits.html:13 app/views/storage.html:13
 msgid "Learn More"
 msgstr "了解更多"
 
@@ -2853,7 +2720,7 @@ msgid ""
 "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>"
 msgstr "了解更多&nbsp;<i class=“fa fa-external-link” aria-hidden=“true”></i>"
 
-#: app/views/edit/jenkinsfile-examples.html:51 app/views/pipelines.html:31
+#: app/views/edit/jenkinsfile-examples.html:51
 msgid "Learn more about"
 msgstr "进一步了解"
 
@@ -2867,11 +2734,11 @@ msgstr "进一步了解<a href=\"command-line\" target=\"_blank\">命令行工�
 msgid "Lifecycle Action"
 msgstr "生命周期操作"
 
-#: app/views/_compute-resource.html:55 app/views/quota.html:232
+#: app/views/_compute-resource.html:55 app/views/quota.html:227
 msgid "Limit"
 msgstr "限制"
 
-#: app/views/quota.html:197
+#: app/views/quota.html:192
 msgid "Limit Range"
 msgstr "限制范围"
 
@@ -2894,7 +2761,7 @@ msgstr "如果设置了请求，则需要限制。(最大限制/请求比:{{maxL
 msgid "Limits"
 msgstr "限制"
 
-#: app/views/quota.html:20
+#: app/views/quota.html:15
 msgid "Limits resource usage across a set of projects."
 msgstr "在一组项目中限制资源的使用。"
 
@@ -2941,20 +2808,20 @@ msgstr "正在载入监控"
 #: app/views/browse/replica-set.html:6 app/views/browse/route.html:6
 #: app/views/browse/routes.html:29 app/views/browse/secret.html:6
 #: app/views/browse/service-instance.html:11 app/views/browse/service.html:6
-#: app/views/browse/stateful-set.html:55 app/views/browse/stateful-sets.html:22
-#: app/views/builds.html:26 app/views/catalog/catalog.html:1
+#: app/views/browse/stateful-set.html:55 app/views/browse/stateful-sets.html:29
+#: app/views/builds.html:21 app/views/catalog/catalog.html:1
 #: app/views/catalog/category-content.html:1 app/views/create-from-url.html:6
 #: app/views/create-route.html:13 app/views/create-secret.html:6
-#: app/views/create/fromimage.html:6 app/views/deployments.html:25
+#: app/views/create/fromimage.html:6 app/views/deployments.html:20
 #: app/views/directives/events.html:1 app/views/edit/autoscaler.html:7
 #: app/views/edit/config-map.html:14 app/views/edit/deployment-config.html:8
 #: app/views/edit/health-checks.html:7 app/views/edit/route.html:9
-#: app/views/edit/yaml.html:6 app/views/images.html:26
+#: app/views/edit/yaml.html:6 app/views/images.html:21
 #: app/views/newfromtemplate.html:6 app/views/overview.html:36
-#: app/views/pipelines.html:22 app/views/pods.html:26
-#: app/views/projects.html:15 app/views/quota.html:15 app/views/secrets.html:29
-#: app/views/service-instances.html:26 app/views/services.html:26
-#: app/views/set-limits.html:7 app/views/storage.html:31
+#: app/views/pipelines.html:17 app/views/pods.html:21
+#: app/views/projects.html:15 app/views/quota.html:10 app/views/secrets.html:24
+#: app/views/service-instances.html:26 app/views/services.html:21
+#: app/views/set-limits.html:7 app/views/storage.html:26
 msgid "Loading..."
 msgstr "加载中…"
 
@@ -2993,7 +2860,7 @@ msgstr "日志是不可用的。"
 msgid "Making code changes"
 msgstr "修改代码"
 
-#: app/views/browse/build-config.html:438
+#: app/scripts/constants.js:15 app/views/browse/build-config.html:438
 #: app/views/browse/deployment-config.html:252
 msgid "Manual"
 msgstr "手动"
@@ -3002,15 +2869,19 @@ msgstr "手动"
 msgid "Manual build"
 msgstr "手动构建"
 
+#: app/views/directives/notifications/notification-body.html:97
+msgid "Mark Read"
+msgstr "标记为已读"
+
 #: app/views/overview/_service-instance-row.html:25
 msgid "Marked for Deletion"
 msgstr "标记为删除"
 
-#: app/views/quota.html:156 app/views/quota.html:218 app/views/quota.html:65
+#: app/views/quota.html:151 app/views/quota.html:213 app/views/quota.html:60
 msgid "Max"
 msgstr "最大"
 
-#: app/views/quota.html:237
+#: app/views/quota.html:232
 msgid "Max Limit/Request"
 msgstr "最大限制/请求"
 
@@ -3047,7 +2918,7 @@ msgstr ""
 "最大pod数量必须大于或等于<span ng-if=\"autoscaling.minReplicas\">最小pod数量"
 "</span>{{autoscaling.minReplicas || 1}."
 
-#: app/views/directives/osc-persistent-volume-claim.html:152
+#: app/views/directives/osc-persistent-volume-claim.html:151
 msgid "Max:"
 msgstr "最大:"
 
@@ -3067,7 +2938,7 @@ msgstr "不可用Pod最大数量"
 msgid "Medium:"
 msgstr "介质:"
 
-#: app/scripts/constants.js:350 app/views/membership.html:14
+#: app/scripts/constants.js:409 app/views/membership.html:14
 msgid "Membership"
 msgstr "成员"
 
@@ -3076,12 +2947,20 @@ msgstr "成员"
 msgid "Memory"
 msgstr "内存"
 
-#: app/views/quota.html:145 app/views/quota.html:53
+#: app/scripts/constants.js:29
+msgid "Memory (Limit)"
+msgstr "内存(限制)"
+
+#: app/scripts/constants.js:27
+msgid "Memory (Request)"
+msgstr "内存(请求)"
+
+#: app/views/quota.html:140 app/views/quota.html:48
 msgid "Memory <small>Limit</small>"
 msgstr "内存<small>限制</small>"
 
-#: app/views/quota.html:129 app/views/quota.html:137 app/views/quota.html:37
-#: app/views/quota.html:45
+#: app/views/quota.html:124 app/views/quota.html:132 app/views/quota.html:32
+#: app/views/quota.html:40
 msgid "Memory <small>Request</small>"
 msgstr "内存<small>需求</small>"
 
@@ -3109,6 +2988,10 @@ msgstr "内存:"
 msgid "Message"
 msgstr "消息"
 
+#: app/views/directives/notifications/notification-body.html:91
+msgid "Message Unread."
+msgstr "未读消息。"
+
 #: app/views/browse/_pod-details.html:18
 msgid "Message:"
 msgstr "消息:"
@@ -3117,7 +3000,7 @@ msgstr "消息:"
 msgid "Messages"
 msgstr "消息"
 
-#: app/scripts/constants.js:588
+#: app/scripts/constants.js:647
 msgid "Messaging"
 msgstr "消息"
 
@@ -3137,6 +3020,10 @@ msgid ""
 "required for autoscaling."
 msgstr "集群管理员可能未配置监控。自动扩缩需要使用监控。"
 
+#: app/scripts/constants.js:66
+msgid "Mid"
+msgstr "中间"
+
 #: app/views/edit/deployment-config.html:243
 msgid "Mid Lifecycle Hook"
 msgstr "中间生命周期Hook"
@@ -3148,7 +3035,7 @@ msgid ""
 msgstr ""
 "在先前的部署被缩小到零之后并且在创建新的部署的第一个Pod之前执行中间hook。"
 
-#: app/views/quota.html:212
+#: app/views/quota.html:207
 msgid "Min"
 msgstr "最小值"
 
@@ -3177,7 +3064,7 @@ msgstr "最小Pod数必须是一个整数。"
 msgid "Min pods must be greater than or equal to 1."
 msgstr "最小Pod数必须大于或等于1。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:149
+#: app/views/directives/osc-persistent-volume-claim.html:148
 msgid "Min:"
 msgstr "最小:"
 
@@ -3189,13 +3076,13 @@ msgstr "最小: {{limits.min | usageWithUnits : type}}"
 msgid "Mode:"
 msgstr "模式:"
 
-#: app/scripts/constants.js:572
+#: app/scripts/constants.js:631
 msgid ""
 "Model, automate, and orchestrate business processes across applications, "
 "services, and data."
 msgstr "在应用程序，服务和数据之间建立，自动化和协调业务流程。"
 
-#: app/scripts/constants.js:398 app/views/monitoring.html:7
+#: app/scripts/constants.js:457 app/views/monitoring.html:7
 msgid "Monitoring"
 msgstr "监控"
 
@@ -3248,7 +3135,7 @@ msgstr "必须是一个非负的整数或百分比。"
 #: app/views/_compute-resource.html:32
 #: app/views/directives/_edit-probe.html:115
 #: app/views/directives/_edit-probe.html:83
-#: app/views/directives/osc-persistent-volume-claim.html:189
+#: app/views/directives/osc-persistent-volume-claim.html:188
 #: app/views/directives/osc-routing-service.html:55
 #: app/views/edit/deployment-config.html:133
 #: app/views/edit/deployment-config.html:165
@@ -3256,7 +3143,7 @@ msgstr "必须是一个非负的整数或百分比。"
 msgid "Must be a number."
 msgstr "必须是一个数字。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:194
+#: app/views/directives/osc-persistent-volume-claim.html:193
 msgid "Must be a positive number."
 msgstr "必须是正数。"
 
@@ -3280,9 +3167,40 @@ msgstr "我的项目"
 msgid "My Projects List"
 msgstr "我的项目列表"
 
+#: app/scripts/controllers/overview.js:175
+#: app/scripts/controllers/projects.js:106 app/scripts/directives/events.js:154
+#: app/views/browse/build-config.html:472 app/views/browse/config-maps.html:51
+#: app/views/browse/deployment.html:102 app/views/browse/stateful-sets.html:48
+#: app/views/builds.html:46 app/views/create/fromimage.html:22
+#: app/views/deployments.html:127 app/views/deployments.html:168
+#: app/views/deployments.html:196 app/views/deployments.html:46
+#: app/views/directives/deploy-image.html:115
+#: app/views/directives/edit-config-map.html:5
+#: app/views/directives/edit-environment-variables.html:15
+#: app/views/directives/edit-environment-variables.html:27
+#: app/views/directives/events.html:44 app/views/directives/events.html:75
+#: app/views/directives/label-editor.html:15
+#: app/views/directives/next-steps.html:108
+#: app/views/directives/osc-persistent-volume-claim.html:64
+#: app/views/directives/osc-routing.html:6 app/views/images.html:43
+#: app/views/membership.html:162 app/views/membership.html:60
+#: app/views/other-resources.html:51 app/views/secrets.html:48
+#: app/views/service-instances.html:45 app/views/services.html:40
+#: app/views/storage.html:51 src/components/create-project/createProject.html:4
+msgid "Name"
+msgstr "名称"
+
 #: app/views/directives/deploy-image.html:142
 msgid "Name can't have more than 24 characters."
 msgstr "名称不能超过24个字符。"
+
+#: app/views/directives/create-secret.html:39
+#: app/views/directives/edit-config-map.html:33
+#: app/views/directives/osc-autoscaling.html:28
+#: app/views/directives/osc-persistent-volume-claim.html:86
+#: src/components/create-project/createProject.html:28
+msgid "Name is required."
+msgstr "名称是必需的。"
 
 #: app/views/directives/deploy-image.html:136
 msgid ""
@@ -3331,8 +3249,8 @@ msgstr "新镜像是可用的"
 msgid "Next"
 msgstr "下一个"
 
-#: app/views/directives/pods-table.html:49 app/views/pods.html:31
-#: app/views/pods.html:32
+#: app/views/directives/pods-table.html:49 app/views/pods.html:26
+#: app/views/pods.html:27
 msgid "No"
 msgstr "没有"
 
@@ -3348,15 +3266,15 @@ msgstr "没有流量"
 msgid "No bindings"
 msgstr "无绑定"
 
-#: app/views/builds.html:66
+#: app/views/builds.html:61
 msgid "No builds"
 msgstr "没有构建"
 
-#: app/views/builds.html:32
+#: app/views/builds.html:27
 msgid "No builds have been added to project {{projectName}}."
 msgstr "项目{{projectName}}中没有添加任何构建。"
 
-#: app/views/browse/build-config.html:82 app/views/builds.html:31
+#: app/views/browse/build-config.html:82 app/views/builds.html:26
 #: app/views/overview/_builds.html:10
 msgid "No builds."
 msgstr "没有构建。"
@@ -3393,7 +3311,7 @@ msgstr ""
 "<a ng-href=\"{{row.apiObject | navigateResourceURL}}\">{{row.apiObject."
 "metadata.name}}</a>的部署不存在"
 
-#: app/views/deployments.html:32
+#: app/views/deployments.html:27
 msgid "No deployments have been added to project"
 msgstr "项目中没有部署"
 
@@ -3401,7 +3319,7 @@ msgstr "项目中没有部署"
 msgid "No deployments to show"
 msgstr "没有部署可以显示"
 
-#: app/views/deployments.html:31
+#: app/views/deployments.html:26
 #: app/views/overview/_list-row-empty-state.html:1
 msgid "No deployments."
 msgstr "没有部署。"
@@ -3426,11 +3344,11 @@ msgstr "没有事件。"
 msgid "No image metadata found."
 msgstr "没有发现镜像元数据。"
 
-#: app/views/images.html:32
+#: app/views/images.html:27
 msgid "No image streams have been added to project"
 msgstr "项目中没有镜像流"
 
-#: app/views/images.html:31
+#: app/views/images.html:26
 msgid "No image streams."
 msgstr "没有镜像流"
 
@@ -3459,27 +3377,27 @@ msgstr "这个镜像没有任何层信息。"
 msgid "No metrics to display."
 msgstr "没有监控显示。"
 
-#: app/views/storage.html:37
+#: app/views/storage.html:32
 msgid "No persistent volume claims have been added to project {{projectName}}."
 msgstr "无持久化卷声明被添加到项目{{projectName}}。"
 
-#: app/views/attach-pvc.html:10 app/views/storage.html:36
+#: app/views/attach-pvc.html:10 app/views/storage.html:31
 msgid "No persistent volume claims."
 msgstr "没有持久的卷被声明。"
 
-#: app/views/pipelines.html:84
+#: app/views/pipelines.html:74
 msgid "No pipeline builds have run for {{buildConfigName}}."
 msgstr "没有为{{buildConfigName}} 运行任何管道构建。"
 
-#: app/views/overview.html:295
+#: app/views/overview.html:290
 msgid "No pipeline runs."
 msgstr "没有管道运行。"
 
-#: app/views/pipelines.html:29
+#: app/views/pipelines.html:24
 msgid "No pipelines have been added to project {{projectName}}."
 msgstr "没有任何管道被添加到项目{{projectName}}中。"
 
-#: app/views/overview.html:256 app/views/pipelines.html:26
+#: app/views/overview.html:256 app/views/pipelines.html:21
 msgid "No pipelines."
 msgstr "没有管道。"
 
@@ -3515,7 +3433,7 @@ msgstr "没有路由"
 msgid "No running containers"
 msgstr "没有运行的容器"
 
-#: app/views/secrets.html:35
+#: app/views/secrets.html:30
 msgid "No secrets have been added to project"
 msgstr "没有任何秘密被添加到项目中"
 
@@ -3523,15 +3441,15 @@ msgstr "没有任何秘密被添加到项目中"
 msgid "No secrets or config maps have been added as Environment From."
 msgstr "没有任何秘密或配置映射被添加到环境中。"
 
-#: app/views/secrets.html:34
+#: app/views/secrets.html:29
 msgid "No secrets."
 msgstr "没有私密凭证"
 
-#: app/views/services.html:32
+#: app/views/services.html:27
 msgid "No services have been added to project"
 msgstr "没有服务添加到项目中"
 
-#: app/views/services.html:31
+#: app/views/services.html:26
 msgid "No services."
 msgstr "没有服务"
 
@@ -3539,13 +3457,13 @@ msgstr "没有服务"
 msgid "No stages have started."
 msgstr "没有开始的阶段。"
 
-#: app/views/browse/stateful-sets.html:28
+#: app/views/browse/stateful-sets.html:35
 msgid "No stateful sets have been added to project {{projectName}}."
-msgstr "没有任何stateful sets被添加到项目{{projectName}}中。"
+msgstr "没有任何有状态集群被添加到项目{{projectName}}中。"
 
-#: app/views/browse/stateful-sets.html:27
+#: app/views/browse/stateful-sets.html:34
 msgid "No stateful sets."
-msgstr "无有状态集。"
+msgstr "无有状态集群。"
 
 #: app/scripts/controllers/imagestream.js:53
 msgid "No tags to show"
@@ -3567,7 +3485,7 @@ msgstr "不取消"
 msgid "Node:"
 msgstr "节点:"
 
-#: app/scripts/directives/oscRouting.js:100 app/views/builds.html:75
+#: app/scripts/directives/oscRouting.js:100 app/views/builds.html:70
 msgid "None"
 msgstr "无"
 
@@ -3575,6 +3493,11 @@ msgstr "无"
 #: app/views/directives/events-badge.html:2
 msgid "Normal"
 msgstr "正常的"
+
+#: app/scripts/directives/podDonut.js:125
+#: app/scripts/directives/podDonut.js:195
+msgid "Not Ready"
+msgstr "未准备"
 
 #: app/views/_pod-template.html:14
 msgid "Not all containers have health checks"
@@ -3590,6 +3513,7 @@ msgid ""
 "browsers."
 msgstr "注意:这个设置是特定于浏览器的，不会跨浏览器维护。"
 
+#: app/scripts/directives/notifications/notificationDrawerWrapper.js:262
 #: app/views/directives/notifications/notification-counter.html:3
 msgid "Notifications"
 msgstr "通知"
@@ -3615,10 +3539,6 @@ msgstr "打开监控URL"
 #: app/views/directives/_probe.html:16
 msgid "Open socket on port {{probe.tcpSocket.port}}"
 msgstr "在端口{{probe.tcpSocket.port}}上打开套接字"
-
-#: app/views/overview.html:264 app/views/pipelines.html:34
-msgid "OpenShift Pipeline Plugin"
-msgstr "管道插件"
 
 #: app/views/projects.html:174
 msgid "OpenShift helps you quickly develop, host, and scale applications."
@@ -3648,12 +3568,12 @@ msgstr "原始的命令:"
 msgid "Other"
 msgstr "其它"
 
-#: app/views/deployments.html:194
+#: app/views/deployments.html:189
 msgid "Other Replication Controllers"
 msgstr "其他复制控制器"
 
-#: app/scripts/constants.js:380 app/views/other-resources.html:5
-#: app/views/overview.html:137 app/views/overview.html:323
+#: app/scripts/constants.js:439 app/views/other-resources.html:5
+#: app/views/overview.html:137 app/views/overview.html:318
 msgid "Other Resources"
 msgstr "其他资源"
 
@@ -3673,11 +3593,11 @@ msgstr "输出到:"
 msgid "Over limit of"
 msgstr "超过限制的"
 
-#: app/scripts/constants.js:233
+#: app/scripts/constants.js:292
 msgid "Overview"
 msgstr "概览"
 
-#: app/scripts/constants.js:543
+#: app/scripts/constants.js:602
 msgid "PHP"
 msgstr "PHP"
 
@@ -3754,7 +3674,8 @@ msgid ""
 "rollouts at any time."
 msgstr "暂停可让您进行更改，而不会触发滚动更新。 您可以随时恢复滚动更新。"
 
-#: app/views/browse/routes.html:87 app/views/directives/traffic-table.html:51
+#: app/scripts/directives/podDonut.js:129 app/views/browse/routes.html:87
+#: app/views/directives/traffic-table.html:51
 #: app/views/overview/_service-instance-row.html:29
 msgid "Pending"
 msgstr "等待"
@@ -3765,11 +3686,11 @@ msgid ""
 "values or"
 msgstr "发送到每个服务的流量百分比。 拖动滑块以调整值或"
 
-#: app/scripts/constants.js:538
+#: app/scripts/constants.js:597
 msgid "Perl"
 msgstr "Perl"
 
-#: app/views/directives/osc-persistent-volume-claim.html:129
+#: app/views/directives/osc-persistent-volume-claim.html:128
 msgid "Permissions to the mounted volume."
 msgstr "挂载卷的权限。"
 
@@ -3785,16 +3706,15 @@ msgstr "选择配置源。 它的数据将作为卷挂载入容器。"
 
 #: app/scripts/controllers/overview.js:192
 #: app/views/directives/_build-pipeline-collapsed.html:5
-#: app/views/overview.html:292
+#: app/views/overview.html:287
 msgid "Pipeline"
 msgstr "管道"
 
-#: app/views/edit/jenkinsfile-examples.html:52 app/views/overview.html:262
-#: app/views/pipelines.html:32
+#: app/views/edit/jenkinsfile-examples.html:52
 msgid "Pipeline Builds"
 msgstr "管道构建"
 
-#: app/scripts/constants.js:321 app/views/overview/_list-row-content.html:18
+#: app/scripts/constants.js:380 app/views/overview/_list-row-content.html:18
 #: app/views/overview/_list-row-expanded.html:153
 #: app/views/overview/_pipelines.html:2 app/views/pipelines.html:6
 msgid "Pipelines"
@@ -3835,7 +3755,7 @@ msgstr "Pod监控"
 msgid "Pod status:"
 msgstr "Pod状态"
 
-#: app/scripts/constants.js:267 app/views/browse/_replica-set-details.html:217
+#: app/scripts/constants.js:326 app/views/browse/_replica-set-details.html:217
 #: app/views/browse/service.html:96 app/views/browse/stateful-set.html:126
 #: app/views/overview.html:243 app/views/pods.html:6
 msgid "Pods"
@@ -3851,7 +3771,7 @@ msgstr "对于像HTTP这样的不安全方案的流量策略。"
 msgid "Port"
 msgstr "端口"
 
-#: app/views/directives/deploy-image.html:96 app/views/services.html:48
+#: app/views/directives/deploy-image.html:96 app/views/services.html:43
 msgid "Ports"
 msgstr "端口"
 
@@ -3870,6 +3790,10 @@ msgstr "在部署策略完成之后，执行后置生命周期hook。"
 #: app/views/browse/_build-details.html:137
 msgid "Post-Commit Hooks"
 msgstr "Post-Commit Hook"
+
+#: app/scripts/constants.js:65
+msgid "Pre"
+msgstr "前置"
 
 #: app/views/edit/deployment-config.html:230
 msgid "Pre Lifecycle Hook"
@@ -3895,7 +3819,7 @@ msgstr "过程的最后期限"
 msgid "Project Name"
 msgstr "项目名称"
 
-#: app/views/quota.html:109
+#: app/views/quota.html:104
 msgid "Project Quota"
 msgstr "项目配额"
 
@@ -3907,13 +3831,18 @@ msgstr "提示手动输入:"
 msgid "Provider:"
 msgstr "供应商:"
 
-#: app/views/overview.html:365 app/views/service-instances.html:10
+#: app/views/overview.html:360 app/views/service-instances.html:10
 msgid "Provisioned Services"
 msgstr "提供的服务"
 
 #: app/views/directives/osc-routing.html:61
 msgid "Public hostname for the route."
 msgstr "路由的公共主机名。"
+
+#: app/scripts/directives/podDonut.js:128
+#: app/scripts/directives/podDonut.js:190
+msgid "Pulling"
+msgstr "拉取中"
 
 #: app/views/browse/_build-details.html:99
 msgid "Push Secret:"
@@ -3923,25 +3852,37 @@ msgstr "推私密凭证:"
 msgid "Push To"
 msgstr "推到"
 
-#: app/scripts/constants.js:548
+#: app/scripts/constants.js:607
 msgid "Python"
 msgstr "Python"
 
-#: app/scripts/constants.js:346 app/views/quota.html:6
+#: app/scripts/constants.js:405 app/views/quota.html:6
 msgid "Quota"
 msgstr "配额"
 
-#: app/views/quota.html:239
+#: app/views/quota.html:234
 msgid "Ratio"
 msgstr "比例"
 
-#: app/views/directives/osc-persistent-volume-claim.html:125
+#: app/views/directives/osc-persistent-volume-claim.html:124
 msgid "Read Only"
 msgstr "只读"
 
 #: app/views/attach-pvc.html:182
 msgid "Read only"
 msgstr "只读"
+
+#: app/scripts/constants.js:51
+msgid "Read-Only-Many"
+msgstr "多次读"
+
+#: app/scripts/constants.js:50
+msgid "Read-Write-Many"
+msgstr "多次写"
+
+#: app/scripts/constants.js:49
+msgid "Read-Write-Once"
+msgstr "一次读写"
 
 #: app/views/edit/health-checks.html:19
 msgid "Readiness Probe"
@@ -3980,39 +3921,43 @@ msgstr "接收"
 msgid "Receiving Traffic"
 msgstr "入口流量"
 
-#: app/views/pipelines.html:102
+#: app/views/pipelines.html:92
 msgid "Recent Runs"
 msgstr "最近运行"
 
-#: app/scripts/constants.js:488
+#: app/scripts/constants.js:17
+msgid "Recreate"
+msgstr "重新创建"
+
+#: app/scripts/constants.js:547
 msgid "Red Hat JBoss A-MQ"
 msgstr "Red Hat JBoss A-MQ"
 
-#: app/scripts/constants.js:492
+#: app/scripts/constants.js:551
 msgid "Red Hat JBoss BPM Suite"
 msgstr "Red Hat JBoss BPM Suite"
 
-#: app/scripts/constants.js:496
+#: app/scripts/constants.js:555
 msgid "Red Hat JBoss BRMS"
 msgstr "Red Hat JBoss BRMS"
 
-#: app/scripts/constants.js:500
+#: app/scripts/constants.js:559
 msgid "Red Hat JBoss Data Grid"
 msgstr "Red Hat JBoss Data Grid"
 
-#: app/scripts/constants.js:504
+#: app/scripts/constants.js:563
 msgid "Red Hat JBoss EAP"
 msgstr "Red Hat JBoss EAP"
 
-#: app/scripts/constants.js:508
+#: app/scripts/constants.js:567
 msgid "Red Hat JBoss Fuse"
 msgstr "Red Hat JBoss Fuse"
 
-#: app/scripts/constants.js:512
+#: app/scripts/constants.js:571
 msgid "Red Hat JBoss Web Server (Tomcat)"
 msgstr "Red Hat JBoss Web Server (Tomcat)"
 
-#: app/scripts/constants.js:516
+#: app/scripts/constants.js:575
 msgid "Red Hat Single Sign-On"
 msgstr "Red Hat Single Sign-On"
 
@@ -4096,13 +4041,13 @@ msgstr "删除角色\"<%= roleName %>\"可能会完全清除您查看此项目�
 msgid "Replace"
 msgstr "替换"
 
-#: app/views/deployments.html:166 app/views/overview.html:223
+#: app/views/deployments.html:161 app/views/overview.html:223
 msgid "Replica Sets"
 msgstr "副本集"
 
-#: app/views/browse/deployment.html:103 app/views/browse/stateful-sets.html:42
-#: app/views/create/fromimage.html:324 app/views/deployments.html:134
-#: app/views/deployments.html:174 app/views/deployments.html:202
+#: app/views/browse/deployment.html:103 app/views/browse/stateful-sets.html:49
+#: app/views/create/fromimage.html:324 app/views/deployments.html:129
+#: app/views/deployments.html:169 app/views/deployments.html:197
 msgid "Replicas"
 msgstr "副本"
 
@@ -4133,7 +4078,7 @@ msgid "Repository:"
 msgstr "仓库:"
 
 #: app/views/_compute-resource.html:53 app/views/_edit-request-limit.html:18
-#: app/views/quota.html:225
+#: app/views/quota.html:220
 msgid "Request"
 msgstr "请求"
 
@@ -4146,12 +4091,12 @@ msgstr "容量请求:"
 msgid "Requests and"
 msgstr "请求"
 
-#: app/scripts/controllers/overview.js:189 app/views/quota.html:154
-#: app/views/quota.html:62
+#: app/scripts/controllers/overview.js:189 app/views/quota.html:149
+#: app/views/quota.html:57
 msgid "Resource Type"
 msgstr "资源类型"
 
-#: app/scripts/constants.js:340
+#: app/scripts/constants.js:399
 msgid "Resources"
 msgstr "资源"
 
@@ -4168,6 +4113,10 @@ msgstr "重启策略:"
 #: app/views/browse/deployment.html:21 app/views/browse/deployment.html:79
 msgid "Resume Rollouts"
 msgstr "恢复滚动更新"
+
+#: app/scripts/constants.js:63
+msgid "Retry"
+msgstr "重试"
 
 #: app/views/directives/lifecycle-hook.html:18
 msgid "Retry the hook until it succeeds"
@@ -4191,13 +4140,21 @@ msgstr "修订历史限制:"
 msgid "Revision:"
 msgstr "修订:"
 
-#: app/views/membership.html:68
+#: app/views/membership.html:63
 msgid "Roles"
 msgstr "角色"
 
 #: app/views/browse/_replica-set-details.html:41
 msgid "Roll Back"
 msgstr "回滚"
+
+#: app/scripts/constants.js:16
+msgid "Rolling"
+msgstr "滚动"
+
+#: app/scripts/constants.js:24
+msgid "Route"
+msgstr "路由"
 
 #: app/views/overview/_networking.html:41
 msgid ""
@@ -4213,7 +4170,7 @@ msgstr ""
 msgid "Route target port is set to \""
 msgstr "路由目标端口设置为\""
 
-#: app/scripts/constants.js:281 app/views/browse/routes.html:9
+#: app/scripts/constants.js:340 app/views/browse/routes.html:9
 msgid "Routes"
 msgstr "路由"
 
@@ -4254,7 +4211,7 @@ msgid ""
 "the system administrator."
 msgstr "路由是使您的应用程序公开可见的一种方式。"
 
-#: app/scripts/constants.js:553
+#: app/scripts/constants.js:612
 msgid "Ruby"
 msgstr "Ruby"
 
@@ -4273,6 +4230,10 @@ msgstr "运行一个构建和部署:"
 #: app/views/edit/build-config.html:513
 msgid "Run policy type"
 msgstr "运行策略类型"
+
+#: app/scripts/constants.js:56 app/scripts/directives/podDonut.js:124
+msgid "Running"
+msgstr "运行"
 
 #: app/views/directives/edit-lifecycle-hook.html:32
 msgid ""
@@ -4336,13 +4297,17 @@ msgstr "扩缩定义了构建镜像的运行实例的数量。"
 msgid "Scaling may be affected."
 msgstr "扩缩可能会受到影响。"
 
-#: app/views/quota.html:114 app/views/quota.html:22
+#: app/views/quota.html:109 app/views/quota.html:17
 msgid "Scopes:"
 msgstr "范围:"
 
 #: app/views/directives/build-hooks.html:18
 msgid "Script:"
 msgstr "脚本:"
+
+#: app/scripts/constants.js:68
+msgid "Search Catalog"
+msgstr "搜索目录"
 
 #: app/views/directives/create-secret.html:14
 msgid "Secret Name"
@@ -4374,7 +4339,7 @@ msgstr "有认证的私密凭证，用来拉取你的源代码。"
 msgid "Secret:"
 msgstr "私密凭证:"
 
-#: app/scripts/constants.js:368 app/views/secrets.html:9
+#: app/scripts/constants.js:427 app/views/secrets.html:9
 msgid "Secrets"
 msgstr "私密凭证"
 
@@ -4440,7 +4405,7 @@ msgstr ""
 "\n"
 "每个文件的内容将是键的值。"
 
-#: app/views/services.html:49
+#: app/views/services.html:44
 msgid "Selector"
 msgstr "选择器"
 
@@ -4466,6 +4431,10 @@ msgstr "发送"
 #: app/views/overview/_service-header.html:4
 msgid "Service"
 msgstr "服务"
+
+#: app/scripts/constants.js:43
+msgid "Service Account"
+msgstr "服务账户"
 
 #: app/views/directives/traffic-table.html:31
 #: app/views/directives/traffic-table.html:67
@@ -4506,7 +4475,7 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr "服务{{route.to.service.metadata.name}}权重"
 
-#: app/scripts/constants.js:274 app/views/services.html:6
+#: app/scripts/constants.js:333 app/views/services.html:6
 msgid "Services"
 msgstr "服务"
 
@@ -4535,7 +4504,7 @@ msgstr "在Secret中设置key{{entry.valueFrom.secretKeyRef.key}}"
 msgid "Severity"
 msgstr "严重程度"
 
-#: app/views/directives/osc-persistent-volume-claim.html:119
+#: app/views/directives/osc-persistent-volume-claim.html:118
 msgid "Shared Access"
 msgstr "共享访问"
 
@@ -4557,7 +4526,7 @@ msgstr "显示镜像环境变量"
 msgid "Show Obfuscated Secret"
 msgstr "显示混淆的私密凭证"
 
-#: app/views/membership.html:286
+#: app/views/membership.html:281
 msgid "Show hidden roles"
 msgstr "显示隐藏的角色"
 
@@ -4573,19 +4542,19 @@ msgstr ""
 "显示 <strong>{{overview.filteredSize}}</strong>/<strong>{{overview.size}}</"
 "strong> 项目"
 
-#: app/scripts/constants.js:599
+#: app/scripts/constants.js:658
 msgid "Single Sign-On"
 msgstr "Single Sign-On"
 
-#: app/views/directives/osc-persistent-volume-claim.html:113
+#: app/views/directives/osc-persistent-volume-claim.html:112
 msgid "Single User"
 msgstr "单用户"
 
-#: app/views/directives/osc-persistent-volume-claim.html:144
+#: app/views/directives/osc-persistent-volume-claim.html:143
 msgid "Size"
 msgstr "大小"
 
-#: app/views/directives/osc-persistent-volume-claim.html:184
+#: app/views/directives/osc-persistent-volume-claim.html:183
 msgid "Size is required."
 msgstr "大小是必需的。"
 
@@ -4597,7 +4566,7 @@ msgstr "一些项目已经存在:"
 msgid "Sort by"
 msgstr "排序根据"
 
-#: app/views/builds.html:57
+#: app/views/builds.html:52
 msgid "Source"
 msgstr "源"
 
@@ -4624,7 +4593,7 @@ msgstr "参考来源:"
 msgid "Source Repo:"
 msgstr "代码仓库:"
 
-#: app/views/pipelines.html:61 app/views/pipelines.html:65
+#: app/views/pipelines.html:51 app/views/pipelines.html:55
 msgid "Source Repository:"
 msgstr "代码仓库:"
 
@@ -4664,9 +4633,9 @@ msgid "Start Deployment"
 msgstr "开始部署"
 
 #: app/views/browse/build-config.html:125 app/views/browse/build-config.html:16
-#: app/views/browse/build-config.html:35 app/views/overview.html:284
+#: app/views/browse/build-config.html:35 app/views/overview.html:279
 #: app/views/overview/_list-row-actions.html:12
-#: app/views/overview/_list-row-empty-state.html:25 app/views/pipelines.html:52
+#: app/views/overview/_list-row-empty-state.html:25 app/views/pipelines.html:42
 msgid "Start Pipeline"
 msgstr "开始管道"
 
@@ -4689,19 +4658,19 @@ msgstr "启动:"
 msgid "State:"
 msgstr "状态:"
 
-#: app/scripts/constants.js:260 app/scripts/controllers/monitoring.js:53
-#: app/views/browse/stateful-sets.html:6 app/views/monitoring.html:326
+#: app/scripts/constants.js:319 app/scripts/controllers/monitoring.js:53
+#: app/views/browse/stateful-sets.html:7 app/views/monitoring.html:326
 #: app/views/overview.html:233
 msgid "Stateful Sets"
-msgstr "有状态集"
+msgstr "有状态集群"
 
 #: app/views/browse/_build-details.html:4 app/views/browse/_pod-details.html:5
 #: app/views/browse/build-config.html:185
 #: app/views/browse/deployment-config.html:136
 #: app/views/browse/deployment-config.html:153
-#: app/views/browse/service-instance.html:67 app/views/builds.html:53
-#: app/views/deployments.html:53 app/views/directives/pods-table.html:9
-#: app/views/service-instances.html:47 app/views/storage.html:57
+#: app/views/browse/service-instance.html:67 app/views/builds.html:48
+#: app/views/deployments.html:48 app/views/directives/pods-table.html:9
+#: app/views/service-instances.html:47 app/views/storage.html:52
 msgid "Status"
 msgstr "状态"
 
@@ -4710,7 +4679,7 @@ msgstr "状态"
 msgid "Status Reason:"
 msgstr "状态的原因:"
 
-#: app/views/quota.html:162 app/views/quota.html:71
+#: app/views/quota.html:157 app/views/quota.html:66
 msgid ""
 "Status has not been reported on this quota usage record.  Any resources "
 "limited by this quota record can not be allocated."
@@ -4731,10 +4700,14 @@ msgstr "状态:"
 msgid "Stop Following"
 msgstr "停止跟踪"
 
-#: app/scripts/constants.js:388 app/views/attach-pvc.html:37
+#: app/scripts/constants.js:447 app/views/attach-pvc.html:37
 #: app/views/storage.html:10
 msgid "Storage"
 msgstr "存储"
+
+#: app/scripts/constants.js:30
+msgid "Storage (Request)"
+msgstr "存储(请求)"
 
 #: app/views/directives/osc-persistent-volume-claim.html:11
 msgid "Storage Class"
@@ -4753,15 +4726,15 @@ msgid ""
 "storage."
 msgstr "已经达到了存储限额的限制。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:210
+#: app/views/directives/osc-persistent-volume-claim.html:209
 msgid "Storage quota will be exceeded."
 msgstr "存储配额将会被超过。"
 
-#: app/scripts/constants.js:584
+#: app/scripts/constants.js:643
 msgid "Store and manage collections of data."
 msgstr "存储和管理数据集合。"
 
-#: app/views/create/fromimage.html:302 app/views/deployments.html:136
+#: app/views/create/fromimage.html:302 app/views/deployments.html:131
 msgid "Strategy"
 msgstr "策略"
 
@@ -4778,6 +4751,10 @@ msgstr "策略:"
 msgid "Subpath"
 msgstr "子路径"
 
+#: app/scripts/directives/podDonut.js:130
+msgid "Succeeded"
+msgstr "成功的"
+
 #: app/views/util/oauth.html:19
 msgid "Switch Users"
 msgstr "切换用户"
@@ -4785,6 +4762,14 @@ msgstr "切换用户"
 #: app/views/directives/_edit-command.html:93
 msgid "Switch to {{multiline ? 'Single-line' : 'Multiline'}} Editor"
 msgstr "切换到 {{multiline ? '单行' : '多行'}} 编辑器"
+
+#: app/scripts/constants.js:47
+msgid "System Group"
+msgstr "系统组"
+
+#: app/scripts/constants.js:45
+msgid "System User"
+msgstr "系统用户"
 
 #: app/views/browse/route.html:155
 msgid "TLS Settings"
@@ -4817,7 +4802,7 @@ msgstr "标记为"
 msgid "Tag image as"
 msgstr "标记镜像为"
 
-#: app/views/images.html:50
+#: app/views/images.html:45
 msgid "Tags"
 msgstr "标记"
 
@@ -4849,7 +4834,7 @@ msgstr "目标端口:"
 msgid "Target port for traffic."
 msgstr "目标端口流量。"
 
-#: app/scripts/constants.js:566
+#: app/scripts/constants.js:625
 msgid "Technologies"
 msgstr "技术"
 
@@ -4867,6 +4852,11 @@ msgstr "模板"
 #: app/views/browse/pod.html:112
 msgid "Terminal"
 msgstr "终端"
+
+#: app/scripts/constants.js:58 app/scripts/directives/podDonut.js:131
+#: app/scripts/directives/podDonut.js:179
+msgid "Terminating"
+msgstr "终止"
 
 #: app/views/browse/routes.html:111 app/views/directives/traffic-table.html:55
 msgid "Termination"
@@ -4997,7 +4987,7 @@ msgstr "当前的过滤器隐藏了所有的项目。"
 
 #: app/views/monitoring.html:332
 msgid "The current filters are hiding all stateful sets."
-msgstr "当前的过滤器隐藏了所有有状态集。"
+msgstr "当前的过滤器隐藏了所有有状态集群。"
 
 #: app/views/_templateopt.html:76
 msgid "The current value is \"{{parameter.value}}\", which is not empty."
@@ -5009,7 +4999,7 @@ msgid ""
 "your own deployment behavior."
 msgstr "定制策略允许您指定将提供您自己的部署行为的容器镜像。"
 
-#: app/views/quota.html:233
+#: app/views/quota.html:228
 msgid ""
 "The default limit defines the maximum amount of compute resource the "
 "container may have access to during execution if no limit is specified. If "
@@ -5027,7 +5017,7 @@ msgstr "部署的部署配置丢失了。"
 msgid "The destination CA certificate will be removed from the route."
 msgstr "目的CA证书将从路由中删除。"
 
-#: app/views/builds.html:35
+#: app/views/builds.html:30
 msgid "The filter is hiding all builds."
 msgstr "过滤器隐藏了所有的构建。"
 
@@ -5035,15 +5025,15 @@ msgstr "过滤器隐藏了所有的构建。"
 msgid "The filter is hiding all config maps."
 msgstr "过滤器隐藏了所有的配置映射。"
 
-#: app/views/deployments.html:35
+#: app/views/deployments.html:30
 msgid "The filter is hiding all deployments."
 msgstr "过滤器隐藏了所有的部署。"
 
-#: app/views/images.html:35
+#: app/views/images.html:30
 msgid "The filter is hiding all image streams."
 msgstr "过滤器隐藏所有的镜像流"
 
-#: app/views/storage.html:46
+#: app/views/storage.html:41
 msgid "The filter is hiding all persistent volume claims."
 msgstr "过滤器隐藏了所有持久的卷声明。"
 
@@ -5059,13 +5049,13 @@ msgstr "过滤器隐藏了所有的资源。"
 msgid "The filter is hiding all routes."
 msgstr "过滤器在隐藏所有的路由"
 
-#: app/views/secrets.html:41
+#: app/views/secrets.html:36
 msgid "The filter is hiding all secrets."
 msgstr "过滤器隐藏着所有的私密凭证."
 
-#: app/views/browse/stateful-sets.html:31
+#: app/views/browse/stateful-sets.html:38
 msgid "The filter is hiding all stateful sets."
-msgstr "当前的过滤器隐藏了所有有状态集。"
+msgstr "当前的过滤器隐藏了所有有状态集群。"
 
 #: app/views/directives/osc-routing.html:69
 msgid "The hostname can't be changed after the route is created."
@@ -5087,11 +5077,11 @@ msgid ""
 "The lower limit for the number of pods that can be set by the autoscaler."
 msgstr "可由自动扩缩器设置的Pod数量的下限。"
 
-#: app/views/_edit-request-limit.html:32
+#: app/scripts/constants.js:37 app/views/_edit-request-limit.html:32
 msgid "The maximum amount of"
 msgstr "最大量的"
 
-#: app/views/quota.html:219
+#: app/views/quota.html:214
 msgid ""
 "The maximum amount of this compute resource that can be requested.  The "
 "limit must also be below the maximum value."
@@ -5119,11 +5109,11 @@ msgstr ""
 "已达到最大Web控制台日志大小。 使用命令行界面或<a href=\"\" ng-click="
 "\"restartLogs()\">重新加载</a>日志来查看新消息。"
 
-#: app/views/_edit-request-limit.html:19
+#: app/scripts/constants.js:35 app/views/_edit-request-limit.html:19
 msgid "The minimum amount of"
 msgstr "最小量"
 
-#: app/views/quota.html:213
+#: app/views/quota.html:208
 msgid "The minimum amount of this compute resource that can be requested."
 msgstr "可以请求的计算资源的最小数量。"
 
@@ -5147,7 +5137,7 @@ msgstr "镜像的实例数量。"
 
 #: app/views/browse/deployment.html:196
 msgid "The number of old replica sets to keep."
-msgstr ""
+msgstr "要保持的旧副本集的数量。"
 
 #: app/views/directives/osc-autoscaling.html:115
 msgid ""
@@ -5187,7 +5177,7 @@ msgstr "路由不安全。"
 
 #: app/views/overview/_service-instance-row.html:113
 msgid "The service failed."
-msgstr ""
+msgstr "服务失败。"
 
 #: app/views/overview/_service-instance-row.html:132
 msgid "The service is not yet ready."
@@ -5231,7 +5221,7 @@ msgstr ""
 msgid "There are no limit ranges set on this project."
 msgstr "这个项目没有设置限制范围。"
 
-#: app/views/quota.html:15
+#: app/views/quota.html:10
 msgid "There are no resource quotas set on this project."
 msgstr "这个项目没有资源限额。"
 
@@ -5242,7 +5232,7 @@ msgstr "没有服务绑定。"
 
 #: app/views/monitoring.html:333
 msgid "There are no stateful sets in this project."
-msgstr "这个项目中没有有状态集。"
+msgstr "这个项目中没有有状态集群。"
 
 #: app/views/directives/osc-file-input.html:25
 msgid ""
@@ -5281,6 +5271,11 @@ msgid ""
 "name."
 msgstr "这个名称已经在项目中使用了。请选择其它名称。"
 
+#: app/views/directives/create-secret.html:31
+#: src/components/create-project/createProject.html:43
+msgid "This name is already in use. Please choose a different name."
+msgstr "名称已近被占用，请使用其他名称"
+
 #: app/views/browse/deployment.html:76
 msgid ""
 "This pauses any in-progress rollouts and stops new\n"
@@ -5288,7 +5283,7 @@ msgid ""
 msgstr ""
 "这将暂停任何正在进行的滚动部署，并停止新的滚动部署运行，直到Deployment恢复。"
 
-#: app/views/overview.html:306
+#: app/views/overview.html:301
 msgid "This pipeline is not associated with any deployments."
 msgstr "这条管道与任何部署都没有关联。"
 
@@ -5322,6 +5317,16 @@ msgid ""
 "        will be available for one hour and will be deleted when the terminal "
 "window is closed."
 msgstr "终端窗口关闭后，Pod将可用1小时，然后被删除。"
+
+#: app/views/modals/delete-project.html:10
+#: src/components/delete-project/delete-project-modal.html:11
+msgid ""
+"This will <strong>delete all resources</strong> associated with the project "
+"{{project | displayName}} and <strong>cannot be undone</strong>.  Make sure "
+"this is something you really want to do!"
+msgstr ""
+"这将<strong>删除</strong>与项目{{project | displayName}}相关联的<strong>所有"
+"资源</strong>，<strong>无法撤消</strong>。 确保这是你真正想做的事情！"
 
 #: app/scripts/directives/overview/listRow.js:299
 msgid ""
@@ -5476,7 +5481,7 @@ msgstr "流量"
 msgid "Traffic Split"
 msgstr "流量分割"
 
-#: app/views/browse/deployment-config.html:138 app/views/deployments.html:55
+#: app/views/browse/deployment-config.html:138 app/views/deployments.html:50
 msgid "Trigger"
 msgstr "触发"
 
@@ -5493,9 +5498,9 @@ msgstr "触发器"
 msgid "Try It"
 msgstr "试一试"
 
-#: app/views/builds.html:56 app/views/directives/_edit-probe.html:3
+#: app/views/builds.html:51 app/views/directives/_edit-probe.html:3
 #: app/views/directives/osc-persistent-volume-claim.html:32
-#: app/views/secrets.html:54
+#: app/views/secrets.html:49
 msgid "Type"
 msgstr "类型"
 
@@ -5515,7 +5520,7 @@ msgstr "输入{{typeDisplayName || (kind | humanizeKind)}}的名称进行确认�
 msgid "Type:"
 msgstr "类型:"
 
-#: app/scripts/constants.js:604
+#: app/scripts/constants.js:663
 msgid "Uncategorized"
 msgstr "未分类"
 
@@ -5539,7 +5544,9 @@ msgstr "用于识别此卷的唯一名称。 如果未指定，则会生成卷�
 msgid "Unit"
 msgstr "单位"
 
-#: app/views/browse/deployment-config.html:167 app/views/deployments.html:101
+#: app/scripts/directives/podDonut.js:132
+#: app/scripts/directives/podDonut.js:198
+#: app/views/browse/deployment-config.html:167 app/views/deployments.html:96
 msgid "Unknown"
 msgstr "未知的"
 
@@ -5561,7 +5568,7 @@ msgid ""
 "unique name cannot be modified."
 msgstr "更新项目的显示名称和说明。项目的唯一名称不能修改。"
 
-#: app/views/images.html:51
+#: app/views/images.html:46
 msgid "Updated"
 msgstr "更新"
 
@@ -5588,7 +5595,7 @@ msgstr "使用HTTPS"
 msgid "Use all keys and values from"
 msgstr "使用所有键和值。"
 
-#: app/views/directives/osc-persistent-volume-claim.html:222
+#: app/views/directives/osc-persistent-volume-claim.html:221
 msgid "Use label selectors to request storage"
 msgstr "使用标签选择器来请求存储."
 
@@ -5602,15 +5609,15 @@ msgstr "在回滚时使用{{replicaSet.metadata.name}}中的以下设置："
 msgid "Use the image for this container as the source of the tag."
 msgstr "使用该容器的镜像作为标记的源。"
 
-#: app/scripts/directives/quotaUsageChart.js:146 app/views/quota.html:155
+#: app/scripts/directives/quotaUsageChart.js:146 app/views/quota.html:150
 msgid "Used"
 msgstr "已使用"
 
-#: app/views/quota.html:64
+#: app/views/quota.html:59
 msgid "Used (All Projects)"
 msgstr "已使用(所有项目)"
 
-#: app/views/quota.html:63
+#: app/views/quota.html:58
 msgid "Used (This Project)"
 msgstr "已使用(这个项目)"
 
@@ -5621,6 +5628,10 @@ msgstr "已使用-其它项目"
 #: app/scripts/directives/quotaUsageChart.js:146
 msgid "Used - This Project"
 msgstr "已使用-这个项目"
+
+#: app/scripts/constants.js:39
+msgid "User"
+msgstr "用户"
 
 #: app/views/directives/create-secret.html:101
 msgid "Username"
@@ -5696,7 +5707,7 @@ msgstr "查看日志"
 msgid "View Membership"
 msgstr "查看成员"
 
-#: app/views/pipelines.html:113
+#: app/views/pipelines.html:103
 msgid "View Pipeline Runs"
 msgstr "查看管道运行"
 
@@ -5704,7 +5715,7 @@ msgstr "查看管道运行"
 msgid "View Quota"
 msgstr "查看配额"
 
-#: app/views/directives/osc-persistent-volume-claim.html:210
+#: app/views/directives/osc-persistent-volume-claim.html:209
 #: app/views/directives/osc-persistent-volume-claim.html:7
 msgid "View Quota&nbsp;"
 msgstr "查看配额&nbsp;"
@@ -5760,6 +5771,8 @@ msgstr "卷:"
 msgid "Waiting for container {{container.name}} to start..."
 msgstr "等待容器{{container.name}}启动。"
 
+#: app/scripts/directives/podDonut.js:126
+#: app/scripts/directives/podDonut.js:186
 #: app/views/directives/events-badge.html:1
 #: app/views/directives/events-badge.html:2
 #: app/views/directives/ui-ace-yaml.html:26
@@ -5772,7 +5785,7 @@ msgstr "警告"
 #: app/views/browse/deployment.html:245 app/views/edit/autoscaler.html:24
 #: app/views/edit/autoscaler.html:31 app/views/edit/config-map.html:18
 #: app/views/edit/config-map.html:24 app/views/edit/yaml.html:13
-#: app/views/edit/yaml.html:21 app/views/pipelines.html:78
+#: app/views/edit/yaml.html:21 app/views/pipelines.html:68
 #: app/views/projects.html:62
 msgid "Warning:"
 msgstr "警告:"
@@ -5823,7 +5836,7 @@ msgstr ""
 "<span ng-if=\"type === 'cpu'\">毫核</span><span ng-if=\"type === "
 "'memory'\">MiB</span>是什么?"
 
-#: app/views/directives/osc-persistent-volume-claim.html:215
+#: app/views/directives/osc-persistent-volume-claim.html:214
 msgid "What are GiB?"
 msgstr "GiB是什么?"
 
@@ -5842,7 +5855,7 @@ msgid ""
 "closed."
 msgstr "当您离开此Pod时，任何打开的终端连接都将被关闭。"
 
-#: app/scripts/constants.js:520
+#: app/scripts/constants.js:579
 msgid "WildFly"
 msgstr "WildFly"
 
@@ -5898,7 +5911,7 @@ msgid ""
 "name}}</strong>."
 msgstr "您目前正在使用用户账户<strong>{{user.metadata.name}}</strong>登录。"
 
-#: app/views/quota.html:179 app/views/quota.html:88
+#: app/views/quota.html:174 app/views/quota.html:83
 msgid "You are not allowed to create resources of this type."
 msgstr "您不被允许创建这种类型的资源。"
 
@@ -5923,7 +5936,7 @@ msgid ""
 "subdomains."
 msgstr "您可以使用支持通配符子域的路由器的<var>*.example.com</var>。"
 
-#: app/views/membership.html:33
+#: app/views/membership.html:28
 msgid "You do not have permission to view roles in this project."
 msgstr "您没有权限查看这个项目中的角色。"
 
@@ -5958,6 +5971,8 @@ msgid ""
 "\"endTimestamp\" countdown-duration=\"\"></time-remaining-from-now></strong> "
 "seconds."
 msgstr ""
+"您将在<strong><time-remaining-from-now end-timestamp=\"endTimestamp\" "
+"countdown-duration=\"\"></time-remaining-from-now></strong>秒内登出."
 
 #: app/views/directives/bind-service/delete-binding-result.html:19
 msgid "You will need to redeploy your pods for this to take effect."
@@ -6000,7 +6015,7 @@ msgstr "镜像被推到"
 msgid "and"
 msgstr "和"
 
-#: app/views/edit/jenkinsfile-examples.html:53 app/views/pipelines.html:33
+#: app/views/edit/jenkinsfile-examples.html:53
 msgid "and the"
 msgstr "和"
 
@@ -6013,6 +6028,10 @@ msgstr "作者为{{build.spec.revision.git.author.name}}"
 msgid "build configuration {{buildConfig.metadata.name}}."
 msgstr "构建配置{{buildConfig.metadata.name}}。"
 
+#: app/views/projects.html:116
+msgid "by"
+msgstr "被"
+
 #: app/views/_templateopt.html:79
 msgid "clear the value"
 msgstr "清除值"
@@ -6020,6 +6039,10 @@ msgstr "清除值"
 #: app/views/modals/confirm-save-log.html:16
 msgid "command line tools"
 msgstr "命令行工具"
+
+#: app/scripts/constants.js:33
+msgid "complete"
+msgstr "完成"
 
 #: app/views/_container-statuses.html:15
 msgid "completed successfully"
@@ -6052,7 +6075,7 @@ msgstr "创建存储"
 #: app/views/browse/service.html:36 app/views/monitoring.html:185
 #: app/views/monitoring.html:256 app/views/monitoring.html:438
 #: app/views/monitoring.html:90 app/views/overview/_builds.html:37
-#: app/views/pipelines.html:62
+#: app/views/pipelines.html:52 app/views/projects.html:115
 msgid "created"
 msgstr "已创建"
 
@@ -6079,6 +6102,10 @@ msgstr "日"
 msgid "debugging"
 msgstr "调试中"
 
+#: app/scripts/constants.js:18
+msgid "deployment config"
+msgstr "部署配置"
+
 #: app/views/browse/_replica-set-details.html:203
 msgid "deployment config or deployment."
 msgstr "部署配置或部署."
@@ -6090,10 +6117,6 @@ msgstr "部署策略"
 #: app/views/browse/_replica-set-details.html:38
 msgid "deployment trigger"
 msgstr "部署触发"
-
-#: app/views/projects.html:183
-msgid "documentation"
-msgstr "文档"
 
 #: app/views/_volumes.html:83
 msgid "downward API"
@@ -6148,6 +6171,10 @@ msgstr "从镜像"
 msgid "git repo"
 msgstr "git仓库"
 
+#: app/scripts/constants.js:42
+msgid "group"
+msgstr "组"
+
 #: app/views/edit/yaml.html:23
 msgid "has been deleted since you started editing it."
 msgstr "已经被删除，在你开始编辑它之后。"
@@ -6156,9 +6183,13 @@ msgstr "已经被删除，在你开始编辑它之后。"
 msgid "has changed since you started editing it."
 msgstr "已经有变化，在你开始编辑它之后。"
 
-#: app/views/pods.html:32
+#: app/views/pods.html:27
 msgid "have been added to project"
 msgstr "已经被添加到项目"
+
+#: app/scripts/constants.js:20
+msgid "horizontal pod autoscaler"
+msgstr "水平pod自动扩缩器"
 
 #: app/views/_volumes.html:51
 msgid "host path"
@@ -6198,6 +6229,10 @@ msgstr "限制"
 #: app/views/edit/autoscaler.html:36
 msgid "limit."
 msgstr "限制."
+
+#: app/scripts/constants.js:32
+msgid "manual change"
+msgstr "手动更改"
 
 #: app/views/directives/deployment-donut.html:57
 msgid "max"
@@ -6248,8 +6283,8 @@ msgstr "节点的默认"
 #: app/views/directives/selector.html:1
 #: app/views/directives/traffic-table.html:63
 #: app/views/directives/traffic-table.html:75
-#: app/views/directives/traffic-table.html:77 app/views/services.html:58
-#: app/views/services.html:72
+#: app/views/directives/traffic-table.html:77 app/views/services.html:53
+#: app/views/services.html:67
 msgid "none"
 msgstr "无"
 
@@ -6265,6 +6300,10 @@ msgstr "属于"
 #: app/views/overview/_list-row-empty-state.html:9
 msgid "one of the images referenced by this deployment config changes."
 msgstr "此部署配置引用的镜像之一更改。"
+
+#: app/scripts/constants.js:25
+msgid "openshift.io/imagestreams"
+msgstr "镜像流"
 
 #: app/views/_pod-template-container.html:113
 #: app/views/overview/_networking.html:21
@@ -6288,6 +6327,14 @@ msgstr "暂停"
 msgid "persistent volume claim"
 msgstr "持久化卷声明"
 
+#: app/scripts/constants.js:22
+msgid "pull"
+msgstr "拉取"
+
+#: app/scripts/constants.js:23
+msgid "push"
+msgstr "推送"
+
 #: app/scripts/filters/resources.js:1346 app/views/_volumes.html:44
 msgid "read-only"
 msgstr "只读"
@@ -6299,6 +6346,11 @@ msgstr "读写"
 #: app/views/browse/_replica-set-details.html:28
 msgid "replica count and selector"
 msgstr "副本数量和选择器"
+
+#: app/views/deployments.html:87
+msgid ""
+"replica<span ng-if=\"replicationController.spec.replicas != 1\">s</span>"
+msgstr "副本集"
 
 #: app/views/edit/autoscaler.html:34
 msgid "request"
@@ -6315,6 +6367,10 @@ msgstr "恢复"
 #: app/views/browse/service.html:94
 msgid "routes"
 msgstr "路由"
+
+#: app/scripts/constants.js:34
+msgid "running"
+msgstr "运行"
 
 #: app/views/browse/_build-details.html:29
 msgid "running for"
@@ -6342,7 +6398,7 @@ msgstr "在前面的部署被缩减为0，并且在新部署的第一个Pod开�
 msgid "runs before the deployment begins"
 msgstr "在部署开始之前运行"
 
-#: app/scripts/directives/podDonut.js:48
+#: app/scripts/directives/podDonut.js:58
 msgid "scaling to"
 msgstr "扩缩到"
 
@@ -6360,6 +6416,10 @@ msgstr "秒"
 #: app/views/edit/deployment-config.html:159
 msgid "seconds"
 msgstr "秒"
+
+#: app/scripts/constants.js:44
+msgid "service account"
+msgstr "服务帐户"
 
 #: app/views/browse/service.html:94
 msgid "services"
@@ -6387,11 +6447,19 @@ msgstr ""
 msgid "started"
 msgstr "已启动"
 
-#: app/views/_edit-request-limit.html:32
+#: app/scripts/constants.js:48
+msgid "system group"
+msgstr "系统组"
+
+#: app/scripts/constants.js:46
+msgid "system user"
+msgstr "系统用户"
+
+#: app/scripts/constants.js:38 app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
 msgstr "容器被允许使用的，在运行时。"
 
-#: app/views/_edit-request-limit.html:19
+#: app/scripts/constants.js:36 app/views/_edit-request-limit.html:19
 msgid "the container is guaranteed."
 msgstr "容器被保证的。"
 
@@ -6411,11 +6479,15 @@ msgstr "来保证你的应用正常运行。"
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr "到卷<strong>{{pvc.spec.volumeName}}</strong>"
 
+#: app/scripts/constants.js:31 app/scripts/constants.js:40
+msgid "user"
+msgstr "用户"
+
 #: app/views/_config-file-params.html:3
 msgid "username"
 msgstr "用户名"
 
-#: app/views/storage.html:66
+#: app/views/storage.html:61
 msgid "using storage class {{pvc | storageClass}}"
 msgstr "使用存储类{{pvc | storageClass}}"
 
@@ -6534,7 +6606,7 @@ msgstr "最后{{event.count}}次"
 msgid "{{hpaList.length}} associated Horizontal Pod Autoscalers"
 msgstr "{{hpaList.length}}个相关的水平Pod自动扩缩器"
 
-#: app/views/directives/osc-persistent-volume-claim.html:145
+#: app/views/directives/osc-persistent-volume-claim.html:144
 msgid ""
 "{{limits.min | usageWithUnits : 'storage'}} min to {{limits.max | "
 "usageWithUnits : 'storage'}} max"
@@ -6549,6 +6621,14 @@ msgid ""
 msgstr ""
 "最小 {{limits.min | usageWithUnits : type}} 至 最大 {{limits.max | "
 "usageWithUnits : type}}"
+
+#: app/views/directives/notifications/notification-body.html:103
+msgid "{{notification.event.count}} times in the last"
+msgstr "{{notification.event.count}}次在最近"
+
+#: app/views/directives/notifications/header.html:17
+msgid "{{notificationGroup.totalUnread}} Unread"
+msgstr "{{notificationGroup.totalUnread}}未读"
 
 #: app/views/directives/_probe.html:21
 msgid "{{probe.initialDelaySeconds}}s delay,"
@@ -6606,6 +6686,187 @@ msgstr "{{view.advancedOptions ? '隐藏' : '显示'}}高级选项"
 #: app/views/browse/secret.html:62
 msgid "{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret"
 msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
+
+#: src/components/binding/bindResults.html:18
+msgid ""
+"<strong>{{ctrl.serviceToBind}}</strong> has been bound to <strong>{{ctrl."
+"applicationToBind}}</strong> successfully."
+msgstr ""
+"<strong>{{ctrl.serviceToBind}}</strong> 已成功绑定到 <strong>{{ctrl."
+"applicationToBind}}</strong> 。"
+
+#: src/components/create-project/createProject.html:64
+#: src/components/edit-project/editProject.html:18
+msgid "A short description."
+msgstr "简短描述。"
+
+#: src/components/create-project/createProject.html:25
+msgid "A unique name for the project."
+msgstr "唯一的项目名称。"
+
+#: src/components/binding/bindResults.html:55
+msgid "An error occurred creating the binding."
+msgstr "创建绑定时出错。"
+
+#: src/components/binding/bindApplicationForm.html:25
+#: src/components/binding/bindServiceForm.html:46
+msgid "Bindings can be created later from within a project."
+msgstr "可以在项目中稍后创建绑定。"
+
+#: src/components/binding/bindApplicationForm.html:7
+msgid ""
+"Bindings create a secret containing the necessary information for an "
+"application to use a service."
+msgstr "绑定创建一个包含应用程序使用服务的必要信息的私密凭证。"
+
+#: src/components/binding/bindServiceForm.html:7
+msgid ""
+"Bindings create a secret containing the necessary information for an "
+"application to use this service."
+msgstr "绑定创建这个包含应用程序使用服务的必要信息的私密凭证。"
+
+#: src/components/binding/bindServiceForm.html:5
+msgid "Create a binding for"
+msgstr "创建绑定"
+
+#: src/components/binding/bindApplicationForm.html:5
+msgid ""
+"Create a binding for application <strong>{{ctrl.applicationName}}</strong>"
+msgstr "为应用程序<strong>{{ctrl.applicationName}}</strong>创建一个绑定"
+
+#: src/components/binding/bindServiceForm.html:16
+msgid "Create a secret and inject it into an application"
+msgstr "创建一个私密凭证并将其注入应用程序"
+
+#: src/components/binding/bindServiceForm.html:37
+msgid ""
+"Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later"
+msgstr "在<strong>{{ctrl.projectName}}</strong>创建稍后使用的私密凭证"
+
+#: src/components/delete-project/delete-project-button.html:10
+msgid "Delete Project {{projectName}}"
+msgstr "删除项目{{projectName}}"
+
+#: src/components/binding/bindServiceForm.html:44
+msgid "Do not bind at this time"
+msgstr "此时不要绑定"
+
+#: src/components/binding/bindApplicationForm.html:22
+msgid "Do not bind at this time."
+msgstr "此时不要绑定。"
+
+#: src/components/binding/bindResults.html:36
+msgid "Info"
+msgstr "信息"
+
+#: src/components/binding/bindResults.html:30
+msgid ""
+"Its data will be available to your application as environment variables."
+msgstr "其数据将作为环境变量提供给您的应用程序。"
+
+#: src/components/create-project/createProject.html:54
+#: src/components/edit-project/editProject.html:8
+msgid "My Project"
+msgstr "我的项目"
+
+#: src/openshiftCommonUI.module.js:27
+msgid ""
+"Name must consist of lower-case letters, numbers, periods, and hyphens. It "
+"must start and end with a letter or a number."
+msgstr ""
+"主机名必须由小写字母，数字，英文句号（.）和连字符(-)组成并且开头和结尾必须是"
+"数字或者字母。"
+
+#: src/components/create-project/createProject.html:33
+msgid "Name must have at least two characters."
+msgstr "名称至少由两个字母组成。"
+
+#: src/components/create-project/createProject.html:38
+msgid ""
+"Project names may only contain lower-case letters, numbers, and dashes. They "
+"may not start or end with a dash."
+msgstr "项目名称只能包含小写字母，数字和破折号，他们不能以破折号开始或结束。"
+
+#: src/components/binding/bindServiceForm.html:39
+msgid "Secrets can be referenced later from an application."
+msgstr "私密凭证可以在以后从应用中引用。"
+
+#: src/components/truncate-long-text/truncateLongText.html:18
+msgid "See All"
+msgstr "查看全部"
+
+#: src/components/binding/bindApplicationForm.html:13
+msgid "Select a service:"
+msgstr "选择一个服务:"
+
+#: src/components/binding/bindResults.html:15
+msgid "Success"
+msgstr "成功"
+
+#: src/components/binding/bindResults.html:21
+msgid ""
+"The binding <strong>{{ctrl.binding.metadata.name}}</strong> has been created "
+"successfully."
+msgstr "绑定 <strong>{{ctrl.binding.metadata.name}}</strong> 创建成功"
+
+#: src/components/binding/bindResults.html:46
+msgid "The binding could not be created."
+msgstr "无法创建绑定"
+
+#: src/components/binding/bindResults.html:6
+msgid "The binding is being created."
+msgstr "绑定正在创建。"
+
+#: src/components/binding/bindResults.html:26
+msgid "The binding operation created the secret"
+msgstr "绑定操作创建了私密凭证"
+
+#: src/components/binding/bindResults.html:37
+msgid ""
+"The binding secret will only be available to new pods. You will need to "
+"redeploy your application."
+msgstr "绑定私密凭证仅适用于新的Pod。您将需要重新部署应用程序。"
+
+#: src/components/binding/bindApplicationForm.html:49
+msgid "There are no bindable services in this project"
+msgstr "此项目中没有可绑定的服务"
+
+#: src/components/binding/bindResults.html:9
+msgid "This may take several minutes."
+msgstr "这可能需要几分钟。"
+
+#: src/components/delete-project/delete-project-modal.html:15
+msgid "Type the name of the project to confirm."
+msgstr "输入要确认的项目的名称。"
+
+#: src/components/delete-project/delete-project-modal.html:17
+msgid "project to delete"
+msgstr "要删除的项目"
+
+#: src/components/binding/bindResults.html:29
+msgid "that you may need to reference in your application."
+msgstr "可能会在你的应用程序中引用。"
+
+#: src/components/delete-project/delete-project.html:1
+msgid "{{label || 'Delete'}}"
+msgstr "{{label || '删除'}}"
+
+#: labelFilter.js:162
+msgid "Add Filter"
+msgstr "增加过滤器"
+
+#: labelFilter.js:140
+msgid "Filter by label"
+msgstr "根据标签过滤"
+
+#~ msgid "OpenShift Pipeline Plugin"
+#~ msgstr "管道插件"
+
+#~ msgid "documentation"
+#~ msgstr "文档"
+
+#~ msgid "Help"
+#~ msgstr "帮助"
 
 #~ msgid ""
 #~ "Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>"

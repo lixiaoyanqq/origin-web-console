@@ -55787,18 +55787,18 @@ angular.module("kubernetesUI");
 angular.module("kubernetesUI", []);
 }
 
-angular.module("kubernetesUI").factory("LabelFilter", [ "$location", function(e) {
-function t() {
+angular.module("kubernetesUI").factory("LabelFilter", [ "$location", "gettext", "gettextCatalog", function(e, t, n) {
+function i() {
 this._existingLabels = {}, this._labelSelector = new LabelSelector(null, !0), this._onActiveFiltersChangedCallbacks = $.Callbacks();
 }
-return t.prototype.addLabelSuggestionsFromResources = function(e, t) {
+return i.prototype.addLabelSuggestionsFromResources = function(e, t) {
 if (e.metadata && e.metadata.name) this._extractLabelsFromItem(e, t); else {
 var n = this;
 angular.forEach(e, function(e) {
 n._extractLabelsFromItem(e, t);
 });
 }
-}, t.prototype.setLabelSuggestions = function(e) {
+}, i.prototype.setLabelSuggestions = function(e) {
 if (this._existingLabels = e, this._labelFilterKeySelectize) {
 this._labelFilterKeySelectize.clearOptions();
 var t = this;
@@ -55806,30 +55806,30 @@ this._labelFilterKeySelectize.load(function(e) {
 e(t._getLabelFilterKeys());
 });
 }
-}, t.prototype.persistFilterState = function(e) {
+}, i.prototype.persistFilterState = function(e) {
 this._shouldPersistState = !!e;
-}, t.prototype._persistState = function() {
+}, i.prototype._persistState = function() {
 if (this._shouldPersistState) if (this._labelSelector.isEmpty()) (t = e.search()).labelFilter = null, e.replace().search(t); else {
 var t = e.search();
 t.labelFilter = this._labelSelector.exportJSON(), e.replace().search(t);
 }
-}, t.prototype.readPersistedState = function() {
+}, i.prototype.readPersistedState = function() {
 var t = e.search().labelFilter;
 if (t) try {
 this._labelSelector = new LabelSelector(JSON.parse(t), !0);
 } catch (e) {
 this._labelSelector = new LabelSelector({}, !0);
 } else this._labelSelector = new LabelSelector({}, !0);
-}, t.prototype._extractLabelsFromItem = function(e, t) {
+}, i.prototype._extractLabelsFromItem = function(e, t) {
 var n = e.metadata ? e.metadata.labels : {};
 angular.forEach(n, function(e, n) {
 t[n] || (t[n] = []), t[n].push({
 value: e
 });
 });
-}, t.prototype.getLabelSelector = function() {
+}, i.prototype.getLabelSelector = function() {
 return this._labelSelector;
-}, t.prototype.setLabelSelector = function(e, t) {
+}, i.prototype.setLabelSelector = function(e, t) {
 if (this._labelFilterActiveFiltersElement && this._labelFilterActiveFiltersElement.find(".label-filter-active-filter").remove(), this._labelSelector = e, this._labelFilterActiveElement) if (this._labelSelector.isEmpty()) this._labelFilterActiveElement.hide(); else {
 this._labelFilterActiveElement.show();
 var n = this;
@@ -55838,14 +55838,14 @@ n._renderActiveFilter(e);
 });
 }
 this._persistState(), t || this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype.onActiveFiltersChanged = function(e) {
+}, i.prototype.onActiveFiltersChanged = function(e) {
 this._onActiveFiltersChangedCallbacks.add(e);
-}, t.prototype.setupFilterWidget = function(e, t, n) {
-var i = this, n = n || {};
-this._labelFilterRootElement = e, this._labelFilterActiveFiltersRootElement = t;
-var r = $("<div>").addClass("label-filter").appendTo(e);
-this._labelFilterKeyInput = $("<select>").addClass("label-filter-key").attr("placeholder", "Filter by label ").appendTo(r), this._labelFilterOperatorInput = $("<select>").addClass("label-filter-operator").attr("placeholder", "matching(...)").hide().appendTo(r), this._labelFilterValuesInput = $("<select>").addClass("label-filter-values").attr("placeholder", "Value(s)").attr("multiple", !0).hide().appendTo(r), this._labelFilterAddBtn = $("<button>").addClass("label-filter-add btn btn-default disabled").attr("disabled", !0).appendTo(e).append($("<span>").text(n.addButtonText || "Add Filter")), this._labelFilterActiveFiltersElement = $("<span>").addClass("label-filter-active-filters").appendTo(t), this._labelFilterActiveElement = $("<span>").addClass("label-filter-clear").hide().appendTo(this._labelFilterActiveFiltersElement).append($("<a>").addClass("label-filtering-remove-all label label-primary").prop("href", "javascript:;").append($("<i>").addClass("fa fa-filter")).append($("<span>").text("Clear filters"))).click(function() {
-i.clear();
+}, i.prototype.setupFilterWidget = function(e, i, r) {
+var o = this, r = r || {};
+this._labelFilterRootElement = e, this._labelFilterActiveFiltersRootElement = i;
+var a = $("<div>").addClass("label-filter").appendTo(e);
+this._labelFilterKeyInput = $("<select>").addClass("label-filter-key").attr("placeholder", n.getString(t("Filter by label")) + " ").appendTo(a), this._labelFilterOperatorInput = $("<select>").addClass("label-filter-operator").attr("placeholder", "matching(...)").hide().appendTo(a), this._labelFilterValuesInput = $("<select>").addClass("label-filter-values").attr("placeholder", "Value(s)").attr("multiple", !0).hide().appendTo(a), this._labelFilterAddBtn = $("<button>").addClass("label-filter-add btn btn-default disabled").attr("disabled", !0).appendTo(e).append($("<span>").text(r.addButtonText || n.getString(t("Add Filter")))), this._labelFilterActiveFiltersElement = $("<span>").addClass("label-filter-active-filters").appendTo(i), this._labelFilterActiveElement = $("<span>").addClass("label-filter-clear").hide().appendTo(this._labelFilterActiveFiltersElement).append($("<a>").addClass("label-filtering-remove-all label label-primary").prop("href", "javascript:;").append($("<i>").addClass("fa fa-filter")).append($("<span>").text("Clear filters"))).click(function() {
+o.clear();
 }), this._labelFilterKeyInput.selectize({
 dropdownParent: "body",
 valueField: "key",
@@ -55855,30 +55855,30 @@ create: !0,
 persist: !0,
 preload: !0,
 onItemAdd: function(e, t) {
-var n = i._labelFilterValuesSelectize;
+var n = o._labelFilterValuesSelectize;
 n.clearOptions(), n.load(function(e) {
-var t = [], n = i._labelFilterKeySelectize.getValue();
+var t = [], n = o._labelFilterKeySelectize.getValue();
 if (!n) return t;
-var r = i._existingLabels;
-if (r[n]) {
-for (var o = 0; o < r[n].length; o++) t.push(r[n][o]);
+var i = o._existingLabels;
+if (i[n]) {
+for (var r = 0; r < i[n].length; r++) t.push(i[n][r]);
 e(t);
 } else e({});
-}), i._labelFilterOperatorSelectizeInput.css("display", "inline-block"), i._labelFilterOperatorSelectize.getValue() ? n.focus() : i._labelFilterOperatorSelectize.focus();
+}), o._labelFilterOperatorSelectizeInput.css("display", "inline-block"), o._labelFilterOperatorSelectize.getValue() ? n.focus() : o._labelFilterOperatorSelectize.focus();
 },
 onItemRemove: function(e) {
-i._labelFilterOperatorSelectizeInput.hide(), i._labelFilterOperatorSelectize.clear(), i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
+o._labelFilterOperatorSelectizeInput.hide(), o._labelFilterOperatorSelectize.clear(), o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
 },
 load: function(e, t) {
-t(i._getLabelFilterKeys());
+t(o._getLabelFilterKeys());
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterKeySelectize = this._labelFilterKeyInput.prop("selectize"), this._labelFilterKeySelectizeInput = $(".selectize-control.label-filter-key", r), this._labelFilterOperatorInput.selectize({
+}), this._labelFilterKeySelectize = this._labelFilterKeyInput.prop("selectize"), this._labelFilterKeySelectizeInput = $(".selectize-control.label-filter-key", a), this._labelFilterOperatorInput.selectize({
 dropdownParent: "body",
 valueField: "type",
 labelField: "label",
@@ -55897,18 +55897,18 @@ type: "not in",
 label: "not in ..."
 } ],
 onItemAdd: function(e, t) {
-"exists" != e && "does not exist" != e ? (i._labelFilterValuesSelectizeInput.css("display", "inline-block"), i._labelFilterValuesSelectize.focus()) : i._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1).focus();
+"exists" != e && "does not exist" != e ? (o._labelFilterValuesSelectizeInput.css("display", "inline-block"), o._labelFilterValuesSelectize.focus()) : o._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1).focus();
 },
 onItemRemove: function(e) {
-i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
+o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterOperatorSelectize = this._labelFilterOperatorInput.prop("selectize"), this._labelFilterOperatorSelectizeInput = $(".selectize-control.label-filter-operator", r), this._labelFilterOperatorSelectizeInput.hide(), this._labelFilterValuesInput.selectize({
+}), this._labelFilterOperatorSelectize = this._labelFilterOperatorInput.prop("selectize"), this._labelFilterOperatorSelectizeInput = $(".selectize-control.label-filter-operator", a), this._labelFilterOperatorSelectizeInput.hide(), this._labelFilterValuesInput.selectize({
 dropdownParent: "body",
 valueField: "value",
 labelField: "value",
@@ -55918,50 +55918,50 @@ create: !0,
 persist: !0,
 preload: !0,
 onItemAdd: function(e, t) {
-i._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1);
+o._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1);
 },
 onItemRemove: function(e) {},
 load: function(e, t) {
-var n = [], r = i._labelFilterKeySelectize.getValue();
-if (!r) return n;
-var o = i._existingLabels;
-if (o[r]) {
-for (var a = 0; a < o[r].length; a++) n.push(o[r][a]);
+var n = [], i = o._labelFilterKeySelectize.getValue();
+if (!i) return n;
+var r = o._existingLabels;
+if (r[i]) {
+for (var a = 0; a < r[i].length; a++) n.push(r[i][a]);
 t(n);
 } else t({});
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterValuesSelectize = this._labelFilterValuesInput.prop("selectize"), this._labelFilterValuesSelectizeInput = $(".selectize-control.label-filter-values", r), this._labelFilterValuesSelectizeInput.hide(), this._labelFilterAddBtn.click(function() {
-var e = i._labelFilterKeySelectize.getValue(), t = i._labelFilterOperatorSelectize.getValue(), n = i._labelFilterValuesSelectize.getValue();
-i._labelFilterKeySelectize.clear(), i._labelFilterOperatorSelectizeInput.hide(), i._labelFilterOperatorSelectize.clear(), i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0), i.addActiveFilter(e, t, n);
+}), this._labelFilterValuesSelectize = this._labelFilterValuesInput.prop("selectize"), this._labelFilterValuesSelectizeInput = $(".selectize-control.label-filter-values", a), this._labelFilterValuesSelectizeInput.hide(), this._labelFilterAddBtn.click(function() {
+var e = o._labelFilterKeySelectize.getValue(), t = o._labelFilterOperatorSelectize.getValue(), n = o._labelFilterValuesSelectize.getValue();
+o._labelFilterKeySelectize.clear(), o._labelFilterOperatorSelectizeInput.hide(), o._labelFilterOperatorSelectize.clear(), o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0), o.addActiveFilter(e, t, n);
 }), this._labelSelector.isEmpty() || (this._labelFilterActiveElement.show(), this._labelSelector.each(function(e) {
-i._renderActiveFilter(e);
+o._renderActiveFilter(e);
 }));
-}, t.prototype._getLabelFilterKeys = function() {
+}, i.prototype._getLabelFilterKeys = function() {
 for (var e = [], t = Object.keys(this._existingLabels), n = 0; n < t.length; n++) e.push({
 key: t[n]
 });
 return e;
-}, t.prototype.addActiveFilter = function(e, t, n) {
+}, i.prototype.addActiveFilter = function(e, t, n) {
 this._labelFilterActiveElement.show(), this._addActiveFilter(e, t, n);
-}, t.prototype._addActiveFilter = function(e, t, n) {
+}, i.prototype._addActiveFilter = function(e, t, n) {
 var i = this._labelSelector.addConjunct(e, t, n);
 this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector), this._renderActiveFilter(i);
-}, t.prototype.clear = function() {
+}, i.prototype.clear = function() {
 this._labelFilterActiveFiltersElement && this._labelFilterActiveFiltersElement.find(".label-filter-active-filter").remove(), this._labelFilterActiveElement && this._labelFilterActiveElement.hide(), this._labelSelector.clearConjuncts(), this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype._renderActiveFilter = function(e) {
+}, i.prototype._renderActiveFilter = function(e) {
 $("<a>").addClass("label label-default label-filter-active-filter").prop("href", "javascript:;").prop("filter-label-id", e.id).click($.proxy(this, "_removeActiveFilter")).append($("<span>").text(e.string)).append($("<i>").addClass("fa fa-times")).appendTo(this._labelFilterActiveFiltersElement);
-}, t.prototype._removeActiveFilter = function(e) {
+}, i.prototype._removeActiveFilter = function(e) {
 var t = $(e.target).closest(".label-filter-active-filter"), n = t.prop("filter-label-id");
 t.remove(), 0 == $(".label-filter-active-filter", this._labelFilterActiveFiltersElement).length && this._labelFilterActiveElement.hide(), this._labelSelector.removeConjunct(n), this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype.toggleFilterWidget = function(e) {
+}, i.prototype.toggleFilterWidget = function(e) {
 this._labelFilterRootElement && (e ? this._labelFilterRootElement.show() : this._labelFilterRootElement.hide()), this._labelFilterActiveFiltersRootElement && (e ? this._labelFilterActiveFiltersRootElement.show() : this._labelFilterActiveFiltersRootElement.hide());
-}, new t();
+}, new i();
 } ]), function(e) {
 if ("object" == typeof exports && "undefined" != typeof module) module.exports = e(); else if ("function" == typeof define && define.amd) define([], e); else {
 ("undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this).Terminal = e();
@@ -73780,14 +73780,14 @@ maxlength: 253,
 description: "Name must consist of lower-case letters, numbers, periods, and hyphens. It must start and end with a letter or a number."
 }).constant("IS_IOS", /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream), hawtioPluginLoader.addModule("openshiftCommonUI"), angular.module("openshiftCommonUI").run([ "$templateCache", function(e) {
 "use strict";
-e.put("src/components/binding/bindApplicationForm.html", '<div class="bind-form">\n  <form>\n    <div class="form-group">\n      <label>\n        <h3>Create a binding for application <strong>{{ctrl.applicationName}}</strong></h3>\n      </label>\n      <span class="help-block">\n        Bindings create a secret containing the necessary information for an application to use a service.\n      </span>\n    </div>\n  </form>\n\n  <label ng-if="!ctrl.allowNoBinding">\n    Select a service:\n  </label>\n  <form name="ctrl.formName">\n    <fieldset>\n      <div class="radio">\n        <div ng-if="ctrl.allowNoBinding" class="bind-service-selection">\n          <label>\n            <input type="radio" ng-model="ctrl.serviceToBind" ng-value="null">\n            Do not bind at this time.\n          </label>\n          <div class="bind-description">\n          <span class="help-block service-instance-name">\n            Bindings can be created later from within a project.\n          </span>\n          </div>\n        </div>\n        <div ng-repeat="serviceInstance in ctrl.bindableServiceInstances" class="bind-service-selection">\n          <label>\n            <input type="radio" ng-model="ctrl.serviceToBind" ng-value="serviceInstance">\n            {{ctrl.serviceClasses[serviceInstance.spec.clusterServiceClassRef.name].spec.externalMetadata.displayName || serviceInstance.spec.clusterServiceClassRef.name}}\n          </label>\n          <div class="bind-description">\n            <span class="pficon pficon-info"\n                  ng-if="!(serviceInstance | isServiceInstanceReady)"\n                  data-content="This service is not yet ready. If you bind to it, then the binding will be pending until the service is ready."\n                  data-toggle="popover"\n                  data-trigger="hover">\n            </span>\n            <span class="help-block service-instance-name">\n              {{serviceInstance.metadata.name}}\n            </span>\n          </div>\n        </div>\n        <h4 ng-if="!ctrl.bindableServiceInstances.length">\n          <span class="pficon pficon-info" aria-hidden="true"></span>\n          <span class="help-block service-instance-name">\n            There are no bindable services in this project\n          </span>\n        </h4>\n      </div>\n    </fieldset>\n  </form>\n</div>\n'), 
-e.put("src/components/binding/bindResults.html", '<div ng-if="!ctrl.error && !(ctrl.binding | isBindingFailed)">\n  <div ng-if="ctrl.binding && !(ctrl.binding | isBindingReady)" class="results-status">\n    <span class="fa fa-clock-o text-muted" aria-hidden="true"></span>\n    <span class="sr-only">Pending</span>\n    <div class="results-message">\n      <h3>\n        The binding is being created.\n      </h3>\n      <p class="results-message-details">This may take several minutes.</p>\n    </div>\n  </div>\n  <div ng-if="(ctrl.binding | isBindingReady)">\n    <div class="results-status">\n      <span class="pficon pficon-ok" aria-hidden="true"></span>\n      <span class="sr-only">Success</span>\n      <div class="results-message">\n        <h3>\n          <span ng-if="ctrl.bindType === \'application\'">\n            <strong>{{ctrl.serviceToBind}}</strong> has been bound to\n            <strong>{{ctrl.applicationToBind}}</strong> successfully.\n          </span>\n          <span ng-if="ctrl.bindType !== \'application\'">\n            The binding <strong>{{ctrl.binding.metadata.name}}</strong> has been created successfully.\n          </span>\n        </h3>\n        <p class="results-message-details">\n          The binding operation created the secret\n          <a ng-if="ctrl.secretHref" ng-href="{{ctrl.secretHref}}">{{ctrl.binding.spec.secretName}}</a>\n          <span ng-if="!ctrl.secretHref">{{ctrl.binding.spec.secretName}}</span>\n          that you may need to reference in your application.\n          <span ng-if="ctrl.showPodPresets">Its data will be available to your application as environment variables.</span>\n        </p>\n      </div>\n    </div>\n    <div class="alert alert-info results-info" ng-if="ctrl.bindType === \'application\'">\n      <span class="pficon pficon-info" aria-hidden="true"></span>\n      <span class="sr-only">Info</span>\n      The binding secret will only be available to new pods. You will need to redeploy your application.\n    </div>\n  </div>\n</div>\n<div ng-if="ctrl.error || (ctrl.binding | isBindingFailed)">\n  <div class="results-status">\n    <span class="pficon pficon-error-circle-o text-danger" aria-hidden="true"></span>\n    <span class="sr-only">Error</span>\n    <div class="results-message">\n      <h3>\n        The binding could not be created.\n      </h3>\n    </div>\n  </div>\n  <div ng-if="ctrl.error" class="sub-title">\n    <span ng-if="ctrl.error.data.message">\n      {{ctrl.error.data.message | upperFirst}}\n    </span>\n    <span ng-if="!ctrl.error.data.message">\n      An error occurred creating the binding.\n    </span>\n  </div>\n  <div ng-if="!ctrl.error" class="sub-title">\n    {{ctrl.binding | bindingFailedMessage}}\n  </div>\n</div>\n'), 
-e.put("src/components/binding/bindServiceForm.html", '<div class="bind-form">\n  <form>\n    <div class="form-group">\n      <label>\n        <h3>Create a binding for <strong>{{ctrl.serviceClass.spec.externalMetadata.displayName || ctrl.serviceClass.spec.externalName}}</strong></h3>\n      </label>\n      <span class="help-block">Bindings create a secret containing the necessary information for an application to use this service.</span>\n    </div>\n  </form>\n\n  <form ng-if="ctrl.allowNoBinding || ctrl.showPodPresets" name="ctrl.formName" class="mar-bottom-lg">\n    <fieldset>\n      <div class="radio">\n        <label ng-if="ctrl.showPodPresets" class="bind-choice" ng-disabled="!ctrl.applications.length">\n          <input type="radio" ng-model="ctrl.bindType" value="application" ng-disabled="!ctrl.applications.length">\n          Create a secret and inject it into an application\n        </label>\n        <div ng-if="ctrl.showPodPresets" class="application-select">\n          <ui-select ng-model="ctrl.appToBind"\n                     ng-disabled="ctrl.bindType !== \'application\'"\n                     ng-required="ctrl.bindType === \'application\'">\n            <ui-select-match placeholder="{{ctrl.applications.length ? \'Select an application\' : \'There are no applications in this project\'}}">\n              <span>\n                {{$select.selected.metadata.name}}\n                <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>\n              </span>\n            </ui-select-match>\n            <ui-select-choices\n              repeat="application in (ctrl.applications) | filter : { metadata: { name: $select.search } } track by (application | uid)"\n              group-by="ctrl.groupByKind">\n              <span ng-bind-html="application.metadata.name | highlight : $select.search"></span>\n            </ui-select-choices>\n          </ui-select>\n        </div>\n        <label class="bind-choice">\n          <input type="radio" ng-model="ctrl.bindType" value="secret-only">\n          Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later\n        </label>\n        <div class="help-block bind-description">\n          Secrets can be referenced later from an application.\n        </div>\n        <label ng-if="ctrl.allowNoBinding" class="bind-choice">\n          <input type="radio" ng-model="ctrl.bindType" value="none">\n          Do not bind at this time\n        </label>\n        <div ng-if="ctrl.allowNoBinding" class="help-block bind-description">\n          Bindings can be created later from within a project.\n        </div>\n      </div>\n    </fieldset>\n  </form>\n</div>\n'), 
-e.put("src/components/create-project/createProject.html", '<form name="createProjectForm" novalidate>\n  <fieldset ng-disabled="disableInputs">\n    <div class="form-group">\n      <label for="name" class="required">Name</label>\n      <span ng-class="{\'has-error\': (createProjectForm.name.$error.pattern && createProjectForm.name.$touched) || nameTaken}">\n        <input class="form-control"\n            name="name"\n            id="name"\n            placeholder="my-project"\n            type="text"\n            required\n            take-focus\n            minlength="2"\n            maxlength="63"\n            pattern="[a-z0-9]([-a-z0-9]*[a-z0-9])?"\n            aria-describedby="nameHelp"\n            ng-model="name"\n            ng-model-options="{ updateOn: \'default blur\' }"\n            ng-change="nameTaken = false"\n            autocorrect="off"\n            autocapitalize="off"\n            spellcheck="false">\n      </span>\n      <div>\n        <span class="help-block">A unique name for the project.</span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.required && createProjectForm.name.$dirty">\n          Name is required.\n        </span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.minlength && createProjectForm.name.$touched">\n          Name must have at least two characters.\n        </span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.pattern && createProjectForm.name.$touched">\n          Project names may only contain lower-case letters, numbers, and dashes.\n          They may not start or end with a dash.\n        </span>\n      </div>\n      <div class="has-error">\n        <span class="help-block" ng-if="nameTaken">\n          This name is already in use. Please choose a different name.\n        </span>\n      </div>\n    </div>\n\n    <div class="form-group">\n      <label for="displayName">Display Name</label>\n      <input class="form-control"\n          name="displayName"\n          id="displayName"\n          placeholder="My Project"\n          type="text"\n          ng-model="displayName">\n    </div>\n\n    <div class="form-group">\n      <label for="description">Description</label>\n      <textarea class="form-control"\n          name="description"\n          id="description"\n          placeholder="A short description."\n          ng-model="description"></textarea>\n    </div>\n\n    <div class="button-group">\n      <button type="submit"\n          class="btn btn-primary"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="createProject()"\n          ng-disabled="createProjectForm.$invalid || nameTaken || disableInputs"\n          value="">\n        Create\n      </button>\n      <button\n          class="btn btn-default"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="cancelCreateProject()">\n        Cancel\n      </button>\n    </div>\n  </fieldset>\n</form>\n'), 
-e.put("src/components/delete-project/delete-project-button.html", '<div class="actions">\n  \x3c!-- Avoid whitespace inside the link --\x3e\n  <a href=""\n     ng-click="$event.stopPropagation(); openDeleteModal()"\n     role="button"\n     class="action-button"\n     ng-attr-aria-disabled="{{disableDelete ? \'true\' : undefined}}"\n     ng-class="{ \'disabled-link\': disableDelete }"\n    ><i class="fa fa-trash-o" aria-hidden="true"\n    ></i><span class="sr-only">Delete Project {{projectName}}</span></a>\n</div>\n'), e.put("src/components/delete-project/delete-project-modal.html", '<div class="delete-resource-modal">\n  \x3c!-- Use a form so that the enter key submits when typing a project name to confirm. --\x3e\n  <form>\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="cancel()">\n        <span class="pficon pficon-close"></span>\n      </button>\n      <h1 class="modal-title">Are you sure you want to delete the project \'<strong>{{project | displayName}}</strong>\'?</h1>\n    </div>\n    <div class="modal-body">\n      <p>\n        This will <strong>delete all resources</strong> associated with\n        the project {{project | displayName}} and <strong>cannot be\n        undone</strong>.  Make sure this is something you really want to do!\n      </p>\n      <div ng-show="typeNameToConfirm">\n        <p>Type the name of the project to confirm.</p>\n        <p>\n          <label class="sr-only" for="resource-to-delete">project to delete</label>\n          <input\n              ng-model="confirmName"\n              id="resource-to-delete"\n              type="text"\n              class="form-control input-lg"\n              autocorrect="off"\n              autocapitalize="off"\n              spellcheck="false"\n              autofocus>\n        </p>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>\n      <button ng-disabled="typeNameToConfirm && confirmName !== project.metadata.name && confirmName !== (project | displayName : false)" class="btn btn-danger" type="submit" ng-click="delete()">Delete</button>\n    </div>\n  </form>\n</div>\n'), 
-e.put("src/components/delete-project/delete-project.html", '<a href="javascript:void(0)"\n   ng-click="openDeleteModal()"\n   role="button"\n   ng-attr-aria-disabled="{{disableDelete ? \'true\' : undefined}}"\n   ng-class="{ \'disabled-link\': disableDelete }"\n>{{label || \'Delete\'}}</a>\n'), e.put("src/components/edit-project/editProject.html", '<form name="editProjectForm">\n  <fieldset ng-disabled="disableInputs">\n    <div class="form-group">\n      <label for="displayName">Display Name</label>\n      <input class="form-control"\n             name="displayName"\n             id="displayName"\n             placeholder="My Project"\n             type="text"\n             ng-model="editableFields.displayName">\n    </div>\n\n    <div class="form-group">\n      <label for="description">Description</label>\n                    <textarea class="form-control"\n                              name="description"\n                              id="description"\n                              placeholder="A short description."\n                              ng-model="editableFields.description"></textarea>\n    </div>\n\n    <div class="button-group">\n      <button type="submit"\n              class="btn btn-primary"\n              ng-class="{\'dialog-btn\': isDialog}"\n              ng-click="update()"\n              ng-disabled="editProjectForm.$invalid || disableInputs"\n              value="">{{submitButtonLabel}}</button>\n      <button\n          class="btn btn-default"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="cancelEditProject()">\n        Cancel\n      </button>\n    </div>\n  </fieldset>\n</form>\n'), 
-e.put("src/components/origin-modal-popup/origin-modal-popup.html", '<div class="origin-modal-popup tile-click-prevent" ng-if="$ctrl.shown" ng-style="$ctrl.positionStyle"\n     ng-class="{\'position-above\': $ctrl.showAbove, \'position-left\': $ctrl.showLeft}">\n  <h4 class="origin-modal-popup-title">\n    {{$ctrl.modalTitle}}\n  </h4>\n  <div ng-transclude></div>\n  <a href="" class="origin-modal-popup-close" ng-click="$ctrl.onClose()">\n    <span class="pficon pficon-close"></span>\n  </a>\n</div>\n'), e.put("src/components/toast-notifications/toast-notifications.html", '<div class="toast-notifications-list-pf">\n  <div\n    ng-repeat="(notificationID, notification) in notifications track by notification.trackByID"\n    ng-if="!notification.hidden || notification.isHover"\n       ng-mouseenter="setHover(notification, true)" ng-mouseleave="setHover(notification, false)">\n    <div class="toast-pf alert {{notification.type | alertStatus}}" ng-class="{\'alert-dismissable\': !hideCloseButton}">\n      <button ng-if="!hideCloseButton" type="button" class="close" ng-click="close(notification)">\n        <span class="pficon pficon-close" aria-hidden="true"></span>\n        <span class="sr-only">Close</span>\n      </button>\n      <span class="{{notification.type | alertIcon}}" aria-hidden="true"></span>\n      <span class="sr-only">{{notification.type}}</span>\n      <span class="toast-notification-message" ng-if="notification.message">{{notification.message}}</span>\n      <div ng-if="notification.details" class="toast-notification-details">\n        <truncate-long-text\n          limit="200"\n          content="notification.details"\n          use-word-boundary="true"\n          expandable="true"\n          hide-collapse="true">\n        </truncate-long-text>\n      </div>\n      <span ng-repeat="link in notification.links">\n        <a ng-if="!link.href" href="" ng-click="onClick(notification, link)" role="button">{{link.label}}</a>\n        <a ng-if="link.href" ng-href="{{link.href}}" ng-attr-target="{{link.target}}">{{link.label}}</a>\n        <span ng-if="!$last" class="toast-action-divider">|</span>\n      </span>\n    </div>\n  </div>\n</div>\n'), 
-e.put("src/components/truncate-long-text/truncateLongText.html", '\x3c!--\n  Do not remove class `truncated-content` (here or below) even though it\'s not\n  styled directly in origin-web-common.  `truncated-content` is used by\n  origin-web-console in certain contexts.\n\n  highlightKeywords and linkify are mutually exclusive options\n--\x3e\n<span ng-if="!truncated">\n  <span ng-if="!linkify || (highlightKeywords | size)" ng-bind-html="content | highlightKeywords : keywords" class="truncated-content"></span>\n  <span ng-if="linkify && !(highlightKeywords | size)" ng-bind-html="content | linkify : \'_blank\'" class="truncated-content"></span>\n</span>\n\x3c!-- To avoid truncating in middle of a link, we only optionally apply linkify to expanded content --\x3e\n<span ng-if="truncated">\n  <span ng-if="!toggles.expanded">\n    <span ng-attr-title="{{content}}" class="truncation-block">\n      <span ng-bind-html="truncatedContent | highlightKeywords : keywords" class="truncated-content"></span>&hellip;\n    </span>\n    <a ng-if="expandable" href="" ng-click="toggles.expanded = true" class="truncation-expand-link">See All</a>\n  </span>\n  <span ng-if="toggles.expanded">\n    <span ng-if="!linkify || (highlightKeywords | size)"\n          ng-bind-html="content | highlightKeywords : keywords"\n          class="truncated-content"></span>\n    <span ng-if="linkify && !(highlightKeywords | size)"\n          ng-bind-html="content | linkify : \'_blank\'"\n          class="truncated-content"></span>\n    <a href="" ng-if="!hideCollapse" ng-click="toggles.expanded = false" class="truncation-collapse-link">Collapse</a>\n  </span>\n</span>\n');
+e.put("src/components/binding/bindApplicationForm.html", '<div class="bind-form">\n  <form>\n    <div class="form-group">\n      <label>\n        <h3 translate>Create a binding for application <strong>{{ctrl.applicationName}}</strong></h3>\n      </label>\n      <span class="help-block" translate>\n        Bindings create a secret containing the necessary information for an application to use a service.\n      </span>\n    </div>\n  </form>\n\n  <label ng-if="!ctrl.allowNoBinding" translate>\n    Select a service:\n  </label>\n  <form name="ctrl.formName">\n    <fieldset>\n      <div class="radio">\n        <div ng-if="ctrl.allowNoBinding" class="bind-service-selection">\n          <label>\n            <input type="radio" ng-model="ctrl.serviceToBind" ng-value="null">\n            <translate>Do not bind at this time.</translate>\n          </label>\n          <div class="bind-description">\n          <span class="help-block service-instance-name" translate>\n            Bindings can be created later from within a project.\n          </span>\n          </div>\n        </div>\n        <div ng-repeat="serviceInstance in ctrl.bindableServiceInstances" class="bind-service-selection">\n          <label>\n            <input type="radio" ng-model="ctrl.serviceToBind" ng-value="serviceInstance">\n            {{ctrl.serviceClasses[serviceInstance.spec.clusterServiceClassRef.name].spec.externalMetadata.displayName || serviceInstance.spec.clusterServiceClassRef.name}}\n          </label>\n          <div class="bind-description">\n            <span class="pficon pficon-info"\n                  ng-if="!(serviceInstance | isServiceInstanceReady)"\n                  data-content="This service is not yet ready. If you bind to it, then the binding will be pending until the service is ready."\n                  data-toggle="popover"\n                  data-trigger="hover">\n            </span>\n            <span class="help-block service-instance-name">\n              {{serviceInstance.metadata.name}}\n            </span>\n          </div>\n        </div>\n        <h4 ng-if="!ctrl.bindableServiceInstances.length">\n          <span class="pficon pficon-info" aria-hidden="true"></span>\n          <span class="help-block service-instance-name" translate>\n            There are no bindable services in this project\n          </span>\n        </h4>\n      </div>\n    </fieldset>\n  </form>\n</div>\n'), 
+e.put("src/components/binding/bindResults.html", '<div ng-if="!ctrl.error && !(ctrl.binding | isBindingFailed)">\n  <div ng-if="ctrl.binding && !(ctrl.binding | isBindingReady)" class="results-status">\n    <span class="fa fa-clock-o text-muted" aria-hidden="true"></span>\n    <span class="sr-only">Pending</span>\n    <div class="results-message">\n      <h3 translate>\n        The binding is being created.\n      </h3>\n      <p class="results-message-details" translate>This may take several minutes.</p>\n    </div>\n  </div>\n  <div ng-if="(ctrl.binding | isBindingReady)">\n    <div class="results-status">\n      <span class="pficon pficon-ok" aria-hidden="true"></span>\n      <span class="sr-only" translate>Success</span>\n      <div class="results-message">\n        <h3>\n          <span ng-if="ctrl.bindType === \'application\'" translate>\n            <strong>{{ctrl.serviceToBind}}</strong> has been bound to <strong>{{ctrl.applicationToBind}}</strong> successfully.\n          </span>\n          <span ng-if="ctrl.bindType !== \'application\'" translate>\n            The binding <strong>{{ctrl.binding.metadata.name}}</strong> has been created successfully.\n          </span>\n        </h3>\n        <p class="results-message-details">\n          <translate>The binding operation created the secret</translate>\n          <a ng-if="ctrl.secretHref" ng-href="{{ctrl.secretHref}}">{{ctrl.binding.spec.secretName}}</a>\n          <span ng-if="!ctrl.secretHref">{{ctrl.binding.spec.secretName}}</span>\n          <translate>that you may need to reference in your application.</translate>\n          <span ng-if="ctrl.showPodPresets" translate>Its data will be available to your application as environment variables.</span>\n        </p>\n      </div>\n    </div>\n    <div class="alert alert-info results-info" ng-if="ctrl.bindType === \'application\'">\n      <span class="pficon pficon-info" aria-hidden="true"></span>\n      <span class="sr-only" translate>Info</span>\n      <translate>The binding secret will only be available to new pods. You will need to redeploy your application.</translate>\n    </div>\n  </div>\n</div>\n<div ng-if="ctrl.error || (ctrl.binding | isBindingFailed)">\n  <div class="results-status">\n    <span class="pficon pficon-error-circle-o text-danger" aria-hidden="true"></span>\n    <span class="sr-only" translate>Error</span>\n    <div class="results-message">\n      <h3 translate>\n        The binding could not be created.\n      </h3>\n    </div>\n  </div>\n  <div ng-if="ctrl.error" class="sub-title">\n    <span ng-if="ctrl.error.data.message">\n      {{ctrl.error.data.message | upperFirst}}\n    </span>\n    <span ng-if="!ctrl.error.data.message" translate>\n      An error occurred creating the binding.\n    </span>\n  </div>\n  <div ng-if="!ctrl.error" class="sub-title">\n    {{ctrl.binding | bindingFailedMessage}}\n  </div>\n</div>\n'), 
+e.put("src/components/binding/bindServiceForm.html", '<div class="bind-form">\n  <form>\n    <div class="form-group">\n      <label>\n        <h3><translate>Create a binding for</translate> <strong>{{ctrl.serviceClass.spec.externalMetadata.displayName || ctrl.serviceClass.spec.externalName}}</strong></h3>\n      </label>\n      <span class="help-block" translate>Bindings create a secret containing the necessary information for an application to use this service.</span>\n    </div>\n  </form>\n\n  <form ng-if="ctrl.allowNoBinding || ctrl.showPodPresets" name="ctrl.formName" class="mar-bottom-lg">\n    <fieldset>\n      <div class="radio">\n        <label ng-if="ctrl.showPodPresets" class="bind-choice" ng-disabled="!ctrl.applications.length">\n          <input type="radio" ng-model="ctrl.bindType" value="application" ng-disabled="!ctrl.applications.length">\n          <translate>Create a secret and inject it into an application</translate>\n        </label>\n        <div ng-if="ctrl.showPodPresets" class="application-select">\n          <ui-select ng-model="ctrl.appToBind"\n                     ng-disabled="ctrl.bindType !== \'application\'"\n                     ng-required="ctrl.bindType === \'application\'">\n            <ui-select-match placeholder="{{ctrl.applications.length ? \'Select an application\' : \'There are no applications in this project\'}}">\n              <span>\n                {{$select.selected.metadata.name}}\n                <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>\n              </span>\n            </ui-select-match>\n            <ui-select-choices\n              repeat="application in (ctrl.applications) | filter : { metadata: { name: $select.search } } track by (application | uid)"\n              group-by="ctrl.groupByKind">\n              <span ng-bind-html="application.metadata.name | highlight : $select.search"></span>\n            </ui-select-choices>\n          </ui-select>\n        </div>\n        <label class="bind-choice">\n          <input type="radio" ng-model="ctrl.bindType" value="secret-only">\n          <translate>Create a secret in <strong>{{ctrl.projectName}}</strong> to be used later</translate>\n        </label>\n        <div class="help-block bind-description" translate>\n          Secrets can be referenced later from an application.\n        </div>\n        <label ng-if="ctrl.allowNoBinding" class="bind-choice">\n          <input type="radio" ng-model="ctrl.bindType" value="none">\n          <translate>Do not bind at this time</translate>\n        </label>\n        <div ng-if="ctrl.allowNoBinding" class="help-block bind-description" translate>\n          Bindings can be created later from within a project.\n        </div>\n      </div>\n    </fieldset>\n  </form>\n</div>\n'), 
+e.put("src/components/create-project/createProject.html", '<form name="createProjectForm" novalidate>\n  <fieldset ng-disabled="disableInputs">\n    <div class="form-group">\n      <label for="name" class="required" translate>Name</label>\n      <span ng-class="{\'has-error\': (createProjectForm.name.$error.pattern && createProjectForm.name.$touched) || nameTaken}">\n        <input class="form-control"\n            name="name"\n            id="name"\n            placeholder="my-project"\n            type="text"\n            required\n            take-focus\n            minlength="2"\n            maxlength="63"\n            pattern="[a-z0-9]([-a-z0-9]*[a-z0-9])?"\n            aria-describedby="nameHelp"\n            ng-model="name"\n            ng-model-options="{ updateOn: \'default blur\' }"\n            ng-change="nameTaken = false"\n            autocorrect="off"\n            autocapitalize="off"\n            spellcheck="false">\n      </span>\n      <div>\n        <span class="help-block" translate>A unique name for the project.</span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.required && createProjectForm.name.$dirty" translate>\n          Name is required.\n        </span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.minlength && createProjectForm.name.$touched" translate>\n          Name must have at least two characters.\n        </span>\n      </div>\n      <div class="has-error">\n        <span id="nameHelp" class="help-block" ng-if="createProjectForm.name.$error.pattern && createProjectForm.name.$touched" translate>\n          Project names may only contain lower-case letters, numbers, and dashes. They may not start or end with a dash.\n        </span>\n      </div>\n      <div class="has-error">\n        <span class="help-block" ng-if="nameTaken" translate>\n          This name is already in use. Please choose a different name.\n        </span>\n      </div>\n    </div>\n\n    <div class="form-group">\n      <label for="displayName" translate>Display Name</label>\n      <input class="form-control"\n          name="displayName"\n          id="displayName"\n          placeholder="{{\'My Project\'|translate}}"\n          type="text"\n          ng-model="displayName">\n    </div>\n\n    <div class="form-group">\n      <label for="description" translate>Description</label>\n      <textarea class="form-control"\n          name="description"\n          id="description"\n          placeholder="{{\'A short description.\'|translate}}"\n          ng-model="description"></textarea>\n    </div>\n\n    <div class="button-group">\n      <button type="submit"\n          class="btn btn-primary"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="createProject()"\n          ng-disabled="createProjectForm.$invalid || nameTaken || disableInputs"\n          value="" translate>\n        Create\n      </button>\n      <button\n          class="btn btn-default"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="cancelCreateProject()" translate>\n        Cancel\n      </button>\n    </div>\n  </fieldset>\n</form>\n'), 
+e.put("src/components/delete-project/delete-project-button.html", '<div class="actions">\n  \x3c!-- Avoid whitespace inside the link --\x3e\n  <a href=""\n     ng-click="$event.stopPropagation(); openDeleteModal()"\n     role="button"\n     class="action-button"\n     ng-attr-aria-disabled="{{disableDelete ? \'true\' : undefined}}"\n     ng-class="{ \'disabled-link\': disableDelete }"\n    ><i class="fa fa-trash-o" aria-hidden="true"\n    ></i><span class="sr-only" translate>Delete Project {{projectName}}</span></a>\n</div>\n'), e.put("src/components/delete-project/delete-project-modal.html", '<div class="delete-resource-modal">\n  \x3c!-- Use a form so that the enter key submits when typing a project name to confirm. --\x3e\n  <form>\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="cancel()">\n        <span class="pficon pficon-close"></span>\n      </button>\n      <h1 class="modal-title" translate>Are you sure you want to delete the project \'<strong>{{project | displayName}}</strong>\'?</h1>\n    </div>\n    <div class="modal-body">\n      <p translate>\n        This will <strong>delete all resources</strong> associated with the project {{project | displayName}} and <strong>cannot be undone</strong>.  Make sure this is something you really want to do!\n      </p>\n      <div ng-show="typeNameToConfirm">\n        <p translate>Type the name of the project to confirm.</p>\n        <p>\n          <label class="sr-only" for="resource-to-delete" translate>project to delete</label>\n          <input\n              ng-model="confirmName"\n              id="resource-to-delete"\n              type="text"\n              class="form-control input-lg"\n              autocorrect="off"\n              autocapitalize="off"\n              spellcheck="false"\n              autofocus>\n        </p>\n      </div>\n    </div>\n    <div class="modal-footer">\n      <button class="btn btn-default" type="button" ng-click="cancel()" translate>Cancel</button>\n      <button ng-disabled="typeNameToConfirm && confirmName !== project.metadata.name && confirmName !== (project | displayName : false)" class="btn btn-danger" type="submit" ng-click="delete()" translate>Delete</button>\n    </div>\n  </form>\n</div>\n'), 
+e.put("src/components/delete-project/delete-project.html", '<a href="javascript:void(0)"\n   ng-click="openDeleteModal()"\n   role="button"\n   ng-attr-aria-disabled="{{disableDelete ? \'true\' : undefined}}"\n   ng-class="{ \'disabled-link\': disableDelete }"\n   translate\n>{{label || \'Delete\'}}</a>\n'), e.put("src/components/edit-project/editProject.html", '<form name="editProjectForm">\n  <fieldset ng-disabled="disableInputs">\n    <div class="form-group">\n      <label for="displayName" translate>Display Name</label>\n      <input class="form-control"\n             name="displayName"\n             id="displayName"\n             placeholder="{{\'My Project\'|translate}}"\n             type="text"\n             ng-model="editableFields.displayName">\n    </div>\n\n    <div class="form-group">\n      <label for="description">Description</label>\n                    <textarea class="form-control"\n                              name="description"\n                              id="description"\n                              placeholder="{{\'A short description.\'|translate}}"\n                              ng-model="editableFields.description"></textarea>\n    </div>\n\n    <div class="button-group">\n      <button type="submit"\n              class="btn btn-primary"\n              ng-class="{\'dialog-btn\': isDialog}"\n              ng-click="update()"\n              ng-disabled="editProjectForm.$invalid || disableInputs"\n              value="">{{submitButtonLabel}}</button>\n      <button\n          class="btn btn-default"\n          ng-class="{\'dialog-btn\': isDialog}"\n          ng-click="cancelEditProject()" translate>\n        Cancel\n      </button>\n    </div>\n  </fieldset>\n</form>\n'), 
+e.put("src/components/origin-modal-popup/origin-modal-popup.html", '<div class="origin-modal-popup tile-click-prevent" ng-if="$ctrl.shown" ng-style="$ctrl.positionStyle"\n     ng-class="{\'position-above\': $ctrl.showAbove, \'position-left\': $ctrl.showLeft}">\n  <h4 class="origin-modal-popup-title">\n    {{$ctrl.modalTitle}}\n  </h4>\n  <div ng-transclude></div>\n  <a href="" class="origin-modal-popup-close" ng-click="$ctrl.onClose()">\n    <span class="pficon pficon-close"></span>\n  </a>\n</div>\n'), e.put("src/components/toast-notifications/toast-notifications.html", '<div class="toast-notifications-list-pf">\n  <div\n    ng-repeat="(notificationID, notification) in notifications track by notification.trackByID"\n    ng-if="!notification.hidden || notification.isHover"\n       ng-mouseenter="setHover(notification, true)" ng-mouseleave="setHover(notification, false)">\n    <div class="toast-pf alert {{notification.type | alertStatus}}" ng-class="{\'alert-dismissable\': !hideCloseButton}">\n      <button ng-if="!hideCloseButton" type="button" class="close" ng-click="close(notification)">\n        <span class="pficon pficon-close" aria-hidden="true"></span>\n        <span class="sr-only" translate>Close</span>\n      </button>\n      <span class="{{notification.type | alertIcon}}" aria-hidden="true"></span>\n      <span class="sr-only">{{notification.type}}</span>\n      <span class="toast-notification-message" ng-if="notification.message">{{notification.message}}</span>\n      <div ng-if="notification.details" class="toast-notification-details">\n        <truncate-long-text\n          limit="200"\n          content="notification.details"\n          use-word-boundary="true"\n          expandable="true"\n          hide-collapse="true">\n        </truncate-long-text>\n      </div>\n      <span ng-repeat="link in notification.links">\n        <a ng-if="!link.href" href="" ng-click="onClick(notification, link)" role="button">{{link.label}}</a>\n        <a ng-if="link.href" ng-href="{{link.href}}" ng-attr-target="{{link.target}}">{{link.label}}</a>\n        <span ng-if="!$last" class="toast-action-divider">|</span>\n      </span>\n    </div>\n  </div>\n</div>\n'), 
+e.put("src/components/truncate-long-text/truncateLongText.html", '\x3c!--\n  Do not remove class `truncated-content` (here or below) even though it\'s not\n  styled directly in origin-web-common.  `truncated-content` is used by\n  origin-web-console in certain contexts.\n\n  highlightKeywords and linkify are mutually exclusive options\n--\x3e\n<span ng-if="!truncated">\n  <span ng-if="!linkify || (highlightKeywords | size)" ng-bind-html="content | highlightKeywords : keywords" class="truncated-content"></span>\n  <span ng-if="linkify && !(highlightKeywords | size)" ng-bind-html="content | linkify : \'_blank\'" class="truncated-content"></span>\n</span>\n\x3c!-- To avoid truncating in middle of a link, we only optionally apply linkify to expanded content --\x3e\n<span ng-if="truncated">\n  <span ng-if="!toggles.expanded">\n    <span ng-attr-title="{{content}}" class="truncation-block">\n      <span ng-bind-html="truncatedContent | highlightKeywords : keywords" class="truncated-content"></span>&hellip;\n    </span>\n    <a ng-if="expandable" href="" ng-click="toggles.expanded = true" class="truncation-expand-link" translate>See All</a>\n  </span>\n  <span ng-if="toggles.expanded">\n    <span ng-if="!linkify || (highlightKeywords | size)"\n          ng-bind-html="content | highlightKeywords : keywords"\n          class="truncated-content"></span>\n    <span ng-if="linkify && !(highlightKeywords | size)"\n          ng-bind-html="content | linkify : \'_blank\'"\n          class="truncated-content"></span>\n    <a href="" ng-if="!hideCollapse" ng-click="toggles.expanded = false" class="truncation-collapse-link" translate>Collapse</a>\n  </span>\n</span>\n');
 } ]), angular.module("openshiftCommonUI").component("bindApplicationForm", {
 controllerAs: "ctrl",
 bindings: {
@@ -73929,77 +73929,6 @@ details: n("getErrorDetails")(t)
 };
 }
 };
-<<<<<<< HEAD
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-} ]), angular.module("openshiftCommonUI").controller("DeleteProjectModalController", [ "$scope", "$uibModalInstance", function(a, b) {
-a["delete"] = function() {
-b.close("delete");
-}, a.cancel = function() {
-b.dismiss("cancel");
-};
-} ]), angular.module("openshiftCommonUI").directive("editProject", [ "$window", function(a) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-return {
-restrict:"E",
-scope:{
-project:"=",
-alerts:"=",
-submitButtonLabel:"@",
-redirectAction:"&",
-onCancel:"&",
-isDialog:"@"
-},
-templateUrl:"src/components/edit-project/editProject.html",
-controller:[ "$scope", "$filter", "$location", "DataService", "NotificationsService", "annotationNameFilter", "displayNameFilter", function(b, c, d, e, f, g, h) {
-b.submitButtonLabel || (b.submitButtonLabel = "Save"), b.isDialog = "true" === b.isDialog;
-var i = c("annotation"), j = c("annotationName"), k = function(a) {
-return {
-description:i(a, "description"),
-displayName:i(a, "displayName")
-};
-}, l = function(a, b) {
-var c = angular.copy(a);
-return c.metadata.annotations[j("description")] = b.description, c.metadata.annotations[j("displayName")] = b.displayName, c;
-}, m = function(a) {
-var b = [ g("description"), g("displayName") ];
-return _.each(b, function(b) {
-a.metadata.annotations[b] || delete a.metadata.annotations[b];
-}), a;
-}, n = function(a) {
-b.alerts.update = a, f.addNotification(a);
-};
-b.editableFields = k(b.project), b.update = function() {
-b.disableInputs = !0, b.editProjectForm.$valid && e.update("projects", b.project.metadata.name, m(l(b.project, b.editableFields)), {
-projectName:b.project.name
-}, {
-errorNotification:!1
-}).then(function(a) {
-var c = b.redirectAction();
-c && c(encodeURIComponent(b.project.metadata.name)), n({
-type:"success",
-message:"Project '" + h(a) + "' was successfully updated."
-});
-}, function(a) {
-b.disableInputs = !1, b.editableFields = k(b.project), n({
-type:"error",
-message:"An error occurred while updating the project",
-details:c("getErrorDetails")(a)
-});
-});
-<<<<<<< HEAD
-}, b.cancelEditProject = function() {
-var c = b.onCancel();
-c ? c() :a.history.back();
-=======
-}, d.cancelEditProject = function() {
-var b = d.onCancel();
-b ? b() :a.history.back();
-=======
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
-=======
-=======
->>>>>>> Build & Translate
 } ]), angular.module("openshiftCommonUI").controller("DeleteProjectModalController", [ "$scope", "$uibModalInstance", function(e, t) {
 e.delete = function() {
 t.close("delete");
@@ -74007,15 +73936,6 @@ t.close("delete");
 t.dismiss("cancel");
 };
 } ]), angular.module("openshiftCommonUI").directive("editProject", [ "$window", function(e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> rebase from poc 3.6
-=======
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
-=======
->>>>>>> Build & Translate
 return {
 restrict: "E",
 scope: {
@@ -74026,67 +73946,6 @@ onCancel: "&",
 isDialog: "@"
 },
 templateUrl: "src/components/edit-project/editProject.html",
-<<<<<<< HEAD
-<<<<<<< 7fc0bb75a45e57cf2098d66ed317a3123741a3d2
-<<<<<<< a044a915ec97ccf53d4ca1b478e9ba6eea281385
-<<<<<<< d18baaa1da41b003bde74e653bb5a7ac8303f42a
-controller: [ "$scope", "$filter", "$location", "DataService", "NotificationsService", "annotationNameFilter", "displayNameFilter", function(b, c, d, e, f, g, h) {
-b.submitButtonLabel || (b.submitButtonLabel = "Save"), b.isDialog = "true" === b.isDialog;
-var i = c("annotation"), j = c("annotationName"), k = function(a) {
-return {
-description: i(a, "description"),
-displayName: i(a, "displayName")
-};
-}, l = function(a, b) {
-var c = angular.copy(a);
-return c.metadata.annotations[j("description")] = b.description, c.metadata.annotations[j("displayName")] = b.displayName, c;
-}, m = function(a) {
-var b = [ g("description"), g("displayName") ];
-return _.each(b, function(b) {
-a.metadata.annotations[b] || delete a.metadata.annotations[b];
-}), a;
-}, n = function(a) {
-b.alerts.update = a, f.addNotification(a);
-};
-b.editableFields = k(b.project), b.update = function() {
-b.disableInputs = !0, b.editProjectForm.$valid && e.update("projects", b.project.metadata.name, m(l(b.project, b.editableFields)), {
-projectName: b.project.name
-}, {
-errorNotification: !1
-}).then(function(a) {
-var c = b.redirectAction();
-c && c(encodeURIComponent(b.project.metadata.name)), n({
-type: "success",
-message: "Project '" + h(a) + "' was successfully updated."
-});
-}, function(a) {
-b.disableInputs = !1, b.editableFields = k(b.project), n({
-type: "error",
-message: "An error occurred while updating the project",
-details: c("getErrorDetails")(a)
-});
-<<<<<<< HEAD
-}, t.cancelEditProject = function() {
-var n = t.onCancel();
-n ? n() : e.history.back();
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
-=======
-});
-}, b.cancelEditProject = function() {
-var c = b.onCancel();
-c ? c() : a.history.back();
-<<<<<<< HEAD
->>>>>>> rebase from poc 3.6
-=======
-=======
-controller: [ "$scope", "$filter", "$location", "DataService", "NotificationsService", "annotationNameFilter", "displayNameFilter", function(t, n, i, r, o, a, s) {
-=======
-controller: [ "$scope", "$filter", "$location", "DataService", "NotificationsService", "annotationNameFilter", "displayNameFilter", "Logger", function(t, n, i, r, o, a, s, l) {
->>>>>>> Bug 1471033 - Only request template metadata
-=======
-=======
->>>>>>> Build & Translate
 controller: [ "$scope", "$filter", "$location", "Logger", "NotificationsService", "ProjectsService", "annotationNameFilter", "displayNameFilter", function(t, n, i, r, o, a, s, l) {
 t.submitButtonLabel || (t.submitButtonLabel = "Save"), t.isDialog = "true" === t.isDialog;
 var c = n("annotation"), u = n("annotationName"), d = function(e) {
@@ -74120,11 +73979,6 @@ details: n("getErrorDetails")(e)
 }, t.cancelEditProject = function() {
 var n = t.onCancel();
 n ? n() : e.history.back();
-<<<<<<< HEAD
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
->>>>>>> Bump grunt-contrib-uglify to 3.0.1
-=======
->>>>>>> Build & Translate
 };
 } ]
 };
@@ -79583,7 +79437,7 @@ e.exports = '<pf-filter-panel config="$ctrl.config">\n  <div class="filter-panel
 }, function(e, t) {
 e.exports = '\x3c!-- Use angular-schema-form to show a form based on the parameter JSON schema. --\x3e\n<ng-form class="catalog-parameters" ng-class="{\'readonly\': $ctrl.readOnly}"\n  sf-model="$ctrl.hideValues ? $ctrl.hiddenModel : $ctrl.model"\n  sf-form="$ctrl.parameterForm"\n  sf-schema="$ctrl.readOnly ? $ctrl.readonlyParameterSchema : $ctrl.parameterSchema"\n  sf-options="$ctrl.parameterFormDefaults">\n</ng-form>\n';
 }, function(e, t) {
-e.exports = '<div class="catalog-search" ng-class="{\'mobile-shown\': $ctrl.mobileSearchInputShown}">\n  <button\n     ng-if="$ctrl.toggleAtMobile"\n     title="Catalog Search"\n     class="catalog-search-toggle visible-xs-inline-block btn btn-link"\n     ng-click="$ctrl.toggleMobileShowSearchInput()">\n    <i class="fa fa-search" aria-hidden="true"></i>\n    <span class="sr-only">Catalog Search</span>\n  </button>\n  <form role="form" class="landing-search-form search-pf has-button" ng-class="{\'hidden-xs\': $ctrl.toggleAtMobile}">\n    <div class="form-group has-clear">\n      <div class="search-pf-input-group">\n        <label for="search-input" class="sr-only">Search Catalog</label>\n        <span class="fa fa-search catalog-search-icon" aria-hidden="true" ng-click="$ctrl.setSearchInputFocus()"></span>\n        <input\n            id="search-input"\n            type="search"\n            autocomplete="off"\n            ng-keypress="$ctrl.onKeyPress($event)"\n            class="form-control catalog-search-input"\n            placeholder="Search Catalog"\n            ng-model="$ctrl.searchText"\n            uib-typeahead="item.name for item in $ctrl.search($viewValue)"\n            typeahead-on-select="$ctrl.itemSelected($item)"\n            typeahead-focus-first="false"\n            typeahead-template-url="catalog-search/catalog-search-result.html"\n            autocorrect="off"\n            autocapitalize="off"\n            spellcheck="false">\n        <button\n            type="button"\n            ng-if="$ctrl.searchText"\n            ng-click="$ctrl.searchText = \'\'"\n            class="clear">\n          <span class="sr-only">Clear Search Input</span>\n          <span class="pficon pficon-close" aria-hidden="true"></span>\n        </button>\n      </div>\n    </div>\n  </form>\n</div>\n';
+e.exports = '<div class="catalog-search" ng-class="{\'mobile-shown\': $ctrl.mobileSearchInputShown}">\n  <button\n     ng-if="$ctrl.toggleAtMobile"\n     title="Catalog Search"\n     class="catalog-search-toggle visible-xs-inline-block btn btn-link"\n     ng-click="$ctrl.toggleMobileShowSearchInput()">\n    <i class="fa fa-search" aria-hidden="true"></i>\n    <span class="sr-only">Catalog Search</span>\n  </button>\n  <form role="form" class="landing-search-form search-pf has-button" ng-class="{\'hidden-xs\': $ctrl.toggleAtMobile}">\n    <div class="form-group has-clear">\n      <div class="search-pf-input-group">\n        <label for="search-input" class="sr-only" translate>Search Catalog</label>\n        <span class="fa fa-search catalog-search-icon" aria-hidden="true" ng-click="$ctrl.setSearchInputFocus()"></span>\n        <input\n            id="search-input"\n            type="search"\n            autocomplete="off"\n            ng-keypress="$ctrl.onKeyPress($event)"\n            class="form-control catalog-search-input"\n            placeholder="{{\'Search Catalog\'|translate}}"\n            ng-model="$ctrl.searchText"\n            uib-typeahead="item.name for item in $ctrl.search($viewValue)"\n            typeahead-on-select="$ctrl.itemSelected($item)"\n            typeahead-focus-first="false"\n            typeahead-template-url="catalog-search/catalog-search-result.html"\n            autocorrect="off"\n            autocapitalize="off"\n            spellcheck="false">\n        <button\n            type="button"\n            ng-if="$ctrl.searchText"\n            ng-click="$ctrl.searchText = \'\'"\n            class="clear">\n          <span class="sr-only">Clear Search Input</span>\n          <span class="pficon pficon-close" aria-hidden="true"></span>\n        </button>\n      </div>\n    </div>\n  </form>\n</div>\n';
 }, function(e, t) {
 e.exports = '<div class="order-service">\n  <pf-wizard\n       wizard-title="{{$ctrl.imageStream.name}}"\n       hide-sidebar="true"\n       step-class="order-service-wizard-step"\n       current-step="$ctrl.currentStep"\n       wizard-ready="$ctrl.wizardReady"\n       next-title="$ctrl.nextTitle"\n       on-finish="$ctrl.closePanel()"\n       on-cancel="$ctrl.closePanel()"\n       wizard-done="$ctrl.wizardDone">\n    <pf-wizard-step ng-repeat="step in $ctrl.steps track by $index"\n         step-title="{{step.label}}"\n         wz-disabled="{{step.hidden}}"\n         allow-click-nav="step.allowClickNav"\n         next-enabled="step.valid && !$ctrl.updating"\n         prev-enabled="step.prevEnabled"\n         on-show="step.onShow"\n         step-id="{{step.id}}"\n         step-priority="{{$index}}">\n      <div class="wizard-pf-main-inner-shadow-covers">\n        <div class="order-service-config">\n          <div ng-include="step.view" class="wizard-pf-main-form-contents"></div>\n        </div>\n      </div>\n    </pf-wizard-step>\n  </pf-wizard>\n</div>\n';
 }, function(e, t) {

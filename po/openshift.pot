@@ -34,8 +34,8 @@ msgstr ""
 msgid "(bare host directory volume)"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:106
-#: app/views/directives/osc-persistent-volume-claim.html:138
+#: app/views/directives/osc-persistent-volume-claim.html:105
+#: app/views/directives/osc-persistent-volume-claim.html:137
 msgid "(cannot be changed)"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 msgid ". You cannot create new storage since you are at quota."
 msgstr ""
 
-#: app/scripts/constants.js:533
+#: app/scripts/constants.js:592
 msgid ".NET"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "A build configuration describes how to build your deployable image.  This includes your source, the base builder image, and when to launch new builds."
 msgstr ""
 
-#: app/scripts/constants.js:600
+#: app/scripts/constants.js:659
 msgid "A centralized authentication server for users to log in, log out, register, and manage user accounts for applications and RESTful web services."
 msgstr ""
 
@@ -124,7 +124,7 @@ msgstr ""
 msgid "A command is required."
 msgstr ""
 
-#: app/views/quota.html:226
+#: app/views/quota.html:221
 msgid "A container will default to request this amount of a compute resource if no request is specified. The system will guarantee the requested amount of compute resource when scheduling a container for execution. If a quota is enabled for this compute resource, the quota usage is incremented by the requested value."
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "A unique name for the route within the project."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:84
+#: app/views/directives/osc-persistent-volume-claim.html:83
 msgid "A unique name for the storage claim within the project."
 msgstr ""
 
@@ -199,6 +199,10 @@ msgstr ""
 msgid "A value for replicas is required."
 msgstr ""
 
+#: app/scripts/constants.js:62
+msgid "Abort"
+msgstr ""
+
 #: app/views/directives/lifecycle-hook.html:17
 msgid "Abort deployment on failure"
 msgstr ""
@@ -216,11 +220,11 @@ msgstr ""
 msgid "About {{aboutTitle}}"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:104
+#: app/views/directives/osc-persistent-volume-claim.html:103
 msgid "Access Mode"
 msgstr ""
 
-#: app/views/storage.html:59
+#: app/views/storage.html:54
 msgid "Access Modes"
 msgstr ""
 
@@ -273,24 +277,29 @@ msgstr ""
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
 #: app/views/overview/_service-instance-row.html:74
+#: app/views/projects.html:128
 msgid "Actions"
+msgstr ""
+
+#: app/scripts/constants.js:54
+msgid "Active"
 msgstr ""
 
 #: app/views/browse/_pod-details.html:50
 msgid "Active Deadline:"
 msgstr ""
 
-#: app/scripts/directives/nav.js:504
+#: app/scripts/directives/nav.js:496
 #: app/views/add-config-volume.html:193
 #: app/views/attach-pvc.html:215
 #: app/views/directives/_edit-command.html:56
 #: app/views/directives/_edit-command.html:77
-#: app/views/membership.html:147
-#: app/views/membership.html:262
+#: app/views/membership.html:142
+#: app/views/membership.html:257
 msgid "Add"
 msgstr ""
 
-#: app/views/membership.html:71
+#: app/views/membership.html:66
 msgid "Add Another Role"
 msgstr ""
 
@@ -471,8 +480,8 @@ msgid "After you login to your account you will get a list of projects that you 
 msgstr ""
 
 #: app/views/directives/pods-table.html:12
-#: app/views/services.html:50
-#: app/views/storage.html:60
+#: app/views/services.html:45
+#: app/views/storage.html:55
 msgid "Age"
 msgstr ""
 
@@ -494,8 +503,12 @@ msgstr ""
 msgid "All items in template {{templateDisplayName}} were created successfully."
 msgstr ""
 
-#: app/views/overview.html:278
+#: app/views/overview.html:273
 msgid "All pipelines are filtered."
+msgstr ""
+
+#: app/scripts/directives/deployImage.js:319
+msgid "All resources for image {{name}} were created successfully."
 msgstr ""
 
 #: app/scripts/directives/oscRouting.js:101
@@ -556,7 +569,7 @@ msgstr ""
 msgid "Application"
 msgstr ""
 
-#: app/scripts/constants.js:238
+#: app/scripts/constants.js:297
 msgid "Applications"
 msgstr ""
 
@@ -600,7 +613,7 @@ msgstr ""
 msgid "Autodeploy when"
 msgstr ""
 
-#: app/scripts/constants.js:578
+#: app/scripts/constants.js:637
 msgid "Automate the build, test, and deployment of your application with each new code revision."
 msgstr ""
 
@@ -655,8 +668,8 @@ msgstr ""
 msgid "Available of"
 msgstr ""
 
-#: app/views/pipelines.html:104
-#: app/views/pipelines.html:98
+#: app/views/pipelines.html:88
+#: app/views/pipelines.html:94
 msgid "Average Duration:"
 msgstr ""
 
@@ -715,6 +728,10 @@ msgstr ""
 msgid "Bitbucket Webhook URL:"
 msgstr ""
 
+#: app/scripts/constants.js:52
+msgid "Bound"
+msgstr ""
+
 #: app/views/create.html:9
 #: app/views/directives/header/header.html:39
 #: app/views/directives/header/header.html:43
@@ -762,7 +779,7 @@ msgstr ""
 msgid "Build Strategy:"
 msgstr ""
 
-#: app/views/pipelines.html:79
+#: app/views/pipelines.html:69
 msgid "Build config <strong>{{buildConfigName}}</strong> no longer exists."
 msgstr ""
 
@@ -779,8 +796,8 @@ msgstr ""
 msgid "Builder Image:"
 msgstr ""
 
-#: app/scripts/constants.js:306
-#: app/scripts/constants.js:312
+#: app/scripts/constants.js:365
+#: app/scripts/constants.js:371
 #: app/scripts/controllers/monitoring.js:50
 #: app/views/builds.html:6
 #: app/views/monitoring.html:404
@@ -810,7 +827,7 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr ""
 
-#: app/scripts/constants.js:571
+#: app/scripts/constants.js:630
 msgid "Business Process Services"
 msgstr ""
 
@@ -825,6 +842,14 @@ msgstr ""
 #: app/scripts/directives/podMetrics.js:71
 #: app/views/modals/about-compute-units-modal.html:15
 msgid "CPU"
+msgstr ""
+
+#: app/scripts/constants.js:28
+msgid "CPU (Limit)"
+msgstr ""
+
+#: app/scripts/constants.js:26
+msgid "CPU (Request)"
 msgstr ""
 
 #: app/views/modals/about-compute-units-modal.html:17
@@ -843,7 +868,7 @@ msgstr ""
 msgid "Can't be greater than {{limitRangeMax | usageWithUnits : type}}."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:204
+#: app/views/directives/osc-persistent-volume-claim.html:203
 msgid "Can't be greater than {{limits.max | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -851,7 +876,7 @@ msgstr ""
 msgid "Can't be less than {{limitRangeMin | usageWithUnits : type}}."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:199
+#: app/views/directives/osc-persistent-volume-claim.html:198
 msgid "Can't be less than {{limits.min | usageWithUnits : 'storage'}}."
 msgstr ""
 
@@ -861,7 +886,7 @@ msgstr ""
 
 #: app/views/directives/edit-config-map.html:38
 #: app/views/directives/osc-autoscaling.html:35
-#: app/views/directives/osc-persistent-volume-claim.html:97
+#: app/views/directives/osc-persistent-volume-claim.html:96
 #: app/views/directives/osc-routing.html:33
 msgid "Can't be longer than {{nameValidation.maxlength}} characters."
 msgstr ""
@@ -881,7 +906,7 @@ msgstr ""
 #: app/views/create-config-map.html:21
 #: app/views/create-from-url.html:44
 #: app/views/create-from-url.html:79
-#: app/views/create-persistent-volume-claim.html:22
+#: app/views/create-persistent-volume-claim.html:21
 #: app/views/create-route.html:33
 #: app/views/create/fromimage.html:403
 #: app/views/directives/add-config-to-application.html:137
@@ -906,7 +931,7 @@ msgstr ""
 #: app/views/modals/process-or-save-template.html:34
 #: app/views/modals/set-home-page-modal.html:47
 #: app/views/overview/_list-row-content.html:47
-#: app/views/set-limits.html:55
+#: app/views/set-limits.html:52
 #: app/views/util/oauth.html:12
 #: app/views/util/oauth.html:20
 msgid "Cancel"
@@ -920,7 +945,15 @@ msgstr ""
 msgid "Cancel deployment {{rcName}}?"
 msgstr ""
 
-#: app/views/storage.html:58
+#: app/scripts/constants.js:53
+msgid "Cancelled"
+msgstr ""
+
+#: app/scripts/directives/deployImage.js:302
+msgid "Cannot create {{kind}} \"{{name}}\"."
+msgstr ""
+
+#: app/views/storage.html:53
 msgid "Capacity"
 msgstr ""
 
@@ -929,12 +962,12 @@ msgstr ""
 msgid "Capacity:"
 msgstr ""
 
-#: app/scripts/constants.js:425
+#: app/scripts/constants.js:484
 msgid "Catalog"
 msgstr ""
 
 #: app/views/modals/set-home-page-modal.html:17
-msgid "Catalog Home"
+msgid "Catalog Home (Default)"
 msgstr ""
 
 #: app/views/directives/osc-routing.html:304
@@ -953,7 +986,7 @@ msgstr ""
 msgid "Change Of:"
 msgstr ""
 
-#: app/views/set-limits.html:18
+#: app/views/set-limits.html:15
 msgid "Changes will only apply to new pods."
 msgstr ""
 
@@ -997,23 +1030,23 @@ msgstr ""
 
 #: app/views/browse/config-maps.html:41
 #: app/views/browse/routes.html:41
-#: app/views/browse/stateful-sets.html:31
-#: app/views/builds.html:35
+#: app/views/browse/stateful-sets.html:38
+#: app/views/builds.html:30
 #: app/views/catalog/catalog.html:49
 #: app/views/catalog/category-content.html:47
-#: app/views/deployments.html:35
+#: app/views/deployments.html:30
 #: app/views/directives/events.html:60
 #: app/views/directives/events.html:67
-#: app/views/images.html:35
+#: app/views/images.html:30
 #: app/views/other-resources.html:38
 #: app/views/overview.html:115
-#: app/views/overview.html:279
-#: app/views/pods.html:35
+#: app/views/overview.html:274
+#: app/views/pods.html:30
 #: app/views/projects.html:95
-#: app/views/secrets.html:41
+#: app/views/secrets.html:36
 #: app/views/service-instances.html:35
-#: app/views/services.html:35
-#: app/views/storage.html:46
+#: app/views/services.html:30
+#: app/views/storage.html:41
 msgid "Clear Filter"
 msgstr ""
 
@@ -1029,6 +1062,10 @@ msgstr ""
 msgid "Clear {{ (type || 'Command') | upperFirst }}"
 msgstr ""
 
+#: app/scripts/constants.js:67
+msgid "Client state could not be verified"
+msgstr ""
+
 #: app/views/_alerts.html:13
 #: app/views/directives/edit-environment-from.html:141
 #: app/views/modals/about-compute-units-modal.html:54
@@ -1041,7 +1078,7 @@ msgstr ""
 msgid "Cluster"
 msgstr ""
 
-#: app/views/services.html:46
+#: app/views/services.html:41
 msgid "Cluster IP"
 msgstr ""
 
@@ -1084,6 +1121,14 @@ msgstr ""
 msgid "Command:"
 msgstr ""
 
+#: app/scripts/constants.js:55
+msgid "Complete"
+msgstr ""
+
+#: app/scripts/constants.js:59
+msgid "Completed"
+msgstr ""
+
 #: app/views/modals/about-compute-units-modal.html:6
 msgid "Compute Resources"
 msgstr ""
@@ -1097,16 +1142,21 @@ msgstr ""
 msgid "Config Change For:"
 msgstr ""
 
+#: app/scripts/constants.js:21
+msgid "Config Map"
+msgstr ""
+
 #: app/views/_volumes.html:97
 msgid "Config Map:"
 msgstr ""
 
-#: app/scripts/constants.js:359
+#: app/scripts/constants.js:418
 #: app/views/browse/config-maps.html:9
 msgid "Config Maps"
 msgstr ""
 
 #: app/views/browse/deployment-config.html:176
+#: app/views/deployments.html:105
 msgid "Config change"
 msgstr ""
 
@@ -1174,7 +1224,7 @@ msgstr ""
 msgid "Confirm User Change"
 msgstr ""
 
-#: app/scripts/constants.js:594
+#: app/scripts/constants.js:653
 msgid "Connect with other applications and data to enhance functionality without duplication."
 msgstr ""
 
@@ -1265,7 +1315,7 @@ msgstr ""
 msgid "Continue with deployment on failure"
 msgstr ""
 
-#: app/scripts/constants.js:577
+#: app/scripts/constants.js:636
 msgid "Continuous Integration & Deployment"
 msgstr ""
 
@@ -1274,6 +1324,10 @@ msgstr ""
 #: app/views/directives/_copy-to-clipboard.html:34
 #: app/views/directives/_copy-to-clipboard.html:38
 msgid "Copy to Clipboard"
+msgstr ""
+
+#: app/scripts/constants.js:60
+msgid "Cores"
 msgstr ""
 
 #: app/views/directives/deploy-image.html:199
@@ -1293,7 +1347,7 @@ msgid "Count"
 msgstr ""
 
 #: app/views/create-config-map.html:16
-#: app/views/create-persistent-volume-claim.html:17
+#: app/views/create-persistent-volume-claim.html:16
 #: app/views/create-route.html:28
 #: app/views/create/fromimage.html:399
 #: app/views/directives/create-secret.html:355
@@ -1345,22 +1399,22 @@ msgstr ""
 msgid "Create Route"
 msgstr ""
 
-#: app/views/overview.html:267
-#: app/views/pipelines.html:37
+#: app/views/overview.html:262
+#: app/views/pipelines.html:27
 msgid "Create Sample Pipeline"
 msgstr ""
 
 #: app/views/add-config-volume.html:53
 #: app/views/create-secret.html:11
-#: app/views/secrets.html:37
+#: app/views/secrets.html:32
 #: app/views/secrets.html:6
 msgid "Create Secret"
 msgstr ""
 
 #: app/views/attach-pvc.html:18
 #: app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:41
-#: app/views/storage.html:42
+#: app/views/storage.html:36
+#: app/views/storage.html:37
 #: app/views/storage.html:6
 #: app/views/storage.html:7
 msgid "Create Storage"
@@ -1396,21 +1450,25 @@ msgstr ""
 #: app/views/browse/config-maps.html:52
 #: app/views/browse/deployment-config.html:137
 #: app/views/browse/deployment.html:104
-#: app/views/browse/stateful-sets.html:43
-#: app/views/browse/stateful-sets.html:57
-#: app/views/builds.html:55
-#: app/views/deployments.html:135
-#: app/views/deployments.html:175
-#: app/views/deployments.html:203
-#: app/views/deployments.html:54
+#: app/views/browse/stateful-sets.html:50
+#: app/views/browse/stateful-sets.html:64
+#: app/views/builds.html:50
+#: app/views/deployments.html:130
+#: app/views/deployments.html:170
+#: app/views/deployments.html:198
+#: app/views/deployments.html:49
 #: app/views/other-resources.html:52
-#: app/views/secrets.html:55
+#: app/views/secrets.html:50
 #: app/views/service-instances.html:48
 msgid "Created"
 msgstr ""
 
 #: app/scripts/controllers/create/createFromImage.js:283
 msgid "Created application"
+msgstr ""
+
+#: app/scripts/directives/deployImage.js:311
+msgid "Created {{kind}} \"{{name}}\" successfully."
 msgstr ""
 
 #: app/scripts/directives/processTemplate.js:106
@@ -1433,6 +1491,10 @@ msgstr ""
 msgid "Credentials Store"
 msgstr ""
 
+#: app/scripts/constants.js:61
+msgid "Custom"
+msgstr ""
+
 #: app/views/directives/osc-routing.html:296
 msgid "Custom certificates cannot be used with passthrough termination."
 msgstr ""
@@ -1445,7 +1507,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/scripts/constants.js:583
+#: app/scripts/constants.js:642
 msgid "Data Stores"
 msgstr ""
 
@@ -1471,8 +1533,8 @@ msgstr ""
 msgid "Decimal Units"
 msgstr ""
 
-#: app/views/quota.html:223
-#: app/views/quota.html:230
+#: app/views/quota.html:218
+#: app/views/quota.html:225
 msgid "Default"
 msgstr ""
 
@@ -1550,11 +1612,15 @@ msgstr ""
 msgid "Deployment"
 msgstr ""
 
+#: app/scripts/constants.js:19
+msgid "Deployment Config"
+msgstr ""
+
 #: app/views/browse/_replica-set-details.html:49
 msgid "Deployment Config:"
 msgstr ""
 
-#: app/views/deployments.html:40
+#: app/views/deployments.html:35
 #: app/views/overview.html:182
 msgid "Deployment Configs"
 msgstr ""
@@ -1572,10 +1638,10 @@ msgstr ""
 msgid "Deployment:"
 msgstr ""
 
-#: app/scripts/constants.js:244
+#: app/scripts/constants.js:303
 #: app/scripts/controllers/deployment.js:41
 #: app/scripts/controllers/monitoring.js:46
-#: app/views/deployments.html:121
+#: app/views/deployments.html:116
 #: app/views/deployments.html:6
 #: app/views/monitoring.html:151
 #: app/views/overview.html:185
@@ -1589,7 +1655,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:179
+#: app/views/directives/osc-persistent-volume-claim.html:178
 msgid "Desired storage capacity."
 msgstr ""
 
@@ -1652,7 +1718,7 @@ msgstr ""
 msgid "Do you want to replace with the new content?"
 msgstr ""
 
-#: app/views/images.html:49
+#: app/views/images.html:44
 msgid "Docker Repo"
 msgstr ""
 
@@ -1683,7 +1749,7 @@ msgid "Duplicate key \"{{item.key}}\". Keys must be unique within the config map
 msgstr ""
 
 #: app/views/browse/build-config.html:186
-#: app/views/builds.html:54
+#: app/views/builds.html:49
 msgid "Duration"
 msgstr ""
 
@@ -1751,7 +1817,7 @@ msgid "Edit Parameters"
 msgstr ""
 
 #: app/views/browse/build.html:33
-#: app/views/pipelines.html:116
+#: app/views/pipelines.html:106
 msgid "Edit Pipeline"
 msgstr ""
 
@@ -1817,11 +1883,15 @@ msgstr ""
 msgid "Edit YAML"
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:123
+msgid "Empty"
+msgstr ""
+
 #: app/views/directives/logs/_log-viewer.html:88
 msgid "End of log"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:233
+#: app/views/directives/osc-persistent-volume-claim.html:232
 msgid "Enter a label and value to use for your storage."
 msgstr ""
 
@@ -1885,6 +1955,8 @@ msgstr ""
 msgid "Environment variables to supply to the hook pod's container."
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:127
+#: app/scripts/directives/podDonut.js:184
 #: app/views/directives/ui-ace-yaml.html:20
 #: app/views/overview/_notification-icon.html:10
 #: app/views/overview/_service-instance-row.html:21
@@ -1945,7 +2017,7 @@ msgstr ""
 msgid "External Hostname:"
 msgstr ""
 
-#: app/views/services.html:47
+#: app/views/services.html:42
 msgid "External IP"
 msgstr ""
 
@@ -1953,12 +2025,16 @@ msgstr ""
 msgid "External IPs:"
 msgstr ""
 
-#: app/scripts/constants.js:589
+#: app/scripts/constants.js:648
 msgid "Facilitate communication between applications and distributed processes with a messaging server."
 msgstr ""
 
 #: app/views/directives/edit-lifecycle-hook.html:124
 msgid "Fail the deployment if the hook fails."
+msgstr ""
+
+#: app/scripts/constants.js:57
+msgid "Failed"
 msgstr ""
 
 #: app/scripts/controllers/create/createFromImage.js:287
@@ -1982,7 +2058,13 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
+#: app/scripts/directives/processTemplateDialog.js:120
+msgid "Filter by Keyword"
+msgstr ""
+
+#: app/views/directives/events.html:12
 #: app/views/projects.html:32
+#: app/views/projects.html:36
 msgid "Filter by keyword"
 msgstr ""
 
@@ -2040,7 +2122,7 @@ msgstr ""
 msgid "Git Repository URL"
 msgstr ""
 
-#: app/scripts/constants.js:559
+#: app/scripts/constants.js:618
 msgid "Go"
 msgstr ""
 
@@ -2060,16 +2142,16 @@ msgstr ""
 msgid "Grace Period:"
 msgstr ""
 
+#: app/scripts/constants.js:41
+msgid "Group"
+msgstr ""
+
 #: app/views/overview/_service-linking-button.html:6
 msgid "Group service to {{service.metadata.name}}"
 msgstr ""
 
 #: app/views/edit/health-checks.html:9
 msgid "Health Checks:"
-msgstr ""
-
-#: app/views/directives/header/_navbar-utility.html:17
-msgid "Help"
 msgstr ""
 
 #: app/views/_tasks.html:25
@@ -2175,7 +2257,7 @@ msgstr ""
 msgid "If not specified, defaults to 1."
 msgstr ""
 
-#: app/views/quota.html:240
+#: app/views/quota.html:235
 msgid "If specified, the compute resource must have a request and limit that are both non-zero, where limit divided by request is less than or equal to the specified amount; this represents the max burst for the compute resource during execution."
 msgstr ""
 
@@ -2199,13 +2281,17 @@ msgstr ""
 msgid "If you need to create resources in this project, a project administrator can grant you additional access by running this command:"
 msgstr ""
 
+#: app/scripts/constants.js:64
+msgid "Ignore"
+msgstr ""
+
 #: app/views/directives/edit-lifecycle-hook.html:125
 msgid "Ignore hook failures and continue the deployment."
 msgstr ""
 
 #: app/views/_pod-template-container.html:16
 #: app/views/browse/deployment-config.html:173
-#: app/views/deployments.html:107
+#: app/views/deployments.html:102
 msgid "Image"
 msgstr ""
 
@@ -2261,7 +2347,7 @@ msgstr ""
 msgid "Image value set"
 msgstr ""
 
-#: app/scripts/constants.js:329
+#: app/scripts/constants.js:388
 #: app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
 msgid "Images"
@@ -2306,7 +2392,7 @@ msgstr ""
 msgid "Instance Name"
 msgstr ""
 
-#: app/scripts/constants.js:593
+#: app/scripts/constants.js:652
 msgid "Integration"
 msgstr ""
 
@@ -2345,11 +2431,11 @@ msgstr ""
 msgid "It will not delete the secret."
 msgstr ""
 
-#: app/scripts/constants.js:481
+#: app/scripts/constants.js:540
 msgid "Java"
 msgstr ""
 
-#: app/scripts/constants.js:528
+#: app/scripts/constants.js:587
 msgid "JavaScript"
 msgstr ""
 
@@ -2414,7 +2500,7 @@ msgstr ""
 msgid "Labels for this route."
 msgstr ""
 
-#: app/scripts/constants.js:476
+#: app/scripts/constants.js:535
 msgid "Languages"
 msgstr ""
 
@@ -2437,7 +2523,7 @@ msgstr ""
 msgid "Last 4 hours"
 msgstr ""
 
-#: app/views/builds.html:52
+#: app/views/builds.html:47
 msgid "Last Build"
 msgstr ""
 
@@ -2450,8 +2536,8 @@ msgstr ""
 msgid "Last State"
 msgstr ""
 
-#: app/views/deployments.html:133
-#: app/views/deployments.html:52
+#: app/views/deployments.html:128
+#: app/views/deployments.html:47
 msgid "Last Version"
 msgstr ""
 
@@ -2481,13 +2567,10 @@ msgstr ""
 #: app/views/browse/deployment-config.html:254
 #: app/views/browse/deployment-config.html:318
 #: app/views/browse/routes.html:12
-#: app/views/builds.html:9
-#: app/views/create-persistent-volume-claim.html:11
 #: app/views/create/fromimage.html:313
-#: app/views/deployments.html:9
 #: app/views/directives/create-secret.html:73
 #: app/views/directives/edit-lifecycle-hook.html:34
-#: app/views/directives/osc-persistent-volume-claim.html:225
+#: app/views/directives/osc-persistent-volume-claim.html:224
 #: app/views/directives/osc-persistent-volume-claim.html:56
 #: app/views/directives/osc-routing.html:252
 #: app/views/directives/osc-secrets.html:30
@@ -2498,20 +2581,11 @@ msgstr ""
 #: app/views/edit/deployment-config.html:35
 #: app/views/edit/deployment-config.html:39
 #: app/views/edit/health-checks.html:13
-#: app/views/images.html:9
-#: app/views/membership.html:17
-#: app/views/membership.html:52
+#: app/views/membership.html:47
 #: app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
 #: app/views/modals/create-secret.html:12
 #: app/views/modals/create-secret.html:9
-#: app/views/pipelines.html:9
-#: app/views/pods.html:9
-#: app/views/quota.html:9
-#: app/views/secrets.html:12
-#: app/views/services.html:9
-#: app/views/set-limits.html:13
-#: app/views/storage.html:13
 msgid "Learn More"
 msgstr ""
 
@@ -2520,7 +2594,6 @@ msgid "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:51
-#: app/views/pipelines.html:31
 msgid "Learn more about"
 msgstr ""
 
@@ -2533,11 +2606,11 @@ msgid "Lifecycle Action"
 msgstr ""
 
 #: app/views/_compute-resource.html:55
-#: app/views/quota.html:232
+#: app/views/quota.html:227
 msgid "Limit"
 msgstr ""
 
-#: app/views/quota.html:197
+#: app/views/quota.html:192
 msgid "Limit Range"
 msgstr ""
 
@@ -2558,7 +2631,7 @@ msgstr ""
 msgid "Limits"
 msgstr ""
 
-#: app/views/quota.html:20
+#: app/views/quota.html:15
 msgid "Limits resource usage across a set of projects."
 msgstr ""
 
@@ -2617,15 +2690,15 @@ msgstr ""
 #: app/views/browse/service-instance.html:11
 #: app/views/browse/service.html:6
 #: app/views/browse/stateful-set.html:55
-#: app/views/browse/stateful-sets.html:22
-#: app/views/builds.html:26
+#: app/views/browse/stateful-sets.html:29
+#: app/views/builds.html:21
 #: app/views/catalog/catalog.html:1
 #: app/views/catalog/category-content.html:1
 #: app/views/create-from-url.html:6
 #: app/views/create-route.html:13
 #: app/views/create-secret.html:6
 #: app/views/create/fromimage.html:6
-#: app/views/deployments.html:25
+#: app/views/deployments.html:20
 #: app/views/directives/events.html:1
 #: app/views/edit/autoscaler.html:7
 #: app/views/edit/config-map.html:14
@@ -2633,18 +2706,18 @@ msgstr ""
 #: app/views/edit/health-checks.html:7
 #: app/views/edit/route.html:9
 #: app/views/edit/yaml.html:6
-#: app/views/images.html:26
+#: app/views/images.html:21
 #: app/views/newfromtemplate.html:6
 #: app/views/overview.html:36
-#: app/views/pipelines.html:22
-#: app/views/pods.html:26
+#: app/views/pipelines.html:17
+#: app/views/pods.html:21
 #: app/views/projects.html:15
-#: app/views/quota.html:15
-#: app/views/secrets.html:29
+#: app/views/quota.html:10
+#: app/views/secrets.html:24
 #: app/views/service-instances.html:26
-#: app/views/services.html:26
+#: app/views/services.html:21
 #: app/views/set-limits.html:7
-#: app/views/storage.html:31
+#: app/views/storage.html:26
 msgid "Loading..."
 msgstr ""
 
@@ -2684,6 +2757,7 @@ msgstr ""
 msgid "Making code changes"
 msgstr ""
 
+#: app/scripts/constants.js:15
 #: app/views/browse/build-config.html:438
 #: app/views/browse/deployment-config.html:252
 msgid "Manual"
@@ -2693,17 +2767,21 @@ msgstr ""
 msgid "Manual build"
 msgstr ""
 
+#: app/views/directives/notifications/notification-body.html:97
+msgid "Mark Read"
+msgstr ""
+
 #: app/views/overview/_service-instance-row.html:25
 msgid "Marked for Deletion"
 msgstr ""
 
-#: app/views/quota.html:156
-#: app/views/quota.html:218
-#: app/views/quota.html:65
+#: app/views/quota.html:151
+#: app/views/quota.html:213
+#: app/views/quota.html:60
 msgid "Max"
 msgstr ""
 
-#: app/views/quota.html:237
+#: app/views/quota.html:232
 msgid "Max Limit/Request"
 msgstr ""
 
@@ -2736,7 +2814,7 @@ msgstr ""
 msgid "Max pods must be greater than or equal to <span ng-if=\"autoscaling.minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}}."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:152
+#: app/views/directives/osc-persistent-volume-claim.html:151
 msgid "Max:"
 msgstr ""
 
@@ -2756,7 +2834,7 @@ msgstr ""
 msgid "Medium:"
 msgstr ""
 
-#: app/scripts/constants.js:350
+#: app/scripts/constants.js:409
 #: app/views/membership.html:14
 msgid "Membership"
 msgstr ""
@@ -2767,15 +2845,23 @@ msgstr ""
 msgid "Memory"
 msgstr ""
 
-#: app/views/quota.html:145
-#: app/views/quota.html:53
+#: app/scripts/constants.js:29
+msgid "Memory (Limit)"
+msgstr ""
+
+#: app/scripts/constants.js:27
+msgid "Memory (Request)"
+msgstr ""
+
+#: app/views/quota.html:140
+#: app/views/quota.html:48
 msgid "Memory <small>Limit</small>"
 msgstr ""
 
-#: app/views/quota.html:129
-#: app/views/quota.html:137
-#: app/views/quota.html:37
-#: app/views/quota.html:45
+#: app/views/quota.html:124
+#: app/views/quota.html:132
+#: app/views/quota.html:32
+#: app/views/quota.html:40
 msgid "Memory <small>Request</small>"
 msgstr ""
 
@@ -2798,6 +2884,10 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#: app/views/directives/notifications/notification-body.html:91
+msgid "Message Unread."
+msgstr ""
+
 #: app/views/browse/_pod-details.html:18
 msgid "Message:"
 msgstr ""
@@ -2806,7 +2896,7 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: app/scripts/constants.js:588
+#: app/scripts/constants.js:647
 msgid "Messaging"
 msgstr ""
 
@@ -2824,6 +2914,10 @@ msgstr ""
 msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
 msgstr ""
 
+#: app/scripts/constants.js:66
+msgid "Mid"
+msgstr ""
+
 #: app/views/edit/deployment-config.html:243
 msgid "Mid Lifecycle Hook"
 msgstr ""
@@ -2832,7 +2926,7 @@ msgstr ""
 msgid "Mid hooks execute after the previous deployment is scaled down to zero and before the first pod of the new deployment is created."
 msgstr ""
 
-#: app/views/quota.html:212
+#: app/views/quota.html:207
 msgid "Min"
 msgstr ""
 
@@ -2861,7 +2955,7 @@ msgstr ""
 msgid "Min pods must be greater than or equal to 1."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:149
+#: app/views/directives/osc-persistent-volume-claim.html:148
 msgid "Min:"
 msgstr ""
 
@@ -2873,11 +2967,11 @@ msgstr ""
 msgid "Mode:"
 msgstr ""
 
-#: app/scripts/constants.js:572
+#: app/scripts/constants.js:631
 msgid "Model, automate, and orchestrate business processes across applications, services, and data."
 msgstr ""
 
-#: app/scripts/constants.js:398
+#: app/scripts/constants.js:457
 #: app/views/monitoring.html:7
 msgid "Monitoring"
 msgstr ""
@@ -2928,7 +3022,7 @@ msgstr ""
 #: app/views/_compute-resource.html:32
 #: app/views/directives/_edit-probe.html:115
 #: app/views/directives/_edit-probe.html:83
-#: app/views/directives/osc-persistent-volume-claim.html:189
+#: app/views/directives/osc-persistent-volume-claim.html:188
 #: app/views/directives/osc-routing-service.html:55
 #: app/views/edit/deployment-config.html:133
 #: app/views/edit/deployment-config.html:165
@@ -2936,7 +3030,7 @@ msgstr ""
 msgid "Must be a number."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:194
+#: app/views/directives/osc-persistent-volume-claim.html:193
 msgid "Must be a positive number."
 msgstr ""
 
@@ -2966,13 +3060,13 @@ msgstr ""
 #: app/views/browse/build-config.html:472
 #: app/views/browse/config-maps.html:51
 #: app/views/browse/deployment.html:102
-#: app/views/browse/stateful-sets.html:41
-#: app/views/builds.html:51
+#: app/views/browse/stateful-sets.html:48
+#: app/views/builds.html:46
 #: app/views/create/fromimage.html:22
-#: app/views/deployments.html:132
-#: app/views/deployments.html:173
-#: app/views/deployments.html:201
-#: app/views/deployments.html:51
+#: app/views/deployments.html:127
+#: app/views/deployments.html:168
+#: app/views/deployments.html:196
+#: app/views/deployments.html:46
 #: app/views/directives/deploy-image.html:115
 #: app/views/directives/edit-config-map.html:5
 #: app/views/directives/edit-environment-variables.html:15
@@ -2983,14 +3077,14 @@ msgstr ""
 #: app/views/directives/next-steps.html:108
 #: app/views/directives/osc-persistent-volume-claim.html:64
 #: app/views/directives/osc-routing.html:6
-#: app/views/images.html:48
-#: app/views/membership.html:167
-#: app/views/membership.html:65
+#: app/views/images.html:43
+#: app/views/membership.html:162
+#: app/views/membership.html:60
 #: app/views/other-resources.html:51
-#: app/views/secrets.html:53
+#: app/views/secrets.html:48
 #: app/views/service-instances.html:45
-#: app/views/services.html:45
-#: app/views/storage.html:56
+#: app/views/services.html:40
+#: app/views/storage.html:51
 msgid "Name"
 msgstr ""
 
@@ -3001,7 +3095,7 @@ msgstr ""
 #: app/views/directives/create-secret.html:39
 #: app/views/directives/edit-config-map.html:33
 #: app/views/directives/osc-autoscaling.html:28
-#: app/views/directives/osc-persistent-volume-claim.html:87
+#: app/views/directives/osc-persistent-volume-claim.html:86
 msgid "Name is required."
 msgstr ""
 
@@ -3050,8 +3144,8 @@ msgid "Next"
 msgstr ""
 
 #: app/views/directives/pods-table.html:49
-#: app/views/pods.html:31
-#: app/views/pods.html:32
+#: app/views/pods.html:26
+#: app/views/pods.html:27
 msgid "No"
 msgstr ""
 
@@ -3067,16 +3161,16 @@ msgstr ""
 msgid "No bindings"
 msgstr ""
 
-#: app/views/builds.html:66
+#: app/views/builds.html:61
 msgid "No builds"
 msgstr ""
 
-#: app/views/builds.html:32
+#: app/views/builds.html:27
 msgid "No builds have been added to project {{projectName}}."
 msgstr ""
 
 #: app/views/browse/build-config.html:82
-#: app/views/builds.html:31
+#: app/views/builds.html:26
 #: app/views/overview/_builds.html:10
 msgid "No builds."
 msgstr ""
@@ -3109,7 +3203,7 @@ msgstr ""
 msgid "No deployments for <a ng-href=\"{{row.apiObject | navigateResourceURL}}\">{{row.apiObject.metadata.name}}</a>"
 msgstr ""
 
-#: app/views/deployments.html:32
+#: app/views/deployments.html:27
 msgid "No deployments have been added to project"
 msgstr ""
 
@@ -3117,7 +3211,7 @@ msgstr ""
 msgid "No deployments to show"
 msgstr ""
 
-#: app/views/deployments.html:31
+#: app/views/deployments.html:26
 #: app/views/overview/_list-row-empty-state.html:1
 msgid "No deployments."
 msgstr ""
@@ -3141,11 +3235,11 @@ msgstr ""
 msgid "No image metadata found."
 msgstr ""
 
-#: app/views/images.html:32
+#: app/views/images.html:27
 msgid "No image streams have been added to project"
 msgstr ""
 
-#: app/views/images.html:31
+#: app/views/images.html:26
 msgid "No image streams."
 msgstr ""
 
@@ -3171,29 +3265,29 @@ msgstr ""
 msgid "No metrics to display."
 msgstr ""
 
-#: app/views/storage.html:37
+#: app/views/storage.html:32
 msgid "No persistent volume claims have been added to project {{projectName}}."
 msgstr ""
 
 #: app/views/attach-pvc.html:10
-#: app/views/storage.html:36
+#: app/views/storage.html:31
 msgid "No persistent volume claims."
 msgstr ""
 
-#: app/views/pipelines.html:84
+#: app/views/pipelines.html:74
 msgid "No pipeline builds have run for {{buildConfigName}}."
 msgstr ""
 
-#: app/views/overview.html:295
+#: app/views/overview.html:290
 msgid "No pipeline runs."
 msgstr ""
 
-#: app/views/pipelines.html:29
+#: app/views/pipelines.html:24
 msgid "No pipelines have been added to project {{projectName}}."
 msgstr ""
 
 #: app/views/overview.html:256
-#: app/views/pipelines.html:26
+#: app/views/pipelines.html:21
 msgid "No pipelines."
 msgstr ""
 
@@ -3229,7 +3323,7 @@ msgstr ""
 msgid "No running containers"
 msgstr ""
 
-#: app/views/secrets.html:35
+#: app/views/secrets.html:30
 msgid "No secrets have been added to project"
 msgstr ""
 
@@ -3237,15 +3331,15 @@ msgstr ""
 msgid "No secrets or config maps have been added as Environment From."
 msgstr ""
 
-#: app/views/secrets.html:34
+#: app/views/secrets.html:29
 msgid "No secrets."
 msgstr ""
 
-#: app/views/services.html:32
+#: app/views/services.html:27
 msgid "No services have been added to project"
 msgstr ""
 
-#: app/views/services.html:31
+#: app/views/services.html:26
 msgid "No services."
 msgstr ""
 
@@ -3253,11 +3347,11 @@ msgstr ""
 msgid "No stages have started."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:28
+#: app/views/browse/stateful-sets.html:35
 msgid "No stateful sets have been added to project {{projectName}}."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:27
+#: app/views/browse/stateful-sets.html:34
 msgid "No stateful sets."
 msgstr ""
 
@@ -3282,13 +3376,18 @@ msgid "Node:"
 msgstr ""
 
 #: app/scripts/directives/oscRouting.js:100
-#: app/views/builds.html:75
+#: app/views/builds.html:70
 msgid "None"
 msgstr ""
 
 #: app/views/directives/events-badge.html:1
 #: app/views/directives/events-badge.html:2
 msgid "Normal"
+msgstr ""
+
+#: app/scripts/directives/podDonut.js:125
+#: app/scripts/directives/podDonut.js:195
+msgid "Not Ready"
 msgstr ""
 
 #: app/views/_pod-template.html:14
@@ -3303,6 +3402,7 @@ msgstr ""
 msgid "Note: This setting is browser-specific and will not be maintained across browsers."
 msgstr ""
 
+#: app/scripts/directives/notifications/notificationDrawerWrapper.js:262
 #: app/views/directives/notifications/notification-counter.html:3
 msgid "Notifications"
 msgstr ""
@@ -3325,11 +3425,6 @@ msgstr ""
 
 #: app/views/directives/_probe.html:16
 msgid "Open socket on port {{probe.tcpSocket.port}}"
-msgstr ""
-
-#: app/views/overview.html:264
-#: app/views/pipelines.html:34
-msgid "OpenShift Pipeline Plugin"
 msgstr ""
 
 #: app/views/projects.html:174
@@ -3360,14 +3455,14 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: app/views/deployments.html:194
+#: app/views/deployments.html:189
 msgid "Other Replication Controllers"
 msgstr ""
 
-#: app/scripts/constants.js:380
+#: app/scripts/constants.js:439
 #: app/views/other-resources.html:5
 #: app/views/overview.html:137
-#: app/views/overview.html:323
+#: app/views/overview.html:318
 msgid "Other Resources"
 msgstr ""
 
@@ -3387,11 +3482,11 @@ msgstr ""
 msgid "Over limit of"
 msgstr ""
 
-#: app/scripts/constants.js:233
+#: app/scripts/constants.js:292
 msgid "Overview"
 msgstr ""
 
-#: app/scripts/constants.js:543
+#: app/scripts/constants.js:602
 msgid "PHP"
 msgstr ""
 
@@ -3461,6 +3556,7 @@ msgstr ""
 msgid "Pausing lets you make changes without triggering a rollout. You can resume rollouts at any time."
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:129
 #: app/views/browse/routes.html:87
 #: app/views/directives/traffic-table.html:51
 #: app/views/overview/_service-instance-row.html:29
@@ -3471,11 +3567,11 @@ msgstr ""
 msgid "Percentage of traffic sent to each service. Drag the slider to adjust the values or"
 msgstr ""
 
-#: app/scripts/constants.js:538
+#: app/scripts/constants.js:597
 msgid "Perl"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:129
+#: app/views/directives/osc-persistent-volume-claim.html:128
 msgid "Permissions to the mounted volume."
 msgstr ""
 
@@ -3489,17 +3585,15 @@ msgstr ""
 
 #: app/scripts/controllers/overview.js:192
 #: app/views/directives/_build-pipeline-collapsed.html:5
-#: app/views/overview.html:292
+#: app/views/overview.html:287
 msgid "Pipeline"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:52
-#: app/views/overview.html:262
-#: app/views/pipelines.html:32
 msgid "Pipeline Builds"
 msgstr ""
 
-#: app/scripts/constants.js:321
+#: app/scripts/constants.js:380
 #: app/views/overview/_list-row-content.html:18
 #: app/views/overview/_list-row-expanded.html:153
 #: app/views/overview/_pipelines.html:2
@@ -3539,7 +3633,7 @@ msgstr ""
 msgid "Pod status:"
 msgstr ""
 
-#: app/scripts/constants.js:267
+#: app/scripts/constants.js:326
 #: app/views/browse/_replica-set-details.html:217
 #: app/views/browse/service.html:96
 #: app/views/browse/stateful-set.html:126
@@ -3559,7 +3653,7 @@ msgid "Port"
 msgstr ""
 
 #: app/views/directives/deploy-image.html:96
-#: app/views/services.html:48
+#: app/views/services.html:43
 msgid "Ports"
 msgstr ""
 
@@ -3577,6 +3671,10 @@ msgstr ""
 
 #: app/views/browse/_build-details.html:137
 msgid "Post-Commit Hooks"
+msgstr ""
+
+#: app/scripts/constants.js:65
+msgid "Pre"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:230
@@ -3603,7 +3701,7 @@ msgstr ""
 msgid "Project Name"
 msgstr ""
 
-#: app/views/quota.html:109
+#: app/views/quota.html:104
 msgid "Project Quota"
 msgstr ""
 
@@ -3616,13 +3714,18 @@ msgstr ""
 msgid "Provider:"
 msgstr ""
 
-#: app/views/overview.html:365
+#: app/views/overview.html:360
 #: app/views/service-instances.html:10
 msgid "Provisioned Services"
 msgstr ""
 
 #: app/views/directives/osc-routing.html:61
 msgid "Public hostname for the route."
+msgstr ""
+
+#: app/scripts/directives/podDonut.js:128
+#: app/scripts/directives/podDonut.js:190
+msgid "Pulling"
 msgstr ""
 
 #: app/views/browse/_build-details.html:99
@@ -3633,25 +3736,37 @@ msgstr ""
 msgid "Push To"
 msgstr ""
 
-#: app/scripts/constants.js:548
+#: app/scripts/constants.js:607
 msgid "Python"
 msgstr ""
 
-#: app/scripts/constants.js:346
+#: app/scripts/constants.js:405
 #: app/views/quota.html:6
 msgid "Quota"
 msgstr ""
 
-#: app/views/quota.html:239
+#: app/views/quota.html:234
 msgid "Ratio"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:125
+#: app/views/directives/osc-persistent-volume-claim.html:124
 msgid "Read Only"
 msgstr ""
 
 #: app/views/attach-pvc.html:182
 msgid "Read only"
+msgstr ""
+
+#: app/scripts/constants.js:51
+msgid "Read-Only-Many"
+msgstr ""
+
+#: app/scripts/constants.js:50
+msgid "Read-Write-Many"
+msgstr ""
+
+#: app/scripts/constants.js:49
+msgid "Read-Write-Once"
 msgstr ""
 
 #: app/views/edit/health-checks.html:19
@@ -3693,39 +3808,43 @@ msgstr ""
 msgid "Receiving Traffic"
 msgstr ""
 
-#: app/views/pipelines.html:102
+#: app/views/pipelines.html:92
 msgid "Recent Runs"
 msgstr ""
 
-#: app/scripts/constants.js:488
+#: app/scripts/constants.js:17
+msgid "Recreate"
+msgstr ""
+
+#: app/scripts/constants.js:547
 msgid "Red Hat JBoss A-MQ"
 msgstr ""
 
-#: app/scripts/constants.js:492
+#: app/scripts/constants.js:551
 msgid "Red Hat JBoss BPM Suite"
 msgstr ""
 
-#: app/scripts/constants.js:496
+#: app/scripts/constants.js:555
 msgid "Red Hat JBoss BRMS"
 msgstr ""
 
-#: app/scripts/constants.js:500
+#: app/scripts/constants.js:559
 msgid "Red Hat JBoss Data Grid"
 msgstr ""
 
-#: app/scripts/constants.js:504
+#: app/scripts/constants.js:563
 msgid "Red Hat JBoss EAP"
 msgstr ""
 
-#: app/scripts/constants.js:508
+#: app/scripts/constants.js:567
 msgid "Red Hat JBoss Fuse"
 msgstr ""
 
-#: app/scripts/constants.js:512
+#: app/scripts/constants.js:571
 msgid "Red Hat JBoss Web Server (Tomcat)"
 msgstr ""
 
-#: app/scripts/constants.js:516
+#: app/scripts/constants.js:575
 msgid "Red Hat Single Sign-On"
 msgstr ""
 
@@ -3801,17 +3920,17 @@ msgstr ""
 msgid "Replace"
 msgstr ""
 
-#: app/views/deployments.html:166
+#: app/views/deployments.html:161
 #: app/views/overview.html:223
 msgid "Replica Sets"
 msgstr ""
 
 #: app/views/browse/deployment.html:103
-#: app/views/browse/stateful-sets.html:42
+#: app/views/browse/stateful-sets.html:49
 #: app/views/create/fromimage.html:324
-#: app/views/deployments.html:134
-#: app/views/deployments.html:174
-#: app/views/deployments.html:202
+#: app/views/deployments.html:129
+#: app/views/deployments.html:169
+#: app/views/deployments.html:197
 msgid "Replicas"
 msgstr ""
 
@@ -3844,7 +3963,7 @@ msgstr ""
 
 #: app/views/_compute-resource.html:53
 #: app/views/_edit-request-limit.html:18
-#: app/views/quota.html:225
+#: app/views/quota.html:220
 msgid "Request"
 msgstr ""
 
@@ -3858,12 +3977,12 @@ msgid "Requests and"
 msgstr ""
 
 #: app/scripts/controllers/overview.js:189
-#: app/views/quota.html:154
-#: app/views/quota.html:62
+#: app/views/quota.html:149
+#: app/views/quota.html:57
 msgid "Resource Type"
 msgstr ""
 
-#: app/scripts/constants.js:340
+#: app/scripts/constants.js:399
 msgid "Resources"
 msgstr ""
 
@@ -3881,6 +4000,10 @@ msgstr ""
 #: app/views/browse/deployment.html:21
 #: app/views/browse/deployment.html:79
 msgid "Resume Rollouts"
+msgstr ""
+
+#: app/scripts/constants.js:63
+msgid "Retry"
 msgstr ""
 
 #: app/views/directives/lifecycle-hook.html:18
@@ -3903,12 +4026,20 @@ msgstr ""
 msgid "Revision:"
 msgstr ""
 
-#: app/views/membership.html:68
+#: app/views/membership.html:63
 msgid "Roles"
 msgstr ""
 
 #: app/views/browse/_replica-set-details.html:41
 msgid "Roll Back"
+msgstr ""
+
+#: app/scripts/constants.js:16
+msgid "Rolling"
+msgstr ""
+
+#: app/scripts/constants.js:24
+msgid "Route"
 msgstr ""
 
 #: app/views/overview/_networking.html:41
@@ -3920,7 +4051,7 @@ msgstr ""
 msgid "Route target port is set to \""
 msgstr ""
 
-#: app/scripts/constants.js:281
+#: app/scripts/constants.js:340
 #: app/views/browse/routes.html:9
 msgid "Routes"
 msgstr ""
@@ -3954,7 +4085,7 @@ msgstr ""
 msgid "Routing is a way to make your application publicly visible. Otherwise you may only be able to access your application by its IP address, if allowed by the system administrator."
 msgstr ""
 
-#: app/scripts/constants.js:553
+#: app/scripts/constants.js:612
 msgid "Ruby"
 msgstr ""
 
@@ -3972,6 +4103,11 @@ msgstr ""
 
 #: app/views/edit/build-config.html:513
 msgid "Run policy type"
+msgstr ""
+
+#: app/scripts/constants.js:56
+#: app/scripts/directives/podDonut.js:124
+msgid "Running"
 msgstr ""
 
 #: app/views/directives/edit-lifecycle-hook.html:32
@@ -4039,13 +4175,17 @@ msgstr ""
 msgid "Scaling may be affected."
 msgstr ""
 
-#: app/views/quota.html:114
-#: app/views/quota.html:22
+#: app/views/quota.html:109
+#: app/views/quota.html:17
 msgid "Scopes:"
 msgstr ""
 
 #: app/views/directives/build-hooks.html:18
 msgid "Script:"
+msgstr ""
+
+#: app/scripts/constants.js:68
+msgid "Search Catalog"
 msgstr ""
 
 #: app/views/directives/create-secret.html:14
@@ -4078,7 +4218,7 @@ msgstr ""
 msgid "Secret:"
 msgstr ""
 
-#: app/scripts/constants.js:368
+#: app/scripts/constants.js:427
 #: app/views/secrets.html:9
 msgid "Secrets"
 msgstr ""
@@ -4139,7 +4279,7 @@ msgid ""
 "                    The contents of each file will be the value of the key."
 msgstr ""
 
-#: app/views/services.html:49
+#: app/views/services.html:44
 msgid "Selector"
 msgstr ""
 
@@ -4166,6 +4306,10 @@ msgstr ""
 #: app/views/overview/_service-header.html:3
 #: app/views/overview/_service-header.html:4
 msgid "Service"
+msgstr ""
+
+#: app/scripts/constants.js:43
+msgid "Service Account"
 msgstr ""
 
 #: app/views/directives/traffic-table.html:31
@@ -4202,7 +4346,7 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr ""
 
-#: app/scripts/constants.js:274
+#: app/scripts/constants.js:333
 #: app/views/services.html:6
 msgid "Services"
 msgstr ""
@@ -4233,7 +4377,7 @@ msgstr ""
 msgid "Severity"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:119
+#: app/views/directives/osc-persistent-volume-claim.html:118
 msgid "Shared Access"
 msgstr ""
 
@@ -4257,7 +4401,7 @@ msgstr ""
 msgid "Show Obfuscated Secret"
 msgstr ""
 
-#: app/views/membership.html:286
+#: app/views/membership.html:281
 msgid "Show hidden roles"
 msgstr ""
 
@@ -4269,19 +4413,19 @@ msgstr ""
 msgid "Showing <strong>{{overview.filteredSize}}</strong> of <strong>{{overview.size}}</strong> items"
 msgstr ""
 
-#: app/scripts/constants.js:599
+#: app/scripts/constants.js:658
 msgid "Single Sign-On"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:113
+#: app/views/directives/osc-persistent-volume-claim.html:112
 msgid "Single User"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:144
+#: app/views/directives/osc-persistent-volume-claim.html:143
 msgid "Size"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:184
+#: app/views/directives/osc-persistent-volume-claim.html:183
 msgid "Size is required."
 msgstr ""
 
@@ -4294,7 +4438,7 @@ msgstr ""
 msgid "Sort by"
 msgstr ""
 
-#: app/views/builds.html:57
+#: app/views/builds.html:52
 msgid "Source"
 msgstr ""
 
@@ -4321,8 +4465,8 @@ msgstr ""
 msgid "Source Repo:"
 msgstr ""
 
-#: app/views/pipelines.html:61
-#: app/views/pipelines.html:65
+#: app/views/pipelines.html:51
+#: app/views/pipelines.html:55
 msgid "Source Repository:"
 msgstr ""
 
@@ -4364,10 +4508,10 @@ msgstr ""
 #: app/views/browse/build-config.html:125
 #: app/views/browse/build-config.html:16
 #: app/views/browse/build-config.html:35
-#: app/views/overview.html:284
+#: app/views/overview.html:279
 #: app/views/overview/_list-row-actions.html:12
 #: app/views/overview/_list-row-empty-state.html:25
-#: app/views/pipelines.html:52
+#: app/views/pipelines.html:42
 msgid "Start Pipeline"
 msgstr ""
 
@@ -4388,9 +4532,9 @@ msgstr ""
 msgid "State:"
 msgstr ""
 
-#: app/scripts/constants.js:260
+#: app/scripts/constants.js:319
 #: app/scripts/controllers/monitoring.js:53
-#: app/views/browse/stateful-sets.html:6
+#: app/views/browse/stateful-sets.html:7
 #: app/views/monitoring.html:326
 #: app/views/overview.html:233
 msgid "Stateful Sets"
@@ -4402,11 +4546,11 @@ msgstr ""
 #: app/views/browse/deployment-config.html:136
 #: app/views/browse/deployment-config.html:153
 #: app/views/browse/service-instance.html:67
-#: app/views/builds.html:53
-#: app/views/deployments.html:53
+#: app/views/builds.html:48
+#: app/views/deployments.html:48
 #: app/views/directives/pods-table.html:9
 #: app/views/service-instances.html:47
-#: app/views/storage.html:57
+#: app/views/storage.html:52
 msgid "Status"
 msgstr ""
 
@@ -4415,8 +4559,8 @@ msgstr ""
 msgid "Status Reason:"
 msgstr ""
 
-#: app/views/quota.html:162
-#: app/views/quota.html:71
+#: app/views/quota.html:157
+#: app/views/quota.html:66
 msgid "Status has not been reported on this quota usage record.  Any resources limited by this quota record can not be allocated."
 msgstr ""
 
@@ -4436,10 +4580,14 @@ msgstr ""
 msgid "Stop Following"
 msgstr ""
 
-#: app/scripts/constants.js:388
+#: app/scripts/constants.js:447
 #: app/views/attach-pvc.html:37
 #: app/views/storage.html:10
 msgid "Storage"
+msgstr ""
+
+#: app/scripts/constants.js:30
+msgid "Storage (Request)"
 msgstr ""
 
 #: app/views/directives/osc-persistent-volume-claim.html:11
@@ -4455,16 +4603,16 @@ msgstr ""
 msgid "Storage quota limit has been reached. You will not be able to create any new storage."
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:210
+#: app/views/directives/osc-persistent-volume-claim.html:209
 msgid "Storage quota will be exceeded."
 msgstr ""
 
-#: app/scripts/constants.js:584
+#: app/scripts/constants.js:643
 msgid "Store and manage collections of data."
 msgstr ""
 
 #: app/views/create/fromimage.html:302
-#: app/views/deployments.html:136
+#: app/views/deployments.html:131
 msgid "Strategy"
 msgstr ""
 
@@ -4481,12 +4629,24 @@ msgstr ""
 msgid "Subpath"
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:130
+msgid "Succeeded"
+msgstr ""
+
 #: app/views/util/oauth.html:19
 msgid "Switch Users"
 msgstr ""
 
 #: app/views/directives/_edit-command.html:93
 msgid "Switch to {{multiline ? 'Single-line' : 'Multiline'}} Editor"
+msgstr ""
+
+#: app/scripts/constants.js:47
+msgid "System Group"
+msgstr ""
+
+#: app/scripts/constants.js:45
+msgid "System User"
 msgstr ""
 
 #: app/views/browse/route.html:155
@@ -4519,7 +4679,7 @@ msgstr ""
 msgid "Tag image as"
 msgstr ""
 
-#: app/views/images.html:50
+#: app/views/images.html:45
 msgid "Tags"
 msgstr ""
 
@@ -4551,7 +4711,7 @@ msgstr ""
 msgid "Target port for traffic."
 msgstr ""
 
-#: app/scripts/constants.js:566
+#: app/scripts/constants.js:625
 msgid "Technologies"
 msgstr ""
 
@@ -4569,6 +4729,12 @@ msgstr ""
 
 #: app/views/browse/pod.html:112
 msgid "Terminal"
+msgstr ""
+
+#: app/scripts/constants.js:58
+#: app/scripts/directives/podDonut.js:131
+#: app/scripts/directives/podDonut.js:179
+msgid "Terminating"
 msgstr ""
 
 #: app/views/browse/routes.html:111
@@ -4675,7 +4841,7 @@ msgstr ""
 msgid "The custom strategy allows you to specify container image that will provide your own deployment behavior."
 msgstr ""
 
-#: app/views/quota.html:233
+#: app/views/quota.html:228
 msgid "The default limit defines the maximum amount of compute resource the container may have access to during execution if no limit is specified. If no request is made for the compute resource on the container or via a Default Request value, the container will default to request the limit."
 msgstr ""
 
@@ -4687,7 +4853,7 @@ msgstr ""
 msgid "The destination CA certificate will be removed from the route."
 msgstr ""
 
-#: app/views/builds.html:35
+#: app/views/builds.html:30
 msgid "The filter is hiding all builds."
 msgstr ""
 
@@ -4695,15 +4861,15 @@ msgstr ""
 msgid "The filter is hiding all config maps."
 msgstr ""
 
-#: app/views/deployments.html:35
+#: app/views/deployments.html:30
 msgid "The filter is hiding all deployments."
 msgstr ""
 
-#: app/views/images.html:35
+#: app/views/images.html:30
 msgid "The filter is hiding all image streams."
 msgstr ""
 
-#: app/views/storage.html:46
+#: app/views/storage.html:41
 msgid "The filter is hiding all persistent volume claims."
 msgstr ""
 
@@ -4719,11 +4885,11 @@ msgstr ""
 msgid "The filter is hiding all routes."
 msgstr ""
 
-#: app/views/secrets.html:41
+#: app/views/secrets.html:36
 msgid "The filter is hiding all secrets."
 msgstr ""
 
-#: app/views/browse/stateful-sets.html:31
+#: app/views/browse/stateful-sets.html:38
 msgid "The filter is hiding all stateful sets."
 msgstr ""
 
@@ -4744,11 +4910,12 @@ msgstr ""
 msgid "The lower limit for the number of pods that can be set by the autoscaler."
 msgstr ""
 
+#: app/scripts/constants.js:37
 #: app/views/_edit-request-limit.html:32
 msgid "The maximum amount of"
 msgstr ""
 
-#: app/views/quota.html:219
+#: app/views/quota.html:214
 msgid "The maximum amount of this compute resource that can be requested.  The limit must also be below the maximum value."
 msgstr ""
 
@@ -4764,11 +4931,12 @@ msgstr ""
 msgid "The maximum web console log size has been reached. Use the command-line interface or <a href=\"\" ng-click=\"restartLogs()\">reload</a> the log to see new messages."
 msgstr ""
 
+#: app/scripts/constants.js:35
 #: app/views/_edit-request-limit.html:19
 msgid "The minimum amount of"
 msgstr ""
 
-#: app/views/quota.html:213
+#: app/views/quota.html:208
 msgid "The minimum amount of this compute resource that can be requested."
 msgstr ""
 
@@ -4854,7 +5022,7 @@ msgstr ""
 msgid "There are no limit ranges set on this project."
 msgstr ""
 
-#: app/views/quota.html:15
+#: app/views/quota.html:10
 msgid "There are no resource quotas set on this project."
 msgstr ""
 
@@ -4904,7 +5072,7 @@ msgid ""
 "            rollouts from running until the deployment is resumed."
 msgstr ""
 
-#: app/views/overview.html:306
+#: app/views/overview.html:301
 msgid "This pipeline is not associated with any deployments."
 msgstr ""
 
@@ -5068,7 +5236,7 @@ msgid "Traffic Split"
 msgstr ""
 
 #: app/views/browse/deployment-config.html:138
-#: app/views/deployments.html:55
+#: app/views/deployments.html:50
 msgid "Trigger"
 msgstr ""
 
@@ -5085,10 +5253,10 @@ msgstr ""
 msgid "Try It"
 msgstr ""
 
-#: app/views/builds.html:56
+#: app/views/builds.html:51
 #: app/views/directives/_edit-probe.html:3
 #: app/views/directives/osc-persistent-volume-claim.html:32
-#: app/views/secrets.html:54
+#: app/views/secrets.html:49
 msgid "Type"
 msgstr ""
 
@@ -5111,7 +5279,7 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: app/scripts/constants.js:604
+#: app/scripts/constants.js:663
 msgid "Uncategorized"
 msgstr ""
 
@@ -5133,8 +5301,10 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:132
+#: app/scripts/directives/podDonut.js:198
 #: app/views/browse/deployment-config.html:167
-#: app/views/deployments.html:101
+#: app/views/deployments.html:96
 msgid "Unknown"
 msgstr ""
 
@@ -5154,7 +5324,7 @@ msgstr ""
 msgid "Update the display name and description of your project. The project's unique name cannot be modified."
 msgstr ""
 
-#: app/views/images.html:51
+#: app/views/images.html:46
 msgid "Updated"
 msgstr ""
 
@@ -5179,7 +5349,7 @@ msgstr ""
 msgid "Use all keys and values from"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:222
+#: app/views/directives/osc-persistent-volume-claim.html:221
 msgid "Use label selectors to request storage"
 msgstr ""
 
@@ -5192,15 +5362,15 @@ msgid "Use the image for this container as the source of the tag."
 msgstr ""
 
 #: app/scripts/directives/quotaUsageChart.js:146
-#: app/views/quota.html:155
+#: app/views/quota.html:150
 msgid "Used"
 msgstr ""
 
-#: app/views/quota.html:64
+#: app/views/quota.html:59
 msgid "Used (All Projects)"
 msgstr ""
 
-#: app/views/quota.html:63
+#: app/views/quota.html:58
 msgid "Used (This Project)"
 msgstr ""
 
@@ -5210,6 +5380,10 @@ msgstr ""
 
 #: app/scripts/directives/quotaUsageChart.js:146
 msgid "Used - This Project"
+msgstr ""
+
+#: app/scripts/constants.js:39
+msgid "User"
 msgstr ""
 
 #: app/views/directives/create-secret.html:101
@@ -5286,7 +5460,7 @@ msgstr ""
 msgid "View Membership"
 msgstr ""
 
-#: app/views/pipelines.html:113
+#: app/views/pipelines.html:103
 msgid "View Pipeline Runs"
 msgstr ""
 
@@ -5294,7 +5468,7 @@ msgstr ""
 msgid "View Quota"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:210
+#: app/views/directives/osc-persistent-volume-claim.html:209
 #: app/views/directives/osc-persistent-volume-claim.html:7
 msgid "View Quota&nbsp;"
 msgstr ""
@@ -5350,6 +5524,8 @@ msgstr ""
 msgid "Waiting for container {{container.name}} to start..."
 msgstr ""
 
+#: app/scripts/directives/podDonut.js:126
+#: app/scripts/directives/podDonut.js:186
 #: app/views/directives/events-badge.html:1
 #: app/views/directives/events-badge.html:2
 #: app/views/directives/ui-ace-yaml.html:26
@@ -5366,7 +5542,7 @@ msgstr ""
 #: app/views/edit/config-map.html:24
 #: app/views/edit/yaml.html:13
 #: app/views/edit/yaml.html:21
-#: app/views/pipelines.html:78
+#: app/views/pipelines.html:68
 #: app/views/projects.html:62
 msgid "Warning:"
 msgstr ""
@@ -5409,7 +5585,7 @@ msgstr ""
 msgid "What are <span ng-if=\"type === 'cpu'\">millicores</span><span ng-if=\"type === 'memory'\">MiB</span>?"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:215
+#: app/views/directives/osc-persistent-volume-claim.html:214
 msgid "What are GiB?"
 msgstr ""
 
@@ -5426,7 +5602,7 @@ msgstr ""
 msgid "When you navigate away from this pod, any open terminal connections will be closed."
 msgstr ""
 
-#: app/scripts/constants.js:520
+#: app/scripts/constants.js:579
 msgid "WildFly"
 msgstr ""
 
@@ -5469,8 +5645,8 @@ msgstr ""
 msgid "You are currently logged in under the user account <strong>{{user.metadata.name}}</strong>."
 msgstr ""
 
-#: app/views/quota.html:179
-#: app/views/quota.html:88
+#: app/views/quota.html:174
+#: app/views/quota.html:83
 msgid "You are not allowed to create resources of this type."
 msgstr ""
 
@@ -5487,7 +5663,7 @@ msgstr ""
 msgid "You can use <var>*.example.com</var> with routers that support wildcard subdomains."
 msgstr ""
 
-#: app/views/membership.html:33
+#: app/views/membership.html:28
 msgid "You do not have permission to view roles in this project."
 msgstr ""
 
@@ -5552,7 +5728,6 @@ msgid "and"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:53
-#: app/views/pipelines.html:33
 msgid "and the"
 msgstr ""
 
@@ -5565,12 +5740,20 @@ msgstr ""
 msgid "build configuration {{buildConfig.metadata.name}}."
 msgstr ""
 
+#: app/views/projects.html:116
+msgid "by"
+msgstr ""
+
 #: app/views/_templateopt.html:79
 msgid "clear the value"
 msgstr ""
 
 #: app/views/modals/confirm-save-log.html:16
 msgid "command line tools"
+msgstr ""
+
+#: app/scripts/constants.js:33
+msgid "complete"
 msgstr ""
 
 #: app/views/_container-statuses.html:15
@@ -5612,7 +5795,8 @@ msgstr ""
 #: app/views/monitoring.html:438
 #: app/views/monitoring.html:90
 #: app/views/overview/_builds.html:37
-#: app/views/pipelines.html:62
+#: app/views/pipelines.html:52
+#: app/views/projects.html:115
 msgid "created"
 msgstr ""
 
@@ -5636,6 +5820,10 @@ msgstr ""
 msgid "debugging"
 msgstr ""
 
+#: app/scripts/constants.js:18
+msgid "deployment config"
+msgstr ""
+
 #: app/views/browse/_replica-set-details.html:203
 msgid "deployment config or deployment."
 msgstr ""
@@ -5646,10 +5834,6 @@ msgstr ""
 
 #: app/views/browse/_replica-set-details.html:38
 msgid "deployment trigger"
-msgstr ""
-
-#: app/views/projects.html:183
-msgid "documentation"
 msgstr ""
 
 #: app/views/_volumes.html:83
@@ -5705,6 +5889,10 @@ msgstr ""
 msgid "git repo"
 msgstr ""
 
+#: app/scripts/constants.js:42
+msgid "group"
+msgstr ""
+
 #: app/views/edit/yaml.html:23
 msgid "has been deleted since you started editing it."
 msgstr ""
@@ -5713,8 +5901,12 @@ msgstr ""
 msgid "has changed since you started editing it."
 msgstr ""
 
-#: app/views/pods.html:32
+#: app/views/pods.html:27
 msgid "have been added to project"
+msgstr ""
+
+#: app/scripts/constants.js:20
+msgid "horizontal pod autoscaler"
 msgstr ""
 
 #: app/views/_volumes.html:51
@@ -5754,6 +5946,10 @@ msgstr ""
 
 #: app/views/edit/autoscaler.html:36
 msgid "limit."
+msgstr ""
+
+#: app/scripts/constants.js:32
+msgid "manual change"
 msgstr ""
 
 #: app/views/directives/deployment-donut.html:57
@@ -5808,8 +6004,8 @@ msgstr ""
 #: app/views/directives/traffic-table.html:63
 #: app/views/directives/traffic-table.html:75
 #: app/views/directives/traffic-table.html:77
-#: app/views/services.html:58
-#: app/views/services.html:72
+#: app/views/services.html:53
+#: app/views/services.html:67
 msgid "none"
 msgstr ""
 
@@ -5824,6 +6020,10 @@ msgstr ""
 
 #: app/views/overview/_list-row-empty-state.html:9
 msgid "one of the images referenced by this deployment config changes."
+msgstr ""
+
+#: app/scripts/constants.js:25
+msgid "openshift.io/imagestreams"
 msgstr ""
 
 #: app/views/_pod-template-container.html:113
@@ -5848,6 +6048,14 @@ msgstr ""
 msgid "persistent volume claim"
 msgstr ""
 
+#: app/scripts/constants.js:22
+msgid "pull"
+msgstr ""
+
+#: app/scripts/constants.js:23
+msgid "push"
+msgstr ""
+
 #: app/scripts/filters/resources.js:1346
 #: app/views/_volumes.html:44
 msgid "read-only"
@@ -5860,6 +6068,10 @@ msgstr ""
 
 #: app/views/browse/_replica-set-details.html:28
 msgid "replica count and selector"
+msgstr ""
+
+#: app/views/deployments.html:87
+msgid "replica<span ng-if=\"replicationController.spec.replicas != 1\">s</span>"
 msgstr ""
 
 #: app/views/edit/autoscaler.html:34
@@ -5876,6 +6088,10 @@ msgstr ""
 
 #: app/views/browse/service.html:94
 msgid "routes"
+msgstr ""
+
+#: app/scripts/constants.js:34
+msgid "running"
 msgstr ""
 
 #: app/views/browse/_build-details.html:29
@@ -5898,7 +6114,7 @@ msgstr ""
 msgid "runs before the deployment begins"
 msgstr ""
 
-#: app/scripts/directives/podDonut.js:48
+#: app/scripts/directives/podDonut.js:58
 msgid "scaling to"
 msgstr ""
 
@@ -5919,6 +6135,10 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
+#: app/scripts/constants.js:44
+msgid "service account"
+msgstr ""
+
 #: app/views/browse/service.html:94
 msgid "services"
 msgstr ""
@@ -5937,10 +6157,20 @@ msgstr ""
 msgid "started"
 msgstr ""
 
+#: app/scripts/constants.js:48
+msgid "system group"
+msgstr ""
+
+#: app/scripts/constants.js:46
+msgid "system user"
+msgstr ""
+
+#: app/scripts/constants.js:38
 #: app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
 msgstr ""
 
+#: app/scripts/constants.js:36
 #: app/views/_edit-request-limit.html:19
 msgid "the container is guaranteed."
 msgstr ""
@@ -5961,11 +6191,16 @@ msgstr ""
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr ""
 
+#: app/scripts/constants.js:31
+#: app/scripts/constants.js:40
+msgid "user"
+msgstr ""
+
 #: app/views/_config-file-params.html:3
 msgid "username"
 msgstr ""
 
-#: app/views/storage.html:66
+#: app/views/storage.html:61
 msgid "using storage class {{pvc | storageClass}}"
 msgstr ""
 
@@ -6065,12 +6300,20 @@ msgstr ""
 msgid "{{hpaList.length}} associated Horizontal Pod Autoscalers"
 msgstr ""
 
-#: app/views/directives/osc-persistent-volume-claim.html:145
+#: app/views/directives/osc-persistent-volume-claim.html:144
 msgid "{{limits.min | usageWithUnits : 'storage'}} min to {{limits.max | usageWithUnits : 'storage'}} max"
 msgstr ""
 
 #: app/views/_edit-request-limit.html:4
 msgid "{{limits.min | usageWithUnits : type}} min to {{limits.max | usageWithUnits : type}} max"
+msgstr ""
+
+#: app/views/directives/notifications/notification-body.html:103
+msgid "{{notification.event.count}} times in the last"
+msgstr ""
+
+#: app/views/directives/notifications/header.html:17
+msgid "{{notificationGroup.totalUnread}} Unread"
 msgstr ""
 
 #: app/views/directives/_probe.html:21

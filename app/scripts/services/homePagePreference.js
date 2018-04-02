@@ -62,15 +62,16 @@ angular.module("openshiftConsole")
     };
 
     var getHomePagePath = function() {
-      var homePagePref = this.getHomePagePreference();
-      if (homePagePref === "project-overview") {
-        var homeProjectPageName = this.getHomePageProjectName();
-        return '/' + Navigate.projectOverviewURL(homeProjectPageName) + "?isHomePage=true";
-      } else if (homePagePref === "project-list") {
-        return '/projects';
-      } else {
-        return '/catalog';
-      }
+      return '/projects';
+      // var homePagePref = this.getHomePagePreference();
+      // if (homePagePref === "project-overview") {
+      //   var homeProjectPageName = this.getHomePageProjectName();
+      //   return '/' + Navigate.projectOverviewURL(homeProjectPageName) + "?isHomePage=true";
+      // } else if (homePagePref === "project-list") {
+      //   return '/projects';
+      // } else {
+      //   return '/catalog';
+      // }
     };
 
     var setHomePagePreference = function(homePagePref) {

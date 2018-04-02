@@ -65,6 +65,7 @@ function Noop() {
   gettext('Pre');
   gettext('Mid');
   gettext('Client state could not be verified');
+  gettext('Search Catalog');
 }
 Noop();
 
@@ -161,7 +162,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
   DISABLE_GLOBAL_EVENT_WATCH: false,
 
   // Disables the copy login command option from the user menu and CLI page.
-  DISABLE_COPY_LOGIN_COMMAND: false,
+  DISABLE_COPY_LOGIN_COMMAND: true,
 
   ENABLE_TECH_PREVIEW_FEATURE: {
     // Set to true if the service catalog supports pod presets for binding services to applications.

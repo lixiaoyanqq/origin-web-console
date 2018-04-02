@@ -86,8 +86,8 @@ code.command {
 .pods {
   display: block;
   // mini donut circle diameter
-  //height: @pod-mini-donut-diameter;
-  //width: @pod-mini-donut-diameter;
+  height: @pod-mini-donut-diameter;
+  width: @pod-mini-donut-diameter;
   // align pod text with right outer edge of .list-pf-details text
   @media(min-width: @screen-sm-min) {
     margin-right: 32px;
@@ -95,19 +95,19 @@ code.command {
 }
 pod-donut[mini] {
   display:inline-block;
-  //height: @pod-mini-donut-diameter;
+  height: @pod-mini-donut-diameter;
   position: relative;
-  //width: @pod-mini-donut-diameter;
+  width: @pod-mini-donut-diameter;
 }
 .pod-donut {
   &.mini {
     display: inline-block;
     // Take mini donut out of flow; positioning is controlled by .pods parent element
-    //height: @pod-mini-donut-diameter;
+    height: @pod-mini-donut-diameter;
     position: absolute !important;
     // center donut within .pods element
     transform: translate(-8px, -5px);
-    //width: @pod-mini-donut-diameter;
+    width: @pod-mini-donut-diameter;
   }
   .c3-defocused {
     // Adjusting the default hover "opacity: .3" to be slightly darker
@@ -243,28 +243,22 @@ pod-donut[mini] {
   margin-left: 20px;
 }
 .service-binding-parameters {
-  margin-left: 20px;
-  > a {
-    border-left: 1px solid @color-pf-black-300;
-    padding: 0 10px;
+  margin-top: 5px;
 
-    &:first-of-type {
-      border-left: 0;
-    }
+  > form {
+    margin-top: 5px;
   }
-  .parameters-heading {
-    color: @color-pf-black-500;
-    text-transform: uppercase;
-  }
-  .parameter-title {
-    font-weight: 700;
-    text-align: right;
+  .hide-show-link {
+    font-size: @font-size-base;
+    margin-left: 5px;
   }
 }
 
 .service-binding-actions {
   font-size: 13px;
   font-weight: 400;
+  margin-top: 5px;
+
   > a {
     border-left: 1px solid @color-pf-black-300;
     padding: 0 10px;
@@ -272,6 +266,11 @@ pod-donut[mini] {
     &:first-of-type {
       border-left: 0;
       padding-left: 0;
+      padding-right: 5px;
     }
   }
+}
+
+.service-description .truncated-content {
+  white-space: pre-wrap;
 }

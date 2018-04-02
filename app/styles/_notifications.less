@@ -3,10 +3,16 @@
 // -----------------------------------------------
 
 notification-drawer-wrapper {
+  .blank-state-pf-title {
+    font-size: @font-size-h4;
+  }
   .drawer-pf {
     height: calc(100vh ~"-" (@navbar-os-header-height-mobile + @project-bar-height-mobile));
+    opacity: 1;
     position: fixed;
+    right: 0;
     top: (@navbar-os-header-height-mobile + @project-bar-height-mobile);
+    transition: top 150ms ease-in-out, opacity 150ms;
     z-index: @zindex-navbar-fixed - 2; // two less than navbar, one less than project-bar
     @media(max-width: 350px) {
       left: 0;
@@ -33,9 +39,9 @@ notification-drawer-wrapper {
   }
   // the whole block is clickable, need to set pointer on all of these
   // for the correct visual
-  .drawer-pf-notification,
-  .drawer-pf-notification-info,
-  .drawer-pf-notification-message {
+  .drawer-pf-notification-inner.is-clickable,
+  .is-clickable .drawer-pf-notification-info,
+  .is-clickable .drawer-pf-notification-message {
     cursor: pointer;
   }
   .drawer-pf-notification {
@@ -48,10 +54,22 @@ notification-drawer-wrapper {
       }
     }
   }
+  .drawer-pf-notification-info {
+    font-size: @font-size-small;
+  }
   .drawer-pf-notification-inner {
     padding: 15px;
-    .pficon-close {
-      color: @color-pf-black;
+    .drawer-pf-notification-close {
+      margin-right: (@grid-gutter-width/(-4)); // vertically align with dropdown-kebab-pf
+      .pficon-close {
+        color: @gray-darker; // match dropdown-kebab-pf color
+        &:active,
+        &:focus,
+        &:hover
+         {
+          text-decoration: none;
+        }
+      }
     }
   }
   .expanded-notification {
@@ -85,16 +103,21 @@ notification-drawer-wrapper {
     //   - https://github.com/patternfly/angular-patternfly/issues/539
     // I'm putting quite a bit of markup inside the header,
     // need to tinker to eliminate this rule.
-    overflow: hidden;
+    overflow:hidden;
     .container-fluid {
       margin-left: 0;
       margin-right: 0;
       padding-left: 0;
       padding-right: 0;
     }
-  }
-  .small {
-    .small();
-    color: @color-pf-black;
+    .panel-counter {
+      font-size: @font-size-small;
+      font-weight: normal;
+      padding: 0;
+      a {
+        display: inline-block;
+        font-style: normal;
+      }
+    }
   }
 }

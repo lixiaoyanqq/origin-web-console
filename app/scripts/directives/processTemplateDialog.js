@@ -12,6 +12,8 @@
       'NotificationsService',
       'ProjectsService',
       'RecentlyViewedProjectsService',
+      'gettext',
+      'gettextCatalog',
       ProcessTemplateDialog
     ],
     controllerAs: '$ctrl',
@@ -32,8 +34,10 @@
                                  KeywordService,
                                  NotificationsService,
                                  ProjectsService,
-	  			 annotation,
-                                 RecentlyViewedProjectsService) {
+                                 annotation,
+                                 RecentlyViewedProjectsService,
+                                 gettext,
+                                 gettextCatalog) {
     var ctrl = this;
     var validityWatcher;
     var imageForIconClass = $filter('imageForIconClass');
@@ -115,7 +119,7 @@
           {
             id: 'keyword',
             title:  'Keyword',
-            placeholder: 'Filter by Keyword',
+            placeholder: gettextCatalog.getString(gettext('Filter by Keyword')),
             filterType: 'text'
           }
         ],

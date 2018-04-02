@@ -33,7 +33,7 @@
                             <input
                               type="search"
                               class="form-control"
-                              placeholder="Filter by keyword"
+                              placeholder="{{'Filter by keyword'|translate}}"
                               id="search-projects"
                               ng-model="search.text">
                             <button
@@ -112,8 +112,8 @@
                               </h2>
                               <small class="project-date">
                                 <span ng-if="project | displayName : true"><span ng-bind-html="project.metadata.name | highlightKeywords : keywords"></span> &ndash;</span>
-                                created
-                                <span ng-if="project | annotation : 'openshift.io/requester'">by <span ng-bind-html="project | annotation : 'openshift.io/requester' | highlightKeywords : keywords"></span></span>
+                                <translate>created</translate>
+                                <span ng-if="project | annotation : 'openshift.io/requester'"><translate>by</translate> <span ng-bind-html="project | annotation : 'openshift.io/requester' | highlightKeywords : keywords"></span></span>
                                 <span am-time-ago="project.metadata.creationTimestamp"></span>
                               </small>
                           </div>
@@ -125,7 +125,7 @@
                       </div>
                       <div class="list-pf-actions" ng-if="project.status.phase == 'Active'">
                         <div uib-dropdown class="dropdown pull-right dropdown-kebab-pf">
-                          <button uib-dropdown-toggle class="btn btn-link dropdown-toggle"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sr-only">Actions</span></button>
+                          <button uib-dropdown-toggle class="btn btn-link dropdown-toggle"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sr-only" translate>Actions</span></button>
                           <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">
                             <li role="menuitem">
                               <a ng-href="project/{{project.metadata.name}}/membership" translate>
@@ -180,7 +180,6 @@
                   <span class="icon-button-text" translate>Create Project</span>
                 </button>
               </div>
-              <p>To learn more, visit the OpenShift <a target="_blank" ng-href="{{'' | helpLink}}" translate>documentation</a>.</p>
               <p class="projects-instructions" ng-if="canCreate === false" ng-include="'views/_cannot-create-project.html'"></p>
             </div>
           </div>

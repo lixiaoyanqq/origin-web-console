@@ -12,10 +12,10 @@ angular.module('openshiftConsole')
           });
         }
 
-        items.push({
-          type: 'dom',
-          node: '<li><set-home-page></set-home-page></li>'
-        });
+        // items.push({
+        //   type: 'dom',
+        //   node: '<li><set-home-page></set-home-page></li>'
+        // });
 
         if ($rootScope.user.metadata.annotations && $rootScope.user.metadata.annotations.manager) {
           var token = AuthService.UserStore().getToken();

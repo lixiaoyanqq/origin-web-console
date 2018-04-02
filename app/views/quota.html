@@ -3,12 +3,7 @@
     <div class="container-fluid">
       <alerts alerts="alerts"></alerts>
           <h1>
-		  <span ng-if="clusterQuotas.length" translate>Cluster </span><translate>Quota</translate>
-            <span class="page-header-link">
-              <a ng-href="{{'quota' | helpLink}}" target="_blank">
-		      <translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i>
-              </a>
-            </span>
+		        <span ng-if="clusterQuotas.length" translate>Cluster </span><translate>Quota</translate>
           </h1>
           <div ng-if="!quotas.length && !clusterQuotas.length" class="mar-top-xl">
             <div class="help-block">{{quotaHelp}}</div>
