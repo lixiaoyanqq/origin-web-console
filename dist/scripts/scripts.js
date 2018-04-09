@@ -3241,6 +3241,7 @@ LOGOS: {
 "icon-tomcat": "tomcat.svg",
 "icon-wildfly": "wildfly.svg",
 "icon-wordpress": "wordpress.svg",
+"icon-xamarin": "xamarin.svg",
 "icon-zend": "zend.svg"
 <<<<<<< HEAD
 <<<<<<< HEAD
