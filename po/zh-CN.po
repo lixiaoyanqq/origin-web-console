@@ -6859,6 +6859,14 @@ msgstr "增加过滤器"
 msgid "Filter by label"
 msgstr "根据标签过滤"
 
+#: labelFilter.js:140
+msgid "Select an item to add to the current project"
+msgstr "选择一个项目添加到当前项目"
+
+#: labelFilter.js:140
+msgid "Languages"
+msgstr "语言"
+
 #~ msgid "OpenShift Pipeline Plugin"
 #~ msgstr "管道插件"
 
