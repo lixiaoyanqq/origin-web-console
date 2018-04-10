@@ -66,6 +66,10 @@ function Noop() {
   gettext('Mid');
   gettext('Client state could not be verified');
   gettext('Search Catalog');
+  gettext('Clear Search Input');
+  gettext('Databases');
+  gettext('Middleware');
+  gettext('CI/CD');
 }
 Noop();
 

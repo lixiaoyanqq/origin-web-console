@@ -13181,7 +13181,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
   $templateCache.put('views/project-browse-catalog.html',
     "<div class=\"middle surface-shaded project-browse-catalog\">\n" +
     "<div class=\"middle-content\">\n" +
-    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" section-title=\"Select an item to add to the current project\" keyword-filter=\"keywordFilter\">\n" +
+    "<services-view catalog-items=\"catalogItems\" base-project-url=\"project\" section-title=\"{{'Select an item to add to the current project'|translate}}\" keyword-filter=\"keywordFilter\">\n" +
     "</services-view>\n" +
     "</div>\n" +
     "</div>"
