@@ -297,20 +297,20 @@ var de, me, pe = {}, fe = {}, ge = {}, ve = N.state = {
 >>>>>>> Overview support for daemon sets
 =======
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b, S, C, w, P, j, k, I, R, E, T, N) {
-function D(e) {
+function A(e) {
 var t = e.metadata.ownerReferences;
 return t ? _(t).filter({
 kind: "OfflineVirtualMachine"
 }).map("uid").first() : null;
 }
-function A() {
+function D() {
 if (B.offlineVirtualMachines && B.virtualMachines && B.pods) {
 var e = _(B.pods).values().filter(function(e) {
 return !!_.get(e, 'metadata.labels["kubevirt.io/vmUID"]');
 }).keyBy('metadata.labels["kubevirt.io/vmUID"]').value(), t = _(B.virtualMachines).values().filter(function(e) {
-return !!D(e);
+return !!A(e);
 }).keyBy(function(e) {
-return D(e);
+return A(e);
 }).value(), n = [];
 _.each(B.offlineVirtualMachines, function(r) {
 var a = r.metadata.uid, o = t[a];
@@ -829,15 +829,15 @@ return _.isEmpty(be.pipelinesByDeploymentConfig[t]);
 B.deploymentConfigsNoPipeline = _.sortBy(e, "metadata.name"), B.pipelineViewHasOtherResources = !(_.isEmpty(B.deploymentConfigsNoPipeline) && _.isEmpty(B.vanillaReplicationControllers) && _.isEmpty(B.deployments) && _.isEmpty(B.vanillaReplicaSets) && _.isEmpty(B.statefulSets) && _.isEmpty(B.monopods));
 }, Ne = function() {
 B.disableFilter = "pipeline" === B.viewBy && _.isEmpty(B.pipelineBuildConfigs);
-}, De = function(e) {
+}, Ae = function(e) {
 return b.getLabelSelector().select(e);
-}, Ae = [ "metadata.name", "spec.clusterServiceClassExternalName" ], $e = function(e) {
-return y.filterForKeywords(e, Ae, be.filterKeywords);
+}, De = [ "metadata.name", "spec.clusterServiceClassExternalName" ], $e = function(e) {
+return y.filterForKeywords(e, De, be.filterKeywords);
 }, Be = function(e) {
 switch (B.filterBy) {
 >>>>>>> Virtual Machines in Overview
 case "label":
-return De(e);
+return Ae(e);
 
 case "name":
 return $e(e);
@@ -857,7 +857,7 @@ B.filteredDeploymentConfigs = Be(B.deploymentConfigs), B.filteredReplicationCont
 B.viewBy = localStorage.getItem(Oe) || "app", e.$watch(function() {
 return B.viewBy;
 }, function(e) {
-localStorage.setItem(Oe, e), Ne(), Ae = "app" === B.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], Le(), "pipeline" === B.viewBy ? b.setLabelSuggestions(he) : b.setLabelSuggestions(ve);
+localStorage.setItem(Oe, e), Ne(), De = "app" === B.viewBy ? [ "metadata.name", "metadata.labels.app" ] : [ "metadata.name" ], Le(), "pipeline" === B.viewBy ? b.setLabelSuggestions(he) : b.setLabelSuggestions(ve);
 }), d.DISABLE_OVERVIEW_METRICS || (C.isAvailable(!0).then(function(e) {
 be.showMetrics = e;
 }), e.$on("metrics-connection-failed", function(e, t) {
@@ -1215,7 +1215,7 @@ _.isEmpty(e) || (b.addLabelSuggestionsFromResources(e, he), "pipeline" === B.vie
 }, nt = function(e) {
 return "Succeeded" !== e.status.phase && "Failed" !== e.status.phase && (!H(e, "openshift.io/deployer-pod-for.name") && (!O(e, "openshift.io/build.name") && "slave" !== H(e, "jenkins")));
 }, rt = function() {
-be.podsByOwnerUID = j.groupByOwnerUID(B.pods), B.monopods = _.filter(be.podsByOwnerUID[""], nt), A();
+be.podsByOwnerUID = j.groupByOwnerUID(B.pods), B.monopods = _.filter(be.podsByOwnerUID[""], nt), D();
 }, at = function(e) {
 return !!_.get(e, "status.replicas") || (!O(e, "deploymentConfig") || x(e));
 }, ot = function(e) {
@@ -1887,7 +1887,7 @@ poll: V,
 pollInterval: 6e4
 })), e.KUBEVIRT_ENABLED) {
 Rt.push(m.watch(N.offlineVirtualMachine, r, function(e) {
-B.offlineVirtualMachines = e.by("metadata.name"), A(), Le();
+B.offlineVirtualMachines = e.by("metadata.name"), D(), Le();
 }, {
 poll: V,
 pollInterval: 6e4
@@ -1930,7 +1930,7 @@ return ge.serviceClasses[t] = e, e;
 =======
 =======
 Rt.push(m.watch(N.virtualMachine, r, function(e) {
-B.virtualMachines = e.by("metadata.name"), A(), Le();
+B.virtualMachines = e.by("metadata.name"), D(), Le();
 }, {
 poll: V,
 pollInterval: 6e4
@@ -10265,7 +10265,7 @@ name: e.containerName
 }), n = I(t);
 e.containerState = n;
 });
-}, N = e("annotation"), D = function(e, t) {
+}, N = e("annotation"), A = function(e, t) {
 if (r.loaded = !0, r.pod = e, r.dcName = N(e, "deploymentConfig"), r.rcName = N(e, "deployment"), r.deploymentVersion = N(e, "deploymentVersion"), r.logCanRun = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase), S(), delete r.controllerRef, !r.dcName) {
 var n = m.getControllerReferences(e);
 r.controllerRef = _.find(n, function(e) {
@@ -10282,10 +10282,10 @@ b = a, r.project = t, r.projectContext = a, s.get(r.podsVersion, n.pod, a, {
 >>>>>>> Resize terminal when nav is collapsed or expanded
 errorNotification: !1
 }).then(function(e) {
-D(e);
+A(e);
 var t = {};
 t[e.metadata.name] = e, r.logOptions.container = n.container || e.spec.containers[0].name, r.containerTerminals = R(), E(e), l.fetchReferencedImageStreamImages(t, r.imagesByDockerReference, r.imageStreamImageRefByDockerReference, b), h.push(s.watchObject(r.podsVersion, n.pod, a, function(e, t) {
-D(e, t), T(r.containerTerminals), E(e);
+A(e, t), T(r.containerTerminals), E(e);
 }));
 }, function(t) {
 r.loaded = !0, r.alerts.load = {
@@ -10720,6 +10720,7 @@ r && e.test(r) || delete c[t.name];
 }
 } else delete c[t.name];
 });
+<<<<<<< HEAD
 });
 var l;
 _.isEmpty(c) || ((l = angular.copy(e)).status.tags = _.filter(l.status.tags, function(e) {
@@ -10922,6 +10923,11 @@ var w = r("orderObjectsByDate"), P = [ "metadata.name" ], j = [], k = function()
 n.filteredPods = c.filterForKeywords(C, P, j), n.filteredReplicationControllers = c.filterForKeywords(b, P, j), n.filteredReplicaSets = c.filterForKeywords(S, P, j), n.filteredBuilds = c.filterForKeywords(y, P, j), n.filteredStatefulSets = c.filterForKeywords(_.values(n.statefulSets), P, j);
 }, I = function(e) {
 >>>>>>> Update monitoring controller to use getPreferredVersion
+=======
+var w = r("orderObjectsByDate"), P = [ "metadata.name" ], j = [], k = function() {
+n.filteredPods = c.filterForKeywords(C, P, j), n.filteredReplicationControllers = c.filterForKeywords(b, P, j), n.filteredReplicaSets = c.filterForKeywords(S, P, j), n.filteredBuilds = c.filterForKeywords(y, P, j), n.filteredStatefulSets = c.filterForKeywords(_.values(n.statefulSets), P, j);
+}, I = function(e) {
+>>>>>>> Virtual Machine uptime added
 n.logOptions.pods[e.metadata.name] = {
 container: e.spec.containers[0].name
 }, n.logCanRun.pods[e.metadata.name] = !_.includes([ "New", "Pending", "Unknown" ], e.status.phase);
@@ -10931,6 +10937,7 @@ var t = r("annotation")(e, "deploymentVersion");
 t && (n.logOptions.replicationControllers[e.metadata.name].version = t), n.logCanRun.replicationControllers[e.metadata.name] = !_.includes([ "New", "Pending" ], r("deploymentStatus")(e));
 }, E = function(e) {
 n.logOptions.builds[e.metadata.name] = {}, n.logCanRun.builds[e.metadata.name] = !_.includes([ "New", "Pending", "Error" ], e.status.phase);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10966,6 +10973,20 @@ y = _.filter(n.builds, function(e) {
 if (!n.filters.hideOlderResources) return !0;
 if (D(e)) return !0;
 var t = A(e);
+=======
+}, T = function() {
+n.filteredStatefulSets = c.filterForKeywords(_.values(n.statefulSets), P, j);
+}, N = function() {
+C = _.filter(n.pods, function(e) {
+return !n.filters.hideOlderResources || "Succeeded" !== e.status.phase && "Failed" !== e.status.phase;
+}), n.filteredPods = c.filterForKeywords(C, P, j);
+}, A = r("isIncompleteBuild"), D = r("buildConfigForBuild"), B = r("isRecentBuild"), V = function() {
+moment().subtract(5, "m");
+y = _.filter(n.builds, function(e) {
+if (!n.filters.hideOlderResources) return !0;
+if (A(e)) return !0;
+var t = D(e);
+>>>>>>> Virtual Machine uptime added
 return t ? n.latestBuildByConfig[t].metadata.name === e.metadata.name : B(e);
 }), n.filteredBuilds = c.filterForKeywords(y, P, j);
 }, L = r("deploymentStatus"), O = r("deploymentIsInProgress"), U = function() {
@@ -10986,6 +11007,7 @@ case "Build":
 s = !n.expanded.builds[a.metadata.name], n.expanded.builds[a.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", f.$emit(c, a);
 var l = _.get(n.podsByName, r("annotation")(a, "buildPod"));
 <<<<<<< HEAD
+<<<<<<< HEAD
 l && p.$emit(c, l);
 >>>>>>> Add Browse Catalog to Project context view.
 break;
@@ -10997,6 +11019,8 @@ break;
 case "BuildConfig":
 r = "oc logs bc/" + e.metadata.name;
 =======
+=======
+>>>>>>> Virtual Machine uptime added
 l && f.$emit(c, l);
 break;
 
@@ -11415,7 +11439,7 @@ return e ? r + (y(e, "description") || "") : "";
 }
 }
 });
-var D = function(e, t, n, a) {
+var A = function(e, t, n, a) {
 var o = {
 title: "Confirm Removal",
 alerts: {},
@@ -11489,7 +11513,7 @@ project: n,
 subjectKinds: N,
 canUpdateRolebindings: b("rolebindings", "update", v),
 confirmRemove: function(n, a, i, s) {
-var l = null, u = D(n, a, i, r.user.metadata.name);
+var l = null, u = A(n, a, i, r.user.metadata.name);
 _.isEqual(n, r.user.metadata.name) && d.isLastRole(r.user.metadata.name, r.roleBindings) && (l = !0), o.open({
 templateUrl: "views/modals/confirm.html",
 controller: "ConfirmModalController",
@@ -13031,7 +13055,7 @@ var $ = [];
 =======
 }));
 } ]), angular.module("openshiftConsole").controller("ReplicaSetController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BreadcrumbsService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "keyValueEditorUtils", "kind", "Logger", "MetricsService", "ModalsService", "Navigate", "OwnerReferencesService", "PodsService", "ProjectsService", "StorageService", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, f, g, v, h, y, b) {
-var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), D = r.getPreferredVersion("resourcequotas"), A = r.getPreferredVersion("appliedclusterresourcequotas");
+var S = !1, C = t("annotation"), w = t("humanizeKind")(d), P = t("hasDeployment"), j = r.getPreferredVersion("builds"), k = r.getPreferredVersion("imagestreams"), I = r.getPreferredVersion("horizontalpodautoscalers"), R = r.getPreferredVersion("limitranges"), E = r.getPreferredVersion("pods"), T = r.getPreferredVersion("replicasets"), N = r.getPreferredVersion("replicationcontrollers"), A = r.getPreferredVersion("resourcequotas"), D = r.getPreferredVersion("appliedclusterresourcequotas");
 switch (d) {
 case "ReplicaSet":
 e.resource = T, e.healthCheckURL = g.healthCheckURL(n.project, "ReplicaSet", n.replicaSet, "extensions");
@@ -13364,7 +13388,7 @@ pollInterval: 6e4
 })), i.list(R, u).then(function(t) {
 e.limitRanges = t.by("metadata.name"), U();
 });
-B.push(i.watch(D, u, function(t) {
+B.push(i.watch(A, u, function(t) {
 e.quotas = t.by("metadata.name");
 >>>>>>> Configurable inactivity timeout in console
 }, {
@@ -13392,7 +13416,7 @@ h || m.list().then(j);
 =======
 poll: !0,
 pollInterval: 6e4
-})), B.push(i.watch(A, u, function(t) {
+})), B.push(i.watch(D, u, function(t) {
 e.clusterQuotas = t.by("metadata.name");
 }, {
 poll: !0,
@@ -14712,6 +14736,7 @@ e.webhookSecrets = m.groupSecretsByType(t).webhook, e.webhookSecrets.unshift("")
 e.unshift("");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), D(), j = C(t.by("metadata.name")), e.valueFromObjects = P.concat(j);
 >>>>>>> Add Browse Catalog to Project context view.
 =======
@@ -14720,6 +14745,9 @@ e.unshift("");
 =======
 }), D(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
 >>>>>>> Bug 1535402 - Webhook trigger editor not responding + Webhook trigger editor should behave like envVar editor
+=======
+}), A(), P = S(t.by("metadata.name")), e.valueFromObjects = w.concat(P);
+>>>>>>> Virtual Machine uptime added
 });
 <<<<<<< HEAD
 var P = r("orderObjectsByDate"), j = [ "metadata.name" ], k = [], I = function() {
@@ -15088,7 +15116,7 @@ var t = [].concat(e.triggers.imageChangeTriggers, e.triggers.builderImageChangeT
 return t = _.filter(t, function(e) {
 return _.has(e, "disabled") && !e.disabled || e.present;
 }), t = t.concat(T(e.triggers.webhookTriggers)), t = _.map(t, "data");
-}, D = function() {
+}, A = function() {
 switch (e.secrets.picked = {
 gitSecret: e.buildConfig.spec.source.sourceSecret ? [ e.buildConfig.spec.source.sourceSecret ] : [ {
 name: ""
@@ -15118,7 +15146,7 @@ name: ""
 mountPath: ""
 } ];
 }
-}, A = function(e, t, n) {
+}, D = function(e, t, n) {
 t.name ? e[n] = t : delete e[n];
 }, $ = function(t, n) {
 var r = "Custom" === e.strategyType ? "secretSource" : "secret", a = _.filter(n, function(e) {
@@ -15137,6 +15165,7 @@ b(e.updatedBuildConfig).noCache = e.options.noCache;
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
 break;
 
+<<<<<<< HEAD
 case "StatefulSet":
 s = !n.expanded.statefulSets[a.metadata.name], n.expanded.statefulSets[a.metadata.name] = s, c = s ? "event.resource.highlight" : "event.resource.clear-highlight", p.$emit(c, a);
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
@@ -15493,6 +15522,12 @@ switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.
 =======
 switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), A(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), A(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), A(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
 >>>>>>> Overview support for daemon sets
+=======
+case "JenkinsPipeline":
+"path" === e.jenkinsfileOptions.type ? delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile : delete e.updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath;
+}
+switch (e.sources.images && !_.isEmpty(e.sourceImages) && (e.updatedBuildConfig.spec.source.images[0].paths = R(e.imageSourcePaths), e.updatedBuildConfig.spec.source.images[0].from = E(e.imageOptions.fromSource)), "None" === e.imageOptions.from.type ? delete b(e.updatedBuildConfig).from : b(e.updatedBuildConfig).from = E(e.imageOptions.from), "None" === e.imageOptions.to.type ? delete e.updatedBuildConfig.spec.output.to : e.updatedBuildConfig.spec.output.to = E(e.imageOptions.to), b(e.updatedBuildConfig).env = p.compactEntries(e.envVars), D(e.updatedBuildConfig.spec.source, _.head(e.secrets.picked.gitSecret), "sourceSecret"), D(b(e.updatedBuildConfig), _.head(e.secrets.picked.pullSecret), "pullSecret"), D(e.updatedBuildConfig.spec.output, _.head(e.secrets.picked.pushSecret), "pushSecret"), e.strategyType) {
+>>>>>>> Virtual Machine uptime added
 case "Source":
 case "Docker":
 $(e.updatedBuildConfig.spec.source, e.secrets.picked.sourceSecrets);
@@ -15503,7 +15538,10 @@ $(b(e.updatedBuildConfig), e.secrets.picked.sourceSecrets);
 }
 e.updatedBuildConfig.spec.triggers = N(), k(), s.update(v, e.updatedBuildConfig.metadata.name, e.updatedBuildConfig, e.context).then(function() {
 l.addNotification({
+<<<<<<< HEAD
 >>>>>>> Handle new build webhooks that use secretRefs instead of inline secrets
+=======
+>>>>>>> Virtual Machine uptime added
 type: "success",
 message: "Build config " + e.updatedBuildConfig.metadata.name + " was successfully updated."
 }), j();
@@ -17067,7 +17105,7 @@ type: "warning",
 details: "The active filters are hiding all builds."
 =======
 e.$on("$destroy", N);
-var D = i.getPreferredVersion("configmaps"), A = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), V = i.getPreferredVersion("secrets"), L = i.getPreferredVersion("resourcequotas"), O = i.getPreferredVersion("appliedclusterresourcequotas");
+var A = i.getPreferredVersion("configmaps"), D = i.getPreferredVersion("limitranges"), $ = i.getPreferredVersion("imagestreams"), B = i.getPreferredVersion("imagestreamtags"), V = i.getPreferredVersion("secrets"), L = i.getPreferredVersion("resourcequotas"), O = i.getPreferredVersion("appliedclusterresourcequotas");
 v.get(a.project).then(_.spread(function(t, n) {
 e.project = t, a.sourceURI && (e.sourceURIinParams = !0), e.hasClusterResourceOverrides = d.hasClusterResourceOverrides(t);
 var i = function() {
@@ -17097,6 +17135,7 @@ details: 404 === n.status ? "Any remaining build history for this build will be 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), s.list("configmaps", i, null, {
 =======
 c.list(U, n).then(function(e) {
@@ -17109,6 +17148,9 @@ v = e.by("metadata.name"), m.log("quotas", v);
 >>>>>>> Update membership to use new rbac endpoints
 =======
 c.list(A, n).then(function(t) {
+=======
+c.list(D, n).then(function(t) {
+>>>>>>> Virtual Machine uptime added
 e.limitRanges = t.by("metadata.name"), _.isEmpty(e.limitRanges) || e.$watch("container", i, !0);
 });
 var v, y, C = function() {
@@ -17173,8 +17215,12 @@ return r.buildConfig.sourceUrl === _.get(r, "image.metadata.annotations.sampleRe
 e.metricsWarning = !t;
 });
 var o = [], i = [];
+<<<<<<< HEAD
 e.valueFromObjects = [], c.list(D, n, null, {
 >>>>>>> Add Browse Catalog to Project context view.
+=======
+e.valueFromObjects = [], c.list(A, n, null, {
+>>>>>>> Virtual Machine uptime added
 errorNotification: !1
 }).then(function(t) {
 b = v(t.by("metadata.name")), e.valueFromObjects = b.concat(S);
@@ -21305,6 +21351,7 @@ e.clusterQuotas = t.by("metadata.name");
 poll: !0,
 pollInterval: 6e4
 }));
+<<<<<<< HEAD
 var G = t("deploymentIsLatest");
 e.showRollbackAction = function() {
 <<<<<<< HEAD
@@ -21344,6 +21391,23 @@ var r = e.deployment || e.deploymentConfig || e.replicaSet;
 s.scale(r, n).then(_.noop, function(n) {
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 e.alerts = e.alerts || {}, e.alerts.scale = {
+=======
+}
+function w() {
+var e = {
+started: "Creating resources in project " + D(p.input.selectedProject),
+success: "Creating resources in project " + D(p.input.selectedProject),
+failure: "Failed to create some resources in project " + D(p.input.selectedProject)
+}, t = {};
+d.add(e, t, p.input.selectedProject.metadata.name, function() {
+var e = n.defer();
+return i.batch(p.createResources, {
+namespace: p.input.selectedProject.metadata.name
+}, "create").then(function(t) {
+var n = [], r = !1;
+if (t.failure.length > 0) r = !0, p.errorOccurred = !0, t.failure.forEach(function(e) {
+n.push({
+>>>>>>> Virtual Machine uptime added
 type: "error",
 <<<<<<< HEAD
 message: "An error occurred scaling.",
@@ -21666,9 +21730,9 @@ e.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(e.statefu
 =======
 function P() {
 var e = {
-started: "Updating resources in project " + A(p.input.selectedProject),
-success: "Updated resources in project " + A(p.input.selectedProject),
-failure: "Failed to update some resources in project " + A(p.input.selectedProject)
+started: "Updating resources in project " + D(p.input.selectedProject),
+success: "Updated resources in project " + D(p.input.selectedProject),
+failure: "Failed to update some resources in project " + D(p.input.selectedProject)
 }, t = {};
 d.add(e, t, p.input.selectedProject.metadata.name, function() {
 var e = n.defer();
@@ -21893,7 +21957,7 @@ type: "error"
 }).length ? (_.each(E, function(e) {
 e.id = _.uniqueId("from-file-alert-"), c.addNotification(e);
 }), p.disableInputs = !1) : E.length ? (R(E), p.disableInputs = !1) : y();
-}, D = function() {
+}, A = function() {
 if (_.has(p.input.selectedProject, "metadata.uid")) return n.when(p.input.selectedProject);
 var t = p.input.selectedProject.metadata.name, r = p.input.selectedProject.metadata.annotations["new-display-name"], a = e("description")(p.input.selectedProject);
 return m.create(t, r, a);
@@ -21908,7 +21972,7 @@ var e = [];
 p.errorOccurred = !1, _.forEach(p.resourceList, function(t) {
 if (!g(t)) return p.errorOccurred = !0, !1;
 e.push(S(t));
-}), D().then(function(t) {
+}), A().then(function(t) {
 p.input.selectedProject = t, n.all(e).then(function() {
 p.errorOccurred || (1 === p.createResources.length && "Template" === p.resourceList[0].kind ? v() : _.isEmpty(p.updateResources) ? l.getLatestQuotaAlerts(p.createResources, {
 namespace: p.input.selectedProject.metadata.name
@@ -21981,7 +22045,7 @@ t && c.fetchReferencedImageStreamImages([ t ], e.imagesByDockerReference, k, f);
 }, p.cancel = function() {
 T(), s.toProjectOverview(p.input.selectedProject.metadata.name);
 };
-var A = e("displayName");
+var D = e("displayName");
 p.$on("importFileFromYAMLOrJSON", p.create), p.$on("$destroy", T);
 } ]
 >>>>>>> Use new clusterResourceOverridesEnabled flag
@@ -23566,12 +23630,16 @@ _.size(h) <= 100 ? (y = e("orderByDisplayName")(h), T = _.map(y, function(e) {
 return n(e, !1);
 })) : T = [ n(h[t], !0) ], E.empty(), E.append(T), E.append($('<option data-divider="true"></option>')), E.append($('<option value="">View All Projects</option>')), E.selectpicker("refresh");
 }
+<<<<<<< HEAD
 }, D = function() {
 >>>>>>> Add context-switcher
+=======
+}, A = function() {
+>>>>>>> Virtual Machine uptime added
 return f.list().then(function(e) {
 h = e.by("metadata.name");
 });
-}, A = function() {
+}, D = function() {
 k(R);
 var e = a.project;
 o.currentProjectName !== e && (o.currentProjectName = e, o.chromeless = "chromeless" === a.view, e && !o.chromeless ? (_.set(r, "view.hasProject", !0), o.canIAddToProject = !1, s.getProjectRules(e).then(function() {
@@ -23586,7 +23654,7 @@ n.all([ r, a ]).then(function() {
 i.catalogItems = c.sortCatalogItems(_.concat(t, o));
 });
 }
-}), D().then(function() {
+}), A().then(function() {
 i.currentProjectName && h && (h[i.currentProjectName] || (h[i.currentProjectName] = {
 >>>>>>> Check service classes to see if template service broker is enabled
 metadata: {
@@ -23655,6 +23723,7 @@ i.closeOrderingPanel = function() {
 v.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, E(), i.$on("$routeChangeSuccess", E), k.selectpicker({
 >>>>>>> Check service classes to see if template service broker is enabled
 =======
@@ -23671,6 +23740,9 @@ t.url(n);
 A(), T();
 =======
 }, A(), i.$on("$routeChangeSuccess", A), E.change(function() {
+=======
+}, D(), i.$on("$routeChangeSuccess", D), E.change(function() {
+>>>>>>> Virtual Machine uptime added
 var e = $(this).val(), t = "" === e ? "projects" : g(e);
 I(t);
 }), i.$on("$destroy", function() {
@@ -46619,6 +46691,7 @@ Available: "#d1d1d1"
 }
 >>>>>>> Configurable inactivity timeout in console
 };
+<<<<<<< HEAD
 }, i.appsForBinding = function(e) {
 return _.get(i.applicationsByBinding, e);
 }, i.closeWizard = function() {
@@ -46657,6 +46730,20 @@ mini: "=?"
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 },
 templateUrl: "views/directives/unbind-service.html"
+=======
+R[t.id] ? R[t.id].load(a) : ((n = B(e)).data = a, r(function() {
+D || (R[t.id] = c3.generate(n));
+}));
+}
+}
+function g(e) {
+if (!_.some(e.datasets, function(e) {
+return !e.data;
+})) {
+var t = {};
+_.each(e.datasets, function(e) {
+t[e.id] = e.data;
+>>>>>>> Virtual Machine uptime added
 });
 <<<<<<< HEAD
 }(), function() {
@@ -46676,7 +46763,7 @@ var n, a = c.getSparklineData(t), o = e.chartPrefix + "sparkline";
 E[o] ? E[o].load(a) : ((n = V(e)).data = a, e.chartDataColors && (n.color = {
 pattern: e.chartDataColors
 }), r(function() {
-A || (E[o] = c3.generate(n));
+D || (E[o] = c3.generate(n));
 }));
 }
 >>>>>>> Configurable inactivity timeout in console
@@ -46722,7 +46809,7 @@ return a;
 return 60 * m.options.timeRange.value * 1e3;
 }
 function y() {
-return Math.floor(h() / D) + "ms";
+return Math.floor(h() / A) + "ms";
 }
 function b(e, t, n) {
 var r, a = {
@@ -46737,12 +46824,12 @@ containerName: e.containerMetric ? m.options.selectedContainer.name : "pod"
 }) : null;
 }
 function S() {
-A || (L = 0, _.each(m.metrics, function(e) {
+D || (L = 0, _.each(m.metrics, function(e) {
 g(e), f(e);
 }));
 }
 function C(e) {
-if (!A) if (L++, m.noData) m.metricsError = {
+if (!D) if (L++, m.noData) m.metricsError = {
 status: _.get(e, "status", 0),
 details: _.get(e, "data.errorMsg") || _.get(e, "statusText") || "Status code " + _.get(e, "status", 0)
 }; else if (!(L < 2)) {
@@ -46818,6 +46905,7 @@ value: b.template.metadata.name
 return !(m.metricsError || V > 1) && (m.pod && _.get(m, "options.selectedContainer"));
 >>>>>>> Fix potential API mismatch in BuildsService
 }
+<<<<<<< HEAD
 var y, b = this, S = e("displayName"), C = e("humanize");
 b.noProjectsCantCreate = !1, b.$onInit = function() {
 b.labels = [], b.template = angular.copy(b.template), b.templateDisplayName = S(b.template), b.selectedProject = b.project, n.$watch("$ctrl.selectedProject.metadata.name", function() {
@@ -46863,6 +46951,12 @@ value: v.template.metadata.name
 =======
 function c(e) {
 return a(e) === _.size(e.spec.containers);
+=======
+function j(e, t) {
+m.noData = !1;
+var n = _.initial(t.data);
+e.data ? e.data = _.chain(e.data).takeRight(A).concat(n).value() : e.data = n;
+>>>>>>> Virtual Machine uptime added
 }
 function l(e) {
 if (n(e)) return "Terminating";
@@ -46872,6 +46966,7 @@ severity: "error"
 }) ? "Error" : _.isEmpty(a) ? t(e) ? "Pulling" : "Running" !== e.status.phase || c(e) ? _.get(e, "status.phase", "Unknown") : "Not Ready" : "Warning";
 >>>>>>> Update editEnvironmentVariables directive to use getPreferredVersion
 }
+<<<<<<< HEAD
 var g, v = this, h = e("displayName"), y = e("humanize");
 v.noProjectsCantCreate = !1, v.$onInit = function() {
 v.labels = [], v.template = angular.copy(v.template), v.templateDisplayName = h(v.template), v.selectedProject = v.project, n.$on("no-projects-cannot-create", function() {
@@ -46898,6 +46993,13 @@ message: "Cannot create " + v(e.object.kind).toLowerCase() + ' "' + e.object.met
 message: "Cannot create " + y(e.object.kind).toLowerCase() + ' "' + e.object.metadata.name + '". ',
 >>>>>>> Updated processTemplate to call ProjectServices.create(...)
 details: e.data.message
+=======
+}), t = t.concat(r), a.all(r).then(function(e) {
+D || angular.forEach(e, function(e) {
+e && j(_.find(n.datasets, {
+id: e.metricID
+}), e);
+>>>>>>> Virtual Machine uptime added
 });
 }), t.success.forEach(function(e) {
 n.push({
@@ -46961,7 +47063,7 @@ cancelButtonText: f.getString(g("Cancel"))
 }
 }
 m.includedMetrics = m.includedMetrics || [ "cpu", "memory", "network" ];
-var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), D = 30, A = !1;
+var I, R = {}, E = {}, T = n("resources.limits.memory"), N = n("resources.limits.cpu"), A = 30, D = !1;
 m.uniqueID = c.uniqueID(), m.metrics = [], _.includes(m.includedMetrics, "memory") && m.metrics.push({
 label: "Memory",
 units: "MiB",
@@ -47403,6 +47505,7 @@ e.destroy();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }), T = null, A = !0;
 >>>>>>> Set Home Page Preference
 =======
@@ -47420,6 +47523,9 @@ e.destroy();
 =======
 }), E = null, A = !0;
 >>>>>>> Overview support for daemon sets
+=======
+}), E = null, D = !0;
+>>>>>>> Virtual Machine uptime added
 });
 }
 };
@@ -47501,7 +47607,7 @@ return S(e);
 function u(e) {
 P || (N = 0, t.showAverage = _.size(t.pods) > 5 || w, _.each(t.metrics, function(n) {
 var r, a = o(e, n), i = n.descriptor;
-w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = D(n)).data = a, S[i] = c3.generate(r));
+w && n.compactCombineWith && (i = n.compactCombineWith, n.lastValue && (T[i].lastValue = (T[i].lastValue || 0) + n.lastValue)), S[i] ? (S[i].load(a), t.showAverage ? S[i].legend.hide() : S[i].legend.show()) : ((r = A(n)).data = a, S[i] = c3.generate(r));
 }));
 >>>>>>> Configurable inactivity timeout in console
 }
@@ -47718,7 +47824,7 @@ t.metricsURL = e;
 }), t.options = {
 rangeOptions: s.getTimeRangeOptions()
 }, t.options.timeRange = _.head(t.options.rangeOptions), t.options.selectedContainer = _.head(t.containers);
-var D = function(e) {
+var A = function(e) {
 var n = s.getDefaultSparklineConfig(e.chartID, e.units, w);
 return _.set(n, "legend.show", !w && !t.showAverage), n;
 >>>>>>> Configurable inactivity timeout in console
@@ -47761,6 +47867,7 @@ function d() {
 v && (v(), v = void 0);
 =======
 };
+<<<<<<< HEAD
 n.$watchGroup([ "used", "total", "crossProjectUsed" ], _.debounce(function() {
 var e = void 0 !== n.crossProjectUsed, t = a(n.used) || 0, r = Math.max((a(n.crossProjectUsed) || 0) - t, 0), o = Math.max(a(n.total) - (r + t), 0), i = {
 columns: [ [ "used", t ], [ "available", o ] ],
@@ -47773,6 +47880,16 @@ names: {
 used: e ? "Used - This Project" : "Used",
 other: "Used - Other Projects",
 available: "Available"
+=======
+var D = a.$on("metrics.charts.resize", function() {
+s.redraw(S);
+});
+t.$on("$destroy", function() {
+b && (e.cancel(b), b = null), D && (D(), D = null), angular.forEach(S, function(e) {
+e.destroy();
+}), S = null, P = !0;
+});
+>>>>>>> Virtual Machine uptime added
 }
 };
 e && i.columns.splice(1, 0, [ "other", r ]), c ? c.load(i) : (_.assign(l.data, i), c = c3.generate(l));
@@ -48088,17 +48205,17 @@ k(!0), b(), C();
 m.on("resize", R);
 var E, T = function() {
 S = !0, d.scrollBottom(u);
-}, N = document.createDocumentFragment(), D = _.debounce(function() {
+}, N = document.createDocumentFragment(), A = _.debounce(function() {
 l.appendChild(N), N = document.createDocumentFragment(), t.autoScrollActive && T(), t.showScrollLinks || b();
 }, 100, {
 maxWait: 300
-}), A = function(e) {
+}), D = function(e) {
 var t = a.defer();
 return E ? (E.onClose(function() {
 t.resolve();
-}), E.stop()) : t.resolve(), e || (D.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
+}), E.stop()) : t.resolve(), e || (A.cancel(), l && (l.innerHTML = ""), N = document.createDocumentFragment()), t.promise;
 }, B = function() {
-A().then(function() {
+D().then(function() {
 t.$evalAsync(function() {
 if (t.run) {
 angular.extend(t, {
@@ -48114,14 +48231,14 @@ follow: !0,
 tailLines: 5e3,
 limitBytes: 10485760
 }, t.options), n = 0, r = function(e) {
-n++, N.appendChild(f(n, e)), D();
+n++, N.appendChild(f(n, e)), A();
 };
 (E = c.createStream(v, h, t.context, e)).onMessage(function(a, o, i) {
 t.$evalAsync(function() {
 t.empty = !1, "logs" !== t.state && (t.state = "logs", I());
 }), a && (e.limitBytes && i >= e.limitBytes && (t.$evalAsync(function() {
 t.limitReached = !0, t.loading = !1;
-}), A(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
+}), D(!0)), r(a), !t.largeLog && n >= e.tailLines && t.$evalAsync(function() {
 t.largeLog = !0;
 }));
 }), E.onClose(function() {
@@ -48238,7 +48355,7 @@ t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && T();
 goChromeless: d.chromelessLink,
 restartLogs: B
 }), t.$on("$destroy", function() {
-A(), m.off("resize", R), m.off("scroll", C), u && $(u).off("scroll", C);
+D(), m.off("resize", R), m.off("scroll", C), u && $(u).off("scroll", C);
 }), "deploymentconfigs/logs" === v && !h) return t.state = "empty", void (t.emptyStateMessage = "Logs are not available for this replication controller because it was not generated from a deployment configuration.");
 t.$watchGroup([ "name", "options.container", "run" ], B);
 <<<<<<< HEAD
@@ -51837,33 +51954,33 @@ templateUrl: "views/overview/_mobile-client-row.html"
 });
 }(), function() {
 angular.module("openshiftConsole").component("virtualMachineRow", {
-controller: [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "DataService", "ListRowUtils", "Navigate", "ProjectsService", "KubevirtVersions", function(e, t, n, r, a, o, i, s, c, l) {
-function u() {
-return p.apiObject.spec.running;
-}
+controller: [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "DataService", "ListRowUtils", "Navigate", "ProjectsService", "KubevirtVersions", "moment", function(e, t, n, r, a, o, i, s, c, l, u) {
 function d() {
-var e = angular.copy(p.apiObject);
+return f.apiObject.spec.running;
+}
+function m() {
+var e = angular.copy(f.apiObject);
 return delete e._pod, delete e._vm, e;
 }
-function m(t) {
-var n = d();
+function p(t) {
+var n = m();
 return n.spec.running = t, o.update(l.offlineVirtualMachine.resource, n.metadata.name, n, e.$parent.context);
 }
-var p = this;
-p.OfflineVirtualMachineVersion = l.offlineVirtualMachine, _.extend(p, i.ui), p.actionsDropdownVisible = function() {
-return !_.get(p.apiObject, "metadata.deletionTimestamp") && a.canI(l.offlineVirtualMachine, "delete");
-}, p.projectName = n.project, p.startOvm = function() {
-m(!0);
-}, p.stopOvm = function() {
-m(!1);
-}, p.restartOvm = function() {
-return o.delete(l.virtualMachine, p.apiObject._vm.metadata.name, e.$parent.context);
-}, p.canStartOvm = function() {
-return !u();
-}, p.canStopOvm = function() {
-return u();
-}, p.canRestartOvm = function() {
-return u() && p.apiObject._vm && "Running" === _.get(p.apiObject, "_pod.status.phase");
+var f = this;
+f.OfflineVirtualMachineVersion = l.offlineVirtualMachine, _.extend(f, i.ui), f.actionsDropdownVisible = function() {
+return !_.get(f.apiObject, "metadata.deletionTimestamp") && a.canI(l.offlineVirtualMachine, "delete");
+}, f.projectName = n.project, f.startOvm = function() {
+p(!0);
+}, f.stopOvm = function() {
+p(!1);
+}, f.restartOvm = function() {
+return o.delete(l.virtualMachine, f.apiObject._vm.metadata.name, e.$parent.context);
+}, f.canStartOvm = function() {
+return !d();
+}, f.canStopOvm = function() {
+return d();
+}, f.canRestartOvm = function() {
+return d() && f.apiObject._vm && "Running" === _.get(f.apiObject, "_pod.status.phase");
 };
 } ],
 controllerAs: "row",
@@ -51872,6 +51989,13 @@ apiObject: "<",
 state: "<"
 },
 templateUrl: "views/overview/_virtual-machine-row.html"
+}), angular.module("openshiftConsole").filter("vmPodUptime", function() {
+return function(e) {
+var t = _(_.get(e, "status.containerStatuses")).filter({
+name: "compute"
+}).map("state.running.startedAt").first() || _.get(e, "status.startTime");
+return t ? moment(t).fromNow(!0) : "--";
+};
 }), angular.module("openshiftConsole").directive("vmState", function() {
 function e(e) {
 var t = _.get(e, "_vm.status.phase");
@@ -53130,8 +53254,12 @@ cancelButtonText: "Cancel"
 >>>>>>> Check service classes to see if template service broker is enabled
 =======
 }).result.then(T);
+<<<<<<< HEAD
 >>>>>>> Overview support for daemon sets
 }, D = function(e) {
+=======
+}, A = function(e) {
+>>>>>>> Virtual Machine uptime added
 b = e.quotaAlerts || [];
 var t = _.filter(b, {
 type: "error"
@@ -53191,8 +53319,18 @@ namespace: n.input.selectedProject.metadata.name
 return n.nameTaken = e.nameTaken, a;
 >>>>>>> Fix for adding non-builder templates to a project
 };
+<<<<<<< HEAD
 o.setAnnotations([ u ]), e.$evalAsync(function() {
 n.annotations = {}, n.annotations[a] = [ u ];
+=======
+t.then(i, i).then(A, A);
+}, function(e) {
+n.disableInputs = !1, "AlreadyExists" === e.data.reason ? n.projectNameTaken = !0 : l.addNotification({
+id: "deploy-image-create-project-error",
+type: "error",
+message: "An error occurred creating project.",
+details: y(e)
+>>>>>>> Virtual Machine uptime added
 });
 }, i = function(t) {
 e.$evalAsync(function() {
@@ -54255,8 +54393,12 @@ S[a.project] && delete S[a.project][e.uid], b[a.project] && delete b[a.project][
 >>>>>>> Overview support for daemon sets
 }, N = function() {
 b[a.project] = {}, S[a.project] = {};
+<<<<<<< HEAD
 }, D = function(e) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
+=======
+}, A = function(e) {
+>>>>>>> Virtual Machine uptime added
 return _.reduce(e, function(e, t) {
 return e[t.metadata.uid] = {
 >>>>>>> Handle displaying parameters when secrets are not available.
@@ -54283,11 +54425,15 @@ event: t
 }, e;
 }, {});
 <<<<<<< HEAD
+<<<<<<< HEAD
 }, T = function(e) {
 >>>>>>> Remember drawer expanded state across sessions
 =======
 }, A = function(e) {
 >>>>>>> Update notificationDrawerWrapper to use getPreferredVersion
+=======
+}, D = function(e) {
+>>>>>>> Virtual Machine uptime added
 return _.reduce(e, function(e, t) {
 return u.isImportantAPIEvent(t) && !u.isCleared(t.metadata.uid) && (e[t.metadata.uid] = t), e;
 }, {});
@@ -54399,7 +54545,7 @@ m && (l.unwatch(m), m = null);
 }, U = function() {
 d && d(), d = null;
 }, F = function(e) {
-b[a.project] = D(A(e.by("metadata.name"))), V();
+b[a.project] = A(D(e.by("metadata.name"))), V();
 }, x = function(e, t) {
 var n = t.namespace || a.project, r = t.id ? n + "/" + t.id : _.uniqueId("notification_") + Date.now();
 t.showInDrawer && !u.isCleared(r) && (S[n] = S[n] || {}, S[n][r] = {
