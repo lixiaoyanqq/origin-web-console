@@ -9535,4 +9535,10 @@ notification-drawer-wrapper .expanded-notification .drawer-pf-notification-messa
 =======
 .set-home-page .select-project-container{max-width:360px;padding-left:20px}
 .bar-separated+.bar-separated::before{content:' | '}
+<<<<<<< HEAD
 >>>>>>> Virtual Machine actions in expandable area
+=======
+.vm-detail-key{font-weight:600}
+.vm-detail-value{padding-left:3px}
+.vm-detail-state-actions{padding-left:12px}
+>>>>>>> Fix margin for OVM Detail on Overview page
