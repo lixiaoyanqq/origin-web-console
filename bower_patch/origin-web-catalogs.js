@@ -1262,14 +1262,14 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
     "use strict";
     t.__esModule = !0;
     var n = r(0), i = r(2), a = function() {
-        function e(e, t, r, n, i, a) {
-            var s = this;
+        function e(e, t, r, n, i, a, s) {
+            var o = this;
             this.ctrl = this, this.loaded = !1, this.maxResultsToShow = 5, this.onKeyPress = function(e) {
-                13 === e.which && s.ctrl.searchText && (s.$rootScope.$emit("filter-catalog-items", {
-                    searchText: s.ctrl.searchText
-                }), s.ctrl.searchText = "");
+                13 === e.which && o.ctrl.searchText && (o.$rootScope.$emit("filter-catalog-items", {
+                    searchText: o.ctrl.searchText
+                }), o.ctrl.searchText = "");
             }, this.$rootScope = e, this.$scope = t, this.$timeout = r, this.$q = n, this.Catalog = i, 
-            this.KeywordService = a;
+            this.KeywordService = a, this.gettextCatalog = s;
         }
         return e.prototype.$onInit = function() {
             this.ctrl.searchText = "";
@@ -1299,7 +1299,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             var t = this.KeywordService.generateKeywords(e), r = this.KeywordService.filterForKeywords(this.ctrl.catalogItems, [ "name", "tags" ], t), i = n.size(r), a = n.take(r, this.maxResultsToShow);
             return 0 === i ? a.push({
                 id: "viewNone",
-                text: "No results found for Keyword: " + e,
+                text: this.gettextCatalog.getString("No results found for Keyword:") + "  " + e,
                 name: e
             }) : 1 === i ? a.push({
                 id: "viewAll",
@@ -1312,7 +1312,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             }), a;
         }, e;
     }();
-    a.$inject = [ "$rootScope", "$scope", "$timeout", "$q", "Catalog", "KeywordService" ], 
+    a.$inject = [ "$rootScope", "$scope", "$timeout", "$q", "Catalog", "KeywordService", "gettextCatalog" ], 
     t.CatalogSearchController = a;
 }, function(e, t, r) {
     "use strict";

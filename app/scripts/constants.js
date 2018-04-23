@@ -70,6 +70,7 @@ function Noop() {
   gettext('Databases');
   gettext('Middleware');
   gettext('CI/CD');
+  gettext('No results found for Keyword:');
 }
 Noop();
 

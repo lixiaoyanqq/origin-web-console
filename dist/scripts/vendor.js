@@ -78667,13 +78667,13 @@ select: !0
 "use strict";
 t.__esModule = !0;
 var i = n(0), r = n(2), o = function() {
-function e(e, t, n, i, r, o) {
-var a = this;
+function e(e, t, n, i, r, o, a) {
+var s = this;
 this.ctrl = this, this.loaded = !1, this.maxResultsToShow = 5, this.onKeyPress = function(e) {
-13 === e.which && a.ctrl.searchText && (a.$rootScope.$emit("filter-catalog-items", {
-searchText: a.ctrl.searchText
-}), a.ctrl.searchText = "");
-}, this.$rootScope = e, this.$scope = t, this.$timeout = n, this.$q = i, this.Catalog = r, this.KeywordService = o;
+13 === e.which && s.ctrl.searchText && (s.$rootScope.$emit("filter-catalog-items", {
+searchText: s.ctrl.searchText
+}), s.ctrl.searchText = "");
+}, this.$rootScope = e, this.$scope = t, this.$timeout = n, this.$q = i, this.Catalog = r, this.KeywordService = o, this.gettextCatalog = a;
 }
 return e.prototype.$onInit = function() {
 this.ctrl.searchText = "";
@@ -78699,7 +78699,7 @@ t.setSearchInputFocus(e + 1);
 var t = this.KeywordService.generateKeywords(e), n = this.KeywordService.filterForKeywords(this.ctrl.catalogItems, [ "name", "tags" ], t), r = i.size(n), o = i.take(n, this.maxResultsToShow);
 return 0 === r ? o.push({
 id: "viewNone",
-text: "No results found for Keyword: " + e,
+text: this.gettextCatalog.getString("No results found for Keyword:") + "  " + e,
 name: e
 }) : 1 === r ? o.push({
 id: "viewAll",
@@ -78712,7 +78712,7 @@ name: e
 }), o;
 }, e;
 }();
-o.$inject = [ "$rootScope", "$scope", "$timeout", "$q", "Catalog", "KeywordService" ], t.CatalogSearchController = o;
+o.$inject = [ "$rootScope", "$scope", "$timeout", "$q", "Catalog", "KeywordService", "gettextCatalog" ], t.CatalogSearchController = o;
 }, function(e, t, n) {
 "use strict";
 t.__esModule = !0;
