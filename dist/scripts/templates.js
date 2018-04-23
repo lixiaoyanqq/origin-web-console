@@ -10736,10 +10736,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
     "<h1>\n" +
-    "<a class=\"pull-right btn btn-default\" href=\"\" ng-if=\"canUpdateRolebindings\" ng-click=\"toggleEditMode()\">\n" +
-    "<span ng-if=\"!(mode.edit)\" translate>Edit Membership</span>\n" +
-    "<span ng-if=\"mode.edit\" translate>Done Editing</span>\n" +
-    "</a>\n" +
     "<translate>Membership</translate>\n" +
     "</h1>\n" +
     "</div>\n" +
@@ -13209,12 +13205,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"projects-bar\">\n" +
     "<h1 translate>My Projects</h1>\n" +
     "<div class=\"projects-options\">\n" +
-    "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
-    "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
-    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
-    "</button>\n" +
-    "</div>\n" +
     "<div class=\"projects-search\">\n" +
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group has-clear\">\n" +
@@ -13286,27 +13276,6 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<truncate-long-text ng-if=\"!keywords.length\" content=\"project | description\" limit=\"265\" newline-limit=\"10\" use-word-boundary=\"true\"></truncate-long-text>\n" +
     "<span class=\"highlighted-content\" ng-if=\"keywords.length\" ng-bind-html=\"project | description | truncate : 1000 | highlightKeywords : keywords\"></span>\n" +
     "</div>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<div class=\"list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
-    "<div uib-dropdown class=\"dropdown pull-right dropdown-kebab-pf\">\n" +
-    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></button>\n" +
-    "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
-    "<li role=\"menuitem\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/membership\" translate>\n" +
-    "View Membership\n" +
-    "</a>\n" +
-    "</li>\n" +
-    "<li role=\"menuitem\">\n" +
-    "<a href=\"\" ng-click=\"editProject(project)\" translate>\n" +
-    "Edit Project\n" +
-    "</a>\n" +
-    "</li>\n" +
-    "<li role=\"menuitem\">\n" +
-    "<delete-project label=\"Delete Project\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
-    "</delete-project>\n" +
-    "</li>\n" +
-    "</ul>\n" +
     "</div>\n" +
     "</div>\n" +
     "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +

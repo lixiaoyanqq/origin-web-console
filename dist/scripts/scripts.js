@@ -8424,13 +8424,13 @@ e.errorMessage = r.getString(n("An error has occurred"));
 a.error_description && (e.errorDetails = a.error_description), e.reloadConsole = function() {
 t.location.href = "/";
 };
-} ]), angular.module("openshiftConsole").controller("LogoutController", [ "$scope", "$log", "AuthService", "AUTH_CFG", "gettext", "gettextCatalog", function(e, t, n, r, a, o) {
-if (t.debug("LogoutController"), n.isLoggedIn()) t.debug("LogoutController, logged in, initiating logout"), e.logoutMessage = o.getString(a("Logging out...")), n.startLogout().finally(function() {
-n.isLoggedIn() ? (t.debug("LogoutController, logout failed, still logged in"), e.logoutMessage = 'You could not be logged out. Return to the <a href="./">console</a>.') : r.logout_uri ? (t.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", r.logout_uri), window.location.href = r.logout_uri) : (t.debug("LogoutController, logout completed, reloading the page"), window.location.reload(!1));
-}); else if (r.logout_uri) t.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", r.logout_uri), e.logoutMessage = o.getString(a("Logging out...")), window.location.href = r.logout_uri; else {
-t.debug("LogoutController, not logged in, logout complete");
-var i = "You are logged out.";
-"timeout" === $routeParams.cause && (i = "You have been logged out due to inactivity."), e.logoutMessage = i + ' Return to the <a href="./">console</a>.';
+} ]), angular.module("openshiftConsole").controller("LogoutController", [ "$scope", "$routeParams", "$log", "AuthService", "AUTH_CFG", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i) {
+if (n.debug("LogoutController"), r.isLoggedIn()) n.debug("LogoutController, logged in, initiating logout"), e.logoutMessage = i.getString(o("Logging out...")), r.startLogout().finally(function() {
+r.isLoggedIn() ? (n.debug("LogoutController, logout failed, still logged in"), e.logoutMessage = 'You could not be logged out. Return to the <a href="./">console</a>.') : a.logout_uri ? (n.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", a.logout_uri), window.location.href = a.logout_uri) : (n.debug("LogoutController, logout completed, reloading the page"), window.location.reload(!1));
+}); else if (a.logout_uri) n.debug("LogoutController, logout completed, redirecting to AUTH_CFG.logout_uri", a.logout_uri), e.logoutMessage = i.getString(o("Logging out...")), window.location.href = a.logout_uri; else {
+n.debug("LogoutController, not logged in, logout complete");
+var s = "You are logged out.";
+"timeout" === t.cause && (s = "You have been logged out due to inactivity."), e.logoutMessage = s + ' Return to the <a href="./">console</a>.';
 }
 } ]), angular.module("openshiftConsole").controller("CreateController", [ "$scope", "$filter", "$location", "$q", "$routeParams", "$uibModal", "CatalogService", "Constants", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, r, a, o, i, s, c, l, u, d) {
 e.projectName = a.project, e.categories = s.CATALOG_CATEGORIES, e.alerts = e.alerts || {}, d.get(a.project).then(_.spread(function(t, n) {
@@ -12241,7 +12241,7 @@ R(!0), C(), P();
 }, 100);
 g.on("resize", T);
 var N, D = function() {
-w = !0, p.scrollBottom(u);
+w = !0, d.scrollBottom(u);
 }, A = document.createDocumentFragment(), B = _.debounce(function() {
 l.appendChild(A), A = document.createDocumentFragment(), t.autoScrollActive && D(), t.showScrollLinks || C();
 }, 100, {
@@ -12280,14 +12280,14 @@ t.largeLog = !0;
 }));
 }), N.onClose(function() {
 N = null, t.$evalAsync(function() {
-t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = d.getString(m("The logs are no longer available or could not be loaded.")));
+t.loading = !1, t.autoScrollActive = !1, 0 !== n || t.emptyStateMessage || (t.state = "empty", t.emptyStateMessage = p.getString(m("The logs are no longer available or could not be loaded.")));
 });
 }), N.onError(function() {
 N = null, t.$evalAsync(function() {
 angular.extend(t, {
 loading: !1,
 autoScrollActive: !1
-}), 0 === n ? (t.state = "empty", t.emptyStateMessage = d.getString(m("The logs are no longer available or could not be loaded."))) : t.errorWhileRunning = !0;
+}), 0 === n ? (t.state = "empty", t.emptyStateMessage = p.getString(m("The logs are no longer available or could not be loaded."))) : t.errorWhileRunning = !0;
 });
 }), N.start();
 }
@@ -12301,7 +12301,7 @@ kibanaAuthUrl: e.trustAsResourceUrl(URI(a).segment("auth").segment("token").norm
 access_token: o.UserStore().getToken()
 }), t.$watchGroup([ "context.project.metadata.name", "options.container", "name" ], function() {
 angular.extend(t, {
-kibanaArchiveUrl: e.trustAsResourceUrl(p.archiveUri({
+kibanaArchiveUrl: e.trustAsResourceUrl(d.archiveUri({
 namespace: t.context.project.metadata.name,
 namespaceUid: t.context.project.metadata.uid,
 podname: b,
@@ -12324,15 +12324,15 @@ loading: !0,
 autoScrollActive: !0,
 state: !1,
 onScrollBottom: function() {
-p.scrollBottom(u);
+d.scrollBottom(u);
 },
 onScrollTop: function() {
-t.autoScrollActive = !1, p.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
+t.autoScrollActive = !1, d.scrollTop(u), $("#" + t.logViewerID + "-affixedFollow").affix("checkPosition");
 },
 toggleAutoScroll: function() {
 t.autoScrollActive = !t.autoScrollActive, t.autoScrollActive && D();
 },
-goChromeless: p.chromelessLink,
+goChromeless: d.chromelessLink,
 restartLogs: x
 }), t.$on("$destroy", function() {
 L(), g.off("resize", T), g.off("scroll", P), u && $(u).off("scroll", P);

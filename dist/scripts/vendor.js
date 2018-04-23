@@ -77729,12 +77729,12 @@ label: "数人云微服务治理",
 subCategories: [ {
 id: "octopus",
 label: "Octopus",
-tags: [ "perl" ],
+tags: [ "octopus" ],
 icon: "icon-octopus-m"
 }, {
 id: "squid",
 label: "Squid",
-tags: [ "perl" ],
+tags: [ "squid" ],
 icon: "icon-squid-m"
 }, {
 id: "hawk",
