@@ -288,12 +288,12 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             subCategories: [ {
                 id: "octopus",
                 label: "Octopus",
-                tags: [ "perl" ],
+                tags: [ "octopus" ],
                 icon: "icon-octopus-m"
             }, {
                 id: "squid",
                 label: "Squid",
-                tags: [ "perl" ],
+                tags: [ "squid" ],
                 icon: "icon-squid-m"
             }, {
                 id: "hawk",
