@@ -12249,12 +12249,31 @@ reason: "DeprovisioningFailed"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 return r && m(t, n, r, "warning"), a && m(t, n, a, "error"), o && m(t, n, o, "error"), t;
 },
 setQuotaNotifications: function(e, t, n) {
 var r = s.getQuotaNotifications(e, t, n);
 _.each(r, function(e) {
 a.isNotificationPermanentlyHidden(e) || a.addNotification(e);
+=======
+}));
+} ]), angular.module("openshiftConsole").controller("ImagesController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "LabelFilter", "Logger", "ProjectsService", function(e, t, n, r, a, o, i, s) {
+n.projectName = t.project, n.imageStreams = {}, n.missingStatusTagsByImageStream = {}, n.builds = {}, n.labelSuggestions = {}, n.clearFilter = function() {
+o.clear();
+};
+var c, l = r.getPreferredVersion("imagestreams"), u = [];
+s.get(t.project).then(_.spread(function(e, t) {
+function r() {
+_.each(c, function(e) {
+var t = n.missingStatusTagsByImageStream[e.metadata.name] = {};
+if (e.spec && e.spec.tags) {
+var r = {};
+e.status && e.status.tags && angular.forEach(e.status.tags, function(e) {
+r[e.tag] = !0;
+}), angular.forEach(e.spec.tags, function(e) {
+r[e.name] || (t[e.name] = e);
+>>>>>>> Improve performance of image streams page
 });
 =======
 return a && l(t, n, a, "warning"), r && l(t, n, r, "error"), o && l(t, n, o, "error"), t;
@@ -12272,6 +12291,7 @@ a.isNotificationPermanentlyHidden(e) || a.addNotification(e);
 });
 >>>>>>> Quota Notifications
 }
+<<<<<<< HEAD
 };
 } ]), angular.module("openshiftConsole").factory("ListRowUtils", function() {
 var e = function(e) {
@@ -12356,6 +12376,19 @@ return _.some(e(t), {
 uid: r,
 controller: !0
 });
+=======
+function s() {
+n.filterWithZeroResults = !o.getLabelSelector().isEmpty() && _.isEmpty(n.imageStreams) && !_.isEmpty(c);
+}
+n.project = e, u.push(a.watch(l, t, function(e) {
+n.imageStreamsLoaded = !0, c = _.sortBy(e.by("metadata.name"), "metadata.name"), o.addLabelSuggestionsFromResources(c, n.labelSuggestions), o.setLabelSuggestions(n.labelSuggestions), n.imageStreams = o.getLabelSelector().select(c), r(), s(), i.log("image streams (subscribe)", n.imageStreams);
+})), o.onActiveFiltersChanged(function(e) {
+n.$evalAsync(function() {
+n.imageStreams = e.select(c), s();
+});
+}), n.$on("$destroy", function() {
+a.unwatchAll(u);
+>>>>>>> Improve performance of image streams page
 });
 }
 };
