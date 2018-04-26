@@ -12,6 +12,8 @@ angular.module('openshiftConsole')
                                              APIService,
                                              DataService,
                                              Logger,
+	  				     gettext,
+	  				     gettextCatalog,
                                              ProjectsService,
                                              $filter) {
     $scope.projectName = $routeParams.project;
@@ -93,7 +95,7 @@ angular.module('openshiftConsole')
       if (action === "DELETED") {
         $scope.alerts["deleted"] = {
           type: "warning",
-          message: "This service has been deleted."
+          message: gettextCatalog.getString(gettext("This service has been deleted."))
         };
       }
     };
@@ -112,7 +114,7 @@ angular.module('openshiftConsole')
             $scope.loaded = true;
             $scope.alerts["load"] = {
               type: "error",
-              message: "The service details could not be loaded.",
+              message: gettextCatalog.getString(gettext("The service details could not be loaded.")),
               details: $filter('getErrorDetails')(e)
             };
           }

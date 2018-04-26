@@ -37,10 +37,10 @@ angular.module('openshiftConsole')
     } else {
       $log.debug("LogoutController, not logged in, logout complete");
 
-      var logoutMessage = "You are logged out.";
+      var logoutMessage = gettextCatalog.getString(gettext("You are logged out."));
       if ($routeParams.cause === "timeout") {
-        logoutMessage = "You have been logged out due to inactivity."
+        logoutMessage = gettextCatalog.getString(gettext("You have been logged out due to inactivity."))
       }
-      $scope.logoutMessage = logoutMessage + ' Return to the <a href="./">console</a>.';
+      $scope.logoutMessage = logoutMessage + ' ' + gettextCatalog.getString(gettext("Return to the")) +' <a href="./">console</a>.';
     }
   });

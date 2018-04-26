@@ -193,7 +193,7 @@ angular.module("openshiftConsole")
               NotificationsService.addNotification({
                 id: "import-create-project-error",
                 type: "error",
-                message: "An error occurred creating project.",
+                message: gettextCatalog.getString(gettext("An error occurred creating project.")),
                 details: getErrorDetails(e)
               });
             }
@@ -209,7 +209,7 @@ angular.module("openshiftConsole")
         function isKindValid(item) {
           if (!item.kind) {
             $scope.error = {
-              message: "Resource is missing kind field."
+              message: gettextCatalog.getString(gettext("Resource is missing kind field."))
             };
             return false;
           }
@@ -223,13 +223,13 @@ angular.module("openshiftConsole")
           }
           if (!item.metadata) {
             $scope.error = {
-              message: "Resource is missing metadata field."
+              message: gettextCatalog.getString(gettext("Resource is missing metadata field."))
             };
             return false;
           }
           if (!item.metadata.name) {
             $scope.error = {
-              message: "Resource name is missing in metadata field."
+              message: gettextCatalog.getString(gettext("Resource name is missing in metadata field."))
             };
             return false;
           }

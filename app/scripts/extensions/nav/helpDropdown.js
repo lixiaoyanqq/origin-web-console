@@ -7,12 +7,12 @@ angular.module('openshiftConsole')
     extensionRegistry
       .add('nav-help-dropdown', function() {
         var options = [];
-        options.push(
-          {
-            type: 'dom',
-            node: '<li><a target="_blank" href="{{\'default\' | helpLink}}">Documentation</a></li>'
-          }
-        );
+        //options.push(
+        //  {
+        //    type: 'dom',
+        //    node: '<li><a target="_blank" href="{{\'default\' | helpLink}}">Documentation</a></li>'
+        //  }
+        //);
 
         if (!_.get(window, 'OPENSHIFT_CONSTANTS.DISABLE_SERVICE_CATALOG_LANDING_PAGE')) {
           var tourConfig = _.get(window, 'OPENSHIFT_CONSTANTS.GUIDED_TOURS.landing_page_tour');

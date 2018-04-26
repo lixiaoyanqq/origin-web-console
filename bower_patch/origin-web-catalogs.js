@@ -1031,7 +1031,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
     }();
     i.$inject = [ "$rootScope" ], t.RecentlyViewedServiceItems = i;
 }, function(e, t) {
-    e.exports = '<pf-filter-panel config="$ctrl.config">\n  <div class="filter-panel-container">\n    <input type="text" ng-model="$ctrl.keywordFilter.value"\n           class="keyword-filter form-control"\n           placeholder="{{$ctrl.keywordFilter.placeholder}}"\n           ng-keypress="$ctrl.onKeywordKeyPress($event)"\n           autocorrect="off"\n           autocapitalize="none"\n           spellcheck="false">\n    <div class="category" ng-repeat="filter in $ctrl.filterPanelModel" ng-if="!$first">\n      {{filter.title}}\n      <span\n        class="pficon pficon-info vendor-info-icon"\n        data-toggle="tooltip"\n        aria-hidden="true"\n        data-original-title="This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.">\n      </span>\n      <ul>\n        <li ng-repeat="value in filter.values">\n          <div class="checkbox">\n            <label class="category-option-label">\n              <input type="checkbox"\n                     ng-model="value.selected"\n                     ng-change="$ctrl.filterChanged()">\n              {{value.title}}\n            </label>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</pf-filter-panel>\n';
+    e.exports = '<pf-filter-panel config="$ctrl.config">\n  <div class="filter-panel-container">\n    <input type="text" ng-model="$ctrl.keywordFilter.value"\n           class="keyword-filter form-control"\n           placeholder="{{$ctrl.keywordFilter.placeholder}}"\n           ng-keypress="$ctrl.onKeywordKeyPress($event)"\n           autocorrect="off"\n           autocapitalize="none"\n           spellcheck="false">\n    <div class="category" ng-repeat="filter in $ctrl.filterPanelModel" ng-if="!$first">\n      {{filter.title}}\n      <span\n        class="pficon pficon-info vendor-info-icon"\n        data-toggle="tooltip"\n        aria-hidden="true"\n\tdata-original-title="{{\'This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.\'|translate}}">\n      </span>\n      <ul>\n        <li ng-repeat="value in filter.values">\n          <div class="checkbox">\n            <label class="category-option-label">\n              <input type="checkbox"\n                     ng-model="value.selected"\n                     ng-change="$ctrl.filterChanged()">\n              {{value.title}}\n            </label>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</pf-filter-panel>\n';
 }, function(e, t) {
     e.exports = '\x3c!-- Use angular-schema-form to show a form based on the parameter JSON schema. --\x3e\n<ng-form class="catalog-parameters" ng-class="{\'readonly\': $ctrl.readOnly}"\n  sf-model="$ctrl.hideValues ? $ctrl.hiddenModel : $ctrl.model"\n  sf-form="$ctrl.parameterForm"\n  sf-schema="$ctrl.readOnly ? $ctrl.readonlyParameterSchema : $ctrl.parameterSchema"\n  sf-options="$ctrl.parameterFormDefaults">\n</ng-form>\n';
 }, function(e, t) {
@@ -1053,44 +1053,44 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
 }, function(e, t) {
     e.exports = '<span ng-if="$ctrl.noProjectsCantCreate" class="no-projects-cant-create">\n  <pf-empty-state config="$ctrl.noProjectsConfig"></pf-empty-state>\n  <p ng-if="!$ctrl.noProjectsCantCreateMessage">\n    A cluster admin can create a project for you by running the command:\n    <div class="code-block">\n      <code>oc adm <span class="command-arg">new-project</span> &lt;projectname&gt; <span class="command-arg">--admin={{$ctrl.user.metadata.name || \'&lt;YourUsername&gt;\'}}</span></code>\n    </div>\n  </p>\n  <div ng-if="$ctrl.noProjectsCantCreateMessage" ng-bind-html="$ctrl.noProjectsCantCreateMessage | linky : \'_blank\'"></div>\n</span>\n\n\x3c!-- Use `ng-show` instead of `ng-if` so that the form exists and the `canI` works when projects load. --\x3e\n<ng-form name="$ctrl.forms.selectProjectForm" ng-show="$ctrl.numProjectChoices >= 1">\n  <div class="form-group" ng-class="{\'has-error\' : $ctrl.forms.selectProjectForm.selectProject.$error.cannotAddToProject ||\n                                                   ($ctrl.forms.selectProjectForm.selectProject.$touched &&\n                                                    $ctrl.forms.selectProjectForm.selectProject.$invalid)}">\n    <h3 ng-if="$ctrl.canOnlyCreateProject()">Create Project</h3>\n    <label ng-if="!$ctrl.canOnlyCreateProject() && !$ctrl.hideLabel" class="control-label required">Add to Project</label>\n    <ui-select\n        ng-if="!$ctrl.canOnlyCreateProject()"\n        ng-disabled="$ctrl.numProjectChoices === 1"\n        name="selectProject"\n        ng-model="$ctrl.selectedProject"\n        ng-change="$ctrl.onSelectProjectChange()"\n        ng-required="$ctrl.isRequired"\n        search-enabled="$ctrl.searchEnabled"\n        uis-open-close="$ctrl.onOpenClose(isOpen)">\n      <ui-select-match placeholder="{{$ctrl.placeholder}}">\n        {{$select.selected | displayName}}\n      </ui-select-match>\n      \x3c!-- refresh-delay must be set using ng-attr-refresh-delay to work as a dynamic value --\x3e\n      <ui-select-choices\n          repeat="project in $ctrl.getProjectChoices() track by (project | uid)"\n          refresh="$ctrl.refreshChoices($select.search)"\n          ng-attr-refresh-delay="{{$ctrl.refreshDelay}}"\n          group-by="$ctrl.groupChoicesBy">\n        <span ng-bind-html="project | displayName | highlightKeywords : $select.search"></span>\n        <span ng-if="project | displayName : true" class="small text-muted">\n          <span ng-if="project.metadata.name">&ndash;</span>\n          <span ng-bind-html="project.metadata.name | highlightKeywords : $select.search"></span>\n        </span>\n      </ui-select-choices>\n    </ui-select>\n    <div ng-if="$ctrl.forms.selectProjectForm.selectProject.$error.cannotAddToProject">\n        <span class="help-block">\n          You are not authorized to add to this project.\n        </span>\n    </div>\n    <div class="has-error" ng-if="$ctrl.forms.selectProjectForm.selectProject.$error.required &&\n                                  $ctrl.forms.selectProjectForm.selectProject.$touched">\n      <span class="help-block">\n        Please select <span ng-if="$ctrl.canCreate && !$ctrl.hideCreateProject">or create</span> a project.\n      </span>\n    </div>\n  </div>\n</ng-form>\n\n<ng-form name="$ctrl.forms.createProjectForm"\n    ng-if="$ctrl.isNewProject()">\n  <div class="form-group">\n    <label for="name" class="control-label required">Project Name</label>\n    <div ng-class="{\'has-error\': ($ctrl.forms.createProjectForm.name.$error.pattern && $ctrl.forms.createProjectForm.name.$touched) ||\n                                 $ctrl.nameTaken || $ctrl.forms.createProjectForm.name.$error.oscUnique}">\n      <input class="form-control"\n          name="name"\n          id="name"\n          placeholder="my-project"\n          type="text"\n          required\n          take-focus\n          minlength="2"\n          maxlength="63"\n          pattern="[a-z0-9]([-a-z0-9]*[a-z0-9])?"\n          aria-describedby="nameHelp"\n          ng-model="$ctrl.selectedProject.metadata.name"\n          osc-unique="$ctrl.existingProjectNames"\n          ng-model-options="{ updateOn: \'default blur\' }"\n          ng-change="$ctrl.onNewProjectNameChange()"\n          autocorrect="off"\n          autocapitalize="off"\n          spellcheck="false">\n    </div>\n    <div class="help-block">A unique name for the project.</div>\n    <div class="has-error" ng-if="$ctrl.forms.createProjectForm.name.$error.minlength && $ctrl.forms.createProjectForm.name.$touched">\n      <span id="nameHelp" class="help-block">\n        Name must have at least two characters.\n      </span>\n    </div>\n    <div class="has-error" ng-if="$ctrl.forms.createProjectForm.name.$error.pattern && $ctrl.forms.createProjectForm.name.$touched">\n      <span id="nameHelp" class="help-block">\n        Project names may only contain lower-case letters, numbers, and dashes.\n        They may not start or end with a dash.\n      </span>\n    </div>\n    <div class="has-error" ng-if="$ctrl.nameTaken || $ctrl.forms.createProjectForm.name.$error.oscUnique">\n      <span class="help-block">\n        This name is already in use. Please choose a different name.\n      </span>\n    </div>\n  </div>\n\n  <div class="form-group">\n    <label for="displayName" class="control-label">Project Display Name</label>\n    <input class="form-control"\n      name="displayName"\n      id="displayName"\n      placeholder="My Project"\n      type="text"\n      ng-model="$ctrl.selectedProject.metadata.annotations[\'new-display-name\']">\n  </div>\n\n  <div class="form-group">\n    <label for="description" class="control-label">Project Description</label>\n    <textarea class="form-control"\n      name="description"\n      id="description"\n      placeholder="A short description."\n      ng-model="$ctrl.selectedProject.metadata.annotations[\'openshift.io/description\']"></textarea>\n  </div>\n</ng-form>\n<div ng-if="!$ctrl.noProjectsCantCreate && $ctrl.showDivider" class="select-project-divider"></div>\n\n';
 }, function(e, t) {
-    e.exports = '<div class="services-view" ng-style="$ctrl.viewStyle">\n  <div ng-if="!$ctrl.loaded" class="spinner-container">\n    <div class="spinner spinner-xl"></div>\n  </div>\n  <div ng-if="$ctrl.loaded" class="services-view-container mobile-{{$ctrl.mobileView}}-view">\n    <div class="add-methods">\n      <h1>{{$ctrl.sectionTitle}}</h1>\n      <div ng-if="$ctrl.onDeployImageSelected || $ctrl.onFromFileSelected || $ctrl.onCreateFromProject">\n        <ul class="add-other hidden-md hidden-lg">\n          <li uib-dropdown="" class="dropdown">\n            <a uib-dropdown-toggle="" class="dropdown-toggle" id="add-methods-dropdown" href="" aria-haspopup="true" aria-expanded="false">\n              Custom Add\n              <span class="caret" aria-hidden="true"></span>\n            </a>\n            <ul class="uib-dropdown-menu dropdown-menu pull-right" aria-labelledby="add-methods-dropdown">\n              \x3c!-- note these are duplicated below --\x3e\n              <li ng-if="$ctrl.onDeployImageSelected">\n                <a href="" ng-click="$ctrl.onDeployImageSelected()">Deploy Image</a>\n              </li>\n              <li ng-if="$ctrl.onFromFileSelected">\n                <a href="" ng-click="$ctrl.onFromFileSelected()">Import YAML / JSON</a>\n              </li>\n              <li ng-if="$ctrl.onCreateFromProject">\n                <a href="" ng-click="$ctrl.onCreateFromProject()">Select from Project</a>\n              </li>\n            </ul>\n          </li>\n        </ul>\n        <ul class="add-other hidden-xs hidden-sm">\n          \x3c!-- note these are duplicated above --\x3e\n          <li ng-if="$ctrl.onDeployImageSelected">\n            <a href="" ng-click="$ctrl.onDeployImageSelected()">Deploy Image</a>\n          </li>\n          <li ng-if="$ctrl.onFromFileSelected">\n            <a href="" ng-click="$ctrl.onFromFileSelected()">Import YAML / JSON</a>\n          </li>\n          <li ng-if="$ctrl.onCreateFromProject">\n            <a href="" ng-click="$ctrl.onCreateFromProject()">Select from Project</a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <ul class="nav nav-tabs nav-tabs-pf services-categories">\n      <li ng-repeat="category in $ctrl.categories"\n          ng-if="category.hasItems"\n          ng-class="{ active: $ctrl.currentFilter === category.id }">\n        <a href="" id="{{\'category-\'+category.id}}" class="services-category-heading" ng-click="$ctrl.selectCategory(category.id)">{{category.label|translate}}</a>\n        <a ng-click="$ctrl.mobileView = \'categories\'" class="services-back-link" href="">Back</a>\n      </li>\n    </ul>\n\n    <div class="services-inner-container">\n      \x3c!-- Do not show sub-category items for \'All\' or \'Other\' main categories --\x3e\n      <ul class="services-sub-categories"\n          ng-if="$ctrl.currentFilter !== \'other\' && $ctrl.currentFilter !== \'all\'">\n        <li ng-repeat="subCategory in $ctrl.subCategories track by subCategory.id"\n             ng-if="subCategory.hasItems"\n             ng-attr-id="{{subCategory.id}}"\n             class="services-sub-category"\n             ng-class="{ active: $ctrl.currentSubFilter === subCategory.id }">\n          <a href="" id="{{\'services-sub-category-\'+subCategory.id}}"\n             class="services-sub-category-tab" ng-click="$ctrl.selectSubCategory(subCategory.id)">\n            <div class="services-sub-category-tab-image" ng-if="imageUrl = (subCategory.imageUrl || (subCategory.icon | imageForIconClass))">\n              <img ng-src="{{imageUrl}}" alt="">\n            </div>\n            <div class="services-sub-category-tab-icon {{subCategory.icon | normalizeIconClass}}"\n                ng-if="subCategory.icon && !subCategory.imageUrl && !(subCategory.icon | imageForIconClass)"></div>\n            <div class="services-sub-category-tab-name">{{subCategory.label|translate}}</div>\n          </a>\n         <a ng-click="$ctrl.mobileView = \'subcategories\'" class="services-back-link" href="">Back</a>\n          <div ng-if="$ctrl.currentSubFilter === subCategory.id" class="services-items">\n            <catalog-filter class="services-items-filter"\n                            config="$ctrl.filterConfig"\n                            vendors="$ctrl.vendors"\n                            filter-on-keyword="$ctrl.keywordFilterValue"\n                            apply-filters="$ctrl.applyFilters($event)">\n            </catalog-filter>\n            <div class="pf-empty-state" ng-if="$ctrl.filterConfig.appliedFilters.length > 0 && $ctrl.filterConfig.resultsCount === 0">\n              <pf-empty-state config="$ctrl.emptyFilterConfig"></pf-empty-state>\n            </div>\n            <a href="" class="services-item" ng-repeat="item in $ctrl.filteredItems track by item.resource.metadata.uid" ng-click="$ctrl.serviceViewItemClicked(item)">\n              <div ng-if="!item.imageUrl" class="services-item-icon">\n                <span class="{{item.iconClass}}"></span>\n              </div>\n              <div ng-if="item.imageUrl" class="services-item-icon">\n                <img ng-src="{{item.imageUrl}}" alt="">\n              </div>\n              <div class="services-item-name" title="{{item.name}}">\n                {{item.name}}\n              </div>\n            </a>\n          </div>\n        </li>\n      </ul>\n\n      \x3c!-- Show catalog item for \'All\' and \'Other\' main categories --\x3e\n      <div ng-if="$ctrl.currentFilter === \'other\' || $ctrl.currentFilter === \'all\'" class="services-no-sub-categories">\n        <div class="services-items" ng-class="{\'no-items-available\': $ctrl.isEmpty}">\n          <div ng-if="$ctrl.isEmpty">\n            <div class="pf-empty-state">\n              <pf-empty-state config="$ctrl.noItemsConfig"></pf-empty-state>\n            </div>\n          </div>\n          <catalog-filter ng-if="!$ctrl.isEmpty"\n                          class="services-items-filter"\n                          config="$ctrl.filterConfig"\n                          vendors="$ctrl.vendors"\n                          filter-on-keyword="$ctrl.keywordFilterValue"\n                          apply-filters="$ctrl.applyFilters($event)">\n          </catalog-filter>\n          <div class="pf-empty-state" ng-if="$ctrl.filterConfig.appliedFilters.length > 0 && $ctrl.filterConfig.resultsCount === 0">\n            <pf-empty-state config="$ctrl.emptyFilterConfig"></pf-empty-state>\n          </div>\n          <a href="" class="services-item" ng-repeat="item in $ctrl.filteredItems track by item.resource.metadata.uid" ng-click="$ctrl.serviceViewItemClicked(item)">\n            <div ng-if="!item.imageUrl" class="services-item-icon">\n              <span class="{{item.iconClass}}"></span>\n            </div>\n            <div ng-if="item.imageUrl" class="services-item-icon">\n              <img ng-src="{{item.imageUrl}}" alt="">\n            </div>\n            <div class="services-item-name" title="{{item.name}}">\n              {{item.name}}\n            </div>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
+    e.exports = '<div class="services-view" ng-style="$ctrl.viewStyle">\n  <div ng-if="!$ctrl.loaded" class="spinner-container">\n    <div class="spinner spinner-xl"></div>\n  </div>\n  <div ng-if="$ctrl.loaded" class="services-view-container mobile-{{$ctrl.mobileView}}-view">\n    <div class="add-methods">\n      <h1>{{$ctrl.sectionTitle}}</h1>\n      <div ng-if="$ctrl.onDeployImageSelected || $ctrl.onFromFileSelected || $ctrl.onCreateFromProject">\n        <ul class="add-other hidden-md hidden-lg">\n          <li uib-dropdown="" class="dropdown">\n            <a uib-dropdown-toggle="" class="dropdown-toggle" id="add-methods-dropdown" href="" aria-haspopup="true" aria-expanded="false">\n              Custom Add\n              <span class="caret" aria-hidden="true"></span>\n            </a>\n            <ul class="uib-dropdown-menu dropdown-menu pull-right" aria-labelledby="add-methods-dropdown">\n              \x3c!-- note these are duplicated below --\x3e\n              <li ng-if="$ctrl.onDeployImageSelected">\n                <a href="" ng-click="$ctrl.onDeployImageSelected()">Deploy Image</a>\n              </li>\n              <li ng-if="$ctrl.onFromFileSelected">\n                <a href="" ng-click="$ctrl.onFromFileSelected()">Import YAML / JSON</a>\n              </li>\n              <li ng-if="$ctrl.onCreateFromProject">\n                <a href="" ng-click="$ctrl.onCreateFromProject()">Select from Project</a>\n              </li>\n            </ul>\n          </li>\n        </ul>\n        <ul class="add-other hidden-xs hidden-sm">\n          \x3c!-- note these are duplicated above --\x3e\n          <li ng-if="$ctrl.onDeployImageSelected">\n            <a href="" ng-click="$ctrl.onDeployImageSelected()">Deploy Image</a>\n          </li>\n          <li ng-if="$ctrl.onFromFileSelected">\n            <a href="" ng-click="$ctrl.onFromFileSelected()">Import YAML / JSON</a>\n          </li>\n          <li ng-if="$ctrl.onCreateFromProject">\n            <a href="" ng-click="$ctrl.onCreateFromProject()">Select from Project</a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <ul class="nav nav-tabs nav-tabs-pf services-categories">\n      <li ng-repeat="category in $ctrl.categories"\n          ng-if="category.hasItems"\n          ng-class="{ active: $ctrl.currentFilter === category.id }">\n        <a href="" id="{{\'category-\'+category.id}}" class="services-category-heading" ng-click="$ctrl.selectCategory(category.id)">{{category.label|translate}}</a>\n        <a ng-click="$ctrl.mobileView = \'categories\'" class="services-back-link" href="">Back</a>\n      </li>\n    </ul>\n\n    <div class="services-inner-container">\n      \x3c!-- Do not show sub-category items for \'All\' or \'Other\' main categories --\x3e\n      <ul class="services-sub-categories"\n          ng-if="$ctrl.currentFilter !== \'other\' && $ctrl.currentFilter !== \'all\'">\n        <li ng-repeat="subCategory in $ctrl.subCategories track by subCategory.id"\n             ng-if="subCategory.hasItems"\n             ng-attr-id="{{subCategory.id}}"\n             class="services-sub-category"\n             ng-class="{ active: $ctrl.currentSubFilter === subCategory.id }">\n          <a href="" id="{{\'services-sub-category-\'+subCategory.id}}"\n             class="services-sub-category-tab" ng-click="$ctrl.selectSubCategory(subCategory.id)">\n            <div class="services-sub-category-tab-image" ng-if="imageUrl = (subCategory.imageUrl || (subCategory.icon | imageForIconClass))">\n              <img ng-src="{{imageUrl}}" alt="">\n            </div>\n            <div class="services-sub-category-tab-icon {{subCategory.icon | normalizeIconClass}}"\n                ng-if="subCategory.icon && !subCategory.imageUrl && !(subCategory.icon | imageForIconClass)"></div>\n            <div class="services-sub-category-tab-name">{{subCategory.label|translate}}</div>\n          </a>\n         <a ng-click="$ctrl.mobileView = \'subcategories\'" class="services-back-link" href="" translate>Back</a>\n          <div ng-if="$ctrl.currentSubFilter === subCategory.id" class="services-items">\n            <catalog-filter class="services-items-filter"\n                            config="$ctrl.filterConfig"\n                            vendors="$ctrl.vendors"\n                            filter-on-keyword="$ctrl.keywordFilterValue"\n                            apply-filters="$ctrl.applyFilters($event)">\n            </catalog-filter>\n            <div class="pf-empty-state" ng-if="$ctrl.filterConfig.appliedFilters.length > 0 && $ctrl.filterConfig.resultsCount === 0">\n              <pf-empty-state config="$ctrl.emptyFilterConfig"></pf-empty-state>\n            </div>\n            <a href="" class="services-item" ng-repeat="item in $ctrl.filteredItems track by item.resource.metadata.uid" ng-click="$ctrl.serviceViewItemClicked(item)">\n              <div ng-if="!item.imageUrl" class="services-item-icon">\n                <span class="{{item.iconClass}}"></span>\n              </div>\n              <div ng-if="item.imageUrl" class="services-item-icon">\n                <img ng-src="{{item.imageUrl}}" alt="">\n              </div>\n              <div class="services-item-name" title="{{item.name}}">\n                {{item.name}}\n              </div>\n            </a>\n          </div>\n        </li>\n      </ul>\n\n      \x3c!-- Show catalog item for \'All\' and \'Other\' main categories --\x3e\n      <div ng-if="$ctrl.currentFilter === \'other\' || $ctrl.currentFilter === \'all\'" class="services-no-sub-categories">\n        <div class="services-items" ng-class="{\'no-items-available\': $ctrl.isEmpty}">\n          <div ng-if="$ctrl.isEmpty">\n            <div class="pf-empty-state">\n              <pf-empty-state config="$ctrl.noItemsConfig"></pf-empty-state>\n            </div>\n          </div>\n          <catalog-filter ng-if="!$ctrl.isEmpty"\n                          class="services-items-filter"\n                          config="$ctrl.filterConfig"\n                          vendors="$ctrl.vendors"\n                          filter-on-keyword="$ctrl.keywordFilterValue"\n                          apply-filters="$ctrl.applyFilters($event)">\n          </catalog-filter>\n          <div class="pf-empty-state" ng-if="$ctrl.filterConfig.appliedFilters.length > 0 && $ctrl.filterConfig.resultsCount === 0">\n            <pf-empty-state config="$ctrl.emptyFilterConfig"></pf-empty-state>\n          </div>\n          <a href="" class="services-item" ng-repeat="item in $ctrl.filteredItems track by item.resource.metadata.uid" ng-click="$ctrl.serviceViewItemClicked(item)">\n            <div ng-if="!item.imageUrl" class="services-item-icon">\n              <span class="{{item.iconClass}}"></span>\n            </div>\n            <div ng-if="item.imageUrl" class="services-item-icon">\n              <img ng-src="{{item.imageUrl}}" alt="">\n            </div>\n            <div class="services-item-name" title="{{item.name}}">\n              {{item.name}}\n            </div>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
 }, function(e, t) {
     e.exports = '<div class="order-service">\n  <pf-wizard wizard-title="{{$ctrl.displayName}}"\n             hide-sidebar="true"\n             step-class="order-service-wizard-step"\n             wizard-ready="$ctrl.wizardReady"\n             next-title="$ctrl.nextTitle"\n             on-finish="$ctrl.closePanel()"\n             on-cancel="$ctrl.closePanel()"\n             wizard-done="$ctrl.wizardDone"\n             hide-back-button="{{$ctrl.hideBackButton}}">\n    <pf-wizard-step ng-repeat="step in $ctrl.steps track by step.id"\n                    step-title="{{step.label}}"\n                    wz-disabled="{{step.hidden}}"\n                    allow-click-nav="step.allowClickNav"\n                    next-enabled="step.valid && !$ctrl.updating"\n                    prev-enabled="step.prevEnabled"\n                    on-show="step.onShow"\n                    step-id="{{step.id}}"\n                    step-priority="{{$index}}">\n      <div class="wizard-pf-main-inner-shadow-covers">\n        <div ng-include="step.view" class="wizard-pf-main-form-contents"></div>\n      </div>\n    </pf-wizard-step>\n  </pf-wizard>\n</div>\n';
 }, function(e, t, r) {
     "use strict";
     t.__esModule = !0;
     var n = r(1), i = r(0), a = function() {
-        function e(e, t, r) {
-            var a = this;
+        function e(e, t, r, a) {
+            var s = this;
             this.ctrl = this, this.onKeywordKeyPress = function(e) {
-                if (13 === e.which && a.ctrl.keywordFilter.value.length > 0) {
-                    var t = a.ctrl.keywordFilter.value;
-                    a.keywordFilterExists(t) ? a.highlightKeywordFilter(t) : (a.ctrl.keywordFilter.values.push(t), 
-                    a.constructFiltersFromModel()), delete a.ctrl.keywordFilter.value;
+                if (13 === e.which && s.ctrl.keywordFilter.value.length > 0) {
+                    var t = s.ctrl.keywordFilter.value;
+                    s.keywordFilterExists(t) ? s.highlightKeywordFilter(t) : (s.ctrl.keywordFilter.values.push(t), 
+                    s.constructFiltersFromModel()), delete s.ctrl.keywordFilter.value;
                 }
             }, this.filterChanged = function() {
-                a.constructFiltersFromModel();
+                s.constructFiltersFromModel();
             }, this.keywordFilterExists = function(e) {
-                return i.some(a.ctrl.keywordFilter.values, function(t) {
+                return i.some(s.ctrl.keywordFilter.values, function(t) {
                     return e.toLowerCase() === t.toLowerCase();
                 });
             }, this.highlightKeywordFilter = function(e) {
                 var t = document.querySelectorAll("pf-filter-panel-results .label-info"), r = i.find(t, function(t) {
                     return t.innerText.trim() === "Keyword:" + e.toLowerCase();
                 });
-                r && (a.$timeout(function() {
+                r && (s.$timeout(function() {
                     r.classList.add("flash-filter-tag");
-                }, 100), a.$timeout(function() {
+                }, 100), s.$timeout(function() {
                     r.classList.remove("flash-filter-tag");
                 }, 300));
             }, this.onFilterChange = function(e, t, r) {
-                n.isDefined(t) && n.isDefined(r) ? a.updateFilterPanelModel(t, r) : a.resetFilterPanelModel(), 
-                a.constructFiltersFromModel();
-            }, this.$scope = e, this.$timeout = t, this.Catalog = r, this.ctrl.filterPanelModel = [], 
-            this.ctrl.keywordFilter = {
+                n.isDefined(t) && n.isDefined(r) ? s.updateFilterPanelModel(t, r) : s.resetFilterPanelModel(), 
+                s.constructFiltersFromModel();
+            }, this.$scope = e, this.$timeout = t, this.Catalog = r, this.gettextCatalog = a, 
+            this.ctrl.filterPanelModel = [], this.ctrl.keywordFilter = {
                 id: "keyword",
                 title: "Keyword",
-                placeholder: "Filter by Keyword",
+                placeholder: this.gettextCatalog.getString("Filter by Keyword"),
                 filterType: "text",
                 values: []
             }, this.ctrl.filterPanelModel.push(this.ctrl.keywordFilter);
@@ -1107,7 +1107,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             this.ctrl.keywordFilter.values = [ this.ctrl.filterOnKeyword ], this.constructFiltersFromModel()), 
             e.vendors && e.vendors.currentValue && (i.isEmpty(this.ctrl.vendors) || (this.ctrl.VendorFilter ? this.ctrl.VendorFilter.values = this.getVendorValues(this.ctrl.vendors) : (this.ctrl.VendorFilter = {
                 id: "vendors",
-                title: "Publisher",
+                title: this.gettextCatalog.getString("Publisher"),
                 filterType: "checkbox",
                 values: this.getVendorValues(this.ctrl.vendors)
             }, this.ctrl.filterPanelModel.push(this.ctrl.VendorFilter))));
@@ -1176,7 +1176,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             });
         }, e;
     }();
-    a.$inject = [ "$scope", "$timeout", "Catalog" ], t.CatalogFilterController = a;
+    a.$inject = [ "$scope", "$timeout", "Catalog", "gettextCatalog" ], t.CatalogFilterController = a;
 }, function(e, t, r) {
     "use strict";
     t.__esModule = !0;
@@ -1303,11 +1303,11 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
                 name: e
             }) : 1 === i ? a.push({
                 id: "viewAll",
-                text: "View the result for Keyword: " + e,
+                text: this.gettextCatalog.getString("View the result for Keyword:") + "  " + e,
                 name: e
             }) : i > 1 && a.push({
                 id: "viewAll",
-                text: "View all " + i + " results for Keyword: " + e,
+                text: this.gettextCatalog.getString("View all") + " " + i + this.gettextCatalog.getString("results for Keyword:") + " " + e,
                 name: e
             }), a;
         }, e;
@@ -2094,30 +2094,30 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
     "use strict";
     t.__esModule = !0;
     var n = r(0), i = r(2), a = function() {
-        function e(e, t, r, i, a, s, o, c, l, d) {
-            var p = this;
+        function e(e, t, r, i, a, s, o, c, l, d, p) {
+            var h = this;
             this.ctrl = this, this.previousSubCategoryHeight = 0, this.resizeRetries = 0, this.serviceViewItemClicked = function(e, t) {
-                p.$scope.$emit("open-overlay-panel", e);
+                h.$scope.$emit("open-overlay-panel", e);
             }, this.filterChange = function(e) {
-                p.filterByCategory(p.ctrl.currentFilter, p.ctrl.currentSubFilter, !1), n.isEmpty(e) || n.each(e, function(e) {
+                h.filterByCategory(h.ctrl.currentFilter, h.ctrl.currentSubFilter, !1), n.isEmpty(e) || n.each(e, function(e) {
                     switch (e.id) {
                       case "keyword":
-                        p.ctrl.filteredItems = p.filterForKeywords(e.values[0], p.ctrl.filteredItems);
+                        h.ctrl.filteredItems = h.filterForKeywords(e.values[0], h.ctrl.filteredItems);
                         break;
 
                       case "vendors":
-                        p.ctrl.filteredItems = p.filterForVendors(e.values, p.ctrl.filteredItems);
+                        h.ctrl.filteredItems = h.filterForVendors(e.values, h.ctrl.filteredItems);
                     }
-                }), p.ctrl.filterConfig.resultsCount = p.ctrl.filteredItems.length, p.ctrl.keywordFilterValue = null;
+                }), h.ctrl.filterConfig.resultsCount = h.ctrl.filteredItems.length, h.ctrl.keywordFilterValue = null;
             }, this.clearAppliedFilters = function() {
-                p.$scope.$broadcast("clear-filters");
+                h.$scope.$broadcast("clear-filters");
             }, this.constants = e, this.catalog = t, this.keywordService = r, this.logger = i, 
             this.htmlService = a, this.element = s[0], this.$filter = o, this.$rootScope = c, 
             this.$scope = l, this.$timeout = d, this.ctrl.loaded = !1, this.ctrl.isEmpty = !1, 
             this.ctrl.mobileView = "categories", this.ctrl.filterConfig = {
                 resultsLabel: "Items",
                 appliedFilters: []
-            }, this.ctrl.keywordFilterValue = null;
+            }, this.ctrl.keywordFilterValue = null, this.gettextCatalog = p;
         }
         return e.prototype.$onInit = function() {
             var e = this;
@@ -2129,15 +2129,15 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             this.ctrl.sectionTitle = this.ctrl.sectionTitle || "Browse Catalog", this.removeFilterListener = this.$rootScope.$on("filter-catalog-items", function(t, r) {
                 e.setKeywordFilter(r.searchText);
             }), this.ctrl.emptyFilterConfig = {
-                title: "No results match.",
-                info: "The active filters are hiding all catalog items.",
+                title: this.gettextCatalog.getString("No results match."),
+                info: this.gettextCatalog.getString("The active filters are hiding all catalog items."),
                 helpLink: {
-                    urlLabel: "Clear Filters",
+                    urlLabel: this.gettextCatalog.getString("Clear Filters"),
                     urlAction: this.clearAppliedFilters
                 }
             }, this.ctrl.noItemsConfig = {
-                title: "No items.",
-                info: "No catalog items have been loaded.",
+                title: this.gettextCatalog.getString("No items."),
+                info: this.gettextCatalog.getString("No catalog items have been loaded."),
                 helpLink: {
                     urlLabel: "See Loading the Default Image Streams and Templates",
                     url: "https://docs.openshift.org/latest/install_config/imagestreams_templates.html"
@@ -2226,7 +2226,7 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             });
         }, e;
     }();
-    a.$inject = [ "Constants", "Catalog", "KeywordService", "Logger", "HTMLService", "$element", "$filter", "$rootScope", "$scope", "$timeout" ], 
+    a.$inject = [ "Constants", "Catalog", "KeywordService", "Logger", "HTMLService", "$element", "$filter", "$rootScope", "$scope", "$timeout", "gettextCatalog" ], 
     a.MAX_RESIZE_RETRIES = 20, t.ServicesViewController = a;
 }, function(e, t, r) {
     "use strict";

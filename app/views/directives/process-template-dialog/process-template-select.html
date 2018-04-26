@@ -7,7 +7,7 @@
         ng-model="$ctrl.templateProject"
         ng-change="$ctrl.templateProjectChange()"
         search-enabled="$ctrl.searchEnabled">
-        <ui-select-match placeholder="Select a Project">
+	<ui-select-match placeholder="{{'Select a Project'|translate}}">
           {{$select.selected | displayName}}
         </ui-select-match>
         <ui-select-choices repeat="project in $ctrl.templateProjects | searchProjects : $select.search track by (project | uid)">

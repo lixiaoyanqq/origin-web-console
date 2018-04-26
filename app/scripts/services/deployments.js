@@ -7,6 +7,8 @@ angular.module("openshiftConsole")
     APIService,
     DataService,
     LabelFilter,
+    gettext,
+    gettextCatalog,
     NotificationsService) {
 
     function DeploymentsService() {}
@@ -38,7 +40,7 @@ angular.module("openshiftConsole")
         function(result) {
           NotificationsService.addNotification({
             type: "error",
-            message: "An error occurred while starting the deployment.",
+            message: gettextCatalog.getString(gettext("An error occurred while starting the deployment.")),
             details: $filter('getErrorDetails')(result)
           });
         }
@@ -67,7 +69,7 @@ angular.module("openshiftConsole")
                 $scope.alerts["retrydeployer"] =
                   {
                     type: "error",
-                    message: "An error occurred while deleting the deployer pod.",
+                    message: gettextCatalog.getString(gettext("An error occurred while deleting the deployer pod.")),
                     details: $filter('getErrorDetails')(result)
                   };
               }
@@ -96,7 +98,7 @@ angular.module("openshiftConsole")
         function(result) {
           NotificationsService.addNotification({
             type: "error",
-            message: "An error occurred while retrying the deployment.",
+            message: gettextCatalog.getString(gettext("An error occurred while retrying the deployment.")),
             details: $filter('getErrorDetails')(result)
           });
         }
@@ -138,7 +140,7 @@ angular.module("openshiftConsole")
               NotificationsService.addNotification({
                 id: "rollback-deployment-error",
                 type: "error",
-                message: "An error occurred while rolling back the deployment.",
+                message: gettextCatalog.getString(gettext("An error occurred while rolling back the deployment.")),
                 details: $filter('getErrorDetails')(result)
               });
             }
@@ -148,7 +150,7 @@ angular.module("openshiftConsole")
           NotificationsService.addNotification({
             id: "rollback-deployment-error",
             type: "error",
-            message: "An error occurred while rolling back the deployment.",
+            message: gettextCatalog.getString(gettext("An error occurred while rolling back the deployment.")),
             details: $filter('getErrorDetails')(result)
           });
         });
@@ -179,7 +181,7 @@ angular.module("openshiftConsole")
           NotificationsService.addNotification({
             id: "cancel-deployment-error",
             type: "error",
-            message: "An error occurred while cancelling the deployment.",
+            message: gettextCatalog.getString(gettext("An error occurred while cancelling the deployment.")),
             details: $filter('getErrorDetails')(result)
           });
         }

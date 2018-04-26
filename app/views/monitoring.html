@@ -22,7 +22,7 @@
                 <div class="search-pf-input-group">
                   <label for="name-filter" class="sr-only" translate>Filter by name</label>
                   <input type="search"
-                      placeholder="Filter by name"
+		      placeholder="{{'Filter by name'|translate}}"
                       class="form-control"
                       id="name-filter"
                       ng-model="filters.text"
@@ -52,15 +52,15 @@
     <div class="middle-content">
       <div class="container-fluid">
         <alerts alerts="alerts"></alerts>
-        <div ng-if="kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Pods'">
+	<div ng-if="kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'Pods'">
           <h2>Pods</h2>
           <div class="list-pf" ng-class="{'list-pf-empty': !(filteredPods | size)}">
             <div class="list-pf-item" ng-if="!(filteredPods | size)">
               <div class="list-pf-container">
                 <ellipsis-pulser color="dark" size="sm" msg="Loading pods" ng-if="!podsLoaded"></ellipsis-pulser>
                 <em>
-                  <div ng-if="(pods | size) > 0">The current filters are hiding all pods.</div>
-                  <span ng-if="podsLoaded && (pods | size) === 0">There are no pods in this project.</span>
+                  <div ng-if="(pods | size) > 0" translate>The current filters are hiding all pods.</div>
+                  <span ng-if="podsLoaded && (pods | size) === 0" translate>There are no pods in this project.</span>
                 </em>
               </div>
             </div>
@@ -154,8 +154,8 @@
               <div class="list-pf-container">
                 <ellipsis-pulser color="dark" size="sm" msg="Loading deployments" ng-if="!replicationControllersLoaded"></ellipsis-pulser>
                 <em>
-                  <div ng-if="(replicationControllers | size) > 0 || (replicaSets | size) > 0">The current filters are hiding all deployments.</div>
-                  <span ng-if="replicationControllersLoaded && !(replicationControllers | size) && replicaSetsLoaded && !(replicaSets | size)">There are no deployments in this project.</span>
+                  <div ng-if="(replicationControllers | size) > 0 || (replicaSets | size) > 0" translate>The current filters are hiding all deployments.</div>
+                  <span ng-if="replicationControllersLoaded && !(replicationControllers | size) && replicaSetsLoaded && !(replicaSets | size)" translate>There are no deployments in this project.</span>
                 </em>
               </div>
             </div>

@@ -12,6 +12,8 @@ angular.module('openshiftConsole')
                                                      Logger,
                                                      ProjectsService,
                                                      SecretsService,
+	  					     gettext,
+	  					     gettextCatalog,
                                                      ServiceInstancesService) {
     $scope.alerts = {};
     $scope.projectName = $routeParams.project;
@@ -200,7 +202,7 @@ angular.module('openshiftConsole')
         $scope.loaded = true;
         $scope.alerts["load"] = {
           type: "error",
-          message: "The service details could not be loaded.",
+          message: gettextCatalog.getString(gettext("The service details could not be loaded.")),
           details: $filter('getErrorDetails')(error)
         };
       }));

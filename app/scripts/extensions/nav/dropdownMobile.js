@@ -22,21 +22,13 @@ angular.module('openshiftConsole')
           dropdownItems.push(liObj);
         });
 
-        dropdownItems = dropdownItems.concat([{
-          type: 'dom',
-          node: [
-            '<li class="list-group-item">',
-              '<a href="{{\'default\' | helpLink}}">',
-                '<span class="fa fa-book fa-fw" aria-hidden="true"></span> <span class="list-group-item-value">Documentation</span>',
-              '</a>',
-            '</li>'
-          ].join('')
-        }, {
+        dropdownItems = dropdownItems.concat([
+        {
           type: 'dom',
           node: [
             '<li class="list-group-item">',
               '<a href="command-line">',
-                '<span class="fa fa-terminal" aria-hidden="true"></span> <span class="list-group-item-value">Command Line Tools</span>',
+                '<span class="fa fa-terminal" aria-hidden="true"></span> <span class="list-group-item-value" translate>Command Line Tools</span>',
               '</a>',
             '</li>'
           ].join('')
@@ -45,7 +37,7 @@ angular.module('openshiftConsole')
           node: [
             '<li class="list-group-item">',
               '<a href="about">',
-                '<span class="pficon pficon-info fa-fw" aria-hidden="true"></span> <span class="list-group-item-value">About</span>',
+                '<span class="pficon pficon-info fa-fw" aria-hidden="true"></span> <span class="list-group-item-value" translate>About</span>',
               '</a>',
             '</li>'
           ].join('')
@@ -56,7 +48,7 @@ angular.module('openshiftConsole')
               '<li class="list-group-item">',
               '<a href="logout">',
               '<span class="pficon pficon-user fa-fw" aria-hidden="true"></span>',
-              '<span class="list-group-item-value">Log out <span class="username"><%= userName %></span></span>',
+              '<span class="list-group-item-value"><translate>Log out</translate> <span class="username"><%= userName %></span></span>',
               '</a>',
               '</li>'
             ].join(''))({userName: (user ? (user.fullName || user.metadata.name) : "") })

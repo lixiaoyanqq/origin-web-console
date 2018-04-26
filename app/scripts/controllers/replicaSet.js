@@ -27,6 +27,8 @@ angular.module('openshiftConsole')
                         OwnerReferencesService,
                         PodsService,
                         ProjectsService,
+		        gettext,
+		        gettextCatalog,
                         StorageService) {
     var hasDC = false;
 
@@ -474,8 +476,8 @@ angular.module('openshiftConsole')
           return $scope.isActive && !rolloutInProgress;
         };
 
-        $scope.removeVolume = function(volume) {
-          var details = "This will remove the volume from the " + $filter('humanizeKind')($scope.replicaSet.kind) + ".";
+        $scope.removeVolume = function(volume, gettext, gettextCatalog) {
+          var details = gettextCatalog.getString(gettext("This will remove the volume from the")) + "  " + $filter('humanizeKind')($scope.replicaSet.kind) + ".";
           if (volume.persistentVolumeClaim) {
             details += " It will not delete the persistent volume claim.";
           } else if (volume.secret) {
@@ -485,11 +487,11 @@ angular.module('openshiftConsole')
           }
 
           var confirm = ModalsService.confirm({
-            title: "Remove volume " + volume.name + "?",
+            title: gettextCatalog.getString(gettext("Remove volume"))+" " + volume.name + "?",
             details: details,
-            okButtonText: "Remove",
+            okButtonText: gettextCatalog.getString(gettext("Remove")),
             okButtonClass: "btn-danger",
-            cancelButtonText: "Cancel"
+            cancelButtonText: gettextCatalog.getString(gettext("Cancel"))
           });
 
           var removeVolume = function() {

@@ -23,6 +23,8 @@ angular.module('openshiftConsole')
                        NotificationsService,
                        ProjectsService,
                        SecretsService,
+		       gettext,
+		       gettextCatalog,
                        keyValueEditorUtils) {
     $scope.projectName = $routeParams.project;
     $scope.deploymentConfig = null;
@@ -190,7 +192,7 @@ angular.module('openshiftConsole')
               if (action === 'MODIFIED') {
                 $scope.alerts["updated/deleted"] = {
                   type: "warning",
-                  message: "This deployment configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
+                  message: gettextCatalog.getString(gettext("This deployment configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."))
                 };
               }
               if (action === "DELETED") {

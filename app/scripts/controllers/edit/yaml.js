@@ -19,6 +19,8 @@ angular.module('openshiftConsole')
                                               DataService,
                                               Navigate,
                                               NotificationsService,
+	  				      gettext,
+	                                      gettextCatalog,
                                               ProjectsService) {
     if (!$routeParams.kind || !$routeParams.name) {
       Navigate.toErrorPage("Kind or name parameter missing.");
@@ -123,8 +125,8 @@ angular.module('openshiftConsole')
                   if (newResourceVersion === editedResourceVersion) {
                     $scope.alerts['no-changes-applied'] = {
                       type: "warning",
-                      message: "No changes were applied to " + humanizeKind($routeParams.kind) + " " + $routeParams.name + ".",
-                      details: "Make sure any new fields you may have added are supported API fields."
+                      message: gettextCatalog.getString(gettext("No changes were applied to")) + "  " + humanizeKind($routeParams.kind) + " " + $routeParams.name + ".",
+                      details: gettextCatalog.getString(gettext("Make sure any new fields you may have added are supported API fields."))
                     };
                     $scope.updatingNow = false;
                     return;

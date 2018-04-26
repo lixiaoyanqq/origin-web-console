@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module("openshiftConsole")
-  .factory("RoutesService", function($filter, gettext, gettextCatalog) {
+  .factory("RoutesService", function($filter) {
     var isPortNamed = function(port) {
       return angular.isString(port);
     };
@@ -19,7 +19,7 @@ angular.module("openshiftConsole")
       });
     };
 
-    var addRouteTargetWarnings = function(route, target, services, warnings) {
+    var addRouteTargetWarnings = function(route, target, services, warnings, gettext, gettextCatalog) {
       if (target.kind !== 'Service') {
         return;
       }
@@ -27,7 +27,7 @@ angular.module("openshiftConsole")
       var service = _.get(services, [target.name]);
       // Has the service been deleted?
       if (!service) {
-        warnings.push('Routes to service "' + target.name + '", but service does not exist.');
+        warnings.push(gettextCatalog.getString(gettext('Routes to service'))+'"' + target.name + '"', gettextCatalog.getString(gettext("but service does not exist.")));
         return;
       }
 

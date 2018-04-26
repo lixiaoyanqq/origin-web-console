@@ -198,6 +198,8 @@ angular.module('openshiftConsole')
       NotificationsService,
       ProjectsService,
       projectOverviewURLFilter,
+      gettext,
+      gettextCatalog,
       RecentlyViewedServiceItems) {
 
     // cache these to eliminate flicker
@@ -310,7 +312,7 @@ angular.module('openshiftConsole')
           select.empty();
           select.append(options);
           select.append($('<option data-divider="true"></option>'));
-          select.append($('<option value="">View All Projects</option>'));
+          select.append($('<option value="">' + gettextCatalog.getString(gettext("View All Projects")) + '</option>'));
           select.selectpicker('refresh');
         };
 

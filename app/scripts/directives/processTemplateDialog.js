@@ -34,17 +34,17 @@
                                  KeywordService,
                                  NotificationsService,
                                  ProjectsService,
-                                 annotation,
                                  RecentlyViewedProjectsService,
                                  gettext,
                                  gettextCatalog) {
     var ctrl = this;
     var validityWatcher;
     var imageForIconClass = $filter('imageForIconClass');
+    var annotation = $filter('annotation');
 
     ctrl.selectStep = {
       id: 'projectTemplates',
-      label: 'Selection',
+      label: gettextCatalog.getString(gettext('Selection')),
       view: 'views/directives/process-template-dialog/process-template-select.html',
       hidden: ctrl.useProjectTemplate !== true,
       allowed: true,
@@ -55,7 +55,7 @@
 
     ctrl.infoStep = {
       id: 'info',
-      label: 'Information',
+      label: gettextCatalog.getString(gettext('Information')),
       view: 'views/directives/process-template-dialog/process-template-info.html',
       allowed: true,
       valid: true,
@@ -65,7 +65,7 @@
 
     ctrl.configStep = {
       id: 'configuration',
-      label: 'Configuration',
+      label: gettextCatalog.getString(gettext('Configuration')),
       view: 'views/directives/process-template-dialog/process-template-config.html',
       // Start initially as invalid so the button doesn't flicker when the dialog
       // is displayed and the template has required fields.
@@ -77,7 +77,7 @@
 
     ctrl.resultsStep = {
       id: 'results',
-      label: 'Results',
+      label: gettextCatalog.getString(gettext('Results')),
       view: 'views/directives/process-template-dialog/process-template-results.html',
       valid: true,
       allowed: false,
@@ -104,14 +104,14 @@
 
       ctrl.projectEmptyState = {
         icon: 'pficon pficon-info',
-        title: 'No Project Selected',
-        info: 'Please select a project from the dropdown to load Templates from that project.'
+        title: gettextCatalog.getString(gettext('No Project Selected')),
+        info: gettextCatalog.getString(gettext('Please select a project from the dropdown to load Templates from that project.'))
       };
 
       ctrl.templatesEmptyState = {
         icon: 'pficon pficon-info',
-        title: 'No Templates',
-        info: 'The selected project has no templates available to import.'
+        title: gettextCatalog.getString(gettext('No Templates')),
+        info: gettextCatalog.getString(gettext('The selected project has no templates available to import.'))
       };
 
       ctrl.filterConfig = {
@@ -251,7 +251,7 @@
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = false;
-      ctrl.nextTitle = "Next >";
+      ctrl.nextTitle = gettextCatalog.getString(gettext("Next"))+" >";
       clearValidityWatcher();
     }
 
@@ -260,7 +260,7 @@
       ctrl.selectStep.selected = true;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = false;
-      ctrl.nextTitle = "Next >";
+      ctrl.nextTitle = gettextCatalog.getString(gettext("Next"))+" >";
       clearValidityWatcher();
       listProjects();
     }
@@ -270,7 +270,7 @@
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = true;
       ctrl.resultsStep.selected = false;
-      ctrl.nextTitle = "Create";
+      ctrl.nextTitle = gettextCatalog.getString(gettext("Create"));
       ctrl.resultsStep.allowed = ctrl.configStep.valid;
 
       validityWatcher = $scope.$watch("$ctrl.form.$valid", function(isValid) {
@@ -284,7 +284,7 @@
       ctrl.selectStep.selected = false;
       ctrl.configStep.selected = false;
       ctrl.resultsStep.selected = true;
-      ctrl.nextTitle = "Close";
+      ctrl.nextTitle = gettextCatalog.getString(gettext("Close"));
       clearValidityWatcher();
       ctrl.wizardDone = true;
     }

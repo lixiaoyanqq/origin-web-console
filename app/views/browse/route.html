@@ -72,11 +72,11 @@
                 <span ng-if="!admittedCondition" translate>Admission status unknown for router '{{ingress.routerName}}'</span>
                 <span ng-if="admittedCondition.status === 'True'">
                   <status-icon status="'Succeeded'"></status-icon>
-                  Exposed on router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
+		  <translate>Exposed on router</translate> '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
                 </span>
                 <span ng-if="admittedCondition.status === 'False'">
                   <status-icon status="'Error'"></status-icon>
-                  Rejected by router '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
+		  <translate>Rejected by router</translate> '{{ingress.routerName}}' <span am-time-ago="admittedCondition.lastTransitionTime"></span>
                 </span>
               </div>
               <div ng-if="showRouterHostnameAlert(ingress, admittedCondition)" class="mar-top-lg">
@@ -95,7 +95,7 @@
               <dt>Path:</dt>
               <dd>
                 <span ng-if="route.spec.path">{{route.spec.path}}</span>
-                <span ng-if="!route.spec.path"><em>none</em></span>
+                <span ng-if="!route.spec.path"><em translate>none</em></span>
               </dd>
               <dt>{{route.spec.to.kind || "Routes To"}}:</dt>
               <dd>
@@ -106,7 +106,7 @@
                 <span ng-if="route.spec.port.targetPort">
                   {{route.spec.port.targetPort}}
                 </span>
-                <span ng-if="!route.spec.port.targetPort"><em>any</em></span>
+                <span ng-if="!route.spec.port.targetPort"><em translate>any</em></span>
               </dd>
               <div ng-if="route.spec.port.targetPort && route.spec.to.kind === 'Service' && (route | routeTargetPortMapping : services[route.spec.to.name])" class="help-block">
                 This target port will route to {{route | routeTargetPortMapping : services[route.spec.to.name]}}.
@@ -155,9 +155,9 @@
               <h4 translate>TLS Settings</h4>
               <dl class="dl-horizontal left" ng-if="route.spec.tls">
                 <dt translate>Termination Type:</dt>
-                <dd>{{route.spec.tls.termination | humanizeTLSTermination}}</dd>
+                <dd translate>{{route.spec.tls.termination | humanizeTLSTermination}}</dd>
                 <dt translate>Insecure Traffic:</dt>
-                <dd>{{route.spec.tls.insecureEdgeTerminationPolicy || 'None'}}</dd>
+                <dd translate>{{route.spec.tls.insecureEdgeTerminationPolicy || 'None'}}</dd>
                 <dt translate>Certificate:</dt>
                 <dd>
                   <span ng-show="route.spec.tls.certificate && !reveal.certificate">

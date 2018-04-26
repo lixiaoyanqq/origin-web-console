@@ -3,16 +3,16 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="ctrl.onCancel()">
       <span class="pficon pficon-close"></span>
     </button>
-    <h1 class="modal-title">Add to Application</h1>
+    <h1 class="modal-title" translate>Add to Application</h1>
   </div>
   <form name="addToApplicationForm" novalidate>
     <fieldset ng-disabled="disableInputs">
       <div class="modal-body">
-        <legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>
+	      <legend ><translate>Add this</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>to application</translate>:</legend>
         <div class="form-group">
           <div class="application-select">
             <ui-select autofocus id="application" ng-model="ctrl.application" on-select="ctrl.checkApplicationContainersRefs($item)" required="true" ng-disabled="ctrl.disableInputs">
-              <ui-select-match placeholder="{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}">
+		    <ui-select-match placeholder="{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}">
               <span>
                 {{$select.selected.metadata.name}}
                 <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>
@@ -26,7 +26,7 @@
             </ui-select>
           </div>
         </div>
-        <legend>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
+	<legend translate>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
         <div class="radio">
           <label for="env">
             <input id="env" type="radio" ng-model="ctrl.addType" value="env" >
@@ -37,12 +37,12 @@
           <div class="has-warning" ng-if="ctrl.hasInvalidEnvVars">
             <div class="help-block">
               <span class="pf-icon pficon-warning-triangle-o" aria-hidden="true"></span>
-              {{ctrl.apiObject.kind | humanizeKind | upperFirst}} <strong>{{ctrl.apiObject.metadata.name}}</strong> contains keys that are not valid environment variable names. Only {{ctrl.apiObject.kind | humanizeKind}} keys with valid names will be added as environment variables.
+	      {{ctrl.apiObject.kind | humanizeKind | upperFirst | translate}} <strong>{{ctrl.apiObject.metadata.name}}</strong><translate>contains keys that are not valid environment variable names.</translate> <translate>Only</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>keys with valid names will be added as environment variables.</translate>
             </div>
           </div>
           <div class="form-group">
             <div class="control-label">
-              <label>Prefix</label>
+              <label translate>Prefix</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
                  uib-popover="Optionally, you can specify a prefix to use with environment variables."
@@ -53,7 +53,7 @@
               <input class="form-control"
                      name="envPrefix"
                      id="envPrefix"
-                     placeholder="(optional)"
+		     placeholder="({{'optional'|translate}})"
                      type="text"
                      ng-pattern="/^[A-Za-z_][A-Za-z0-9_]*$/"
                      aria-describedby="env-prefix-help"
@@ -72,7 +72,7 @@
         <div class="radio">
           <label for="volume">
             <input id="volume" type="radio" ng-model="ctrl.addType" value="volume">
-            Volume
+	    <translate>Volume</translate>
           </label>
         </div>
         <div ng-if="ctrl.addType === 'volume'" class="choice-contents clearfix">
@@ -81,9 +81,9 @@
               <label class="required">Mount Path</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-                 uib-popover="Mount Path for the volume. A file will be created in this
+		 uib-popover="{{'Mount Path for the volume. A file will be created in this
                               directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.
-                              The file contents will be the value of the key."
+			      The file contents will be the value of the key.' | translate}}"
                  popover-trigger="focus">
               </a>
             </div>

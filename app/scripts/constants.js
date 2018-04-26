@@ -71,6 +71,17 @@ function Noop() {
   gettext('Middleware');
   gettext('CI/CD');
   gettext('No results found for Keyword:');
+  gettext('View the result for Keyword:');	
+  gettext('View all');
+  gettext('results for Keyword:');
+  gettext('Filter by Keyword');
+  gettext('Publisher');
+  gettext('No results match.');
+  gettext('The active filters are hiding all catalog items.');
+  gettext('This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.');
+  gettext('Clear Filters');
+  gettext('No items.');
+  gettext('No catalog items have been loaded.');
 }
 Noop();
 
@@ -409,15 +420,6 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
             {
               label: gettext("Quota"),
               href: "/quota"
-            },
-            {
-              label: gettext("Membership"),
-              href: "/membership",
-              // supports: {resource: '', verb: '', group: '' }
-              canI: {
-                resource: 'rolebindings',
-                verb: 'list'
-              }
             },
             {
               label: gettext("Config Maps"),
