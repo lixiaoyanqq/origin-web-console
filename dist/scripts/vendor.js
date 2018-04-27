@@ -55792,18 +55792,18 @@ angular.module("kubernetesUI");
 angular.module("kubernetesUI", []);
 }
 
-angular.module("kubernetesUI").factory("LabelFilter", [ "$location", function(e) {
-function t() {
+angular.module("kubernetesUI").factory("LabelFilter", [ "$location", "gettext", "gettextCatalog", function(e, t, n) {
+function i() {
 this._existingLabels = {}, this._labelSelector = new LabelSelector(null, !0), this._onActiveFiltersChangedCallbacks = $.Callbacks();
 }
-return t.prototype.addLabelSuggestionsFromResources = function(e, t) {
+return i.prototype.addLabelSuggestionsFromResources = function(e, t) {
 if (e.metadata && e.metadata.name) this._extractLabelsFromItem(e, t); else {
 var n = this;
 angular.forEach(e, function(e) {
 n._extractLabelsFromItem(e, t);
 });
 }
-}, t.prototype.setLabelSuggestions = function(e) {
+}, i.prototype.setLabelSuggestions = function(e) {
 if (this._existingLabels = e, this._labelFilterKeySelectize) {
 this._labelFilterKeySelectize.clearOptions();
 var t = this;
@@ -55811,30 +55811,30 @@ this._labelFilterKeySelectize.load(function(e) {
 e(t._getLabelFilterKeys());
 });
 }
-}, t.prototype.persistFilterState = function(e) {
+}, i.prototype.persistFilterState = function(e) {
 this._shouldPersistState = !!e;
-}, t.prototype._persistState = function() {
+}, i.prototype._persistState = function() {
 if (this._shouldPersistState) if (this._labelSelector.isEmpty()) (t = e.search()).labelFilter = null, e.replace().search(t); else {
 var t = e.search();
 t.labelFilter = this._labelSelector.exportJSON(), e.replace().search(t);
 }
-}, t.prototype.readPersistedState = function() {
+}, i.prototype.readPersistedState = function() {
 var t = e.search().labelFilter;
 if (t) try {
 this._labelSelector = new LabelSelector(JSON.parse(t), !0);
 } catch (e) {
 this._labelSelector = new LabelSelector({}, !0);
 } else this._labelSelector = new LabelSelector({}, !0);
-}, t.prototype._extractLabelsFromItem = function(e, t) {
+}, i.prototype._extractLabelsFromItem = function(e, t) {
 var n = e.metadata ? e.metadata.labels : {};
 angular.forEach(n, function(e, n) {
 t[n] || (t[n] = []), t[n].push({
 value: e
 });
 });
-}, t.prototype.getLabelSelector = function() {
+}, i.prototype.getLabelSelector = function() {
 return this._labelSelector;
-}, t.prototype.setLabelSelector = function(e, t) {
+}, i.prototype.setLabelSelector = function(e, t) {
 if (this._labelFilterActiveFiltersElement && this._labelFilterActiveFiltersElement.find(".label-filter-active-filter").remove(), this._labelSelector = e, this._labelFilterActiveElement) if (this._labelSelector.isEmpty()) this._labelFilterActiveElement.hide(); else {
 this._labelFilterActiveElement.show();
 var n = this;
@@ -55843,14 +55843,14 @@ n._renderActiveFilter(e);
 });
 }
 this._persistState(), t || this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype.onActiveFiltersChanged = function(e) {
+}, i.prototype.onActiveFiltersChanged = function(e) {
 this._onActiveFiltersChangedCallbacks.add(e);
-}, t.prototype.setupFilterWidget = function(e, t, n) {
-var i = this, n = n || {};
-this._labelFilterRootElement = e, this._labelFilterActiveFiltersRootElement = t;
-var r = $("<div>").addClass("label-filter").appendTo(e);
-this._labelFilterKeyInput = $("<select>").addClass("label-filter-key").attr("placeholder", "Filter by label ").appendTo(r), this._labelFilterOperatorInput = $("<select>").addClass("label-filter-operator").attr("placeholder", "matching(...)").hide().appendTo(r), this._labelFilterValuesInput = $("<select>").addClass("label-filter-values").attr("placeholder", "Value(s)").attr("multiple", !0).hide().appendTo(r), this._labelFilterAddBtn = $("<button>").addClass("label-filter-add btn btn-default disabled").attr("disabled", !0).appendTo(e).append($("<span>").text(n.addButtonText || "Add Filter")), this._labelFilterActiveFiltersElement = $("<span>").addClass("label-filter-active-filters").appendTo(t), this._labelFilterActiveElement = $("<span>").addClass("label-filter-clear").hide().appendTo(this._labelFilterActiveFiltersElement).append($("<a>").addClass("label-filtering-remove-all label label-primary").prop("href", "javascript:;").append($("<i>").addClass("fa fa-filter")).append($("<span>").text("Clear filters"))).click(function() {
-i.clear();
+}, i.prototype.setupFilterWidget = function(e, i, r) {
+var o = this, r = r || {};
+this._labelFilterRootElement = e, this._labelFilterActiveFiltersRootElement = i;
+var a = $("<div>").addClass("label-filter").appendTo(e);
+this._labelFilterKeyInput = $("<select>").addClass("label-filter-key").attr("placeholder", n.getString(t("Filter by label")) + " ").appendTo(a), this._labelFilterOperatorInput = $("<select>").addClass("label-filter-operator").attr("placeholder", "matching(...)").hide().appendTo(a), this._labelFilterValuesInput = $("<select>").addClass("label-filter-values").attr("placeholder", "Value(s)").attr("multiple", !0).hide().appendTo(a), this._labelFilterAddBtn = $("<button>").addClass("label-filter-add btn btn-default disabled").attr("disabled", !0).appendTo(e).append($("<span>").text(r.addButtonText || "Add Filter")), this._labelFilterActiveFiltersElement = $("<span>").addClass("label-filter-active-filters").appendTo(i), this._labelFilterActiveElement = $("<span>").addClass("label-filter-clear").hide().appendTo(this._labelFilterActiveFiltersElement).append($("<a>").addClass("label-filtering-remove-all label label-primary").prop("href", "javascript:;").append($("<i>").addClass("fa fa-filter")).append($("<span>").text("Clear filters"))).click(function() {
+o.clear();
 }), this._labelFilterKeyInput.selectize({
 dropdownParent: "body",
 valueField: "key",
@@ -55860,30 +55860,30 @@ create: !0,
 persist: !0,
 preload: !0,
 onItemAdd: function(e, t) {
-var n = i._labelFilterValuesSelectize;
+var n = o._labelFilterValuesSelectize;
 n.clearOptions(), n.load(function(e) {
-var t = [], n = i._labelFilterKeySelectize.getValue();
+var t = [], n = o._labelFilterKeySelectize.getValue();
 if (!n) return t;
-var r = i._existingLabels;
-if (r[n]) {
-for (var o = 0; o < r[n].length; o++) t.push(r[n][o]);
+var i = o._existingLabels;
+if (i[n]) {
+for (var r = 0; r < i[n].length; r++) t.push(i[n][r]);
 e(t);
 } else e({});
-}), i._labelFilterOperatorSelectizeInput.css("display", "inline-block"), i._labelFilterOperatorSelectize.getValue() ? n.focus() : i._labelFilterOperatorSelectize.focus();
+}), o._labelFilterOperatorSelectizeInput.css("display", "inline-block"), o._labelFilterOperatorSelectize.getValue() ? n.focus() : o._labelFilterOperatorSelectize.focus();
 },
 onItemRemove: function(e) {
-i._labelFilterOperatorSelectizeInput.hide(), i._labelFilterOperatorSelectize.clear(), i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
+o._labelFilterOperatorSelectizeInput.hide(), o._labelFilterOperatorSelectize.clear(), o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
 },
 load: function(e, t) {
-t(i._getLabelFilterKeys());
+t(o._getLabelFilterKeys());
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterKeySelectize = this._labelFilterKeyInput.prop("selectize"), this._labelFilterKeySelectizeInput = $(".selectize-control.label-filter-key", r), this._labelFilterOperatorInput.selectize({
+}), this._labelFilterKeySelectize = this._labelFilterKeyInput.prop("selectize"), this._labelFilterKeySelectizeInput = $(".selectize-control.label-filter-key", a), this._labelFilterOperatorInput.selectize({
 dropdownParent: "body",
 valueField: "type",
 labelField: "label",
@@ -55902,18 +55902,18 @@ type: "not in",
 label: "not in ..."
 } ],
 onItemAdd: function(e, t) {
-"exists" != e && "does not exist" != e ? (i._labelFilterValuesSelectizeInput.css("display", "inline-block"), i._labelFilterValuesSelectize.focus()) : i._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1).focus();
+"exists" != e && "does not exist" != e ? (o._labelFilterValuesSelectizeInput.css("display", "inline-block"), o._labelFilterValuesSelectize.focus()) : o._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1).focus();
 },
 onItemRemove: function(e) {
-i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
+o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0);
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterOperatorSelectize = this._labelFilterOperatorInput.prop("selectize"), this._labelFilterOperatorSelectizeInput = $(".selectize-control.label-filter-operator", r), this._labelFilterOperatorSelectizeInput.hide(), this._labelFilterValuesInput.selectize({
+}), this._labelFilterOperatorSelectize = this._labelFilterOperatorInput.prop("selectize"), this._labelFilterOperatorSelectizeInput = $(".selectize-control.label-filter-operator", a), this._labelFilterOperatorSelectizeInput.hide(), this._labelFilterValuesInput.selectize({
 dropdownParent: "body",
 valueField: "value",
 labelField: "value",
@@ -55923,50 +55923,50 @@ create: !0,
 persist: !0,
 preload: !0,
 onItemAdd: function(e, t) {
-i._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1);
+o._labelFilterAddBtn.removeClass("disabled").prop("disabled", !1);
 },
 onItemRemove: function(e) {},
 load: function(e, t) {
-var n = [], r = i._labelFilterKeySelectize.getValue();
-if (!r) return n;
-var o = i._existingLabels;
-if (o[r]) {
-for (var a = 0; a < o[r].length; a++) n.push(o[r][a]);
+var n = [], i = o._labelFilterKeySelectize.getValue();
+if (!i) return n;
+var r = o._existingLabels;
+if (r[i]) {
+for (var a = 0; a < r[i].length; a++) n.push(r[i][a]);
 t(n);
 } else t({});
 },
 onFocus: function() {
-r.addClass("filter-active");
+a.addClass("filter-active");
 },
 onBlur: function() {
-r.removeClass("filter-active");
+a.removeClass("filter-active");
 }
-}), this._labelFilterValuesSelectize = this._labelFilterValuesInput.prop("selectize"), this._labelFilterValuesSelectizeInput = $(".selectize-control.label-filter-values", r), this._labelFilterValuesSelectizeInput.hide(), this._labelFilterAddBtn.click(function() {
-var e = i._labelFilterKeySelectize.getValue(), t = i._labelFilterOperatorSelectize.getValue(), n = i._labelFilterValuesSelectize.getValue();
-i._labelFilterKeySelectize.clear(), i._labelFilterOperatorSelectizeInput.hide(), i._labelFilterOperatorSelectize.clear(), i._labelFilterValuesSelectizeInput.hide(), i._labelFilterValuesSelectize.clear(), i._labelFilterAddBtn.addClass("disabled").prop("disabled", !0), i.addActiveFilter(e, t, n);
+}), this._labelFilterValuesSelectize = this._labelFilterValuesInput.prop("selectize"), this._labelFilterValuesSelectizeInput = $(".selectize-control.label-filter-values", a), this._labelFilterValuesSelectizeInput.hide(), this._labelFilterAddBtn.click(function() {
+var e = o._labelFilterKeySelectize.getValue(), t = o._labelFilterOperatorSelectize.getValue(), n = o._labelFilterValuesSelectize.getValue();
+o._labelFilterKeySelectize.clear(), o._labelFilterOperatorSelectizeInput.hide(), o._labelFilterOperatorSelectize.clear(), o._labelFilterValuesSelectizeInput.hide(), o._labelFilterValuesSelectize.clear(), o._labelFilterAddBtn.addClass("disabled").prop("disabled", !0), o.addActiveFilter(e, t, n);
 }), this._labelSelector.isEmpty() || (this._labelFilterActiveElement.show(), this._labelSelector.each(function(e) {
-i._renderActiveFilter(e);
+o._renderActiveFilter(e);
 }));
-}, t.prototype._getLabelFilterKeys = function() {
+}, i.prototype._getLabelFilterKeys = function() {
 for (var e = [], t = Object.keys(this._existingLabels), n = 0; n < t.length; n++) e.push({
 key: t[n]
 });
 return e;
-}, t.prototype.addActiveFilter = function(e, t, n) {
+}, i.prototype.addActiveFilter = function(e, t, n) {
 this._labelFilterActiveElement.show(), this._addActiveFilter(e, t, n);
-}, t.prototype._addActiveFilter = function(e, t, n) {
+}, i.prototype._addActiveFilter = function(e, t, n) {
 var i = this._labelSelector.addConjunct(e, t, n);
 this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector), this._renderActiveFilter(i);
-}, t.prototype.clear = function() {
+}, i.prototype.clear = function() {
 this._labelFilterActiveFiltersElement && this._labelFilterActiveFiltersElement.find(".label-filter-active-filter").remove(), this._labelFilterActiveElement && this._labelFilterActiveElement.hide(), this._labelSelector.clearConjuncts(), this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype._renderActiveFilter = function(e) {
+}, i.prototype._renderActiveFilter = function(e) {
 $("<a>").addClass("label label-default label-filter-active-filter").prop("href", "javascript:;").prop("filter-label-id", e.id).click($.proxy(this, "_removeActiveFilter")).append($("<span>").text(e.string)).append($("<i>").addClass("fa fa-times")).appendTo(this._labelFilterActiveFiltersElement);
-}, t.prototype._removeActiveFilter = function(e) {
+}, i.prototype._removeActiveFilter = function(e) {
 var t = $(e.target).closest(".label-filter-active-filter"), n = t.prop("filter-label-id");
 t.remove(), 0 == $(".label-filter-active-filter", this._labelFilterActiveFiltersElement).length && this._labelFilterActiveElement.hide(), this._labelSelector.removeConjunct(n), this._persistState(), this._onActiveFiltersChangedCallbacks.fire(this._labelSelector);
-}, t.prototype.toggleFilterWidget = function(e) {
+}, i.prototype.toggleFilterWidget = function(e) {
 this._labelFilterRootElement && (e ? this._labelFilterRootElement.show() : this._labelFilterRootElement.hide()), this._labelFilterActiveFiltersRootElement && (e ? this._labelFilterActiveFiltersRootElement.show() : this._labelFilterActiveFiltersRootElement.hide());
-}, new t();
+}, new i();
 } ]), function(e) {
 if ("object" == typeof exports && "undefined" != typeof module) module.exports = e(); else if ("function" == typeof define && define.amd) define([], e); else {
 ("undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this).Terminal = e();
@@ -80445,10 +80445,10 @@ h.ctrl.filteredItems = h.filterForVendors(e.values, h.ctrl.filteredItems);
 }), h.ctrl.filterConfig.resultsCount = h.ctrl.filteredItems.length, h.ctrl.keywordFilterValue = null;
 }, this.clearAppliedFilters = function() {
 h.$scope.$broadcast("clear-filters");
-}, this.constants = e, this.catalog = t, this.keywordService = n, this.logger = r, this.htmlService = o, this.element = a[0], this.$filter = s, this.$rootScope = l, this.$scope = c, this.$timeout = u, this.ctrl.loaded = !1, this.ctrl.isEmpty = !1, this.ctrl.mobileView = "categories", this.ctrl.filterConfig = {
-resultsLabel: "Items",
+}, this.constants = e, this.catalog = t, this.keywordService = n, this.logger = r, this.htmlService = o, this.element = a[0], this.$filter = s, this.$rootScope = l, this.$scope = c, this.$timeout = u, this.ctrl.loaded = !1, this.ctrl.isEmpty = !1, this.ctrl.mobileView = "categories", this.gettextCatalog = d, this.ctrl.filterConfig = {
+resultsLabel: this.gettextCatalog.getString("Items"),
 appliedFilters: []
-}, this.ctrl.keywordFilterValue = null, this.gettextCatalog = d;
+}, this.ctrl.keywordFilterValue = null;
 }
 return e.prototype.$onInit = function() {
 var e = this;

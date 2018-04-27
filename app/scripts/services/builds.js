@@ -7,6 +7,8 @@ angular.module("openshiftConsole")
                     APIService,
                     DataService,
                     Navigate,
+		    gettext, 
+		    gettextCatalog,
                     NotificationsService) {
 
     var buildConfigsInstantiateVersion = APIService.getPreferredVersion('buildconfigs/instantiate');
@@ -55,10 +57,10 @@ angular.module("openshiftConsole")
         var displayName = getBuildDisplayName(build, buildConfig.metadata.name);
         var runPolicy = _.get(buildConfig, 'spec.runPolicy');
         if (runPolicy === 'Serial' || runPolicy === 'SerialLatestOnly') {
-          message = _.capitalize(buildType) + " " + displayName + " successfully queued.";
-          details = "Builds for " + buildConfig.metadata.name + " are configured to run one at a time.";
+          message = gettextCatalog.getString(gettext(_.capitalize(buildType))) + " " + displayName + " "+gettextCatalog.getString(gettext("successfully queued."));
+          details = gettextCatalog.getString(gettext("Builds for")) + " " + buildConfig.metadata.name + " " + gettextCatalog.getString(gettext("are configured to run one at a time."));
         } else {
-          message = _.capitalize(buildType) + " " + displayName + " successfully created.";
+          message = gettextCatalog.getString(gettext(_.capitalize(buildType))) + " " + displayName + " " + gettextCatalog.getString(gettext("successfully created."));
         }
         NotificationsService.addNotification({
           type: "success",
@@ -66,13 +68,13 @@ angular.module("openshiftConsole")
           details: details,
           links: [{
             href: Navigate.resourceURL(build),
-            label: "View Build"
+            label: gettextCatalog.getString(gettext("View Build"))
           }]
         });
       }, function(result) {
         NotificationsService.addNotification({
           type: "error",
-          message: "An error occurred while starting the " + buildType + ".",
+          message: gettextCatalog.getString(gettext("An error occurred while starting the")) + " " + buildType + ".",
           details: getErrorDetails(result)
         });
 
@@ -93,12 +95,12 @@ angular.module("openshiftConsole")
       return DataService.update(rgv, canceledBuild.metadata.name, canceledBuild, context).then(function() {
         NotificationsService.addNotification({
           type: "success",
-          message: _.capitalize(buildType) + " " + displayName + " successfully cancelled."
+          message: gettextCatalog.getString(gettext(_.capitalize(buildType))) + " " + displayName + " " + gettextCatalog.getString(gettext("successfully cancelled."))
         });
       }), function(result) {
         NotificationsService.addNotification({
           type: "error",
-          message: "An error occurred cancelling " + buildType + " " + displayName + ".",
+          message: gettextCatalog.getString(gettext("An error occurred cancelling")) + " " + buildType + " " + displayName + ".",
           details: getErrorDetails(result)
         });
 
@@ -125,16 +127,16 @@ angular.module("openshiftConsole")
         var clonedDisplayName = getBuildDisplayName(clonedBuild, buildConfigName);
         NotificationsService.addNotification({
           type: "success",
-          message: _.capitalize(buildType) + " " + originalDisplayName + " is being rebuilt as " + clonedDisplayName + ".",
+          message: gettextCatalog.getString(gettext(_.capitalize(buildType))) + " " + originalDisplayName + " " + gettextCatalog.getString(gettext("is being rebuilt as")) + " " + clonedDisplayName + ".",
           links: [{
             href: Navigate.resourceURL(clonedBuild),
-            label: "View Build"
+            label: gettextCatalog.getString(gettext("View Build"))
           }]
         });
       }, function(result) {
         NotificationsService.addNotification({
           type: "error",
-          message: "An error occurred while rerunning " + buildType + " " + originalDisplayName + ".",
+          message: gettextCatalog.getString(gettext("An error occurred while rerunning")) + " " + buildType + " " + originalDisplayName + ".",
           details: getErrorDetails(result)
         });
 

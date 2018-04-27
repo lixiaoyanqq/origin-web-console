@@ -2,7 +2,7 @@
 
 function Noop() {
 gettext("Manual"), gettext("Rolling"), gettext("Recreate"), gettext("deployment config"), gettext("Deployment Config"), gettext("horizontal pod autoscaler"), gettext("Config Map"), gettext("pull"), gettext("push"), gettext("Route"), gettext("openshift.io/imagestreams"), gettext("CPU (Request)"), gettext("Memory (Request)"), gettext("CPU (Limit)"), gettext("Memory (Limit)"), gettext("Storage (Request)"), gettext("user"), gettext("manual change"), gettext("complete"), gettext("running"), gettext("The minimum amount of"), gettext("the container is guaranteed."), gettext("The maximum amount of"), gettext("the container is allowed to use when running."), gettext("User"), gettext("user"), gettext("Group"), gettext("group"), gettext("Service Account"), gettext("service account"), gettext("System User"), gettext("system user"), gettext("System Group"), gettext("system group"), gettext("Read-Write-Once"), gettext("Read-Write-Many"), gettext("Read-Only-Many"), gettext("Bound"), gettext("Cancelled"), 
-gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded.");
+gettext("Active"), gettext("Complete"), gettext("Running"), gettext("Failed"), gettext("Terminating"), gettext("Completed"), gettext("Cores"), gettext("Custom"), gettext("Abort"), gettext("Retry"), gettext("Ignore"), gettext("Pre"), gettext("Mid"), gettext("Client state could not be verified"), gettext("Search Catalog"), gettext("Clear Search Input"), gettext("Databases"), gettext("Middleware"), gettext("CI/CD"), gettext("No results found for Keyword:"), gettext("View the result for Keyword:"), gettext("View all"), gettext("results for Keyword:"), gettext("Filter by Keyword"), gettext("Publisher"), gettext("No results match."), gettext("The active filters are hiding all catalog items."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("Clear Filters"), gettext("No items."), gettext("No catalog items have been loaded."), gettext("Items");
 }
 
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y, b, S, C, w, P, j, k, I, R, T, E, N, D) {
@@ -2043,21 +2043,21 @@ auth: {}
 };
 } ]), angular.module("openshiftConsole").factory("BaseHref", [ "$document", function(e) {
 return e.find("base").attr("href") || "/";
-} ]), angular.module("openshiftConsole").factory("BuildsService", [ "$filter", "$q", "APIService", "DataService", "Navigate", "NotificationsService", function(e, t, n, r, a, o) {
-var i = n.getPreferredVersion("buildconfigs/instantiate"), s = n.getPreferredVersion("builds/clone"), c = e("annotation"), l = e("buildConfigForBuild"), u = e("getErrorDetails"), d = e("isIncompleteBuild"), m = e("isJenkinsPipelineStrategy"), p = e("isNewerResource"), g = function(e) {
-var t = c(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
+} ]), angular.module("openshiftConsole").factory("BuildsService", [ "$filter", "$q", "APIService", "DataService", "Navigate", "gettext", "gettextCatalog", "NotificationsService", function(e, t, n, r, a, o, i, s) {
+var c = n.getPreferredVersion("buildconfigs/instantiate"), l = n.getPreferredVersion("builds/clone"), u = e("annotation"), d = e("buildConfigForBuild"), m = e("getErrorDetails"), p = e("isIncompleteBuild"), g = e("isJenkinsPipelineStrategy"), f = e("isNewerResource"), v = function(e) {
+var t = u(e, "buildNumber") || parseInt(e.metadata.name.match(/(\d+)$/), 10);
 return isNaN(t) ? null : t;
-}, f = function(e, t) {
-var n = g(e);
+}, h = function(e, t) {
+var n = v(e);
 return t && n ? t + " #" + n : e.metadata.name;
-}, v = function(e) {
-return "true" === c(e, "openshift.io/build-config.paused");
-}, h = function(e) {
-return e.status.startTimestamp || e.metadata.creationTimestamp;
 }, y = function(e) {
+return "true" === u(e, "openshift.io/build-config.paused");
+}, b = function(e) {
+return e.status.startTimestamp || e.metadata.creationTimestamp;
+}, S = function(e) {
 return _.round(e / 1e3 / 1e3);
-}, b = e("imageObjectRef"), S = function(e) {
-var t = c(e, "jenkinsStatus");
+}, C = e("imageObjectRef"), w = function(e) {
+var t = u(e, "jenkinsStatus");
 if (!t) return null;
 try {
 return JSON.parse(t);
@@ -2067,85 +2067,85 @@ return Logger.error("Could not parse Jenkins status as JSON", t), null;
 };
 return {
 startBuild: function(e) {
-var s = m(e) ? "pipeline" : "build", c = {
+var l = g(e) ? "pipeline" : "build", u = {
 kind: "BuildRequest",
-apiVersion: n.toAPIVersion(i),
+apiVersion: n.toAPIVersion(c),
 metadata: {
 name: e.metadata.name
 }
-}, l = {
+}, d = {
 namespace: e.metadata.namespace
 };
-return r.create(i, e.metadata.name, c, l).then(function(t) {
-var n, r, i = f(t, e.metadata.name), c = _.get(e, "spec.runPolicy");
-"Serial" === c || "SerialLatestOnly" === c ? (n = _.capitalize(s) + " " + i + " successfully queued.", r = "Builds for " + e.metadata.name + " are configured to run one at a time.") : n = _.capitalize(s) + " " + i + " successfully created.", o.addNotification({
+return r.create(c, e.metadata.name, u, d).then(function(t) {
+var n, r, c = h(t, e.metadata.name), u = _.get(e, "spec.runPolicy");
+"Serial" === u || "SerialLatestOnly" === u ? (n = i.getString(o(_.capitalize(l))) + " " + c + " " + i.getString(o("successfully queued.")), r = i.getString(o("Builds for")) + " " + e.metadata.name + " " + i.getString(o("are configured to run one at a time."))) : n = i.getString(o(_.capitalize(l))) + " " + c + " " + i.getString(o("successfully created.")), s.addNotification({
 type: "success",
 message: n,
 details: r,
 links: [ {
 href: a.resourceURL(t),
-label: "View Build"
+label: i.getString(o("View Build"))
 } ]
 });
 }, function(e) {
-return o.addNotification({
+return s.addNotification({
 type: "error",
-message: "An error occurred while starting the " + s + ".",
-details: u(e)
+message: i.getString(o("An error occurred while starting the")) + " " + l + ".",
+details: m(e)
 }), t.reject(e);
 });
 },
 cancelBuild: function(e, a) {
-var i = m(e) ? "pipeline" : "build", s = f(e, a), c = {
+var c = g(e) ? "pipeline" : "build", l = h(e, a), u = {
 namespace: e.metadata.namespace
-}, l = angular.copy(e), d = n.objectToResourceGroupVersion(l);
-return l.status.cancelled = !0, r.update(d, l.metadata.name, l, c).then(function() {
-o.addNotification({
+}, d = angular.copy(e), p = n.objectToResourceGroupVersion(d);
+return d.status.cancelled = !0, r.update(p, d.metadata.name, d, u).then(function() {
+s.addNotification({
 type: "success",
-message: _.capitalize(i) + " " + s + " successfully cancelled."
+message: i.getString(o(_.capitalize(c))) + " " + l + " " + i.getString(o("successfully cancelled."))
 });
 }), function(e) {
-return o.addNotification({
+return s.addNotification({
 type: "error",
-message: "An error occurred cancelling " + i + " " + s + ".",
-details: u(e)
+message: i.getString(o("An error occurred cancelling")) + " " + c + " " + l + ".",
+details: m(e)
 }), t.reject(e);
 };
 },
-cloneBuild: function(e, i) {
-var c = m(e) ? "pipeline" : "build", l = f(e, i), d = {
+cloneBuild: function(e, c) {
+var u = g(e) ? "pipeline" : "build", d = h(e, c), p = {
 kind: "BuildRequest",
-apiVersion: n.toAPIVersion(s),
+apiVersion: n.toAPIVersion(l),
 metadata: {
 name: e.metadata.name
 }
-}, p = {
+}, f = {
 namespace: e.metadata.namespace
 };
-return r.create(s, e.metadata.name, d, p).then(function(e) {
-var t = f(e, i);
-o.addNotification({
+return r.create(l, e.metadata.name, p, f).then(function(e) {
+var t = h(e, c);
+s.addNotification({
 type: "success",
-message: _.capitalize(c) + " " + l + " is being rebuilt as " + t + ".",
+message: i.getString(o(_.capitalize(u))) + " " + d + " " + i.getString(o("is being rebuilt as")) + " " + t + ".",
 links: [ {
 href: a.resourceURL(e),
-label: "View Build"
+label: i.getString(o("View Build"))
 } ]
 });
 }, function(e) {
-return o.addNotification({
+return s.addNotification({
 type: "error",
-message: "An error occurred while rerunning " + c + " " + l + ".",
-details: u(e)
+message: i.getString(o("An error occurred while rerunning")) + " " + u + " " + d + ".",
+details: m(e)
 }), t.reject();
 });
 },
-isPaused: v,
+isPaused: y,
 canBuild: function(e) {
-return !!e && !e.metadata.deletionTimestamp && !v(e);
+return !!e && !e.metadata.deletionTimestamp && !y(e);
 },
 usesDeploymentConfigs: function(e) {
-var t = c(e, "pipeline.alpha.openshift.io/uses");
+var t = u(e, "pipeline.alpha.openshift.io/uses");
 if (!t) return [];
 try {
 t = JSON.parse(t);
@@ -2159,49 +2159,49 @@ t.name && (t.namespace && t.namespace !== _.get(e, "metadata.namespace") || "Dep
 },
 validatedBuildsForBuildConfig: function(e, t) {
 return _.pickBy(t, function(t) {
-var n = c(t, "buildConfig");
+var n = u(t, "buildConfig");
 return !n || n === e;
 });
 },
 latestBuildByConfig: function(e, t) {
 var n = {};
 return _.each(e, function(e) {
-var r = l(e) || "";
-t && !t(e) || p(e, n[r]) && (n[r] = e);
+var r = d(e) || "";
+t && !t(e) || f(e, n[r]) && (n[r] = e);
 }), n;
 },
-getBuildNumber: g,
-getBuildDisplayName: f,
-getStartTimestsamp: h,
+getBuildNumber: v,
+getBuildDisplayName: h,
+getStartTimestsamp: b,
 getDuration: function(e) {
 var t = _.get(e, "status.duration");
-if (t) return y(t);
-var n = h(e), r = e.status.completionTimestamp;
+if (t) return S(t);
+var n = b(e), r = e.status.completionTimestamp;
 return n && r ? moment(r).diff(moment(n)) : 0;
 },
 incompleteBuilds: function(e) {
 return _.map(e, function(e) {
-return d(e);
+return p(e);
 });
 },
 completeBuilds: function(e) {
 return _.map(e, function(e) {
-return !d(e);
+return !p(e);
 });
 },
 lastCompleteByBuildConfig: function(t) {
 return _.reduce(t, function(t, n) {
-if (d(n)) return t;
+if (p(n)) return t;
 var r = e("annotation")(n, "buildConfig");
-return p(n, t[r]) && (t[r] = n), t;
+return f(n, t[r]) && (t[r] = n), t;
 }, {});
 },
 interestingBuilds: function(t) {
 var n = {};
 return _.filter(t, function(t) {
-if (d(t)) return !0;
+if (p(t)) return !0;
 var r = e("annotation")(t, "buildConfig");
-p(t, n[r]) && (n[r] = t);
+f(t, n[r]) && (n[r] = t);
 }).concat(_.map(n, function(e) {
 return e;
 }));
@@ -2209,13 +2209,13 @@ return e;
 groupBuildConfigsByOutputImage: function(e) {
 var t = {};
 return _.each(e, function(e) {
-var n = _.get(e, "spec.output.to"), r = b(n, e.metadata.namespace);
+var n = _.get(e, "spec.output.to"), r = C(n, e.metadata.namespace);
 r && (t[r] = t[r] || [], t[r].push(e));
 }), t;
 },
 sortBuilds: function(e, t) {
 var n = function(e, n) {
-var r, a, o = g(e), i = g(n);
+var r, a, o = v(e), i = v(n);
 return o || i ? o ? i ? t ? i - o : o - i : t ? -1 : 1 : t ? 1 : -1 : (r = _.get(e, "metadata.name", ""), a = _.get(n, "metadata.name", ""), t ? a.localeCompare(r) : r.localeCompare(a));
 };
 return _.toArray(e).sort(function(e, r) {
@@ -2223,9 +2223,9 @@ var a = _.get(e, "metadata.creationTimestamp", ""), o = _.get(r, "metadata.creat
 return a === o ? n(e, r) : t ? o.localeCompare(a) : a.localeCompare(o);
 });
 },
-getJenkinsStatus: S,
+getJenkinsStatus: w,
 getCurrentStage: function(e) {
-var t = S(e), n = _.get(t, "stages", []);
+var t = w(e), n = _.get(t, "stages", []);
 return _.last(n);
 }
 };

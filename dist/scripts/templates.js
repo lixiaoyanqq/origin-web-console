@@ -1911,7 +1911,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<i ng-switch-when=\"Serial\" class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Builds triggered from this Build Configuration will run one at the time, in the order they have been triggered.'|translate}}\"></i>\n" +
     "<i ng-switch-when=\"Parallel\" class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Builds triggered from this Build Configuration will run all at the same time. The order in which they will finish is not guaranteed.'|translate}}\"></i>\n" +
     "<i ng-switch-when=\"SerialLatestOnly\" class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Builds triggered from this Build Configuration will run one at the time. When a currently running build completes, the next build that will run is the latest build created. Other queued builds will be cancelled.'|translate}}\"></i>\n" +
-    "<i ng-switch-default class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Builds triggered from this Build Configuration will run using the {{buildConfig.spec.runPolicy | sentenceCase}} policy.'|translate}}\"></i>\n" +
+    "<i ng-switch-default class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Builds triggered from this Build Configuration will run using the'}} + '{{buildConfig.spec.runPolicy | sentenceCase}}' + {{'policy.'|translate}}\"></i>\n" +
     "</a>\n" +
     "</span>\n" +
     "</dd>\n" +
@@ -2049,7 +2049,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ng-form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.events\" ng-if=\"('events' | canI : 'watch')\">\n" +
-    "<uib-tab-heading>Events</uib-tab-heading>\n" +
+    "<uib-tab-heading translate>Events</uib-tab-heading>\n" +
     "<events api-objects=\"[ buildConfig ]\" project-context=\"projectContext\" ng-if=\"selectedTab.events\"></events>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -2697,7 +2697,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<uib-tabset>\n" +
     "<uib-tab active=\"selectedTab.history\">\n" +
-    "<uib-tab-heading>History</uib-tab-heading>\n" +
+    "<uib-tab-heading translate>History</uib-tab-heading>\n" +
     "<div class=\"table-filter-extension\">\n" +
     "<div class=\"data-toolbar\">\n" +
     "<div class=\"data-toolbar-filter\">\n" +
@@ -11482,7 +11482,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'ReplicationControllers'\">\n" +
+    "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === 'ReplicationControllers'\">\n" +
     "<h2 translate>Deployments</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredReplicationControllers | size) && !(filteredReplicaSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredReplicationControllers | size) && !(filteredReplicaSets | size)\">\n" +
@@ -11613,7 +11613,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'StatefulSets'\">\n" +
+    "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '有状态集群'\">\n" +
     "<h2 translate>Stateful Sets</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredStatefulSets | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredStatefulSets | size)\">\n" +
@@ -11680,7 +11680,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"kindSelector.selected.kind === 'All' || kindSelector.selected.kind === 'Builds'\" class=\"mar-bottom-xl\">\n" +
+    "<div ng-if=\"kindSelector.selected.kind === '全部' || kindSelector.selected.kind === '构建'\" class=\"mar-bottom-xl\">\n" +
     "<h2 translate>Builds</h2>\n" +
     "<div class=\"list-pf\" ng-class=\"{'list-pf-empty': !(filteredBuilds | size)}\">\n" +
     "<div class=\"list-pf-item\" ng-if=\"!(filteredBuilds | size)\">\n" +

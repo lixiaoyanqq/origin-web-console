@@ -2114,10 +2114,10 @@ webpackJsonp([ 0, 1 ], [ function(e, t) {
             }, this.constants = e, this.catalog = t, this.keywordService = r, this.logger = i, 
             this.htmlService = a, this.element = s[0], this.$filter = o, this.$rootScope = c, 
             this.$scope = l, this.$timeout = d, this.ctrl.loaded = !1, this.ctrl.isEmpty = !1, 
-            this.ctrl.mobileView = "categories", this.ctrl.filterConfig = {
-                resultsLabel: "Items",
+            this.ctrl.mobileView = "categories", this.gettextCatalog = p, this.ctrl.filterConfig = {
+                resultsLabel: this.gettextCatalog.getString("Items"),
                 appliedFilters: []
-            }, this.ctrl.keywordFilterValue = null, this.gettextCatalog = p;
+            }, this.ctrl.keywordFilterValue = null;
         }
         return e.prototype.$onInit = function() {
             var e = this;

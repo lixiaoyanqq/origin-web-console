@@ -82,6 +82,7 @@ function Noop() {
   gettext('Clear Filters');
   gettext('No items.');
   gettext('No catalog items have been loaded.');
+  gettext('Items');
 }
 Noop();
 

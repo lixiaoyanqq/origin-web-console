@@ -326,7 +326,7 @@
 				    <i ng-switch-when="Serial" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run one at the time, in the order they have been triggered.'|translate}}"></i>
 				    <i ng-switch-when="Parallel" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run all at the same time. The order in which they will finish is not guaranteed.'|translate}}"></i>
 				    <i ng-switch-when="SerialLatestOnly" class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run one at the time. When a currently running build completes, the next build that will run is the latest build created. Other queued builds will be cancelled.'|translate}}"></i>
-				    <i ng-switch-default class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run using the {{buildConfig.spec.runPolicy | sentenceCase}} policy.'|translate}}"></i>
+				    <i ng-switch-default class="pficon pficon-help" data-toggle="tooltip" aria-hidden="true" data-original-title="{{'Builds triggered from this Build Configuration will run using the'}} + '{{buildConfig.spec.runPolicy | sentenceCase}}' + {{'policy.'|translate}}"></i>
                             </a>
                           </span>
                         </dd>
@@ -502,7 +502,7 @@
               </ng-form>
             </uib-tab>
             <uib-tab active="selectedTab.events" ng-if="('events' | canI : 'watch')">
-              <uib-tab-heading>Events</uib-tab-heading>
+              <uib-tab-heading translate>Events</uib-tab-heading>
               <events api-objects="[ buildConfig ]" project-context="projectContext" ng-if="selectedTab.events"></events>
             </uib-tab>
           </uib-tabset>
