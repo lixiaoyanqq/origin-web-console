@@ -5105,7 +5105,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</traffic-table>\n" +
     "</div>\n" +
     "<p>\n" +
+<<<<<<< HEAD
     "<translate>Learn more about</translate> <a ng-href=\"{{'route-types' | helpLink}}\" target=\"_blank\" translate>routes</a><translate>and</translate><a ng-href=\"{{'services' | helpLink}}\" target=\"_blank\" translate>services</a>.\n" +
+=======
+    "Learn more about <a ng-href=\"{{'routes' | helpLink}}\" target=\"_blank\">routes</a> and <a ng-href=\"{{'services' | helpLink}}\" target=\"_blank\">services</a>.\n" +
+>>>>>>> Change routes help link on browse page
     "</p>\n" +
     "<h3 translate>Pods</h3>\n" +
     "<div>\n" +
