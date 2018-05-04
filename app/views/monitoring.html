@@ -407,8 +407,8 @@
               <div class="list-pf-container">
                 <ellipsis-pulser color="dark" size="sm" msg="Loading builds" ng-if="!buildsLoaded"></ellipsis-pulser>
                 <em>
-                  <div ng-if="(builds | size) > 0">The current filters are hiding all builds.</div>
-                  <span ng-if="buildsLoaded && (builds | size) === 0">There are no builds in this project.</span>
+                  <div ng-if="(builds | size) > 0" translate>The current filters are hiding all builds.</div>
+                  <span ng-if="buildsLoaded && (builds | size) === 0" translate>当前项目中没有构建</span>
                 </em>
               </div>
             </div>

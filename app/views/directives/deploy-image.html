@@ -74,9 +74,7 @@
       <div class="col-sm-10">
         <div ng-if="runsAsRoot" class="alert alert-warning">
           <span class="pficon pficon-warning-triangle-o" aria-hidden="true"></span>
-          Image <strong>{{import.name}}</strong> runs as the
-          <strong>root</strong> user which might not be permitted by your cluster
-          administrator.
+	  镜像<strong>{{import.name}}</strong>以<strong>root</strong>用户运行可能不会被集群管理员允许. 
         </div>
         <h2>
           <span ng-if="mode === 'dockerImage'">{{import.name}}</span>
@@ -98,8 +96,8 @@
               <span ng-if="!$first && $last" translate>and</span>
               {{port.containerPort}}/{{port.protocol}}<span ng-if="!$last && ports.length > 2">,</span>
             </span>
-            will be load balanced by Service <strong>{{app.name || "&lt;name&gt;"}}</strong>.
-            <div>Other containers can access this service through the hostname <strong>{{app.name || "&lt;name&gt;"}}</strong>.</div>
+	    将会被<strong>{{app.name || "&lt;name&gt;"}}</strong>服务负载均衡.
+            <div>其他容器可以通过主机名<strong>{{app.name || "&lt;name&gt;"}}</strong>访问该服务.</div>
           </li>
         </ul>
         <div ng-if="(volumes | hashSize) > 0" class="help-block" translate>
@@ -148,7 +146,7 @@
           </div>
         </div>
         <osc-form-section
-            header="Environment Variables"
+	    header="{{'Environment Variables'|translate}}"
             about-title="Environment Variables"
             about="Environment variables are used to configure and pass information to running containers."
             expand="true"
@@ -156,20 +154,20 @@
             class="first-section">
           <key-value-editor
             entries="env"
-            key-placeholder="Name"
+	    key-placeholder="{{'Name'|translate}}"
             key-validator="[A-Za-z_][A-Za-z0-9_]*"
             key-validator-error="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
-            value-placeholder="Value"
+	    value-placeholder="{{'Value'|translate}}"
             value-from-selector-options="input.selectedProject.metadata.uid && valueFromNamespace[input.selectedProject.metadata.name]"
-            add-row-link="Add Value"
-            add-row-with-selectors-link="Add Value from Config Map or Secret"></key-value-editor>
+	    add-row-link="{{'Add Value'|translate}}"
+            add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"></key-value-editor>
         </osc-form-section>
 
         <label-editor
             labels="labels"
             expand="true"
             can-toggle="false"
-            help-text="Each label is applied to each created resource.">
+	    help-text="{{'Each label is applied to each created resource.'|translate}}">
         </label-editor>
 
         <alerts alerts="alerts"></alerts>

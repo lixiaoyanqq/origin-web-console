@@ -211,8 +211,8 @@
                                 class="form-control"
                                 aria-describedby="max-surge-help">
                           </div>
-                          <div class="help-block" id="max-surge-help">
-                            The maximum number of pods that can be scheduled above the original number of pods while the rolling deployment is in progress. This can be either a percentage (10%) or a whole number (1).
+                          <div class="help-block" id="max-surge-help" translate>
+                            当滚动部署正在进行时，可以在初始数量的pod之上调度的最大pod数。这可以是百分比(10%)或整数(1)
                           </div>
                           <div ng-if="form.maxSurge.$invalid && form.maxSurge.$touched && form.maxSurge.$error.pattern" class="has-error">
                             <span class="help-block" translate>
@@ -357,8 +357,8 @@
                       value-from-selector-options="valueFromObjects"
                       key-validator="[a-zA-Z_][a-zA-Z0-9_]*"
                       key-validator-error-tooltip="A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores."
-                      add-row-link="Add Value"
-                      add-row-with-selectors-link="Add Value from Config Map or Secret"></key-value-editor>
+		      add-row-link="{{'Add Value'|translate}}"
+		      add-row-with-selectors-link="{{'Add Value from Config Map or Secret'|translate}}"></key-value-editor>
                   </div>
                 </div>
 

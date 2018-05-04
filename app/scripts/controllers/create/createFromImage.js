@@ -344,7 +344,7 @@ angular.module("openshiftConsole")
                   details: "Problems were detected while checking your application configuration.",
                   okButtonText: "Create Anyway",
                   okButtonClass: "btn-danger",
-                  cancelButtonText: "Cancel"
+                  cancelButtonText: gettextCatalog.getString(gettext("Cancel"))
                 };
               }
             }

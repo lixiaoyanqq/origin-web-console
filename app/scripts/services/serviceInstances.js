@@ -118,7 +118,7 @@ angular.module("openshiftConsole")
         displayName: apiObject.metadata.name,
         okButtonText: 'Delete',
         okButtonClass: 'btn-danger',
-        cancelButtonText: 'Cancel',
+        cancelButtonText: 'cel',
         delete: function() {
           modalInstance.close('delete');
         }

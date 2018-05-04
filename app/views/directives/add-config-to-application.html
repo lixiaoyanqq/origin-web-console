@@ -8,11 +8,11 @@
   <form name="addToApplicationForm" novalidate>
     <fieldset ng-disabled="disableInputs">
       <div class="modal-body">
-	      <legend ><translate>Add this</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>to application</translate>:</legend>
+	      <legend ><translate>Add this</translate> {{ctrl.apiObject.kind | humanizeKind}} <translate>to application</translate>:</legend>
         <div class="form-group">
           <div class="application-select">
             <ui-select autofocus id="application" ng-model="ctrl.application" on-select="ctrl.checkApplicationContainersRefs($item)" required="true" ng-disabled="ctrl.disableInputs">
-		    <ui-select-match placeholder="{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}">
+		    <ui-select-match placeholder="{{ctrl.applications.length ? '选择应用' : '当前项目中没有应用'}}">
               <span>
                 {{$select.selected.metadata.name}}
                 <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>
@@ -26,7 +26,7 @@
             </ui-select>
           </div>
         </div>
-	<legend translate>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>
+	<legend ><translate>Add</translate> <translate>{{ctrl.apiObject.kind | humanizeKind}}</translate> 作为:</legend>
         <div class="radio">
           <label for="env">
             <input id="env" type="radio" ng-model="ctrl.addType" value="env" >
@@ -45,7 +45,7 @@
               <label translate>Prefix</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-                 uib-popover="Optionally, you can specify a prefix to use with environment variables."
+		 uib-popover="可选的,还可以指定使用环境变量的前缀"
                  popover-trigger="focus">
               </a>
             </div>
@@ -78,12 +78,10 @@
         <div ng-if="ctrl.addType === 'volume'" class="choice-contents clearfix">
           <div class="form-group">
             <div class="control-label">
-              <label class="required">Mount Path</label>
+              <label class="required" translate>Mount Path</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-		 uib-popover="{{'Mount Path for the volume. A file will be created in this
-                              directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.
-			      The file contents will be the value of the key.' | translate}}"
+		 uib-popover="卷的挂载路径.从{{ctrl.apiObject.kind | humanizeKind}}的每一个键都会在该目录下创建一个文件,文件的内容是键的值。"
                  popover-trigger="focus">
               </a>
             </div>

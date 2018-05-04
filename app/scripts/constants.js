@@ -83,6 +83,9 @@ function Noop() {
   gettext('No items.');
   gettext('No catalog items have been loaded.');
   gettext('Items');
+  gettext('To push an image to this image stream');
+  gettext('To pull this image');
+  gettext("Last Updated");
 }
 Noop();
 
