@@ -1093,7 +1093,7 @@ t.debug = !1;
 var a = e.OPENSHIFT_LANG, o = new XMLHttpRequest();
 "en" !== a && (!function(e) {
 null !== o ? (o.onreadystatechange = r, o.open("GET", e, !1), o.send(null)) : console.error("Your browser does not support XMLHttpRequest.");
-}("languages/" + a + ".json"), t.setCurrentLanguage(a), n.changeLocale(a.toLowerCase()));
+}("languages/" + "zh-CN" + ".json"), t.setCurrentLanguage("zh-CN"), n.changeLocale("zh-cn"));
 } ]), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "gettext", "i18n", "openshiftCommonServices", "openshiftCommonUI", "webCatalog", "gettext" ]).config([ "$routeProvider", "$uibModalProvider", "HomePagePreferenceServiceProvider", function(e, t, n) {
 var r, a = {
 templateUrl: "views/projects.html",
