@@ -14221,7 +14221,7 @@ appendToBody: "="
 templateUrl: "views/directives/istag-select.html",
 controller: [ "$scope", function(e) {
 e.isByNamespace = {}, e.isNamesByNamespace = {};
-var a = window.DMOS_OPENSHIFT_PROJECTNAMES.split(","), o = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), i = function(e) {
+var a = process.env.DMOS_OPENSHIFT_PROJECTNAMES.split(","), o = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), i = function(e) {
 _.each(e, function(e) {
 _.get(e, "status.tags") || _.set(e, "status.tags", []);
 });
