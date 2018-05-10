@@ -1084,16 +1084,16 @@ CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_NAMES: [ "openshift", "kubernetes", "k
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_PREFIXES: [ "openshift-", "kubernetes-", "kube-" ]
 }), angular.module("i18n", [ "gettext", "angularMoment" ]).run([ "$window", "gettextCatalog", "amMoment", function(e, t, n) {
 function r() {
-if (4 === o.readyState) if (200 === o.status) {
-var e = JSON.parse(o.response);
+if (4 === a.readyState) if (200 === a.status) {
+var e = JSON.parse(a.response);
 for (var n in e) t.setStrings(n, e[n]);
 } else console.error("Problem retrieving language data");
 }
 t.debug = !1;
-var a = e.OPENSHIFT_LANG, o = new XMLHttpRequest();
-"en" !== a && (!function(e) {
-null !== o ? (o.onreadystatechange = r, o.open("GET", e, !1), o.send(null)) : console.error("Your browser does not support XMLHttpRequest.");
-}("languages/" + a + ".json"), t.setCurrentLanguage(a), n.changeLocale(a.toLowerCase()));
+var a = new XMLHttpRequest();
+!function(e) {
+null !== a ? (a.onreadystatechange = r, a.open("GET", e, !1), a.send(null)) : console.error("Your browser does not support XMLHttpRequest.");
+}("languages/zh-CN.json"), t.setCurrentLanguage("zh-CN"), n.changeLocale("zh-CN".toLowerCase());
 } ]), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "gettext", "i18n", "openshiftCommonServices", "openshiftCommonUI", "webCatalog", "gettext" ]).config([ "$routeProvider", "$uibModalProvider", "HomePagePreferenceServiceProvider", function(e, t, n) {
 var r, a = {
 templateUrl: "views/projects.html",
