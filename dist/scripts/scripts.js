@@ -14221,11 +14221,11 @@ appendToBody: "="
 templateUrl: "views/directives/istag-select.html",
 controller: [ "$scope", function(e) {
 e.isByNamespace = {}, e.isNamesByNamespace = {};
-var a = process.env.DMOS_OPENSHIFT_PROJECTNAMES.split(","), o = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), i = function(e) {
+var a = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), o = function(e) {
 _.each(e, function(e) {
 _.get(e, "status.tags") || _.set(e, "status.tags", []);
 });
-}, s = function(n) {
+}, i = function(n) {
 if (e.isByNamespace[n] = {}, e.isNamesByNamespace[n] = [], !_.includes(e.namespaces, n)) return e.namespaces.push(n), e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), void (e.isByNamespace[n][e.istag.imageStream] = {
 status: {
 tags: [ {
@@ -14237,7 +14237,7 @@ t.list(r, {
 namespace: n
 }, function(t) {
 var r = angular.copy(t.by("metadata.name"));
-i(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort(), _.includes(e.isNamesByNamespace[n], e.istag.imageStream) || (e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), e.isByNamespace[n][e.istag.imageStream] = {
+o(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort(), _.includes(e.isNamesByNamespace[n], e.istag.imageStream) || (e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), e.isByNamespace[n][e.istag.imageStream] = {
 status: {
 tags: {}
 }
@@ -14249,14 +14249,12 @@ tag: e.istag.tagObject.tag
 });
 };
 n.list().then(function(n) {
-e.namespaces = _.keys(n.by("metadata.name")), e.includeSharedNamespace && (e.namespaces = _.uniq([ "openshift" ].concat(e.namespaces))), e.namespaces = e.namespaces.filter(function(e) {
-return a.indexOf(e) < 0;
-}), e.namespaces = e.namespaces.sort(), e.$watch("istag.namespace", function(n) {
-if (n && !e.isByNamespace[n]) return o ? (s(n), void (o = !1)) : void t.list(r, {
+e.namespaces = _.keys(n.by("metadata.name")), e.includeSharedNamespace && (e.namespaces = _.uniq([ "openshift" ].concat(e.namespaces))), e.namespaces = e.namespaces.sort(), e.$watch("istag.namespace", function(n) {
+if (n && !e.isByNamespace[n]) return a ? (i(n), void (a = !1)) : void t.list(r, {
 namespace: n
 }, function(t) {
 var r = angular.copy(t.by("metadata.name"));
-i(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort();
+o(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort();
 });
 });
 }), e.getTags = function(t) {

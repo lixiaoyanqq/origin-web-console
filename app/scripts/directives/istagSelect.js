@@ -43,7 +43,7 @@ angular.module("openshiftConsole")
         $scope.isNamesByNamespace = {};
 
         //var dmFilterKeyword = window.DMOS_OPENSHIFT_PROJECTNAMES.split(",");
-	var dmFilterKeyword = process.env['DMOS_OPENSHIFT_PROJECTNAMES'].split(",");      
+	//var dmFilterKeyword = process.env['DMOS_OPENSHIFT_PROJECTNAMES'].split(",");      
 
         // Check if the istag object contains data about namespace/imageStream/tag so the ui-select will be pre-populated with them
         var shouldPrepopulate = _.get($scope, 'istag.namespace') && _.get($scope, 'istag.imageStream') && _.get($scope, 'istag.tagObject.tag');
@@ -100,9 +100,9 @@ angular.module("openshiftConsole")
             $scope.namespaces = _.uniq(['openshift'].concat($scope.namespaces));
           }
 
-          $scope.namespaces = $scope.namespaces.filter(function(elem) {
-            return (dmFilterKeyword.indexOf(elem) < 0);
-          });
+          //$scope.namespaces = $scope.namespaces.filter(function(elem) {
+          //  return (dmFilterKeyword.indexOf(elem) < 0);
+          //});
 
           $scope.namespaces = $scope.namespaces.sort();
 
