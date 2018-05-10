@@ -9414,7 +9414,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     " <table class=\"table table-bordered table-mobile\">\n" +
     "<thead>\n" +
     "<tr>\n" +
-    "<th translate>{{customNameHeader || '路由'}}<span ng-if=\"showNodePorts\" translate> / Node Port</span></th>\n" +
+    "<th>路由<span ng-if=\"showNodePorts\" translate> / Node Port</span></th>\n" +
     "<th role=\"presentation\"></th>\n" +
     "<th translate>Service Port</th>\n" +
     "<th role=\"presentation\"></th>\n" +
