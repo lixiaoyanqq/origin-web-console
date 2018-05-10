@@ -51611,7 +51611,7 @@ var e = !1;
 angular.isDefined(_.get(i.notificationGroups, "notifications")) && (i.notificationGroups = [ i.notificationGroups ]), i.singleGroup = _.size(i.notificationGroups) < 2, angular.forEach(i.notificationGroups, function(e) {
 e.emptyStateConfig = {
 icon: "pficon-info",
-title: e.noNotificationsText || i.noNotificationsText || "There are no notifications to display."
+title: e.noNotificationsText || i.noNotificationsText || "没有通知"
 };
 }), angular.forEach(i.notificationGroups, function(t) {
 t.open && (e ? t.open = !1 : e = !0);
@@ -51630,7 +51630,7 @@ i.drawerExpanded = !i.drawerExpanded;
 }, i.$onInit = function() {
 i.allowExpand && !angular.isUndefined(i.drawerExpanded) || (i.drawerExpanded = !1), i.emptyStateConfig = {
 icon: "pficon-info",
-title: i.noNotificationsText || "There are no notifications to display."
+title: i.noNotificationsText || "没有通知"
 }, r();
 }, i.$onChanges = function(e) {
 e.notificationGroups && (r(), o()), !i.drawerHidden && (e.drawerHidden || e.showMarkAllRead || e.showClearAll || e.actionButtonTitle || e.titleInclude || e.headingInclude || e.subheadingInclude || e.notificationBodyInclude || e.notificationFooterInclude) && o();
@@ -52753,7 +52753,7 @@ n = !0, i.steps = [], i.context = {}, i.hideHeader = "true" === i.hideHeader, i.
 height: i.contentHeight,
 "max-height": i.contentHeight,
 "overflow-y": "auto"
-}), angular.isUndefined(i.wizardReady) && (i.wizardReady = !0), i.cancelTitle || (i.cancelTitle = "Cancel"), i.backTitle || (i.backTitle = "< Back"), i.nextTitle || (i.nextTitle = "Next >");
+}), angular.isUndefined(i.wizardReady) && (i.wizardReady = !0), i.cancelTitle || (i.cancelTitle = "Cancel"), i.backTitle || (i.backTitle = "< 返回"), i.nextTitle || (i.nextTitle = "下一步 >");
 }, i.$onChanges = function(e) {
 var t;
 if (e.hideHeader && (i.hideHeader = "true" === i.hideHeader), e.hideSidebar && (i.hideSidebar = "true" === i.hideSidebar), e.hideBackButton && (i.hideBackButton = "true" === i.hideBackButton), e.wizardReady && e.wizardReady.currentValue && i.goTo(i.getEnabledSteps()[0]), e.currentStep) {
