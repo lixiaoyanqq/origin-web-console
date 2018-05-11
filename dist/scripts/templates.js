@@ -18348,8 +18348,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "</p>\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "<div>\n" +
+=======
+    "<div ng-if=\"canCreate\">\n" +
+>>>>>>> Check canCreate in projects empty state message
     "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
     "<span class=\"icon-button-text\">Create Project</span>\n" +
