@@ -1084,16 +1084,16 @@ CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_NAMES: [ "openshift", "kubernetes", "k
 CLUSTER_RESOURCE_OVERRIDES_EXEMPT_PROJECT_PREFIXES: [ "openshift-", "kubernetes-", "kube-" ]
 }), angular.module("i18n", [ "gettext", "angularMoment" ]).run([ "$window", "gettextCatalog", "amMoment", function(e, t, n) {
 function r() {
-if (4 === a.readyState) if (200 === a.status) {
-var e = JSON.parse(a.response);
+if (4 === o.readyState) if (200 === o.status) {
+var e = JSON.parse(o.response);
 for (var n in e) t.setStrings(n, e[n]);
 } else console.error("Problem retrieving language data");
 }
 t.debug = !1;
-var a = new XMLHttpRequest();
-!function(e) {
-null !== a ? (a.onreadystatechange = r, a.open("GET", e, !1), a.send(null)) : console.error("Your browser does not support XMLHttpRequest.");
-}("languages/zh-CN.json"), t.setCurrentLanguage("zh-CN"), n.changeLocale("zh-CN".toLowerCase());
+var a = e.OPENSHIFT_LANG, o = new XMLHttpRequest();
+"en" !== a && (!function(e) {
+null !== o ? (o.onreadystatechange = r, o.open("GET", e, !1), o.send(null)) : console.error("Your browser does not support XMLHttpRequest.");
+}("languages/" + a + ".json"), t.setCurrentLanguage(a), n.changeLocale(a.toLowerCase()));
 } ]), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.navigation", "patternfly.sort", "patternfly.notification", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "gettext", "i18n", "openshiftCommonServices", "openshiftCommonUI", "webCatalog", "gettext" ]).config([ "$routeProvider", "$uibModalProvider", "HomePagePreferenceServiceProvider", function(e, t, n) {
 var r, a = {
 templateUrl: "views/projects.html",
@@ -14221,11 +14221,11 @@ appendToBody: "="
 templateUrl: "views/directives/istag-select.html",
 controller: [ "$scope", function(e) {
 e.isByNamespace = {}, e.isNamesByNamespace = {};
-var a = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), o = function(e) {
+var a = window.DMOS_OPENSHIFT_PROJECTNAMES.split(","), o = _.get(e, "istag.namespace") && _.get(e, "istag.imageStream") && _.get(e, "istag.tagObject.tag"), i = function(e) {
 _.each(e, function(e) {
 _.get(e, "status.tags") || _.set(e, "status.tags", []);
 });
-}, i = function(n) {
+}, s = function(n) {
 if (e.isByNamespace[n] = {}, e.isNamesByNamespace[n] = [], !_.includes(e.namespaces, n)) return e.namespaces.push(n), e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), void (e.isByNamespace[n][e.istag.imageStream] = {
 status: {
 tags: [ {
@@ -14237,7 +14237,7 @@ t.list(r, {
 namespace: n
 }, function(t) {
 var r = angular.copy(t.by("metadata.name"));
-o(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort(), _.includes(e.isNamesByNamespace[n], e.istag.imageStream) || (e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), e.isByNamespace[n][e.istag.imageStream] = {
+i(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort(), _.includes(e.isNamesByNamespace[n], e.istag.imageStream) || (e.isNamesByNamespace[n] = e.isNamesByNamespace[n].concat(e.istag.imageStream), e.isByNamespace[n][e.istag.imageStream] = {
 status: {
 tags: {}
 }
@@ -14249,12 +14249,14 @@ tag: e.istag.tagObject.tag
 });
 };
 n.list().then(function(n) {
-e.namespaces = _.keys(n.by("metadata.name")), e.includeSharedNamespace && (e.namespaces = _.uniq([ "openshift" ].concat(e.namespaces))), e.namespaces = e.namespaces.sort(), e.$watch("istag.namespace", function(n) {
-if (n && !e.isByNamespace[n]) return a ? (i(n), void (a = !1)) : void t.list(r, {
+e.namespaces = _.keys(n.by("metadata.name")), e.includeSharedNamespace && (e.namespaces = _.uniq([ "openshift" ].concat(e.namespaces))), e.namespaces = e.namespaces.filter(function(e) {
+return a.indexOf(e) < 0;
+}), e.namespaces = e.namespaces.sort(), e.$watch("istag.namespace", function(n) {
+if (n && !e.isByNamespace[n]) return o ? (s(n), void (o = !1)) : void t.list(r, {
 namespace: n
 }, function(t) {
 var r = angular.copy(t.by("metadata.name"));
-o(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort();
+i(r), e.isByNamespace[n] = r, e.isNamesByNamespace[n] = _.keys(r).sort();
 });
 });
 }), e.getTags = function(t) {

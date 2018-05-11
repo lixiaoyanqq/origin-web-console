@@ -2,8 +2,7 @@
 
 angular.module('i18n', ['gettext', 'angularMoment']).run(['$window', 'gettextCatalog', 'amMoment', function ($window, gettextCatalog, amMoment) {
   gettextCatalog.debug = false;
-  //var lang = $window.OPENSHIFT_LANG;
-  var lang = "zh-CN";	
+  var lang = $window.OPENSHIFT_LANG;
 
   var xmlhttp = new XMLHttpRequest();
 
