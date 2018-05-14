@@ -3939,9 +3939,24 @@ icon: "fa fa-database"
 =======
 } ]).run([ "$rootScope", "APIService", "KubevirtVersions", function(e, t, n) {
 e.KUBEVIRT_ENABLED = !!t.apiInfo(n.offlineVirtualMachine);
+<<<<<<< HEAD
 >>>>>>> Virtual Machines in Overview
 } ]), pluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
 >>>>>>> Remove hawtio-core dependency
+=======
+} ]), pluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("HawtioExtension", [ "extensionRegistry", function(e) {
+return console.warn("HawtioExtension.add() has been deprecated.  Please migrate to angular-extension-registry https://github.com/openshift/angular-extension-registry"), {
+add: function(t, n) {
+e.add(t, function(e) {
+return {
+type: "dom",
+node: n(e)
+};
+});
+}
+};
+} ]), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
+>>>>>>> Add HawtioExtension shim
 var e = {
 local: window.localStorage,
 session: window.sessionStorage
