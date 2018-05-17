@@ -13291,15 +13291,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 translate>Welcome to OpenShift.</h1>\n" +
     "<p>\n" +
     "<translate>OpenShift helps you quickly develop, host, and scale applications.</translate><br>\n" +
-    "<span ng-if=\"canCreate\" translate>Create a project for your application.</span>\n" +
+    "\n" +
     "</p>\n" +
-    "<div>\n" +
-    "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
-    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
-    "</button>\n" +
-    "</div>\n" +
-    "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
