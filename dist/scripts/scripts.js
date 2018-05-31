@@ -3933,6 +3933,7 @@ icon: "fa fa-database"
 }), Logger.info("AEROGEAR_MOBILE_ENABLED: " + e.AEROGEAR_MOBILE_ENABLED);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Allow viewing mobile clients in the overview screen
 } ]), hawtioPluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("BrowserStore", [ function() {
 =======
@@ -3945,6 +3946,9 @@ e.KUBEVIRT_ENABLED = !!t.apiInfo(n.offlineVirtualMachine);
 >>>>>>> Remove hawtio-core dependency
 =======
 } ]), pluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("HawtioExtension", [ "extensionRegistry", function(e) {
+=======
+} ]).run([ "$rootScope", "APIService", "KubevirtVersions", function(e, t, n) {} ]), pluginLoader.addModule("openshiftConsole"), angular.module("openshiftConsole").factory("HawtioExtension", [ "extensionRegistry", function(e) {
+>>>>>>> Virtual Machines UI turned off
 return console.warn("HawtioExtension.add() has been deprecated.  Please migrate to angular-extension-registry https://github.com/openshift/angular-extension-registry"), {
 add: function(t, n) {
 e.add(t, function(e) {
