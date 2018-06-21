@@ -61,13 +61,13 @@
                     </tbody>
                   </table>
                 </div>
-                <div ng-if="!(project && (pvcVersion | canI : 'create'))" class="help-block">
+                <!--<div ng-if="!(project && (pvcVersion | canI : 'create'))" class="help-block">
                   Select storage to use.
                 </div>
                 <div ng-if="project && (pvcVersion | canI : 'create')" class="help-block">
                   Select storage to use<span ng-if="!outOfClaims"> or <a ng-href="project/{{project.metadata.name}}/create-pvc" translate>create storage</a>.</span>
                   <span ng-if="outOfClaims" translate>. You cannot create new storage since you are at quota.</span>
-                </div>
+		</div>-->
 
                 <h3 translate>Volume</h3>
                 <div class="help-block" translate>

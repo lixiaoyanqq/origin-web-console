@@ -1034,13 +1034,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tbody>\n" +
     "</table>\n" +
     "</div>\n" +
-    "<div ng-if=\"!(project && (pvcVersion | canI : 'create'))\" class=\"help-block\">\n" +
-    "Select storage to use.\n" +
-    "</div>\n" +
-    "<div ng-if=\"project && (pvcVersion | canI : 'create')\" class=\"help-block\">\n" +
-    "Select storage to use<span ng-if=\"!outOfClaims\"> or <a ng-href=\"project/{{project.metadata.name}}/create-pvc\" translate>create storage</a>.</span>\n" +
-    "<span ng-if=\"outOfClaims\" translate>. You cannot create new storage since you are at quota.</span>\n" +
-    "</div>\n" +
+    "\n" +
     "<h3 translate>Volume</h3>\n" +
     "<div class=\"help-block\" translate>\n" +
     "Specify details about how volumes are going to be mounted inside containers.\n" +
@@ -2983,22 +2977,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!loaded\" translate>Loading...</div>\n" +
     "<div ng-if=\"pvc\">\n" +
     "<h1 class=\"contains-actions\">\n" +
-    "<div class=\"pull-right dropdown\" ng-hide=\"!('persistentVolumeClaims' | canIDoAny)\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
-    "<translate>Actions</translate>\n" +
-    "<span class=\"caret\" aria-hidden=\"true\"></span>\n" +
-    "</button>\n" +
-    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
-    "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
-    "<li ng-if=\"!pvc.spec.volumeName\">\n" +
-    "<a ng-href=\"{{pvc | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
-    "</li>\n" +
-    "<li>\n" +
-    "<delete-link ng-if=\"pvcVersion | canI : 'delete'\" kind=\"PersistentVolumeClaim\" resource-name=\"{{pvc.metadata.name}}\" project-name=\"{{pvc.metadata.namespace}}\" alerts=\"alerts\">\n" +
-    "</delete-link>\n" +
-    "</li>\n" +
-    "</ul>\n" +
-    "</div>\n" +
+    "\n" +
     "{{pvc.metadata.name}}\n" +
     "<small class=\"meta\" ng-if=\"!pvc.spec.volumeName\">\n" +
     "<span ng-if=\"pvc.spec.resources.requests['storage']\" translate>\n" +
@@ -13843,10 +13822,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
-    "<div class=\"pull-right\" ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
-    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
-    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
-    "</div>\n" +
+    "\n" +
     "<h1>\n" +
     "<translate>Storage</translate>\n" +
     "</h1>\n" +
@@ -13873,10 +13849,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>\n" +
     "No persistent volume claims have been added to project {{projectName}}.\n" +
     "</p>\n" +
-    "<p ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && !filterWithZeroResults\">\n" +
-    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
-    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
-    "</p>\n" +
+    "\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all persistent volume claims.</translate> <a href=\"\" ng-click=\"clearFilter()\" role=\"button\" class=\"nowrap\" translate>Clear Filter</a></h2>\n" +
