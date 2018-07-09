@@ -997,9 +997,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>\n" +
     "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project.\n" +
     "</p>\n" +
-    "<div ng-if=\"project && (pvcVersion | canI : 'create')\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
-    "</div>\n" +
+    "\n" +
     "<p ng-if=\"project && !(pvcVersion | canI : 'create')\">\n" +
     "To claim storage from a persistent volume, refer to the documentation on <a target=\"_blank\" ng-href=\"{{'persistent_volumes' | helpLink}}\">using persistent volumes</a>.\n" +
     "</p>\n" +

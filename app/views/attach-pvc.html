@@ -14,10 +14,10 @@
               but none are loaded on this project.
             </p>
 
-            <div ng-if="project && (pvcVersion | canI : 'create')">
+            <!--<div ng-if="project && (pvcVersion | canI : 'create')">
               <a ng-href="project/{{project.metadata.name}}/create-pvc"
                  class="btn btn-primary" translate>Create Storage</a>
-            </div>
+	    </div>-->
 
             <p ng-if="project && !(pvcVersion | canI : 'create')">
               To claim storage from a persistent volume, refer to the documentation on <a target="_blank" ng-href="{{'persistent_volumes' | helpLink}}">using persistent volumes</a>.
