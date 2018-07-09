@@ -50,12 +50,6 @@ angular.module('openshiftConsole')
       $window.history.back();
     };
 
-    $scope.$watch('resource', function(current, previous) {
-      if (current !== previous) {
-        $scope.modified = true;
-      }
-    });
-
     var watches = [];
     ProjectsService
       .get($routeParams.project)
@@ -77,6 +71,14 @@ angular.module('openshiftConsole')
 
             // Modify a copy of the resource.
             _.set($scope, 'updated.resource', angular.copy(result));
+            $scope.$watch('updated.resource', function(updated, previous) {
+              // Skip the initial $watch callback when we first add the listener.
+              if (updated === previous) {
+                return;
+              }
+
+              $scope.modified = true;
+            });
 
             // TODO: Update the BreadcrumbsService to handle types without browse pages.
             // $scope.breadcrumbs = BreadcrumbsService.getBreadcrumbs({
@@ -115,7 +117,7 @@ angular.module('openshiftConsole')
               }
 
               $scope.updatingNow = true;
-              DataService.update(groupVersion, original.metadata.name, original, {
+              DataService.update(groupVersion, original.metadata.name, updated, {
                 namespace: original.metadata.namespace
               }).then(
                 // success
@@ -125,7 +127,7 @@ angular.module('openshiftConsole')
                   if (newResourceVersion === editedResourceVersion) {
                     $scope.alerts['no-changes-applied'] = {
                       type: "warning",
-                      message: gettextCatalog.getString(gettext("No changes were applied to")) + "  " + humanizeKind($routeParams.kind) + " " + $routeParams.name + ".",
+                      message: gettextCatalog.getString(gettext("No changes were applied to")) + humanizeKind($routeParams.kind) + " " + $routeParams.name + ".",
                       details: gettextCatalog.getString(gettext("Make sure any new fields you may have added are supported API fields."))
                     };
                     $scope.updatingNow = false;

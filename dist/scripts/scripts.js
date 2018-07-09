@@ -7905,11 +7905,7 @@ title: "Edit YAML"
 } ];
 var f = function() {
 e.modified = !1, r.returnURL ? n.url(r.returnURL) : a.history.back();
-};
-e.$watch("resource", function(t, n) {
-t !== n && (e.modified = !0);
-});
-var v = [];
+}, v = [];
 p.get(r.project).then(_.spread(function(n, a) {
 var s = {
 resource: o.kindToResource(r.kind),
@@ -7919,7 +7915,9 @@ i.canI(s, "update", r.project) ? (c.get(s, e.name, a, {
 errorNotification: !1
 }).then(function(n) {
 var i = n;
-_.set(e, "updated.resource", angular.copy(n));
+_.set(e, "updated.resource", angular.copy(n)), e.$watch("updated.resource", function(t, n) {
+t !== n && (e.modified = !0);
+});
 var l = function(e) {
 return _.get(e, "metadata.resourceVersion");
 };
@@ -7927,13 +7925,13 @@ e.save = function() {
 var n = e.updated.resource;
 if (e.modified = !1, n.kind === i.kind) {
 var a = o.objectToResourceGroupVersion(i), s = o.objectToResourceGroupVersion(n);
-s ? s.group === a.group ? o.apiInfo(s) ? (e.updatingNow = !0, c.update(a, i.metadata.name, i, {
+s ? s.group === a.group ? o.apiInfo(s) ? (e.updatingNow = !0, c.update(a, i.metadata.name, n, {
 namespace: i.metadata.namespace
 }).then(function(t) {
 var a = _.get(n, "metadata.resourceVersion");
 if (_.get(t, "metadata.resourceVersion") === a) return e.alerts["no-changes-applied"] = {
 type: "warning",
-message: m.getString(d("No changes were applied to")) + "  " + g(r.kind) + " " + r.name + ".",
+message: m.getString(d("No changes were applied to")) + g(r.kind) + " " + r.name + ".",
 details: m.getString(d("Make sure any new fields you may have added are supported API fields."))
 }, void (e.updatingNow = !1);
 u.addNotification({
