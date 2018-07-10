@@ -6373,8 +6373,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/deploy-image-dialog.html',
-    "<pf-wizard title=\"{{'Deploy Image'|translate}}\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\" class=\"pf-wizard-no-back\">\n" +
-    "<pf-wizard-step step-title=\"{{'Image'|translate}}\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"$ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated\">\n" +
+    "<pf-wizard wizard-title=\"Deploy Image\" on-cancel=\"$ctrl.close()\" on-finish=\"$ctrl.close()\" hide-back-button=\"true\" hide-sidebar=\"true\" next-title=\"$ctrl.nextButtonTitle\" next-callback=\"$ctrl.nextCallback\" current-step=\"$ctrl.currentStep\" on-step-changed=\"$ctrl.stepChanged(step)\" step-class=\"order-service-wizard-step\" wizard-done=\"$ctrl.wizardDone\">\n" +
+    "\n" +
+    "<pf-wizard-step step-title=\"Image\" step-id=\"image\" step-priority=\"1\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\" next-enabled=\"!!($ctrl.deployForm.$valid || $ctrl.deployImageNewAppCreated)\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -6385,7 +6386,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</pf-wizard-step>\n" +
-    "<pf-wizard-step step-title=\"{{'Results'|translate}}\" step-id=\"results\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\">\n" +
+    "<pf-wizard-step step-title=\"Results\" step-id=\"results\" step-priority=\"2\" substeps=\"false\" ok-to-nav-away=\"true\" allow-click-nav=\"false\">\n" +
     "<div class=\"wizard-pf-main-inner-shadow-covers\">\n" +
     "<div class=\"order-service-config\">\n" +
     "<div class=\"wizard-pf-main-form-contents\">\n" +
@@ -7924,13 +7925,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"results-message\">\n" +
     "<h1 class=\"h3\">\n" +
     "<span ng-if=\"$ctrl.kind\">{{$ctrl.kind | humanizeKind | upperFirst}}</span>\n" +
-    "<strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
+    "<strong>{{$ctrl.name}}</strong> 部署成功<span ng-if=\"$ctrl.showProjectName && $ctrl.projectName\"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.\n" +
     "</h1>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length\">\n" +
-    "<a href=\"\" ng-click=\"$ctrl.goToOverview()\">Continue to the project overview</a>.\n" +
+    "<a href=\"\" ng-click=\"$ctrl.goToOverview()\">返回概览页面</a>.\n" +
     "</p>\n" +
     "<div ng-if=\"hasTaskWithError()\">\n" +
     "<ul ng-repeat=\"task in tasks()\">\n" +
