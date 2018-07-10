@@ -43,14 +43,14 @@
       <div class="results-message">
         <h1 class="h3">
           <span ng-if="$ctrl.kind">{{$ctrl.kind | humanizeKind | upperFirst}}</span>
-          <strong>{{$ctrl.name}}</strong> has been {{$ctrl.actionLabel}}<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
+          <strong>{{$ctrl.name}}</strong> 部署成功<span ng-if="$ctrl.showProjectName && $ctrl.projectName"> in <strong>{{$ctrl.projectName}}</strong> successfully</span>.
         </h1>
       </div>
     </div>
   </div>
 
   <p ng-if="!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length">
-    <a href="" ng-click="$ctrl.goToOverview()">Continue to the project overview</a>.
+    <a href="" ng-click="$ctrl.goToOverview()">返回概览页面</a>.
   </p>
 
   <div ng-if="hasTaskWithError()">
