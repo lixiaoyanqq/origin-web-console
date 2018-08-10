@@ -53,8 +53,6 @@
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-nightmare": "^0.4.10",
     "karma-phantomjs-launcher": "^1.0.4",
-    "karma-nightmare": "^0.4.10",
-    "karma-phantomjs-launcher": "^1.0.4",
     "less": "2.6.1",
     "load-grunt-tasks": "0.4.0",
     "lodash": "3.10.1",

@@ -68,7 +68,7 @@ function OverviewController($scope,
                             RoutesService,
                             ServiceInstancesService,
                             gettext,
-                            gettextCatalog) {
+                            gettextCatalog,
                             KubevirtVersions) {
   var overview = this;
   var limitWatches = $filter('isIE')();
