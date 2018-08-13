@@ -373,7 +373,7 @@ angular.module('openshiftConsole')
       return false;
     };
   })
-  .filter('podWarnings', function(isContainerLoopingFilter, isContainerFailedFilter, isContainerUnpreparedFilter, isTerminatingFilter) {
+  .filter('podWarnings', function(isContainerLoopingFilter, isContainerFailedFilter, isContainerUnpreparedFilter, isTerminatingFilter, gettext, gettextCatalog) {
     return function(pod) {
       var warnings = [];
 

@@ -84,15 +84,6 @@ angular.module("openshiftConsole")
                 label: "Webhook Secret"
               }
             ]
-          },
-          webhook: {
-            label: "Webhook Secret",
-            authTypes: [
-              {
-                id: "Opaque",
-                label: "Webhook Secret"
-              }
-            ]
           }
         };
 

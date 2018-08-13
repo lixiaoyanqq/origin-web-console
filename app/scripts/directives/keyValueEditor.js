@@ -7,10 +7,18 @@
       '$routeParams',
       '$timeout',
       '$filter',
+      'APIService',
       'gettextCatalog',
       'keyValueEditorConfig',
       'keyValueEditorUtils',
-      function($routeParams, $timeout, $filter, gettextCatalog, config, utils) {
+      function(
+        $routeParams,
+        $timeout,
+        $filter,
+        APIService,
+        config,
+        gettextCatalog,
+        utils) {
 
         var humanizeKind = $filter('humanizeKind');
         var canI = $filter('canI');

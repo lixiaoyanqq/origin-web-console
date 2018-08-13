@@ -1552,11 +1552,6 @@ function OverviewController($scope,
           return $q.when(serviceClass);
         }
 
-        var serviceClass = _.get(state, ['serviceClasses', serviceClassName]);
-        if (serviceClass) {
-          return $q.when(serviceClass);
-        }
-
         // Check if we already have the service class or if a request is already in flight.
         if (!serviceClassPromises[serviceClassName]) {
           serviceClassPromises[serviceClassName] = DataService.get(serviceClassesVersion, serviceClassName, {}).then(function(serviceClass) {
