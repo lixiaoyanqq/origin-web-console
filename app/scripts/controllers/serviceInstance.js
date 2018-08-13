@@ -61,9 +61,6 @@ angular.module('openshiftConsole')
     var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
     var serviceInstanceReady = $filter('isServiceInstanceReady');
 
-    var serviceInstanceDisplayName = $filter('serviceInstanceDisplayName');
-    var serviceInstanceReady = $filter('isServiceInstanceReady');
-
     var updateBreadcrumbs = function() {
       $scope.breadcrumbs.push({
         title: $scope.displayName

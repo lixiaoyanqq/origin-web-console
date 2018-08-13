@@ -70,7 +70,7 @@
       });
     };
 
-    var updated = function() {
+    var updated = function(current, previous) {
       var resource;
       // Check for errors, then check for warnings.
       try {

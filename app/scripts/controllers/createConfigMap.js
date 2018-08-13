@@ -32,8 +32,6 @@ angular.module('openshiftConsole')
       }
     ];
 
-    var configMapsVersion = APIService.getPreferredVersion('configmaps');
-
     var hideErrorNotifications = function() {
       NotificationsService.hideNotification("create-config-map-error");
     };
