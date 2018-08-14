@@ -55,7 +55,7 @@
               <uib-tab-heading translate>Environment</uib-tab-heading>
               <p ng-if="dcName">
                 <span class="pficon pficon-info" aria-hidden="true"></span>
-                Environment variables can be edited on deployment config
+                <translate>Environment variables can be edited on deployment config</translate>
                 <a ng-href="{{dcName | navigateResourceURL : 'DeploymentConfig' : pod.metadata.namespace}}?tab=environment">{{dcName}}</a>.
               </p>
               <p ng-if="!dcName && controllerRef">

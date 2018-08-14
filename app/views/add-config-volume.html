@@ -19,20 +19,20 @@
               as a volume for this {{kind | humanizeKind}}.
             </p>
 
-	    <p ng-if="targetObject"><a ng-href="{{targetObject | navigateResourceURL}}"><translate>Back to</translate> {{kind | humanizeKind}} {{name}}</a></p>
+	    <p ng-if="targetObject"><a ng-href="{{targetObject | navigateResourceURL}}"><translate>Back to {{kind | humanizeKind | translate}} {{name}}</translate></a></p>
           </div>
 
           <div ng-if="configMaps.length || secrets.length || (configMapVersion | canI : 'create') || (secretVersion | canI : 'create')" class="mar-top-xl">
             <h1 translate>Add Config Files to {{name}}</h1>
-            <div class="help-block" translate>
-              Add values from a config map or secret as volume. This will make the data available as files for {{kind | humanizeKind}} {{name}}.
+            <div class="help-block">
+              <translate>Add values from a config map or secret as volume. This will make the data available as files for {{kind | humanizeKind | translate}} {{name}}.</translate>
             </div>
             <form name="forms.addConfigVolumeForm" class="mar-top-lg">
               <fieldset ng-disabled="disableInputs">
                 <div class="form-group">
-                  <label class="required">Source</label>
+                  <label class="required" translate>Source</label>
                   <ui-select ng-model="attach.source" ng-required="true">
-                    <ui-select-match placeholder="Select config map or secret">
+                    <ui-select-match placeholder="{{'Select config map or secret' | translate}}">
                       <span>
                         {{$select.selected.metadata.name}}
                         <small class="text-muted">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>
@@ -69,7 +69,7 @@
                       required
                       ng-pattern="/^\/.*$/"
                       osc-unique="existingMountPaths"
-                      placeholder="example: /data"
+                      placeholder="{{'example: /data' | translate}}"
                       autocorrect="off"
                       autocapitalize="none"
                       spellcheck="false"
