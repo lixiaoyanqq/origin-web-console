@@ -2857,11 +2857,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"imageStream\">\n" +
     "<h1 class=\"contains-actions\">\n" +
     "<div class=\"pull-right dropdown\" ng-hide=\"!('imageStreams' | canIDoAny)\">\n" +
-    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\" translate>\n" +
-    "Actions\n" +
+    "<button type=\"button\" class=\"dropdown-toggle btn btn-default actions-dropdown-btn hidden-xs\" data-toggle=\"dropdown\">\n" +
+    "<translate>Actions</translate>\n" +
     "<span class=\"caret\" aria-hidden=\"true\"></span>\n" +
     "</button>\n" +
-    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\" translate>Actions</span></a>\n" +
+    "<a href=\"\" class=\"dropdown-toggle actions-dropdown-kebab visible-xs-inline\" data-toggle=\"dropdown\"><i class=\"fa fa-ellipsis-v\"></i><span class=\"sr-only\"><translate>Actions</translate></span></a>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right actions action-button\">\n" +
     "<li ng-if=\"imageStreamsVersion | canI : 'update'\">\n" +
     "<a ng-href=\"{{imageStream | editYamlURL}}\" role=\"button\" translate>Edit YAML</a>\n" +
@@ -4070,7 +4070,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>Builds</translate>\n" +
     "<span class=\"page-header-link\">\n" +
     "<a ng-href=\"{{'builds' | helpLink}}\" target=\"_blank\">\n" +
-    "Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
+    "<translate>Learn More</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
     "</a>\n" +
     "</span>\n" +
     "</h1>\n" +
@@ -9700,12 +9700,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
-    "<label for=\"buildFrom\">Source and Destination Paths<span class=\"help action-inline\">\n" +
+    "<label for=\"buildFrom\"><translate>Source and Destination Paths</translate><span class=\"help action-inline\">\n" +
     "<a href=\"\">\n" +
     "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Paths is a list of source and destination paths to copy from the image. At least one pair has to be specified.\"></i>\n" +
     "</a>\n" +
     "</span></label>\n" +
-    "<key-value-editor entries=\"imageSourcePaths\" key-placeholder=\"Source Path\" key-validator=\"\\/.*?$\" value-placeholder=\"Destination Dir\" key-validator-error-tooltip=\"A valid Source Path is an absolute path beginning with '/'\" add-row-link=\"Add image source path\"></key-value-editor>\n" +
+    "<key-value-editor entries=\"imageSourcePaths\" key-placeholder=\"Source Path\" key-validator=\"\\/.*?$\" value-placeholder=\"Destination Dir\" key-validator-error-tooltip=\"A valid Source Path is an absolute path beginning with '/'\" add-row-link=\"{{'Add image source path'|translate}}\"></key-value-editor>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"multiple-image-source\" ng-if=\"sourceImages.length !== 1\">\n" +
@@ -9726,7 +9726,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"updatedBuildConfig | isJenkinsPipelineStrategy\" class=\"section\">\n" +
-    "<h3 ng-class=\"{ 'with-divider': !sources.none }\">Jenkins Pipeline Configuration</h3>\n" +
+    "<h3 ng-class=\"{ 'with-divider': !sources.none }\" translate>Jenkins Pipeline Configuration</h3>\n" +
     "<div class=\"form-group\" ng-if=\"buildConfig.spec.source.type === 'Git'\">\n" +
     "<label for=\"jenkinsfile-type\">Jenkinsfile Type</label>\n" +
     "<ui-select search-enabled=\"false\" ng-model=\"jenkinsfileOptions.type\" input-id=\"jenkinsfile-type\" aria-describedby=\"jenkinsfile-type-help\">\n" +
@@ -9758,7 +9758,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "                  }\" ng-model=\"updatedBuildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" class=\"ace-bordered ace-inline\"></div>\n" +
     "</div>\n" +
     "<div class=\"mar-top-md mar-bottom-md\">\n" +
-    "<a ng-if=\"!view.jenkinsfileExamples\" href=\"\" ng-click=\"view.jenkinsfileExamples = true\">What's a Jenkinsfile?</a>\n" +
+    "<a ng-if=\"!view.jenkinsfileExamples\" href=\"\" ng-click=\"view.jenkinsfileExamples = true\" translate>What's a Jenkinsfile?</a>\n" +
     "</div>\n" +
     "<div ng-if=\"view.jenkinsfileExamples\" class=\"editor-examples\">\n" +
     "<div class=\"pull-right mar-top-md\">\n" +
@@ -9774,11 +9774,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"strategyType !== 'JenkinsPipeline'\" class=\"section\">\n" +
-    "<h3 class=\"with-divider\">Image Configuration</h3>\n" +
+    "<h3 class=\"with-divider\" translate>Image Configuration</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
     "<div>\n" +
     "<div class=\"form-group\">\n" +
-    "<label for=\"buildFrom\">Build From</label>\n" +
+    "<label for=\"buildFrom\" translate>Build From</label>\n" +
     "<ui-select required ng-model=\"imageOptions.from.type\" search-enabled=\"false\">\n" +
     "<ui-select-match>{{$select.selected | startCase}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"type in buildFromTypes\">\n" +
@@ -9790,7 +9790,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<istag-select include-shared-namespace=\"true\" select-required=\"true\" model=\"imageOptions.from.imageStreamTag\"></istag-select>\n" +
     "</div>\n" +
     "<div ng-if=\"imageOptions.from.type==='DockerImage'\" class=\"form-group\">\n" +
-    "<label for=\"FromTypeLink\">Docker Image Repository</label>\n" +
+    "<label for=\"FromTypeLink\" translate>Docker Image Repository</label>\n" +
     "<div>\n" +
     "<input class=\"form-control\" type=\"text\" ng-model=\"imageOptions.from.dockerImage\" autocorrect=\"off\" autocapitalize=\"none\" placeholder=\"example: centos/ruby-20-centos7:latest\" spellcheck=\"false\" required>\n" +
     "</div>\n" +
@@ -9855,7 +9855,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "</span></h3>\n" +
     "<div>\n" +
-    "<key-value-editor ng-if=\"envVars\" entries=\"envVars\" key-placeholder=\"Name\" value-placeholder=\"Value\" show-header value-from-selector-options=\"valueFromObjects\" key-validator=\"[a-zA-Z_][a-zA-Z0-9_]*\" key-validator-error-tooltip=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" add-row-link=\"Add Value\" add-row-with-selectors-link=\"Add Value from Config Map or Secret\"></key-value-editor>\n" +
+    "<key-value-editor ng-if=\"envVars\" entries=\"envVars\" key-placeholder=\"{{'Name'|translate}}\" value-placeholder=\"{{'Value'|translate}}\" show-header value-from-selector-options=\"valueFromObjects\" key-validator=\"[a-zA-Z_][a-zA-Z0-9_]*\" key-validator-error-tooltip=\"A valid environment variable name is an alphanumeric (a-z and 0-9) string beginning with a letter that may contain underscores.\" add-row-link=\"{{'Add Value'|translate}}\" add-row-with-selectors-link=\"{{'Add Value from Config Map or Secret'|translate}}\"></key-value-editor>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"sources.git || !(updatedBuildConfig | isJenkinsPipelineStrategy)\" class=\"section\">\n" +
@@ -10493,7 +10493,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<alerts alerts=\"alerts\"></alerts>\n" +
     "<div ng-if=\"!updated.resource\" class=\"pad-top-md\" translate>Loading...</div>\n" +
     "<div ng-if=\"updated.resource\">\n" +
-    "<h1 class=\"truncate\"><translate>Edit</translate> <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true}}</span> {{updated.resource.metadata.name}}</h1>\n" +
+    "<h1 class=\"truncate\"><translate>Edit</translate> <span class=\"hidden-xs\">{{updated.resource.kind | humanizeKind : true | translate}}</span> {{updated.resource.metadata.name}}</h1>\n" +
     "<parse-error error=\"error\" ng-if=\"error\"></parse-error>\n" +
     "<div ng-if=\"resourceChanged && !resourceDeleted && !updatingNow\" class=\"alert alert-warning\">\n" +
     "<span class=\"pficon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
@@ -11844,7 +11844,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td data-title=\"Actions\" class=\"text-xs-left text-right\">\n" +
     "<span uib-dropdown ng-hide=\"!(selectedResource | canI : 'update') && !(selectedResource | canI : 'delete')\">\n" +
     "<button type=\"button\" class=\"dropdown-toggle btn btn-default\" data-toggle=\"dropdown\">\n" +
-    "<translate translate>Actions</translate>\n" +
+    "<translate>Actions</translate>\n" +
     "<span class=\"caret\"></span>\n" +
     "</button>\n" +
     "<ul uib-dropdown-menu class=\"dropdown-menu-right\" aria-labelledby=\"{{resource.metadata.name}}_actions\">\n" +
