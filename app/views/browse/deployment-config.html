@@ -175,7 +175,7 @@
                               </span>
                             </span>
                             <span ng-switch-when="ConfigChange" translate>Config change</span>
-                            <span ng-switch-default>{{cause.type}}</span>
+                            <span ng-switch-default>{{cause.type | translate}}</span>
                           </span>
                         </span>
                       </span>
@@ -328,7 +328,7 @@
                       <div ng-if="strategyParams.post">
                         <lifecycle-hook deployment-config="deploymentConfig" type="post"></lifecycle-hook>
                       </div>
-                      <p ng-if="!strategyParams.pre && !strategyParams.mid && !strategyParams.post">
+                      <p ng-if="!strategyParams.pre && !strategyParams.mid && !strategyParams.post" translate>
                         none
                       </p>
                     </div>

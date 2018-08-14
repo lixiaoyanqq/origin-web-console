@@ -98,7 +98,7 @@
     </div>
   </div>
   <div ng-show="showRequestInput" class="form-group">
-    <label>
+    <label translate>
       CPU Request Target
     </label>
     <div class="input-group" ng-class="{ 'has-error': form.targetCPU.$invalid && form.targetCPU.$touched }">
@@ -118,7 +118,7 @@
       drops below this target value.
     </div>
     <div class="learn-more-block">
-      <a ng-href="{{'compute_resources' | helpLink}}" target="_blank">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
+      <a ng-href="{{'compute_resources' | helpLink}}" target="_blank"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a>
     </div>
     <!-- Add extra top margin for the learn more block -->
     <div class="has-error mar-top-md" ng-show="form.targetCPU.$touched && form.targetCPU.$invalid">

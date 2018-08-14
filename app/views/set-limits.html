@@ -6,11 +6,11 @@
           <breadcrumbs breadcrumbs="breadcrumbs"></breadcrumbs>
           <div ng-show="!containers.length" translate>Loading...</div>
           <form ng-if="containers.length" name="form" class="set-limits-form" novalidate>
-            <h1>Resource Limits: {{name}}</h1>
+            <h1 translate>Resource Limits: {{name}}</h1>
             <div class="help-block">
-              Resource limits control how much <span ng-if="!hideCPU">CPU and</span> memory a container will consume on a node.
+              <translate>Resource limits control how much <span ng-if="!hideCPU">CPU and</span> memory a container will consume on a node.</translate>
               <div class="learn-more-block" ng-class="{ 'gutter-bottom': showPodWarning }">
-                <a href="{{'compute_resources' | helpLink}}" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a href="{{'compute_resources' | helpLink}}" target="_blank"><translate>Learn More</translate> <i class="fa fa-external-link" aria-hidden="true"></i></a>
               </div>
             </div>
             <div ng-if="showPodWarning" class="alert alert-warning">
@@ -51,7 +51,7 @@
                   class="btn btn-primary btn-lg"
                   ng-click="save()"
                   ng-disabled="form.$pristine || form.$invalid || disableInputs || cpuProblems.length || memoryProblems.length"
-                  value="">Save</button>
+                  value="" translate>Save</button>
                 <button class="btn btn-default btn-lg" ng-click="cancel()" translate>Cancel</button>
               </div>
             </fieldset>

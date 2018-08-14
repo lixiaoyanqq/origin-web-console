@@ -1,7 +1,7 @@
 <ng-form name="$ctrl.editEnvironmentFromForm" novalidate ng-class="{ 'has-sort' : !$ctrl.cannotSort && $ctrl.entries.length > 1}">
   <div ng-if="$ctrl.showHeader" class="row form-row-has-controls input-labels">
     <div class="col-xs-6">
-      <label class="input-label">
+      <label class="input-label" translate>
         Config Map/Secret
       </label>
     </div>
@@ -27,7 +27,7 @@
       <div class="environment-from-input col-xs-6 form-group">
         <div ng-if="$ctrl.isEnvFromReadonly(entry) || !$ctrl.hasOptions()" class="faux-input-group">
           <div ng-if="!entry.configMapRef.name && !entry.secretRef.name" translate>
-            No config maps or secrets have been added as Environment From.
+             No config maps or secrets have been added as Environment From.
           </div>
           <div ng-if="entry.configMapRef.name || entry.secretRef.name" class="faux-form-control readonly">
 		  <translate>Use all keys and values from</translate>
