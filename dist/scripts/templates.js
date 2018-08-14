@@ -6430,10 +6430,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\">\n" +
-    "To deploy an image from a private repository, you must <span ng-if=\"!input.selectedProject.metadata.uid\">create an image pull secret</span>\n" +
-    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\">create an image pull secret</a>\n" +
-    "with your image registry credentials.\n" +
-    "<a ng-href=\"{{'pull_secret' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></div>\n" +
+    "<translate>To deploy an image from a private repository,</translate><translate>you must</translate><span ng-if=\"!input.selectedProject.metadata.uid\" translate>create an image pull secret</span>\n" +
+    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\" translate>create an image pull secret</a>\n" +
+    "<translate>with your image registry credentials.</translate>\n" +
+    "<a ng-href=\"{{'pull_secret' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\" translate>Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></div>\n" +
     "</div>\n" +
     "</fieldset>\n" +
     "</fieldset>\n" +
@@ -6442,7 +6442,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"separator\"></div>\n" +
     "</div>\n" +
     "<div ng-if=\"loading || !import\" class=\"empty-state-message text-center\">\n" +
-    "<h2 ng-if=\"!loading\" class=\"h2\">Select an image stream tag or enter an image name.</h2>\n" +
+    "<h2 ng-if=\"!loading\" class=\"h2\" translate>Select an image stream tag or enter an image name.</h2>\n" +
     "<h2 ng-if=\"loading\" class=\"h2\">Loading image metadata for <span class=\"word-break\">{{imageName | stripSHA}}</span>...</h2>\n" +
     "</div>\n" +
     "<div class=\"row mar-bottom-md\" ng-if-start=\"!loading && import.image\">\n" +
