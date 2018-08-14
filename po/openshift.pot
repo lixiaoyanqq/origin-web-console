@@ -2673,6 +2673,7 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
+#: app/views/directives/deploy-image.html:69
 #: app/views/edit/build-config.html:493
 msgid "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>"
 msgstr ""
@@ -4459,6 +4460,10 @@ msgstr ""
 msgid "Select a storage class"
 msgstr ""
 
+#: app/views/directives/deploy-image.html:78
+msgid "Select an image stream tag or enter an image name."
+msgstr ""
+
 #: app/views/project-browse-catalog.html:3
 msgid "Select an item to add to the current project"
 msgstr ""
@@ -5483,6 +5488,10 @@ msgstr ""
 msgid "To add an image stream or template from a file, use the editor in the <strong>Import YAML / JSON</strong> tab, or run the following command:"
 msgstr ""
 
+#: app/views/directives/deploy-image.html:64
+msgid "To deploy an image from a private repository,"
+msgstr ""
+
 #: app/views/modals/confirm-save-log.html:12
 msgid "To get the complete log, run the command"
 msgstr ""
@@ -6099,6 +6108,11 @@ msgstr ""
 msgid "cores"
 msgstr ""
 
+#: app/views/directives/deploy-image.html:64
+#: app/views/directives/deploy-image.html:65
+msgid "create an image pull secret"
+msgstr ""
+
 #: app/views/browse/build-config.html:164
 #: app/views/browse/build-config.html:63
 #: app/views/browse/build.html:75
@@ -6611,12 +6625,20 @@ msgstr ""
 msgid "will track this image."
 msgstr ""
 
+#: app/views/directives/deploy-image.html:68
+msgid "with your image registry credentials."
+msgstr ""
+
 #: app/scripts/filters/date.js:46
 msgid "year"
 msgstr ""
 
 #: app/scripts/filters/date.js:46
 msgid "years"
+msgstr ""
+
+#: app/views/directives/deploy-image.html:64
+msgid "you must"
 msgstr ""
 
 #: app/views/_pod-template-container.html:140

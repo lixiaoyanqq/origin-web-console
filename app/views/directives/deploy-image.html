@@ -61,12 +61,12 @@
               </span>
             </div>
             <div class="help-block">
-              To deploy an image from a private repository, you must <span ng-if="!input.selectedProject.metadata.uid">create an image pull secret</span>
+              <translate>To deploy an image from a private repository,</translate><translate>you must</translate><span ng-if="!input.selectedProject.metadata.uid" translate>create an image pull secret</span>
               <a href=""
                  ng-click="openCreateWebhookSecretModal()"
-                 ng-if="input.selectedProject.metadata.uid">create an image pull secret</a>
-              with your image registry credentials.
-              <a ng-href="{{'pull_secret' | helpLink}}" target="_blank"><span class="learn-more-inline">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a></div>
+                 ng-if="input.selectedProject.metadata.uid" translate>create an image pull secret</a>
+                 <translate>with your image registry credentials.</translate>
+              <a ng-href="{{'pull_secret' | helpLink}}" target="_blank"><span class="learn-more-inline" translate>Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a></div>
           </div>
         </fieldset>
       </fieldset>
@@ -75,7 +75,7 @@
       <div class="separator"></div>
     </div>
     <div ng-if="loading || !import" class="empty-state-message text-center">
-      <h2 ng-if="!loading" class="h2">Select an image stream tag or enter an image name.</h2>
+      <h2 ng-if="!loading" class="h2" translate>Select an image stream tag or enter an image name.</h2>
       <h2 ng-if="loading" class="h2">Loading image metadata for <span class="word-break">{{imageName | stripSHA}}</span>...</h2>
     </div>
     <div class="row mar-bottom-md" ng-if-start="!loading && import.image">
