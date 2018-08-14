@@ -15,6 +15,7 @@ function Noop() {
   gettext('Abort');
   gettext('Active');
   gettext('Bound');
+  gettext('Build Config');
   gettext('Cancelled');
   gettext('CI/CD');
   gettext('Clear Filters');

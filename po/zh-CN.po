@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-14 15:14+0800\n"
+"PO-Revision-Date: 2018-08-14 18:18+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -86,7 +86,7 @@ msgstr ",子路径 {{mount.subPath}}"
 msgid ". You cannot create new storage since you are at quota."
 msgstr "。受配额限制, 您无法创建新的存储空间。"
 
-#: app/scripts/constants.js:604
+#: app/scripts/constants.js:605
 msgid ".NET"
 msgstr ".NET"
 
@@ -134,7 +134,7 @@ msgstr ""
 "水线阶段，并在每个阶段中运行一个或多个步骤。 以下是您可以在管道中使用的一些示"
 "例。"
 
-#: app/scripts/constants.js:671
+#: app/scripts/constants.js:672
 msgid ""
 "A centralized authentication server for users to log in, log out, register, "
 "and manage user accounts for applications and RESTful web services."
@@ -439,6 +439,7 @@ msgstr "添加存储到 {{name}}"
 #: app/views/browse/build-config.html:480 app/views/create/fromimage.html:287
 #: app/views/directives/deploy-image.html:183
 #: app/views/directives/edit-lifecycle-hook.html:62
+#: app/views/edit/build-config.html:436
 #: app/views/edit/deployment-config.html:360
 #: app/views/edit/deployment-config.html:73
 msgid "Add Value"
@@ -447,6 +448,7 @@ msgstr "添加值"
 #: app/views/browse/build-config.html:481
 #: app/views/directives/deploy-image.html:184
 #: app/views/directives/edit-lifecycle-hook.html:61
+#: app/views/edit/build-config.html:437
 #: app/views/edit/deployment-config.html:361
 #: app/views/edit/deployment-config.html:74
 msgid "Add Value from Config Map or Secret"
@@ -480,6 +482,10 @@ msgid ""
 msgstr ""
 "从 web 框架、数据库和其他组件的目录中向项目中添加内容。您还可以部署现有镜像、"
 "创建或替换其 YAML 或 JSON 定义中的资源, 或从其他项目中选择共享的项。"
+
+#: app/views/edit/build-config.html:209
+msgid "Add image source path"
+msgstr "添加镜像来源路径"
 
 #: app/views/add-config-volume.html:108
 msgid ""
@@ -695,7 +701,7 @@ msgstr "一个可以执行部署的镜像。"
 msgid "Application"
 msgstr "应用程序"
 
-#: app/scripts/constants.js:318
+#: app/scripts/constants.js:319
 msgid "Applications"
 msgstr "应用程序"
 
@@ -758,7 +764,7 @@ msgstr "验证类型"
 msgid "Autodeploy when"
 msgstr "自动部署在"
 
-#: app/scripts/constants.js:649
+#: app/scripts/constants.js:650
 msgid ""
 "Automate the build, test, and deployment of your application with each new "
 "code revision."
@@ -846,10 +852,6 @@ msgstr "平均:{{averageDurationText}}"
 msgid "Back"
 msgstr "后退"
 
-#: app/views/add-config-volume.html:22
-msgid "Back to"
-msgstr "后退到"
-
 #: app/views/catalog/category-content.html:15
 msgid "Back to catalog"
 msgstr "回目录"
@@ -858,7 +860,7 @@ msgstr "回目录"
 msgid "Back to overview"
 msgstr "回到概述"
 
-#: app/views/attach-pvc.html:26
+#: app/views/add-config-volume.html:22 app/views/attach-pvc.html:26
 msgid "Back to {{kind | humanizeKind | translate}} {{name}}"
 msgstr "返回到{{kind | humanizeKind | translate}}{{name}}"
 
@@ -913,6 +915,14 @@ msgstr "构建"
 msgid "Build #{{build | annotation : 'buildNumber'}}"
 msgstr "构建 #{{build | annotation : 'buildNumber'}}"
 
+#: app/scripts/constants.js:18
+msgid "Build Config"
+msgstr "构建配置"
+
+#: app/views/edit/build-config.html:299
+msgid "Build From"
+msgstr "构建于"
+
 #: app/views/directives/osc-source-secrets.html:63
 #: app/views/directives/osc-source-secrets.html:8
 msgid "Build Secret"
@@ -948,7 +958,7 @@ msgstr "构建:"
 msgid "Builder Image:"
 msgstr "构建镜像:"
 
-#: app/scripts/constants.js:386 app/scripts/constants.js:392
+#: app/scripts/constants.js:387 app/scripts/constants.js:393
 #: app/scripts/controllers/monitoring.js:55 app/views/builds.html:6
 #: app/views/monitoring.html:402 app/views/overview/_builds.html:2
 #: app/views/overview/_list-row-content.html:23
@@ -997,7 +1007,7 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr "构建一个镜像"
 
-#: app/scripts/constants.js:642
+#: app/scripts/constants.js:643
 msgid "Business Process Services"
 msgstr "业务流程服务"
 
@@ -1009,7 +1019,7 @@ msgstr "CA证书"
 msgid "CA Certificate:"
 msgstr "CA证书:"
 
-#: app/scripts/constants.js:19
+#: app/scripts/constants.js:20
 msgid "CI/CD"
 msgstr "CI/CD"
 
@@ -1018,11 +1028,11 @@ msgstr "CI/CD"
 msgid "CPU"
 msgstr "CPU"
 
-#: app/scripts/constants.js:28
+#: app/scripts/constants.js:29
 msgid "CPU (Limit)"
 msgstr "CPU(限制)"
 
-#: app/scripts/constants.js:29
+#: app/scripts/constants.js:30
 msgid "CPU (Request)"
 msgstr "CPU (请求)"
 
@@ -1125,7 +1135,7 @@ msgstr "取消构建"
 msgid "Cancel deployment {{rcName}}?"
 msgstr "取消部署{{rcName}}？"
 
-#: app/scripts/constants.js:18
+#: app/scripts/constants.js:19
 msgid "Cancelled"
 msgstr "已取消"
 
@@ -1142,7 +1152,7 @@ msgstr "能力"
 msgid "Capacity:"
 msgstr "容量:"
 
-#: app/scripts/constants.js:496
+#: app/scripts/constants.js:497
 msgid "Catalog"
 msgstr "目录"
 
@@ -1208,11 +1218,11 @@ msgstr "声明名称:"
 msgid "Clear Changes"
 msgstr "清空修改"
 
-#: app/scripts/constants.js:20
+#: app/scripts/constants.js:21
 msgid "Clear Filters"
 msgstr "清除过滤器"
 
-#: app/scripts/constants.js:21
+#: app/scripts/constants.js:22
 msgid "Clear Search Input"
 msgstr "清空搜索文本"
 
@@ -1228,7 +1238,7 @@ msgstr "清空通知"
 msgid "Clear {{ (type || 'Command') | upperFirst }}"
 msgstr "清空{{ (type || 'Command') | upperFirst }}"
 
-#: app/scripts/constants.js:22
+#: app/scripts/constants.js:23
 msgid "Client state could not be verified"
 msgstr "客户端状态无法验证"
 
@@ -1287,11 +1297,11 @@ msgstr "命令行工具"
 msgid "Command:"
 msgstr "命令:"
 
-#: app/scripts/constants.js:23
+#: app/scripts/constants.js:24
 msgid "Complete"
 msgstr "完成"
 
-#: app/scripts/constants.js:25
+#: app/scripts/constants.js:26
 msgid "Completed"
 msgstr "完成"
 
@@ -1307,7 +1317,7 @@ msgstr "配置"
 msgid "Config Change For:"
 msgstr "配置更改："
 
-#: app/scripts/constants.js:26
+#: app/scripts/constants.js:27
 msgid "Config Map"
 msgstr "配置集"
 
@@ -1319,7 +1329,7 @@ msgstr "配置映射/私密凭证"
 msgid "Config Map:"
 msgstr "配置集:"
 
-#: app/scripts/constants.js:430 app/views/browse/config-maps.html:9
+#: app/scripts/constants.js:431 app/views/browse/config-maps.html:9
 msgid "Config Maps"
 msgstr "配置集"
 
@@ -1391,7 +1401,7 @@ msgstr "确认缩"
 msgid "Confirm User Change"
 msgstr "确认用户改变"
 
-#: app/scripts/constants.js:665
+#: app/scripts/constants.js:666
 msgid ""
 "Connect with other applications and data to enhance functionality without "
 "duplication."
@@ -1477,7 +1487,7 @@ msgstr "继续会话"
 msgid "Continue with deployment on failure"
 msgstr "继续部署失败"
 
-#: app/scripts/constants.js:648
+#: app/scripts/constants.js:649
 msgid "Continuous Integration & Deployment"
 msgstr "持续集成与部署"
 
@@ -1488,7 +1498,7 @@ msgstr "持续集成与部署"
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: app/scripts/constants.js:27
+#: app/scripts/constants.js:28
 msgid "Cores"
 msgstr "核"
 
@@ -1638,7 +1648,7 @@ msgstr "创建者"
 msgid "Credentials Store"
 msgstr "证书存储"
 
-#: app/scripts/constants.js:30
+#: app/scripts/constants.js:31
 msgid "Custom"
 msgstr "自定义"
 
@@ -1658,7 +1668,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: app/scripts/constants.js:654
+#: app/scripts/constants.js:655
 msgid "Data Stores"
 msgstr "数据存储"
 
@@ -1666,7 +1676,7 @@ msgstr "数据存储"
 msgid "DataMan OS Pipeline Plugin"
 msgstr "DataMan OS管道插件"
 
-#: app/scripts/constants.js:32
+#: app/scripts/constants.js:33
 msgid "Databases"
 msgstr "数据库"
 
@@ -1769,7 +1779,7 @@ msgstr "用镜像流版本部署镜像"
 msgid "Deployment"
 msgstr "部署"
 
-#: app/scripts/constants.js:34
+#: app/scripts/constants.js:35
 msgid "Deployment Config"
 msgstr "部署配置"
 
@@ -1794,7 +1804,7 @@ msgstr "部署配置更改"
 msgid "Deployment:"
 msgstr "部署:"
 
-#: app/scripts/constants.js:324 app/scripts/controllers/deployment.js:41
+#: app/scripts/constants.js:325 app/scripts/controllers/deployment.js:41
 #: app/scripts/controllers/monitoring.js:51 app/views/deployments.html:116
 #: app/views/deployments.html:6 app/views/monitoring.html:152
 #: app/views/overview.html:190 app/views/overview.html:206
@@ -1864,6 +1874,10 @@ msgstr "您想要替换现有的资源吗?"
 #: app/views/modals/confirm-replace.html:11
 msgid "Do you want to replace with the new content?"
 msgstr "你想用新的内容来代替吗?"
+
+#: app/views/edit/build-config.html:316
+msgid "Docker Image Repository"
+msgstr "Docker镜像仓库"
 
 #: app/views/images.html:44
 msgid "Docker Repo"
@@ -2173,7 +2187,7 @@ msgstr "外部IP"
 msgid "External IPs:"
 msgstr "外部IP:"
 
-#: app/scripts/constants.js:660
+#: app/scripts/constants.js:661
 msgid ""
 "Facilitate communication between applications and distributed processes with "
 "a messaging server."
@@ -2183,7 +2197,7 @@ msgstr "通过消息服务器促进应用程序和分布式进程之间的通信
 msgid "Fail the deployment if the hook fails."
 msgstr "如果hook失败，则部署会失败。"
 
-#: app/scripts/constants.js:35
+#: app/scripts/constants.js:36
 msgid "Failed"
 msgstr "失败"
 
@@ -2214,7 +2228,7 @@ msgstr "使用凭据和其他配置文件连接到安全的镜像registry"
 msgid "Filter"
 msgstr "过滤器"
 
-#: app/scripts/constants.js:36
+#: app/scripts/constants.js:37
 #: app/scripts/directives/processTemplateDialog.js:137
 msgid "Filter by Keyword"
 msgstr "根据关键字过滤"
@@ -2279,7 +2293,7 @@ msgstr "Git参考"
 msgid "Git Repository URL"
 msgstr "Git仓库地址"
 
-#: app/scripts/constants.js:630
+#: app/scripts/constants.js:631
 msgid "Go"
 msgstr "Go"
 
@@ -2299,7 +2313,7 @@ msgstr "到顶部"
 msgid "Grace Period:"
 msgstr "宽限期:"
 
-#: app/scripts/constants.js:38
+#: app/scripts/constants.js:39
 msgid "Group"
 msgstr "组"
 
@@ -2462,7 +2476,7 @@ msgstr ""
 "如果您需要在这个项目中创建资源，项目管理员可以通过运行这个命令授予您额外的访"
 "问权限:"
 
-#: app/scripts/constants.js:40
+#: app/scripts/constants.js:41
 msgid "Ignore"
 msgstr "忽略"
 
@@ -2476,6 +2490,10 @@ msgstr "忽略hook故障并继续部署。"
 #: app/views/directives/deploy-image-dialog.html:15
 msgid "Image"
 msgstr "镜像"
+
+#: app/views/edit/build-config.html:294
+msgid "Image Configuration"
+msgstr "镜像配置"
 
 #: app/views/directives/deploy-image.html:31
 #: app/views/edit/deployment-config.html:305
@@ -2534,7 +2552,7 @@ msgstr "需要镜像registry服务器地址"
 msgid "Image value set"
 msgstr "镜像集合"
 
-#: app/scripts/constants.js:409 app/views/edit/deployment-config.html:279
+#: app/scripts/constants.js:410 app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
 msgid "Images"
 msgstr "镜像"
@@ -2584,7 +2602,7 @@ msgstr "不安全的流量:"
 msgid "Instance Name"
 msgstr "实例名称"
 
-#: app/scripts/constants.js:664
+#: app/scripts/constants.js:665
 msgid "Integration"
 msgstr "集成"
 
@@ -2625,17 +2643,21 @@ msgstr "这将不会删除持久化卷声明。"
 msgid "It will not delete the secret."
 msgstr "这将不会删除私密凭证。"
 
-#: app/scripts/constants.js:41
+#: app/scripts/constants.js:42
 msgid "Items"
 msgstr "项"
 
-#: app/scripts/constants.js:552
+#: app/scripts/constants.js:553
 msgid "Java"
 msgstr "Java"
 
-#: app/scripts/constants.js:599
+#: app/scripts/constants.js:600
 msgid "JavaScript"
 msgstr "JavaScript"
+
+#: app/views/edit/build-config.html:233
+msgid "Jenkins Pipeline Configuration"
+msgstr "Jenkins Pipeline配置"
 
 #: app/views/browse/_build-details.html:101
 msgid "Jenkinsfile Path:"
@@ -2691,7 +2713,7 @@ msgstr "标签用于组织或给资源对象分组，例如Pods。"
 msgid "Labels for this route."
 msgstr "路由的标签。"
 
-#: app/scripts/constants.js:547
+#: app/scripts/constants.js:548
 msgid "Languages"
 msgstr "语言"
 
@@ -2726,7 +2748,7 @@ msgstr "最近扩缩:"
 msgid "Last State"
 msgstr "最近状态"
 
-#: app/scripts/constants.js:42
+#: app/scripts/constants.js:43
 msgid "Last Updated"
 msgstr "更新"
 
@@ -2757,7 +2779,7 @@ msgstr "层"
 #: app/views/browse/build-config.html:383 app/views/browse/config-maps.html:12
 #: app/views/browse/deployment-config.html:255
 #: app/views/browse/deployment-config.html:319 app/views/browse/routes.html:12
-#: app/views/create/fromimage.html:314
+#: app/views/builds.html:9 app/views/create/fromimage.html:314
 #: app/views/directives/create-secret.html:335
 #: app/views/directives/create-secret.html:73
 #: app/views/directives/edit-lifecycle-hook.html:34
@@ -2933,7 +2955,7 @@ msgstr "确保您可能添加的任何新字段都是受支持的API字段."
 msgid "Making code changes"
 msgstr "修改代码"
 
-#: app/scripts/constants.js:43 app/views/browse/build-config.html:440
+#: app/scripts/constants.js:44 app/views/browse/build-config.html:440
 #: app/views/browse/deployment-config.html:253
 msgid "Manual"
 msgstr "手动"
@@ -3020,11 +3042,11 @@ msgstr "成员"
 msgid "Memory"
 msgstr "内存"
 
-#: app/scripts/constants.js:45
+#: app/scripts/constants.js:46
 msgid "Memory (Limit)"
 msgstr "内存(限制)"
 
-#: app/scripts/constants.js:46
+#: app/scripts/constants.js:47
 msgid "Memory (Request)"
 msgstr "内存(请求)"
 
@@ -3076,7 +3098,7 @@ msgstr "消息:"
 msgid "Messages"
 msgstr "消息"
 
-#: app/scripts/constants.js:659
+#: app/scripts/constants.js:660
 msgid "Messaging"
 msgstr "消息"
 
@@ -3096,7 +3118,7 @@ msgid ""
 "required for autoscaling."
 msgstr "集群管理员可能未配置监控。自动扩缩需要使用监控。"
 
-#: app/scripts/constants.js:47
+#: app/scripts/constants.js:48
 msgid "Mid"
 msgstr "中间"
 
@@ -3111,7 +3133,7 @@ msgid ""
 msgstr ""
 "在先前的部署被缩小到零之后并且在创建新的部署的第一个Pod之前执行中间hook。"
 
-#: app/scripts/constants.js:48
+#: app/scripts/constants.js:49
 msgid "Middleware"
 msgstr "中间件"
 
@@ -3156,13 +3178,13 @@ msgstr "最小: {{limits.min | usageWithUnits : type}}"
 msgid "Mode:"
 msgstr "模式:"
 
-#: app/scripts/constants.js:643
+#: app/scripts/constants.js:644
 msgid ""
 "Model, automate, and orchestrate business processes across applications, "
 "services, and data."
 msgstr "在应用程序，服务和数据之间建立，自动化和协调业务流程。"
 
-#: app/scripts/constants.js:469 app/views/monitoring.html:7
+#: app/scripts/constants.js:470 app/views/monitoring.html:7
 msgid "Monitoring"
 msgstr "监控"
 
@@ -3263,11 +3285,11 @@ msgstr "我的项目列表"
 #: app/views/directives/label-editor.html:15
 #: app/views/directives/next-steps.html:108
 #: app/views/directives/osc-persistent-volume-claim.html:64
-#: app/views/directives/osc-routing.html:6 app/views/images.html:43
-#: app/views/membership.html:155 app/views/membership.html:58
-#: app/views/other-resources.html:51 app/views/secrets.html:48
-#: app/views/service-instances.html:45 app/views/services.html:40
-#: app/views/storage.html:51
+#: app/views/directives/osc-routing.html:6 app/views/edit/build-config.html:430
+#: app/views/images.html:43 app/views/membership.html:155
+#: app/views/membership.html:58 app/views/other-resources.html:51
+#: app/views/secrets.html:48 app/views/service-instances.html:45
+#: app/views/services.html:40 app/views/storage.html:51
 msgid "Name"
 msgstr "名称"
 
@@ -3372,7 +3394,7 @@ msgstr "项目{{projectName}}中没有添加任何构建。"
 msgid "No builds."
 msgstr "没有构建。"
 
-#: app/scripts/constants.js:49
+#: app/scripts/constants.js:50
 msgid "No catalog items have been loaded."
 msgstr "没有目录项被加载"
 
@@ -3473,7 +3495,7 @@ msgstr ""
 msgid "No images or templates."
 msgstr "没有镜像或模板。"
 
-#: app/scripts/constants.js:50
+#: app/scripts/constants.js:51
 msgid "No items."
 msgstr "没有项目。"
 
@@ -3526,11 +3548,11 @@ msgstr "没有为项目添加任何提供的服务。"
 msgid "No provisioned services."
 msgstr "没有提供服务"
 
-#: app/scripts/constants.js:51
+#: app/scripts/constants.js:52
 msgid "No results found for Keyword:"
 msgstr "找不到关键词对应的结果："
 
-#: app/scripts/constants.js:52
+#: app/scripts/constants.js:53
 msgid "No results match."
 msgstr "没有符合的结果"
 
@@ -3689,7 +3711,7 @@ msgstr "其它"
 msgid "Other Replication Controllers"
 msgstr "其他复本控制器"
 
-#: app/scripts/constants.js:451 app/views/other-resources.html:5
+#: app/scripts/constants.js:452 app/views/other-resources.html:5
 #: app/views/overview.html:137 app/views/overview.html:338
 msgid "Other Resources"
 msgstr "其他资源"
@@ -3710,11 +3732,11 @@ msgstr "输出到:"
 msgid "Over limit of"
 msgstr "超过限制的"
 
-#: app/scripts/constants.js:313
+#: app/scripts/constants.js:314
 msgid "Overview"
 msgstr "概览"
 
-#: app/scripts/constants.js:614
+#: app/scripts/constants.js:615
 msgid "PHP"
 msgstr "PHP"
 
@@ -3811,7 +3833,7 @@ msgid ""
 "values or"
 msgstr "发送到每个服务的流量百分比。 拖动滑块以调整值或"
 
-#: app/scripts/constants.js:609
+#: app/scripts/constants.js:610
 msgid "Perl"
 msgstr "Perl"
 
@@ -3839,7 +3861,7 @@ msgstr "管道"
 msgid "Pipeline Builds"
 msgstr "管道构建"
 
-#: app/scripts/constants.js:401 app/views/overview/_list-row-content.html:18
+#: app/scripts/constants.js:402 app/views/overview/_list-row-content.html:18
 #: app/views/overview/_list-row-expanded.html:158
 #: app/views/overview/_pipelines.html:2 app/views/pipelines.html:6
 msgid "Pipelines"
@@ -3879,7 +3901,7 @@ msgstr "Pod监控"
 msgid "Pod status:"
 msgstr "Pod状态"
 
-#: app/scripts/constants.js:347 app/views/browse/_replica-set-details.html:217
+#: app/scripts/constants.js:348 app/views/browse/_replica-set-details.html:217
 #: app/views/browse/service.html:98 app/views/browse/stateful-set.html:126
 #: app/views/overview.html:258 app/views/pods.html:6
 msgid "Pods"
@@ -3903,7 +3925,7 @@ msgstr "端口"
 msgid "Ports:"
 msgstr "端口:"
 
-#: app/scripts/constants.js:54
+#: app/scripts/constants.js:55
 msgid "Post"
 msgstr "后置"
 
@@ -3919,7 +3941,7 @@ msgstr "在部署策略完成之后，执行后置生命周期hook。"
 msgid "Post-Commit Hooks"
 msgstr "Post-Commit Hook"
 
-#: app/scripts/constants.js:55
+#: app/scripts/constants.js:56
 msgid "Pre"
 msgstr "前置"
 
@@ -3971,7 +3993,7 @@ msgstr "提供的服务"
 msgid "Public hostname for the route."
 msgstr "路由的公共主机名。"
 
-#: app/scripts/constants.js:56
+#: app/scripts/constants.js:57
 msgid "Publisher"
 msgstr "发布者"
 
@@ -3988,11 +4010,11 @@ msgstr "推私密凭证:"
 msgid "Push To"
 msgstr "推到"
 
-#: app/scripts/constants.js:619
+#: app/scripts/constants.js:620
 msgid "Python"
 msgstr "Python"
 
-#: app/scripts/constants.js:426 app/views/quota.html:6
+#: app/scripts/constants.js:427 app/views/quota.html:6
 msgid "Quota"
 msgstr "配额"
 
@@ -4008,15 +4030,15 @@ msgstr "只读"
 msgid "Read only"
 msgstr "只读"
 
-#: app/scripts/constants.js:59
+#: app/scripts/constants.js:60
 msgid "Read-Only-Many"
 msgstr "多次读"
 
-#: app/scripts/constants.js:60
+#: app/scripts/constants.js:61
 msgid "Read-Write-Many"
 msgstr "多次写"
 
-#: app/scripts/constants.js:61
+#: app/scripts/constants.js:62
 msgid "Read-Write-Once"
 msgstr "一次读写"
 
@@ -4061,39 +4083,39 @@ msgstr "入口流量"
 msgid "Recent Runs"
 msgstr "最近运行"
 
-#: app/scripts/constants.js:62
+#: app/scripts/constants.js:63
 msgid "Recreate"
 msgstr "重新创建"
 
-#: app/scripts/constants.js:559
+#: app/scripts/constants.js:560
 msgid "Red Hat JBoss A-MQ"
 msgstr "Red Hat JBoss A-MQ"
 
-#: app/scripts/constants.js:563
+#: app/scripts/constants.js:564
 msgid "Red Hat JBoss BPM Suite"
 msgstr "Red Hat JBoss BPM Suite"
 
-#: app/scripts/constants.js:567
+#: app/scripts/constants.js:568
 msgid "Red Hat JBoss BRMS"
 msgstr "Red Hat JBoss BRMS"
 
-#: app/scripts/constants.js:571
+#: app/scripts/constants.js:572
 msgid "Red Hat JBoss Data Grid"
 msgstr "Red Hat JBoss Data Grid"
 
-#: app/scripts/constants.js:575
+#: app/scripts/constants.js:576
 msgid "Red Hat JBoss EAP"
 msgstr "Red Hat JBoss EAP"
 
-#: app/scripts/constants.js:579
+#: app/scripts/constants.js:580
 msgid "Red Hat JBoss Fuse"
 msgstr "Red Hat JBoss Fuse"
 
-#: app/scripts/constants.js:583
+#: app/scripts/constants.js:584
 msgid "Red Hat JBoss Web Server (Tomcat)"
 msgstr "Red Hat JBoss Web Server (Tomcat)"
 
-#: app/scripts/constants.js:587
+#: app/scripts/constants.js:588
 msgid "Red Hat Single Sign-On"
 msgstr "Red Hat Single Sign-On"
 
@@ -4257,7 +4279,7 @@ msgstr ""
 msgid "Resource name is missing in metadata field."
 msgstr "元数据字段中缺少资源名"
 
-#: app/scripts/constants.js:420
+#: app/scripts/constants.js:421
 msgid "Resources"
 msgstr "资源"
 
@@ -4282,7 +4304,7 @@ msgstr "结果"
 msgid "Resume Rollouts"
 msgstr "恢复滚动更新"
 
-#: app/scripts/constants.js:64
+#: app/scripts/constants.js:65
 msgid "Retry"
 msgstr "重试"
 
@@ -4320,11 +4342,11 @@ msgstr "角色"
 msgid "Roll Back"
 msgstr "回滚"
 
-#: app/scripts/constants.js:65
+#: app/scripts/constants.js:66
 msgid "Rolling"
 msgstr "滚动"
 
-#: app/scripts/constants.js:66
+#: app/scripts/constants.js:67
 msgid "Route"
 msgstr "路由"
 
@@ -4342,7 +4364,7 @@ msgstr ""
 msgid "Route target port is set to \""
 msgstr "路由目标端口设置为\""
 
-#: app/scripts/constants.js:361 app/views/browse/routes.html:9
+#: app/scripts/constants.js:362 app/views/browse/routes.html:9
 msgid "Routes"
 msgstr "路由"
 
@@ -4376,7 +4398,7 @@ msgstr "路由："
 msgid "Routing is a way to make your application publicly visible."
 msgstr "路由是使您的应用程序公开可见的一种方式。"
 
-#: app/scripts/constants.js:624
+#: app/scripts/constants.js:625
 msgid "Ruby"
 msgstr "Ruby"
 
@@ -4396,7 +4418,7 @@ msgstr "运行一个构建和部署:"
 msgid "Run policy type"
 msgstr "运行策略类型"
 
-#: app/scripts/constants.js:68 app/scripts/directives/podDonut.js:124
+#: app/scripts/constants.js:69 app/scripts/directives/podDonut.js:124
 msgid "Running"
 msgstr "运行"
 
@@ -4470,7 +4492,7 @@ msgstr "范围:"
 msgid "Script:"
 msgstr "脚本:"
 
-#: app/scripts/constants.js:69
+#: app/scripts/constants.js:70
 msgid "Search Catalog"
 msgstr "搜索目录"
 
@@ -4508,7 +4530,7 @@ msgstr "有认证的私密凭证，用来拉取你的源代码。"
 msgid "Secret:"
 msgstr "私密凭证:"
 
-#: app/scripts/constants.js:439 app/views/secrets.html:9
+#: app/scripts/constants.js:440 app/views/secrets.html:9
 msgid "Secrets"
 msgstr "私密凭证"
 
@@ -4628,7 +4650,7 @@ msgstr "发送"
 msgid "Service"
 msgstr "服务"
 
-#: app/scripts/constants.js:71 app/views/directives/create-secret.html:342
+#: app/scripts/constants.js:72 app/views/directives/create-secret.html:342
 msgid "Service Account"
 msgstr "服务账户"
 
@@ -4675,7 +4697,7 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr "服务{{route.to.service.metadata.name}}权重"
 
-#: app/scripts/constants.js:354 app/views/services.html:6
+#: app/scripts/constants.js:355 app/views/services.html:6
 msgid "Services"
 msgstr "服务"
 
@@ -4742,7 +4764,7 @@ msgstr ""
 "显示 <strong>{{overview.filteredSize}}</strong>/<strong>{{overview.size}}</"
 "strong> 项目"
 
-#: app/scripts/constants.js:670
+#: app/scripts/constants.js:671
 msgid "Single Sign-On"
 msgstr "Single Sign-On"
 
@@ -4805,6 +4827,10 @@ msgstr "源码私密凭证"
 msgid "Source Type:"
 msgstr "源类型:"
 
+#: app/views/edit/build-config.html:198
+msgid "Source and Destination Paths"
+msgstr "源和目标路径"
+
 #: app/views/directives/osc-source-secrets.html:52
 msgid "Source secret to copy into the builder pod at build time."
 msgstr "源代码私密凭证在构建时复制到构建器Pod中。"
@@ -4858,7 +4884,7 @@ msgstr "启动:"
 msgid "State:"
 msgstr "状态:"
 
-#: app/scripts/constants.js:340 app/scripts/controllers/monitoring.js:58
+#: app/scripts/constants.js:341 app/scripts/controllers/monitoring.js:58
 #: app/views/browse/stateful-sets.html:7 app/views/monitoring.html:325
 #: app/views/overview.html:238
 msgid "Stateful Sets"
@@ -4900,12 +4926,12 @@ msgstr "状态:"
 msgid "Stop Following"
 msgstr "停止跟踪"
 
-#: app/scripts/constants.js:459 app/views/attach-pvc.html:37
+#: app/scripts/constants.js:460 app/views/attach-pvc.html:37
 #: app/views/storage.html:10
 msgid "Storage"
 msgstr "存储"
 
-#: app/scripts/constants.js:72
+#: app/scripts/constants.js:73
 msgid "Storage (Request)"
 msgstr "存储(请求)"
 
@@ -4930,7 +4956,7 @@ msgstr "已经达到了存储限额的限制。"
 msgid "Storage quota will be exceeded."
 msgstr "存储配额将会被超过。"
 
-#: app/scripts/constants.js:655
+#: app/scripts/constants.js:656
 msgid "Store and manage collections of data."
 msgstr "存储和管理数据集合。"
 
@@ -4963,11 +4989,11 @@ msgstr "切换用户"
 msgid "Switch to {{multiline ? 'Single-line' : 'Multiline'}} Editor"
 msgstr "切换到 {{multiline ? '单行' : '多行'}} 编辑器"
 
-#: app/scripts/constants.js:74
+#: app/scripts/constants.js:75
 msgid "System Group"
 msgstr "系统组"
 
-#: app/scripts/constants.js:76
+#: app/scripts/constants.js:77
 msgid "System User"
 msgstr "系统用户"
 
@@ -5035,7 +5061,7 @@ msgstr "目标端口:"
 msgid "Target port for traffic."
 msgstr "目标端口流量。"
 
-#: app/scripts/constants.js:637
+#: app/scripts/constants.js:638
 msgid "Technologies"
 msgstr "技术"
 
@@ -5050,7 +5076,7 @@ msgstr "模板"
 msgid "Terminal"
 msgstr "终端"
 
-#: app/scripts/constants.js:77 app/scripts/directives/podDonut.js:131
+#: app/scripts/constants.js:78 app/scripts/directives/podDonut.js:131
 #: app/scripts/directives/podDonut.js:179
 msgid "Terminating"
 msgstr "终止"
@@ -5115,7 +5141,7 @@ msgid ""
 "pasting from the clipboard."
 msgstr "PEM格式秘钥文件。 通过拖放，选择或从剪贴板粘贴来上传文件。"
 
-#: app/scripts/constants.js:80
+#: app/scripts/constants.js:81
 msgid "The active filters are hiding all catalog items."
 msgstr "当前活动过滤器隐藏所有的目录项"
 
@@ -5289,7 +5315,7 @@ msgid ""
 "The lower limit for the number of pods that can be set by the autoscaler."
 msgstr "可由自动扩缩器设置的Pod数量的下限。"
 
-#: app/scripts/constants.js:81 app/views/_edit-request-limit.html:32
+#: app/scripts/constants.js:82 app/views/_edit-request-limit.html:32
 msgid "The maximum amount of"
 msgstr "最大量的"
 
@@ -5328,7 +5354,7 @@ msgstr ""
 "已达到最大Web控制台日志大小。 使用命令行界面或<a href=\"\" ng-click="
 "\"restartLogs()\">重新加载</a>日志来查看新消息。"
 
-#: app/scripts/constants.js:82 app/views/_edit-request-limit.html:19
+#: app/scripts/constants.js:83 app/views/_edit-request-limit.html:19
 msgid "The minimum amount of"
 msgstr "最小量"
 
@@ -5502,7 +5528,7 @@ msgstr ""
 "自从您开始编辑这个配置以来，这个配置已经发生了变化。您需要复制您所做的更改并"
 "重新编辑。"
 
-#: app/scripts/constants.js:83
+#: app/scripts/constants.js:84
 msgid ""
 "This filter will only apply to items which contain publisher information. "
 "Items that do not have a publisher will not be shown in the filter results."
@@ -5703,11 +5729,11 @@ msgstr ""
 msgid "To get the complete log, run the command"
 msgstr "要获得完整的日志，请运行以下命令"
 
-#: app/scripts/constants.js:84
+#: app/scripts/constants.js:85
 msgid "To pull this image"
 msgstr "将跟踪该镜像"
 
-#: app/scripts/constants.js:85
+#: app/scripts/constants.js:86
 msgid "To push an image to this image stream"
 msgstr "用镜像流版本部署镜像"
 
@@ -5785,7 +5811,7 @@ msgstr "输入{{typeDisplayName || (kind | humanizeKind)}}的名称进行确认�
 msgid "Type:"
 msgstr "类型:"
 
-#: app/scripts/constants.js:675
+#: app/scripts/constants.js:676
 msgid "Uncategorized"
 msgstr "未分类"
 
@@ -5892,7 +5918,7 @@ msgstr "已使用-其它项目"
 msgid "Used - This Project"
 msgstr "已使用-这个项目"
 
-#: app/scripts/constants.js:87
+#: app/scripts/constants.js:88
 msgid "User"
 msgstr "用户"
 
@@ -5912,6 +5938,7 @@ msgstr "用户名是必需的。"
 #: app/views/directives/edit-environment-variables.html:27
 #: app/views/directives/label-editor.html:18
 #: app/views/directives/next-steps.html:109
+#: app/views/edit/build-config.html:431
 msgid "Value"
 msgstr "值"
 
@@ -5989,7 +6016,7 @@ msgstr "查看配额"
 msgid "View Quota&nbsp;"
 msgstr "查看配额&nbsp;"
 
-#: app/scripts/constants.js:88
+#: app/scripts/constants.js:89
 msgid "View all"
 msgstr "查看所有"
 
@@ -5997,7 +6024,7 @@ msgstr "查看所有"
 msgid "View pods for {{rc | displayName}}"
 msgstr "查看pods {{rc | displayName}}"
 
-#: app/scripts/constants.js:89
+#: app/scripts/constants.js:90
 msgid "View the result for Keyword:"
 msgstr "查看关键词对应的结果："
 
@@ -6123,6 +6150,7 @@ msgstr "你想做什么?"
 
 #: app/views/browse/_build-details.html:113
 #: app/views/browse/_build-details.html:116
+#: app/views/edit/build-config.html:277
 msgid "What's a Jenkinsfile?"
 msgstr "Jenkinsfile是什么?"
 
@@ -6132,7 +6160,7 @@ msgid ""
 "closed."
 msgstr "当您离开此Pod时，任何打开的终端连接都将被关闭。"
 
-#: app/scripts/constants.js:591
+#: app/scripts/constants.js:592
 msgid "WildFly"
 msgstr "WildFly"
 
@@ -6341,7 +6369,7 @@ msgstr "清除值"
 msgid "command line tools"
 msgstr "命令行工具"
 
-#: app/scripts/constants.js:24
+#: app/scripts/constants.js:25
 msgid "complete"
 msgstr "完成"
 
@@ -6388,7 +6416,7 @@ msgid ""
 msgstr ""
 "从<a href=\"{{build | configURLForResource}}\">{{buildConfigName}}</a>创建"
 
-#: app/scripts/constants.js:31
+#: app/scripts/constants.js:32
 msgid "daemon set"
 msgstr "守护进程"
 
@@ -6404,7 +6432,7 @@ msgstr "日"
 msgid "debugging"
 msgstr "调试中"
 
-#: app/scripts/constants.js:33
+#: app/scripts/constants.js:34
 msgid "deployment config"
 msgstr "部署配置"
 
@@ -6481,7 +6509,7 @@ msgstr "从镜像"
 msgid "git repo"
 msgstr "git仓库"
 
-#: app/scripts/constants.js:37
+#: app/scripts/constants.js:38
 msgid "group"
 msgstr "组"
 
@@ -6497,7 +6525,7 @@ msgstr "已经有变化，在你开始编辑它之后。"
 msgid "have been added to project"
 msgstr "已经被添加到项目"
 
-#: app/scripts/constants.js:39
+#: app/scripts/constants.js:40
 msgid "horizontal pod autoscaler"
 msgstr "水平pod自动扩缩器"
 
@@ -6544,7 +6572,7 @@ msgstr "限制"
 msgid "limit."
 msgstr "限制."
 
-#: app/scripts/constants.js:44
+#: app/scripts/constants.js:45
 msgid "manual change"
 msgstr "手动更改"
 
@@ -6616,7 +6644,7 @@ msgstr "属于"
 msgid "one of the images referenced by this deployment config changes."
 msgstr "此部署配置引用的镜像之一更改。"
 
-#: app/scripts/constants.js:53
+#: app/scripts/constants.js:54
 msgid "openshift.io/imagestreams"
 msgstr "镜像流"
 
@@ -6642,11 +6670,11 @@ msgstr "暂停"
 msgid "persistent volume claim"
 msgstr "持久化卷声明"
 
-#: app/scripts/constants.js:57
+#: app/scripts/constants.js:58
 msgid "pull"
 msgstr "拉取"
 
-#: app/scripts/constants.js:58
+#: app/scripts/constants.js:59
 msgid "push"
 msgstr "推送"
 
@@ -6675,7 +6703,7 @@ msgstr "请求"
 msgid "request."
 msgstr "请求."
 
-#: app/scripts/constants.js:63
+#: app/scripts/constants.js:64
 msgid "results for Keyword:"
 msgstr "关键词对应的结果："
 
@@ -6687,7 +6715,7 @@ msgstr "恢复"
 msgid "routes"
 msgstr "路由"
 
-#: app/scripts/constants.js:67
+#: app/scripts/constants.js:68
 msgid "running"
 msgstr "运行"
 
@@ -6736,7 +6764,7 @@ msgstr "秒"
 msgid "seconds"
 msgstr "秒"
 
-#: app/scripts/constants.js:70
+#: app/scripts/constants.js:71
 msgid "service account"
 msgstr "服务帐户"
 
@@ -6778,19 +6806,19 @@ msgstr "成功创建"
 msgid "successfully queued."
 msgstr "成功排队"
 
-#: app/scripts/constants.js:73
+#: app/scripts/constants.js:74
 msgid "system group"
 msgstr "系统组"
 
-#: app/scripts/constants.js:75
+#: app/scripts/constants.js:76
 msgid "system user"
 msgstr "系统用户"
 
-#: app/scripts/constants.js:78 app/views/_edit-request-limit.html:32
+#: app/scripts/constants.js:79 app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
 msgstr "容器被允许使用的，在运行时。"
 
-#: app/scripts/constants.js:79 app/views/_edit-request-limit.html:19
+#: app/scripts/constants.js:80 app/views/_edit-request-limit.html:19
 msgid "the container is guaranteed."
 msgstr "容器被保证的。"
 
@@ -6810,7 +6838,7 @@ msgstr "来保证你的应用正常运行。"
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr "到卷<strong>{{pvc.spec.volumeName}}</strong>"
 
-#: app/scripts/constants.js:86
+#: app/scripts/constants.js:87
 msgid "user"
 msgstr "用户"
 
@@ -7030,6 +7058,9 @@ msgstr "{{view.advancedOptions ? '隐藏' : '显示'}}高级选项"
 msgid "{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret"
 msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 
+#~ msgid "Back to"
+#~ msgstr "后退到"
+
 #, fuzzy
 #~| msgid ""
 #~| "Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></"
@@ -7238,9 +7269,6 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 
 #~ msgid "Add this"
 #~ msgstr "添加该"
-
-#~ msgid "Build Configuration"
-#~ msgstr "构建配置"
 
 #~ msgid "Choose a resource"
 #~ msgstr "选择一个资源"
