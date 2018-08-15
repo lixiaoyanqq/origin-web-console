@@ -12,6 +12,7 @@ var gettext = function (s) {
 
 // for translate
 function Noop() {
+  gettext('< Back');
   gettext('Abort');
   gettext('Active');
   gettext('Bound');
@@ -25,6 +26,7 @@ function Noop() {
   gettext('complete');
   gettext('Completed');
   gettext('Config Map');
+  gettext('Collapse');
   gettext('Cores');
   gettext('CPU (Limit)');
   gettext('CPU (Request)');
@@ -35,14 +37,17 @@ function Noop() {
   gettext('Deployment Config');
   gettext('Failed');
   gettext('Filter by Keyword');
+  gettext('Filter by label');
   gettext('group');
   gettext('Group');
   gettext('horizontal pod autoscaler');
   gettext('Ignore');
+  gettext('Image count');
   gettext('Items');
   gettext("Last Updated");
   gettext('Manual');
   gettext('manual change');
+  gettext('matching(...)');
   gettext('Memory (Limit)');
   gettext('Memory (Request)');
   gettext('Mid');
@@ -56,6 +61,7 @@ function Noop() {
   gettext('Pre');
   gettext('Publisher');
   gettext('pull');
+  gettext('Pulling repository');
   gettext('push');
   gettext('Read-Only-Many');
   gettext('Read-Write-Many');
@@ -68,6 +74,8 @@ function Noop() {
   gettext('running');
   gettext('Running');
   gettext('Search Catalog');
+  gettext('See All');
+  gettext('Select an application');
   gettext('service account');
   gettext('Service Account');
   gettext('Storage (Request)');
@@ -81,9 +89,10 @@ function Noop() {
   gettext('The active filters are hiding all catalog items.');
   gettext('The maximum amount of');
   gettext('The minimum amount of');
+  gettext('There are no applications in this project');
   gettext('This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.');
   gettext('To pull this image');
-  gettext('To push an image to this image stream');
+  gettext('To push an image to this image stream:');
   gettext('user');
   gettext('User');
   gettext('View all');

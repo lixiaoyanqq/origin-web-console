@@ -92,11 +92,7 @@ angular.module("openshiftConsole")
         handleDecodeException(e, configType);
       }
 
-      if (configType === ".dockercfg") {
-        _.each(decodedData, function(serverData, serverName) {
-          decodedSecretData.auths[serverName] = getServerParams(serverData);
-        });
-      } else {
+      if (decodedData.auths) {
         _.each(decodedData.auths, function(serverData, serverName) {
           if (!serverData.auth) {
             decodedSecretData.auths[serverName] = serverData;
@@ -108,6 +104,10 @@ angular.module("openshiftConsole")
         if (decodedData.credsStore) {
           decodedSecretData.credsStore = decodedData.credsStore;
         }
+      } else {
+        _.each(decodedData, function(serverData, serverName) {
+          decodedSecretData.auths[serverName] = getServerParams(serverData);
+        });
       }
 
       return decodedSecretData;

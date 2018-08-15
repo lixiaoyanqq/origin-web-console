@@ -5412,11 +5412,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<input ng-if=\"!multiline\" id=\"{{id}}\" type=\"text\" class=\"form-control\" value=\"{{inputText || clipboardText}}\" ng-disabled=\"isDisabled\" ng-readonly=\"!isDisabled\" select-on-focus>\n" +
     "<pre ng-if=\"multiline\" id=\"{{id}}\">{{inputText || clipboardText}}</pre>\n" +
     "<span ng-class=\"{ 'input-group-btn': !multiline }\" ng-hide=\"hidden\">\n" +
-    "<a ng-show=\"!inputText\" data-clipboard-target=\"#{{id}}\" href=\"\" ng-disabled=\"isDisabled\" data-toggle=\"tooltip\" data-placement=\"left\" data-container=\".middle\" title=\"{{'Copy to Clipboard'|translate}}\" role=\"button\" class=\"btn btn-default\">\n" +
+    "<a ng-show=\"!inputText\" data-clipboard-target=\"#{{id}}\" href=\"\" ng-disabled=\"isDisabled\" data-toggle=\"tooltip\" data-placement=\"left\" data-container=\".middle\" title=\"Copy to Clipboard\" role=\"button\" class=\"btn btn-default\">\n" +
     "<i class=\"fa fa-clipboard\" aria-hidden=\"true\"></i>\n" +
     "<span class=\"sr-only\" translate>Copy to Clipboard</span>\n" +
     "</a>\n" +
-    "<a ng-show=\"inputText\" data-clipboard-text=\"{{clipboardText}}\" href=\"\" ng-disabled=\"isDisabled\" data-toggle=\"tooltip\" data-placement=\"left\" data-container=\".middle\" title=\"{{'Copy to Clipboard'|translate}}\" role=\"button\" class=\"btn btn-default\">\n" +
+    "<a ng-show=\"inputText\" data-clipboard-text=\"{{clipboardText}}\" href=\"\" ng-disabled=\"isDisabled\" data-toggle=\"tooltip\" data-placement=\"left\" data-container=\".middle\" title=\"Copy to Clipboard\" role=\"button\" class=\"btn btn-default\">\n" +
     "<i class=\"fa fa-clipboard\" aria-hidden=\"true\"></i>\n" +
     "<span class=\"sr-only\" translate>Copy to Clipboard</span>\n" +
     "</a>\n" +
@@ -5762,16 +5762,16 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"ctrl.onCancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
-    "<h1 class=\"modal-title\">Add to Application</h1>\n" +
+    "<h1 class=\"modal-title\" translate>Add to Application</h1>\n" +
     "</div>\n" +
     "<form name=\"addToApplicationForm\" novalidate>\n" +
     "<fieldset ng-disabled=\"disableInputs\">\n" +
     "<div class=\"modal-body\">\n" +
-    "<legend>Add this {{ctrl.apiObject.kind | humanizeKind}} to application:</legend>\n" +
+    "<legend><translate>Add this</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>to application</translate>:</legend>\n" +
     "<div class=\"form-group\" ng-class=\"{'has-error' : ctrl.addType === 'env' && ctrl.application && !ctrl.canAddRefToApplication}\">\n" +
     "<div class=\"application-select\">\n" +
     "<ui-select autofocus id=\"application\" ng-model=\"ctrl.application\" on-select=\"ctrl.checkApplicationContainersRefs($item)\" required=\"true\" ng-disabled=\"ctrl.disableInputs\">\n" +
-    "<ui-select-match placeholder=\"{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project'}}\">\n" +
+    "<ui-select-match placeholder=\"{{ctrl.applications.length ? 'Select an application' : 'There are no applications in this project' | translate}}\">\n" +
     "<span>\n" +
     "{{$select.selected.metadata.name}}\n" +
     "<small class=\"text-muted\">&ndash; {{$select.selected.kind | humanizeKind : true}}</small>\n" +
@@ -5788,28 +5788,28 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "The {{ctrl.apiObject.kind | humanizeKind}} has already been added to this application.\n" +
     "</span>\n" +
     "</div>\n" +
-    "<legend>Add {{ctrl.apiObject.kind | humanizeKind}} as:</legend>\n" +
+    "<legend><translate>Add</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>as:</translate></legend>\n" +
     "<div class=\"radio\">\n" +
     "<label for=\"env\">\n" +
     "<input id=\"env\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"env\">\n" +
-    "Environment variables\n" +
+    "<translate>Environment variables</translate>\n" +
     "</label>\n" +
     "</div>\n" +
     "<div ng-if=\"ctrl.addType === 'env'\" class=\"choice-contents clearfix\">\n" +
     "<div class=\"has-warning\" ng-if=\"ctrl.hasInvalidEnvVars\">\n" +
     "<div class=\"help-block\">\n" +
     "<span class=\"pf-icon pficon-warning-triangle-o\" aria-hidden=\"true\"></span>\n" +
-    "{{ctrl.apiObject.kind | humanizeKind | upperFirst}} <strong>{{ctrl.apiObject.metadata.name}}</strong> contains keys that are not valid environment variable names. Only {{ctrl.apiObject.kind | humanizeKind}} keys with valid names will be added as environment variables.\n" +
+    "{{ctrl.apiObject.kind | humanizeKind | upperFirst | translate}} <strong>{{ctrl.apiObject.metadata.name}}</strong> <translate>contains keys that are not valid environment variable names.</translate> <translate>Only</translate> {{ctrl.apiObject.kind | humanizeKind | translate}} <translate>keys with valid names will be added as environment variables.</translate>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\">\n" +
     "<div class=\"control-label\">\n" +
-    "<label>Prefix</label>\n" +
+    "<label translate>Prefix</label>\n" +
     "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"Optionally, you can specify a prefix to use with environment variables.\" popover-trigger=\"focus\">\n" +
     "</a>\n" +
     "</div>\n" +
     "<span class=\"control-input\" ng-class=\"{'has-error': addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched}\">\n" +
-    "<input class=\"form-control\" name=\"envPrefix\" id=\"envPrefix\" placeholder=\"(optional)\" type=\"text\" ng-pattern=\"/^[A-Za-z_][A-Za-z0-9_]*$/\" aria-describedby=\"env-prefix-help\" ng-disabled=\"ctrl.addType !== 'env' || !ctrl.application\" ng-model=\"ctrl.envPrefix\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
+    "<input class=\"form-control\" name=\"envPrefix\" id=\"envPrefix\" placeholder=\"({{'optional'|translate}})\" type=\"text\" ng-pattern=\"/^[A-Za-z_][A-Za-z0-9_]*$/\" aria-describedby=\"env-prefix-help\" ng-disabled=\"ctrl.addType !== 'env' || !ctrl.application\" ng-model=\"ctrl.envPrefix\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\">\n" +
     "<div class=\"help-block\" ng-show=\"addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched\">\n" +
     "Prefix can contain numbers, letters, and underscores, but can not start with a number.\n" +
     "</div>\n" +
@@ -5820,13 +5820,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"radio\">\n" +
     "<label for=\"volume\">\n" +
     "<input id=\"volume\" type=\"radio\" ng-model=\"ctrl.addType\" value=\"volume\">\n" +
-    "Volume\n" +
+    "<translate>Volume</translate>\n" +
     "</label>\n" +
     "</div>\n" +
     "<div ng-if=\"ctrl.addType === 'volume'\" class=\"choice-contents clearfix\">\n" +
     "<div class=\"form-group\">\n" +
     "<div class=\"control-label\">\n" +
-    "<label class=\"required\">Mount Path</label>\n" +
+    "<label class=\"required\" translate>Mount Path</label>\n" +
     "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"Mount Path for the volume. A file will be created in this\n" +
     "                              directory for each key from the {{ctrl.apiObject.kind | humanizeKind}}.\n" +
     "                              The file contents will be the value of the key.\" popover-trigger=\"focus\">\n" +
@@ -5847,7 +5847,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"ctrl.canAddRefToApplication\">\n" +
-    "<legend ng-if-start=\"ctrl.application.spec.template.spec.containers.length > 1\">Containers:</legend>\n" +
+    "<legend ng-if-start=\"ctrl.application.spec.template.spec.containers.length > 1\" translate>Containers:</legend>\n" +
     "<div ng-if-end class=\"form-group container-options\">\n" +
     "<div ng-if=\"ctrl.attachAllContainers\">\n" +
     "The {{ctrl.apiObject.kind | humanizeKind}} will be added to all containers. You can\n" +
@@ -5855,7 +5855,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "instead.\n" +
     "</div>\n" +
     "<div ng-if=\"!ctrl.attachAllContainers\" class=\"form-group\">\n" +
-    "<label class=\"sr-only required\">Containers</label>\n" +
+    "<label class=\"sr-only required\" translate>Containers</label>\n" +
     "<select-containers ng-model=\"ctrl.attachContainers\" pod-template=\"ctrl.application.spec.template\" ng-required=\"true\" help-text=\"Add the {{ctrl.apiObject.kind | humanizeKind}} to the selected containers.\">\n" +
     "</select-containers>\n" +
     "</div>\n" +
@@ -5863,10 +5863,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"modal-footer\">\n" +
-    "<button class=\"btn btn-default\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.onCancel()\">\n" +
+    "<button class=\"btn btn-default\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.onCancel()\" translate>\n" +
     "Cancel\n" +
     "</button>\n" +
-    "<button type=\"submit\" class=\"btn btn-primary\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.addToApplication()\" ng-disabled=\"addToApplicationForm.$invalid || (ctrl.addType === 'env' && !ctrl.canAddRefToApplication)\" value=\"\">\n" +
+    "<button type=\"submit\" class=\"btn btn-primary\" ng-class=\"{'dialog-btn': isDialog}\" ng-click=\"ctrl.addToApplication()\" ng-disabled=\"addToApplicationForm.$invalid || (ctrl.addType === 'env' && !ctrl.canAddRefToApplication)\" value=\"\" translate>\n" +
     "Save\n" +
     "</button>\n" +
     "</div>\n" +
@@ -6421,7 +6421,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"imageName\" class=\"sr-only\" translate>Image name or pull spec</label>\n" +
     "<div class=\"input-group\">\n" +
-    "<input type=\"search\" id=\"imageName\" name=\"imageName\" ng-model=\"imageName\" ng-required=\"mode === 'dockerImage'\" select-on-focus ng-disabled=\"mode !== 'dockerImage'\" placeholder=\"Image name or pull spec|translate\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
+    "<input type=\"search\" id=\"imageName\" name=\"imageName\" ng-model=\"imageName\" ng-required=\"mode === 'dockerImage'\" select-on-focus ng-disabled=\"mode !== 'dockerImage'\" placeholder=\"{{'Image name or pull spec'|translate}}\" class=\"form-control\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\">\n" +
     "<span class=\"input-group-btn\">\n" +
     "<button class=\"btn btn-default\" type=\"submit\" ng-disabled=\"!imageName\" ng-click=\"findImage()\">\n" +
     "<i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n" +
@@ -6430,9 +6430,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\">\n" +
-    "<translate>To deploy an image from a private repository,</translate><translate>you must</translate><span ng-if=\"!input.selectedProject.metadata.uid\" translate>create an image pull secret</span>\n" +
-    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\" translate>create an image pull secret</a>\n" +
-    "<translate>with your image registry credentials.</translate>\n" +
+    "<translate>To deploy an image from a private repository,you must<span ng-if=\"!input.selectedProject.metadata.uid\">create an image pull secret</span>\n" +
+    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\">create an image pull secret</a>\n" +
+    "with your image registry credentials.</translate>\n" +
     "<a ng-href=\"{{'pull_secret' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\" translate>Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></div>\n" +
     "</div>\n" +
     "</fieldset>\n" +
@@ -6707,8 +6707,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-class=\"{ 'has-error': keyValueMapForm['key-' + $id].$invalid && keyValueMapForm['key-' + $id].$touched }\">\n" +
     "<input class=\"form-control\" name=\"key-{{$id}}\" ng-attr-id=\"key-{{$id}}\" type=\"text\" ng-model=\"item.key\" required ng-pattern=\"/^[-._a-zA-Z0-9]+$/\" ng-maxlength=\"253\" osc-unique=\"keys\" placeholder=\"my.key\" select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"key-{{$id}}-help\">\n" +
     "</div>\n" +
-    "<div class=\"help-block\">\n" +
-    "A unique key for this {{type}} entry.\n" +
+    "<div class=\"help-block\" translate>\n" +
+    "A unique key for this {{type | translate}} entry.\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"keyValueMapForm['key-' + $id].$error.required && keyValueMapForm['key-' + $id].$touched\">\n" +
     "<span class=\"help-block\">\n" +
@@ -6736,7 +6736,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"isBinaryFile\" class=\"h4\">\n" +
     "This file contains binary content.\n" +
     "</div>\n" +
-    "<osc-file-input model=\"item.value\" drop-zone-id=\"drop-zone-{{$id}}\" help-text=\"Enter a value for the {{type}} entry or use the contents of a file.\" read-as-binary-string=\"readAsBinaryString\" is-binary-file=\"isBinaryFile\"></osc-file-input>\n" +
+    "<osc-file-input model=\"item.value\" drop-zone-id=\"drop-zone-{{$id}}\" help-text=\"{{'Enter a value for the' | translate}} {{type | translate}} {{'entry or use the contents of a file' | translate}}.\" read-as-binary-string=\"readAsBinaryString\" is-binary-file=\"isBinaryFile\"></osc-file-input>\n" +
     "<div ui-ace=\"{\n" +
     "          theme: 'eclipse',\n" +
     "          rendererOptions: {\n" +
@@ -11786,7 +11786,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"data-toolbar other-resources-toolbar\">\n" +
     "<ui-select class=\"data-toolbar-dropdown\" ng-model=\"kindSelector.selected\" theme=\"bootstrap\" search-enabled=\"true\" ng-disabled=\"kindSelector.disabled\" title=\"Choose a resource\">\n" +
-    "<ui-select-match placeholder=\"Choose a resource to list...\">{{$select.selected.kind | humanizeKind : true}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Choose a resource to list...'|translate}}\">{{$select.selected.kind | humanizeKind : true}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"kind in kinds | filter : {kind: $select.search} : matchKind | orderBy : 'kind'\">\n" +
     "<div ng-bind-html=\"(kind.kind | humanizeKind : true) | highlight: $select.search\"></div>\n" +
     "<small ng-if=\"isDuplicateKind(kind.kind)\" ng-bind-html=\"kind.group | highlight: $select.search\" class=\"text-muted\"></small>\n" +
@@ -11809,8 +11809,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<div ng-if=\"kindSelector.selected\" class=\"empty-state-message text-center\">\n" +
     "<div ng-if=\"!filterWithZeroResults\">\n" +
-    "<h2>No {{resourceName}}.</h2>\n" +
-    "<p>\n" +
+    "<h2 translate>No {{resourceName}}.</h2>\n" +
+    "<p translate>\n" +
     "No {{resourceName}} have been added to project {{projectName}}.\n" +
     "</p>\n" +
     "</div>\n" +
@@ -11839,7 +11839,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<td data-title=\"Name\">{{resource.metadata.name}}</td>\n" +
     "<td data-title=\"Created\"><span am-time-ago=\"resource.metadata.creationTimestamp\"></span></td>\n" +
     "<td data-title=\"Labels\">\n" +
-    "<em ng-if=\"(resource.metadata.labels | hashSize) === 0\">none</em>\n" +
+    "<em ng-if=\"(resource.metadata.labels | hashSize) === 0\" translate>none</em>\n" +
     "<labels labels=\"resource.metadata.labels\" clickable=\"true\" kind=\"{{kindSelector.selected.kind | kindToResource : true }}\" project-name=\"{{resource.metadata.namespace}}\" limit=\"3\" filter-current-page=\"true\"></labels></td>\n" +
     "<td data-title=\"Actions\" class=\"text-xs-left text-right\">\n" +
     "<span uib-dropdown ng-hide=\"!(selectedResource | canI : 'update') && !(selectedResource | canI : 'delete')\">\n" +
@@ -14198,7 +14198,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group col-sm-4\">\n" +
     "<label class=\"sr-only\">Namespace</label>\n" +
     "<ui-select ng-required=\"$ctrl.selectRequired\" ng-model=\"$ctrl.istag.namespace\" ng-disabled=\"$ctrl.selectDisabled\" ng-change=\"$ctrl.namespaceChanged($ctrl.istag.namespace)\" append-to-body=\"$ctrl.appendToBody\">\n" +
-    "<ui-select-match placeholder=\"Namespace\">{{$select.selected}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Namespace'|translate}}\">{{$select.selected}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"namespace in ($ctrl.namespaces | filter : $select.search)\">\n" +
     "<div ng-bind-html=\"namespace | highlight : $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
@@ -14208,7 +14208,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group col-sm-4\">\n" +
     "<label class=\"sr-only\">Image Stream</label>\n" +
     "<ui-select ng-required=\"$ctrl.selectRequired\" ng-model=\"$ctrl.istag.imageStream\" ng-disabled=\"!$ctrl.istag.namespace || $ctrl.selectDisabled\" ng-change=\"$ctrl.istag.tagObject = null\" append-to-body=\"$ctrl.appendToBody\">\n" +
-    "<ui-select-match placeholder=\"Image Stream\">{{$select.selected}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Image Stream'|translate}}\">{{$select.selected}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"imageStream in ($ctrl.isNamesByNamespace[$ctrl.istag.namespace] | filter : $select.search)\">\n" +
     "<div ng-bind-html=\"imageStream | highlight : $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
@@ -14218,7 +14218,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group col-sm-4\">\n" +
     "<label class=\"sr-only\">Tag</label>\n" +
     "<ui-select ng-required=\"$ctrl.selectRequired\" ng-model=\"$ctrl.istag.tagObject\" ng-disabled=\"!$ctrl.istag.imageStream || $ctrl.selectDisabled\" append-to-body=\"$ctrl.appendToBody\">\n" +
-    "<ui-select-match placeholder=\"Tag\">{{$select.selected.tag}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Tag'|translate}}\">{{$select.selected.tag}}</ui-select-match>\n" +
     "<ui-select-choices group-by=\"$ctrl.groupTags\" repeat=\"statusTag in ($ctrl.isByNamespace[$ctrl.istag.namespace][$ctrl.istag.imageStream].status.tags | filter : { tag: $select.search })\" refresh=\"$ctrl.getTags($select.search)\" refresh-delay=\"200\">\n" +
     "<div ng-bind-html=\"statusTag.tag | highlight : $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
