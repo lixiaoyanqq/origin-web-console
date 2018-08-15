@@ -45,7 +45,7 @@
                      ng-required="mode === 'dockerImage'"
                      select-on-focus
                      ng-disabled="mode !== 'dockerImage'"
-                     placeholder="Image name or pull spec|translate"
+                     placeholder="{{'Image name or pull spec'|translate}}"
                      class="form-control"
                      autocorrect="off"
                      autocapitalize="none"
@@ -61,11 +61,11 @@
               </span>
             </div>
             <div class="help-block">
-              <translate>To deploy an image from a private repository,</translate><translate>you must</translate><span ng-if="!input.selectedProject.metadata.uid" translate>create an image pull secret</span>
+              <translate>To deploy an image from a private repository,you must<span ng-if="!input.selectedProject.metadata.uid">create an image pull secret</span>
               <a href=""
                  ng-click="openCreateWebhookSecretModal()"
-                 ng-if="input.selectedProject.metadata.uid" translate>create an image pull secret</a>
-                 <translate>with your image registry credentials.</translate>
+                 ng-if="input.selectedProject.metadata.uid">create an image pull secret</a>
+                 with your image registry credentials.</translate>
               <a ng-href="{{'pull_secret' | helpLink}}" target="_blank"><span class="learn-more-inline" translate>Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a></div>
           </div>
         </fieldset>
