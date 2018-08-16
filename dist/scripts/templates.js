@@ -5191,7 +5191,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-switch=\"cause.type\">\n" +
     "<span ng-switch-when=\"ImageChange\">\n" +
     "<span ng-if=\"cause.imageTrigger.from\">\n" +
-    "<abbr title=\"{{cause.imageTrigger.from | imageObjectRef : null : true}}\" translate>Image</abbr> change\n" +
+    "<abbr title=\"{{cause.imageTrigger.from | imageObjectRef : null : true}}\" translate>Image change</abbr>\n" +
     "</span>\n" +
     "</span>\n" +
     "<span ng-switch-when=\"ConfigChange\" translate>Config change</span>\n" +
