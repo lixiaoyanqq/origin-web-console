@@ -2852,7 +2852,7 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: app/scripts/extensions/nav/userDropdown.js:20
+#: app/scripts/extensions/nav/userDropdown.js:26
 #: app/views/modals/logout.html:14
 msgid "Log Out"
 msgstr ""
