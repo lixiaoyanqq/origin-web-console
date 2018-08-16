@@ -90,6 +90,7 @@ function Noop() {
   gettext('The maximum amount of');
   gettext('The minimum amount of');
   gettext('There are no applications in this project');
+  gettext('There are no notifications to display.');
   gettext('This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.');
   gettext('To pull this image');
   gettext('To push an image to this image stream:');
