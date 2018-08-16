@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-15 18:28+0800\n"
+"PO-Revision-Date: 2018-08-16 15:14+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: app/scripts/services/routes.js:55
 msgid "\" does not expose that port."
@@ -2275,8 +2275,8 @@ msgstr "根据标签过滤"
 msgid "Filter by labels"
 msgstr "根据标签过滤"
 
-#: app/views/monitoring.html:23 app/views/overview.html:65
-#: app/views/overview.html:70
+#: app/views/monitoring.html:23 app/views/monitoring.html:25
+#: app/views/overview.html:65 app/views/overview.html:70
 msgid "Filter by name"
 msgstr "根据名称过滤"
 
@@ -2583,7 +2583,6 @@ msgid "Image registry server address is required."
 msgstr "需要镜像registry服务器地址"
 
 #: app/views/newfromtemplate.html:24
-#, fuzzy
 msgid "Image value set"
 msgstr "镜像集合"
 
@@ -2843,6 +2842,7 @@ msgid ""
 msgstr "了解更多&nbsp;<i class=“fa fa-external-link” aria-hidden=“true”></i>"
 
 #: app/views/browse/service.html:96 app/views/edit/jenkinsfile-examples.html:51
+#: app/views/overview.html:276
 msgid "Learn more about"
 msgstr "进一步了解"
 
@@ -2952,7 +2952,7 @@ msgstr "正在载入监控"
 msgid "Loading..."
 msgstr "加载中…"
 
-#: app/scripts/extensions/nav/userDropdown.js:20
+#: app/scripts/extensions/nav/userDropdown.js:26
 #: app/views/modals/logout.html:14
 msgid "Log Out"
 msgstr "注销"
@@ -3561,6 +3561,10 @@ msgstr "没有为{{buildConfigName}} 运行任何管道构建。"
 msgid "No pipeline runs."
 msgstr "没有管道运行。"
 
+#: app/views/overview.html:274
+msgid "No pipelines have been added to project"
+msgstr "没有任何管道被添加到项目中"
+
 #: app/views/pipelines.html:24
 msgid "No pipelines have been added to project {{projectName}}."
 msgstr "没有任何管道被添加到项目{{projectName}}中。"
@@ -3906,7 +3910,7 @@ msgstr "选择配置源。 它的数据将作为卷挂载入容器。"
 msgid "Pipeline"
 msgstr "管道"
 
-#: app/views/edit/jenkinsfile-examples.html:52
+#: app/views/edit/jenkinsfile-examples.html:52 app/views/overview.html:277
 msgid "Pipeline Builds"
 msgstr "管道构建"
 
@@ -4641,8 +4645,6 @@ msgid "Select an application"
 msgstr "选择应用程序"
 
 #: app/views/directives/deploy-image.html:78
-#, fuzzy
-#| msgid "Deploy an existing image from an image stream tag or image registry."
 msgid "Select an image stream tag or enter an image name."
 msgstr "通过拉取镜像或者现有的镜像流部署应用."
 
@@ -6418,7 +6420,7 @@ msgid "an image is pushed to"
 msgstr "镜像被推到"
 
 #: app/views/browse/service.html:96 app/views/directives/deploy-image.html:109
-#: app/views/overview/_networking.html:17
+#: app/views/overview.html:278 app/views/overview/_networking.html:17
 msgid "and"
 msgstr "和"
 
@@ -6435,8 +6437,6 @@ msgid "are configured to run one at a time."
 msgstr "配置为每次运行一个"
 
 #: app/views/directives/add-config-to-application.html:34
-#, fuzzy
-#| msgid "Tags"
 msgid "as:"
 msgstr "标记"
 
@@ -6929,6 +6929,10 @@ msgstr "系统组"
 #: app/scripts/constants.js:84
 msgid "system user"
 msgstr "系统用户"
+
+#: app/views/overview.html:279
+msgid "the OpenShift Pipeline Plugin"
+msgstr "DataMan OS管道插件"
 
 #: app/scripts/constants.js:87 app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."

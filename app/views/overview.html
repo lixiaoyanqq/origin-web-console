@@ -271,12 +271,12 @@
                 <h2 translate>No pipelines.</h2>
                 <div ng-if="project.metadata.name | canIAddToProject">
                   <p>
-                    No pipelines have been added to project {{projectName}}.
+                    <translate>No pipelines have been added to project</translate>{{projectName}}.
                     <br>
-                    Learn more about
-                    <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank">Pipeline Builds</a>
-                    and the
-                    <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank">OpenShift Pipeline Plugin</a>.
+                    <translate>Learn more about</translate>
+                    <a ng-href="{{ 'pipeline-builds' | helpLink}}" target="_blank" translate>Pipeline Builds</a>
+                    <translate>and</translate>
+                    <a ng-href="{{ 'pipeline-plugin' | helpLink}}" target="_blank" translate>the OpenShift Pipeline Plugin</a>.
                   </p>
                   <p ng-if="(project.metadata.name | canIAddToProject) && overview.samplePipelineURL">
                     <a ng-href="{{overview.samplePipelineURL}}" class="btn btn-lg btn-primary" translate>
