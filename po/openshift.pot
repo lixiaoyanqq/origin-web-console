@@ -275,6 +275,7 @@ msgstr ""
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
 #: app/views/overview/_service-instance-row.html:74
+#: app/views/projects.html:128
 msgid "Actions"
 msgstr ""
 
@@ -1454,6 +1455,10 @@ msgstr ""
 msgid "Create New Secret"
 msgstr ""
 
+#: app/views/projects.html:25
+msgid "Create Project"
+msgstr ""
+
 #: app/views/browse/routes.html:37
 #: app/views/browse/routes.html:6
 #: app/views/browse/service.html:19
@@ -1628,6 +1633,10 @@ msgstr ""
 #: app/views/overview/_list-row-actions.html:74
 #: app/views/overview/_service-instance-row.html:83
 msgid "Delete Binding"
+msgstr ""
+
+#: app/views/projects.html:142
+msgid "Delete Project"
 msgstr ""
 
 #: app/views/overview/_service-instance-row.html:122
@@ -1883,6 +1892,10 @@ msgstr ""
 #: app/views/browse/build.html:33
 #: app/views/pipelines.html:106
 msgid "Edit Pipeline"
+msgstr ""
+
+#: app/views/projects.html:136
+msgid "Edit Project"
 msgstr ""
 
 #: app/views/edit/project.html:5
@@ -2466,11 +2479,13 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: app/views/create.html:27
 #: app/views/directives/header/header.html:48
 #: app/views/directives/header/header.html:52
-#: app/views/overview.html:22
 msgid "Import YAML / JSON"
+msgstr ""
+
+#: app/views/overview.html:22
+msgid "Import YAML / JSON11"
 msgstr ""
 
 #: app/scripts/directives/processTemplateDialog.js:58
@@ -5851,6 +5866,10 @@ msgstr ""
 msgid "View Logs"
 msgstr ""
 
+#: app/views/projects.html:131
+msgid "View Membership"
+msgstr ""
+
 #: app/views/pipelines.html:103
 msgid "View Pipeline Runs"
 msgstr ""
@@ -6681,6 +6700,10 @@ msgstr ""
 
 #: app/views/browse/persistent-volume-claim.html:58
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
+msgstr ""
+
+#: app/views/create.html:27
+msgid "translate  Import YAML / JSON"
 msgstr ""
 
 #: app/scripts/constants.js:97

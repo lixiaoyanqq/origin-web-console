@@ -4781,7 +4781,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.fromFile\">\n" +
-    "<uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>\n" +
+    "<uib-tab-heading translate>translate Import YAML / JSON</uib-tab-heading>\n" +
     "<from-file ng-if=\"project\" project=\"project\"></from-file>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -7351,7 +7351,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"icon-bar\"></span>\n" +
     "</button>\n" +
     "\n" +
-    "<a class=\"navbar-brand\" id=\"openshift-logo\" href=\"./catalog\">\n" +
+    "<a class=\"navbar-brand\" id=\"openshift-logo\" href=\"./projects\">\n" +
     "<div id=\"header-logo\"></div>\n" +
     "</a>\n" +
     "</div>\n" +
@@ -11892,7 +11892,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Deploy Image\n" +
     "</button>\n" +
     "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromFile')\" translate>\n" +
-    "Import YAML / JSON\n" +
+    "Import YAML / JSON11\n" +
     "</button>\n" +
     "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromProject')\">\n" +
     "Select from Project\n" +
@@ -13349,7 +13349,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
     "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
     "</button>\n" +
     "</div>\n" +
     "<div class=\"projects-search\">\n" +
@@ -13427,20 +13427,20 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
     "<div uib-dropdown class=\"dropdown pull-right dropdown-kebab-pf\">\n" +
-    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\">Actions</span></button>\n" +
+    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></button>\n" +
     "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
     "<li role=\"menuitem\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/membership\">\n" +
+    "<a ng-href=\"project/{{project.metadata.name}}/membership\" translate>\n" +
     "View Membership\n" +
     "</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\">\n" +
-    "<a href=\"\" ng-click=\"editProject(project)\">\n" +
+    "<a href=\"\" ng-click=\"editProject(project)\" translate>\n" +
     "Edit Project\n" +
     "</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\">\n" +
-    "<delete-project label=\"Delete Project\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
+    "<delete-project label=\"{{'Delete Project' | translate}}\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
     "</delete-project>\n" +
     "</li>\n" +
     "</ul>\n" +
@@ -13470,7 +13470,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"canCreate\">\n" +
     "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
     "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\">Create Project</span>\n" +
+    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
     "</button>\n" +
     "</div>\n" +
     "<p>To learn more, visit the OpenShift <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
