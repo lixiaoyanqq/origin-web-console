@@ -66,7 +66,7 @@
           </div>
         </div>
         <div class="order-service-description-block">
-          <p ng-bind-html="$ctrl.template | description | linky : '_blank'" class="description"></p>
+          <p ng-bind-html="($ctrl.template | description | linky : '_blank') || 'No description provided.'" class="description"></p>
         </div>
       </div>
       <div class="order-service-config">
@@ -74,7 +74,7 @@
           <div class="osc-form">
             <alerts alerts="$ctrl.alerts"></alerts>
             <form name="$ctrl.templateForm">
-              <process-template project="$ctrl.project" template="$ctrl.template" alerts="$ctrl.alerts" is-dialog="true"></process-template>
+              <process-template ng-if="$ctrl.template" project="$ctrl.selectedProject" template="$ctrl.template" alerts="$ctrl.alerts" is-dialog="true"></process-template>
             </form>
           </div>
         </div>

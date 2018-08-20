@@ -19,6 +19,7 @@ function Noop() {
   gettext('Build Config');
   gettext('Cancelled');
   gettext('CI/CD');
+  gettext('Clear All');
   gettext('Clear Filters');
   gettext('Clear Search Input');
   gettext('Client state could not be verified');
@@ -30,6 +31,7 @@ function Noop() {
   gettext('Cores');
   gettext('CPU (Limit)');
   gettext('CPU (Request)');
+  gettext('Create Project');
   gettext('Custom');
   gettext('daemon set');
   gettext('Databases');
@@ -47,6 +49,7 @@ function Noop() {
   gettext("Last Updated");
   gettext('Manual');
   gettext('manual change');
+  gettext('Mark All Read');
   gettext('matching(...)');
   gettext('Memory (Limit)');
   gettext('Memory (Request)');
