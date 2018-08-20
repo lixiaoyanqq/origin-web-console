@@ -22,7 +22,7 @@
                     <div class="projects-add" ng-if="canCreate">
                       <button ng-click="createProject($event)" class="btn btn-primary">
                         <span class="fa fa-plus" aria-hidden="true"></span>
-                        <span class="icon-button-text">Create Project</span>
+                        <span class="icon-button-text" translate>Create Project</span>
                       </button>
                     </div>
                     <div class="projects-search">
@@ -125,21 +125,21 @@
                       </div>
                       <div class="list-pf-actions" ng-if="project.status.phase == 'Active'">
                         <div uib-dropdown class="dropdown pull-right dropdown-kebab-pf">
-                          <button uib-dropdown-toggle class="btn btn-link dropdown-toggle"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sr-only">Actions</span></button>
+                          <button uib-dropdown-toggle class="btn btn-link dropdown-toggle"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sr-only" translate>Actions</span></button>
                           <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">
                             <li role="menuitem">
-                              <a ng-href="project/{{project.metadata.name}}/membership">
+                              <a ng-href="project/{{project.metadata.name}}/membership" translate>
                                 View Membership
                               </a>
                             </li>
                             <li role="menuitem">
-                              <a href="" ng-click="editProject(project)">
+                              <a href="" ng-click="editProject(project)" translate>
                                 Edit Project
                               </a>
                             </li>
                             <li role="menuitem">
                               <delete-project
-                                label="Delete Project"
+                                label="{{'Delete Project' | translate}}"
                                 project="project"
                                 type-name-to-confirm="true"
                                 stay-on-current-page="true"
@@ -177,7 +177,7 @@
               <div ng-if="canCreate">
                 <button ng-click="createProject($event)" class="btn btn-lg btn-primary">
                   <span class="fa fa-plus" aria-hidden="true"></span>
-                  <span class="icon-button-text">Create Project</span>
+                  <span class="icon-button-text" translate>Create Project</span>
                 </button>
               </div>
               <p>To learn more, visit the OpenShift <a target="_blank" ng-href="{{'' | helpLink}}">documentation</a>.</p>

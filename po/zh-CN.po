@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-16 16:48+0800\n"
+"PO-Revision-Date: 2018-08-20 15:28+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -334,7 +334,7 @@ msgstr "操作:"
 #: app/views/overview/_list-row-actions.html:45
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
-#: app/views/overview/_service-instance-row.html:74
+#: app/views/overview/_service-instance-row.html:74 app/views/projects.html:128
 msgid "Actions"
 msgstr "操作"
 
@@ -1572,6 +1572,10 @@ msgstr "创建配置集"
 msgid "Create New Secret"
 msgstr "创建新的私密凭证"
 
+#: app/views/projects.html:25
+msgid "Create Project"
+msgstr "创建项目"
+
 #: app/views/browse/routes.html:37 app/views/browse/routes.html:6
 #: app/views/browse/service.html:19 app/views/create-route.html:8
 #: app/views/overview/_networking.html:52
@@ -1745,6 +1749,10 @@ msgstr "删除"
 msgid "Delete Binding"
 msgstr "删除绑定"
 
+#: app/views/projects.html:142
+msgid "Delete Project"
+msgstr "删除项目"
+
 #: app/views/overview/_service-instance-row.html:122
 msgid "Delete This Service"
 msgstr "删除这个服务"
@@ -1778,7 +1786,7 @@ msgstr "部署<span ng-if=\"row.isPaused()\">(暂停)</span>"
 #: app/views/directives/header/header.html:47
 #: app/views/directives/header/header.html:51 app/views/overview.html:19
 msgid "Deploy Image"
-msgstr "部署镜像"
+msgstr "部署镜像  "
 
 #: app/views/directives/deploy-image.html:4
 msgid "Deploy an existing image from an image stream tag or image registry."
@@ -1988,6 +1996,10 @@ msgstr "编辑参数"
 #: app/views/browse/build.html:33 app/views/pipelines.html:106
 msgid "Edit Pipeline"
 msgstr "编辑管道"
+
+#: app/views/projects.html:136
+msgid "Edit Project"
+msgstr "编辑项目"
 
 #: app/views/edit/project.html:5
 msgid "Edit Project {{project.metadata.name}}"
@@ -2515,7 +2527,7 @@ msgstr "忽略hook故障并继续部署。"
 
 #: app/scripts/directives/deployImageDialog.js:27
 #: app/views/_pod-template-container.html:16
-#: app/views/browse/deployment-config.html:174 app/views/deployments.html:102
+#: app/views/browse/deployment-config.html:174
 #: app/views/directives/deploy-image-dialog.html:15
 msgid "Image"
 msgstr "镜像"
@@ -2565,7 +2577,7 @@ msgstr "镜像流标签"
 msgid "Image Streams"
 msgstr "镜像流"
 
-#: app/views/edit/build-config.html:468
+#: app/views/deployments.html:102 app/views/edit/build-config.html:468
 msgid "Image change"
 msgstr "镜像更改"
 
@@ -2595,10 +2607,16 @@ msgstr "镜像"
 msgid "Import"
 msgstr "导入"
 
-#: app/views/create.html:27 app/views/directives/header/header.html:48
-#: app/views/directives/header/header.html:52 app/views/overview.html:22
+#: app/views/directives/header/header.html:48
+#: app/views/directives/header/header.html:52
 msgid "Import YAML / JSON"
-msgstr "导入YAML/JSON"
+msgstr " 导入YAML/JSON "
+
+#: app/views/overview.html:22
+#, fuzzy
+#| msgid "Import YAML / JSON"
+msgid "Import YAML / JSON11"
+msgstr " 导入YAML/JSON "
 
 #: app/scripts/directives/processTemplateDialog.js:58
 msgid "Information"
@@ -4659,7 +4677,7 @@ msgstr "选择配置集或私密凭证"
 #: app/views/directives/header/header.html:53
 #: app/views/directives/process-template-dialog/process-template-select.html:4
 msgid "Select from Project"
-msgstr "从项目中选择"
+msgstr " 从项目中选择 "
 
 #: app/views/directives/key-value-editor.html:165
 msgid "Select key"
@@ -6098,6 +6116,10 @@ msgstr "查看日志"
 msgid "View Logs"
 msgstr "查看日志"
 
+#: app/views/projects.html:131
+msgid "View Membership"
+msgstr "查看成员"
+
 #: app/views/pipelines.html:103
 msgid "View Pipeline Runs"
 msgstr "查看管道运行"
@@ -6966,6 +6988,12 @@ msgstr "来保证你的应用正常运行。"
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr "到卷<strong>{{pvc.spec.volumeName}}</strong>"
 
+#: app/views/create.html:27
+#, fuzzy
+#| msgid "Import YAML / JSON"
+msgid "translate  Import YAML / JSON"
+msgstr "导入YAML/JSON"
+
 #: app/scripts/constants.js:97
 msgid "user"
 msgstr "用户"
@@ -7415,9 +7443,6 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 #~ "and underscores."
 #~ msgstr "配置集键值可能只包含字母、数字、英文句号、连字符和下划线。"
 
-#~ msgid "Create Project"
-#~ msgstr "创建项目"
-
 #~ msgid "Create a route to the application"
 #~ msgstr "给应用创建路由"
 
@@ -7542,9 +7567,3 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 
 #~ msgid "Edit Membership"
 #~ msgstr "编辑成员"
-
-#~ msgid "Edit Project"
-#~ msgstr "编辑项目"
-
-#~ msgid "View Membership"
-#~ msgstr "查看成员"

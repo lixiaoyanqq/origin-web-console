@@ -3213,12 +3213,7 @@ return o.error("Could not parse homePagePref as JSON", e), null;
 return e && "project-overview" === e.type ? e.project : null;
 },
 getHomePagePath: function() {
-var e = this.getHomePagePreference();
-if ("project-overview" === e) {
-var t = this.getHomePageProjectName();
-return "/" + i.projectOverviewURL(t) + "?isHomePage=true";
-}
-return "project-list" === e ? "/projects" : "/catalog";
+return "/projects";
 },
 notifyInvalidProjectHomePage: function(e) {
 c(), s.addNotification({
