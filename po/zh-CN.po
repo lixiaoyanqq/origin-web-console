@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-20 15:28+0800\n"
+"PO-Revision-Date: 2018-08-20 15:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -1572,7 +1572,7 @@ msgstr "创建配置集"
 msgid "Create New Secret"
 msgstr "创建新的私密凭证"
 
-#: app/views/projects.html:25
+#: app/views/projects.html:180 app/views/projects.html:25
 msgid "Create Project"
 msgstr "创建项目"
 
@@ -1918,6 +1918,10 @@ msgstr "Dockerfile路径"
 msgid "Don't Show Me Again"
 msgstr "不再显示"
 
+#: app/views/membership.html:12
+msgid "Done Editing"
+msgstr "完成编辑"
+
 #: app/views/command-line.html:17
 msgid "Download <code>oc</code>:"
 msgstr "下载<code>oc</code>:"
@@ -1988,6 +1992,10 @@ msgstr "编辑部署配置{{deploymentConfig.metadata.name}}"
 #: app/views/browse/deployment.html:43
 msgid "Edit Health Checks"
 msgstr "编辑健康检查"
+
+#: app/views/membership.html:11
+msgid "Edit Membership"
+msgstr "编辑成员"
 
 #: app/views/_templateopt.html:10
 msgid "Edit Parameters"
@@ -2845,8 +2853,8 @@ msgstr "层"
 #: app/views/edit/deployment-config.html:31
 #: app/views/edit/deployment-config.html:35
 #: app/views/edit/deployment-config.html:39
-#: app/views/edit/health-checks.html:13 app/views/membership.html:47
-#: app/views/modals/create-secret.html:10
+#: app/views/edit/health-checks.html:13 app/views/membership.html:17
+#: app/views/membership.html:47 app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
 #: app/views/modals/create-secret.html:12 app/views/modals/create-secret.html:9
 #: app/views/set-limits.html:13
@@ -5088,6 +5096,11 @@ msgstr "系统组"
 #: app/scripts/constants.js:85
 msgid "System User"
 msgstr "系统用户"
+
+#: app/views/membership.html:275
+msgid ""
+"System roles are hidden by default and do not typically need to be managed."
+msgstr "默认情况下，系统角色是隐藏的，通常不需要进行管理。"
 
 #: app/views/browse/route.html:155
 msgid "TLS Settings"
@@ -7561,9 +7574,3 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 
 #~ msgid "{{type | upperFirst}} Secret"
 #~ msgstr "{{type | upperFirst}}私密凭证"
-
-#~ msgid "Done Editing"
-#~ msgstr "完成编辑"
-
-#~ msgid "Edit Membership"
-#~ msgstr "编辑成员"

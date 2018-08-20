@@ -1455,6 +1455,7 @@ msgstr ""
 msgid "Create New Secret"
 msgstr ""
 
+#: app/views/projects.html:180
 #: app/views/projects.html:25
 msgid "Create Project"
 msgstr ""
@@ -1813,6 +1814,10 @@ msgstr ""
 msgid "Don't Show Me Again"
 msgstr ""
 
+#: app/views/membership.html:12
+msgid "Done Editing"
+msgstr ""
+
 #: app/views/command-line.html:17
 msgid "Download <code>oc</code>:"
 msgstr ""
@@ -1883,6 +1888,10 @@ msgstr ""
 #: app/views/browse/deployment-config.html:64
 #: app/views/browse/deployment.html:43
 msgid "Edit Health Checks"
+msgstr ""
+
+#: app/views/membership.html:11
+msgid "Edit Membership"
 msgstr ""
 
 #: app/views/_templateopt.html:10
@@ -2721,6 +2730,7 @@ msgstr ""
 #: app/views/edit/deployment-config.html:35
 #: app/views/edit/deployment-config.html:39
 #: app/views/edit/health-checks.html:13
+#: app/views/membership.html:17
 #: app/views/membership.html:47
 #: app/views/modals/create-secret.html:10
 #: app/views/modals/create-secret.html:11
@@ -4975,6 +4985,10 @@ msgstr ""
 
 #: app/scripts/constants.js:85
 msgid "System User"
+msgstr ""
+
+#: app/views/membership.html:275
+msgid "System roles are hidden by default and do not typically need to be managed."
 msgstr ""
 
 #: app/views/browse/route.html:155

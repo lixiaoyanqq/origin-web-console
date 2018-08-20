@@ -10702,13 +10702,13 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
     "<h1>\n" +
     "<a class=\"pull-right btn btn-default\" href=\"\" ng-if=\"canUpdateRolebindings\" ng-click=\"toggleEditMode()\">\n" +
-    "<span ng-if=\"!(mode.edit)\">Edit Membership</span>\n" +
-    "<span ng-if=\"mode.edit\">Done Editing</span>\n" +
+    "<span ng-if=\"!(mode.edit)\" translate>Edit Membership</span>\n" +
+    "<span ng-if=\"mode.edit\" translate>Done Editing</span>\n" +
     "</a>\n" +
     "<translate>Membership</translate>\n" +
     "<span class=\"page-header-link\">\n" +
     "<a ng-href=\"{{'roles' | helpLink}}\" target=\"_blank\">\n" +
-    "Learn More <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
+    "<translate>Learn More</translate> <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i>\n" +
     "</a>\n" +
     "</span>\n" +
     "</h1>\n" +
@@ -10851,7 +10851,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" class=\"toggle-hidden\" ng-click=\"toggleRoles($event)\" ng-checked=\"toggle.roles\">\n" +
-    "<translate>Show hidden roles</translate></label>&nbsp;<a href=\"\" class=\"action-inline\" data-toggle=\"popover\" data-trigger=\"hover focus\" data-content=\"System roles are hidden by default and do not typically need to be managed.\"><i class=\"pficon pficon-help\"></i></a>\n" +
+    "<translate>Show hidden roles</translate></label>&nbsp;<a href=\"\" class=\"action-inline\" data-toggle=\"popover\" data-trigger=\"hover focus\" data-content=\"{{'System roles are hidden by default and do not typically need to be managed.' | translate}}\"><i class=\"pficon pficon-help\"></i></a>\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -13425,30 +13425,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div class=\"list-pf-actions\" ng-if=\"project.status.phase == 'Active'\">\n" +
-    "<div uib-dropdown class=\"dropdown pull-right dropdown-kebab-pf\">\n" +
-    "<button uib-dropdown-toggle class=\"btn btn-link dropdown-toggle\"><i class=\"fa fa-ellipsis-v\" aria-hidden=\"true\"></i><span class=\"sr-only\" translate>Actions</span></button>\n" +
-    "<ul class=\"dropdown-menu dropdown-menu-right\" uib-dropdown-menu role=\"menu\">\n" +
-    "<li role=\"menuitem\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/membership\" translate>\n" +
-    "View Membership\n" +
-    "</a>\n" +
-    "</li>\n" +
-    "<li role=\"menuitem\">\n" +
-    "<a href=\"\" ng-click=\"editProject(project)\" translate>\n" +
-    "Edit Project\n" +
-    "</a>\n" +
-    "</li>\n" +
-    "<li role=\"menuitem\">\n" +
-    "<delete-project label=\"{{'Delete Project' | translate}}\" project=\"project\" type-name-to-confirm=\"true\" stay-on-current-page=\"true\" success=\"onDeleteProject\">\n" +
-    "</delete-project>\n" +
-    "</li>\n" +
-    "</ul>\n" +
-    "</div>\n" +
-    "</div>\n" +
-    "<origin-modal-popup shown=\"editProjectPanelShown && editingProject === project\" ng-class=\"{'with-description': (project | description | size)}\" modal-title=\"Edit Project\" on-close=\"closeEditProjectPanel\">\n" +
-    "<edit-project project=\"project\" is-dialog=\"true\" redirect-action=\"onEditProject\" on-cancel=\"closeEditProjectPanel\"></edit-project>\n" +
-    "</origin-modal-popup>\n" +
+    "\n" +
+    "\n" +
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
