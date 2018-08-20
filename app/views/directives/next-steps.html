@@ -50,7 +50,7 @@
   </div>
 
   <p ng-if="!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length">
-    <a href="" ng-click="$ctrl.goToOverview()">返回概览页面</a>.
+    <a href="" ng-click="$ctrl.goToOverview()" translate>Continue to the project overview</a>.
   </p>
 
   <div ng-if="hasTaskWithError()">

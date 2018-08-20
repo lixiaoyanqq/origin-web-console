@@ -109,8 +109,8 @@
               <span ng-if="!$first && $last" translate>and</span>
               {{port.containerPort}}/{{port.protocol}}<span ng-if="!$last && ports.length > 2">,</span>
             </span>
-            will be load balanced by Service <strong>{{app.name || "&lt;name&gt;"}}</strong>.
-            <div>Other containers can access this service through the hostname <strong>{{app.name || "&lt;name&gt;"}}</strong>.</div>
+            <translate>will be load balanced by Service</translate> <strong>{{app.name || "&lt;name&gt;"}}</strong>.
+            <div><translate>Other containers can access this service through the hostname</translate> <strong>{{app.name || "&lt;name&gt;"}}</strong>.</div>
           </li>
         </ul>
         <div ng-if="(volumes | hashSize) > 0" class="help-block" translate>

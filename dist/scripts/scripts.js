@@ -1,9 +1,9 @@
 "use strict";
 
 function Noop() {
-gettext("< Back"), gettext("Abort"), gettext("Active"), gettext("Bound"), gettext("Build Config"), gettext("Cancelled"), gettext("CI/CD"), gettext("Clear Filters"), gettext("Clear Search Input"), gettext("Client state could not be verified"), gettext("Complete"), gettext("complete"), gettext("Completed"), gettext("Config Map"), gettext("Collapse"), gettext("Cores"), gettext("CPU (Limit)"), gettext("CPU (Request)"), gettext("Custom"), gettext("daemon set"), gettext("Databases"), gettext("deployment config"), gettext("Deployment Config"), gettext("Failed"), gettext("Filter by Keyword"), gettext("Filter by label"), gettext("group"), gettext("Group"), gettext("horizontal pod autoscaler"), gettext("Ignore"), gettext("Image count"), gettext("Items"), gettext("Last Updated"), gettext("Manual"), gettext("manual change"), gettext("matching(...)"), gettext("Memory (Limit)"), gettext("Memory (Request)"), gettext("Mid"), gettext("Middleware"), gettext("No catalog items have been loaded."), gettext("No items."), 
-gettext("No results found for Keyword:"), gettext("No results match."), gettext("openshift.io/imagestreams"), gettext("Post"), gettext("Pre"), gettext("Publisher"), gettext("pull"), gettext("Pulling repository"), gettext("push"), gettext("Read-Only-Many"), gettext("Read-Write-Many"), gettext("Read-Write-Once"), gettext("Recreate"), gettext("results for Keyword:"), gettext("Retry"), gettext("Rolling"), gettext("Route"), gettext("running"), gettext("Running"), gettext("Search Catalog"), gettext("See All"), gettext("Select an application"), gettext("service account"), gettext("Service Account"), gettext("Storage (Request)"), gettext("system group"), gettext("System Group"), gettext("system user"), gettext("System User"), gettext("Terminating"), gettext("the container is allowed to use when running."), gettext("the container is guaranteed."), gettext("The active filters are hiding all catalog items."), gettext("The maximum amount of"), gettext("The minimum amount of"), gettext("There are no applications in this project"), 
-gettext("There are no notifications to display."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("To pull this image"), gettext("To push an image to this image stream:"), gettext("user"), gettext("User"), gettext("View all"), gettext("View the result for Keyword:");
+gettext("< Back"), gettext("Abort"), gettext("Active"), gettext("Bound"), gettext("Build Config"), gettext("Cancelled"), gettext("CI/CD"), gettext("Clear All"), gettext("Clear Filters"), gettext("Clear Search Input"), gettext("Client state could not be verified"), gettext("Complete"), gettext("complete"), gettext("Completed"), gettext("Config Map"), gettext("Collapse"), gettext("Cores"), gettext("CPU (Limit)"), gettext("CPU (Request)"), gettext("Create Project"), gettext("Custom"), gettext("daemon set"), gettext("Databases"), gettext("deployment config"), gettext("Deployment Config"), gettext("Failed"), gettext("Filter by Keyword"), gettext("Filter by label"), gettext("group"), gettext("Group"), gettext("horizontal pod autoscaler"), gettext("Ignore"), gettext("Image count"), gettext("Items"), gettext("Last Updated"), gettext("Manual"), gettext("manual change"), gettext("Mark All Read"), gettext("matching(...)"), gettext("Memory (Limit)"), gettext("Memory (Request)"), gettext("Mid"), gettext("Middleware"), 
+gettext("No catalog items have been loaded."), gettext("No items."), gettext("No results found for Keyword:"), gettext("No results match."), gettext("openshift.io/imagestreams"), gettext("Post"), gettext("Pre"), gettext("Publisher"), gettext("pull"), gettext("Pulling repository"), gettext("push"), gettext("Read-Only-Many"), gettext("Read-Write-Many"), gettext("Read-Write-Once"), gettext("Recreate"), gettext("results for Keyword:"), gettext("Retry"), gettext("Rolling"), gettext("Route"), gettext("running"), gettext("Running"), gettext("Search Catalog"), gettext("See All"), gettext("Select an application"), gettext("service account"), gettext("Service Account"), gettext("Storage (Request)"), gettext("system group"), gettext("System Group"), gettext("system user"), gettext("System User"), gettext("Terminating"), gettext("the container is allowed to use when running."), gettext("the container is guaranteed."), gettext("The active filters are hiding all catalog items."), gettext("The maximum amount of"), 
+gettext("The minimum amount of"), gettext("There are no applications in this project"), gettext("There are no notifications to display."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("To pull this image"), gettext("To push an image to this image stream:"), gettext("user"), gettext("User"), gettext("View all"), gettext("View the result for Keyword:");
 }
 
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y, b, S, C, w, P, j, k, I, R, E, T, N, A, D) {
@@ -13884,14 +13884,13 @@ templateUrl: "views/directives/deploy-image-dialog.html"
 angular.module("openshiftConsole").component("fromFileDialog", {
 controller: [ "$scope", "$timeout", "$routeParams", "$filter", "DataService", function(e, t, n, r, a) {
 function o() {
-var e = _.get(s, "template.metadata.annotations.iconClass", "fa fa-clone");
-return -1 !== e.indexOf("icon-") ? "font-icon " + e : e;
+return u(_.get(s, "template.metadata.annotations.iconClass", "fa fa-clone"));
 }
 function i() {
 var e = _.get(s, "template.metadata.annotations.iconClass", "fa fa-clone");
 return l(e);
 }
-var s = this, c = r("annotation"), l = r("imageForIconClass");
+var s = this, c = r("annotation"), l = r("imageForIconClass"), u = r("normalizeIconClass");
 s.$onInit = function() {
 s.alerts = {}, s.loginBaseUrl = a.openshiftAPIBaseUrl(), n.project || (s.showProjectName = !0), e.$on("no-projects-cannot-create", function() {
 s.importForm.$setValidity("required", !1);
@@ -15062,8 +15061,9 @@ n.setOption("tabSize", 2), n.setOption("useSoftTabs", !0), e.setDragDelay = 0;
 }, e.$watch(function() {
 return n.model;
 }, function(e, t) {
+var s;
 try {
-n.resource = r(!1), i(!0), e !== t && (n.resource = void 0);
+s = r(!1), i(!0), e !== t && (n.resource = s);
 try {
 r(!0), a();
 } catch (e) {

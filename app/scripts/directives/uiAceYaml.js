@@ -74,7 +74,7 @@
       var resource;
       // Check for errors, then check for warnings.
       try {
-        ctrl.resource = parseYAML(false);
+        resource = parseYAML(false);
         setValid(true);
 
         // Only update `ctrl.resource` if the value has changed.

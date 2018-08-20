@@ -4781,7 +4781,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</form>\n" +
     "</uib-tab>\n" +
     "<uib-tab active=\"selectedTab.fromFile\">\n" +
-    "<uib-tab-heading translate>translate Import YAML / JSON</uib-tab-heading>\n" +
+    "<uib-tab-heading translate>Import YAML / JSON</uib-tab-heading>\n" +
     "<from-file ng-if=\"project\" project=\"project\"></from-file>\n" +
     "</uib-tab>\n" +
     "</uib-tabset>\n" +
@@ -6475,8 +6475,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!$first && $last\" translate>and</span>\n" +
     "{{port.containerPort}}/{{port.protocol}}<span ng-if=\"!$last && ports.length > 2\">,</span>\n" +
     "</span>\n" +
-    "will be load balanced by Service <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.\n" +
-    "<div>Other containers can access this service through the hostname <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.</div>\n" +
+    "<translate>will be load balanced by Service</translate> <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.\n" +
+    "<div><translate>Other containers can access this service through the hostname</translate> <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.</div>\n" +
     "</li>\n" +
     "</ul>\n" +
     "<div ng-if=\"(volumes | hashSize) > 0\" class=\"help-block\" translate>\n" +
@@ -7252,7 +7252,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"order-service-description-block\">\n" +
-    "<p ng-bind-html=\"$ctrl.template | description | linky : '_blank'\" class=\"description\"></p>\n" +
+    "<p ng-bind-html=\"($ctrl.template | description | linky : '_blank') || 'No description provided.'\" class=\"description\"></p>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"order-service-config\">\n" +
@@ -7260,7 +7260,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"osc-form\">\n" +
     "<alerts alerts=\"$ctrl.alerts\"></alerts>\n" +
     "<form name=\"$ctrl.templateForm\">\n" +
-    "<process-template project=\"$ctrl.project\" template=\"$ctrl.template\" alerts=\"$ctrl.alerts\" is-dialog=\"true\"></process-template>\n" +
+    "<process-template ng-if=\"$ctrl.template\" project=\"$ctrl.selectedProject\" template=\"$ctrl.template\" alerts=\"$ctrl.alerts\" is-dialog=\"true\"></process-template>\n" +
     "</form>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -7392,7 +7392,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if-start=\"catalogLandingPageEnabled\" role=\"menuitem\"><a href=\"{{currentProjectName | catalogURL}}\" translate>Browse Catalog</a></li>\n" +
     "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('deployImage')\" translate>Deploy Image</a></li>\n" +
     "<li ng-if-end role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromFile')\" translate>Import YAML / JSON</a></li>\n" +
-    "<li role=\"menuitem\"><a href=\"\" ng-click=\"showOrderingPanel('fromProject')\" translate>Select from Project</a></li>\n" +
+    "\n" +
     "</ul>\n" +
     "</div>\n" +
     "</div> \n" +
@@ -7909,7 +7909,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<p ng-if=\"!$ctrl.pendingTasks(tasks()).length && !$ctrl.erroredTasks(tasks()).length\">\n" +
-    "<a href=\"\" ng-click=\"$ctrl.goToOverview()\">返回概览页面</a>.\n" +
+    "<a href=\"\" ng-click=\"$ctrl.goToOverview()\" translate>Continue to the project overview</a>.\n" +
     "</p>\n" +
     "<div ng-if=\"hasTaskWithError()\">\n" +
     "<ul ng-repeat=\"task in tasks()\">\n" +
