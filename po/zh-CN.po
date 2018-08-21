@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-20 17:55+0800\n"
+"PO-Revision-Date: 2018-08-21 09:53+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -334,7 +334,7 @@ msgstr "操作:"
 #: app/views/overview/_list-row-actions.html:45
 #: app/views/overview/_list-row-actions.html:60
 #: app/views/overview/_list-row-actions.html:8
-#: app/views/overview/_service-instance-row.html:74 app/views/projects.html:128
+#: app/views/overview/_service-instance-row.html:74
 msgid "Actions"
 msgstr "操作"
 
@@ -1580,8 +1580,8 @@ msgstr "创建配置集"
 msgid "Create New Secret"
 msgstr "创建新的私密凭证"
 
-#: app/views/projects.html:180 app/views/projects.html:25
-#: app/scripts/constants.js:34
+#: app/scripts/constants.js:34 app/views/projects.html:180
+#: app/views/projects.html:25
 msgid "Create Project"
 msgstr "创建项目"
 
@@ -1759,8 +1759,10 @@ msgid "Delete Binding"
 msgstr "删除绑定"
 
 #: app/views/projects.html:142
+#, fuzzy
+#| msgid "Select a Project"
 msgid "Delete Project"
-msgstr "删除项目"
+msgstr "选择项目"
 
 #: app/views/overview/_service-instance-row.html:122
 msgid "Delete This Service"
@@ -1795,7 +1797,7 @@ msgstr "部署<span ng-if=\"row.isPaused()\">(暂停)</span>"
 #: app/views/directives/header/header.html:47
 #: app/views/directives/header/header.html:51 app/views/overview.html:19
 msgid "Deploy Image"
-msgstr "部署镜像  "
+msgstr "部署镜像"
 
 #: app/views/directives/deploy-image.html:4
 msgid "Deploy an existing image from an image stream tag or image registry."
@@ -2013,10 +2015,6 @@ msgstr "编辑参数"
 #: app/views/browse/build.html:33 app/views/pipelines.html:106
 msgid "Edit Pipeline"
 msgstr "编辑管道"
-
-#: app/views/projects.html:136
-msgid "Edit Project"
-msgstr "编辑项目"
 
 #: app/views/edit/project.html:5
 msgid "Edit Project {{project.metadata.name}}"
@@ -2625,16 +2623,16 @@ msgstr "镜像"
 msgid "Import"
 msgstr "导入"
 
-#: app/views/directives/header/header.html:48
+#: app/views/create.html:27 app/views/directives/header/header.html:48
 #: app/views/directives/header/header.html:52
 msgid "Import YAML / JSON"
-msgstr " 导入YAML/JSON "
+msgstr "导入YAML/JSON"
 
 #: app/views/overview.html:22
 #, fuzzy
 #| msgid "Import YAML / JSON"
 msgid "Import YAML / JSON11"
-msgstr " 导入YAML/JSON "
+msgstr "导入YAML/JSON"
 
 #: app/scripts/directives/processTemplateDialog.js:58
 msgid "Information"
@@ -3816,8 +3814,12 @@ msgid "Other Trigger:"
 msgstr "其他触发器:"
 
 #: app/views/directives/deploy-image.html:113
-msgid "Other containers can access this service through the hostname"
-msgstr "其他容器能通过主机名进入该服务"
+msgid ""
+"Other containers can access this service through the hostname <strong>{{app."
+"name || \"&lt;name&gt;\"}}</strong>."
+msgstr ""
+"其他容器可以通过主机名<strong>{{app.name || “&lt;name&gt;”}}</strong>访问该服"
+"务."
 
 #: app/views/browse/_build-details.html:89
 msgid "Output Image:"
@@ -4704,7 +4706,7 @@ msgstr "选择配置集或私密凭证"
 
 #: app/views/directives/process-template-dialog/process-template-select.html:4
 msgid "Select from Project"
-msgstr " 从项目中选择 "
+msgstr "从项目中选择"
 
 #: app/views/directives/key-value-editor.html:165
 msgid "Select key"
@@ -5119,7 +5121,7 @@ msgstr "系统用户"
 #: app/views/membership.html:275
 msgid ""
 "System roles are hidden by default and do not typically need to be managed."
-msgstr "默认情况下，系统角色是隐藏的，通常不需要进行管理。"
+msgstr ""
 
 #: app/views/browse/route.html:155
 msgid "TLS Settings"
@@ -6148,10 +6150,6 @@ msgstr "查看日志"
 msgid "View Logs"
 msgstr "查看日志"
 
-#: app/views/projects.html:131
-msgid "View Membership"
-msgstr "查看成员"
-
 #: app/views/pipelines.html:103
 msgid "View Pipeline Runs"
 msgstr "查看管道运行"
@@ -7084,8 +7082,10 @@ msgid "was cancelled."
 msgstr "被取消了."
 
 #: app/views/directives/deploy-image.html:112
-msgid "will be load balanced by Service"
-msgstr "将被服务加载平衡"
+msgid ""
+"will be load balanced by Service <strong>{{app.name || \"&lt;name&gt;\"}}</"
+"strong>."
+msgstr "将会被<strong>{{app.name || “&lt;name&gt;”}}</strong>服务负载均衡."
 
 #: app/views/directives/deploy-image.html:19
 msgid ""
@@ -7247,6 +7247,9 @@ msgstr "{{view.advancedOptions ? '隐藏' : '显示'}}高级选项"
 #: app/views/browse/secret.html:62
 msgid "{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret"
 msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
+
+#~ msgid "will be load balanced by Service"
+#~ msgstr "将被服务加载平衡"
 
 #~ msgid "To deploy an image from a private repository,"
 #~ msgstr "用镜像流版本部署镜像,"
@@ -7595,3 +7598,9 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 
 #~ msgid "{{type | upperFirst}} Secret"
 #~ msgstr "{{type | upperFirst}}私密凭证"
+
+#~ msgid "Edit Project"
+#~ msgstr "编辑项目"
+
+#~ msgid "View Membership"
+#~ msgstr "查看成员"
