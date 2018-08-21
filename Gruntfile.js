@@ -661,7 +661,7 @@ module.exports = function (grunt) {
     nggettext_extract: {
       pot: {
         files: {
-          'po/openshift.pot': ['app/index.html', 'app/views/**/*.html', 'app/scripts/**/*.js']
+          'po/openshift.pot': ['app/index.html', 'app/views/**/*.html', 'app/scripts/**/*.js','app/components/osc-webhook-triggers/osc-webhook-triggers.html']
         }
       }
     },

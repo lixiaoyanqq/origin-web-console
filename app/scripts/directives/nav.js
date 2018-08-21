@@ -352,7 +352,7 @@ angular.module('openshiftConsole')
           projectPicker.empty();
           projectPicker.append(projectPickerOptions);
           projectPicker.append($('<option data-divider="true"></option>'));
-          projectPicker.append($('<option value="">View All Projects</option>'));
+          projectPicker.append($('<option value="">'+gettextCatalog.getString(gettext("View All Projects"))+'</option>'));
           projectPicker.selectpicker('refresh');
         };
 

@@ -1,9 +1,9 @@
 "use strict";
 
 function Noop() {
-gettext("< Back"), gettext("Abort"), gettext("Active"), gettext("Bound"), gettext("Build Config"), gettext("Cancelled"), gettext("CI/CD"), gettext("Clear All"), gettext("Clear Filters"), gettext("Clear Search Input"), gettext("Client state could not be verified"), gettext("Complete"), gettext("complete"), gettext("Completed"), gettext("Config Map"), gettext("Collapse"), gettext("Cores"), gettext("CPU (Limit)"), gettext("CPU (Request)"), gettext("Create Project"), gettext("Custom"), gettext("daemon set"), gettext("Databases"), gettext("deployment config"), gettext("Deployment Config"), gettext("Failed"), gettext("Filter by Keyword"), gettext("Filter by label"), gettext("group"), gettext("Group"), gettext("horizontal pod autoscaler"), gettext("Ignore"), gettext("Image count"), gettext("Items"), gettext("Last Updated"), gettext("Manual"), gettext("manual change"), gettext("Mark All Read"), gettext("matching(...)"), gettext("Memory (Limit)"), gettext("Memory (Request)"), gettext("Mid"), gettext("Middleware"), 
-gettext("No catalog items have been loaded."), gettext("No items."), gettext("No results found for Keyword:"), gettext("No results match."), gettext("openshift.io/imagestreams"), gettext("Post"), gettext("Pre"), gettext("Publisher"), gettext("pull"), gettext("Pulling repository"), gettext("push"), gettext("Read-Only-Many"), gettext("Read-Write-Many"), gettext("Read-Write-Once"), gettext("Recreate"), gettext("results for Keyword:"), gettext("Retry"), gettext("Rolling"), gettext("Route"), gettext("running"), gettext("Running"), gettext("Search Catalog"), gettext("See All"), gettext("Select an application"), gettext("service account"), gettext("Service Account"), gettext("Storage (Request)"), gettext("system group"), gettext("System Group"), gettext("system user"), gettext("System User"), gettext("Terminating"), gettext("the container is allowed to use when running."), gettext("the container is guaranteed."), gettext("The active filters are hiding all catalog items."), gettext("The maximum amount of"), 
-gettext("The minimum amount of"), gettext("There are no applications in this project"), gettext("There are no notifications to display."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("To pull this image"), gettext("To push an image to this image stream:"), gettext("user"), gettext("User"), gettext("View all"), gettext("View the result for Keyword:");
+gettext("< Back"), gettext("Abort"), gettext("Active"), gettext("Bound"), gettext("Build Config"), gettext("Cancelled"), gettext("CI/CD"), gettext("Clear All"), gettext("Clear Filters"), gettext("Clear Search Input"), gettext("Client state could not be verified"), gettext("Complete"), gettext("complete"), gettext("Completed"), gettext("Config Map"), gettext("Collapse"), gettext("Configuration File"), gettext("Cores"), gettext("CPU (Limit)"), gettext("CPU (Request)"), gettext("Create Project"), gettext("Custom"), gettext("daemon set"), gettext("Databases"), gettext("deployment config"), gettext("Deployment Config"), gettext("Failed"), gettext("Filter by Keyword"), gettext("Filter by label"), gettext("From"), gettext("Generic"), gettext("group"), gettext("Group"), gettext("horizontal pod autoscaler"), gettext("Identifier"), gettext("Ignore"), gettext("Image count"), gettext("Image Registry Credentials"), gettext("Items"), gettext("Last Updated"), gettext("Manual"), gettext("manual change"), 
+gettext("Mark All Read"), gettext("matching(...)"), gettext("Memory (Limit)"), gettext("Memory (Request)"), gettext("Mid"), gettext("Middleware"), gettext("No catalog items have been loaded."), gettext("No items."), gettext("No results found for Keyword:"), gettext("No results match."), gettext("openshift.io/imagestreams"), gettext("Post"), gettext("Pre"), gettext("Publisher"), gettext("pull"), gettext("Pull"), gettext("Pulling repository"), gettext("push"), gettext("Read-Only-Many"), gettext("Read-Write-Many"), gettext("Read-Write-Once"), gettext("Recreate"), gettext("replication controller"), gettext("Replication Controller"), gettext("results for Keyword:"), gettext("Retry"), gettext("Rolling"), gettext("Route"), gettext("running"), gettext("Running"), gettext("Search Catalog"), gettext("See All"), gettext("Select an application"), gettext("service account"), gettext("Service Account"), gettext("Storage (Request)"), gettext("system group"), gettext("System Group"), gettext("system user"), 
+gettext("System User"), gettext("Terminating"), gettext("the container is allowed to use when running."), gettext("the container is guaranteed."), gettext("The active filters are hiding all catalog items."), gettext("The maximum amount of"), gettext("The minimum amount of"), gettext("There are no applications in this project"), gettext("There are no notifications to display."), gettext("This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."), gettext("To pull this image"), gettext("To push an image to this image stream:"), gettext("user"), gettext("User"), gettext("View all"), gettext("View the result for Keyword:");
 }
 
 function OverviewController(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v, h, y, b, S, C, w, P, j, k, I, R, E, T, N, A, D) {
@@ -9204,10 +9204,10 @@ image: {
 label: i.getString(o("Image Secret")),
 authTypes: [ {
 id: "kubernetes.io/dockerconfigjson",
-label: "Image Registry Credentials"
+label: i.getString(o("Image Registry Credentials"))
 }, {
 id: "kubernetes.io/dockercfg",
-label: "Configuration File"
+label: i.getString(o("Configuration File"))
 } ]
 },
 source: {
@@ -10859,33 +10859,33 @@ restrict: "EA",
 templateUrl: "views/directives/header/header.html",
 link: function(i, p) {
 i.currentProject = b[a.project];
-var v = function(e, t) {
+var j = function(e, t) {
 var n;
 _.set(r, "nav.collapsed", e), t && (n = e ? "true" : "false", localStorage.setItem("openshift/vertical-nav-collapsed", n));
 };
 !function() {
 var e = "true" === localStorage.getItem("openshift/vertical-nav-collapsed");
-v(e);
+j(e);
 }();
-var h = function() {
+var k = function() {
 return _.get(r, "nav.collapsed", !1);
-}, j = function(e) {
-_.set(r, "nav.showMobileNav", e);
-}, k = function(e) {
-"/catalog" === t.path() ? e.selectpicker("val", "catalog") : e.selectpicker("val", "application-console");
 }, I = function(e) {
+_.set(r, "nav.showMobileNav", e);
+}, R = function(e) {
+"/catalog" === t.path() ? e.selectpicker("val", "catalog") : e.selectpicker("val", "application-console");
+}, E = function(e) {
 i.$evalAsync(function() {
 t.url(e);
 });
 };
 i.toggleNav = function() {
-var e = h();
-v(!e, !0), r.$emit("oscHeader.toggleNav");
+var e = k();
+j(!e, !0), r.$emit("oscHeader.toggleNav");
 }, i.toggleMobileNav = function() {
 var e = _.get(r, "nav.showMobileNav");
-j(!e);
+I(!e);
 }, i.closeMobileNav = function() {
-j(!1);
+I(!1);
 }, i.closeOrderingPanel = function() {
 i.orderingPanelVisible = !1;
 }, i.showOrderingPanel = function(e) {
@@ -10893,40 +10893,40 @@ i.orderingPanelVisible = !0, i.orderKind = e;
 }, i.onSearchToggle = function(e) {
 _.set(r, "view.hasProjectSearch", e);
 }, i.catalogLandingPageEnabled = !u.DISABLE_SERVICE_CATALOG_LANDING_PAGE;
-var R = p.find(".contextselector");
-i.clusterConsoleURL = window.OPENSHIFT_CONSTANTS.TECTONIC_URL || window.OPENSHIFT_CONFIG.tectonicURL, R.on("loaded.bs.select", function() {
-k(R);
+var T = p.find(".contextselector");
+i.clusterConsoleURL = window.OPENSHIFT_CONSTANTS.TECTONIC_URL || window.OPENSHIFT_CONFIG.tectonicURL, T.on("loaded.bs.select", function() {
+R(T);
 }).change(function() {
 switch ($(this).val()) {
 case "catalog":
-I("/catalog");
+E("/catalog");
 break;
 
 case "application-console":
-I("/projects");
+E("/projects");
 break;
 
 case "cluster-console":
 window.location.assign(i.clusterConsoleURL);
 }
 });
-var E = p.find(".project-picker"), T = [], N = function() {
+var N = p.find(".project-picker"), A = [], D = function() {
 var t = i.currentProjectName;
 if (t) {
 var n = function(e, n) {
 var r = $("<option>").attr("value", e.metadata.name).attr("selected", e.metadata.name === t);
 return n ? r.text(C(e)) : r.text(w(e, S)), r;
 };
-_.size(b) <= 100 ? (S = e("orderByDisplayName")(b), T = _.map(S, function(e) {
+_.size(b) <= 100 ? (S = e("orderByDisplayName")(b), A = _.map(S, function(e) {
 return n(e, !1);
-})) : T = [ n(b[t], !0) ], E.empty(), E.append(T), E.append($('<option data-divider="true"></option>')), E.append($('<option value="">View All Projects</option>')), E.selectpicker("refresh");
+})) : A = [ n(b[t], !0) ], N.empty(), N.append(A), N.append($('<option data-divider="true"></option>')), N.append($('<option value="">' + h.getString(v("View All Projects")) + "</option>")), N.selectpicker("refresh");
 }
-}, A = function() {
+}, B = function() {
 return g.list().then(function(e) {
 b = e.by("metadata.name");
 });
-}, D = function() {
-k(R);
+}, V = function() {
+R(T);
 var e = a.project;
 if (i.currentProjectName !== e) {
 i.currentProjectName = e, i.chromeless = "chromeless" === a.view;
@@ -10942,20 +10942,20 @@ n.all([ r, a ]).then(function() {
 i.catalogItems = c.sortCatalogItems(_.concat(t, o));
 });
 }
-}), A().then(function() {
+}), B().then(function() {
 i.currentProjectName && b && (b[i.currentProjectName] || (b[i.currentProjectName] = {
 metadata: {
 name: i.currentProjectName
 }
-}), i.currentProject = b[i.currentProjectName], N());
+}), i.currentProject = b[i.currentProjectName], D());
 })) : _.set(r, "view.hasProject", !1);
 }
-}, B = function() {
+}, L = function() {
 i.orderingPanelVisible && y.addItem(_.get(i.selectedItem, "resource.metadata.uid"));
-}, V = function(e) {
+}, x = function(e) {
 return "PartialObjectMetadata" === e.kind;
-}, L = function(e) {
-return V(e) ? d.get(P, e.metadata.name, {
+}, O = function(e) {
+return x(e) ? d.get(P, e.metadata.name, {
 namespace: e.metadata.namespace
 }) : n.when(e);
 };
@@ -10968,11 +10968,11 @@ status: {
 removedFromBrokerCatalog: !0
 }
 }), i.selectedItem = t, i.orderingPanelVisible = !0;
-}) : L(t.resource).then(function(e) {
+}) : O(t.resource).then(function(e) {
 i.selectedItem = e, i.orderingPanelVisible = !0, i.orderKind = "Template";
 }));
 });
-var x = r.$on("filter-catalog-items", function(e, t) {
+var U = r.$on("filter-catalog-items", function(e, t) {
 if (i.currentProjectName) {
 var n = {
 filter: t.searchText
@@ -10982,11 +10982,11 @@ m.toProjectCatalog(i.currentProjectName, n);
 });
 i.closeOrderingPanel = function() {
 y.addItem(_.get(i.selectedItem, "resource.metadata.uid")), i.orderingPanelVisible = !1;
-}, D(), i.$on("$routeChangeSuccess", D), E.change(function() {
+}, V(), i.$on("$routeChangeSuccess", V), N.change(function() {
 var e = $(this).val(), t = "" === e ? "projects" : f(e);
-I(t);
+E(t);
 }), i.$on("$destroy", function() {
-x(), B();
+U(), L();
 });
 }
 };
