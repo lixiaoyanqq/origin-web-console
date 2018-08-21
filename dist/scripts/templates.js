@@ -3040,8 +3040,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</p>\n" +
     "<p ng-if=\"!dcName && controllerRef\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-    "Environment variables were set by {{controllerRef.kind | humanizeKind}}\n" +
-    "<a ng-href=\"{{controllerRef.name | navigateResourceURL : controllerRef.kind : pod.metadata.namespace}}?tab=environment\">{{controllerRef.name}}</a>.\n" +
+    "<translate>Environment variables were set by {{controllerRef.kind | humanizeKind | translate}}\n" +
+    "<a ng-href=\"{{controllerRef.name | navigateResourceURL : controllerRef.kind : pod.metadata.namespace}}?tab=environment\">{{controllerRef.name}}</a></translate>.\n" +
     "</p>\n" +
     "<edit-environment-variables api-object=\"pod\" ng-readonly=\"true\"></edit-environment-variables>\n" +
     "</uib-tab>\n" +
@@ -6087,9 +6087,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!type\" class=\"form-group mar-top-lg\">\n" +
     "<label for=\"secret-type\" translate>Secret Type</label>\n" +
     "<ui-select input-id=\"secret-type\" required ng-model=\"newSecret.type\" search-enabled=\"false\" ng-change=\"newSecret.authType = secretAuthTypeMap[newSecret.type].authTypes[0].id\">\n" +
-    "<ui-select-match>{{$select.selected | upperFirst}} Secret</ui-select-match>\n" +
+    "<ui-select-match><translate>{{$select.selected | upperFirst | translate}} Secret</translate></ui-select-match>\n" +
     "<ui-select-choices repeat=\"type in secretTypes\">\n" +
-    "{{type | upperFirst | translate}} <translate>Secret</translate>\n" +
+    "<translate>{{type | upperFirst | translate}} Secret</translate>\n" +
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
     "</div>\n" +
@@ -6129,7 +6129,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\" id=\"secret-name-help\">\n" +
-    "Value of the secret will be supplied when invoking the webhook.\n" +
+    "<translate>Value of the secret will be supplied when invoking the webhook</translate>.\n" +
     "<a ng-href=\"{{'webhooks' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.webhookSecretKey.$error.pattern && secretForm.webhookSecretKey.$touched\">\n" +
@@ -6932,12 +6932,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"actionType\" class=\"required\" translate>Lifecycle Action</label><br/>\n" +
     "<label class=\"radio-inline\">\n" +
-    "<input type=\"radio\" name=\"{{type}}-action-newpod\" ng-model=\"action.type\" value=\"execNewPod\" aria-describedby=\"action-help\" translate>\n" +
-    "Run a specific command in a new pod\n" +
+    "<input type=\"radio\" name=\"{{type}}-action-newpod\" ng-model=\"action.type\" value=\"execNewPod\" aria-describedby=\"action-help\">\n" +
+    "<translate>Run a specific command in a new pod</translate>\n" +
     "</label>\n" +
     "<label class=\"radio-inline\">\n" +
-    "<input type=\"radio\" name=\"{{type}}-action-images\" ng-model=\"action.type\" value=\"tagImages\" aria-describedby=\"action-help\" translate>\n" +
-    "Tag image if the deployment succeeds\n" +
+    "<input type=\"radio\" name=\"{{type}}-action-images\" ng-model=\"action.type\" value=\"tagImages\" aria-describedby=\"action-help\">\n" +
+    "<translate>Tag image if the deployment succeeds</translate>\n" +
     "</label>\n" +
     "<div id=\"action-help\" class=\"help-block\">\n" +
     "<span ng-if=\"action.type === 'execNewPod'\" translate>Runs a command in a new pod using the container from the deployment template. You can add additional environment variables and volumes.</span>\n" +
@@ -7322,15 +7322,14 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<li ng-if=\"launcherApps.length > 0\">\n" +
     "<pf-application-launcher items=\"launcherApps\" is-list=\"true\"></pf-application-launcher>\n" +
     "</li>\n" +
-    "<li uib-dropdown>\n" +
-    "<a uib-dropdown-toggle class=\"nav-item-iconic\" id=\"help-dropdown\" href=\"\">\n" +
-    "<span title=\"Help\" class=\"fa pficon-help\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"sr-only\" translate>Help</span>\n" +
-    "<span class=\"caret\" aria-hidden=\"true\"></span>\n" +
-    "</a>\n" +
-    "<ul uib-dropdown-menu aria-labelledby=\"help-dropdown\" extension-point extension-name=\"nav-help-dropdown\" extension-types=\"dom html\"></ul>\n" +
-    "</li>\n" +
     "\n" +
+    "<li uib-dropdown ng-cloak ng-if=\"user\">\n" +
+    "<a href=\"\" uib-dropdown-toggle id=\"user-dropdown\" class=\"nav-item-iconic\">\n" +
+    "<span class=\"fa pf-icon pficon-user\" aria-hidden=\"true\"></span>\n" +
+    "<span class=\"username truncate\">{{user.fullName || user.metadata.name}}</span> <span class=\"caret\" aria-hidden=\"true\"></span>\n" +
+    "</a>\n" +
+    "<ul uib-dropdown-menu aria-labelledby=\"user-dropdown\" extension-point extension-name=\"nav-user-dropdown\" extension-types=\"dom html\"> extension points generated here </ul>\n" +
+    "</li>\n" +
     "</ul>"
   );
 
@@ -8740,7 +8739,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"basic-secrets\">\n" +
     "<div class=\"input-labels\">\n" +
     "<label class=\"input-label\" translate>\n" +
-    "{{displayType | startCase}} Secret\n" +
+    "{{displayType | startCase | translate}} Secret\n" +
     "</label>\n" +
     "</div>\n" +
     "<div ng-repeat=\"pickedSecret in pickedSecrets\" class=\"row form-row-has-controls\">\n" +
@@ -9599,8 +9598,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<input class=\"form-control\" id=\"sourceUrl\" name=\"sourceUrl\" ng-model=\"updatedBuildConfig.spec.source.git.uri\" type=\"text\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"source-url-help\" required>\n" +
     "</div>\n" +
     "<div class=\"help-block\" id=\"source-url-help\">\n" +
-    "Git URL of the source code to build.\n" +
-    "<span ng-if=\"!view.advancedOptions\">If your Git repository is private, view the <a href=\"\" ng-click=\"view.advancedOptions = true\">advanced options</a> to set up authentication.</span>\n" +
+    "<translate>Git URL of the source code to build.</translate>\n" +
+    "<span ng-if=\"!view.advancedOptions\"><translate>If your Git repository is private, view the</translate> <a href=\"\" ng-click=\"view.advancedOptions = true\" translate>advanced options</a> <translate>to set up authentication</translate>.</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-if=\"form.sourceUrl.$touched && form.sourceUrl.$error.required\">\n" +
     "<span class=\"help-block\" translate>A Git repository URL is required.</span>\n" +
@@ -9808,7 +9807,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"options.forcePull\">\n" +
-    "Always pull the builder image from the docker registry, even if it is present locally\n" +
+    "<translate>Always pull the builder image from the docker registry, even if it is present locally</translate>\n" +
     "</label>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -9828,7 +9827,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"imageOptions.to.type==='DockerImage'\" class=\"form-group\">\n" +
     "<label for=\"pushToLink\">Docker Image Repository</label>\n" +
     "<div>\n" +
-    "<input class=\"form-control\" id=\"pushToLink\" name=\"pushToLink\" type=\"text\" ng-model=\"imageOptions.to.dockerImage\" placeholder=\"example: centos/ruby-20-centos7:latest\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
+    "<input class=\"form-control\" id=\"pushToLink\" name=\"pushToLink\" type=\"text\" ng-model=\"imageOptions.to.dockerImage\" placeholder=\"{{'example: centos/ruby-20-centos7:latest' | translate}}\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" required>\n" +
     "</div>\n" +
     "</div>\n" +
     "\n" +
@@ -9855,8 +9854,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"sources.git || !(updatedBuildConfig | isJenkinsPipelineStrategy)\" class=\"section\">\n" +
     "\n" +
     "<div ng-show=\"view.advancedOptions\">\n" +
-    "<h3 class=\"with-divider\">Triggers\n" +
-    "<a ng-href=\"{{'build-triggers' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
+    "<h3 class=\"with-divider\"><translate>Triggers</translate>\n" +
+    "<a ng-href=\"{{'build-triggers' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\" translate>Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
     "</h3>\n" +
     "<dl class=\"dl-horizontal left\">\n" +
     "<div>\n" +
@@ -9927,17 +9926,17 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "\n" +
     "<div ng-show=\"view.advancedOptions\">\n" +
     "<h3 class=\"with-divider\">\n" +
-    "Post-Commit Hooks\n" +
+    "<translate>Post-Commit Hooks</translate>\n" +
     "<span class=\"help action-inline\">\n" +
-    "<a href=\"{{'build-hooks' | helpLink}}\" aria-hidden=\"true\" target=\"_blank\"><span class=\"learn-more-inline\">Learn More&nbsp;<i class=\"fa fa-external-link\"></i></span></a>\n" +
+    "<a href=\"{{'build-hooks' | helpLink}}\" aria-hidden=\"true\" target=\"_blank\"><span class=\"learn-more-inline\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\"></i></span></a>\n" +
     "</span>\n" +
     "</h3>\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"view.hasHooks\" aria-describedby=\"build-hooks-help\">\n" +
-    "Run build hooks after image is built\n" +
+    "<translate>Run build hooks after image is built</translate>\n" +
     "</label>\n" +
-    "<div class=\"help-block\" id=\"build-hooks-help\">\n" +
+    "<div class=\"help-block\" id=\"build-hooks-help\" translate>\n" +
     "Build hooks allow you to run commands at the end of the build to verify the image.\n" +
     "</div>\n" +
     "</div>\n" +
@@ -10106,7 +10105,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label for=\"strategy-timeout\" translate>Timeout</label>\n" +
     "<span class=\"input-group\" ng-class=\"{ 'has-error': form.strategyTimeout.$invalid && form.strategyTimeout.$touched }\">\n" +
     "<input id=\"strategy-timeout\" type=\"number\" name=\"strategyTimeout\" ng-model=\"strategyData[strategyParamsPropertyName].timeoutSeconds\" placeholder=\"600\" pattern=\"\\d*\" min=\"0\" select-on-focus class=\"form-control\" aria-describedby=\"strategy-timeout-help\">\n" +
-    "<span class=\"input-group-addon\">seconds</span>\n" +
+    "<span class=\"input-group-addon\" translate>seconds</span>\n" +
     "</span>\n" +
     "<div class=\"help-block\" id=\"strategy-timeout-help\" translate>\n" +
     "How long to wait for a pod to scale up before giving up.\n" +
@@ -11017,7 +11016,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
     "<h1 class=\"modal-title\">\n" +
-    "Create {{type | capitalize}} Secret\n" +
+    "<translate>Create {{type | capitalize | translate}} Secret</translate>\n" +
     "<span ng-switch=\"type\">\n" +
     "<a ng-switch-when=\"webhook\" ng-href=\"{{'webhook_secrets' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
     "<a ng-switch-when=\"source\" ng-href=\"{{'git_secret' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a>\n" +
@@ -11886,11 +11885,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "Deploy Image\n" +
     "</button>\n" +
     "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromFile')\" translate>\n" +
-    "Import YAML / JSON11\n" +
+    "Import YAML / JSON\n" +
     "</button>\n" +
-    "<button class=\"btn btn-default btn-sm\" ng-click=\"showOrderingPanel('fromProject')\">\n" +
-    "Select from Project\n" +
-    "</button>\n" +
+    "\n" +
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!(project.metadata.name | canIAddToProject)\">\n" +
@@ -13340,12 +13337,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"projects-bar\">\n" +
     "<h1 translate>My Projects</h1>\n" +
     "<div class=\"projects-options\">\n" +
-    "<div class=\"projects-add\" ng-if=\"canCreate\">\n" +
-    "<button ng-click=\"createProject($event)\" class=\"btn btn-primary\">\n" +
-    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
-    "</button>\n" +
-    "</div>\n" +
+    "\n" +
     "<div class=\"projects-search\">\n" +
     "<form role=\"form\" class=\"search-pf has-button\">\n" +
     "<div class=\"form-group has-clear\">\n" +
@@ -14207,8 +14199,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"trigger in $ctrl.webhookTriggers track by $index\" ng-init=\"secretFieldName = 'triggerSecretRef' + $index\" class=\"form-group\">\n" +
     "<div class=\"row form-row-has-controls\">\n" +
     "<div class=\"select-webhook-type col-xs-6\">\n" +
-    "<ui-select ng-model=\"trigger.data.type\" name=\"triggerType{{$index}}\" ng-disabled=\"$ctrl.isDeprecated(trigger)\" on-select=\"$ctrl.triggerTypeChange(trigger)\" search-enabled=\"false\" title=\"Select a webhook type\" ng-class=\"{'has-warning': trigger.isDuplicate }\" focus-on=\"focus-index-{{$index}}\">\n" +
-    "<ui-select-match placeholder=\"Webhook type\">\n" +
+    "<ui-select ng-model=\"trigger.data.type\" name=\"triggerType{{$index}}\" ng-disabled=\"$ctrl.isDeprecated(trigger)\" on-select=\"$ctrl.triggerTypeChange(trigger)\" search-enabled=\"false\" title=\"{{'Select a webhook type'|translate}}\" ng-class=\"{'has-warning': trigger.isDuplicate }\" focus-on=\"focus-index-{{$index}}\">\n" +
+    "<ui-select-match placeholder=\"{{'Webhook type'|translate}}\">\n" +
     "{{ $select.selected.label }}\n" +
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"option.label as option in $ctrl.webhookTypesOptions\">\n" +
@@ -14217,8 +14209,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select>\n" +
     "</div>\n" +
     "<div class=\"select-secret-ref col-xs-6\" ng-if=\"!$ctrl.isDeprecated(trigger)\">\n" +
-    "<ui-select ng-model=\"trigger.data[trigger.data.type.toLowerCase()].secretReference.name\" name=\"{{secretFieldName}}\" on-select=\"$ctrl.triggerSecretChange(trigger)\" title=\"Select a webhook secret reference\" ng-class=\"{'has-error': $ctrl.secretsForm[secretFieldName].$invalid && $ctrl.secretsForm[secretFieldName].$touched}\" ng-disabled=\"!trigger.data.type\" ng-required=\"trigger.data.type\">\n" +
-    "<ui-select-match placeholder=\"Webhook secret reference\">\n" +
+    "<ui-select ng-model=\"trigger.data[trigger.data.type.toLowerCase()].secretReference.name\" name=\"{{secretFieldName}}\" on-select=\"$ctrl.triggerSecretChange(trigger)\" title=\"{{'Select a webhook secret reference'|translate}}\" ng-class=\"{'has-error': $ctrl.secretsForm[secretFieldName].$invalid && $ctrl.secretsForm[secretFieldName].$touched}\" ng-disabled=\"!trigger.data.type\" ng-required=\"trigger.data.type\">\n" +
+    "<ui-select-match placeholder=\"{{'Webhook secret reference'|translate}}\">\n" +
     "{{ $select.selected.metadata.name }}\n" +
     "</ui-select-match>\n" +
     "<ui-select-choices repeat=\"webhookSecret.metadata.name as webhookSecret in ($ctrl.webhookSecrets | filter : $select.search) track by (webhookSecret | uid)\">\n" +
@@ -14226,7 +14218,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ui-select-choices>\n" +
     "</ui-select>\n" +
     "<div class=\"has-error select-secret-ref\" ng-show=\"$ctrl.secretsForm[secretFieldName].$invalid && $ctrl.secretsForm[secretFieldName].$touched\">\n" +
-    "<span class=\"help-block\">\n" +
+    "<span class=\"help-block\" translate>\n" +
     "Secret reference is required.\n" +
     "</span>\n" +
     "</div>\n" +
@@ -14252,10 +14244,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group-actions\">\n" +
-    "<button class=\"btn btn-link pad-left-none\" type=\"button\" ng-click=\"$ctrl.addEmptyWebhookTrigger()\">Add Webhook</button>\n" +
+    "<button class=\"btn btn-link pad-left-none\" type=\"button\" ng-click=\"$ctrl.addEmptyWebhookTrigger()\" translate>Add Webhook</button>\n" +
     "<span ng-if=\"$ctrl.secretsVersion | canI : 'create'\">\n" +
     "<span class=\"action-divider\" aria-hidden=\"true\">|</span>\n" +
-    "<button class=\"btn btn-link\" href=\"\" type=\"button\" ng-click=\"$ctrl.openCreateWebhookSecretModal()\">Create New Webhook Secret</button>\n" +
+    "<button class=\"btn btn-link\" href=\"\" type=\"button\" ng-click=\"$ctrl.openCreateWebhookSecretModal()\" translate>Create New Webhook Secret</button>\n" +
     "</span>\n" +
     "</div>\n" +
     "</ng-form>"

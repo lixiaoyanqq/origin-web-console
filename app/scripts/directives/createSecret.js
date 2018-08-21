@@ -52,14 +52,14 @@ angular.module("openshiftConsole")
             authTypes: [
               {
                 id: "kubernetes.io/dockerconfigjson",
-                label: "Image Registry Credentials"
+                label: gettextCatalog.getString(gettext("Image Registry Credentials"))
               },
               // User can paste content of his docker configuration file, which could be either in old
               // '.dockercfg' format, or new '.docker/config.json' format. Because of that the secret type
               // is determined upon creating the secret, where we scan for the type of format.
               {
                 id: "kubernetes.io/dockercfg",
-                label: "Configuration File"
+                label: gettextCatalog.getString(gettext("Configuration File"))
               }
             ]
           },

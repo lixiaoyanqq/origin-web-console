@@ -39,8 +39,8 @@
                               required>
                           </div>
                           <div class="help-block" id="source-url-help">
-                            Git URL of the source code to build.
-                            <span ng-if="!view.advancedOptions">If your Git repository is private, view the <a href="" ng-click="view.advancedOptions = true">advanced options</a> to set up authentication.</span>
+                            <translate>Git URL of the source code to build.</translate>
+                            <span ng-if="!view.advancedOptions"><translate>If your Git repository is private, view the</translate> <a href="" ng-click="view.advancedOptions = true" translate>advanced options</a> <translate>to set up authentication</translate>.</span>
                           </div>
                           <div class="has-error" ng-if="form.sourceUrl.$touched && form.sourceUrl.$error.required">
                             <span class="help-block" translate>A Git repository URL is required.</span>
@@ -361,7 +361,7 @@
                     <div class="checkbox">
                       <label>
                         <input type="checkbox" ng-model="options.forcePull">
-                        Always pull the builder image from the docker registry, even if it is present locally
+                        <translate>Always pull the builder image from the docker registry, even if it is present locally</translate>
                       </label>
                     </div>
                   </div>
@@ -390,7 +390,7 @@
                           name="pushToLink"
                           type="text"
                           ng-model="imageOptions.to.dockerImage"
-                          placeholder="example: centos/ruby-20-centos7:latest"
+                          placeholder="{{'example: centos/ruby-20-centos7:latest' | translate}}"
                           autocorrect="off"
                           autocapitalize="none"
                           spellcheck="false"
@@ -440,8 +440,8 @@
               <div ng-if="sources.git || !(updatedBuildConfig | isJenkinsPipelineStrategy)" class="section">
                 <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
                 <div ng-show="view.advancedOptions">
-                  <h3 class="with-divider">Triggers
-                    <a ng-href="{{'build-triggers' | helpLink}}" target="_blank"><span class="learn-more-inline">Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+                  <h3 class="with-divider"><translate>Triggers</translate>
+                    <a ng-href="{{'build-triggers' | helpLink}}" target="_blank"><span class="learn-more-inline" translate>Learn More&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span></a>
                   </h3>
                   <dl class="dl-horizontal left">
                     <div>
@@ -535,18 +535,18 @@
                 <!-- Use ng-show instead of ng-if so the form is still marked invalid if a hidden field has errors. -->
                 <div ng-show="view.advancedOptions">
                   <h3 class="with-divider">
-                    Post-Commit Hooks
+                    <translate>Post-Commit Hooks</translate>
                     <span class="help action-inline">
-                      <a href="{{'build-hooks' | helpLink}}" aria-hidden="true" target="_blank"><span class="learn-more-inline">Learn More&nbsp;<i class="fa fa-external-link"></i></span></a>
+                      <a href="{{'build-hooks' | helpLink}}" aria-hidden="true" target="_blank"><span class="learn-more-inline"><translate>Learn More</translate>&nbsp;<i class="fa fa-external-link"></i></span></a>
                     </span>
                   </h3>
 
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" ng-model="view.hasHooks" aria-describedby="build-hooks-help">
-                      Run build hooks after image is built
+                      <translate>Run build hooks after image is built</translate>
                     </label>
-                    <div class="help-block" id="build-hooks-help">
+                    <div class="help-block" id="build-hooks-help" translate>
                       Build hooks allow you to run commands at the end of the build to verify the image.
                     </div>
                   </div>

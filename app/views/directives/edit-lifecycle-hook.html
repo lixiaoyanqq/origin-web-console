@@ -16,8 +16,8 @@
             name="{{type}}-action-newpod"
             ng-model="action.type"
             value="execNewPod"
-            aria-describedby="action-help" translate>
-          Run a specific command in a new pod
+            aria-describedby="action-help">
+          <translate>Run a specific command in a new pod</translate>
         </label>
         <label class="radio-inline">
           <input
@@ -25,8 +25,8 @@
             name="{{type}}-action-images"
             ng-model="action.type"
             value="tagImages"
-            aria-describedby="action-help" translate>
-          Tag image if the deployment succeeds
+            aria-describedby="action-help">
+          <translate>Tag image if the deployment succeeds</translate>
         </label>
         <div  id="action-help" class="help-block">
           <span ng-if="action.type === 'execNewPod'" translate>Runs a command in a new pod using the container from the deployment template. You can add additional environment variables and volumes.</span>
