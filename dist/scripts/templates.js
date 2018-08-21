@@ -6475,8 +6475,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!$first && $last\" translate>and</span>\n" +
     "{{port.containerPort}}/{{port.protocol}}<span ng-if=\"!$last && ports.length > 2\">,</span>\n" +
     "</span>\n" +
-    "<translate>will be load balanced by Service</translate> <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.\n" +
-    "<div><translate>Other containers can access this service through the hostname</translate> <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.</div>\n" +
+    "<translate>will be load balanced by Service <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.</translate>\n" +
+    "<div translate>Other containers can access this service through the hostname <strong>{{app.name || \"&lt;name&gt;\"}}</strong>.</div>\n" +
     "</li>\n" +
     "</ul>\n" +
     "<div ng-if=\"(volumes | hashSize) > 0\" class=\"help-block\" translate>\n" +
@@ -7330,13 +7330,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</a>\n" +
     "<ul uib-dropdown-menu aria-labelledby=\"help-dropdown\" extension-point extension-name=\"nav-help-dropdown\" extension-types=\"dom html\"></ul>\n" +
     "</li>\n" +
-    "<li uib-dropdown ng-cloak ng-if=\"user\">\n" +
-    "<a href=\"\" uib-dropdown-toggle id=\"user-dropdown\" class=\"nav-item-iconic\">\n" +
-    "<span class=\"fa pf-icon pficon-user\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"username truncate\">{{user.fullName || user.metadata.name}}</span> <span class=\"caret\" aria-hidden=\"true\"></span>\n" +
-    "</a>\n" +
-    "<ul uib-dropdown-menu aria-labelledby=\"user-dropdown\" extension-point extension-name=\"nav-user-dropdown\" extension-types=\"dom html\"></ul>\n" +
-    "</li>\n" +
+    "\n" +
     "</ul>"
   );
 

@@ -3706,7 +3706,7 @@ msgid "Other Trigger:"
 msgstr ""
 
 #: app/views/directives/deploy-image.html:113
-msgid "Other containers can access this service through the hostname"
+msgid "Other containers can access this service through the hostname <strong>{{app.name || \"&lt;name&gt;\"}}</strong>."
 msgstr ""
 
 #: app/views/browse/_build-details.html:89
@@ -6776,7 +6776,7 @@ msgid "was cancelled."
 msgstr ""
 
 #: app/views/directives/deploy-image.html:112
-msgid "will be load balanced by Service"
+msgid "will be load balanced by Service <strong>{{app.name || \"&lt;name&gt;\"}}</strong>."
 msgstr ""
 
 #: app/views/directives/deploy-image.html:19
