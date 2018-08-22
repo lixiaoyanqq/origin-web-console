@@ -26,8 +26,10 @@ function Noop() {
   gettext('Complete');
   gettext('complete');
   gettext('Completed');
+  gettext('config-map');
   gettext('Config Map');
   gettext('Collapse');
+  gettext('Config map');
   gettext('Configuration File');
   gettext('Cores');
   gettext('CPU (Limit)');

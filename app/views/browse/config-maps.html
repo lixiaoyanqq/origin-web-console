@@ -62,7 +62,7 @@
                   <span am-time-ago="configMap.metadata.creationTimestamp"></span>
                 </td>
                 <td data-title="Labels">
-                  <em ng-if="(configMap.metadata.labels | hashSize) === 0">none</em>
+                  <em ng-if="(configMap.metadata.labels | hashSize) === 0" translate>none</em>
                   <labels labels="configMap.metadata.labels" clickable="true" kind="Config Map" project-name="{{configMap.metadata.namespace}}" limit="3" filter-current-page="true"></labels>
                 </td>
               </tr>

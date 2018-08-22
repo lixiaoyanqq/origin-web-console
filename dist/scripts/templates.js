@@ -2232,7 +2232,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span am-time-ago=\"configMap.metadata.creationTimestamp\"></span>\n" +
     "</td>\n" +
     "<td data-title=\"Labels\">\n" +
-    "<em ng-if=\"(configMap.metadata.labels | hashSize) === 0\">none</em>\n" +
+    "<em ng-if=\"(configMap.metadata.labels | hashSize) === 0\" translate>none</em>\n" +
     "<labels labels=\"configMap.metadata.labels\" clickable=\"true\" kind=\"Config Map\" project-name=\"{{configMap.metadata.namespace}}\" limit=\"3\" filter-current-page=\"true\"></labels>\n" +
     "</td>\n" +
     "</tr>\n" +
@@ -5150,7 +5150,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a ng-if=\"deploymentConfigs[dcName]\" href=\"{{dcName | navigateResourceURL : 'DeploymentConfig' : projectName}}\">{{dcName}}</a>\n" +
     "<span ng-if=\"deploymentConfigs[dcName].status.details.message\" class=\"pficon pficon-warning-triangle-o\" style=\"cursor: help\" data-toggle=\"popover\" data-trigger=\"hover\" dynamic-content=\"{{deploymentConfigs[dcName].status.details.message}}\"></span>\n" +
     "</td>\n" +
-    "<td data-title=\"Last Version\"><em>No deployments</em></td>\n" +
+    "<td data-title=\"Last Version\"><em translate>No deployments</em></td>\n" +
     "<td class=\"hidden-xs\">&nbsp;</td>\n" +
     "<td class=\"hidden-xs\">&nbsp;</td>\n" +
     "<td class=\"hidden-xs\">&nbsp;</td>\n" +
@@ -6675,10 +6675,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label for=\"key-value-map-name\" class=\"required\" translate>Name</label>\n" +
     "\n" +
     "<div ng-class=\"{ 'has-error': keyValueMapForm.name.$invalid && keyValueMapForm.name.$touched }\">\n" +
-    "<input id=\"key-value-map-name\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"map.metadata.name\" ng-required=\"showNameInput\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" placeholder=\"my-{{type}}\" select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"key-value-map-name-help\">\n" +
+    "<input id=\"key-value-map-name\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"map.metadata.name\" ng-required=\"showNameInput\" ng-pattern=\"nameValidation.pattern\" ng-maxlength=\"nameValidation.maxlength\" placeholder=\"{{'my'|translate}}-{{type | translate}}\" select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"key-value-map-name-help\">\n" +
     "</div>\n" +
     "<div>\n" +
-    "<span id=\"key-value-map-name-help\" class=\"help-block\">A unique name for the {{type}} within the project.</span>\n" +
+    "<span id=\"key-value-map-name-help\" class=\"help-block\" translate>A unique name for the {{type | translate}} within the project.</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"keyValueMapForm.name.$error.pattern && keyValueMapForm.name.$touched\">\n" +
     "<span class=\"help-block\">\n" +
@@ -6697,7 +6697,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div ng-if=\"!data.length\">\n" +
-    "<p><em>The {{type}} has no items.</em></p>\n" +
+    "<p><em translate>The {{type | translate}} has no items.</em></p>\n" +
     "<a href=\"\" ng-click=\"addItem()\" translate>Add Item</a>\n" +
     "</div>\n" +
     "<div ng-repeat=\"item in data\" ng-init=\"keys = getKeys()\">\n" +
@@ -6705,7 +6705,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<label ng-attr-for=\"key-{{$id}}\" class=\"required\" translate>Key</label>\n" +
     "\n" +
     "<div ng-class=\"{ 'has-error': keyValueMapForm['key-' + $id].$invalid && keyValueMapForm['key-' + $id].$touched }\">\n" +
-    "<input class=\"form-control\" name=\"key-{{$id}}\" ng-attr-id=\"key-{{$id}}\" type=\"text\" ng-model=\"item.key\" required ng-pattern=\"/^[-._a-zA-Z0-9]+$/\" ng-maxlength=\"253\" osc-unique=\"keys\" placeholder=\"my.key\" select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"key-{{$id}}-help\">\n" +
+    "<input class=\"form-control\" name=\"key-{{$id}}\" ng-attr-id=\"key-{{$id}}\" type=\"text\" ng-model=\"item.key\" required ng-pattern=\"/^[-._a-zA-Z0-9]+$/\" ng-maxlength=\"253\" osc-unique=\"keys\" placeholder=\"{{my.key|translate}}\" select-on-focus autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"key-{{$id}}-help\">\n" +
     "</div>\n" +
     "<div class=\"help-block\" translate>\n" +
     "A unique key for this {{type | translate}} entry.\n" +
@@ -11120,7 +11120,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 class=\"modal-title\" translate>Confirm Delete</h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
-    "<p translate>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind)}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>\n" +
+    "<p translate>Are you sure you want to delete the {{typeDisplayName || (kind | humanizeKind) | translate}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</p>\n" +
     "<p>\n" +
     "<span ng-if=\"kind === 'DeploymentConfig'\" translate>\n" +
     "This will delete the deployment config, all rollout history, and any running pods.\n" +
@@ -13431,13 +13431,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>OpenShift helps you quickly develop, host, and scale applications.</translate><br>\n" +
     "<span ng-if=\"canCreate\" translate>Create a project for your application.</span>\n" +
     "</p>\n" +
-    "<div ng-if=\"canCreate\">\n" +
-    "<button ng-click=\"createProject($event)\" class=\"btn btn-lg btn-primary\">\n" +
-    "<span class=\"fa fa-plus\" aria-hidden=\"true\"></span>\n" +
-    "<span class=\"icon-button-text\" translate>Create Project</span>\n" +
-    "</button>\n" +
-    "</div>\n" +
-    "<p>To learn more, visit the OpenShift <a target=\"_blank\" ng-href=\"{{'' | helpLink}}\">documentation</a>.</p>\n" +
+    "\n" +
+    "\n" +
     "<p class=\"projects-instructions\" ng-if=\"canCreate === false\" ng-include=\"'views/_cannot-create-project.html'\"></p>\n" +
     "</div>\n" +
     "</div>\n" +
