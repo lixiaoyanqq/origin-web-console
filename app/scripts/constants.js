@@ -85,6 +85,7 @@ function Noop() {
   gettext('running');
   gettext('Running');
   gettext('Search Catalog');
+  gettext('secret');
   gettext('See All');
   gettext('Select an application');
   gettext('service account');

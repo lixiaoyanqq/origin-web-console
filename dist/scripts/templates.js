@@ -6183,8 +6183,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-if=\"add.cacert\" id=\"cacert\">\n" +
-    "<label class=\"required\" for=\"cacert\">CA Certificate File</label>\n" +
-    "<osc-file-input id=\"cacert-file-input\" model=\"newSecret.data.cacert\" drop-zone-id=\"cacert\" help-text=\"Upload your ca.crt file.\" required=\"true\"></osc-file-input>\n" +
+    "<label class=\"required\" for=\"cacert\" translate>CA Certificate File</label>\n" +
+    "<osc-file-input id=\"cacert-file-input\" model=\"newSecret.data.cacert\" drop-zone-id=\"cacert\" help-text=\"{{'Upload your ca.crt file.'|translate}}\" required=\"true\"></osc-file-input>\n" +
     "<div ui-ace=\"{\n" +
     "            mode: 'txt',\n" +
     "            theme: 'eclipse',\n" +
@@ -6221,8 +6221,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "<div class=\"form-group\" ng-if=\"add.gitconfig\" id=\"gitconfig\">\n" +
-    "<label class=\"required\" for=\"gitconfig\">Git Configuration File</label>\n" +
-    "<osc-file-input id=\"gitconfig-file-input\" model=\"newSecret.data.gitconfig\" drop-zone-id=\"gitconfig\" help-text=\"Upload your .gitconfig or  file.\" required=\"true\"></osc-file-input>\n" +
+    "<label class=\"required\" for=\"gitconfig\" translate>Git Configuration File</label>\n" +
+    "<osc-file-input id=\"gitconfig-file-input\" model=\"newSecret.data.gitconfig\" drop-zone-id=\"gitconfig\" help-text=\"{{'Upload your .gitconfig or  file.'|translate}}\" required=\"true\"></osc-file-input>\n" +
     "<div ui-ace=\"{\n" +
     "            mode: 'ini',\n" +
     "            theme: 'eclipse',\n" +
@@ -6319,7 +6319,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label class=\"required\" translate>Service Account</label>\n" +
     "<ui-select required ng-model=\"newSecret.pickedServiceAccountToLink\">\n" +
-    "<ui-select-match placeholder=\"Service Account Name\">{{$select.selected}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Service Account Name'|translate}}\">{{$select.selected}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"sa in (serviceAccountsNames | filter : $select.search)\">\n" +
     "<div ng-bind-html=\"sa | highlight : $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
