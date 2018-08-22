@@ -5658,6 +5658,10 @@ msgstr ""
 msgid "This will remove the volume from the deployment."
 msgstr ""
 
+#: app/views/browse/deployment-config.html:97
+msgid "This will stop any new rollouts or triggers from running until resumed."
+msgstr ""
+
 #: app/views/edit/autoscaler.html:32
 msgid "This {{targetKind | humanizeKind}} does not have any containers with a CPU"
 msgstr ""
@@ -6552,6 +6556,10 @@ msgstr ""
 msgid "is being rebuilt as"
 msgstr ""
 
+#: app/views/browse/deployment-config.html:96
+msgid "is paused."
+msgstr ""
+
 #: app/views/directives/add-config-to-application.html:45
 msgid "keys with valid names will be added as environment variables."
 msgstr ""
@@ -6673,6 +6681,10 @@ msgstr ""
 
 #: app/views/_volumes.html:37
 msgid "persistent volume claim"
+msgstr ""
+
+#: app/views/browse/pod.html:39
+msgid "pod.metadata.creationTimestamp"
 msgstr ""
 
 #: app/scripts/constants.js:71
@@ -7051,4 +7063,8 @@ msgstr ""
 
 #: app/views/browse/secret.html:62
 msgid "{{view.showSecret ? \"Hide\" : \"Reveal\"}} Secret"
+msgstr ""
+
+#: app/views/browse/deployment-config.html:143
+msgid "没有部署可以显示"
 msgstr ""
