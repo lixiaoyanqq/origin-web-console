@@ -16,7 +16,8 @@
         </div>
       </div>
     </div>
-  </div><!-- /middle-header-->
+  </div>
+  <!-- /middle-header-->
   <div class="middle-content">
     <div class="container-fluid">
       <alerts alerts="alerts"></alerts>
@@ -32,10 +33,10 @@
                 <p translate>
                   No persistent volume claims have been added to project {{projectName}}.
                 </p>
-                <p ng-if="project && (persistentVolumeClaimsVersion | canI : 'create') && !filterWithZeroResults">
+                <!-- <p ng-if="project && (persistentVolumeClaimsVersion | canI : 'create') && !filterWithZeroResults">
                   <a ng-if="!outOfClaims" ng-href="project/{{project.metadata.name}}/create-pvc" class="btn btn-primary" translate>Create Storage</a>
                   <a ng-if="outOfClaims" href="" class="btn btn-primary disabled" aria-disabled="true" translate>Create Storage</a>
-	              </p>
+	              </p> -->
               </div>
               <div ng-if="filterWithZeroResults">
                 <h2><translate>The filter is hiding all persistent volume claims.</translate> <button type="button" class="btn btn-link inline-btn-link" ng-click="clearFilter()">Clear All Filters</button></h2>

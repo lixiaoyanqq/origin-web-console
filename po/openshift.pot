@@ -222,7 +222,7 @@ msgstr ""
 msgid "Access Mode"
 msgstr ""
 
-#: app/views/storage.html:54
+#: app/views/storage.html:55
 msgid "Access Modes"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 
 #: app/views/directives/pods-table.html:12
 #: app/views/services.html:45
-#: app/views/storage.html:55
+#: app/views/storage.html:56
 msgid "Age"
 msgstr ""
 
@@ -1048,7 +1048,7 @@ msgstr ""
 msgid "Cannot create {{kind}} \"{{name}}\"."
 msgstr ""
 
-#: app/views/storage.html:53
+#: app/views/storage.html:54
 msgid "Capacity"
 msgstr ""
 
@@ -1104,6 +1104,10 @@ msgstr ""
 
 #: app/views/create-from-url.html:17
 msgid "Choose a Project"
+msgstr ""
+
+#: app/views/monitoring.html:13
+msgid "Choose a resource"
 msgstr ""
 
 #: app/views/other-resources.html:9
@@ -1511,8 +1515,6 @@ msgstr ""
 
 #: app/views/attach-pvc.html:18
 #: app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:36
-#: app/views/storage.html:37
 #: app/views/storage.html:6
 #: app/views/storage.html:7
 msgid "Create Storage"
@@ -2935,7 +2937,7 @@ msgstr ""
 #: app/views/service-instances.html:26
 #: app/views/services.html:21
 #: app/views/set-limits.html:7
-#: app/views/storage.html:26
+#: app/views/storage.html:27
 msgid "Loading..."
 msgstr ""
 
@@ -3320,7 +3322,7 @@ msgstr ""
 #: app/views/secrets.html:48
 #: app/views/service-instances.html:45
 #: app/views/services.html:40
-#: app/views/storage.html:51
+#: app/views/storage.html:52
 msgid "Name"
 msgstr ""
 
@@ -3531,12 +3533,12 @@ msgstr ""
 msgid "No metrics to display."
 msgstr ""
 
-#: app/views/storage.html:32
+#: app/views/storage.html:33
 msgid "No persistent volume claims have been added to project {{projectName}}."
 msgstr ""
 
 #: app/views/attach-pvc.html:10
-#: app/views/storage.html:31
+#: app/views/storage.html:32
 msgid "No persistent volume claims."
 msgstr ""
 
@@ -4928,6 +4930,10 @@ msgstr ""
 msgid "Specify details about how volumes are going to be mounted inside containers."
 msgstr ""
 
+#: app/views/directives/osc-routing.html:154
+msgid "Split traffic across multiple services"
+msgstr ""
+
 #: app/views/browse/build-config.html:122
 #: app/views/browse/build-config.html:13
 #: app/views/browse/build-config.html:32
@@ -4984,7 +4990,7 @@ msgstr ""
 #: app/views/deployments.html:48
 #: app/views/directives/pods-table.html:9
 #: app/views/service-instances.html:47
-#: app/views/storage.html:52
+#: app/views/storage.html:53
 msgid "Status"
 msgstr ""
 
@@ -5319,7 +5325,7 @@ msgstr ""
 msgid "The filter is hiding all image streams."
 msgstr ""
 
-#: app/views/storage.html:41
+#: app/views/storage.html:42
 msgid "The filter is hiding all persistent volume claims."
 msgstr ""
 
@@ -6875,7 +6881,7 @@ msgstr ""
 msgid "username"
 msgstr ""
 
-#: app/views/storage.html:61
+#: app/views/storage.html:62
 msgid "using storage class {{pvc | storageClass}}"
 msgstr ""
 
