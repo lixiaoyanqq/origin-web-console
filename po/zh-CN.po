@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-22 11:39+0800\n"
+"PO-Revision-Date: 2018-08-22 14:52+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -293,7 +293,7 @@ msgstr "关于计算资源"
 msgid "Access Mode"
 msgstr "访问模式"
 
-#: app/views/storage.html:54
+#: app/views/storage.html:55
 msgid "Access Modes"
 msgstr "访问模式"
 
@@ -584,7 +584,7 @@ msgid ""
 msgstr "当你登录到你的帐户后，你会得到一个你可以切换的项目列表:"
 
 #: app/views/directives/pods-table.html:12 app/views/services.html:45
-#: app/views/storage.html:55
+#: app/views/storage.html:56
 msgid "Age"
 msgstr "运行时间"
 
@@ -1172,7 +1172,7 @@ msgstr "已取消"
 msgid "Cannot create {{kind}} \"{{name}}\"."
 msgstr "无法创建{{kind}} \"{{name}}\"."
 
-#: app/views/storage.html:53
+#: app/views/storage.html:54
 msgid "Capacity"
 msgstr "能力"
 
@@ -1231,6 +1231,10 @@ msgstr "选择现有的项目"
 #: app/views/create-from-url.html:17
 msgid "Choose a Project"
 msgstr "选择一个项目"
+
+#: app/views/monitoring.html:13
+msgid "Choose a resource"
+msgstr "选择要列出的资源..."
 
 #: app/views/other-resources.html:9
 msgid "Choose a resource to list..."
@@ -1625,8 +1629,7 @@ msgid "Create Secret"
 msgstr "创建私密凭证"
 
 #: app/views/attach-pvc.html:18 app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:36 app/views/storage.html:37 app/views/storage.html:6
-#: app/views/storage.html:7
+#: app/views/storage.html:6 app/views/storage.html:7
 msgid "Create Storage"
 msgstr "创建存储"
 
@@ -3039,7 +3042,7 @@ msgstr "正在载入监控"
 #: app/views/pipelines.html:17 app/views/pods.html:21
 #: app/views/projects.html:15 app/views/quota.html:10 app/views/secrets.html:24
 #: app/views/service-instances.html:26 app/views/services.html:21
-#: app/views/set-limits.html:7 app/views/storage.html:26
+#: app/views/set-limits.html:7 app/views/storage.html:27
 msgid "Loading..."
 msgstr "加载中…"
 
@@ -3421,7 +3424,7 @@ msgstr "我的项目列表"
 #: app/views/images.html:43 app/views/membership.html:155
 #: app/views/membership.html:58 app/views/other-resources.html:51
 #: app/views/secrets.html:48 app/views/service-instances.html:45
-#: app/views/services.html:40 app/views/storage.html:51
+#: app/views/services.html:40 app/views/storage.html:52
 msgid "Name"
 msgstr "名称"
 
@@ -3640,11 +3643,11 @@ msgstr "这个镜像没有任何层信息。"
 msgid "No metrics to display."
 msgstr "没有监控显示。"
 
-#: app/views/storage.html:32
+#: app/views/storage.html:33
 msgid "No persistent volume claims have been added to project {{projectName}}."
 msgstr "无持久化卷声明被添加到项目{{projectName}}。"
 
-#: app/views/attach-pvc.html:10 app/views/storage.html:31
+#: app/views/attach-pvc.html:10 app/views/storage.html:32
 msgid "No persistent volume claims."
 msgstr "没有持久的卷被声明。"
 
@@ -3657,8 +3660,6 @@ msgid "No pipeline runs."
 msgstr "没有管道运行。"
 
 #: app/views/overview.html:274
-#, fuzzy
-#| msgid "No services have been added to project"
 msgid "No pipelines have been added to project"
 msgstr "没有服务添加到项目中"
 
@@ -5055,6 +5056,10 @@ msgid ""
 "Specify details about how volumes are going to be mounted inside containers."
 msgstr "指定如何将卷挂载入容器内的详情。"
 
+#: app/views/directives/osc-routing.html:154
+msgid "Split traffic across multiple services"
+msgstr "这条路由会在多个服务之间分割流量。"
+
 #: app/views/browse/build-config.html:122 app/views/browse/build-config.html:13
 #: app/views/browse/build-config.html:32
 #: app/views/overview/_list-row-actions.html:15
@@ -5103,7 +5108,7 @@ msgstr "有状态集群"
 #: app/views/browse/deployment-config.html:154
 #: app/views/browse/service-instance.html:67 app/views/builds.html:53
 #: app/views/deployments.html:48 app/views/directives/pods-table.html:9
-#: app/views/service-instances.html:47 app/views/storage.html:52
+#: app/views/service-instances.html:47 app/views/storage.html:53
 msgid "Status"
 msgstr "状态"
 
@@ -5481,7 +5486,7 @@ msgstr "过滤器隐藏了所有的部署。"
 msgid "The filter is hiding all image streams."
 msgstr "过滤器隐藏所有的镜像流"
 
-#: app/views/storage.html:41
+#: app/views/storage.html:42
 msgid "The filter is hiding all persistent volume claims."
 msgstr "过滤器隐藏了所有持久的卷声明。"
 
@@ -7170,7 +7175,7 @@ msgstr "用户"
 msgid "username"
 msgstr "用户名"
 
-#: app/views/storage.html:61
+#: app/views/storage.html:62
 msgid "using storage class {{pvc | storageClass}}"
 msgstr "使用存储类{{pvc | storageClass}}"
 

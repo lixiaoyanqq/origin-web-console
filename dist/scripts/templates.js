@@ -8574,8 +8574,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
-    "<input type=\"checkbox\" ng-model=\"options.alternateServices\" aria-describedby=\"secure-route-help\" translate>\n" +
-    "Split traffic across multiple services\n" +
+    "<input type=\"checkbox\" ng-model=\"options.alternateServices\" aria-describedby=\"secure-route-help\">\n" +
+    "<translate>Split traffic across multiple services</translate>\n" +
     "</label>\n" +
     "<div class=\"help-block\" translate>\n" +
     "Routes can direct traffic to multiple services for A/B testing. Each service has a weight controlling how much traffic it gets.\n" +
@@ -11329,7 +11329,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"data-toolbar\">\n" +
     "<ui-select class=\"data-toolbar-dropdown\" ng-model=\"kindSelector.selected\" theme=\"bootstrap\" search-enabled=\"true\" ng-disabled=\"kindSelector.disabled\" title=\"Choose a resource\">\n" +
-    "<ui-select-match placeholder=\"Choose a resource|translate\">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>\n" +
+    "<ui-select-match placeholder=\"{{'Choose a resource' | translate}}\">{{$select.selected.label ? $select.selected.label : ($select.selected.kind | humanizeKind : true)}}</ui-select-match>\n" +
     "<ui-select-choices repeat=\"kind in kinds | filter : {kind: $select.search} : matchKind\">\n" +
     "<div ng-bind-html=\"(kind.label ? kind.label : (kind.kind | humanizeKind : true)) | highlight: $select.search\"></div>\n" +
     "</ui-select-choices>\n" +
@@ -14007,6 +14007,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</div>\n" +
+    "\n" +
     "<div class=\"middle-content\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<alerts alerts=\"alerts\"></alerts>\n" +
@@ -14022,10 +14023,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<p translate>\n" +
     "No persistent volume claims have been added to project {{projectName}}.\n" +
     "</p>\n" +
-    "<p ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && !filterWithZeroResults\">\n" +
-    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
-    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-primary disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
-    "</p>\n" +
+    "\n" +
     "</div>\n" +
     "<div ng-if=\"filterWithZeroResults\">\n" +
     "<h2><translate>The filter is hiding all persistent volume claims.</translate> <button type=\"button\" class=\"btn btn-link inline-btn-link\" ng-click=\"clearFilter()\">Clear All Filters</button></h2>\n" +
