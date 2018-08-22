@@ -2322,8 +2322,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"col-md-12\" ng-class=\"{ 'hide-tabs' : !deploymentConfig }\">\n" +
     "<div ng-if=\"deploymentConfig.spec.paused && !updatingPausedState\" class=\"alert alert-info animate-if\">\n" +
     "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
-    "<strong>{{deploymentConfig.metadata.name}} is paused.</strong>\n" +
-    "This will stop any new rollouts or triggers from running until resumed.\n" +
+    "<strong>{{deploymentConfig.metadata.name}} <translate>is paused.</translate></strong>\n" +
+    "<translate>This will stop any new rollouts or triggers from running until resumed.</translate>\n" +
     "<span ng-if=\"!updatingPausedState && (deploymentConfigsVersion | canI : 'update')\" class=\"nowrap\">\n" +
     "<a href=\"\" ng-click=\"setPaused(false)\" role=\"button\" translate>Resume Rollouts</a>\n" +
     "</span>\n" +
@@ -2366,7 +2366,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</tr>\n" +
     "</thead>\n" +
     "<tbody ng-if=\"(deployments | hashSize) == 0\">\n" +
-    "<tr><td colspan=\"4\"><em>{{emptyMessage}}</em></td></tr>\n" +
+    "<tr><td colspan=\"4\"><em translate>没有部署可以显示</em></td></tr>\n" +
     "</tbody>\n" +
     "<tbody ng-if=\"(deployments | hashSize) > 0\">\n" +
     "<tr ng-repeat=\"deployment in orderedDeployments\">\n" +
@@ -3016,7 +3016,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"pod | isTroubledPod\">\n" +
     "<pod-warnings pod=\"pod\"></pod-warnings>\n" +
     "</span>\n" +
-    "<small class=\"meta\"><translate>created</translate> <span am-time-ago=\"pod.metadata.creationTimestamp\"></span></small>\n" +
+    "<small class=\"meta\"><translate>created</translate> <span am-time-ago=\"{{'pod.metadata.creationTimestamp' | translate}}\"></span></small>\n" +
     "</h1>\n" +
     "<labels labels=\"pod.metadata.labels\" clickable=\"true\" kind=\"pods\" project-name=\"{{pod.metadata.namespace}}\" limit=\"3\"></labels>\n" +
     "</div>\n" +

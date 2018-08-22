@@ -93,8 +93,8 @@
         <div class="col-md-12" ng-class="{ 'hide-tabs' : !deploymentConfig }">
           <div ng-if="deploymentConfig.spec.paused && !updatingPausedState" class="alert alert-info animate-if">
             <span class="pficon pficon-info" aria-hidden="true"></span>
-            <strong>{{deploymentConfig.metadata.name}} is paused.</strong>
-            This will stop any new rollouts or triggers from running until resumed.
+            <strong>{{deploymentConfig.metadata.name}} <translate>is paused.</translate></strong>
+            <translate>This will stop any new rollouts or triggers from running until resumed.</translate>
             <span ng-if="!updatingPausedState && (deploymentConfigsVersion | canI : 'update')" class="nowrap">
               <a href="" ng-click="setPaused(false)" role="button" translate>Resume Rollouts</a>
             </span>
@@ -140,7 +140,7 @@
                   </tr>
                 </thead>
                 <tbody ng-if="(deployments | hashSize) == 0">
-                  <tr><td colspan="4"><em>{{emptyMessage}}</em></td></tr>
+                  <tr><td colspan="4"><em translate>没有部署可以显示</em></td></tr>
                 </tbody>
                 <tbody ng-if="(deployments | hashSize) > 0">
                   <tr ng-repeat="deployment in orderedDeployments">

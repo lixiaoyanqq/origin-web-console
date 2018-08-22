@@ -36,7 +36,7 @@
           <span ng-if="pod | isTroubledPod">
             <pod-warnings pod="pod"></pod-warnings>
           </span>
-	  <small class="meta"><translate>created</translate> <span am-time-ago="pod.metadata.creationTimestamp"></span></small>
+	  <small class="meta"><translate>created</translate> <span am-time-ago="{{'pod.metadata.creationTimestamp' | translate}}"></span></small>
         </h1>
         <labels labels="pod.metadata.labels" clickable="true" kind="pods" project-name="{{pod.metadata.namespace}}" limit="3"></labels>
       </div>
