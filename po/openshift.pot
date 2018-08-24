@@ -1649,6 +1649,10 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: app/views/attach-pvc.html:123
+msgid "Defaults to the volume's root."
+msgstr ""
+
 #: app/scripts/controllers/quota.js:28
 msgid "Defines minimum and maximum constraints for runtime resources such as memory and CPU."
 msgstr ""
@@ -2781,7 +2785,7 @@ msgstr ""
 #: app/views/directives/create-secret.html:335
 #: app/views/directives/create-secret.html:73
 #: app/views/directives/edit-lifecycle-hook.html:34
-#: app/views/directives/osc-autoscaling.html:121
+#: app/views/directives/osc-autoscaling.html:120
 #: app/views/directives/osc-persistent-volume-claim.html:224
 #: app/views/directives/osc-persistent-volume-claim.html:56
 #: app/views/directives/osc-routing.html:252
@@ -3735,10 +3739,8 @@ msgstr ""
 msgid "Optional branch, tag, or commit."
 msgstr ""
 
-#: app/views/attach-pvc.html:121
-msgid ""
-"Optional path within the volume from which it will be mounted into the\n"
-"                      container. Defaults to the volume's root."
+#: app/views/attach-pvc.html:122
+msgid "Optional path within the volume from which it will be mounted into the container."
 msgstr ""
 
 #: app/views/create/fromimage.html:137
@@ -3848,6 +3850,7 @@ msgid "Path value will not be used. Paths cannot be set for passthrough TLS."
 msgstr ""
 
 #: app/views/_volumes.html:54
+#: app/views/browse/route.html:95
 msgid "Path:"
 msgstr ""
 
@@ -3957,6 +3960,10 @@ msgstr ""
 #: app/views/overview.html:258
 #: app/views/pods.html:6
 msgid "Pods"
+msgstr ""
+
+#: app/views/directives/osc-autoscaling.html:117
+msgid "Pods will be added or removed periodically when CPU usage exceeds or drops below this target value."
 msgstr ""
 
 #: app/views/directives/osc-routing.html:274
@@ -5152,11 +5159,11 @@ msgstr ""
 msgid "Tags the current image as an image stream tag if the deployment succeeds."
 msgstr ""
 
-#: app/views/directives/osc-autoscaling.html:128
+#: app/views/directives/osc-autoscaling.html:127
 msgid "Target CPU percentage must be a whole number."
 msgstr ""
 
-#: app/views/directives/osc-autoscaling.html:131
+#: app/views/directives/osc-autoscaling.html:130
 msgid "Target CPU percentage must be greater than 1."
 msgstr ""
 
@@ -5440,11 +5447,8 @@ msgstr ""
 msgid "The number of old replica sets to keep."
 msgstr ""
 
-#: app/views/directives/osc-autoscaling.html:115
-msgid ""
-"The percentage of the CPU request that each pod should ideally be using.\n"
-"      Pods will be added or removed periodically when CPU usage exceeds or\n"
-"      drops below this target value."
+#: app/views/directives/osc-autoscaling.html:116
+msgid "The percentage of the CPU request that each pod should ideally be using."
 msgstr ""
 
 #: app/views/edit/deployment-config.html:30
@@ -5624,6 +5628,10 @@ msgstr ""
 
 #: app/scripts/controllers/service.js:98
 msgid "This service has been deleted."
+msgstr ""
+
+#: app/views/browse/route.html:112
+msgid "This target port will route to"
 msgstr ""
 
 #: app/views/modals/debug-terminal.html:35

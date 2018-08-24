@@ -987,8 +987,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<label for=\"sub-path\" translate>Subpath</label>\n" +
     "<input id=\"sub-path\" class=\"form-control\" type=\"text\" name=\"subPath\" ng-model=\"attach.subPath\" placeholder=\"{{'example: application/resources' | translate}}\" ng-pattern=\"RELATIVE_PATH_PATTERN\" autocorrect=\"off\" autocapitalize=\"none\" spellcheck=\"false\" aria-describedby=\"sub-path-help\">\n" +
-    "<div id=\"sub-path-help\" class=\"help-block\" translate>\n" +
-    "Optional path within the volume from which it will be mounted into the container. Defaults to the volume's root.\n" +
+    "<div id=\"sub-path-help\" class=\"help-block\">\n" +
+    "<translate>Optional path within the volume from which it will be mounted into the container.</translate>\n" +
+    "<translate>Defaults to the volume's root.</translate>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"attachPVCForm.subPath.$error.pattern && attachPVCForm.subPath.$touched\">\n" +
     "<span class=\"help-block\">\n" +
@@ -3311,12 +3312,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dl class=\"dl-horizontal left\">\n" +
     "<dt ng-if-start=\"route.spec.wildcardPolicy && route.spec.wildcardPolicy !== 'None' && route.spec.wildcardPolicy !== 'Subdomain'\" translate>Wildcard Policy:</dt>\n" +
     "<dd ng-if-end>{{route.spec.wildcardPolicy}}</dd>\n" +
-    "<dt>Path:</dt>\n" +
+    "<dt translate>Path:</dt>\n" +
     "<dd>\n" +
     "<span ng-if=\"route.spec.path\">{{route.spec.path}}</span>\n" +
     "<span ng-if=\"!route.spec.path\"><em translate>none</em></span>\n" +
     "</dd>\n" +
-    "<dt>{{route.spec.to.kind || \"Routes To\"}}:</dt>\n" +
+    "<dt>{{route.spec.to.kind || \"Routes To\" | translate}}:</dt>\n" +
     "<dd>\n" +
     "<a ng-href=\"{{route.spec.to.name | navigateResourceURL : route.spec.to.kind : route.metadata.namespace}}\">{{route.spec.to.name}}</a>\n" +
     "</dd>\n" +
@@ -3328,7 +3329,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"!route.spec.port.targetPort\"><em translate>any</em></span>\n" +
     "</dd>\n" +
     "<div ng-if=\"route.spec.port.targetPort && route.spec.to.kind === 'Service' && (route | routeTargetPortMapping : services[route.spec.to.name])\" class=\"help-block\">\n" +
-    "This target port will route to {{route | routeTargetPortMapping : services[route.spec.to.name]}}.\n" +
+    "<translate>This target port will route to</translate> {{route | routeTargetPortMapping : services[route.spec.to.name]}}.\n" +
     "</div>\n" +
     "</dl>\n" +
     "<div ng-if=\"route.spec.alternateBackends.length\" class=\"row\">\n" +
@@ -8130,8 +8131,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<input type=\"number\" class=\"form-control\" min=\"1\" name=\"targetCPU\" ng-model=\"autoscaling.targetCPU\" pattern=\"\\d*\" select-on-focus aria-describedby=\"target-cpu-help\">\n" +
     "<span class=\"input-group-addon\">%</span>\n" +
     "</div>\n" +
-    "<div id=\"target-cpu-help\" class=\"help-block\" translate>\n" +
-    "The percentage of the CPU request that each pod should ideally be using. Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.\n" +
+    "<div id=\"target-cpu-help\" class=\"help-block\">\n" +
+    "<translate>The percentage of the CPU request that each pod should ideally be using.</translate>\n" +
+    "<translate>Pods will be added or removed periodically when CPU usage exceeds or drops below this target value.</translate>\n" +
     "</div>\n" +
     "<div class=\"learn-more-block\">\n" +
     "<a ng-href=\"{{'compute_resources' | helpLink}}\" target=\"_blank\"><translate>Learn More</translate>&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n" +
