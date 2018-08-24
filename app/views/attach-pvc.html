@@ -118,9 +118,9 @@
                         autocapitalize="none"
                         spellcheck="false"
                         aria-describedby="sub-path-help">
-                    <div id="sub-path-help" class="help-block" translate>
-                      Optional path within the volume from which it will be mounted into the
-                      container. Defaults to the volume's root.
+                    <div id="sub-path-help" class="help-block">
+                      <translate>Optional path within the volume from which it will be mounted into the container.</translate>
+                      <translate>Defaults to the volume's root.</translate>
                     </div>
                     <div class="has-error" ng-show="attachPVCForm.subPath.$error.pattern && attachPVCForm.subPath.$touched">
                       <span class="help-block">
