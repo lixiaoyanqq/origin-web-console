@@ -1792,6 +1792,10 @@ msgstr ""
 msgid "Destination CA certificates are only used for re-encrypt termination."
 msgstr ""
 
+#: app/views/edit/build-config.html:207
+msgid "Destination Dir"
+msgstr ""
+
 #: app/views/directives/osc-source-secrets.html:13
 msgid "Destination Directory"
 msgstr ""
@@ -2668,6 +2672,10 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
+#: app/views/directives/edit-config-map-or-secret.html:78
+msgid "Key is required."
+msgstr ""
+
 #: app/views/_volumes.html:100
 msgid "Key to File:"
 msgstr ""
@@ -2678,6 +2686,14 @@ msgstr ""
 
 #: app/views/add-config-volume.html:115
 msgid "Keys and Paths"
+msgstr ""
+
+#: app/views/directives/edit-config-map-or-secret.html:93
+msgid "Keys may not be longer than 253 characters."
+msgstr ""
+
+#: app/views/directives/edit-config-map-or-secret.html:88
+msgid "Keys may only consist of letters, numbers, periods, hyphens, and underscores."
 msgstr ""
 
 #: app/scripts/directives/events.js:158
@@ -4908,6 +4924,10 @@ msgstr ""
 #: app/views/browse/_build-details.html:74
 #: app/views/browse/build-config.html:255
 msgid "Source Context Dir:"
+msgstr ""
+
+#: app/views/edit/build-config.html:205
+msgid "Source Path"
 msgstr ""
 
 #: app/views/browse/_build-details.html:72

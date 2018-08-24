@@ -6712,7 +6712,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "A unique key for this {{type | translate}} entry.\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"keyValueMapForm['key-' + $id].$error.required && keyValueMapForm['key-' + $id].$touched\">\n" +
-    "<span class=\"help-block\">\n" +
+    "<span class=\"help-block\" translate>\n" +
     "Key is required.\n" +
     "</span>\n" +
     "</div>\n" +
@@ -6722,12 +6722,12 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"keyValueMapForm['key-' + $id].$error.pattern && keyValueMapForm['key-' + $id].$touched\">\n" +
-    "<span class=\"help-block\">\n" +
+    "<span class=\"help-block\" translate>\n" +
     "Keys may only consist of letters, numbers, periods, hyphens, and underscores.\n" +
     "</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"keyValueMapForm['key-' + $id].$error.maxlength\">\n" +
-    "<span class=\"help-block\">\n" +
+    "<span class=\"help-block\" translate>\n" +
     "Keys may not be longer than 253 characters.\n" +
     "</span>\n" +
     "</div>\n" +
@@ -9700,7 +9700,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Paths is a list of source and destination paths to copy from the image. At least one pair has to be specified.\"></i>\n" +
     "</a>\n" +
     "</span></label>\n" +
-    "<key-value-editor entries=\"imageSourcePaths\" key-placeholder=\"Source Path\" key-validator=\"\\/.*?$\" value-placeholder=\"Destination Dir\" key-validator-error-tooltip=\"A valid Source Path is an absolute path beginning with '/'\" add-row-link=\"{{'Add image source path'|translate}}\"></key-value-editor>\n" +
+    "<key-value-editor entries=\"imageSourcePaths\" key-placeholder=\"{{'Source Path'|translate}}\" key-validator=\"\\/.*?$\" value-placeholder=\"{{'Destination Dir'|translate}}\" key-validator-error-tooltip=\"A valid Source Path is an absolute path beginning with '/'\" add-row-link=\"{{'Add image source path'|translate}}\"></key-value-editor>\n" +
     "</div>\n" +
     "</div>\n" +
     "<div class=\"multiple-image-source\" ng-if=\"sourceImages.length !== 1\">\n" +
