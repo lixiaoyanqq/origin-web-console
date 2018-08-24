@@ -5734,10 +5734,7 @@ msgid "To add an image stream or template from a file, use the editor in the <st
 msgstr ""
 
 #: app/views/directives/deploy-image.html:64
-msgid ""
-"To deploy an image from a private repository,you must<span ng-if=\"!input.selectedProject.metadata.uid\">create an image pull secret</span>\n"
-"              <a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\">create an image pull secret</a>\n"
-"                 with your image registry credentials."
+msgid "To deploy an image from a private repository,you must"
 msgstr ""
 
 #: app/views/modals/confirm-save-log.html:12
@@ -6396,6 +6393,11 @@ msgstr ""
 msgid "cores"
 msgstr ""
 
+#: app/views/directives/deploy-image.html:64
+#: app/views/directives/deploy-image.html:65
+msgid "create an image pull secret"
+msgstr ""
+
 #: app/views/browse/build-config.html:164
 #: app/views/browse/build-config.html:63
 #: app/views/browse/build.html:75
@@ -6965,6 +6967,10 @@ msgstr ""
 
 #: app/views/directives/deploy-image.html:103
 msgid "will track this image."
+msgstr ""
+
+#: app/views/directives/deploy-image.html:68
+msgid "with your image registry credentials"
 msgstr ""
 
 #: app/scripts/filters/date.js:46
