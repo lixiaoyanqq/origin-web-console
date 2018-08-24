@@ -34,7 +34,7 @@ angular.module("openshiftConsole")
         $scope.secretReferenceValidation = {
           pattern: /^[a-zA-Z0-9\-_]+$/,
           minLength: 8,
-          description: 'Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore.'
+          description: gettextCatalog.getString(gettext("Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore."))
         };
 
         $scope.secretAuthTypeMap = {

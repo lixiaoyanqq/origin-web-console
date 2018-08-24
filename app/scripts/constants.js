@@ -62,6 +62,7 @@ function Noop() {
   gettext('Memory (Request)');
   gettext('Mid');
   gettext('Middleware');
+  gettext('Name must consist of lower-case letters, numbers, periods, and hyphens. It must start and end with a letter or a number.');
   gettext('No catalog items have been loaded.');
   gettext('No items.');
   gettext('No results found for Keyword:');
@@ -90,6 +91,7 @@ function Noop() {
   gettext('secret');
   gettext('See All');
   gettext('Select an application');
+  gettext("Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore.");
   gettext('service account');
   gettext('Service Account');
   gettext('Storage (Request)');
