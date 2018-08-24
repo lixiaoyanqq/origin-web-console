@@ -6106,7 +6106,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"secretForm.name.$invalid\">\n" +
     "<div ng-show=\"secretForm.name.$error.pattern && secretForm.name.$touched\" class=\"help-block\">\n" +
-    "{{nameValidation.description}}\n" +
+    "{{nameValidation.description | translate}}\n" +
     "</div>\n" +
     "<div ng-show=\"secretForm.name.$error.required && secretForm.name.$touched\" class=\"help-block\" translate>\n" +
     "Name is required.\n" +
@@ -13429,7 +13429,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h1 translate>Welcome to OpenShift.</h1>\n" +
     "<p>\n" +
     "<translate>OpenShift helps you quickly develop, host, and scale applications.</translate><br>\n" +
-    "<span ng-if=\"canCreate\" translate>Create a project for your application.</span>\n" +
+    "\n" +
     "</p>\n" +
     "\n" +
     "\n" +
