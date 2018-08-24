@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-24 17:14+0800\n"
+"PO-Revision-Date: 2018-08-24 17:36+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -113,7 +113,7 @@ msgstr ""
 msgid ""
 "<strong>It cannot be undone.</strong> Make sure this is something you really "
 "want to do!"
-msgstr "<strong>当前操作无法撤销。</strong> 确认么？"
+msgstr "<strong>此操作无法恢复.</strong>请确认是否删除!"
 
 #: app/views/attach-pvc.html:12
 msgid ""
@@ -653,7 +653,7 @@ msgstr "取消时发生错误"
 
 #: app/scripts/directives/fromFile.js:196
 msgid "An error occurred creating project."
-msgstr "创建项目时发生了错误"
+msgstr "创建项目时发生了错误."
 
 #: app/views/directives/bind-service/delete-binding-result.html:28
 msgid "An error occurred deleting the binding."
@@ -684,11 +684,11 @@ msgstr "开始调试pod时出现了错误。"
 
 #: app/scripts/services/deployments.js:184
 msgid "An error occurred while cancelling the deployment."
-msgstr "取消部署时发生了错误"
+msgstr "取消部署时发生了错误."
 
 #: app/scripts/services/deployments.js:72
 msgid "An error occurred while deleting the deployer pod."
-msgstr "删除部署pod时发生了错误"
+msgstr "删除部署pod时发生了错误."
 
 #: app/scripts/services/builds.js:139
 msgid "An error occurred while rerunning"
@@ -696,12 +696,12 @@ msgstr "重新运行时发生了错误"
 
 #: app/scripts/services/deployments.js:101
 msgid "An error occurred while retrying the deployment."
-msgstr "重试部署时发生了错误"
+msgstr "重试部署时发生了错误."
 
 #: app/scripts/services/deployments.js:143
 #: app/scripts/services/deployments.js:153
 msgid "An error occurred while rolling back the deployment."
-msgstr "回滚部署时发生了错误"
+msgstr "回滚部署时发生了错误."
 
 #: app/scripts/services/builds.js:77
 msgid "An error occurred while starting the"
@@ -709,7 +709,7 @@ msgstr "发生了错误当启动"
 
 #: app/scripts/services/deployments.js:43
 msgid "An error occurred while starting the deployment."
-msgstr "开始部署时发生了错误"
+msgstr "开始部署时发生了错误."
 
 #: app/scripts/controllers/edit/project.js:71
 msgid "An error occurred while updating the project"
@@ -925,7 +925,7 @@ msgstr "浏览目录"
 
 #: app/views/directives/osc-file-input.html:16
 msgid "Browse&hellip;"
-msgstr "浏览文件"
+msgstr "浏览&hellip;"
 
 #: app/views/browse/build-config.html:138
 #: app/views/browse/build-config.html:184
@@ -1006,7 +1006,7 @@ msgstr "构建源代码"
 msgid ""
 "Builds triggered from this Build Configuration will run all at the same "
 "time. The order in which they will finish is not guaranteed."
-msgstr "由此构建配置触发的构建将同时运行， 但他们完成的顺序不能保证"
+msgstr "由此构建配置触发的构建将同时运行， 但他们完成的顺序不能保证."
 
 #: app/views/browse/build-config.html:328 app/views/edit/build-config.html:527
 msgid ""
@@ -1416,7 +1416,7 @@ msgstr "配置文件"
 
 #: app/views/directives/create-secret.html:323
 msgid "Configuration file should be in JSON format."
-msgstr "配置文件应该是JSON格式"
+msgstr "配置文件应该是JSON格式."
 
 #: app/views/create/fromimage.html:189
 msgid "Configure a webhook build trigger"
@@ -1798,10 +1798,8 @@ msgid "Delete Binding"
 msgstr "删除绑定"
 
 #: app/views/projects.html:142
-#, fuzzy
-#| msgid "Select a Project"
 msgid "Delete Project"
-msgstr "选择项目"
+msgstr "删除项目"
 
 #: app/views/overview/_service-instance-row.html:122
 msgid "Delete This Service"
@@ -2690,9 +2688,8 @@ msgid "Image registry server address is required."
 msgstr "需要镜像registry服务器地址"
 
 #: app/views/newfromtemplate.html:24
-#, fuzzy
 msgid "Image value set"
-msgstr "镜像集合"
+msgstr "镜像值集"
 
 #: app/scripts/constants.js:436 app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
@@ -3700,10 +3697,8 @@ msgid "No pipeline runs."
 msgstr "没有管道运行。"
 
 #: app/views/overview.html:274
-#, fuzzy
-#| msgid "No services have been added to project"
 msgid "No pipelines have been added to project"
-msgstr "没有服务添加到项目中"
+msgstr "没有管道添加到项目中"
 
 #: app/views/pipelines.html:24
 msgid "No pipelines have been added to project {{projectName}}."
@@ -4109,21 +4104,10 @@ msgid "Pods"
 msgstr "Pods"
 
 #: app/views/directives/osc-autoscaling.html:117
-#, fuzzy
-#| msgid ""
-#| "The percentage of the CPU request that each pod should ideally be using.\n"
-#| "      Pods will be added or removed periodically when CPU usage exceeds "
-#| "or\n"
-#| "      drops below this target value."
 msgid ""
 "Pods will be added or removed periodically when CPU usage exceeds or drops "
 "below this target value."
-msgstr ""
-"每个pod应该使用的CPU请求的百分比。\n"
-"\n"
-"当CPU使用率超过或超过时，将会定期添加或删除pod。\n"
-"\n"
-"低于此目标值。"
+msgstr "当CPU使用率超过或低于此目标值时，将定期添加或删除Pods."
 
 #: app/views/directives/osc-routing.html:274
 msgid "Policy for traffic on insecure schemes like HTTP."
@@ -5126,10 +5110,8 @@ msgid ""
 msgstr "指定如何将卷挂载入容器内的详情。"
 
 #: app/views/directives/osc-routing.html:154
-#, fuzzy
-#| msgid "This route splits traffic across multiple services."
 msgid "Split traffic across multiple services"
-msgstr "这条路由会在多个服务之间分割流量。"
+msgstr "在多个服务之间分割流量"
 
 #: app/views/browse/build-config.html:122 app/views/browse/build-config.html:13
 #: app/views/browse/build-config.html:32
@@ -5896,10 +5878,8 @@ msgid "This service has been deleted."
 msgstr "该服务已经被删除"
 
 #: app/views/browse/route.html:112
-#, fuzzy
-#| msgid "Route target port is set to \""
 msgid "This target port will route to"
-msgstr "路由目标端口设置为\""
+msgstr "路由目标端口将指向"
 
 #: app/views/modals/debug-terminal.html:35
 msgid ""
@@ -7211,10 +7191,8 @@ msgid "system user"
 msgstr "系统用户"
 
 #: app/views/overview.html:279
-#, fuzzy
-#| msgid "DataMan OS Pipeline Plugin"
 msgid "the OpenShift Pipeline Plugin"
-msgstr "DataMan OS管道插件"
+msgstr "OpenShift管道插件"
 
 #: app/scripts/constants.js:103 app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
