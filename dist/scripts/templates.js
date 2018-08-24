@@ -6430,9 +6430,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</div>\n" +
     "<div class=\"help-block\">\n" +
-    "<translate>To deploy an image from a private repository,you must<span ng-if=\"!input.selectedProject.metadata.uid\">create an image pull secret</span>\n" +
-    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\">create an image pull secret</a>\n" +
-    "with your image registry credentials.</translate>\n" +
+    "<translate>To deploy an image from a private repository,you must</translate><span ng-if=\"!input.selectedProject.metadata.uid\" translate>create an image pull secret</span>\n" +
+    "<a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if=\"input.selectedProject.metadata.uid\" translate>create an image pull secret</a>\n" +
+    "<translate>with your image registry credentials</translate>.\n" +
     "<a ng-href=\"{{'pull_secret' | helpLink}}\" target=\"_blank\"><span class=\"learn-more-inline\" translate>Learn More&nbsp;<i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></span></a></div>\n" +
     "</div>\n" +
     "</fieldset>\n" +

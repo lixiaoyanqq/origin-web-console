@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-24 14:58+0800\n"
+"PO-Revision-Date: 2018-08-24 15:48+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -5992,17 +5992,8 @@ msgstr ""
 "器，或运行以下命令："
 
 #: app/views/directives/deploy-image.html:64
-msgid ""
-"To deploy an image from a private repository,you must<span ng-if=\"!input."
-"selectedProject.metadata.uid\">create an image pull secret</span>\n"
-"              <a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-if="
-"\"input.selectedProject.metadata.uid\">create an image pull secret</a>\n"
-"                 with your image registry credentials."
-msgstr ""
-"要从专用存储库部署映像，必须使用镜像注册证书<span ng-if=“!input."
-"selectedProject.metadata.uid”>创建镜像提取密钥</span>\n"
-"              <a href=“” ng-click=“openCreateWebhookSecretModal()” ng-"
-"if=“input.selectedProject.metadata.uid”>创建镜像提取密钥</a>."
+msgid "To deploy an image from a private repository,you must"
+msgstr "从专用存储库部署镜像，必须"
 
 #: app/views/modals/confirm-save-log.html:12
 msgid "To get the complete log, run the command"
@@ -6706,6 +6697,11 @@ msgstr "包含非有效环境变量名的键"
 msgid "cores"
 msgstr "核"
 
+#: app/views/directives/deploy-image.html:64
+#: app/views/directives/deploy-image.html:65
+msgid "create an image pull secret"
+msgstr "创建镜像拉取秘钥"
+
 #: app/views/browse/build-config.html:164 app/views/browse/build-config.html:63
 #: app/views/browse/build.html:75 app/views/browse/config-map.html:55
 #: app/views/browse/deployment-config.html:123
@@ -7286,6 +7282,10 @@ msgstr "需要镜像拉取权限来部署镜像吗"
 msgid "will track this image."
 msgstr "将跟踪该镜像"
 
+#: app/views/directives/deploy-image.html:68
+msgid "with your image registry credentials"
+msgstr "用镜像注册表证书"
+
 #: app/scripts/filters/date.js:46
 msgid "year"
 msgstr "年"
@@ -7449,6 +7449,19 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 msgid "没有部署可以显示"
 msgstr ""
 
+#~ msgid ""
+#~ "To deploy an image from a private repository,you must<span ng-if=\"!input."
+#~ "selectedProject.metadata.uid\">create an image pull secret</span>\n"
+#~ "              <a href=\"\" ng-click=\"openCreateWebhookSecretModal()\" ng-"
+#~ "if=\"input.selectedProject.metadata.uid\">create an image pull secret</"
+#~ "a>\n"
+#~ "                 with your image registry credentials."
+#~ msgstr ""
+#~ "要从专用存储库部署映像，必须使用镜像注册证书<span ng-if=“!input."
+#~ "selectedProject.metadata.uid”>创建镜像提取密钥</span>\n"
+#~ "              <a href=“” ng-click=“openCreateWebhookSecretModal()” ng-"
+#~ "if=“input.selectedProject.metadata.uid”>创建镜像提取密钥</a>."
+
 #~ msgid "Create a project for your application."
 #~ msgstr "为您的应用程序创建一个项目。"
 
@@ -7484,12 +7497,6 @@ msgstr ""
 
 #~ msgid "will be load balanced by Service"
 #~ msgstr "将被服务加载平衡"
-
-#~ msgid "To deploy an image from a private repository,"
-#~ msgstr "用镜像流版本部署镜像,"
-
-#~ msgid "create an image pull secret"
-#~ msgstr "创建一个镜像拉取秘钥"
 
 #~ msgid "you must"
 #~ msgstr "你必须"
