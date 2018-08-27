@@ -93,6 +93,7 @@ function Noop() {
   gettext('Save ');
   gettext('Search Catalog');
   gettext('secret');
+  gettext('Secret');
   gettext('See All');
   gettext('Select an application');
   gettext("Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore.");
