@@ -2085,7 +2085,12 @@ msgid "Environment variables"
 msgstr ""
 
 #: app/views/create/fromimage.html:217
+#: app/views/edit/build-config.html:423
 msgid "Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime."
+msgstr ""
+
+#: app/views/create/fromimage.html:258
+msgid "Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime."
 msgstr ""
 
 #: app/views/browse/pod.html:58
