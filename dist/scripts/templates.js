@@ -838,8 +838,10 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div ng-if=\"attach.pickKeys && attach.source\" class=\"mar-bottom-md\">\n" +
     "<h3 translate>Keys and Paths</h3>\n" +
-    "<div class=\"help-block mar-bottom-md\" translate>\n" +
-    "Select the keys to use and the file paths where each key will be exposed. The file paths are relative to the mount path. The contents of each file will be the value of the key.\n" +
+    "<div class=\"help-block mar-bottom-md\">\n" +
+    "<translate>Select the keys to use and the file paths where each key will be exposed.</translate>\n" +
+    "<translate>The file paths are relative to the mount path.</translate>\n" +
+    "<translate>The contents of each file will be the value of the key.</translate>\n" +
     "</div>\n" +
     "<div ng-repeat=\"item in attach.items\">\n" +
     "<div class=\"row\">\n" +
