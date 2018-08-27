@@ -12068,11 +12068,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"project.metadata.name | canIAddToProject\">\n" +
     "<p>\n" +
     "<translate>No pipelines have been added to project</translate>{{projectName}}.\n" +
-    "<br>\n" +
-    "<translate>Learn more about</translate>\n" +
-    "<a ng-href=\"{{ 'pipeline-builds' | helpLink}}\" target=\"_blank\" translate>Pipeline Builds</a>\n" +
-    "<translate>and</translate>\n" +
-    "<a ng-href=\"{{ 'pipeline-plugin' | helpLink}}\" target=\"_blank\" translate>the OpenShift Pipeline Plugin</a>.\n" +
+    "\n" +
     "</p>\n" +
     "<p ng-if=\"(project.metadata.name | canIAddToProject) && overview.samplePipelineURL\">\n" +
     "<a ng-href=\"{{overview.samplePipelineURL}}\" class=\"btn btn-lg btn-primary\" translate>\n" +
