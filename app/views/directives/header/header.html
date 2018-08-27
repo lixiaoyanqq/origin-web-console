@@ -40,7 +40,7 @@
     <button class="dropdown-toggle btn btn-link" ng-disabled="currentProject.status.phase != 'Active'" title="Add to Project" uib-dropdown-toggle>
       <i class="fa fa-plus visible-xs-inline-block" aria-hidden="true" title="Add to Project"></i>
       <span class="hidden-xs" translate>Add to Project</span>
-      <span class="hidden-xs caret" aria-hidden="true" title="Add to Project"></span>
+      <span class="hidden-xs caret" aria-hidden="true" title="{{'Add to Project'|translate}}"></span>
     </button>
     <ul role="menu" uib-dropdown-menu class="dropdown-menu dropdown-menu-right">
       <li ng-if-start="!catalogLandingPageEnabled" role="menuitem"><a ng-href="project/{{currentProjectName}}/create?tab=fromCatalog" translate>Browse Catalog</a></li>

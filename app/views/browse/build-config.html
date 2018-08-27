@@ -89,8 +89,8 @@
                       <span ng-if="buildConfigsInstantiateVersion | canI : 'create'" translate>
                         Start a new build to create an image from
                       </span>
-                      <span ng-if="buildConfig.spec.source.type === 'Git'" translate>
-                        source repository
+                      <span ng-if="buildConfig.spec.source.type === 'Git'">
+                        <translate>source repository</translate>
                         <span class="word-break"><osc-git-link
                                         uri="buildConfig.spec.source.git.uri"
                                         ref="buildConfig.spec.source.git.ref"

@@ -235,7 +235,7 @@ angular.module("openshiftConsole")
           }
           if (item.metadata.namespace && item.metadata.namespace !== $scope.input.selectedProject.metadata.name) {
             $scope.error = {
-              message: item.kind + " " + item.metadata.name + " can't be created in project " + item.metadata.namespace + ". Can't create resource in different projects."
+              message: gettextCatalog.getString(gettext(item.kind)) + " " + item.metadata.name + " " + gettextCatalog.getString(gettext("can't be created in project")) + " " + item.metadata.namespace + ". " + gettextCatalog.getString(gettext("Can't create resource in different projects."))
             };
             return false;
           }

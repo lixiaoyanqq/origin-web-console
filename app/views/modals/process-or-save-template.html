@@ -3,7 +3,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" ng-click="cancel()">
       <span class="pficon pficon-close"></span>
     </button>
-    <h1 class="modal-title">{{updateTemplate ? "Update" : "Add"}} Template</h1>
+    <h1 class="modal-title">{{updateTemplate ? "Update" : "Add" | translate}} <translate>Template</translate></h1>
   </div>
   <div class="modal-body">
     <p translate>What would you like to do?</p>
@@ -22,7 +22,7 @@
       <div class="checkbox">
         <label>
           <input type="checkbox" ng-model="templateOptions.add" aria-descirbedby="save-template-help">
-          <strong>{{updateTemplate ? "Update" : "Save"}} template</strong>
+          <strong>{{updateTemplate ? "Update" : "Save" | translate}} <translate>template</translate></strong>
         </label>
         <div id="save-template-help" class="help-block" translate>
           {{updateTemplate ? "This will overwrite the current version of the template." : "Save the template to the project. This will make the template available to anyone who can view the project."}}

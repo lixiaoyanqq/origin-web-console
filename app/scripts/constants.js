@@ -15,9 +15,12 @@ function Noop() {
   gettext('< Back');
   gettext('Abort');
   gettext('Active');
+  gettext('Add ');
   gettext('Bound');
   gettext('Build Config');
   gettext('Cancelled');
+  gettext("can't be created in project");
+  gettext("Can't create resource in different projects.");
   gettext('CI/CD');
   gettext('Clear All');
   gettext('Clear Filters');
@@ -87,6 +90,7 @@ function Noop() {
   gettext('Route');
   gettext('running');
   gettext('Running');
+  gettext('Save ');
   gettext('Search Catalog');
   gettext('secret');
   gettext('See All');
@@ -100,6 +104,7 @@ function Noop() {
   gettext('system user');
   gettext('System User');
   gettext('Terminating');
+  gettext('template');
   gettext('the container is allowed to use when running.');
   gettext('the container is guaranteed.');
   gettext('The active filters are hiding all catalog items.');
@@ -112,6 +117,7 @@ function Noop() {
   gettext('To push an image to this image stream:');
   gettext('user');
   gettext('User');
+  gettext('Update ');
   gettext('View all');
   gettext('View the result for Keyword:');
 }

@@ -1618,8 +1618,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span ng-if=\"buildConfigsInstantiateVersion | canI : 'create'\" translate>\n" +
     "Start a new build to create an image from\n" +
     "</span>\n" +
-    "<span ng-if=\"buildConfig.spec.source.type === 'Git'\" translate>\n" +
-    "source repository\n" +
+    "<span ng-if=\"buildConfig.spec.source.type === 'Git'\">\n" +
+    "<translate>source repository</translate>\n" +
     "<span class=\"word-break\"><osc-git-link uri=\"buildConfig.spec.source.git.uri\" ref=\"buildConfig.spec.source.git.ref\" context-dir=\"buildConfig.spec.source.contextDir\">{{buildConfig.spec.source.git.uri}}</osc-git-link></span>\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig.spec.source.type !== 'Git'\" translate>\n" +
@@ -4956,7 +4956,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</label>\n" +
     "</div>\n" +
     "<h3><translate>Environment Variables</translate> <span class=\"appended-icon\"><translate>(Build and Runtime)</translate> <span class=\"help action-inline\">\n" +
-    "<a href data-toggle=\"tooltip\" data-original-title=\"&quot;Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.&quot;|translate\">\n" +
+    "<a href data-toggle=\"tooltip\" data-original-title=\"{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}\">\n" +
     "<i class=\"pficon pficon-help\"></i>\n" +
     "</a>\n" +
     "</span></span></h3>\n" +
@@ -4981,7 +4981,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "<div>\n" +
     "<h3><translate>Environment Variables</translate> <span class=\"appended-icon\"><translate>(Runtime only)</translate> <span class=\"help action-inline\">\n" +
-    "<a href=\"\" data-toggle=\"tooltip\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime.\">\n" +
+    "<a href=\"\" data-toggle=\"tooltip\" data-original-title=\"{{'Environment variables are used to configure and pass information to running containers.  These environment variables will only be available at runtime.'|translate}}\">\n" +
     "<i class=\"pficon pficon-help\"></i>\n" +
     "</a>\n" +
     "</span></span></h3>\n" +
@@ -5806,7 +5806,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"form-group\">\n" +
     "<div class=\"control-label\">\n" +
     "<label translate>Prefix</label>\n" +
-    "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"Optionally, you can specify a prefix to use with environment variables.\" popover-trigger=\"focus\">\n" +
+    "<a href=\"\" class=\"pficon pficon-info field-help\" aria-hidden=\"true\" uib-popover=\"{{'Optionally, you can specify a prefix to use with environment variables.'|translate}}\" popover-trigger=\"focus\">\n" +
     "</a>\n" +
     "</div>\n" +
     "<span class=\"control-input\" ng-class=\"{'has-error': addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched}\">\n" +
@@ -5814,7 +5814,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"help-block\" ng-show=\"addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched\">\n" +
     "Prefix can contain numbers, letters, and underscores, but can not start with a number.\n" +
     "</div>\n" +
-    "<span class=\"sr-only\" id=\"env-prefix-help\">Optionally, you can specify a prefix to use with environment variables.</span>\n" +
+    "<span class=\"sr-only\" id=\"env-prefix-help\" translate>Optionally, you can specify a prefix to use with environment variables.</span>\n" +
     "</span>\n" +
     "</div>\n" +
     "</div>\n" +
@@ -6908,7 +6908,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</key-value-editor>\n" +
     "<h4>\n" +
     "<translate>Environment From</translate>\n" +
-    "<span class=\"pficon pficon-help tooltip-default-icon\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"Environment From lets you add all key-value pairs from a config map or secret as environment variables.\"></span>\n" +
+    "<span class=\"pficon pficon-help tooltip-default-icon\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-original-title=\"{{'Environment From lets you add all key-value pairs from a config map or secret as environment variables.'|translate}}\"></span>\n" +
     "</h4>\n" +
     "<edit-environment-from entries=\"container.envFrom\" env-from-selector-options=\"$ctrl.valueFromObjects\" is-readonly=\"$ctrl.ngReadonly\" show-header>\n" +
     "</edit-environment-from>\n" +
@@ -7377,7 +7377,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button class=\"dropdown-toggle btn btn-link\" ng-disabled=\"currentProject.status.phase != 'Active'\" title=\"Add to Project\" uib-dropdown-toggle>\n" +
     "<i class=\"fa fa-plus visible-xs-inline-block\" aria-hidden=\"true\" title=\"Add to Project\"></i>\n" +
     "<span class=\"hidden-xs\" translate>Add to Project</span>\n" +
-    "<span class=\"hidden-xs caret\" aria-hidden=\"true\" title=\"Add to Project\"></span>\n" +
+    "<span class=\"hidden-xs caret\" aria-hidden=\"true\" title=\"{{'Add to Project'|translate}}\"></span>\n" +
     "</button>\n" +
     "<ul role=\"menu\" uib-dropdown-menu class=\"dropdown-menu dropdown-menu-right\">\n" +
     "<li ng-if-start=\"!catalogLandingPageEnabled\" role=\"menuitem\"><a ng-href=\"project/{{currentProjectName}}/create?tab=fromCatalog\" translate>Browse Catalog</a></li>\n" +
@@ -9846,7 +9846,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-if=\"!(updatedBuildConfig | isJenkinsPipelineStrategy)\" class=\"section\">\n" +
     "<h3 class=\"with-divider\"><translate>Environment Variables</translate><span class=\"help action-inline\">\n" +
     "<a href=\"\">\n" +
-    "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.\"></i>\n" +
+    "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime.'|translate}}\"></i>\n" +
     "</a>\n" +
     "</span></h3>\n" +
     "<div>\n" +
@@ -9904,7 +9904,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<h3 class=\"with-divider\"><translate>Run Policy</translate>\n" +
     "<span class=\"help action-inline\">\n" +
     "<a href=\"\">\n" +
-    "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"The build run policy describes the order in which the builds created from the build configuration should run.\"></i>\n" +
+    "<i class=\"pficon pficon-help\" data-toggle=\"tooltip\" aria-hidden=\"true\" data-original-title=\"{{'The build run policy describes the order in which the builds created from the build configuration should run.'|translate}}\"></i>\n" +
     "</a>\n" +
     "</span>\n" +
     "</h3>\n" +
@@ -11236,7 +11236,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\" aria-label=\"Close\" ng-click=\"cancel()\">\n" +
     "<span class=\"pficon pficon-close\"></span>\n" +
     "</button>\n" +
-    "<h1 class=\"modal-title\">{{updateTemplate ? \"Update\" : \"Add\"}} Template</h1>\n" +
+    "<h1 class=\"modal-title\">{{updateTemplate ? \"Update\" : \"Add\" | translate}} <translate>Template</translate></h1>\n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
     "<p translate>What would you like to do?</p>\n" +
@@ -11255,7 +11255,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"checkbox\">\n" +
     "<label>\n" +
     "<input type=\"checkbox\" ng-model=\"templateOptions.add\" aria-descirbedby=\"save-template-help\">\n" +
-    "<strong>{{updateTemplate ? \"Update\" : \"Save\"}} template</strong>\n" +
+    "<strong>{{updateTemplate ? \"Update\" : \"Save\" | translate}} <translate>template</translate></strong>\n" +
     "</label>\n" +
     "<div id=\"save-template-help\" class=\"help-block\" translate>\n" +
     "{{updateTemplate ? \"This will overwrite the current version of the template.\" : \"Save the template to the project. This will make the template available to anyone who can view the project.\"}}\n" +

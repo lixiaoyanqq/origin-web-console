@@ -80,7 +80,7 @@ msgstr ""
 msgid ". You cannot create new storage since you are at quota."
 msgstr ""
 
-#: app/scripts/constants.js:631
+#: app/scripts/constants.js:637
 msgid ".NET"
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "A Jenkinsfile is a Groovy script that defines your pipeline. In the Jenkinsfile, you can declare pipeline stages and run one or more steps within each stage. Here are some examples you can use in your pipelines."
 msgstr ""
 
-#: app/scripts/constants.js:698
+#: app/scripts/constants.js:704
 msgid "A centralized authentication server for users to log in, log out, register, and manage user accounts for applications and RESTful web services."
 msgstr ""
 
@@ -290,6 +290,7 @@ msgstr ""
 msgid "Active Deadline:"
 msgstr ""
 
+#: app/scripts/constants.js:18
 #: app/scripts/directives/nav.js:533
 #: app/views/add-config-volume.html:193
 #: app/views/attach-pvc.html:215
@@ -407,11 +408,11 @@ msgstr ""
 msgid "Add Value from Config Map or Secret"
 msgstr ""
 
-#: app/views/directives/edit-environment-variables.html:32
+#: app/views/directives/edit-environment-variables.html:31
 msgid "Add Variable"
 msgstr ""
 
-#: app/views/directives/edit-environment-variables.html:33
+#: app/views/directives/edit-environment-variables.html:32
 msgid "Add Variable from Config Map or Secret"
 msgstr ""
 
@@ -456,6 +457,7 @@ msgid "Add to Application"
 msgstr ""
 
 #: app/views/directives/header/header.html:42
+#: app/views/directives/header/header.html:43
 msgid "Add to Project"
 msgstr ""
 
@@ -629,7 +631,7 @@ msgstr ""
 msgid "Application"
 msgstr ""
 
-#: app/scripts/constants.js:345
+#: app/scripts/constants.js:351
 msgid "Applications"
 msgstr ""
 
@@ -673,7 +675,7 @@ msgstr ""
 msgid "Autodeploy when"
 msgstr ""
 
-#: app/scripts/constants.js:676
+#: app/scripts/constants.js:682
 msgid "Automate the build, test, and deployment of your application with each new code revision."
 msgstr ""
 
@@ -793,7 +795,7 @@ msgstr ""
 msgid "Bitbucket Webhook URL:"
 msgstr ""
 
-#: app/scripts/constants.js:18
+#: app/scripts/constants.js:19
 msgid "Bound"
 msgstr ""
 
@@ -821,7 +823,7 @@ msgstr ""
 msgid "Build #{{build | annotation : 'buildNumber'}}"
 msgstr ""
 
-#: app/scripts/constants.js:19
+#: app/scripts/constants.js:20
 msgid "Build Config"
 msgstr ""
 
@@ -868,8 +870,8 @@ msgstr ""
 msgid "Builder Image:"
 msgstr ""
 
-#: app/scripts/constants.js:413
 #: app/scripts/constants.js:419
+#: app/scripts/constants.js:425
 #: app/scripts/controllers/monitoring.js:55
 #: app/views/builds.html:6
 #: app/views/monitoring.html:402
@@ -910,7 +912,7 @@ msgstr ""
 msgid "Builds will create an image from"
 msgstr ""
 
-#: app/scripts/constants.js:669
+#: app/scripts/constants.js:675
 msgid "Business Process Services"
 msgstr ""
 
@@ -926,7 +928,7 @@ msgstr ""
 msgid "CA Certificate:"
 msgstr ""
 
-#: app/scripts/constants.js:21
+#: app/scripts/constants.js:24
 msgid "CI/CD"
 msgstr ""
 
@@ -935,11 +937,11 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
-#: app/scripts/constants.js:35
+#: app/scripts/constants.js:38
 msgid "CPU (Limit)"
 msgstr ""
 
-#: app/scripts/constants.js:36
+#: app/scripts/constants.js:39
 msgid "CPU (Request)"
 msgstr ""
 
@@ -989,6 +991,11 @@ msgstr ""
 
 #: app/views/_compute-resource.html:35
 msgid "Can't be negative."
+msgstr ""
+
+#: app/scripts/constants.js:23
+#: app/scripts/directives/fromFile.js:238
+msgid "Can't create resource in different projects."
 msgstr ""
 
 #: app/scripts/controllers/create/createFromImage.js:347
@@ -1044,7 +1051,7 @@ msgstr ""
 msgid "Cancel deployment {{rcName}}?"
 msgstr ""
 
-#: app/scripts/constants.js:20
+#: app/scripts/constants.js:21
 msgid "Cancelled"
 msgstr ""
 
@@ -1061,7 +1068,7 @@ msgstr ""
 msgid "Capacity:"
 msgstr ""
 
-#: app/scripts/constants.js:523
+#: app/scripts/constants.js:529
 msgid "Catalog"
 msgstr ""
 
@@ -1126,20 +1133,20 @@ msgstr ""
 msgid "Claim name:"
 msgstr ""
 
-#: app/scripts/constants.js:22
+#: app/scripts/constants.js:25
 msgid "Clear All"
 msgstr ""
 
 #: app/views/browse/build-config.html:487
-#: app/views/directives/edit-environment-variables.html:57
+#: app/views/directives/edit-environment-variables.html:56
 msgid "Clear Changes"
 msgstr ""
 
-#: app/scripts/constants.js:23
+#: app/scripts/constants.js:26
 msgid "Clear Filters"
 msgstr ""
 
-#: app/scripts/constants.js:24
+#: app/scripts/constants.js:27
 msgid "Clear Search Input"
 msgstr ""
 
@@ -1155,7 +1162,7 @@ msgstr ""
 msgid "Clear {{ (type || 'Command') | upperFirst }}"
 msgstr ""
 
-#: app/scripts/constants.js:25
+#: app/scripts/constants.js:28
 msgid "Client state could not be verified"
 msgstr ""
 
@@ -1176,7 +1183,7 @@ msgstr ""
 msgid "Cluster IP"
 msgstr ""
 
-#: app/scripts/constants.js:31
+#: app/scripts/constants.js:34
 #: app/views/_templateopt.html:9
 #: app/views/directives/osc-form-section.html:9
 #: app/views/monitoring.html:172
@@ -1217,11 +1224,11 @@ msgstr ""
 msgid "Command:"
 msgstr ""
 
-#: app/scripts/constants.js:26
+#: app/scripts/constants.js:29
 msgid "Complete"
 msgstr ""
 
-#: app/scripts/constants.js:28
+#: app/scripts/constants.js:31
 msgid "Completed"
 msgstr ""
 
@@ -1238,7 +1245,7 @@ msgstr ""
 msgid "Config Change For:"
 msgstr ""
 
-#: app/scripts/constants.js:30
+#: app/scripts/constants.js:33
 msgid "Config Map"
 msgstr ""
 
@@ -1250,7 +1257,7 @@ msgstr ""
 msgid "Config Map:"
 msgstr ""
 
-#: app/scripts/constants.js:457
+#: app/scripts/constants.js:463
 #: app/views/browse/config-maps.html:9
 msgid "Config Maps"
 msgstr ""
@@ -1260,7 +1267,7 @@ msgstr ""
 msgid "Config change"
 msgstr ""
 
-#: app/scripts/constants.js:32
+#: app/scripts/constants.js:35
 msgid "Config map"
 msgstr ""
 
@@ -1284,7 +1291,7 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: app/scripts/constants.js:33
+#: app/scripts/constants.js:36
 #: app/scripts/directives/createSecret.js:62
 #: app/views/directives/create-secret.html:303
 msgid "Configuration File"
@@ -1328,7 +1335,7 @@ msgstr ""
 msgid "Confirm User Change"
 msgstr ""
 
-#: app/scripts/constants.js:692
+#: app/scripts/constants.js:698
 msgid "Connect with other applications and data to enhance functionality without duplication."
 msgstr ""
 
@@ -1424,7 +1431,7 @@ msgstr ""
 msgid "Continue with deployment on failure"
 msgstr ""
 
-#: app/scripts/constants.js:675
+#: app/scripts/constants.js:681
 msgid "Continuous Integration & Deployment"
 msgstr ""
 
@@ -1433,7 +1440,7 @@ msgstr ""
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: app/scripts/constants.js:34
+#: app/scripts/constants.js:37
 msgid "Cores"
 msgstr ""
 
@@ -1496,7 +1503,7 @@ msgstr ""
 msgid "Create New Webhook Secret"
 msgstr ""
 
-#: app/scripts/constants.js:37
+#: app/scripts/constants.js:40
 msgid "Create Project"
 msgstr ""
 
@@ -1598,7 +1605,7 @@ msgstr ""
 msgid "Credentials Store"
 msgstr ""
 
-#: app/scripts/constants.js:38
+#: app/scripts/constants.js:41
 msgid "Custom"
 msgstr ""
 
@@ -1614,7 +1621,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/scripts/constants.js:681
+#: app/scripts/constants.js:687
 msgid "Data Stores"
 msgstr ""
 
@@ -1622,7 +1629,7 @@ msgstr ""
 msgid "DataMan OS Pipeline Plugin"
 msgstr ""
 
-#: app/scripts/constants.js:40
+#: app/scripts/constants.js:43
 msgid "Databases"
 msgstr ""
 
@@ -1733,7 +1740,7 @@ msgstr ""
 msgid "Deployment"
 msgstr ""
 
-#: app/scripts/constants.js:42
+#: app/scripts/constants.js:45
 msgid "Deployment Config"
 msgstr ""
 
@@ -1759,7 +1766,7 @@ msgstr ""
 msgid "Deployment:"
 msgstr ""
 
-#: app/scripts/constants.js:351
+#: app/scripts/constants.js:357
 #: app/scripts/controllers/deployment.js:41
 #: app/scripts/controllers/monitoring.js:51
 #: app/views/deployments.html:116
@@ -2049,8 +2056,12 @@ msgstr ""
 msgid "Environment"
 msgstr ""
 
-#: app/views/directives/edit-environment-variables.html:38
+#: app/views/directives/edit-environment-variables.html:37
 msgid "Environment From"
+msgstr ""
+
+#: app/views/directives/edit-environment-variables.html:41
+msgid "Environment From lets you add all key-value pairs from a config map or secret as environment variables."
 msgstr ""
 
 #: app/views/browse/build-config.html:453
@@ -2073,7 +2084,7 @@ msgstr ""
 msgid "Environment variables"
 msgstr ""
 
-#: app/views/create/fromimage.html:216
+#: app/views/create/fromimage.html:217
 msgid "Environment variables are used to configure and pass information to running containers.  These environment variables will be available during your build and at runtime."
 msgstr ""
 
@@ -2176,7 +2187,7 @@ msgstr ""
 msgid "External IPs:"
 msgstr ""
 
-#: app/scripts/constants.js:687
+#: app/scripts/constants.js:693
 msgid "Facilitate communication between applications and distributed processes with a messaging server."
 msgstr ""
 
@@ -2184,7 +2195,7 @@ msgstr ""
 msgid "Fail the deployment if the hook fails."
 msgstr ""
 
-#: app/scripts/constants.js:43
+#: app/scripts/constants.js:46
 msgid "Failed"
 msgstr ""
 
@@ -2213,7 +2224,7 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: app/scripts/constants.js:44
+#: app/scripts/constants.js:47
 #: app/scripts/directives/processTemplateDialog.js:137
 msgid "Filter by Keyword"
 msgstr ""
@@ -2228,7 +2239,7 @@ msgstr ""
 msgid "Filter by keyword or change sort options to see other projects."
 msgstr ""
 
-#: app/scripts/constants.js:45
+#: app/scripts/constants.js:48
 msgid "Filter by label"
 msgstr ""
 
@@ -2258,7 +2269,7 @@ msgstr ""
 msgid "Follow"
 msgstr ""
 
-#: app/scripts/constants.js:46
+#: app/scripts/constants.js:49
 msgid "From"
 msgstr ""
 
@@ -2270,7 +2281,7 @@ msgstr ""
 msgid "Generate"
 msgstr ""
 
-#: app/scripts/constants.js:47
+#: app/scripts/constants.js:50
 msgid "Generic"
 msgstr ""
 
@@ -2299,7 +2310,7 @@ msgstr ""
 msgid "Git URL of the source code to build."
 msgstr ""
 
-#: app/scripts/constants.js:657
+#: app/scripts/constants.js:663
 msgid "Go"
 msgstr ""
 
@@ -2319,7 +2330,7 @@ msgstr ""
 msgid "Grace Period:"
 msgstr ""
 
-#: app/scripts/constants.js:49
+#: app/scripts/constants.js:52
 msgid "Group"
 msgstr ""
 
@@ -2403,7 +2414,7 @@ msgstr ""
 msgid "IP:"
 msgstr ""
 
-#: app/scripts/constants.js:51
+#: app/scripts/constants.js:54
 msgid "Identifier"
 msgstr ""
 
@@ -2463,7 +2474,7 @@ msgstr ""
 msgid "If your Git repository is private, view the"
 msgstr ""
 
-#: app/scripts/constants.js:52
+#: app/scripts/constants.js:55
 msgid "Ignore"
 msgstr ""
 
@@ -2488,7 +2499,7 @@ msgstr ""
 msgid "Image Name"
 msgstr ""
 
-#: app/scripts/constants.js:54
+#: app/scripts/constants.js:57
 #: app/scripts/directives/createSecret.js:55
 msgid "Image Registry Credentials"
 msgstr ""
@@ -2534,7 +2545,7 @@ msgstr ""
 msgid "Image change"
 msgstr ""
 
-#: app/scripts/constants.js:53
+#: app/scripts/constants.js:56
 msgid "Image count"
 msgstr ""
 
@@ -2551,7 +2562,7 @@ msgstr ""
 msgid "Image value set"
 msgstr ""
 
-#: app/scripts/constants.js:436
+#: app/scripts/constants.js:442
 #: app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
 msgid "Images"
@@ -2604,7 +2615,7 @@ msgstr ""
 msgid "Instance Name"
 msgstr ""
 
-#: app/scripts/constants.js:691
+#: app/scripts/constants.js:697
 msgid "Integration"
 msgstr ""
 
@@ -2643,15 +2654,15 @@ msgstr ""
 msgid "It will not delete the secret."
 msgstr ""
 
-#: app/scripts/constants.js:55
+#: app/scripts/constants.js:58
 msgid "Items"
 msgstr ""
 
-#: app/scripts/constants.js:579
+#: app/scripts/constants.js:585
 msgid "Java"
 msgstr ""
 
-#: app/scripts/constants.js:626
+#: app/scripts/constants.js:632
 msgid "JavaScript"
 msgstr ""
 
@@ -2725,7 +2736,7 @@ msgstr ""
 msgid "Labels for this route."
 msgstr ""
 
-#: app/scripts/constants.js:574
+#: app/scripts/constants.js:580
 msgid "Languages"
 msgstr ""
 
@@ -2761,7 +2772,7 @@ msgstr ""
 msgid "Last State"
 msgstr ""
 
-#: app/scripts/constants.js:56
+#: app/scripts/constants.js:59
 msgid "Last Updated"
 msgstr ""
 
@@ -3004,7 +3015,7 @@ msgstr ""
 msgid "Making code changes"
 msgstr ""
 
-#: app/scripts/constants.js:57
+#: app/scripts/constants.js:60
 #: app/views/browse/build-config.html:440
 #: app/views/browse/deployment-config.html:253
 msgid "Manual"
@@ -3014,7 +3025,7 @@ msgstr ""
 msgid "Manual build"
 msgstr ""
 
-#: app/scripts/constants.js:59
+#: app/scripts/constants.js:62
 msgid "Mark All Read"
 msgstr ""
 
@@ -3095,11 +3106,11 @@ msgstr ""
 msgid "Memory"
 msgstr ""
 
-#: app/scripts/constants.js:61
+#: app/scripts/constants.js:64
 msgid "Memory (Limit)"
 msgstr ""
 
-#: app/scripts/constants.js:62
+#: app/scripts/constants.js:65
 msgid "Memory (Request)"
 msgstr ""
 
@@ -3149,7 +3160,7 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: app/scripts/constants.js:686
+#: app/scripts/constants.js:692
 msgid "Messaging"
 msgstr ""
 
@@ -3168,7 +3179,7 @@ msgstr ""
 msgid "Metrics might not be configured by your cluster administrator. Metrics are required for autoscaling."
 msgstr ""
 
-#: app/scripts/constants.js:63
+#: app/scripts/constants.js:66
 msgid "Mid"
 msgstr ""
 
@@ -3180,7 +3191,7 @@ msgstr ""
 msgid "Mid hooks execute after the previous deployment is scaled down to zero and before the first pod of the new deployment is created."
 msgstr ""
 
-#: app/scripts/constants.js:64
+#: app/scripts/constants.js:67
 msgid "Middleware"
 msgstr ""
 
@@ -3225,11 +3236,11 @@ msgstr ""
 msgid "Mode:"
 msgstr ""
 
-#: app/scripts/constants.js:670
+#: app/scripts/constants.js:676
 msgid "Model, automate, and orchestrate business processes across applications, services, and data."
 msgstr ""
 
-#: app/scripts/constants.js:496
+#: app/scripts/constants.js:502
 #: app/views/monitoring.html:7
 msgid "Monitoring"
 msgstr ""
@@ -3329,8 +3340,8 @@ msgstr ""
 #: app/views/directives/deploy-image.html:126
 #: app/views/directives/deploy-image.html:178
 #: app/views/directives/edit-config-map-or-secret.html:5
-#: app/views/directives/edit-environment-variables.html:14
-#: app/views/directives/edit-environment-variables.html:26
+#: app/views/directives/edit-environment-variables.html:13
+#: app/views/directives/edit-environment-variables.html:25
 #: app/views/directives/events.html:44
 #: app/views/directives/events.html:75
 #: app/views/directives/label-editor.html:15
@@ -3367,7 +3378,7 @@ msgid ""
 "              character is allowed anywhere except the first or last character."
 msgstr ""
 
-#: app/scripts/constants.js:65
+#: app/scripts/constants.js:68
 msgid "Name must consist of lower-case letters, numbers, periods, and hyphens. It must start and end with a letter or a number."
 msgstr ""
 
@@ -3454,7 +3465,7 @@ msgstr ""
 msgid "No builds."
 msgstr ""
 
-#: app/scripts/constants.js:66
+#: app/scripts/constants.js:69
 msgid "No catalog items have been loaded."
 msgstr ""
 
@@ -3512,9 +3523,7 @@ msgid "No deployments."
 msgstr ""
 
 #: app/views/directives/edit-environment-variables.html:7
-msgid ""
-"No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}}\n"
-"        template for container {{container.name}}."
+msgid "No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}} template for container {{container.name}}."
 msgstr ""
 
 #: app/views/directives/events.html:57
@@ -3551,7 +3560,7 @@ msgstr ""
 msgid "No images or templates."
 msgstr ""
 
-#: app/scripts/constants.js:67
+#: app/scripts/constants.js:70
 msgid "No items."
 msgstr ""
 
@@ -3610,11 +3619,11 @@ msgstr ""
 msgid "No provisioned services."
 msgstr ""
 
-#: app/scripts/constants.js:68
+#: app/scripts/constants.js:71
 msgid "No results found for Keyword:"
 msgstr ""
 
-#: app/scripts/constants.js:69
+#: app/scripts/constants.js:72
 msgid "No results match."
 msgstr ""
 
@@ -3768,6 +3777,11 @@ msgstr ""
 msgid "Optional username for Git authentication."
 msgstr ""
 
+#: app/views/directives/add-config-to-application.html:53
+#: app/views/directives/add-config-to-application.html:73
+msgid "Optionally, you can specify a prefix to use with environment variables."
+msgstr ""
+
 #: app/views/modals/debug-terminal.html:39
 msgid "Original Command:"
 msgstr ""
@@ -3780,7 +3794,7 @@ msgstr ""
 msgid "Other Replication Controllers"
 msgstr ""
 
-#: app/scripts/constants.js:478
+#: app/scripts/constants.js:484
 #: app/views/other-resources.html:5
 #: app/views/overview.html:137
 #: app/views/overview.html:338
@@ -3807,11 +3821,11 @@ msgstr ""
 msgid "Over limit of"
 msgstr ""
 
-#: app/scripts/constants.js:340
+#: app/scripts/constants.js:346
 msgid "Overview"
 msgstr ""
 
-#: app/scripts/constants.js:641
+#: app/scripts/constants.js:647
 msgid "PHP"
 msgstr ""
 
@@ -3902,7 +3916,7 @@ msgstr ""
 msgid "Percentage of traffic sent to each service. Drag the slider to adjust the values or"
 msgstr ""
 
-#: app/scripts/constants.js:636
+#: app/scripts/constants.js:642
 msgid "Perl"
 msgstr ""
 
@@ -3929,7 +3943,7 @@ msgstr ""
 msgid "Pipeline Builds"
 msgstr ""
 
-#: app/scripts/constants.js:428
+#: app/scripts/constants.js:434
 #: app/views/overview/_list-row-content.html:18
 #: app/views/overview/_list-row-expanded.html:158
 #: app/views/overview/_pipelines.html:2
@@ -3945,7 +3959,7 @@ msgstr ""
 msgid "Please enter a valid key"
 msgstr ""
 
-#: app/views/directives/edit-environment-variables.html:30
+#: app/views/directives/edit-environment-variables.html:29
 msgid "Please enter a valid key."
 msgstr ""
 
@@ -3969,7 +3983,7 @@ msgstr ""
 msgid "Pod status:"
 msgstr ""
 
-#: app/scripts/constants.js:374
+#: app/scripts/constants.js:380
 #: app/views/browse/_replica-set-details.html:217
 #: app/views/browse/service.html:98
 #: app/views/browse/stateful-set.html:126
@@ -4001,7 +4015,7 @@ msgstr ""
 msgid "Ports:"
 msgstr ""
 
-#: app/scripts/constants.js:71
+#: app/scripts/constants.js:74
 msgid "Post"
 msgstr ""
 
@@ -4018,7 +4032,7 @@ msgstr ""
 msgid "Post-Commit Hooks"
 msgstr ""
 
-#: app/scripts/constants.js:72
+#: app/scripts/constants.js:75
 msgid "Pre"
 msgstr ""
 
@@ -4076,11 +4090,11 @@ msgstr ""
 msgid "Public hostname for the route."
 msgstr ""
 
-#: app/scripts/constants.js:73
+#: app/scripts/constants.js:76
 msgid "Publisher"
 msgstr ""
 
-#: app/scripts/constants.js:75
+#: app/scripts/constants.js:78
 msgid "Pull"
 msgstr ""
 
@@ -4089,7 +4103,7 @@ msgstr ""
 msgid "Pulling"
 msgstr ""
 
-#: app/scripts/constants.js:76
+#: app/scripts/constants.js:79
 msgid "Pulling repository"
 msgstr ""
 
@@ -4101,11 +4115,11 @@ msgstr ""
 msgid "Push To"
 msgstr ""
 
-#: app/scripts/constants.js:646
+#: app/scripts/constants.js:652
 msgid "Python"
 msgstr ""
 
-#: app/scripts/constants.js:453
+#: app/scripts/constants.js:459
 #: app/views/quota.html:6
 msgid "Quota"
 msgstr ""
@@ -4122,15 +4136,15 @@ msgstr ""
 msgid "Read only"
 msgstr ""
 
-#: app/scripts/constants.js:78
+#: app/scripts/constants.js:81
 msgid "Read-Only-Many"
 msgstr ""
 
-#: app/scripts/constants.js:79
+#: app/scripts/constants.js:82
 msgid "Read-Write-Many"
 msgstr ""
 
-#: app/scripts/constants.js:80
+#: app/scripts/constants.js:83
 msgid "Read-Write-Once"
 msgstr ""
 
@@ -4177,39 +4191,39 @@ msgstr ""
 msgid "Recent Runs"
 msgstr ""
 
-#: app/scripts/constants.js:81
+#: app/scripts/constants.js:84
 msgid "Recreate"
 msgstr ""
 
-#: app/scripts/constants.js:586
+#: app/scripts/constants.js:592
 msgid "Red Hat JBoss A-MQ"
 msgstr ""
 
-#: app/scripts/constants.js:590
+#: app/scripts/constants.js:596
 msgid "Red Hat JBoss BPM Suite"
 msgstr ""
 
-#: app/scripts/constants.js:594
+#: app/scripts/constants.js:600
 msgid "Red Hat JBoss BRMS"
 msgstr ""
 
-#: app/scripts/constants.js:598
+#: app/scripts/constants.js:604
 msgid "Red Hat JBoss Data Grid"
 msgstr ""
 
-#: app/scripts/constants.js:602
+#: app/scripts/constants.js:608
 msgid "Red Hat JBoss EAP"
 msgstr ""
 
-#: app/scripts/constants.js:606
+#: app/scripts/constants.js:612
 msgid "Red Hat JBoss Fuse"
 msgstr ""
 
-#: app/scripts/constants.js:610
+#: app/scripts/constants.js:616
 msgid "Red Hat JBoss Web Server (Tomcat)"
 msgstr ""
 
-#: app/scripts/constants.js:614
+#: app/scripts/constants.js:620
 msgid "Red Hat Single Sign-On"
 msgstr ""
 
@@ -4319,7 +4333,7 @@ msgstr ""
 msgid "Replicas:"
 msgstr ""
 
-#: app/scripts/constants.js:83
+#: app/scripts/constants.js:86
 msgid "Replication Controller"
 msgstr ""
 
@@ -4376,7 +4390,7 @@ msgstr ""
 msgid "Resource name is missing in metadata field."
 msgstr ""
 
-#: app/scripts/constants.js:447
+#: app/scripts/constants.js:453
 msgid "Resources"
 msgstr ""
 
@@ -4403,7 +4417,7 @@ msgstr ""
 msgid "Resume Rollouts"
 msgstr ""
 
-#: app/scripts/constants.js:85
+#: app/scripts/constants.js:88
 msgid "Retry"
 msgstr ""
 
@@ -4439,11 +4453,11 @@ msgstr ""
 msgid "Roll Back"
 msgstr ""
 
-#: app/scripts/constants.js:86
+#: app/scripts/constants.js:89
 msgid "Rolling"
 msgstr ""
 
-#: app/scripts/constants.js:87
+#: app/scripts/constants.js:90
 msgid "Route"
 msgstr ""
 
@@ -4456,7 +4470,7 @@ msgstr ""
 msgid "Route target port is set to \""
 msgstr ""
 
-#: app/scripts/constants.js:388
+#: app/scripts/constants.js:394
 #: app/views/browse/routes.html:9
 msgid "Routes"
 msgstr ""
@@ -4485,7 +4499,7 @@ msgstr ""
 msgid "Routing is a way to make your application publicly visible."
 msgstr ""
 
-#: app/scripts/constants.js:651
+#: app/scripts/constants.js:657
 msgid "Ruby"
 msgstr ""
 
@@ -4513,7 +4527,7 @@ msgstr ""
 msgid "Run policy type"
 msgstr ""
 
-#: app/scripts/constants.js:89
+#: app/scripts/constants.js:92
 #: app/scripts/directives/podDonut.js:124
 msgid "Running"
 msgstr ""
@@ -4526,9 +4540,10 @@ msgstr ""
 msgid "SSH Key"
 msgstr ""
 
+#: app/scripts/constants.js:93
 #: app/views/browse/build-config.html:483
 #: app/views/directives/add-config-to-application.html:150
-#: app/views/directives/edit-environment-variables.html:52
+#: app/views/directives/edit-environment-variables.html:51
 #: app/views/directives/logs/_log-viewer.html:23
 #: app/views/edit/autoscaler.html:71
 #: app/views/edit/build-config.html:613
@@ -4594,7 +4609,7 @@ msgstr ""
 msgid "Script:"
 msgstr ""
 
-#: app/scripts/constants.js:90
+#: app/scripts/constants.js:94
 msgid "Search Catalog"
 msgstr ""
 
@@ -4624,7 +4639,7 @@ msgstr ""
 msgid "Secret reference is required."
 msgstr ""
 
-#: app/scripts/constants.js:94
+#: app/scripts/constants.js:98
 #: app/scripts/directives/createSecret.js:37
 msgid "Secret reference key must consist of lower-case, upper-case letters, numbers, dash, and underscore."
 msgstr ""
@@ -4637,7 +4652,7 @@ msgstr ""
 msgid "Secret:"
 msgstr ""
 
-#: app/scripts/constants.js:466
+#: app/scripts/constants.js:472
 #: app/views/secrets.html:9
 msgid "Secrets"
 msgstr ""
@@ -4654,7 +4669,7 @@ msgstr ""
 msgid "Security"
 msgstr ""
 
-#: app/scripts/constants.js:92
+#: app/scripts/constants.js:96
 msgid "See All"
 msgstr ""
 
@@ -4693,7 +4708,7 @@ msgstr ""
 msgid "Select a webhook type"
 msgstr ""
 
-#: app/scripts/constants.js:93
+#: app/scripts/constants.js:97
 msgid "Select an application"
 msgstr ""
 
@@ -4769,7 +4784,7 @@ msgstr ""
 msgid "Service"
 msgstr ""
 
-#: app/scripts/constants.js:96
+#: app/scripts/constants.js:100
 #: app/views/directives/create-secret.html:342
 msgid "Service Account"
 msgstr ""
@@ -4816,7 +4831,7 @@ msgstr ""
 msgid "Service {{route.to.service.metadata.name}} Weight"
 msgstr ""
 
-#: app/scripts/constants.js:381
+#: app/scripts/constants.js:387
 #: app/views/services.html:6
 msgid "Services"
 msgstr ""
@@ -4883,7 +4898,7 @@ msgstr ""
 msgid "Showing <strong>{{overview.filteredSize}}</strong> of <strong>{{overview.size}}</strong> items"
 msgstr ""
 
-#: app/scripts/constants.js:697
+#: app/scripts/constants.js:703
 msgid "Single Sign-On"
 msgstr ""
 
@@ -5015,7 +5030,7 @@ msgstr ""
 msgid "State:"
 msgstr ""
 
-#: app/scripts/constants.js:367
+#: app/scripts/constants.js:373
 #: app/scripts/controllers/monitoring.js:58
 #: app/views/browse/stateful-sets.html:7
 #: app/views/monitoring.html:325
@@ -5063,13 +5078,13 @@ msgstr ""
 msgid "Stop Following"
 msgstr ""
 
-#: app/scripts/constants.js:486
+#: app/scripts/constants.js:492
 #: app/views/attach-pvc.html:37
 #: app/views/storage.html:10
 msgid "Storage"
 msgstr ""
 
-#: app/scripts/constants.js:97
+#: app/scripts/constants.js:101
 msgid "Storage (Request)"
 msgstr ""
 
@@ -5090,7 +5105,7 @@ msgstr ""
 msgid "Storage quota will be exceeded."
 msgstr ""
 
-#: app/scripts/constants.js:682
+#: app/scripts/constants.js:688
 msgid "Store and manage collections of data."
 msgstr ""
 
@@ -5124,11 +5139,11 @@ msgstr ""
 msgid "Switch to {{multiline ? 'Single-line' : 'Multiline'}} Editor"
 msgstr ""
 
-#: app/scripts/constants.js:99
+#: app/scripts/constants.js:103
 msgid "System Group"
 msgstr ""
 
-#: app/scripts/constants.js:101
+#: app/scripts/constants.js:105
 msgid "System User"
 msgstr ""
 
@@ -5203,7 +5218,7 @@ msgstr ""
 msgid "Target port for traffic."
 msgstr ""
 
-#: app/scripts/constants.js:664
+#: app/scripts/constants.js:670
 msgid "Technologies"
 msgstr ""
 
@@ -5212,6 +5227,7 @@ msgstr ""
 #: app/views/browse/deployment-config.html:228
 #: app/views/browse/deployment.html:213
 #: app/views/browse/stateful-set.html:106
+#: app/views/modals/process-or-save-template.html:6
 msgid "Template"
 msgstr ""
 
@@ -5219,7 +5235,7 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-#: app/scripts/constants.js:102
+#: app/scripts/constants.js:106
 #: app/scripts/directives/podDonut.js:131
 #: app/scripts/directives/podDonut.js:179
 msgid "Terminating"
@@ -5264,12 +5280,16 @@ msgstr ""
 msgid "The PEM format key. Upload file by dragging & dropping, selecting it, or pasting from the clipboard."
 msgstr ""
 
-#: app/scripts/constants.js:105
+#: app/scripts/constants.js:110
 msgid "The active filters are hiding all catalog items."
 msgstr ""
 
 #: app/views/browse/deployment.html:205
 msgid "The amount of time to wait for a deployment to make progress before it's considered failed."
+msgstr ""
+
+#: app/views/edit/build-config.html:512
+msgid "The build run policy describes the order in which the builds created from the build configuration should run."
 msgstr ""
 
 #: app/views/browse/build.html:111
@@ -5413,7 +5433,7 @@ msgstr ""
 msgid "The lower limit for the number of pods that can be set by the autoscaler."
 msgstr ""
 
-#: app/scripts/constants.js:106
+#: app/scripts/constants.js:111
 #: app/views/_edit-request-limit.html:32
 msgid "The maximum amount of"
 msgstr ""
@@ -5438,7 +5458,7 @@ msgstr ""
 msgid "The maximum web console log size has been reached. Use the command-line interface or <a href=\"\" ng-click=\"restartLogs()\">reload</a> the log to see new messages."
 msgstr ""
 
-#: app/scripts/constants.js:107
+#: app/scripts/constants.js:112
 #: app/views/_edit-request-limit.html:19
 msgid "The minimum amount of"
 msgstr ""
@@ -5529,7 +5549,7 @@ msgstr ""
 msgid "There are no annotations on this resource."
 msgstr ""
 
-#: app/scripts/constants.js:108
+#: app/scripts/constants.js:113
 msgid "There are no applications in this project"
 msgstr ""
 
@@ -5551,7 +5571,7 @@ msgstr ""
 msgid "There are no limit ranges set on this project."
 msgstr ""
 
-#: app/scripts/constants.js:109
+#: app/scripts/constants.js:114
 msgid "There are no notifications to display."
 msgstr ""
 
@@ -5592,7 +5612,7 @@ msgstr ""
 msgid "This deployment configuration has changed since you started editing it. You'll need to copy any changes you've made and edit again."
 msgstr ""
 
-#: app/scripts/constants.js:110
+#: app/scripts/constants.js:115
 msgid "This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results."
 msgstr ""
 
@@ -5769,11 +5789,11 @@ msgstr ""
 msgid "To get the complete log, run the command"
 msgstr ""
 
-#: app/scripts/constants.js:111
+#: app/scripts/constants.js:116
 msgid "To pull this image"
 msgstr ""
 
-#: app/scripts/constants.js:112
+#: app/scripts/constants.js:117
 msgid "To push an image to this image stream:"
 msgstr ""
 
@@ -5849,7 +5869,7 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: app/scripts/constants.js:702
+#: app/scripts/constants.js:708
 msgid "Uncategorized"
 msgstr ""
 
@@ -5870,6 +5890,10 @@ msgstr ""
 #: app/views/browse/deployment-config.html:168
 #: app/views/deployments.html:96
 msgid "Unknown"
+msgstr ""
+
+#: app/scripts/constants.js:120
+msgid "Update"
 msgstr ""
 
 #: app/views/edit/deployment-config.html:114
@@ -5958,7 +5982,7 @@ msgstr ""
 msgid "Used - This Project"
 msgstr ""
 
-#: app/scripts/constants.js:114
+#: app/scripts/constants.js:119
 msgid "User"
 msgstr ""
 
@@ -5974,8 +5998,8 @@ msgstr ""
 #: app/views/browse/build-config.html:475
 #: app/views/directives/deploy-image.html:181
 #: app/views/directives/edit-config-map-or-secret.html:99
-#: app/views/directives/edit-environment-variables.html:15
-#: app/views/directives/edit-environment-variables.html:27
+#: app/views/directives/edit-environment-variables.html:14
+#: app/views/directives/edit-environment-variables.html:26
 #: app/views/directives/label-editor.html:18
 #: app/views/directives/next-steps.html:109
 #: app/views/edit/build-config.html:431
@@ -6065,7 +6089,7 @@ msgstr ""
 msgid "View Quota&nbsp;"
 msgstr ""
 
-#: app/scripts/constants.js:115
+#: app/scripts/constants.js:121
 msgid "View all"
 msgstr ""
 
@@ -6073,7 +6097,7 @@ msgstr ""
 msgid "View pods for {{rc | displayName}}"
 msgstr ""
 
-#: app/scripts/constants.js:116
+#: app/scripts/constants.js:122
 msgid "View the result for Keyword:"
 msgstr ""
 
@@ -6212,7 +6236,7 @@ msgstr ""
 msgid "When you navigate away from this pod, any open terminal connections will be closed."
 msgstr ""
 
-#: app/scripts/constants.js:618
+#: app/scripts/constants.js:624
 msgid "WildFly"
 msgstr ""
 
@@ -6385,6 +6409,11 @@ msgstr ""
 msgid "by"
 msgstr ""
 
+#: app/scripts/constants.js:22
+#: app/scripts/directives/fromFile.js:238
+msgid "can't be created in project"
+msgstr ""
+
 #: app/views/_templateopt.html:79
 msgid "clear the value"
 msgstr ""
@@ -6393,7 +6422,7 @@ msgstr ""
 msgid "command line tools"
 msgstr ""
 
-#: app/scripts/constants.js:27
+#: app/scripts/constants.js:30
 msgid "complete"
 msgstr ""
 
@@ -6405,7 +6434,7 @@ msgstr ""
 msgid "config map"
 msgstr ""
 
-#: app/scripts/constants.js:29
+#: app/scripts/constants.js:32
 msgid "config-map"
 msgstr ""
 
@@ -6459,7 +6488,7 @@ msgstr ""
 msgid "created from <a href=\"{{build | configURLForResource}}\">{{buildConfigName}}</a>"
 msgstr ""
 
-#: app/scripts/constants.js:39
+#: app/scripts/constants.js:42
 msgid "daemon set"
 msgstr ""
 
@@ -6475,7 +6504,7 @@ msgstr ""
 msgid "debugging"
 msgstr ""
 
-#: app/scripts/constants.js:41
+#: app/scripts/constants.js:44
 msgid "deployment config"
 msgstr ""
 
@@ -6561,7 +6590,7 @@ msgstr ""
 msgid "git repo"
 msgstr ""
 
-#: app/scripts/constants.js:48
+#: app/scripts/constants.js:51
 msgid "group"
 msgstr ""
 
@@ -6577,7 +6606,7 @@ msgstr ""
 msgid "have been added to project"
 msgstr ""
 
-#: app/scripts/constants.js:50
+#: app/scripts/constants.js:53
 msgid "horizontal pod autoscaler"
 msgstr ""
 
@@ -6632,11 +6661,11 @@ msgstr ""
 msgid "limit."
 msgstr ""
 
-#: app/scripts/constants.js:58
+#: app/scripts/constants.js:61
 msgid "manual change"
 msgstr ""
 
-#: app/scripts/constants.js:60
+#: app/scripts/constants.js:63
 msgid "matching(...)"
 msgstr ""
 
@@ -6718,7 +6747,7 @@ msgstr ""
 msgid "one of the images referenced by this deployment config changes."
 msgstr ""
 
-#: app/scripts/constants.js:70
+#: app/scripts/constants.js:73
 msgid "openshift.io/imagestreams"
 msgstr ""
 
@@ -6752,11 +6781,11 @@ msgstr ""
 msgid "pod.metadata.creationTimestamp"
 msgstr ""
 
-#: app/scripts/constants.js:74
+#: app/scripts/constants.js:77
 msgid "pull"
 msgstr ""
 
-#: app/scripts/constants.js:77
+#: app/scripts/constants.js:80
 msgid "push"
 msgstr ""
 
@@ -6778,7 +6807,7 @@ msgstr ""
 msgid "replica<span ng-if=\"replicationController.spec.replicas != 1\">s</span>"
 msgstr ""
 
-#: app/scripts/constants.js:82
+#: app/scripts/constants.js:85
 msgid "replication controller"
 msgstr ""
 
@@ -6790,7 +6819,7 @@ msgstr ""
 msgid "request."
 msgstr ""
 
-#: app/scripts/constants.js:84
+#: app/scripts/constants.js:87
 msgid "results for Keyword:"
 msgstr ""
 
@@ -6802,7 +6831,7 @@ msgstr ""
 msgid "routes"
 msgstr ""
 
-#: app/scripts/constants.js:88
+#: app/scripts/constants.js:91
 msgid "running"
 msgstr ""
 
@@ -6848,11 +6877,11 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
-#: app/scripts/constants.js:91
+#: app/scripts/constants.js:95
 msgid "secret"
 msgstr ""
 
-#: app/scripts/constants.js:95
+#: app/scripts/constants.js:99
 msgid "service account"
 msgstr ""
 
@@ -6864,10 +6893,8 @@ msgstr ""
 msgid "set. Autoscaling will not work without a CPU"
 msgstr ""
 
-#: app/views/browse/build-config.html:92
-msgid ""
-"source repository\n"
-"                        <span class=\"word-break\"><osc-git-link uri=\"buildConfig.spec.source.git.uri\" ref=\"buildConfig.spec.source.git.ref\" context-dir=\"buildConfig.spec.source.contextDir\">{{buildConfig.spec.source.git.uri}}</osc-git-link></span>"
+#: app/views/browse/build-config.html:93
+msgid "source repository"
 msgstr ""
 
 #: app/views/browse/build-config.html:167
@@ -6886,24 +6913,29 @@ msgstr ""
 msgid "successfully queued."
 msgstr ""
 
-#: app/scripts/constants.js:98
+#: app/scripts/constants.js:102
 msgid "system group"
 msgstr ""
 
-#: app/scripts/constants.js:100
+#: app/scripts/constants.js:104
 msgid "system user"
+msgstr ""
+
+#: app/scripts/constants.js:107
+#: app/views/modals/process-or-save-template.html:25
+msgid "template"
 msgstr ""
 
 #: app/views/overview.html:279
 msgid "the OpenShift Pipeline Plugin"
 msgstr ""
 
-#: app/scripts/constants.js:103
+#: app/scripts/constants.js:108
 #: app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
 msgstr ""
 
-#: app/scripts/constants.js:104
+#: app/scripts/constants.js:109
 #: app/views/_edit-request-limit.html:19
 msgid "the container is guaranteed."
 msgstr ""
@@ -6932,7 +6964,7 @@ msgstr ""
 msgid "to volume <strong>{{pvc.spec.volumeName}}</strong>"
 msgstr ""
 
-#: app/scripts/constants.js:113
+#: app/scripts/constants.js:118
 msgid "user"
 msgstr ""
 

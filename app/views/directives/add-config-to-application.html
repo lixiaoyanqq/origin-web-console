@@ -50,7 +50,7 @@
               <label translate>Prefix</label>
               <a href="" class="pficon pficon-info field-help"
                  aria-hidden="true"
-                 uib-popover="Optionally, you can specify a prefix to use with environment variables."
+                 uib-popover="{{'Optionally, you can specify a prefix to use with environment variables.'|translate}}"
                  popover-trigger="focus">
               </a>
             </div>
@@ -70,7 +70,7 @@
                 <div class="help-block" ng-show="addToApplicationForm.envPrefix.$error.pattern && addToApplicationForm.envPrefix.$touched">
                   Prefix can contain numbers, letters, and underscores, but can not start with a number.
                 </div>
-                <span class="sr-only" id="env-prefix-help">Optionally, you can specify a prefix to use with environment variables.</span>
+                <span class="sr-only" id="env-prefix-help" translate>Optionally, you can specify a prefix to use with environment variables.</span>
             </span>
           </div>
         </div>

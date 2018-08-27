@@ -5,8 +5,7 @@
 
     <div ng-if="!$ctrl.canIUpdate || $ctrl.ngReadonly">
       <span ng-if="!container.env.length" translate>
-        No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}}
-        template for container {{container.name}}.
+        No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}} template for container {{container.name}}.
       </span>
       <key-value-editor
         ng-if="container.env.length"
@@ -39,7 +38,7 @@
       <span class="pficon pficon-help tooltip-default-icon"
             aria-hidden="true"
             data-toggle="tooltip"
-            data-original-title="Environment From lets you add all key-value pairs from a config map or secret as environment variables."></span>
+            data-original-title="{{'Environment From lets you add all key-value pairs from a config map or secret as environment variables.'|translate}}"></span>
     </h4>
     <edit-environment-from
       entries="container.envFrom"
