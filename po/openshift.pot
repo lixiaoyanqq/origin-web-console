@@ -104,10 +104,8 @@ msgstr ""
 msgid "<strong>It cannot be undone.</strong> Make sure this is something you really want to do!"
 msgstr ""
 
-#: app/views/attach-pvc.html:12
-msgid ""
-"A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},\n"
-"                but none are loaded on this project."
+#: app/views/attach-pvc.html:13
+msgid "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},"
 msgstr ""
 
 #: app/views/edit/build-config.html:46
@@ -2848,7 +2846,6 @@ msgstr ""
 
 #: app/views/browse/service.html:96
 #: app/views/edit/jenkinsfile-examples.html:51
-#: app/views/overview.html:276
 msgid "Learn more about"
 msgstr ""
 
@@ -3944,7 +3941,6 @@ msgid "Pipeline"
 msgstr ""
 
 #: app/views/edit/jenkinsfile-examples.html:52
-#: app/views/overview.html:277
 msgid "Pipeline Builds"
 msgstr ""
 
@@ -6385,7 +6381,6 @@ msgstr ""
 
 #: app/views/browse/service.html:96
 #: app/views/directives/deploy-image.html:109
-#: app/views/overview.html:278
 #: app/views/overview/_networking.html:17
 msgid "and"
 msgstr ""
@@ -6413,6 +6408,10 @@ msgstr ""
 
 #: app/views/browse/build-config.html:99
 msgid "build configuration {{buildConfig.metadata.name}}."
+msgstr ""
+
+#: app/views/attach-pvc.html:14
+msgid "but none are loaded on this project."
 msgstr ""
 
 #: app/scripts/services/routes.js:30
@@ -6938,10 +6937,6 @@ msgstr ""
 #: app/scripts/constants.js:108
 #: app/views/modals/process-or-save-template.html:25
 msgid "template"
-msgstr ""
-
-#: app/views/overview.html:279
-msgid "the OpenShift Pipeline Plugin"
 msgstr ""
 
 #: app/scripts/constants.js:109

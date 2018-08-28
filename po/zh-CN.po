@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-27 14:58+0800\n"
+"PO-Revision-Date: 2018-08-28 09:58+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.9\n"
 
 #: app/scripts/services/routes.js:55
 msgid "\" does not expose that port."
@@ -113,16 +113,13 @@ msgstr ""
 msgid ""
 "<strong>It cannot be undone.</strong> Make sure this is something you really "
 "want to do!"
-msgstr "<strong>当前操作无法撤销。</strong> 确认么？"
+msgstr "<strong>此操作无法恢复.</strong>请确认是否删除!"
 
-#: app/views/attach-pvc.html:12
+#: app/views/attach-pvc.html:13
 msgid ""
 "A <b>persistent volume claim</b> is required to attach to this {{kind | "
-"humanizeKind}},\n"
-"                but none are loaded on this project."
-msgstr ""
-"一个 <b>持久卷声明</b>需要依附到{{kind | humanizeKind}}，\n"
-"但是这个项目没有加载持久卷。"
+"humanizeKind}},"
+msgstr "一个 <b>持久卷声明</b>需要依附到{{kind | humanizeKind}},"
 
 #: app/views/edit/build-config.html:46
 msgid "A Git repository URL is required."
@@ -655,7 +652,7 @@ msgstr "取消时发生错误"
 
 #: app/scripts/directives/fromFile.js:196
 msgid "An error occurred creating project."
-msgstr "创建项目时发生了错误"
+msgstr "创建项目时发生了错误."
 
 #: app/views/directives/bind-service/delete-binding-result.html:28
 msgid "An error occurred deleting the binding."
@@ -686,11 +683,11 @@ msgstr "开始调试pod时出现了错误。"
 
 #: app/scripts/services/deployments.js:184
 msgid "An error occurred while cancelling the deployment."
-msgstr "取消部署时发生了错误"
+msgstr "取消部署时发生了错误."
 
 #: app/scripts/services/deployments.js:72
 msgid "An error occurred while deleting the deployer pod."
-msgstr "删除部署pod时发生了错误"
+msgstr "删除部署pod时发生了错误."
 
 #: app/scripts/services/builds.js:139
 msgid "An error occurred while rerunning"
@@ -698,12 +695,12 @@ msgstr "重新运行时发生了错误"
 
 #: app/scripts/services/deployments.js:101
 msgid "An error occurred while retrying the deployment."
-msgstr "重试部署时发生了错误"
+msgstr "重试部署时发生了错误."
 
 #: app/scripts/services/deployments.js:143
 #: app/scripts/services/deployments.js:153
 msgid "An error occurred while rolling back the deployment."
-msgstr "回滚部署时发生了错误"
+msgstr "回滚部署时发生了错误."
 
 #: app/scripts/services/builds.js:77
 msgid "An error occurred while starting the"
@@ -711,7 +708,7 @@ msgstr "发生了错误当启动"
 
 #: app/scripts/services/deployments.js:43
 msgid "An error occurred while starting the deployment."
-msgstr "开始部署时发生了错误"
+msgstr "开始部署时发生了错误."
 
 #: app/scripts/controllers/edit/project.js:71
 msgid "An error occurred while updating the project"
@@ -746,7 +743,7 @@ msgid ""
 "resourceName}}</strong>'?"
 msgstr ""
 "你确定要删除 {{typeDisplayName || (kind | humanizeKind) | translate}} "
-"‘<strong>{{displayName ? displayName : resourceName}}</strong>’吗?"
+"'<strong>{{displayName ? displayName : resourceName}}</strong>'吗?"
 
 #: app/scripts/controllers/membership.js:47
 msgid ""
@@ -927,7 +924,7 @@ msgstr "浏览目录"
 
 #: app/views/directives/osc-file-input.html:16
 msgid "Browse&hellip;"
-msgstr "浏览文件"
+msgstr "浏览&hellip;"
 
 #: app/views/browse/build-config.html:138
 #: app/views/browse/build-config.html:184
@@ -1008,7 +1005,7 @@ msgstr "构建源代码"
 msgid ""
 "Builds triggered from this Build Configuration will run all at the same "
 "time. The order in which they will finish is not guaranteed."
-msgstr "由此构建配置触发的构建将同时运行， 但他们完成的顺序不能保证"
+msgstr "由此构建配置触发的构建将同时运行， 但他们完成的顺序不能保证."
 
 #: app/views/browse/build-config.html:328 app/views/edit/build-config.html:527
 msgid ""
@@ -1129,7 +1126,7 @@ msgstr "不能是负数。"
 
 #: app/scripts/constants.js:23 app/scripts/directives/fromFile.js:238
 msgid "Can't create resource in different projects."
-msgstr ""
+msgstr "不能在不同项目中创建资源."
 
 #: app/scripts/controllers/create/createFromImage.js:347
 #: app/scripts/controllers/deployment.js:227
@@ -1422,7 +1419,7 @@ msgstr "配置文件"
 
 #: app/views/directives/create-secret.html:323
 msgid "Configuration file should be in JSON format."
-msgstr "配置文件应该是JSON格式"
+msgstr "配置文件应该是JSON格式."
 
 #: app/views/create/fromimage.html:189
 msgid "Configure a webhook build trigger"
@@ -1775,7 +1772,7 @@ msgstr "默认的"
 
 #: app/views/attach-pvc.html:123
 msgid "Defaults to the volume's root."
-msgstr "默认为卷的根路径。"
+msgstr "默认为卷的根目录."
 
 #: app/scripts/controllers/quota.js:28
 msgid ""
@@ -1912,8 +1909,6 @@ msgid "Destination CA certificates are only used for re-encrypt termination."
 msgstr "目的CA证书仅用于重新加密终止。"
 
 #: app/views/edit/build-config.html:207
-#, fuzzy
-#| msgid "Destination Directory"
 msgid "Destination Dir"
 msgstr "目标目录"
 
@@ -2176,7 +2171,7 @@ msgstr "环境"
 msgid ""
 "Environment From lets you add all key-value pairs from a config map or "
 "secret as environment variables."
-msgstr "环境允许您从配置映射或秘密中添加所有键值对作为环境变量。"
+msgstr "Environment From允许您从配置集或秘钥中添加所有键值对作为环境变量."
 
 #: app/views/browse/build-config.html:453 app/views/browse/build.html:95
 #: app/views/create/fromimage.html:215 app/views/create/fromimage.html:256
@@ -2715,7 +2710,7 @@ msgstr "需要镜像registry服务器地址"
 
 #: app/views/newfromtemplate.html:24
 msgid "Image value set"
-msgstr "镜像值设置"
+msgstr "镜像值集"
 
 #: app/scripts/constants.js:443 app/views/edit/deployment-config.html:279
 #: app/views/newfromtemplate.html:16
@@ -2839,7 +2834,7 @@ msgstr "键"
 
 #: app/views/directives/edit-config-map-or-secret.html:78
 msgid "Key is required."
-msgstr "键是必需的。"
+msgstr "键是必填的."
 
 #: app/views/_volumes.html:100
 msgid "Key to File:"
@@ -2854,21 +2849,13 @@ msgid "Keys and Paths"
 msgstr "键和路径"
 
 #: app/views/directives/edit-config-map-or-secret.html:93
-#, fuzzy
-#| msgid "Config map keys may not be longer than 253 characters."
 msgid "Keys may not be longer than 253 characters."
-msgstr "配置集键可能不超过253个字符。"
+msgstr "键不能超过253个字符。"
 
 #: app/views/directives/edit-config-map-or-secret.html:88
-#, fuzzy
-#| msgid ""
-#| "Name must consist of lower-case letters, numbers, periods, and hyphens. "
-#| "It must start and end with a letter or a number."
 msgid ""
 "Keys may only consist of letters, numbers, periods, hyphens, and underscores."
-msgstr ""
-"主机名必须由小写字母，数字，英文句号（.）和连字符(-)组成并且开头和结尾必须是"
-"数字或者字母。"
+msgstr "键必须由字母，数字，英文句号（.）和连字符(-)和下划线组成."
 
 #: app/scripts/directives/events.js:158 app/views/directives/events.html:47
 #: app/views/directives/events.html:86
@@ -2995,7 +2982,6 @@ msgid ""
 msgstr "了解更多&nbsp;<i class=“fa fa-external-link” aria-hidden=“true”></i>"
 
 #: app/views/browse/service.html:96 app/views/edit/jenkinsfile-examples.html:51
-#: app/views/overview.html:276
 msgid "Learn more about"
 msgstr "进一步了解"
 
@@ -3204,7 +3190,7 @@ msgid ""
 "minReplicas\">min pods, which is</span> {{autoscaling.minReplicas || 1}}."
 msgstr ""
 "最大pod数量必须大于或等于<span ng-if=\"autoscaling.minReplicas\">最小pod数量"
-"</span>{{autoscaling.minReplicas || 1}."
+"</span>{{autoscaling.minReplicas || 1}}."
 
 #: app/views/directives/osc-persistent-volume-claim.html:151
 msgid "Max:"
@@ -3496,7 +3482,7 @@ msgstr "名称不能超过24个字符。"
 #: app/views/directives/osc-autoscaling.html:28
 #: app/views/directives/osc-persistent-volume-claim.html:86
 msgid "Name is required."
-msgstr "名称是必需的。"
+msgstr "名称是必填的."
 
 #: app/views/directives/deploy-image.html:147
 msgid ""
@@ -3514,8 +3500,8 @@ msgid ""
 "Name must consist of lower-case letters, numbers, periods, and hyphens. It "
 "must start and end with a letter or a number."
 msgstr ""
-"主机名必须由小写字母，数字，英文句号（.）和连字符(-)组成并且开头和结尾必须是"
-"数字或者字母。"
+"名称必须由小写字母，数字，英文句号（.）和连字符(-)组成并且开头和结尾必须是数"
+"字或者字母。"
 
 #: app/views/directives/deploy-image.html:152
 msgid "Name must have at least 2 characters."
@@ -3630,7 +3616,7 @@ msgstr "没有部署配置可以显示"
 
 #: app/views/deployments.html:61
 msgid "No deployments"
-msgstr "没有部署。"
+msgstr "没有部署"
 
 #: app/views/overview/_list-row-empty-state.html:15
 msgid "No deployments for"
@@ -3658,17 +3644,12 @@ msgid "No deployments."
 msgstr "没有部署。"
 
 #: app/views/directives/edit-environment-variables.html:7
-#, fuzzy
-#| msgid ""
-#| "No environment variables set in the {{$ctrl.apiObject.kind | "
-#| "humanizeKind}}\n"
-#| "        template for container {{container.name}}."
 msgid ""
 "No environment variables set in the {{$ctrl.apiObject.kind | humanizeKind}} "
 "template for container {{container.name}}."
 msgstr ""
-"没有环境变量设置在{{$ctrl.apiObject.kind | humanizeKind}}\n"
-"容器模板{{container.name}}."
+"没有环境变量设置在{{$ctrl.apiObject.kind | humanizeKind}}容器模板{{container."
+"name}}."
 
 #: app/views/directives/events.html:57 app/views/directives/events.html:64
 msgid "No events to show."
@@ -3737,7 +3718,7 @@ msgstr "没有管道运行。"
 
 #: app/views/overview.html:274
 msgid "No pipelines have been added to project"
-msgstr "没有服务添加到项目中"
+msgstr "没有管道添加到项目中"
 
 #: app/views/pipelines.html:24
 msgid "No pipelines have been added to project {{projectName}}."
@@ -3914,7 +3895,7 @@ msgstr "可选的分支、标记或提交。"
 msgid ""
 "Optional path within the volume from which it will be mounted into the "
 "container."
-msgstr "将被挂入容器的卷的可选路径."
+msgstr "可选路径，将从该卷安装到容器中."
 
 #: app/views/create/fromimage.html:137 app/views/edit/build-config.html:89
 msgid ""
@@ -3929,7 +3910,7 @@ msgstr "私有SSH密钥文件用于Git认证."
 #: app/views/directives/add-config-to-application.html:53
 #: app/views/directives/add-config-to-application.html:73
 msgid "Optionally, you can specify a prefix to use with environment variables."
-msgstr ""
+msgstr "您可以选择指定一个前缀，以便与环境变量一起使用."
 
 #: app/views/modals/debug-terminal.html:39
 msgid "Original Command:"
@@ -4097,7 +4078,7 @@ msgstr "选择配置源。 它的数据将作为卷挂载入容器。"
 msgid "Pipeline"
 msgstr "管道"
 
-#: app/views/edit/jenkinsfile-examples.html:52 app/views/overview.html:277
+#: app/views/edit/jenkinsfile-examples.html:52
 msgid "Pipeline Builds"
 msgstr "管道构建"
 
@@ -4151,7 +4132,7 @@ msgstr "Pods"
 msgid ""
 "Pods will be added or removed periodically when CPU usage exceeds or drops "
 "below this target value."
-msgstr "当CPU使用率超过或低于此目标值时，Pods会被定期添加或删除。"
+msgstr "当CPU使用率超过或低于此目标值时，将定期添加或删除Pods."
 
 #: app/views/directives/osc-routing.html:274
 msgid "Policy for traffic on insecure schemes like HTTP."
@@ -4802,7 +4783,7 @@ msgstr "私密凭证参考是必填的."
 msgid ""
 "Secret reference key must consist of lower-case, upper-case letters, "
 "numbers, dash, and underscore."
-msgstr "配置集键值可能只包含字母、数字、英文句号、连字符和下划线。"
+msgstr "秘钥引用键必须由小写字母、大写字母、数字、破折号和下划线组成."
 
 #: app/views/directives/osc-secrets.html:33
 msgid "Secret with credentials for pulling your source code."
@@ -5104,10 +5085,8 @@ msgid "Source Context Dir:"
 msgstr "源上下文目录:"
 
 #: app/views/edit/build-config.html:205
-#, fuzzy
-#| msgid "Source"
 msgid "Source Path"
-msgstr "源"
+msgstr "源路径"
 
 #: app/views/browse/_build-details.html:72
 #: app/views/browse/build-config.html:253
@@ -5154,7 +5133,7 @@ msgstr "指定如何将卷挂载入容器内的详情。"
 
 #: app/views/directives/osc-routing.html:154
 msgid "Split traffic across multiple services"
-msgstr "这条路由会在多个服务之间分割流量。"
+msgstr "在多个服务之间分割流量"
 
 #: app/views/browse/build-config.html:122 app/views/browse/build-config.html:13
 #: app/views/browse/build-config.html:32
@@ -5473,7 +5452,7 @@ msgstr "在被认为失败之前等待部署进度的时间。"
 msgid ""
 "The build run policy describes the order in which the builds created from "
 "the build configuration should run."
-msgstr ""
+msgstr "构建运行策略描述从构建配置创建的构建运行的顺序."
 
 #: app/views/browse/build.html:111
 msgid "The build strategy had no environment variables defined."
@@ -5719,7 +5698,7 @@ msgstr "要保持的旧副本集的数量。"
 #: app/views/directives/osc-autoscaling.html:116
 msgid ""
 "The percentage of the CPU request that each pod should ideally be using."
-msgstr "每个pod应该使用的CPU请求的百分比。"
+msgstr ""
 
 #: app/views/edit/deployment-config.html:30
 msgid ""
@@ -5777,7 +5756,7 @@ msgstr "该卷将装入所有容器。你可以"
 
 #: app/views/directives/edit-config-map-or-secret.html:45
 msgid "The {{type | translate}} has no items."
-msgstr "配置集没有条目。"
+msgstr "{{type | translate}}没有条目。"
 
 #: app/views/directives/osc-routing-service.html:25
 msgid ""
@@ -5937,7 +5916,7 @@ msgstr "该服务已经被删除"
 
 #: app/views/browse/route.html:112
 msgid "This target port will route to"
-msgstr "路由目标端口设置为"
+msgstr "路由目标端口将指向"
 
 #: app/views/modals/debug-terminal.html:35
 msgid ""
@@ -6020,7 +5999,7 @@ msgstr "这将从部署里删除卷。"
 
 #: app/views/browse/deployment-config.html:97
 msgid "This will stop any new rollouts or triggers from running until resumed."
-msgstr "这将阻止任何新的滚动更新或触发器在恢复之前运行。"
+msgstr "这将阻止任何新的滚动更新或触发器在恢复之前运行."
 
 #: app/views/edit/autoscaler.html:32
 msgid ""
@@ -6072,7 +6051,7 @@ msgstr ""
 
 #: app/views/directives/deploy-image.html:64
 msgid "To deploy an image from a private repository,you must"
-msgstr "用镜像流版本部署镜像,"
+msgstr "从专用存储库部署镜像，必须"
 
 #: app/views/modals/confirm-save-log.html:12
 msgid "To get the complete log, run the command"
@@ -6186,8 +6165,6 @@ msgid "Unknown"
 msgstr "未知的"
 
 #: app/scripts/constants.js:121
-#, fuzzy
-#| msgid "Updated"
 msgid "Update"
 msgstr "更新"
 
@@ -6709,7 +6686,7 @@ msgid "an image is pushed to"
 msgstr "镜像被推到"
 
 #: app/views/browse/service.html:96 app/views/directives/deploy-image.html:109
-#: app/views/overview.html:278 app/views/overview/_networking.html:17
+#: app/views/overview/_networking.html:17
 msgid "and"
 msgstr "和"
 
@@ -6738,6 +6715,10 @@ msgstr "作者为{{build.spec.revision.git.author.name}}"
 msgid "build configuration {{buildConfig.metadata.name}}."
 msgstr "构建配置{{buildConfig.metadata.name}}。"
 
+#: app/views/attach-pvc.html:14
+msgid "but none are loaded on this project."
+msgstr "但是这个项目没有加载持久卷."
+
 #: app/scripts/services/routes.js:30
 msgid "but service does not exist."
 msgstr "但是服务不存在"
@@ -6747,10 +6728,8 @@ msgid "by"
 msgstr "被"
 
 #: app/scripts/constants.js:22 app/scripts/directives/fromFile.js:238
-#, fuzzy
-#| msgid "have been added to project"
 msgid "can't be created in project"
-msgstr "已经被添加到项目"
+msgstr "不能被创建在项目"
 
 #: app/views/_templateopt.html:79
 msgid "clear the value"
@@ -6791,7 +6770,7 @@ msgstr "核"
 #: app/views/directives/deploy-image.html:64
 #: app/views/directives/deploy-image.html:65
 msgid "create an image pull secret"
-msgstr "创建一个镜像拉取秘钥"
+msgstr "创建镜像拉取秘钥"
 
 #: app/views/browse/build-config.html:164 app/views/browse/build-config.html:63
 #: app/views/browse/build.html:75 app/views/browse/config-map.html:55
@@ -7030,7 +7009,7 @@ msgstr "月"
 
 #: app/views/directives/edit-config-map-or-secret.html:17
 msgid "my"
-msgstr ""
+msgstr "我的"
 
 #: app/views/create/fromimage.html:282
 msgid "name"
@@ -7223,10 +7202,8 @@ msgid "set. Autoscaling will not work without a CPU"
 msgstr "设置。自动扩缩将不会执行，只要没有CPU"
 
 #: app/views/browse/build-config.html:93
-#, fuzzy
-#| msgid "Source Repository:"
 msgid "source repository"
-msgstr "代码仓库:"
+msgstr "代码仓库"
 
 #: app/views/browse/build-config.html:167
 msgid "started"
@@ -7254,14 +7231,8 @@ msgstr "系统用户"
 
 #: app/scripts/constants.js:108
 #: app/views/modals/process-or-save-template.html:25
-#, fuzzy
-#| msgid "Template"
 msgid "template"
 msgstr "模板"
-
-#: app/views/overview.html:279
-msgid "the OpenShift Pipeline Plugin"
-msgstr "DataMan OS管道插件"
 
 #: app/scripts/constants.js:109 app/views/_edit-request-limit.html:32
 msgid "the container is allowed to use when running."
@@ -7372,7 +7343,7 @@ msgstr "将跟踪该镜像"
 
 #: app/views/directives/deploy-image.html:68
 msgid "with your image registry credentials"
-msgstr "镜像注册表证书"
+msgstr "用镜像注册表证书"
 
 #: app/scripts/filters/date.js:46
 msgid "year"
@@ -7537,6 +7508,9 @@ msgstr "{{view.showSecret ? \"隐藏\" : \"显示\"}}私密凭证"
 msgid "没有部署可以显示"
 msgstr ""
 
+#~ msgid "the OpenShift Pipeline Plugin"
+#~ msgstr "OpenShift管道插件"
+
 #~ msgid ""
 #~ "Select the keys to use and the file paths where each key will be "
 #~ "exposed.\n"
@@ -7580,9 +7554,6 @@ msgstr ""
 #~ "ref” context-dir=“buildConfig.spec.source.contextDir”>{{buildConfig.spec."
 #~ "source.git.uri}}</osc-git-link></span>"
 
-#~ msgid "Create a project for your application."
-#~ msgstr "为您的应用程序创建一个项目。"
-
 #~ msgid ""
 #~ "To deploy an image from a private repository,you must<span ng-if=\"!input."
 #~ "selectedProject.metadata.uid\">create an image pull secret</span>\n"
@@ -7596,22 +7567,13 @@ msgstr ""
 #~ "              <a href=“” ng-click=“openCreateWebhookSecretModal()” ng-"
 #~ "if=“input.selectedProject.metadata.uid”>创建镜像提取密钥</a>."
 
-#~ msgid ""
-#~ "The percentage of the CPU request that each pod should ideally be using.\n"
-#~ "      Pods will be added or removed periodically when CPU usage exceeds "
-#~ "or\n"
-#~ "      drops below this target value."
-#~ msgstr ""
-#~ "每个pod应该使用的CPU请求的百分比。\n"
-#~ "\n"
-#~ "当CPU使用率超过或超过时，将会定期添加或删除pod。\n"
-#~ "\n"
-#~ "低于此目标值。"
+#~ msgid "Create a project for your application."
+#~ msgstr "为您的应用程序创建一个项目。"
 
 #, fuzzy
-#~| msgid "Message"
-#~ msgid "{{emptyMessage}}"
-#~ msgstr "消息"
+#~| msgid "No deployments."
+#~ msgid "No deployments----"
+#~ msgstr "没有部署。"
 
 #, fuzzy
 #~| msgid ""
