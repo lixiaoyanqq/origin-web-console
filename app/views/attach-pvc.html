@@ -9,9 +9,9 @@
             <div ng-show="pvcs && !pvcs.length && attach.resource" class="empty-state-message empty-state-full-page text-center">
               <h2 translate>No persistent volume claims.</h2>
   
-              <p translate>
-                A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},
-                but none are loaded on this project.
+              <p>
+                <translate>A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},</translate>
+                <translate>but none are loaded on this project.</translate>
               </p>
   
               <div ng-if="project && (pvcVersion | canI : 'create')">

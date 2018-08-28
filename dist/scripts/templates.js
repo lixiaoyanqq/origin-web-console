@@ -918,8 +918,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-show=\"!pvcs || !attach.resource\" translate>Loading...</div>\n" +
     "<div ng-show=\"pvcs && !pvcs.length && attach.resource\" class=\"empty-state-message empty-state-full-page text-center\">\n" +
     "<h2 translate>No persistent volume claims.</h2>\n" +
-    "<p translate>\n" +
-    "A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}}, but none are loaded on this project.\n" +
+    "<p>\n" +
+    "<translate>A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},</translate>\n" +
+    "<translate>but none are loaded on this project.</translate>\n" +
     "</p>\n" +
     "<div ng-if=\"project && (pvcVersion | canI : 'create')\">\n" +
     "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
