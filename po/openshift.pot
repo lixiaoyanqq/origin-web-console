@@ -3584,6 +3584,7 @@ msgstr ""
 msgid "No persistent volume claims."
 msgstr ""
 
+#: app/views/browse/build-config.html:104
 #: app/views/pipelines.html:74
 msgid "No pipeline builds have run for {{buildConfigName}}."
 msgstr ""
@@ -6105,6 +6106,10 @@ msgstr ""
 
 #: app/views/directives/deployment-donut.html:13
 msgid "View pods for {{rc | displayName}}"
+msgstr ""
+
+#: app/views/browse/build-config.html:106
+msgid "View the <a ng-href=\"{{(buildConfig | navigateResourceURL) + '?tab=configuration'}}\">Jenkinsfile</a> to see what stages will run."
 msgstr ""
 
 #: app/scripts/constants.js:123

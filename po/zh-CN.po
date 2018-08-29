@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-28 09:58+0800\n"
+"PO-Revision-Date: 2018-08-28 14:02+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -3710,7 +3710,29 @@ msgstr "没有持久的卷被声明。"
 
 #: app/views/pipelines.html:74
 msgid "No pipeline builds have run for {{buildConfigName}}."
-msgstr "没有为{{buildConfigName}} 运行任何管道构建。"
+msgstr "没有为{{buildConfigName}} 运行任何管道构建."
+
+#: app/views/browse/build-config.html:103
+msgid ""
+"No pipeline builds have run for {{buildConfigName}}.\n"
+"                      <br>\n"
+"                      <span ng-if=\"buildConfig.spec.strategy."
+"jenkinsPipelineStrategy.jenkinsfile\" translate=\"\">\n"
+"                        View the <a ng-href=\"{{(buildConfig | "
+"navigateResourceURL) + '?tab=configuration'}}\">Jenkinsfile</a> to see what "
+"stages will run.\n"
+"                      </span>\n"
+"                      <span ng-if=\"buildConfig.spec.strategy."
+"jenkinsPipelineStrategy.jenkinsfilePath\">\n"
+"                        View the file <code>{{buildConfig.spec.strategy."
+"jenkinsPipelineStrategy.jenkinsfilePath}}</code> in the\n"
+"                        <a ng-if=\"buildConfig | jenkinsfileLink\" ng-href="
+"\"buildConfig | jenkinsfileLink\">source repository</a>\n"
+"                        <span ng-if=\"!(buildConfig | "
+"jenkinsfileLink)\">source repository</span>\n"
+"                        to see what stages will run.\n"
+"                      </span>"
+msgstr ""
 
 #: app/views/overview.html:310
 msgid "No pipeline runs."
@@ -6372,6 +6394,14 @@ msgstr "查看所有"
 #: app/views/directives/deployment-donut.html:13
 msgid "View pods for {{rc | displayName}}"
 msgstr "查看pods {{rc | displayName}}"
+
+#: app/views/browse/build-config.html:106
+msgid ""
+"View the <a ng-href=\"{{(buildConfig | navigateResourceURL) + '?"
+"tab=configuration'}}\">Jenkinsfile</a> to see what stages will run."
+msgstr ""
+"查看<a ng-href=“{{(buildConfig | navigateResourceURL) + ‘?"
+"tab=configuration’}}”>Jenkinsfile</a> 以查看将运行哪些阶段."
 
 #: app/scripts/constants.js:123
 msgid "View the result for Keyword:"
