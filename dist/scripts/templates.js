@@ -1630,9 +1630,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</span>\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig.spec.strategy.jenkinsPipelineStrategy\">\n" +
-    "No pipeline builds have run for {{buildConfigName}}.\n" +
+    "<translate>No pipeline builds have run for {{buildConfigName}}.</translate>\n" +
     "<br>\n" +
-    "<span ng-if=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\">\n" +
+    "<span ng-if=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile\" translate>\n" +
     "View the <a ng-href=\"{{(buildConfig | navigateResourceURL) + '?tab=configuration'}}\">Jenkinsfile</a> to see what stages will run.\n" +
     "</span>\n" +
     "<span ng-if=\"buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath\">\n" +

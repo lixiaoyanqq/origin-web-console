@@ -101,9 +101,9 @@
                       </span>
                     </span>
                     <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy">
-                      No pipeline builds have run for {{buildConfigName}}.
+                      <translate>No pipeline builds have run for {{buildConfigName}}.</translate>
                       <br>
-                      <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile">
+                      <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfile" translate>
                         View the <a ng-href="{{(buildConfig | navigateResourceURL) + '?tab=configuration'}}">Jenkinsfile</a> to see what stages will run.
                       </span>
                       <span ng-if="buildConfig.spec.strategy.jenkinsPipelineStrategy.jenkinsfilePath">
