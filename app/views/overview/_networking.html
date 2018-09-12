@@ -3,7 +3,7 @@
   <div ng-repeat="service in networking.rowServices" class="row">
     <div class="col-sm-5 col-md-6">
       <div class="resource-label">
-        Service - Internal Traffic
+        {{'Service'|translate}} - Internal Traffic
       </div>
       <h3>
         <a ng-href="{{service | navigateResourceURL}}">{{service.metadata.name}}</a>
@@ -39,7 +39,7 @@
             <route-warnings route="route" services="networking.allServices"></route-warnings>
           </h3>
           <div class="overview-route" translate>
-            Route <a ng-href="{{route | navigateResourceURL}}">{{route.metadata.name}}</a><span ng-if="route.spec.port.targetPort">, target port {{route.spec.port.targetPort}}</span>
+            {{'Route'|translate}} <a ng-href="{{route | navigateResourceURL}}">{{route.metadata.name}}</a><span ng-if="route.spec.port.targetPort">, target port {{route.spec.port.targetPort}}</span>
           </div>
           <div ng-if="route | hasAlternateBackends">
             <route-service-bar-chart route="route" highlight-service="service.metadata.name"></route-service-bar-chart>

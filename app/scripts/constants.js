@@ -55,6 +55,7 @@ function Noop() {
   gettext('Ignore');
   gettext('Image count');
   gettext('Image Registry Credentials');
+  gettext('is paused');
   gettext('Items');
   gettext("Last Updated");
   gettext('Manual');
@@ -85,6 +86,7 @@ function Noop() {
   gettext('replication controller');
   gettext('Replication Controller');
   gettext('results for Keyword:');
+  gettext('Resume Rollouts');
   gettext('Retry');
   gettext('Rolling');
   gettext('Route');
@@ -114,6 +116,7 @@ function Noop() {
   gettext('There are no applications in this project');
   gettext('There are no notifications to display.');
   gettext('This filter will only apply to items which contain publisher information. Items that do not have a publisher will not be shown in the filter results.');
+  gettext('This will stop any new rollouts or triggers from running until resumed.');
   gettext('To pull this image');
   gettext('To push an image to this image stream:');
   gettext('user');

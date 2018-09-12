@@ -88,11 +88,11 @@ angular.module("openshiftConsole")
       if(_.get(deployment, 'spec.paused')) {
         alerts[deployment.metadata.uid + '-paused'] = {
           type: 'info',
-          message: deployment.metadata.name + ' is paused.',
-          details: 'This will stop any new rollouts or triggers from running until resumed.',
+          message: deployment.metadata.name + ' ' + gettextCatalog.getString(gettext('is paused')),
+          details: gettextCatalog.getString(gettext('This will stop any new rollouts or triggers from running until resumed.')),
           links: [{
             href: "",
-            label: 'Resume Rollouts',
+            label: gettextCatalog.getString(gettext('Resume Rollouts')),
             onClick: function() {
               DeploymentsService.setPaused(deployment, false, {namespace: deployment.metadata.namespace}).then(
                 _.noop,
