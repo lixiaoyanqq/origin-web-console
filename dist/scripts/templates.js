@@ -922,9 +922,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<translate>A <b>persistent volume claim</b> is required to attach to this {{kind | humanizeKind}},</translate>\n" +
     "<translate>but none are loaded on this project.</translate>\n" +
     "</p>\n" +
-    "<div ng-if=\"project && (pvcVersion | canI : 'create')\">\n" +
-    "<a ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-primary\" translate>Create Storage</a>\n" +
-    "</div>\n" +
+    "\n" +
     "<p ng-if=\"project && !(pvcVersion | canI : 'create')\">\n" +
     "To claim storage from a persistent volume, refer to the documentation on <a target=\"_blank\" ng-href=\"{{'persistent_volumes' | helpLink}}\">using persistent volumes</a>.\n" +
     "</p>\n" +
@@ -1008,8 +1006,9 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<span id=\"volume-name-help\" class=\"help-block\" translate>Unique name used to identify this volume. If not specified, a volume name is generated.</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"attachPVCForm.volumeName.$error.pattern && attachPVCForm.volumeName.$touched\">\n" +
-    "<span class=\"help-block\" translate>\n" +
-    "Volume names may only contain lower-case letters, numbers, and dashes. They may not start or end with a dash.\n" +
+    "<span class=\"help-block\">\n" +
+    "<translate>Volume names may only contain lower-case letters, numbers, and dashes.</translate>\n" +
+    "<translate>They may not start or end with a dash.</translate>\n" +
     "</span>\n" +
     "</div>\n" +
     "<div class=\"has-error\" ng-show=\"attachPVCForm.volumeName.$error.maxlength\">\n" +
@@ -12732,7 +12731,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div ng-repeat=\"service in networking.rowServices\" class=\"row\">\n" +
     "<div class=\"col-sm-5 col-md-6\">\n" +
     "<div class=\"resource-label\">\n" +
-    "Service - Internal Traffic\n" +
+    "{{'Service'|translate}} - Internal Traffic\n" +
     "</div>\n" +
     "<h3>\n" +
     "<a ng-href=\"{{service | navigateResourceURL}}\">{{service.metadata.name}}</a>\n" +
@@ -12768,7 +12767,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<route-warnings route=\"route\" services=\"networking.allServices\"></route-warnings>\n" +
     "</h3>\n" +
     "<div class=\"overview-route\" translate>\n" +
-    "Route <a ng-href=\"{{route | navigateResourceURL}}\">{{route.metadata.name}}</a><span ng-if=\"route.spec.port.targetPort\">, target port {{route.spec.port.targetPort}}</span>\n" +
+    "{{'Route'|translate}} <a ng-href=\"{{route | navigateResourceURL}}\">{{route.metadata.name}}</a><span ng-if=\"route.spec.port.targetPort\">, target port {{route.spec.port.targetPort}}</span>\n" +
     "</div>\n" +
     "<div ng-if=\"route | hasAlternateBackends\">\n" +
     "<route-service-bar-chart route=\"route\" highlight-service=\"service.metadata.name\"></route-service-bar-chart>\n" +
@@ -13988,10 +13987,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"middle-header header-toolbar\">\n" +
     "<div class=\"container-fluid\">\n" +
     "<div class=\"page-header page-header-bleed-right page-header-bleed-left\">\n" +
-    "<div class=\"pull-right\" ng-if=\"project && (persistentVolumeClaimsVersion | canI : 'create') && ((pvcs | hashSize) > 0 || filterWithZeroResults)\">\n" +
-    "<a ng-if=\"!outOfClaims\" ng-href=\"project/{{project.metadata.name}}/create-pvc\" class=\"btn btn-default\" translate>Create Storage</a>\n" +
-    "<a ng-if=\"outOfClaims\" href=\"\" class=\"btn btn-default disabled\" aria-disabled=\"true\" translate>Create Storage</a>\n" +
-    "</div>\n" +
+    "\n" +
     "<h1>\n" +
     "<translate>Storage</translate>\n" +
     "</h1>\n" +
