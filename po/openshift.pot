@@ -1525,10 +1525,7 @@ msgstr ""
 msgid "Create Secret"
 msgstr ""
 
-#: app/views/attach-pvc.html:18
 #: app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:6
-#: app/views/storage.html:7
 msgid "Create Storage"
 msgstr ""
 
@@ -2921,6 +2918,9 @@ msgstr ""
 msgid "Loading metrics"
 msgstr ""
 
+#: app/index.html:52
+#: app/scripts/controllers/buildConfig.js:56
+#: app/scripts/controllers/deployment.js:35
 #: app/scripts/controllers/deploymentConfig.js:47
 #: app/scripts/controllers/deployments.js:28
 #: app/scripts/controllers/imagestream.js:36
@@ -2965,6 +2965,7 @@ msgstr ""
 #: app/views/images.html:21
 #: app/views/newfromtemplate.html:6
 #: app/views/overview.html:36
+#: app/views/overview/_mobile-client-row.html:50
 #: app/views/pipelines.html:17
 #: app/views/pods.html:21
 #: app/views/projects.html:15
