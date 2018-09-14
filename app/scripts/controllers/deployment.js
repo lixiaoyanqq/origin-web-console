@@ -32,7 +32,7 @@ angular.module('openshiftConsole')
     $scope.replicaSetsForDeployment = {};
     $scope.unfilteredReplicaSetsForDeployment  = {};
     $scope.labelSuggestions = {};
-    $scope.emptyMessage = "Loading...";
+    $scope.emptyMessage = gettext("Loading...");
     $scope.forms = {};
     $scope.alerts = {};
     $scope.imagesByDockerReference = {};

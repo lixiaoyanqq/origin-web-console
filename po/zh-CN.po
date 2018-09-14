@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-12 16:58+0800\n"
+"PO-Revision-Date: 2018-09-14 10:24+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -1639,8 +1639,7 @@ msgstr "创建示例管道"
 msgid "Create Secret"
 msgstr "创建私密凭证"
 
-#: app/views/attach-pvc.html:18 app/views/create-persistent-volume-claim.html:8
-#: app/views/storage.html:6 app/views/storage.html:7
+#: app/views/create-persistent-volume-claim.html:8
 msgid "Create Storage"
 msgstr "创建存储"
 
@@ -3060,7 +3059,7 @@ msgstr "正在载入日志"
 msgid "Loading metrics"
 msgstr "正在载入监控"
 
-#: app/scripts/controllers/deploymentConfig.js:47
+#: app/index.html:52 app/scripts/controllers/deploymentConfig.js:47
 #: app/scripts/controllers/deployments.js:28
 #: app/scripts/controllers/imagestream.js:36
 #: app/scripts/controllers/quota.js:27 app/views/add-config-volume.html:6

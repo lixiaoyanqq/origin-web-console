@@ -17,6 +17,7 @@ angular.module('openshiftConsole')
              BuildsService,
              ImagesService,
              DataService,
+             gettext,
              LabelFilter,
              ModalsService,
              NotificationsService,
@@ -52,7 +53,7 @@ angular.module('openshiftConsole')
       $scope.buildConfigsInstantiateVersion = APIService.getPreferredVersion('buildconfigs/instantiate');
       $scope.secretsVersion = APIService.getPreferredVersion('secrets');
 
-      $scope.emptyMessage = "Loading...";
+      $scope.emptyMessage = gettext("Loading...");
 
       $scope.aceLoaded = function(editor) {
         var session = editor.getSession();

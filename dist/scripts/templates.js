@@ -12715,7 +12715,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</button>\n" +
     "</div>\n" +
     "</div>\n" +
-    "<div ng-if=\"loading\">\n" +
+    "<div ng-if=\"loading\" translate>\n" +
     "Loading...\n" +
     "</div>\n" +
     "</div>\n" +

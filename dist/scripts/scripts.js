@@ -5628,7 +5628,7 @@ h();
 i.unwatchAll(m);
 });
 }));
-} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BuildsService", "ImagesService", "DataService", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p) {
+} ]), angular.module("openshiftConsole").controller("BuildConfigController", [ "$scope", "$filter", "$routeParams", "APIService", "AuthorizationService", "BuildsService", "ImagesService", "DataService", "gettext", "LabelFilter", "ModalsService", "NotificationsService", "ProjectsService", "SecretsService", "keyValueEditorUtils", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g) {
 e.projectName = n.project, e.buildConfigName = n.buildconfig, e.buildConfig = null, e.labelSuggestions = {}, e.alerts = {}, e.breadcrumbs = [], e.forms = {}, e.expand = {
 imageEnv: !1
 }, n.isPipeline ? e.breadcrumbs.push({
@@ -5639,25 +5639,25 @@ title: "Builds",
 link: "project/" + n.project + "/browse/builds"
 }), e.breadcrumbs.push({
 title: n.buildconfig
-}), e.buildConfigsVersion = r.getPreferredVersion("buildconfigs"), e.buildsVersion = r.getPreferredVersion("builds"), e.buildConfigsInstantiateVersion = r.getPreferredVersion("buildconfigs/instantiate"), e.secretsVersion = r.getPreferredVersion("secrets"), e.emptyMessage = "Loading...", e.aceLoaded = function(e) {
+}), e.buildConfigsVersion = r.getPreferredVersion("buildconfigs"), e.buildsVersion = r.getPreferredVersion("builds"), e.buildConfigsInstantiateVersion = r.getPreferredVersion("buildconfigs/instantiate"), e.secretsVersion = r.getPreferredVersion("secrets"), e.emptyMessage = c("Loading..."), e.aceLoaded = function(e) {
 var t = e.getSession();
 t.setOption("tabSize", 2), t.setOption("useSoftTabs", !0), e.$blockScrolling = 1 / 0;
 };
-var g = t("buildConfigForBuild"), f = t("buildStrategy"), v = t("orderByDisplayName"), h = t("getErrorDetails"), y = [], b = [], S = [];
+var f = t("buildConfigForBuild"), v = t("buildStrategy"), h = t("orderByDisplayName"), y = t("getErrorDetails"), b = [], S = [], C = [];
 e.valueFromObjects = [];
-var C = function(t) {
-e.updatedBuildConfig = angular.copy(t), e.envVars = f(e.updatedBuildConfig).env || [];
+var w = function(t) {
+e.updatedBuildConfig = angular.copy(t), e.envVars = v(e.updatedBuildConfig).env || [];
 };
 e.compareTriggers = function(e, t) {
 return _.isNumber(e.value) ? -1 : "ConfigChange" === e.value ? -1 : "ConfigChange" === t.value ? 1 : "ImageChange" === e.value ? -1 : "ImageChange" === t.value ? 1 : e.value.localeCompare(t.value);
 }, e.saveEnvVars = function() {
-u.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), f(e.updatedBuildConfig).env = p.compactEntries(angular.copy(e.envVars)), s.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
-u.addNotification({
+d.hideNotification("save-bc-env-error"), e.envVars = _.filter(e.envVars, "name"), v(e.updatedBuildConfig).env = g.compactEntries(angular.copy(e.envVars)), s.update(e.buildConfigsVersion, n.buildconfig, e.updatedBuildConfig, e.projectContext).then(function() {
+d.addNotification({
 type: "success",
 message: "Environment variables for build config " + e.buildConfigName + " were successfully updated."
 }), e.forms.bcEnvVars.$setPristine();
 }, function(n) {
-u.addNotification({
+d.addNotification({
 id: "save-bc-env-error",
 type: "error",
 message: "An error occurred updating environment variables for build config " + e.buildConfigName + ".",
@@ -5665,14 +5665,14 @@ details: t("getErrorDetails")(n)
 });
 });
 }, e.clearEnvVarUpdates = function() {
-C(e.buildConfig), e.forms.bcEnvVars.$setPristine();
+w(e.buildConfig), e.forms.bcEnvVars.$setPristine();
 };
-var w, P = function(n, a) {
+var P, j = function(n, a) {
 e.loaded = !0, e.buildConfig = n, e.buildConfigPaused = o.isPaused(e.buildConfig), e.buildConfig.spec.source.images && (e.imageSources = e.buildConfig.spec.source.images, e.imageSourcesPaths = [], e.imageSources.forEach(function(n) {
 e.imageSourcesPaths.push(t("destinationSourcePair")(n.paths));
 }));
-var c = _.get(f(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
-w !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (w = l, s.get(r.kindToResource(c.kind), c.name, {
+var c = _.get(v(n), "from", {}), l = c.kind + "/" + c.name + "/" + (c.namespace || e.projectName);
+P !== l && (_.includes([ "ImageStreamTag", "ImageStreamImage" ], c.kind) ? (P = l, s.get(r.kindToResource(c.kind), c.name, {
 namespace: c.namespace || e.projectName
 }, {
 errorNotification: !1
@@ -5680,10 +5680,10 @@ errorNotification: !1
 e.BCEnvVarsFromImage = i.getEnvironment(t);
 }, function() {
 e.BCEnvVarsFromImage = [];
-})) : e.BCEnvVarsFromImage = []), C(n), "DELETED" === a && (e.alerts.deleted = {
+})) : e.BCEnvVarsFromImage = []), w(n), "DELETED" === a && (e.alerts.deleted = {
 type: "warning",
 message: "This build configuration has been deleted."
-}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? C(n) : e.alerts.background_update = {
+}, e.buildConfigDeleted = !0), !e.forms.bcEnvVars || e.forms.bcEnvVars.$pristine ? w(n) : e.alerts.background_update = {
 type: "warning",
 message: "This build configuration has been updated in the background. Saving your changes may create a conflict or cause loss of data.",
 links: [ {
@@ -5694,9 +5694,9 @@ return e.clearEnvVarUpdates(), !0;
 } ]
 }, e.paused = o.isPaused(e.buildConfig);
 };
-d.get(n.project).then(_.spread(function(r, i) {
-function d() {
-c.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
+m.get(n.project).then(_.spread(function(r, i) {
+function c() {
+l.getLabelSelector().isEmpty() || !$.isEmptyObject(e.builds) || $.isEmptyObject(e.unfilteredBuilds) ? delete e.alerts.builds : e.alerts.builds = {
 type: "warning",
 details: "The active filters are hiding all builds."
 };
@@ -5704,7 +5704,7 @@ details: "The active filters are hiding all builds."
 e.project = r, e.projectContext = i, s.get(e.buildConfigsVersion, n.buildconfig, i, {
 errorNotification: !1
 }).then(function(t) {
-P(t), y.push(s.watchObject(e.buildConfigsVersion, n.buildconfig, i, P));
+j(t), b.push(s.watchObject(e.buildConfigsVersion, n.buildconfig, i, j));
 }, function(n) {
 e.loaded = !0, e.alerts.load = {
 type: "error",
@@ -5714,28 +5714,28 @@ details: 404 === n.status ? "Any remaining build history for this build will be 
 }), s.list("configmaps", i, null, {
 errorNotification: !1
 }).then(function(t) {
-b = v(t.by("metadata.name")), e.valueFromObjects = b.concat(S);
+S = h(t.by("metadata.name")), e.valueFromObjects = S.concat(C);
 }, function(e) {
-403 !== e.code && u.addNotification({
+403 !== e.code && d.addNotification({
 id: "build-config-list-config-maps-error",
 type: "error",
 message: "Could not load config maps.",
-details: h(e)
+details: y(e)
 });
 }), a.canI(e.secretsVersion, "list", n.project) && s.list("secrets", i, null, {
 errorNotification: !1
 }).then(function(t) {
-S = v(t.by("metadata.name")), e.webhookSecrets = m.groupSecretsByType(t).webhook, e.valueFromObjects = b.concat(S);
+C = h(t.by("metadata.name")), e.webhookSecrets = p.groupSecretsByType(t).webhook, e.valueFromObjects = S.concat(C);
 }, function(e) {
-403 !== e.code && u.addNotification({
+403 !== e.code && d.addNotification({
 id: "build-config-list-secrets-error",
 type: "error",
 message: "Could not load secrets.",
-details: h(e)
+details: y(e)
 });
-}), y.push(s.watch(e.buildsVersion, i, function(t, r, a) {
+}), b.push(s.watch(e.buildsVersion, i, function(t, r, a) {
 if (e.emptyMessage = "No builds to show", r) {
-if (g(a) === n.buildconfig) {
+if (f(a) === n.buildconfig) {
 var i = a.metadata.name;
 switch (r) {
 case "ADDED":
@@ -5748,7 +5748,7 @@ delete e.unfilteredBuilds[i];
 }
 }
 } else e.unfilteredBuilds = o.validatedBuildsForBuildConfig(n.buildconfig, t.by("metadata.name"));
-e.builds = c.getLabelSelector().select(e.unfilteredBuilds), d(), c.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), c.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
+e.builds = l.getLabelSelector().select(e.unfilteredBuilds), c(), l.addLabelSuggestionsFromResources(e.unfilteredBuilds, e.labelSuggestions), l.setLabelSuggestions(e.labelSuggestions), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds);
 }, {
 http: {
 params: {
@@ -5758,16 +5758,16 @@ omission: ""
 })
 }
 }
-})), c.onActiveFiltersChanged(function(t) {
+})), l.onActiveFiltersChanged(function(t) {
 e.$apply(function() {
-e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), d();
+e.builds = t.select(e.unfilteredBuilds), e.orderedBuilds = o.sortBuilds(e.builds, !0), e.latestBuild = _.head(e.orderedBuilds), c();
 });
 }), e.startBuild = function() {
 o.startBuild(e.buildConfig);
 }, e.showJenkinsfileExamples = function() {
-l.showJenkinsfileExamples();
+u.showJenkinsfileExamples();
 }, e.$on("$destroy", function() {
-s.unwatchAll(y);
+s.unwatchAll(b);
 });
 }));
 } ]), angular.module("openshiftConsole").controller("BuildController", [ "$scope", "$filter", "$routeParams", "APIService", "BuildsService", "DataService", "ModalsService", "Navigate", "ProjectsService", function(e, t, n, r, a, o, i, s, c) {
@@ -6003,7 +6003,7 @@ a.unwatchAll(b);
 }));
 } ]), angular.module("openshiftConsole").controller("DeploymentController", [ "$scope", "$filter", "$routeParams", "APIService", "DataService", "DeploymentsService", "HPAService", "ImageStreamResolver", "LabelFilter", "Logger", "ModalsService", "Navigate", "OwnerReferencesService", "ProjectsService", "StorageService", "gettext", "gettextCatalog", function(e, t, n, r, a, o, i, s, c, l, u, d, m, p, g, f, v) {
 var h = {};
-e.projectName = n.project, e.name = n.deployment, e.replicaSetsForDeployment = {}, e.unfilteredReplicaSetsForDeployment = {}, e.labelSuggestions = {}, e.emptyMessage = "Loading...", e.forms = {}, e.alerts = {}, e.imagesByDockerReference = {}, e.breadcrumbs = [ {
+e.projectName = n.project, e.name = n.deployment, e.replicaSetsForDeployment = {}, e.unfilteredReplicaSetsForDeployment = {}, e.labelSuggestions = {}, e.emptyMessage = f("Loading..."), e.forms = {}, e.alerts = {}, e.imagesByDockerReference = {}, e.breadcrumbs = [ {
 title: f("Deployments"),
 link: "project/" + n.project + "/browse/deployments"
 }, {
