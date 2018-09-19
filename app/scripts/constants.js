@@ -760,6 +760,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     'icon-debian': 'debian.svg',
     'icon-decisionserver': 'decisionserver.svg',
     'icon-django': 'django.svg',
+    'icon-dmos-oc': 'dmos-oc.svg',
     'icon-dotnet': 'dotnet.svg',
     'icon-drupal': 'drupal.svg',
     'icon-eap': 'eap.svg',
