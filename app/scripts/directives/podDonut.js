@@ -120,7 +120,7 @@ angular.module('openshiftConsole')
           }
         };
 
-        config.data.colors[gettextCatalog.getString(gettext('Empty'))] = "#ffffff";
+        config.data.colors[gettextCatalog.getString(gettext('Empty'))] = "#dbdcdd";
         config.data.colors[gettextCatalog.getString(gettext('Running'))] = "#00b9e4";
         config.data.colors[gettextCatalog.getString(gettext('Not Ready'))] = "#beedf9";
         config.data.colors[gettextCatalog.getString(gettext('Warning'))] = "#f39d3c";
@@ -147,13 +147,12 @@ angular.module('openshiftConsole')
           angular.forEach(phases, function(phase) {
             data.columns.push([gettextCatalog.getString(phase), countByPhase[phase] || 0]);
           });
-
           if (_.isEmpty(countByPhase)) {
             // Add a dummy group to draw an arc, which we style in CSS.
-            data.columns.push(["Empty", 1]);
+            data.columns.push([gettextCatalog.getString(gettext('Empty')), 1]);
           } else {
             // Unload the dummy group if present when there's real data.
-            data.unload = "Empty";
+            data.unload = gettextCatalog.getString(gettext('Empty'));
           }
 
           if (!chart) {
@@ -194,10 +193,8 @@ angular.module('openshiftConsole')
           if (pod.status.phase === 'Running' && !isReady(pod)) {
             return gettextCatalog.getString(gettext('Not Ready'));
           }
-
           return _.get(pod, 'status.phase', gettextCatalog.getString(gettext('Unknown')));
         }
-
         function countPodPhases() {
           var countByPhase = {};
 
