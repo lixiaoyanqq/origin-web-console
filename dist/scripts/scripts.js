@@ -12685,7 +12685,7 @@ selection: {
 enabled: !1
 }
 }
-}).data.colors[c.getString(s("Empty"))] = "#ffffff", p.data.colors[c.getString(s("Running"))] = "#00b9e4", p.data.colors[c.getString(s("Not Ready"))] = "#beedf9", p.data.colors[c.getString(s("Warning"))] = "#f39d3c", p.data.colors[c.getString(s("Error"))] = "#d9534f", p.data.colors[c.getString(s("Pulling"))] = "#d1d1d1", p.data.colors[c.getString(s("Pending"))] = "#ededed", p.data.colors[c.getString(s("Succeeded"))] = "#00659c", p.data.colors[c.getString(s("Terminating"))] = "#3f9c35", p.data.colors[c.getString(s("Unknown"))] = "#f9d67a", e.mini && (p.padding = {
+}).data.colors[c.getString(s("Empty"))] = "#dbdcdd", p.data.colors[c.getString(s("Running"))] = "#00b9e4", p.data.colors[c.getString(s("Not Ready"))] = "#beedf9", p.data.colors[c.getString(s("Warning"))] = "#f39d3c", p.data.colors[c.getString(s("Error"))] = "#d9534f", p.data.colors[c.getString(s("Pulling"))] = "#d1d1d1", p.data.colors[c.getString(s("Pending"))] = "#ededed", p.data.colors[c.getString(s("Succeeded"))] = "#00659c", p.data.colors[c.getString(s("Terminating"))] = "#3f9c35", p.data.colors[c.getString(s("Unknown"))] = "#f9d67a", e.mini && (p.padding = {
 top: 0,
 right: 0,
 bottom: 0,
@@ -12697,7 +12697,7 @@ columns: []
 };
 angular.forEach(g, function(e) {
 n.columns.push([ c.getString(e), t[e] || 0 ]);
-}), _.isEmpty(t) ? n.columns.push([ "Empty", 1 ]) : n.unload = "Empty", m ? m.load(n) : (p.data.columns = n.columns, m = c3.generate(p)), e.podStatusData = n.columns;
+}), _.isEmpty(t) ? n.columns.push([ c.getString(s("Empty")), 1 ]) : n.unload = c.getString(s("Empty")), m ? m.load(n) : (p.data.columns = n.columns, m = c3.generate(p)), e.podStatusData = n.columns;
 }, 350, {
 maxWait: 500
 });
